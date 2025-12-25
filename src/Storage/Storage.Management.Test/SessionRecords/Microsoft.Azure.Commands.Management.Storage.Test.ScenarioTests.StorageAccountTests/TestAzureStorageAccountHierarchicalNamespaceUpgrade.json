@@ -523,8 +523,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourcegroups/pstestrg5751/providers/Microsoft.Storage/storageAccounts/stopstestrg5751/hnsonmigration?api-version=2025-06-01&requestType=HnsOnValidationRequest",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnNTc1MS9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNTc1MS9obnNvbm1pZ3JhdGlvbj9hcGktdmVyc2lvbj0yMDI1LTA2LTAxJnJlcXVlc3RUeXBlPUhuc09uVmFsaWRhdGlvblJlcXVlc3Q=",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg5751/providers/Microsoft.Storage/storageAccounts/stopstestrg5751/hnsonmigration?api-version=2025-06-01&requestType=HnsOnValidationRequest",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNTc1MS9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNTc1MS9obnNvbm1pZ3JhdGlvbj9hcGktdmVyc2lvbj0yMDI1LTA2LTAxJnJlcXVlc3RUeXBlPUhuc09uVmFsaWRhdGlvblJlcXVlc3Q=",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {

@@ -19,8 +19,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -52,8 +51,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -84,6 +82,75 @@ namespace Microsoft.Azure.Management.Storage
             }
         }
         /// <summary>
+        /// Gets properties of a specified share.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='shareName'>
+        /// The name of the file share within the specified storage account. File share
+        /// names must be between 3 and 63 characters in length and use numbers,
+        /// lower-case letters and dash (-) only. Every dash (-) character must be
+        /// immediately preceded and followed by a letter or number.
+        /// </param>
+        /// <param name='expand'>
+        /// Optional, used to expand the properties within share&#39;s properties. Valid
+        /// values are: stats. Should be passed as a string with delimiter &#39;,&#39;.
+        /// </param>
+        /// <param name='xMsSnapshot'>
+        /// Optional, used to retrieve properties of a snapshot.
+        /// </param>
+        public static FileShare Get(this IFileSharesOperations operations, string resourceGroupName, string accountName, string shareName, string expand = default(string), string xMsSnapshot = default(string))
+        {
+                return ((IFileSharesOperations)operations).GetAsync(resourceGroupName, accountName, shareName, expand, xMsSnapshot).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets properties of a specified share.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='shareName'>
+        /// The name of the file share within the specified storage account. File share
+        /// names must be between 3 and 63 characters in length and use numbers,
+        /// lower-case letters and dash (-) only. Every dash (-) character must be
+        /// immediately preceded and followed by a letter or number.
+        /// </param>
+        /// <param name='expand'>
+        /// Optional, used to expand the properties within share&#39;s properties. Valid
+        /// values are: stats. Should be passed as a string with delimiter &#39;,&#39;.
+        /// </param>
+        /// <param name='xMsSnapshot'>
+        /// Optional, used to retrieve properties of a snapshot.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<FileShare> GetAsync(this IFileSharesOperations operations, string resourceGroupName, string accountName, string shareName, string expand = default(string), string xMsSnapshot = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, accountName, shareName, expand, xMsSnapshot, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates a new share under the specified account as described by request
         /// body. The share resource includes metadata and properties for that share.
         /// It does not include a list of the files contained by the share.
@@ -92,8 +159,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -124,8 +190,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -161,8 +226,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -189,8 +253,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -214,85 +277,13 @@ namespace Microsoft.Azure.Management.Storage
             }
         }
         /// <summary>
-        /// Gets properties of a specified share.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share
-        /// names must be between 3 and 63 characters in length and use numbers,
-        /// lower-case letters and dash (-) only. Every dash (-) character must be
-        /// immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='expand'>
-        /// Optional, used to expand the properties within share&#39;s properties. Valid
-        /// values are: stats. Should be passed as a string with delimiter &#39;,&#39;.
-        /// </param>
-        /// <param name='xMsSnapshot'>
-        /// Optional, used to retrieve properties of a snapshot.
-        /// </param>
-        public static FileShare Get(this IFileSharesOperations operations, string resourceGroupName, string accountName, string shareName, string expand = default(string), string xMsSnapshot = default(string))
-        {
-                return ((IFileSharesOperations)operations).GetAsync(resourceGroupName, accountName, shareName, expand, xMsSnapshot).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets properties of a specified share.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share
-        /// names must be between 3 and 63 characters in length and use numbers,
-        /// lower-case letters and dash (-) only. Every dash (-) character must be
-        /// immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='expand'>
-        /// Optional, used to expand the properties within share&#39;s properties. Valid
-        /// values are: stats. Should be passed as a string with delimiter &#39;,&#39;.
-        /// </param>
-        /// <param name='xMsSnapshot'>
-        /// Optional, used to retrieve properties of a snapshot.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<FileShare> GetAsync(this IFileSharesOperations operations, string resourceGroupName, string accountName, string shareName, string expand = default(string), string xMsSnapshot = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, accountName, shareName, expand, xMsSnapshot, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Deletes specified share under its account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -330,8 +321,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -365,62 +355,6 @@ namespace Microsoft.Azure.Management.Storage
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, shareName, xMsSnapshot, include, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Restore a file share within a valid retention days if share soft delete is
-        /// enabled
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share
-        /// names must be between 3 and 63 characters in length and use numbers,
-        /// lower-case letters and dash (-) only. Every dash (-) character must be
-        /// immediately preceded and followed by a letter or number.
-        /// </param>
-        public static void Restore(this IFileSharesOperations operations, string resourceGroupName, string accountName, string shareName, string deletedShareName, string deletedShareVersion)
-        {
-                ((IFileSharesOperations)operations).RestoreAsync(resourceGroupName, accountName, shareName, deletedShareName, deletedShareVersion).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Restore a file share within a valid retention days if share soft delete is
-        /// enabled
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share
-        /// names must be between 3 and 63 characters in length and use numbers,
-        /// lower-case letters and dash (-) only. Every dash (-) character must be
-        /// immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task RestoreAsync(this IFileSharesOperations operations, string resourceGroupName, string accountName, string shareName, string deletedShareName, string deletedShareVersion, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.RestoreWithHttpMessagesAsync(resourceGroupName, accountName, shareName, deletedShareName, deletedShareVersion, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// The Lease Share operation establishes and manages a lock on a share for
         /// delete operations. The lock duration can be 15 to 60 seconds, or can be
         /// infinite.
@@ -429,8 +363,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -460,8 +393,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -486,6 +418,60 @@ namespace Microsoft.Azure.Management.Storage
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Restore a file share within a valid retention days if share soft delete is
+        /// enabled
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='shareName'>
+        /// The name of the file share within the specified storage account. File share
+        /// names must be between 3 and 63 characters in length and use numbers,
+        /// lower-case letters and dash (-) only. Every dash (-) character must be
+        /// immediately preceded and followed by a letter or number.
+        /// </param>
+        public static void Restore(this IFileSharesOperations operations, string resourceGroupName, string accountName, string shareName, string deletedShareName, string deletedShareVersion)
+        {
+                ((IFileSharesOperations)operations).RestoreAsync(resourceGroupName, accountName, shareName, deletedShareName, deletedShareVersion).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Restore a file share within a valid retention days if share soft delete is
+        /// enabled
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='shareName'>
+        /// The name of the file share within the specified storage account. File share
+        /// names must be between 3 and 63 characters in length and use numbers,
+        /// lower-case letters and dash (-) only. Every dash (-) character must be
+        /// immediately preceded and followed by a letter or number.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task RestoreAsync(this IFileSharesOperations operations, string resourceGroupName, string accountName, string shareName, string deletedShareName, string deletedShareVersion, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.RestoreWithHttpMessagesAsync(resourceGroupName, accountName, shareName, deletedShareName, deletedShareVersion, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists all shares.

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Storage.Models
     /// Etag.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class FileShare : AzureEntityResource
+    public partial class FileShare : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the FileShare class.
@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Initializes a new instance of the FileShare class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
@@ -35,6 +35,10 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
         /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="etag">Resource Etag.
@@ -142,10 +146,11 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="fileSharePaidBursting">File Share Paid Bursting properties.
         /// </param>
-        public FileShare(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IDictionary<string, string> metadata = default(System.Collections.Generic.IDictionary<string, string>), int? shareQuota = default(int?), int? provisionedIops = default(int?), string enabledProtocols = default(string), string version = default(string), System.DateTime? deletedTime = default(System.DateTime?), string leaseStatus = default(string), string leaseState = default(string), string leaseDuration = default(string), System.Collections.Generic.IList<SignedIdentifier> signedIdentifiers = default(System.Collections.Generic.IList<SignedIdentifier>), System.DateTime? snapshotTime = default(System.DateTime?), System.DateTime? lastModifiedTime = default(System.DateTime?), int? provisionedBandwidthMibps = default(int?), int? includedBurstIops = default(int?), long? maxBurstCreditsForIops = default(long?), System.DateTime? nextAllowedQuotaDowngradeTime = default(System.DateTime?), System.DateTime? nextAllowedProvisionedIopsDowngradeTime = default(System.DateTime?), System.DateTime? nextAllowedProvisionedBandwidthDowngradeTime = default(System.DateTime?), string rootSquash = default(string), bool? deleted = default(bool?), int? remainingRetentionDays = default(int?), string accessTier = default(string), System.DateTime? accessTierChangeTime = default(System.DateTime?), string accessTierStatus = default(string), long? shareUsageBytes = default(long?), FileSharePropertiesFileSharePaidBursting fileSharePaidBursting = default(FileSharePropertiesFileSharePaidBursting))
+        public FileShare(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string etag = default(string), System.Collections.Generic.IDictionary<string, string> metadata = default(System.Collections.Generic.IDictionary<string, string>), int? shareQuota = default(int?), int? provisionedIops = default(int?), string enabledProtocols = default(string), string version = default(string), System.DateTime? deletedTime = default(System.DateTime?), string leaseStatus = default(string), string leaseState = default(string), string leaseDuration = default(string), System.Collections.Generic.IList<SignedIdentifier> signedIdentifiers = default(System.Collections.Generic.IList<SignedIdentifier>), System.DateTime? snapshotTime = default(System.DateTime?), System.DateTime? lastModifiedTime = default(System.DateTime?), int? provisionedBandwidthMibps = default(int?), int? includedBurstIops = default(int?), long? maxBurstCreditsForIops = default(long?), string nextAllowedQuotaDowngradeTime = default(string), string nextAllowedProvisionedIopsDowngradeTime = default(string), string nextAllowedProvisionedBandwidthDowngradeTime = default(string), string rootSquash = default(string), bool? deleted = default(bool?), int? remainingRetentionDays = default(int?), string accessTier = default(string), System.DateTime? accessTierChangeTime = default(System.DateTime?), string accessTierStatus = default(string), long? shareUsageBytes = default(long?), FileSharePropertiesFileSharePaidBursting fileSharePaidBursting = default(FileSharePropertiesFileSharePaidBursting))
 
-        : base(id, name, type, etag)
+        : base(id, name, type, systemData)
         {
+            this.Etag = etag;
             this.Metadata = metadata;
             this.ShareQuota = shareQuota;
             this.ProvisionedIops = provisionedIops;
@@ -180,6 +185,12 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets resource Etag.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
+        public string Etag {get; private set; }
 
         /// <summary>
         /// Gets or sets a name-value pair to associate with the share as metadata.
@@ -293,7 +304,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Provisioned v1 SSD and Files Provisioned v2 account type
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nextAllowedQuotaDowngradeTime")]
-        public System.DateTime? NextAllowedQuotaDowngradeTime {get; private set; }
+        public string NextAllowedQuotaDowngradeTime {get; private set; }
 
         /// <summary>
         /// Gets returns the next allowed provisioned IOPS downgrade time for the
@@ -301,7 +312,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Provisioned v2 account type.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nextAllowedProvisionedIopsDowngradeTime")]
-        public System.DateTime? NextAllowedProvisionedIopsDowngradeTime {get; private set; }
+        public string NextAllowedProvisionedIopsDowngradeTime {get; private set; }
 
         /// <summary>
         /// Gets returns the next allowed provisioned bandwidth downgrade time for the
@@ -309,7 +320,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Provisioned v2 account type.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nextAllowedProvisionedBandwidthDowngradeTime")]
-        public System.DateTime? NextAllowedProvisionedBandwidthDowngradeTime {get; private set; }
+        public string NextAllowedProvisionedBandwidthDowngradeTime {get; private set; }
 
         /// <summary>
         /// Gets or sets the property is for NFS share only. The default is

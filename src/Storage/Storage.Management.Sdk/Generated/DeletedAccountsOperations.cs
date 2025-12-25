@@ -73,17 +73,7 @@ namespace Microsoft.Azure.Management.Storage
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
+
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -100,7 +90,7 @@ namespace Microsoft.Azure.Management.Storage
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Storage/deletedAccounts").ToString();
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (this.Client.ApiVersion != null)
@@ -209,7 +199,7 @@ namespace Microsoft.Azure.Management.Storage
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<DeletedAccount>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<DeletedAccount>>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -235,11 +225,11 @@ namespace Microsoft.Azure.Management.Storage
         /// <summary>
         /// Get properties of specified deleted account resource.
         /// </summary>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
         /// <param name='deletedAccountName'>
         /// Name of the deleted storage account.
-        /// </param>
-        /// <param name='location'>
-        /// The location of the deleted storage account.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -262,12 +252,29 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeletedAccount>> GetWithHttpMessagesAsync(string deletedAccountName, string location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeletedAccount>> GetWithHttpMessagesAsync(string location, string deletedAccountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+
+            if (location == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
+            }
+            if (location != null)
+            {
+                if (location.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "location", 1);
+                }
+            }
             if (deletedAccountName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "deletedAccountName");
@@ -283,27 +290,6 @@ namespace Microsoft.Azure.Management.Storage
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "deletedAccountName", 3);
                 }
             }
-            if (location == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -311,8 +297,8 @@ namespace Microsoft.Azure.Management.Storage
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
-                tracingParameters.Add("deletedAccountName", deletedAccountName);
                 tracingParameters.Add("location", location);
+                tracingParameters.Add("deletedAccountName", deletedAccountName);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -322,9 +308,9 @@ namespace Microsoft.Azure.Management.Storage
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/deletedAccounts/{deletedAccountName}").ToString();
-            _url = _url.Replace("{deletedAccountName}", System.Uri.EscapeDataString(deletedAccountName));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{deletedAccountName}", System.Uri.EscapeDataString(deletedAccountName));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (this.Client.ApiVersion != null)
@@ -610,7 +596,7 @@ namespace Microsoft.Azure.Management.Storage
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<DeletedAccount>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<DeletedAccount>>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {

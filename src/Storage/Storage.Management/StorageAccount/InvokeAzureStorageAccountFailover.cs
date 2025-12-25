@@ -96,11 +96,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     this.Name = InputObject.StorageAccountName;
                 }
 
-                StorageModels.FailoverType? type = null;
+                StorageModels.Enum56? type = null;
                 if (!String.IsNullOrEmpty(this.FailoverType)) { 
                     if (this.FailoverType.ToLower() == AccountFailoverType.Planned.ToLower())
                     {
-                        type = StorageModels.FailoverType.Planned;
+                        type = StorageModels.Enum56.Planned;
                     } 
                     else if (this.FailoverType.ToLower() != AccountFailoverType.Unplanned.ToLower())
                     {
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
         }
 
-        private void ExecuteFailover(StorageModels.FailoverType? type = null)
+        private void ExecuteFailover(StorageModels.Enum56? type = null)
         {
             this.StorageClient.StorageAccounts.Failover(
                 this.ResourceGroupName,

@@ -43,8 +43,7 @@ namespace Microsoft.Azure.Management.Storage
         /// SRP today does not return continuation token.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -89,6 +88,12 @@ namespace Microsoft.Azure.Management.Storage
 
 
  
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -102,10 +107,6 @@ namespace Microsoft.Azure.Management.Storage
                 if (resourceGroupName.Length < 1)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
                 }
             }
             if (accountName == null)
@@ -125,22 +126,6 @@ namespace Microsoft.Azure.Management.Storage
                 if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+$"))
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-z0-9]+$");
-                }
-            }
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
                 }
             }
 
@@ -167,9 +152,9 @@ namespace Microsoft.Azure.Management.Storage
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (this.Client.ApiVersion != null)
@@ -248,14 +233,13 @@ namespace Microsoft.Azure.Management.Storage
 
             if ((int)_statusCode != 200)
             {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -265,10 +249,6 @@ namespace Microsoft.Azure.Management.Storage
                 }
                 ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
@@ -295,7 +275,260 @@ namespace Microsoft.Azure.Management.Storage
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<ListContainerItem>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<ListContainerItem>>(_responseContent, this.Client.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
+        }
+        /// <summary>
+        /// Gets properties of a specified container.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='containerName'>
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BlobContainer>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+ 
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+
+            if (resourceGroupName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (accountName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 24)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "accountName", 24);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-z0-9]+$");
+                }
+            }
+            if (containerName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "containerName");
+            }
+            if (containerName != null)
+            {
+                if (containerName.Length > 63)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "containerName", 63);
+                }
+                if (containerName.Length < 3)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "containerName", 3);
+                }
+            }
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("containerName", containerName);
+
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (this.Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (this.Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 200)
+            {
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<BlobContainer>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<BlobContainer>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -325,8 +558,7 @@ namespace Microsoft.Azure.Management.Storage
         /// container.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -374,6 +606,12 @@ namespace Microsoft.Azure.Management.Storage
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "blobContainer");
             }
 
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -387,10 +625,6 @@ namespace Microsoft.Azure.Management.Storage
                 if (resourceGroupName.Length < 1)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
                 }
             }
             if (accountName == null)
@@ -427,22 +661,6 @@ namespace Microsoft.Azure.Management.Storage
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "containerName", 3);
                 }
             }
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -463,10 +681,10 @@ namespace Microsoft.Azure.Management.Storage
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
             _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (this.Client.ApiVersion != null)
@@ -539,14 +757,13 @@ namespace Microsoft.Azure.Management.Storage
 
             if ((int)_statusCode != 200 && (int)_statusCode != 201)
             {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -556,10 +773,6 @@ namespace Microsoft.Azure.Management.Storage
                 }
                 ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
@@ -633,8 +846,7 @@ namespace Microsoft.Azure.Management.Storage
         /// container doesn&#39;t already exist.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -681,6 +893,12 @@ namespace Microsoft.Azure.Management.Storage
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "blobContainer");
             }
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -694,10 +912,6 @@ namespace Microsoft.Azure.Management.Storage
                 if (resourceGroupName.Length < 1)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
                 }
             }
             if (accountName == null)
@@ -734,22 +948,6 @@ namespace Microsoft.Azure.Management.Storage
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "containerName", 3);
                 }
             }
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -770,10 +968,10 @@ namespace Microsoft.Azure.Management.Storage
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
             _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (this.Client.ApiVersion != null)
@@ -846,14 +1044,13 @@ namespace Microsoft.Azure.Management.Storage
 
             if ((int)_statusCode != 200)
             {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -863,283 +1060,6 @@ namespace Microsoft.Azure.Management.Storage
                 }
                 ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<BlobContainer>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<BlobContainer>(_responseContent, this.Client.DeserializationSettings);
-                }
-                catch (Newtonsoft.Json.JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-
-
-
-
-
-        }
-        /// <summary>
-        /// Gets properties of a specified container.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob
-        /// container names must be between 3 and 63 characters in length and use
-        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
-        /// must be immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BlobContainer>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-
-
- 
-            if (resourceGroupName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-            if (resourceGroupName != null)
-            {
-                if (resourceGroupName.Length > 90)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
-                }
-                if (resourceGroupName.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
-                }
-            }
-            if (accountName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "accountName");
-            }
-            if (accountName != null)
-            {
-                if (accountName.Length > 24)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "accountName", 24);
-                }
-                if (accountName.Length < 3)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "accountName", 3);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-z0-9]+$");
-                }
-            }
-            if (containerName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "containerName");
-            }
-            if (containerName != null)
-            {
-                if (containerName.Length > 63)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "containerName", 63);
-                }
-                if (containerName.Length < 3)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "containerName", 3);
-                }
-            }
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
-            // Tracing
-            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
-                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("accountName", accountName);
-                tracingParameters.Add("containerName", containerName);
-
-
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
-            }
-            // Construct URL
-
-            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}").ToString();
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
-            _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
-
-            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new System.Net.Http.HttpRequestMessage();
-            System.Net.Http.HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new System.Net.Http.HttpMethod("GET");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (this.Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
-            }
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-            // Serialize Request
-            string _requestContent = null;
-            // Set Credentials
-            if (this.Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-
-            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-
-            if ((int)_statusCode != 200)
-            {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (Newtonsoft.Json.JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
@@ -1193,8 +1113,7 @@ namespace Microsoft.Azure.Management.Storage
         /// Deletes specified container under its account.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -1231,6 +1150,12 @@ namespace Microsoft.Azure.Management.Storage
 
 
  
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -1244,10 +1169,6 @@ namespace Microsoft.Azure.Management.Storage
                 if (resourceGroupName.Length < 1)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
                 }
             }
             if (accountName == null)
@@ -1284,22 +1205,6 @@ namespace Microsoft.Azure.Management.Storage
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "containerName", 3);
                 }
             }
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1319,10 +1224,10 @@ namespace Microsoft.Azure.Management.Storage
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
             _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (this.Client.ApiVersion != null)
@@ -1389,14 +1294,13 @@ namespace Microsoft.Azure.Management.Storage
 
             if ((int)_statusCode != 200 && (int)_statusCode != 204)
             {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -1406,10 +1310,6 @@ namespace Microsoft.Azure.Management.Storage
                 }
                 ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
@@ -1442,310 +1342,12 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// Sets legal hold tags. Setting the same tag results in an idempotent
-        /// operation. SetLegalHold follows an append pattern and does not clear out
-        /// the existing tags that are not specified in the request.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob
-        /// container names must be between 3 and 63 characters in length and use
-        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
-        /// must be immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='tags'>
-        /// Each tag should be 3 to 23 alphanumeric characters and is normalized to
-        /// lower case at SRP.
-        /// </param>
-        /// <param name='allowProtectedAppendWritesAll'>
-        /// When enabled, new blocks can be written to both &#39;Append and Bock Blobs&#39;
-        /// while maintaining legal hold protection and compliance. Only new blocks can
-        /// be added and any existing blocks cannot be modified or deleted.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LegalHold>> SetLegalHoldWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, System.Collections.Generic.IList<string> tags, bool? allowProtectedAppendWritesAll = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-
-
- 
-            if (resourceGroupName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-            if (resourceGroupName != null)
-            {
-                if (resourceGroupName.Length > 90)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
-                }
-                if (resourceGroupName.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
-                }
-            }
-            if (accountName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "accountName");
-            }
-            if (accountName != null)
-            {
-                if (accountName.Length > 24)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "accountName", 24);
-                }
-                if (accountName.Length < 3)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "accountName", 3);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-z0-9]+$");
-                }
-            }
-            if (containerName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "containerName");
-            }
-            if (containerName != null)
-            {
-                if (containerName.Length > 63)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "containerName", 63);
-                }
-                if (containerName.Length < 3)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "containerName", 3);
-                }
-            }
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
-            LegalHold legalHold = new LegalHold();
-            if(tags != null||allowProtectedAppendWritesAll != null)
-            {
-                legalHold.Tags = tags;
-                legalHold.AllowProtectedAppendWritesAll = allowProtectedAppendWritesAll;
-            }
-            // Tracing
-            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
-                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("accountName", accountName);
-                tracingParameters.Add("containerName", containerName);
-
-                tracingParameters.Add("legalHold", legalHold);
-
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "SetLegalHold", tracingParameters);
-            }
-            // Construct URL
-
-            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/setLegalHold").ToString();
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
-            _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
-
-            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new System.Net.Http.HttpRequestMessage();
-            System.Net.Http.HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (this.Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
-            }
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-            // Serialize Request
-            string _requestContent = null;
-            if(legalHold != null)
-            {
-                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(legalHold, this.Client.SerializationSettings);
-                _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
-            }
-            // Set Credentials
-            if (this.Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-
-            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-
-            if ((int)_statusCode != 200)
-            {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (Newtonsoft.Json.JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<LegalHold>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<LegalHold>(_responseContent, this.Client.DeserializationSettings);
-                }
-                catch (Newtonsoft.Json.JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-
-
-
-
-
-        }
-        /// <summary>
         /// Clears legal hold tags. Clearing the same or non-existent tag results in an
         /// idempotent operation. ClearLegalHold clears out only the specified tags in
         /// the request.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -1794,6 +1396,12 @@ namespace Microsoft.Azure.Management.Storage
 
 
  
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -1807,10 +1415,6 @@ namespace Microsoft.Azure.Management.Storage
                 if (resourceGroupName.Length < 1)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
                 }
             }
             if (accountName == null)
@@ -1847,22 +1451,6 @@ namespace Microsoft.Azure.Management.Storage
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "containerName", 3);
                 }
             }
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
             LegalHold legalHold = new LegalHold();
             if(tags != null||allowProtectedAppendWritesAll != null)
             {
@@ -1889,10 +1477,10 @@ namespace Microsoft.Azure.Management.Storage
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/clearLegalHold").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
             _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (this.Client.ApiVersion != null)
@@ -1965,14 +1553,13 @@ namespace Microsoft.Azure.Management.Storage
 
             if ((int)_statusCode != 200)
             {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -1982,10 +1569,6 @@ namespace Microsoft.Azure.Management.Storage
                 }
                 ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
@@ -2036,12 +1619,293 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
+        /// Gets the existing immutability policy along with the corresponding ETag in
+        /// response headers and body.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='containerName'>
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The entity state (ETag) version of the immutability policy to update must
+        /// be returned to the server for all update operations. The ETag value must
+        /// include the leading and trailing double quotes as returned by the service.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ImmutabilityPolicy,BlobContainersGetImmutabilityPolicyHeaders>> GetImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+ 
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+
+            if (resourceGroupName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (accountName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 24)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "accountName", 24);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-z0-9]+$");
+                }
+            }
+            if (containerName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "containerName");
+            }
+            if (containerName != null)
+            {
+                if (containerName.Length > 63)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "containerName", 63);
+                }
+                if (containerName.Length < 3)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "containerName", 3);
+                }
+            }
+
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("containerName", containerName);
+                tracingParameters.Add("ifMatch", ifMatch);
+
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "GetImmutabilityPolicy", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (this.Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+            if (ifMatch != null)
+            {
+                if (_httpRequest.Headers.Contains("If-Match"))
+                {
+                    _httpRequest.Headers.Remove("If-Match");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("If-Match", ifMatch);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (this.Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 200)
+            {
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ImmutabilityPolicy,BlobContainersGetImmutabilityPolicyHeaders>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ImmutabilityPolicy>(_responseContent, this.Client.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BlobContainersGetImmutabilityPolicyHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
+        }
+        /// <summary>
         /// Creates or updates an unlocked immutability policy. ETag in If-Match is
         /// honored if given but not required for this operation.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -2088,8 +1952,14 @@ namespace Microsoft.Azure.Management.Storage
         {
 
 
-            string immutabilityPolicyName = "default";
+
  
+
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
 
             if (resourceGroupName == null)
             {
@@ -2104,10 +1974,6 @@ namespace Microsoft.Azure.Management.Storage
                 if (resourceGroupName.Length < 1)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
                 }
             }
             if (accountName == null)
@@ -2145,23 +2011,6 @@ namespace Microsoft.Azure.Management.Storage
                 }
             }
 
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
-
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2172,7 +2021,6 @@ namespace Microsoft.Azure.Management.Storage
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("accountName", accountName);
                 tracingParameters.Add("containerName", containerName);
-                tracingParameters.Add("immutabilityPolicyName", immutabilityPolicyName);
                 tracingParameters.Add("ifMatch", ifMatch);
 
                 tracingParameters.Add("parameters", parameters);
@@ -2183,12 +2031,11 @@ namespace Microsoft.Azure.Management.Storage
             // Construct URL
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/{immutabilityPolicyName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
             _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
-            _url = _url.Replace("{immutabilityPolicyName}", System.Uri.EscapeDataString(immutabilityPolicyName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (this.Client.ApiVersion != null)
@@ -2269,14 +2116,13 @@ namespace Microsoft.Azure.Management.Storage
 
             if ((int)_statusCode != 200)
             {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -2286,10 +2132,6 @@ namespace Microsoft.Azure.Management.Storage
                 }
                 ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
@@ -2353,311 +2195,6 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// Gets the existing immutability policy along with the corresponding ETag in
-        /// response headers and body.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob
-        /// container names must be between 3 and 63 characters in length and use
-        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
-        /// must be immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update must
-        /// be returned to the server for all update operations. The ETag value must
-        /// include the leading and trailing double quotes as returned by the service.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ImmutabilityPolicy,BlobContainersGetImmutabilityPolicyHeaders>> GetImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-
-            string immutabilityPolicyName = "default";
- 
-            if (resourceGroupName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-            if (resourceGroupName != null)
-            {
-                if (resourceGroupName.Length > 90)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
-                }
-                if (resourceGroupName.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
-                }
-            }
-            if (accountName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "accountName");
-            }
-            if (accountName != null)
-            {
-                if (accountName.Length > 24)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "accountName", 24);
-                }
-                if (accountName.Length < 3)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "accountName", 3);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-z0-9]+$");
-                }
-            }
-            if (containerName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "containerName");
-            }
-            if (containerName != null)
-            {
-                if (containerName.Length > 63)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "containerName", 63);
-                }
-                if (containerName.Length < 3)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "containerName", 3);
-                }
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
-
-            // Tracing
-            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
-                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("accountName", accountName);
-                tracingParameters.Add("containerName", containerName);
-                tracingParameters.Add("immutabilityPolicyName", immutabilityPolicyName);
-                tracingParameters.Add("ifMatch", ifMatch);
-
-
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "GetImmutabilityPolicy", tracingParameters);
-            }
-            // Construct URL
-
-            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/{immutabilityPolicyName}").ToString();
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
-            _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
-            _url = _url.Replace("{immutabilityPolicyName}", System.Uri.EscapeDataString(immutabilityPolicyName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
-
-            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new System.Net.Http.HttpRequestMessage();
-            System.Net.Http.HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new System.Net.Http.HttpMethod("GET");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (this.Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
-            }
-            if (ifMatch != null)
-            {
-                if (_httpRequest.Headers.Contains("If-Match"))
-                {
-                    _httpRequest.Headers.Remove("If-Match");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("If-Match", ifMatch);
-            }
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-            // Serialize Request
-            string _requestContent = null;
-            // Set Credentials
-            if (this.Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-
-            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-
-            if ((int)_statusCode != 200)
-            {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (Newtonsoft.Json.JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ImmutabilityPolicy,BlobContainersGetImmutabilityPolicyHeaders>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ImmutabilityPolicy>(_responseContent, this.Client.DeserializationSettings);
-                }
-                catch (Newtonsoft.Json.JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            try
-            {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BlobContainersGetImmutabilityPolicyHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
-            }
-            catch (Newtonsoft.Json.JsonException ex)
-            {
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
-            }
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-
-
-
-
-
-        }
-        /// <summary>
         /// Aborts an unlocked immutability policy. The response of delete has
         /// immutabilityPeriodSinceCreationInDays set to 0. ETag in If-Match is
         /// required for this operation. Deleting a locked immutability policy is not
@@ -2665,8 +2202,7 @@ namespace Microsoft.Azure.Management.Storage
         /// blobs inside the policy locked container.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -2709,8 +2245,14 @@ namespace Microsoft.Azure.Management.Storage
         {
 
 
-            string immutabilityPolicyName = "default";
+
  
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -2724,10 +2266,6 @@ namespace Microsoft.Azure.Management.Storage
                 if (resourceGroupName.Length < 1)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
                 }
             }
             if (accountName == null)
@@ -2764,23 +2302,6 @@ namespace Microsoft.Azure.Management.Storage
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "containerName", 3);
                 }
             }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
             if (ifMatch == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ifMatch");
@@ -2796,7 +2317,6 @@ namespace Microsoft.Azure.Management.Storage
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("accountName", accountName);
                 tracingParameters.Add("containerName", containerName);
-                tracingParameters.Add("immutabilityPolicyName", immutabilityPolicyName);
                 tracingParameters.Add("ifMatch", ifMatch);
 
 
@@ -2806,12 +2326,11 @@ namespace Microsoft.Azure.Management.Storage
             // Construct URL
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/{immutabilityPolicyName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
             _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
-            _url = _url.Replace("{immutabilityPolicyName}", System.Uri.EscapeDataString(immutabilityPolicyName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (this.Client.ApiVersion != null)
@@ -2886,14 +2405,13 @@ namespace Microsoft.Azure.Management.Storage
 
             if ((int)_statusCode != 200)
             {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -2903,10 +2421,6 @@ namespace Microsoft.Azure.Management.Storage
                 }
                 ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
@@ -2970,320 +2484,12 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// Sets the ImmutabilityPolicy to Locked state. The only action allowed on a
-        /// Locked policy is ExtendImmutabilityPolicy action. ETag in If-Match is
-        /// required for this operation.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob
-        /// container names must be between 3 and 63 characters in length and use
-        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
-        /// must be immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update must
-        /// be returned to the server for all update operations. The ETag value must
-        /// include the leading and trailing double quotes as returned by the service.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ImmutabilityPolicy,BlobContainersLockImmutabilityPolicyHeaders>> LockImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-
-
- 
-            if (resourceGroupName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-            if (resourceGroupName != null)
-            {
-                if (resourceGroupName.Length > 90)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
-                }
-                if (resourceGroupName.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
-                }
-            }
-            if (accountName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "accountName");
-            }
-            if (accountName != null)
-            {
-                if (accountName.Length > 24)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "accountName", 24);
-                }
-                if (accountName.Length < 3)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "accountName", 3);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-z0-9]+$");
-                }
-            }
-            if (containerName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "containerName");
-            }
-            if (containerName != null)
-            {
-                if (containerName.Length > 63)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "containerName", 63);
-                }
-                if (containerName.Length < 3)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "containerName", 3);
-                }
-            }
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
-            if (ifMatch == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ifMatch");
-            }
-
-            // Tracing
-            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
-                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("accountName", accountName);
-                tracingParameters.Add("containerName", containerName);
-                tracingParameters.Add("ifMatch", ifMatch);
-
-
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "LockImmutabilityPolicy", tracingParameters);
-            }
-            // Construct URL
-
-            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/lock").ToString();
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
-            _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
-
-            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new System.Net.Http.HttpRequestMessage();
-            System.Net.Http.HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (this.Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
-            }
-            if (ifMatch != null)
-            {
-                if (_httpRequest.Headers.Contains("If-Match"))
-                {
-                    _httpRequest.Headers.Remove("If-Match");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("If-Match", ifMatch);
-            }
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-            // Serialize Request
-            string _requestContent = null;
-            // Set Credentials
-            if (this.Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-
-            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-
-            if ((int)_statusCode != 200)
-            {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (Newtonsoft.Json.JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ImmutabilityPolicy,BlobContainersLockImmutabilityPolicyHeaders>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ImmutabilityPolicy>(_responseContent, this.Client.DeserializationSettings);
-                }
-                catch (Newtonsoft.Json.JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            try
-            {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BlobContainersLockImmutabilityPolicyHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
-            }
-            catch (Newtonsoft.Json.JsonException ex)
-            {
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
-            }
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-
-
-
-
-
-        }
-        /// <summary>
         /// Extends the immutabilityPeriodSinceCreationInDays of a locked
         /// immutabilityPolicy. The only action allowed on a Locked policy will be this
         /// action. ETag in If-Match is required for this operation.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -3302,8 +2508,7 @@ namespace Microsoft.Azure.Management.Storage
         /// include the leading and trailing double quotes as returned by the service.
         /// </param>
         /// <param name='parameters'>
-        /// The ImmutabilityPolicy Properties that will be extended for a blob
-        /// container.
+        /// The content of the action request
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3333,6 +2538,12 @@ namespace Microsoft.Azure.Management.Storage
 
  
 
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -3346,10 +2557,6 @@ namespace Microsoft.Azure.Management.Storage
                 if (resourceGroupName.Length < 1)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
                 }
             }
             if (accountName == null)
@@ -3386,22 +2593,6 @@ namespace Microsoft.Azure.Management.Storage
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "containerName", 3);
                 }
             }
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
             if (ifMatch == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ifMatch");
@@ -3428,10 +2619,10 @@ namespace Microsoft.Azure.Management.Storage
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/extend").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
             _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (this.Client.ApiVersion != null)
@@ -3512,14 +2703,13 @@ namespace Microsoft.Azure.Management.Storage
 
             if ((int)_statusCode != 200)
             {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -3529,10 +2719,6 @@ namespace Microsoft.Azure.Management.Storage
                 }
                 ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
@@ -3596,13 +2782,12 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// The Lease Container operation establishes and manages a lock on a container
-        /// for delete operations. The lock duration can be 15 to 60 seconds, or can be
-        /// infinite.
+        /// Sets the ImmutabilityPolicy to Locked state. The only action allowed on a
+        /// Locked policy is ExtendImmutabilityPolicy action. ETag in If-Match is
+        /// required for this operation.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -3615,8 +2800,10 @@ namespace Microsoft.Azure.Management.Storage
         /// numbers, lower-case letters and dash (-) only. Every dash (-) character
         /// must be immediately preceded and followed by a letter or number.
         /// </param>
-        /// <param name='parameters'>
-        /// Lease Container request body.
+        /// <param name='ifMatch'>
+        /// The entity state (ETag) version of the immutability policy to update must
+        /// be returned to the server for all update operations. The ETag value must
+        /// include the leading and trailing double quotes as returned by the service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3639,16 +2826,18 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LeaseContainerResponse>> LeaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, LeaseContainerRequest parameters = default(LeaseContainerRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ImmutabilityPolicy,BlobContainersLockImmutabilityPolicyHeaders>> LockImmutabilityPolicyWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, string ifMatch, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
-            if (parameters != null)
+            if (this.Client.ApiVersion == null)
             {
-                parameters.Validate();
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
+
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -3662,10 +2851,6 @@ namespace Microsoft.Azure.Management.Storage
                 if (resourceGroupName.Length < 1)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
                 }
             }
             if (accountName == null)
@@ -3702,20 +2887,293 @@ namespace Microsoft.Azure.Management.Storage
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "containerName", 3);
                 }
             }
+            if (ifMatch == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ifMatch");
+            }
+
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("containerName", containerName);
+                tracingParameters.Add("ifMatch", ifMatch);
+
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "LockImmutabilityPolicy", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/lock").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (this.Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+            if (ifMatch != null)
+            {
+                if (_httpRequest.Headers.Contains("If-Match"))
+                {
+                    _httpRequest.Headers.Remove("If-Match");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("If-Match", ifMatch);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (this.Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 200)
+            {
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ImmutabilityPolicy,BlobContainersLockImmutabilityPolicyHeaders>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ImmutabilityPolicy>(_responseContent, this.Client.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BlobContainersLockImmutabilityPolicyHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
+        }
+        /// <summary>
+        /// The Lease Container operation establishes and manages a lock on a container
+        /// for delete operations. The lock duration can be 15 to 60 seconds, or can be
+        /// infinite.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='containerName'>
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
+        /// </param>
+        /// <param name='parameters'>
+        /// The content of the action request
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LeaseContainerResponse>> LeaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, LeaseContainerRequest parameters = default(LeaseContainerRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+ 
+            if (parameters != null)
+            {
+                parameters.Validate();
+            }
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.SubscriptionId == null)
+
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-            if (this.Client.SubscriptionId != null)
+            if (resourceGroupName != null)
             {
-                if (this.Client.SubscriptionId.Length < 1)
+                if (resourceGroupName.Length > 90)
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (accountName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 24)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "accountName", 24);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-z0-9]+$");
+                }
+            }
+            if (containerName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "containerName");
+            }
+            if (containerName != null)
+            {
+                if (containerName.Length > 63)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "containerName", 63);
+                }
+                if (containerName.Length < 3)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "containerName", 3);
                 }
             }
             // Tracing
@@ -3738,10 +3196,10 @@ namespace Microsoft.Azure.Management.Storage
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/lease").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
             _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (this.Client.ApiVersion != null)
@@ -3814,14 +3272,13 @@ namespace Microsoft.Azure.Management.Storage
 
             if ((int)_statusCode != 200)
             {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -3831,10 +3288,6 @@ namespace Microsoft.Azure.Management.Storage
                 }
                 ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
@@ -3892,8 +3345,7 @@ namespace Microsoft.Azure.Management.Storage
         /// on the container.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -3912,23 +3364,20 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> ObjectLevelWormWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<BlobContainersObjectLevelWormHeaders>> ObjectLevelWormWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse _response = await BeginObjectLevelWormWithHttpMessagesAsync(resourceGroupName, accountName, containerName, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationHeaderResponse<BlobContainersObjectLevelWormHeaders> _response = await BeginObjectLevelWormWithHttpMessagesAsync(resourceGroupName, accountName, containerName, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// This operation migrates a blob container from container level WORM to
-        /// object level immutability enabled container. Prerequisites require a
-        /// container level immutability policy either in locked or unlocked state,
-        /// Account level versioning must be enabled and there should be no Legal hold
-        /// on the container.
+        /// Sets legal hold tags. Setting the same tag results in an idempotent
+        /// operation. SetLegalHold follows an append pattern and does not clear out
+        /// the existing tags that are not specified in the request.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -3940,6 +3389,15 @@ namespace Microsoft.Azure.Management.Storage
         /// container names must be between 3 and 63 characters in length and use
         /// numbers, lower-case letters and dash (-) only. Every dash (-) character
         /// must be immediately preceded and followed by a letter or number.
+        /// </param>
+        /// <param name='tags'>
+        /// Each tag should be 3 to 23 alphanumeric characters and is normalized to
+        /// lower case at SRP.
+        /// </param>
+        /// <param name='allowProtectedAppendWritesAll'>
+        /// When enabled, new blocks can be written to both &#39;Append and Bock Blobs&#39;
+        /// while maintaining legal hold protection and compliance. Only new blocks can
+        /// be added and any existing blocks cannot be modified or deleted.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3950,6 +3408,9 @@ namespace Microsoft.Azure.Management.Storage
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -3959,12 +3420,18 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginObjectLevelWormWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LegalHold>> SetLegalHoldWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, System.Collections.Generic.IList<string> tags, bool? allowProtectedAppendWritesAll = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -3978,10 +3445,6 @@ namespace Microsoft.Azure.Management.Storage
                 if (resourceGroupName.Length < 1)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
                 }
             }
             if (accountName == null)
@@ -4018,20 +3481,271 @@ namespace Microsoft.Azure.Management.Storage
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "containerName", 3);
                 }
             }
+            LegalHold legalHold = new LegalHold();
+            if(tags != null||allowProtectedAppendWritesAll != null)
+            {
+                legalHold.Tags = tags;
+                legalHold.AllowProtectedAppendWritesAll = allowProtectedAppendWritesAll;
+            }
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("containerName", containerName);
+
+                tracingParameters.Add("legalHold", legalHold);
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "SetLegalHold", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/setLegalHold").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
+            _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (this.Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            if(legalHold != null)
+            {
+                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(legalHold, this.Client.SerializationSettings);
+                _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (this.Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 200)
+            {
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<LegalHold>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<LegalHold>(_responseContent, this.Client.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
+        }
+        /// <summary>
+        /// This operation migrates a blob container from container level WORM to
+        /// object level immutability enabled container. Prerequisites require a
+        /// container level immutability policy either in locked or unlocked state,
+        /// Account level versioning must be enabled and there should be no Legal hold
+        /// on the container.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='containerName'>
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<BlobContainersObjectLevelWormHeaders>> BeginObjectLevelWormWithHttpMessagesAsync(string resourceGroupName, string accountName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+ 
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.SubscriptionId == null)
+
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-            if (this.Client.SubscriptionId != null)
+            if (resourceGroupName != null)
             {
-                if (this.Client.SubscriptionId.Length < 1)
+                if (resourceGroupName.Length > 90)
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (accountName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "accountName");
+            }
+            if (accountName != null)
+            {
+                if (accountName.Length > 24)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "accountName", 24);
+                }
+                if (accountName.Length < 3)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-z0-9]+$");
+                }
+            }
+            if (containerName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "containerName");
+            }
+            if (containerName != null)
+            {
+                if (containerName.Length > 63)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "containerName", 63);
+                }
+                if (containerName.Length < 3)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "containerName", 3);
                 }
             }
             // Tracing
@@ -4053,10 +3767,10 @@ namespace Microsoft.Azure.Management.Storage
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/migrate").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{accountName}", System.Uri.EscapeDataString(accountName));
             _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (this.Client.ApiVersion != null)
@@ -4156,13 +3870,26 @@ namespace Microsoft.Azure.Management.Storage
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse();
+            var _result = new Microsoft.Rest.Azure.AzureOperationHeaderResponse<BlobContainersObjectLevelWormHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BlobContainersObjectLevelWormHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
             }
             if (_shouldTrace)
             {
@@ -4288,14 +4015,13 @@ namespace Microsoft.Azure.Management.Storage
 
             if ((int)_statusCode != 200)
             {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -4305,10 +4031,6 @@ namespace Microsoft.Azure.Management.Storage
                 }
                 ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
@@ -4335,7 +4057,7 @@ namespace Microsoft.Azure.Management.Storage
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<ListContainerItem>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<ListContainerItem>>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
