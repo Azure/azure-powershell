@@ -321,6 +321,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [ValidateNotNullOrEmpty]
         public string[] ExcludeZone { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the high speed interconnect placement for the virtual machine scale set.")]
+        [PSArgumentCompleter("None", "Trunk")]
+        public string HighSpeedInterconnectPlacement { get; set; }
+
         private void ConfigureSecuritySettings()
         {
             if (SecurityType?.ToLower() == SecurityTypes.TrustedLaunch ||
@@ -585,7 +592,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     addProxyAgentExtension: _cmdlet.AddProxyAgentExtension.IsPresent ? true : (bool?)null,
                     zonePlacementPolicy: _cmdlet.ZonePlacementPolicy,
                     includeZone: _cmdlet.IncludeZone,
-                    excludeZone: _cmdlet.ExcludeZone
+                    excludeZone: _cmdlet.ExcludeZone,
+                    highSpeedInterconnectPlacement: _cmdlet.IsParameterBound(c => c.HighSpeedInterconnectPlacement) ? _cmdlet.HighSpeedInterconnectPlacement : null
                     );
             }
 
@@ -729,7 +737,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     addProxyAgentExtension: _cmdlet.AddProxyAgentExtension.IsPresent ? true : (bool?)null,
                     zonePlacementPolicy: _cmdlet.ZonePlacementPolicy,
                     includeZone: _cmdlet.IncludeZone,
-                    excludeZone: _cmdlet.ExcludeZone
+                    excludeZone: _cmdlet.ExcludeZone,
+                    highSpeedInterconnectPlacement: _cmdlet.IsParameterBound(c => c.HighSpeedInterconnectPlacement) ? _cmdlet.HighSpeedInterconnectPlacement : null
                 );
             }
         }
