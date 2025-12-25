@@ -1003,5 +1003,9 @@
   {
     "alias": "DisconnectedOperations",
     "module": "DisconnectedOperations"
+  },
+  {
+    "alias": "EdgeAction",
+    "module": "EdgeAction"
   }
 ]

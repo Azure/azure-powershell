@@ -406,6 +406,43 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("CreateBeforeDelete")]
         public string AutomaticZoneRebalanceBehavior { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the policy for resource's placement in availability zone. Possible values are: **Any** (used for Virtual Machines), **Auto** (used for Virtual Machine Scale Sets) - An availability zone will be automatically picked by system as part of resource creation.")]
+        [PSArgumentCompleter("Any", "Auto")]
+        public string ZonePlacementPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The maximum number of availability zones to use if the ZonePlacementPolicy is 'Auto'. If not specified, all availability zones will be used.")]
+        public int MaxZoneCount { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies whether maxInstancePercentPerZonePolicy should be enabled on the virtual machine scale set.")]
+        public SwitchParameter EnableMaxInstancePercentPerZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Limit on the number of instances in each availability zone as a percentage of the total capacity of the virtual machine scale set. For example: if set to 50, this means that at any time, no more than 50% of the VMs in your scale set can be allocated to a single zone.")]
+        public int MaxInstancePercentPerZoneValue { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.")]
+        [ValidateNotNullOrEmpty]
+        public string[] IncludeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.")]
+        [ValidateNotNullOrEmpty]
+        public string[] ExcludeZone { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -454,6 +491,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             //ResiliencyPolicy
             ResiliencyPolicy vResiliencyPolicy = null;
+
+            // Placement
+            Placement vPlacement = null;
 
             if (this.IsParameterBound(c => c.SkuName))
             {
@@ -1121,6 +1161,68 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.SecurityPostureReference.ExcludeExtensions = this.SecurityPostureExcludeExtension;
             }
 
+            if (this.IsParameterBound(c => c.ZonePlacementPolicy))
+            {
+                if (vPlacement == null)
+                {
+                    vPlacement = new Placement();
+                }
+                vPlacement.ZonePlacementPolicy = this.ZonePlacementPolicy;
+            }
+
+            if (this.IsParameterBound(c => c.IncludeZone))
+            {
+                if (vPlacement == null)
+                {
+                    vPlacement = new Placement();
+                }
+                vPlacement.IncludeZones = this.IncludeZone;
+            }
+
+            if (this.IsParameterBound(c => c.ExcludeZone))
+            {
+                if (vPlacement == null)
+                {
+                    vPlacement = new Placement();
+                }
+                vPlacement.ExcludeZones = this.ExcludeZone;
+            }
+
+            if (this.IsParameterBound(c => c.MaxZoneCount))
+            {
+                if (vResiliencyPolicy == null)
+                {
+                    vResiliencyPolicy = new ResiliencyPolicy();
+                }
+                if (vResiliencyPolicy.ZoneAllocationPolicy == null)
+                {
+                    vResiliencyPolicy.ZoneAllocationPolicy = new ZoneAllocationPolicy();
+                }
+                vResiliencyPolicy.ZoneAllocationPolicy.MaxZoneCount = this.MaxZoneCount;
+            }
+
+            if (this.EnableMaxInstancePercentPerZone.IsPresent)
+            {
+                if (vResiliencyPolicy == null)
+                {
+                    vResiliencyPolicy = new ResiliencyPolicy();
+                }
+                if (vResiliencyPolicy.ZoneAllocationPolicy == null)
+                {
+                    vResiliencyPolicy.ZoneAllocationPolicy = new ZoneAllocationPolicy();
+                }
+                if (vResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy == null)
+                {
+                    vResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy = new MaxInstancePercentPerZonePolicy();
+                }
+                vResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Enabled = this.EnableMaxInstancePercentPerZone.IsPresent;
+
+                if (this.IsParameterBound(c => c.MaxInstancePercentPerZoneValue))
+                {
+                    vResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value = this.MaxInstancePercentPerZoneValue;
+                }
+            }
+
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
                 Overprovision = this.IsParameterBound(c => c.Overprovision) ? this.Overprovision : (bool?)null,
@@ -1145,7 +1247,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null,
                 PriorityMixPolicy = vPriorityMixPolicy,
                 SkuProfile = vSkuProfile,
-                ResiliencyPolicy = vResiliencyPolicy
+                ResiliencyPolicy = vResiliencyPolicy,
+                Placement = vPlacement
             };
 
             WriteObject(vVirtualMachineScaleSet);
