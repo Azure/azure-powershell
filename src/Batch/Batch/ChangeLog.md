@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Azure.Core from 1.47.3 to 1.50.0
 
 ## Version 4.0.1
 * Updated the implementation of 'New-AzBatchApplicationPackage' cmdlet to not call 'Get-AzBatchApplicationPackage' to retrieve storage keys for security improvements. No behavior changes to the cmdlet.
@@ -30,7 +31,7 @@
 
 ## Version 3.7.0
 * Upgraded nuget package to signed package.
-* Fixed 'Object reference not set to an instance of an object' error when setting null values inside job `CommonEnvironmentSettings` property. 
+* Fixed 'Object reference not set to an instance of an object' error when setting null values inside job `CommonEnvironmentSettings` property.
 
 ## Version 3.6.4
 * Migrate Batch SDK to generated SDK
