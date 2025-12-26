@@ -28,7 +28,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWebPubSubCustomDomain')
 Describe 'New-AzWebPubSubCustomDomain' {
     It 'CreateExpanded' {
         $wpsName = 'ps-test-wps';
-        $resourceGroup = 'ps-test-rg'
+        $resourceGroup = 'azwps-test-rg2'
         $customCertName = 'pstest-customCert'
         $keyVaultBaseUri = 'https://kvcustomcertificatetest.vault.azure.net/'
         $keyVaultSecretName = 'manual-test'
