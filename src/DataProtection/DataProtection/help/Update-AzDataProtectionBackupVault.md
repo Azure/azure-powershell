@@ -17,14 +17,13 @@ For example, updating tags for a resource.
 ```
 Update-AzDataProtectionBackupVault [-Token <String>] [-AzureMonitorAlertsForAllJobFailure <AlertsState>]
  [-CrossRegionRestoreState <CrossRegionRestoreState>]
- [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-ImmutabilityState <ImmutabilityState>]
+ [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-ImmutabilityState <ImmutabilityState>]
  [-ResourceGuardOperationRequest <String[]>] [-SoftDeleteRetentionDurationInDay <Double>]
  [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String>]
- [-CmkEncryptionState <EncryptionState>] [-CmkIdentityType <IdentityType>]
- [-CmkUserAssignedIdentityId <String>] [-CmkEncryptionKeyUri <String>] [-SecureToken <SecureString>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-CmkEncryptionState <EncryptionState>]
+ [-CmkIdentityType <IdentityType>] [-CmkUserAssignedIdentityId <String>] [-CmkEncryptionKeyUri <String>]
+ [-SecureToken <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -32,7 +31,7 @@ Update-AzDataProtectionBackupVault [-Token <String>] [-AzureMonitorAlertsForAllJ
 Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity> [-Token <String>]
  [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-CrossRegionRestoreState <CrossRegionRestoreState>]
  [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-EncryptionSetting <IEncryptionSettings>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-ImmutabilityState <ImmutabilityState>]
+ [-Identity <IDppIdentityDetails>] [-ImmutabilityState <ImmutabilityState>]
  [-ResourceGuardOperationRequest <String[]>] [-SoftDeleteRetentionDurationInDay <Double>]
  [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -286,7 +285,23 @@ Customer Managed Key details of the resource.
 To construct, see NOTES section for ENCRYPTIONSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IEncryptionSettings
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IEncryptionSettings
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Identity
+Input Managed Identity Details
+To construct, see NOTES section for IDENTITY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IDppIdentityDetails
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -298,11 +313,11 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
+The identityType which can take values: "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned", "None"
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -317,7 +332,7 @@ Gets or sets the user assigned identities.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: UserAssignedIdentity, AssignUserIdentity
 
 Required: False
@@ -554,7 +569,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IBackupVaultResource
 
 ## NOTES
 
