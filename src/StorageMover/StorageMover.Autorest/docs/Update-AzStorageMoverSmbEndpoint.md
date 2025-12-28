@@ -276,7 +276,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 
 ## NOTES
 

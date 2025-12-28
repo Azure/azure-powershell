@@ -18,36 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Azure.Core from 1.47.3 to 1.50.0
+* Updated the implementation of 'New-AzBatchApplicationPackage' cmdlet to not call 'Get-AzBatchApplicationPackage' to retrieve storage keys for security improvements. No behavior changes to the cmdlet.
 
-* Removed command `Get-AzBatchRemoteDesktopProtocolFile`.
-* Removed command `Get-AzBatchCertificate`.
-* Removed command `New-AzBatchCertificate`.
-* Removed command `Remove-AzBatchCertificate`.
-* Removed command `Stop-AzBatchCertificateDeletion`.
-
-* Removed parameter `CloudServiceConfiguration` from `New-AzBatchPool` command.
-* Removed parameter `CertificateReferences` from `New-AzBatchPool` command.
-* Removed parameter `TargetNodeCommunication` from `New-AzBatchPool` command.
-* Removed parameter `CurrentNodeCommunication` from `New-AzBatchPool` command.
-* Removed parameter `ResourceTag` from `New-AzBatchPool` command.
-* Removed parameter `ApplicationLicenses` from `New-AzBatchPool` command.
-
-* Removed properties `CloudServiceConfiguration`, `CertificateReferences`, `TargetNodeCommunication`, `CurrentNodeCommunication`, `ResourceTag`, and `ApplicationLicenses` from `PsCloudPool` model.
-* Removed property `CertificateReferences` from `PsComputeNode` model.
-* Removed properties `CloudServiceConfiguration`, `CertificateReferences`, `TargetNodeCommunication`, `CurrentNodeCommunication`, `ResourceTag`, and `ApplicationLicenses` from `PsPoolSpecification` model.
-
-* Added new enum values `Deallocated` and `Deallocating` to `PSNodeCounts` model.
-* Added properties `CommunityGalleryImageId` and `SharedGalleryImageId` to `PSImageReference` model.
-* Added property `SkipWithdrawFromVNet` to `PSJobNetworkConfiguration` model.
-* Added property `SecurityProfile` to `PSManagedDisk` model.
-* Added property `ContainerHostBatchBindMounts` to `PSTaskContainerSettings` model.
+## Version 4.0.0
+* Upgraded API version from 2022-10-01 to 2024-07-01.
 
 ## Version 3.7.1
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 
 ## Version 3.7.0
 * Upgraded nuget package to signed package.
-* Fixed 'Object reference not set to an instance of an object' error when setting null values inside job `CommonEnvironmentSettings` property. 
+* Fixed 'Object reference not set to an instance of an object' error when setting null values inside job `CommonEnvironmentSettings` property.
 
 ## Version 3.6.4
 * Migrate Batch SDK to generated SDK

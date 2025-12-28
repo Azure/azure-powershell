@@ -392,5 +392,76 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// values include: 'StorageAccount', 'ManagedDisks'
         /// </summary>
         public string StorageProfile { get; set; }
+
+        /// <summary>
+        /// Gets unique read-only string used to implement optimistic concurrency. The
+        /// eTag value will change when the resource is updated. Specify an if-match or
+        /// if-none-match header with the eTag value for a subsequent request to enable
+        /// optimistic concurrency per the normal etag convention.
+        /// </summary>
+        public string ETag { get; private set; }
+
+        /// <summary>
+        /// Gets or sets message of the day for Linux nodes, base64-encoded. A
+        /// base64-encoded string which will be written to /etc/motd after decoding.
+        /// This allows customization of the message of the day for Linux nodes. It
+        /// must not be specified for Windows nodes. It must be a static string (i.e.,
+        /// will be printed raw and not be executed as a script).
+        /// </summary>
+        public string MessageOfTheDay { get; set; }
+
+        /// <summary>
+        /// Gets or sets aKS will associate the specified agent pool with the Capacity
+        /// Reservation Group.
+        /// </summary>
+        public string CapacityReservationGroupId { get; set; }
+
+        /// <summary>
+        /// Gets or sets network-related settings of an agent pool.
+        /// </summary>
+        public AgentPoolNetworkProfile NetworkProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Windows agent pool&#39;s specific profile.
+        /// </summary>
+        public AgentPoolWindowsProfile WindowsProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the security settings of an agent pool.
+        /// </summary>
+        public AgentPoolSecurityProfile SecurityProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets gPU settings for the Agent Pool.
+        /// </summary>
+        public GPUProfile GpuProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets profile specific to a managed agent pool in Gateway mode. This
+        /// field cannot be set if agent pool mode is not Gateway.
+        /// </summary>
+        public AgentPoolGatewayProfile GatewayProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifications on VirtualMachines agent pool.
+        /// </summary>
+        public VirtualMachinesProfile VirtualMachinesProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the status of nodes in a VirtualMachines agent pool.
+        /// </summary>
+        public System.Collections.Generic.IList<VirtualMachineNodes> VirtualMachineNodesStatus { get; set; }
+
+        /// <summary>
+        /// Gets or sets contains read-only information about the Agent Pool.
+        /// </summary>
+        public AgentPoolStatus Status { get; set; }
+
+        /// <summary>
+        /// Gets or sets pod IP Allocation Mode. The IP allocation mode for pods in the
+        /// agent pool. Must be used with podSubnetId. The default is
+        /// &#39;DynamicIndividual&#39;. Possible values include: &#39;DynamicIndividual&#39;, &#39;StaticBlock&#39;
+        /// </summary>
+        public string PodIPAllocationMode { get; set; }
     }
 }

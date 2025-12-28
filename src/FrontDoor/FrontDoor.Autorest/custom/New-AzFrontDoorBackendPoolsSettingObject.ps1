@@ -23,7 +23,7 @@ Create an in-memory object for BackendPoolsSettings.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.BackendPoolsSettings
 .Link
-https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendbackendpoolssettingsobject
+https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorbackendpoolssettingobject
 #>
 function New-AzFrontDoorBackendPoolsSettingObject {
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.ModelCmdletAttribute()]

@@ -16,7 +16,7 @@ Captures a resource group as a template and saves it to a file.
 ```
 Export-AzResourceGroup -ResourceGroupName <String> [-Path <String>] [-IncludeParameterDefaultValue]
  [-IncludeComments] [-SkipResourceNameParameterization] [-SkipAllParameterization] [-Resource <String[]>]
- [-OutputFormat <String>] [-Force] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-Force] [-ApiVersion <String>] [-OutputFormat <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -145,6 +145,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OutputFormat
+Specifies the format of the exported template. Supported values are "Json" and "Bicep".
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Json, Bicep
+
+Required: False
+Position: Named
+Default value: Json
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Path
 Specifies the output path of the template file.
 
@@ -157,21 +173,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -OutputFormat
-Specifies the format of the exported template. Supported values are "Json" and "Bicep".
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: Json
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

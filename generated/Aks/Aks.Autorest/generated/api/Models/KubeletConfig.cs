@@ -8,7 +8,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Extensions;
 
     /// <summary>
-    /// See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+    /// Kubelet configurations of agent nodes. See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration)
+    /// for more details.
     /// </summary>
     public partial class KubeletConfig :
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IKubeletConfig,
@@ -41,7 +42,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Backing field for <see cref="CpuCfsQuota" /> property.</summary>
         private bool? _cpuCfsQuota;
 
-        /// <summary>The default is true.</summary>
+        /// <summary>
+        /// If CPU CFS quota enforcement is enabled for containers that specify CPU limits. The default is true.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public bool? CpuCfsQuota { get => this._cpuCfsQuota; set => this._cpuCfsQuota = value; }
 
@@ -49,8 +52,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private string _cpuCfsQuotaPeriod;
 
         /// <summary>
-        /// The default is '100ms.' Valid values are a sequence of decimal numbers with an optional fraction and a unit suffix. For
-        /// example: '300ms', '2h45m'. Supported units are 'ns', 'us', 'ms', 's', 'm', and 'h'.
+        /// The CPU CFS quota period value. The default is '100ms.' Valid values are a sequence of decimal numbers with an optional
+        /// fraction and a unit suffix. For example: '300ms', '2h45m'. Supported units are 'ns', 'us', 'ms', 's', 'm', and 'h'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string CpuCfsQuotaPeriod { get => this._cpuCfsQuotaPeriod; set => this._cpuCfsQuotaPeriod = value; }
@@ -59,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private string _cpuManagerPolicy;
 
         /// <summary>
-        /// The default is 'none'. See [Kubernetes CPU management policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#cpu-management-policies)
+        /// The CPU Manager policy to use. The default is 'none'. See [Kubernetes CPU management policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#cpu-management-policies)
         /// for more information. Allowed values are 'none' and 'static'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
@@ -77,14 +80,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Backing field for <see cref="ImageGcHighThreshold" /> property.</summary>
         private int? _imageGcHighThreshold;
 
-        /// <summary>To disable image garbage collection, set to 100. The default is 85%</summary>
+        /// <summary>
+        /// The percent of disk usage after which image garbage collection is always run. To disable image garbage collection, set
+        /// to 100. The default is 85%
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public int? ImageGcHighThreshold { get => this._imageGcHighThreshold; set => this._imageGcHighThreshold = value; }
 
         /// <summary>Backing field for <see cref="ImageGcLowThreshold" /> property.</summary>
         private int? _imageGcLowThreshold;
 
-        /// <summary>This cannot be set higher than imageGcHighThreshold. The default is 80%</summary>
+        /// <summary>
+        /// The percent of disk usage before which image garbage collection is never run. This cannot be set higher than imageGcHighThreshold.
+        /// The default is 80%
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public int? ImageGcLowThreshold { get => this._imageGcLowThreshold; set => this._imageGcLowThreshold = value; }
 
@@ -99,7 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private string _topologyManagerPolicy;
 
         /// <summary>
-        /// For more information see [Kubernetes Topology Manager](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager).
+        /// The Topology Manager policy to use. For more information see [Kubernetes Topology Manager](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager).
         /// The default is 'none'. Allowed values are 'none', 'best-effort', 'restricted', and 'single-numa-node'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
@@ -111,7 +120,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
 
         }
     }
-    /// See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+    /// Kubelet configurations of agent nodes. See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration)
+    /// for more details.
     public partial interface IKubeletConfig :
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IJsonSerializable
     {
@@ -150,20 +160,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"containerLogMaxSizeMB",
         PossibleTypes = new [] { typeof(int) })]
         int? ContainerLogMaxSizeMb { get; set; }
-        /// <summary>The default is true.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The default is true.",
-        SerializedName = @"cpuCfsQuota",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? CpuCfsQuota { get; set; }
         /// <summary>
-        /// The default is '100ms.' Valid values are a sequence of decimal numbers with an optional fraction and a unit suffix. For
-        /// example: '300ms', '2h45m'. Supported units are 'ns', 'us', 'ms', 's', 'm', and 'h'.
+        /// If CPU CFS quota enforcement is enabled for containers that specify CPU limits. The default is true.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -171,12 +169,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is '100ms.' Valid values are a sequence of decimal numbers with an optional fraction and a unit suffix. For example: '300ms', '2h45m'. Supported units are 'ns', 'us', 'ms', 's', 'm', and 'h'.",
+        Description = @"If CPU CFS quota enforcement is enabled for containers that specify CPU limits. The default is true.",
+        SerializedName = @"cpuCfsQuota",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? CpuCfsQuota { get; set; }
+        /// <summary>
+        /// The CPU CFS quota period value. The default is '100ms.' Valid values are a sequence of decimal numbers with an optional
+        /// fraction and a unit suffix. For example: '300ms', '2h45m'. Supported units are 'ns', 'us', 'ms', 's', 'm', and 'h'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The CPU CFS quota period value. The default is '100ms.' Valid values are a sequence of decimal numbers with an optional fraction and a unit suffix. For example: '300ms', '2h45m'. Supported units are 'ns', 'us', 'ms', 's', 'm', and 'h'.",
         SerializedName = @"cpuCfsQuotaPeriod",
         PossibleTypes = new [] { typeof(string) })]
         string CpuCfsQuotaPeriod { get; set; }
         /// <summary>
-        /// The default is 'none'. See [Kubernetes CPU management policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#cpu-management-policies)
+        /// The CPU Manager policy to use. The default is 'none'. See [Kubernetes CPU management policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#cpu-management-policies)
         /// for more information. Allowed values are 'none' and 'static'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
@@ -185,7 +197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is 'none'. See [Kubernetes CPU management policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#cpu-management-policies) for more information. Allowed values are 'none' and 'static'.",
+        Description = @"The CPU Manager policy to use. The default is 'none'. See [Kubernetes CPU management policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#cpu-management-policies) for more information. Allowed values are 'none' and 'static'.",
         SerializedName = @"cpuManagerPolicy",
         PossibleTypes = new [] { typeof(string) })]
         string CpuManagerPolicy { get; set; }
@@ -202,25 +214,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"failSwapOn",
         PossibleTypes = new [] { typeof(bool) })]
         bool? FailSwapOn { get; set; }
-        /// <summary>To disable image garbage collection, set to 100. The default is 85%</summary>
+        /// <summary>
+        /// The percent of disk usage after which image garbage collection is always run. To disable image garbage collection, set
+        /// to 100. The default is 85%
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"To disable image garbage collection, set to 100. The default is 85%",
+        Description = @"The percent of disk usage after which image garbage collection is always run. To disable image garbage collection, set to 100. The default is 85%",
         SerializedName = @"imageGcHighThreshold",
         PossibleTypes = new [] { typeof(int) })]
         int? ImageGcHighThreshold { get; set; }
-        /// <summary>This cannot be set higher than imageGcHighThreshold. The default is 80%</summary>
+        /// <summary>
+        /// The percent of disk usage before which image garbage collection is never run. This cannot be set higher than imageGcHighThreshold.
+        /// The default is 80%
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"This cannot be set higher than imageGcHighThreshold. The default is 80%",
+        Description = @"The percent of disk usage before which image garbage collection is never run. This cannot be set higher than imageGcHighThreshold. The default is 80%",
         SerializedName = @"imageGcLowThreshold",
         PossibleTypes = new [] { typeof(int) })]
         int? ImageGcLowThreshold { get; set; }
@@ -236,7 +254,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(int) })]
         int? PodMaxPid { get; set; }
         /// <summary>
-        /// For more information see [Kubernetes Topology Manager](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager).
+        /// The Topology Manager policy to use. For more information see [Kubernetes Topology Manager](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager).
         /// The default is 'none'. Allowed values are 'none', 'best-effort', 'restricted', and 'single-numa-node'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
@@ -245,13 +263,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"For more information see [Kubernetes Topology Manager](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager). The default is 'none'. Allowed values are 'none', 'best-effort', 'restricted', and 'single-numa-node'.",
+        Description = @"The Topology Manager policy to use. For more information see [Kubernetes Topology Manager](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager). The default is 'none'. Allowed values are 'none', 'best-effort', 'restricted', and 'single-numa-node'.",
         SerializedName = @"topologyManagerPolicy",
         PossibleTypes = new [] { typeof(string) })]
         string TopologyManagerPolicy { get; set; }
 
     }
-    /// See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+    /// Kubelet configurations of agent nodes. See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration)
+    /// for more details.
     internal partial interface IKubeletConfigInternal
 
     {
@@ -263,15 +282,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         int? ContainerLogMaxFile { get; set; }
         /// <summary>The maximum size (e.g. 10Mi) of container log file before it is rotated.</summary>
         int? ContainerLogMaxSizeMb { get; set; }
-        /// <summary>The default is true.</summary>
+        /// <summary>
+        /// If CPU CFS quota enforcement is enabled for containers that specify CPU limits. The default is true.
+        /// </summary>
         bool? CpuCfsQuota { get; set; }
         /// <summary>
-        /// The default is '100ms.' Valid values are a sequence of decimal numbers with an optional fraction and a unit suffix. For
-        /// example: '300ms', '2h45m'. Supported units are 'ns', 'us', 'ms', 's', 'm', and 'h'.
+        /// The CPU CFS quota period value. The default is '100ms.' Valid values are a sequence of decimal numbers with an optional
+        /// fraction and a unit suffix. For example: '300ms', '2h45m'. Supported units are 'ns', 'us', 'ms', 's', 'm', and 'h'.
         /// </summary>
         string CpuCfsQuotaPeriod { get; set; }
         /// <summary>
-        /// The default is 'none'. See [Kubernetes CPU management policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#cpu-management-policies)
+        /// The CPU Manager policy to use. The default is 'none'. See [Kubernetes CPU management policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#cpu-management-policies)
         /// for more information. Allowed values are 'none' and 'static'.
         /// </summary>
         string CpuManagerPolicy { get; set; }
@@ -279,14 +300,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// If set to true it will make the Kubelet fail to start if swap is enabled on the node.
         /// </summary>
         bool? FailSwapOn { get; set; }
-        /// <summary>To disable image garbage collection, set to 100. The default is 85%</summary>
+        /// <summary>
+        /// The percent of disk usage after which image garbage collection is always run. To disable image garbage collection, set
+        /// to 100. The default is 85%
+        /// </summary>
         int? ImageGcHighThreshold { get; set; }
-        /// <summary>This cannot be set higher than imageGcHighThreshold. The default is 80%</summary>
+        /// <summary>
+        /// The percent of disk usage before which image garbage collection is never run. This cannot be set higher than imageGcHighThreshold.
+        /// The default is 80%
+        /// </summary>
         int? ImageGcLowThreshold { get; set; }
         /// <summary>The maximum number of processes per pod.</summary>
         int? PodMaxPid { get; set; }
         /// <summary>
-        /// For more information see [Kubernetes Topology Manager](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager).
+        /// The Topology Manager policy to use. For more information see [Kubernetes Topology Manager](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager).
         /// The default is 'none'. Allowed values are 'none', 'best-effort', 'restricted', and 'single-numa-node'.
         /// </summary>
         string TopologyManagerPolicy { get; set; }

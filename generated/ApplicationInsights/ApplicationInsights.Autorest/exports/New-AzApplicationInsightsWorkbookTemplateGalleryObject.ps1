@@ -23,12 +23,12 @@ Create an in-memory object for WorkbookTemplateGallery.
 New-AzApplicationInsightsWorkbookTemplateGalleryObject -Category "Failures" -Name "Simple Template" -Type 'tsg' -ResourceType "microsoft.insights/components" -Order 100
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.WorkbookTemplateGallery
+Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.WorkbookTemplateGallery
 .Link
-https://learn.microsoft.com/powershell/module/Az.ApplicationInsights/new-AzApplicationInsightsWorkbookTemplateGalleryObject
+https://learn.microsoft.com/powershell/module/Az.ApplicationInsights/new-azapplicationinsightsworkbooktemplategalleryobject
 #>
 function New-AzApplicationInsightsWorkbookTemplateGalleryObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.WorkbookTemplateGallery])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.WorkbookTemplateGallery])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -69,6 +69,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -97,6 +100,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

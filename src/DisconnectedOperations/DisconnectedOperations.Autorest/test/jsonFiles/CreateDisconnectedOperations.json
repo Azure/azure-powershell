@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "connectionIntent": "Disconnected",
+    "billingModel": "Capacity"
+  },
+  "tags": {},
+  "location": "westus3"
+}

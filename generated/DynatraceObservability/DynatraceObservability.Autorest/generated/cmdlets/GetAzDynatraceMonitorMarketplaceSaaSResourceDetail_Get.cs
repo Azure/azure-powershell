@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Get Marketplace SaaS resource details of a tenant under a specific subscription</summary>
+    /// <summary>Get Marketplace SaaS resource details</summary>
     /// <remarks>
     /// [OpenAPI] GetMarketplaceSaaSResourceDetails=>POST:"/subscriptions/{subscriptionId}/providers/Dynatrace.Observability/getMarketplaceSaaSResourceDetails"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDynatraceMonitorMarketplaceSaaSResourceDetail_Get", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsResponse))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Description(@"Get Marketplace SaaS resource details of a tenant under a specific subscription")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Description(@"Get Marketplace SaaS resource details")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Dynatrace.Observability/getMarketplaceSaaSResourceDetails", ApiVersion = "2023-04-27")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Dynatrace.Observability/getMarketplaceSaaSResourceDetails", ApiVersion = "2024-04-24")]
     public partial class GetAzDynatraceMonitorMarketplaceSaaSResourceDetail_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IContext
@@ -134,12 +134,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The ID of the target subscription.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(

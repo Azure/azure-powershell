@@ -18,7 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Azure.Core from 1.47.3 to 1.50.0
+* General availability for module Az.NetAppFiles
+
+## Version 0.25.1
 * Updated Azure.Core from 1.45.0 to 1.47.3
+* Updated to api-version 2025-09-01
+* Added argument `ExcludeFilter` to `Get-AzNetAppFilesVolumeReplication` to exclude deleted replications
 
 ## Version 0.25.0
 * Updated to api-version 2025-06-01
@@ -34,7 +40,7 @@
 * Added `NfsV4IdDomain` to `New-AzNetAppFilesAccount` and `Update-AzNetAppFilesAccount`
 * Added added support CRR data recovery options for VolumeGroups with `DataReplicationSourceId`, DataReplicationSchedule to `New-AzNetAppFilesVolumeGroup`
 * Added `OracleDatabaseSize`, `NumberOfDataVolumes`, `OracleDatabaseThroughput` for Oracle Volume groups support in `New-AzNetAppFilesVolumeGroup`
-* Added `KeyVaultPrivateEndpointResourceId`, `Zone` to `New-AzNetAppFilesVolumeGroup`  
+* Added `KeyVaultPrivateEndpointResourceId`, `Zone` to `New-AzNetAppFilesVolumeGroup`
 
 ## Version 0.23.0
 * Added `NfsV4IdDomain` to `New-AzNetAppFilesAccount` and `Update-AzNetAppFilesAccount`
@@ -45,7 +51,7 @@
 
 ## Version 0.21.0
 * Added new parameter `CoolAccessTieringPolicy` to  `New-AzNetAppFilesVolume` and `Update-AzNetAppFilesVolume`,
-* Added new cmdLet`Invoke-AzNetAppFilesAccountChangeKeyVault` to change Key Vault/Managed HSM that is used for encryption of volumes under NetApp account. `Get-AzNetAppFilesAccountKeyVaultInformation` can be used to get information for this command.  
+* Added new cmdLet`Invoke-AzNetAppFilesAccountChangeKeyVault` to change Key Vault/Managed HSM that is used for encryption of volumes under NetApp account. `Get-AzNetAppFilesAccountKeyVaultInformation` can be used to get information for this command.
 * Added new cmdLet `Get-AzNetAppFilesAccountKeyVaultInformation`, Gets information that can be used in `Invoke-AzNetAppFilesAccountChangeKeyVault`
 * Added new cmdLet `Convert-AzNetAppFilesAccountToCmk`  Transition volumes encryption from PMK to CMK.
 ## Version 0.20.1
@@ -98,7 +104,7 @@
 * Updated Azure.Core to 1.34.0.
 
 ## Version 0.13.0
-* Updated to api-version 2022-11-01        
+* Updated to api-version 2022-11-01
 * Added `Identity` to NetAppAccountPatch
 * Added `ActualThroughputMibps` and `OriginatingResourceId`
 * Added `SnapshotDirectoryVisible` to Update-AzNetAppFilesVolume
@@ -108,7 +114,7 @@
 
 ## Version 0.12.0
 * Updated Azure.Core to 1.31.0.
-* Added cmdLet `Restore-AzNetAppFilesBackupFile`                 
+* Added cmdLet `Restore-AzNetAppFilesBackupFile`
 * Added cmdLet `Unlock-AzNetAppFilesVolumeFileLock`
 * Added parameter `LdapSearchScope` and `PreferredServersForLdapClient` to `New-AzNetAppFilesActiveDirectory`
 * Added parameter `IsLargeVolume` to `NewAzNetAppFilesVolume`
@@ -135,7 +141,7 @@ Breaking change:
 * Added paramter `CoolAccess` to `Update-AzNetAppFilesPool`
 * Added paramter `DeleteBaseSnapshot`, `SmbAccessBasedEnumeration`, `SmbNonBrowsable`, `EncryptionKeySource` and `KeyVaultPrivateEndpointResourceId` to `New-AzNetAppFilesVolume`
 * Added paramter `CoolAccess`, `CoolnessPeriod`, `EncryptionKeySource` and `KeyVaultPrivateEndpointResourceId` to `Update-AzNetAppFilesVolume`
-* Planning to deprecate the cmdLet `Get-AzNetAppFilesVault` as it will not be needed 
+* Planning to deprecate the cmdLet `Get-AzNetAppFilesVault` as it will not be needed
 
 ## Version 0.10.0
 * Added cmdlet `New/Remove/Get/Update-AzNetAppFilesSubvolume` and `Get-AzNetAppFilesSubvolumeMetadata`
@@ -143,9 +149,9 @@ Breaking change:
 * Added cmdlet `New-AzNetAppFilesExportPolicyRuleObject` and `New-AzNetAppFilesExportPolicyObject`
 * Added `Restore-AzNetAppFilesSnapshot` to restore the specified files from the specified snapshot to the active filesystem
 * Added property `LdapSearchScope` to `PSNetAppFilesActiveDirectory`
-* Added property `SystemData` to `PSNetAppFilesBackupPolicy`, `PSNetAppFilesAccount` and `PSNetAppFilesPool` 
-* Added property `SystemData` and `MonthlySchedule` to output type `PSNetAppFilesSnapshotPolicy` 
-* Added property `SystemData`, `MaximumNumberOfFiles` and `EnableSubvolumes` to output type `PSNetAppFilesVolume` 
+* Added property `SystemData` to `PSNetAppFilesBackupPolicy`, `PSNetAppFilesAccount` and `PSNetAppFilesPool`
+* Added property `SystemData` and `MonthlySchedule` to output type `PSNetAppFilesSnapshotPolicy`
+* Added property `SystemData`, `MaximumNumberOfFiles` and `EnableSubvolumes` to output type `PSNetAppFilesVolume`
 * Added parameter `EnableSubvolume` and `UnixPermission` to `Update-AzNetAppFilesVolume`
 * Added parameter `ForceDelete' to `Remove-AzNetAppFilesVolume`
 
@@ -161,7 +167,7 @@ Breaking change:
 * Added list NetAppAccounts by subscription
 * Added etags to response PSNetAppFilesVolume, PSNetAppFilesPool, PSNetAppFilesAccount, PSNetAppFilesBackupPolicy, PSNetAppFilesSnapshotPolicy
 * Added EncryptionType to New-AzNetAppFilesPool and PSNetAppFilesPool
-* Added CloneProgress, AvsDataStore,IsDefaultQuotaEnabled, DefaultUserQuotaInKiBs, DefaultGroupQuotaInKiBs, NetworkFeatures, NetworkSiblingSetId, StorageToNetworkProximity to PSNetAppFilesVolume 
+* Added CloneProgress, AvsDataStore,IsDefaultQuotaEnabled, DefaultUserQuotaInKiBs, DefaultGroupQuotaInKiBs, NetworkFeatures, NetworkSiblingSetId, StorageToNetworkProximity to PSNetAppFilesVolume
 * Added CloneProgress, AvsDataStore,IsDefaultQuotaEnabled, DefaultUserQuotaInKiBs, DefaultGroupQuotaInKiBs, NetworkFeatures to New-AzNetAppFilesVolume
 * Added IsDefaultQuotaEnabled, DefaultUserQuotaInKiBs, DefaultGroupQuotaInKiBs  Update-AzNetAppFilesVolume
 * Service level now supports StandardZRS
@@ -177,7 +183,7 @@ Breaking change:
 * Added Get-Az-NetAppFilesVolumeRestoreStatus to get the status of a restore operation for a volume
 
 ## Version 0.6.0
-* Added UseExistingSnapshot to Backups 
+* Added UseExistingSnapshot to Backups
 * SnapshotPolicyId to UpdateAnfNetAppFilesVolume, this can be used to apply a snapshot policy to an existing volume
 
 ## Version 0.5.0
@@ -191,7 +197,7 @@ Breaking change:
 * Volume list now gets all volumes instead of first over 100 volumes
 * Added SnapshotPolicyId to NewAzNetAppFilesVolume to set snapshot policy to volume
 * Added AesEncryption, LdapOverTLS, LdapSigning to ActiveDirectory
-* Added FailureReason to Backup and backup patch  
+* Added FailureReason to Backup and backup patch
 * Added Encryption and systemData to NetAppAccount
 * Added EncryptionKeySource to volume
 
@@ -206,12 +212,12 @@ Breaking change:
     - `Get-AzNetAppFilesBackupPolicy`
     - `New-AzNetAppFilesBackupPolicy`
     - `Remove-AzNetAppFilesBackupPolicy`
-    - `Update-AzNetAppFilesBackupPolicy`    
+    - `Update-AzNetAppFilesBackupPolicy`
 * Add new Snapshot Policy cmdlets:
     - `Get-AzNetAppFilesBackupPolicy`
     - `New-AzNetAppFilesBackupPolicy`
     - `Remove-AzNetAppFilesBackupPolicy`
-    - `Update-AzNetAppFilesBackupPolicy`    
+    - `Update-AzNetAppFilesBackupPolicy`
 * Add new Backup cmdlets:
     - `Get-AzNetAppFilesBackup`
     - `New-AzNetAppFilesBackup`
@@ -224,9 +230,9 @@ Breaking change:
     - `Update-AzNetAppFilesActiveDirectory`
 * Add new `Get-AzNetAppFilesVault` cmdlet (use for backups, vaults currently only support getting list of vaults):
 * Add new Set-AzNetAppFilesVolumePool cmdlet, to move volume to another pool
-* Add parameters to `New-AzNetAppFilesVolume` 
-     - Backup to to enable Backups and Backup Policy 
-     - Snapshot to enable Snapshot Policy 
+* Add parameters to `New-AzNetAppFilesVolume`
+     - Backup to to enable Backups and Backup Policy
+     - Snapshot to enable Snapshot Policy
      - totalThroughputMips
      - SnapshotDirectoryVisible
      - BackupId
@@ -252,7 +258,7 @@ Breaking change:
 * Added Status, OrganizationalUnit and Site properties to ActiveDirectory
 * Added SnapshotDirectoryVisible to Volume, If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true)
 * Added Snapshot to Volume DataProtection
- 
+
 ## Version 0.1.5
 * Includes replication operations
 

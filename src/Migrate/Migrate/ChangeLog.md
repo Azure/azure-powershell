@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated DefaultCrashConsistentFrequencyInMinutes and DefaultAppConsistentFrequencyInMinutes to align with Azure Portal UX for Replication Policy
+ - `New-AzMigrateLocalServerReplication`
+
+## Version 3.0.14
+* Added TargetCapacityReservationGroupId parameter in the following cmdlets
+ - `New-AzMigrateServerReplication`
+ - `Set-AzMigrateServerReplication`
+ - `Start-AzMigrateServerMigration`
+* Updated Migrate.RecoveryServices to stable API version 2025-08-01
 
 ## Version 2.10.1
 * Fixed bugs in `Initialize-AzMigrateLocalReplicationInfrastructure`

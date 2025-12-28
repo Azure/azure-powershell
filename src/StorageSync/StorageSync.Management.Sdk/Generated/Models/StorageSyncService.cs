@@ -46,8 +46,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// <param name="location">The geo-location where the resource lives
         /// </param>
 
-        /// <param name="identity">managed identities for the Storage Sync service to interact with other
-        /// Azure services without maintaining any secrets or credentials in code.
+        /// <param name="identity">The managed service identities assigned to this resource.
         /// </param>
 
         /// <param name="incomingTrafficPolicy">Incoming Traffic Policy
@@ -98,9 +97,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
 
 
         /// <summary>
-        /// Gets or sets managed identities for the Storage Sync service to interact
-        /// with other Azure services without maintaining any secrets or credentials in
-        /// code.
+        /// Gets or sets the managed service identities assigned to this resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
         public ManagedServiceIdentity Identity {get; set; }

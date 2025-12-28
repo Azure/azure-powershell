@@ -1,17 +1,17 @@
 {
-  "Get-AzCdnProfileSupportedOptimizationType+[NoContext]+List+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-g51i/providers/Microsoft.Cdn/profiles/p-hmv7yj?api-version=2025-04-15+1": {
+  "Get-AzCdnProfileSupportedOptimizationType+[NoContext]+List+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-gnrb/providers/Microsoft.Cdn/profiles/p-vgp3in?api-version=2025-06-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-g51i/providers/Microsoft.Cdn/profiles/p-hmv7yj?api-version=2025-04-15",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-gnrb/providers/Microsoft.Cdn/profiles/p-vgp3in?api-version=2025-06-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "202" ],
-        "x-ms-client-request-id": [ "264a3a40-3fc2-49f2-94c5-307cbe12ac61" ],
+        "x-ms-unique-id": [ "556" ],
+        "x-ms-client-request-id": [ "58d87011-7c81-4cb5-b75b-cf8dc23e4c73" ],
         "CommandName": [ "Az.Cdn.internal\\Get-AzCdnProfile" ],
         "FullCommandName": [ "Get-AzCdnProfile_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.3", "Az.Cdn/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.4", "Az.Cdn/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,39 +23,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "55b2bb7a-c52b-47f4-8da4-03684725e06f" ],
-        "x-ms-client-request-id": [ "264a3a40-3fc2-49f2-94c5-307cbe12ac61" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "00771ff8-611a-45fc-8211-34af32862792" ],
-        "x-ms-routing-request-id": [ "WESTUS:20251029T041847Z:00771ff8-611a-45fc-8211-34af32862792" ],
+        "x-ms-request-id": [ "62153248-de72-4d4b-b9fc-0b2677b888a7" ],
+        "x-ms-client-request-id": [ "58d87011-7c81-4cb5-b75b-cf8dc23e4c73" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1094" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16494" ],
+        "x-ms-correlation-request-id": [ "f975eeb5-4bae-4c32-8acb-dd15df6c03c2" ],
+        "x-ms-routing-request-id": [ "WESTUS:20251106T074440Z:f975eeb5-4bae-4c32-8acb-dd15df6c03c2" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4A60A63232BF463D8F0D371D25732B12 Ref B: SYD03EDGE1114 Ref C: 2025-10-29T04:18:46Z" ],
-        "Date": [ "Wed, 29 Oct 2025 04:18:46 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F7EE2D2B1EBA404884063120B3DCB5D2 Ref B: SYD03EDGE2113 Ref C: 2025-11-06T07:44:40Z" ],
+        "Date": [ "Thu, 06 Nov 2025 07:44:40 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "357" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-g51i/providers/Microsoft.Cdn/profiles/p-hmv7yj\",\"type\":\"Microsoft.Cdn/profiles\",\"name\":\"p-hmv7yj\",\"location\":\"Global\",\"kind\":\"cdn\",\"tags\":{},\"sku\":{\"name\":\"Standard_Microsoft\"},\"properties\":{\"extendedProperties\":{},\"resourceState\":\"Active\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-gnrb/providers/Microsoft.Cdn/profiles/p-vgp3in\",\"type\":\"Microsoft.Cdn/profiles\",\"name\":\"p-vgp3in\",\"location\":\"Global\",\"kind\":\"cdn\",\"tags\":{},\"sku\":{\"name\":\"Standard_Microsoft\"},\"properties\":{\"extendedProperties\":{},\"resourceState\":\"Active\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzCdnProfileSupportedOptimizationType+[NoContext]+List+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-g51i/providers/Microsoft.Cdn/profiles/p-hmv7yj/getSupportedOptimizationTypes?api-version=2025-04-15+2": {
+  "Get-AzCdnProfileSupportedOptimizationType+[NoContext]+List+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-gnrb/providers/Microsoft.Cdn/profiles/p-vgp3in/getSupportedOptimizationTypes?api-version=2025-06-01+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-g51i/providers/Microsoft.Cdn/profiles/p-hmv7yj/getSupportedOptimizationTypes?api-version=2025-04-15",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-gnrb/providers/Microsoft.Cdn/profiles/p-vgp3in/getSupportedOptimizationTypes?api-version=2025-06-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "203" ],
-        "x-ms-client-request-id": [ "11da17c6-5324-4206-b26f-890643a0725b" ],
+        "x-ms-unique-id": [ "557" ],
+        "x-ms-client-request-id": [ "8da72b52-40e2-431a-bc7d-0416dcc276ab" ],
         "CommandName": [ "Get-AzCdnProfileSupportedOptimizationType" ],
         "FullCommandName": [ "Get-AzCdnProfileSupportedOptimizationType_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.3", "Az.Cdn/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.4", "Az.Cdn/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -67,17 +67,17 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "4d3a8926-af2f-4a41-a45b-02846f7bc2be" ],
-        "x-ms-client-request-id": [ "11da17c6-5324-4206-b26f-890643a0725b" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/a4ea8fad-5070-4d2b-95fb-fb270c66b2ba" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11998" ],
-        "x-ms-correlation-request-id": [ "a259953e-143a-4dde-9bc6-8bc9cfd2cbcc" ],
-        "x-ms-routing-request-id": [ "WESTUS:20251029T041848Z:a259953e-143a-4dde-9bc6-8bc9cfd2cbcc" ],
+        "x-ms-request-id": [ "59f77bdd-a00c-4fd2-9abf-a9afaafd4400" ],
+        "x-ms-client-request-id": [ "8da72b52-40e2-431a-bc7d-0416dcc276ab" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/ea4ed2c7-9964-4160-b874-ae7b7aec3171" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "fb6b0f25-565b-4253-bb33-b620217f7ac7" ],
+        "x-ms-routing-request-id": [ "WESTUS:20251106T074440Z:fb6b0f25-565b-4253-bb33-b620217f7ac7" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1E2FFB3A8FE64E78B695601FEE95EA11 Ref B: SYD03EDGE1114 Ref C: 2025-10-29T04:18:47Z" ],
-        "Date": [ "Wed, 29 Oct 2025 04:18:47 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8ED29DED18CE4FD3A27DAF810191A26E Ref B: SYD03EDGE2113 Ref C: 2025-11-06T07:44:40Z" ],
+        "Date": [ "Thu, 06 Nov 2025 07:44:40 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "53" ],

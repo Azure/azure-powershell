@@ -23,7 +23,7 @@ Create an in-memory object for Backend.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.Backend
 .Link
-https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendbackendobject
+https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorbackendobject
 #>
 function New-AzFrontDoorBackendObject {
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.ModelCmdletAttribute()]
