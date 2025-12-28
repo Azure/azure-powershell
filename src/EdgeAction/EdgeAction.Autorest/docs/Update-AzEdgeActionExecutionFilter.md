@@ -57,19 +57,18 @@ Update a EdgeActionExecutionFilter
 
 ## EXAMPLES
 
-### Example 1: Update execution filter tags
+### Example 1: Update an execution filter with tags
 ```powershell
-Update-AzEdgeActionExecutionFilter -EdgeActionName "myEdgeAction" -ResourceGroupName "myResourceGroup" -ExecutionFilter "myFilter" -Tag @{Environment="staging"}
+Update-AzEdgeActionExecutionFilter -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Name "myFilter" -Tag @{ Environment = "Production" }
 ```
 
-This command updates the tags on the specified execution filter.
-
-### Example 2: Update execution filter using pipeline input
-```powershell
-Get-AzEdgeActionExecutionFilter -EdgeActionName "myEdgeAction" -ResourceGroupName "myResourceGroup" -ExecutionFilter "myFilter" | Update-AzEdgeActionExecutionFilter -Tag @{Environment="production"}
+```output
+Name     Location ProvisioningState
+----     -------- -----------------
+myFilter global   Succeeded
 ```
 
-This command retrieves an execution filter and pipes it to update the tags.
+Updates the specified execution filter with the provided tags.
 
 ## PARAMETERS
 
