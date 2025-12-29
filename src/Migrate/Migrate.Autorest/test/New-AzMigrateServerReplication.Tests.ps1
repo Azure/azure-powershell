@@ -11,7 +11,7 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'New-AzMigrateServerReplication' {
+Describe 'New-AzMigrateServerReplication' -Tag 'LiveOnly' {
     It 'ByIdDefaultUser' {
          $output = New-AzMigrateServerReplication -MachineId $env.migGetSDSMachineID  -LicenseType $env.srsLicense -TargetResourceGroupId $env.migResourceGroupId -TargetNetworkId $env.migTestNetworkId -TargetSubnetName default -TargetVMName $env.srsTgtVMName -DiskType $env.srsDiskType -OSDiskID $env.srsDiskId1 -SubscriptionId $env.migSubscriptionId
          $output.Count | Should -BeGreaterOrEqual 1 

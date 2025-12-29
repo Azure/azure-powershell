@@ -11,7 +11,7 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Resume-AzMigrateServerReplication' {
+Describe 'Resume-AzMigrateServerReplication' -Tag 'LiveOnly' {
     It 'ByIDVMwareCbt' {
        {Resume-AzMigrateServerReplication -TargetObjectID $env.migMachineId} | Should -Not -Throw
     }

@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMigrateServerMigrationS
 $appName = "ecygqlapp"
 $machineName = "GQLVM-DoNotDelete"
 
-Describe 'Get-AzMigrateServerMigrationStatus' {
+Describe 'Get-AzMigrateServerMigrationStatus' -Tag 'LiveOnly' {
     It 'ListByName' {
         $output = Get-AzMigrateServerMigrationStatus -ProjectName $env.migProjectName -ResourceGroupName $env.migResourceGroup
         $output.Count | Should -BeGreaterOrEqual 1 

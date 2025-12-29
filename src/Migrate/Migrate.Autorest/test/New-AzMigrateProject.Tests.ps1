@@ -11,7 +11,7 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'New-AzMigrateProject' {
+Describe 'New-AzMigrateProject' -Tag 'LiveOnly' {
     It 'PutExpandedCustom' {
         $projName = "AzMigratePwshTestProj1234"
         $rgName = "singhabh-rg"

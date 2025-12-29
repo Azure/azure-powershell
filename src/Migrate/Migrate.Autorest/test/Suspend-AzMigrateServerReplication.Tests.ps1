@@ -11,7 +11,7 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Suspend-AzMigrateServerReplication' {
+Describe 'Suspend-AzMigrateServerReplication' -Tag 'LiveOnly' {
     It 'ByIDVMwareCbt' {
        {Suspend-AzMigrateServerReplication -TargetObjectID $env.migMachineId} | Should -Not -Throw
     }

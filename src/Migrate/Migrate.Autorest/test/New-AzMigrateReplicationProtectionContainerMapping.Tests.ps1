@@ -11,7 +11,7 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'New-AzMigrateReplicationProtectionContainerMapping' {
+Describe 'New-AzMigrateReplicationProtectionContainerMapping' -Tag 'LiveOnly' {
     It 'CreateExpanded' {
     $providerSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareCbtContainerMappingInput]::new()
     $providerSpecificInput.InstanceType = "VMwareCbt"
