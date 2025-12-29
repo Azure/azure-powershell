@@ -11,7 +11,7 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Get-AzMigrateDiscoveredServer' {
+Describe 'Get-AzMigrateDiscoveredServer'-Tag 'LiveOnly' {
     It 'List' {
         $machines = Get-AzMigrateDiscoveredServer -ResourceGroupName $env.migResourceGroup -ProjectName $env.migProjectName -SubscriptionId $env.migSubscriptionId
         $machines.Count | Should -BeGreaterOrEqual 1 

@@ -1,16 +1,17 @@
 {
-  "Get-AzMigrateReplicationRecoveryServicesProvider+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationRecoveryServicesProviders?api-version=2024-01-01+1": {
+  "Get-AzMigrateReplicationRecoveryServicesProvider+[NoContext]+List+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationRecoveryServicesProviders?api-version=2024-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationRecoveryServicesProviders?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationRecoveryServicesProviders?api-version=2024-01-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "31" ],
-        "x-ms-client-request-id": [ "9ac47500-d871-42ff-ac7a-f91da629d35a" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "9d881070-3e16-4612-9981-1beb16b87fa2" ],
         "CommandName": [ "Get-AzMigrateReplicationRecoveryServicesProvider" ],
-        "FullCommandName": [ "Get-AzMigrateReplicationRecoveryServicesProvider_List" ],
+        "FullCommandName": [ "Get-AzMigrateReplicationRecoveryServicesProvider_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Migrate/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -21,36 +22,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11966" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "9ac47500-d871-42ff-ac7a-f91da629d35a 9/26/2022 11:23:20 AM" ],
+        "x-ms-request-id": [ "9d881070-3e16-4612-9981-1beb16b87fa2 11/18/2025 7:33:47 AM" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "9ac47500-d871-42ff-ac7a-f91da629d35a" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-correlation-request-id": [ "b92384f4-d67a-4e22-9d95-84df2b2d6db1" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20220926T112320Z:b92384f4-d67a-4e22-9d95-84df2b2d6db1" ],
-        "Date": [ "Mon, 26 Sep 2022 11:23:19 GMT" ]
+        "x-ms-client-request-id": [ "9d881070-3e16-4612-9981-1beb16b87fa2" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=4279be47-f126-4486-ab3e-da5c65842c25/centraluseuap/f57154cb-9194-4324-be10-05b3398bb4b4" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-correlation-request-id": [ "442f128b-b13a-42e6-a155-d87b15e691ce" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251118T073347Z:442f128b-b13a-42e6-a155-d87b15e691ce" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E34BEBE9519E449AB9AFF467EDF45460 Ref B: MAA201060513045 Ref C: 2025-11-18T07:33:46Z" ],
+        "Date": [ "Tue, 18 Nov 2025 07:33:47 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1778" ],
+        "Content-Length": [ "1767" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationRecoveryServicesProviders/signoffccyappae52dra\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders\",\"name\":\"signoffccyappae52dra\",\"properties\":{\"fabricType\":\"VMwareV2\",\"friendlyName\":\"signoffccyappae52dra\",\"providerVersion\":\"5.1.7636.0\",\"serverVersion\":\"0.0\",\"providerVersionState\":\"Latest\",\"providerVersionExpiryDate\":\"9999-12-31T23:59:59.9999999\",\"fabricFriendlyName\":\"signoffccyappae52replicationfabric\",\"lastHeartBeat\":\"2022-09-26T11:22:31.9317498Z\",\"connectionStatus\":\"Connected\",\"protectedItemCount\":7,\"allowedScenarios\":[\"Refresh\"],\"healthErrorDetails\":[],\"draIdentifier\":\"25e13d18-d9a2-538b-9ff8-a494ac0efd2d\",\"machineId\":null,\"machineName\":\"WIN-DGSM4IF4RMF\",\"biosId\":null,\"authenticationIdentityDetails\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"applicationId\":\"d759dafa-25b0-412b-b5bc-78e0307b5596\",\"objectId\":\"0cdd5aed-eadc-45ed-8b0b-3819d175955e\",\"audience\":\"d759dafa-25b0-412b-b5bc-78e0307b5596\",\"aadAuthority\":\"https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"resourceAccessIdentityDetails\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"applicationId\":\"d759dafa-25b0-412b-b5bc-78e0307b5596\",\"objectId\":\"0cdd5aed-eadc-45ed-8b0b-3819d175955e\",\"audience\":\"d759dafa-25b0-412b-b5bc-78e0307b5596\",\"aadAuthority\":\"https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"dataPlaneAuthenticationIdentityDetails\":null,\"providerVersionDetails\":{\"version\":\"5.1.7636.0\",\"expiryDate\":\"9999-12-31T23:59:59.9999999\",\"status\":\"Supported\"}}}],\"nextLink\":null}"
+      "Content": "{\"value\":[{\"id\":\"/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationRecoveryServicesProviders/ecygqlapp2fd6dra\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders\",\"name\":\"ecygqlapp2fd6dra\",\"properties\":{\"fabricType\":\"VMwareV2\",\"friendlyName\":\"ecygqlapp2fd6dra\",\"providerVersion\":\"5.25.814.4\",\"serverVersion\":\"0.0\",\"providerVersionState\":\"Latest\",\"providerVersionExpiryDate\":\"9999-12-31T23:59:59.9999999Z\",\"fabricFriendlyName\":\"ecygqlapp2fd6replicationfabric\",\"lastHeartBeat\":\"2025-11-18T07:32:57.9757098Z\",\"connectionStatus\":\"Connected\",\"protectedItemCount\":2,\"allowedScenarios\":[\"Refresh\"],\"healthErrorDetails\":[],\"draIdentifier\":\"f20ebfe6-2ff1-5c27-a5e3-da1b7502c286\",\"machineId\":null,\"machineName\":\"WIN-TCMLAQ2PS8U\",\"biosId\":null,\"authenticationIdentityDetails\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"applicationId\":\"82546859-22b0-49c8-ba6e-417ce67bc88c\",\"objectId\":\"3e1dee66-bb3a-4523-b431-0626476bb3b4\",\"audience\":\"82546859-22b0-49c8-ba6e-417ce67bc88c\",\"aadAuthority\":\"https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"resourceAccessIdentityDetails\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"applicationId\":\"82546859-22b0-49c8-ba6e-417ce67bc88c\",\"objectId\":\"3e1dee66-bb3a-4523-b431-0626476bb3b4\",\"audience\":\"82546859-22b0-49c8-ba6e-417ce67bc88c\",\"aadAuthority\":\"https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"dataPlaneAuthenticationIdentityDetails\":null,\"providerVersionDetails\":{\"version\":\"5.25.814.4\",\"expiryDate\":\"9999-12-31T23:59:59.9999999Z\",\"status\":\"Supported\"}}}],\"nextLink\":null}",
+      "isContentBase64": false
     }
   },
-  "Get-AzMigrateReplicationRecoveryServicesProvider+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationRecoveryServicesProviders/signoffccyappae52dra?api-version=2024-01-01+1": {
+  "Get-AzMigrateReplicationRecoveryServicesProvider+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationRecoveryServicesProviders/ecygqlapp2fd6dra?api-version=2024-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationRecoveryServicesProviders/signoffccyappae52dra?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationRecoveryServicesProviders/ecygqlapp2fd6dra?api-version=2024-01-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "32" ],
-        "x-ms-client-request-id": [ "291649c0-1cb2-47f9-ba2a-3abef8005e8c" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "135a63fb-a966-4532-9b5d-3ccd375ac3e6" ],
         "CommandName": [ "Get-AzMigrateReplicationRecoveryServicesProvider" ],
         "FullCommandName": [ "Get-AzMigrateReplicationRecoveryServicesProvider_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Migrate/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -62,21 +68,25 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "291649c0-1cb2-47f9-ba2a-3abef8005e8c 9/26/2022 11:23:21 AM" ],
+        "x-ms-request-id": [ "135a63fb-a966-4532-9b5d-3ccd375ac3e6 11/18/2025 7:33:48 AM" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "291649c0-1cb2-47f9-ba2a-3abef8005e8c" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11965" ],
-        "x-ms-correlation-request-id": [ "ff20a16e-3771-4f8a-b30c-821c64918c2e" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20220926T112321Z:ff20a16e-3771-4f8a-b30c-821c64918c2e" ],
-        "Date": [ "Mon, 26 Sep 2022 11:23:20 GMT" ]
+        "x-ms-client-request-id": [ "135a63fb-a966-4532-9b5d-3ccd375ac3e6" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=4279be47-f126-4486-ab3e-da5c65842c25/centraluseuap/373a4ba4-07b3-4a79-a6fd-43545d989033" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-correlation-request-id": [ "3cacd640-d603-4364-a386-0af833695143" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251118T073348Z:3cacd640-d603-4364-a386-0af833695143" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F81DC1A21EA14001994C5B2B17D87FEC Ref B: MAA201060513045 Ref C: 2025-11-18T07:33:48Z" ],
+        "Date": [ "Tue, 18 Nov 2025 07:33:48 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1750" ],
+        "Content-Length": [ "1739" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationRecoveryServicesProviders/signoffccyappae52dra\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders\",\"name\":\"signoffccyappae52dra\",\"properties\":{\"fabricType\":\"VMwareV2\",\"friendlyName\":\"signoffccyappae52dra\",\"providerVersion\":\"5.1.7636.0\",\"serverVersion\":\"0.0\",\"providerVersionState\":\"Latest\",\"providerVersionExpiryDate\":\"9999-12-31T23:59:59.9999999\",\"fabricFriendlyName\":\"signoffccyappae52replicationfabric\",\"lastHeartBeat\":\"2022-09-26T11:22:31.9317498Z\",\"connectionStatus\":\"Connected\",\"protectedItemCount\":7,\"allowedScenarios\":[\"Refresh\"],\"healthErrorDetails\":[],\"draIdentifier\":\"25e13d18-d9a2-538b-9ff8-a494ac0efd2d\",\"machineId\":null,\"machineName\":\"WIN-DGSM4IF4RMF\",\"biosId\":null,\"authenticationIdentityDetails\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"applicationId\":\"d759dafa-25b0-412b-b5bc-78e0307b5596\",\"objectId\":\"0cdd5aed-eadc-45ed-8b0b-3819d175955e\",\"audience\":\"d759dafa-25b0-412b-b5bc-78e0307b5596\",\"aadAuthority\":\"https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"resourceAccessIdentityDetails\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"applicationId\":\"d759dafa-25b0-412b-b5bc-78e0307b5596\",\"objectId\":\"0cdd5aed-eadc-45ed-8b0b-3819d175955e\",\"audience\":\"d759dafa-25b0-412b-b5bc-78e0307b5596\",\"aadAuthority\":\"https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"dataPlaneAuthenticationIdentityDetails\":null,\"providerVersionDetails\":{\"version\":\"5.1.7636.0\",\"expiryDate\":\"9999-12-31T23:59:59.9999999\",\"status\":\"Supported\"}}}"
+      "Content": "{\"id\":\"/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationRecoveryServicesProviders/ecygqlapp2fd6dra\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders\",\"name\":\"ecygqlapp2fd6dra\",\"properties\":{\"fabricType\":\"VMwareV2\",\"friendlyName\":\"ecygqlapp2fd6dra\",\"providerVersion\":\"5.25.814.4\",\"serverVersion\":\"0.0\",\"providerVersionState\":\"Latest\",\"providerVersionExpiryDate\":\"9999-12-31T23:59:59.9999999Z\",\"fabricFriendlyName\":\"ecygqlapp2fd6replicationfabric\",\"lastHeartBeat\":\"2025-11-18T07:32:57.9757098Z\",\"connectionStatus\":\"Connected\",\"protectedItemCount\":2,\"allowedScenarios\":[\"Refresh\"],\"healthErrorDetails\":[],\"draIdentifier\":\"f20ebfe6-2ff1-5c27-a5e3-da1b7502c286\",\"machineId\":null,\"machineName\":\"WIN-TCMLAQ2PS8U\",\"biosId\":null,\"authenticationIdentityDetails\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"applicationId\":\"82546859-22b0-49c8-ba6e-417ce67bc88c\",\"objectId\":\"3e1dee66-bb3a-4523-b431-0626476bb3b4\",\"audience\":\"82546859-22b0-49c8-ba6e-417ce67bc88c\",\"aadAuthority\":\"https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"resourceAccessIdentityDetails\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"applicationId\":\"82546859-22b0-49c8-ba6e-417ce67bc88c\",\"objectId\":\"3e1dee66-bb3a-4523-b431-0626476bb3b4\",\"audience\":\"82546859-22b0-49c8-ba6e-417ce67bc88c\",\"aadAuthority\":\"https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"dataPlaneAuthenticationIdentityDetails\":null,\"providerVersionDetails\":{\"version\":\"5.25.814.4\",\"expiryDate\":\"9999-12-31T23:59:59.9999999Z\",\"status\":\"Supported\"}}}",
+      "isContentBase64": false
     }
   }
 }
