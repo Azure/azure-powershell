@@ -1,6 +1,6 @@
 ---
 Module Name: Az.EdgeAction
-Module Guid: 9684b1ec-34c5-477b-9878-aa83099528e2
+Module Guid: 8ffcaacd-9f0e-47fd-ac55-2cca00479933
 Download Help Link: https://learn.microsoft.com/powershell/module/az.edgeaction
 Help Version: 1.0.0.0
 Locale: en-US
