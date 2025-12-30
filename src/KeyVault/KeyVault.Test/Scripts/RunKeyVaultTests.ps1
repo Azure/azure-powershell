@@ -331,6 +331,7 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-KeyTest {Test_GetNonExistKey} "Test_GetNonExistKey" } "Test_GetNonExistKey"
     Run-TestProtected { Run-KeyTest {Test_GetKeyInNoPermissionVault} "Test_GetKeyInNoPermissionVault" } "Test_GetKeyInNoPermissionVault"
     Run-TestProtected { Run-KeyTest {Test_GetAllKeys} "Test_GetAllKeys" } "Test_GetAllKeys"
+    Run-TestProtected { Run-KeyTest {Test_GetKeysDoesNotReturnCertificateBackedKeys} "Test_GetKeysDoesNotReturnCertificateBackedKeys" } "Test_GetKeysDoesNotReturnCertificateBackedKeys"
     Run-TestProtected { Run-KeyTest {Test_GetKeyVersions} "Test_GetKeyVersions" } "Test_GetKeyVersions"
 
     # Remove-AzKeyVaultKey tests.
