@@ -412,17 +412,5 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
 
             return tenantIdGuid;
         }
-
-        /// <summary>
-        /// Gets a deleted Azure SQL server by location and server name.
-        /// </summary>
-        /// <param name="location">The Azure region (location) where the deleted server resided.</param>
-        /// <param name="serverName">The name of the deleted SQL server.</param>
-        /// <param name="subscriptionId">Optional. The subscription ID associated with the server. If null, uses the current context.</param>
-        /// <returns>The deleted server information if found; otherwise, null.</returns>
-        public Management.Sql.Models.DeletedServer GetDeletedServer(string location, string serverName, string subscriptionId = null)
-        {
-            return Communicator.GetDeleted(location, serverName, subscriptionId);
-        }
     }
 }
