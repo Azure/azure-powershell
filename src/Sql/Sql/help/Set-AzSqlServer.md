@@ -59,9 +59,9 @@ This command resets the administrator password on the AzureSQL Server named serv
 Set-AzSqlServer -AssignIdentity -ResourceGroupName 'ResourceGroup01' -ServerName 'Server01'
 ```
 
-### Example 3: Enable soft-delete retention for the server (default 7 days)
+### Example 3: Enable soft-delete retention for the server
 ```powershell
-Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -EnableSoftDelete $true
+Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SoftDeleteRetentionDays 7
 ```
 
 ```output
@@ -84,11 +84,11 @@ FederatedClientId             :
 SoftDeleteRetentionDays       : 7
 ```
 
-This command enables soft-delete retention on the Azure SQL Server named server01, with a default retention period of 7 days. To customize the retention duration, use the SoftDeleteRetentionDays parameter.
+This command enables soft-delete retention on the Azure SQL Server named server01, with a retention period of 7 days.
 
 ### Example 4: Disable soft-delete retention for the server
 ```powershell
-Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -EnableSoftDelete $false -SoftDeleteRetentionDays 0
+Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SoftDeleteRetentionDays 0
 ```
 
 ```output

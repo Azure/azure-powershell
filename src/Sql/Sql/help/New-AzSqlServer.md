@@ -101,16 +101,16 @@ PrimaryUserAssignedIdentityId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx
 
 This command creates a version 12 Azure SQL Database server with TDE CMK enabled.
 
-### Example 4: Create a new Azure SQL Database server with soft delete retention enabled with default retention days
+### Example 4: Create a new Azure SQL Database server with soft delete retention enabled with 7 days retention
 ```powershell
-New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential) -EnableSoftDelete $true
+New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential) -SoftDeleteRetentionDays 7
 ```
 
 ```output
 ResourceGroupName             : ResourceGroup01
 ServerName                    : server01
 Location                      : centralus
-SqlAdministratorLogin         : ramtest
+SqlAdministratorLogin         : test
 SqlAdministratorPassword      :
 ServerVersion                 : 12.0
 Tags                          :
@@ -128,16 +128,16 @@ SoftDeleteRetentionDays       : 7
 
 This command creates a version 12 Azure SQL Database server with soft-delete retention enabled (default 7 days).
 
-### Example 5: Create a new Azure SQL Database server with soft delete retention enabled with 30 retention days
+### Example 5: Create a new Azure SQL Database server with soft delete retention disabled
 ```powershell
-New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential) -EnableSoftDelete $true -SoftDeleteRetentionDays 30
+New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential) -SoftDeleteRetentionDays 0
 ```
 
 ```output
 ResourceGroupName             : ResourceGroup01
 ServerName                    : server01
 Location                      : centralus
-SqlAdministratorLogin         : ramtest
+SqlAdministratorLogin         : test
 SqlAdministratorPassword      :
 ServerVersion                 : 12.0
 Tags                          :
@@ -150,10 +150,10 @@ Administrators                :
 PrimaryUserAssignedIdentityId :
 KeyId                         :
 FederatedClientId             :
-SoftDeleteRetentionDays       : 30
+SoftDeleteRetentionDays       : 0
 ```
 
-This command creates a version 12 Azure SQL Database server with soft-delete retention set to 30 days.
+This command creates a version 12 Azure SQL Database server with soft-delete retention set to 0 days.
 
 ## PARAMETERS
 
@@ -431,7 +431,7 @@ Accept wildcard characters: False
 ```
 
 ### -SoftDeleteRetentionDays
-Specifies the soft-delete retention days for the server. The acceptable values for this parameter are 0-35. Specify 0 to disable the SoftDelete
+Specifies the soft-delete retention days for the server. The acceptable values for this parameter are 0-7. Specify 0 to disable the SoftDelete
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
