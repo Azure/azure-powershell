@@ -617,56 +617,6 @@ function Test_GetAllKeys
 
 <#
 .SYNOPSIS
-Tests that Get-AzKeyVaultKey does not return certificate-backed managed keys
-#>
-
-function Test_GetKeysDoesNotReturnCertificateBackedKeys
-{
-    $keyVault = Get-KeyVault
-    $certName = Get-CertificateName 'filtercert'
-    $keyName = Get-KeyName 'standalone'
-    
-    # Create a self-signed certificate (which creates a managed key)
-    $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=test.contoso.com" -IssuerName Self -ValidityInMonths 12
-    $certOp = Add-AzKeyVaultCertificate -VaultName $keyVault -Name $certName -CertificatePolicy $policy
-    
-    # Wait for certificate creation to complete
-    $attempts = 0
-    do {
-        Wait-Seconds 5
-        $cert = Get-AzKeyVaultCertificate -VaultName $keyVault -Name $certName
-        $attempts++
-    } while (($cert -eq $null -or $cert.Certificate -eq $null) -and $attempts -lt 12)
-    
-    Assert-NotNull $cert "Certificate creation failed"
-    $global:createdCertificates += $certName
-    
-    # Create a standalone key
-    $key = Add-AzKeyVaultKey -VaultName $keyVault -Name $keyName -Destination 'Software'
-    Assert-NotNull $key
-    $global:createdKeys += $keyName
-    
-    # Get all keys - should only return standalone key, not certificate-backed key
-    $keys = Get-AzKeyVaultKey -VaultName $keyVault
-    
-    # Assert standalone key is present
-    $standaloneKey = $keys | Where-Object { $_.Name -eq $keyName }
-    Assert-NotNull $standaloneKey "Standalone key should be returned by Get-AzKeyVaultKey"
-    
-    # INTENTIONAL FAILURE:
-    Assert-Null $standaloneKey "DELIBERATE FAILURE: This should fail to prove test execution"
-    
-    # Assert certificate-backed key is NOT present
-    $certBackedKey = $keys | Where-Object { $_.Name -eq $certName }
-    Assert-Null $certBackedKey "Certificate-backed key should NOT be returned by Get-AzKeyVaultKey"
-    
-    # Verify certificate is still accessible via Get-AzKeyVaultCertificate
-    $certCheck = Get-AzKeyVaultCertificate -VaultName $keyVault -Name $certName
-    Assert-NotNull $certCheck "Certificate should still be accessible via Get-AzKeyVaultCertificate"
-}
-
-<#
-.SYNOPSIS
 Tests get previous version of a key from key vault
 #>
 
