@@ -2,7 +2,7 @@
 $debugModulePath = "$PSScriptRoot\..\..\..\..\artifacts\Debug\Az.KeyVault\Az.KeyVault.psd1"
 Import-Module $debugModulePath -Force
 
-$vaultName = 'danielKV5816'
+$vaultName = 'danielKV7103'
 . "$PSScriptRoot\..\Scripts\Common.ps1"
 
 Describe "Get-AzKeyVaultKey filters certificate-backed keys" {
