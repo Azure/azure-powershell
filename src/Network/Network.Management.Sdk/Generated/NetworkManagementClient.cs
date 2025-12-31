@@ -513,6 +513,10 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual IVirtualNetworkPeeringsOperations VirtualNetworkPeerings { get; private set; }
         /// <summary>
+        /// Gets the IVirtualNetworkAppliancesOperations
+        /// </summary>
+        public virtual IVirtualNetworkAppliancesOperations VirtualNetworkAppliances { get; private set; }
+        /// <summary>
         /// Gets the IVirtualNetworkGatewaysOperations
         /// </summary>
         public virtual IVirtualNetworkGatewaysOperations VirtualNetworkGateways { get; private set; }
@@ -995,6 +999,7 @@ namespace Microsoft.Azure.Management.Network
             this.ResourceNavigationLinks = new ResourceNavigationLinksOperations(this);
             this.ServiceAssociationLinks = new ServiceAssociationLinksOperations(this);
             this.VirtualNetworkPeerings = new VirtualNetworkPeeringsOperations(this);
+            this.VirtualNetworkAppliances = new VirtualNetworkAppliancesOperations(this);
             this.VirtualNetworkGateways = new VirtualNetworkGatewaysOperations(this);
             this.VirtualNetworkGatewayConnections = new VirtualNetworkGatewayConnectionsOperations(this);
             this.LocalNetworkGateways = new LocalNetworkGatewaysOperations(this);
