@@ -150,5 +150,26 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-RestoreDeletedServer");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreNonExistentDeletedServer()
+        {
+            TestRunner.RunTestScript("Test-RestoreNonExistentDeletedServer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreDeletedServerInvalidResourceGroup()
+        {
+            TestRunner.RunTestScript("Test-RestoreDeletedServerInvalidResourceGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreDeletedServerAfterResourceGroupRemoval()
+        {
+            TestRunner.RunTestScript("Test-RestoreDeletedServerAfterResourceGroupRemoval");
+        }
     }
 }

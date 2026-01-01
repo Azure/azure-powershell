@@ -38,5 +38,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-CreateServerWithSoftDeleteAndVerifyDeletedServer");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetDeletedServerInvalidLocation()
+        {
+            TestRunner.RunTestScript("Test-GetDeletedServerInvalidLocation");
+        }
     }
 }

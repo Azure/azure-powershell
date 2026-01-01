@@ -106,3 +106,42 @@ function Test-CreateServerWithSoftDeleteAndVerifyDeletedServer
 		Remove-ResourceGroupForTest $rg
 	}
 }
+
+<#
+	.SYNOPSIS
+	Tests attempting to get a deleted server from a different location than where it was deleted (negative scenario)
+	.DESCRIPTION
+	Negative test
+#>
+function Test-GetDeletedServerInvalidLocation
+{
+	# Setup - use two different valid locations
+	$rg = Create-ResourceGroupForTest "centralus"
+	$serverName = Get-ServerName
+	$version = "12.0"
+	$serverLogin = "testusername"
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
+	$softDeleteRetentionDays = 7
+	$wrongLocation = "eastus"
+
+	try
+	{
+		# Create and delete server in centralus
+		$server = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -SoftDeleteRetentionDays $softDeleteRetentionDays
+		Assert-NotNull $server
+
+		# Delete the server (soft delete)
+		Remove-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Force
+
+		# Attempt to get deleted server from wrong location (eastus instead of centralus) - should throw ResourceNotFound
+		Assert-Throws { Get-AzSqlDeletedServer -Location $wrongLocation -ServerName $serverName }
+	}
+	finally
+	{
+		# Clean up - restore and delete from correct location
+		Restore-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location $rg.Location
+		Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -SoftDeleteRetentionDays 0
+		Remove-ResourceGroupForTest $rg
+	}
+}

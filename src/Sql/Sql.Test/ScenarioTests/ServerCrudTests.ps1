@@ -728,7 +728,7 @@ function Test-CreateServerWithSoftDeleteRetention
 		Assert-StartsWith ($server5.ServerName + ".") $server5.FullyQualifiedDomainName
 		Assert-AreEqual $server5.SoftDeleteRetentionDays 0
 
-		# Scenario 6: Create server without either parameter (should default to 0 - disabled ot -1 until backend fix is deployed)
+		# Scenario 6: Create server without either parameter (should default to 0 - disabled or -1 until backend fix is deployed)
 		$server6 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName6 `
 			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials
 		Assert-AreEqual $server6.ServerName $serverName6
@@ -843,6 +843,116 @@ function Test-RestoreDeletedServer
 	finally
 	{
 		Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -SoftDeleteRetentionDays 0
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests attempting to restore a non-existent deleted server (negative scenario)
+	.DESCRIPTION
+	Negative test
+#>
+function Test-RestoreNonExistentDeletedServer
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest "centralus"
+	$nonExistentServerName = "nonexistentserver" + (Get-Random -Minimum 10000 -Maximum 99999)
+
+	try
+	{
+		# Attempt to restore a server that was never deleted - should fail
+		Assert-Throws { Restore-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $nonExistentServerName -Location $rg.Location }
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests attempting to restore a deleted server with invalid/non-existent resource group (negative scenario)
+	.DESCRIPTION
+	Negative test
+#>
+function Test-RestoreDeletedServerInvalidResourceGroup
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest "centralus"
+	$serverName = Get-ServerName
+	$version = "12.0"
+	$serverLogin = "testusername"
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
+	$softDeleteRetentionDays = 7
+	$invalidResourceGroup = "InvalidRG" + (Get-Random -Minimum 10000 -Maximum 99999)
+
+	try
+	{
+		# Create server with soft delete retention
+		$server = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -SoftDeleteRetentionDays $softDeleteRetentionDays
+		Assert-NotNull $server
+
+		# Delete the server (soft delete)
+		Remove-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Force
+
+		# Attempt to restore with a non-existent resource group - should fail
+		Assert-Throws { Restore-AzSqlServer -ResourceGroupName $invalidResourceGroup -ServerName $serverName -Location $rg.Location }
+	}
+	finally
+	{
+		# Clean up - restore to correct resource group and then delete
+		Restore-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location $rg.Location
+		Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -SoftDeleteRetentionDays 0
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests attempting to restore a deleted server after the resource group has been removed (negative scenario)
+	.DESCRIPTION
+	Negative test
+#>
+function Test-RestoreDeletedServerAfterResourceGroupRemoval
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest "centralus"
+	$serverName = Get-ServerName
+	$version = "12.0"
+	$serverLogin = "testusername"
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
+	$softDeleteRetentionDays = 7
+
+	try
+	{
+		# Create server with soft delete retention
+		$server = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -SoftDeleteRetentionDays $softDeleteRetentionDays
+		Assert-NotNull $server
+
+		# Delete the server (soft delete)
+		Remove-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Force
+
+		# Delete the resource group
+		Remove-ResourceGroupForTest $rg
+
+		# Attempt to restore the deleted server to the now-deleted resource group - should fail
+		Assert-Throws { Restore-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location $rg.Location }
+
+		# Recreate the same resource group that was deleted
+		$rg = New-AzResourceGroup -Name $rg.ResourceGroupName -Location "centralus"
+		
+		# Restore the server to the recreated resource group
+		Restore-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location $rg.Location
+	}
+	finally
+	{
+		# Disable soft delete
+		Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -SoftDeleteRetentionDays 0
+		
+		# Remove the resource group
 		Remove-ResourceGroupForTest $rg
 	}
 }
