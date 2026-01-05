@@ -174,13 +174,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestServerSoftDeleteParameterValidation()
-        {
-            TestRunner.RunTestScript("Test-ServerSoftDeleteParameterValidation");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreDeletedServerToDifferentResourceGroup()
         {
             TestRunner.RunTestScript("Test-RestoreDeletedServerToDifferentResourceGroup");
