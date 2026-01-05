@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkAppliance", DefaultParameterSetName = ResourceNameParameterSet), OutputType(typeof(PSVirtualNetworkAppliance))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkAppliance", DefaultParameterSetName = ResourceNameParameterSet, HelpUri = "https://learn.microsoft.com/powershell/module/az.network/get-azvirtualnetworkappliance"), OutputType(typeof(PSVirtualNetworkAppliance))]
     public class GetVirtualNetworkApplianceCommand : VirtualNetworkApplianceBaseCmdlet
     {
         private const string ResourceNameParameterSet = "ResourceNameParameterSet";
