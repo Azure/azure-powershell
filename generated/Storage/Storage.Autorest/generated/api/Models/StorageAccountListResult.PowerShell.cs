@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PowerShell;
 
-    /// <summary>The response from the List Storage Accounts operation.</summary>
+    /// <summary>The response of a StorageAccount list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(StorageAccountListResultTypeConverter))]
     public partial class StorageAccountListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             return ToJsonString();
         }
     }
-    /// The response from the List Storage Accounts operation.
+    /// The response of a StorageAccount list operation.
     [System.ComponentModel.TypeConverter(typeof(StorageAccountListResultTypeConverter))]
     public partial interface IStorageAccountListResult
 

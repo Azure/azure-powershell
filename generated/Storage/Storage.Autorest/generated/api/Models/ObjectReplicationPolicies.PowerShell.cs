@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPoliciesInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicy>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPoliciesInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicy>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyTypeConverter.ConvertFrom));
             }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPoliciesInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPoliciesInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -133,6 +137,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("Value"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPoliciesInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicy>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPoliciesInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicy>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPoliciesInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPoliciesInternal)this).NextLink, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

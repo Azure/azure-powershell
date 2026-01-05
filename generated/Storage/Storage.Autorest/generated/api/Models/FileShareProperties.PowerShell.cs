@@ -136,15 +136,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("NextAllowedQuotaDowngradeTime"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedQuotaDowngradeTime = (global::System.DateTime?) content.GetValueForProperty("NextAllowedQuotaDowngradeTime",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedQuotaDowngradeTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedQuotaDowngradeTime = (string) content.GetValueForProperty("NextAllowedQuotaDowngradeTime",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedQuotaDowngradeTime, global::System.Convert.ToString);
             }
             if (content.Contains("NextAllowedProvisionedIopsDowngradeTime"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedProvisionedIopsDowngradeTime = (global::System.DateTime?) content.GetValueForProperty("NextAllowedProvisionedIopsDowngradeTime",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedProvisionedIopsDowngradeTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedProvisionedIopsDowngradeTime = (string) content.GetValueForProperty("NextAllowedProvisionedIopsDowngradeTime",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedProvisionedIopsDowngradeTime, global::System.Convert.ToString);
             }
             if (content.Contains("NextAllowedProvisionedBandwidthDowngradeTime"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedProvisionedBandwidthDowngradeTime = (global::System.DateTime?) content.GetValueForProperty("NextAllowedProvisionedBandwidthDowngradeTime",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedProvisionedBandwidthDowngradeTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedProvisionedBandwidthDowngradeTime = (string) content.GetValueForProperty("NextAllowedProvisionedBandwidthDowngradeTime",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedProvisionedBandwidthDowngradeTime, global::System.Convert.ToString);
             }
             if (content.Contains("EnabledProtocol"))
             {
@@ -269,15 +269,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("NextAllowedQuotaDowngradeTime"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedQuotaDowngradeTime = (global::System.DateTime?) content.GetValueForProperty("NextAllowedQuotaDowngradeTime",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedQuotaDowngradeTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedQuotaDowngradeTime = (string) content.GetValueForProperty("NextAllowedQuotaDowngradeTime",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedQuotaDowngradeTime, global::System.Convert.ToString);
             }
             if (content.Contains("NextAllowedProvisionedIopsDowngradeTime"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedProvisionedIopsDowngradeTime = (global::System.DateTime?) content.GetValueForProperty("NextAllowedProvisionedIopsDowngradeTime",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedProvisionedIopsDowngradeTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedProvisionedIopsDowngradeTime = (string) content.GetValueForProperty("NextAllowedProvisionedIopsDowngradeTime",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedProvisionedIopsDowngradeTime, global::System.Convert.ToString);
             }
             if (content.Contains("NextAllowedProvisionedBandwidthDowngradeTime"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedProvisionedBandwidthDowngradeTime = (global::System.DateTime?) content.GetValueForProperty("NextAllowedProvisionedBandwidthDowngradeTime",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedProvisionedBandwidthDowngradeTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedProvisionedBandwidthDowngradeTime = (string) content.GetValueForProperty("NextAllowedProvisionedBandwidthDowngradeTime",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal)this).NextAllowedProvisionedBandwidthDowngradeTime, global::System.Convert.ToString);
             }
             if (content.Contains("EnabledProtocol"))
             {

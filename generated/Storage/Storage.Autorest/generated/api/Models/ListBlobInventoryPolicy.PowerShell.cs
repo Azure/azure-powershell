@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListBlobInventoryPolicyInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicy>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListBlobInventoryPolicyInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicy>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobInventoryPolicyTypeConverter.ConvertFrom));
             }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListBlobInventoryPolicyInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListBlobInventoryPolicyInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -133,6 +137,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("Value"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListBlobInventoryPolicyInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicy>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListBlobInventoryPolicyInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicy>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobInventoryPolicyTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListBlobInventoryPolicyInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IListBlobInventoryPolicyInternal)this).NextLink, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

@@ -102,14 +102,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return container;
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._liveShare ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._liveShare.ToJson(null,serializationMode) : null, "liveShares" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._softDeletedShare ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._softDeletedShare.ToJson(null,serializationMode) : null, "softDeletedShares" ,container.Add );
-            }
+            AddIf( null != this._liveShare ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._liveShare.ToJson(null,serializationMode) : null, "liveShares" ,container.Add );
+            AddIf( null != this._softDeletedShare ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._softDeletedShare.ToJson(null,serializationMode) : null, "softDeletedShares" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

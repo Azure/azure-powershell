@@ -113,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             // actually deserialize
             if (content.Contains("SshPassword"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserRegeneratePasswordResultInternal)this).SshPassword = (string) content.GetValueForProperty("SshPassword",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserRegeneratePasswordResultInternal)this).SshPassword, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserRegeneratePasswordResultInternal)this).SshPassword = (System.Security.SecureString) content.GetValueForProperty("SshPassword",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserRegeneratePasswordResultInternal)this).SshPassword, (object ss) => (System.Security.SecureString)ss);
             }
             AfterDeserializeDictionary(content);
         }
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             // actually deserialize
             if (content.Contains("SshPassword"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserRegeneratePasswordResultInternal)this).SshPassword = (string) content.GetValueForProperty("SshPassword",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserRegeneratePasswordResultInternal)this).SshPassword, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserRegeneratePasswordResultInternal)this).SshPassword = (System.Security.SecureString) content.GetValueForProperty("SshPassword",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserRegeneratePasswordResultInternal)this).SshPassword, (object ss) => (System.Security.SecureString)ss);
             }
             AfterDeserializePSObject(content);
         }

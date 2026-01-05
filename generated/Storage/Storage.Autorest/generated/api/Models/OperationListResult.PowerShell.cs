@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PowerShell;
 
-    /// <summary>
-    /// Result of the request to list Storage operations. It contains a list of operations and a URL link to get the next set
-    /// of results.
-    /// </summary>
+    /// <summary>The list of available operations.</summary>
     [System.ComponentModel.TypeConverter(typeof(OperationListResultTypeConverter))]
     public partial class OperationListResult
     {
@@ -116,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationListResultInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperation>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.OperationTypeConverter.ConvertFrom));
             }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationListResultInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -137,6 +138,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationListResultInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperation>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.OperationTypeConverter.ConvertFrom));
             }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationListResultInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -157,8 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             return ToJsonString();
         }
     }
-    /// Result of the request to list Storage operations. It contains a list of operations and a URL link to get the next set
-    /// of results.
+    /// The list of available operations.
     [System.ComponentModel.TypeConverter(typeof(OperationListResultTypeConverter))]
     public partial interface IOperationListResult
 

@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_sshPassword = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("sshPassword"), out var __jsonSshPassword) ? (string)__jsonSshPassword : (string)_sshPassword;}
+            {_sshPassword = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("sshPassword"), out var __jsonSshPassword) ? new System.Net.NetworkCredential("",(string)__jsonSshPassword).SecurePassword : _sshPassword;}
             AfterFromJson(json);
         }
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
-                AddIf( null != (((object)this._sshPassword)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._sshPassword.ToString()) : null, "sshPassword" ,container.Add );
+                AddIf( null != (((object)this._sshPassword)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this._sshPassword))) : null, "sshPassword" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

@@ -221,6 +221,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).ImmutableStorageWithVersioning = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IImmutableStorageAccount) content.GetValueForProperty("ImmutableStorageWithVersioning",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).ImmutableStorageWithVersioning, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ImmutableStorageAccountTypeConverter.ConvertFrom);
             }
+            if (content.Contains("GeoPriorityReplicationStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).GeoPriorityReplicationStatus = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatus) content.GetValueForProperty("GeoPriorityReplicationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).GeoPriorityReplicationStatus, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.GeoPriorityReplicationStatusTypeConverter.ConvertFrom);
+            }
             if (content.Contains("AllowedCopyScope"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).AllowedCopyScope = (string) content.GetValueForProperty("AllowedCopyScope",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).AllowedCopyScope, global::System.Convert.ToString);
@@ -384,6 +388,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("ImmutableStorageWithVersioningEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).ImmutableStorageWithVersioningEnabled = (bool?) content.GetValueForProperty("ImmutableStorageWithVersioningEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).ImmutableStorageWithVersioningEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("GeoPriorityReplicationStatusIsBlobEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).GeoPriorityReplicationStatusIsBlobEnabled = (bool?) content.GetValueForProperty("GeoPriorityReplicationStatusIsBlobEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).GeoPriorityReplicationStatusIsBlobEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("ActiveDirectoryPropertyNetBiosDomainName"))
             {
@@ -542,6 +550,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).ImmutableStorageWithVersioning = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IImmutableStorageAccount) content.GetValueForProperty("ImmutableStorageWithVersioning",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).ImmutableStorageWithVersioning, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ImmutableStorageAccountTypeConverter.ConvertFrom);
             }
+            if (content.Contains("GeoPriorityReplicationStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).GeoPriorityReplicationStatus = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatus) content.GetValueForProperty("GeoPriorityReplicationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).GeoPriorityReplicationStatus, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.GeoPriorityReplicationStatusTypeConverter.ConvertFrom);
+            }
             if (content.Contains("AllowedCopyScope"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).AllowedCopyScope = (string) content.GetValueForProperty("AllowedCopyScope",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).AllowedCopyScope, global::System.Convert.ToString);
@@ -705,6 +717,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("ImmutableStorageWithVersioningEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).ImmutableStorageWithVersioningEnabled = (bool?) content.GetValueForProperty("ImmutableStorageWithVersioningEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).ImmutableStorageWithVersioningEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("GeoPriorityReplicationStatusIsBlobEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).GeoPriorityReplicationStatusIsBlobEnabled = (bool?) content.GetValueForProperty("GeoPriorityReplicationStatusIsBlobEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal)this).GeoPriorityReplicationStatusIsBlobEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("ActiveDirectoryPropertyNetBiosDomainName"))
             {

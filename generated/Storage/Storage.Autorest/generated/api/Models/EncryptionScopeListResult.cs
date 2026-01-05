@@ -7,36 +7,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Extensions;
 
-    /// <summary>
-    /// List of encryption scopes requested, and if paging is required, a URL to the next page of encryption scopes.
-    /// </summary>
+    /// <summary>The response of a EncryptionScope list operation.</summary>
     public partial class EncryptionScopeListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeListResult,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeListResultInternal
     {
 
-        /// <summary>Internal Acessors for NextLink</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeListResultInternal.NextLink { get => this._nextLink; set { {_nextLink = value;} } }
-
-        /// <summary>Internal Acessors for Value</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope> Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScopeListResultInternal.Value { get => this._value; set { {_value = value;} } }
-
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>
-        /// Request URL that can be used to query next page of encryption scopes. Returned when total number of requested encryption
-        /// scopes exceeds the maximum page size.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public string NextLink { get => this._nextLink; }
+        public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope> _value;
 
-        /// <summary>List of encryption scopes requested.</summary>
+        /// <summary>The EncryptionScope items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope> Value { get => this._value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope> Value { get => this._value; set => this._value = value; }
 
         /// <summary>Creates an new <see cref="EncryptionScopeListResult" /> instance.</summary>
         public EncryptionScopeListResult()
@@ -44,47 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         }
     }
-    /// List of encryption scopes requested, and if paging is required, a URL to the next page of encryption scopes.
+    /// The response of a EncryptionScope list operation.
     public partial interface IEncryptionScopeListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// Request URL that can be used to query next page of encryption scopes. Returned when total number of requested encryption
-        /// scopes exceeds the maximum page size.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Request URL that can be used to query next page of encryption scopes. Returned when total number of requested encryption scopes exceeds the maximum page size.",
+        Create = true,
+        Update = true,
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
-        string NextLink { get;  }
-        /// <summary>List of encryption scopes requested.</summary>
+        string NextLink { get; set; }
+        /// <summary>The EncryptionScope items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"List of encryption scopes requested.",
+        Create = true,
+        Update = true,
+        Description = @"The EncryptionScope items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope> Value { get;  }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope> Value { get; set; }
 
     }
-    /// List of encryption scopes requested, and if paging is required, a URL to the next page of encryption scopes.
+    /// The response of a EncryptionScope list operation.
     internal partial interface IEncryptionScopeListResultInternal
 
     {
-        /// <summary>
-        /// Request URL that can be used to query next page of encryption scopes. Returned when total number of requested encryption
-        /// scopes exceeds the maximum page size.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>List of encryption scopes requested.</summary>
+        /// <summary>The EncryptionScope items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionScope> Value { get; set; }
 
     }

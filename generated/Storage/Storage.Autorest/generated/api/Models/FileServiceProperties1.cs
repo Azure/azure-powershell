@@ -144,7 +144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The List of CORS rules. You can include up to five CorsRule elements in the request. ",
+        Description = @"The List of CORS rules. You can include up to five CorsRule elements in the request.",
         SerializedName = @"corsRules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICorsRule) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICorsRule> CorCorsRule { get; set; }

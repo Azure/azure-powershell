@@ -236,6 +236,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryption Encryption { get => (this._encryption = this._encryption ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Encryption()); set => this._encryption = value; }
 
+        /// <summary>Backing field for <see cref="GeoPriorityReplicationStatus" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatus _geoPriorityReplicationStatus;
+
+        /// <summary>Status indicating whether Geo Priority Replication is enabled for the account.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatus GeoPriorityReplicationStatus { get => (this._geoPriorityReplicationStatus = this._geoPriorityReplicationStatus ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.GeoPriorityReplicationStatus()); set => this._geoPriorityReplicationStatus = value; }
+
+        /// <summary>
+        /// Indicates whether Blob Geo Priority Replication is enabled for the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? GeoPriorityReplicationStatusIsBlobEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatusInternal)GeoPriorityReplicationStatus).IsBlobEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatusInternal)GeoPriorityReplicationStatus).IsBlobEnabled = value ?? default(bool); }
+
         /// <summary>
         /// This property can only be changed for disabled and unlocked time-based retention policies. When enabled, new blocks can
         /// be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and
@@ -334,6 +347,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>Internal Acessors for DualStackEndpointPreference</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDualStackEndpointPreference Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal.DualStackEndpointPreference { get => (this._dualStackEndpointPreference = this._dualStackEndpointPreference ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DualStackEndpointPreference()); set { {_dualStackEndpointPreference = value;} } }
+
+        /// <summary>Internal Acessors for GeoPriorityReplicationStatus</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatus Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal.GeoPriorityReplicationStatus { get => (this._geoPriorityReplicationStatus = this._geoPriorityReplicationStatus ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.GeoPriorityReplicationStatus()); set { {_geoPriorityReplicationStatus = value;} } }
 
         /// <summary>Internal Acessors for ImmutableStorageWithVersioning</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IImmutableStorageAccount Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal.ImmutableStorageWithVersioning { get => (this._immutableStorageWithVersioning = this._immutableStorageWithVersioning ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ImmutableStorageAccount()); set { {_immutableStorageWithVersioning = value;} } }
@@ -807,6 +823,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryption) })]
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryption Encryption { get; set; }
         /// <summary>
+        /// Indicates whether Blob Geo Priority Replication is enabled for the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether Blob Geo Priority Replication is enabled for the storage account.",
+        SerializedName = @"isBlobEnabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? GeoPriorityReplicationStatusIsBlobEnabled { get; set; }
+        /// <summary>
         /// This property can only be changed for disabled and unlocked time-based retention policies. When enabled, new blocks can
         /// be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and
         /// any existing blocks cannot be modified or deleted.
@@ -1246,6 +1275,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// Encryption settings to be used for server-side encryption for the storage account.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryption Encryption { get; set; }
+        /// <summary>Status indicating whether Geo Priority Replication is enabled for the account.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatus GeoPriorityReplicationStatus { get; set; }
+        /// <summary>
+        /// Indicates whether Blob Geo Priority Replication is enabled for the storage account.
+        /// </summary>
+        bool? GeoPriorityReplicationStatusIsBlobEnabled { get; set; }
         /// <summary>
         /// This property can only be changed for disabled and unlocked time-based retention policies. When enabled, new blocks can
         /// be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and
