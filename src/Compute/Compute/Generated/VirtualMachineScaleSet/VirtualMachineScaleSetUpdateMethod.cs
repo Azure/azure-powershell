@@ -481,13 +481,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Limit on the number of instances in each availability zone as a percentage of the total capacity of the virtual machine scale set. For example: if set to 50, this means that at any time, no more than 50% of the VMs in your scale set can be allocated to a single zone.")]
         public int MaxInstancePercentPerZoneValue { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the high speed interconnect placement for the virtual machine scale set.")]
-        [PSArgumentCompleter("None", "Trunk")]
-        public string HighSpeedInterconnectPlacement { get; set; }
-
         private void BuildPatchObject()
         {
             if (this.IsParameterBound(c => c.AutomaticOSUpgrade))
