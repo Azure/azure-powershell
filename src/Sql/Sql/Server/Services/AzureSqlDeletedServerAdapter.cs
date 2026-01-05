@@ -102,7 +102,6 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
                 FullyQualifiedDomainName = deletedServer.FullyQualifiedDomainName,
                 Version = deletedServer.Version,
                 Id = deletedServer.Id,
-                Type = deletedServer.Type,
                 OriginalId = deletedServer.OriginalId,
                 SubscriptionId = parsedSubscriptionId,
                 ResourceGroupName = parsedResourceGroupName

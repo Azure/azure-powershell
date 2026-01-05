@@ -49,11 +49,6 @@ namespace Microsoft.Azure.Commands.Sql.Server.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the type of the resource
-        /// </summary>
-        public string Type { get; set; }
-
-        /// <summary>
         /// Gets or sets the original resource ID of the server before deletion
         /// </summary>
         public string OriginalId { get; set; }

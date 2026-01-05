@@ -38,7 +38,6 @@ function Test-GetDeletedServerByLocation
 				Assert-NotNull $deletedServer.Location
 				Assert-NotNull $deletedServer.DeletionTime
 				Assert-NotNull $deletedServer.Id
-				Assert-NotNull $deletedServer.Type
 				Assert-AreEqual $deletedServer.Location.ToLowerInvariant() $location.ToLowerInvariant().Replace(' ', '')
 			}
 		}
@@ -120,6 +119,7 @@ function Test-GetDeletedServerInvalidLocation
 	$serverName = Get-ServerName
 	$version = "12.0"
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	$softDeleteRetentionDays = 7

@@ -55,27 +55,19 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <returns>A collection of deleted servers</returns>
         protected override IEnumerable<AzureSqlDeletedServerModel> GetEntity()
         {
-            ICollection<AzureSqlDeletedServerModel> results = new List<AzureSqlDeletedServerModel>();
+            IEnumerable<AzureSqlDeletedServerModel> results = null;
 
             if (!string.IsNullOrEmpty(this.ServerName))
             {
                 // Get a specific deleted server
                 var deletedServer = ModelAdapter.GetDeletedServer(this.Location, this.ServerName);
-                if (deletedServer != null)
-                {
-                    var model = ModelAdapter.CreateDeletedServerModelFromResponse(deletedServer);
-                    results.Add(model);
-                }
+                results = new List<AzureSqlDeletedServerModel> { ModelAdapter.CreateDeletedServerModelFromResponse(deletedServer)};
             }
             else
             {
                 // List all deleted servers in the location
-                var deletedServers = ModelAdapter.ListDeletedServers(this.Location);
-                foreach (var deletedServer in deletedServers)
-                {
-                    var model = ModelAdapter.CreateDeletedServerModelFromResponse(deletedServer);
-                    results.Add(model);
-                }
+                results = ModelAdapter.ListDeletedServers(this.Location)
+                    .Select(deletedServer => ModelAdapter.CreateDeletedServerModelFromResponse(deletedServer));
             }
 
             return results;

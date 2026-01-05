@@ -156,6 +156,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[Get-AzSqlDeletedServer](./Get-AzSqlDeletedServer.md)
+
 [Get-AzSqlServer](./Get-AzSqlServer.md)
 
 [New-AzSqlServer](./New-AzSqlServer.md)

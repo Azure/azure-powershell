@@ -35,7 +35,6 @@ DeletionTime              : 11/6/2025 12:30:00 PM
 FullyQualifiedDomainName  : myserver.database.windows.net
 Version                   : 12.0
 Id                        : /subscriptions/12345678-1234-1234-1234-123456789012/providers/Microsoft.Sql/locations/centralus/deletedServers/myserver
-Type                      :
 OriginalId                : /subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/myresourcegroup/providers/Microsoft.Sql/servers/myserver
 ResourceGroupName         : myresourcegroup
 SubscriptionId            : 12345678-1234-1234-1234-123456789012
@@ -50,12 +49,10 @@ Get-AzSqlDeletedServer -Location "centralus" -ServerName "myserver"
 
 ```output
 ServerName                : myserver
-Location                  : centralus
 DeletionTime              : 11/6/2025 12:30:00 PM
 FullyQualifiedDomainName  : myserver.database.windows.net
 Version                   : 12.0
 Id                        : /subscriptions/12345678-1234-1234-1234-123456789012/providers/Microsoft.Sql/locations/centralus/deletedServers/myserver
-Type                      :
 OriginalId                : /subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/myresourcegroup/providers/Microsoft.Sql/servers/myserver
 ResourceGroupName         : myresourcegroup
 SubscriptionId            : 12345678-1234-1234-1234-123456789012
