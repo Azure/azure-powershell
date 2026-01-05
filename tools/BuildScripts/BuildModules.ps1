@@ -14,6 +14,10 @@
 [CmdletBinding(DefaultParameterSetName = "AllSet")]
 param (
     [string]$RepoRoot,
+    [ArgumentCompleter({
+        param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)
+        @('Debug', 'Release') | Where-Object { $_ -like "$wordToComplete*" }
+    })]
     [string]$Configuration = 'Debug',
     [Parameter(ParameterSetName = "AllSet")]
     [string]$TestsToRun = 'All',
