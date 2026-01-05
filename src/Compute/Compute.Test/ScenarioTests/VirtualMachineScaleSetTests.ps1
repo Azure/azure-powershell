@@ -6186,3 +6186,88 @@ function Test-VirtualMachineScaleSetResiliencyView
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set Automatic Zone Placement feature
+#>
+function Test-VirtualMachineScaleSetAutomaticZonePlacement
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = "eastus2euap";
+        $vmssName = "vmssAutoZonePlacement" + $rgname;
+        $vmssName2 = "vmssAutoZonePlacement2" + $rgname;
+        $vnetName = "vnetAutoZonePlacement" + $rgname;
+        $subnetName = "subnetAutoZonePlacement" + $rgname;
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $password);
+        $linuxImage = "Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest"
+        $domainNameLabel1 = "d1" + $rgname;
+
+        # Create resource group
+        New-AzResourceGroup -Name $rgname -Location $loc -Force
+
+                
+        # Create using simple parameter and New-AzVmss
+        New-AzVmss -ResourceGroupName $rgname -Location $loc -Credential $cred -VMScaleSetName $vmssName -DomainNameLabel $domainNameLabel1 -Image $linuxImage -ZonePlacementPolicy 'Auto' -IncludeZone "1","2"
+
+        # Verify ZonePlacementPolicy successfully set
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName
+        Assert-AreEqual $vmss.Placement.ZonePlacementPolicy 'Auto'
+        Assert-AreEqual $vmss.Placement.IncludeZones.Count 2
+
+        # Create VNet and Subnet
+        $vnetAddressPrefix = "10.0.0.0/16";
+        $subnetAddressPrefix = "10.0.0.0/24";
+        $subnetConfig = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix $subnetAddressPrefix;
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddressPrefix -Subnet $subnetConfig;
+
+        # Get subnet object
+        $subnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnetName
+
+        # VMSS Config
+        $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName "Standard_D2s_v3" -ZonePlacementPolicy 'Auto' -MaxZoneCount 2 -EnableMaxInstancePercentPerZone -MaxInstancePercentPerZoneValue 50 -IncludeZone "1","2";
+
+        # Configure IP and NIC
+        $ipCfg = New-AzVmssIpConfig -Name "ipconfig1" -SubnetId $subnet.Id
+        $vmssConfig = Add-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmssConfig `
+            -Name "nicConfig" -Primary $true -IPConfiguration $ipCfg;
+
+        # Configure OS profile
+        $vmssConfig = Set-AzVmssOSProfile -VirtualMachineScaleSet $vmssConfig `
+           -ComputerNamePrefix "test" `
+            -AdminUsername $adminUsername `
+            -AdminPassword $password
+
+        # Assert the Automatic Zone Placement from the vmssConfig
+        Assert-AreEqual $vmssConfig.Placement.ZonePlacementPolicy 'Auto';
+        Assert-AreEqual $vmssConfig.ResiliencyPolicy.ZoneAllocationPolicy.MaxZoneCount 2;
+        Assert-True { $vmssConfig.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Enabled }
+        Assert-AreEqual $vmssConfig.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value 50
+
+        # Create the vmss using the config
+        $vmssResult = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2 -VirtualMachineScaleSet $vmssConfig;
+
+        # Assert the Automatic Zone Placement from the vmssResult
+        Assert-AreEqual $vmssResult.Placement.ZonePlacementPolicy 'Auto';
+        Assert-AreEqual $vmssResult.ResiliencyPolicy.ZoneAllocationPolicy.MaxZoneCount 2;
+        Assert-True { $vmssResult.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Enabled }
+        Assert-AreEqual $vmssResult.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value 50
+
+        # Update vmss
+        $vmssUpdate = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName2 -MaxInstancePercentPerZoneValue 60;
+
+        Assert-AreEqual $vmssUpdate.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value 60;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

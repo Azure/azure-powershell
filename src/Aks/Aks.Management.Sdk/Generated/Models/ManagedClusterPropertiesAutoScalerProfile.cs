@@ -24,72 +24,113 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the ManagedClusterPropertiesAutoScalerProfile class.
         /// </summary>
 
-        /// <param name="balanceSimilarNodeGroups">Valid values are &#39;true&#39; and &#39;false&#39;
+        /// <param name="balanceSimilarNodeGroups">Detects similar node pools and balances the number of nodes between them.
+        /// Valid values are &#39;true&#39; and &#39;false&#39;
         /// </param>
 
-        /// <param name="expander">If not specified, the default is &#39;random&#39;. See
+        /// <param name="daemonsetEvictionForEmptyNodes">DaemonSet pods will be gracefully terminated from empty nodes. If set to
+        /// true, all daemonset pods on empty nodes will be evicted before deletion of
+        /// the node. If the daemonset pod cannot be evicted another node will be
+        /// chosen for scaling. If set to false, the node will be deleted without
+        /// ensuring that daemonset pods are deleted or evicted.
+        /// </param>
+
+        /// <param name="daemonsetEvictionForOccupiedNodes">DaemonSet pods will be gracefully terminated from non-empty nodes. If set
+        /// to true, all daemonset pods on occupied nodes will be evicted before
+        /// deletion of the node. If the daemonset pod cannot be evicted another node
+        /// will be chosen for scaling. If set to false, the node will be deleted
+        /// without ensuring that daemonset pods are deleted or evicted.
+        /// </param>
+
+        /// <param name="ignoreDaemonsetsUtilization">Should CA ignore DaemonSet pods when calculating resource utilization for
+        /// scaling down. If set to true, the resources used by daemonset will be taken
+        /// into account when making scaling down decisions.
+        /// </param>
+
+        /// <param name="expander">The expander to use when scaling up. If not specified, the default is
+        /// &#39;random&#39;. See
         /// [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)
         /// for more information.
         /// Possible values include: &#39;least-waste&#39;, &#39;most-pods&#39;, &#39;priority&#39;, &#39;random&#39;</param>
 
-        /// <param name="maxEmptyBulkDelete">The default is 10.
+        /// <param name="maxEmptyBulkDelete">The maximum number of empty nodes that can be deleted at the same time.
+        /// This must be a positive integer. The default is 10.
         /// </param>
 
-        /// <param name="maxGracefulTerminationSec">The default is 600.
+        /// <param name="maxGracefulTerminationSec">The maximum number of seconds the cluster autoscaler waits for pod
+        /// termination when trying to scale down a node. The default is 600.
         /// </param>
 
-        /// <param name="maxNodeProvisionTime">The default is &#39;15m&#39;. Values must be an integer followed by an &#39;m&#39;. No unit
+        /// <param name="maxNodeProvisionTime">The maximum time the autoscaler waits for a node to be provisioned. The
+        /// default is &#39;15m&#39;. Values must be an integer followed by an &#39;m&#39;. No unit of
+        /// time other than minutes (m) is supported.
+        /// </param>
+
+        /// <param name="maxTotalUnreadyPercentage">The maximum percentage of unready nodes in the cluster. After this
+        /// percentage is exceeded, cluster autoscaler halts operations. The default is
+        /// 45. The maximum is 100 and the minimum is 0.
+        /// </param>
+
+        /// <param name="newPodScaleUpDelay">Ignore unscheduled pods before they&#39;re a certain age. For scenarios like
+        /// burst/batch scale where you don&#39;t want CA to act before the kubernetes
+        /// scheduler could schedule all the pods, you can tell CA to ignore
+        /// unscheduled pods before they&#39;re a certain age. The default is &#39;0s&#39;. Values
+        /// must be an integer followed by a unit (&#39;s&#39; for seconds, &#39;m&#39; for minutes,
+        /// &#39;h&#39; for hours, etc).
+        /// </param>
+
+        /// <param name="okTotalUnreadyCount">The number of allowed unready nodes, irrespective of
+        /// max-total-unready-percentage. This must be an integer. The default is 3.
+        /// </param>
+
+        /// <param name="scanInterval">How often cluster is reevaluated for scale up or down. The default is &#39;10&#39;.
+        /// Values must be an integer number of seconds.
+        /// </param>
+
+        /// <param name="scaleDownDelayAfterAdd">How long after scale up that scale down evaluation resumes. The default is
+        /// &#39;10m&#39;. Values must be an integer followed by an &#39;m&#39;. No unit of time other
+        /// than minutes (m) is supported.
+        /// </param>
+
+        /// <param name="scaleDownDelayAfterDelete">How long after node deletion that scale down evaluation resumes. The
+        /// default is the scan-interval. Values must be an integer followed by an &#39;m&#39;.
+        /// No unit of time other than minutes (m) is supported.
+        /// </param>
+
+        /// <param name="scaleDownDelayAfterFailure">How long after scale down failure that scale down evaluation resumes. The
+        /// default is &#39;3m&#39;. Values must be an integer followed by an &#39;m&#39;. No unit of
+        /// time other than minutes (m) is supported.
+        /// </param>
+
+        /// <param name="scaleDownUnneededTime">How long a node should be unneeded before it is eligible for scale down.
+        /// The default is &#39;10m&#39;. Values must be an integer followed by an &#39;m&#39;. No unit
         /// of time other than minutes (m) is supported.
         /// </param>
 
-        /// <param name="maxTotalUnreadyPercentage">The default is 45. The maximum is 100 and the minimum is 0.
+        /// <param name="scaleDownUnreadyTime">How long an unready node should be unneeded before it is eligible for scale
+        /// down. The default is &#39;20m&#39;. Values must be an integer followed by an &#39;m&#39;.
+        /// No unit of time other than minutes (m) is supported.
         /// </param>
 
-        /// <param name="newPodScaleUpDelay">For scenarios like burst/batch scale where you don&#39;t want CA to act before
-        /// the kubernetes scheduler could schedule all the pods, you can tell CA to
-        /// ignore unscheduled pods before they&#39;re a certain age. The default is &#39;0s&#39;.
-        /// Values must be an integer followed by a unit (&#39;s&#39; for seconds, &#39;m&#39; for
-        /// minutes, &#39;h&#39; for hours, etc).
+        /// <param name="scaleDownUtilizationThreshold">Node utilization level, defined as sum of requested resources divided by
+        /// capacity, below which a node can be considered for scale down. The default
+        /// is &#39;0.5&#39;.
         /// </param>
 
-        /// <param name="okTotalUnreadyCount">This must be an integer. The default is 3.
+        /// <param name="skipNodesWithLocalStorage">If cluster autoscaler will skip deleting nodes with pods with local
+        /// storage, for example, EmptyDir or HostPath. The default is true.
         /// </param>
 
-        /// <param name="scanInterval">The default is &#39;10&#39;. Values must be an integer number of seconds.
+        /// <param name="skipNodesWithSystemPods">If cluster autoscaler will skip deleting nodes with pods from kube-system
+        /// (except for DaemonSet or mirror pods). The default is true.
         /// </param>
-
-        /// <param name="scaleDownDelayAfterAdd">The default is &#39;10m&#39;. Values must be an integer followed by an &#39;m&#39;. No unit
-        /// of time other than minutes (m) is supported.
-        /// </param>
-
-        /// <param name="scaleDownDelayAfterDelete">The default is the scan-interval. Values must be an integer followed by an
-        /// &#39;m&#39;. No unit of time other than minutes (m) is supported.
-        /// </param>
-
-        /// <param name="scaleDownDelayAfterFailure">The default is &#39;3m&#39;. Values must be an integer followed by an &#39;m&#39;. No unit
-        /// of time other than minutes (m) is supported.
-        /// </param>
-
-        /// <param name="scaleDownUnneededTime">The default is &#39;10m&#39;. Values must be an integer followed by an &#39;m&#39;. No unit
-        /// of time other than minutes (m) is supported.
-        /// </param>
-
-        /// <param name="scaleDownUnreadyTime">The default is &#39;20m&#39;. Values must be an integer followed by an &#39;m&#39;. No unit
-        /// of time other than minutes (m) is supported.
-        /// </param>
-
-        /// <param name="scaleDownUtilizationThreshold">The default is &#39;0.5&#39;.
-        /// </param>
-
-        /// <param name="skipNodesWithLocalStorage">The default is true.
-        /// </param>
-
-        /// <param name="skipNodesWithSystemPods">The default is true.
-        /// </param>
-        public ManagedClusterPropertiesAutoScalerProfile(string balanceSimilarNodeGroups = default(string), string expander = default(string), string maxEmptyBulkDelete = default(string), string maxGracefulTerminationSec = default(string), string maxNodeProvisionTime = default(string), string maxTotalUnreadyPercentage = default(string), string newPodScaleUpDelay = default(string), string okTotalUnreadyCount = default(string), string scanInterval = default(string), string scaleDownDelayAfterAdd = default(string), string scaleDownDelayAfterDelete = default(string), string scaleDownDelayAfterFailure = default(string), string scaleDownUnneededTime = default(string), string scaleDownUnreadyTime = default(string), string scaleDownUtilizationThreshold = default(string), string skipNodesWithLocalStorage = default(string), string skipNodesWithSystemPods = default(string))
+        public ManagedClusterPropertiesAutoScalerProfile(string balanceSimilarNodeGroups = default(string), bool? daemonsetEvictionForEmptyNodes = default(bool?), bool? daemonsetEvictionForOccupiedNodes = default(bool?), bool? ignoreDaemonsetsUtilization = default(bool?), string expander = default(string), string maxEmptyBulkDelete = default(string), string maxGracefulTerminationSec = default(string), string maxNodeProvisionTime = default(string), string maxTotalUnreadyPercentage = default(string), string newPodScaleUpDelay = default(string), string okTotalUnreadyCount = default(string), string scanInterval = default(string), string scaleDownDelayAfterAdd = default(string), string scaleDownDelayAfterDelete = default(string), string scaleDownDelayAfterFailure = default(string), string scaleDownUnneededTime = default(string), string scaleDownUnreadyTime = default(string), string scaleDownUtilizationThreshold = default(string), string skipNodesWithLocalStorage = default(string), string skipNodesWithSystemPods = default(string))
 
         {
             this.BalanceSimilarNodeGroups = balanceSimilarNodeGroups;
+            this.DaemonsetEvictionForEmptyNodes = daemonsetEvictionForEmptyNodes;
+            this.DaemonsetEvictionForOccupiedNodes = daemonsetEvictionForOccupiedNodes;
+            this.IgnoreDaemonsetsUtilization = ignoreDaemonsetsUtilization;
             this.Expander = expander;
             this.MaxEmptyBulkDelete = maxEmptyBulkDelete;
             this.MaxGracefulTerminationSec = maxGracefulTerminationSec;
@@ -116,13 +157,43 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
 
         /// <summary>
-        /// Gets or sets valid values are &#39;true&#39; and &#39;false&#39;
+        /// Gets or sets detects similar node pools and balances the number of nodes
+        /// between them. Valid values are &#39;true&#39; and &#39;false&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "balance-similar-node-groups")]
         public string BalanceSimilarNodeGroups {get; set; }
 
         /// <summary>
-        /// Gets or sets if not specified, the default is &#39;random&#39;. See
+        /// Gets or sets daemonSet pods will be gracefully terminated from empty nodes.
+        /// If set to true, all daemonset pods on empty nodes will be evicted before
+        /// deletion of the node. If the daemonset pod cannot be evicted another node
+        /// will be chosen for scaling. If set to false, the node will be deleted
+        /// without ensuring that daemonset pods are deleted or evicted.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "daemonset-eviction-for-empty-nodes")]
+        public bool? DaemonsetEvictionForEmptyNodes {get; set; }
+
+        /// <summary>
+        /// Gets or sets daemonSet pods will be gracefully terminated from non-empty
+        /// nodes. If set to true, all daemonset pods on occupied nodes will be evicted
+        /// before deletion of the node. If the daemonset pod cannot be evicted another
+        /// node will be chosen for scaling. If set to false, the node will be deleted
+        /// without ensuring that daemonset pods are deleted or evicted.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "daemonset-eviction-for-occupied-nodes")]
+        public bool? DaemonsetEvictionForOccupiedNodes {get; set; }
+
+        /// <summary>
+        /// Gets or sets should CA ignore DaemonSet pods when calculating resource
+        /// utilization for scaling down. If set to true, the resources used by
+        /// daemonset will be taken into account when making scaling down decisions.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ignore-daemonsets-utilization")]
+        public bool? IgnoreDaemonsetsUtilization {get; set; }
+
+        /// <summary>
+        /// Gets or sets the expander to use when scaling up. If not specified, the
+        /// default is &#39;random&#39;. See
         /// [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)
         /// for more information. Possible values include: &#39;least-waste&#39;, &#39;most-pods&#39;, &#39;priority&#39;, &#39;random&#39;
         /// </summary>
@@ -130,102 +201,118 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string Expander {get; set; }
 
         /// <summary>
-        /// Gets or sets the default is 10.
+        /// Gets or sets the maximum number of empty nodes that can be deleted at the
+        /// same time. This must be a positive integer. The default is 10.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "max-empty-bulk-delete")]
         public string MaxEmptyBulkDelete {get; set; }
 
         /// <summary>
-        /// Gets or sets the default is 600.
+        /// Gets or sets the maximum number of seconds the cluster autoscaler waits for
+        /// pod termination when trying to scale down a node. The default is 600.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "max-graceful-termination-sec")]
         public string MaxGracefulTerminationSec {get; set; }
 
         /// <summary>
-        /// Gets or sets the default is &#39;15m&#39;. Values must be an integer followed by an
+        /// Gets or sets the maximum time the autoscaler waits for a node to be
+        /// provisioned. The default is &#39;15m&#39;. Values must be an integer followed by an
         /// &#39;m&#39;. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "max-node-provision-time")]
         public string MaxNodeProvisionTime {get; set; }
 
         /// <summary>
-        /// Gets or sets the default is 45. The maximum is 100 and the minimum is 0.
+        /// Gets or sets the maximum percentage of unready nodes in the cluster. After
+        /// this percentage is exceeded, cluster autoscaler halts operations. The
+        /// default is 45. The maximum is 100 and the minimum is 0.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "max-total-unready-percentage")]
         public string MaxTotalUnreadyPercentage {get; set; }
 
         /// <summary>
-        /// Gets or sets for scenarios like burst/batch scale where you don&#39;t want CA
-        /// to act before the kubernetes scheduler could schedule all the pods, you can
-        /// tell CA to ignore unscheduled pods before they&#39;re a certain age. The
-        /// default is &#39;0s&#39;. Values must be an integer followed by a unit (&#39;s&#39; for
-        /// seconds, &#39;m&#39; for minutes, &#39;h&#39; for hours, etc).
+        /// Gets or sets ignore unscheduled pods before they&#39;re a certain age. For
+        /// scenarios like burst/batch scale where you don&#39;t want CA to act before the
+        /// kubernetes scheduler could schedule all the pods, you can tell CA to ignore
+        /// unscheduled pods before they&#39;re a certain age. The default is &#39;0s&#39;. Values
+        /// must be an integer followed by a unit (&#39;s&#39; for seconds, &#39;m&#39; for minutes,
+        /// &#39;h&#39; for hours, etc).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "new-pod-scale-up-delay")]
         public string NewPodScaleUpDelay {get; set; }
 
         /// <summary>
-        /// Gets or sets this must be an integer. The default is 3.
+        /// Gets or sets the number of allowed unready nodes, irrespective of
+        /// max-total-unready-percentage. This must be an integer. The default is 3.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ok-total-unready-count")]
         public string OkTotalUnreadyCount {get; set; }
 
         /// <summary>
-        /// Gets or sets the default is &#39;10&#39;. Values must be an integer number of
-        /// seconds.
+        /// Gets or sets how often cluster is reevaluated for scale up or down. The
+        /// default is &#39;10&#39;. Values must be an integer number of seconds.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scan-interval")]
         public string ScanInterval {get; set; }
 
         /// <summary>
-        /// Gets or sets the default is &#39;10m&#39;. Values must be an integer followed by an
-        /// &#39;m&#39;. No unit of time other than minutes (m) is supported.
+        /// Gets or sets how long after scale up that scale down evaluation resumes.
+        /// The default is &#39;10m&#39;. Values must be an integer followed by an &#39;m&#39;. No unit
+        /// of time other than minutes (m) is supported.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scale-down-delay-after-add")]
         public string ScaleDownDelayAfterAdd {get; set; }
 
         /// <summary>
-        /// Gets or sets the default is the scan-interval. Values must be an integer
+        /// Gets or sets how long after node deletion that scale down evaluation
+        /// resumes. The default is the scan-interval. Values must be an integer
         /// followed by an &#39;m&#39;. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scale-down-delay-after-delete")]
         public string ScaleDownDelayAfterDelete {get; set; }
 
         /// <summary>
-        /// Gets or sets the default is &#39;3m&#39;. Values must be an integer followed by an
-        /// &#39;m&#39;. No unit of time other than minutes (m) is supported.
+        /// Gets or sets how long after scale down failure that scale down evaluation
+        /// resumes. The default is &#39;3m&#39;. Values must be an integer followed by an &#39;m&#39;.
+        /// No unit of time other than minutes (m) is supported.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scale-down-delay-after-failure")]
         public string ScaleDownDelayAfterFailure {get; set; }
 
         /// <summary>
-        /// Gets or sets the default is &#39;10m&#39;. Values must be an integer followed by an
+        /// Gets or sets how long a node should be unneeded before it is eligible for
+        /// scale down. The default is &#39;10m&#39;. Values must be an integer followed by an
         /// &#39;m&#39;. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scale-down-unneeded-time")]
         public string ScaleDownUnneededTime {get; set; }
 
         /// <summary>
-        /// Gets or sets the default is &#39;20m&#39;. Values must be an integer followed by an
-        /// &#39;m&#39;. No unit of time other than minutes (m) is supported.
+        /// Gets or sets how long an unready node should be unneeded before it is
+        /// eligible for scale down. The default is &#39;20m&#39;. Values must be an integer
+        /// followed by an &#39;m&#39;. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scale-down-unready-time")]
         public string ScaleDownUnreadyTime {get; set; }
 
         /// <summary>
-        /// Gets or sets the default is &#39;0.5&#39;.
+        /// Gets or sets node utilization level, defined as sum of requested resources
+        /// divided by capacity, below which a node can be considered for scale down.
+        /// The default is &#39;0.5&#39;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scale-down-utilization-threshold")]
         public string ScaleDownUtilizationThreshold {get; set; }
 
         /// <summary>
-        /// Gets or sets the default is true.
+        /// Gets or sets if cluster autoscaler will skip deleting nodes with pods with
+        /// local storage, for example, EmptyDir or HostPath. The default is true.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "skip-nodes-with-local-storage")]
         public string SkipNodesWithLocalStorage {get; set; }
 
         /// <summary>
-        /// Gets or sets the default is true.
+        /// Gets or sets if cluster autoscaler will skip deleting nodes with pods from
+        /// kube-system (except for DaemonSet or mirror pods). The default is true.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "skip-nodes-with-system-pods")]
         public string SkipNodesWithSystemPods {get; set; }
