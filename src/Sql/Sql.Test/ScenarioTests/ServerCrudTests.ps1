@@ -956,3 +956,128 @@ function Test-RestoreDeletedServerAfterResourceGroupRemoval
 		Remove-ResourceGroupForTest $rg
 	}
 }
+
+<#
+	.SYNOPSIS
+	Tests parameter validation for soft-delete parameters (client-side validation, no API calls)
+	.DESCRIPTION
+	Negative test - validates parameter conflicts and range validation
+#>
+function Test-ServerSoftDeleteParameterValidation
+{
+	# Setup - these are not used since validation fails before API calls
+	$rgName = "test-rg"
+	$serverName = "test-server"
+	$location = "centralus"
+	$version = "12.0"
+	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
+
+	# Test 1: Conflict - EnableSoftDelete = false AND SoftDeleteRetentionDays = 5 (should throw)
+	$exc1 = "When EnableSoftDelete is false, SoftDeleteRetentionDays must be 0."
+	Assert-ThrowsContains { New-AzSqlServer -ResourceGroupName $rgName -ServerName $serverName -Location $location -ServerVersion $version -SqlAdministratorCredentials $credentials -EnableSoftDelete $false -SoftDeleteRetentionDays 5 } $exc1
+
+	# Test 2: Conflict - EnableSoftDelete = true AND SoftDeleteRetentionDays = 0 (should throw)
+	$exc2 = "When EnableSoftDelete is true, SoftDeleteRetentionDays must be between 1 and 7."
+	Assert-ThrowsContains { New-AzSqlServer -ResourceGroupName $rgName -ServerName $serverName -Location $location -ServerVersion $version -SqlAdministratorCredentials $credentials -EnableSoftDelete $true -SoftDeleteRetentionDays 0 } $exc2
+
+	# Test 3: Range validation - SoftDeleteRetentionDays = -1 (should throw)
+	$exc3 = "SoftDeleteRetentionDays must be between 0 and 7."
+	Assert-ThrowsContains { New-AzSqlServer -ResourceGroupName $rgName -ServerName $serverName -Location $location -ServerVersion $version -SqlAdministratorCredentials $credentials -SoftDeleteRetentionDays -1 } $exc3
+
+	# Test 4: Range validation - SoftDeleteRetentionDays = 8 (should throw)
+	$exc4 = "SoftDeleteRetentionDays must be between 0 and 7."
+	Assert-ThrowsContains { New-AzSqlServer -ResourceGroupName $rgName -ServerName $serverName -Location $location -ServerVersion $version -SqlAdministratorCredentials $credentials -SoftDeleteRetentionDays 8 } $exc4
+
+	# Test 5: Range validation - SoftDeleteRetentionDays = 35 (should throw)
+	$exc5 = "SoftDeleteRetentionDays must be between 0 and 7."
+	Assert-ThrowsContains { New-AzSqlServer -ResourceGroupName $rgName -ServerName $serverName -Location $location -ServerVersion $version -SqlAdministratorCredentials $credentials -SoftDeleteRetentionDays 35 } $exc5
+
+	# Test 6: Test with Set-AzSqlServer as well - conflict scenario
+	$exc6 = "When EnableSoftDelete is false, SoftDeleteRetentionDays must be 0."
+	Assert-ThrowsContains { Set-AzSqlServer -ResourceGroupName $rgName -ServerName $serverName -EnableSoftDelete $false -SoftDeleteRetentionDays 5 } $exc6
+
+	# Test 7: Test with Set-AzSqlServer - range validation
+	$exc7 = "SoftDeleteRetentionDays must be between 0 and 7."
+	Assert-ThrowsContains { Set-AzSqlServer -ResourceGroupName $rgName -ServerName $serverName -SoftDeleteRetentionDays 10 } $exc7
+}
+
+<#
+	.SYNOPSIS
+	Tests restoring a server to a different resource group than where it was created (negative scenario)
+	.DESCRIPTION
+	Negative test
+#>
+function Test-RestoreDeletedServerToDifferentResourceGroup
+{
+	# Setup
+	$rg1 = Create-ResourceGroupForTest "centralus"
+	$rg2 = Create-ResourceGroupForTest "centralus"
+	$serverName = Get-ServerName
+	$version = "12.0"
+	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
+	$softDeleteRetentionDays = 7
+
+	try
+	{
+		# Create server in RG1 with soft-delete enabled
+		$server = New-AzSqlServer -ResourceGroupName $rg1.ResourceGroupName -ServerName $serverName -Location $rg1.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -SoftDeleteRetentionDays $softDeleteRetentionDays
+		Assert-NotNull $server
+
+		# Delete the server (soft delete)
+		Remove-AzSqlServer -ResourceGroupName $rg1.ResourceGroupName -ServerName $serverName -Force
+
+		# Attempt to restore to RG2 (different resource group) - should throw ResourceGroupMismatchForRestore
+		$expectedError = "does not match the deleted server's original resource group"
+		Assert-ThrowsContains { Restore-AzSqlServer -ResourceGroupName $rg2.ResourceGroupName -ServerName $serverName -Location $rg1.Location } $expectedError
+	}
+	finally
+	{
+		# Clean up - restore to correct RG and then clean up
+		Restore-AzSqlServer -ResourceGroupName $rg1.ResourceGroupName -ServerName $serverName -Location $rg1.Location
+		Set-AzSqlServer -ResourceGroupName $rg1.ResourceGroupName -ServerName $serverName -SoftDeleteRetentionDays 0
+		Remove-ResourceGroupForTest $rg1
+		Remove-ResourceGroupForTest $rg2
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests restoring a deleted server when a live server with the same name already exists (negative scenario)
+	.DESCRIPTION
+	Negative test
+#>
+function Test-RestoreDeletedServerWhenLiveServerExists
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest "centralus"
+	$serverName = Get-ServerName
+	$version = "12.0"
+	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
+	$softDeleteRetentionDays = 7
+
+	try
+	{
+		# Create server with soft-delete enabled
+		$server1 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -SoftDeleteRetentionDays $softDeleteRetentionDays
+		Assert-NotNull $server1
+
+		# Attempt to restore the deleted server - should fail because there is no deleted server (server is still live)
+		$expectedError = "ResourceNotFound"
+		Assert-ThrowsContains { Restore-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location $rg.Location } $expectedError
+	}
+	finally
+	{
+		# Clean up - remove the live server
+		Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -SoftDeleteRetentionDays 0
+		Remove-ResourceGroupForTest $rg
+	}
+}

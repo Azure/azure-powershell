@@ -171,5 +171,26 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-RestoreDeletedServerAfterResourceGroupRemoval");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerSoftDeleteParameterValidation()
+        {
+            TestRunner.RunTestScript("Test-ServerSoftDeleteParameterValidation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreDeletedServerToDifferentResourceGroup()
+        {
+            TestRunner.RunTestScript("Test-RestoreDeletedServerToDifferentResourceGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreDeletedServerWhenLiveServerExists()
+        {
+            TestRunner.RunTestScript("Test-RestoreDeletedServerWhenLiveServerExists");
+        }
     }
 }
