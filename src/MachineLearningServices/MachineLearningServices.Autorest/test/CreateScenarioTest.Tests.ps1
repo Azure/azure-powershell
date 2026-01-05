@@ -17,21 +17,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'CreateScenarioTest'))
 Describe 'CreateScenarioTest' {
     It 'CUScenarioWorkspace' {
         {
-            New-AzMLWorkspace -ResourceGroupName $env.TestGroupName -Name $env.mainWorkspace -Location $env.region -KeyVaultId $env.KeyVaultID -StorageAccountId $env.StorageAccountID -ApplicationInsightId $env.InsightsID1 -IdentityType 'SystemAssigned' -Kind 'Default' -Tag @{'key1' = 'value1'}
+            New-AzMLWorkspace -ResourceGroupName $env.TestGroupName -Name $env.mainWorkspace -Location $env.region -KeyVaultId $env.KeyVaultID -StorageAccountId $env.StorageAccountID -ApplicationInsightId $env.InsightsID1 -EnableSystemAssignedIdentity -Kind 'Default' -Tag @{'key1' = 'value1'}
             Update-AzMLWorkspace -ResourceGroupName $env.TestGroupName -Name $env.mainWorkspace -Tag @{'key2' = 'value2'}
         } | Should -Not -Throw
     }
 
     It 'CreateHubWorkspace' {
         {
-            New-AzMLWorkspace -ResourceGroupName $env.TestGroupName -Name $env.hubWorkspace -Location $env.region -KeyVaultId $env.KeyVaultID -StorageAccountId $env.StorageAccountID -IdentityType 'SystemAssigned' -Kind 'Hub' -Tag @{'key3' = 'value3'}
+            New-AzMLWorkspace -ResourceGroupName $env.TestGroupName -Name $env.hubWorkspace -Location $env.region -KeyVaultId $env.KeyVaultID -StorageAccountId $env.StorageAccountID -EnableSystemAssignedIdentity -Kind 'Hub' -Tag @{'key3' = 'value3'}
         } | Should -Not -Throw
     }
 
     It 'CreateProjectWorkspace' {
         {
             $Hub = Get-AzMLWorkspace -ResourceGroupName $env.TestGroupName -Name $env.hubWorkspace
-            New-AzMLWorkspace -ResourceGroupName $env.TestGroupName -Name $env.projWorkspace -Location $env.region  -IdentityType 'SystemAssigned' -Kind 'Project' -HubResourceId $Hub.Id
+            New-AzMLWorkspace -ResourceGroupName $env.TestGroupName -Name $env.projWorkspace -Location $env.region  -EnableSystemAssignedIdentity -Kind 'Project' -HubResourceId $Hub.Id
         } | Should -Not -Throw
     }
 
@@ -65,14 +65,14 @@ Describe 'CreateScenarioTest' {
     It 'CreateBatchCluster' {
         {
             $batchcluster = New-AzMLWorkspaceAmlComputeObject -OSType 'Linux' -VMSize "STANDARD_DS3_V2" -ScaleMaxNodeCount 1 -ScaleMinNodeCount 0 -RemoteLoginPortPublicAccess 'NotSpecified' -EnableNodePublicIP $true
-            New-AzMLWorkspaceCompute -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name $env.batchClusterName -Location eastus -Compute $batchcluster
+            New-AzMLWorkspaceCompute -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name $env.batchClusterName -Location $env.manualRegion -Compute $batchcluster
         } | Should -Not -Throw
     }
 
     It 'CreateComputeInstance' {
         {
             $computeinstance = New-AzMLWorkspaceComputeInstanceObject -VMSize "STANDARD_DS3_V2" -EnableNodePublicIP $true
-            New-AzMLWorkspaceCompute -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name $env.computeinstance -Location eastus -Compute $computeinstance -IdentityType 'SystemAssigned'
+            New-AzMLWorkspaceCompute -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name $env.computeinstance -Location $env.manualRegion -Compute $computeinstance -EnableSystemAssignedIdentity
         } | Should -Not -Throw
     }
 
@@ -92,7 +92,7 @@ Describe 'CreateScenarioTest' {
     
     It 'CreateWorkspaceBatchEndpoint' {
         {
-            New-AzMLWorkspaceBatchEndpoint -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name $env.batchEndpoint -AuthMode 'AADToken' -Location $env.region
+            New-AzMLWorkspaceBatchEndpoint -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name $env.batchEndpoint -AuthMode 'AADToken' -Location $env.manualRegion
         } | Should -Not -Throw
     }
     It 'CreateWorkspaceBatchEndpointDeployment' {
@@ -101,8 +101,8 @@ Describe 'CreateScenarioTest' {
             $environment = New-AzMLWorkspaceEnvironmentVersion -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name batchenv1 -Version 1 -Image "mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04"
             $codeid = (Get-AzMLWorkspaceCodeVersion -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name $env.codename -Version 1).Id
             $vmid = (Get-AzMLWorkspaceCompute -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name $env.batchClusterName).Id
-            $modelobject = New-AzMLWorkspaceIdAssetReferenceObject -AssetId (Get-AzMLWorkspaceModelVersion -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name heart-classifier-batch -Version 1).Id -ReferenceType 'Id'
-            New-AzMLWorkspaceBatchDeployment -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -EndpointName $env.batchEndpoint -Name $env.batchDeployment -Location $env.region -CodeScoringScript $srciptFile -EnvironmentId $environment.Id -Compute $vmid -CodeId $codeid -Model $modelobject
+            $modelobject = New-AzMLWorkspaceIdAssetReferenceObject -AssetId (Get-AzMLWorkspaceModelVersion -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name heart-classifier-batch -Version 1).Id
+            New-AzMLWorkspaceBatchDeployment -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -EndpointName $env.batchEndpoint -Name $env.batchDeployment -Location $env.manualRegion -CodeScoringScript $srciptFile -EnvironmentId $environment.Id -Compute $vmid -CodeId $codeid -Model $modelobject
         } | Should -Not -Throw
     }
 
@@ -118,7 +118,7 @@ Describe 'CreateScenarioTest' {
     It 'CreateMainCommandJob' {
         {
             $computeinstance = New-AzMLWorkspaceComputeInstanceObject -VMSize "STANDARD_DS3_V2" -EnableNodePublicIP $true
-            $compute = New-AzMLWorkspaceCompute -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace -Name commandjobcompute -Location eastus -Compute $computeinstance
+            $compute = New-AzMLWorkspaceCompute -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace -Name commandjobcompute -Location $env.region -Compute $computeinstance
             $environment = New-AzMLWorkspaceEnvironmentVersion -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace -Name commandjobenv1 -Version 1 -Image "library/python:latest"
             $commandJob = New-AzMLWorkspaceCommandJobObject -Command 'echo "hello powershell 01"' -ComputeId $compute.Id -EnvironmentId $environment.Id -DisplayName 'commandJob01' -ExperimentName 'jobexperiment'
             New-AzMLWorkspaceJob -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace -Name $env.commandJob01 -Job $commandJob

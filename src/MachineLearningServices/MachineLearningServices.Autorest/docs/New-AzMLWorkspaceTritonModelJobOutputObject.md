@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceTritonModelJobOutputObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacetritonmodeljoboutputobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for TritonModelJobOutput.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceTritonModelJobOutputObject -Type <JobOutputType> [-Description <String>]
- [-Mode <OutputDeliveryMode>] [-Uri <String>] [<CommonParameters>]
+New-AzMLWorkspaceTritonModelJobOutputObject [-Description <String>] [-Mode <String>] [-Uri <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,26 +50,11 @@ Accept wildcard characters: False
 Output Asset Delivery Mode.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OutputDeliveryMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-[Required] Specifies the type of job.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobOutputType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -98,7 +83,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.TritonModelJobOutput
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.TritonModelJobOutput
 
 ## NOTES
 

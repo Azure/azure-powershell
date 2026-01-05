@@ -8,46 +8,60 @@ schema: 2.0.0
 # Update-AzMLWorkspace
 
 ## SYNOPSIS
-Updates a machine learning workspace with the specified parameters.
+Update a workspace with the specified parameters.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzMLWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ApplicationInsightId <String>] [-ComputeRuntimeSparkRuntimeVersion <String>] [-ContainerRegistryId <String>]
- [-CosmoDbCollectionsThroughput <Int32>] [-Description <String>] [-EnableDataIsolation]
- [-FeatureStoreSettingOfflineStoreConnectionName <String>]
- [-FeatureStoreSettingOnlineStoreConnectionName <String>] [-FriendlyName <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssigned <Hashtable>] [-ImageBuildCompute <String>]
- [-KeyVaultKeyIdentifier <String>] [-ManagedNetworkIsolationMode <IsolationMode>]
- [-ManagedNetworkOutboundRule <Hashtable>] [-PrimaryUserAssignedIdentity <String>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-ServerlessComputeSettingServerlessComputeCustomSubnet <String>]
- [-ServerlessComputeSettingServerlessComputeNoPublicIP] [-SkuCapacity <Int32>] [-SkuFamily <String>]
- [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Status <ManagedNetworkStatus>]
- [-StatusSparkReady] [-Tag <Hashtable>] [-V1LegacyMode] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-AllowPublicAccessWhenBehindVnet] [-ApplicationInsightId <String>] [-AssociatedWorkspace <String[]>]
+ [-ComputeRuntimeSparkRuntimeVersion <String>] [-ContainerRegistryId <String>]
+ [-CosmoDbCollectionsThroughput <Int32>] [-Description <String>] [-DiscoveryUrl <String>]
+ [-EnableDataIsolation] [-EnableSystemAssignedIdentity <Boolean>] [-EncryptionStatus <String>]
+ [-EncryptionUserAssignedIdentity <String>] [-FeatureStoreSettingOfflineStoreConnectionName <String>]
+ [-FeatureStoreSettingOnlineStoreConnectionName <String>] [-FriendlyName <String>] [-HbiWorkspace]
+ [-HubResourceId <String>] [-IdentityUserAssigned <Hashtable>] [-ImageBuildCompute <String>]
+ [-KeyVaultArmId <String>] [-KeyVaultId <String>] [-KeyVaultIdentityClientId <String>]
+ [-KeyVaultKeyIdentifier <String>] [-Kind <String>] [-Location <String>]
+ [-ManagedNetworkIsolationMode <String>] [-ManagedNetworkOutboundRule <Hashtable>]
+ [-PrimaryUserAssignedIdentity <String>] [-PublicNetworkAccess <String>]
+ [-ServerlessComputeSettingServerlessComputeCustomSubnet <String>]
+ [-ServerlessComputeSettingServerlessComputeNoPublicIP]
+ [-SharedPrivateLinkResource <ISharedPrivateLinkResource[]>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Status <String>] [-StatusSparkReady]
+ [-StorageAccountId <String>] [-Tag <Hashtable>] [-V1LegacyMode]
+ [-WorkspaceHubConfigAdditionalWorkspaceStorageAccount <String[]>]
+ [-WorkspaceHubConfigDefaultWorkspaceResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMLWorkspace -InputObject <IMachineLearningServicesIdentity> [-ApplicationInsightId <String>]
+Update-AzMLWorkspace -InputObject <IMachineLearningServicesIdentity> [-AllowPublicAccessWhenBehindVnet]
+ [-ApplicationInsightId <String>] [-AssociatedWorkspace <String[]>]
  [-ComputeRuntimeSparkRuntimeVersion <String>] [-ContainerRegistryId <String>]
- [-CosmoDbCollectionsThroughput <Int32>] [-Description <String>] [-EnableDataIsolation]
- [-FeatureStoreSettingOfflineStoreConnectionName <String>]
- [-FeatureStoreSettingOnlineStoreConnectionName <String>] [-FriendlyName <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssigned <Hashtable>] [-ImageBuildCompute <String>]
- [-KeyVaultKeyIdentifier <String>] [-ManagedNetworkIsolationMode <IsolationMode>]
- [-ManagedNetworkOutboundRule <Hashtable>] [-PrimaryUserAssignedIdentity <String>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-ServerlessComputeSettingServerlessComputeCustomSubnet <String>]
- [-ServerlessComputeSettingServerlessComputeNoPublicIP] [-SkuCapacity <Int32>] [-SkuFamily <String>]
- [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Status <ManagedNetworkStatus>]
- [-StatusSparkReady] [-Tag <Hashtable>] [-V1LegacyMode] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-CosmoDbCollectionsThroughput <Int32>] [-Description <String>] [-DiscoveryUrl <String>]
+ [-EnableDataIsolation] [-EnableSystemAssignedIdentity <Boolean>] [-EncryptionStatus <String>]
+ [-EncryptionUserAssignedIdentity <String>] [-FeatureStoreSettingOfflineStoreConnectionName <String>]
+ [-FeatureStoreSettingOnlineStoreConnectionName <String>] [-FriendlyName <String>] [-HbiWorkspace]
+ [-HubResourceId <String>] [-IdentityUserAssigned <Hashtable>] [-ImageBuildCompute <String>]
+ [-KeyVaultArmId <String>] [-KeyVaultId <String>] [-KeyVaultIdentityClientId <String>]
+ [-KeyVaultKeyIdentifier <String>] [-Kind <String>] [-Location <String>]
+ [-ManagedNetworkIsolationMode <String>] [-ManagedNetworkOutboundRule <Hashtable>]
+ [-PrimaryUserAssignedIdentity <String>] [-PublicNetworkAccess <String>]
+ [-ServerlessComputeSettingServerlessComputeCustomSubnet <String>]
+ [-ServerlessComputeSettingServerlessComputeNoPublicIP]
+ [-SharedPrivateLinkResource <ISharedPrivateLinkResource[]>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Status <String>] [-StatusSparkReady]
+ [-StorageAccountId <String>] [-Tag <Hashtable>] [-V1LegacyMode]
+ [-WorkspaceHubConfigAdditionalWorkspaceStorageAccount <String[]>]
+ [-WorkspaceHubConfigDefaultWorkspaceResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a machine learning workspace with the specified parameters.
+Update a workspace with the specified parameters.
 
 ## EXAMPLES
 
@@ -79,6 +93,21 @@ These commands update a machine learning workspace with the specified parameters
 
 ## PARAMETERS
 
+### -AllowPublicAccessWhenBehindVnet
+The flag to indicate whether to allow public access when behind VNet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ApplicationInsightId
 ARM id of the application insights associated with this workspace.
 
@@ -99,6 +128,21 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AssociatedWorkspace
+.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -185,11 +229,71 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DiscoveryUrl
+Url for the discovery service to identify regional endpoints for machine learning experimentation services
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableDataIsolation
 .
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionStatus
+Indicates whether or not the encryption is enabled for the workspace.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionUserAssignedIdentity
+The ArmId of the user assigned identity that will be used to access the customer managed key vault
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -232,6 +336,7 @@ Accept wildcard characters: False
 
 ### -FriendlyName
 The friendly name for this workspace.
+This name in mutable
 
 ```yaml
 Type: System.String
@@ -245,11 +350,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -HbiWorkspace
+The flag to signal HBI data in the workspace and reduce diagnostic data collected by the service
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HubResourceId
+.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -294,7 +414,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
@@ -308,8 +427,85 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -KeyVaultArmId
+The ArmId of the keyVault where the customer owned encryption key is present.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultId
+ARM id of the key vault associated with this workspace.
+This cannot be changed once the workspace has been created
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultIdentityClientId
+For future use - The client id of the identity which will be used to access key vault.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyVaultKeyIdentifier
-.
+Key vault uri to access the encryption key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Kind
+Type of workspace.
+Possible values: Default, Hub, Project, FeatureStore.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Specifies the location of the resource.
 
 ```yaml
 Type: System.String
@@ -327,7 +523,7 @@ Accept wildcard characters: False
 Isolation mode for the managed network of a machine learning workspace.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IsolationMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -402,7 +598,7 @@ Accept wildcard characters: False
 Whether requests from Public Network are allowed.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PublicNetworkAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -449,6 +645,21 @@ The flag to signal if serverless compute nodes deployed in custom vNet would hav
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SharedPrivateLinkResource
+The list of shared private link resources in this workspace.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ISharedPrivateLinkResource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -527,7 +738,7 @@ Accept wildcard characters: False
 This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -542,7 +753,7 @@ Accept wildcard characters: False
 Status for the managed network of a machine learning workspace.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedNetworkStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -558,6 +769,22 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountId
+ARM id of the storage account associated with this workspace.
+This cannot be changed once the workspace has been created
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -584,7 +811,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-The resource tags for the machine learning workspace.
+Contains resource tags defined as key/value pairs.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -603,6 +830,36 @@ Enabling v1_legacy_mode may prevent you from using features provided by the v2 A
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceHubConfigAdditionalWorkspaceStorageAccount
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceHubConfigDefaultWorkspaceResourceGroup
+.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -653,7 +910,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IWorkspace
 
 ## NOTES
 

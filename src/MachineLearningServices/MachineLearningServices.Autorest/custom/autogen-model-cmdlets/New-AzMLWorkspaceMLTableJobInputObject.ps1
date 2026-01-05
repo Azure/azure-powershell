@@ -21,33 +21,30 @@ Create an in-memory object for MLTableJobInput.
 Create an in-memory object for MLTableJobInput.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.MLTableJobInput
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.MLTableJobInput
 .Link
-https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceMLTableJobInputObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacemltablejobinputobject
 #>
 function New-AzMLWorkspaceMLTableJobInputObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.MLTableJobInput')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.MLTableJobInput')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Input Asset Delivery Mode.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.InputDeliveryMode])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.InputDeliveryMode]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("ReadOnlyMount", "ReadWriteMount", "Download", "Direct", "EvalMount", "EvalDownload")]
+        [string]
         $Mode,
         [Parameter(Mandatory, HelpMessage="[Required] Input Asset URI.")]
         [string]
         $Uri,
         [Parameter(HelpMessage="Description for the input.")]
         [string]
-        $Description,
-        [Parameter(Mandatory, HelpMessage="[Required] Specifies the type of job.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType]
-        $Type
+        $Description
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.MLTableJobInput]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.MLTableJobInput]::New()
 
         if ($PSBoundParameters.ContainsKey('Mode')) {
             $Object.Mode = $Mode
@@ -57,9 +54,6 @@ function New-AzMLWorkspaceMLTableJobInputObject {
         }
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description
-        }
-        if ($PSBoundParameters.ContainsKey('Type')) {
-            $Object.Type = $Type
         }
         return $Object
     }
