@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualnetworkappliance
 schema: 2.0.0
 ---
 
@@ -57,7 +57,7 @@ Gets a Virtual Network Appliance by its Azure resource ID.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceNameParameterSet
 Aliases: ResourceName
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceNameParameterSet
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 The resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 

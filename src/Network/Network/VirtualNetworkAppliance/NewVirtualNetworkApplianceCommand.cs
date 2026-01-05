@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkAppliance", SupportsShouldProcess = true, DefaultParameterSetName = ResourceNameParameterSet), OutputType(typeof(PSVirtualNetworkAppliance))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkAppliance", SupportsShouldProcess = true, DefaultParameterSetName = ResourceNameParameterSet, HelpUri = "https://learn.microsoft.com/powershell/module/az.network/new-azvirtualnetworkappliance"), OutputType(typeof(PSVirtualNetworkAppliance))]
     public class NewVirtualNetworkApplianceCommand : VirtualNetworkApplianceBaseCmdlet
     {
         private const string ResourceNameParameterSet = "ResourceNameParameterSet";
