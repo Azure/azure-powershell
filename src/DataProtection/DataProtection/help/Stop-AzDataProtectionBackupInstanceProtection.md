@@ -14,16 +14,48 @@ This operation will stop protection of a backup instance and data will be held f
 
 ### Stop (Default)
 ```
-Stop-AzDataProtectionBackupInstanceProtection -ResourceGroupName <String> -BackupInstanceName <String>
- -VaultName <String> [-SubscriptionId <String>] [-ResourceGuardOperationRequest <String[]>] [-Token <String>]
- [-SecureToken <SecureString>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+Stop-AzDataProtectionBackupInstanceProtection -BackupInstanceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -VaultName <String> [-Token <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-ResourceGuardOperationRequest <String[]>] [-SecureToken <SecureString>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StopViaJsonString
+```
+Stop-AzDataProtectionBackupInstanceProtection -BackupInstanceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -VaultName <String> [-Token <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] -JsonString <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### StopViaJsonFilePath
+```
+Stop-AzDataProtectionBackupInstanceProtection -BackupInstanceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -VaultName <String> [-Token <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] -JsonFilePath <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### StopViaIdentityBackupVaultExpanded
+```
+Stop-AzDataProtectionBackupInstanceProtection -BackupInstanceName <String>
+ -BackupVaultInputObject <IDataProtectionIdentity> [-Token <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-ResourceGuardOperationRequest <String[]>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StopViaIdentityBackupVault
+```
+Stop-AzDataProtectionBackupInstanceProtection -BackupInstanceName <String>
+ -BackupVaultInputObject <IDataProtectionIdentity> [-Token <String>] -Parameter <IStopProtectionRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### StopViaIdentity
 ```
-Stop-AzDataProtectionBackupInstanceProtection [-ResourceGuardOperationRequest <String[]>] [-Token <String>]
- [-SecureToken <SecureString>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+Stop-AzDataProtectionBackupInstanceProtection [-Token <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-ResourceGuardOperationRequest <String[]>] [-SecureToken <SecureString>]
  -InputObject <IDataProtectionIdentity> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -58,11 +90,11 @@ Accept wildcard characters: False
 ```
 
 ### -BackupInstanceName
-The name of the backup instance
+The name of the backup instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Stop, StopViaJsonString, StopViaJsonFilePath, StopViaIdentityBackupVaultExpanded, StopViaIdentityBackupVault
 Aliases:
 
 Required: True
@@ -72,7 +104,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BackupVaultInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+Parameter Sets: StopViaIdentityBackupVaultExpanded, StopViaIdentityBackupVault
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -87,8 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
@@ -99,6 +147,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Stop operation
+
+```yaml
+Type: System.String
+Parameter Sets: StopViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Stop operation
+
+```yaml
+Type: System.String
+Parameter Sets: StopViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -114,6 +192,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Parameter
+Request body of Stop protection when MUA is Enabled
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IStopProtectionRequest
+Parameter Sets: StopViaIdentityBackupVault
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -133,11 +226,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group where the backup vault is present
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Stop, StopViaJsonString, StopViaJsonFilePath
 Aliases:
 
 Required: True
@@ -148,12 +242,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGuardOperationRequest
-Resource guard operation request in the format similar to \<ResourceGuard-ARMID\>/dppDisableStopProtectionRequests/default.
-Use this parameter when the operation is MUA protected.
+ResourceGuardOperationRequests on which LAC check will be performed
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Stop, StopViaIdentityBackupVaultExpanded, StopViaIdentity
 Aliases:
 
 Required: False
@@ -169,7 +262,7 @@ Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: Stop, StopViaIdentity
 Aliases:
 
 Required: False
@@ -180,16 +273,17 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription Id of the backup vault
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Stop, StopViaJsonString, StopViaJsonFilePath
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -211,11 +305,11 @@ Accept wildcard characters: False
 ```
 
 ### -VaultName
-The name of the backup vault
+The name of the backup vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Stop, StopViaJsonString, StopViaJsonFilePath
 Aliases:
 
 Required: True
@@ -262,6 +356,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IStopProtectionRequest
 
 ## OUTPUTS
 

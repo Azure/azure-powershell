@@ -30,6 +30,12 @@ Get-AzDataProtectionBackupInstance -InputObject <IDataProtectionIdentity> [-Defa
  [<CommonParameters>]
 ```
 
+### GetViaIdentityBackupVault
+```
+Get-AzDataProtectionBackupInstance -BackupVaultInputObject <IDataProtectionIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets a backup instance with name in a backup vault
 
@@ -64,6 +70,21 @@ This command gets a specific backup instance protected in a backup vault.
 
 ## PARAMETERS
 
+### -BackupVaultInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+Parameter Sets: GetViaIdentityBackupVault
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -82,7 +103,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
@@ -101,7 +121,7 @@ The name of the backup instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityBackupVault
 Aliases: BackupInstanceName
 
 Required: True
@@ -167,7 +187,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource
 
 ## NOTES
 

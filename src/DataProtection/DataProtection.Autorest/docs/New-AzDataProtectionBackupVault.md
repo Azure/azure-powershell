@@ -15,14 +15,12 @@ Creates or updates a BackupVault resource belonging to a resource group.
 ```
 New-AzDataProtectionBackupVault -Location <String> -ResourceGroupName <String>
  -StorageSetting <IStorageSetting[]> -VaultName <String> [-AsJob]
- [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-CmkEncryptionKeyUri <String>]
- [-CmkEncryptionState <EncryptionState>] [-CmkIdentityType <IdentityType>]
- [-CmkInfrastructureEncryption <InfrastructureEncryptionState>] [-CmkUserAssignedIdentityId <String>]
- [-CrossRegionRestoreState <CrossRegionRestoreState>]
- [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-DefaultProfile <PSObject>]
- [-ETag <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-ImmutabilityState <ImmutabilityState>] [-NoWait] [-SoftDeleteRetentionDurationInDay <Double>]
- [-SoftDeleteState <SoftDeleteState>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
+ [-AzureMonitorAlertsForAllJobFailure <String>] [-CmkEncryptionKeyUri <String>] [-CmkEncryptionState <String>]
+ [-CmkIdentityType <String>] [-CmkInfrastructureEncryption <String>] [-CmkUserAssignedIdentityId <String>]
+ [-CrossRegionRestoreState <String>] [-CrossSubscriptionRestoreState <String>] [-DefaultProfile <PSObject>]
+ [-ETag <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Object>]
+ [-ImmutabilityState <String>] [-NoWait] [-SoftDeleteRetentionDurationInDay <Double>]
+ [-SoftDeleteState <String>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -112,7 +110,7 @@ Parameter to Enable or Disable built-in azure monitor alerts for job failures.
 Security alerts cannot be disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AlertsState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +141,7 @@ Accept wildcard characters: False
 Enable CMK encryption state for a Backup Vault.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.EncryptionState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -158,7 +156,7 @@ Accept wildcard characters: False
 The identity type to be used for CMK encryption - SystemAssigned or UserAssigned Identity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.IdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -174,7 +172,7 @@ Enable infrastructure encryption with CMK on this vault.
 Infrastructure encryption must be configured only when creating the vault.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.InfrastructureEncryptionState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -206,7 +204,7 @@ Cross region restore state of the vault.
 Allowed values are Disabled, Enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossRegionRestoreState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -222,7 +220,7 @@ Cross subscription restore state of the vault.
 Allowed values are Disabled, Enabled, PermanentlyDisabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossSubscriptionRestoreState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -282,9 +280,9 @@ Accept wildcard characters: False
 Gets or sets the user assigned identities.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.Object
 Parameter Sets: (All)
-Aliases: UserAssignedIdentity, AssignUserIdentity
+Aliases:
 
 Required: False
 Position: Named
@@ -298,7 +296,7 @@ Immutability state of the vault.
 Allowed values are Disabled, Unlocked, Locked.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ImmutabilityState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -374,7 +372,7 @@ Soft delete state of the vault.
 Allowed values are Off, On, AlwaysOn
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SoftDeleteState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -388,10 +386,9 @@ Accept wildcard characters: False
 ### -StorageSetting
 Storage Settings of the vault.
 Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.
-To construct, see NOTES section for STORAGESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IStorageSetting[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IStorageSetting[]
 Parameter Sets: (All)
 Aliases:
 

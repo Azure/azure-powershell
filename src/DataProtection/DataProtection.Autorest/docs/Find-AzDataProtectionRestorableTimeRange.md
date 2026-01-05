@@ -12,11 +12,32 @@ Finds the valid recovery point in time ranges for the restore.
 
 ## SYNTAX
 
+### FindExpanded (Default)
 ```
 Find-AzDataProtectionRestorableTimeRange -BackupInstanceName <String> -ResourceGroupName <String>
- -VaultName <String> -SourceDataStoreType <RestoreSourceDataStoreType> [-SubscriptionId <String>]
- [-EndTime <String>] [-StartTime <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -VaultName <String> -SourceDataStoreType <String> [-SubscriptionId <String>] [-EndTime <String>]
+ [-StartTime <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### FindViaIdentityBackupVaultExpanded
+```
+Find-AzDataProtectionRestorableTimeRange -BackupInstanceName <String>
+ -BackupVaultInputObject <IDataProtectionIdentity> -SourceDataStoreType <String> [-EndTime <String>]
+ [-StartTime <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### FindViaJsonFilePath
+```
+Find-AzDataProtectionRestorableTimeRange -BackupInstanceName <String> -ResourceGroupName <String>
+ -VaultName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### FindViaJsonString
+```
+Find-AzDataProtectionRestorableTimeRange -BackupInstanceName <String> -ResourceGroupName <String>
+ -VaultName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,6 +82,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BackupVaultInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+Parameter Sets: FindViaIdentityBackupVaultExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -83,10 +119,40 @@ ISO 8601 format.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: FindExpanded, FindViaIdentityBackupVaultExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Find operation
+
+```yaml
+Type: System.String
+Parameter Sets: FindViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Find operation
+
+```yaml
+Type: System.String
+Parameter Sets: FindViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -99,7 +165,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: FindExpanded, FindViaJsonFilePath, FindViaJsonString
 Aliases:
 
 Required: True
@@ -113,8 +179,8 @@ Accept wildcard characters: False
 Gets or sets the type of the source data store.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreSourceDataStoreType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: FindExpanded, FindViaIdentityBackupVaultExpanded
 Aliases:
 
 Required: True
@@ -130,7 +196,7 @@ ISO 8601 format.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: FindExpanded, FindViaIdentityBackupVaultExpanded
 Aliases:
 
 Required: False
@@ -146,7 +212,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: FindExpanded, FindViaJsonFilePath, FindViaJsonString
 Aliases:
 
 Required: False
@@ -161,7 +227,7 @@ The name of the backup vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: FindExpanded, FindViaJsonFilePath, FindViaJsonString
 Aliases:
 
 Required: True
@@ -207,9 +273,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IAzureBackupFindRestorableTimeRangesResponseResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupFindRestorableTimeRangesResponseResource
 
 ## NOTES
 

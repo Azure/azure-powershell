@@ -12,9 +12,31 @@ Sync backup instance again in case of failure\r\nThis action will retry last fai
 
 ## SYNTAX
 
+### SyncExpanded (Default)
 ```
 Sync-AzDataProtectionBackupInstance -Name <String> -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String>] [-SyncType <SyncType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-SubscriptionId <String>] [-SyncType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SyncViaIdentityBackupVaultExpanded
+```
+Sync-AzDataProtectionBackupInstance -BackupVaultInputObject <IDataProtectionIdentity> -Name <String>
+ [-SyncType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### SyncViaJsonFilePath
+```
+Sync-AzDataProtectionBackupInstance -Name <String> -ResourceGroupName <String> -VaultName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SyncViaJsonString
+```
+Sync-AzDataProtectionBackupInstance -Name <String> -ResourceGroupName <String> -VaultName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -48,6 +70,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BackupVaultInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+Parameter Sets: SyncViaIdentityBackupVaultExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -58,6 +95,36 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Sync operation
+
+```yaml
+Type: System.String
+Parameter Sets: SyncViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Sync operation
+
+```yaml
+Type: System.String
+Parameter Sets: SyncViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -115,7 +182,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SyncExpanded, SyncViaJsonFilePath, SyncViaJsonString
 Aliases:
 
 Required: True
@@ -131,7 +198,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SyncExpanded, SyncViaJsonFilePath, SyncViaJsonString
 Aliases:
 
 Required: False
@@ -146,8 +213,8 @@ Field indicating sync type e.g.
 to sync only in case of failure or in all cases
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SyncType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: SyncExpanded, SyncViaIdentityBackupVaultExpanded
 Aliases:
 
 Required: False
@@ -162,7 +229,7 @@ The name of the backup vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SyncExpanded, SyncViaJsonFilePath, SyncViaJsonString
 Aliases:
 
 Required: True
@@ -207,6 +274,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 
 ## OUTPUTS
 
