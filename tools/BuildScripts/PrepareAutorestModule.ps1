@@ -57,16 +57,16 @@ $outdatedSubModule = Get-OutdatedSubModule -SourceDirectory $moduleRootSource -G
 if (('Release' -eq $Configuration) -And $outdatedSubModule) {
     $outdatedSubModuleString = $outdatedSubModule -Join ", "
     Write-Error "Found outdated modules: $outdatedSubModuleString"
+    Exit 1
 }
-
+if (('Debug' -eq $Configuration) -And $outdatedSubModule -And -Not (Get-Module -Name "AzDev")) {
+    $AzDevPath = Join-Path $RepoRoot "tools" "AzDev"
+    $AzDevBuildPath = Join-Path $AzDevPath "build.ps1"
+    $AzDevModulePath = Join-Path $RepoRoot "artifacts" "AzDev" "AzDev.psd1"
+    & $AzDevBuildPath
+    Import-Module $AzDevModulePath -Force
+}
 foreach ($subModuleName in $outdatedSubModule) {
-    if (-Not (Get-Module -Name "AzDev")) {
-        $AzDevPath = Join-Path $RepoRoot "tools" "AzDev"
-        $AzDevBuildPath = Join-Path $AzDevPath "build.ps1"
-        $AzDevModulePath = Join-Path $RepoRoot "artifacts" "AzDev" "AzDev.psd1"
-        & $AzDevBuildPath
-        Import-Module $AzDevModulePath -Force
-    }
     $generateLog = Join-Path $AutorestOutputDir $ModuleRootName "$subModuleName.log"
     if (Test-Path $generateLog) {
         Remove-Item -Path $generateLog -Recurse -Force
