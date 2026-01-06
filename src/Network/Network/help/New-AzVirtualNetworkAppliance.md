@@ -14,7 +14,7 @@ Creates a new Virtual Network Appliance (VNA) resource.
 
 ```
 New-AzVirtualNetworkAppliance -Name <String> -ResourceGroupName <String> -Location <String> -SubnetId <String>
- -BandwidthInGbps <String> [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ -Bandwidth <String> [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ load balancing, or routing within a virtual network.
 ### Example 1: Create a Virtual Network Appliance
 ```powershell
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name "VirtualNetworkApplianceSubnet" -VirtualNetwork (Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup")
-New-AzVirtualNetworkAppliance -Name "myVNA" -ResourceGroupName "myResourceGroup" -Location "eastus" -SubnetId $subnet.Id -BandwidthInGbps "50"
+New-AzVirtualNetworkAppliance -Name "myVNA" -ResourceGroupName "myResourceGroup" -Location "eastus" -SubnetId $subnet.Id -Bandwidth "50"
 ```
 
 Creates a new Virtual Network Appliance named "myVNA" in the specified subnet with 50 Gbps bandwidth.
@@ -36,7 +36,7 @@ Creates a new Virtual Network Appliance named "myVNA" in the specified subnet wi
 ### Example 2: Create a Virtual Network Appliance with tags
 ```powershell
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name "VirtualNetworkApplianceSubnet" -VirtualNetwork (Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup")
-New-AzVirtualNetworkAppliance -Name "myVNA" -ResourceGroupName "myResourceGroup" -Location "eastus" -SubnetId $subnet.Id -BandwidthInGbps "100" -Tag @{"Environment" = "Production"}
+New-AzVirtualNetworkAppliance -Name "myVNA" -ResourceGroupName "myResourceGroup" -Location "eastus" -SubnetId $subnet.Id -Bandwidth "100" -Tag @{"Environment" = "Production"}
 ```
 
 Creates a new Virtual Network Appliance with 100 Gbps bandwidth and a tag.
@@ -58,7 +58,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BandwidthInGbps
+### -Bandwidth
 Bandwidth of the Virtual Network Appliance in Gbps. Valid values are: 50, 100, 200.
 
 ```yaml

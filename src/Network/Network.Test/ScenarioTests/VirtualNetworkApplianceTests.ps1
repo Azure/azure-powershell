@@ -36,7 +36,7 @@ function Test-VirtualNetworkApplianceCRUD
         $subnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
 
         # Create VirtualNetworkAppliance
-        $vna = New-AzVirtualNetworkAppliance -Name $rname -ResourceGroupName $rgname -Location $location -SubnetId $subnet.Id -BandwidthInGbps 50 -Tag @{"testKey" = "testValue"}
+        $vna = New-AzVirtualNetworkAppliance -Name $rname -ResourceGroupName $rgname -Location $location -SubnetId $subnet.Id -Bandwidth 50 -Tag @{"testKey" = "testValue"}
 
         # Verify creation
         Assert-NotNull $vna

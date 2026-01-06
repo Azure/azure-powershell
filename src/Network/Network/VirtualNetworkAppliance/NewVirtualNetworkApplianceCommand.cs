@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Bandwidth of the Virtual Network Appliance in Gbps. Valid values are: 50, 100, 200.")]
         [ValidateNotNullOrEmpty]
-        public virtual string BandwidthInGbps { get; set; }
+        public virtual string Bandwidth { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Network
             };
 
             // Set bandwidth (required)
-            vnaModel.BandwidthInGbps = this.BandwidthInGbps;
+            vnaModel.BandwidthInGbps = this.Bandwidth;
 
             // Create the resource
             var vnaResponse = this.VirtualNetworkAppliancesClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnaModel);
