@@ -25,6 +25,7 @@ Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.EventHubEndpoint
 #>
 function New-AzWebPubSubEventHubEndpointObject
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.EventHubEndpoint')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

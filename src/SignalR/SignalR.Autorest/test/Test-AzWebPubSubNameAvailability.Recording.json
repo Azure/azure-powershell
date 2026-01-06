@@ -19,17 +19,17 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "f579f75d-8f76-4e9c-ab4a-ce7edc5e394f" ],
+        "x-ms-client-request-id": [ "9ad3301f-0790-4fad-96d3-dd0d2e44ff47" ],
         "x-rp-server-mvid": [ "0895b6bc-4801-4f4f-8fe1-12ae1c9d7162" ],
-        "x-ms-request-id": [ "d943bbc9-ac4f-4a85-83f9-a2e0d01334cb" ],
-        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/dfeca8f6-6527-4e31-a2b4-d98af3d2135a" ],
+        "x-ms-request-id": [ "3557423d-5ea5-4ca0-af37-5376933aa3cf" ],
+        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/dfc5ed21-5889-4eb9-86ce-cb7d3d001ec4" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "00574534-284b-4f5c-82db-ba2e54793033" ],
-        "x-ms-routing-request-id": [ "EASTUS:20251223T014724Z:00574534-284b-4f5c-82db-ba2e54793033" ],
+        "x-ms-correlation-request-id": [ "f260ce2a-c5c5-4989-9a20-23d91689a43a" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260106T032813Z:f260ce2a-c5c5-4989-9a20-23d91689a43a" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7479A6C71FB04706A31752E6FC00A530 Ref B: SG2AA1070304023 Ref C: 2025-12-23T01:47:23Z" ],
-        "Date": [ "Tue, 23 Dec 2025 01:47:23 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: AD77B1F6285F472DA5371884E7F59972 Ref B: SG2AA1070303031 Ref C: 2026-01-06T03:28:12Z" ],
+        "Date": [ "Tue, 06 Jan 2026 03:28:12 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "136" ],
@@ -44,7 +44,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/providers/Microsoft.SignalRService/locations/eastus/checkNameAvailability?api-version=2022-08-01-preview",
-      "Content": "{\r\n  \"type\": \"Microsoft.SignalRService/webPubSub\",\r\n  \"name\": \"ayna\"\r\n}",
+      "Content": "{\r\n  \"type\": \"Microsoft.SignalRService/webPubSub\",\r\n  \"name\": \"a6ez\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -60,17 +60,17 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "458e3336-115d-4855-93d2-a845f269e7e1" ],
+        "x-ms-client-request-id": [ "2f506cbb-1e15-4b3e-a0f7-21a4d5754d9b" ],
         "x-rp-server-mvid": [ "0895b6bc-4801-4f4f-8fe1-12ae1c9d7162" ],
-        "x-ms-request-id": [ "2ba513f2-dae3-409f-85e3-55107c6ffdf2" ],
-        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/southeastasia/5f6bf57e-0e28-46c3-b7a0-042a3a5c4f31" ],
+        "x-ms-request-id": [ "2f6e90a1-7f50-424c-8128-b57375dbe717" ],
+        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/southeastasia/706b1528-df3a-41ab-8db6-9abff2d27f4b" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "e043e51a-dddd-424f-be1d-d206edee9cb6" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251223T014727Z:e043e51a-dddd-424f-be1d-d206edee9cb6" ],
+        "x-ms-correlation-request-id": [ "4d29c15c-c9fe-4896-b6e5-b503d06bd258" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260106T032815Z:4d29c15c-c9fe-4896-b6e5-b503d06bd258" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4C23551FFD1C43E38CE42720327103BA Ref B: SG2AA1070304023 Ref C: 2025-12-23T01:47:24Z" ],
-        "Date": [ "Tue, 23 Dec 2025 01:47:26 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6E7522D3EE4347A2A4213EE9FD65CFA9 Ref B: SG2AA1070303031 Ref C: 2026-01-06T03:28:13Z" ],
+        "Date": [ "Tue, 06 Jan 2026 03:28:15 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "22" ],
