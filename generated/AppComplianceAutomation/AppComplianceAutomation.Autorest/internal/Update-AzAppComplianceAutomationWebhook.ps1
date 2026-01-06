@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an exiting AppComplianceAutomation webhook.
+Update an exiting AppComplianceAutomation webhook.
 .Description
-update an exiting AppComplianceAutomation webhook.
+Update an exiting AppComplianceAutomation webhook.
 .Example
 {{ Add code here }}
 .Example

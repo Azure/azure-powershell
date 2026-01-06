@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVoiceServicesCommunicationsGateway
 
 ## SYNOPSIS
-update a CommunicationsGateway
+Update a CommunicationsGateway
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Update-AzVoiceServicesCommunicationsGateway -Name <String> -ResourceGroupName <S
 ```
 
 ## DESCRIPTION
-update a CommunicationsGateway
+Update a CommunicationsGateway
 
 ## EXAMPLES
 

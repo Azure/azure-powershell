@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an  MSIX Package.
+Update an  MSIX Package.
 .Description
-update an  MSIX Package.
+Update an  MSIX Package.
 .Example
 Update-AzWvdMsixPackage -HostPoolName HostPoolName `
         -ResourceGroupName ResourceGroupName `
@@ -239,8 +239,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/schedules/{scheduleName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzLabServicesSchedule_UpdateViaJsonFilePath", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.CmdletBreakingChange("18.2.0", "-", "2027/06/28", ChangeDescription = "Azure Lab Services will be retired on June 28, 2027, please see details on https://azure.microsoft.com/en-us/updates?id=azure-lab-services-is-being-retired.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.GenericBreakingChange("", "18.2.0", "-", "2027/06/28", ChangeDescription = "Azure Lab Services will be retired on June 28, 2027, please see details on https://azure.microsoft.com/en-us/updates?id=azure-lab-services-is-being-retired.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.LabServices.Description(@"Operation to update a lab schedule.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.LabServices.Generated]

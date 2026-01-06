@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-list source configurations for a Linker.
+List source configurations for a Linker.
 .Description
-list source configurations for a Linker.
+List source configurations for a Linker.
 .Example
 {{ Add code here }}
 .Example
@@ -144,9 +144,9 @@ end {
 
 <#
 .Synopsis
-get a dryrun job
+Get a dryrun job
 .Description
-get a dryrun job
+Get a dryrun job
 .Example
 {{ Add code here }}
 .Example
@@ -788,9 +788,9 @@ end {
 
 <#
 .Synopsis
-create a dryrun job to do necessary check before actual creation
+Create a dryrun job to do necessary check before actual creation
 .Description
-create a dryrun job to do necessary check before actual creation
+Create a dryrun job to do necessary check before actual creation
 .Example
 {{ Add code here }}
 .Example
@@ -951,9 +951,9 @@ end {
 
 <#
 .Synopsis
-create Linker resource.
+Create Linker resource.
 .Description
-create Linker resource.
+Create Linker resource.
 .Example
 {{ Add code here }}
 .Example
@@ -1239,9 +1239,9 @@ end {
 
 <#
 .Synopsis
-delete a dryrun job
+Delete a dryrun job
 .Description
-delete a dryrun job
+Delete a dryrun job
 .Example
 {{ Add code here }}
 .Example
@@ -1730,9 +1730,9 @@ end {
 
 <#
 .Synopsis
-add a dryrun job to do necessary check before actual creation
+Add a dryrun job to do necessary check before actual creation
 .Description
-add a dryrun job to do necessary check before actual creation
+Add a dryrun job to do necessary check before actual creation
 .Example
 {{ Add code here }}
 .Example

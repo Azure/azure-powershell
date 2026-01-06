@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new App or create an exiting App.
+Create a new App or create an exiting App.
 .Description
-create a new App or create an exiting App.
+Create a new App or create an exiting App.
 .Example
 New-AzSpringCloudApp -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -Name tools
 

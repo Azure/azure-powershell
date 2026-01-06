@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDeviceUpdateAccount
 
 ## SYNOPSIS
-create Account.
+Create Account.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ New-AzDeviceUpdateAccount -Name <String> -ResourceGroupName <String> -JsonString
 ```
 
 ## DESCRIPTION
-create Account.
+Create Account.
 
 ## EXAMPLES
 

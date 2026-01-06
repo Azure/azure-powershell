@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDiskPoolIscsiTarget
 
 ## SYNOPSIS
-update an iSCSI Target.
+Update an iSCSI Target.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ Update-AzDiskPoolIscsiTarget -DiskPoolName <String> -Name <String> -ResourceGrou
 ```
 
 ## DESCRIPTION
-update an iSCSI Target.
+Update an iSCSI Target.
 
 ## EXAMPLES
 

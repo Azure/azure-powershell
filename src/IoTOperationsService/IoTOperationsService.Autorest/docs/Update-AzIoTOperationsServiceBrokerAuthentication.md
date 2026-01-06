@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzIoTOperationsServiceBrokerAuthentication
 
 ## SYNOPSIS
-update a BrokerAuthenticationResource
+Update a BrokerAuthenticationResource
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ Update-AzIoTOperationsServiceBrokerAuthentication -AuthenticationName <String> -
 ```
 
 ## DESCRIPTION
-update a BrokerAuthenticationResource
+Update a BrokerAuthenticationResource
 
 ## EXAMPLES
 

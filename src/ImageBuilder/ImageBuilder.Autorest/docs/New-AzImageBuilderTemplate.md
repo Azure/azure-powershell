@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzImageBuilderTemplate
 
 ## SYNOPSIS
-create a virtual machine image template
+Create a virtual machine image template
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> -JsonStrin
 ```
 
 ## DESCRIPTION
-create a virtual machine image template
+Create a virtual machine image template
 
 ## EXAMPLES
 

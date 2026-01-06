@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a Disk pool.
+Update a Disk pool.
 .Description
-update a Disk pool.
+Update a Disk pool.
 .Example
 Update-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test' -DiskId @()
 .Example

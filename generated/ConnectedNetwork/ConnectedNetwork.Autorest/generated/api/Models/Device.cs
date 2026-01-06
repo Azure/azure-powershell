@@ -33,13 +33,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IDeviceInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.SystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PropertyOrigin.Inherited)]

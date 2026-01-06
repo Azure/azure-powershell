@@ -1,6 +1,6 @@
 ---
 Module Name: Az.MongoDB
-Module Guid: e8abde8d-9c45-4aea-9875-390bd042d9ea
+Module Guid: 4dc62361-75d2-42f6-a3e1-ec38f69cd76c
 Download Help Link: https://learn.microsoft.com/powershell/module/az.mongodb
 Help Version: 1.0.0.0
 Locale: en-US

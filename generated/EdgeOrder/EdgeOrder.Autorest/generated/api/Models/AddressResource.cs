@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for AddressValidationStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressResourceInternal.AddressValidationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)Property).AddressValidationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)Property).AddressValidationStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressResourceInternal.AddressValidationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)Property).AddressValidationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)Property).AddressValidationStatus = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressProperties Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.AddressProperties()); set { {_property = value;} } }
@@ -46,13 +46,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
         Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressResourceInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.SystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.PropertyOrigin.Inherited)]

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMapsCreator
 
 ## SYNOPSIS
-update the Maps Creator resource.
+Update the Maps Creator resource.
 Only a subset of the parameters may be updated after creation, such as Tags.
 
 ## SYNTAX
@@ -45,7 +45,7 @@ Update-AzMapsCreator -AccountName <String> -Name <String> -ResourceGroupName <St
 ```
 
 ## DESCRIPTION
-update the Maps Creator resource.
+Update the Maps Creator resource.
 Only a subset of the parameters may be updated after creation, such as Tags.
 
 ## EXAMPLES

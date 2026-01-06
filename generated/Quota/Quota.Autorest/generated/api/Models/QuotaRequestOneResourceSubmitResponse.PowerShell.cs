@@ -182,7 +182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
             }
             if (content.Contains("LimitValue"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal)this).LimitValue = (int) content.GetValueForProperty("LimitValue",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal)this).LimitValue, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal)this).LimitValue = (int?) content.GetValueForProperty("LimitValue",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal)this).LimitValue, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("LimitType"))
             {
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
             }
             if (content.Contains("LimitValue"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal)this).LimitValue = (int) content.GetValueForProperty("LimitValue",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal)this).LimitValue, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal)this).LimitValue = (int?) content.GetValueForProperty("LimitValue",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestOneResourceSubmitResponseInternal)this).LimitValue, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("LimitType"))
             {

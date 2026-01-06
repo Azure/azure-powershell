@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new Kubernetes Cluster Extension.
+Create a new Kubernetes Cluster Extension.
 .Description
-create a new Kubernetes Cluster Extension.
+Create a new Kubernetes Cluster Extension.
 .Example
 New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azps_test_group -ExtensionType azuremonitor-containers
 .Example

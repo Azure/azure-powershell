@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDedicatedHsm
 
 ## SYNOPSIS
-update a dedicated HSM in the specified subscription.
+Update a dedicated HSM in the specified subscription.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Update-AzDedicatedHsm -Name <String> -ResourceGroupName <String> -JsonString <St
 ```
 
 ## DESCRIPTION
-update a dedicated HSM in the specified subscription.
+Update a dedicated HSM in the specified subscription.
 
 ## EXAMPLES
 

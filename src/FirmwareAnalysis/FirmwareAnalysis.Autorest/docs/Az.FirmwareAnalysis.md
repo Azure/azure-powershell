@@ -1,6 +1,6 @@
 ---
 Module Name: Az.FirmwareAnalysis
-Module Guid: 5b4de3cc-6dec-4f20-9ee5-ebc729b9a384
+Module Guid: ce195a7a-d428-4e44-8966-bdd846028416
 Download Help Link: https://learn.microsoft.com/powershell/module/az.firmwareanalysis
 Help Version: 1.0.0.0
 Locale: en-US

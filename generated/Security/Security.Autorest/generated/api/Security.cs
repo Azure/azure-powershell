@@ -1790,13 +1790,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -1947,13 +1947,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -2106,7 +2106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update monitored Azure DevOps organization details.</summary>
+        /// <summary>update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -2158,7 +2158,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update monitored Azure DevOps organization details.</summary>
+        /// <summary>update monitored Azure DevOps organization details.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps organization resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2220,7 +2220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update monitored Azure DevOps organization details.</summary>
+        /// <summary>update monitored Azure DevOps organization details.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps organization resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2280,7 +2280,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update monitored Azure DevOps organization details.</summary>
+        /// <summary>update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -2331,7 +2331,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update monitored Azure DevOps organization details.</summary>
+        /// <summary>update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -2380,7 +2380,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update monitored Azure DevOps organization details.</summary>
+        /// <summary>update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -2447,13 +2447,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -2601,13 +2601,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -3753,7 +3753,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update monitored Azure DevOps organization details.</summary>
+        /// <summary>update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -3805,7 +3805,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update monitored Azure DevOps organization details.</summary>
+        /// <summary>update monitored Azure DevOps organization details.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps organization resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3867,7 +3867,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update monitored Azure DevOps organization details.</summary>
+        /// <summary>update monitored Azure DevOps organization details.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps organization resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3927,7 +3927,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update monitored Azure DevOps organization details.</summary>
+        /// <summary>update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -3978,7 +3978,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update monitored Azure DevOps organization details.</summary>
+        /// <summary>update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -4027,7 +4027,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update monitored Azure DevOps organization details.</summary>
+        /// <summary>update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -4092,13 +4092,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -4246,13 +4246,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -4400,7 +4400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps project resource.</summary>
+        /// <summary>update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -4455,7 +4455,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps project resource.</summary>
+        /// <summary>update a monitored Azure DevOps project resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps project resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4520,7 +4520,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps project resource.</summary>
+        /// <summary>update a monitored Azure DevOps project resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps project resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4583,7 +4583,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps project resource.</summary>
+        /// <summary>update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -4637,7 +4637,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps project resource.</summary>
+        /// <summary>update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -4689,7 +4689,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps project resource.</summary>
+        /// <summary>update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -4759,13 +4759,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -4913,13 +4913,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -5759,7 +5759,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps project resource.</summary>
+        /// <summary>update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -5814,7 +5814,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps project resource.</summary>
+        /// <summary>update a monitored Azure DevOps project resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps project resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -5879,7 +5879,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps project resource.</summary>
+        /// <summary>update a monitored Azure DevOps project resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps project resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -5942,7 +5942,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps project resource.</summary>
+        /// <summary>update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -5996,7 +5996,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps project resource.</summary>
+        /// <summary>update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -6048,7 +6048,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps project resource.</summary>
+        /// <summary>update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -6118,13 +6118,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -6272,13 +6272,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -6428,7 +6428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
+        /// <summary>update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -6486,7 +6486,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
+        /// <summary>update a monitored Azure DevOps repository resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps repository resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6554,7 +6554,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
+        /// <summary>update a monitored Azure DevOps repository resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps repository resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6620,7 +6620,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
+        /// <summary>update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -6677,7 +6677,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
+        /// <summary>update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -6732,7 +6732,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
+        /// <summary>update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -6805,13 +6805,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -6959,13 +6959,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -7835,7 +7835,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
+        /// <summary>update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -7893,7 +7893,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
+        /// <summary>update a monitored Azure DevOps repository resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps repository resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7961,7 +7961,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
+        /// <summary>update a monitored Azure DevOps repository resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps repository resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8027,7 +8027,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
+        /// <summary>update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8084,7 +8084,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
+        /// <summary>update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8139,7 +8139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
+        /// <summary>update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8210,13 +8210,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -8364,13 +8364,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -8522,7 +8522,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a DevOps Configuration.</summary>
+        /// <summary>update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8572,7 +8572,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a DevOps Configuration.</summary>
+        /// <summary>update a DevOps Configuration.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The DevOps configuration resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8632,7 +8632,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a DevOps Configuration.</summary>
+        /// <summary>update a DevOps Configuration.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The DevOps configuration resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8690,7 +8690,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a DevOps Configuration.</summary>
+        /// <summary>update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8739,7 +8739,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a DevOps Configuration.</summary>
+        /// <summary>update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8786,7 +8786,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a DevOps Configuration.</summary>
+        /// <summary>update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8851,13 +8851,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -9005,13 +9005,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -9275,13 +9275,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -10086,7 +10086,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a DevOps Configuration.</summary>
+        /// <summary>update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -10136,7 +10136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a DevOps Configuration.</summary>
+        /// <summary>update a DevOps Configuration.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The DevOps configuration resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10196,7 +10196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a DevOps Configuration.</summary>
+        /// <summary>update a DevOps Configuration.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The DevOps configuration resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10254,7 +10254,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a DevOps Configuration.</summary>
+        /// <summary>update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -10303,7 +10303,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a DevOps Configuration.</summary>
+        /// <summary>update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -10350,7 +10350,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a DevOps Configuration.</summary>
+        /// <summary>update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -10415,13 +10415,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -10569,13 +10569,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -14800,7 +14800,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Update a security connector. If a security connector is already created and a subsequent request is issued for the same
+        /// update a security connector. If a security connector is already created and a subsequent request is issued for the same
         /// security connector id, then it will be updated.
         /// </summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
@@ -14853,7 +14853,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Update a security connector. If a security connector is already created and a subsequent request is issued for the same
+        /// update a security connector. If a security connector is already created and a subsequent request is issued for the same
         /// security connector id, then it will be updated.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -14916,7 +14916,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Update a security connector. If a security connector is already created and a subsequent request is issued for the same
+        /// update a security connector. If a security connector is already created and a subsequent request is issued for the same
         /// security connector id, then it will be updated.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -14976,7 +14976,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Update a security connector. If a security connector is already created and a subsequent request is issued for the same
+        /// update a security connector. If a security connector is already created and a subsequent request is issued for the same
         /// security connector id, then it will be updated.
         /// </summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
@@ -15028,7 +15028,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Update a security connector. If a security connector is already created and a subsequent request is issued for the same
+        /// update a security connector. If a security connector is already created and a subsequent request is issued for the same
         /// security connector id, then it will be updated.
         /// </summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
@@ -15077,7 +15077,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Update a security connector. If a security connector is already created and a subsequent request is issued for the same
+        /// update a security connector. If a security connector is already created and a subsequent request is issued for the same
         /// security connector id, then it will be updated.
         /// </summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
@@ -16419,7 +16419,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a security connector</summary>
+        /// <summary>update a security connector</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -16468,7 +16468,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a security connector</summary>
+        /// <summary>update a security connector</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The security connector resource</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -16527,7 +16527,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a security connector</summary>
+        /// <summary>update a security connector</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The security connector resource</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16584,7 +16584,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a security connector</summary>
+        /// <summary>update a security connector</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -16632,7 +16632,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a security connector</summary>
+        /// <summary>update a security connector</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -16678,7 +16678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Update a security connector</summary>
+        /// <summary>update a security connector</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>

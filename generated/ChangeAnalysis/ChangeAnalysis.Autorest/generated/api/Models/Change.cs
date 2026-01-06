@@ -40,13 +40,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models
         Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IChangeProperties Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IChangeInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.ChangeProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.PropertyOrigin.Inherited)]

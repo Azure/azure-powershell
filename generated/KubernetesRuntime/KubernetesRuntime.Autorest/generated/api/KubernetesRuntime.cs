@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
     public partial class KubernetesRuntime
     {
 
-        /// <summary>Update a BgpPeer</summary>
+        /// <summary>update a BgpPeer</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="bgpPeerName">The name of the BgpPeer</param>
         /// <param name="body">Resource create parameters.</param>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a BgpPeer</summary>
+        /// <summary>update a BgpPeer</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a BgpPeer</summary>
+        /// <summary>update a BgpPeer</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a BgpPeer</summary>
+        /// <summary>update a BgpPeer</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="bgpPeerName">The name of the BgpPeer</param>
         /// <param name="jsonString">Json string supplied to the BgpPeersCreateOrUpdate operation</param>
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a BgpPeer</summary>
+        /// <summary>update a BgpPeer</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="bgpPeerName">The name of the BgpPeer</param>
         /// <param name="jsonString">Json string supplied to the BgpPeersCreateOrUpdate operation</param>
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a BgpPeer</summary>
+        /// <summary>update a BgpPeer</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="bgpPeerName">The name of the BgpPeer</param>
         /// <param name="body">Resource create parameters.</param>
@@ -316,13 +316,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -470,13 +470,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -1388,7 +1388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a LoadBalancer</summary>
+        /// <summary>update a LoadBalancer</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="loadBalancerName">The name of the LoadBalancer</param>
         /// <param name="body">Resource create parameters.</param>
@@ -1434,7 +1434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a LoadBalancer</summary>
+        /// <summary>update a LoadBalancer</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1490,7 +1490,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a LoadBalancer</summary>
+        /// <summary>update a LoadBalancer</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1544,7 +1544,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a LoadBalancer</summary>
+        /// <summary>update a LoadBalancer</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="loadBalancerName">The name of the LoadBalancer</param>
         /// <param name="jsonString">Json string supplied to the LoadBalancersCreateOrUpdate operation</param>
@@ -1589,7 +1589,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a LoadBalancer</summary>
+        /// <summary>update a LoadBalancer</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="loadBalancerName">The name of the LoadBalancer</param>
         /// <param name="jsonString">Json string supplied to the LoadBalancersCreateOrUpdate operation</param>
@@ -1632,7 +1632,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a LoadBalancer</summary>
+        /// <summary>update a LoadBalancer</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="loadBalancerName">The name of the LoadBalancer</param>
         /// <param name="body">Resource create parameters.</param>
@@ -1693,13 +1693,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -1847,13 +1847,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -3047,7 +3047,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a ServiceResource</summary>
+        /// <summary>update a ServiceResource</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="serviceName">The name of the the service</param>
         /// <param name="body">Resource create parameters.</param>
@@ -3094,7 +3094,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a ServiceResource</summary>
+        /// <summary>update a ServiceResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3151,7 +3151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a ServiceResource</summary>
+        /// <summary>update a ServiceResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3205,7 +3205,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a ServiceResource</summary>
+        /// <summary>update a ServiceResource</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="serviceName">The name of the the service</param>
         /// <param name="jsonString">Json string supplied to the ServicesCreateOrUpdate operation</param>
@@ -3251,7 +3251,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a ServiceResource</summary>
+        /// <summary>update a ServiceResource</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="serviceName">The name of the the service</param>
         /// <param name="jsonString">Json string supplied to the ServicesCreateOrUpdate operation</param>
@@ -3294,7 +3294,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a ServiceResource</summary>
+        /// <summary>update a ServiceResource</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="serviceName">The name of the the service</param>
         /// <param name="body">Resource create parameters.</param>
@@ -4254,7 +4254,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a StorageClassResource</summary>
+        /// <summary>update a StorageClassResource</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="storageClassName">The name of the the storage class</param>
         /// <param name="body">Resource create parameters.</param>
@@ -4300,7 +4300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a StorageClassResource</summary>
+        /// <summary>update a StorageClassResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4356,7 +4356,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a StorageClassResource</summary>
+        /// <summary>update a StorageClassResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4410,7 +4410,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a StorageClassResource</summary>
+        /// <summary>update a StorageClassResource</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="storageClassName">The name of the the storage class</param>
         /// <param name="jsonString">Json string supplied to the StorageClassCreateOrUpdate operation</param>
@@ -4455,7 +4455,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a StorageClassResource</summary>
+        /// <summary>update a StorageClassResource</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="storageClassName">The name of the the storage class</param>
         /// <param name="jsonString">Json string supplied to the StorageClassCreateOrUpdate operation</param>
@@ -4498,7 +4498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a StorageClassResource</summary>
+        /// <summary>update a StorageClassResource</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="storageClassName">The name of the the storage class</param>
         /// <param name="body">Resource create parameters.</param>
@@ -4559,13 +4559,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -4713,13 +4713,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -4971,13 +4971,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -5724,7 +5724,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a StorageClassResource</summary>
+        /// <summary>update a StorageClassResource</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="storageClassName">The name of the the storage class</param>
         /// <param name="body">The resource properties to be updated.</param>
@@ -5770,7 +5770,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a StorageClassResource</summary>
+        /// <summary>update a StorageClassResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -5826,7 +5826,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a StorageClassResource</summary>
+        /// <summary>update a StorageClassResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -5880,7 +5880,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a StorageClassResource</summary>
+        /// <summary>update a StorageClassResource</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="storageClassName">The name of the the storage class</param>
         /// <param name="jsonString">Json string supplied to the StorageClassUpdate operation</param>
@@ -5925,7 +5925,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a StorageClassResource</summary>
+        /// <summary>update a StorageClassResource</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="storageClassName">The name of the the storage class</param>
         /// <param name="jsonString">Json string supplied to the StorageClassUpdate operation</param>
@@ -5968,7 +5968,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
             }
         }
 
-        /// <summary>Update a StorageClassResource</summary>
+        /// <summary>update a StorageClassResource</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource.</param>
         /// <param name="storageClassName">The name of the the storage class</param>
         /// <param name="body">The resource properties to be updated.</param>
@@ -6027,13 +6027,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -6182,13 +6182,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");

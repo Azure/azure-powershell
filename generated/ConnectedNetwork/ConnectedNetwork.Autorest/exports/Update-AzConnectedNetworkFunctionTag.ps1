@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the tags for the network function resource.
+Update the tags for the network function resource.
 .Description
-update the tags for the network function resource.
+Update the tags for the network function resource.
 .Example
 $tags = @{ NewTag = "NewTagValue"}
 Update-AzConnectedNetworkFunctionTag -NetworkFunctionName myNewVnf1 -ResourceGroupName myResources -Tag $tags
@@ -170,8 +170,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

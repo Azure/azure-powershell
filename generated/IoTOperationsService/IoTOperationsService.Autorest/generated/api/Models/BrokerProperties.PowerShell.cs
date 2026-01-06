@@ -142,11 +142,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
             }
             if (content.Contains("BackendChainPartition"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).BackendChainPartition = (int) content.GetValueForProperty("BackendChainPartition",((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).BackendChainPartition, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).BackendChainPartition = (int?) content.GetValueForProperty("BackendChainPartition",((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).BackendChainPartition, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("BackendChainRedundancyFactor"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).BackendChainRedundancyFactor = (int) content.GetValueForProperty("BackendChainRedundancyFactor",((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).BackendChainRedundancyFactor, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).BackendChainRedundancyFactor = (int?) content.GetValueForProperty("BackendChainRedundancyFactor",((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).BackendChainRedundancyFactor, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("BackendChainWorker"))
             {
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
             }
             if (content.Contains("FrontendReplica"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).FrontendReplica = (int) content.GetValueForProperty("FrontendReplica",((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).FrontendReplica, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).FrontendReplica = (int?) content.GetValueForProperty("FrontendReplica",((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).FrontendReplica, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("FrontendWorker"))
             {
@@ -343,11 +343,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
             }
             if (content.Contains("BackendChainPartition"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).BackendChainPartition = (int) content.GetValueForProperty("BackendChainPartition",((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).BackendChainPartition, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).BackendChainPartition = (int?) content.GetValueForProperty("BackendChainPartition",((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).BackendChainPartition, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("BackendChainRedundancyFactor"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).BackendChainRedundancyFactor = (int) content.GetValueForProperty("BackendChainRedundancyFactor",((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).BackendChainRedundancyFactor, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).BackendChainRedundancyFactor = (int?) content.GetValueForProperty("BackendChainRedundancyFactor",((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).BackendChainRedundancyFactor, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("BackendChainWorker"))
             {
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
             }
             if (content.Contains("FrontendReplica"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).FrontendReplica = (int) content.GetValueForProperty("FrontendReplica",((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).FrontendReplica, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).FrontendReplica = (int?) content.GetValueForProperty("FrontendReplica",((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerPropertiesInternal)this).FrontendReplica, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("FrontendWorker"))
             {

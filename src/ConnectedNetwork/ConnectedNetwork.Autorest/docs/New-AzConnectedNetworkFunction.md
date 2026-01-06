@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedNetworkFunction
 
 ## SYNOPSIS
-create a network function resource.
+Create a network function resource.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 
@@ -38,7 +38,7 @@ New-AzConnectedNetworkFunction -Name <String> -ResourceGroupName <String> -JsonS
 ```
 
 ## DESCRIPTION
-create a network function resource.
+Create a network function resource.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.BlobStorageClassType
 https://learn.microsoft.com/powershell/module/Az.KubernetesRuntime/new-azkubernetesruntimeblobstorageclasstypepropertiesobject
 #>
 function New-AzKubernetesRuntimeBlobStorageClassTypePropertiesObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.BlobStorageClassTypeProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.PipelineGroup
-Module Guid: 771bcd47-2561-4441-abe5-4149f359b483
+Module Guid: 4a17d94c-3364-44f7-92ca-ad2ced16f5db
 Download Help Link: https://learn.microsoft.com/powershell/module/az.pipelinegroup
 Help Version: 1.0.0.0
 Locale: en-US
@@ -15,11 +15,11 @@ Microsoft Azure PowerShell: PipelineGroup cmdlets
 Returns the specific pipeline group instance.
 
 ### [New-AzPipelineGroup](New-AzPipelineGroup.md)
-create a pipeline group instance.
+Create a pipeline group instance.
 
 ### [Remove-AzPipelineGroup](Remove-AzPipelineGroup.md)
 Delete a pipeline group instance.
 
 ### [Update-AzPipelineGroup](Update-AzPipelineGroup.md)
-update a pipeline group instance
+Update a pipeline group instance
 

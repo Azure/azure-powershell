@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-list source configurations for a linker in spring cloud.
+List source configurations for a linker in spring cloud.
 .Description
-list source configurations for a linker in spring cloud.
+List source configurations for a linker in spring cloud.
 .Example
 Get-AzServiceLinkerConfigurationForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker | Format-List
 
@@ -137,8 +137,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

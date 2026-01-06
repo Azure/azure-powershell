@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a topic space with the specified parameters.
+Update a topic space with the specified parameters.
 .Description
-update a topic space with the specified parameters.
+Update a topic space with the specified parameters.
 .Example
 Update-AzEventGridTopicSpace -Name azps-topicspace -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -TopicTemplate "filter1"
 .Example
@@ -235,8 +235,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

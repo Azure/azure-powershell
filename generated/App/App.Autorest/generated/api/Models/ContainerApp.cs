@@ -122,7 +122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.App.FormatTable(Index = 0)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>Backing field for <see cref="ManagedBy" /> property.</summary>
         private string _managedBy;
@@ -142,10 +142,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         public string ManagedEnvironmentId { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).ManagedEnvironmentId; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).ManagedEnvironmentId = value ?? null; }
 
         /// <summary>Internal Acessors for CustomDomainVerificationId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.CustomDomainVerificationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).CustomDomainVerificationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).CustomDomainVerificationId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.CustomDomainVerificationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).CustomDomainVerificationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).CustomDomainVerificationId = value ?? null; }
 
         /// <summary>Internal Acessors for EventStreamEndpoint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.EventStreamEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).EventStreamEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).EventStreamEndpoint = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.EventStreamEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).EventStreamEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).EventStreamEndpoint = value ?? null; }
 
         /// <summary>Internal Acessors for ExtendedLocation</summary>
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.IExtendedLocation Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.ExtendedLocation { get => (this._extendedLocation = this._extendedLocation ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.ExtendedLocation()); set { {_extendedLocation = value;} } }
@@ -154,46 +154,64 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedServiceIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedServiceIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for LatestReadyRevisionName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.LatestReadyRevisionName { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).LatestReadyRevisionName; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).LatestReadyRevisionName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.LatestReadyRevisionName { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).LatestReadyRevisionName; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).LatestReadyRevisionName = value ?? null; }
 
         /// <summary>Internal Acessors for LatestRevisionFqdn</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.LatestRevisionFqdn { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).LatestRevisionFqdn; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).LatestRevisionFqdn = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.LatestRevisionFqdn { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).LatestRevisionFqdn; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).LatestRevisionFqdn = value ?? null; }
 
         /// <summary>Internal Acessors for LatestRevisionName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.LatestRevisionName { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).LatestRevisionName; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).LatestRevisionName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.LatestRevisionName { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).LatestRevisionName; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).LatestRevisionName = value ?? null; }
 
         /// <summary>Internal Acessors for OutboundIPAddress</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.OutboundIPAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).OutboundIPAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).OutboundIPAddress = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.OutboundIPAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).OutboundIPAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).OutboundIPAddress = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProperties Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Template</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplate Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.Template { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).Template; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).Template = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplate Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.Template { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).Template; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).Template = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for TemplateScale</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScale Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.TemplateScale { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).TemplateScale; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).TemplateScale = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScale Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppInternal.TemplateScale { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).TemplateScale; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal)Property).TemplateScale = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inherited)]
@@ -243,37 +261,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.App.DoNotFormat]
-        internal Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.App.DoNotFormat]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.App.DoNotFormat]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.App.DoNotFormat]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.App.DoNotFormat]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.App.DoNotFormat]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.App.DoNotFormat]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Inherited)]

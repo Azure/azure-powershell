@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.AssociationUpdateProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for Subnet</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationSubnetUpdate Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationUpdateInternal.Subnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationUpdatePropertiesInternal)Property).Subnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationUpdatePropertiesInternal)Property).Subnet = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationSubnetUpdate Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationUpdateInternal.Subnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationUpdatePropertiesInternal)Property).Subnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationUpdatePropertiesInternal)Property).Subnet = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationUpdateProperties _property;

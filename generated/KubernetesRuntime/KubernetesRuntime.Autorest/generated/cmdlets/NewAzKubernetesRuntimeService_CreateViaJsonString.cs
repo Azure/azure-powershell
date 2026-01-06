@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a ServiceResource</summary>
+    /// <summary>create a ServiceResource</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/{resourceUri}/providers/Microsoft.KubernetesRuntime/services/{serviceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzKubernetesRuntimeService_CreateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IServiceResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Description(@"Create a ServiceResource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Description(@"create a ServiceResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.HttpPath(Path = "/{resourceUri}/providers/Microsoft.KubernetesRuntime/services/{serviceName}", ApiVersion = "2024-03-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.NotSuggestDefaultParameterSet]

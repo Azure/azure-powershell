@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-update the Maps Creator resource.
+Update the Maps Creator resource.
 Only a subset of the parameters may be updated after creation, such as Tags.
 .Description
-update the Maps Creator resource.
+Update the Maps Creator resource.
 Only a subset of the parameters may be updated after creation, such as Tags.
 .Example
 Update-AzMapsCreator -ResourceGroupName azure-rg-test -AccountName pwsh-mapsAccount03 -Name creator-01 -Tag @{'key1'='value1'; 'key2'='value2'}
@@ -198,8 +198,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

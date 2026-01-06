@@ -20,10 +20,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models
         Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuRestrictionInfo Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuRestrictionsInternal.RestrictionInfo { get => (this._restrictionInfo = this._restrictionInfo ?? new Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ResourceSkuRestrictionInfo()); set { {_restrictionInfo = value;} } }
 
         /// <summary>Internal Acessors for RestrictionInfoLocation</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuRestrictionsInternal.RestrictionInfoLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuRestrictionInfoInternal)RestrictionInfo).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuRestrictionInfoInternal)RestrictionInfo).Location = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuRestrictionsInternal.RestrictionInfoLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuRestrictionInfoInternal)RestrictionInfo).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuRestrictionInfoInternal)RestrictionInfo).Location = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for RestrictionInfoZone</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuRestrictionsInternal.RestrictionInfoZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuRestrictionInfoInternal)RestrictionInfo).Zone; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuRestrictionInfoInternal)RestrictionInfo).Zone = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuRestrictionsInternal.RestrictionInfoZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuRestrictionInfoInternal)RestrictionInfo).Zone; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuRestrictionInfoInternal)RestrictionInfo).Zone = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuRestrictionsInternal.Type { get => this._type; set { {_type = value;} } }

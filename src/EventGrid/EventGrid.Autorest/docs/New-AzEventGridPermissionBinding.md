@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridPermissionBinding
 
 ## SYNOPSIS
-create a permission binding with the specified parameters.
+Create a permission binding with the specified parameters.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ New-AzEventGridPermissionBinding -Name <String> -NamespaceName <String> -Resourc
 ```
 
 ## DESCRIPTION
-create a permission binding with the specified parameters.
+Create a permission binding with the specified parameters.
 
 ## EXAMPLES
 

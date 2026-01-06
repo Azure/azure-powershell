@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-create a service namespace.
+Create a service namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Description
-create a service namespace.
+Create a service namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Example
@@ -66,7 +66,7 @@ KEYVAULTPROPERTY <IKeyVaultProperties[]>: Properties of KeyVault
   [UserAssignedIdentity <String>]: ARM ID of user Identity selected for encryption
 
 PARAMETER <ISbNamespace>: Description of a namespace resource.
-  Location <String>: The Geo-location where the resource lives
+  [Location <String>]: The Geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
   [AlternateName <String>]: Alternate name for namespace

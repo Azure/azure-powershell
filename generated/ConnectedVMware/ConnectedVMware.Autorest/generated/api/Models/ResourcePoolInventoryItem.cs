@@ -29,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         public string ManagedResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ManagedResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ManagedResourceId = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemPropertiesInternal)__inventoryItemProperties).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Parent</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItemDetails Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IResourcePoolInventoryItemInternal.Parent { get => (this._parent = this._parent ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.InventoryItemDetails()); set { {_parent = value;} } }

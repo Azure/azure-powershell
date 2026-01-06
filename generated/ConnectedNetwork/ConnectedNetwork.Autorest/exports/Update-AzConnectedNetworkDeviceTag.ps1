@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update device tags.
+Update device tags.
 .Description
-update device tags.
+Update device tags.
 .Example
 $tags = @{ NewTag = "NewTagValue"}
 Update-AzConnectedNetworkDeviceTag -DeviceName "myMecDevice" -ResourceGroupName "myResources" -Tag $tags
@@ -170,8 +170,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a ServiceResource</summary>
+    /// <summary>update a ServiceResource</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/{resourceUri}/providers/Microsoft.KubernetesRuntime/services/{serviceName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/{resourceUri}/providers/Microsoft.KubernetesRuntime/services/{serviceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzKubernetesRuntimeService_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IServiceResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Description(@"Update a ServiceResource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Description(@"update a ServiceResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Generated]
     public partial class UpdateAzKubernetesRuntimeService_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.IEventListener,

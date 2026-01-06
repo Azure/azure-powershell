@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new HealthBot.
+Create a new HealthBot.
 .Description
-create a new HealthBot.
+Create a new HealthBot.
 .Example
 New-AzHealthBot -Name yourihealthbot1 -ResourceGroupName youriTest -Location eastus -Sku F0
 
@@ -157,8 +157,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

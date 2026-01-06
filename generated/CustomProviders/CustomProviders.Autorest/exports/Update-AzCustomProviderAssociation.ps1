@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an association.
+Update an association.
 .Description
-update an association.
+Update an association.
 .Example
 $provider = Get-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type
 Update-AzCustomProviderAssociation -Scope $resourceId -Name MyAssoc -TargetResourceId $provider.Id
@@ -147,8 +147,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

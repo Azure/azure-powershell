@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a Pool
+Create a Pool
 .Description
-create a Pool
+Create a Pool
 .Example
 New-AzMdpPool -Name Contoso -ResourceGroupName testRG -Location westus -MaximumConcurrency 2 -DevCenterProjectResourceId "/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/resourceGroups/example/providers/Microsoft.DevCenter/projects/contoso-proj" -AgentProfile '{"kind": "stateless"}' -OrganizationProfile '{"kind": "AzureDevOps","organizations": [{"url": "https://dev.azure.com/contoso-org","projects": null,"parallelism": 1}],"permissionProfile": {"kind": "CreatorOnly"}}' -FabricProfile '{"kind": "Vmss", "sku": {"name": "Standard_DS12_v2"}, "storageProfile": { "osDiskStorageAccountType": "Standard","dataDisks": []},"images": [{"resourceId": "/Subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/Providers/Microsoft.Compute/Locations/eastus2/Publishers/canonical/ArtifactTypes/VMImage/Offers/0001-com-ubuntu-server-focal/Skus/20_04-lts-gen2/versions/latest","buffer": "*"}]}'
 .Example
@@ -57,7 +57,7 @@ ORGANIZATIONPROFILE <IOrganizationProfile>: Defines the organization in which th
   Kind <String>: Discriminator property for OrganizationProfile.
 
 RESOURCE <IPool>: Concrete tracked resource types can be created by aliasing this type using a specific property type.
-  Location <String>: The geo-location where the resource lives
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AgentProfile <IAgentProfile>]: Defines how the machine will be handled once it executed a job.
@@ -283,6 +283,14 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
 
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Mdp.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
@@ -309,8 +317,6 @@ begin {
             CreateViaJsonString = 'Az.Mdp.private\New-AzMdpPool_CreateViaJsonString';
         }
         if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Mdp.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -324,6 +330,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

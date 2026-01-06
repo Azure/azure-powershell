@@ -23,12 +23,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.DoNotFormat]
-        public string AntennaConfigurationDestinationIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).AntennaConfigurationDestinationIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).AntennaConfigurationDestinationIP = value ?? null; }
+        public string AntennaConfigurationDestinationIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).AntennaConfigurationDestinationIP; }
 
         /// <summary>List of Source IP</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.DoNotFormat]
-        public System.Collections.Generic.List<string> AntennaConfigurationSourceIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).AntennaConfigurationSourceIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).AntennaConfigurationSourceIP = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> AntennaConfigurationSourceIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).AntennaConfigurationSourceIP; }
 
         /// <summary>Azimuth of the antenna at the end of the contact in decimal degrees.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Inlined)]
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         /// <summary>Azure Ground Station name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.FormatTable(Index = 1)]
-        public string GroundStationName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).GroundStationName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).GroundStationName = value ; }
+        public string GroundStationName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).GroundStationName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).GroundStationName = value ?? null; }
 
         /// <summary>
         /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -63,61 +63,85 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         public float? MaximumElevationDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).MaximumElevationDegree; }
 
         /// <summary>Internal Acessors for AntennaConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesAntennaConfiguration Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.AntennaConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).AntennaConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).AntennaConfiguration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesAntennaConfiguration Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.AntennaConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).AntennaConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).AntennaConfiguration = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for AntennaConfigurationDestinationIP</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.AntennaConfigurationDestinationIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).AntennaConfigurationDestinationIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).AntennaConfigurationDestinationIP = value ?? null; }
+
+        /// <summary>Internal Acessors for AntennaConfigurationSourceIP</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.AntennaConfigurationSourceIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).AntennaConfigurationSourceIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).AntennaConfigurationSourceIP = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for EndAzimuthDegree</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.EndAzimuthDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).EndAzimuthDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).EndAzimuthDegree = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.EndAzimuthDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).EndAzimuthDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).EndAzimuthDegree = value ?? default(float); }
 
         /// <summary>Internal Acessors for EndElevationDegree</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.EndElevationDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).EndElevationDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).EndElevationDegree = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.EndElevationDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).EndElevationDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).EndElevationDegree = value ?? default(float); }
 
         /// <summary>Internal Acessors for ErrorMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.ErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ErrorMessage = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.ErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ErrorMessage = value ?? null; }
 
         /// <summary>Internal Acessors for MaximumElevationDegree</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.MaximumElevationDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).MaximumElevationDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).MaximumElevationDegree = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.MaximumElevationDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).MaximumElevationDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).MaximumElevationDegree = value ?? default(float); }
 
         /// <summary>Internal Acessors for Profile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesContactProfile Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.Profile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ContactProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ContactProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesContactProfile Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.Profile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ContactProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ContactProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsProperties Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactsProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for RxEndTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.RxEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).RxEndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).RxEndTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.RxEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).RxEndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).RxEndTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for RxStartTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.RxStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).RxStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).RxStartTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.RxStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).RxStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).RxStartTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for StartAzimuthDegree</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.StartAzimuthDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).StartAzimuthDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).StartAzimuthDegree = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.StartAzimuthDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).StartAzimuthDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).StartAzimuthDegree = value ?? default(float); }
 
         /// <summary>Internal Acessors for StartElevationDegree</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.StartElevationDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).StartElevationDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).StartElevationDegree = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.StartElevationDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).StartElevationDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).StartElevationDegree = value ?? default(float); }
 
         /// <summary>Internal Acessors for Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).Status = value ?? null; }
 
         /// <summary>Internal Acessors for TxEndTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.TxEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).TxEndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).TxEndTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.TxEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).TxEndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).TxEndTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for TxStartTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.TxStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).TxStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).TxStartTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInternal.TxStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).TxStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).TxStartTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Inherited)]
@@ -145,12 +169,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         /// <summary>Reservation end time of a contact (ISO 8601 UTC standard).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.FormatTable(Index = 4)]
-        public global::System.DateTime ReservationEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ReservationEndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ReservationEndTime = value ; }
+        public global::System.DateTime? ReservationEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ReservationEndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ReservationEndTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Reservation start time of a contact (ISO 8601 UTC standard).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.FormatTable(Index = 3)]
-        public global::System.DateTime ReservationStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ReservationStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ReservationStartTime = value ; }
+        public global::System.DateTime? ReservationStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ReservationStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactsPropertiesInternal)Property).ReservationStartTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Gets the resource group name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Owned)]
@@ -187,37 +211,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.DoNotFormat]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.DoNotFormat]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.DoNotFormat]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.DoNotFormat]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.DoNotFormat]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.DoNotFormat]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.DoNotFormat]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
 
         /// <summary>Transmit end time of a contact (ISO 8601 UTC standard).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Inlined)]
@@ -318,7 +342,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         string ErrorMessage { get;  }
         /// <summary>Azure Ground Station name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -362,7 +386,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         string ProvisioningState { get;  }
         /// <summary>Reservation end time of a contact (ISO 8601 UTC standard).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -370,10 +394,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         Description = @"Reservation end time of a contact (ISO 8601 UTC standard).",
         SerializedName = @"reservationEndTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime ReservationEndTime { get; set; }
+        global::System.DateTime? ReservationEndTime { get; set; }
         /// <summary>Reservation start time of a contact (ISO 8601 UTC standard).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -381,7 +405,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         Description = @"Reservation start time of a contact (ISO 8601 UTC standard).",
         SerializedName = @"reservationStartTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime ReservationStartTime { get; set; }
+        global::System.DateTime? ReservationStartTime { get; set; }
         /// <summary>Receive end time of a contact (ISO 8601 UTC standard).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
         Required = false,
@@ -493,9 +517,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         /// <summary>The current state of the resource's creation, deletion, or modification.</summary>
         string ProvisioningState { get; set; }
         /// <summary>Reservation end time of a contact (ISO 8601 UTC standard).</summary>
-        global::System.DateTime ReservationEndTime { get; set; }
+        global::System.DateTime? ReservationEndTime { get; set; }
         /// <summary>Reservation start time of a contact (ISO 8601 UTC standard).</summary>
-        global::System.DateTime ReservationStartTime { get; set; }
+        global::System.DateTime? ReservationStartTime { get; set; }
         /// <summary>Receive end time of a contact (ISO 8601 UTC standard).</summary>
         global::System.DateTime? RxEndTime { get; set; }
         /// <summary>Receive start time of a contact (ISO 8601 UTC standard).</summary>

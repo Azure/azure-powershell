@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDeidService
 
 ## SYNOPSIS
-update a DeidService
+Update a DeidService
 
 ## SYNTAX
 
@@ -28,7 +28,7 @@ Update-AzDeidService -InputObject <IHealthDataAiServicesIdentity> [-EnableSystem
 ```
 
 ## DESCRIPTION
-update a DeidService
+Update a DeidService
 
 ## EXAMPLES
 

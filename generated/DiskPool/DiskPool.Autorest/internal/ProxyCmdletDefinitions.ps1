@@ -132,11 +132,11 @@ end {
 
 <#
 .Synopsis
-create Disk pool.
+Create Disk pool.
 This create operation can take 15 minutes to complete.
 This is expected service behavior.
 .Description
-create Disk pool.
+Create Disk pool.
 This create operation can take 15 minutes to complete.
 This is expected service behavior.
 .Example
@@ -377,9 +377,9 @@ end {
 
 <#
 .Synopsis
-update a Disk pool.
+Update a Disk pool.
 .Description
-update a Disk pool.
+Update a Disk pool.
 .Example
 Update-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test' -DiskId @()
 .Example

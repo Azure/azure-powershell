@@ -30,31 +30,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Location; }
 
         /// <summary>Internal Acessors for MigrationState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigPropertiesInternal.MigrationState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties1Internal)Property).MigrationState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties1Internal)Property).MigrationState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigPropertiesInternal.MigrationState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties1Internal)Property).MigrationState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties1Internal)Property).MigrationState = value ?? null; }
 
         /// <summary>Internal Acessors for PendingReplicationOperationsCount</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigPropertiesInternal.PendingReplicationOperationsCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties1Internal)Property).PendingReplicationOperationsCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties1Internal)Property).PendingReplicationOperationsCount = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigPropertiesInternal.PendingReplicationOperationsCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties1Internal)Property).PendingReplicationOperationsCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties1Internal)Property).PendingReplicationOperationsCount = value ?? default(long); }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties1 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigPropertiesInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.MigrationConfigProperties1()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties1Internal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties1Internal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties1Internal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties1Internal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigPropertiesInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SystemData()); set { {_systemData = value;} } }
 
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigPropertiesInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigPropertiesInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigPropertiesInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigPropertiesInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigPropertiesInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigPropertiesInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Location</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Location = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IProxyResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>
         /// State in which Standard to Premium Migration is, possible values : Unknown, Reverting, Completing, Initiating, Syncing,
@@ -99,27 +117,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedByType; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedByType; }
 
         /// <summary>
         /// Existing premium Namespace ARM Id name which has no entities, will be used for migration

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a new registered prefix with the specified name under the given subscription, resource group and peering.
+Update a new registered prefix with the specified name under the given subscription, resource group and peering.
 .Description
-update a new registered prefix with the specified name under the given subscription, resource group and peering.
+Update a new registered prefix with the specified name under the given subscription, resource group and peering.
 .Example
 Update-AzPeeringRegisteredPrefix -Name accessibilityTesting6 -PeeringName DemoPeering -ResourceGroupName DemoRG -Prefix 240.0.5.0/24
 
@@ -168,8 +168,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

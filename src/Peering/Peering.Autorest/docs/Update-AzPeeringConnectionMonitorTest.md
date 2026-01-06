@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzPeeringConnectionMonitorTest
 
 ## SYNOPSIS
-update a connection monitor test with the specified name under the given subscription, resource group and peering service.
+Update a connection monitor test with the specified name under the given subscription, resource group and peering service.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Update-AzPeeringConnectionMonitorTest -Name <String> -PeeringServiceInputObject 
 ```
 
 ## DESCRIPTION
-update a connection monitor test with the specified name under the given subscription, resource group and peering service.
+Update a connection monitor test with the specified name under the given subscription, resource group and peering service.
 
 ## EXAMPLES
 

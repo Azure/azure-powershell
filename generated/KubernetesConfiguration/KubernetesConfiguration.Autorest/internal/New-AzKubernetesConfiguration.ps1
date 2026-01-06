@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new Kubernetes Source Control Configuration.
+Create a new Kubernetes Source Control Configuration.
 .Description
-create a new Kubernetes Source Control Configuration.
+Create a new Kubernetes Source Control Configuration.
 .Example
 New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01
 New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -Name azpstestk8s -RepositoryUrl http://github.com/xxxx -ClusterType ConnectedClusters

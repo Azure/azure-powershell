@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConfluentOrganization
 
 ## SYNOPSIS
-update Organization resource
+Update Organization resource
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzConfluentOrganization -Name <String> -ResourceGroupName <String> -JsonS
 ```
 
 ## DESCRIPTION
-update Organization resource
+Update Organization resource
 
 ## EXAMPLES
 

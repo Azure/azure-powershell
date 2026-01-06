@@ -35,25 +35,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         public bool? IsTestSuccessful { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestPropertiesInternal)Property).IsTestSuccessful; }
 
         /// <summary>Internal Acessors for IsTestSuccessful</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestInternal.IsTestSuccessful { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestPropertiesInternal)Property).IsTestSuccessful; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestPropertiesInternal)Property).IsTestSuccessful = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestInternal.IsTestSuccessful { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestPropertiesInternal)Property).IsTestSuccessful; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestPropertiesInternal)Property).IsTestSuccessful = value ?? default(bool); }
 
         /// <summary>Internal Acessors for Path</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestInternal.Path { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestPropertiesInternal)Property).Path; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestPropertiesInternal)Property).Path = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestInternal.Path { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestPropertiesInternal)Property).Path; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestPropertiesInternal)Property).Path = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestProperties Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ConnectionMonitorTestProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IConnectionMonitorTestPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Type = value ?? null; }
 
         /// <summary>The name of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Peering.Origin(Microsoft.Azure.PowerShell.Cmdlets.Peering.PropertyOrigin.Inherited)]

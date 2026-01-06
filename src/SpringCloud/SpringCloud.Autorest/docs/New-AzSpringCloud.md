@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSpringCloud
 
 ## SYNOPSIS
-create a new Service or update an exiting Service.
+Create a new Service or update an exiting Service.
 
 ## SYNTAX
 
@@ -22,7 +22,7 @@ New-AzSpringCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <S
 ```
 
 ## DESCRIPTION
-create a new Service or update an exiting Service.
+Create a new Service or update an exiting Service.
 
 ## EXAMPLES
 

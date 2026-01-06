@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppManagedEnvDapr
 
 ## SYNOPSIS
-create a Dapr Component in a Managed Environment.
+Create a Dapr Component in a Managed Environment.
 
 ## SYNTAX
 
@@ -51,7 +51,7 @@ New-AzContainerAppManagedEnvDapr -EnvName <String> -Name <String> -ResourceGroup
 ```
 
 ## DESCRIPTION
-create a Dapr Component in a Managed Environment.
+Create a Dapr Component in a Managed Environment.
 
 ## EXAMPLES
 

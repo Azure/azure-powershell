@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new partner registration with the specified parameters.
+Create a new partner registration with the specified parameters.
 .Description
-create a new partner registration with the specified parameters.
+Create a new partner registration with the specified parameters.
 .Example
 New-AzEventGridPartnerRegistration -Name azps-registration -ResourceGroupName azps_test_group_eventgrid -Location global
 
@@ -217,8 +217,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

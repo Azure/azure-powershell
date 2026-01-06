@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the default Application Configuration Service or update the existing Application Configuration Service.
+Update the default Application Configuration Service or update the existing Application Configuration Service.
 .Description
-update the default Application Configuration Service or update the existing Application Configuration Service.
+Update the default Application Configuration Service or update the existing Application Configuration Service.
 .Example
 Update-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01 -GitRepository ***
 
@@ -208,8 +208,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

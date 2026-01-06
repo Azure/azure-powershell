@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a CA certificate with the specified parameters.
+Create a CA certificate with the specified parameters.
 .Description
-create a CA certificate with the specified parameters.
+Create a CA certificate with the specified parameters.
 .Example
 New-AzEventGridCaCertificate -Name azps-cacert -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -EncodedCertificate "-----BEGIN CERTIFICATE-----
 >> ****************
@@ -259,8 +259,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

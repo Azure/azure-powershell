@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
         Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressProperties Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IReturnOrderItemDetailsInternal.ReturnAddress { get => (this._returnAddress = this._returnAddress ?? new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.AddressProperties()); set { {_returnAddress = value;} } }
 
         /// <summary>Internal Acessors for ReturnAddressValidationStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IReturnOrderItemDetailsInternal.ReturnAddressValidationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ReturnAddress).AddressValidationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ReturnAddress).AddressValidationStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IReturnOrderItemDetailsInternal.ReturnAddressValidationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ReturnAddress).AddressValidationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ReturnAddress).AddressValidationStatus = value ?? null; }
 
         /// <summary>Backing field for <see cref="ReturnAddress" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressProperties _returnAddress;

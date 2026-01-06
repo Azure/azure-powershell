@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-list source configurations for a Linker.
+List source configurations for a Linker.
 .Description
-list source configurations for a Linker.
+List source configurations for a Linker.
 .Example
 {{ Add code here }}
 .Example

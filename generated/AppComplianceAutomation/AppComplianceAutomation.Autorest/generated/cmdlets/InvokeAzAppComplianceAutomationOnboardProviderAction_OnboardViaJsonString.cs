@@ -42,15 +42,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
-
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.ParameterCategory.Runtime)]
@@ -227,11 +218,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -550,29 +536,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Cmdlets
                 var result = (await response);
                 // response should be returning an array of some kind. +Pageable
                 // nested-array / subscriptionIds / <none>
-                if (null != result.SubscriptionId)
-                {
-                    if (0 == _responseSize && 1 == result.SubscriptionId.Count)
-                    {
-                        _firstResponse = result.SubscriptionId[0];
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        var values = new System.Collections.Generic.List<System.Management.Automation.PSObject>();
-                        foreach( var value in result.SubscriptionId )
-                        {
-                            values.Add(value.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(values, true);
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result.SubscriptionId, true);
             }
         }
     }

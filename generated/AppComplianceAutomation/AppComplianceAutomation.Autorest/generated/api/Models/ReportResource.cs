@@ -58,67 +58,85 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models
         public int? M365PendingCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365PendingCount; }
 
         /// <summary>Internal Acessors for CertRecord</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ICertSyncRecord> Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.CertRecord { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).CertRecord; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).CertRecord = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ICertSyncRecord> Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.CertRecord { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).CertRecord; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).CertRecord = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for ComplianceStatus</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportComplianceStatus Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.ComplianceStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).ComplianceStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).ComplianceStatus = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportComplianceStatus Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.ComplianceStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).ComplianceStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).ComplianceStatus = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ComplianceStatusM365</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatus Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.ComplianceStatusM365 { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).ComplianceStatusM365; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).ComplianceStatusM365 = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IOverviewStatus Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.ComplianceStatusM365 { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).ComplianceStatusM365; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).ComplianceStatusM365 = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Error</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.Error { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).Error = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.Error { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).Error = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for LastTriggerTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.LastTriggerTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).LastTriggerTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).LastTriggerTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.LastTriggerTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).LastTriggerTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).LastTriggerTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for M365FailedCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.M365FailedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365FailedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365FailedCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.M365FailedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365FailedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365FailedCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for M365ManualCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.M365ManualCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365ManualCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365ManualCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.M365ManualCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365ManualCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365ManualCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for M365NotApplicableCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.M365NotApplicableCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365NotApplicableCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365NotApplicableCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.M365NotApplicableCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365NotApplicableCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365NotApplicableCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for M365PassedCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.M365PassedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365PassedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365PassedCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.M365PassedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365PassedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365PassedCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for M365PendingCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.M365PendingCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365PendingCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365PendingCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.M365PendingCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365PendingCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).M365PendingCount = value ?? default(int); }
 
         /// <summary>Internal Acessors for NextTriggerTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.NextTriggerTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).NextTriggerTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).NextTriggerTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.NextTriggerTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).NextTriggerTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).NextTriggerTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportProperties Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ReportProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).Status = value ?? null; }
 
         /// <summary>Internal Acessors for StorageInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IStorageInfo Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.StorageInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).StorageInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).StorageInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IStorageInfo Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.StorageInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).StorageInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).StorageInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Subscription</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.Subscription { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).Subscription; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).Subscription = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.Subscription { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).Subscription; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).Subscription = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for TenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourceInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportPropertiesInternal)Property).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PropertyOrigin.Inherited)]
@@ -182,31 +200,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
 
         /// <summary>Report's tenant id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PropertyOrigin.Inlined)]

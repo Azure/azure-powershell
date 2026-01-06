@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzOrbitalSpacecraft
 
 ## SYNOPSIS
-update the specified spacecraft tags.
+Update the specified spacecraft tags.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Update-AzOrbitalSpacecraft -Name <String> -ResourceGroupName <String> -JsonStrin
 ```
 
 ## DESCRIPTION
-update the specified spacecraft tags.
+Update the specified spacecraft tags.
 
 ## EXAMPLES
 

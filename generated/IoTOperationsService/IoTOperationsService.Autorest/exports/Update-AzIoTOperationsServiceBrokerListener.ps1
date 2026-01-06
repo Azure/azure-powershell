@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a BrokerListenerResource
+Update a BrokerListenerResource
 .Description
-update a BrokerListenerResource
+Update a BrokerListenerResource
 .Example
 Update-AzIoTOperationsServiceBrokerListener -BrokerName "my-broker" -InstanceName "aio-instance-name" -ListenerName "my-listener" -ResourceGroupName "aio-validation-116116143"  -Port @(@{ port = 1883 })
 
@@ -243,8 +243,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.VoiceServices
-Module Guid: 8635872c-2777-4eac-8a7b-6c2b66691ee8
+Module Guid: cda876f8-ad9c-435b-a8de-22f3017749ab
 Download Help Link: https://learn.microsoft.com/powershell/module/az.voiceservices
 Help Version: 1.0.0.0
 Locale: en-US
@@ -18,13 +18,13 @@ Get a CommunicationsGateway
 Get a TestLine
 
 ### [New-AzVoiceServicesCommunicationsGateway](New-AzVoiceServicesCommunicationsGateway.md)
-create a CommunicationsGateway
+Create a CommunicationsGateway
 
 ### [New-AzVoiceServicesCommunicationsGatewayServiceRegionObject](New-AzVoiceServicesCommunicationsGatewayServiceRegionObject.md)
 Create an in-memory object for ServiceRegionProperties.
 
 ### [New-AzVoiceServicesCommunicationsTestLine](New-AzVoiceServicesCommunicationsTestLine.md)
-create a TestLine
+Create a TestLine
 
 ### [Remove-AzVoiceServicesCommunicationsGateway](Remove-AzVoiceServicesCommunicationsGateway.md)
 Delete a CommunicationsGateway
@@ -36,8 +36,8 @@ Delete a TestLine
 Check whether the resource name is available in the given region.
 
 ### [Update-AzVoiceServicesCommunicationsGateway](Update-AzVoiceServicesCommunicationsGateway.md)
-update a CommunicationsGateway
+Update a CommunicationsGateway
 
 ### [Update-AzVoiceServicesCommunicationsTestLine](Update-AzVoiceServicesCommunicationsTestLine.md)
-update a TestLine
+Update a TestLine
 

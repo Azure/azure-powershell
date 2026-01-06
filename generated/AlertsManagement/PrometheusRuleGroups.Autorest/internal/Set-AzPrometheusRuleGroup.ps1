@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a Prometheus rule group definition.
+Update a Prometheus rule group definition.
 .Description
-update a Prometheus rule group definition.
+Update a Prometheus rule group definition.
 .Example
 {{ Add code here }}
 .Example

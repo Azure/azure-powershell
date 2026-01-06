@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzUserAssignedIdentity
 
 ## SYNOPSIS
-create an identity in the specified subscription and resource group.
+Create an identity in the specified subscription and resource group.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ New-AzUserAssignedIdentity -Name <String> -ResourceGroupName <String> -JsonStrin
 ```
 
 ## DESCRIPTION
-create an identity in the specified subscription and resource group.
+Create an identity in the specified subscription and resource group.
 
 ## EXAMPLES
 

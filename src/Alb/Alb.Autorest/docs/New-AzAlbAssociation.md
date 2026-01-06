@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzAlbAssociation
 
 ## SYNOPSIS
-create a Association
+Create a Association
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzAlbAssociation -AlbName <String> -Name <String> -ResourceGroupName <String
 ```
 
 ## DESCRIPTION
-create a Association
+Create a Association
 
 ## EXAMPLES
 

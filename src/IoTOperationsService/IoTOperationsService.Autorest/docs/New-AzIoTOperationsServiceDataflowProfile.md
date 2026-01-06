@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzIoTOperationsServiceDataflowProfile
 
 ## SYNOPSIS
-create a DataflowProfileResource
+Create a DataflowProfileResource
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzIoTOperationsServiceDataflowProfile -InstanceName <String> -Name <String> 
 ```
 
 ## DESCRIPTION
-create a DataflowProfileResource
+Create a DataflowProfileResource
 
 ## EXAMPLES
 

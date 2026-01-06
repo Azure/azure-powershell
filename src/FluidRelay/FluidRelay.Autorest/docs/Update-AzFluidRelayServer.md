@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFluidRelayServer
 
 ## SYNOPSIS
-update a Fluid Relay server.
+Update a Fluid Relay server.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Update-AzFluidRelayServer -Name <String> -ResourceGroupInputObject <IFluidRelayI
 ```
 
 ## DESCRIPTION
-update a Fluid Relay server.
+Update a Fluid Relay server.
 
 ## EXAMPLES
 

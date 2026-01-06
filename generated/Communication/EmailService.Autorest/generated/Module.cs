@@ -68,7 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
         public static Microsoft.Azure.PowerShell.Cmdlets.EmailService.Module Instance { get { if (_instance == null) { lock (_singletonLock) { if (_instance == null) { _instance = new Module(); }}} return _instance; } }
 
         /// <summary>The Name of this module</summary>
-        public string Name => @"Az.EmailService";
+        public string Name => @"Az.Communication";
 
         /// <summary>The delegate to call when this module is loaded (supporting a commmon module).</summary>
         public ModuleLoadPipelineDelegate OnModuleLoad { get; set; }
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
         public global::System.String ProfileName { get; set; }
 
         /// <summary>The ResourceID for this module (azure arm).</summary>
-        public string ResourceId => @"Az.EmailService";
+        public string ResourceId => @"Az.Communication";
 
         /// <summary>The delegate to call in WriteObject to sanitize the output object.</summary>
         public SanitizerDelegate SanitizeOutput { get; set; }

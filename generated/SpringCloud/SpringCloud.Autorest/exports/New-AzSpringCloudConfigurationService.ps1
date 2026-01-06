@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create the default Application Configuration Service or create the existing Application Configuration Service.
+Create the default Application Configuration Service or create the existing Application Configuration Service.
 .Description
-create the default Application Configuration Service or create the existing Application Configuration Service.
+Create the default Application Configuration Service or create the existing Application Configuration Service.
 .Example
 New-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01
 
@@ -199,8 +199,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

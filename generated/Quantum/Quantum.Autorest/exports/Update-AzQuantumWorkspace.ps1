@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an existing workspace's tags.
+Update an existing workspace's tags.
 .Description
-update an existing workspace's tags.
+Update an existing workspace's tags.
 .Example
 Update-AzQuantumWorkspace -ResourceGroupName azps_test_group_quantum -Name azps-qw -Tag @{"abc"="123"}
 .Example
@@ -160,8 +160,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

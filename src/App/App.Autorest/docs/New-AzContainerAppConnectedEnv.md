@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppConnectedEnv
 
 ## SYNOPSIS
-create an connectedEnvironment.
+Create an connectedEnvironment.
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ New-AzContainerAppConnectedEnv -Name <String> -ResourceGroupName <String> -JsonS
 ```
 
 ## DESCRIPTION
-create an connectedEnvironment.
+Create an connectedEnvironment.
 
 ## EXAMPLES
 

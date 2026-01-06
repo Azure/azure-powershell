@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCommunicationService
 
 ## SYNOPSIS
-update a new CommunicationService or update an existing CommunicationService.
+Update a new CommunicationService or update an existing CommunicationService.
 
 ## SYNTAX
 
@@ -28,7 +28,7 @@ Update-AzCommunicationService -InputObject <ICommunicationIdentity> [-EnableSyst
 ```
 
 ## DESCRIPTION
-update a new CommunicationService or update an existing CommunicationService.
+Update a new CommunicationService or update an existing CommunicationService.
 
 ## EXAMPLES
 

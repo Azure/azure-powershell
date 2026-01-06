@@ -56,13 +56,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models
         Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuLocationInfo Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuInfoInternal.LocationInfo { get => (this._locationInfo = this._locationInfo ?? new Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ResourceSkuLocationInfo()); set { {_locationInfo = value;} } }
 
         /// <summary>Internal Acessors for LocationInfoLocation</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuInfoInternal.LocationInfoLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuLocationInfoInternal)LocationInfo).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuLocationInfoInternal)LocationInfo).Location = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuInfoInternal.LocationInfoLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuLocationInfoInternal)LocationInfo).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuLocationInfoInternal)LocationInfo).Location = value ?? null; }
 
         /// <summary>Internal Acessors for LocationInfoZone</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuInfoInternal.LocationInfoZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuLocationInfoInternal)LocationInfo).Zone; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuLocationInfoInternal)LocationInfo).Zone = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuInfoInternal.LocationInfoZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuLocationInfoInternal)LocationInfo).Zone; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuLocationInfoInternal)LocationInfo).Zone = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for LocationInfoZoneDetail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuZoneDetails> Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuInfoInternal.LocationInfoZoneDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuLocationInfoInternal)LocationInfo).ZoneDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuLocationInfoInternal)LocationInfo).ZoneDetail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuZoneDetails> Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuInfoInternal.LocationInfoZoneDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuLocationInfoInternal)LocationInfo).ZoneDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuLocationInfoInternal)LocationInfo).ZoneDetail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IResourceSkuInfoInternal.Name { get => this._name; set { {_name = value;} } }

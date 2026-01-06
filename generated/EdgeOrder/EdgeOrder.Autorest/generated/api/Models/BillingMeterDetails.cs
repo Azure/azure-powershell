@@ -53,13 +53,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
         Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetails Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IBillingMeterDetailsInternal.MeterDetail { get => (this._meterDetail = this._meterDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.MeterDetails()); set { {_meterDetail = value;} } }
 
         /// <summary>Internal Acessors for MeterDetailBillingType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IBillingMeterDetailsInternal.MeterDetailBillingType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)MeterDetail).BillingType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)MeterDetail).BillingType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IBillingMeterDetailsInternal.MeterDetailBillingType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)MeterDetail).BillingType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)MeterDetail).BillingType = value ?? null; }
 
         /// <summary>Internal Acessors for MeterDetailChargingType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IBillingMeterDetailsInternal.MeterDetailChargingType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)MeterDetail).ChargingType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)MeterDetail).ChargingType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IBillingMeterDetailsInternal.MeterDetailChargingType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)MeterDetail).ChargingType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)MeterDetail).ChargingType = value ?? null; }
 
         /// <summary>Internal Acessors for MeterDetailMultiplier</summary>
-        double? Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IBillingMeterDetailsInternal.MeterDetailMultiplier { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)MeterDetail).Multiplier; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)MeterDetail).Multiplier = value; }
+        double? Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IBillingMeterDetailsInternal.MeterDetailMultiplier { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)MeterDetail).Multiplier; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IMeterDetailsInternal)MeterDetail).Multiplier = value ?? default(double); }
 
         /// <summary>Internal Acessors for MeteringType</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IBillingMeterDetailsInternal.MeteringType { get => this._meteringType; set { {_meteringType = value;} } }

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a new CommunicationService or update an existing CommunicationService.
+Update a new CommunicationService or update an existing CommunicationService.
 .Description
-update a new CommunicationService or update an existing CommunicationService.
+Update a new CommunicationService or update an existing CommunicationService.
 .Example
 Update-AzCommunicationService -Name ContosoAcsResource2 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="ExampleValue1"}
 .Example
@@ -179,8 +179,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

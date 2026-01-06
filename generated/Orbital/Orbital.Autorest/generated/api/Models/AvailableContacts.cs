@@ -40,40 +40,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         public float? MaximumElevationDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).MaximumElevationDegree; }
 
         /// <summary>Internal Acessors for EndAzimuthDegree</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.EndAzimuthDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).EndAzimuthDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).EndAzimuthDegree = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.EndAzimuthDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).EndAzimuthDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).EndAzimuthDegree = value ?? default(float); }
 
         /// <summary>Internal Acessors for EndElevationDegree</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.EndElevationDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).EndElevationDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).EndElevationDegree = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.EndElevationDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).EndElevationDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).EndElevationDegree = value ?? default(float); }
 
         /// <summary>Internal Acessors for GroundStationName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.GroundStationName { get => this._groundStationName; set { {_groundStationName = value;} } }
 
         /// <summary>Internal Acessors for MaximumElevationDegree</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.MaximumElevationDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).MaximumElevationDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).MaximumElevationDegree = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.MaximumElevationDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).MaximumElevationDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).MaximumElevationDegree = value ?? default(float); }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsProperties Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.AvailableContactsProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for RxEndTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.RxEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).RxEndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).RxEndTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.RxEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).RxEndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).RxEndTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for RxStartTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.RxStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).RxStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).RxStartTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.RxStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).RxStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).RxStartTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Spacecraft</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsSpacecraft Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.Spacecraft { get => (this._spacecraft = this._spacecraft ?? new Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.AvailableContactsSpacecraft()); set { {_spacecraft = value;} } }
 
         /// <summary>Internal Acessors for StartAzimuthDegree</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.StartAzimuthDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).StartAzimuthDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).StartAzimuthDegree = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.StartAzimuthDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).StartAzimuthDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).StartAzimuthDegree = value ?? default(float); }
 
         /// <summary>Internal Acessors for StartElevationDegree</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.StartElevationDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).StartElevationDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).StartElevationDegree = value; }
+        float? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.StartElevationDegree { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).StartElevationDegree; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).StartElevationDegree = value ?? default(float); }
 
         /// <summary>Internal Acessors for TxEndTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.TxEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).TxEndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).TxEndTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.TxEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).TxEndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).TxEndTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for TxStartTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.TxStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).TxStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).TxStartTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsInternal.TxStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).TxStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactInstancePropertiesInternal)Property).TxStartTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContactsProperties _property;

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.SmsReceiver
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactiongroupsmsreceiverobject
 #>
 function New-AzActionGroupSmsReceiverObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.SmsReceiver')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

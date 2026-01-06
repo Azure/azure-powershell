@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DeviceUpdate
-Module Guid: 7ccf1a98-2bbc-4c3f-8f8f-ad4c17fc1625
+Module Guid: 7bbe5ef8-8f86-45b8-a81d-d9b3226dc8b6
 Download Help Link: https://learn.microsoft.com/powershell/module/az.deviceupdate
 Help Version: 1.0.0.0
 Locale: en-US
@@ -18,7 +18,7 @@ Returns account details for the given account name.
 Returns instance details for the given instance and account name.
 
 ### [New-AzDeviceUpdateAccount](New-AzDeviceUpdateAccount.md)
-create Account.
+Create Account.
 
 ### [New-AzDeviceUpdateCheckNameAvailabilityRequestObject](New-AzDeviceUpdateCheckNameAvailabilityRequestObject.md)
 Create an in-memory object for CheckNameAvailabilityRequest.
@@ -36,8 +36,8 @@ Deletes instance.
 Checks ADU resource name availability.
 
 ### [Update-AzDeviceUpdateAccount](Update-AzDeviceUpdateAccount.md)
-update Account.
+Update Account.
 
 ### [Update-AzDeviceUpdateInstance](Update-AzDeviceUpdateInstance.md)
-update instance's tags.
+Update instance's tags.
 

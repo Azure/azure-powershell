@@ -2018,16 +2018,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -2040,7 +2041,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -2168,16 +2172,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -2190,7 +2195,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3738,16 +3746,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -3760,7 +3769,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3888,16 +3900,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -3910,7 +3923,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4696,7 +4712,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Create a new file workspace for the specified subscription.</summary>
+        /// <summary>create a new file workspace for the specified subscription.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="fileWorkspaceName">File workspace name.</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -4736,7 +4752,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Create a new file workspace for the specified subscription.</summary>
+        /// <summary>create a new file workspace for the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4786,7 +4802,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Create a new file workspace for the specified subscription.</summary>
+        /// <summary>create a new file workspace for the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -4834,7 +4850,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Create a new file workspace for the specified subscription.</summary>
+        /// <summary>create a new file workspace for the specified subscription.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="fileWorkspaceName">File workspace name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -5309,7 +5325,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Create a new file workspace.</summary>
+        /// <summary>create a new file workspace.</summary>
         /// <param name="fileWorkspaceName">File workspace name.</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -5346,7 +5362,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Create a new file workspace.</summary>
+        /// <summary>create a new file workspace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -5393,7 +5409,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Create a new file workspace.</summary>
+        /// <summary>create a new file workspace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -5438,7 +5454,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Create a new file workspace.</summary>
+        /// <summary>create a new file workspace.</summary>
         /// <param name="fileWorkspaceName">File workspace name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -5896,7 +5912,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Update a new file under a workspace for the specified subscription.</summary>
+        /// <summary>update a new file under a workspace for the specified subscription.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="fileWorkspaceName">File workspace name.</param>
         /// <param name="fileName">File name.</param>
@@ -5945,7 +5961,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Update a new file under a workspace for the specified subscription.</summary>
+        /// <summary>update a new file under a workspace for the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Create file object</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -6004,7 +6020,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Update a new file under a workspace for the specified subscription.</summary>
+        /// <summary>update a new file under a workspace for the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Create file object</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6061,7 +6077,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Update a new file under a workspace for the specified subscription.</summary>
+        /// <summary>update a new file under a workspace for the specified subscription.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="fileWorkspaceName">File workspace name.</param>
         /// <param name="fileName">File name.</param>
@@ -6109,7 +6125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Update a new file under a workspace for the specified subscription.</summary>
+        /// <summary>update a new file under a workspace for the specified subscription.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="fileWorkspaceName">File workspace name.</param>
         /// <param name="fileName">File name.</param>
@@ -6155,7 +6171,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Update a new file under a workspace for the specified subscription.</summary>
+        /// <summary>update a new file under a workspace for the specified subscription.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="fileWorkspaceName">File workspace name.</param>
         /// <param name="fileName">File name.</param>
@@ -6968,7 +6984,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Update a new file under a workspace.</summary>
+        /// <summary>update a new file under a workspace.</summary>
         /// <param name="fileWorkspaceName">File workspace name.</param>
         /// <param name="fileName">File name.</param>
         /// <param name="body">Create file object</param>
@@ -7014,7 +7030,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Update a new file under a workspace.</summary>
+        /// <summary>update a new file under a workspace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Create file object</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -7070,7 +7086,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Update a new file under a workspace.</summary>
+        /// <summary>update a new file under a workspace.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Create file object</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7124,7 +7140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Update a new file under a workspace.</summary>
+        /// <summary>update a new file under a workspace.</summary>
         /// <param name="fileWorkspaceName">File workspace name.</param>
         /// <param name="fileName">File name.</param>
         /// <param name="jsonString">Json string supplied to the FilesNoSubscriptionCreate operation</param>
@@ -7169,7 +7185,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Update a new file under a workspace.</summary>
+        /// <summary>update a new file under a workspace.</summary>
         /// <param name="fileWorkspaceName">File workspace name.</param>
         /// <param name="fileName">File name.</param>
         /// <param name="jsonString">Json string supplied to the FilesNoSubscriptionCreate operation</param>
@@ -7212,7 +7228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
             }
         }
 
-        /// <summary>Update a new file under a workspace.</summary>
+        /// <summary>update a new file under a workspace.</summary>
         /// <param name="fileWorkspaceName">File workspace name.</param>
         /// <param name="fileName">File name.</param>
         /// <param name="body">Create file object</param>
@@ -10372,7 +10388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
         }
 
         /// <summary>
-        /// Create a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management
+        /// create a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management
         /// issues for the specified subscription. Learn the [prerequisites](https://aka.ms/supportAPI) required to create a support
         /// ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most recent set of services and problem
         /// categories required for support ticket creation.<br/><br/>Adding attachments is not currently supported via the API. To
@@ -10431,7 +10447,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
         }
 
         /// <summary>
-        /// Create a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management
+        /// create a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management
         /// issues for the specified subscription. Learn the [prerequisites](https://aka.ms/supportAPI) required to create a support
         /// ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most recent set of services and problem
         /// categories required for support ticket creation.<br/><br/>Adding attachments is not currently supported via the API. To
@@ -10500,7 +10516,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
         }
 
         /// <summary>
-        /// Create a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management
+        /// create a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management
         /// issues for the specified subscription. Learn the [prerequisites](https://aka.ms/supportAPI) required to create a support
         /// ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most recent set of services and problem
         /// categories required for support ticket creation.<br/><br/>Adding attachments is not currently supported via the API. To
@@ -10567,7 +10583,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
         }
 
         /// <summary>
-        /// Create a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management
+        /// create a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management
         /// issues for the specified subscription. Learn the [prerequisites](https://aka.ms/supportAPI) required to create a support
         /// ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most recent set of services and problem
         /// categories required for support ticket creation.<br/><br/>Adding attachments is not currently supported via the API. To
@@ -10625,7 +10641,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
         }
 
         /// <summary>
-        /// Create a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management
+        /// create a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management
         /// issues for the specified subscription. Learn the [prerequisites](https://aka.ms/supportAPI) required to create a support
         /// ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most recent set of services and problem
         /// categories required for support ticket creation.<br/><br/>Adding attachments is not currently supported via the API. To
@@ -10681,7 +10697,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
         }
 
         /// <summary>
-        /// Create a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management
+        /// create a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management
         /// issues for the specified subscription. Learn the [prerequisites](https://aka.ms/supportAPI) required to create a support
         /// ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most recent set of services and problem
         /// categories required for support ticket creation.<br/><br/>Adding attachments is not currently supported via the API. To
@@ -10752,16 +10768,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -10774,7 +10791,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -10902,16 +10922,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -10924,7 +10945,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -12131,7 +12155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
         }
 
         /// <summary>
-        /// Create a new support ticket for Billing, and Subscription Management issues. Learn the [prerequisites](https://aka.ms/supportAPI)
+        /// create a new support ticket for Billing, and Subscription Management issues. Learn the [prerequisites](https://aka.ms/supportAPI)
         /// required to create a support ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most
         /// recent set of services and problem categories required for support ticket creation.<br/><br/>Adding attachments is not
         /// currently supported via the API. To add a file to an existing support ticket, visit the [Manage support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/managesupportrequest)
@@ -12183,7 +12207,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
         }
 
         /// <summary>
-        /// Create a new support ticket for Billing, and Subscription Management issues. Learn the [prerequisites](https://aka.ms/supportAPI)
+        /// create a new support ticket for Billing, and Subscription Management issues. Learn the [prerequisites](https://aka.ms/supportAPI)
         /// required to create a support ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most
         /// recent set of services and problem categories required for support ticket creation.<br/><br/>Adding attachments is not
         /// currently supported via the API. To add a file to an existing support ticket, visit the [Manage support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/managesupportrequest)
@@ -12245,7 +12269,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
         }
 
         /// <summary>
-        /// Create a new support ticket for Billing, and Subscription Management issues. Learn the [prerequisites](https://aka.ms/supportAPI)
+        /// create a new support ticket for Billing, and Subscription Management issues. Learn the [prerequisites](https://aka.ms/supportAPI)
         /// required to create a support ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most
         /// recent set of services and problem categories required for support ticket creation.<br/><br/>Adding attachments is not
         /// currently supported via the API. To add a file to an existing support ticket, visit the [Manage support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/managesupportrequest)
@@ -12305,7 +12329,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
         }
 
         /// <summary>
-        /// Create a new support ticket for Billing, and Subscription Management issues. Learn the [prerequisites](https://aka.ms/supportAPI)
+        /// create a new support ticket for Billing, and Subscription Management issues. Learn the [prerequisites](https://aka.ms/supportAPI)
         /// required to create a support ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most
         /// recent set of services and problem categories required for support ticket creation.<br/><br/>Adding attachments is not
         /// currently supported via the API. To add a file to an existing support ticket, visit the [Manage support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/managesupportrequest)
@@ -12356,7 +12380,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
         }
 
         /// <summary>
-        /// Create a new support ticket for Billing, and Subscription Management issues. Learn the [prerequisites](https://aka.ms/supportAPI)
+        /// create a new support ticket for Billing, and Subscription Management issues. Learn the [prerequisites](https://aka.ms/supportAPI)
         /// required to create a support ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most
         /// recent set of services and problem categories required for support ticket creation.<br/><br/>Adding attachments is not
         /// currently supported via the API. To add a file to an existing support ticket, visit the [Manage support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/managesupportrequest)
@@ -12405,7 +12429,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
         }
 
         /// <summary>
-        /// Create a new support ticket for Billing, and Subscription Management issues. Learn the [prerequisites](https://aka.ms/supportAPI)
+        /// create a new support ticket for Billing, and Subscription Management issues. Learn the [prerequisites](https://aka.ms/supportAPI)
         /// required to create a support ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most
         /// recent set of services and problem categories required for support ticket creation.<br/><br/>Adding attachments is not
         /// currently supported via the API. To add a file to an existing support ticket, visit the [Manage support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/managesupportrequest)
@@ -12471,16 +12495,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -12493,7 +12518,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -12621,16 +12649,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -12643,7 +12672,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener

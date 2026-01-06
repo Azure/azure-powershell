@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
     public partial class ConnectedVMware
     {
 
-        /// <summary>Create cluster.</summary>
+        /// <summary>create cluster.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="clusterName">Name of the cluster.</param>
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create cluster.</summary>
+        /// <summary>create cluster.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create cluster.</summary>
+        /// <summary>create cluster.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create cluster.</summary>
+        /// <summary>create cluster.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="clusterName">Name of the cluster.</param>
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create cluster.</summary>
+        /// <summary>create cluster.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="clusterName">Name of the cluster.</param>
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create cluster.</summary>
+        /// <summary>create cluster.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="clusterName">Name of the cluster.</param>
@@ -335,16 +335,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -357,7 +358,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -485,16 +489,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -507,7 +512,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -752,17 +760,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -775,7 +784,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -1830,7 +1842,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the cluster resource.</summary>
+        /// <summary>API to update certain properties of the cluster resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="clusterName">Name of the cluster.</param>
@@ -1879,7 +1891,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the cluster resource.</summary>
+        /// <summary>API to update certain properties of the cluster resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1938,7 +1950,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the cluster resource.</summary>
+        /// <summary>API to update certain properties of the cluster resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1995,7 +2007,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the cluster resource.</summary>
+        /// <summary>API to update certain properties of the cluster resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="clusterName">Name of the cluster.</param>
@@ -2043,7 +2055,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the cluster resource.</summary>
+        /// <summary>API to update certain properties of the cluster resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="clusterName">Name of the cluster.</param>
@@ -2089,7 +2101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the cluster resource.</summary>
+        /// <summary>API to update certain properties of the cluster resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="clusterName">Name of the cluster.</param>
@@ -2270,7 +2282,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create datastore.</summary>
+        /// <summary>create datastore.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="datastoreName">Name of the datastore.</param>
@@ -2319,7 +2331,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create datastore.</summary>
+        /// <summary>create datastore.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2378,7 +2390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create datastore.</summary>
+        /// <summary>create datastore.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2435,7 +2447,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create datastore.</summary>
+        /// <summary>create datastore.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="datastoreName">Name of the datastore.</param>
@@ -2483,7 +2495,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create datastore.</summary>
+        /// <summary>create datastore.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="datastoreName">Name of the datastore.</param>
@@ -2529,7 +2541,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create datastore.</summary>
+        /// <summary>create datastore.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="datastoreName">Name of the datastore.</param>
@@ -2591,16 +2603,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -2613,7 +2626,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -2741,16 +2757,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -2763,7 +2780,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3008,17 +3028,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -3031,7 +3052,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4086,7 +4110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the datastore resource.</summary>
+        /// <summary>API to update certain properties of the datastore resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="datastoreName">Name of the datastore.</param>
@@ -4135,7 +4159,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the datastore resource.</summary>
+        /// <summary>API to update certain properties of the datastore resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4194,7 +4218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the datastore resource.</summary>
+        /// <summary>API to update certain properties of the datastore resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4251,7 +4275,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the datastore resource.</summary>
+        /// <summary>API to update certain properties of the datastore resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="datastoreName">Name of the datastore.</param>
@@ -4299,7 +4323,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the datastore resource.</summary>
+        /// <summary>API to update certain properties of the datastore resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="datastoreName">Name of the datastore.</param>
@@ -4345,7 +4369,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the datastore resource.</summary>
+        /// <summary>API to update certain properties of the datastore resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="datastoreName">Name of the datastore.</param>
@@ -4526,7 +4550,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create host.</summary>
+        /// <summary>create host.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="hostName">Name of the host.</param>
@@ -4575,7 +4599,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create host.</summary>
+        /// <summary>create host.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4634,7 +4658,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create host.</summary>
+        /// <summary>create host.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4691,7 +4715,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create host.</summary>
+        /// <summary>create host.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="hostName">Name of the host.</param>
@@ -4739,7 +4763,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create host.</summary>
+        /// <summary>create host.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="hostName">Name of the host.</param>
@@ -4785,7 +4809,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create host.</summary>
+        /// <summary>create host.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="hostName">Name of the host.</param>
@@ -4847,16 +4871,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4869,7 +4894,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4997,16 +5025,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -5019,7 +5048,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -5264,17 +5296,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -5287,7 +5320,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -6340,7 +6376,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the host resource.</summary>
+        /// <summary>API to update certain properties of the host resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="hostName">Name of the host.</param>
@@ -6389,7 +6425,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the host resource.</summary>
+        /// <summary>API to update certain properties of the host resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6448,7 +6484,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the host resource.</summary>
+        /// <summary>API to update certain properties of the host resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6505,7 +6541,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the host resource.</summary>
+        /// <summary>API to update certain properties of the host resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="hostName">Name of the host.</param>
@@ -6553,7 +6589,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the host resource.</summary>
+        /// <summary>API to update certain properties of the host resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="hostName">Name of the host.</param>
@@ -6599,7 +6635,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the host resource.</summary>
+        /// <summary>API to update certain properties of the host resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="hostName">Name of the host.</param>
@@ -6780,7 +6816,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Update InventoryItem.</summary>
+        /// <summary>update InventoryItem.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -6832,7 +6868,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Update InventoryItem.</summary>
+        /// <summary>update InventoryItem.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6894,7 +6930,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Update InventoryItem.</summary>
+        /// <summary>update InventoryItem.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6954,7 +6990,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Update InventoryItem.</summary>
+        /// <summary>update InventoryItem.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -7005,7 +7041,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Update InventoryItem.</summary>
+        /// <summary>update InventoryItem.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -7054,7 +7090,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Update InventoryItem.</summary>
+        /// <summary>update InventoryItem.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -8364,7 +8400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create resourcePool.</summary>
+        /// <summary>create resourcePool.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="resourcePoolName">Name of the resourcePool.</param>
@@ -8413,7 +8449,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create resourcePool.</summary>
+        /// <summary>create resourcePool.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8472,7 +8508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create resourcePool.</summary>
+        /// <summary>create resourcePool.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8529,7 +8565,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create resourcePool.</summary>
+        /// <summary>create resourcePool.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="resourcePoolName">Name of the resourcePool.</param>
@@ -8577,7 +8613,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create resourcePool.</summary>
+        /// <summary>create resourcePool.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="resourcePoolName">Name of the resourcePool.</param>
@@ -8623,7 +8659,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create resourcePool.</summary>
+        /// <summary>create resourcePool.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="resourcePoolName">Name of the resourcePool.</param>
@@ -8685,16 +8721,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -8707,7 +8744,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -8835,16 +8875,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -8857,7 +8898,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -9102,17 +9146,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -9125,7 +9170,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -10180,7 +10228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the resourcePool resource.</summary>
+        /// <summary>API to update certain properties of the resourcePool resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="resourcePoolName">Name of the resourcePool.</param>
@@ -10229,7 +10277,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the resourcePool resource.</summary>
+        /// <summary>API to update certain properties of the resourcePool resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10288,7 +10336,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the resourcePool resource.</summary>
+        /// <summary>API to update certain properties of the resourcePool resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10345,7 +10393,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the resourcePool resource.</summary>
+        /// <summary>API to update certain properties of the resourcePool resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="resourcePoolName">Name of the resourcePool.</param>
@@ -10393,7 +10441,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the resourcePool resource.</summary>
+        /// <summary>API to update certain properties of the resourcePool resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="resourcePoolName">Name of the resourcePool.</param>
@@ -10439,7 +10487,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the resourcePool resource.</summary>
+        /// <summary>API to update certain properties of the resourcePool resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="resourcePoolName">Name of the resourcePool.</param>
@@ -10620,7 +10668,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create vCenter.</summary>
+        /// <summary>create vCenter.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -10669,7 +10717,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create vCenter.</summary>
+        /// <summary>create vCenter.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10728,7 +10776,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create vCenter.</summary>
+        /// <summary>create vCenter.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10785,7 +10833,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create vCenter.</summary>
+        /// <summary>create vCenter.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -10833,7 +10881,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create vCenter.</summary>
+        /// <summary>create vCenter.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -10879,7 +10927,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create vCenter.</summary>
+        /// <summary>create vCenter.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -10941,16 +10989,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -10963,7 +11012,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -11091,16 +11143,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -11113,7 +11166,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -11358,17 +11414,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -11381,7 +11438,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -12436,7 +12496,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the vCenter resource.</summary>
+        /// <summary>API to update certain properties of the vCenter resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -12485,7 +12545,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the vCenter resource.</summary>
+        /// <summary>API to update certain properties of the vCenter resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -12544,7 +12604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the vCenter resource.</summary>
+        /// <summary>API to update certain properties of the vCenter resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -12601,7 +12661,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the vCenter resource.</summary>
+        /// <summary>API to update certain properties of the vCenter resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -12649,7 +12709,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the vCenter resource.</summary>
+        /// <summary>API to update certain properties of the vCenter resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -12695,7 +12755,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the vCenter resource.</summary>
+        /// <summary>API to update certain properties of the vCenter resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -12876,7 +12936,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Update GuestAgent.</summary>
+        /// <summary>update GuestAgent.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="body">Request payload.</param>
@@ -12921,7 +12981,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Update GuestAgent.</summary>
+        /// <summary>update GuestAgent.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -12975,7 +13035,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Update GuestAgent.</summary>
+        /// <summary>update GuestAgent.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -13027,7 +13087,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Update GuestAgent.</summary>
+        /// <summary>update GuestAgent.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="jsonString">Json string supplied to the VMInstanceGuestAgentsCreate operation</param>
@@ -13071,7 +13131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Update GuestAgent.</summary>
+        /// <summary>update GuestAgent.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="jsonString">Json string supplied to the VMInstanceGuestAgentsCreate operation</param>
@@ -13113,7 +13173,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Update GuestAgent.</summary>
+        /// <summary>update GuestAgent.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="body">Request payload.</param>
@@ -13173,16 +13233,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -13195,7 +13256,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -13323,16 +13387,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -13345,7 +13410,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -13469,6 +13537,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -13476,7 +13545,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VMInstanceGuestAgentsDelete(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VMInstanceGuestAgentsDelete(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-10-01";
             // Constant Parameters
@@ -13500,13 +13569,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.VMInstanceGuestAgentsDelete_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.VMInstanceGuestAgentsDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Implements GuestAgent DELETE method.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -13514,7 +13584,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VMInstanceGuestAgentsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VMInstanceGuestAgentsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-10-01";
             // Constant Parameters
@@ -13548,13 +13618,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.VMInstanceGuestAgentsDelete_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.VMInstanceGuestAgentsDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "VMInstanceGuestAgentsDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -13562,24 +13633,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VMInstanceGuestAgentsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VMInstanceGuestAgentsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -13592,7 +13664,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -13670,6 +13745,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         case global::System.Net.HttpStatusCode.NoContent:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -14915,7 +14996,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         }
 
         /// <summary>
-        /// The operation to Update a virtual machine instance. Please note some properties can be set only during virtual machine
+        /// The operation to update a virtual machine instance. Please note some properties can be set only during virtual machine
         /// instance creation.
         /// </summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
@@ -14963,7 +15044,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         }
 
         /// <summary>
-        /// The operation to Update a virtual machine instance. Please note some properties can be set only during virtual machine
+        /// The operation to update a virtual machine instance. Please note some properties can be set only during virtual machine
         /// instance creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -15020,7 +15101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         }
 
         /// <summary>
-        /// The operation to Update a virtual machine instance. Please note some properties can be set only during virtual machine
+        /// The operation to update a virtual machine instance. Please note some properties can be set only during virtual machine
         /// instance creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -15075,7 +15156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         }
 
         /// <summary>
-        /// The operation to Update a virtual machine instance. Please note some properties can be set only during virtual machine
+        /// The operation to update a virtual machine instance. Please note some properties can be set only during virtual machine
         /// instance creation.
         /// </summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
@@ -15122,7 +15203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         }
 
         /// <summary>
-        /// The operation to Update a virtual machine instance. Please note some properties can be set only during virtual machine
+        /// The operation to update a virtual machine instance. Please note some properties can be set only during virtual machine
         /// instance creation.
         /// </summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
@@ -15167,7 +15248,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         }
 
         /// <summary>
-        /// The operation to Update a virtual machine instance. Please note some properties can be set only during virtual machine
+        /// The operation to update a virtual machine instance. Please note some properties can be set only during virtual machine
         /// instance creation.
         /// </summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
@@ -15229,16 +15310,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -15251,7 +15333,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -15381,16 +15466,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -15403,7 +15489,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -15529,6 +15618,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <param name="deleteFromHost">Whether to delete the VM from the vCenter.</param>
         /// <param name="force">Whether force delete was specified.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -15536,7 +15626,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineInstancesDelete(string resourceUri, bool? deleteFromHost, bool? force, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineInstancesDelete(string resourceUri, bool? deleteFromHost, bool? force, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-10-01";
             // Constant Parameters
@@ -15564,7 +15654,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.VirtualMachineInstancesDelete_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.VirtualMachineInstancesDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -15573,6 +15663,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <param name="deleteFromHost">Whether to delete the VM from the vCenter.</param>
         /// <param name="force">Whether force delete was specified.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -15580,7 +15671,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineInstancesDeleteViaIdentity(global::System.String viaIdentity, bool? deleteFromHost, bool? force, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineInstancesDeleteViaIdentity(global::System.String viaIdentity, bool? deleteFromHost, bool? force, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-10-01";
             // Constant Parameters
@@ -15618,13 +15709,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.VirtualMachineInstancesDelete_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.VirtualMachineInstancesDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "VirtualMachineInstancesDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -15632,24 +15724,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineInstancesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualMachineInstancesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -15662,7 +15755,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -15737,6 +15833,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         case global::System.Net.HttpStatusCode.NoContent:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -16392,6 +16494,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <summary>The operation to restart a virtual machine instance.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16399,7 +16502,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineInstancesRestart(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineInstancesRestart(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-10-01";
             // Constant Parameters
@@ -16423,12 +16526,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.VirtualMachineInstancesRestart_Call (request, onDefault,eventListener,sender);
+                await this.VirtualMachineInstancesRestart_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>The operation to restart a virtual machine instance.</summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16436,7 +16540,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineInstancesRestartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineInstancesRestartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-10-01";
             // Constant Parameters
@@ -16470,12 +16574,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.VirtualMachineInstancesRestart_Call (request, onDefault,eventListener,sender);
+                await this.VirtualMachineInstancesRestart_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "VirtualMachineInstancesRestart" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16483,24 +16588,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineInstancesRestart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualMachineInstancesRestart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -16513,7 +16619,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -16588,6 +16697,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -16627,6 +16742,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <summary>The operation to start a virtual machine instance.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16634,7 +16750,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineInstancesStart(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineInstancesStart(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-10-01";
             // Constant Parameters
@@ -16658,12 +16774,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.VirtualMachineInstancesStart_Call (request, onDefault,eventListener,sender);
+                await this.VirtualMachineInstancesStart_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>The operation to start a virtual machine instance.</summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16671,7 +16788,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineInstancesStartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineInstancesStartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-10-01";
             // Constant Parameters
@@ -16705,12 +16822,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.VirtualMachineInstancesStart_Call (request, onDefault,eventListener,sender);
+                await this.VirtualMachineInstancesStart_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "VirtualMachineInstancesStart" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16718,24 +16836,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineInstancesStart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualMachineInstancesStart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -16748,7 +16867,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -16823,6 +16945,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -16863,6 +16991,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="body">Virtualmachine stop action payload.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16871,7 +17000,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineInstancesStop(string resourceUri, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IStopVirtualMachineOptions body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task VirtualMachineInstancesStop(string resourceUri, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IStopVirtualMachineOptions body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-10-01";
             // Constant Parameters
@@ -16899,13 +17028,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.VirtualMachineInstancesStop_Call (request, onDefault,eventListener,sender);
+                await this.VirtualMachineInstancesStop_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>The operation to power off (stop) a virtual machine instance.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Virtualmachine stop action payload.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16914,7 +17044,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineInstancesStopViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IStopVirtualMachineOptions body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task VirtualMachineInstancesStopViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IStopVirtualMachineOptions body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-10-01";
             // Constant Parameters
@@ -16952,7 +17082,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.VirtualMachineInstancesStop_Call (request, onDefault,eventListener,sender);
+                await this.VirtualMachineInstancesStop_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -16960,6 +17090,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="jsonString">Json string supplied to the VirtualMachineInstancesStop operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16967,7 +17098,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineInstancesStopViaJsonString(string resourceUri, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineInstancesStopViaJsonString(string resourceUri, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-10-01";
             // Constant Parameters
@@ -16995,12 +17126,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.VirtualMachineInstancesStop_Call (request, onDefault,eventListener,sender);
+                await this.VirtualMachineInstancesStop_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "VirtualMachineInstancesStop" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -17008,24 +17140,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineInstancesStop_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualMachineInstancesStop_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -17038,7 +17171,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -17113,6 +17249,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -17152,7 +17294,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>The operation to Update a virtual machine instance.</summary>
+        /// <summary>The operation to update a virtual machine instance.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="body">Resource properties to update.</param>
@@ -17197,7 +17339,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>The operation to Update a virtual machine instance.</summary>
+        /// <summary>The operation to update a virtual machine instance.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -17251,7 +17393,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>The operation to Update a virtual machine instance.</summary>
+        /// <summary>The operation to update a virtual machine instance.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -17303,7 +17445,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>The operation to Update a virtual machine instance.</summary>
+        /// <summary>The operation to update a virtual machine instance.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="jsonString">Json string supplied to the VirtualMachineInstancesUpdate operation</param>
@@ -17347,7 +17489,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>The operation to Update a virtual machine instance.</summary>
+        /// <summary>The operation to update a virtual machine instance.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="jsonString">Json string supplied to the VirtualMachineInstancesUpdate operation</param>
@@ -17389,7 +17531,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>The operation to Update a virtual machine instance.</summary>
+        /// <summary>The operation to update a virtual machine instance.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="body">Resource properties to update.</param>
@@ -17449,16 +17591,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -17471,7 +17614,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -17599,16 +17745,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -17621,7 +17768,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -17741,7 +17891,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create virtual machine template.</summary>
+        /// <summary>create virtual machine template.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualMachineTemplateName">Name of the virtual machine template resource.</param>
@@ -17790,7 +17940,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create virtual machine template.</summary>
+        /// <summary>create virtual machine template.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -17849,7 +17999,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create virtual machine template.</summary>
+        /// <summary>create virtual machine template.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -17906,7 +18056,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create virtual machine template.</summary>
+        /// <summary>create virtual machine template.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualMachineTemplateName">Name of the virtual machine template resource.</param>
@@ -17954,7 +18104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create virtual machine template.</summary>
+        /// <summary>create virtual machine template.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualMachineTemplateName">Name of the virtual machine template resource.</param>
@@ -18000,7 +18150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create virtual machine template.</summary>
+        /// <summary>create virtual machine template.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualMachineTemplateName">Name of the virtual machine template resource.</param>
@@ -18064,16 +18214,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -18086,7 +18237,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -18214,16 +18368,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -18236,7 +18391,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -18481,17 +18639,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -18504,7 +18663,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -19565,7 +19727,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the virtual machine template resource.</summary>
+        /// <summary>API to update certain properties of the virtual machine template resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualMachineTemplateName">Name of the virtual machine template resource.</param>
@@ -19614,7 +19776,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the virtual machine template resource.</summary>
+        /// <summary>API to update certain properties of the virtual machine template resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -19673,7 +19835,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the virtual machine template resource.</summary>
+        /// <summary>API to update certain properties of the virtual machine template resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -19730,7 +19892,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the virtual machine template resource.</summary>
+        /// <summary>API to update certain properties of the virtual machine template resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualMachineTemplateName">Name of the virtual machine template resource.</param>
@@ -19778,7 +19940,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the virtual machine template resource.</summary>
+        /// <summary>API to update certain properties of the virtual machine template resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualMachineTemplateName">Name of the virtual machine template resource.</param>
@@ -19824,7 +19986,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the virtual machine template resource.</summary>
+        /// <summary>API to update certain properties of the virtual machine template resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualMachineTemplateName">Name of the virtual machine template resource.</param>
@@ -20007,7 +20169,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create virtual network.</summary>
+        /// <summary>create virtual network.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualNetworkName">Name of the virtual network resource.</param>
@@ -20056,7 +20218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create virtual network.</summary>
+        /// <summary>create virtual network.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -20115,7 +20277,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create virtual network.</summary>
+        /// <summary>create virtual network.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -20172,7 +20334,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create virtual network.</summary>
+        /// <summary>create virtual network.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualNetworkName">Name of the virtual network resource.</param>
@@ -20220,7 +20382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create virtual network.</summary>
+        /// <summary>create virtual network.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualNetworkName">Name of the virtual network resource.</param>
@@ -20266,7 +20428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create virtual network.</summary>
+        /// <summary>create virtual network.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualNetworkName">Name of the virtual network resource.</param>
@@ -20328,16 +20490,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -20350,7 +20513,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -20478,16 +20644,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -20500,7 +20667,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -20745,17 +20915,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -20768,7 +20939,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -21823,7 +21997,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the virtual network resource.</summary>
+        /// <summary>API to update certain properties of the virtual network resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualNetworkName">Name of the virtual network resource.</param>
@@ -21872,7 +22046,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the virtual network resource.</summary>
+        /// <summary>API to update certain properties of the virtual network resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -21931,7 +22105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the virtual network resource.</summary>
+        /// <summary>API to update certain properties of the virtual network resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -21988,7 +22162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the virtual network resource.</summary>
+        /// <summary>API to update certain properties of the virtual network resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualNetworkName">Name of the virtual network resource.</param>
@@ -22036,7 +22210,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the virtual network resource.</summary>
+        /// <summary>API to update certain properties of the virtual network resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualNetworkName">Name of the virtual network resource.</param>
@@ -22082,7 +22256,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to Update certain properties of the virtual network resource.</summary>
+        /// <summary>API to update certain properties of the virtual network resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualNetworkName">Name of the virtual network resource.</param>

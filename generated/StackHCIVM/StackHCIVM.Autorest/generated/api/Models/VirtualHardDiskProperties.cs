@@ -63,11 +63,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
+        /// <summary>Internal Acessors for ProvisioningStatus</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskPropertiesInternal.ProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ProvisioningStatusStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ProvisioningStatusStatus = value ?? null; }
+
+        /// <summary>Internal Acessors for ProvisioningStatusOperationId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskPropertiesInternal.ProvisioningStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ProvisioningStatusOperationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ProvisioningStatusOperationId = value ?? null; }
+
         /// <summary>Internal Acessors for Status</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskPropertiesInternal.Status { get => (this._status = this._status ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.VirtualHardDiskStatus()); set { {_status = value;} } }
 
+        /// <summary>Internal Acessors for StatusErrorCode</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskPropertiesInternal.StatusErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ErrorCode = value ?? null; }
+
+        /// <summary>Internal Acessors for StatusErrorMessage</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskPropertiesInternal.StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ErrorMessage = value ?? null; }
+
         /// <summary>Internal Acessors for StatusProvisioningStatus</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusProvisioningStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskPropertiesInternal.StatusProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ProvisioningStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ProvisioningStatus = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusProvisioningStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskPropertiesInternal.StatusProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ProvisioningStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ProvisioningStatus = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="PhysicalSectorByte" /> property.</summary>
         private int? _physicalSectorByte;
@@ -86,11 +98,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         /// The status of the operation performed on the virtual hard disk [Succeeded, Failed, InProgress]
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string ProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ProvisioningStatusStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ProvisioningStatusStatus = value ?? null; }
+        public string ProvisioningStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ProvisioningStatusStatus; }
 
         /// <summary>The ID of the operation performed on the virtual hard disk</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string ProvisioningStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ProvisioningStatusOperationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ProvisioningStatusOperationId = value ?? null; }
+        public string ProvisioningStatusOperationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ProvisioningStatusOperationId; }
 
         /// <summary>Backing field for <see cref="Status" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatus _status;
@@ -101,11 +113,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
 
         /// <summary>VirtualHardDisk provisioning error code</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string StatusErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ErrorCode = value ?? null; }
+        public string StatusErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ErrorCode; }
 
         /// <summary>Descriptive error message</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inlined)]
-        public string StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ErrorMessage = value ?? null; }
+        public string StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusInternal)Status).ErrorMessage; }
 
         /// <summary>Creates an new <see cref="VirtualHardDiskProperties" /> instance.</summary>
         public VirtualHardDiskProperties()

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new Kubernetes Flux Configuration.
+Create a new Kubernetes Flux Configuration.
 .Description
-create a new Kubernetes Flux Configuration.
+Create a new Kubernetes Flux Configuration.
 .Example
 $kustomizations = @{
     infra=@{

@@ -937,9 +937,9 @@ end {
 
 <#
 .Synopsis
-create a new Kubernetes Flux Configuration.
+Create a new Kubernetes Flux Configuration.
 .Description
-create a new Kubernetes Flux Configuration.
+Create a new Kubernetes Flux Configuration.
 .Example
 $kustomizations = @{
     infra=@{
@@ -1377,9 +1377,9 @@ end {
 
 <#
 .Synopsis
-create a new Kubernetes Source Control Configuration.
+Create a new Kubernetes Source Control Configuration.
 .Description
-create a new Kubernetes Source Control Configuration.
+Create a new Kubernetes Source Control Configuration.
 .Example
 New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01
 New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -Name azpstestk8s -RepositoryUrl http://github.com/xxxx -ClusterType ConnectedClusters
@@ -1629,9 +1629,9 @@ end {
 
 <#
 .Synopsis
-create a new Kubernetes Cluster Extension.
+Create a new Kubernetes Cluster Extension.
 .Description
-create a new Kubernetes Cluster Extension.
+Create a new Kubernetes Cluster Extension.
 .Example
 New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azps_test_group -ExtensionType azuremonitor-containers
 .Example
@@ -2563,9 +2563,9 @@ end {
 
 <#
 .Synopsis
-update an existing Kubernetes Flux Configuration.
+Update an existing Kubernetes Flux Configuration.
 .Description
-update an existing Kubernetes Flux Configuration.
+Update an existing Kubernetes Flux Configuration.
 .Example
 Update-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azps_test_group -GitRepositoryUrl https://github.com/fluxcd/flux2-kustomize-helm-example -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
 .Example
@@ -3051,9 +3051,9 @@ end {
 
 <#
 .Synopsis
-update a new Kubernetes Source Control Configuration.
+Update a new Kubernetes Source Control Configuration.
 .Description
-update a new Kubernetes Source Control Configuration.
+Update a new Kubernetes Source Control Configuration.
 .Example
 {{ Add code here }}
 .Example

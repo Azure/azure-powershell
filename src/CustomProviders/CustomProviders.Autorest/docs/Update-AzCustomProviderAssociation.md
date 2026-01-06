@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCustomProviderAssociation
 
 ## SYNOPSIS
-update an association.
+Update an association.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Update-AzCustomProviderAssociation -InputObject <ICustomProvidersIdentity> [-Tar
 ```
 
 ## DESCRIPTION
-update an association.
+Update an association.
 
 ## EXAMPLES
 

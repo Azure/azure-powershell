@@ -189,9 +189,9 @@ end {
 
 <#
 .Synopsis
-create a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
+Create a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
 .Description
-create a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
+Create a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
 .Example
 $pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzSapMonitorProviderInstance -ResourceGroupName nancyc-hn1 -Name ps-sapmonitorins-t01 -SapMonitorName yemingmonitor -ProviderType SapHana -HanaHostname 'hdb1-0' -HanaDatabaseName 'SYSTEMDB' -HanaDatabaseSqlPort 30015 -HanaDatabaseUsername SYSTEM -HanaDatabasePassword $pwd
@@ -403,9 +403,9 @@ end {
 
 <#
 .Synopsis
-create an identity in the specified subscription and resource group.
+Create an identity in the specified subscription and resource group.
 .Description
-create an identity in the specified subscription and resource group.
+Create an identity in the specified subscription and resource group.
 .Example
 {{ Add code here }}
 .Example
@@ -747,9 +747,9 @@ end {
 
 <#
 .Synopsis
-update an identity in the specified subscription and resource group.
+Update an identity in the specified subscription and resource group.
 .Description
-update an identity in the specified subscription and resource group.
+Update an identity in the specified subscription and resource group.
 .Example
 {{ Add code here }}
 .Example
@@ -917,9 +917,9 @@ end {
 
 <#
 .Synopsis
-update access policies in a key vault in the specified subscription.
+Update access policies in a key vault in the specified subscription.
 .Description
-update access policies in a key vault in the specified subscription.
+Update access policies in a key vault in the specified subscription.
 .Example
 {{ Add code here }}
 .Example
@@ -1102,9 +1102,9 @@ end {
 
 <#
 .Synopsis
-update an identity in the specified subscription and resource group.
+Update an identity in the specified subscription and resource group.
 .Description
-update an identity in the specified subscription and resource group.
+Update an identity in the specified subscription and resource group.
 .Example
 {{ Add code here }}
 .Example

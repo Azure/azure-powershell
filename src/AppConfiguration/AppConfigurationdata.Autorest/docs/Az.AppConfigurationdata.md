@@ -1,6 +1,6 @@
 ---
 Module Name: Az.AppConfigurationdata
-Module Guid: 3b9833a8-dc77-4172-afe7-da97ed36393d
+Module Guid: f04ca17a-c4eb-48ed-8bf2-8e2fe164d6e1
 Download Help Link: https://learn.microsoft.com/powershell/module/az.appconfigurationdata
 Help Version: 1.0.0.0
 Locale: en-US

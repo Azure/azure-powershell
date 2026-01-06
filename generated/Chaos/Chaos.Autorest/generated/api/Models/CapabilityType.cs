@@ -20,11 +20,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
 
         /// <summary>Control plane actions necessary to execute capability type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> AzureRbacAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).AzureRbacAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).AzureRbacAction = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> AzureRbacAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).AzureRbacAction; }
 
         /// <summary>Data plane actions necessary to execute capability type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> AzureRbacDataAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).AzureRbacDataAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).AzureRbacDataAction = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> AzureRbacDataAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).AzureRbacDataAction; }
 
         /// <summary>Localized string of the description.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
@@ -51,47 +51,71 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
+        /// <summary>Internal Acessors for AzureRbacAction</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.AzureRbacAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).AzureRbacAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).AzureRbacAction = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for AzureRbacDataAction</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.AzureRbacDataAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).AzureRbacDataAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).AzureRbacDataAction = value ?? null /* arrayOf */; }
+
         /// <summary>Internal Acessors for Description</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).Description = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).Description = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).DisplayName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).DisplayName = value ?? null; }
 
         /// <summary>Internal Acessors for Kind</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).Kind = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).Kind = value ?? null; }
 
         /// <summary>Internal Acessors for ParametersSchema</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.ParametersSchema { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).ParametersSchema; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).ParametersSchema = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.ParametersSchema { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).ParametersSchema; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).ParametersSchema = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeProperties Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.CapabilityTypeProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for Publisher</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.Publisher { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).Publisher; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).Publisher = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.Publisher { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).Publisher; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).Publisher = value ?? null; }
 
         /// <summary>Internal Acessors for RuntimeProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesRuntimeProperties Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.RuntimeProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).RuntimeProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).RuntimeProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesRuntimeProperties Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.RuntimeProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).RuntimeProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).RuntimeProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for RuntimePropertyKind</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.RuntimePropertyKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).RuntimePropertyKind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).RuntimePropertyKind = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.RuntimePropertyKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).RuntimePropertyKind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).RuntimePropertyKind = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.SystemData()); set { {_systemData = value;} } }
 
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+
         /// <summary>Internal Acessors for TargetType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.TargetType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).TargetType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).TargetType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.TargetType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).TargetType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).TargetType = value ?? null; }
 
         /// <summary>Internal Acessors for Urn</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.Urn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).Urn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).Urn = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypeInternal.Urn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).Urn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)Property).Urn = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__resource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__resource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__resource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
@@ -129,27 +153,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedByType; }
 
         /// <summary>String of the Target Type that this Capability Type extends.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]

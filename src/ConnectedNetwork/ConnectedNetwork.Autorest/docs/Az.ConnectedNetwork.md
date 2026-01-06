@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ConnectedNetwork
-Module Guid: a88943cd-acc4-4576-9d7a-ffa6719d34cc
+Module Guid: 7abf5ee3-7968-4b9f-8f54-03cd3de997e4
 Download Help Link: https://learn.microsoft.com/powershell/module/az.connectednetwork
 Help Version: 1.0.0.0
 Locale: en-US
@@ -42,10 +42,10 @@ Gets the preview information of a vendor sku.
 Create an in-memory object for AzureStackEdgeFormat.
 
 ### [New-AzConnectedNetworkDevice](New-AzConnectedNetworkDevice.md)
-create a device.
+Create a device.
 
 ### [New-AzConnectedNetworkFunction](New-AzConnectedNetworkFunction.md)
-create a network function resource.
+Create a network function resource.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 
@@ -65,20 +65,20 @@ Create an in-memory object for NetworkInterfaceIPConfiguration.
 Create an in-memory object for NetworkInterface.
 
 ### [New-AzConnectedNetworkVendor](New-AzConnectedNetworkVendor.md)
-create a vendor.
+Create a vendor.
 
 ### [New-AzConnectedNetworkVendorFunction](New-AzConnectedNetworkVendorFunction.md)
-create a vendor network function.
+Create a vendor network function.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 
 ### [New-AzConnectedNetworkVendorSku](New-AzConnectedNetworkVendorSku.md)
-create a sku.
+Create a sku.
 This operation can take up to 2 hours to complete.
 This is expected service behavior.
 
 ### [New-AzConnectedNetworkVendorSkuPreview](New-AzConnectedNetworkVendorSkuPreview.md)
-create preview information of a vendor sku.
+Create preview information of a vendor sku.
 
 ### [Remove-AzConnectedNetworkDevice](Remove-AzConnectedNetworkDevice.md)
 Deletes the specified device.
@@ -109,24 +109,24 @@ Starts a role instance of a vendor network function.
 Powers off (stop) a role instance of a vendor network function.
 
 ### [Update-AzConnectedNetworkDeviceTag](Update-AzConnectedNetworkDeviceTag.md)
-update device tags.
+Update device tags.
 
 ### [Update-AzConnectedNetworkFunctionTag](Update-AzConnectedNetworkFunctionTag.md)
-update the tags for the network function resource.
+Update the tags for the network function resource.
 
 ### [Update-AzConnectedNetworkVendor](Update-AzConnectedNetworkVendor.md)
-update a vendor.
+Update a vendor.
 
 ### [Update-AzConnectedNetworkVendorFunction](Update-AzConnectedNetworkVendorFunction.md)
-update a vendor network function.
+Update a vendor network function.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 
 ### [Update-AzConnectedNetworkVendorSku](Update-AzConnectedNetworkVendorSku.md)
-update a sku.
+Update a sku.
 This operation can take up to 2 hours to complete.
 This is expected service behavior.
 
 ### [Update-AzConnectedNetworkVendorSkuPreview](Update-AzConnectedNetworkVendorSkuPreview.md)
-update preview information of a vendor sku.
+Update preview information of a vendor sku.
 

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.NativeStorageClassTy
 https://learn.microsoft.com/powershell/module/Az.KubernetesRuntime/new-azkubernetesruntimenativestorageclasstypepropertiesobject
 #>
 function New-AzKubernetesRuntimeNativeStorageClassTypePropertiesObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.NativeStorageClassTypeProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

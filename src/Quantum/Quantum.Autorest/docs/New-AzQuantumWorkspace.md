@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzQuantumWorkspace
 
 ## SYNOPSIS
-create a workspace resource.
+Create a workspace resource.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzQuantumWorkspace -Name <String> -ResourceGroupName <String> -JsonString <S
 ```
 
 ## DESCRIPTION
-create a workspace resource.
+Create a workspace resource.
 
 ## EXAMPLES
 

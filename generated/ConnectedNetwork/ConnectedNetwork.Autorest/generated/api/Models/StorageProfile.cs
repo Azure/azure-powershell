@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IOSDisk Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IStorageProfileInternal.OSDisk { get => (this._oSDisk = this._oSDisk ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.OSDisk()); set { {_oSDisk = value;} } }
 
         /// <summary>Internal Acessors for OSDiskVhd</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVirtualHardDisk Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IStorageProfileInternal.OSDiskVhd { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IOSDiskInternal)OSDisk).Vhd; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IOSDiskInternal)OSDisk).Vhd = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVirtualHardDisk Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IStorageProfileInternal.OSDiskVhd { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IOSDiskInternal)OSDisk).Vhd; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IOSDiskInternal)OSDisk).Vhd = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="OSDisk" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IOSDisk _oSDisk;

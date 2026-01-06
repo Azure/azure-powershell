@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a KPack build.
+Create a KPack build.
 .Description
-create a KPack build.
+Create a KPack build.
 .Example
 {{ Add code here }}
 .Example

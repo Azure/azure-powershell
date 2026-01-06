@@ -23,6 +23,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models
         /// <summary>Internal Acessors for OperationStatus</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IOperationStatus Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.ISensitiveDataDiscoveryPropertiesInternal.OperationStatus { get => (this._operationStatus = this._operationStatus ?? new Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.OperationStatus()); set { {_operationStatus = value;} } }
 
+        /// <summary>Internal Acessors for OperationStatusCode</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.ISensitiveDataDiscoveryPropertiesInternal.OperationStatusCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IOperationStatusInternal)OperationStatus).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IOperationStatusInternal)OperationStatus).Code = value ?? null; }
+
+        /// <summary>Internal Acessors for OperationStatusMessage</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.ISensitiveDataDiscoveryPropertiesInternal.OperationStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IOperationStatusInternal)OperationStatus).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IOperationStatusInternal)OperationStatus).Message = value ?? null; }
+
         /// <summary>Backing field for <see cref="OperationStatus" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IOperationStatus _operationStatus;
 
@@ -34,11 +40,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models
 
         /// <summary>The operation status code.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Origin(Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.PropertyOrigin.Inlined)]
-        public string OperationStatusCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IOperationStatusInternal)OperationStatus).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IOperationStatusInternal)OperationStatus).Code = value ?? null; }
+        public string OperationStatusCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IOperationStatusInternal)OperationStatus).Code; }
 
         /// <summary>Additional information regarding the success/failure of the operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Origin(Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.PropertyOrigin.Inlined)]
-        public string OperationStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IOperationStatusInternal)OperationStatus).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IOperationStatusInternal)OperationStatus).Message = value ?? null; }
+        public string OperationStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IOperationStatusInternal)OperationStatus).Message; }
 
         /// <summary>Creates an new <see cref="SensitiveDataDiscoveryProperties" /> instance.</summary>
         public SensitiveDataDiscoveryProperties()

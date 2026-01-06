@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzAppConfigurationStore
 
 ## SYNOPSIS
-create a configuration store with the specified parameters.
+Create a configuration store with the specified parameters.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ New-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -JsonStri
 ```
 
 ## DESCRIPTION
-create a configuration store with the specified parameters.
+Create a configuration store with the specified parameters.
 
 ## EXAMPLES
 

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.LogicAppReceiver
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactiongrouplogicappreceiverobject
 #>
 function New-AzActionGroupLogicAppReceiverObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.LogicAppReceiver')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

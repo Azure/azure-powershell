@@ -36,19 +36,12 @@ Delete a EdgeActionExecutionFilter
 
 ## EXAMPLES
 
-### Example 1: Remove an execution filter by name
+### Example 1: Delete an execution filter
 ```powershell
-Remove-AzEdgeActionExecutionFilter -EdgeActionName "myEdgeAction" -ResourceGroupName "myResourceGroup" -ExecutionFilter "myFilter"
+Remove-AzEdgeActionExecutionFilter -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Name "myFilter"
 ```
 
-This command removes the specified execution filter from the edge action.
-
-### Example 2: Remove an execution filter using pipeline input
-```powershell
-Get-AzEdgeActionExecutionFilter -EdgeActionName "myEdgeAction" -ResourceGroupName "myResourceGroup" -ExecutionFilter "myFilter" | Remove-AzEdgeActionExecutionFilter
-```
-
-This command retrieves an execution filter and pipes it to remove the resource.
+Deletes the specified execution filter from the edge action.
 
 ## PARAMETERS
 

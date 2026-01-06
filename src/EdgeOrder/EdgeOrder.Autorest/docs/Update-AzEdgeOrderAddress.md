@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEdgeOrderAddress
 
 ## SYNOPSIS
-update the properties of an existing address.
+Update the properties of an existing address.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ Update-AzEdgeOrderAddress -Name <String> -ResourceGroupName <String> -JsonString
 ```
 
 ## DESCRIPTION
-update the properties of an existing address.
+Update the properties of an existing address.
 
 ## EXAMPLES
 

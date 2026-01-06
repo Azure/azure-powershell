@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Dashboard
-Module Guid: f4a10d49-86e6-4794-9efc-fc62829e937b
+Module Guid: cbd24577-2885-412b-b05d-3d1dbc77a3de
 Download Help Link: https://learn.microsoft.com/powershell/module/az.dashboard
 Help Version: 1.0.0.0
 Locale: en-US

@@ -64,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ILinuxConfiguration Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IOSProfileInternal.LinuxConfiguration { get => (this._linuxConfiguration = this._linuxConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.LinuxConfiguration()); set { {_linuxConfiguration = value;} } }
 
         /// <summary>Internal Acessors for LinuxConfigurationSsh</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISshConfiguration Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IOSProfileInternal.LinuxConfigurationSsh { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ILinuxConfigurationInternal)LinuxConfiguration).Ssh; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ILinuxConfigurationInternal)LinuxConfiguration).Ssh = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISshConfiguration Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IOSProfileInternal.LinuxConfigurationSsh { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ILinuxConfigurationInternal)LinuxConfiguration).Ssh; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ILinuxConfigurationInternal)LinuxConfiguration).Ssh = value ?? null /* model class */; }
 
         /// <summary>The list of SSH public keys used to authenticate with linux based VMs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PropertyOrigin.Inlined)]

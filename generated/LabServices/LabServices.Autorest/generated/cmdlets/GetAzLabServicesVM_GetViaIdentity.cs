@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzLabServicesVM_GetViaIdentity")]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.CmdletBreakingChange("18.2.0", "-", "2027/06/28", ChangeDescription = "Azure Lab Services will be retired on June 28, 2027, please see details on https://azure.microsoft.com/en-us/updates?id=azure-lab-services-is-being-retired.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.GenericBreakingChange("", "18.2.0", "-", "2027/06/28", ChangeDescription = "Azure Lab Services will be retired on June 28, 2027, please see details on https://azure.microsoft.com/en-us/updates?id=azure-lab-services-is-being-retired.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.LabServices.Description(@"Returns the properties for a lab virtual machine.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.LabServices.Generated]
