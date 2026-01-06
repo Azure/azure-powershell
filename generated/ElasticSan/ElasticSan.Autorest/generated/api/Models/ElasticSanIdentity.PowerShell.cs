@@ -113,10 +113,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).ElasticSanName = (string) content.GetValueForProperty("ElasticSanName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).ElasticSanName, global::System.Convert.ToString);
             }
-            if (content.Contains("PrivateEndpointConnectionName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
-            }
             if (content.Contains("VolumeGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).VolumeGroupName = (string) content.GetValueForProperty("VolumeGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).VolumeGroupName, global::System.Convert.ToString);
@@ -124,6 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             if (content.Contains("VolumeName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).VolumeName = (string) content.GetValueForProperty("VolumeName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).VolumeName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
             }
             if (content.Contains("SnapshotName"))
             {
@@ -162,10 +162,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).ElasticSanName = (string) content.GetValueForProperty("ElasticSanName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).ElasticSanName, global::System.Convert.ToString);
             }
-            if (content.Contains("PrivateEndpointConnectionName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
-            }
             if (content.Contains("VolumeGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).VolumeGroupName = (string) content.GetValueForProperty("VolumeGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).VolumeGroupName, global::System.Convert.ToString);
@@ -173,6 +169,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             if (content.Contains("VolumeName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).VolumeName = (string) content.GetValueForProperty("VolumeName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).VolumeName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
             }
             if (content.Contains("SnapshotName"))
             {

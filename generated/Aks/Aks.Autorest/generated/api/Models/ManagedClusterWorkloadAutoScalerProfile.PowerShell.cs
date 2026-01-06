@@ -116,9 +116,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)this).Keda = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileKeda) content.GetValueForProperty("Keda",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)this).Keda, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterWorkloadAutoScalerProfileKedaTypeConverter.ConvertFrom);
             }
+            if (content.Contains("VerticalPodAutoscaler"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)this).VerticalPodAutoscaler = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler) content.GetValueForProperty("VerticalPodAutoscaler",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)this).VerticalPodAutoscaler, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerTypeConverter.ConvertFrom);
+            }
             if (content.Contains("KedaEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)this).KedaEnabled = (bool?) content.GetValueForProperty("KedaEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)this).KedaEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("VerticalPodAutoscalerEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)this).VerticalPodAutoscalerEnabled = (bool?) content.GetValueForProperty("VerticalPodAutoscalerEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)this).VerticalPodAutoscalerEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -141,9 +149,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)this).Keda = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileKeda) content.GetValueForProperty("Keda",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)this).Keda, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterWorkloadAutoScalerProfileKedaTypeConverter.ConvertFrom);
             }
+            if (content.Contains("VerticalPodAutoscaler"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)this).VerticalPodAutoscaler = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler) content.GetValueForProperty("VerticalPodAutoscaler",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)this).VerticalPodAutoscaler, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerTypeConverter.ConvertFrom);
+            }
             if (content.Contains("KedaEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)this).KedaEnabled = (bool?) content.GetValueForProperty("KedaEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)this).KedaEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("VerticalPodAutoscalerEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)this).VerticalPodAutoscalerEnabled = (bool?) content.GetValueForProperty("VerticalPodAutoscalerEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)this).VerticalPodAutoscalerEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }

@@ -48,5 +48,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualApplianceSiteCRUD");
         }
-    }
+
+		    [Fact]
+		    [Trait(Category.AcceptanceType, Category.CheckIn)]
+		    [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+		    public void TestNVAInVNetCRUD()
+		    {
+			    TestRunner.RunTestScript("Test-NVAInVnetCRUD");
+		    }
+	}
 }

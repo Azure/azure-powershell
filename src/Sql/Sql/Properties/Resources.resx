@@ -772,11 +772,20 @@
   <data name="DeletedServerNotFound" xml:space="preserve">
     <value>No deleted server named '{0}' found in location '{1}' that can be restored.</value>
   </data>
+  <data name="DeletedServerNotFoundInLocation" xml:space="preserve">
+    <value>No deleted server named '{0}' found in location '{1}'.</value>
+  </data>
+  <data name="ResourceGroupMismatchForRestore" xml:space="preserve">
+    <value>The specified resource group '{0}' does not match the deleted server's original resource group '{1}'. Server '{2}' must be restored to its original resource group.</value>
+  </data>
+  <data name="ResourceGroupNotFoundForRestore" xml:space="preserve">
+    <value>Cannot restore deleted server '{0}' because resource group '{1}' does not exist. Please create the resource group before restoring the server.</value>
+  </data>
   <data name="InvalidSoftDeleteRetentionDaysForDisablingSoftDelete" xml:space="preserve">
     <value>SoftDeleteRetentionDays can only be set to 0 when EnableSoftDelete is false.</value>
   </data>
   <data name="InvalidSoftDeleteRetentionDaysRange" xml:space="preserve">
-    <value>SoftDeleteRetentionDays must be between 1 and 35 when EnableSoftDelete is true.</value>
+    <value>SoftDeleteRetentionDays must be between 1 and 7 when EnableSoftDelete is true.</value>
   </data>
   <data name="LockAzureSqlDatabaseLongTermRetentionBackupDescription" xml:space="preserve">
     <value>Locking the time-based immutability for the Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}'.</value>

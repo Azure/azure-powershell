@@ -17,6 +17,9 @@ Gets function apps in a subscription.
 ### [Get-AzFunctionAppAvailableLocation](Get-AzFunctionAppAvailableLocation.md)
 Gets the location where a function app for the given os and plan type is available.
 
+### [Get-AzFunctionAppFlexConsumptionRuntime](Get-AzFunctionAppFlexConsumptionRuntime.md)
+Gets the Flex Consumption function app runtimes supported at the specified location.
+
 ### [Get-AzFunctionAppPlan](Get-AzFunctionAppPlan.md)
 Get function apps plans in a subscription.
 

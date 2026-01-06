@@ -23,5 +23,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// User agent pools are primarily for hosting your application pods.
         /// </summary>
         public const string User = "User";
+        /// <summary>
+        /// Gateway agent pools are dedicated to providing static egress IPs to pods.
+        /// For more details, see https://aka.ms/aks/static-egress-gateway.
+        /// </summary>
+        public const string Gateway = "Gateway";
     }
 }

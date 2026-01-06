@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
     using Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PowerShell;
 
     /// <summary>
-    /// For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
+    /// AADProfile specifies attributes for Azure Active Directory integration. For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ManagedClusterAadProfileTypeConverter))]
     public partial class ManagedClusterAadProfile
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             return ToJsonString();
         }
     }
-    /// For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
+    /// AADProfile specifies attributes for Azure Active Directory integration. For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
     [System.ComponentModel.TypeConverter(typeof(ManagedClusterAadProfileTypeConverter))]
     public partial interface IManagedClusterAadProfile
 

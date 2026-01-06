@@ -35,10 +35,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Vault key management service is disabled, leave the field empty.
         /// </param>
 
-        /// <param name="keyVaultNetworkAccess">Network access of key vault. The possible values are `Public` and
-        /// `Private`. `Public` means the key vault allows public access from all
-        /// networks. `Private` means the key vault disables public access and enables
-        /// private link. The default value is `Public`.
+        /// <param name="keyVaultNetworkAccess">Network access of the key vault. Network access of key vault. The possible
+        /// values are `Public` and `Private`. `Public` means the key vault allows
+        /// public access from all networks. `Private` means the key vault disables
+        /// public access and enables private link. The default value is `Public`.
         /// Possible values include: &#39;Public&#39;, &#39;Private&#39;</param>
 
         /// <param name="keyVaultResourceId">Resource ID of key vault. When keyVaultNetworkAccess is `Private`, this
@@ -79,10 +79,11 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string KeyId {get; set; }
 
         /// <summary>
-        /// Gets or sets network access of key vault. The possible values are `Public`
-        /// and `Private`. `Public` means the key vault allows public access from all
-        /// networks. `Private` means the key vault disables public access and enables
-        /// private link. The default value is `Public`. Possible values include: &#39;Public&#39;, &#39;Private&#39;
+        /// Gets or sets network access of the key vault. Network access of key vault.
+        /// The possible values are `Public` and `Private`. `Public` means the key
+        /// vault allows public access from all networks. `Private` means the key vault
+        /// disables public access and enables private link. The default value is
+        /// `Public`. Possible values include: &#39;Public&#39;, &#39;Private&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "keyVaultNetworkAccess")]
         public string KeyVaultNetworkAccess {get; set; }
