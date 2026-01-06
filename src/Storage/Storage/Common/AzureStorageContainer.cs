@@ -262,7 +262,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
                 string fullUri = cloubContainer.Uri.ToString();
                 string sas = Util.GetSASStringWithoutQuestionMark(cloubContainer.ServiceClient.Credentials.SASToken);
                 fullUri = fullUri + "?" + sas;
-                if (context.Track2OauthToken != null)
+                if (context != null && context.Track2OauthToken != null)
                 {
                     blobContainerClient = new BlobContainerClient(new Uri(fullUri), context.Track2OauthToken, options);
                 }

@@ -487,7 +487,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 if (blobType == null)
                 {
-                    if (context.Track2OauthToken != null)
+                    if (context != null && context.Track2OauthToken != null)
                     {
                         blobClient = new BlobBaseClient(blobUri, context.Track2OauthToken, options);
                     }
@@ -501,7 +501,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     switch (blobType.Value)
                     {
                         case global::Azure.Storage.Blobs.Models.BlobType.Page:
-                            if (context.Track2OauthToken != null)
+                            if (context != null && context.Track2OauthToken != null)
                             {
                                 blobClient = new PageBlobClient(blobUri, context.Track2OauthToken, options);
                             }
@@ -511,7 +511,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                             }
                             break;
                         case global::Azure.Storage.Blobs.Models.BlobType.Append:
-                            if (context.Track2OauthToken != null)
+                            if (context != null && context.Track2OauthToken != null)
                             {
                                 blobClient = new AppendBlobClient(blobUri, context.Track2OauthToken, options);
                             }
@@ -521,7 +521,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                             }
                             break;
                         default: //Block
-                            if (context.Track2OauthToken != null)
+                            if (context != null && context.Track2OauthToken != null)
                             {
                                 blobClient = new BlockBlobClient(blobUri, context.Track2OauthToken, options);
                             }
@@ -786,7 +786,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     connectionString = connectionString.Replace("SharedAccessSignature=?", "SharedAccessSignature=");
                     shareServiceClient = new ShareServiceClient(connectionString, options);
 
-                    if (context.Track2OauthToken != null)
+                    if (context != null && context.Track2OauthToken != null)
                     {
                         if (context.ShareTokenIntent != null)
                         {

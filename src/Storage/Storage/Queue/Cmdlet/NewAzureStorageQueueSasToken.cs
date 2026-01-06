@@ -61,11 +61,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Delegation object id")]
+        [Parameter(Mandatory = false, HelpMessage = "This value specifies the Entra ID of the user would is authorized to use the resulting SAS URL. The resulting SAS URL must be used in conjunction with an Entra ID token that has been issued to the user specified in this value. This parameter can only be specified when input Storage Context is OAuth based.")]
         [ValidateNotNullOrEmpty]
-        public string DelegationObjectID { get; set; }
+        public string DelegatedUserObjectId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
         [ValidateSet("HttpsOnly", "HttpsOrHttp", IgnoreCase = true),]
@@ -116,9 +114,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         {
             if (String.IsNullOrEmpty(Name)) return;
 
-            // When the input context is Oauth bases, can't generate normal SAS, but UserDelegationSas
+            // When the input context is OAuth based, can't generate normal SAS, but UserDelegationSas
             bool generateUserDelegationSas = false;
-            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount.Credentials != null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
+            if (Channel != null && Channel.StorageContext != null && (
+                (Channel.StorageContext.StorageAccount.Credentials != null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
+                || (Channel.StorageContext.Track2OauthToken != null)))
             {
                 if (ShouldProcess(Name, "Generate User Delegation SAS, since input Storage Context is OAuth based."))
                 {
@@ -133,6 +133,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
                     return;
                 }
             }
+            else
+            {
+                if (this.DelegatedUserObjectId != null)
+                {
+                    throw new ArgumentException("DelegatedUserObjectId can only be specified when input Storage Context is OAuth based.", "DelegatedUserObjectId");
+                }
+            }
 
             QueueClient queueClient = Util.GetTrack2QueueClient(this.Name, (AzureStorageContext)this.Context, this.ClientOptions);
             QueueSignedIdentifier identifier = null;
@@ -141,7 +148,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
                 identifier = SasTokenHelper.GetQueueSignedIdentifier(queueClient, this.Policy, CmdletCancellationToken);
             }
 
-            QueueSasBuilder sasBuilder = SasTokenHelper.SetQueueSasbuilder(queueClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol, this.DelegationObjectID);
+            QueueSasBuilder sasBuilder = SasTokenHelper.SetQueueSasbuilder(queueClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol, this.DelegatedUserObjectId);
             string sasToken = SasTokenHelper.GetQueueSharedAccessSignature((AzureStorageContext)this.Context, sasBuilder, generateUserDelegationSas, CmdletCancellationToken);
 
             // remove prefix "?" of SAS if any

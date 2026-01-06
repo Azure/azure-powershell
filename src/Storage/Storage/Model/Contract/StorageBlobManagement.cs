@@ -68,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         }
         public bool IsSasWithOAuthCredential()
         {
-            return this.BlobClient.Credentials.IsSAS && this.StorageContext.Track2OauthToken != null;
+            return this.BlobClient != null && this.BlobClient.Credentials.IsSAS && this.StorageContext != null && this.StorageContext.Track2OauthToken != null;
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                 }
                 else //sas, Anonymous
                 {
-                    if (this.StorageContext.Track2OauthToken != null)
+                    if (this.StorageContext != null && this.StorageContext.Track2OauthToken != null)
                     {
                         blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint, this.StorageContext.Track2OauthToken, options);
                     }

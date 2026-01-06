@@ -538,7 +538,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
                             if (sourceChannel.StorageContext != null && sourceChannel.StorageContext.Track2OauthToken != null)
                             {
-                                string oauthToken = sourceChannel.StorageContext.Track2OauthToken.GetToken(new TokenRequestContext(), this.CmdletCancellationToken).Token;
+                                string oauthToken = sourceChannel.StorageContext.Track2OauthToken.GetToken(null, this.CmdletCancellationToken).TokenValue;
                                 options.SourceAuthentication = new HttpAuthorization("Bearer", oauthToken);
                             }
 

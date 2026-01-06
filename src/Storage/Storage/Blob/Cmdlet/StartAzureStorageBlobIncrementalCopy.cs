@@ -206,6 +206,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             IStorageBlobManagement destChannel = GetDestinationChannel();
             IStorageBlobManagement srcChannel = Channel;
 
+            if (srcChannel.IsSasWithOAuthCredential() || destChannel.IsSasWithOAuthCredential())
+            {
+                throw new InvalidOperationException("Blob Async copy doesn't support user delegation SAS with OAuth credential.");
+            }
+
             string target = string.Empty;
             Action copyAction = null;
             switch (ParameterSetName)
