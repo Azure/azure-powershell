@@ -18,7 +18,7 @@ Starts to copy a source file.
 Start-AzStorageFileCopy -SrcBlobName <String> -SrcContainerName <String> -DestShareName <String>
  -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>]
  [-DisAllowDestTrailingDot] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Start-AzStorageFileCopy -SrcBlobName <String> -SrcContainerName <String> -DestSh
 Start-AzStorageFileCopy -SrcBlobName <String> -SrcContainer <CloudBlobContainer> -DestShareName <String>
  -DestFilePath <String> [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobInstanceFilePath
@@ -35,7 +35,7 @@ Start-AzStorageFileCopy -SrcBlobName <String> -SrcContainer <CloudBlobContainer>
 Start-AzStorageFileCopy -SrcBlob <CloudBlob> -DestShareName <String> -DestFilePath <String>
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobInstanceFileInstance
@@ -43,7 +43,7 @@ Start-AzStorageFileCopy -SrcBlob <CloudBlob> -DestShareName <String> -DestFilePa
 Start-AzStorageFileCopy -SrcBlob <CloudBlob> [-DestShareFileClient <ShareFileClient>]
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareName
@@ -53,7 +53,7 @@ Start-AzStorageFileCopy -SrcFilePath <String> -SrcShareName <String> -DestShareN
  [-DisAllowSourceTrailingDot] [-DisAllowDestTrailingDot] [-FileMode <String>] [-Owner <String>]
  [-Group <String>] [-OwnerCopyMode <String>] [-FileModeCopyMode <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -63,7 +63,7 @@ Start-AzStorageFileCopy -SrcFilePath <String> -SrcShare <ShareClient> -DestShare
  -DestFilePath <String> [-DestContext <IStorageContext>] [-FileMode <String>] [-Owner <String>]
  [-Group <String>] [-OwnerCopyMode <String>] [-FileModeCopyMode <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -73,7 +73,7 @@ Start-AzStorageFileCopy -SrcFile <ShareFileClient> -DestShareName <String> -Dest
  [-DestContext <IStorageContext>] [-FileMode <String>] [-Owner <String>] [-Group <String>]
  [-OwnerCopyMode <String>] [-FileModeCopyMode <String>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileInstanceToFileInstance
@@ -82,7 +82,7 @@ Start-AzStorageFileCopy -SrcFile <ShareFileClient> [-DestShareFileClient <ShareF
  [-DestContext <IStorageContext>] [-FileMode <String>] [-Owner <String>] [-Group <String>]
  [-OwnerCopyMode <String>] [-FileModeCopyMode <String>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UriToFilePath
@@ -90,7 +90,7 @@ Start-AzStorageFileCopy -SrcFile <ShareFileClient> [-DestShareFileClient <ShareF
 Start-AzStorageFileCopy -AbsoluteUri <String> -DestShareName <String> -DestFilePath <String>
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UriToFileInstance
@@ -98,7 +98,7 @@ Start-AzStorageFileCopy -AbsoluteUri <String> -DestShareName <String> -DestFileP
 Start-AzStorageFileCopy -AbsoluteUri <String> [-DestShareFileClient <ShareFileClient>]
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -391,6 +391,21 @@ Only applicable to NFS Files. The value "Override" need to be specified together
 Type: System.String
 Parameter Sets: ShareName, ShareInstance, FileInstanceToFilePath, FileInstanceToFileInstance
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

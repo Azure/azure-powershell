@@ -18,7 +18,7 @@ Uploads the contents of a file.
 Set-AzStorageFileContent [-ShareName] <String> [-Source] <String> [[-Path] <String>] [-FileMode <String>]
  [-Owner <String>] [-Group <String>] [-PassThru] [-Force] [-AsJob] [-DisAllowTrailingDot]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Set-AzStorageFileContent [-ShareName] <String> [-Source] <String> [[-Path] <Stri
 Set-AzStorageFileContent [-ShareClient] <ShareClient> [-Source] <String> [[-Path] <String>]
  [-FileMode <String>] [-Owner <String>] [-Group <String>] [-PassThru] [-Force] [-AsJob]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ Set-AzStorageFileContent [-ShareClient] <ShareClient> [-Source] <String> [[-Path
 Set-AzStorageFileContent [-ShareDirectoryClient] <ShareDirectoryClient> [-Source] <String> [[-Path] <String>]
  [-FileMode <String>] [-Owner <String>] [-Group <String>] [-PassThru] [-Force] [-AsJob]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
@@ -288,6 +288,21 @@ Keep the source File SMB properties (File Attributes, File Creation Time, File L
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

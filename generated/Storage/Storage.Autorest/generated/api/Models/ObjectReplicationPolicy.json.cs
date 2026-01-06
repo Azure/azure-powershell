@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            __resource = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Resource(json);
+            __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ProxyResource(json);
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyProperties.FromJson(__jsonProperties) : _property;}
             AfterFromJson(json);
         }
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return container;
             }
-            __resource?.ToJson(container, serializationMode);
+            __proxyResource?.ToJson(container, serializationMode);
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AfterToJson(ref container);
             return container;

@@ -457,6 +457,18 @@ Modifies a Storage account.
 ### [Set-AzStorageAccountManagementPolicy](Set-AzStorageAccountManagementPolicy.md)
 Creates or modifies the management policy of an Azure Storage account.
 
+### [Set-AzStorageAccountManagementPolicy](Set-AzStorageAccountManagementPolicy.md)
+Creates or modifies the management policy of an Azure Storage account.
+
+### [Set-AzStorageAccountManagementPolicy](Set-AzStorageAccountManagementPolicy.md)
+Creates or modifies the management policy of an Azure Storage account.
+
+### [Set-AzStorageAccountManagementPolicy](Set-AzStorageAccountManagementPolicy.md)
+Creates or modifies the management policy of an Azure Storage account.
+
+### [Set-AzStorageAccountManagementPolicy](Set-AzStorageAccountManagementPolicy.md)
+Creates or modifies the management policy of an Azure Storage account.
+
 ### [Set-AzStorageBlobContent](Set-AzStorageBlobContent.md)
 Uploads a local file to an Azure Storage blob.
 

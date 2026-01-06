@@ -18,7 +18,7 @@ Update-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <Str
  [-QuotaGiB <Int32>] [-Metadata <Hashtable>] [-AccessTier <String>] [-RootSquash <String>]
  [-ProvisionedBandwidthMibps <Int32>] [-ProvisionedIops <Int32>] [-PaidBurstingEnabled <Boolean>]
  [-PaidBurstingMaxIops <Int32>] [-PaidBurstingMaxBandwidthMibps <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ Update-AzRmStorageShare -Name <String> -StorageAccount <PSStorageAccount> [-Quot
  [-Metadata <Hashtable>] [-AccessTier <String>] [-RootSquash <String>] [-ProvisionedBandwidthMibps <Int32>]
  [-ProvisionedIops <Int32>] [-PaidBurstingEnabled <Boolean>] [-PaidBurstingMaxIops <Int32>]
  [-PaidBurstingMaxBandwidthMibps <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareResourceId
@@ -36,7 +36,7 @@ Update-AzRmStorageShare -Name <String> -StorageAccount <PSStorageAccount> [-Quot
 Update-AzRmStorageShare [-ResourceId] <String> [-QuotaGiB <Int32>] [-Metadata <Hashtable>]
  [-AccessTier <String>] [-RootSquash <String>] [-ProvisionedBandwidthMibps <Int32>] [-ProvisionedIops <Int32>]
  [-PaidBurstingEnabled <Boolean>] [-PaidBurstingMaxIops <Int32>] [-PaidBurstingMaxBandwidthMibps <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ Update-AzRmStorageShare [-ResourceId] <String> [-QuotaGiB <Int32>] [-Metadata <H
 Update-AzRmStorageShare -InputObject <PSShare> [-QuotaGiB <Int32>] [-Metadata <Hashtable>]
  [-AccessTier <String>] [-RootSquash <String>] [-ProvisionedBandwidthMibps <Int32>] [-ProvisionedIops <Int32>]
  [-PaidBurstingEnabled <Boolean>] [-PaidBurstingMaxIops <Int32>] [-PaidBurstingMaxBandwidthMibps <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -268,6 +268,21 @@ The maximum paid bursting IOPS for the share. This property is only for file sha
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
