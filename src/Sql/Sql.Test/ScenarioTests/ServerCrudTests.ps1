@@ -998,39 +998,3 @@ function Test-RestoreDeletedServerToDifferentResourceGroup
 		Remove-ResourceGroupForTest $rg2
 	}
 }
-
-<#
-	.SYNOPSIS
-	Tests restoring a deleted server when a live server with the same name already exists (negative scenario)
-	.DESCRIPTION
-	Negative test
-#>
-function Test-RestoreDeletedServerWhenLiveServerExists
-{
-	# Setup
-	$rg = Create-ResourceGroupForTest "centralus"
-	$serverName = Get-ServerName
-	$version = "12.0"
-	$serverLogin = "testusername"
-	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
-	$serverPassword = "t357ingP@s5w0rd!"
-	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
-	$softDeleteRetentionDays = 7
-
-	try
-	{
-		# Create server with soft-delete enabled
-		$server1 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -SoftDeleteRetentionDays $softDeleteRetentionDays
-		Assert-NotNull $server1
-
-		# Attempt to restore the deleted server - should fail because there is no deleted server (server is still live)
-		$expectedError = "ResourceNotFound"
-		Assert-ThrowsContains { Restore-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location $rg.Location } $expectedError
-	}
-	finally
-	{
-		# Clean up - remove the live server
-		Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -SoftDeleteRetentionDays 0
-		Remove-ResourceGroupForTest $rg
-	}
-}

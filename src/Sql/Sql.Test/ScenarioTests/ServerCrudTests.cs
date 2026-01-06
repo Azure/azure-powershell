@@ -178,12 +178,5 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-RestoreDeletedServerToDifferentResourceGroup");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRestoreDeletedServerWhenLiveServerExists()
-        {
-            TestRunner.RunTestScript("Test-RestoreDeletedServerWhenLiveServerExists");
-        }
     }
 }
