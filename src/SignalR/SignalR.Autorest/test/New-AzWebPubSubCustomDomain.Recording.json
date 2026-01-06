@@ -18,14 +18,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "f3e7aec3-ce56-4375-858f-37f383c19326" ],
-        "x-ms-correlation-request-id": [ "f3e7aec3-ce56-4375-858f-37f383c19326" ],
-        "x-ms-routing-request-id": [ "EASTUS:20251223T013415Z:f3e7aec3-ce56-4375-858f-37f383c19326" ],
+        "x-ms-request-id": [ "5d2a56d2-0ff3-4454-834a-2c608a745f88" ],
+        "x-ms-correlation-request-id": [ "5d2a56d2-0ff3-4454-834a-2c608a745f88" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260106T031530Z:5d2a56d2-0ff3-4454-834a-2c608a745f88" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A3F1FDA91308473E922BA90F38433173 Ref B: SG2AA1070304023 Ref C: 2025-12-23T01:34:15Z" ],
-        "Date": [ "Tue, 23 Dec 2025 01:34:15 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 9B5A5D2D9D8D4DD5AA3164948C9FAD63 Ref B: SG2AA1070303031 Ref C: 2026-01-06T03:15:30Z" ],
+        "Date": [ "Tue, 06 Jan 2026 03:15:30 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "232" ],
