@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Run restricted data extraction on a bare metal machine
 ```powershell
-{{ Add code here }}
+$command = @{
+    command = "command"
+    arguments = "commandArguments"
+}
+Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -BareMetalMachineName bmmName -ResourceGroupName resourcceGroupName -SubscriptionId subscriptionId -Command $command -LimitTimeSecond 60
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This example runs a restricted data extraction command on the specified bare metal machine with a 60-second timeout.
 
