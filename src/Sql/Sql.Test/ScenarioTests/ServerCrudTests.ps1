@@ -26,6 +26,7 @@ function Test-CreateServer
 	$serverName = Get-ServerName
 	$version = "12.0"
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 
@@ -63,6 +64,7 @@ function Test-UpdateServer
 	try
 	{
 		# Test using parameters
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$serverPassword = "n3wc00lP@55w0rd"
 		$secureString = ConvertTo-SecureString $serverPassword -AsPlainText -Force
 
@@ -75,6 +77,7 @@ function Test-UpdateServer
 		Assert-StartsWith ($server1.ServerName + ".") $server1.FullyQualifiedDomainName
 
 		# Test piping
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$serverPassword = "n3wc00lP@55w0rd!!!"
 		$secureString = ConvertTo-SecureString $serverPassword -AsPlainText -Force
 
@@ -177,6 +180,7 @@ function Test-CreateServerWithIdentity
 
 	$serverName = Get-ServerName
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 
@@ -206,6 +210,7 @@ function Test-UpdateServerWithIdentity
 
 	try
 	{
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$serverPassword = "n3wc00lP@55w0rd"
 		$secureString = ConvertTo-SecureString $serverPassword -AsPlainText -Force
 
@@ -231,6 +236,7 @@ function Test-UpdateServerWithoutIdentity
 
 	$serverName = Get-ServerName
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 
@@ -243,6 +249,7 @@ function Test-UpdateServerWithoutIdentity
 		Assert-NotNull $server1.Identity.PrincipalId
 
 		# Update server without "AssignIdentity" switch and validate identity still exists
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$newPassword = "n3wc00lP@55w0rd"
 		$secureString = ConvertTo-SecureString $newPassword -AsPlainText -Force
 		$server2 = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server1.ServerName -SqlAdministratorPassword $secureString
@@ -266,6 +273,7 @@ function Test-CreateServerWithFederatedClientId
 
 	$serverName = Get-ServerName
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	$federatedClientId = "3728d52a-7b46-47a9-8a8c-318c27263eef";
@@ -294,6 +302,7 @@ function Test-UpdatingServerWithFederatedClientId
 
 	$serverName = Get-ServerName
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	$federatedClientId = "3728d52a-7b46-47a9-8a8c-318c27263eef";
@@ -306,6 +315,7 @@ function Test-UpdatingServerWithFederatedClientId
 		Assert-AreEqual $server1.FederatedClientId $federatedClientId
 
 		# Update server with new Federated client id
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$newPassword = "n3wc00lP@55w0rd"
 		$secureString = ConvertTo-SecureString $newPassword -AsPlainText -Force
 		$server2 = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server1.ServerName -SqlAdministratorPassword $secureString -FederatedClientId $updatedFederatedClientId
@@ -336,6 +346,7 @@ function Test-CreateandUpdateServerWithMinimalTlsVersion
 		$serverName = Get-ServerName
 		$version = "12.0"
 		$serverLogin = "testusername"
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$serverPassword = "t357ingP@s5w0rd!"
 		$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 		$tls1_1 = "1.1"
@@ -380,6 +391,7 @@ function Test-CreateAndGetServerWithPublicNetworkAccess
 	$serverName2 = Get-ServerName
 	$serverName3 = Get-ServerName
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	$enabled = "Enabled"
@@ -424,6 +436,7 @@ function Test-UpdateServerWithPublicNetworkAccess
 
 	$serverName = Get-ServerName
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$secureString = ConvertTo-SecureString $serverPassword -AsPlainText -Force
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
@@ -468,6 +481,7 @@ function Test-CreateAndGetServerWithRestrictOutboundNetworkAccess
 	$serverName2 = Get-ServerName
 	$serverName3 = Get-ServerName
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	$enabled = "Enabled"
@@ -520,6 +534,7 @@ function Test-UpdateServerWithRestrictOutboundNetworkAccess
 
 	$serverName = Get-ServerName
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$secureString = ConvertTo-SecureString $serverPassword -AsPlainText -Force
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
@@ -583,6 +598,7 @@ function Test-OutboundFirewallRulesCRUD
 
 	$serverName = Get-ServerName
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
     $enabled = "Enabled"
@@ -677,6 +693,7 @@ function Test-CreateServerWithSoftDeleteRetention
 	$serverName6 = Get-ServerName
 	$version = "12.0"
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	$retentionDays = 5
@@ -801,6 +818,7 @@ function Test-UpdateServerWithSoftDeleteRetention
 		$server5 = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -SoftDeleteRetentionDays $retentionDays1
 		Assert-AreEqual $server5.SoftDeleteRetentionDays $retentionDays1
 
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 		$newPassword = "n3wP@ssw0rd!123"
 		$secureString = ConvertTo-SecureString $newPassword -AsPlainText -Force
 		$server6 = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -SqlAdministratorPassword $secureString
@@ -883,6 +901,7 @@ function Test-RestoreDeletedServerInvalidResourceGroup
 	$serverName = Get-ServerName
 	$version = "12.0"
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	$softDeleteRetentionDays = 7
@@ -922,6 +941,7 @@ function Test-RestoreDeletedServerAfterResourceGroupRemoval
 	$serverName = Get-ServerName
 	$version = "12.0"
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	$softDeleteRetentionDays = 7

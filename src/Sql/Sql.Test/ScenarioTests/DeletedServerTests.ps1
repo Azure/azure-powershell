@@ -63,6 +63,7 @@ function Test-CreateServerWithSoftDeleteAndVerifyDeletedServer
 	$serverName = Get-ServerName
 	$version = "12.0"
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	$softDeleteRetentionDays = 7
