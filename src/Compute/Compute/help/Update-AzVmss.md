@@ -40,7 +40,7 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-EnableResilientVMDelete <Boolean>] [-EnableAutomaticZoneRebalance <Boolean>]
  [-AutomaticZoneRebalanceStrategy <String>] [-AutomaticZoneRebalanceBehavior <String>]
  [-MaxZoneCount <Int32>] [-EnableMaxInstancePercentPerZone <Boolean>]
- [-MaxInstancePercentPerZoneValue <Int32>] [-HighSpeedInterconnectPlacement <String>]
+ [-MaxInstancePercentPerZoneValue <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -72,7 +72,7 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-EnableResilientVMDelete <Boolean>] [-EnableAutomaticZoneRebalance <Boolean>]
  [-AutomaticZoneRebalanceStrategy <String>] [-AutomaticZoneRebalanceBehavior <String>]
  [-MaxZoneCount <Int32>] [-EnableMaxInstancePercentPerZone <Boolean>]
- [-MaxInstancePercentPerZoneValue <Int32>] [-HighSpeedInterconnectPlacement <String>]
+ [-MaxInstancePercentPerZoneValue <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -447,22 +447,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HighSpeedInterconnectPlacement
-Specifies the high speed interconnect placement for the virtual machine scale set.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: None, Trunk
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
