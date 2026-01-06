@@ -802,6 +802,22 @@ Preview modules are not included in this list. Read more about [module version t
   - This change will take effect on '11/19/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect from version : '4.0.0'
 
+## Az.Sql
+
+### `New-AzSqlServer`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-EnableSoftDelete`
+    - The EnableSoftDelete parameter will be removed. Please use SoftDeleteRetentionDays parameter instead. Setting SoftDeleteRetentionDays to 1-7 enables soft-delete, and setting it to 0 disables soft-delete.
+    - This change is expected to take effect from Az.Sql version: 7.0.0 and Az version: 16.0.0
+
+### `Set-AzSqlServer`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-EnableSoftDelete`
+    - The EnableSoftDelete parameter will be removed. Please use SoftDeleteRetentionDays parameter instead. Setting SoftDeleteRetentionDays to 1-7 enables soft-delete, and setting it to 0 disables soft-delete.
+    - This change is expected to take effect from Az.Sql version: 7.0.0 and Az version: 16.0.0
+
 ## Az.StackHCI
 
 ### `Get-AzStackHciArcSetting`
