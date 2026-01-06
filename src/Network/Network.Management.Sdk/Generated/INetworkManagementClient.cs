@@ -633,6 +633,11 @@ namespace Microsoft.Azure.Management.Network
         IVirtualNetworkPeeringsOperations VirtualNetworkPeerings { get; }
 
         /// <summary>
+        /// Gets the IVirtualNetworkAppliancesOperations
+        /// </summary>
+        IVirtualNetworkAppliancesOperations VirtualNetworkAppliances { get; }
+
+        /// <summary>
         /// Gets the IVirtualNetworkGatewaysOperations
         /// </summary>
         IVirtualNetworkGatewaysOperations VirtualNetworkGateways { get; }

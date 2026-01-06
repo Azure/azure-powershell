@@ -2556,6 +2556,15 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ReachabilityAnalysisIntent, ANM.PSReachabilityAnalysisIntent>();
                 cfg.CreateMap<MNM.ReachabilityAnalysisIntentProperties, ANM.PSReachabilityAnalysisIntentProperties>();
                 cfg.CreateMap<MNM.IPTraffic, ANM.PSIPTraffic>();
+
+                // Virtual Network Appliance
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSVirtualNetworkAppliance, MNM.VirtualNetworkAppliance>();
+                cfg.CreateMap<CNM.PSVirtualNetworkApplianceIpConfiguration, MNM.VirtualNetworkApplianceIpConfiguration>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.VirtualNetworkAppliance, CNM.PSVirtualNetworkAppliance>();
+                cfg.CreateMap<MNM.VirtualNetworkApplianceIpConfiguration, CNM.PSVirtualNetworkApplianceIpConfiguration>();
             });
             _mapper = config.CreateMapper();
         }
