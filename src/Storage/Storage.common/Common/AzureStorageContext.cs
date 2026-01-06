@@ -150,12 +150,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <param name="DefaultContext"></param>
         /// <param name="logWriter"></param>
         public AzureStorageContext(CloudStorageAccount account, string accountName = null, IAzureContext DefaultContext = null, DebugLogWriter logWriter = null) :
-            this(account, accountName, false, null, null)
+            this(account, accountName, false, DefaultContext, logWriter)
         {
         }
 
         /// <summary>
-        /// Create a storage context usign cloud storage account
+        /// Create a storage context using cloud storage account
         /// </summary>
         /// <param name="account">cloud storage account</param>
         /// <param name="accountName">Storage account name</param>

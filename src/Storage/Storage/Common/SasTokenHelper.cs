@@ -749,7 +749,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 sasBuilder.EncryptionScope = EncryptionScope;
             }
-            if(DelegatedUserObjectId != null)
+            if (DelegatedUserObjectId != null)
             {
                 sasBuilder.DelegatedUserObjectId = DelegatedUserObjectId;
             }

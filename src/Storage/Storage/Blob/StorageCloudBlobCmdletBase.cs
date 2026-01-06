@@ -931,7 +931,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 {
                     fullUri = fullUri + "?" + sas;
                 }
-                if (context.Track2OauthToken != null)
+                if (context != null && context.Track2OauthToken != null)
                 {
                     blobClient = new BlobClient(new Uri(fullUri), context.Track2OauthToken, options);
                 }
