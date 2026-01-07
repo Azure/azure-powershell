@@ -982,19 +982,8 @@ Example:
                     {
                         Write-Verbose "WhatIf: Creating Application Insights '$Name' in resource group '$ResourceGroupName' at location '$($functionAppDef.Location)'..."
                         # Create a mock object for WhatIf to avoid null reference issues
-                        # Use the current cloud's Application Insights endpoint
-                        $appInsightsSuffix = (Get-AzContext).Environment.AzureApplicationInsightsEndpointResourceId
-                        if ([string]::IsNullOrWhiteSpace($appInsightsSuffix))
-                        {
-                            $appInsightsSuffix = "applicationinsights.azure.com"
-                        }
-                        else
-                        {
-                            # Extract domain from the resource ID (e.g., remove leading https:// or trailing /)
-                            $appInsightsSuffix = $appInsightsSuffix -replace '^https?://', '' -replace '/$', ''
-                        }
                         $newAppInsightsProject = New-Object PSObject -Property @{
-                            ConnectionString = "InstrumentationKey=00000000-0000-0000-0000-000000000000;IngestionEndpoint=https://$appInsightsSuffix/"
+                            ConnectionString = "InstrumentationKey=00000000-0000-0000-0000-000000000000;IngestionEndpoint=https://placeholder.applicationinsights.azure.com/"
                             Name = $Name
                         }
                         $appSettings.Add((NewAppSetting -Name 'APPLICATIONINSIGHTS_CONNECTION_STRING' -Value $newAppInsightsProject.ConnectionString))
