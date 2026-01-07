@@ -40,6 +40,7 @@ function New-AzMLWorkspaceCustomModelJobOutputObject {
         [Parameter(HelpMessage="Description for the output.")]
         [string]
         $Description,
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.ParameterBreakingChangeAttribute("Type", "16.0.0", "1.3.0", "2026/05")]
         [Parameter(Mandatory, HelpMessage="[Required] Specifies the type of job.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobOutputType])]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobOutputType]

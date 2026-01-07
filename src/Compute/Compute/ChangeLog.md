@@ -21,7 +21,7 @@
 -->
 ## Upcoming Release
 * Fix console close issue by upgrading with autorest v4.0.752
-
+* Added `-HighSpeedInterconnectPlacement` parameter to `New-AzVmssConfig` and `New-AzVmss` cmdlets.
 * Added new parameters `ZonePlacementPolicy`, `IncludeZone`, `ExcludeZone`, `MaxZoneCount`, `EnableMaxInstancePercentPerZone` and `MaxInstancePercentPerZoneValue` to `New-AzVmssConfig` cmdlet.
 * Added new parameters `ZonePlacementPolicy`, `IncludeZone` and `ExcludeZone` to `New-AzVmss` cmdlet.
 * Added new parameters `MaxZoneCount`, `EnableMaxInstancePercentPerZone` and `MaxInstancePercentPerZoneValue` to `Update-AzVmss` cmdlet.

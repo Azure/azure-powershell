@@ -16,17 +16,17 @@
 
 <#
 .Synopsis
-Create an in-memory object for TritonModelJobOutput.
+Create an in-memory object for MLTableJobOutput.
 .Description
-Create an in-memory object for TritonModelJobOutput.
+Create an in-memory object for MLTableJobOutput.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.TritonModelJobOutput
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.MLTableJobOutput
 .Link
-https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceTritonModelJobOutputObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceMLTableJobOutputObject
 #>
-function New-AzMLWorkspaceTritonModelJobOutputObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.TritonModelJobOutput')]
+function New-AzMLWorkspaceMLTableJobOutputObject {
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.MLTableJobOutput')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,6 +40,7 @@ function New-AzMLWorkspaceTritonModelJobOutputObject {
         [Parameter(HelpMessage="Description for the output.")]
         [string]
         $Description,
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.ParameterBreakingChangeAttribute("Type", "16.0.0", "1.3.0", "2026/05")]
         [Parameter(Mandatory, HelpMessage="[Required] Specifies the type of job.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobOutputType])]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobOutputType]
@@ -47,7 +48,7 @@ function New-AzMLWorkspaceTritonModelJobOutputObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.TritonModelJobOutput]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.MLTableJobOutput]::New()
 
         if ($PSBoundParameters.ContainsKey('Mode')) {
             $Object.Mode = $Mode
