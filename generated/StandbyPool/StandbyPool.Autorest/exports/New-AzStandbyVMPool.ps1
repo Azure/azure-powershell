@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a StandbyVirtualMachinePoolResource
+Create a StandbyVirtualMachinePoolResource
 .Description
-create a StandbyVirtualMachinePoolResource
+Create a StandbyVirtualMachinePoolResource
 .Example
 New-AzStandbyVMPool `
 -Name testPool `
@@ -186,8 +186,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

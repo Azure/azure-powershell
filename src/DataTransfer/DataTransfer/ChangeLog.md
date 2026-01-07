@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix console close issue by upgrading with autorest v4.0.752
+
 
 ## Version 1.0.0
 * General availability for module Az.DataTransfer

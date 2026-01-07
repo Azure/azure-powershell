@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzBillingBenefitsSavingsPlanOrderAlias
 
 ## SYNOPSIS
-create a savings plan.
+Create a savings plan.
 Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2215851
 
 ## SYNTAX
@@ -37,7 +37,7 @@ New-AzBillingBenefitsSavingsPlanOrderAlias -Name <String> -JsonString <String> [
 ```
 
 ## DESCRIPTION
-create a savings plan.
+Create a savings plan.
 Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2215851
 
 ## EXAMPLES

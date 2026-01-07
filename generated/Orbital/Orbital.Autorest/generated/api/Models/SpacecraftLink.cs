@@ -23,18 +23,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAuthorizedGroundstation> Authorization { get => this._authorization; }
 
         /// <summary>Backing field for <see cref="BandwidthMHz" /> property.</summary>
-        private float _bandwidthMHz;
+        private float? _bandwidthMHz;
 
         /// <summary>Bandwidth in MHz.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Owned)]
-        public float BandwidthMHz { get => this._bandwidthMHz; set => this._bandwidthMHz = value; }
+        public float? BandwidthMHz { get => this._bandwidthMHz; set => this._bandwidthMHz = value; }
 
         /// <summary>Backing field for <see cref="CenterFrequencyMHz" /> property.</summary>
-        private float _centerFrequencyMHz;
+        private float? _centerFrequencyMHz;
 
         /// <summary>Center Frequency in MHz.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Owned)]
-        public float CenterFrequencyMHz { get => this._centerFrequencyMHz; set => this._centerFrequencyMHz = value; }
+        public float? CenterFrequencyMHz { get => this._centerFrequencyMHz; set => this._centerFrequencyMHz = value; }
 
         /// <summary>Backing field for <see cref="Direction" /> property.</summary>
         private string _direction;
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAuthorizedGroundstation> Authorization { get;  }
         /// <summary>Bandwidth in MHz.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -91,10 +91,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         Description = @"Bandwidth in MHz.",
         SerializedName = @"bandwidthMHz",
         PossibleTypes = new [] { typeof(float) })]
-        float BandwidthMHz { get; set; }
+        float? BandwidthMHz { get; set; }
         /// <summary>Center Frequency in MHz.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -102,10 +102,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         Description = @"Center Frequency in MHz.",
         SerializedName = @"centerFrequencyMHz",
         PossibleTypes = new [] { typeof(float) })]
-        float CenterFrequencyMHz { get; set; }
+        float? CenterFrequencyMHz { get; set; }
         /// <summary>Direction (Uplink or Downlink).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         string Direction { get; set; }
         /// <summary>Link name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         string Name { get; set; }
         /// <summary>Polarization. e.g. (RHCP, LHCP).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -147,9 +147,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         /// <summary>Authorized Ground Stations</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAuthorizedGroundstation> Authorization { get; set; }
         /// <summary>Bandwidth in MHz.</summary>
-        float BandwidthMHz { get; set; }
+        float? BandwidthMHz { get; set; }
         /// <summary>Center Frequency in MHz.</summary>
-        float CenterFrequencyMHz { get; set; }
+        float? CenterFrequencyMHz { get; set; }
         /// <summary>Direction (Uplink or Downlink).</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Orbital.PSArgumentCompleterAttribute("Uplink", "Downlink")]
         string Direction { get; set; }

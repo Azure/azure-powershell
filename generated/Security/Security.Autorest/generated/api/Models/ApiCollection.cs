@@ -37,46 +37,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceInternal)__resource).Id; }
 
         /// <summary>Internal Acessors for BaseUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.BaseUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).BaseUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).BaseUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.BaseUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).BaseUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).BaseUrl = value ?? null; }
 
         /// <summary>Internal Acessors for DiscoveredVia</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.DiscoveredVia { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).DiscoveredVia; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).DiscoveredVia = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.DiscoveredVia { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).DiscoveredVia; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).DiscoveredVia = value ?? null; }
 
         /// <summary>Internal Acessors for DisplayName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).DisplayName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).DisplayName = value ?? null; }
 
         /// <summary>Internal Acessors for NumberOfApiEndpoint</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.NumberOfApiEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfApiEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfApiEndpoint = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.NumberOfApiEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfApiEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfApiEndpoint = value ?? default(long); }
 
         /// <summary>Internal Acessors for NumberOfApiEndpointsWithSensitiveDataExposed</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.NumberOfApiEndpointsWithSensitiveDataExposed { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfApiEndpointsWithSensitiveDataExposed; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfApiEndpointsWithSensitiveDataExposed = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.NumberOfApiEndpointsWithSensitiveDataExposed { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfApiEndpointsWithSensitiveDataExposed; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfApiEndpointsWithSensitiveDataExposed = value ?? default(long); }
 
         /// <summary>Internal Acessors for NumberOfExternalApiEndpoint</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.NumberOfExternalApiEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfExternalApiEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfExternalApiEndpoint = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.NumberOfExternalApiEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfExternalApiEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfExternalApiEndpoint = value ?? default(long); }
 
         /// <summary>Internal Acessors for NumberOfInactiveApiEndpoint</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.NumberOfInactiveApiEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfInactiveApiEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfInactiveApiEndpoint = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.NumberOfInactiveApiEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfInactiveApiEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfInactiveApiEndpoint = value ?? default(long); }
 
         /// <summary>Internal Acessors for NumberOfUnauthenticatedApiEndpoint</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.NumberOfUnauthenticatedApiEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfUnauthenticatedApiEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfUnauthenticatedApiEndpoint = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.NumberOfUnauthenticatedApiEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfUnauthenticatedApiEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).NumberOfUnauthenticatedApiEndpoint = value ?? default(long); }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionProperties Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ApiCollectionProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for SensitivityLabel</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.SensitivityLabel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).SensitivityLabel; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).SensitivityLabel = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionInternal.SensitivityLabel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).SensitivityLabel; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollectionPropertiesInternal)Property).SensitivityLabel = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceInternal)__resource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceInternal)__resource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IResourceInternal)__resource).Type = value ?? null; }
 
         /// <summary>Resource name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Security.Origin(Microsoft.Azure.PowerShell.Cmdlets.Security.PropertyOrigin.Inherited)]

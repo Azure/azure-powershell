@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix console close issue by upgrading with autorest v4.0.752
+
 
 ## Version 4.1.1
 * Fixed a bug when invoke `Set-AzServiceBusNamespace` with parameter `NoWait` [#26998]

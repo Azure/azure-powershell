@@ -71,43 +71,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models
         Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatus Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatus { get => (this._afterStageWaitStatus = this._afterStageWaitStatus ?? new Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.WaitStatus()); set { {_afterStageWaitStatus = value;} } }
 
         /// <summary>Internal Acessors for AfterStageWaitStatusCompletedTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusCompletedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).StatusCompletedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).StatusCompletedTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusCompletedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).StatusCompletedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).StatusCompletedTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for AfterStageWaitStatusError</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).StatusError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).StatusError = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).StatusError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).StatusError = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for AfterStageWaitStatusErrorAdditionalInfo</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusErrorAdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).AdditionalInfo = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusErrorAdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).AdditionalInfo = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for AfterStageWaitStatusErrorCode</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Code = value ?? null; }
 
         /// <summary>Internal Acessors for AfterStageWaitStatusErrorDetail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusErrorDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusErrorDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for AfterStageWaitStatusErrorMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Message = value ?? null; }
 
         /// <summary>Internal Acessors for AfterStageWaitStatusErrorTarget</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusErrorTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusErrorTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Target = value ?? null; }
 
         /// <summary>Internal Acessors for AfterStageWaitStatusStartTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).StatusStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).StatusStartTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).StatusStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).StatusStartTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for AfterStageWaitStatusState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).StatusState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).StatusState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).StatusState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).StatusState = value ?? null; }
 
         /// <summary>Internal Acessors for AfterStageWaitStatusStatus</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatus Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Status = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatus Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).Status = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for AfterStageWaitStatusWaitDurationInSecond</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusWaitDurationInSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).WaitDurationInSecond; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).WaitDurationInSecond = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.AfterStageWaitStatusWaitDurationInSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).WaitDurationInSecond; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IWaitStatusInternal)AfterStageWaitStatus).WaitDurationInSecond = value ?? default(int); }
 
         /// <summary>Internal Acessors for CompletedTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.CompletedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).CompletedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).CompletedTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.CompletedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).CompletedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).CompletedTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Error</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.Error { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Error = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.Error { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Error = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Group</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateGroupStatus> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.Group { get => this._group; set { {_group = value;} } }
@@ -116,28 +116,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models
         string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.Name { get => this._name; set { {_name = value;} } }
 
         /// <summary>Internal Acessors for StartTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.StartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).StartTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.StartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).StartTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for State</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.State { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).State; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).State = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.State { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).State; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).State = value ?? null; }
 
         /// <summary>Internal Acessors for Status</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatus Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.Status { get => (this._status = this._status ?? new Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.UpdateStatus()); set { {_status = value;} } }
 
         /// <summary>Internal Acessors for StatusErrorAdditionalInfo</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.StatusErrorAdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).AdditionalInfo = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.StatusErrorAdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).AdditionalInfo = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for StatusErrorCode</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.StatusErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.StatusErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Code = value ?? null; }
 
         /// <summary>Internal Acessors for StatusErrorDetail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.StatusErrorDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.StatusErrorDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for StatusErrorMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.StatusErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Message = value ?? null; }
 
         /// <summary>Internal Acessors for StatusErrorTarget</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.StatusErrorTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStageStatusInternal.StatusErrorTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStatusInternal)Status).Target = value ?? null; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.AppConfiguration
-Module Guid: eb7a20d7-4675-4932-b491-c24a29f7519e
+Module Guid: 3a740572-ea48-4b5f-9eeb-9d5e976765d7
 Download Help Link: https://learn.microsoft.com/powershell/module/az.appconfiguration
 Help Version: 1.0.0.0
 Locale: en-US
@@ -24,7 +24,7 @@ Get or list app configuration stores.
 Lists the access key for the specified configuration store.
 
 ### [New-AzAppConfigurationStore](New-AzAppConfigurationStore.md)
-create a configuration store with the specified parameters.
+Create a configuration store with the specified parameters.
 
 ### [New-AzAppConfigurationStoreKey](New-AzAppConfigurationStoreKey.md)
 Regenerates an access key for the specified configuration store.
@@ -36,5 +36,5 @@ Deletes a configuration store.
 Checks whether the configuration store name is available for use.
 
 ### [Update-AzAppConfigurationStore](Update-AzAppConfigurationStore.md)
-update a configuration store with the specified parameters.
+Update a configuration store with the specified parameters.
 

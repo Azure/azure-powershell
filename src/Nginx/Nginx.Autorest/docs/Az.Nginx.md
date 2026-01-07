@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Nginx
-Module Guid: 7a45cf2c-9da1-4949-a4bd-578750ea3f20
+Module Guid: 503e4ccc-56f9-4dbb-baf8-c0f42a9aa779
 Download Help Link: https://learn.microsoft.com/powershell/module/az.nginx
 Help Version: 1.0.0.0
 Locale: en-US

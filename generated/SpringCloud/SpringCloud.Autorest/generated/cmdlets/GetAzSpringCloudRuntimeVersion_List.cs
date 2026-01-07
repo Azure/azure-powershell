@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
     /// [OpenAPI] ListRuntimeVersions=>GET:"/providers/Microsoft.AppPlatform/runtimeVersions"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzSpringCloudRuntimeVersion_List")]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.CmdletBreakingChange("19.3.0", "0.3.2", "2028/03/31", ChangeDescription = "Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.GenericBreakingChange("", "19.3.0", "0.3.2", "2028/03/31", ChangeDescription = "Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAvailableRuntimeVersions))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Description(@"Lists all of the available runtime versions supported by Microsoft.AppPlatform provider.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Generated]

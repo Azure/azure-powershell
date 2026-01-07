@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new CommunicationService or create an existing CommunicationService.
+Create a new CommunicationService or create an existing CommunicationService.
 .Description
-create a new CommunicationService or create an existing CommunicationService.
+Create a new CommunicationService or create an existing CommunicationService.
 .Example
 New-AzCommunicationService -ResourceGroupName ContosoResourceProvider1 -Name ContosoAcsResource1 -DataLocation UnitedStates -Location Global
 .Example
@@ -185,8 +185,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the specified contact profile tags.
+Update the specified contact profile tags.
 .Description
-update the specified contact profile tags.
+Update the specified contact profile tags.
 .Example
 Update-AzOrbitalContactProfile -Name azps-orbital-contactprofile -ResourceGroupName azpstest-gp -Tag @{"123"="abc"}
 .Example
@@ -175,8 +175,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new peering or create an existing peering with the specified name under the given subscription and resource group.
+Create a new peering or create an existing peering with the specified name under the given subscription and resource group.
 .Description
-create a new peering or create an existing peering with the specified name under the given subscription and resource group.
+Create a new peering or create an existing peering with the specified name under the given subscription and resource group.
 .Example
 $peerAsnId = "/subscriptions/{subId}/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest"
 $directConnections = New-AzPeeringDirectConnectionObject -BandwidthInMbps 10000 -BgpSessionMaxPrefixesAdvertisedV4 20000
@@ -215,8 +215,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

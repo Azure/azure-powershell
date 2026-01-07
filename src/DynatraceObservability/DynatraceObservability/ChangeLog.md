@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix console close issue by upgrading with autorest v4.0.752
+
 
 ## Version 0.4.0
 * Added complete help examples for Dynatrace Observability cmdlets

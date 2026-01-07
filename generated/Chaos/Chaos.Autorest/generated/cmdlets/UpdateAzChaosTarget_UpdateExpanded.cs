@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a Target resource that extends a tracked regional resource.</summary>
+    /// <summary>update a Target resource that extends a tracked regional resource.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzChaosTarget_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITarget))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.Description(@"Update a Target resource that extends a tracked regional resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.Description(@"update a Target resource that extends a tracked regional resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.Generated]
     public partial class UpdateAzChaosTarget_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.IEventListener,

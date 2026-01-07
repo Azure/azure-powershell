@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzHealthBot
 
 ## SYNOPSIS
-create a new HealthBot.
+Create a new HealthBot.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ New-AzHealthBot -Name <String> -ResourceGroupName <String> -JsonString <String> 
 ```
 
 ## DESCRIPTION
-create a new HealthBot.
+Create a new HealthBot.
 
 ## EXAMPLES
 

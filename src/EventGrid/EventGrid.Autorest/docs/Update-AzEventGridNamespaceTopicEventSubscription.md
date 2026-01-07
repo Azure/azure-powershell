@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridNamespaceTopicEventSubscription
 
 ## SYNOPSIS
-update an existing event subscription of a namespace topic.
+Update an existing event subscription of a namespace topic.
 
 ## SYNTAX
 
@@ -70,7 +70,7 @@ Update-AzEventGridNamespaceTopicEventSubscription -EventSubscriptionName <String
 ```
 
 ## DESCRIPTION
-update an existing event subscription of a namespace topic.
+Update an existing event subscription of a namespace topic.
 
 ## EXAMPLES
 
@@ -343,7 +343,7 @@ Time span duration in ISO 8601 format that determines how long messages are avai
 - H is the hour designator, and it follows the value for the number of hours.
 - M is the minute designator, and it follows the value for the number of minutes.
 - S is the second designator, and it follows the value for the number of seconds.This duration value cannot be set greater than the topic’s EventRetentionInDays.
-It is is an optional field where its minimum value is 1 minute, and its maximum is determined by topic’s EventRetentionInDays value.
+It is is an optional field where its minimum value is 1 minute, and its maximum is determinedby topic’s EventRetentionInDays value.
 The followings are examples of valid values: - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
 - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
 

@@ -47,34 +47,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         public string LogAnalyticWorkspacePropertyWorkspaceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).LogAnalyticWorkspacePropertyWorkspaceId; }
 
         /// <summary>Internal Acessors for LogAnalyticWorkspacePropertyConnectedAgent</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServiceInternal.LogAnalyticWorkspacePropertyConnectedAgent { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).LogAnalyticWorkspacePropertyConnectedAgent; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).LogAnalyticWorkspacePropertyConnectedAgent = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServiceInternal.LogAnalyticWorkspacePropertyConnectedAgent { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).LogAnalyticWorkspacePropertyConnectedAgent; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).LogAnalyticWorkspacePropertyConnectedAgent = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for LogAnalyticWorkspacePropertyKey</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServiceInternal.LogAnalyticWorkspacePropertyKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).LogAnalyticWorkspacePropertyKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).LogAnalyticWorkspacePropertyKey = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServiceInternal.LogAnalyticWorkspacePropertyKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).LogAnalyticWorkspacePropertyKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).LogAnalyticWorkspacePropertyKey = value ?? null; }
 
         /// <summary>Internal Acessors for LogAnalyticWorkspacePropertyWorkspaceId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServiceInternal.LogAnalyticWorkspacePropertyWorkspaceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).LogAnalyticWorkspacePropertyWorkspaceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).LogAnalyticWorkspacePropertyWorkspaceId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServiceInternal.LogAnalyticWorkspacePropertyWorkspaceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).LogAnalyticWorkspacePropertyWorkspaceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).LogAnalyticWorkspacePropertyWorkspaceId = value ?? null; }
 
         /// <summary>Internal Acessors for LogAnalyticsWorkspaceProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ILogAnalyticsWorkspaceProperties Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServiceInternal.LogAnalyticsWorkspaceProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).LogAnalyticsWorkspaceProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).LogAnalyticsWorkspaceProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ILogAnalyticsWorkspaceProperties Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServiceInternal.LogAnalyticsWorkspaceProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).LogAnalyticsWorkspaceProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).LogAnalyticsWorkspaceProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServiceProperties Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServiceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServiceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServiceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServicePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServiceSku Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringServiceInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PeeringServiceSku()); set { {_sku = value;} } }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IResourceInternal)__resource).Type = value ?? null; }
 
         /// <summary>The name of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Peering.Origin(Microsoft.Azure.PowerShell.Cmdlets.Peering.PropertyOrigin.Inherited)]
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
     {
         /// <summary>The location of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,

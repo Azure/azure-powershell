@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ActivityLogAlert
-Module Guid: e90c5cc6-1740-41fc-b428-ff95e61b80d4
+Module Guid: c7d4550b-0148-45af-840c-0a75dbc5a41f
 Download Help Link: https://learn.microsoft.com/powershell/module/az.activitylogalert
 Help Version: 1.0.0.0
 Locale: en-US

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDedicatedHsm
 
 ## SYNOPSIS
-create a dedicated HSM in the specified subscription.
+Create a dedicated HSM in the specified subscription.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzDedicatedHsm -Name <String> -ResourceGroupName <String> -JsonString <Strin
 ```
 
 ## DESCRIPTION
-create a dedicated HSM in the specified subscription.
+Create a dedicated HSM in the specified subscription.
 
 ## EXAMPLES
 

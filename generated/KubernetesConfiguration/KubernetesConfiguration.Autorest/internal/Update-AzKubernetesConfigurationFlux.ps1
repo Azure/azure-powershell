@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an existing Kubernetes Flux Configuration.
+Update an existing Kubernetes Flux Configuration.
 .Description
-update an existing Kubernetes Flux Configuration.
+Update an existing Kubernetes Flux Configuration.
 .Example
 Update-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azps_test_group -GitRepositoryUrl https://github.com/fluxcd/flux2-kustomize-helm-example -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
 .Example

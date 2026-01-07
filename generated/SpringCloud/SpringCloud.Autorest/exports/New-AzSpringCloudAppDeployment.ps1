@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new Deployment or create an exiting Deployment.
+Create a new Deployment or create an exiting Deployment.
 .Description
-create a new Deployment or create an exiting Deployment.
+Create a new Deployment or create an exiting Deployment.
 .Example
 New-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rp -ServiceName spring-cloud-service -AppName gateway -Name default
 
@@ -305,8 +305,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

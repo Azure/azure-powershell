@@ -46,52 +46,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models
         public global::System.DateTime? LastAccessTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).LastAccessTime; }
 
         /// <summary>Internal Acessors for CreationTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.CreationTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).CreationTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).CreationTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.CreationTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).CreationTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).CreationTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for FrsContainerId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.FrsContainerId { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).FrsContainerId; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).FrsContainerId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.FrsContainerId { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).FrsContainerId; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).FrsContainerId = value ?? null; }
 
         /// <summary>Internal Acessors for FrsTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.FrsTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).FrsTenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).FrsTenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.FrsTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).FrsTenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).FrsTenantId = value ?? null; }
 
         /// <summary>Internal Acessors for LastAccessTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.LastAccessTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).LastAccessTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).LastAccessTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.LastAccessTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).LastAccessTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).LastAccessTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerProperties Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.FluidRelayContainerProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.SystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).CreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).CreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).LastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).LastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).LastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayContainerInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Origin(Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.PropertyOrigin.Inherited)]

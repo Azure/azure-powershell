@@ -83,7 +83,7 @@
     },
     {
       "name": "Start-AzImageBuilderTemplate",
-      "description": "run artifacts from a existing image template",
+      "description": "Run artifacts from a existing image template",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/run",
       "help": {
         "learnMore": {

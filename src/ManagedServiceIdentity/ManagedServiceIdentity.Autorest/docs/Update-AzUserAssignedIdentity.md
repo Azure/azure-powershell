@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzUserAssignedIdentity
 
 ## SYNOPSIS
-update an identity in the specified subscription and resource group.
+Update an identity in the specified subscription and resource group.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Update-AzUserAssignedIdentity -Name <String> -ResourceGroupName <String> -JsonSt
 ```
 
 ## DESCRIPTION
-update an identity in the specified subscription and resource group.
+Update an identity in the specified subscription and resource group.
 
 ## EXAMPLES
 

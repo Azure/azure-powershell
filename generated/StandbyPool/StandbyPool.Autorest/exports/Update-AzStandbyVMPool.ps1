@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a StandbyVirtualMachinePoolResource
+Update a StandbyVirtualMachinePoolResource
 .Description
-update a StandbyVirtualMachinePoolResource
+Update a StandbyVirtualMachinePoolResource
 .Example
 Update-AzStandbyVMPool `
 -SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b `
@@ -196,8 +196,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

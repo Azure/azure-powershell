@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Monitors
-Module Guid: c2b5aac3-3ae4-4fa4-9d6a-b7a7834ba0ba
+Module Guid: 35c60360-5412-42e0-96cf-e17f6dae2715
 Download Help Link: https://learn.microsoft.com/powershell/module/az.monitors
 Help Version: 1.0.0.0
 Locale: en-US

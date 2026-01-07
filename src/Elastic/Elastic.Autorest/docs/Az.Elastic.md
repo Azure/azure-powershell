@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Elastic
-Module Guid: ee6a2974-6069-4011-89e2-32e115786d7e
+Module Guid: e240187f-038d-4861-af1d-06bb97961502
 Download Help Link: https://learn.microsoft.com/powershell/module/az.elastic
 Help Version: 1.0.0.0
 Locale: en-US

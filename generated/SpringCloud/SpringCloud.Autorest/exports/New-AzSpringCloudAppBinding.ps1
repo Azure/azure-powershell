@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new Binding or create an exiting Binding.
+Create a new Binding or create an exiting Binding.
 .Description
-create a new Binding or create an exiting Binding.
+Create a new Binding or create an exiting Binding.
 .Example
 New-AzSpringCloudAppBinding -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -name redis -Key myKey -ResourceId myResourceId -AppName tools -BindingParameter @{ "useSsl"= "true" }
 
@@ -247,8 +247,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

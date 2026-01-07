@@ -89,10 +89,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IBgpSession Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IExchangeConnectionInternal.BgpSession { get => (this._bgpSession = this._bgpSession ?? new Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.BgpSession()); set { {_bgpSession = value;} } }
 
         /// <summary>Internal Acessors for BgpSessionStateV4</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IExchangeConnectionInternal.BgpSessionStateV4 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IBgpSessionInternal)BgpSession).SessionStateV4; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IBgpSessionInternal)BgpSession).SessionStateV4 = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IExchangeConnectionInternal.BgpSessionStateV4 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IBgpSessionInternal)BgpSession).SessionStateV4; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IBgpSessionInternal)BgpSession).SessionStateV4 = value ?? null; }
 
         /// <summary>Internal Acessors for BgpSessionStateV6</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IExchangeConnectionInternal.BgpSessionStateV6 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IBgpSessionInternal)BgpSession).SessionStateV6; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IBgpSessionInternal)BgpSession).SessionStateV6 = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IExchangeConnectionInternal.BgpSessionStateV6 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IBgpSessionInternal)BgpSession).SessionStateV6; set => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IBgpSessionInternal)BgpSession).SessionStateV6 = value ?? null; }
 
         /// <summary>Internal Acessors for ConnectionState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IExchangeConnectionInternal.ConnectionState { get => this._connectionState; set { {_connectionState = value;} } }

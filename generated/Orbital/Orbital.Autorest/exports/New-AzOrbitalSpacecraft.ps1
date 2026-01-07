@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a spacecraft resource.
+Create a spacecraft resource.
 .Description
-create a spacecraft resource.
+Create a spacecraft resource.
 .Example
 $linkObject = New-AzOrbitalSpacecraftLinkObject -BandwidthMHz 15 -CenterFrequencyMHz 8160 -Direction 'Downlink' -Name spacecraftlink -Polarization 'RHCP'
 
@@ -32,11 +32,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 LINK <ISpacecraftLink[]>: Immutable list of Spacecraft links.
-  BandwidthMHz <Single>: Bandwidth in MHz.
-  CenterFrequencyMHz <Single>: Center Frequency in MHz.
-  Direction <String>: Direction (Uplink or Downlink).
-  Name <String>: Link name.
-  Polarization <String>: Polarization. e.g. (RHCP, LHCP).
+  [BandwidthMHz <Single?>]: Bandwidth in MHz.
+  [CenterFrequencyMHz <Single?>]: Center Frequency in MHz.
+  [Direction <String>]: Direction (Uplink or Downlink).
+  [Name <String>]: Link name.
+  [Polarization <String>]: Polarization. e.g. (RHCP, LHCP).
 .Link
 https://learn.microsoft.com/powershell/module/az.orbital/new-azorbitalspacecraft
 #>
@@ -195,8 +195,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

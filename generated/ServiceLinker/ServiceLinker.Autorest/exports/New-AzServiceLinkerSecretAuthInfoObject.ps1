@@ -62,7 +62,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
     [System.String]
-    # The name of secret in keyvault refenced by -SecretStoreKeyVaultId.
+    # The name of secret in keyvault referenced by -SecretStoreKeyVaultId.
     ${SecretNameInKeyVault}
 )
 

@@ -86,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         public static Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Module Instance { get { if (_instance == null) { lock (_singletonLock) { if (_instance == null) { _instance = new Module(); }}} return _instance; } }
 
         /// <summary>The Name of this module</summary>
-        public string Name => @"Az.Purviewdata";
+        public string Name => @"Az.Purview";
 
         /// <summary>The delegate to call when this module is loaded (supporting a commmon module).</summary>
         public ModuleLoadPipelineDelegate OnModuleLoad { get; set; }
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         public global::System.String ProfileName { get; set; }
 
         /// <summary>The ResourceID for this module (azure arm).</summary>
-        public string ResourceId => @"Az.Purviewdata";
+        public string ResourceId => @"Az.Purview";
 
         /// <summary>The delegate to call in WriteObject to sanitize the output object.</summary>
         public SanitizerDelegate SanitizeOutput { get; set; }

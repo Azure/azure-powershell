@@ -1,6 +1,6 @@
 ---
 Module Name: Az.IoTOperationsService
-Module Guid: c42b5ed7-0bb4-4124-a90b-4e7754da4b45
+Module Guid: de276d13-a498-4d49-af04-02694949eef7
 Download Help Link: https://learn.microsoft.com/powershell/module/az.iotoperationsservice
 Help Version: 1.0.0.0
 Locale: en-US
@@ -36,28 +36,28 @@ Get a DataflowProfileResource
 Get a InstanceResource
 
 ### [New-AzIoTOperationsServiceBroker](New-AzIoTOperationsServiceBroker.md)
-create a BrokerResource
+Create a BrokerResource
 
 ### [New-AzIoTOperationsServiceBrokerAuthentication](New-AzIoTOperationsServiceBrokerAuthentication.md)
-create a BrokerAuthenticationResource
+Create a BrokerAuthenticationResource
 
 ### [New-AzIoTOperationsServiceBrokerAuthorization](New-AzIoTOperationsServiceBrokerAuthorization.md)
-create a BrokerAuthorizationResource
+Create a BrokerAuthorizationResource
 
 ### [New-AzIoTOperationsServiceBrokerListener](New-AzIoTOperationsServiceBrokerListener.md)
-create a BrokerListenerResource
+Create a BrokerListenerResource
 
 ### [New-AzIoTOperationsServiceDataflow](New-AzIoTOperationsServiceDataflow.md)
-create a DataflowResource
+Create a DataflowResource
 
 ### [New-AzIoTOperationsServiceDataflowEndpoint](New-AzIoTOperationsServiceDataflowEndpoint.md)
-create a DataflowEndpointResource
+Create a DataflowEndpointResource
 
 ### [New-AzIoTOperationsServiceDataflowProfile](New-AzIoTOperationsServiceDataflowProfile.md)
-create a DataflowProfileResource
+Create a DataflowProfileResource
 
 ### [New-AzIoTOperationsServiceInstance](New-AzIoTOperationsServiceInstance.md)
-create a InstanceResource
+Create a InstanceResource
 
 ### [Remove-AzIoTOperationsServiceBroker](Remove-AzIoTOperationsServiceBroker.md)
 Delete a BrokerResource
@@ -84,50 +84,50 @@ Delete a DataflowProfileResource
 Delete a InstanceResource
 
 ### [Set-AzIoTOperationsServiceBroker](Set-AzIoTOperationsServiceBroker.md)
-update a BrokerResource
+Update a BrokerResource
 
 ### [Set-AzIoTOperationsServiceBrokerAuthentication](Set-AzIoTOperationsServiceBrokerAuthentication.md)
-update a BrokerAuthenticationResource
+Update a BrokerAuthenticationResource
 
 ### [Set-AzIoTOperationsServiceBrokerAuthorization](Set-AzIoTOperationsServiceBrokerAuthorization.md)
-update a BrokerAuthorizationResource
+Update a BrokerAuthorizationResource
 
 ### [Set-AzIoTOperationsServiceBrokerListener](Set-AzIoTOperationsServiceBrokerListener.md)
-update a BrokerListenerResource
+Update a BrokerListenerResource
 
 ### [Set-AzIoTOperationsServiceDataflow](Set-AzIoTOperationsServiceDataflow.md)
-update a DataflowResource
+Update a DataflowResource
 
 ### [Set-AzIoTOperationsServiceDataflowEndpoint](Set-AzIoTOperationsServiceDataflowEndpoint.md)
-update a DataflowEndpointResource
+Update a DataflowEndpointResource
 
 ### [Set-AzIoTOperationsServiceDataflowProfile](Set-AzIoTOperationsServiceDataflowProfile.md)
-update a DataflowProfileResource
+Update a DataflowProfileResource
 
 ### [Set-AzIoTOperationsServiceInstance](Set-AzIoTOperationsServiceInstance.md)
-update a InstanceResource
+Update a InstanceResource
 
 ### [Update-AzIoTOperationsServiceBroker](Update-AzIoTOperationsServiceBroker.md)
-update a BrokerResource
+Update a BrokerResource
 
 ### [Update-AzIoTOperationsServiceBrokerAuthentication](Update-AzIoTOperationsServiceBrokerAuthentication.md)
-update a BrokerAuthenticationResource
+Update a BrokerAuthenticationResource
 
 ### [Update-AzIoTOperationsServiceBrokerAuthorization](Update-AzIoTOperationsServiceBrokerAuthorization.md)
-update a BrokerAuthorizationResource
+Update a BrokerAuthorizationResource
 
 ### [Update-AzIoTOperationsServiceBrokerListener](Update-AzIoTOperationsServiceBrokerListener.md)
-update a BrokerListenerResource
+Update a BrokerListenerResource
 
 ### [Update-AzIoTOperationsServiceDataflow](Update-AzIoTOperationsServiceDataflow.md)
-update a DataflowResource
+Update a DataflowResource
 
 ### [Update-AzIoTOperationsServiceDataflowEndpoint](Update-AzIoTOperationsServiceDataflowEndpoint.md)
-update a DataflowEndpointResource
+Update a DataflowEndpointResource
 
 ### [Update-AzIoTOperationsServiceDataflowProfile](Update-AzIoTOperationsServiceDataflowProfile.md)
-update a DataflowProfileResource
+Update a DataflowProfileResource
 
 ### [Update-AzIoTOperationsServiceInstance](Update-AzIoTOperationsServiceInstance.md)
-update a InstanceResource
+Update a InstanceResource
 

@@ -159,7 +159,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
             }
             if (content.Contains("ConfigurationReplicaTimeout"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJobPropertiesInternal)this).ConfigurationReplicaTimeout = (int) content.GetValueForProperty("ConfigurationReplicaTimeout",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJobPropertiesInternal)this).ConfigurationReplicaTimeout, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJobPropertiesInternal)this).ConfigurationReplicaTimeout = (int?) content.GetValueForProperty("ConfigurationReplicaTimeout",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJobPropertiesInternal)this).ConfigurationReplicaTimeout, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ConfigurationReplicaRetryLimit"))
             {
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
             }
             if (content.Contains("ConfigurationReplicaTimeout"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJobPropertiesInternal)this).ConfigurationReplicaTimeout = (int) content.GetValueForProperty("ConfigurationReplicaTimeout",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJobPropertiesInternal)this).ConfigurationReplicaTimeout, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJobPropertiesInternal)this).ConfigurationReplicaTimeout = (int?) content.GetValueForProperty("ConfigurationReplicaTimeout",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJobPropertiesInternal)this).ConfigurationReplicaTimeout, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ConfigurationReplicaRetryLimit"))
             {

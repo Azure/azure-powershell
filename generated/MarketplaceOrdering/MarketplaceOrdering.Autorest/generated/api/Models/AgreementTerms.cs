@@ -46,31 +46,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models
         Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTermsInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.SystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTermsInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTermsInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTermsInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).CreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTermsInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTermsInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).CreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTermsInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTermsInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).LastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTermsInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTermsInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).LastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTermsInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTermsInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).LastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTermsInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IResourceInternal)__resource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IResourceInternal)__resource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IResourceInternal)__resource).Type = value ?? null; }
 
         /// <summary>Resource name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Origin(Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.PropertyOrigin.Inherited)]

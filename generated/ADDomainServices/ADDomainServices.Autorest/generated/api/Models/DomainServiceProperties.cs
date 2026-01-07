@@ -119,28 +119,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models
         Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainSecuritySettings Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainServicePropertiesInternal.DomainSecuritySetting { get => (this._domainSecuritySetting = this._domainSecuritySetting ?? new Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.DomainSecuritySettings()); set { {_domainSecuritySetting = value;} } }
 
         /// <summary>Internal Acessors for LdapSettingCertificateNotAfter</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainServicePropertiesInternal.LdapSettingCertificateNotAfter { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ILdapsSettingsInternal)LdapsSetting).CertificateNotAfter; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ILdapsSettingsInternal)LdapsSetting).CertificateNotAfter = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainServicePropertiesInternal.LdapSettingCertificateNotAfter { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ILdapsSettingsInternal)LdapsSetting).CertificateNotAfter; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ILdapsSettingsInternal)LdapsSetting).CertificateNotAfter = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for LdapSettingCertificateThumbprint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainServicePropertiesInternal.LdapSettingCertificateThumbprint { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ILdapsSettingsInternal)LdapsSetting).CertificateThumbprint; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ILdapsSettingsInternal)LdapsSetting).CertificateThumbprint = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainServicePropertiesInternal.LdapSettingCertificateThumbprint { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ILdapsSettingsInternal)LdapsSetting).CertificateThumbprint; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ILdapsSettingsInternal)LdapsSetting).CertificateThumbprint = value ?? null; }
 
         /// <summary>Internal Acessors for LdapSettingPublicCertificate</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainServicePropertiesInternal.LdapSettingPublicCertificate { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ILdapsSettingsInternal)LdapsSetting).PublicCertificate; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ILdapsSettingsInternal)LdapsSetting).PublicCertificate = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainServicePropertiesInternal.LdapSettingPublicCertificate { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ILdapsSettingsInternal)LdapsSetting).PublicCertificate; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ILdapsSettingsInternal)LdapsSetting).PublicCertificate = value ?? null; }
 
         /// <summary>Internal Acessors for LdapsSetting</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ILdapsSettings Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainServicePropertiesInternal.LdapsSetting { get => (this._ldapsSetting = this._ldapsSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.LdapsSettings()); set { {_ldapsSetting = value;} } }
+
+        /// <summary>Internal Acessors for MigrationProgressCompletionPercentage</summary>
+        double? Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainServicePropertiesInternal.MigrationProgressCompletionPercentage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).MigrationProgressCompletionPercentage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).MigrationProgressCompletionPercentage = value ?? default(double); }
+
+        /// <summary>Internal Acessors for MigrationProgressMessage</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainServicePropertiesInternal.MigrationProgressMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).MigrationProgressMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).MigrationProgressMessage = value ?? null; }
 
         /// <summary>Internal Acessors for MigrationProperty</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationProperties Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainServicePropertiesInternal.MigrationProperty { get => (this._migrationProperty = this._migrationProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.MigrationProperties()); set { {_migrationProperty = value;} } }
 
         /// <summary>Internal Acessors for MigrationPropertyMigrationProgress</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationProgress Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainServicePropertiesInternal.MigrationPropertyMigrationProgress { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).MigrationProgress; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).MigrationProgress = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationProgress Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainServicePropertiesInternal.MigrationPropertyMigrationProgress { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).MigrationProgress; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).MigrationProgress = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for MigrationPropertyOldSubnetId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainServicePropertiesInternal.MigrationPropertyOldSubnetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).OldSubnetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).OldSubnetId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainServicePropertiesInternal.MigrationPropertyOldSubnetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).OldSubnetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).OldSubnetId = value ?? null; }
 
         /// <summary>Internal Acessors for MigrationPropertyOldVnetSiteId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainServicePropertiesInternal.MigrationPropertyOldVnetSiteId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).OldVnetSiteId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).OldVnetSiteId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainServicePropertiesInternal.MigrationPropertyOldVnetSiteId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).OldVnetSiteId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).OldVnetSiteId = value ?? null; }
 
         /// <summary>Internal Acessors for NotificationSetting</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.INotificationSettings Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainServicePropertiesInternal.NotificationSetting { get => (this._notificationSetting = this._notificationSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.NotificationSettings()); set { {_notificationSetting = value;} } }
@@ -162,11 +168,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models
 
         /// <summary>Completion Percentage</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PropertyOrigin.Inlined)]
-        public double? MigrationProgressCompletionPercentage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).MigrationProgressCompletionPercentage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).MigrationProgressCompletionPercentage = value ?? default(double); }
+        public double? MigrationProgressCompletionPercentage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).MigrationProgressCompletionPercentage; }
 
         /// <summary>Progress Message</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PropertyOrigin.Inlined)]
-        public string MigrationProgressMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).MigrationProgressMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).MigrationProgressMessage = value ?? null; }
+        public string MigrationProgressMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal)MigrationProperty).MigrationProgressMessage; }
 
         /// <summary>Backing field for <see cref="MigrationProperty" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationProperties _migrationProperty;

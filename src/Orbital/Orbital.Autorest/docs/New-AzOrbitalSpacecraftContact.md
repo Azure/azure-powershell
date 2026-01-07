@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzOrbitalSpacecraftContact
 
 ## SYNOPSIS
-create a contact.
+Create a contact.
 
 ## SYNTAX
 
@@ -43,7 +43,7 @@ New-AzOrbitalSpacecraftContact -Name <String> -ResourceGroupName <String> -Space
 ```
 
 ## DESCRIPTION
-create a contact.
+Create a contact.
 
 ## EXAMPLES
 

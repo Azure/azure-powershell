@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support.Cmdlets
     using System;
 
     /// <summary>
-    /// Create a new support ticket for Billing, and Subscription Management issues. Learn the [prerequisites](https://aka.ms/supportAPI)
+    /// create a new support ticket for Billing, and Subscription Management issues. Learn the [prerequisites](https://aka.ms/supportAPI)
     /// required to create a support ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most
     /// recent set of services and problem categories required for support ticket creation.<br/><br/>Adding attachments is not
     /// currently supported via the API. To add a file to an existing support ticket, visit the [Manage support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/managesupportrequest)
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzSupportTicketsNoSubscription_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportTicketDetails))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Support.Description(@"Create a new support ticket for Billing, and Subscription Management issues. Learn the [prerequisites](https://aka.ms/supportAPI) required to create a support ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most recent set of services and problem categories required for support ticket creation.<br/><br/>Adding attachments is not currently supported via the API. To add a file to an existing support ticket, visit the [Manage support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/managesupportrequest) page in the Azure portal, select the support ticket, and use the file upload control to add a new file.<br/><br/>Providing consent to share diagnostic information with Azure support is currently not supported via the API. The Azure support engineer working on your ticket will reach out to you for consent if your issue requires gathering diagnostic information from your Azure resources.<br/><br/>")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Support.Description(@"create a new support ticket for Billing, and Subscription Management issues. Learn the [prerequisites](https://aka.ms/supportAPI) required to create a support ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most recent set of services and problem categories required for support ticket creation.<br/><br/>Adding attachments is not currently supported via the API. To add a file to an existing support ticket, visit the [Manage support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/managesupportrequest) page in the Azure portal, select the support ticket, and use the file upload control to add a new file.<br/><br/>Providing consent to share diagnostic information with Azure support is currently not supported via the API. The Azure support engineer working on your ticket will reach out to you for consent if your issue requires gathering diagnostic information from your Azure resources.<br/><br/>")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Support.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Support.HttpPath(Path = "/providers/Microsoft.Support/supportTickets/{supportTicketName}", ApiVersion = "2024-04-01")]
     public partial class NewAzSupportTicketsNoSubscription_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -51,15 +51,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support.Cmdlets
 
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
-
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>Advanced diagnostic consent to be updated on the support ticket.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Advanced diagnostic consent to be updated on the support ticket.")]
@@ -559,11 +550,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Support.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -879,24 +865,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportTicketDetails
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

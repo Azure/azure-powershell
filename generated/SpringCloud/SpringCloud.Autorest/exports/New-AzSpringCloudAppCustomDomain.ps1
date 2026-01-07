@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create custom domain of one lifecycle application.
+Create custom domain of one lifecycle application.
 .Description
-create custom domain of one lifecycle application.
+Create custom domain of one lifecycle application.
 .Example
 New-AzSpringCloudAppCustomDomain -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName gateway -Name springcloud-service.azuremicroservices.io
 
@@ -237,8 +237,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

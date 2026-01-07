@@ -130,7 +130,7 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -388,7 +388,7 @@ Accept wildcard characters: False
 ### -SkuCapacity
 Specifies the number of Throughput Units that defines the capacity for the namespace.
 The property default value is1 which signifies 1 Throughput Unit = 1MB/s ingress and 2MB/s egress per namespace.
-Min capacity is 1 and max allowed capacity is 20.
+Min capacity is 1 andmax allowed capacity is 20.
 
 ```yaml
 Type: System.Int32

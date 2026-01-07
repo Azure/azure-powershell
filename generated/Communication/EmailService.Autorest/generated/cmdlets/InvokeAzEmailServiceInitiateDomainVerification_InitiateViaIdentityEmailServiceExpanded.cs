@@ -40,17 +40,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
         /// <summary>Input parameter for verification APIs</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationParameter _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.VerificationParameter();
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -135,6 +126,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
         /// <summary>
+        /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Returns true when the command succeeds")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter PassThru { get; set; }
+
+        /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.HttpPipeline Pipeline { get; set; }
@@ -178,6 +176,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
         /// return immediately (set to true to skip further processing )</param>
 
         partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+
+        /// <summary>
+        /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
+        /// on that response. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
+        /// immediately (set to true to skip further processing )</param>
+
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -224,11 +232,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.EmailService.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -446,7 +449,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
                     if (EmailServiceInputObject?.Id != null)
                     {
                         this.EmailServiceInputObject.Id += $"/domains/{(global::System.Uri.EscapeDataString(this.DomainName.ToString()))}";
-                        await this.Client.DomainsInitiateVerificationViaIdentity(EmailServiceInputObject.Id, _parametersBody, onDefault, this, Pipeline);
+                        await this.Client.DomainsInitiateVerificationViaIdentity(EmailServiceInputObject.Id, _parametersBody, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -463,7 +466,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("EmailServiceInputObject has null value for EmailServiceInputObject.EmailServiceName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, EmailServiceInputObject) );
                         }
-                        await this.Client.DomainsInitiateVerification(EmailServiceInputObject.SubscriptionId ?? null, EmailServiceInputObject.ResourceGroupName ?? null, EmailServiceInputObject.EmailServiceName ?? null, DomainName, _parametersBody, onDefault, this, Pipeline);
+                        await this.Client.DomainsInitiateVerification(EmailServiceInputObject.SubscriptionId ?? null, EmailServiceInputObject.ResourceGroupName ?? null, EmailServiceInputObject.EmailServiceName ?? null, DomainName, _parametersBody, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -541,6 +544,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
+                }
+            }
+        }
+
+        /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
+        /// </returns>
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage)
+        {
+            using( NoSynchronizationContext )
+            {
+                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
+                overrideOnOk(responseMessage, ref _returnNow);
+                // if overrideOnOk has returned true, then return right away.
+                if ((null != _returnNow && await _returnNow))
+                {
+                    return ;
+                }
+                // onOk - response for 200 /
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
+                {
+                    WriteObject(true);
                 }
             }
         }

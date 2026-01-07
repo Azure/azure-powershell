@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update tags for a peering service with the specified name under the given subscription and resource group.
+Update tags for a peering service with the specified name under the given subscription and resource group.
 .Description
-update tags for a peering service with the specified name under the given subscription and resource group.
+Update tags for a peering service with the specified name under the given subscription and resource group.
 .Example
 $tags=@{hello='world'}
 Update-AzPeeringService -Name DRTestInterCloud -ResourceGroupName DemoRG -Tag $tags
@@ -145,8 +145,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobScaleRule
 https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappjobscaleruleobject
 #>
 function New-AzContainerAppJobScaleRuleObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobScaleRule')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
