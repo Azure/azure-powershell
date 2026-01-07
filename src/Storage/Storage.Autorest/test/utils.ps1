@@ -52,6 +52,9 @@ function setupEnv() {
     $env.RandomString = (RandomString $false 8)
     $env.ResourceGroupName = "testaccountmigrationrg"
     $env.AccountName = "testaccountmigration111"
+    $env.TaskID = "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testtaskassignmentrg/providers/Microsoft.StorageActions/storageTasks/testtask1"
+    $env.TaskAssignmentResourceGroup = "testtaskassignmentrg"
+    $env.TaskAssignmentAccount = "testassignmentaccount"
     $env.FilePV2AccountName = "pshtestaccountpv2"
     $env.TaskID = "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.StorageActions/storageTasks/mytask1"
     $env.TaskAssignmentResourceGroup = "testtaskassignmentrg"
@@ -62,6 +65,6 @@ function setupEnv() {
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {
-    # Clean resources you create for
+    # Clean resources you create fortest
 }
 

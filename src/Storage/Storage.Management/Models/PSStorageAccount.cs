@@ -25,6 +25,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
@@ -76,7 +78,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.EnableSftp = storageAccount.IsSftpEnabled;
             this.EnableLocalUser = storageAccount.IsLocalUserEnabled;
             this.AllowedCopyScope = storageAccount.AllowedCopyScope;
-            this.DnsEndpointType= storageAccount.DnsEndpointType;
+            this.DnsEndpointType = storageAccount.DnsEndpointType;
+            this.EnableExtendedGroups = storageAccount.EnableExtendedGroups;
             this.Zone = storageAccount.Zones is null ? null : storageAccount.Zones.ToArray();
             this.ZonePlacementPolicy = storageAccount.Placement is null ? null : storageAccount.Placement.ZonePlacementPolicy;
             this.GeoPriorityReplicationStatus = storageAccount.GeoPriorityReplicationStatus is null ? null : new PSGeoPriorityReplicationStatus(storageAccount.GeoPriorityReplicationStatus);
@@ -142,9 +145,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public bool? EnableHierarchicalNamespace { get; set; }
 
-        public bool? FailoverInProgress { get; set; }
-
         public string LargeFileSharesState { get; set; }
+
+        public bool? FailoverInProgress { get; set; }
 
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
 
@@ -174,10 +177,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSImmutableStorageAccount ImmutableStorageWithVersioning { get; set; }
         public PSStorageAccountSkuConversionStatus StorageAccountSkuConversionStatus { get; set; }
         public string DnsEndpointType { get; set; }
+        public bool? EnableExtendedGroups { get; set; }       
         public string[] Zone { get; set; }
         public string ZonePlacementPolicy { get; set; }
         public PSGeoPriorityReplicationStatus GeoPriorityReplicationStatus { get; set; }
-
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client, IAzureContext DefaultContext)
         {
@@ -227,6 +230,26 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             // Allow listing storage contents through piping
             return null;
+        }
+
+        /// <summary>
+        /// Function used by piping PSStorageAccount to autorest based cmdlets
+        /// </summary>
+        /// <returns></returns>
+        public string ToJsonString()
+        {
+            DefaultContractResolver contractResolver = new DefaultContractResolver
+            {
+                NamingStrategy = new CamelCaseNamingStrategy()
+            };
+            PSStorageAccount result = MemberwiseClone() as PSStorageAccount;
+            result.Context = null;
+
+            return JsonConvert.SerializeObject(result, new JsonSerializerSettings
+            {
+                ContractResolver = contractResolver,
+                Formatting = Formatting.Indented,
+            });
         }
     }
 
@@ -338,10 +361,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             {
                 this.ImmutabilityPeriodSinceCreationInDays = accountImmutabilityPolicyProperties.ImmutabilityPeriodSinceCreationInDays;
                 this.State = accountImmutabilityPolicyProperties.State;
+                this.AllowProtectedAppendWrites = accountImmutabilityPolicyProperties.AllowProtectedAppendWrites;
             }
         }
         public int? ImmutabilityPeriodSinceCreationInDays { get; set; }
         public string State { get; set; }
+        public bool? AllowProtectedAppendWrites { get; set; }
     }
 
     /// <summary>

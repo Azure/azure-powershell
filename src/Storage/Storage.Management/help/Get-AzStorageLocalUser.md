@@ -15,13 +15,15 @@ Gets a specified local user or lists all local users in a storage account.
 ### AccountName (Default)
 ```
 Get-AzStorageLocalUser [-ResourceGroupName] <String> [-StorageAccountName] <String> [-UserName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-MaxPageSize <Int32>] [-Filter <String>] [-IncludeNFSv3] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
-Get-AzStorageLocalUser -StorageAccount <PSStorageAccount> [-UserName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzStorageLocalUser -StorageAccount <PSStorageAccount> [-UserName <String>] [-MaxPageSize <Int32>]
+ [-Filter <String>] [-IncludeNFSv3] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,9 +42,9 @@ $localUser
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name      Sid                                          HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes
-----      ---                                          ------------- ------------ --------- -------------- ----------------
-testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /             True         True      True           [container1,...]
+Name      Sid                                          HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes UserId GroupId AllowAclAuthorization
+----      ---                                          ------------- ------------ --------- -------------- ---------------- ------ ------- ---------------------
+testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /             True         True      True           [container1,...] 1000    
 
 $localUser.PermissionScopes
   
@@ -62,13 +64,46 @@ Get-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystor
 ```output
 ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name      Sid                                          HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes SshAuthorizedKeys
-----      ---                                          ------------- ------------ --------- -------------- ---------------- -----------------
-testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /             True         True      True           [container1,...]      
-testuser2 S-1-2-0-0000000000-000000000-0000000000-0002 /dir          True         True      False
+Name      Sid                                          HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes UserId GroupId AllowAclAuthorization
+----      ---                                          ------------- ------------ --------- -------------- ---------------- ------ ------- ---------------------
+testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /             True         True      True           [container1,...] 1000     
+testuser2 S-1-2-0-0000000000-000000000-0000000000-0002 /dir          True         True      False                           1001
 ```
 
 This command lists all local users in a storage account.
+
+### Example 3: List local users with a max page size and filter
+```powershell
+Get-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -MaxPageSize 3 -Filter "startswith(name, test)"
+```
+
+```output
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name      Sid                                          HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes UserId GroupId AllowAclAuthorization
+----      ---                                          ------------- ------------ --------- -------------- ---------------- ------ ------- ---------------------
+testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /             True         True      True           [container1,...] 1000     
+testuser2 S-1-2-0-0000000000-000000000-0000000000-0002 /dir          True         True      False                           1001
+testuser3 S-1-2-0-0000000000-000000000-0000000000-0003 /             True         True      False                           1001   100     True
+```
+
+This command lists local users that names start with "test", with a max page size of 3 included in the list response.
+
+### Example 4: List all nfsv3 local users in a storage account
+```powershell
+Get-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IncludeNFSv3
+```
+
+```output
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name        Sid                                           HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes UserId GroupId AllowAclAuthorization
+----        ---                                           ------------- ------------ --------- -------------- ---------------- ------ ------- ---------------------
+nfsv3_100   S-1-2-0-3080345243-855858100-3794096380-1001  /test         False        False     False                           1001                                
+nfsv3_70005 S-1-2-0-1439193041-1066083860-1154209853-1000 /test         False        False     False                           1000
+```
+
+This command lists all nfsv3 local users in a storage account.
 
 ## PARAMETERS
 
@@ -79,6 +114,51 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Filter
+The filter of username. When specified, only usernames starting with the filter will be listed. The filter must be in format: startswith(name, <prefix>)
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeNFSv3
+Specify to include NFSv3 enabled Local Users in list Local Users.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxPageSize
+The maximum number of local users that will be included in the list response
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

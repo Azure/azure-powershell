@@ -15,9 +15,9 @@ Creates a Storage file share.
 ### AccountName (Default)
 ```
 New-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
- [-QuotaGiB <Int32>] [-Metadata <Hashtable>] [-AccessTier <String>] [-Snapshot] [-EnabledProtocol <String>]
- [-RootSquash <String>] [-ProvisionedBandwidthMibps <Int32>] [-ProvisionedIops <Int32>] [-PaidBurstingEnabled]
- [-PaidBurstingMaxIops <Int32>] [-PaidBurstingMaxBandwidthMibps <Int32>]
+ [-QuotaGiB <Int32>] [-Metadata <Hashtable>] [-EnabledProtocol <String>] [-RootSquash <String>]
+ [-AccessTier <String>] [-Snapshot] [-ProvisionedBandwidthMibps <Int32>] [-ProvisionedIops <Int32>]
+ [-PaidBurstingEnabled] [-PaidBurstingMaxIops <Int32>] [-PaidBurstingMaxBandwidthMibps <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ New-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String
 ### AccountObject
 ```
 New-AzRmStorageShare -StorageAccount <PSStorageAccount> -Name <String> [-QuotaGiB <Int32>]
- [-Metadata <Hashtable>] [-AccessTier <String>] [-Snapshot] [-EnabledProtocol <String>] [-RootSquash <String>]
+ [-Metadata <Hashtable>] [-EnabledProtocol <String>] [-RootSquash <String>] [-AccessTier <String>] [-Snapshot]
  [-ProvisionedBandwidthMibps <Int32>] [-ProvisionedIops <Int32>] [-PaidBurstingEnabled]
  [-PaidBurstingMaxIops <Int32>] [-PaidBurstingMaxBandwidthMibps <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]

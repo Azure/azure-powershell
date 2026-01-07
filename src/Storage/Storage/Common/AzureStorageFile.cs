@@ -190,6 +190,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             {
                 credentials = null;
             }
+            // Track1 File not support Trailing Dot
+            if (Util.PathContainsTrailingDot(shareFileClient.Path) && (clientOptions != null && clientOptions.AllowTrailingDot != null && clientOptions.AllowTrailingDot.Value))
+            {
+                return new InvalidCloudFile(shareFileClient.Uri, credentials);
+            }
             CloudFile track1CloudFile;
             track1CloudFile = new CloudFile(shareFileClient.Uri, credentials);
             return track1CloudFile;

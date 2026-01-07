@@ -87,6 +87,21 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNull]
         public Hashtable Metadata { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Sets protocols for file shares. It cannot be changed after file share creation. Possible values include: 'SMB', 'NFS'")]
+        [ValidateSet(EnabledProtocols.NFS,
+            EnabledProtocols.SMB,
+            IgnoreCase = true)]
+        public string EnabledProtocol { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Sets reduction of the access rights for the remote superuser. Possible values include: 'NoRootSquash', 'RootSquash', 'AllSquash'")]
+        [ValidateSet(RootSquashType.NoRootSquash,
+            RootSquashType.RootSquash,
+            RootSquashType.AllSquash,
+            IgnoreCase = true)]
+        public string RootSquash { get; set; }
+
 
         [Parameter(
            Mandatory = false,
@@ -112,21 +127,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(Mandatory = false, HelpMessage = "Create a snapshot of existing share with same name.")]
         public SwitchParameter Snapshot { get; set; }
-        
-        [Parameter(Mandatory = false,
-            HelpMessage = "Sets protocols for file shares. It cannot be changed after file share creation. Possible values include: 'SMB', 'NFS'")]
-        [ValidateSet(EnabledProtocols.NFS,
-            EnabledProtocols.SMB,
-            IgnoreCase = true)]
-        public string EnabledProtocol { get; set; }
-
-        [Parameter(Mandatory = false,
-            HelpMessage = "Sets reduction of the access rights for the remote superuser. Possible values include: 'NoRootSquash', 'RootSquash', 'AllSquash'")]
-        [ValidateSet(RootSquashType.NoRootSquash,
-            RootSquashType.RootSquash,
-            RootSquashType.AllSquash,
-            IgnoreCase = true)]
-        public string RootSquash { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "The provisioned bandwidth of the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v2 account type. Please refer to the Get-AzStorageFileServiceUsage cmdlet output for the minimum and maximum allowed value for provisioned bandwidth.")]
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     this.StorageClient.FileShares.Create(
                             this.ResourceGroupName,
                             this.StorageAccountName,
-                            this.Name,
+                            this.Name, 
                             new FileShare(
                                 metadata: MetadataDictionary,
                                 shareQuota: shareQuota,

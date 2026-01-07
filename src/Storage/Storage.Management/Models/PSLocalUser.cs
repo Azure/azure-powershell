@@ -15,6 +15,7 @@
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
@@ -38,7 +39,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.HasSshKey = user.HasSshKey;
             this.HasSshPassword = user.HasSshPassword;
             this.SshAuthorizedKeys = PSSshPublicKey.GetPSSshPublicKeys(user.SshAuthorizedKeys);
-            this.PermissionScopes = PSPermissionScope.GetPSPermissionScopes(user.PermissionScopes);
+            this.PermissionScopes = PSPermissionScope.GetPSPermissionScopes(user.PermissionScopes); 
+            this.IsNfSv3Enabled = user.IsNfSv3Enabled;
+            this.ExtendedGroups = user.ExtendedGroups == null ? null : user.ExtendedGroups.ToArray();
+            this.GroupId = user.GroupId;
+            this.AllowAclAuthorization = user.AllowAclAuthorization;
+            this.UserId = user.UserId;
         }
 
 
@@ -52,6 +58,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             user.HasSshPassword = this.HasSshPassword;
             user.SshAuthorizedKeys = PSSshPublicKey.ParseSshPublicKeyss(this.SshAuthorizedKeys);
             user.PermissionScopes = PSPermissionScope.ParsePermissionScopes(this.PermissionScopes);
+            user.IsNfSv3Enabled = this.IsNfSv3Enabled;
+            user.ExtendedGroups = this.ExtendedGroups is null ? null : new List<int?>(this.ExtendedGroups);
+            user.GroupId = this.GroupId;
+            user.AllowAclAuthorization = this.AllowAclAuthorization;
             return user;
         }
 
@@ -77,6 +87,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public bool? HasSshPassword { get; set; }
         public PSSshPublicKey[] SshAuthorizedKeys { get; set; }
         public PSPermissionScope[] PermissionScopes { get; set; }
+        public int?[] ExtendedGroups { get; set; }
+        public bool? IsNfSv3Enabled { get; set; }
+        public int? GroupId {  get; set; }
+        public bool? AllowAclAuthorization {  get; set; }
+        public int? UserId {  get; set; }
     }
 
     //wrapper of SshPublicKey

@@ -322,7 +322,7 @@ Accept wildcard characters: False
 
 ### -StandardBlobTier
 Block Blob Tier, valid values are Hot/Cool/Archive/Cold.
-See detail in https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers
+See detail in https://learn.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers
 
 ```yaml
 Type: System.String

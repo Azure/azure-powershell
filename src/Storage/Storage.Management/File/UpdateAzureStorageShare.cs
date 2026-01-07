@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
         }
         private string accessTier = null;
-        
+
         [Parameter(Mandatory = false,
             HelpMessage = "Sets reduction of the access rights for the remote superuser. Possible values include: 'NoRootSquash', 'RootSquash', 'AllSquash'")]
         [ValidateSet(RootSquashType.NoRootSquash,

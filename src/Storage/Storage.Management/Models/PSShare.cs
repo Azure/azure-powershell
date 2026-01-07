@@ -130,6 +130,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string AccessTierStatus { get; }
 
         public long? ShareUsageBytes { get; }
+
         public DateTime? SnapshotTime { get; private set; }
         public int? ProvisionedIops { get; set; }
         public int? ProvisionedBandwidthMibps { get; set; }

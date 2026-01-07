@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
@@ -128,10 +129,44 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? hasSshPassword = null;
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "An identifier for associating a group of users.")]
+        [ValidateNotNullOrEmpty]
+        public int? GroupId {  get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicates whether ACL authorization is allowed for this user. Set it to false to disallow using ACL authorization.")]
+        [ValidateNotNullOrEmpty]
+        public bool? AllowAclAuthorization {  get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicates whether LocalUser belongs to NFSv3 or SFTP.")]
+        [ValidateNotNullOrEmpty]
+        public bool IsNfSv3Enabled
+        {
+            get
+            {
+                return isNfSv3Enabled != null ? isNfSv3Enabled.Value : false;
+            }
+            set
+            {
+                isNfSv3Enabled = value;
+            }
+        }
+        private bool? isNfSv3Enabled = null;
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Sets extended Groups of which user is part of, only for NFSv3 User.")]
+        [ValidateNotNullOrEmpty]
+        public int[] ExtendedGroup { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-             
+
             if (ShouldProcess(this.UserName, "Create Storage Account LocalUser with name:"))
             {
                 switch (ParameterSetName)
@@ -152,16 +187,41 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     HasSshKey = this.hasSshKey,
                     HasSshPassword = this.hasSshPassword,
                     PermissionScopes = this.PermissionScope,
-                    SshAuthorizedKeys = this.SshAuthorizedKey
+                    SshAuthorizedKeys = this.SshAuthorizedKey,
+                    IsNfSv3Enabled = this.isNfSv3Enabled,
+                    ExtendedGroups = this.ExtendedGroup is null ? null : this.ExtendedGroup.Cast<int?>().ToArray(),
+                    GroupId = this.GroupId,
+                    AllowAclAuthorization = this.AllowAclAuthorization,
                 };
 
-                LocalUser localUser = this.StorageClient.LocalUsers.CreateOrUpdate(
-                            this.ResourceGroupName,
-                            this.StorageAccountName,
-                            this.UserName,
-                            localuser.ParseLocalUser());
+                try
+                {
+                    LocalUser localUser = this.StorageClient.LocalUsers.CreateOrUpdate(
+                                this.ResourceGroupName,
+                                this.StorageAccountName,
+                                this.UserName,
+                                localuser.ParseLocalUser());
 
-                WriteObject(new PSLocalUser(localUser, this.ResourceGroupName, this.StorageAccountName));
+                    WriteObject(new PSLocalUser(localUser, this.ResourceGroupName, this.StorageAccountName));
+                }
+
+                catch (ErrorResponseException e)
+                {
+                    if (e.Body != null && e.Body.Error != null && e.Body.Error.Message != null)
+                    {
+                        // sdk will not add the detail error message to exception message for custmized error, so create a new exception with detail error in exception message
+                        ErrorResponseException newex = new ErrorResponseException(e.Body.Error.Message, e);
+                        newex.Request = e.Request;
+                        newex.Response = e.Response;
+                        newex.Source = e.Source;
+                        newex.Body = e.Body;
+                        throw newex;
+                    }
+                    else
+                    {
+                        throw e;
+                    }
+                }
             }
         }
     }

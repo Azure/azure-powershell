@@ -180,7 +180,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         private PremiumPageBlobTier? pageBlobTier = null;
 
-        [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive/Cold. See detail in https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
+        [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive/Cold. See detail in https://learn.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Hot", "Cool", "Archive", "Cold")]
         public string StandardBlobTier
@@ -395,7 +395,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 Tuple<string, StorageBlob.CloudBlob> uploadRequest = UploadRequests.DequeueRequest();
                 IStorageBlobManagement localChannel = Channel;
                 Func<long, Task> taskGenerator;
-                if (!UseTrack2Sdk())
+                long fileSize = new FileInfo(ResolvedFileName).Length;
+
+                if (!UseTrack2Sdk() && (this.BlobType.ToLower() != AppendBlobType.ToLower() || fileSize <= (long)size4MB * maxBlockCount))
                 {
                     //Upload with DMlib
                     taskGenerator = (taskId) => Upload2Blob(taskId, localChannel, uploadRequest.Item1, uploadRequest.Item2);
@@ -543,32 +545,39 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                         }
 
                         // Upload blob content
-                        byte[] uploadcache4MB = null;
+                        //For page blob will always use 4MB
+                        long chunksize = size4MB;
+
+                        // for append blob, the chunksize can be at most 100MB, will make it multiple of 8MB.
+                        if (string.Equals(blobType, AppendBlobType, StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            chunksize = GetAppendBlockLength(fileSize);
+                        }
+                        byte[] uploadcacheLong = null;
                         byte[] uploadcache = null;
                         progressHandler.Report(0);
                         long offset = 0;
                         while (offset < fileSize)
                         {
                             // Get chunk size and prepare cache
-                            int chunksize = size4MB;
                             if (chunksize <= (fileSize - offset)) // Chunk size will be 4MB
                             {
-                                if (uploadcache4MB == null)
+                                if (uploadcacheLong == null)
                                 {
-                                    uploadcache4MB = new byte[size4MB];
+                                    uploadcacheLong = new byte[chunksize];
                                 }
-                                uploadcache = uploadcache4MB;
+                                uploadcache = uploadcacheLong;
                             }
                             else // last chunk can < 4MB
                             {
                                 chunksize = (int)(fileSize - offset);
-                                if (uploadcache4MB == null)
+                                if (uploadcacheLong == null)
                                 {
                                     uploadcache = new byte[chunksize];
                                 }
                                 else
                                 {
-                                    uploadcache = uploadcache4MB;
+                                    uploadcache = uploadcacheLong;
                                 }
                             }
 

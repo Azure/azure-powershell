@@ -111,9 +111,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             var newsignedIdentifiers = new List<BlobSignedIdentifier>(signedIdentifiers);
             newsignedIdentifiers.Add(signedIdentifier);
 
-            //Set permissions back to container
+                //Set permissions back to container
             container.SetAccessPolicy(accessPolicy.BlobPublicAccess, newsignedIdentifiers, BlobRequestConditions, CmdletCancellationToken);
-            return policyName;
+                return policyName;
+            //}
         }
 
         /// <summary>

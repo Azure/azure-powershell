@@ -60,6 +60,12 @@ directive:
   - remove-operation: StorageAccounts_Update
   - remove-operation: FileShares_Lease
   - where:
+      variant: ^(Create|Update)(?!.*?Expanded|JsonFilePath|JsonString)
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity.*$
+    remove: true
+  - where:
       subject: ^StorageAccountCustomerInitiatedMigration$
     set:
       subject: StorageAccountMigration

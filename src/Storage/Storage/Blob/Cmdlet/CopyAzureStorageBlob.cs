@@ -99,7 +99,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateSet("Block", "Page", "Append", IgnoreCase = true)]
         public string DestBlobType { get; set; }
 
-        [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive/Cold. See detail in https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
+        [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive/Cold. See detail in https://learn.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Hot", "Cool", "Archive", "Cold")]
         public string StandardBlobTier
@@ -156,6 +156,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(HelpMessage = "Destination Storage context object", Mandatory = false)]
         public IStorageContext DestContext { get; set; }
 
+        // Overwrite the useless parameter
         public override int? ServerTimeoutPerRequest { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ConcurrentTaskCount { get; set; }
@@ -479,9 +480,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         long appendCopyOffset = 0;
                         progressHandler.Report(appendCopyOffset);
                         long appendContentLenLeft = srcProperties.ContentLength;
+                        long appendChunkSize = GetAppendBlockLength(srcProperties.ContentLength);
                         while (appendContentLenLeft > 0)
                         {
-                            long appendContentSize = appendContentLenLeft < size4MB ? appendContentLenLeft : size4MB;
+                            long appendContentSize = appendContentLenLeft < appendChunkSize ? appendContentLenLeft : appendChunkSize;
 
                             Track2Models.AppendBlobAppendBlockFromUriOptions appendBlobAppendBlockFromUriOptions = new Track2Models.AppendBlobAppendBlockFromUriOptions
                             {

@@ -96,6 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "Container name", ValueFromPipelineByPropertyName = true, ParameterSetName = PrefixParameterSet)]
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "Container name", ValueFromPipelineByPropertyName = true, ParameterSetName = SingleBlobSnapshotTimeParameterSet)]
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "Container name", ValueFromPipelineByPropertyName = true, ParameterSetName = SingleBlobVersionIDParameterSet)]
+
         [ValidateNotNullOrEmpty]
         public string Container
         {

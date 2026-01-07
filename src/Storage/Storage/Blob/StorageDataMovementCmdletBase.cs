@@ -33,6 +33,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         protected const int size256MB = 256 * 1024 * 1024;
 
+        protected const int maxBlockCount = 50000;
+
+        protected const int maxBlockSize = 100 * 1024 * 1024;
+
         /// <summary>
         /// block blob type
         /// </summary>
@@ -177,12 +181,33 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             {
                 return contentLength;
             }
-            long blockLength = contentLength / 50000;
+            long blockLength = contentLength / maxBlockCount;
             if (blockLength % (size8MB) != 0)
             {
                 blockLength = (blockLength / (size8MB) + 1) * (size8MB);
             }
             return blockLength > 0 ? blockLength : contentLength;
+        }
+
+        /// <summary>
+        /// Get the block size from append blob length
+        /// </summary>
+        public static long GetAppendBlockLength(long contentLength)
+        {
+            if (contentLength <= size8MB)
+            {
+                return contentLength;
+            }
+            long blockLength = contentLength / maxBlockCount;
+            if (blockLength <= size8MB)
+            {
+                return size8MB;
+            }
+            if (blockLength % (size4MB) != 0)
+            {
+                blockLength = (blockLength / (size4MB) + 1) * (size4MB);
+            }
+            return blockLength;
         }
 
         /// <summary>

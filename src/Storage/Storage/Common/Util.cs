@@ -534,6 +534,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             return blobServiceClient;
         }
 
+
         /// <summary>
         /// Validate if Start Time and Expire time meet the requirement of userDelegationKey
         /// </summary>

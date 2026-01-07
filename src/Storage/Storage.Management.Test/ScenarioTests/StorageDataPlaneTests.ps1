@@ -259,10 +259,21 @@ function Test-Blob
         $blob.BlobBaseClient.SetAccessTier($StandardBlobTier2)
         $blob.ICloudBlob.FetchAttributes()
         Assert-AreEqual $blob.ICloudBlob.Properties.StandardBlobTier $StandardBlobTier2
-        Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName2 -Force -Properties @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} -Context $storageContext
-        $blob = Get-AzStorageContainer -Name $containerName -Context $storageContext | Get-AzStorageBlob
-        Assert-AreEqual $blob.Count 2
-        Get-AzStorageBlob -Container $containerName -Blob $objectName2 -Context $storageContext | Remove-AzStorageBlob -Force 
+        Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName2 -Force -Properties @{"ContentType" = $ContentType; "CacheControl" = "READ"} -Tag @{"tag3" = "value3"; "tag2" = "value2" } -Context $storageContext
+        $blobs = Get-AzStorageContainer -Name $containerName -Context $storageContext | Get-AzStorageBlob -IncludeTag
+        Assert-AreEqual $blobs.Count 2
+		Assert-AreEqual 2 $blobs[1].TagCount
+		Assert-AreEqual 2 $blobs[1].Tags.Count
+		$blob2 = get-AzStorageBlob -Container $containerName -Blob $objectName2 -Context $storageContext -TagCondition """tag2""='value2'"  -IncludeTag
+		Assert-AreEqual 2 $blob2.TagCount
+		Assert-AreEqual 2 $blob2.Tags.Count
+		$Tag = Set-AzStorageBlobTag -Container $containerName -Blob $objectName1 -Context $storageContext -Tag @{"tag3" = "value3"; "tag2" = "value2" ; "tag1" = "value1" }
+		Assert-AreEqual 3 $Tag.Count
+		$Tag = get-AzStorageBlobTag -Container $containerName -Blob $objectName1 -Context $storageContext -TagCondition """tag2""='value2'"
+		Assert-AreEqual 3 $Tag.Count
+        $blobs = get-AzStorageBlobByTag  -Context $storageContext -TagFilterSqlExpression "@container='$($containerName)' AND ""tag3""='value3' AND ""tag2""='value2'"      
+        Assert-AreEqual 2 $blobs.Count 
+        Get-AzStorageBlob -Container $containerName -Blob $objectName2 -Context $storageContext | Remove-AzStorageBlob -Force -TagCondition """tag2""='value2'"
 
         #check XSCL Track2 Items works for container
         $container = Get-AzStorageContainer $containerName -Context $storageContext
@@ -1041,6 +1052,23 @@ function Test-DatalakeGen2
         Assert-AreEqual 1 $restoredItems.Count
         Assert-AreEqual $deletedItems.Name $restoredItems.Path		
 
+		# get deleted items from dir and restore with pipeline
+		$deletedItems = Get-AzDataLakeGen2DeletedItem -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 
+		Assert-AreEqual 2 $deletedItems.Count
+		$restoredItems = $deletedItems | Restore-AzDataLakeGen2DeletedItem
+		Assert-AreEqual 2 $restoredItems.Count
+        $items = Get-AzDataLakeGen2ChildItem -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -Recurse
+		Assert-AreEqual 2 $deletedItems.Count # the folder itself won't be list, so the count will be restored item count -1
+        
+        # get deleted items from filesystem and restore single
+        Remove-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1 -Force
+		$deletedItems = Get-AzDataLakeGen2DeletedItem -Context $storageContext -FileSystem $filesystemName 
+        Assert-AreEqual $filePath1 $deletedItems[0].Name 
+		Assert-AreEqual 1 $deletedItems.Count
+		$restoredItems = Restore-AzDataLakeGen2DeletedItem -Context $storageContext -FileSystem $filesystemName  -Path $deletedItems[0].Path -DeletionId $deletedItems[0].DeletionId 
+		Assert-AreEqual 1 $restoredItems.Count
+        Assert-AreEqual $deletedItems.Name $restoredItems.Path		
+
         # Clean Storage Account
         Get-AzDataLakeGen2ChildItem -Context $storageContext -FileSystem $filesystemName | Remove-AzDataLakeGen2Item -Force
 
@@ -1068,7 +1096,7 @@ function New-TestResourceGroupAndStorageAccount
         $EnableHNFS = $false
     ) 
 
-    $location = Get-ProviderLocation ResourceManagement    
+    $location = Get-ProviderLocation_Canary ResourceManagement    
     $storageAccountType = 'Standard_LRS'# Standard Geo-Reduntand Storage
     New-AzResourceGroup -Name $ResourceGroupName -Location $location
     New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $ResourceGroupName -Location $location -Type $storageAccountType -EnableHierarchicalNamespace $EnableHNFS

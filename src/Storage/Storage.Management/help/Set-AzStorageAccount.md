@@ -25,8 +25,9 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
  [-SasExpirationPeriod <TimeSpan>] [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>]
  [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>]
- [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
- [-EnableLocalUser <Boolean>] [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
+ [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>]
+ [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>]
+ [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
  [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -44,8 +45,9 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
  [-SasExpirationPeriod <TimeSpan>] [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>]
  [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>]
- [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
- [-EnableLocalUser <Boolean>] [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
+ [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>]
+ [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>]
+ [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
  [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -63,10 +65,11 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
  [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
- [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>]
- [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
- [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
+ [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>] [-AllowedCopyScope <String>] [-Zone <String[]>]
+ [-ZonePlacementPolicy <String>] [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -85,10 +88,11 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
  [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
- [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>]
- [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
- [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
+ [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>] [-AllowedCopyScope <String>] [-Zone <String[]>]
+ [-ZonePlacementPolicy <String>] [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -396,16 +400,16 @@ This command updates a Storage account by set PublicNetworkAccess as enabled.
 
 
 ```
-$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -ImmutabilityPeriod 2 -ImmutabilityPolicyState Unlocked
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -ImmutabilityPeriod 2 -ImmutabilityPolicyState Unlocked -AllowProtectedAppendWrite $false
 
-$account.ImmutableStorageWithVersioning.Enabled
+PS C:\> $account.ImmutableStorageWithVersioning.Enabled
 True
 
-$account.ImmutableStorageWithVersioning.ImmutabilityPolicy
+PS C:\> $account.ImmutableStorageWithVersioning.ImmutabilityPolicy
 
-ImmutabilityPeriodSinceCreationInDays State    
-------------------------------------- -----    
-                                    2 Unlocked
+ImmutabilityPeriodSinceCreationInDays State    AllowProtectedAppendWrites
+------------------------------------- -----    --------------------------
+                                    2 Unlocked                      False
 ```
 
 The command updates account-level immutability policy properties on an existing storage account, and show the result. 
@@ -415,36 +419,48 @@ The account-level immutability policy will be inherited and applied to objects t
 ### Example 20: Update a Storage account by enable Sftp and localuser
 <!-- Skip: Output cannot be splitted from code -->
 
-
 ```powershell
-$account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableSftp $true -EnableLocalUser $true 
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableSftp $true -EnableLocalUser $true 
 
-$account.EnableSftp
+PS C:\> $account.EnableSftp
 True
 
-$account.EnableLocalUser
+PS C:\> $account.EnableLocalUser
 True
 ```
 
 This command updates a Storage account by enable Sftp and localuser. 
 To run the command successfully, the Storage account should already enable Hierarchical Namespace.
 
-### Example 21: Update a Storage account with Keyvault from another tenant (access Keyvault with FederatedClientId)
+### Example 21: Update a Storage account by set AllowedCopyScope as PrivateLink
+<!-- Skip: Output cannot be splitted from code -->
+
+
+```
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -AllowedCopyScope PrivateLink
+
+PS C:\> $account.AllowedCopyScope
+PrivateLink
+```
+
+The command updates a Storage account by set AllowedCopyScope as PrivateLink. 
+
+### Example 22: Update a Storage account with Keyvault from another tenant (access Keyvault with FederatedClientId)
 <!-- Skip: Output cannot be splitted from code -->
 
 
 ```powershell
 # create Storage account with Keyvault encryption (access Keyvault with FederatedClientId), then show properties
-$account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName  `
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName  `
                 -KeyVaultUri $keyVault.VaultUri -KeyName $keyname -KeyVaultUserAssignedIdentityId $useridentityId -KeyVaultFederatedClientId $federatedClientId
 
-$account.Encryption.EncryptionIdentity
+PS C:\> $account.Encryption.EncryptionIdentity
 
 EncryptionUserAssignedIdentity                                                                                                      EncryptionFederatedIdentityClientId                                                                                                                 
 ------------------------------                                                                                                      ----------------------------------- 
 /subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserid ********-****-****-****-************
 
-$account.Encryption.KeyVaultProperties
+PS C:\> $account.Encryption.KeyVaultProperties
 
 KeyName                       : wrappingKey
 KeyVersion                    : 
@@ -676,6 +692,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AllowProtectedAppendWrite
+When enabled by set it to true, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property can only be changed when account is created with '-EnableAccountLevelImmutability', and ImmutabilityPolicy State is disabled or unlocked.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AllowSharedKeyAccess
 Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Microsoft Entra ID. The default value is null, which is equivalent to true.
 
@@ -816,6 +847,21 @@ Accept wildcard characters: False
 Indicates whether Blob Geo Priority Replication is enabled for the storage account. 
 This feature provides enhanced geo-replication with service level agreement for priority replication to improve recovery time objectives (RTO). 
 Only available for geo-redundant storage account types (GRS, GZRS, RAGRS, RAGZRS).
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableExtendedGroup
+Enables extended group support with local users feature, if set to true.
 
 ```yaml
 Type: System.Boolean

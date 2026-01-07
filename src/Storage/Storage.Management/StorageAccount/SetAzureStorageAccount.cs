@@ -555,6 +555,21 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private int? immutabilityPeriod;
 
+        [Parameter(Mandatory = false, HelpMessage = "When enabled by set it to true, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. " +
+            "This property can only be changed when account is created with '-EnableAccountLevelImmutability', and ImmutabilityPolicy State is disabled or unlocked.")]
+        public bool AllowProtectedAppendWrite
+        {
+            get
+            {
+                return allowProtectedAppendWrite is null ? false : allowProtectedAppendWrite.Value;
+            }
+            set
+            {
+                allowProtectedAppendWrite = value;
+            }
+        }
+        private bool? allowProtectedAppendWrite;
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "The mode of the policy. Possible values include: 'Unlocked', 'Locked', 'Disabled. " +
@@ -600,6 +615,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
         }
         private bool? enableLocalUser = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enables extended group support with local users feature, if set to true.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableExtendedGroup
+        {
+            get
+            {
+                return enableExtendedGroup != null ? enableExtendedGroup.Value : false;
+            }
+            set
+            {
+                enableExtendedGroup = value;
+            }
+        }
+        private bool? enableExtendedGroup = null;
 
         [Parameter(Mandatory = false, HelpMessage = "Set restrict copy to and from Storage Accounts within a Microsoft Entra tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'")]
         [PSArgumentCompleter("PrivateLink", "AAD")]
@@ -932,6 +964,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     {
                         updateParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
                     }
+                    if (this.RoutingChoice != null || this.publishMicrosoftEndpoint != null || this.publishInternetEndpoint != null)
+                    { 
+                        updateParameters.RoutingPreference = new RoutingPreference(this.RoutingChoice, this.publishMicrosoftEndpoint, this.publishInternetEndpoint);
+                    }
                     if (this.minimumTlsVersion != null)
                     {
                         updateParameters.MinimumTlsVersion = this.minimumTlsVersion;
@@ -987,12 +1023,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     {
                         updateParameters.PublicNetworkAccess = this.PublicNetworkAccess;
                     }
-                    if(this.immutabilityPeriod !=null ||  this.ImmutabilityPolicyState != null)
+                    if(this.immutabilityPeriod !=null || this.allowProtectedAppendWrite != null || this.ImmutabilityPolicyState != null)
                     {
                         updateParameters.ImmutableStorageWithVersioning = new ImmutableStorageAccount();
                         updateParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy = new AccountImmutabilityPolicyProperties();
                         updateParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays = this.immutabilityPeriod;
                         updateParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.State = this.ImmutabilityPolicyState;
+                        updateParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.AllowProtectedAppendWrites = this.allowProtectedAppendWrite;
                     }
                     if (this.enableSftp != null)
                     {
@@ -1001,6 +1038,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (this.enableLocalUser != null)
                     {
                         updateParameters.IsLocalUserEnabled = this.enableLocalUser;
+                    }
+                    if (this.enableExtendedGroup != null)
+                    {
+                        updateParameters.EnableExtendedGroups = this.enableExtendedGroup;
                     }
                     if (this.AllowedCopyScope != null)
                     {

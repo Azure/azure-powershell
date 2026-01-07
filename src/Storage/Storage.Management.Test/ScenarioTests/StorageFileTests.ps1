@@ -28,7 +28,7 @@ function Test-StorageFileShare
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'StorageV2'
 		$shareName = "share"+ $rgname
 
@@ -68,16 +68,26 @@ function Test-StorageFileShare
         $quotaGiB = 300
 		$metadata = @{tag0="value0";tag1="value1";tag2="value2";tag3="value3"}
 		$shareName2 = "share2"+ $rgname		
-		$stos | New-AzRmStorageShare -Name $shareName2 -QuotaGiB $quotaGiB -Metadata $metadata -AccessTier Cool
+		$stos | New-AzRmStorageShare -Name $shareName2 -QuotaGiB $quotaGiB -Metadata $metadata -EnabledProtocol NFS -RootSquash RootSquash -AccessTier Cool
 		$share = $stos | Get-AzRmStorageShare -Name $shareName2
 		Assert-AreEqual $rgname $share.ResourceGroupName
 		Assert-AreEqual $stoname $share.StorageAccountName
 		Assert-AreEqual $shareName2 $share.Name
 		Assert-AreEqual $quotaGiB $share.QuotaGiB
 		Assert-AreEqual $metadata.Count $share.Metadata.Count
+		#Assert-AreEqual "NFS" $share.EnabledProtocols
+		#Assert-AreEqual "RootSquash" $share.RootSquash
 		Assert-AreEqual "Cool" $share.Accesstier
-		Update-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName2 -AccessTier Hot
+		
+		Update-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName2 -RootSquash NoRootSquash 	-AccessTier Hot
 		$share = $stos | Get-AzRmStorageShare -Name $shareName2
+		Assert-AreEqual $rgname $share.ResourceGroupName
+		Assert-AreEqual $stoname $share.StorageAccountName
+		Assert-AreEqual $shareName2 $share.Name
+		Assert-AreEqual $quotaGiB $share.QuotaGiB
+		Assert-AreEqual $metadata.Count $share.Metadata.Count
+		#Assert-AreEqual "NFS" $share.EnabledProtocols
+		#Assert-AreEqual "NoRootSquash" $share.RootSquash
 		Assert-AreEqual "Hot" $share.Accesstier
 
 		$shares = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname
@@ -112,48 +122,6 @@ function Test-StorageFileShare
     }
 }
 
-function Test-StorageFileShareGetUsage
-{
-    # Setup
-    $rgname = Get-StorageManagementTestResourceName;
-
-    try
-    {
-        # Test
-        $stoname = 'sto' + $rgname;
-        $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
-        $kind = 'StorageV2'
-		$shareName = "share"+ $rgname
-
-        Write-Verbose "RGName: $rgname | Loc: $loc"
-        New-AzResourceGroup -Name $rgname -Location $loc;
-
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
-        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
-
-		New-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName
-		$share = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName
-		Assert-AreEqual $rgname $share.ResourceGroupName
-		Assert-AreEqual $stoname $share.StorageAccountName
-		Assert-AreEqual $shareName $share.Name
-		
-        # Get share usage
-		$share = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName -GetShareUsage
-		Assert-AreEqual $shareName $share.Name
-		Assert-AreEqual 0 $share.ShareUsageBytes
-		Assert-AreEqual $null $share.Deleted
-
-
-        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}
-
 <#
 .SYNOPSIS
 Test Storage File Share Soft Delete
@@ -170,7 +138,7 @@ function Test-ShareSoftDelete
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_LRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'StorageV2'
 		$shareName1 = "share1"+ $rgname
 		$shareName2 = "share2"+ $rgname
@@ -178,7 +146,6 @@ function Test-ShareSoftDelete
         Write-Verbose "RGName: $rgname | Loc: $loc"
         New-AzResourceGroup -Name $rgname -Location $loc;
 		
-        $loc = Get-ProviderLocation_Stage ResourceManagement;
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
 
@@ -252,6 +219,121 @@ function Test-ShareSoftDelete
 		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableShareDeleteRetentionPolicy $false
 		$servicePropertie = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 
 		Assert-AreEqual $false $servicePropertie.ShareDeleteRetentionPolicy.Enabled
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-StorageFileShareGetUsage
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        $kind = 'StorageV2'
+		$shareName = "share"+ $rgname
+
+        Write-Verbose "RGName: $rgname | Loc: $loc"
+        New-AzResourceGroup -Name $rgname -Location $loc;
+
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
+
+		New-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName
+		$share = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName
+		Assert-AreEqual $rgname $share.ResourceGroupName
+		Assert-AreEqual $stoname $share.StorageAccountName
+		Assert-AreEqual $shareName $share.Name
+		
+        # Get share usage
+		$share = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName -GetShareUsage
+		Assert-AreEqual $shareName $share.Name
+		Assert-AreEqual 0 $share.ShareUsageBytes
+		Assert-AreEqual $null $share.Deleted
+
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Storage File Service Properties
+.DESCRIPTION
+SmokeTest
+#>
+function Test-FileServiceProperties
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Premium_LRS';
+        $loc = Get-ProviderLocation_Canary2 ResourceManagement;
+        $kind = 'FileStorage'
+
+        Write-Verbose "RGName: $rgname | Loc: $loc"
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        # $loc = Get-ProviderLocation_Canary ResourceManagement;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
+		
+		# Enable MC, and set smb setting
+		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableSmbMultichannel $true `
+					-SMBProtocolVersion SMB2.1,SMB3.0,SMB3.1.1 `
+					-SMBAuthenticationMethod Kerberos,NTLMv2 `
+					-SMBKerberosTicketEncryption RC4-HMAC,AES-256 `
+					-SMBChannelEncryption AES-128-CCM,AES-128-GCM,AES-256-GCM
+		$servicePropertie = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 
+		Assert-AreEqual 3 $servicePropertie.ProtocolSettings.Smb.Versions.Count
+		Assert-AreEqual 2 $servicePropertie.ProtocolSettings.Smb.AuthenticationMethods.Count
+		Assert-AreEqual 2 $servicePropertie.ProtocolSettings.Smb.KerberosTicketEncryption.Count
+		Assert-AreEqual 3 $servicePropertie.ProtocolSettings.Smb.ChannelEncryption.Count
+		Assert-AreEqual $true $servicePropertie.ProtocolSettings.Smb.Multichannel.Enabled
+
+		# Disable MC, update smb setting
+		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableSmbMultichannel $false `
+					-SMBProtocolVersion SMB3.1.1 `
+					-SMBAuthenticationMethod Kerberos `
+					-SMBKerberosTicketEncryption AES-256 `
+					-SMBChannelEncryption AES-128-CCM
+		$servicePropertie = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 
+		Assert-AreEqual "SMB3.1.1" $servicePropertie.ProtocolSettings.Smb.Versions[0]
+		Assert-AreEqual "Kerberos" $servicePropertie.ProtocolSettings.Smb.AuthenticationMethods[0]
+		Assert-AreEqual "AES-256" $servicePropertie.ProtocolSettings.Smb.KerberosTicketEncryption[0]
+		Assert-AreEqual "AES-128-CCM" $servicePropertie.ProtocolSettings.Smb.ChannelEncryption[0]
+		Assert-AreEqual $false $servicePropertie.ProtocolSettings.Smb.Multichannel.Enabled
+
+		# remove smb setting
+		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname `
+					-SMBProtocolVersion @() `
+					-SMBAuthenticationMethod @()`
+					-SMBKerberosTicketEncryption @() `
+					-SMBChannelEncryption @()
+		$servicePropertie = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 
+		Assert-AreEqual $null $servicePropertie.ProtocolSettings.Smb.Versions
+		Assert-AreEqual $null $servicePropertie.ProtocolSettings.Smb.AuthenticationMethods
+		Assert-AreEqual $null $servicePropertie.ProtocolSettings.Smb.KerberosTicketEncryption
+		Assert-AreEqual $null $servicePropertie.ProtocolSettings.Smb.ChannelEncryption
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }

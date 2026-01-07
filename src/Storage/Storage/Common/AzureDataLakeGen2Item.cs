@@ -141,7 +141,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// Azure DataLakeGen2 Item constructor
         /// </summary>
-        /// <param name="fileClient">CloudBlockBlob blob object</param>
+        /// <param name="fileClient">Datalake gen2 file object</param>
         public AzureDataLakeGen2Item(DataLakeFileClient fileClient)
         {
             Name = fileClient.Name;

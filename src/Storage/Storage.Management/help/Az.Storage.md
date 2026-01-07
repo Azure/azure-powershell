@@ -11,9 +11,6 @@ Locale: en-US
 This topic displays help topics for the Azure Storage Management Cmdlets.
 
 ## Az.Storage Cmdlets
-### [Add-AzRmStorageContainerLegalHold](Add-AzRmStorageContainerLegalHold.md)
-Adds legal hold tags to a Storage blob container
-
 ### [Add-AzStorageAccountManagementPolicyAction](Add-AzStorageAccountManagementPolicyAction.md)
 Adds an action to the input ManagementPolicy Action Group object, or creates a ManagementPolicy Action Group object with the action. The object can be used in New-AzStorageAccountManagementPolicyRule.
 

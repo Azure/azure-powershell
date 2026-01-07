@@ -228,6 +228,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureStorageAccountEnableNfsV3()
+        {
+            TestRunner.RunTestScript("Test-NewAzureStorageAccountEnableNfsV3");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzureStorageAccountEdgeZone()
         {
             TestRunner.RunTestScript("Test-NewAzureStorageAccountEdgeZone");
@@ -256,13 +263,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAzureStorageAccountEnableNfsV3()
-        {
-            TestRunner.RunTestScript("Test-NewAzureStorageAccountEnableNfsV3");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureStorageAccountHierarchicalNamespaceUpgrade()
         {
             TestRunner.RunTestScript("Test-AzureStorageAccountHierarchicalNamespaceUpgrade");
@@ -277,6 +277,27 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageLocalUserSftp()
+        {
+            TestRunner.RunTestScript("Test-AzureStorageLocalUserSftp");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageLocalUserNFSV3()
+        {
+            TestRunner.RunTestScript("Test-AzureStorageLocalUserNFSV3");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageAccountAllowedCopyScope()
+        {
+            TestRunner.RunTestScript("Test-StorageAccountAllowedCopyScope");
+        }        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzStorageContext()
         {
             TestRunner.RunTestScript("Test-NewAzStorageContext");
@@ -287,13 +308,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         public void TestNewSetAzStorageAccountFileAADKERB()
         {
             TestRunner.RunTestScript("Test-NewSetAzStorageAccountFileAADKERB");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureStorageLocalUserSftp()
-        {
-            TestRunner.RunTestScript("Test-AzureStorageLocalUserSftp");
         }
 
         [Fact]

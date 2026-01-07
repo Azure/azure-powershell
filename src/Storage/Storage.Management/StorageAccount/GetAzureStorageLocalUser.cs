@@ -61,6 +61,21 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.")]
         [ValidateNotNullOrEmpty]
         public string UserName { get; set; }
+ 
+        [Parameter(Mandatory = false,
+            HelpMessage = "The maximum number of local users that will be included in the list response")]
+        [ValidateNotNullOrEmpty]
+        public int? MaxPageSize { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The filter of username. When specified, only usernames starting with the filter will be listed. The filter must be in format: startswith(name, <prefix>)")]
+        [ValidateNotNullOrEmpty]
+        public string Filter { get; set; }
+ 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specify to include NFSv3 enabled Local Users in list Local Users.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter IncludeNFSv3 { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -81,8 +96,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 var users = this.StorageClient.LocalUsers.List(
                         this.ResourceGroupName,
-                        this.StorageAccountName);
-               
+                        this.StorageAccountName, this.MaxPageSize, this.Filter,
+                        include: this.IncludeNFSv3.IsPresent ? "nfsv3" : null);
+
                 if (users != null)
                 {
                     foreach(LocalUser localUser in users)

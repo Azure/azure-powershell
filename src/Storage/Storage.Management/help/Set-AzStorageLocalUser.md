@@ -16,7 +16,8 @@ Creates or updates a specified local user in a storage account.
 ```
 Set-AzStorageLocalUser [-ResourceGroupName] <String> [-StorageAccountName] <String> -UserName <String>
  [-HomeDirectory <String>] [-SshAuthorizedKey <PSSshPublicKey[]>] [-PermissionScope <PSPermissionScope[]>]
- [-HasSharedKey <Boolean>] [-HasSshKey <Boolean>] [-HasSshPassword <Boolean>]
+ [-HasSharedKey <Boolean>] [-HasSshKey <Boolean>] [-HasSshPassword <Boolean>] [-GroupId <Int32>]
+ [-AllowAclAuthorization <Boolean>] [-IsNfSv3Enabled <Boolean>] [-ExtendedGroup <Int32[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -25,7 +26,8 @@ Set-AzStorageLocalUser [-ResourceGroupName] <String> [-StorageAccountName] <Stri
 ```
 Set-AzStorageLocalUser -StorageAccount <PSStorageAccount> -UserName <String> [-HomeDirectory <String>]
  [-SshAuthorizedKey <PSSshPublicKey[]>] [-PermissionScope <PSPermissionScope[]>] [-HasSharedKey <Boolean>]
- [-HasSshKey <Boolean>] [-HasSshPassword <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-HasSshKey <Boolean>] [-HasSshPassword <Boolean>] [-GroupId <Int32>] [-AllowAclAuthorization <Boolean>]
+ [-IsNfSv3Enabled <Boolean>] [-ExtendedGroup <Int32[]>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -44,15 +46,15 @@ $sshkey1 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa base64encodedkey=" -
 
 $permissionScope1 = New-AzStorageLocalUserPermissionScope -Permission rw -Service blob -ResourceName container1 
 
-$localuser = Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -SshAuthorizedKey $sshkey1 -PermissionScope $permissionScope1 -HasSharedKey $true -HasSshKey $true -HasSshPassword $true
+$localuser = Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -SshAuthorizedKey $sshkey1 -PermissionScope $permissionScope1 -HasSharedKey $true -HasSshKey $true -HasSshPassword $true -GroupId 100 -AllowAclAuthorization $true
 
 $localuser
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name      Sid                                          HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes        
-----      ---                                          ------------- ------------ --------- -------------- ----------------         
-testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /             True         True      True           [container1]
+Name      Sid                                          HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes UserId GroupId AllowAclAuthorization        
+----      ---                                          ------------- ------------ --------- -------------- ---------------- ------ ------- ---------------------        
+testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /             True         True      True           [container1]     1000   100     True
 
 $localuser.SshAuthorizedKeys 
 
@@ -98,14 +100,44 @@ Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystor
 ```output
 ResourceGroupName: weitry, StorageAccountName: weisftp3
 
-Name      Sid                                          HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes        
-----      ---                                          ------------- ------------ --------- -------------- ----------------         
-testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /             True         True      True           [container1,...]
+Name      Sid                                          HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes UserId GroupId AllowAclAuthorization       
+----      ---                                          ------------- ------------ --------- -------------- ---------------- ------ ------- ---------------------      
+testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /             True         True      True           [container1,...] 1000   100     True
 ```
 
 This command creates or updates a local user by input permission scope and ssh key with json.
 
+### Example 3: Create or update a nfsv3 local user with extended groups
+```powershell
+Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName nfsv3_100 -HomeDirectory /test -IsNfSv3Enabled $true -ExtendedGroup 1,2,3
+```
+
+```output
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name      Sid                                          HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes UserId GroupId AllowAclAuthorization
+----      ---                                          ------------- ------------ --------- -------------- ---------------- ------ ------- ---------------------
+nfsv3_100 S-1-2-0-3080345243-855858100-3794096380-1001 /test
+```
+
+This command creates or updates a nfsv3 local user with extended groups.
+
 ## PARAMETERS
+
+### -AllowAclAuthorization
+Indicates whether ACL authorization is allowed for this user. Set it to false to disallow using ACL authorization.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -114,6 +146,36 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExtendedGroup
+Sets extended Groups of which user is part of, only for NFSv3 User.
+
+```yaml
+Type: System.Int32[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GroupId
+An identifier for associating a group of users.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -175,6 +237,21 @@ Local user home directory
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsNfSv3Enabled
+Indicates whether LocalUser belongs to NFSv3 or SFTP.
+
+```yaml
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 

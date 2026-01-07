@@ -108,6 +108,8 @@ ProtocolSettings.Smb.ChannelEncryption        : {AES-128-CCM, AES-128-GCM, AES-2
 
 This command updates secure smb settings.
 
+This command updates secure smb settings.
+
 ### Example 4: Clear secure smb settings
 ```powershell
 Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" `

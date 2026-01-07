@@ -15,8 +15,8 @@ Creates a Storage blob container
 ### AccountName (Default)
 ```
 New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
- [-PublicAccess <PSPublicAccess>] [-Metadata <Hashtable>] [-RootSquash <String>]
- [-EnableImmutableStorageWithVersioning] [-DefaultProfile <IAzureContextContainer>]
+ [-PublicAccess <PSPublicAccess>] [-Metadata <Hashtable>] [-EnableImmutableStorageWithVersioning]
+ [-RootSquash <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <St
 ```
 New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
  -DefaultEncryptionScope <String> -PreventEncryptionScopeOverride <Boolean> [-PublicAccess <PSPublicAccess>]
- [-Metadata <Hashtable>] [-RootSquash <String>] [-EnableImmutableStorageWithVersioning]
+ [-Metadata <Hashtable>] [-EnableImmutableStorageWithVersioning] [-RootSquash <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -32,7 +32,7 @@ New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <St
 ### AccountObject
 ```
 New-AzRmStorageContainer -StorageAccount <PSStorageAccount> -Name <String> [-PublicAccess <PSPublicAccess>]
- [-Metadata <Hashtable>] [-RootSquash <String>] [-EnableImmutableStorageWithVersioning]
+ [-Metadata <Hashtable>] [-EnableImmutableStorageWithVersioning] [-RootSquash <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -41,7 +41,7 @@ New-AzRmStorageContainer -StorageAccount <PSStorageAccount> -Name <String> [-Pub
 ```
 New-AzRmStorageContainer -StorageAccount <PSStorageAccount> -Name <String> -DefaultEncryptionScope <String>
  -PreventEncryptionScopeOverride <Boolean> [-PublicAccess <PSPublicAccess>] [-Metadata <Hashtable>]
- [-RootSquash <String>] [-EnableImmutableStorageWithVersioning] [-DefaultProfile <IAzureContextContainer>]
+ [-EnableImmutableStorageWithVersioning] [-RootSquash <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
