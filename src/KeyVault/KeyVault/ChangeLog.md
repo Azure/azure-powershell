@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix console close issue by upgrading with autorest v4.0.752
+
 * Updated Azure.Core from 1.47.3 to 1.50.0
 
 ## Version 6.4.1

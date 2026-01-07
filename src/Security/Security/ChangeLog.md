@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Fix console close issue by upgrading with autorest v4.0.752
+
 
 ## Version 1.8.0
 * Upgraded nuget package to signed package.

@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Fix console close issue by upgrading with autorest v4.0.752
+
 
 ## Version 7.0.0
 * Parameters EmailSendToSubscriptionAdministrator and EmailSendToSubscriptionCoAdministrator of cmdlet `New-AzAutoscaleNotificationObject` was unavailable after April 3, 2024 due to Azure classic administrator retirement.
