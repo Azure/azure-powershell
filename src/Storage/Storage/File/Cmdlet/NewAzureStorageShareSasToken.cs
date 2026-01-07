@@ -110,30 +110,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         snapshotTime: null, 
                         ClientOptions);
 
-
-            if (this.Context != null && this.Context is AzureStorageContext)
-            {
-                var currentContext = this.Context as AzureStorageContext;
-                if (currentContext.StorageAccount != null)
-                {
-                    if ((!currentContext.StorageAccount.Credentials.IsSharedKey)
-                        && !(currentContext.Track2OauthToken != null && currentContext.StorageAccount.Credentials.IsAnonymous))
-                    {
-                        throw new InvalidOperationException("Create File service SAS supported key or oauth token credential.");
-                    }
-
-                }
-                else if (currentContext.Track2OauthToken == null)
-                {
-                    throw new InvalidOperationException("Create File service SAS supported key or oauth token credential.");
-                }
-            }
-
             // When the input context is Oauth bases, can't generate normal SAS, but UserDelegationSas
             bool generateUserDelegationSas = false;
-            if (Channel != null && Channel.StorageContext != null && (
-                (Channel.StorageContext.StorageAccount.Credentials != null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
-                || (Channel.StorageContext.Track2OauthToken != null)))
+            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount.Credentials != null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
             {
                 if (ShouldProcess(ShareName, "Generate User Delegation SAS, since input Storage Context is OAuth based."))
                 {
@@ -152,7 +131,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 if (this.DelegatedUserObjectId != null)
                 {
-                    throw new ArgumentException("DelegatedUserObjectId can only be specified when input Storage Context is OAuth based.", "DelegatedUserObjectId");
+                    throw new ArgumentException("DelegatedUserObjectId can only be specified when input Storage Context is OAuth based, and without SAS.", "DelegatedUserObjectId");
                 }
             }
 
