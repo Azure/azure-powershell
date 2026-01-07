@@ -66,6 +66,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                 return this.blobClient;
             }
         }
+        public bool IsSasWithOAuthCredential()
+        {
+            return this.BlobClient != null && this.BlobClient.Credentials.IsSAS && this.StorageContext != null && this.StorageContext.Track2OauthToken != null;
+        }
 
         /// <summary>
         /// The azure storage context associated with this IStorageBlobManagement
@@ -179,7 +183,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                 }
                 else //sas, Anonymous
                 {
-                    blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint, options);
+                    if (this.StorageContext != null && this.StorageContext.Track2OauthToken != null)
+                    {
+                        blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint, this.StorageContext.Track2OauthToken, options);
+                    }
+                    else
+                    {
+                        blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint, options);
+                    }
                 }
             }
             return blobServiceClient;

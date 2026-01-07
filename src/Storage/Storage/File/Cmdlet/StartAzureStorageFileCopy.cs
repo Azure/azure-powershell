@@ -311,6 +311,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             blobChannel = this.GetBlobChannel();
             destChannel = GetDestinationChannel();
             IStorageFileManagement srcChannel = Channel;
+
+            if (srcChannel.IsSasWithOAuthCredential() || destChannel.IsSasWithOAuthCredential())
+            {
+                throw new InvalidOperationException("File Async copy doesn't support user delegation SAS with OAuth credential.");
+            }
+
             Action copyAction = null;
             string target = this.DestShareFileClient != null ? this.DestShareFileClient.Name : DestFilePath;
             switch (ParameterSetName)

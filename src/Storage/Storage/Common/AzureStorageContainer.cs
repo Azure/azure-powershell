@@ -262,7 +262,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
                 string fullUri = cloubContainer.Uri.ToString();
                 string sas = Util.GetSASStringWithoutQuestionMark(cloubContainer.ServiceClient.Credentials.SASToken);
                 fullUri = fullUri + "?" + sas;
-                blobContainerClient = new BlobContainerClient(new Uri(fullUri), options);
+                if (context != null && context.Track2OauthToken != null)
+                {
+                    blobContainerClient = new BlobContainerClient(new Uri(fullUri), context.Track2OauthToken, options);
+                }
+                else
+                {
+                    blobContainerClient = new BlobContainerClient(new Uri(fullUri), options);
+                }
             }
             else if (cloubContainer.ServiceClient.Credentials.IsSharedKey) //Shared Key
             {

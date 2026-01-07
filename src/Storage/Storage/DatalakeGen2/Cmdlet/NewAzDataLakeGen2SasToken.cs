@@ -62,6 +62,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "This value specifies the Entra ID of the user would is authorized to use the resulting SAS URL. The resulting SAS URL must be used in conjunction with an Entra ID token that has been issued to the user specified in this value. This parameter can only be specified when input Storage Context is OAuth based.")]
+        [ValidateNotNullOrEmpty]
+        public string DelegatedUserObjectId { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
         [ValidateNotNull]
         public SasProtocol? Protocol { get; set; }
@@ -118,8 +122,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             // When the input context is Oauth bases, can't generate normal SAS, but UserDelegationSas
             bool generateUserDelegationSas = false;
-            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount != null && 
-                Channel.StorageContext.StorageAccount.Credentials != null &&  Channel.StorageContext.StorageAccount.Credentials.IsToken)
+            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount.Credentials != null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
             {
                 if (ShouldProcess(this.Path, "Generate User Delegation SAS, since input Storage Context is OAuth based."))
                 {
@@ -128,6 +131,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 else
                 {
                     return;
+                }
+            }
+            else
+            {
+                if (this.DelegatedUserObjectId != null)
+                {
+                    throw new ArgumentException("DelegatedUserObjectId can only be specified when input Storage Context is OAuth based, and without SAS.", "DelegatedUserObjectId");
                 }
             }
 
@@ -179,6 +189,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             if (this.EncryptionScope != null)
             {
                 sasBuilder.EncryptionScope = this.EncryptionScope;
+            }
+            if (this.DelegatedUserObjectId != null)
+            {
+                if (!generateUserDelegationSas)
+                {
+                    // TODO Write error
+                }
+                sasBuilder.DelegatedUserObjectId = this.DelegatedUserObjectId;
             }
 
             DataLakeFileSystemClient fileSystem = GetFileSystemClientByName(localChannel, this.FileSystem);

@@ -181,6 +181,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [Parameter(HelpMessage = "Use OAuth storage account", Mandatory = false, ParameterSetName = OAuthParameterSet)]
         [Parameter(HelpMessage = "Use OAuth storage account", Mandatory = false, ParameterSetName = OAuthEnvironmentParameterSet)]
         [Parameter(HelpMessage = "Use OAuth storage account", Mandatory = false, ParameterSetName = OAuthServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = "Use OAuth storage account", Mandatory = false, ParameterSetName = SasTokenParameterSet)]
+        [Parameter(HelpMessage = "Use OAuth storage account", Mandatory = false, ParameterSetName = SasTokenEnvironmentParameterSet)]
+        [Parameter(HelpMessage = "Use OAuth storage account", Mandatory = false, ParameterSetName = SasTokenServiceEndpointParameterSet)]
+
         public SwitchParameter UseConnectedAccount
         {
             get { return isOAuth; }
@@ -270,9 +274,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [Parameter(HelpMessage = TableServiceEndPointHelpMessage, ParameterSetName = OAuthServiceEndpointParameterSet)]
         public string TableEndpoint { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = OAuthParameterSet, HelpMessage = "Required parameter to use with OAuth (Microsoft Entra ID) Authentication for Files. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.")]
-        [Parameter(Mandatory = false, ParameterSetName = OAuthEnvironmentParameterSet, HelpMessage = "Required parameter to use with OAuth (Microsoft Entra ID) Authentication for Files. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.")]
-        [Parameter(Mandatory = false, ParameterSetName = OAuthServiceEndpointParameterSet, HelpMessage = "Required parameter to use with OAuth (Microsoft Entra ID) Authentication for Files. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.")]
+        private const string EnableFileBackupRequestIntentHelpText = "Required parameter to use with OAuth (Microsoft Entra ID) Authentication for Files. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.";
+        [Parameter(Mandatory = false, ParameterSetName = OAuthParameterSet, HelpMessage = EnableFileBackupRequestIntentHelpText)]
+        [Parameter(Mandatory = false, ParameterSetName = OAuthEnvironmentParameterSet, HelpMessage = EnableFileBackupRequestIntentHelpText)]
+        [Parameter(Mandatory = false, ParameterSetName = OAuthServiceEndpointParameterSet, HelpMessage = EnableFileBackupRequestIntentHelpText)]
+        [Parameter(Mandatory = false, ParameterSetName = SasTokenParameterSet, HelpMessage = EnableFileBackupRequestIntentHelpText)]
+        [Parameter(Mandatory = false, ParameterSetName = SasTokenEnvironmentParameterSet, HelpMessage = EnableFileBackupRequestIntentHelpText)]
+        [Parameter(Mandatory = false, ParameterSetName = SasTokenServiceEndpointParameterSet, HelpMessage = EnableFileBackupRequestIntentHelpText)]
         public SwitchParameter EnableFileBackupRequestIntent { get; set; }
 
         /// <summary>
@@ -639,7 +647,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                     throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);
             }
 
-            AzureStorageContext context = new AzureStorageContext(account, GetRealAccountName(StorageAccountName), DefaultContext, WriteDebug);
+            AzureStorageContext context = new AzureStorageContext(account, GetRealAccountName(StorageAccountName), this.isOAuth, DefaultContext, WriteDebug);
             if (this.EnableFileBackupRequestIntent.IsPresent)
             {
                 context.ShareTokenIntent = ShareTokenIntent.Backup;
