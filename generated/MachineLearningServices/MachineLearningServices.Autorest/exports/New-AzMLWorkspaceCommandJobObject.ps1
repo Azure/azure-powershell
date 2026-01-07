@@ -20,7 +20,7 @@ Create an in-memory object for CommandJob.
 .Description
 Create an in-memory object for CommandJob.
 .Example
-# You can use following commands to create job input or job oupt as vaule pass to JobInput or JobOutput parameter of the  New-AzMLWorkspaceCommandJobObject
+# You can use following commands to create job input or job output as value pass to JobInput or JobOutput parameter of the  New-AzMLWorkspaceCommandJobObject
 
 # New-AzMLWorkspaceCustomModelJobInputObject
 # New-AzMLWorkspaceCustomModelJobOutputObject
