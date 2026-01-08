@@ -19,7 +19,7 @@
       },
       "allOf": [
         {
-          "$ref": "#/definitions/Resource"
+          "$ref": "#/definitions/ResourceOriginal"
         }
       ],
       "x-ms-client-name": "AzureEntityResource"
@@ -133,33 +133,6 @@
         }
       }
     },
-    "Identity": {
-      "type": "object",
-      "description": "Identity for the resource.",
-      "properties": {
-        "principalId": {
-          "type": "string",
-          "description": "The principal ID of resource identity.",
-          "readOnly": true
-        },
-        "tenantId": {
-          "type": "string",
-          "description": "The tenant ID of resource.",
-          "readOnly": true
-        },
-        "type": {
-          "type": "string",
-          "description": "The identity type.",
-          "enum": [
-            "SystemAssigned"
-          ],
-          "x-ms-enum": {
-            "name": "ResourceIdentityType",
-            "modelAsString": false
-          }
-        }
-      }
-    },
     "KeyVaultProperties": {
       "type": "object",
       "properties": {
@@ -173,74 +146,42 @@
         }
       }
     },
-    "Operation": {
+    "Operation": {},
+    "ResourceOriginal": {
       "type": "object",
-      "title": "REST API Operation",
-      "description": "Details of a REST API operation, returned from the Resource Provider Operations API",
+      "description": "The Resource model definition.",
       "properties": {
+        "id": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource Id"
+        },
         "name": {
+          "readOnly": true,
           "type": "string",
-          "description": "The name of the operation, as per Resource-Based Access Control (RBAC). Examples: \"Microsoft.Compute/virtualMachines/write\", \"Microsoft.Compute/virtualMachines/capture/action\"",
-          "readOnly": true
+          "description": "Resource name"
         },
-        "isDataAction": {
-          "type": "boolean",
-          "description": "Whether the operation applies to data-plane. This is \"true\" for data-plane operations and \"false\" for ARM/control-plane operations.",
-          "readOnly": true
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource type"
         },
-        "display": {
+        "location": {
+          "type": "string",
+          "description": "Resource location"
+        },
+        "tags": {
           "type": "object",
-          "description": "Localized display information for this particular operation.",
-          "properties": {
-            "provider": {
-              "type": "string",
-              "description": "The localized friendly form of the resource provider name, e.g. \"Microsoft Monitoring Insights\" or \"Microsoft Compute\".",
-              "readOnly": true
-            },
-            "resource": {
-              "type": "string",
-              "description": "The localized friendly name of the resource type related to this operation. E.g. \"Virtual Machines\" or \"Job Schedule Collections\".",
-              "readOnly": true
-            },
-            "operation": {
-              "type": "string",
-              "description": "The concise, localized friendly name for the operation; suitable for dropdowns. E.g. \"Create or Update Virtual Machine\", \"Restart Virtual Machine\".",
-              "readOnly": true
-            },
-            "description": {
-              "type": "string",
-              "description": "The short, localized friendly description of the operation; suitable for tool tips and detailed views.",
-              "readOnly": true
-            }
-          }
-        },
-        "origin": {
-          "type": "string",
-          "description": "The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is \"user,system\"",
-          "enum": [
-            "user",
-            "system",
-            "user,system"
-          ],
-          "x-ms-enum": {
-            "name": "Origin",
-            "modelAsString": true
+          "additionalProperties": {
+            "type": "string"
           },
-          "readOnly": true
-        },
-        "actionType": {
-          "type": "string",
-          "description": "Enum. Indicates the action type. \"Internal\" refers to actions that are for internal only APIs.",
-          "enum": [
-            "Internal"
-          ],
-          "x-ms-enum": {
-            "name": "ActionType",
-            "modelAsString": true
-          },
-          "readOnly": true
+          "description": "Resource tags."
         }
-      }
+      },
+      "required": [
+        "location"
+      ],
+      "x-ms-azure-resource": true
     },
     "OperationListResult": {
       "type": "object",
@@ -312,160 +253,26 @@
         "status"
       ]
     },
-    "Plan": {
-      "type": "object",
-      "description": "Plan for the resource.",
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "A user defined name of the 3rd Party Artifact that is being procured."
-        },
-        "publisher": {
-          "type": "string",
-          "description": "The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic"
-        },
-        "product": {
-          "type": "string",
-          "description": "The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. "
-        },
-        "promotionCode": {
-          "type": "string",
-          "description": "A publisher provided promotion code as provisioned in Data Market for the said product/artifact."
-        },
-        "version": {
-          "type": "string",
-          "description": "The version of the desired product/artifact."
-        }
-      },
-      "required": [
-        "name",
-        "publisher",
-        "product"
-      ]
-    },
     "ProxyResource": {
-      "type": "object",
-      "title": "Proxy Resource",
-      "description": "The resource model definition for a Azure Resource Manager proxy resource. It will not have tags and a location",
-      "allOf": [
-        {
-          "$ref": "#/definitions/Resource"
-        }
-      ]
-    },
-    "Resource": {
-      "type": "object",
-      "title": "Resource",
-      "description": "Common fields that are returned in the response for all Azure Resource Manager resources",
       "properties": {
         "id": {
+          "readOnly": true,
           "type": "string",
-          "description": "Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}",
-          "readOnly": true
+          "description": "Resource Id"
         },
         "name": {
+          "readOnly": true,
           "type": "string",
-          "description": "The name of the resource",
-          "readOnly": true
+          "description": "Resource name"
         },
         "type": {
+          "readOnly": true,
           "type": "string",
-          "description": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\"",
-          "readOnly": true
-        },
-        "systemData": {
-          "$ref": "#/definitions/systemData",
-          "type": "object",
-          "description": "Azure Resource Manager metadata containing createdBy and modifiedBy information.",
-          "readOnly": true
+          "description": "Resource type"
         }
       },
+      "description": "The resource model definition for an Azure Resource Manager proxy resource. It will not have tags and a location",
       "x-ms-azure-resource": true
-    },
-    "ResourceModelWithAllowedPropertySet": {
-      "type": "object",
-      "description": "The resource model definition containing the full set of allowed properties for a resource. Except properties bag, there cannot be a top level property outside of this set.",
-      "properties": {
-        "managedBy": {
-          "type": "string",
-          "description": "The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.",
-          "x-ms-mutability": [
-            "read",
-            "create",
-            "update"
-          ]
-        },
-        "kind": {
-          "type": "string",
-          "description": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.",
-          "pattern": "^[-\\w\\._,\\(\\)]+$",
-          "x-ms-mutability": [
-            "read",
-            "create"
-          ]
-        },
-        "etag": {
-          "type": "string",
-          "description": "The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. ",
-          "readOnly": true
-        },
-        "identity": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/Identity"
-            }
-          ]
-        },
-        "sku": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/Sku"
-            }
-          ]
-        },
-        "plan": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/Plan"
-            }
-          ]
-        }
-      },
-      "allOf": [
-        {
-          "$ref": "#/definitions/TrackedResource"
-        }
-      ],
-      "x-ms-azure-resource": true
-    },
-    "Sku": {
-      "type": "object",
-      "description": "The resource model definition representing SKU",
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "The name of the SKU. Ex - P3. It is typically a letter+number code"
-        },
-        "tier": {
-          "$ref": "#/definitions/SkuTier"
-        },
-        "size": {
-          "type": "string",
-          "description": "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. "
-        },
-        "family": {
-          "type": "string",
-          "description": "If the service has different generations of hardware, for the same SKU, then that can be captured here."
-        },
-        "capacity": {
-          "type": "integer",
-          "format": "int32",
-          "description": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
-        }
-      },
-      "required": [
-        "name"
-      ]
     },
     "SkuTier": {
       "type": "string",
@@ -483,38 +290,39 @@
     },
     "TrackedResource": {
       "type": "object",
-      "title": "Tracked Resource",
-      "description": "The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'",
+      "description": "The Resource model definition.",
       "properties": {
-        "tags": {
-          "type": "object",
-          "description": "Resource tags.",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "x-ms-mutability": [
-            "read",
-            "create",
-            "update"
-          ]
+        "id": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource Id"
+        },
+        "name": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource name"
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource type"
         },
         "location": {
           "type": "string",
-          "description": "The geo-location where the resource lives",
-          "x-ms-mutability": [
-            "read",
-            "create"
-          ]
+          "description": "Resource location"
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Resource tags"
         }
       },
       "required": [
         "location"
       ],
-      "allOf": [
-        {
-          "$ref": "#/definitions/Resource"
-        }
-      ]
+      "x-ms-azure-resource": true
     },
     "encryptionProperties": {
       "type": "object",
@@ -622,10 +430,9 @@
     "ApiVersionParameter": {
       "name": "api-version",
       "in": "query",
-      "description": "The API version to use for this operation.",
       "required": true,
       "type": "string",
-      "minLength": 1
+      "description": "Client Api Version."
     },
     "LocationParameter": {
       "name": "location",
@@ -658,10 +465,9 @@
     "SubscriptionIdParameter": {
       "name": "subscriptionId",
       "in": "path",
-      "description": "The ID of the target subscription.",
       "required": true,
       "type": "string",
-      "minLength": 1
+      "description": "Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call."
     }
   }
 }

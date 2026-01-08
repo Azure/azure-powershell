@@ -110,42 +110,6 @@
       },
       "description": "Api error."
     },
-    "Resource": {
-      "type": "object",
-      "description": "The Resource model definition.",
-      "properties": {
-        "id": {
-          "readOnly": true,
-          "type": "string",
-          "description": "Resource Id"
-        },
-        "name": {
-          "readOnly": true,
-          "type": "string",
-          "description": "Resource name"
-        },
-        "type": {
-          "readOnly": true,
-          "type": "string",
-          "description": "Resource type"
-        },
-        "location": {
-          "type": "string",
-          "description": "Resource location"
-        },
-        "tags": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Resource tags"
-        }
-      },
-      "required": [
-        "location"
-      ],
-      "x-ms-azure-resource": true
-    },
     "SubResource": {
       "type": "object",
       "properties": {
@@ -174,39 +138,44 @@
           "description": "Resource location"
         },
         "id": {
-          "readOnly": true,
           "type": "string",
-          "description": "Resource Id"
+          "description": "Resource Id",
+          "readOnly": true
         },
         "name": {
-          "readOnly": true,
           "type": "string",
-          "description": "Resource name"
+          "description": "Resource name",
+          "readOnly": true
         },
         "type": {
-          "readOnly": true,
           "type": "string",
-          "description": "Resource type"
+          "description": "Resource type",
+          "readOnly": true
         },
         "tags": {
           "type": "object",
+          "description": "Resource tags",
           "additionalProperties": {
             "type": "string"
-          },
-          "description": "Resource tags"
+          }
         }
-      },
-      "x-ms-azure-resource": true
+      }
     },
     "ExtendedLocationType": {
       "type": "string",
-      "description": "The type of extendedLocation.",
+      "description": "The type of the extended location.",
       "enum": [
         "EdgeZone"
       ],
       "x-ms-enum": {
-        "name": "ExtendedLocationTypes",
-        "modelAsString": true
+        "name": "ExtendedLocationType",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "EdgeZone",
+            "value": "EdgeZone"
+          }
+        ]
       }
     },
     "ExtendedLocation": {
@@ -222,26 +191,6 @@
           "description": "The type of the extended location."
         }
       }
-    },
-    "UserAssignedIdentities": {
-      "type": "object",
-      "additionalProperties": {
-        "type": "object",
-        "x-ms-client-name": "userAssignedIdentitiesValue",
-        "properties": {
-          "principalId": {
-            "readOnly": true,
-            "type": "string",
-            "description": "The principal id of user assigned identity."
-          },
-          "clientId": {
-            "readOnly": true,
-            "type": "string",
-            "description": "The client id of user assigned identity."
-          }
-        }
-      },
-      "description": "The list of user identities associated with the Virtual Machine. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
     },
     "SystemData": {
       "description": "The system meta data relating to this resource.",
