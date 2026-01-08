@@ -19,7 +19,7 @@ Describe 'Update-AzWebPubSub' {
         $name = $env.WpsPrefix + "update-wps-" + "UpdateExpanded"
         $wps = New-AzWebPubSub -ResourceGroupName $env.ResourceGroupName -Name $name -Location eastus -SkuName Standard_S1
 
-        $newWps = Update-AzWebPubSub -ResourceGroupName $env.ResourceGroupName -Name $name -IdentityType SystemAssigned
+        $newWps = Update-AzWebPubSub -ResourceGroupName $env.ResourceGroupName -Name $name -EnableSystemAssignedIdentity $true
 
         $newWps.IdentityType | Should -Be "SystemAssigned"
         $newWps.IdentityType | Should -Not -Be $wps.IdentityType
@@ -29,7 +29,7 @@ Describe 'Update-AzWebPubSub' {
         $name = $env.WpsPrefix + "update-wps-" + "UpdateViaIdentityExpanded"
         $wps = New-AzWebPubSub -ResourceGroupName $env.ResourceGroupName -Name $name -Location eastus -SkuName Standard_S1
 
-        $newWps = Update-AzWebPubSub -IdentityType SystemAssigned -InputObject $wps
+        $newWps = Update-AzWebPubSub -EnableSystemAssignedIdentity $true -InputObject $wps
 
         $newWps.IdentityType | Should -Be "SystemAssigned"
         $newWps.IdentityType | Should -Not -Be $wps.IdentityType
