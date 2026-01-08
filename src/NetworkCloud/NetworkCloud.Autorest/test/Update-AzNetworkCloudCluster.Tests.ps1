@@ -62,6 +62,9 @@ Describe 'Update-AzNetworkCloudCluster' {
             $bmmConfigurationData3 = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername $clusterconfig.bmcCredsUsername -BmcMacAddress $clusterconfig.bmcMacAddress3 -BootMacAddress $clusterconfig.bootMacAddress3 -RackSlot 3 -SerialNumber $clusterconfig.serialNumber3 -MachineDetail "machineDetailmgr" -MachineName "lab00r750mgr2"
             $bareMetalMachineConfigurationData = @($bmmConfigurationData1, $bmmConfigurationData2, $bmmConfigurationData3)
 
+            $identityUserAssignedIdentity = @{}
+            $identityUserAssignedIdentity.Add($clusterconfig.miUserAssignedIdentityResourceId, @{})
+
             $computerackdefinition = New-AzNetworkCloudRackDefinitionObject -NetworkRackId $clusterconfig.aggregatorRack.networkRackId -RackSerialNumber $clusterconfig.computeRack.serialNumber -RackSkuId $clusterconfig.computeRack.rackSkuId -AvailabilityZone $clusterconfig.computeRack.availabilityZone -RackLocation $clusterconfig.clusterLocation -BareMetalMachineConfigurationData $bareMetalMachineConfigurationData
 
             Update-AzNetworkCloudCluster -ResourceGroupName $clusterconfig.miClusterRg -Name $clusterconfig.miClusterName `
@@ -76,12 +79,13 @@ Describe 'Update-AzNetworkCloudCluster' {
                 -AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId $clusterconfig.miUserAssignedIdentityResourceId `
                 -CommandOutputSettingContainerUrl $clusterconfig.containerUrlUpdate `
                 -AssociatedIdentityType $clusterconfig.identityType `
-                -AssociatedIdentityUserAssignedIdentityResourceId $clusterconfig.miUserAssignedIdentityResourceId `
+                -AssociatedIdentityUserAssignedIdentityResourceId $identityUserAssignedIdentity `
                 -ComputeDeploymentThresholdGrouping $clusterconfig.computeDeploymentThresholdGrouping `
                 -ComputeDeploymentThresholdType $clusterconfig.computeDeploymentThresholdType `
                 -ComputeDeploymentThresholdValue $clusterconfig.computeDeploymentThresholdValue `
                 -ComputeRackDefinition $computerackdefinition `
-                -UserAssignedIdentity $clusterconfig.miUserAssignedIdentityResourceId `
+                -IdentityType $clusterconfig.identityType `
+                -IdentityUserAssignedIdentity $identityUserAssignedIdentity `
                 -RuntimeProtectionConfigurationEnforcementLevel $clusterconfig.runtimeProtectionConfigEnforcementLevel `
                 -SecretArchiveKeyVaultId $clusterconfig.miKeyVaultId `
                 -SecretArchiveSettingVaultUri $clusterconfig.keyVaultUriUpdate `

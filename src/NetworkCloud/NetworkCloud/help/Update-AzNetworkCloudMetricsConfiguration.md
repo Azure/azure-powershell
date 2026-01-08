@@ -45,6 +45,15 @@ Update-AzNetworkCloudMetricsConfiguration -Name <String> -ClusterInputObject <IN
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityCluster
+```
+Update-AzNetworkCloudMetricsConfiguration -Name <String> -ClusterInputObject <INetworkCloudIdentity>
+ [-IfMatch <String>] [-IfNoneMatch <String>]
+ -MetricsConfigurationUpdateParameter <IClusterMetricsConfigurationPatchParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkCloudMetricsConfiguration -InputObject <INetworkCloudIdentity> [-IfMatch <String>]
@@ -94,7 +103,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: UpdateViaIdentityClusterExpanded
+Parameter Sets: UpdateViaIdentityClusterExpanded, UpdateViaIdentityCluster
 Aliases:
 
 Required: True
@@ -243,12 +252,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MetricsConfigurationUpdateParameter
+ClusterMetricsConfigurationPatchParameters represents the body of the request to patch the metrics configuration of cluster.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterMetricsConfigurationPatchParameters
+Parameter Sets: UpdateViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the metrics configuration for the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityClusterExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityClusterExpanded, UpdateViaIdentityCluster
 Aliases: MetricsConfigurationName
 
 Required: True
@@ -355,6 +379,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterMetricsConfigurationPatchParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 

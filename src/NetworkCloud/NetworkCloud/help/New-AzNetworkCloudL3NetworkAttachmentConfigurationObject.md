@@ -13,7 +13,7 @@ Create an in-memory object for L3NetworkAttachmentConfiguration.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudL3NetworkAttachmentConfigurationObject -NetworkId <String> [-IpamEnabled <String>]
+New-AzNetworkCloudL3NetworkAttachmentConfigurationObject [-IpamEnabled <String>] [-NetworkId <String>]
  [-PluginType <String>] [<CommonParameters>]
 ```
 
@@ -60,7 +60,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
