@@ -34,7 +34,7 @@ function Test-VirtualMachine
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A4_v2';
         $vmname = 'vm' + $rgname;
         $stnd = "Standard";
         $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
@@ -45,7 +45,7 @@ function Test-VirtualMachine
         $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Static -DomainNameLabel ('pubip' + $rgname);
         $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
         $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
@@ -109,7 +109,7 @@ function Test-VirtualMachine
         # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
-        $imgRef = Create-ComputeVMImageObject -loc "eastus2euap" -publisherName "MicrosoftWindowsServer" -offer "WindowsServer" -skus "2012-R2-Datacenter" -version "4.127.20180315";
+        $imgRef = Create-ComputeVMImageObject -loc "eastus2euap" -publisherName "MicrosoftWindowsServer" -offer "WindowsServer" -skus "2022-datacenter" -version "latest";
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
