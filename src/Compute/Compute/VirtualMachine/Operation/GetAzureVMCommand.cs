@@ -119,7 +119,6 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipeline = true)]
         public String ResourceId { get; set; }
 
-        // In the parameter section, add:
         [Parameter(
             Mandatory = false,
             HelpMessage = "Specifies the API version for Event Grid and Resource Graph scheduled events in YYYY-MM-DD format.")]
