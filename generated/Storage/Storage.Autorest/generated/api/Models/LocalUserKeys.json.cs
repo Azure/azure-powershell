@@ -78,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                 return;
             }
             {_sshAuthorizedKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("sshAuthorizedKeys"), out var __jsonSshAuthorizedKeys) ? If( __jsonSshAuthorizedKeys as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISshPublicKey>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISshPublicKey) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SshPublicKey.FromJson(__u) )) ))() : null : _sshAuthorizedKey;}
-            {_sharedKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("sharedKey"), out var __jsonSharedKey) ? (string)__jsonSharedKey : (string)_sharedKey;}
+            {_sharedKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("sharedKey"), out var __jsonSharedKey) ? new System.Net.NetworkCredential("",(string)__jsonSharedKey).SecurePassword : _sharedKey;}
             AfterFromJson(json);
         }
 
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
-                AddIf( null != (((object)this._sharedKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._sharedKey.ToString()) : null, "sharedKey" ,container.Add );
+                AddIf( null != (((object)this._sharedKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this._sharedKey))) : null, "sharedKey" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

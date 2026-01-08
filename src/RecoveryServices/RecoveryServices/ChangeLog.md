@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Added Cross region restore support for Bleu cloud regions
+* Added Availability Zone support in Update Protection
+* Added Platform Fault Domain support in Enable, Update, and Switch Protection workflows
 
 ## Version 7.10.0
 * Added Cross region restore support for new region - northeastus5.
