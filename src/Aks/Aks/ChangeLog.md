@@ -25,6 +25,8 @@
 * Added cmdlets `Get-AzAksMachine`, `Get-AzAksManagedClusterMeshRevisionProfile`, `Get-AzAksManagedClusterMeshUpgradeProfile`, `Get-AzAksTrustedAccessRole`, `Get-AzAksTrustedAccessRoleBinding`, `New-AzAksTrustedAccessRoleBinding`, `Remove-AzAksAgentPoolMachine`, `Remove-AzAksTrustedAccessRoleBinding`, `Update-AzAksTrustedAccessRoleBinding`
 * Added necessary parameters for `New-AzAksCluster`, `Set-AzAksCluster`, `New-AzAksNodePool`, `Update-AzAksNodePool`
 * Removed cmdlet `Get-AzAksManagedClusterOSOption`
+* Enforced RSA as the default key generation type in `New-AzAksCluster` when generating SSH keys with `-GenerateSshKey` parameter
+
 
 ## Version 7.0.0
 * Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
