@@ -55,10 +55,7 @@ input-file:
 module-version: 0.1.0
 title: PostgreSQL 
 subject-prefix: 'PostgreSQL'
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+disable-transform-identity-type: true
 
 directive:
   - from: swagger-document
@@ -229,12 +226,6 @@ directive:
       subject: Server
     set:
       parameter-description: Backup retention days for the server. Day count is between 7 and 35.
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/OperationOrigin System/, 'OperationOrigin System1');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerPropertiesForCreate Property', 'public Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerPropertiesForCreate Property');
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('public int StorageProfileBackupRetentionDay', '[System.Management.Automation.ValidateRangeAttribute(7,35)]\n        public int StorageProfileBackupRetentionDay');

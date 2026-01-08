@@ -14,7 +14,7 @@
 # ----------------------------------------------------------------------------------
 
 function New-AzPostgreSqlReplica {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IServer])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Description('Creates a new replica from an existing database.')]
     param(
@@ -38,7 +38,7 @@ function New-AzPostgreSqlReplica {
         [Parameter(Mandatory, ValueFromPipeline, HelpMessage = 'The source server object to create replica from.')]
         [Alias('InputObject')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IServer]
         ${Master},
 
         [Parameter(HelpMessage = 'The location the resource resides in.')]
@@ -109,9 +109,9 @@ function New-AzPostgreSqlReplica {
 
     process {
         try {
-          $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerForCreate]::new()
-          $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerPropertiesForReplica]::new()
-          $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode]::Replica
+          $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.ServerForCreate]::new()
+          $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.ServerPropertiesForReplica]::new()
+          $Parameter.CreateMode = 'Replica'
 
           $server = $PSBoundParameters['Master']
           $Parameter.Property.SourceServerId = $server.Id
