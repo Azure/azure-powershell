@@ -1,0 +1,52 @@
+{
+  "resourceType": "flexibleServers/tuningOptions",
+  "apiVersion": "2025-08-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.postgresqlflexibleserver"
+  },
+  "commands": [
+    {
+      "name": "Get-AzPostgreSqlFlexibleServerTuningOption",
+      "description": "Gets the tuning options of a server.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/tuningOptions/{tuningOption}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.postgresqlflexibleserver/get-azpostgresqlflexibleservertuningoption"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "-ServerName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-TuningOption <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the tuning options of a server.",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServerName",
+              "value": "[Path.serverName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-TuningOption",
+              "value": "[Path.tuningOption]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
