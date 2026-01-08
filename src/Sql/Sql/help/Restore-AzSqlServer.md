@@ -66,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location in which to create the server
+Location where the deleted server was originally located
 
 ```yaml
 Type: System.String
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group where the server will be restored. This must be the same resource group where the server was originally located before deletion.
 
 ```yaml
 Type: System.String
@@ -155,6 +155,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzSqlDeletedServer](./Get-AzSqlDeletedServer.md)
 
 [Get-AzSqlServer](./Get-AzSqlServer.md)
 
