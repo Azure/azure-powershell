@@ -25,12 +25,12 @@ title: ComputeManagementClient
 payload-flattening-threshold: 1
 
 input-file: 
-  -  https://github.com/Azure/azure-rest-api-specs/blob/main/specification/common-types/resource-management/v3/types.json
-  -  https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/common-types/v1/common.json
-  -  https://github.com/Azure/azure-rest-api-specs/tree/main/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2025-04-01/ComputeRP.json
-  -  https://github.com/Azure/azure-rest-api-specs/tree/main/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2025-01-02/DiskRP.json
-  -  https://github.com/Azure/azure-rest-api-specs/tree/main/specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2024-03-03/GalleryRP.json
-  -  https://github.com/Azure/azure-rest-api-specs/tree/main/specification/compute/resource-manager/Microsoft.Compute/Skus/stable/2021-07-01/skus.json
+  - ./Rest-api-specs/types.json
+  - ./Rest-api-specs/common.json
+  - ./Rest-api-specs/ComputeRP.json
+  - ./Rest-api-specs/DiskRP.json
+  - ./Rest-api-specs/GalleryRP.json
+  - ./Rest-api-specs/skus.json
 
 output-folder: Generated
 namespace: Microsoft.Azure.Management.Compute
