@@ -17,7 +17,10 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Upcoming Release
+## Version 4.2.0
+* Updated API Management SDK to use API version 2022-08-01
+    - Regenerated SDK from Azure REST API specifications for 2022-08-01
+    - This resolves compatibility issues with newer Azure API Management service instances
 
 ## Version 4.1.0
 * Upgraded nuget package to signed package.

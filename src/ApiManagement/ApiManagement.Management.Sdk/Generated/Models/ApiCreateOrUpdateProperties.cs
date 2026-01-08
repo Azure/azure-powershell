@@ -110,7 +110,11 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// * `websocket` creates websocket API
         /// * `graphql` creates GraphQL API.
         /// Possible values include: &#39;http&#39;, &#39;soap&#39;, &#39;websocket&#39;, &#39;graphql&#39;</param>
-        public ApiCreateOrUpdateProperties(string path, string description = default(string), AuthenticationSettingsContract authenticationSettings = default(AuthenticationSettingsContract), SubscriptionKeyParameterNamesContract subscriptionKeyParameterNames = default(SubscriptionKeyParameterNamesContract), string apiType = default(string), string apiRevision = default(string), string apiVersion = default(string), bool? isCurrent = default(bool?), bool? isOnline = default(bool?), string apiRevisionDescription = default(string), string apiVersionDescription = default(string), string apiVersionSetId = default(string), bool? subscriptionRequired = default(bool?), string termsOfServiceUrl = default(string), ApiContactInformation contact = default(ApiContactInformation), ApiLicenseInformation license = default(ApiLicenseInformation), string sourceApiId = default(string), string displayName = default(string), string serviceUrl = default(string), System.Collections.Generic.IList<string> protocols = default(System.Collections.Generic.IList<string>), ApiVersionSetContractDetails apiVersionSet = default(ApiVersionSetContractDetails), string value = default(string), string format = default(string), ApiCreateOrUpdatePropertiesWsdlSelector wsdlSelector = default(ApiCreateOrUpdatePropertiesWsdlSelector), string soapApiType = default(string))
+
+        /// <param name="translateRequiredQueryParametersConduct">Strategy of translating required query parameters to template ones. By
+        /// default has value &#39;template&#39;. Possible values: &#39;template&#39;, &#39;query&#39;
+        /// Possible values include: &#39;template&#39;, &#39;query&#39;</param>
+        public ApiCreateOrUpdateProperties(string path, string description = default(string), AuthenticationSettingsContract authenticationSettings = default(AuthenticationSettingsContract), SubscriptionKeyParameterNamesContract subscriptionKeyParameterNames = default(SubscriptionKeyParameterNamesContract), string apiType = default(string), string apiRevision = default(string), string apiVersion = default(string), bool? isCurrent = default(bool?), bool? isOnline = default(bool?), string apiRevisionDescription = default(string), string apiVersionDescription = default(string), string apiVersionSetId = default(string), bool? subscriptionRequired = default(bool?), string termsOfServiceUrl = default(string), ApiContactInformation contact = default(ApiContactInformation), ApiLicenseInformation license = default(ApiLicenseInformation), string sourceApiId = default(string), string displayName = default(string), string serviceUrl = default(string), System.Collections.Generic.IList<string> protocols = default(System.Collections.Generic.IList<string>), ApiVersionSetContractDetails apiVersionSet = default(ApiVersionSetContractDetails), string value = default(string), string format = default(string), ApiCreateOrUpdatePropertiesWsdlSelector wsdlSelector = default(ApiCreateOrUpdatePropertiesWsdlSelector), string soapApiType = default(string), string translateRequiredQueryParametersConduct = default(string))
 
         : base(path, description, authenticationSettings, subscriptionKeyParameterNames, apiType, apiRevision, apiVersion, isCurrent, isOnline, apiRevisionDescription, apiVersionDescription, apiVersionSetId, subscriptionRequired, termsOfServiceUrl, contact, license, sourceApiId, displayName, serviceUrl, protocols, apiVersionSet)
         {
@@ -118,6 +122,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
             this.Format = format;
             this.WsdlSelector = wsdlSelector;
             this.SoapApiType = soapApiType;
+            this.TranslateRequiredQueryParametersConduct = translateRequiredQueryParametersConduct;
             CustomInit();
         }
 
@@ -154,6 +159,13 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "apiType")]
         public string SoapApiType {get; set; }
+
+        /// <summary>
+        /// Gets or sets strategy of translating required query parameters to template
+        /// ones. By default has value &#39;template&#39;. Possible values: &#39;template&#39;, &#39;query&#39; Possible values include: &#39;template&#39;, &#39;query&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "translateRequiredQueryParameters")]
+        public string TranslateRequiredQueryParametersConduct {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -163,6 +175,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         public override void Validate()
         {
             base.Validate();
+
 
 
 

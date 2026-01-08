@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the entity state (Etag) version of the DelegationSettings.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Get Delegation Settings for the Portal.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Update Delegation settings.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Create or Update Delegation settings.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the secret validation key of the DelegationSettings.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
