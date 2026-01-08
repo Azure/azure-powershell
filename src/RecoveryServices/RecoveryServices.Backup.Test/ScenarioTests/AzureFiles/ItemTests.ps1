@@ -617,3 +617,232 @@ function Test-AzureFSVaultRestore
 		#>
 	}
 }
+
+function Test-AzureFSRestoreWithDeletedStorageAccount
+	{
+		# # Pre-requisites: run these commands in Azure Cloud Shell
+		# # SubscriptionId MUST MATCH the one defined in testcredentials.json
+		# Set-AzContext -SubscriptionId "38304e13-357e-405e-9e9a-220351dcce8c"
+		# # Resources MUST MATCH the ones defined below in order for the tests to work
+		# $testResourceGroupName = "iannafs-pstest-sa-rg-0" 
+		# $testVaultName = "ianna-afs-vault-0" 
+		# $testSaName = "iannafssa0" 
+		# $testTargetSaName = "iannafstarget0" 
+		# $testFileShareName = "testshare"
+		# $testPolicyName = "vaultstandardpolicy"
+		# $testLocation = "eastus"
+		# $skuName = "Standard_LRS"
+		# $tags = @{                                                                    
+		# 	"ManagerAlias" = "nilsha"
+		# 	"Workload" = "AFS"
+		# 	"TestType" = "Powershell Test"
+		# 	"Owner" = "nilsha"
+		# 	"Purpose" = "Powershell Test"
+		# 	"DeleteBy" = "12-2025"
+		# }
+		# Write-Host "Creating resource group: $testResourceGroupName"
+		# $rg = New-AzResourceGroup -Name $testResourceGroupName -Location $testLocation -Tag $tags
+		
+		# Write-Host "Creating source storage account: $testSaName"
+		# $sourceStorageAccount = New-AzStorageAccount `
+		# 	-ResourceGroupName $testResourceGroupName `
+		# 	-Name $testSaName `
+		# 	-Location $testLocation `
+		# 	-AllowBlobPublicAccess $false `
+		# 	-SkuName $skuName
+		
+		# Write-Host "Creating file share: $testFileShareName"
+		# $storageContext = $sourceStorageAccount.Context
+		# $fileShare = New-AzStorageShare -Name $testFileShareName -Context $storageContext
+		
+		# Write-Host "Creating target storage account: $testTargetSaName"
+		# $targetStorageAccount = New-AzStorageAccount `
+		# 	-ResourceGroupName $testResourceGroupName `
+		# 	-Name $testTargetSaName `
+		# 	-Location $testLocation `
+		# 	-AllowBlobPublicAccess $false `
+		# 	-SkuName $skuName
+
+		# Write-Host "Creating Recovery Services vault: $testVaultName"
+		# $vault = New-AzRecoveryServicesVault `
+		#     -Name $testVaultName `
+		#     -ResourceGroupName $testResourceGroupName `
+		#     -Location $testLocation
+		# Assert-NotNull $vault
+		# Assert-True { $vault.Name -eq $testVaultName }
+
+		# Write-Host "Creating backup policy with VaultStandard tier"
+		# $schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
+		# Assert-NotNull $schedulePolicy
+
+		# $retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject `
+		#     -WorkloadType AzureFiles `
+		#     -BackupTier VaultStandard
+		# Assert-NotNull $retentionPolicy
+
+		# $policy = New-AzRecoveryServicesBackupProtectionPolicy `
+		#     -VaultId $vault.ID `
+		#     -Name $testPolicyName `
+		#     -WorkloadType AzureFiles `
+		#     -RetentionPolicy $retentionPolicy `
+		#     -SchedulePolicy $schedulePolicy
+		# Assert-NotNull $policy
+		# Assert-True { $policy.Name -eq $testPolicyName }
+
+		# Write-Host "Enabling protection for file share"
+		# $enableJob = Enable-AzRecoveryServicesBackupProtection `
+		#     -VaultId $vault.ID `
+		#     -Policy $policy `
+		#     -Name $testFileShareName `
+		#     -StorageAccountName $testSaName 
+
+		# $enableJob = Wait-AzRecoveryServicesBackupJob -Job $enableJob -VaultId $vault.ID
+		# Assert-True { $enableJob.Status -eq "Completed" }
+
+		# Write-Host "Getting protected item"
+		# $container = Get-AzRecoveryServicesBackupContainer `
+		#     -VaultId $vault.ID `
+		#     -ContainerType AzureStorage `
+		#     -FriendlyName $testSaName
+		# Assert-NotNull $container
+
+		# $item = Get-AzRecoveryServicesBackupItem `
+		#     -VaultId $vault.ID `
+		#     -Container $container `
+		#     -WorkloadType AzureFiles `
+		#     -Name $testFileShareName
+		# Assert-NotNull $item
+		# Assert-True { $item.ProtectionState -eq "Protected" -or $item.ProtectionState -eq "IRPending" }
+
+		# Write-Host "Triggering on-demand backup"
+		# $backupJob = Backup-AzRecoveryServicesBackupItem `
+		#     -VaultId $vault.ID `
+		#     -Item $item
+
+		# $backupJob = Wait-AzRecoveryServicesBackupJob -Job $backupJob -VaultId $vault.ID
+		# Assert-True { $backupJob.Status -eq "Completed" }
+		# Write-Host "Backup completed successfully"
+
+		# Write-Host "Getting recovery point"
+		# $backupStartTime = $backupJob.StartTime.AddMinutes(-1)
+		# $backupEndTime = $backupJob.EndTime.AddMinutes(1)
+
+		# $recoveryPoints = Get-AzRecoveryServicesBackupRecoveryPoint `
+		#     -VaultId $vault.ID `
+		#     -Item $item `
+		#     -StartDate $backupStartTime `
+		#     -EndDate $backupEndTime
+
+		# Assert-NotNull $recoveryPoints
+		# Assert-True { $recoveryPoints.Count -gt 0 }
+		# $recoveryPoint = $recoveryPoints[0]
+		# Write-Host "Recovery point obtained: $($recoveryPoint.RecoveryPointId)"
+
+		# Get-AzResourceLock -ResourceGroupName $testResourceGroupName -ResourceType Microsoft.Storage/storageAccounts -ResourceName $testSaName |
+		#     ForEach-Object { Remove-AzResourceLock -LockId $_.LockId -Force }
+
+		# Write-Host "Deleting source storage account: $testSaName"
+		# Remove-AzStorageAccount `
+		#     -ResourceGroupName $testResourceGroupName `
+		#     -Name $testSaName 
+
+		# $deletedAccount = Get-AzStorageAccount `
+		#     -ResourceGroupName $testResourceGroupName `
+		#     -Name $testSaName `
+		#     -ErrorAction SilentlyContinue
+		# Assert-Null $deletedAccount
+		# Write-Host "Source storage account deleted successfully"
+		# Test-specific variables for isolation
+		$testResourceGroupName = "iannafs-pstest-sa-rg-1" 
+		$testVaultName = "ianna-afs-vault-1" 
+		$testSaName = "iannafssa1" 
+		$testTargetSaName = "iannafstarget1" 
+		$testFileShareName = "testshare"
+		$testPolicyName = "vaultstandardpolicy"
+		$testLocation = "eastus"
+		$tags = @{                                                                    
+			"ManagerAlias" = "nilsha"
+			"Workload" = "AFS"
+			"TestType" = "Powershell Test"
+			"Owner" = "nilsha"
+			"Purpose" = "Powershell Test"
+			"DeleteBy" = "12-2025"
+		}
+	
+		try
+		{	
+			$vault = Get-AzRecoveryServicesVault -ResourceGroupName $testResourceGroupName -Name $testVaultName
+			$container = Get-AzRecoveryServicesBackupContainer `
+			  -VaultId $vault.ID `
+			  -ContainerType AzureStorage `
+			  -FriendlyName $testSaName
+			Assert-NotNull $container
+
+			$item = Get-AzRecoveryServicesBackupItem `
+			  -VaultId $vault.ID `
+			  -Container $container `
+			  -WorkloadType AzureFiles `
+			  -Name $testFileShareName
+			Assert-NotNull $item
+
+			$backupStartTime = (Get-Date).AddDays(-7).ToUniversalTime()
+			$backupEndTime = (Get-Date).ToUniversalTime()
+
+			$recoveryPoints = Get-AzRecoveryServicesBackupRecoveryPoint `
+			  -VaultId $vault.ID `
+			  -Item $item `
+			  -StartDate $backupStartTime `
+			  -EndDate $backupEndTime
+
+			Assert-NotNull $recoveryPoints
+			Assert-True { $recoveryPoints.Count -gt 0 }
+			$recoveryPoint = $recoveryPoints[0]
+
+			$restoreJob = Restore-AzRecoveryServicesBackupItem `
+			  -VaultId $vault.ID `
+			  -VaultLocation $vault.Location `
+			  -RecoveryPoint $recoveryPoint `
+			  -TargetStorageAccountName $testTargetSaName `
+			  -TargetFileShareName $testFileShareName `
+			  -ResolveConflict Overwrite 
+
+			$restoreJob = Wait-AzRecoveryServicesBackupJob -Job $restoreJob -VaultId $vault.ID
+
+			Assert-True { $restoreJob.Status -eq "Completed" }
+		}
+		finally
+		{
+			# # Cleanup
+			# Write-Host "Cleaning up test resources"
+
+			# # Disable protection if item exists
+			# if ($null -ne $item)
+			# {
+			# 	try
+			# 	{
+			# 		Cleanup-Vault $vault $item $container
+			# 	}
+			# 	catch
+			# 	{
+			# 		Write-Host "Warning: Failed to disable protection - may already be disabled"
+			# 	}
+			# }
+
+			# # Delete resource group (will delete all contained resources)
+			# if ($null -ne $testResourceGroupName)
+			# {
+			# 	try
+			# 	{
+			# 		Remove-AzResourceGroup `
+			# 			-Name $testResourceGroupName `
+			# 			-Force `
+			# 			-ErrorAction SilentlyContinue
+			# 		Write-Host "Test resource group deleted"
+			# 	}
+			# 	catch
+			# 	{
+			# 		Write-Host "Warning: Failed to delete resource group"
+			# 	}
+			# }
+		}
+	}
