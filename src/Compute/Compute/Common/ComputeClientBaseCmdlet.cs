@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Compute
         protected DateTime StartTime;
 
         private ComputeClient computeClient;
+        private ComputeClientTrack2 computeClientTrack2;
 
         public ComputeClient ComputeClient
         {
@@ -49,6 +50,23 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             set { computeClient = value; }
+        }
+
+        public ComputeClientTrack2 ComputeClientTrack2
+        {
+            get
+            {
+                if (computeClientTrack2 == null)
+                {
+                    computeClientTrack2 = new ComputeClientTrack2(DefaultProfile.DefaultContext);
+                }
+
+                this.computeClientTrack2.VerboseLogger = WriteVerboseWithTimestamp;
+                this.computeClientTrack2.ErrorLogger = WriteErrorWithTimestamp;
+                return computeClientTrack2;
+            }
+
+            set { computeClientTrack2 = value; }
         }
 
         public override void ExecuteCmdlet()
