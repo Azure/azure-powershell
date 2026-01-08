@@ -14,7 +14,7 @@ Create or update a resource.
 
 ```
 New-AzWebPubSub -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- -SkuName <String> [-DisableAadAuth] [-DisableLocalAuth] [-EnableTlsClientCert] [-IdentityType <String>]
+ -SkuName <String> [-DisableAadAuth] [-DisableLocalAuth] [-EnableTlsClientCert] [-EnableSystemAssignedIdentity]
  [-LiveTraceCategory <ILiveTraceCategory[]>] [-LiveTraceEnabled <String>] [-NetworkAcLDefaultAction <String>]
  [-PrivateEndpointAcl <IPrivateEndpointAcl[]>] [-PublicNetworkAccess <String>] [-PublicNetworkAllow <String[]>]
  [-PublicNetworkDeny <String[]>] [-ResourceLogCategory <IResourceLogCategory[]>] [-SkuCapacity <Int32>]
@@ -41,7 +41,7 @@ psdemo-wps          eastus        Standard_S1
 ### Example 2: Create a Web PubSub resource with more parameters and show the result
 ```powershell
 $wps = New-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps `
--Location eastus -SkuName Standard_S1 -IdentityType SystemAssigned -LiveTraceEnabled true `
+-Location eastus -SkuName Standard_S1 -EnableSystemAssignedIdentity -LiveTraceEnabled true `
 -LiveTraceCategory @{ Name='ConnectivityLogs' ; Enabled = 'true' }, @{ Name='MessageLogs' ; Enabled = 'true' }
 ```
 
@@ -113,8 +113,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableTlsClientCert
-Request client certificate during TLS handshake if enabled
+### -EnableSystemAssignedIdentity
+[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType])]
+[System.String]
+[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType]
+Represent the identity type: systemAssigned, userAssigned, None
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -128,13 +131,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType])]
-[Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType]
-Represent the identity type: systemAssigned, userAssigned, None
+### -EnableTlsClientCert
+Request client certificate during TLS handshake if enabled
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

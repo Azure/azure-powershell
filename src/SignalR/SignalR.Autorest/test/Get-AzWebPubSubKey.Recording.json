@@ -6,12 +6,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "28" ],
-        "x-ms-client-request-id": [ "ba71c576-a976-4a99-b32f-d6fcae35df5e" ],
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "c88a206c-9c31-43ef-9ab3-0946b64da3fa" ],
         "CommandName": [ "Get-AzWebPubSubKey" ],
         "FullCommandName": [ "Get-AzWebPubSubKey_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.SignalR/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.SignalR/2.3.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -24,17 +24,17 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "ba71c576-a976-4a99-b32f-d6fcae35df5e" ],
+        "x-ms-client-request-id": [ "c88a206c-9c31-43ef-9ab3-0946b64da3fa" ],
         "x-rp-server-mvid": [ "0895b6bc-4801-4f4f-8fe1-12ae1c9d7162" ],
-        "x-ms-request-id": [ "c66f59ee-0e97-410c-8076-ac5ef7d4d5d6" ],
-        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/23cc2705-ac10-4eed-b966-077820770ece" ],
+        "x-ms-request-id": [ "b133de3f-0a32-47bd-8f63-3ca424e2b129" ],
+        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/96f5f29a-f469-4a9c-85c8-9b37718962d2" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "1b6ac6d0-9a08-4671-9242-83a45631c9f1" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260106T031306Z:1b6ac6d0-9a08-4671-9242-83a45631c9f1" ],
+        "x-ms-correlation-request-id": [ "c2ce7822-8900-432e-bbb4-7ab57a7c9425" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260108T031710Z:c2ce7822-8900-432e-bbb4-7ab57a7c9425" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A6E9CCE6F8134D5DA92F2F04B28708A0 Ref B: SG2AA1070303031 Ref C: 2026-01-06T03:13:06Z" ],
-        "Date": [ "Tue, 06 Jan 2026 03:13:06 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 718F930955B044C293598EBE978E37C0 Ref B: SG2AA1040513040 Ref C: 2026-01-08T03:17:10Z" ],
+        "Date": [ "Thu, 08 Jan 2026 03:17:09 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "565" ],
@@ -52,12 +52,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "29" ],
-        "x-ms-client-request-id": [ "f16f0ecd-9292-45d8-ab1b-a20ed731e995" ],
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "1c909d44-dd7a-46e1-b606-d05287f4dd70" ],
         "CommandName": [ "Get-AzWebPubSub" ],
         "FullCommandName": [ "Get-AzWebPubSub_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.SignalR/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.SignalR/2.3.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -70,23 +70,23 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "f16f0ecd-9292-45d8-ab1b-a20ed731e995" ],
+        "x-ms-client-request-id": [ "1c909d44-dd7a-46e1-b606-d05287f4dd70" ],
         "x-rp-server-mvid": [ "0895b6bc-4801-4f4f-8fe1-12ae1c9d7162" ],
-        "x-ms-request-id": [ "8033b076-7265-4f0e-b3e9-261eccb6c375" ],
+        "x-ms-request-id": [ "a7e60f22-a762-43b5-ba56-bf0954997dba" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-correlation-request-id": [ "06f75a1e-0431-464b-9e77-7c3bceac59a6" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260106T031307Z:06f75a1e-0431-464b-9e77-7c3bceac59a6" ],
+        "x-ms-correlation-request-id": [ "bad3e57f-5165-4e17-beaa-0bc5ff12d967" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260108T031711Z:bad3e57f-5165-4e17-beaa-0bc5ff12d967" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0A95C4BA7600419589AA92FE74F551CF Ref B: SG2AA1070303031 Ref C: 2026-01-06T03:13:07Z" ],
-        "Date": [ "Tue, 06 Jan 2026 03:13:07 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3805D6556313413BB7937A3B276ACCD3 Ref B: SG2AA1040513040 Ref C: 2026-01-08T03:17:11Z" ],
+        "Date": [ "Thu, 08 Jan 2026 03:17:10 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1137" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"Premium_P1\",\"tier\":\"Premium\",\"size\":\"P1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Succeeded\",\"externalIP\":\"20.62.134.162\",\"hostName\":\"azwps1.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"hostNamePrefix\":\"azwps1\",\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps1\",\"name\":\"azwps1\",\"type\":\"Microsoft.SignalRService/WebPubSub\",\"systemData\":{\"createdBy\":\"v-jiasenglaw@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-06T03:09:31.1489588Z\",\"lastModifiedBy\":\"v-jiasenglaw@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-06T03:09:31.1489588Z\"}}",
+      "Content": "{\"sku\":{\"name\":\"Premium_P1\",\"tier\":\"Premium\",\"size\":\"P1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Succeeded\",\"externalIP\":\"20.88.154.147\",\"hostName\":\"azwps1.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"hostNamePrefix\":\"azwps1\",\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps1\",\"name\":\"azwps1\",\"type\":\"Microsoft.SignalRService/WebPubSub\",\"systemData\":{\"createdBy\":\"v-jiasenglaw@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-08T03:14:15.5439009Z\",\"lastModifiedBy\":\"v-jiasenglaw@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-08T03:14:15.5439009Z\"}}",
       "isContentBase64": false
     }
   },
@@ -97,12 +97,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "30" ],
-        "x-ms-client-request-id": [ "caad3135-1869-40ca-a5c9-8004ef506e00" ],
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "22ef6b7d-7b4f-4627-b25f-cf004a9ab6ff" ],
         "CommandName": [ "Az.SignalR\\Get-AzWebPubSubKey" ],
         "FullCommandName": [ "Get-AzWebPubSubKey_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.SignalR/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.SignalR/2.3.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -115,17 +115,17 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "caad3135-1869-40ca-a5c9-8004ef506e00" ],
+        "x-ms-client-request-id": [ "22ef6b7d-7b4f-4627-b25f-cf004a9ab6ff" ],
         "x-rp-server-mvid": [ "0895b6bc-4801-4f4f-8fe1-12ae1c9d7162" ],
-        "x-ms-request-id": [ "096566a0-a72b-4170-bf28-d70cee0221e1" ],
-        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/8f71af82-a214-42ea-9b02-bd8bc09547ba" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "9af44311-2a1a-482f-a1ed-7895be7bb61a" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260106T031308Z:9af44311-2a1a-482f-a1ed-7895be7bb61a" ],
+        "x-ms-request-id": [ "812975c5-d03d-4197-b274-edefa4d1e7ad" ],
+        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/611a20ab-8108-4985-8f94-8de3eaedf961" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "198" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2998" ],
+        "x-ms-correlation-request-id": [ "2dab8562-621e-4c24-9a82-365fc39c574a" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260108T031711Z:2dab8562-621e-4c24-9a82-365fc39c574a" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 457C54526F0F494CB5CE2C859206FA6B Ref B: SG2AA1070303031 Ref C: 2026-01-06T03:13:08Z" ],
-        "Date": [ "Tue, 06 Jan 2026 03:13:08 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 0DDA21F8F124419A86906C142CF825F1 Ref B: SG2AA1040513040 Ref C: 2026-01-08T03:17:11Z" ],
+        "Date": [ "Thu, 08 Jan 2026 03:17:10 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "565" ],

@@ -138,10 +138,11 @@ function New-AzWebPubSub
     [Parameter()]
     # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [System.String]
+    [System.Management.Automation.SwitchParameter]
+    # [System.String]
     # [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType]
     # Represent the identity type: systemAssigned, userAssigned, None
-    ${IdentityType},
+    ${EnableSystemAssignedIdentity},
 
     [Parameter()]
     [AllowEmptyCollection()]

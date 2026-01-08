@@ -157,7 +157,7 @@ Update the Network ACL of a SignalR service.
 Update properties of a SignalR replica.
 
 ### [Update-AzWebPubSub](Update-AzWebPubSub.md)
-Operation to update an exiting resource.
+Update a resource.
 
 ### [Update-AzWebPubSubCustomDomain](Update-AzWebPubSubCustomDomain.md)
 Update a custom domain.

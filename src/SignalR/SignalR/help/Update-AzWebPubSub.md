@@ -8,32 +8,18 @@ schema: 2.0.0
 # Update-AzWebPubSub
 
 ## SYNOPSIS
-Operation to update an exiting resource.
+Update a resource.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzWebPubSub -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-DisableAadAuth]
- [-DisableLocalAuth] [-EnableTlsClientCert] [-IdentityType <String>]
+ [-DisableLocalAuth] [-EnableSystemAssignedIdentity <Boolean>] [-EnableTlsClientCert]
  [-LiveTraceCategory <ILiveTraceCategory[]>] [-LiveTraceEnabled <String>] [-NetworkAcLDefaultAction <String>]
  [-PrivateEndpointAcl <IPrivateEndpointAcl[]>] [-PublicNetworkAccess <String>] [-PublicNetworkAllow <String[]>]
  [-PublicNetworkDeny <String[]>] [-ResourceLogCategory <IResourceLogCategory[]>] [-SkuCapacity <Int32>]
- [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzWebPubSub -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzWebPubSub -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String>
+ [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -41,23 +27,23 @@ Update-AzWebPubSub -Name <String> -ResourceGroupName <String> [-SubscriptionId <
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWebPubSub -InputObject <IWebPubSubIdentity> [-DisableAadAuth] [-DisableLocalAuth]
- [-EnableTlsClientCert] [-IdentityType <String>] [-LiveTraceCategory <ILiveTraceCategory[]>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-EnableTlsClientCert] [-LiveTraceCategory <ILiveTraceCategory[]>]
  [-LiveTraceEnabled <String>] [-NetworkAcLDefaultAction <String>] [-PrivateEndpointAcl <IPrivateEndpointAcl[]>]
  [-PublicNetworkAccess <String>] [-PublicNetworkAllow <String[]>] [-PublicNetworkDeny <String[]>]
  [-ResourceLogCategory <IResourceLogCategory[]>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Operation to update an exiting resource.
+Update a resource.
 
 ## EXAMPLES
 
 ### Example 1: Update a Web PubSub resource
 ```powershell
 $wps = Update-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps `
--IdentityType SystemAssigned -LiveTraceEnabled true `
+-EnableSystemAssignedIdentity $true -LiveTraceEnabled true `
 -LiveTraceCategory @{ Name='ConnectivityLogs' ; Enabled = 'true' }, @{ Name='MessageLogs' ; Enabled = 'true' }
 ```
 
@@ -128,7 +114,7 @@ DisableLocalAuthEnable or disable aad authWhen set as true, connection with Auth
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -143,7 +129,22 @@ DisableLocalAuthEnable or disable local auth with AccessKeyWhen set as true, con
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -158,22 +159,7 @@ Request client certificate during TLS handshake if enabled
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Represents the identity type: systemAssigned, userAssigned, None
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -198,42 +184,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -LiveTraceCategory
 Gets or sets the list of category configurations.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ILiveTraceCategory[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -248,7 +204,7 @@ Indicates whether or not enable live trace.When it's set to true, live trace cli
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -263,7 +219,7 @@ The name of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases: ResourceName
 
 Required: True
@@ -278,7 +234,7 @@ Azure Networking ACL Action.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -308,7 +264,7 @@ ACLs for requests from private endpoints
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IPrivateEndpointAcl[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -324,7 +280,7 @@ Default to "Enabled".When it's Enabled, network ACLs still apply.When it's Disab
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -340,7 +296,7 @@ The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -356,7 +312,7 @@ The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -372,7 +328,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -387,7 +343,7 @@ Gets or sets the list of category configurations.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceLogCategory[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -404,7 +360,7 @@ The unit count of the resource.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -420,7 +376,7 @@ Required.Allowed values: Standard_S1, Free_F1, Premium_P1
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -437,7 +393,7 @@ Optional tier of this particular SKU.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -453,7 +409,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -468,7 +424,7 @@ Tags of the service which is a list of key value pairs that describe the resourc
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -479,11 +435,12 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-Get or set the user assigned identities
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False

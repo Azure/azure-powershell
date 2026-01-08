@@ -1,6 +1,6 @@
 ---
 Module Name: Az.SignalR
-Module Guid: ce90a5b1-5206-4ebd-8e27-37b0def5927e
+Module Guid: bd54dc5e-210e-4fa3-82c6-e38bb4389e1b
 Download Help Link: https://learn.microsoft.com/powershell/module/az.signalr
 Help Version: 1.0.0.0
 Locale: en-US
@@ -73,7 +73,7 @@ Operation to restart a resource.
 Checks that the resource name is valid and is not already in use.
 
 ### [Update-AzWebPubSub](Update-AzWebPubSub.md)
-Operation to update an exiting resource.
+Update a resource.
 
 ### [Update-AzWebPubSubCustomDomain](Update-AzWebPubSubCustomDomain.md)
 Update a custom domain.

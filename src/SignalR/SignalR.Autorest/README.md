@@ -52,8 +52,6 @@ commit: 492cf91751be945ceae53cfdd53b1ff2fb878703
 # If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs
 identity-correction-for-post: true
-disable-transform-identity-type: true
-flatten-userassignedidentity: false
 
 directive:
   # Following is two common directive which are normally required in all the RPs
