@@ -126,12 +126,12 @@ Function Write-OMSLogfile {
 
 Function SendToLogA ($eventsTableName, $EventsTableFile, $CustomerId, $SharedKey ) {
     $eventsData = Import-Csv $EventsTableFile
-        
+    
     #Test Size; Log A limit is 30MB
     $tempdata = @()
     $tempDataSize = 0
     
-    if ((($eventsData |  Convertto-json -depth 20).Length) -gt 25MB) {        
+    if ((($eventsData | ConvertTo-Json -depth 20).Length) -gt 25MB) {        
         Write-Host "Upload is over 25MB, needs to be split"									 
         foreach ($record in $eventsData) {            
             $tempdata += $record
@@ -144,10 +144,10 @@ Function SendToLogA ($eventsTableName, $EventsTableFile, $CustomerId, $SharedKey
                 $tempDataSize = 0
             }
         }
-        Write-Host "Sending left over data = $Tempdatasize"
+        Write-Host "Sending left over data = $TempDataSize"
         $postLAStatus = Write-OMSLogfile -dateTime (Get-Date) -type $eventsTableName -logdata $tempdata -CustomerID $CustomerId -SharedKey $SharedKey
     }
-    Else {          
+    else {
         $postLAStatus = Write-OMSLogfile -dateTime (Get-Date) -type $eventsTableName -logdata $eventsData -CustomerID $CustomerId -SharedKey $SharedKey        
     }  
     return $postLAStatus
