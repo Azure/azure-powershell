@@ -506,8 +506,6 @@ namespace Microsoft.Azure.Commands.Compute
                         };
                         WriteObject(result);
                     }
-
-
                 });
             }
         }

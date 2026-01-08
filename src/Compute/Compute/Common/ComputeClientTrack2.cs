@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.Compute
             try
             {
                 var resourceGroup = await GetResourceGroupAsync(resourceGroupName, cancellationToken);
-                var response = await resourceGroup.GetVirtualMachineAsync(vmName, cancellationToken:cancellationToken);
+                var response = await resourceGroup.GetVirtualMachineAsync(vmName, cancellationToken: cancellationToken);
                 return response.Value;
             }
             catch (Exception ex)
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Commands.Compute
             try
             {
                 var resourceGroup = await GetResourceGroupAsync(resourceGroupName, cancellationToken);
-                var response = await resourceGroup.GetVirtualMachineScaleSetAsync(vmssName, cancellationToken:cancellationToken);
+                var response = await resourceGroup.GetVirtualMachineScaleSetAsync(vmssName, cancellationToken: cancellationToken);
                 return response.Value;
             }
             catch (Exception ex)

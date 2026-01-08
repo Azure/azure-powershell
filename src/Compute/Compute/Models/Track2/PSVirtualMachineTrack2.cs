@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Compute.Models.Track2
         // Additional Capabilities
         public PSAdditionalCapabilities AdditionalCapabilities { get; set; }
         
-        // Flattened ResourceIdentifiers ( pattern)
+        // Flattened ResourceIdentifiers (ARM resource ID pattern)
         public string AvailabilitySetId { get; set; }
         public string VirtualMachineScaleSetId { get; set; }
         public string ProximityPlacementGroupId { get; set; }

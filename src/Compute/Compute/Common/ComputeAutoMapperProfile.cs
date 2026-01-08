@@ -178,10 +178,13 @@ namespace Microsoft.Azure.Commands.Compute
                     .ForMember(d => d.DisplayHint, opt => opt.Ignore())
                     .ForMember(d => d.AddProxyAgentExtension, opt => opt.Ignore());
 
-                // TODO: Add mappings for nested profile types if AutoMapper doesn't handle them automatically
-                // cfg.CreateMap<Track2Models.PSHardwareProfileTrack2, FROM.HardwareProfile>();
-                // cfg.CreateMap<Track2Models.PSStorageProfileTrack2, FROM.StorageProfile>();
-                // etc.
+                // Explicit mappings for nested profile types used by Track2 PSVirtualMachine
+                cfg.CreateMap<Track2Models.PSHardwareProfileTrack2, FROM.HardwareProfile>();
+                cfg.CreateMap<Track2Models.PSStorageProfileTrack2, FROM.StorageProfile>();
+                cfg.CreateMap<Track2Models.PSNetworkProfileTrack2, FROM.NetworkProfile>();
+                cfg.CreateMap<Track2Models.PSOSProfileTrack2, FROM.OSProfile>();
+                cfg.CreateMap<Track2Models.PSSecurityProfileTrack2, FROM.SecurityProfile>();
+                cfg.CreateMap<Track2Models.PSDiagnosticsProfileTrack2, FROM.DiagnosticsProfile>();
 
                 // => PSComputeLongrunningOperation
                 cfg.CreateMap<Rest.Azure.AzureOperationResponse, TO.PSComputeLongRunningOperation>()

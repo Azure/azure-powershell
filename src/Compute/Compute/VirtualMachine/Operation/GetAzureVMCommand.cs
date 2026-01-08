@@ -184,12 +184,9 @@ namespace Microsoft.Azure.Commands.Compute
                             this.ResourceGroupName,
                             this.Name);
 
-                        VirtualMachineData data = vmResource.Data;
 
                         if (vmResource.Data != null)
                         {
-                            var psResultTrack2 = ComputeAutoMapperProfile.Mapper.Map<Models.Track2.PSVirtualMachine>(vmResource.Data);
-                            // convert psResultTrack2 to psResult of PSVirtualMachine type
                             var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(data);
                             WriteObject(psResult);
                         }
