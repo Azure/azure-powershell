@@ -6,12 +6,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "31" ],
-        "x-ms-client-request-id": [ "8965d9ea-a32b-4ee5-abf5-324b79f5d4a5" ],
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "6de55fdc-fc2f-4ec2-a276-f1e22cf8a00a" ],
         "CommandName": [ "Get-AzWebPubSubSku" ],
         "FullCommandName": [ "Get-AzWebPubSubSku_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.SignalR/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.SignalR/2.3.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -24,17 +24,17 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "8965d9ea-a32b-4ee5-abf5-324b79f5d4a5" ],
+        "x-ms-client-request-id": [ "6de55fdc-fc2f-4ec2-a276-f1e22cf8a00a" ],
         "x-rp-server-mvid": [ "0895b6bc-4801-4f4f-8fe1-12ae1c9d7162" ],
-        "x-ms-request-id": [ "13619207-12da-4dcc-954b-61836061e1e9" ],
-        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/f5518be3-ee7a-4e2a-8216-23720b00ebe9" ],
+        "x-ms-request-id": [ "13290380-1867-4952-8348-f8cdca9c437b" ],
+        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/c45ac123-b9aa-4cee-b9a1-4f9d8a034d96" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-correlation-request-id": [ "c41c81fb-096a-4c96-ae71-7d922346a158" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260106T031311Z:c41c81fb-096a-4c96-ae71-7d922346a158" ],
+        "x-ms-correlation-request-id": [ "03d44e65-3f3d-427c-b7e3-31d1286f769a" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260108T031713Z:03d44e65-3f3d-427c-b7e3-31d1286f769a" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B134F558FA334A6E81D34EA98AB6D2E0 Ref B: SG2AA1070303031 Ref C: 2026-01-06T03:13:10Z" ],
-        "Date": [ "Tue, 06 Jan 2026 03:13:10 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: CCCD46F0BEE6444AAF751CE4956C9EA6 Ref B: SG2AA1040513040 Ref C: 2026-01-08T03:17:12Z" ],
+        "Date": [ "Thu, 08 Jan 2026 03:17:12 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1246" ],
