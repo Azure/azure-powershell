@@ -8,27 +8,55 @@ schema: 2.0.0
 # Suspend-AzDataProtectionBackupInstanceBackup
 
 ## SYNOPSIS
-This operation will stop backup for a backup instance and retains the backup data as per the policy except latest Recovery point, which will be retained forever
+This operation will stop backup for a backup instance and retains the backup data as per the policy (except latest Recovery point, which will be retained forever)
 
 ## SYNTAX
 
 ### Suspend (Default)
 ```
 Suspend-AzDataProtectionBackupInstanceBackup -BackupInstanceName <String> -ResourceGroupName <String>
- -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>] [-NoWait] [-PassThru]
- [-ResourceGuardOperationRequest <String[]>] [-SecureToken <SecureString>] [-SubscriptionId <String>]
- [-Token <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VaultName <String> [-SubscriptionId <String>] [-Token <String>] [-AsJob] [-DefaultProfile <PSObject>]
+ [-NoWait] [-PassThru] [-ResourceGuardOperationRequest <String[]>] [-SecureToken <SecureString>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### SuspendViaIdentity
 ```
-Suspend-AzDataProtectionBackupInstanceBackup -InputObject <IDataProtectionIdentity> [-AsJob]
+Suspend-AzDataProtectionBackupInstanceBackup -InputObject <IDataProtectionIdentity> [-Token <String>] [-AsJob]
  [-DefaultProfile <PSObject>] [-NoWait] [-PassThru] [-ResourceGuardOperationRequest <String[]>]
- [-SecureToken <SecureString>] [-Token <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SecureToken <SecureString>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SuspendViaIdentityBackupVault
+```
+Suspend-AzDataProtectionBackupInstanceBackup -BackupInstanceName <String>
+ -BackupVaultInputObject <IDataProtectionIdentity> -Parameter <ISuspendBackupRequest> [-Token <String>]
+ [-AsJob] [-DefaultProfile <PSObject>] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SuspendViaIdentityBackupVaultExpanded
+```
+Suspend-AzDataProtectionBackupInstanceBackup -BackupInstanceName <String>
+ -BackupVaultInputObject <IDataProtectionIdentity> [-Token <String>] [-AsJob] [-DefaultProfile <PSObject>]
+ [-NoWait] [-PassThru] [-ResourceGuardOperationRequest <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SuspendViaJsonFilePath
+```
+Suspend-AzDataProtectionBackupInstanceBackup -BackupInstanceName <String> -ResourceGroupName <String>
+ -VaultName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-Token <String>] [-AsJob]
+ [-DefaultProfile <PSObject>] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SuspendViaJsonString
+```
+Suspend-AzDataProtectionBackupInstanceBackup -BackupInstanceName <String> -ResourceGroupName <String>
+ -VaultName <String> -JsonString <String> [-SubscriptionId <String>] [-Token <String>] [-AsJob]
+ [-DefaultProfile <PSObject>] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This operation will stop backup for a backup instance and retains the backup data as per the policy except latest Recovery point, which will be retained forever
+This operation will stop backup for a backup instance and retains the backup data as per the policy (except latest Recovery point, which will be retained forever)
 
 ## EXAMPLES
 
@@ -57,11 +85,11 @@ Accept wildcard characters: False
 ```
 
 ### -BackupInstanceName
-The name of the backup instance
+The name of the backup instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Suspend
+Parameter Sets: Suspend, SuspendViaIdentityBackupVault, SuspendViaIdentityBackupVaultExpanded, SuspendViaJsonFilePath, SuspendViaJsonString
 Aliases:
 
 Required: True
@@ -71,8 +99,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
+### -BackupVaultInputObject
+Identity Parameter
 
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+Parameter Sets: SuspendViaIdentityBackupVault, SuspendViaIdentityBackupVaultExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -87,8 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
@@ -99,6 +142,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Suspend operation
+
+```yaml
+Type: System.String
+Parameter Sets: SuspendViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Suspend operation
+
+```yaml
+Type: System.String
+Parameter Sets: SuspendViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -114,6 +187,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Parameter
+Request body of Suspend backup when MUA is Enabled
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ISuspendBackupRequest
+Parameter Sets: SuspendViaIdentityBackupVault
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -133,11 +221,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group where the backup vault is present
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Suspend
+Parameter Sets: Suspend, SuspendViaJsonFilePath, SuspendViaJsonString
 Aliases:
 
 Required: True
@@ -148,12 +237,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGuardOperationRequest
-Resource guard operation request in the format similar to \<ResourceGuard-ARMID\>/dppDisableSuspendBackupsRequests/default.
-Use this parameter when the operation is MUA protected.
+ResourceGuardOperationRequests on which LAC check will be performed
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Suspend, SuspendViaIdentity, SuspendViaIdentityBackupVaultExpanded
 Aliases:
 
 Required: False
@@ -169,7 +257,7 @@ Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: Suspend, SuspendViaIdentity
 Aliases:
 
 Required: False
@@ -180,16 +268,17 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription Id of the backup vault
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Suspend
+Parameter Sets: Suspend, SuspendViaJsonFilePath, SuspendViaJsonString
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -211,11 +300,11 @@ Accept wildcard characters: False
 ```
 
 ### -VaultName
-The name of the backup vault
+The name of the backup vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: Suspend
+Parameter Sets: Suspend, SuspendViaJsonFilePath, SuspendViaJsonString
 Aliases:
 
 Required: True
@@ -262,6 +351,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ISuspendBackupRequest
 
 ## OUTPUTS
 

@@ -43,7 +43,7 @@ DatasourceType            ObjectType
 
 This command adds a weekly tag to given backup policy
 
-### Example 2: Remove Weekly tag from Backup Policy
+### Example 2: Remove Weeky tag from Backup Policy
 ```powershell
 Edit-AzDataProtectionPolicyTagClientObject -Policy $pol -Name Weekly -RemoveRule
 ```
@@ -60,10 +60,9 @@ This command removes Weekly tag from backup policy.
 
 ### -Criteria
 Criterias to be associated with the schedule tag.
-To construct, see NOTES section for CRITERIA properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IScheduleBasedBackupCriteria[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IScheduleBasedBackupCriteria[]
 Parameter Sets: updateTag
 Aliases:
 
@@ -92,10 +91,9 @@ Accept wildcard characters: False
 
 ### -Policy
 Backup Policy Object.
-To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupPolicy
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +126,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy
 
 ## NOTES
 

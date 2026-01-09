@@ -8,21 +8,44 @@ schema: 2.0.0
 # Update-AzDataProtectionBackupInstance
 
 ## SYNOPSIS
-Updates a given backup instance
+Update a backup instance in a backup vault
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
+```
+Update-AzDataProtectionBackupInstance -ResourceGroupName <String> -VaultName <String> -Name <String>
+ [-SubscriptionId <String>] [-Token <String>] -BackupInstanceName <String> [-Property <IBackupInstance>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PolicyId <String>]
+ [-UseSystemAssignedIdentity <Boolean>] [-UserAssignedIdentityArmId <String>]
+ [-VaultedBackupContainer <String[]>] [-ResourceGuardOperationRequest <String[]>] [-SecureToken <SecureString>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityBackupVaultExpanded
+```
+Update-AzDataProtectionBackupInstance -ResourceGroupName <String> -VaultName <String> -Name <String>
+ [-SubscriptionId <String>] -BackupVaultInputObject <IDataProtectionIdentity> [-Token <String>]
+ -BackupInstanceName <String> [-Property <IBackupInstance>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PolicyId <String>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] [-VaultedBackupContainer <String[]>]
+ [-ResourceGuardOperationRequest <String[]>] [-SecureToken <SecureString>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
 ```
 Update-AzDataProtectionBackupInstance -ResourceGroupName <String> -VaultName <String>
- -BackupInstanceName <String> [-SubscriptionId <String>] [-PolicyId <String>]
- [-UseSystemAssignedIdentity <Boolean>] [-UserAssignedIdentityArmId <String>]
- [-VaultedBackupContainer <String[]>] [-ResourceGuardOperationRequest <String[]>] [-Token <String>]
- [-SecureToken <SecureString>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SubscriptionId <String>] -InputObject <IDataProtectionIdentity> [-Token <String>]
+ -BackupInstanceName <String> [-Property <IBackupInstance>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PolicyId <String>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] [-VaultedBackupContainer <String[]>]
+ [-ResourceGuardOperationRequest <String[]>] [-SecureToken <SecureString>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a given backup instance
+Update a backup instance in a backup vault
 
 ## EXAMPLES
 
@@ -47,7 +70,7 @@ First command fetch the backup instance which needs to be updated.
 Second command gets the backup policy with name vaulted-policy which need to be updated in Backup Instance.
 Third command fetches the list of vaulted containers which are currently backed up in the backup vault.
 Fourth command update the backup instance with new policy and new list of container (which is currently a subset of the existing backed up containers).
-Fifth and sixth command shows the updated policy and containers list in the backup instance.
+Fifth and sixth command shows the updated policy and containers list in the backu instance.
 
 ### Example 2: Update UAMI in Backup Instance
 ```powershell
@@ -68,6 +91,7 @@ Second command updates the backup instance with the new User Assigned Managed Id
 ## PARAMETERS
 
 ### -AsJob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -96,7 +120,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BackupVaultInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+Parameter Sets: UpdateViaIdentityBackupVaultExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -110,7 +151,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the backup instance.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityBackupVaultExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -139,8 +211,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Property
+BackupInstanceResource properties
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstance
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-Resource Group of the backup vault
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -187,10 +275,26 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription Id of the vault
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Proxy Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -264,7 +368,7 @@ Accept wildcard characters: False
 ```
 
 ### -VaultName
-Name of the backup vault
+The name of the backup vault.
 
 ```yaml
 Type: System.String
@@ -314,9 +418,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource
 
 ## NOTES
 

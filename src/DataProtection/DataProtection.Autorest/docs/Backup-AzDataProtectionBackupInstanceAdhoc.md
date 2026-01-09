@@ -20,11 +20,40 @@ Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName <String> -Resourc
  [-WhatIf] [<CommonParameters>]
 ```
 
+### BackupViaIdentityBackupVault
+```
+Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName <String>
+ -BackupVaultInputObject <IDataProtectionIdentity> -Parameter <ITriggerBackupRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### BackupViaIdentityBackupVaultExpanded
+```
+Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName <String>
+ -BackupVaultInputObject <IDataProtectionIdentity> -BackupRuleOptionRuleName <String>
+ [-TriggerOptionRetentionTagOverride <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ### BackupViaIdentityExpanded
 ```
 Backup-AzDataProtectionBackupInstanceAdhoc -InputObject <IDataProtectionIdentity>
  -BackupRuleOptionRuleName <String> [-TriggerOptionRetentionTagOverride <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### BackupViaJsonFilePath
+```
+Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName <String> -ResourceGroupName <String>
+ -VaultName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### BackupViaJsonString
+```
+Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName <String> -ResourceGroupName <String>
+ -VaultName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,7 +109,7 @@ The name of the backup instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: BackupExpanded
+Parameter Sets: BackupExpanded, BackupViaIdentityBackupVault, BackupViaIdentityBackupVaultExpanded, BackupViaJsonFilePath, BackupViaJsonString
 Aliases:
 
 Required: True
@@ -95,13 +124,28 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: BackupExpanded, BackupViaIdentityBackupVaultExpanded, BackupViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupVaultInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+Parameter Sets: BackupViaIdentityBackupVault, BackupViaIdentityBackupVaultExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -123,7 +167,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
@@ -134,6 +177,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Backup operation
+
+```yaml
+Type: System.String
+Parameter Sets: BackupViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Backup operation
+
+```yaml
+Type: System.String
+Parameter Sets: BackupViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -152,13 +225,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Parameter
+Trigger backup request
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ITriggerBackupRequest
+Parameter Sets: BackupViaIdentityBackupVault
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: BackupExpanded
+Parameter Sets: BackupExpanded, BackupViaJsonFilePath, BackupViaJsonString
 Aliases:
 
 Required: True
@@ -174,7 +262,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: BackupExpanded
+Parameter Sets: BackupExpanded, BackupViaJsonFilePath, BackupViaJsonString
 Aliases:
 
 Required: False
@@ -189,7 +277,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: BackupExpanded, BackupViaIdentityBackupVaultExpanded, BackupViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -204,7 +292,7 @@ The name of the backup vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: BackupExpanded
+Parameter Sets: BackupExpanded, BackupViaJsonFilePath, BackupViaJsonString
 Aliases:
 
 Required: True
@@ -252,9 +340,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ITriggerBackupRequest
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo
 
 ## NOTES
 
