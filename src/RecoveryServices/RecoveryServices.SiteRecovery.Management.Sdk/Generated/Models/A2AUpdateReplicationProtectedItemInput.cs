@@ -51,7 +51,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="recoveryCapacityReservationGroupId">The recovery capacity reservation group Id.
         /// </param>
-        public A2AUpdateReplicationProtectedItemInput(string recoveryCloudServiceId = default(string), string recoveryResourceGroupId = default(string), System.Collections.Generic.IList<A2AVmManagedDiskUpdateDetails> managedDiskUpdateDetails = default(System.Collections.Generic.IList<A2AVmManagedDiskUpdateDetails>), string recoveryBootDiagStorageAccountId = default(string), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo), string tfoAzureVMName = default(string), string recoveryProximityPlacementGroupId = default(string), string recoveryVirtualMachineScaleSetId = default(string), string recoveryCapacityReservationGroupId = default(string))
+
+        /// <param name="recoveryAvailabilityZone">The recovery availability zone.
+        /// </param>
+
+        /// <param name="platformFaultDomain">The platform fault domain.
+        /// </param>
+        public A2AUpdateReplicationProtectedItemInput(string recoveryCloudServiceId = default(string), string recoveryResourceGroupId = default(string), System.Collections.Generic.IList<A2AVmManagedDiskUpdateDetails> managedDiskUpdateDetails = default(System.Collections.Generic.IList<A2AVmManagedDiskUpdateDetails>), string recoveryBootDiagStorageAccountId = default(string), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo), string tfoAzureVMName = default(string), string recoveryProximityPlacementGroupId = default(string), string recoveryVirtualMachineScaleSetId = default(string), string recoveryCapacityReservationGroupId = default(string), string recoveryAvailabilityZone = default(string), int? platformFaultDomain = default(int?))
 
         {
             this.RecoveryCloudServiceId = recoveryCloudServiceId;
@@ -63,6 +69,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.RecoveryProximityPlacementGroupId = recoveryProximityPlacementGroupId;
             this.RecoveryVirtualMachineScaleSetId = recoveryVirtualMachineScaleSetId;
             this.RecoveryCapacityReservationGroupId = recoveryCapacityReservationGroupId;
+            this.RecoveryAvailabilityZone = recoveryAvailabilityZone;
+            this.PlatformFaultDomain = platformFaultDomain;
             CustomInit();
         }
 
@@ -125,5 +133,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryCapacityReservationGroupId")]
         public string RecoveryCapacityReservationGroupId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery availability zone.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryAvailabilityZone")]
+        public string RecoveryAvailabilityZone {get; set; }
+
+        /// <summary>
+        /// Gets or sets the platform fault domain.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "platformFaultDomain")]
+        public int? PlatformFaultDomain {get; set; }
     }
 }

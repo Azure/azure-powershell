@@ -24,8 +24,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private System.Collections.Generic.List<int> _hourSlot;
 
         /// <summary>
-        /// Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds
-        /// to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range.
+        /// A list of hours in the day used to identify a time range. Each integer hour represents a time range beginning at 0m after
+        /// the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying
+        /// [0, 1] means the 00:00 - 02:00 UTC time range.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<int> HourSlot { get => this._hourSlot; set => this._hourSlot = value; }
@@ -53,8 +54,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
         string Day { get; set; }
         /// <summary>
-        /// Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds
-        /// to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range.
+        /// A list of hours in the day used to identify a time range. Each integer hour represents a time range beginning at 0m after
+        /// the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying
+        /// [0, 1] means the 00:00 - 02:00 UTC time range.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -62,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range.",
+        Description = @"A list of hours in the day used to identify a time range. Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range.",
         SerializedName = @"hourSlots",
         PossibleTypes = new [] { typeof(int) })]
         System.Collections.Generic.List<int> HourSlot { get; set; }
@@ -76,8 +78,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
         string Day { get; set; }
         /// <summary>
-        /// Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds
-        /// to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range.
+        /// A list of hours in the day used to identify a time range. Each integer hour represents a time range beginning at 0m after
+        /// the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying
+        /// [0, 1] means the 00:00 - 02:00 UTC time range.
         /// </summary>
         System.Collections.Generic.List<int> HourSlot { get; set; }
 

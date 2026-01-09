@@ -24,6 +24,14 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         public const string AzureLinux = "AzureLinux";
         /// <summary>
+        /// Use AzureLinux3 as the OS for node images. Azure Linux is a
+        /// container-optimized Linux distro built by Microsoft, visit
+        /// https://aka.ms/azurelinux for more information. For limitations, visit
+        /// https://aka.ms/aks/node-images. For OS migration guidance, see
+        /// https://aka.ms/aks/upgrade-os-version.
+        /// </summary>
+        public const string AzureLinux3 = "AzureLinux3";
+        /// <summary>
         /// Deprecated OSSKU. Microsoft recommends that new deployments choose
         /// &#39;AzureLinux&#39; instead.
         /// </summary>
@@ -40,5 +48,11 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Windows2019 containers and vice versa.
         /// </summary>
         public const string Windows2022 = "Windows2022";
+        /// <summary>
+        /// Use Ubuntu2204 as the OS for node images, however, Ubuntu 22.04 may not be
+        /// supported for all nodepools. For limitations and supported kubernetes
+        /// versions, see https://aka.ms/aks/supported-ubuntu-versions
+        /// </summary>
+        public const string Ubuntu2204 = "Ubuntu2204";
     }
 }

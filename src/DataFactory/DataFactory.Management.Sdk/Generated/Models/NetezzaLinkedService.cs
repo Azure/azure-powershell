@@ -49,17 +49,39 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// AzureKeyVaultSecretReference.
         /// </param>
 
+        /// <param name="server">Server name for connection. Type: string.
+        /// </param>
+
+        /// <param name="port">The port for the connection. Type: integer.
+        /// </param>
+
+        /// <param name="uid">Username for authentication. Type: string.
+        /// </param>
+
+        /// <param name="database">Database name for connection. Type: string.
+        /// </param>
+
+        /// <param name="securityLevel">Specifies the security level for the driver connection to the data store.
+        /// PreferredUnSecured : prefer unsecured, allow fallback to secured connection
+        /// if required. OnlyUnSecured : strictly unsecured, no fallback.
+        /// Possible values include: &#39;PreferredUnSecured&#39;, &#39;OnlyUnSecured&#39;</param>
+
         /// <param name="pwd">The Azure key vault secret reference of password in connection string.
         /// </param>
 
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public NetezzaLinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object connectionString = default(object), AzureKeyVaultSecretReference pwd = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
+        public NetezzaLinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object connectionString = default(object), object server = default(object), object port = default(object), object uid = default(object), object database = default(object), string securityLevel = default(string), AzureKeyVaultSecretReference pwd = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
 
         : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.ConnectionString = connectionString;
+            this.Server = server;
+            this.Port = port;
+            this.Uid = uid;
+            this.Database = database;
+            this.SecurityLevel = securityLevel;
             this.Pwd = pwd;
             this.EncryptedCredential = encryptedCredential;
             CustomInit();
@@ -77,6 +99,39 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.connectionString")]
         public object ConnectionString {get; set; }
+
+        /// <summary>
+        /// Gets or sets server name for connection. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.server")]
+        public object Server {get; set; }
+
+        /// <summary>
+        /// Gets or sets the port for the connection. Type: integer.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.port")]
+        public object Port {get; set; }
+
+        /// <summary>
+        /// Gets or sets username for authentication. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.uid")]
+        public object Uid {get; set; }
+
+        /// <summary>
+        /// Gets or sets database name for connection. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.database")]
+        public object Database {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the security level for the driver connection to the
+        /// data store. PreferredUnSecured : prefer unsecured, allow fallback to
+        /// secured connection if required. OnlyUnSecured : strictly unsecured, no
+        /// fallback. Possible values include: &#39;PreferredUnSecured&#39;, &#39;OnlyUnSecured&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.securityLevel")]
+        public string SecurityLevel {get; set; }
 
         /// <summary>
         /// Gets or sets the Azure key vault secret reference of password in connection
@@ -101,6 +156,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public override void Validate()
         {
             base.Validate();
+
+
+
+
+
 
             if (this.Pwd != null)
             {
