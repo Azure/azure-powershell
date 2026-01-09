@@ -19,6 +19,20 @@ Update-AzContainerInstanceContainerGroupProfile -Name <String> -ResourceGroupNam
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### PatchViaJsonString
+```
+Update-AzContainerInstanceContainerGroupProfile -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PatchViaJsonFilePath
+```
+Update-AzContainerInstanceContainerGroupProfile -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### Patch
 ```
 Update-AzContainerInstanceContainerGroupProfile -Name <String> -ResourceGroupName <String>
@@ -94,7 +108,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
@@ -108,12 +121,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Patch operation
+
+```yaml
+Type: System.String
+Parameter Sets: PatchViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Patch operation
+
+```yaml
+Type: System.String
+Parameter Sets: PatchViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the container group profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, Patch
+Parameter Sets: PatchExpanded, PatchViaJsonString, PatchViaJsonFilePath, Patch
 Aliases: ContainerGroupProfileName
 
 Required: True
@@ -125,10 +168,9 @@ Accept wildcard characters: False
 
 ### -Property
 Properties of container group profile that need to be patched
-To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerGroupProfilePatch
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerGroupProfilePatch
 Parameter Sets: Patch, PatchViaIdentity
 Aliases:
 
@@ -145,7 +187,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, Patch
+Parameter Sets: PatchExpanded, PatchViaJsonString, PatchViaJsonFilePath, Patch
 Aliases:
 
 Required: True
@@ -161,7 +203,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, Patch
+Parameter Sets: PatchExpanded, PatchViaJsonString, PatchViaJsonFilePath, Patch
 Aliases:
 
 Required: False
@@ -222,13 +264,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerGroupProfilePatch
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerGroupProfilePatch
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerGroupProfile
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerGroupProfile
 
 ## NOTES
 
