@@ -1145,7 +1145,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
                 }
-                this.VirtualMachineScaleSetUpdate.DoNotRunExtensionsOnOverprovisionedVMs = this.SkipExtensionsOnOverprovisionedVMs;
+                this.VirtualMachineScaleSetUpdate.DoNotRunExtensionsOnOverprovisionedVms = this.SkipExtensionsOnOverprovisionedVMs;
             }
 
             if (this.IsParameterBound(c => c.SkuCapacity))

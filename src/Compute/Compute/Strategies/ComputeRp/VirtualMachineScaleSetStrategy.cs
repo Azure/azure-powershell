@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             VmSizes = skuProfileVmSize,
                             AllocationStrategy = skuProfileAllocationStrategy
                         },
-                        DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
+                        DoNotRunExtensionsOnOverprovisionedVms = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
                         OrchestrationMode = orchestrationMode,
                         Placement = (zonePlacementPolicy != null || includeZone != null || excludeZone != null) ? new Placement
                         {
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             VmSizes = skuProfileVmSize,
                             AllocationStrategy = skuProfileAllocationStrategy
                         },
-                        DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
+                        DoNotRunExtensionsOnOverprovisionedVms = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
                         OrchestrationMode = orchestrationMode,
                         Placement = (zonePlacementPolicy != null || includeZone != null || excludeZone != null) ? new Placement
                         {

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             AutomaticRepairsPolicy = automaticRepairsPolicy;
             VirtualMachineProfile = virtualMachineProfile;
             Overprovision = overprovision;
-            DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs;
+            DoNotRunExtensionsOnOverprovisionedVms = doNotRunExtensionsOnOverprovisionedVMs;
             SinglePlacementGroup = singlePlacementGroup;
             AdditionalCapabilities = additionalCapabilities;
             ScaleInPolicy = scaleInPolicy;

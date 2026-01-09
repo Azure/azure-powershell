@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// <summary>
     /// Describes a virtual machine scale set virtual machine .
     /// </summary>
-    public partial class VirtualMachineScaleSetVM : Resource
+    public partial class VirtualMachineScaleSetVM : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualMachineScaleSetVM class.
