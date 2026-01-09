@@ -465,6 +465,11 @@ directive:
       verb: Test
       subject: BackupInstanceCrossRegionRestore
     hide: true
+
+  - where:
+      verb: Test
+      subject: ^BackupInstance$
+    hide: true
   
   - where:
       subject: FetchCrossRegionRestoreJob      

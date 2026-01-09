@@ -18,10 +18,9 @@ New-AzDataProtectionBackupVault -Location <String> -ResourceGroupName <String>
  [-AzureMonitorAlertsForAllJobFailure <String>] [-CmkEncryptionKeyUri <String>] [-CmkEncryptionState <String>]
  [-CmkIdentityType <String>] [-CmkInfrastructureEncryption <String>] [-CmkUserAssignedIdentityId <String>]
  [-CrossRegionRestoreState <String>] [-CrossSubscriptionRestoreState <String>] [-DefaultProfile <PSObject>]
- [-ETag <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Object>]
- [-ImmutabilityState <String>] [-NoWait] [-SoftDeleteRetentionDurationInDay <Double>]
- [-SoftDeleteState <String>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-EnableSystemAssignedIdentity] [-ETag <String>] [-ImmutabilityState <String>] [-NoWait]
+ [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <String>] [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,22 +61,13 @@ This command creates a new backup vault while setting Immutability state, cross 
 ### Example 3: Create a Backup Vault with CMK
 ```powershell
 $storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType VaultStore -Type LocallyRedundant
-$userAssignedIdentity = @{
-    "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/samplerg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuami" = @{
-        clientId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-        principalId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    }
-    "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/samplerg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuami2" = @{
-        clientId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-        principalId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    }
-}
+$userAssignedIdentity = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/samplerg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuami","/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/samplerg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuami2"
 
 $cmkIdentityId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/samplerg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuami"
 
 $cmkKeyUri = "https://samplekvazbckp.vault.azure.net/keys/testkey/3cd5235ad6ac4c11b40a6f35444bcbe1"
 
-New-AzDataProtectionBackupVault -SubscriptionId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Location "location" -StorageSetting $storagesetting -IdentityType UserAssigned -UserAssignedIdentity $userAssignedIdentity -CmkEncryptionState Enabled -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId $cmkIdentityId -CmkEncryptionKeyUri $cmkKeyUri -CmkInfrastructureEncryption Enabled
+New-AzDataProtectionBackupVault -SubscriptionId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Location "location" -StorageSetting $storagesetting -UserAssignedIdentity $userAssignedIdentity -CmkEncryptionState Enabled -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId $cmkIdentityId -CmkEncryptionKeyUri $cmkKeyUri -CmkInfrastructureEncryption Enabled
 ```
 
 ```output
@@ -246,41 +236,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ETag
 Optional ETag.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-The identityType can take values - "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned", "None".
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-Gets or sets the user assigned identities.
-
-```yaml
-Type: System.Object
 Parameter Sets: (All)
 Aliases:
 
@@ -419,6 +394,21 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

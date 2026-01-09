@@ -5,41 +5,54 @@
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Updates a BackupVault resource belonging to a resource group. For example updating tags for a resource.')]
 
     param(
-        [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='The ID of the target subscription. The value must be an UUID.')]
-        [System.String]
-        ${SubscriptionId},
-
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory, HelpMessage='The name of the resource group. The name is case insensitive.')]
         [System.String]
         ${ResourceGroupName},
-
+        
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory, HelpMessage='The name of the backup vault.')]
         [System.String]
         ${VaultName},
 
-        [Parameter(ParameterSetName="UpdateExpanded",HelpMessage='The identityType which can take values: "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned", "None"')]
+        [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='The ID of the target subscription. The value must be an UUID.')]
         [System.String]
-        ${IdentityType},
+        ${SubscriptionId},
+
+        [Parameter(Mandatory=$false, HelpMessage='Parameter deprecate. Please use SecureToken instead.')]
+        [System.String]
+        ${Token},
+
+        [Parameter(Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.')]
+        [System.Security.SecureString]
+        ${SecureToken},
 
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Parameter to Enable or Disable built-in azure monitor alerts for job failures. Security alerts cannot be disabled.')]
         [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [ValidateSet('Enabled','Disabled')]
         ${AzureMonitorAlertsForAllJobFailure},
+
+        [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Cross region restore state of the vault. Allowed values are Disabled, Enabled.')]
+        [System.String]
+        [ValidateSet('Disabled','Enabled')]
+        ${CrossRegionRestoreState},
+
+        [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Cross subscription restore state of the vault. Allowed values are Disabled, Enabled, PermanentlyDisabled.')]
+        [System.String]
+        [ValidateSet('Disabled','Enabled', 'PermanentlyDisabled')]
+        ${CrossSubscriptionRestoreState},
+
+        [Parameter(ParameterSetName="UpdateExpanded",HelpMessage='Determines whether to enable a system-assigned identity for the resource.')]
+        [System.Nullable[System.Boolean]]
+        ${EnableSystemAssignedIdentity},
 
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Immutability state of the vault. Allowed values are Disabled, Unlocked, Locked.')]
         [System.String]
         [ValidateSet('Disabled','Unlocked', 'Locked')]
         ${ImmutabilityState},
 
-        [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Cross region restore state of the vault. Allowed values are Disabled, Enabled.')]
-        [System.String]
-        [ValidateSet('Disabled','Enabled')]
-        ${CrossRegionRestoreState},
-        
-        [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Cross subscription restore state of the vault. Allowed values are Disabled, Enabled, PermanentlyDisabled.')]
-        [System.String]
-        [ValidateSet('Disabled','Enabled', 'PermanentlyDisabled')]
-        ${CrossSubscriptionRestoreState},
+        [Parameter(ParameterSetName="UpdateExpanded", Mandatory=$false, HelpMessage='Resource guard operation request in the format similar to <ResourceGuard-ARMID>/operationName/default. Here operationName can be any of dppReduceImmutabilityStateRequests, dppReduceSoftDeleteSecurityRequests, dppModifyEncryptionSettingsRequests. Use this parameter when the operation is MUA protected.')]
+        [System.String[]]
+        ${ResourceGuardOperationRequest},
         
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Soft delete retention duration in days')]
         [System.Double]
@@ -55,8 +68,8 @@
         ${Tag},
 
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Gets or sets the user assigned identities.')]
-        [System.Collections.Hashtable]
-        ${IdentityUserAssignedIdentity},
+        [System.String[]]
+        ${UserAssignedIdentity},
 
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Enable CMK encryption state for a Backup Vault.')]
         [System.String]
@@ -73,18 +86,6 @@
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='The Key URI of the CMK key to be used for encryption. To enable auto-rotation of keys, exclude the version component from the Key URI. ')]
         [System.String]
         ${CmkEncryptionKeyUri},
-        
-        [Parameter(ParameterSetName="UpdateExpanded", Mandatory=$false, HelpMessage='Resource guard operation request in the format similar to <ResourceGuard-ARMID>/operationName/default. Here operationName can be any of dppReduceImmutabilityStateRequests, dppReduceSoftDeleteSecurityRequests, dppModifyEncryptionSettingsRequests. Use this parameter when the operation is MUA protected.')]
-        [System.String[]]
-        ${ResourceGuardOperationRequest},
-
-        [Parameter(Mandatory=$false, HelpMessage='Parameter deprecate. Please use SecureToken instead.')]
-        [System.String]
-        ${Token},
-
-        [Parameter(Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.')]
-        [System.Security.SecureString]
-        ${SecureToken},
 
         [Parameter(HelpMessage='The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.')]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -114,16 +115,16 @@
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-    
-        [Parameter(DontShow)]
-        [System.Uri]
-        # The URI for the proxy server to use
-        ${Proxy},
 
         [Parameter()]
         [System.Management.Automation.SwitchParameter]
         # Run the command asynchronously
         ${NoWait},
+    
+        [Parameter(DontShow)]
+        [System.Uri]
+        # The URI for the proxy server to use
+        ${Proxy},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]
@@ -135,7 +136,6 @@
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
-
     )
 
     process

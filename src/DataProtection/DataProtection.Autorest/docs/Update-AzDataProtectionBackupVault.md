@@ -17,11 +17,11 @@ Update a BackupVault resource belonging to a resource group.
 Update-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> [-Token <String>] [-AsJob]
  [-AzureMonitorAlertsForAllJobFailure <String>] [-CmkEncryptionKeyUri <String>] [-CmkEncryptionState <String>]
  [-CmkIdentityType <String>] [-CmkUserAssignedIdentityId <String>] [-CrossRegionRestoreState <String>]
- [-CrossSubscriptionRestoreState <String>] [-DefaultProfile <PSObject>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-ImmutabilityState <String>] [-NoWait]
+ [-CrossSubscriptionRestoreState <String>] [-DefaultProfile <PSObject>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-ImmutabilityState <String>] [-NoWait]
  [-ResourceGuardOperationRequest <String[]>] [-SecureToken <SecureString>]
  [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <String>] [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -119,9 +119,9 @@ CmkIdenityId is a required parameter.
 
 ### Example 6: Update vault to assign a User Assigned Managed Identity (UAMI)
 ```powershell
-$UAMI = @{"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userAssignedIdentityName"=[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.UserAssignedIdentity]::new()}
+$UAMI = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userAssignedIdentityName"
 
-$vault = Update-AzDataProtectionBackupVault -AssignUserIdentity $UAMI -SubscriptionId "00000000-0000-0000-0000-000000000000" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" -IdentityType 'SystemAssigned,UserAssigned'
+$vault = Update-AzDataProtectionBackupVault -UserAssignedIdentity $UAMI -SubscriptionId "00000000-0000-0000-0000-000000000000" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" -EnableSystemAssignedIdentity
 ```
 
 ```output
@@ -283,7 +283,7 @@ Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -314,36 +314,6 @@ Optional ETag.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-The identityType which can take values: "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned", "None"
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-Gets or sets the user assigned identities.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -575,7 +545,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False

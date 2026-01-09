@@ -143,9 +143,6 @@ This operation will stop backup for a backup instance and retains the backup dat
 ### [Sync-AzDataProtectionBackupInstance](Sync-AzDataProtectionBackupInstance.md)
 Sync backup instance again in case of failure\r\nThis action will retry last failed operation and will bring backup instance to valid state
 
-### [Test-AzDataProtectionBackupInstance](Test-AzDataProtectionBackupInstance.md)
-Validate whether validate for backup instance will be successful or not
-
 ### [Test-AzDataProtectionBackupInstanceReadiness](Test-AzDataProtectionBackupInstanceReadiness.md)
 Validate whether adhoc backup will be successful or not
 

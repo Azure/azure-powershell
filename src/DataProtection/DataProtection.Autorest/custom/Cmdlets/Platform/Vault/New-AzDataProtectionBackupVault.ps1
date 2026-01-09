@@ -5,10 +5,6 @@
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Creates or updates a BackupVault resource belonging to a resource group.')]
 
     param(
-        [Parameter(Mandatory=$false, HelpMessage='Subscription Id of the vault')]
-        [System.String]
-        ${SubscriptionId},
-
         [Parameter(Mandatory, HelpMessage='Resource Group Name of the backup vault')]
         [System.String]
         ${ResourceGroupName},
@@ -17,17 +13,9 @@
         [System.String]
         ${VaultName},
 
-        [Parameter(HelpMessage='Optional ETag.')]
+        [Parameter(Mandatory=$false, HelpMessage='Subscription Id of the vault')]
         [System.String]
-        ${ETag},
-
-        [Parameter(HelpMessage='The identityType can take values - "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned", "None".')]
-        [System.String]
-        ${IdentityType},
-
-        [Parameter(Mandatory, HelpMessage='Resource location.')]
-        [System.String]
-        ${Location},
+        ${SubscriptionId},
 
         [Parameter(Mandatory, HelpMessage='Storage Settings of the vault. Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IStorageSetting[]]
@@ -38,20 +26,32 @@
         [ValidateSet('Enabled','Disabled')]
         ${AzureMonitorAlertsForAllJobFailure},
 
+        [Parameter(Mandatory=$false, HelpMessage='Cross region restore state of the vault. Allowed values are Disabled, Enabled.')]
+        [System.String]
+        [ValidateSet('Disabled','Enabled')]
+        ${CrossRegionRestoreState},
+
+        [Parameter(Mandatory=$false, HelpMessage='Cross subscription restore state of the vault. Allowed values are Disabled, Enabled, PermanentlyDisabled.')]
+        [System.String]
+        [ValidateSet('Disabled','Enabled', 'PermanentlyDisabled')]
+        ${CrossSubscriptionRestoreState},
+
+        [Parameter(HelpMessage='Optional ETag.')]
+        [System.String]
+        ${ETag},
+
+        [Parameter(HelpMessage='Determines whether to enable a system-assigned identity for the resource.')]
+        [System.Management.Automation.SwitchParameter]
+        ${EnableSystemAssignedIdentity},
+
         [Parameter(Mandatory=$false, HelpMessage='Immutability state of the vault. Allowed values are Disabled, Unlocked, Locked.')]
         [System.String]
         [ValidateSet('Disabled','Unlocked', 'Locked')]
         ${ImmutabilityState},
 
-        [Parameter(Mandatory=$false, HelpMessage='Cross region restore state of the vault. Allowed values are Disabled, Enabled.')]
+        [Parameter(Mandatory, HelpMessage='Resource location.')]
         [System.String]
-        [ValidateSet('Disabled','Enabled')]
-        ${CrossRegionRestoreState},
-        
-        [Parameter(Mandatory=$false, HelpMessage='Cross subscription restore state of the vault. Allowed values are Disabled, Enabled, PermanentlyDisabled.')]
-        [System.String]
-        [ValidateSet('Disabled','Enabled', 'PermanentlyDisabled')]
-        ${CrossSubscriptionRestoreState},
+        ${Location},
         
         [Parameter(Mandatory=$false, HelpMessage='Soft delete retention duration in days')]
         [System.Double]
@@ -66,9 +66,9 @@
         [System.Collections.Hashtable]
         ${Tag},
 
-        [Parameter(Mandatory=$false, HelpMessage='Gets or sets the user assigned identities.')]
-
-        ${IdentityUserAssignedIdentity},
+        [Parameter(Mandatory=$false, HelpMessage='The array of user assigned identities associated with the resource.')]
+        [System.String[]]
+        ${UserAssignedIdentity},
 
         [Parameter(Mandatory=$false, HelpMessage='Enable CMK encryption state for a Backup Vault.')]
         [System.String]
@@ -118,16 +118,16 @@
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-    
-        [Parameter(DontShow)]
-        [System.Uri]
-        # The URI for the proxy server to use
-        ${Proxy},
 
         [Parameter()]
         [System.Management.Automation.SwitchParameter]
         # Run the command asynchronously
         ${NoWait},
+    
+        [Parameter(DontShow)]
+        [System.Uri]
+        # The URI for the proxy server to use
+        ${Proxy},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]
