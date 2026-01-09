@@ -19,21 +19,21 @@ Test-AzStackHciEdgeDevice -Name <String> -ResourceUri <String> -EdgeDeviceId <St
  [<CommonParameters>]
 ```
 
-### Validate
-```
-Test-AzStackHciEdgeDevice -Name <String> -ResourceUri <String> -ValidateRequest <IValidateRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentity
-```
-Test-AzStackHciEdgeDevice -InputObject <IStackHciIdentity> -ValidateRequest <IValidateRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### ValidateViaIdentityExpanded
 ```
 Test-AzStackHciEdgeDevice -InputObject <IStackHciIdentity> -EdgeDeviceId <String[]> [-AdditionalInfo <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ValidateViaJsonFilePath
+```
+Test-AzStackHciEdgeDevice -Name <String> -ResourceUri <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ValidateViaJsonString
+```
+Test-AzStackHciEdgeDevice -Name <String> -ResourceUri <String> -JsonString <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -44,15 +44,7 @@ A long-running resource action.
 
 ### Example 1:
 ```powershell
-$ValidateRequest = @{
-    edgeDeviceIds = @(
-        "/subscriptions/<subId>/resourceGroups/<test-rg>/providers/Microsoft.HybridCompute/machines/<test-node>/edgeDevices/default",
-        "/subscriptions/<subId>/resourceGroups/<test-rg>/providers/Microsoft.HybridCompute/machines/<test-node2>/edgeDevices/default"
-    )
-    additionalInfo = "test"
-}
-
-Test-AzStackHciEdgeDevice -ResourceUri "subscriptions/<subId>/resourceGroups/<test-rg>/providers/Microsoft.HybridCompute/machines/<test-node>" -Name "default" -ValidateRequest $ValidateRequest
+Test-AzStackHciEdgeDevice -ResourceUri "subscriptions/<subId>/resourceGroups/<test-rg>/providers/Microsoft.HybridCompute/machines/<test-node>" -Name "default" -EdgeDeviceId @("/subscriptions/<subId>/resourceGroups/<test-rg>/providers/Microsoft.HybridCompute/machines/<test-node>/edgeDevices/default", "/subscriptions/<subId>/resourceGroups/<test-rg>/providers/Microsoft.HybridCompute/machines/<test-node2>/edgeDevices/default") -AdditionalInfo "test"
 ```
 
 Tests the edge devices for the node
@@ -122,11 +114,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-Parameter Sets: ValidateViaIdentity, ValidateViaIdentityExpanded
+Parameter Sets: ValidateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -136,12 +127,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Validate operation
+
+```yaml
+Type: System.String
+Parameter Sets: ValidateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Validate operation
+
+```yaml
+Type: System.String
+Parameter Sets: ValidateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of Device
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded
+Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases: EdgeDeviceName
 
 Required: True
@@ -171,29 +192,13 @@ The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded
+Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ValidateRequest
-The validate request for Edge Device.
-To construct, see NOTES section for VALIDATEREQUEST properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IValidateRequest
-Parameter Sets: Validate, ValidateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -233,13 +238,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IValidateRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
 
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IValidateResponse
 
 ## NOTES
 
