@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzBillingBenefitsSavingsPlan
 
 ## SYNOPSIS
-update savings plan.
+Update savings plan.
 
 ## SYNTAX
 
@@ -54,7 +54,7 @@ Update-AzBillingBenefitsSavingsPlan -Id <String> -OrderId <String> -JsonString <
 ```
 
 ## DESCRIPTION
-update savings plan.
+Update savings plan.
 
 ## EXAMPLES
 

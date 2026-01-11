@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbe
 https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappprobeobject
 #>
 function New-AzContainerAppProbeObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbe')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

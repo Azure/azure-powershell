@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.Volume
 https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappvolumeobject
 #>
 function New-AzContainerAppVolumeObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Volume')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.SecretVolumeItem
 https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappsecretvolumeitemobject
 #>
 function New-AzContainerAppSecretVolumeItemObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.SecretVolumeItem')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

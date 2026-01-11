@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzBillingBenefitsSavingsPlanOrderAlias
 
 ## SYNOPSIS
-update a savings plan.
+Update a savings plan.
 Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2215851
 
 ## SYNTAX
@@ -36,7 +36,7 @@ Update-AzBillingBenefitsSavingsPlanOrderAlias -InputObject <IBillingBenefitsIden
 ```
 
 ## DESCRIPTION
-update a savings plan.
+Update a savings plan.
 Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2215851
 
 ## EXAMPLES

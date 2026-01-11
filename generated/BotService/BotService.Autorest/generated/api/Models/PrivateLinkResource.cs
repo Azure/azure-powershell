@@ -30,22 +30,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceBaseInternal)__privateLinkResourceBase).Id; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceBaseInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceBaseInternal)__privateLinkResourceBase).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceBaseInternal)__privateLinkResourceBase).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceBaseInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceBaseInternal)__privateLinkResourceBase).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceBaseInternal)__privateLinkResourceBase).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceBaseInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceBaseInternal)__privateLinkResourceBase).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceBaseInternal)__privateLinkResourceBase).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceBaseInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceBaseInternal)__privateLinkResourceBase).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceBaseInternal)__privateLinkResourceBase).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceBaseInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceBaseInternal)__privateLinkResourceBase).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceBaseInternal)__privateLinkResourceBase).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceBaseInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceBaseInternal)__privateLinkResourceBase).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceBaseInternal)__privateLinkResourceBase).Type = value ?? null; }
 
         /// <summary>Internal Acessors for GroupId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceInternal.GroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourcePropertiesInternal)Property).GroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourcePropertiesInternal)Property).GroupId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceInternal.GroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourcePropertiesInternal)Property).GroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourcePropertiesInternal)Property).GroupId = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceProperties Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.PrivateLinkResourceProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for RequiredMember</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceInternal.RequiredMember { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourcePropertiesInternal)Property).RequiredMember; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourcePropertiesInternal)Property).RequiredMember = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourceInternal.RequiredMember { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourcePropertiesInternal)Property).RequiredMember; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IPrivateLinkResourcePropertiesInternal)Property).RequiredMember = value ?? null /* arrayOf */; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Inherited)]

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppSourceControl
 
 ## SYNOPSIS
-create the SourceControl for a Container App.
+Create the SourceControl for a Container App.
 
 ## SYNTAX
 
@@ -62,7 +62,7 @@ New-AzContainerAppSourceControl -ContainerAppName <String> -Name <String> -Resou
 ```
 
 ## DESCRIPTION
-create the SourceControl for a Container App.
+Create the SourceControl for a Container App.
 
 ## EXAMPLES
 

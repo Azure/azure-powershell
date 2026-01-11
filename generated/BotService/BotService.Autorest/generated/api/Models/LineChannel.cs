@@ -39,13 +39,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).Location = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for CallbackUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ILineChannelInternal.CallbackUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ILineChannelPropertiesInternal)Property).CallbackUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ILineChannelPropertiesInternal)Property).CallbackUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ILineChannelInternal.CallbackUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ILineChannelPropertiesInternal)Property).CallbackUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ILineChannelPropertiesInternal)Property).CallbackUrl = value ?? null; }
 
         /// <summary>Internal Acessors for IsValidated</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ILineChannelInternal.IsValidated { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ILineChannelPropertiesInternal)Property).IsValidated; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ILineChannelPropertiesInternal)Property).IsValidated = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ILineChannelInternal.IsValidated { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ILineChannelPropertiesInternal)Property).IsValidated; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ILineChannelPropertiesInternal)Property).IsValidated = value ?? default(bool); }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ILineChannelProperties Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ILineChannelInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.LineChannelProperties()); set { {_property = value;} } }

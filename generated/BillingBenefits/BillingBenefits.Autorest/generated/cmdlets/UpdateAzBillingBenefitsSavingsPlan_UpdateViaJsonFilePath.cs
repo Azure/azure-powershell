@@ -453,7 +453,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Cmdlets
                     return ;
                 }
                 // onAccepted - response for 202 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);
                 }
