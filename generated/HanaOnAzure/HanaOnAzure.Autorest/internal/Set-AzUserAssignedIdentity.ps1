@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an identity in the specified subscription and resource group.
+Update an identity in the specified subscription and resource group.
 .Description
-update an identity in the specified subscription and resource group.
+Update an identity in the specified subscription and resource group.
 .Example
 {{ Add code here }}
 .Example

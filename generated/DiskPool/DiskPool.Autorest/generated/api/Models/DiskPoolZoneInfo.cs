@@ -39,10 +39,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models
         Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolZoneInfoInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Sku()); set { {_sku = value;} } }
 
         /// <summary>Internal Acessors for SkuName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolZoneInfoInternal.SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISkuInternal)Sku).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolZoneInfoInternal.SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISkuInternal)Sku).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SkuTier</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolZoneInfoInternal.SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISkuInternal)Sku).Tier = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolZoneInfoInternal.SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISkuInternal)Sku).Tier = value ?? null; }
 
         /// <summary>Backing field for <see cref="Sku" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.ISku _sku;

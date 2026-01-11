@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DiskPool
-Module Guid: d17fff57-d1f7-4a28-b0e2-c25afdc3877a
+Module Guid: e79de1f8-979b-4d16-96a1-bce122fb51a5
 Download Help Link: https://learn.microsoft.com/powershell/module/az.diskpool
 Help Version: 1.0.0.0
 Locale: en-US
@@ -43,7 +43,7 @@ Create an in-memory object for Acl.
 Create an in-memory object for IscsiLun.
 
 ### [New-AzDiskPoolIscsiTarget](New-AzDiskPoolIscsiTarget.md)
-create an iSCSI Target.
+Create an iSCSI Target.
 
 ### [Remove-AzDiskPool](Remove-AzDiskPool.md)
 Delete a Disk pool; attached disks are not affected.
@@ -68,5 +68,5 @@ This is expected service behavior.
 Update a Disk pool.
 
 ### [Update-AzDiskPoolIscsiTarget](Update-AzDiskPoolIscsiTarget.md)
-update an iSCSI Target.
+Update an iSCSI Target.
 

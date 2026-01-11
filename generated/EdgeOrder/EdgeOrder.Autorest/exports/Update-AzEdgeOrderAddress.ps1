@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the properties of an existing address.
+Update the properties of an existing address.
 .Description
-update the properties of an existing address.
+Update the properties of an existing address.
 .Example
 $contactDetail = New-AzEdgeOrderContactDetailsObject -ContactName "ContactName2" -EmailList @("emailId") -Phone Phone
 $DebugPreference = "Continue"
@@ -222,8 +222,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

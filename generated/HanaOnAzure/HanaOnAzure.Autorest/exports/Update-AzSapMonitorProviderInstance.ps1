@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
+Update a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
 .Description
-update a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
+Update a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
 .Example
 $jsonString = '{
   "HanaHostname": "hdb1-0",
@@ -231,8 +231,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

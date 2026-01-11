@@ -1,6 +1,6 @@
 ---
 Module Name: Az.GuestConfiguration
-Module Guid: 4afd08fc-b997-4356-8118-ed62d7ce1ce1
+Module Guid: 05423a1f-08f7-4c85-b5e8-9ec549b51c87
 Download Help Link: https://learn.microsoft.com/powershell/module/az.guestconfiguration
 Help Version: 1.0.0.0
 Locale: en-US
@@ -18,11 +18,11 @@ Get information about a guest configuration assignment
 Get a report for the guest configuration assignment, by reportId.
 
 ### [New-AzGuestConfigurationAssignment](New-AzGuestConfigurationAssignment.md)
-create an association between a VM and guest configuration
+Create an association between a VM and guest configuration
 
 ### [Remove-AzGuestConfigurationAssignment](Remove-AzGuestConfigurationAssignment.md)
 Delete a guest configuration assignment
 
 ### [Update-AzGuestConfigurationAssignment](Update-AzGuestConfigurationAssignment.md)
-update an association between a ARC machine and guest configuration
+Update an association between a ARC machine and guest configuration
 

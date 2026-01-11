@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update instance's tags.
+Update instance's tags.
 .Description
-update instance's tags.
+Update instance's tags.
 .Example
 Update-AzDeviceUpdateInstance -AccountName azpstest-account -ResourceGroupName azpstest_gp -Name azpstest-instance -Tag @{"abc"="123"}
 .Example
@@ -190,8 +190,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
         Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressProperties Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemUpdatePropertiesInternal.ForwardAddress { get => (this._forwardAddress = this._forwardAddress ?? new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.AddressProperties()); set { {_forwardAddress = value;} } }
 
         /// <summary>Internal Acessors for ForwardAddressValidationStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemUpdatePropertiesInternal.ForwardAddressValidationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ForwardAddress).AddressValidationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ForwardAddress).AddressValidationStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemUpdatePropertiesInternal.ForwardAddressValidationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ForwardAddress).AddressValidationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressPropertiesInternal)ForwardAddress).AddressValidationStatus = value ?? null; }
 
         /// <summary>Backing field for <see cref="NotificationEmailList" /> property.</summary>
         private System.Collections.Generic.List<string> _notificationEmailList;

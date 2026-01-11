@@ -43,25 +43,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__proxyResource).Id; }
 
         /// <summary>Internal Acessors for CurrentStage</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IStageDetails Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderResourceInternal.CurrentStage { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStage; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStage = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IStageDetails Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderResourceInternal.CurrentStage { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStage; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStage = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for CurrentStageDisplayName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderResourceInternal.CurrentStageDisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStageDisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStageDisplayName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderResourceInternal.CurrentStageDisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStageDisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStageDisplayName = value ?? null; }
 
         /// <summary>Internal Acessors for CurrentStageName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderResourceInternal.CurrentStageName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStageName; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStageName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderResourceInternal.CurrentStageName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStageName; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStageName = value ?? null; }
 
         /// <summary>Internal Acessors for CurrentStageStartTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderResourceInternal.CurrentStageStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStageStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStageStartTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderResourceInternal.CurrentStageStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStageStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStageStartTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for CurrentStageStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderResourceInternal.CurrentStageStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStageStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStageStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderResourceInternal.CurrentStageStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStageStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).CurrentStageStatus = value ?? null; }
 
         /// <summary>Internal Acessors for OrderItemId</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderResourceInternal.OrderItemId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).OrderItemId; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).OrderItemId = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderResourceInternal.OrderItemId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).OrderItemId; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).OrderItemId = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for OrderStageHistory</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IStageDetails> Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderResourceInternal.OrderStageHistory { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).OrderStageHistory; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).OrderStageHistory = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IStageDetails> Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderResourceInternal.OrderStageHistory { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).OrderStageHistory; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderPropertiesInternal)Property).OrderStageHistory = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderProperties Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderProperties()); set { {_property = value;} } }
@@ -70,13 +70,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
         Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderResourceInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.SystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.PropertyOrigin.Inherited)]

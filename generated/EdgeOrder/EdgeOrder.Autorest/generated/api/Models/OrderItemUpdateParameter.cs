@@ -26,10 +26,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models
         public string ForwardAddressValidationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemUpdatePropertiesInternal)Property).ForwardAddressValidationStatus; }
 
         /// <summary>Internal Acessors for ForwardAddress</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressProperties Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemUpdateParameterInternal.ForwardAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemUpdatePropertiesInternal)Property).ForwardAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemUpdatePropertiesInternal)Property).ForwardAddress = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressProperties Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemUpdateParameterInternal.ForwardAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemUpdatePropertiesInternal)Property).ForwardAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemUpdatePropertiesInternal)Property).ForwardAddress = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ForwardAddressValidationStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemUpdateParameterInternal.ForwardAddressValidationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemUpdatePropertiesInternal)Property).ForwardAddressValidationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemUpdatePropertiesInternal)Property).ForwardAddressValidationStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemUpdateParameterInternal.ForwardAddressValidationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemUpdatePropertiesInternal)Property).ForwardAddressValidationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemUpdatePropertiesInternal)Property).ForwardAddressValidationStatus = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemUpdateParameterInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemUpdateProperties()); set { {_property = value;} } }
