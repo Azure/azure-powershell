@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-update a Maps Account.
+Update a Maps Account.
 Only a subset of the parameters may be updated after creation, such as Sku, Tags, Properties.
 .Description
-update a Maps Account.
+Update a Maps Account.
 Only a subset of the parameters may be updated after creation, such as Sku, Tags, Properties.
 .Example
 Update-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount03 -Tag @{'key1'='value1'; 'key2'='value2'}
@@ -190,8 +190,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

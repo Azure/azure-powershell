@@ -130,16 +130,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models
         public string LogLevel { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).LogLevel; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).LogLevel = value ?? null; }
 
         /// <summary>Internal Acessors for DeliveryPackage</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IDeliveryPackageInformation Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.DeliveryPackage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).DeliveryPackage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).DeliveryPackage = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IDeliveryPackageInformation Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.DeliveryPackage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).DeliveryPackage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).DeliveryPackage = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for EncryptionKey</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IEncryptionKeyDetails Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.EncryptionKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).EncryptionKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).EncryptionKey = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IEncryptionKeyDetails Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.EncryptionKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).EncryptionKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).EncryptionKey = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Export</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IExport Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.Export { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).Export; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).Export = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IExport Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.Export { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).Export; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).Export = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ExportBlobList</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IExportBlobList Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.ExportBlobList { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ExportBlobList; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ExportBlobList = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IExportBlobList Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.ExportBlobList { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ExportBlobList; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ExportBlobList = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.Id { get => this._id; set { {_id = value;} } }
@@ -148,10 +148,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models
         Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IIdentityDetails Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IdentityDetails()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IIdentityDetailsInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IIdentityDetailsInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IIdentityDetailsInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IIdentityDetailsInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IIdentityDetailsInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IIdentityDetailsInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IIdentityDetailsInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IIdentityDetailsInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.Name { get => this._name; set { {_name = value;} } }
@@ -160,40 +160,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models
         Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetails Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.JobDetails()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ReturnAddress</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IReturnAddress Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.ReturnAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ReturnAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ReturnAddress = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IReturnAddress Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.ReturnAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ReturnAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ReturnAddress = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ReturnPackage</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IPackageInformation Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.ReturnPackage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ReturnPackage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ReturnPackage = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IPackageInformation Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.ReturnPackage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ReturnPackage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ReturnPackage = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ReturnShipping</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IReturnShipping Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.ReturnShipping { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ReturnShipping; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ReturnShipping = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IReturnShipping Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.ReturnShipping { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ReturnShipping; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ReturnShipping = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ShippingInformation</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IShippingInformation Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.ShippingInformation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ShippingInformation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ShippingInformation = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IShippingInformation Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.ShippingInformation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ShippingInformation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ShippingInformation = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ShippingInformationAdditionalInformation</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.ShippingInformationAdditionalInformation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ShippingInformationAdditionalInformation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ShippingInformationAdditionalInformation = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.ShippingInformationAdditionalInformation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ShippingInformationAdditionalInformation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal)Property).ShippingInformationAdditionalInformation = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.SystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).CreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).CreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).LastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).LastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).LastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponseInternal.Type { get => this._type; set { {_type = value;} } }

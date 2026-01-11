@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzIoTOperationsServiceDataflowProfile
 
 ## SYNOPSIS
-update a DataflowProfileResource
+Update a DataflowProfileResource
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Set-AzIoTOperationsServiceDataflowProfile -InstanceName <String> -Name <String> 
 ```
 
 ## DESCRIPTION
-update a DataflowProfileResource
+Update a DataflowProfileResource
 
 ## EXAMPLES
 

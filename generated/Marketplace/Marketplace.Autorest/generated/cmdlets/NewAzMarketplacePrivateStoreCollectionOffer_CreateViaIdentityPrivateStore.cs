@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create or add an offer to a specific collection of the private store.</summary>
+    /// <summary>create or add an offer to a specific collection of the private store.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzMarketplacePrivateStoreCollectionOffer_CreateViaIdentityPrivateStore", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Description(@"Create or add an offer to a specific collection of the private store.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Description(@"create or add an offer to a specific collection of the private store.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.HttpPath(Path = "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}", ApiVersion = "2023-01-01")]
     public partial class NewAzMarketplacePrivateStoreCollectionOffer_CreateViaIdentityPrivateStore : global::System.Management.Automation.PSCmdlet,

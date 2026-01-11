@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzIoTOperationsServiceDataflow
 
 ## SYNOPSIS
-update a DataflowResource
+Update a DataflowResource
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ Update-AzIoTOperationsServiceDataflow -InstanceInputObject <IIoTOperationsServic
 ```
 
 ## DESCRIPTION
-update a DataflowResource
+Update a DataflowResource
 
 ## EXAMPLES
 

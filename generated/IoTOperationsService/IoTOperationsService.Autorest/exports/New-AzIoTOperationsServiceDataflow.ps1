@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a DataflowResource
+Create a DataflowResource
 .Description
-create a DataflowResource
+Create a DataflowResource
 .Example
 New-AzIoTOperationsServiceDataflow -InstanceName "aio-117832708" `
   -Name "dataflow-name" `
@@ -246,8 +246,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

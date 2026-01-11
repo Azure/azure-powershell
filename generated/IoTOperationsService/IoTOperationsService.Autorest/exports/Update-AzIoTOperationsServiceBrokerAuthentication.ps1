@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a BrokerAuthenticationResource
+Update a BrokerAuthenticationResource
 .Description
-update a BrokerAuthenticationResource
+Update a BrokerAuthenticationResource
 .Example
 Update-AzIoTOperationsServiceBrokerAuthentication `
   -AuthenticationName "my-authn" `
@@ -238,8 +238,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
