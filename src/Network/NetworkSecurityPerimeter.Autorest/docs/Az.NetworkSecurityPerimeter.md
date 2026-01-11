@@ -1,6 +1,6 @@
 ---
 Module Name: Az.NetworkSecurityPerimeter
-Module Guid: 19cb1f22-64db-4916-ae5c-e611e0181a66
+Module Guid: 09f634b7-e3c8-41f0-9a46-55371ed397a7
 Download Help Link: https://learn.microsoft.com/powershell/module/az.networksecurityperimeter
 Help Version: 1.0.0.0
 Locale: en-US
@@ -41,22 +41,22 @@ Gets the list of service tags supported by NSP.
 These service tags can be used to list access rules in NSP.
 
 ### [New-AzNetworkSecurityPerimeter](New-AzNetworkSecurityPerimeter.md)
-create a Network Security Perimeter.
+Create a Network Security Perimeter.
 
 ### [New-AzNetworkSecurityPerimeterAccessRule](New-AzNetworkSecurityPerimeterAccessRule.md)
-create a network access rule.
+Create a network access rule.
 
 ### [New-AzNetworkSecurityPerimeterAssociation](New-AzNetworkSecurityPerimeterAssociation.md)
-create a NSP resource association.
+Create a NSP resource association.
 
 ### [New-AzNetworkSecurityPerimeterLink](New-AzNetworkSecurityPerimeterLink.md)
-create NSP link resource.
+Create NSP link resource.
 
 ### [New-AzNetworkSecurityPerimeterLoggingConfiguration](New-AzNetworkSecurityPerimeterLoggingConfiguration.md)
-create NSP logging configuration.
+Create NSP logging configuration.
 
 ### [New-AzNetworkSecurityPerimeterProfile](New-AzNetworkSecurityPerimeterProfile.md)
-create a network profile.
+Create a network profile.
 
 ### [Remove-AzNetworkSecurityPerimeter](Remove-AzNetworkSecurityPerimeter.md)
 Deletes a network security perimeter.

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a new registered ASN with the specified name under the given subscription, resource group and peering.
+Update a new registered ASN with the specified name under the given subscription, resource group and peering.
 .Description
-update a new registered ASN with the specified name under the given subscription, resource group and peering.
+Update a new registered ASN with the specified name under the given subscription, resource group and peering.
 .Example
 Update-AzPeeringRegisteredAsn -Name TestAsn -PeeringName MapsIxRs -ResourceGroupName MAPSDemo -Asn 65001
 
@@ -168,8 +168,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

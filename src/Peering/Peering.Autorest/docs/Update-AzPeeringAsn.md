@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzPeeringAsn
 
 ## SYNOPSIS
-update a new peer ASN or update an existing peer ASN with the specified name under the given subscription.
+Update a new peer ASN or update an existing peer ASN with the specified name under the given subscription.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Update-AzPeeringAsn -InputObject <IPeeringIdentity> [-PeerAsn <Int32>] [-PeerCon
 ```
 
 ## DESCRIPTION
-update a new peer ASN or update an existing peer ASN with the specified name under the given subscription.
+Update a new peer ASN or update an existing peer ASN with the specified name under the given subscription.
 
 ## EXAMPLES
 

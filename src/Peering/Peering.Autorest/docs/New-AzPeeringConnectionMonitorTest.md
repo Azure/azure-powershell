@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPeeringConnectionMonitorTest
 
 ## SYNOPSIS
-create a connection monitor test with the specified name under the given subscription, resource group and peering service.
+Create a connection monitor test with the specified name under the given subscription, resource group and peering service.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzPeeringConnectionMonitorTest -Name <String> -PeeringServiceName <String> -
 ```
 
 ## DESCRIPTION
-create a connection monitor test with the specified name under the given subscription, resource group and peering service.
+Create a connection monitor test with the specified name under the given subscription, resource group and peering service.
 
 ## EXAMPLES
 

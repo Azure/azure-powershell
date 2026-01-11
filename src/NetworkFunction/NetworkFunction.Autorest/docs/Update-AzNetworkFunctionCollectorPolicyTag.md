@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNetworkFunctionCollectorPolicyTag
 
 ## SYNOPSIS
-update the specified Collector Policy tags.
+Update the specified Collector Policy tags.
 
 ## SYNTAX
 
@@ -47,7 +47,7 @@ Update-AzNetworkFunctionCollectorPolicyTag -AzureTrafficCollectorName <String> -
 ```
 
 ## DESCRIPTION
-update the specified Collector Policy tags.
+Update the specified Collector Policy tags.
 
 ## EXAMPLES
 

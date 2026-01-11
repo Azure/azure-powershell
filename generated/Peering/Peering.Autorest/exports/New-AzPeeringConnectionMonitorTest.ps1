@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a connection monitor test with the specified name under the given subscription, resource group and peering service.
+Create a connection monitor test with the specified name under the given subscription, resource group and peering service.
 .Description
-create a connection monitor test with the specified name under the given subscription, resource group and peering service.
+Create a connection monitor test with the specified name under the given subscription, resource group and peering service.
 .Example
 New-AzPeeringConnectionMonitorTest -Name TestName -PeeringServiceName DRTest -ResourceGroupName DemoRG
 
@@ -143,8 +143,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

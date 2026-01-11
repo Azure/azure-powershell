@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzPeering
 
 ## SYNOPSIS
-update tags for a peering with the specified name under the given subscription and resource group.
+Update tags for a peering with the specified name under the given subscription and resource group.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Update-AzPeering -InputObject <IPeeringIdentity> [-Tag <Hashtable>] [-DefaultPro
 ```
 
 ## DESCRIPTION
-update tags for a peering with the specified name under the given subscription and resource group.
+Update tags for a peering with the specified name under the given subscription and resource group.
 
 ## EXAMPLES
 

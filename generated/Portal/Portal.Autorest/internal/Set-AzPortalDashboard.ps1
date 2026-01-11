@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a Dashboard.
+Update a Dashboard.
 .Description
-update a Dashboard.
+Update a Dashboard.
 .Example
 Set-AzPortalDashboard -DashboardPath .\resources\dash1-update.json -ResourceGroupName my-rg -DashboardName dashbase03
 

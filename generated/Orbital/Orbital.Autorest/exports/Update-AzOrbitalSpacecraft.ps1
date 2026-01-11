@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the specified spacecraft tags.
+Update the specified spacecraft tags.
 .Description
-update the specified spacecraft tags.
+Update the specified spacecraft tags.
 .Example
 Update-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name AQUA -Tag @{"123"="abc"}
 .Example
@@ -176,8 +176,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

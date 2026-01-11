@@ -131,11 +131,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.SerializationMode.IncludeCreate))
             {
-                AddIf( (Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString(this._reservationStartTime.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)), "reservationStartTime" ,container.Add );
+                AddIf( null != this._reservationStartTime ? (Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString(this._reservationStartTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "reservationStartTime" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.SerializationMode.IncludeCreate))
             {
-                AddIf( (Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString(this._reservationEndTime.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)), "reservationEndTime" ,container.Add );
+                AddIf( null != this._reservationEndTime ? (Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString(this._reservationEndTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "reservationEndTime" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.SerializationMode.IncludeRead))
             {

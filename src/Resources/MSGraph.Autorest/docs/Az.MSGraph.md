@@ -1,6 +1,6 @@
 ---
 Module Name: Az.MSGraph
-Module Guid: 9c1e9bcf-5175-4d03-99c7-a7f2f7040f46
+Module Guid: 0a85c495-8b1f-496e-9b7c-b8583dfc3993
 Download Help Link: https://learn.microsoft.com/powershell/module/az.msgraph
 Help Version: 1.0.0.0
 Locale: en-US
@@ -124,19 +124,19 @@ Removes key credentials or password credentials for an service principal.
 Deletes entity from users.
 
 ### [Update-AzADAppFederatedCredential](Update-AzADAppFederatedCredential.md)
-update the navigation property federatedIdentityCredentials in applications
+Update the navigation property federatedIdentityCredentials in applications
 
 ### [Update-AzADApplication](Update-AzADApplication.md)
 Updates entity in applications
 
 ### [Update-AzADGroup](Update-AzADGroup.md)
-update entity in groups
+Update entity in groups
 
 ### [Update-AzADServicePrincipal](Update-AzADServicePrincipal.md)
 Updates entity in service principal
 
 ### [Update-AzADServicePrincipalAppRoleAssignment](Update-AzADServicePrincipalAppRoleAssignment.md)
-update the navigation property appRoleAssignments in servicePrincipals
+Update the navigation property appRoleAssignments in servicePrincipals
 
 ### [Update-AzADUser](Update-AzADUser.md)
 Updates entity in users

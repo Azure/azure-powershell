@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPeeringAsn
 
 ## SYNOPSIS
-create a new peer ASN or create an existing peer ASN with the specified name under the given subscription.
+Create a new peer ASN or create an existing peer ASN with the specified name under the given subscription.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzPeeringAsn -Name <String> [-SubscriptionId <String>] [-PeerAsn <Int32>]
 ```
 
 ## DESCRIPTION
-create a new peer ASN or create an existing peer ASN with the specified name under the given subscription.
+Create a new peer ASN or create an existing peer ASN with the specified name under the given subscription.
 
 ## EXAMPLES
 

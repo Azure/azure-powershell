@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkFunctionTrafficCollector
 
 ## SYNOPSIS
-create a Azure Traffic Collector resource
+Create a Azure Traffic Collector resource
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ New-AzNetworkFunctionTrafficCollector -Name <String> -ResourceGroupName <String>
 ```
 
 ## DESCRIPTION
-create a Azure Traffic Collector resource
+Create a Azure Traffic Collector resource
 
 ## EXAMPLES
 

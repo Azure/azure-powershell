@@ -29,11 +29,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models
 
         /// <summary>The operation status code.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Origin(Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.PropertyOrigin.Inlined)]
-        public string MalwareScanningOperationStatusCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IMalwareScanningPropertiesInternal)MalwareScanning).OperationStatusCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IMalwareScanningPropertiesInternal)MalwareScanning).OperationStatusCode = value ?? null; }
+        public string MalwareScanningOperationStatusCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IMalwareScanningPropertiesInternal)MalwareScanning).OperationStatusCode; }
 
         /// <summary>Additional information regarding the success/failure of the operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Origin(Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.PropertyOrigin.Inlined)]
-        public string MalwareScanningOperationStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IMalwareScanningPropertiesInternal)MalwareScanning).OperationStatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IMalwareScanningPropertiesInternal)MalwareScanning).OperationStatusMessage = value ?? null; }
+        public string MalwareScanningOperationStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IMalwareScanningPropertiesInternal)MalwareScanning).OperationStatusMessage; }
 
         /// <summary>Optional. Resource id of an Event Grid Topic to send scan results to.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Origin(Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.PropertyOrigin.Inlined)]
@@ -43,16 +43,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models
         Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IMalwareScanningProperties Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IDefenderForStorageSettingPropertiesInternal.MalwareScanning { get => (this._malwareScanning = this._malwareScanning ?? new Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.MalwareScanningProperties()); set { {_malwareScanning = value;} } }
 
         /// <summary>Internal Acessors for MalwareScanningOnUpload</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IOnUploadProperties Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IDefenderForStorageSettingPropertiesInternal.MalwareScanningOnUpload { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IMalwareScanningPropertiesInternal)MalwareScanning).OnUpload; set => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IMalwareScanningPropertiesInternal)MalwareScanning).OnUpload = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IOnUploadProperties Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IDefenderForStorageSettingPropertiesInternal.MalwareScanningOnUpload { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IMalwareScanningPropertiesInternal)MalwareScanning).OnUpload; set => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IMalwareScanningPropertiesInternal)MalwareScanning).OnUpload = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for MalwareScanningOperationStatus</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IOperationStatus Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IDefenderForStorageSettingPropertiesInternal.MalwareScanningOperationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IMalwareScanningPropertiesInternal)MalwareScanning).OperationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IMalwareScanningPropertiesInternal)MalwareScanning).OperationStatus = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IOperationStatus Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IDefenderForStorageSettingPropertiesInternal.MalwareScanningOperationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IMalwareScanningPropertiesInternal)MalwareScanning).OperationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IMalwareScanningPropertiesInternal)MalwareScanning).OperationStatus = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for MalwareScanningOperationStatusCode</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IDefenderForStorageSettingPropertiesInternal.MalwareScanningOperationStatusCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IMalwareScanningPropertiesInternal)MalwareScanning).OperationStatusCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IMalwareScanningPropertiesInternal)MalwareScanning).OperationStatusCode = value ?? null; }
+
+        /// <summary>Internal Acessors for MalwareScanningOperationStatusMessage</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IDefenderForStorageSettingPropertiesInternal.MalwareScanningOperationStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IMalwareScanningPropertiesInternal)MalwareScanning).OperationStatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IMalwareScanningPropertiesInternal)MalwareScanning).OperationStatusMessage = value ?? null; }
 
         /// <summary>Internal Acessors for SensitiveDataDiscovery</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.ISensitiveDataDiscoveryProperties Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IDefenderForStorageSettingPropertiesInternal.SensitiveDataDiscovery { get => (this._sensitiveDataDiscovery = this._sensitiveDataDiscovery ?? new Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.SensitiveDataDiscoveryProperties()); set { {_sensitiveDataDiscovery = value;} } }
 
         /// <summary>Internal Acessors for SensitiveDataDiscoveryOperationStatus</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IOperationStatus Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IDefenderForStorageSettingPropertiesInternal.SensitiveDataDiscoveryOperationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.ISensitiveDataDiscoveryPropertiesInternal)SensitiveDataDiscovery).OperationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.ISensitiveDataDiscoveryPropertiesInternal)SensitiveDataDiscovery).OperationStatus = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IOperationStatus Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IDefenderForStorageSettingPropertiesInternal.SensitiveDataDiscoveryOperationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.ISensitiveDataDiscoveryPropertiesInternal)SensitiveDataDiscovery).OperationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.ISensitiveDataDiscoveryPropertiesInternal)SensitiveDataDiscovery).OperationStatus = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SensitiveDataDiscoveryOperationStatusCode</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IDefenderForStorageSettingPropertiesInternal.SensitiveDataDiscoveryOperationStatusCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.ISensitiveDataDiscoveryPropertiesInternal)SensitiveDataDiscovery).OperationStatusCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.ISensitiveDataDiscoveryPropertiesInternal)SensitiveDataDiscovery).OperationStatusCode = value ?? null; }
+
+        /// <summary>Internal Acessors for SensitiveDataDiscoveryOperationStatusMessage</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.IDefenderForStorageSettingPropertiesInternal.SensitiveDataDiscoveryOperationStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.ISensitiveDataDiscoveryPropertiesInternal)SensitiveDataDiscovery).OperationStatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.ISensitiveDataDiscoveryPropertiesInternal)SensitiveDataDiscovery).OperationStatusMessage = value ?? null; }
 
         /// <summary>Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Origin(Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.PropertyOrigin.Inlined)]
@@ -84,11 +96,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models
 
         /// <summary>The operation status code.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Origin(Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.PropertyOrigin.Inlined)]
-        public string SensitiveDataDiscoveryOperationStatusCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.ISensitiveDataDiscoveryPropertiesInternal)SensitiveDataDiscovery).OperationStatusCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.ISensitiveDataDiscoveryPropertiesInternal)SensitiveDataDiscovery).OperationStatusCode = value ?? null; }
+        public string SensitiveDataDiscoveryOperationStatusCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.ISensitiveDataDiscoveryPropertiesInternal)SensitiveDataDiscovery).OperationStatusCode; }
 
         /// <summary>Additional information regarding the success/failure of the operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Origin(Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.PropertyOrigin.Inlined)]
-        public string SensitiveDataDiscoveryOperationStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.ISensitiveDataDiscoveryPropertiesInternal)SensitiveDataDiscovery).OperationStatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.ISensitiveDataDiscoveryPropertiesInternal)SensitiveDataDiscovery).OperationStatusMessage = value ?? null; }
+        public string SensitiveDataDiscoveryOperationStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage.Models.ISensitiveDataDiscoveryPropertiesInternal)SensitiveDataDiscovery).OperationStatusMessage; }
 
         /// <summary>Creates an new <see cref="DefenderForStorageSettingProperties" /> instance.</summary>
         public DefenderForStorageSettingProperties()

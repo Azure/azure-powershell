@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new prefix with the specified name under the given subscription, resource group and peering service.
+Create a new prefix with the specified name under the given subscription, resource group and peering service.
 .Description
-create a new prefix with the specified name under the given subscription, resource group and peering service.
+Create a new prefix with the specified name under the given subscription, resource group and peering service.
 .Example
 New-AzPeeringServicePrefix -Name TestPrefix -PeeringServiceName TestDRInterCloudZurich -ResourceGroupName DemoRG -PeeringServicePrefixKey 6a7f0d42-e49c-4eea-a930-280610671c3f -Prefix 91.194.255.0/24
 
@@ -131,8 +131,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
