@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzServiceLinkerConfigurationForWebApp
 
 ## SYNOPSIS
-list source configurations for a linker in webapp.
+List source configurations for a linker in webapp.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Get-AzServiceLinkerConfigurationForWebApp -LinkerName <String> -ResourceGroupNam
 ```
 
 ## DESCRIPTION
-list source configurations for a linker in webapp.
+List source configurations for a linker in webapp.
 
 ## EXAMPLES
 

@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-The operation to create or update a virtual machine instance.
+The operation to create a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Description
-The operation to create or update a virtual machine instance.
+The operation to create a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Example
 New-AzStackHCIVMVirtualMachine -Name "testVm" -OsType "Linux"  -ImageName "testImage" -VmSize "Standard_K8S_v1"  -AdminUsername "localadmin" -ComputerName "testVm"  -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus"
@@ -357,6 +357,9 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
 
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
         $mapping = @{
             CreateExpanded = 'Az.StackHCIVM.private\New-AzStackHCIVMVirtualMachine_CreateExpanded';
             CreateViaJsonFilePath = 'Az.StackHCIVM.private\New-AzStackHCIVMVirtualMachine_CreateViaJsonFilePath';
@@ -367,6 +370,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVoiceServicesCommunicationsGateway
 
 ## SYNOPSIS
-create a CommunicationsGateway
+Create a CommunicationsGateway
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ New-AzVoiceServicesCommunicationsGateway -Name <String> -ResourceGroupName <Stri
 ```
 
 ## DESCRIPTION
-create a CommunicationsGateway
+Create a CommunicationsGateway
 
 ## EXAMPLES
 

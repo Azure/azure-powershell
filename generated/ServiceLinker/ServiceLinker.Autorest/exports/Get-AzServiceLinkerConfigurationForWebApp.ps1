@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-list source configurations for a linker in webapp.
+List source configurations for a linker in webapp.
 .Description
-list source configurations for a linker in webapp.
+List source configurations for a linker in webapp.
 .Example
 Get-AzServiceLinkerConfigurationForWebApp -WebApp servicelinker-webapp -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker | Format-List
 
@@ -124,8 +124,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

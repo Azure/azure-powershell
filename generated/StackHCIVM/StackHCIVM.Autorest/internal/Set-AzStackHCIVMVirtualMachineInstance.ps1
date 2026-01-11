@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-The operation to create or update a virtual machine instance.
+The operation to update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Description
-The operation to create or update a virtual machine instance.
+The operation to update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Example
 {{ Add code here }}
@@ -364,6 +364,9 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
 
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
         $mapping = @{
             UpdateExpanded = 'Az.StackHCIVM.private\Set-AzStackHCIVMVirtualMachineInstance_UpdateExpanded';
             UpdateViaJsonFilePath = 'Az.StackHCIVM.private\Set-AzStackHCIVMVirtualMachineInstance_UpdateViaJsonFilePath';
@@ -371,6 +374,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

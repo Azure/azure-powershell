@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Cmdlets
     /// [OpenAPI] CheckNameAvailability=>POST:"/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/locations/{location}/checkNameAvailability"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsDiagnostic.Test, @"AzSpringCloudNameAvailability_CheckExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.CmdletBreakingChange("19.3.0", "0.3.2", "2028/03/31", ChangeDescription = "Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.GenericBreakingChange("", "19.3.0", "0.3.2", "2028/03/31", ChangeDescription = "Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.INameAvailability))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Description(@"Checks that the resource name is valid and is not already in use.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Generated]

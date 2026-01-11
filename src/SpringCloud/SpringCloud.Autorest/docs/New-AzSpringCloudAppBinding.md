@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSpringCloudAppBinding
 
 ## SYNOPSIS
-create a new Binding or create an exiting Binding.
+Create a new Binding or create an exiting Binding.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ New-AzSpringCloudAppBinding -AppName <String> -Name <String> -ResourceGroupName 
 ```
 
 ## DESCRIPTION
-create a new Binding or create an exiting Binding.
+Create a new Binding or create an exiting Binding.
 
 ## EXAMPLES
 

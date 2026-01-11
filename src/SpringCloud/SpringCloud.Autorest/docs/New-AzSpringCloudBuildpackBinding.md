@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSpringCloudBuildpackBinding
 
 ## SYNOPSIS
-create a buildpack binding.
+Create a buildpack binding.
 
 ## SYNTAX
 
@@ -57,7 +57,7 @@ New-AzSpringCloudBuildpackBinding -BuilderName <String> -Name <String> -Resource
 ```
 
 ## DESCRIPTION
-create a buildpack binding.
+Create a buildpack binding.
 
 ## EXAMPLES
 

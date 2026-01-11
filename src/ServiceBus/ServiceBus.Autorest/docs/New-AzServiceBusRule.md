@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceBusRule
 
 ## SYNOPSIS
-create a new rule and create an existing rule
+Create a new rule and create an existing rule
 
 ## SYNTAX
 
@@ -75,7 +75,7 @@ New-AzServiceBusRule -Name <String> -SubscriptionName <String> -TopicInputObject
 ```
 
 ## DESCRIPTION
-create a new rule and create an existing rule
+Create a new rule and create an existing rule
 
 ## EXAMPLES
 

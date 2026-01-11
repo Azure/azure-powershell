@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWindowsIotServicesDevice
 
 ## SYNOPSIS
-create the metadata of a Windows IoT Device Service.
+Create the metadata of a Windows IoT Device Service.
 The usual pattern to modify a property is to retrieve the Windows IoT Device Service metadata and security metadata, and then combine them with the modified values in a new body to create the Windows IoT Device Service.
 
 ## SYNTAX
@@ -36,7 +36,7 @@ New-AzWindowsIotServicesDevice -Name <String> -ResourceGroupName <String> -JsonS
 ```
 
 ## DESCRIPTION
-create the metadata of a Windows IoT Device Service.
+Create the metadata of a Windows IoT Device Service.
 The usual pattern to modify a property is to retrieve the Windows IoT Device Service metadata and security metadata, and then combine them with the modified values in a new body to create the Windows IoT Device Service.
 
 ## EXAMPLES

@@ -2129,9 +2129,9 @@ end {
 
 <#
 .Synopsis
-create a new Alias(Disaster Recovery configuration)
+Create a new Alias(Disaster Recovery configuration)
 .Description
-create a new Alias(Disaster Recovery configuration)
+Create a new Alias(Disaster Recovery configuration)
 .Example
 New-AzServiceBusGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace -PartnerNamespace "/subscriptions/0000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/mySecondaryNamespace"
 
@@ -2287,9 +2287,9 @@ end {
 
 <#
 .Synopsis
-create an authorization rule for a namespace.
+Create an authorization rule for a namespace.
 .Description
-create an authorization rule for a namespace.
+Create an authorization rule for a namespace.
 .Example
 {{ Add code here }}
 .Example
@@ -2737,11 +2737,11 @@ end {
 
 <#
 .Synopsis
-create a service namespace.
+Create a service namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Description
-create a service namespace.
+Create a service namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Example
@@ -2787,7 +2787,7 @@ KEYVAULTPROPERTY <IKeyVaultProperties[]>: Properties of KeyVault
   [UserAssignedIdentity <String>]: ARM ID of user Identity selected for encryption
 
 PARAMETER <ISbNamespace>: Description of a namespace resource.
-  Location <String>: The Geo-location where the resource lives
+  [Location <String>]: The Geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
   [AlternateName <String>]: Alternate name for namespace
@@ -3100,9 +3100,9 @@ end {
 
 <#
 .Synopsis
-create NetworkRuleSet for a Namespace.
+Create NetworkRuleSet for a Namespace.
 .Description
-create NetworkRuleSet for a Namespace.
+Create NetworkRuleSet for a Namespace.
 .Example
 {{ Add code here }}
 .Example
@@ -3332,9 +3332,9 @@ end {
 
 <#
 .Synopsis
-create PrivateEndpointConnections of service namespace.
+Create PrivateEndpointConnections of service namespace.
 .Description
-create PrivateEndpointConnections of service namespace.
+Create PrivateEndpointConnections of service namespace.
 .Example
 {{ Add code here }}
 .Example
@@ -3581,9 +3581,9 @@ end {
 
 <#
 .Synopsis
-create an authorization rule for a queue.
+Create an authorization rule for a queue.
 .Description
-create an authorization rule for a queue.
+Create an authorization rule for a queue.
 .Example
 {{ Add code here }}
 .Example
@@ -4100,10 +4100,10 @@ end {
 
 <#
 .Synopsis
-create a Service Bus queue.
+Create a Service Bus queue.
 This operation is idempotent.
 .Description
-create a Service Bus queue.
+Create a Service Bus queue.
 This operation is idempotent.
 .Example
 New-AzServiceBusQueue -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myQueue -AutoDeleteOnIdle (New-TimeSpan -Days 1 -Minutes 3 -Seconds 4) -DefaultMessageTimeToLive (New-TimeSpan -Days 5) -EnablePartitioning
@@ -4270,9 +4270,9 @@ end {
 
 <#
 .Synopsis
-create a new rule and create an existing rule
+Create a new rule and create an existing rule
 .Description
-create a new rule and create an existing rule
+Create a new rule and create an existing rule
 .Example
 New-AzServiceBusRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -SubscriptionName mySubscription -Name myCorrelationRule -FilterType CorrelationFilter -ContentType contenttype -CorrelationFilterProperty @{a='b';c='d'} -SessionId sessionid -CorrelationId correlationid -MessageId messageid -Label label -ReplyTo replyto -ReplyToSessionId replytosessionid
 .Example
@@ -4440,9 +4440,9 @@ end {
 
 <#
 .Synopsis
-create a topic subscription.
+Create a topic subscription.
 .Description
-create a topic subscription.
+Create a topic subscription.
 .Example
 New-AzServiceBusSubscription -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -Name mySubscription -DefaultMessageTimeToLive (New-TimeSpan -Days 6) -EnableBatchedOperations
 
@@ -4608,9 +4608,9 @@ end {
 
 <#
 .Synopsis
-create an authorization rule for the specified topic.
+Create an authorization rule for the specified topic.
 .Description
-create an authorization rule for the specified topic.
+Create an authorization rule for the specified topic.
 .Example
 {{ Add code here }}
 .Example
@@ -5129,9 +5129,9 @@ end {
 
 <#
 .Synopsis
-create a topic in the specified namespace.
+Create a topic in the specified namespace.
 .Description
-create a topic in the specified namespace.
+Create a topic in the specified namespace.
 .Example
 New-AzServiceBusTopic -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myTopic -DefaultMessageTimeToLive (New-TimeSpan -Days 18) -EnableBatchedOperations
 
@@ -5968,9 +5968,9 @@ end {
 
 <#
 .Synopsis
-create Migration configuration and starts migration of entities from Standard to Premium namespace
+Create Migration configuration and starts migration of entities from Standard to Premium namespace
 .Description
-create Migration configuration and starts migration of entities from Standard to Premium namespace
+Create Migration configuration and starts migration of entities from Standard to Premium namespace
 .Example
 Start-AzServiceBusMigration -ResourceGroupName myResourceGroup -NamespaceName myNamespace -PostMigrationName myStandardNamespace2 -TargetNamespace /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myPremiumNamespace
 

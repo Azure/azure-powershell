@@ -1,6 +1,6 @@
 ---
 Module Name: Az.StandbyPool
-Module Guid: 906124f0-0d0b-43ea-a3f8-27a8a5ed0afa
+Module Guid: c53fc34e-c220-44b5-ba74-6de3a39dfd19
 Download Help Link: https://learn.microsoft.com/powershell/module/az.standbypool
 Help Version: 1.0.0.0
 Locale: en-US
@@ -24,10 +24,10 @@ Get a StandbyVirtualMachinePoolResource
 Get a StandbyVirtualMachinePoolRuntimeViewResource
 
 ### [New-AzStandbyContainerGroupPool](New-AzStandbyContainerGroupPool.md)
-create a StandbyContainerGroupPoolResource
+Create a StandbyContainerGroupPoolResource
 
 ### [New-AzStandbyVMPool](New-AzStandbyVMPool.md)
-create a StandbyVirtualMachinePoolResource
+Create a StandbyVirtualMachinePoolResource
 
 ### [Remove-AzStandbyContainerGroupPool](Remove-AzStandbyContainerGroupPool.md)
 Delete a StandbyContainerGroupPoolResource
@@ -36,8 +36,8 @@ Delete a StandbyContainerGroupPoolResource
 Delete a StandbyVirtualMachinePoolResource
 
 ### [Update-AzStandbyContainerGroupPool](Update-AzStandbyContainerGroupPool.md)
-update a StandbyContainerGroupPoolResource
+Update a StandbyContainerGroupPoolResource
 
 ### [Update-AzStandbyVMPool](Update-AzStandbyVMPool.md)
-update a StandbyVirtualMachinePoolResource
+Update a StandbyVirtualMachinePoolResource
 

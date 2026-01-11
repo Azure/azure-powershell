@@ -1405,9 +1405,9 @@ end {
 
 <#
 .Synopsis
-create a new App or create an exiting App.
+Create a new App or create an exiting App.
 .Description
-create a new App or create an exiting App.
+Create a new App or create an exiting App.
 .Example
 New-AzSpringCloudApp -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -Name tools
 
@@ -1725,9 +1725,9 @@ end {
 
 <#
 .Synopsis
-create a KPack build.
+Create a KPack build.
 .Description
-create a KPack build.
+Create a KPack build.
 .Example
 {{ Add code here }}
 .Example
@@ -2001,9 +2001,9 @@ end {
 
 <#
 .Synopsis
-create a new Service or create an exiting Service.
+Create a new Service or create an exiting Service.
 .Description
-create a new Service or create an exiting Service.
+Create a new Service or create an exiting Service.
 .Example
 New-AzSpringCloud -ResourceGroupName springcloudrg -Name spring-pwsh01 -Location eastus
 .Example
@@ -2468,9 +2468,9 @@ end {
 
 <#
 .Synopsis
-update a KPack build.
+Update a KPack build.
 .Description
-update a KPack build.
+Update a KPack build.
 .Example
 {{ Add code here }}
 .Example

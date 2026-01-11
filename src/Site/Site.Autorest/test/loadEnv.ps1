@@ -20,23 +20,10 @@ if ($TestMode -eq 'live') {
 if (Test-Path -Path (Join-Path $PSScriptRoot $envFile)) {
     $envFilePath = Join-Path $PSScriptRoot $envFile
 } else {
-    $envFilePath = Join-Path $PSScriptRoot "..\$envFile"
+    $envFilePath = Join-Path $PSScriptRoot '..\$envFile'
 }
-Write-Host "Loading environment from: $envFile (TestMode: $TestMode)"
-Write-Host "Environment file path: $envFilePath"
-Write-Host "Environment file exists: $(Test-Path -Path $envFilePath)"
-
 $env = @{}
 if (Test-Path -Path $envFilePath) {
-    $envData = Get-Content $envFilePath | ConvertFrom-Json
-    # Convert PSCustomObject to Hashtable
-    $envData.psobject.properties | ForEach-Object { 
-        $env[$_.Name] = $_.Value 
-    }
+    $env = Get-Content (Join-Path $PSScriptRoot $envFile) | ConvertFrom-Json
     $PSDefaultParameterValues=@{"*:Tenant"=$env.Tenant}
-    Write-Host "Loaded environment variables: $($env.Keys -join ', ')"
-    Write-Host "Resource Group: $($env.resourceGroup)"
-    Write-Host "Site Name 01: $($env.siteName01)"
-} else {
-    Write-Warning "Environment file not found: $envFilePath"
 }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzTrustedSigningAccount
 
 ## SYNOPSIS
-create a trusted Signing Account.
+Create a trusted Signing Account.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzTrustedSigningAccount -AccountName <String> -ResourceGroupName <String> -J
 ```
 
 ## DESCRIPTION
-create a trusted Signing Account.
+Create a trusted Signing Account.
 
 ## EXAMPLES
 

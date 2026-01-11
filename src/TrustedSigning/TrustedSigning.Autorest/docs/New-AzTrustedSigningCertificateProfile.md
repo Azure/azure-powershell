@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzTrustedSigningCertificateProfile
 
 ## SYNOPSIS
-create a certificate profile.
+Create a certificate profile.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzTrustedSigningCertificateProfile -AccountName <String> -ProfileName <Strin
 ```
 
 ## DESCRIPTION
-create a certificate profile.
+Create a certificate profile.
 
 ## EXAMPLES
 

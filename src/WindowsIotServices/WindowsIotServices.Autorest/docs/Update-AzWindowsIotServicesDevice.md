@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWindowsIotServicesDevice
 
 ## SYNOPSIS
-update the metadata of a Windows IoT Device Service.
+Update the metadata of a Windows IoT Device Service.
 The usual pattern to modify a property is to retrieve the Windows IoT Device Service metadata and security metadata, and then combine them with the modified values in a new body to update the Windows IoT Device Service.
 
 ## SYNTAX
@@ -43,7 +43,7 @@ Update-AzWindowsIotServicesDevice -Name <String> -ResourceGroupName <String> -Js
 ```
 
 ## DESCRIPTION
-update the metadata of a Windows IoT Device Service.
+Update the metadata of a Windows IoT Device Service.
 The usual pattern to modify a property is to retrieve the Windows IoT Device Service metadata and security metadata, and then combine them with the modified values in a new body to update the Windows IoT Device Service.
 
 ## EXAMPLES

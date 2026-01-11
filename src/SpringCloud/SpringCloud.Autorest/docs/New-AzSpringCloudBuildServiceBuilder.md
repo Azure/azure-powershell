@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSpringCloudBuildServiceBuilder
 
 ## SYNOPSIS
-create a KPack builder.
+Create a KPack builder.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ New-AzSpringCloudBuildServiceBuilder -Name <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-create a KPack builder.
+Create a KPack builder.
 
 ## EXAMPLES
 

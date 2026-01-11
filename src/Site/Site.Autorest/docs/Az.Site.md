@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Site
-Module Guid: b53c3ae8-5a9c-4886-b110-45e1a4e69e78
+Module Guid: 12c4f12c-e747-4723-b173-81076bc3124f
 Download Help Link: https://learn.microsoft.com/powershell/module/az.site
 Help Version: 1.0.0.0
 Locale: en-US

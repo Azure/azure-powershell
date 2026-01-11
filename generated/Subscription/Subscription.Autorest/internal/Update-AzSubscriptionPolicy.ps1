@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-add Subscription tenant policy for user's tenant.
+Add Subscription tenant policy for user's tenant.
 .Description
-add Subscription tenant policy for user's tenant.
+Add Subscription tenant policy for user's tenant.
 .Example
 {{ Add code here }}
 .Example
