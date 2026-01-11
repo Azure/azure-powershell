@@ -20,6 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
         /// <param name="emailServiceName">The name of the EmailService resource.</param>
         /// <param name="domainName">The name of the Domains resource.</param>
         /// <param name="body">Type of verification to be canceled.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DomainsCancelVerification(string subscriptionId, string resourceGroupName, string emailServiceName, string domainName, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task DomainsCancelVerification(string subscriptionId, string resourceGroupName, string emailServiceName, string domainName, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-06-01-preview";
             // Constant Parameters
@@ -62,13 +63,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DomainsCancelVerification_Call (request, onDefault,eventListener,sender);
+                await this.DomainsCancelVerification_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Cancel verification of DNS record.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Type of verification to be canceled.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -77,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DomainsCancelVerificationViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task DomainsCancelVerificationViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-06-01-preview";
             // Constant Parameters
@@ -124,7 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DomainsCancelVerification_Call (request, onDefault,eventListener,sender);
+                await this.DomainsCancelVerification_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -134,6 +136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
         /// <param name="emailServiceName">The name of the EmailService resource.</param>
         /// <param name="domainName">The name of the Domains resource.</param>
         /// <param name="jsonString">Json string supplied to the DomainsCancelVerification operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -141,7 +144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DomainsCancelVerificationViaJsonString(string subscriptionId, string resourceGroupName, string emailServiceName, string domainName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DomainsCancelVerificationViaJsonString(string subscriptionId, string resourceGroupName, string emailServiceName, string domainName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-06-01-preview";
             // Constant Parameters
@@ -175,12 +178,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DomainsCancelVerification_Call (request, onDefault,eventListener,sender);
+                await this.DomainsCancelVerification_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "DomainsCancelVerification" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -188,20 +192,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DomainsCancelVerification_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DomainsCancelVerification_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -297,6 +301,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -700,13 +710,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -854,13 +864,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -1135,13 +1145,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -1645,6 +1655,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
         /// <param name="emailServiceName">The name of the EmailService resource.</param>
         /// <param name="domainName">The name of the Domains resource.</param>
         /// <param name="body">Type of verification to be initiated.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1653,7 +1664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DomainsInitiateVerification(string subscriptionId, string resourceGroupName, string emailServiceName, string domainName, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task DomainsInitiateVerification(string subscriptionId, string resourceGroupName, string emailServiceName, string domainName, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-06-01-preview";
             // Constant Parameters
@@ -1687,13 +1698,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DomainsInitiateVerification_Call (request, onDefault,eventListener,sender);
+                await this.DomainsInitiateVerification_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Initiate verification of DNS record.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Type of verification to be initiated.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1702,7 +1714,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DomainsInitiateVerificationViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task DomainsInitiateVerificationViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-06-01-preview";
             // Constant Parameters
@@ -1749,7 +1761,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DomainsInitiateVerification_Call (request, onDefault,eventListener,sender);
+                await this.DomainsInitiateVerification_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -1759,6 +1771,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
         /// <param name="emailServiceName">The name of the EmailService resource.</param>
         /// <param name="domainName">The name of the Domains resource.</param>
         /// <param name="jsonString">Json string supplied to the DomainsInitiateVerification operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1766,7 +1779,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DomainsInitiateVerificationViaJsonString(string subscriptionId, string resourceGroupName, string emailServiceName, string domainName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DomainsInitiateVerificationViaJsonString(string subscriptionId, string resourceGroupName, string emailServiceName, string domainName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-06-01-preview";
             // Constant Parameters
@@ -1800,12 +1813,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DomainsInitiateVerification_Call (request, onDefault,eventListener,sender);
+                await this.DomainsInitiateVerification_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "DomainsInitiateVerification" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1813,20 +1827,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DomainsInitiateVerification_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DomainsInitiateVerification_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -1922,6 +1936,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -2652,13 +2672,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -2806,13 +2826,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -3288,13 +3308,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -3442,13 +3462,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -3713,13 +3733,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -5430,13 +5450,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -5584,13 +5604,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");

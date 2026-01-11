@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ConnectedVMware
-Module Guid: a0ad279a-4e68-428d-8864-28b698ac90f8
+Module Guid: c719c31b-8678-44ce-a5f7-2d8f1422bbc1
 Download Help Link: https://learn.microsoft.com/powershell/module/az.connectedvmware
 Help Version: 1.0.0.0
 Locale: en-US
@@ -57,7 +57,7 @@ Create resourcePool.
 Create vCenter.
 
 ### [New-AzConnectedVMwareVM](New-AzConnectedVMwareVM.md)
-The operation to Create a virtual machine instance.
+The operation to create a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 
 ### [New-AzConnectedVMwareVMGuestAgent](New-AzConnectedVMwareVMGuestAgent.md)
@@ -103,26 +103,26 @@ The operation to start a virtual machine instance.
 The operation to power off (stop) a virtual machine instance.
 
 ### [Update-AzConnectedVMwareCluster](Update-AzConnectedVMwareCluster.md)
-API to Update certain properties of the cluster resource.
+API to update certain properties of the cluster resource.
 
 ### [Update-AzConnectedVMwareDatastore](Update-AzConnectedVMwareDatastore.md)
-API to Update certain properties of the datastore resource.
+API to update certain properties of the datastore resource.
 
 ### [Update-AzConnectedVMwareHost](Update-AzConnectedVMwareHost.md)
-API to Update certain properties of the host resource.
+API to update certain properties of the host resource.
 
 ### [Update-AzConnectedVMwareResourcePool](Update-AzConnectedVMwareResourcePool.md)
-API to Update certain properties of the resourcePool resource.
+API to update certain properties of the resourcePool resource.
 
 ### [Update-AzConnectedVMwareVCenter](Update-AzConnectedVMwareVCenter.md)
-API to Update certain properties of the vCenter resource.
+API to update certain properties of the vCenter resource.
 
 ### [Update-AzConnectedVMwareVM](Update-AzConnectedVMwareVM.md)
-The operation to Update a virtual machine instance.
+The operation to update a virtual machine instance.
 
 ### [Update-AzConnectedVMwareVMTemplate](Update-AzConnectedVMwareVMTemplate.md)
-API to Update certain properties of the virtual machine template resource.
+API to update certain properties of the virtual machine template resource.
 
 ### [Update-AzConnectedVMwareVNet](Update-AzConnectedVMwareVNet.md)
-API to Update certain properties of the virtual network resource.
+API to update certain properties of the virtual network resource.
 

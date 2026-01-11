@@ -1,6 +1,6 @@
 ---
 Module Name: Az.CloudHsm
-Module Guid: cebcd908-33c3-4d14-91bd-2448a48e74fe
+Module Guid: ad83a859-ffd8-4514-bdae-2597ebb7f563
 Download Help Link: https://learn.microsoft.com/powershell/module/az.cloudhsm
 Help Version: 1.0.0.0
 Locale: en-US

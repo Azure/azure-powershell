@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedVMwareVNet
 
 ## SYNOPSIS
-API to Update certain properties of the virtual network resource.
+API to update certain properties of the virtual network resource.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzConnectedVMwareVNet -Name <String> -ResourceGroupName <String> -JsonStr
 ```
 
 ## DESCRIPTION
-API to Update certain properties of the virtual network resource.
+API to update certain properties of the virtual network resource.
 
 ## EXAMPLES
 

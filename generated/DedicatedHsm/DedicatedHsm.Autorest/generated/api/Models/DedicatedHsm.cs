@@ -43,58 +43,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models
         public string ManagementNetworkProfileSubnetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).ManagementNetworkProfileSubnetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).ManagementNetworkProfileSubnetId = value ?? null; }
 
         /// <summary>Internal Acessors for ManagementNetworkProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.INetworkProfile Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.ManagementNetworkProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).ManagementNetworkProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).ManagementNetworkProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.INetworkProfile Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.ManagementNetworkProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).ManagementNetworkProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).ManagementNetworkProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ManagementNetworkProfileSubnet</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IApiEntityReference Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.ManagementNetworkProfileSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).ManagementNetworkProfileSubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).ManagementNetworkProfileSubnet = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IApiEntityReference Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.ManagementNetworkProfileSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).ManagementNetworkProfileSubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).ManagementNetworkProfileSubnet = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NetworkProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.INetworkProfile Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.NetworkProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).NetworkProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).NetworkProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.INetworkProfile Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.NetworkProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).NetworkProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).NetworkProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NetworkProfileSubnet</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IApiEntityReference Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.NetworkProfileSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).NetworkProfileSubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).NetworkProfileSubnet = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IApiEntityReference Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.NetworkProfileSubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).NetworkProfileSubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).NetworkProfileSubnet = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmProperties Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.DedicatedHsmProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for StatusMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.StatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).StatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).StatusMessage = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.StatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).StatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPropertiesInternal)Property).StatusMessage = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.SystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).CreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).CreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).LastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).LastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).LastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal)__resource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal)__resource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal)__resource).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal)__resource).Sku = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal)__resource).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal)__resource).Sku = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IResourceInternal)__resource).Type = value ?? null; }
 
         /// <summary>The name of the dedicated HSM.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.PropertyOrigin.Inherited)]

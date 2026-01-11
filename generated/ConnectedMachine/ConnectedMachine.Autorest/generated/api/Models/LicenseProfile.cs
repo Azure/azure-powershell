@@ -63,83 +63,101 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>The error message.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).Message; }
 
         /// <summary>Internal Acessors for AdditionalInfo</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).AdditionalInfo = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).AdditionalInfo = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for EsuProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmEsuProperties Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.EsuProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmEsuProperties Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.EsuProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for EsuProfileAssignedLicenseImmutableId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.EsuProfileAssignedLicenseImmutableId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileAssignedLicenseImmutableId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileAssignedLicenseImmutableId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.EsuProfileAssignedLicenseImmutableId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileAssignedLicenseImmutableId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileAssignedLicenseImmutableId = value ?? null; }
 
         /// <summary>Internal Acessors for EsuProfileEsuEligibility</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.EsuProfileEsuEligibility { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileEsuEligibility; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileEsuEligibility = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.EsuProfileEsuEligibility { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileEsuEligibility; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileEsuEligibility = value ?? null; }
 
         /// <summary>Internal Acessors for EsuProfileEsuKey</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IEsuKey> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.EsuProfileEsuKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileEsuKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileEsuKey = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IEsuKey> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.EsuProfileEsuKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileEsuKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileEsuKey = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for EsuProfileEsuKeyState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.EsuProfileEsuKeyState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileEsuKeyState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileEsuKeyState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.EsuProfileEsuKeyState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileEsuKeyState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileEsuKeyState = value ?? null; }
 
         /// <summary>Internal Acessors for EsuProfileServerType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.EsuProfileServerType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileServerType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileServerType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.EsuProfileServerType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileServerType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).EsuProfileServerType = value ?? null; }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).Message = value ?? null; }
 
         /// <summary>Internal Acessors for ProductProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfileProperties Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.ProductProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfileProperties Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.ProductProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ProductProfileBillingEndDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.ProductProfileBillingEndDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileBillingEndDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileBillingEndDate = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.ProductProfileBillingEndDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileBillingEndDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileBillingEndDate = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for ProductProfileBillingStartDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.ProductProfileBillingStartDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileBillingStartDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileBillingStartDate = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.ProductProfileBillingStartDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileBillingStartDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileBillingStartDate = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for ProductProfileDisenrollmentDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.ProductProfileDisenrollmentDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileDisenrollmentDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileDisenrollmentDate = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.ProductProfileDisenrollmentDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileDisenrollmentDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileDisenrollmentDate = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for ProductProfileEnrollmentDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.ProductProfileEnrollmentDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileEnrollmentDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileEnrollmentDate = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.ProductProfileEnrollmentDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileEnrollmentDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileEnrollmentDate = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for ProductProfileError</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.ProductProfileError { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileError; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileError = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.ProductProfileError { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileError; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProductProfileError = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileProperties Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseProfileProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for SoftwareAssurance</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesSoftwareAssurance Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.SoftwareAssurance { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).SoftwareAssurance; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).SoftwareAssurance = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesSoftwareAssurance Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.SoftwareAssurance { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).SoftwareAssurance; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).SoftwareAssurance = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilePropertiesInternal)Property).Target = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inherited)]
@@ -198,31 +216,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemData; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inherited)]

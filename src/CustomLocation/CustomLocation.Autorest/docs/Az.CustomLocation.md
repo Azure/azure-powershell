@@ -1,6 +1,6 @@
 ---
 Module Name: Az.CustomLocation
-Module Guid: b5a68592-6b36-4d8f-b582-a157eb4dfacf
+Module Guid: 1b5e3bac-99a3-4bcf-a499-3aad2f622fa6
 Download Help Link: https://learn.microsoft.com/powershell/module/az.customlocation
 Help Version: 1.0.0.0
 Locale: en-US

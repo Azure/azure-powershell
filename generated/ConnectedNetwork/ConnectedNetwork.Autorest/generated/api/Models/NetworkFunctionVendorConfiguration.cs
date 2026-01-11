@@ -14,13 +14,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models
     {
 
         /// <summary>Internal Acessors for LinuxConfigurationSsh</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISshConfiguration Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionVendorConfigurationInternal.LinuxConfigurationSsh { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IOSProfileInternal)OSProfile).LinuxConfigurationSsh; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IOSProfileInternal)OSProfile).LinuxConfigurationSsh = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISshConfiguration Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionVendorConfigurationInternal.LinuxConfigurationSsh { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IOSProfileInternal)OSProfile).LinuxConfigurationSsh; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IOSProfileInternal)OSProfile).LinuxConfigurationSsh = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for OSProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IOSProfile Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionVendorConfigurationInternal.OSProfile { get => (this._oSProfile = this._oSProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.OSProfile()); set { {_oSProfile = value;} } }
 
         /// <summary>Internal Acessors for OSProfileLinuxConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ILinuxConfiguration Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionVendorConfigurationInternal.OSProfileLinuxConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IOSProfileInternal)OSProfile).LinuxConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IOSProfileInternal)OSProfile).LinuxConfiguration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ILinuxConfiguration Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionVendorConfigurationInternal.OSProfileLinuxConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IOSProfileInternal)OSProfile).LinuxConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IOSProfileInternal)OSProfile).LinuxConfiguration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for UserDataParameter</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IAny Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionVendorConfigurationInternal.UserDataParameter { get => (this._userDataParameter = this._userDataParameter ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Any()); set { {_userDataParameter = value;} } }

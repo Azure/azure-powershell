@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Compute
-Module Guid: a6e7404d-a42b-4e3f-880c-8b5e012c5adc
+Module Guid: 4ba298f2-39bb-4c3d-8ffc-ea826b7ce53a
 Download Help Link: https://learn.microsoft.com/powershell/module/az.compute
 Help Version: 1.0.0.0
 Locale: en-US

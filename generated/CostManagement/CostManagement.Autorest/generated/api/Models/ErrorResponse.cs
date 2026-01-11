@@ -37,13 +37,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetailsInternal)Error).Message; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetailsInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetailsInternal)Error).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetailsInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetailsInternal)Error).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Error</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetails Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorResponseInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ErrorDetails()); set { {_error = value;} } }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetailsInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetailsInternal)Error).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetailsInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IErrorDetailsInternal)Error).Message = value ?? null; }
 
         /// <summary>Creates an new <see cref="ErrorResponse" /> instance.</summary>
         public ErrorResponse()

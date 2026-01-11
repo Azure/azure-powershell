@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdHostPool
 
 ## SYNOPSIS
-update a host pool.
+Update a host pool.
 
 ## SYNTAX
 
@@ -53,7 +53,7 @@ Update-AzWvdHostPool -Name <String> -ResourceGroupName <String> -JsonString <Str
 ```
 
 ## DESCRIPTION
-update a host pool.
+Update a host pool.
 
 ## EXAMPLES
 
