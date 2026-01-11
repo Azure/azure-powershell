@@ -38,13 +38,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IAlexaChannelProperties Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IAlexaChannelInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.AlexaChannelProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ServiceEndpointUri</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IAlexaChannelInternal.ServiceEndpointUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IAlexaChannelPropertiesInternal)Property).ServiceEndpointUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IAlexaChannelPropertiesInternal)Property).ServiceEndpointUri = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IAlexaChannelInternal.ServiceEndpointUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IAlexaChannelPropertiesInternal)Property).ServiceEndpointUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IAlexaChannelPropertiesInternal)Property).ServiceEndpointUri = value ?? null; }
 
         /// <summary>Internal Acessors for UrlFragment</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IAlexaChannelInternal.UrlFragment { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IAlexaChannelPropertiesInternal)Property).UrlFragment; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IAlexaChannelPropertiesInternal)Property).UrlFragment = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IAlexaChannelInternal.UrlFragment { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IAlexaChannelPropertiesInternal)Property).UrlFragment; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IAlexaChannelPropertiesInternal)Property).UrlFragment = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IChannelInternal)__channel).ProvisioningState = value ?? null; }
 
         /// <summary>The channel name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Constant]

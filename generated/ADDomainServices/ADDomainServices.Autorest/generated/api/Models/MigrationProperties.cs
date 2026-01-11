@@ -16,6 +16,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models
         /// <summary>Internal Acessors for MigrationProgress</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationProgress Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal.MigrationProgress { get => (this._migrationProgress = this._migrationProgress ?? new Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.MigrationProgress()); set { {_migrationProgress = value;} } }
 
+        /// <summary>Internal Acessors for MigrationProgressCompletionPercentage</summary>
+        double? Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal.MigrationProgressCompletionPercentage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationProgressInternal)MigrationProgress).CompletionPercentage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationProgressInternal)MigrationProgress).CompletionPercentage = value ?? default(double); }
+
+        /// <summary>Internal Acessors for MigrationProgressMessage</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal.MigrationProgressMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationProgressInternal)MigrationProgress).ProgressMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationProgressInternal)MigrationProgress).ProgressMessage = value ?? null; }
+
         /// <summary>Internal Acessors for OldSubnetId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationPropertiesInternal.OldSubnetId { get => this._oldSubnetId; set { {_oldSubnetId = value;} } }
 
@@ -31,11 +37,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models
 
         /// <summary>Completion Percentage</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PropertyOrigin.Inlined)]
-        public double? MigrationProgressCompletionPercentage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationProgressInternal)MigrationProgress).CompletionPercentage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationProgressInternal)MigrationProgress).CompletionPercentage = value ?? default(double); }
+        public double? MigrationProgressCompletionPercentage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationProgressInternal)MigrationProgress).CompletionPercentage; }
 
         /// <summary>Progress Message</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PropertyOrigin.Inlined)]
-        public string MigrationProgressMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationProgressInternal)MigrationProgress).ProgressMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationProgressInternal)MigrationProgress).ProgressMessage = value ?? null; }
+        public string MigrationProgressMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IMigrationProgressInternal)MigrationProgress).ProgressMessage; }
 
         /// <summary>Backing field for <see cref="OldSubnetId" /> property.</summary>
         private string _oldSubnetId;

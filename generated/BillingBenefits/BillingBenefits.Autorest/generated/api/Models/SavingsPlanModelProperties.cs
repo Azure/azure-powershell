@@ -191,10 +191,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IExtendedStatusInfo Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanModelPropertiesInternal.ExtendedStatusInfo { get => (this._extendedStatusInfo = this._extendedStatusInfo ?? new Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ExtendedStatusInfo()); set { {_extendedStatusInfo = value;} } }
 
         /// <summary>Internal Acessors for ExtendedStatusInfoMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanModelPropertiesInternal.ExtendedStatusInfoMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IExtendedStatusInfoInternal)ExtendedStatusInfo).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IExtendedStatusInfoInternal)ExtendedStatusInfo).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanModelPropertiesInternal.ExtendedStatusInfoMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IExtendedStatusInfoInternal)ExtendedStatusInfo).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IExtendedStatusInfoInternal)ExtendedStatusInfo).Message = value ?? null; }
 
         /// <summary>Internal Acessors for ExtendedStatusInfoStatusCode</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanModelPropertiesInternal.ExtendedStatusInfoStatusCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IExtendedStatusInfoInternal)ExtendedStatusInfo).StatusCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IExtendedStatusInfoInternal)ExtendedStatusInfo).StatusCode = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanModelPropertiesInternal.ExtendedStatusInfoStatusCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IExtendedStatusInfoInternal)ExtendedStatusInfo).StatusCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IExtendedStatusInfoInternal)ExtendedStatusInfo).StatusCode = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanModelPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
@@ -209,10 +209,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IUtilization Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanModelPropertiesInternal.Utilization { get => (this._utilization = this._utilization ?? new Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Utilization()); set { {_utilization = value;} } }
 
         /// <summary>Internal Acessors for UtilizationAggregate</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IUtilizationAggregates> Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanModelPropertiesInternal.UtilizationAggregate { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IUtilizationInternal)Utilization).Aggregate; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IUtilizationInternal)Utilization).Aggregate = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IUtilizationAggregates> Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanModelPropertiesInternal.UtilizationAggregate { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IUtilizationInternal)Utilization).Aggregate; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IUtilizationInternal)Utilization).Aggregate = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for UtilizationTrend</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanModelPropertiesInternal.UtilizationTrend { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IUtilizationInternal)Utilization).Trend; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IUtilizationInternal)Utilization).Trend = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanModelPropertiesInternal.UtilizationTrend { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IUtilizationInternal)Utilization).Trend; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IUtilizationInternal)Utilization).Trend = value ?? null; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;

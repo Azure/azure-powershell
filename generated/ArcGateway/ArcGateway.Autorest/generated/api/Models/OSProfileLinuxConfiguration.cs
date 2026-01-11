@@ -30,28 +30,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Message; }
 
         /// <summary>Internal Acessors for AdditionalInfo</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOSProfileLinuxConfigurationInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).AdditionalInfo = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOSProfileLinuxConfigurationInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).AdditionalInfo = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOSProfileLinuxConfigurationInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOSProfileLinuxConfigurationInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOSProfileLinuxConfigurationInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOSProfileLinuxConfigurationInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOSProfileLinuxConfigurationInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOSProfileLinuxConfigurationInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Message = value ?? null; }
 
         /// <summary>Internal Acessors for PatchSetting</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettings Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOSProfileLinuxConfigurationInternal.PatchSetting { get => (this._patchSetting = this._patchSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.PatchSettings()); set { {_patchSetting = value;} } }
 
         /// <summary>Internal Acessors for PatchSettingStatus</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatus Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOSProfileLinuxConfigurationInternal.PatchSettingStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Status = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatus Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOSProfileLinuxConfigurationInternal.PatchSettingStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Status = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for StatusError</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOSProfileLinuxConfigurationInternal.StatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).StatusError; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).StatusError = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOSProfileLinuxConfigurationInternal.StatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).StatusError; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).StatusError = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for StatusHotpatchEnablementStatus</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOSProfileLinuxConfigurationInternal.StatusHotpatchEnablementStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).StatusHotpatchEnablementStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).StatusHotpatchEnablementStatus = value ?? null; }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOSProfileLinuxConfigurationInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IOSProfileLinuxConfigurationInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).Target = value ?? null; }
 
         /// <summary>Backing field for <see cref="PatchSetting" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettings _patchSetting;
@@ -77,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
 
         /// <summary>Indicates the current status of the hotpatch being enabled or disabled.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public string StatusHotpatchEnablementStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).StatusHotpatchEnablementStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).StatusHotpatchEnablementStatus = value ?? null; }
+        public string StatusHotpatchEnablementStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal)PatchSetting).StatusHotpatchEnablementStatus; }
 
         /// <summary>The error target.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]

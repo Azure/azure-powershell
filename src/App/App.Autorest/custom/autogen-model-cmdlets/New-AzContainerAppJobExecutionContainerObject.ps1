@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobExecutionContainer
 https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappjobexecutioncontainerobject
 #>
 function New-AzContainerAppJobExecutionContainerObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobExecutionContainer')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

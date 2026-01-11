@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a configuration store with the specified parameters.
+Create a configuration store with the specified parameters.
 .Description
-create a configuration store with the specified parameters.
+Create a configuration store with the specified parameters.
 .Example
 New-AzAppConfigurationStore -Name azpstest-appstore -ResourceGroupName azpstest_gp -Location eastus -Sku Standard
 .Example
@@ -221,8 +221,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
