@@ -31,52 +31,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models
         public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).Kind = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerProperties Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.TriggerProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Status</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerStatus Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).Status = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerStatus Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).Status = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for StatusCode</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerInternal.StatusCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).StatusCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).StatusCode = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerInternal.StatusCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).StatusCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).StatusCode = value ?? null; }
 
         /// <summary>Internal Acessors for StatusMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerInternal.StatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).StatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).StatusMessage = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerInternal.StatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).StatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).StatusMessage = value ?? null; }
 
         /// <summary>Internal Acessors for StatusTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerInternal.StatusTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).StatusTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).StatusTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerInternal.StatusTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).StatusTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITriggerPropertiesInternal)Property).StatusTime = value ?? default(global::System.DateTime); }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Inherited)]

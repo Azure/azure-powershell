@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFederatedIdentityCredential
 
 ## SYNOPSIS
-update a federated identity credential under the specified user assigned identity.
+Update a federated identity credential under the specified user assigned identity.
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Update-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -Reso
 ```
 
 ## DESCRIPTION
-update a federated identity credential under the specified user assigned identity.
+Update a federated identity credential under the specified user assigned identity.
 
 ## EXAMPLES
 

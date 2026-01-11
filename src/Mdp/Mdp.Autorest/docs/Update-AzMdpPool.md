@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMdpPool
 
 ## SYNOPSIS
-update a Pool
+Update a Pool
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ Update-AzMdpPool -InputObject <IMdpIdentity> [-AgentProfile <IAgentProfile>]
 ```
 
 ## DESCRIPTION
-update a Pool
+Update a Pool
 
 ## EXAMPLES
 

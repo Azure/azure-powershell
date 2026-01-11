@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.SmbStorageClassTypeP
 https://learn.microsoft.com/powershell/module/Az.KubernetesRuntime/new-azkubernetesruntimesmbstorageclasstypepropertiesobject
 #>
 function New-AzKubernetesRuntimeSmbStorageClassTypePropertiesObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.SmbStorageClassTypeProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

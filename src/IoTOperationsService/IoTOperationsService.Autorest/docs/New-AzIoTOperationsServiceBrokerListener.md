@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzIoTOperationsServiceBrokerListener
 
 ## SYNOPSIS
-create a BrokerListenerResource
+Create a BrokerListenerResource
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzIoTOperationsServiceBrokerListener -BrokerName <String> -InstanceName <Str
 ```
 
 ## DESCRIPTION
-create a BrokerListenerResource
+Create a BrokerListenerResource
 
 ## EXAMPLES
 

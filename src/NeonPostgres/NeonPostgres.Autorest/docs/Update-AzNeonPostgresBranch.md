@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNeonPostgresBranch
 
 ## SYNOPSIS
-update a Branch
+Update a Branch
 
 ## SYNTAX
 
@@ -50,7 +50,7 @@ Update-AzNeonPostgresBranch -Name <String> -ProjectInputObject <INeonPostgresIde
 ```
 
 ## DESCRIPTION
-update a Branch
+Update a Branch
 
 ## EXAMPLES
 

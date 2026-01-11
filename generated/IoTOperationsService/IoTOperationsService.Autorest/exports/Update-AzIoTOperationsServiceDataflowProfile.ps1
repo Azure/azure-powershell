@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a DataflowProfileResource
+Update a DataflowProfileResource
 .Description
-update a DataflowProfileResource
+Update a DataflowProfileResource
 .Example
 Update-AzIoTOperationsServiceDataflowProfile -InstanceName "aio-instance-name" -Name dataflowprofile-name -ResourceGroupName "aio-validation-116116143"
 
@@ -197,8 +197,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

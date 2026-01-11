@@ -1,6 +1,6 @@
 ---
 Module Name: Az.LabServices
-Module Guid: 08d6abb1-2d08-468b-8fe9-57be7661dad7
+Module Guid: f397406e-ee42-4ee8-be08-239c43a21bf1
 Download Help Link: https://learn.microsoft.com/powershell/module/az.labservices
 Help Version: 1.0.0.0
 Locale: en-US

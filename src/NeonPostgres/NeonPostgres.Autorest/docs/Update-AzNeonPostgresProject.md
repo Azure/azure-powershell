@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNeonPostgresProject
 
 ## SYNOPSIS
-update a Project
+Update a Project
 
 ## SYNTAX
 
@@ -55,7 +55,7 @@ Update-AzNeonPostgresProject -Name <String> -OrganizationInputObject <INeonPostg
 ```
 
 ## DESCRIPTION
-update a Project
+Update a Project
 
 ## EXAMPLES
 

@@ -153,7 +153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models
         Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IExport Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal.Export { get => (this._export = this._export ?? new Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Export()); set { {_export = value;} } }
 
         /// <summary>Internal Acessors for ExportBlobList</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IExportBlobList Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal.ExportBlobList { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IExportInternal)Export).BlobList; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IExportInternal)Export).BlobList = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IExportBlobList Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal.ExportBlobList { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IExportInternal)Export).BlobList; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IExportInternal)Export).BlobList = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ReturnAddress</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IReturnAddress Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal.ReturnAddress { get => (this._returnAddress = this._returnAddress ?? new Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ReturnAddress()); set { {_returnAddress = value;} } }
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models
         Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IShippingInformation Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal.ShippingInformation { get => (this._shippingInformation = this._shippingInformation ?? new Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.ShippingInformation()); set { {_shippingInformation = value;} } }
 
         /// <summary>Internal Acessors for ShippingInformationAdditionalInformation</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal.ShippingInformationAdditionalInformation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IShippingInformationInternal)ShippingInformation).AdditionalInformation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IShippingInformationInternal)ShippingInformation).AdditionalInformation = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobDetailsInternal.ShippingInformationAdditionalInformation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IShippingInformationInternal)ShippingInformation).AdditionalInformation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IShippingInformationInternal)ShippingInformation).AdditionalInformation = value ?? null; }
 
         /// <summary>Backing field for <see cref="PercentComplete" /> property.</summary>
         private long? _percentComplete;

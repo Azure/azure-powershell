@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
     /// [OpenAPI] Stop=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/stop"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Stop, @"AzLabServicesVM_StopViaIdentityLab", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.CmdletBreakingChange("18.2.0", "-", "2027/06/28", ChangeDescription = "Azure Lab Services will be retired on June 28, 2027, please see details on https://azure.microsoft.com/en-us/updates?id=azure-lab-services-is-being-retired.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.GenericBreakingChange("", "18.2.0", "-", "2027/06/28", ChangeDescription = "Azure Lab Services will be retired on June 28, 2027, please see details on https://azure.microsoft.com/en-us/updates?id=azure-lab-services-is-being-retired.")]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.LabServices.Description(@"Action to stop a lab virtual machine.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.LabServices.Generated]
@@ -40,15 +40,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
 
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
-
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -227,11 +218,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.LabServices.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -564,7 +550,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);
                 }

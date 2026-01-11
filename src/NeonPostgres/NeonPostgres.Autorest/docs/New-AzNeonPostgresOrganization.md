@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNeonPostgresOrganization
 
 ## SYNOPSIS
-create a OrganizationResource
+Create a OrganizationResource
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ New-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> -JsonS
 ```
 
 ## DESCRIPTION
-create a OrganizationResource
+Create a OrganizationResource
 
 ## EXAMPLES
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-run artifacts from a existing image template
+Run artifacts from a existing image template
 .Description
-run artifacts from a existing image template
+Run artifacts from a existing image template
 .Example
 Start-AzImageBuilderTemplate -Name azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder
 .Example
@@ -154,8 +154,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

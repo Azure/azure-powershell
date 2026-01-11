@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a DataflowEndpointResource
+Update a DataflowEndpointResource
 .Description
-update a DataflowEndpointResource
+Update a DataflowEndpointResource
 .Example
 Update-AzIoTOperationsServiceDataflowEndpoint  -InstanceName  "aio-instance-name"   -Name "local-storage-endpoint"  -ResourceGroupName "aio-validation-116116143"  -EndpointType "LocalStorage"  -LocalStorageSettingPersistentVolumeClaimRef "myPersistentVolumeClaim" 
 
@@ -428,8 +428,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

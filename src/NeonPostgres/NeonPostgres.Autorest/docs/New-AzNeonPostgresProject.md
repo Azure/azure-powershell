@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNeonPostgresProject
 
 ## SYNOPSIS
-create a Project
+Create a Project
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ New-AzNeonPostgresProject -Name <String> -OrganizationName <String> -ResourceGro
 ```
 
 ## DESCRIPTION
-create a Project
+Create a Project
 
 ## EXAMPLES
 

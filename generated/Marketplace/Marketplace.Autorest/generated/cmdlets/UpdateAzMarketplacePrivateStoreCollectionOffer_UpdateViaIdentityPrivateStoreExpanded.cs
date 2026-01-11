@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update or add an offer to a specific collection of the private store.</summary>
+    /// <summary>update or add an offer to a specific collection of the private store.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzMarketplacePrivateStoreCollectionOffer_UpdateViaIdentityPrivateStoreExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Description(@"Update or add an offer to a specific collection of the private store.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Description(@"update or add an offer to a specific collection of the private store.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Generated]
     public partial class UpdateAzMarketplacePrivateStoreCollectionOffer_UpdateViaIdentityPrivateStoreExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener,

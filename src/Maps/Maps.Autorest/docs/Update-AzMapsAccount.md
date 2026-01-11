@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMapsAccount
 
 ## SYNOPSIS
-update a Maps Account.
+Update a Maps Account.
 Only a subset of the parameters may be updated after creation, such as Sku, Tags, Properties.
 
 ## SYNTAX
@@ -39,7 +39,7 @@ Update-AzMapsAccount -Name <String> -ResourceGroupName <String> -JsonString <Str
 ```
 
 ## DESCRIPTION
-update a Maps Account.
+Update a Maps Account.
 Only a subset of the parameters may be updated after creation, such as Sku, Tags, Properties.
 
 ## EXAMPLES

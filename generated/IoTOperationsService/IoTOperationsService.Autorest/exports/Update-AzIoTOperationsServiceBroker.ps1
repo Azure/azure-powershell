@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a BrokerResource
+Update a BrokerResource
 .Description
-update a BrokerResource
+Update a BrokerResource
 .Example
 Update-AzIoTOperationsServiceBroker -InstanceName "aio-instance-name" -Name "my-broker" -ResourceGroupName "aio-validation-116116143" 
 
@@ -242,8 +242,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

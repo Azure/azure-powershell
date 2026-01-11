@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a trigger for the specified virtual machine image template
+Create a trigger for the specified virtual machine image template
 .Description
-create a trigger for the specified virtual machine image template
+Create a trigger for the specified virtual machine image template
 .Example
 New-AzImageBuilderTrigger -ImageTemplateName azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder -Name azps-buildertrigger -Kind "SourceImage"
 
@@ -177,8 +177,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

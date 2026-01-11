@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNeonPostgresBranch
 
 ## SYNOPSIS
-create a Branch
+Create a Branch
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ New-AzNeonPostgresBranch -Name <String> -OrganizationName <String> -ProjectName 
 ```
 
 ## DESCRIPTION
-create a Branch
+Create a Branch
 
 ## EXAMPLES
 

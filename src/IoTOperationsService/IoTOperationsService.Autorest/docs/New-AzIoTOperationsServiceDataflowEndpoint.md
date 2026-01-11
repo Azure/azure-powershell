@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzIoTOperationsServiceDataflowEndpoint
 
 ## SYNOPSIS
-create a DataflowEndpointResource
+Create a DataflowEndpointResource
 
 ## SYNTAX
 
@@ -56,7 +56,7 @@ New-AzIoTOperationsServiceDataflowEndpoint -InstanceName <String> -Name <String>
 ```
 
 ## DESCRIPTION
-create a DataflowEndpointResource
+Create a DataflowEndpointResource
 
 ## EXAMPLES
 

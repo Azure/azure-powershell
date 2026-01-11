@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Marketplace
-Module Guid: 4db1f51a-b835-4783-be47-0b8939492ea5
+Module Guid: 1de32ea4-fa3e-4bc7-bfc8-e854ff4b9e4a
 Download Help Link: https://learn.microsoft.com/powershell/module/az.marketplace
 Help Version: 1.0.0.0
 Locale: en-US
@@ -12,7 +12,7 @@ Microsoft Azure PowerShell: Marketplace cmdlets
 
 ## Az.Marketplace Cmdlets
 ### [Copy-AzMarketplacePrivateStoreCollectionOffer](Copy-AzMarketplacePrivateStoreCollectionOffer.md)
-transferring offers (copy or move) from source collection to target collection(s)
+Transferring offers (copy or move) from source collection to target collection(s)
 
 ### [Disable-AzMarketplacePrivateStoreCollectionAllItem](Disable-AzMarketplacePrivateStoreCollectionAllItem.md)
 Disable approve all items for the collection.

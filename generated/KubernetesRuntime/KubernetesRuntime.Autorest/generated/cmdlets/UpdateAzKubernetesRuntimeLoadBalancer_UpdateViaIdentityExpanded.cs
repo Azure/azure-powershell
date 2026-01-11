@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a LoadBalancer</summary>
+    /// <summary>update a LoadBalancer</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers/{loadBalancerName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers/{loadBalancerName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzKubernetesRuntimeLoadBalancer_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.ILoadBalancer))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Description(@"Update a LoadBalancer")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Description(@"update a LoadBalancer")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Generated]
     public partial class UpdateAzKubernetesRuntimeLoadBalancer_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.IEventListener,
@@ -40,19 +40,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
         /// <summary>
         /// A LoadBalancer resource for an Arc connected cluster (Microsoft.Kubernetes/connectedClusters)
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.ILoadBalancer _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.LoadBalancer();
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>IP Range</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -264,11 +255,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -625,24 +611,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.ILoadBalancer
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

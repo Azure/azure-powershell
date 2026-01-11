@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         public long? FabricAsn { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBLayer3ConfigurationInternal)__optionBLayer3Configuration).FabricAsn; }
 
         /// <summary>Internal Acessors for FabricAsn</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBLayer3ConfigurationInternal.FabricAsn { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBLayer3ConfigurationInternal)__optionBLayer3Configuration).FabricAsn; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBLayer3ConfigurationInternal)__optionBLayer3Configuration).FabricAsn = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBLayer3ConfigurationInternal.FabricAsn { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBLayer3ConfigurationInternal)__optionBLayer3Configuration).FabricAsn; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBLayer3ConfigurationInternal)__optionBLayer3Configuration).FabricAsn = value ?? default(long); }
 
         /// <summary>ASN of PE devices for CE/PE connectivity.Example : 28</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
