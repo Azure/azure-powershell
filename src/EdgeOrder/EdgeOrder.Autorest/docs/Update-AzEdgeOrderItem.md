@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEdgeOrderItem
 
 ## SYNOPSIS
-update the properties of an existing order item.
+Update the properties of an existing order item.
 
 ## SYNTAX
 
@@ -43,7 +43,7 @@ Update-AzEdgeOrderItem -Name <String> -ResourceGroupName <String> -JsonString <S
 ```
 
 ## DESCRIPTION
-update the properties of an existing order item.
+Update the properties of an existing order item.
 
 ## EXAMPLES
 

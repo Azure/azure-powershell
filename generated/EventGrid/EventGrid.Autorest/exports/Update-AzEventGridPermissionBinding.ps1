@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a permission binding with the specified parameters.
+Update a permission binding with the specified parameters.
 .Description
-update a permission binding with the specified parameters.
+Update a permission binding with the specified parameters.
 .Example
 Update-AzEventGridPermissionBinding -ResourceGroupName azps_test_group_eventgrid -NamespaceName azps-eventgridnamespace -Name azps-pb -ClientGroupName "azps-clientgroup" -Permission Publisher -TopicSpaceName "azps-topicspace"
 .Example
@@ -247,8 +247,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

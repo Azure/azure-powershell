@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzGuestConfigurationAssignment
 
 ## SYNOPSIS
-create an association between a VM and guest configuration
+Create an association between a VM and guest configuration
 
 ## SYNTAX
 
@@ -63,7 +63,7 @@ New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName <String> -M
 ```
 
 ## DESCRIPTION
-create an association between a VM and guest configuration
+Create an association between a VM and guest configuration
 
 ## EXAMPLES
 
