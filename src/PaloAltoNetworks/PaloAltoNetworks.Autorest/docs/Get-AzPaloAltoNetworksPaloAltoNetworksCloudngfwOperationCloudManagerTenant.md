@@ -1,5 +1,5 @@
 ---
-external help file: Az.PaloAltoNetworks-help.xml
+external help file:
 Module Name: Az.PaloAltoNetworks
 online version: https://learn.microsoft.com/powershell/module/az.paloaltonetworks/get-azpaloaltonetworkspaloaltonetworkscloudngfwoperationcloudmanagertenant
 schema: 2.0.0
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationCloudManagerTenant
 
 ## SYNOPSIS
-Get Cloud Manager Tenants for a subscription
+
 
 ## SYNTAX
 
@@ -18,7 +18,6 @@ Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationCloudManagerTenant [-Sub
 ```
 
 ## DESCRIPTION
-Get Cloud Manager Tenants for a subscription
 
 
 ## EXAMPLES

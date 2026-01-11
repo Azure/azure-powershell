@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.EmailReceiver
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactiongroupemailreceiverobject
 #>
 function New-AzActionGroupEmailReceiverObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.EmailReceiver')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

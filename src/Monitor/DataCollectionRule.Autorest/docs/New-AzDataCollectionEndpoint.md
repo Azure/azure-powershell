@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataCollectionEndpoint
 
 ## SYNOPSIS
-create a data collection endpoint.
+Create a data collection endpoint.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ New-AzDataCollectionEndpoint -Name <String> -ResourceGroupName <String> -JsonStr
 ```
 
 ## DESCRIPTION
-create a data collection endpoint.
+Create a data collection endpoint.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzActionGroup
 
 ## SYNOPSIS
-create a new action group or create an existing one.
+Create a new action group or create an existing one.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ New-AzActionGroup -Name <String> -ResourceGroupName <String> -JsonString <String
 ```
 
 ## DESCRIPTION
-create a new action group or create an existing one.
+Create a new action group or create an existing one.
 
 ## EXAMPLES
 
