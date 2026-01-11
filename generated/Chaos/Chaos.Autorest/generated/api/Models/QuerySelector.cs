@@ -35,10 +35,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelectorInternal)__selector).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelectorInternal)__selector).Id = value ; }
 
         /// <summary>Internal Acessors for Filter</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IFilter Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelectorInternal.Filter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelectorInternal)__selector).Filter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelectorInternal)__selector).Filter = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IFilter Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelectorInternal.Filter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelectorInternal)__selector).Filter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelectorInternal)__selector).Filter = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for FilterType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelectorInternal.FilterType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelectorInternal)__selector).FilterType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelectorInternal)__selector).FilterType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelectorInternal.FilterType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelectorInternal)__selector).FilterType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelectorInternal)__selector).FilterType = value ?? null; }
 
         /// <summary>Backing field for <see cref="QueryString" /> property.</summary>
         private string _queryString;

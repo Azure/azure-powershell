@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Internal Acessors for CustomResourceName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.CustomResourceName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).CustomResourceName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).CustomResourceName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.CustomResourceName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).CustomResourceName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).CustomResourceName = value ?? null; }
 
         /// <summary>Internal Acessors for ExtendedLocation</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IExtendedLocation Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.ExtendedLocation { get => (this._extendedLocation = this._extendedLocation ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ExtendedLocation()); set { {_extendedLocation = value;} } }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.Id { get => this._id; set { {_id = value;} } }
 
         /// <summary>Internal Acessors for MoName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.MoName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).MoName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).MoName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.MoName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).MoName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).MoName = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.Name { get => this._name; set { {_name = value;} } }
@@ -79,19 +79,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkProperties Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.VirtualNetworkProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Statuses</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IResourceStatus> Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.Statuses { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).Statuses; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).Statuses = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IResourceStatus> Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.Statuses { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).Statuses; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).Statuses = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.SystemData()); set { {_systemData = value;} } }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.Type { get => this._type; set { {_type = value;} } }
 
         /// <summary>Internal Acessors for Uuid</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.Uuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).Uuid; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).Uuid = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkInternal.Uuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).Uuid; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkPropertiesInternal)Property).Uuid = value ?? null; }
 
         /// <summary>Gets or sets the vCenter Managed Object name for the virtual network.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.PropertyOrigin.Inlined)]
@@ -138,27 +156,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).CreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).CreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).CreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).LastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).LastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ISystemDataInternal)SystemData).LastModifiedByType; }
 
         /// <summary>Backing field for <see cref="Tag" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualNetworkTags _tag;
@@ -263,7 +281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         string Kind { get; set; }
         /// <summary>Gets or sets the location.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,

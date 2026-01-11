@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedNetworkFunctionTag
 
 ## SYNOPSIS
-update the tags for the network function resource.
+Update the tags for the network function resource.
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Update-AzConnectedNetworkFunctionTag -NetworkFunctionName <String> -ResourceGrou
 ```
 
 ## DESCRIPTION
-update the tags for the network function resource.
+Update the tags for the network function resource.
 
 ## EXAMPLES
 

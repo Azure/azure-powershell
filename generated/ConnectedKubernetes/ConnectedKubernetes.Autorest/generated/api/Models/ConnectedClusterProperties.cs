@@ -173,7 +173,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IArcAgentProfile Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedClusterPropertiesInternal.ArcAgentProfile { get => (this._arcAgentProfile = this._arcAgentProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ArcAgentProfile()); set { {_arcAgentProfile = value;} } }
 
         /// <summary>Internal Acessors for ArcAgentProfileAgentState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedClusterPropertiesInternal.ArcAgentProfileAgentState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IArcAgentProfileInternal)ArcAgentProfile).AgentState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IArcAgentProfileInternal)ArcAgentProfile).AgentState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedClusterPropertiesInternal.ArcAgentProfileAgentState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IArcAgentProfileInternal)ArcAgentProfile).AgentState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IArcAgentProfileInternal)ArcAgentProfile).AgentState = value ?? null; }
 
         /// <summary>Internal Acessors for ConnectivityStatus</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedClusterPropertiesInternal.ConnectivityStatus { get => this._connectivityStatus; set { {_connectivityStatus = value;} } }
@@ -200,13 +200,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IOidcIssuerProfile Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedClusterPropertiesInternal.OidcIssuerProfile { get => (this._oidcIssuerProfile = this._oidcIssuerProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.OidcIssuerProfile()); set { {_oidcIssuerProfile = value;} } }
 
         /// <summary>Internal Acessors for OidcIssuerProfileIssuerUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedClusterPropertiesInternal.OidcIssuerProfileIssuerUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IOidcIssuerProfileInternal)OidcIssuerProfile).IssuerUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IOidcIssuerProfileInternal)OidcIssuerProfile).IssuerUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedClusterPropertiesInternal.OidcIssuerProfileIssuerUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IOidcIssuerProfileInternal)OidcIssuerProfile).IssuerUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IOidcIssuerProfileInternal)OidcIssuerProfile).IssuerUrl = value ?? null; }
 
         /// <summary>Internal Acessors for SecurityProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ISecurityProfile Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedClusterPropertiesInternal.SecurityProfile { get => (this._securityProfile = this._securityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.SecurityProfile()); set { {_securityProfile = value;} } }
 
         /// <summary>Internal Acessors for SecurityProfileWorkloadIdentity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ISecurityProfileWorkloadIdentity Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedClusterPropertiesInternal.SecurityProfileWorkloadIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ISecurityProfileInternal)SecurityProfile).WorkloadIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ISecurityProfileInternal)SecurityProfile).WorkloadIdentity = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ISecurityProfileWorkloadIdentity Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedClusterPropertiesInternal.SecurityProfileWorkloadIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ISecurityProfileInternal)SecurityProfile).WorkloadIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ISecurityProfileInternal)SecurityProfile).WorkloadIdentity = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for TotalCoreCount</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedClusterPropertiesInternal.TotalCoreCount { get => this._totalCoreCount; set { {_totalCoreCount = value;} } }

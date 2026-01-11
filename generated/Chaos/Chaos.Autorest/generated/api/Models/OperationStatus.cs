@@ -53,22 +53,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Message; }
 
         /// <summary>Internal Acessors for AdditionalInfo</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).AdditionalInfo = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).AdditionalInfo = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Error</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal.Error { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Error = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal.Error { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Error = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IErrorResponseInternal)__errorResponse).Target = value ?? null; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

@@ -61,22 +61,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentityInternal)Identity).Type = value ?? null; }
 
         /// <summary>Internal Acessors for Authentication</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesAuthentication Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IPatchableCustomLocationsInternal.Authentication { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).Authentication; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).Authentication = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesAuthentication Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IPatchableCustomLocationsInternal.Authentication { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).Authentication; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).Authentication = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentity Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IPatchableCustomLocationsInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Identity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IPatchableCustomLocationsInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IPatchableCustomLocationsInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IPatchableCustomLocationsInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IPatchableCustomLocationsInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationProperties Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IPatchableCustomLocationsInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.CustomLocationProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IPatchableCustomLocationsInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IPatchableCustomLocationsInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Kubernetes namespace that will be created on the specified cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Origin(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PropertyOrigin.Inlined)]

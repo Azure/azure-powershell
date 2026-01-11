@@ -1,6 +1,6 @@
 ---
 Module Name: Az.EmailService
-Module Guid: 21bdebd2-08fb-474b-9b85-a6b7415bd1f2
+Module Guid: c687a653-aef1-42e8-9ba0-cb6ade82accc
 Download Help Link: https://learn.microsoft.com/powershell/module/az.emailservice
 Help Version: 1.0.0.0
 Locale: en-US
@@ -24,7 +24,7 @@ Get a valid sender username for a domains resource.
 Initiate verification of DNS record.
 
 ### [New-AzEmailService](New-AzEmailService.md)
-create a new EmailService or create an existing EmailService.
+Create a new EmailService or create an existing EmailService.
 
 ### [New-AzEmailServiceDomain](New-AzEmailServiceDomain.md)
 Add a new Domains resource under the parent EmailService resource or create an existing Domains resource.

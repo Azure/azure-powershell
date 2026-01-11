@@ -34,16 +34,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models
         Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpManifestProperties Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpManifestInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.CustomRpManifestProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpManifestInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpManifestPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpManifestPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpManifestInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpManifestPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpManifestPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceInternal)__resource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceInternal)__resource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceInternal)__resource).Type = value ?? null; }
 
         /// <summary>Resource name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Origin(Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.PropertyOrigin.Inherited)]

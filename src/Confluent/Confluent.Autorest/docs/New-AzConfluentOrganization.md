@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConfluentOrganization
 
 ## SYNOPSIS
-create Organization resource
+Create Organization resource
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ New-AzConfluentOrganization -Name <String> -ResourceGroupName <String> -JsonStri
 ```
 
 ## DESCRIPTION
-create Organization resource
+Create Organization resource
 
 ## EXAMPLES
 

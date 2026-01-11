@@ -1,6 +1,6 @@
 ---
 Module Name: Az.CustomProviders
-Module Guid: ada95d58-e126-4685-9380-6e88db6da852
+Module Guid: 2df267bf-74df-49b5-b3ca-17edebeab816
 Download Help Link: https://learn.microsoft.com/powershell/module/az.customproviders
 Help Version: 1.0.0.0
 Locale: en-US
@@ -18,10 +18,10 @@ Gets the custom resource provider manifest.
 Get an association.
 
 ### [New-AzCustomProvider](New-AzCustomProvider.md)
-create the custom resource provider.
+Create the custom resource provider.
 
 ### [New-AzCustomProviderAssociation](New-AzCustomProviderAssociation.md)
-create an association.
+Create an association.
 
 ### [Remove-AzCustomProvider](Remove-AzCustomProvider.md)
 Deletes the custom resource provider.
@@ -30,9 +30,9 @@ Deletes the custom resource provider.
 Delete an association.
 
 ### [Update-AzCustomProvider](Update-AzCustomProvider.md)
-update an existing custom resource provider.
+Update an existing custom resource provider.
 The only value that can be updated via PATCH currently is the tags.
 
 ### [Update-AzCustomProviderAssociation](Update-AzCustomProviderAssociation.md)
-update an association.
+Update an association.
 

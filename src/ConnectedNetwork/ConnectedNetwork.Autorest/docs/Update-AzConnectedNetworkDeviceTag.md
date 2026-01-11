@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedNetworkDeviceTag
 
 ## SYNOPSIS
-update device tags.
+Update device tags.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzConnectedNetworkDeviceTag -DeviceName <String> -ResourceGroupName <Stri
 ```
 
 ## DESCRIPTION
-update device tags.
+Update device tags.
 
 ## EXAMPLES
 

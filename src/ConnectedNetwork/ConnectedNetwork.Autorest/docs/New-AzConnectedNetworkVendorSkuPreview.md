@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedNetworkVendorSkuPreview
 
 ## SYNOPSIS
-create preview information of a vendor sku.
+Create preview information of a vendor sku.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ New-AzConnectedNetworkVendorSkuPreview -PreviewSubscription <String> -SkuName <S
 ```
 
 ## DESCRIPTION
-create preview information of a vendor sku.
+Create preview information of a vendor sku.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedNetworkVendor
 
 ## SYNOPSIS
-create a vendor.
+Create a vendor.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ New-AzConnectedNetworkVendor -Name <String> -JsonString <String> [-SubscriptionI
 ```
 
 ## DESCRIPTION
-create a vendor.
+Create a vendor.
 
 ## EXAMPLES
 

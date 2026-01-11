@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedVMwareVCenter
 
 ## SYNOPSIS
-API to Update certain properties of the vCenter resource.
+API to update certain properties of the vCenter resource.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzConnectedVMwareVCenter -Name <String> -ResourceGroupName <String> -Json
 ```
 
 ## DESCRIPTION
-API to Update certain properties of the vCenter resource.
+API to update certain properties of the vCenter resource.
 
 ## EXAMPLES
 

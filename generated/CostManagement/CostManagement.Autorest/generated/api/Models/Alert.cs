@@ -147,22 +147,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IProxyResourceInternal)__proxyResource).Id; }
 
         /// <summary>Internal Acessors for Definition</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAlertPropertiesDefinition Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAlertInternal.Definition { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAlertPropertiesInternal)Property).Definition; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAlertPropertiesInternal)Property).Definition = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAlertPropertiesDefinition Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAlertInternal.Definition { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAlertPropertiesInternal)Property).Definition; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAlertPropertiesInternal)Property).Definition = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAlertPropertiesDetails Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAlertInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAlertPropertiesInternal)Property).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAlertPropertiesInternal)Property).Detail = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAlertPropertiesDetails Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAlertInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAlertPropertiesInternal)Property).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAlertPropertiesInternal)Property).Detail = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAlertProperties Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IAlertInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.AlertProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IProxyResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IProxyResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IProxyResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IProxyResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IProxyResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IProxyResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IProxyResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IProxyResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IProxyResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IProxyResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IProxyResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IProxyResourceInternal)__proxyResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IProxyResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IProxyResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IProxyResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IProxyResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IProxyResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IProxyResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>dateTime in which alert was last modified</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Inlined)]

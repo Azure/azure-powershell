@@ -16,41 +16,41 @@ Initiate verification of DNS record.
 ```
 Invoke-AzEmailServiceInitiateDomainVerification -DomainName <String> -EmailServiceName <String>
  -ResourceGroupName <String> -VerificationType <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Initiate
 ```
 Invoke-AzEmailServiceInitiateDomainVerification -DomainName <String> -EmailServiceName <String>
  -ResourceGroupName <String> -Parameter <IVerificationParameter> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InitiateViaIdentity
 ```
 Invoke-AzEmailServiceInitiateDomainVerification -InputObject <IEmailServiceIdentity>
- -Parameter <IVerificationParameter> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -Parameter <IVerificationParameter> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### InitiateViaIdentityEmailService
 ```
 Invoke-AzEmailServiceInitiateDomainVerification -DomainName <String>
  -EmailServiceInputObject <IEmailServiceIdentity> -Parameter <IVerificationParameter>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InitiateViaIdentityEmailServiceExpanded
 ```
 Invoke-AzEmailServiceInitiateDomainVerification -DomainName <String>
  -EmailServiceInputObject <IEmailServiceIdentity> -VerificationType <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InitiateViaIdentityExpanded
 ```
 Invoke-AzEmailServiceInitiateDomainVerification -InputObject <IEmailServiceIdentity>
- -VerificationType <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -VerificationType <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -58,14 +58,14 @@ Invoke-AzEmailServiceInitiateDomainVerification -InputObject <IEmailServiceIdent
 ```
 Invoke-AzEmailServiceInitiateDomainVerification -DomainName <String> -EmailServiceName <String>
  -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InitiateViaJsonString
 ```
 Invoke-AzEmailServiceInitiateDomainVerification -DomainName <String> -EmailServiceName <String>
  -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -230,6 +230,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

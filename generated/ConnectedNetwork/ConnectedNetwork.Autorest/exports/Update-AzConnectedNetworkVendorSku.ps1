@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-update a sku.
+Update a sku.
 This operation can take up to 2 hours to complete.
 This is expected service behavior.
 .Description
-update a sku.
+Update a sku.
 This operation can take up to 2 hours to complete.
 This is expected service behavior.
 .Example
@@ -262,8 +262,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedNetworkVendor
 
 ## SYNOPSIS
-update a vendor.
+Update a vendor.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Update-AzConnectedNetworkVendor -InputObject <IConnectedNetworkIdentity> [-Defau
 ```
 
 ## DESCRIPTION
-update a vendor.
+Update a vendor.
 
 ## EXAMPLES
 

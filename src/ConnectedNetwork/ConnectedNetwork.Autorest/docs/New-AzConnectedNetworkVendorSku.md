@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedNetworkVendorSku
 
 ## SYNOPSIS
-create a sku.
+Create a sku.
 This operation can take up to 2 hours to complete.
 This is expected service behavior.
 
@@ -49,7 +49,7 @@ New-AzConnectedNetworkVendorSku -SkuName <String> -VendorName <String> -JsonStri
 ```
 
 ## DESCRIPTION
-create a sku.
+Create a sku.
 This operation can take up to 2 hours to complete.
 This is expected service behavior.
 

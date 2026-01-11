@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a Capability resource that extends a Target resource.</summary>
+    /// <summary>update a Capability resource that extends a Target resource.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}/capabilities/{capabilityName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}/capabilities/{capabilityName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzChaosCapability_UpdateViaIdentityTargetExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapability))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.Description(@"Update a Capability resource that extends a Target resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.Description(@"update a Capability resource that extends a Target resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.Generated]
     public partial class UpdateAzChaosCapability_UpdateViaIdentityTargetExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.IEventListener,
