@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the specified Collector Policy tags.
+Update the specified Collector Policy tags.
 .Description
-update the specified Collector Policy tags.
+Update the specified Collector Policy tags.
 .Example
 Update-AzNetworkFunctionCollectorPolicyTag -collectorpolicyname cp1 -azuretrafficcollectorname atc -resourcegroupname rg1 | Format-List
 
@@ -180,8 +180,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

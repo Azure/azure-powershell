@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the specified Azure Traffic Collector tags.
+Update the specified Azure Traffic Collector tags.
 .Description
-update the specified Azure Traffic Collector tags.
+Update the specified Azure Traffic Collector tags.
 .Example
 Update-AzNetworkFunctionTrafficCollectorTag -azuretrafficcollectorname atc -resourcegroupname rg1 | Format-List
 
@@ -157,8 +157,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

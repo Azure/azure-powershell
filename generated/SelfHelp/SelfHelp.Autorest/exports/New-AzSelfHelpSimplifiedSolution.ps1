@@ -16,13 +16,13 @@
 
 <#
 .Synopsis
-create a simplified Solutions for the specific Azure resource or subscription using the inputs ‘solutionId and requiredInputs’ from discovery solutions.
+Create a simplified Solutions for the specific Azure resource or subscription using the inputs ‘solutionId and requiredInputs’ from discovery solutions.
 In the absence of the ‘Parameters’ it is likely that some of the simplified Solutions might fail execution, and you might see an empty response.
 <br/><br/> <b>Note:</b>  <br/>1.
 ‘requiredInputs’ from Discovery solutions response must be passed via ‘parameters’ in the request body of simplified Solutions API.
 <br/>
 .Description
-create a simplified Solutions for the specific Azure resource or subscription using the inputs ‘solutionId and requiredInputs’ from discovery solutions.
+Create a simplified Solutions for the specific Azure resource or subscription using the inputs ‘solutionId and requiredInputs’ from discovery solutions.
 In the absence of the ‘Parameters’ it is likely that some of the simplified Solutions might fail execution, and you might see an empty response.
 <br/><br/> <b>Note:</b>  <br/>1.
 ‘requiredInputs’ from Discovery solutions response must be passed via ‘parameters’ in the request body of simplified Solutions API.
@@ -185,8 +185,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

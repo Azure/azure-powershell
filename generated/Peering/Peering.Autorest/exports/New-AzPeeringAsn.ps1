@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new peer ASN or create an existing peer ASN with the specified name under the given subscription.
+Create a new peer ASN or create an existing peer ASN with the specified name under the given subscription.
 .Description
-create a new peer ASN or create an existing peer ASN with the specified name under the given subscription.
+Create a new peer ASN or create an existing peer ASN with the specified name under the given subscription.
 .Example
 $contactDetail = New-AzPeeringContactDetailObject -Email "abc@xyz.com" -Phone 1234567890 -Role "Noc"
 $PeerContactList = ,$contactDetail
@@ -137,8 +137,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

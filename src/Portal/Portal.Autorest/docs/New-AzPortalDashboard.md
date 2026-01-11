@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPortalDashboard
 
 ## SYNOPSIS
-create a Dashboard.
+Create a Dashboard.
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ New-AzPortalDashboard -Name <String> -ResourceGroupName <String> -JsonString <St
 ```
 
 ## DESCRIPTION
-create a Dashboard.
+Create a Dashboard.
 
 ## EXAMPLES
 
@@ -83,7 +83,8 @@ Content           : {"id":"/subscriptions/00000000-0000-0000-0000-000000000000/r
 Headers           : {[Content-Length, 1234], [Content-Type, application/json; charset=utf-8], [Date, Wed, 01 Jan 2025 00:00:00 GMT]}
 ```
 
-Use this workaround when `New-AzPortalDashboard` succeeds but the dashboard fails to render with "Dashboard not found" error. This issue is with the underlying REST API and this method provides a reliable alternative.
+Use this workaround when `New-AzPortalDashboard` succeeds but the dashboard fails to render with "Dashboard not found" error.
+This issue is with the underlying REST API and this method provides a reliable alternative.
 
 ## PARAMETERS
 

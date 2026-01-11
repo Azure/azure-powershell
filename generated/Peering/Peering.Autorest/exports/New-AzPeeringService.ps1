@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new peering service or create an existing peering with the specified name under the given subscription and resource group.
+Create a new peering service or create an existing peering with the specified name under the given subscription and resource group.
 .Description
-create a new peering service or create an existing peering with the specified name under the given subscription and resource group.
+Create a new peering service or create an existing peering with the specified name under the given subscription and resource group.
 .Example
 New-AzPeeringService -Name TestPeeringService -ResourceGroupName DemoRG -Location "East US 2" -PeeringServiceLocation Georgia -PeeringServiceProvider MicrosoftEdge -ProviderPrimaryPeeringLocation Atlanta
 
@@ -157,8 +157,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

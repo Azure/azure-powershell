@@ -1,6 +1,6 @@
 ---
 Module Name: Az.NetworkFunction
-Module Guid: 8e269219-9c00-4745-a2e9-4f38cf2648ea
+Module Guid: 34ac3b0e-1cff-4094-9f3f-a74248a68908
 Download Help Link: https://learn.microsoft.com/powershell/module/az.networkfunction
 Help Version: 1.0.0.0
 Locale: en-US
@@ -21,7 +21,7 @@ Gets the specified Azure Traffic Collector in a specified resource group
 Creates or updates a Collector Policy resource
 
 ### [New-AzNetworkFunctionTrafficCollector](New-AzNetworkFunctionTrafficCollector.md)
-create a Azure Traffic Collector resource
+Create a Azure Traffic Collector resource
 
 ### [Remove-AzNetworkFunctionCollectorPolicy](Remove-AzNetworkFunctionCollectorPolicy.md)
 Deletes a specified Collector Policy resource.
@@ -33,11 +33,11 @@ Deletes a specified Azure Traffic Collector resource.
 Creates or updates a Collector Policy resource
 
 ### [Update-AzNetworkFunctionCollectorPolicyTag](Update-AzNetworkFunctionCollectorPolicyTag.md)
-update the specified Collector Policy tags.
+Update the specified Collector Policy tags.
 
 ### [Update-AzNetworkFunctionTrafficCollector](Update-AzNetworkFunctionTrafficCollector.md)
 Creates or updates a Azure Traffic Collector resource
 
 ### [Update-AzNetworkFunctionTrafficCollectorTag](Update-AzNetworkFunctionTrafficCollectorTag.md)
-update the specified Azure Traffic Collector tags.
+Update the specified Azure Traffic Collector tags.
 

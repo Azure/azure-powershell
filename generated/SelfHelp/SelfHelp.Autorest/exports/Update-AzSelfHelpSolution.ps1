@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the requiredInputs or additional information needed to execute the solution
+Update the requiredInputs or additional information needed to execute the solution
 .Description
-update the requiredInputs or additional information needed to execute the solution
+Update the requiredInputs or additional information needed to execute the solution
 .Example
 $parameters = [ordered]@{ 
         "SearchText" = "Can not Search" 
@@ -183,8 +183,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

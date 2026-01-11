@@ -138,8 +138,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -227,11 +226,24 @@ end {
 
 <#
 .Synopsis
-create a Dashboard.
+Create a Dashboard.
 .Description
-create a Dashboard.
+Create a Dashboard.
 .Example
 New-AzPortalDashboard -DashboardPath .\resources\dash1.json -ResourceGroupName mydash-rg -DashboardName my-dashboard03
+.Example
+$SubscriptionId = (Get-AzContext).Subscription.Id
+$ResourceGroupName = 'mydash-rg'
+$DashboardName = 'my-dashboard03'
+$DashboardPath = ".\resources\dash1.json"
+$Location = "East US"
+$ApiVersion = "2022-12-01-preview"
+$Dashboard = Get-Content -Path $DashboardPath -Raw | ConvertFrom-Json
+$Payload = @{
+    properties = $Dashboard.properties
+    location = $Location
+} | ConvertTo-Json -Depth 10
+Invoke-AzRestMethod -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ResourceProviderName "Microsoft.Portal" -ResourceType "dashboards" -Name $DashboardName -ApiVersion $ApiVersion -Method PUT -Payload $Payload
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard
@@ -410,8 +422,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -625,8 +636,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -712,9 +722,9 @@ end {
 
 <#
 .Synopsis
-update an existing Dashboard.
+Update an existing Dashboard.
 .Description
-update an existing Dashboard.
+Update an existing Dashboard.
 .Example
 Update-AzPortalDashboard -ResourceGroupName my-rg -Name dashbase03 -Tag @{'hidden-title'="My Dashboard Title"; NewTag="NewValue"}
 .Example
@@ -883,8 +893,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1065,8 +1074,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

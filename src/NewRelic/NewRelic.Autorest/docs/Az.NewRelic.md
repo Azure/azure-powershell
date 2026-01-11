@@ -1,6 +1,6 @@
 ---
 Module Name: Az.NewRelic
-Module Guid: 9594ee80-6c29-41b6-a615-e8689b5ae0dd
+Module Guid: f1f46d24-302b-4b40-8849-a63236071cfa
 Download Help Link: https://learn.microsoft.com/powershell/module/az.newrelic
 Help Version: 1.0.0.0
 Locale: en-US
@@ -63,7 +63,7 @@ Returns the latest SaaS linked to the newrelic organization of the underlying mo
 Links a new SaaS to the newrelic organization of the underlying monitor.
 
 ### [Invoke-AzNewRelicResubscribeMonitor](Invoke-AzNewRelicResubscribeMonitor.md)
-Resubscribes the New Relic Organization of the underlying Monitor Resource to be billed by Azure Marketplace
+Resubscribes the New Relic Organization of the underline Monitor Resource to be billed by Azure Marketplace
 
 ### [New-AzNewRelicFilteringTagObject](New-AzNewRelicFilteringTagObject.md)
 Create an in-memory object for FilteringTag.
