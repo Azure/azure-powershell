@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new App or update an exiting App.
+Create a new App or update an exiting App.
 .Description
-create a new App or update an exiting App.
+Create a new App or update an exiting App.
 .Example
 New-AzSpringCloudApp -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -Name tools
 
@@ -227,8 +227,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

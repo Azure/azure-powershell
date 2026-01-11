@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update custom domain of one lifecycle application.
+Update custom domain of one lifecycle application.
 .Description
-update custom domain of one lifecycle application.
+Update custom domain of one lifecycle application.
 .Example
 Update-AzSpringCloudAppCustomDomain -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName gateway -Name springcloud-service.azuremicroservices.io
 .Example
@@ -273,8 +273,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

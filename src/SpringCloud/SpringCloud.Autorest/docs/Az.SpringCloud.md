@@ -1,6 +1,6 @@
 ---
 Module Name: Az.SpringCloud
-Module Guid: bced8d1c-4a71-4435-b0cd-b1f90ea30349
+Module Guid: 5f9dffc9-d5ec-4327-a531-4727263a9b96
 Download Help Link: https://learn.microsoft.com/powershell/module/az.springcloud
 Help Version: 1.0.0.0
 Locale: en-US
@@ -81,19 +81,19 @@ Lists all of the available skus of the Microsoft.AppPlatform provider.
 List test keys for a Service.
 
 ### [New-AzSpringCloud](New-AzSpringCloud.md)
-create a new Service or update an exiting Service.
+Create a new Service or update an exiting Service.
 
 ### [New-AzSpringCloudApp](New-AzSpringCloudApp.md)
-create a new App or update an exiting App.
+Create a new App or update an exiting App.
 
 ### [New-AzSpringCloudAppBinding](New-AzSpringCloudAppBinding.md)
-create a new Binding or create an exiting Binding.
+Create a new Binding or create an exiting Binding.
 
 ### [New-AzSpringCloudAppCustomDomain](New-AzSpringCloudAppCustomDomain.md)
-create custom domain of one lifecycle application.
+Create custom domain of one lifecycle application.
 
 ### [New-AzSpringCloudAppDeployment](New-AzSpringCloudAppDeployment.md)
-create a new Deployment or create an exiting Deployment.
+Create a new Deployment or create an exiting Deployment.
 
 ### [New-AzSpringCloudAppDeploymentBuildResultObject](New-AzSpringCloudAppDeploymentBuildResultObject.md)
 Create an in-memory object for BuildResultUserSourceInfo.
@@ -111,7 +111,7 @@ Create an in-memory object for SourceUploadedUserSourceInfo.
 Create an in-memory object for LoadedCertificate.
 
 ### [New-AzSpringCloudBuildpackBinding](New-AzSpringCloudBuildpackBinding.md)
-create a buildpack binding.
+Create a buildpack binding.
 
 ### [New-AzSpringCloudBuildpackObject](New-AzSpringCloudBuildpackObject.md)
 Create an in-memory object for BuildpackProperties.
@@ -120,16 +120,16 @@ Create an in-memory object for BuildpackProperties.
 Create an in-memory object for BuildpacksGroupProperties.
 
 ### [New-AzSpringCloudBuildServiceAgentPool](New-AzSpringCloudBuildServiceAgentPool.md)
-update build service agent pool.
+Update build service agent pool.
 
 ### [New-AzSpringCloudBuildServiceBuilder](New-AzSpringCloudBuildServiceBuilder.md)
-create a KPack builder.
+Create a KPack builder.
 
 ### [New-AzSpringCloudCertificate](New-AzSpringCloudCertificate.md)
-create certificate resource.
+Create certificate resource.
 
 ### [New-AzSpringCloudConfigurationService](New-AzSpringCloudConfigurationService.md)
-create the default Application Configuration Service or create the existing Application Configuration Service.
+Create the default Application Configuration Service or create the existing Application Configuration Service.
 
 ### [New-AzSpringCloudConfigurationServiceGitRepositoryObject](New-AzSpringCloudConfigurationServiceGitRepositoryObject.md)
 Create an in-memory object for ConfigurationServiceGitRepository.
@@ -144,7 +144,7 @@ Create an in-memory object for GitPatternRepository.
 Create an in-memory object for KeyVaultCertificateProperties.
 
 ### [New-AzSpringCloudRegistry](New-AzSpringCloudRegistry.md)
-create the default Service Registry or create the existing Service Registry.
+Create the default Service Registry or create the existing Service Registry.
 
 ### [New-AzSpringCloudTestKey](New-AzSpringCloudTestKey.md)
 Regenerate a test key for a Service.
@@ -213,29 +213,29 @@ Set existing Deployment under the app as active
 Operation to update an exiting Binding.
 
 ### [Update-AzSpringCloudAppCustomDomain](Update-AzSpringCloudAppCustomDomain.md)
-update custom domain of one lifecycle application.
+Update custom domain of one lifecycle application.
 
 ### [Update-AzSpringCloudAppDeployment](Update-AzSpringCloudAppDeployment.md)
 Operation to update an exiting Deployment.
 
 ### [Update-AzSpringCloudBuildpackBinding](Update-AzSpringCloudBuildpackBinding.md)
-update a buildpack binding.
+Update a buildpack binding.
 
 ### [Update-AzSpringCloudBuildServiceAgentPool](Update-AzSpringCloudBuildServiceAgentPool.md)
-update build service agent pool.
+Update build service agent pool.
 
 ### [Update-AzSpringCloudBuildServiceBuilder](Update-AzSpringCloudBuildServiceBuilder.md)
-update a KPack builder.
+Update a KPack builder.
 
 ### [Update-AzSpringCloudCertificate](Update-AzSpringCloudCertificate.md)
-update certificate resource.
+Update certificate resource.
 
 ### [Update-AzSpringCloudConfigServer](Update-AzSpringCloudConfigServer.md)
-update the config server.
+Update the config server.
 
 ### [Update-AzSpringCloudConfigurationService](Update-AzSpringCloudConfigurationService.md)
-update the default Application Configuration Service or update the existing Application Configuration Service.
+Update the default Application Configuration Service or update the existing Application Configuration Service.
 
 ### [Update-AzSpringCloudMonitoringSetting](Update-AzSpringCloudMonitoringSetting.md)
-update the Monitoring Setting.
+Update the Monitoring Setting.
 

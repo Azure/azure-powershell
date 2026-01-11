@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVoiceServicesCommunicationsTestLine
 
 ## SYNOPSIS
-create a TestLine
+Create a TestLine
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ New-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayName <String> -N
 ```
 
 ## DESCRIPTION
-create a TestLine
+Create a TestLine
 
 ## EXAMPLES
 

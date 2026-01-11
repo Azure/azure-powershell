@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzServiceLinkerConfigurationForContainerApp
 
 ## SYNOPSIS
-list source configurations for a linker in container app.
+List source configurations for a linker in container app.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Get-AzServiceLinkerConfigurationForContainerApp -LinkerName <String> -ContainerA
 ```
 
 ## DESCRIPTION
-list source configurations for a linker in container app.
+List source configurations for a linker in container app.
 
 ## EXAMPLES
 

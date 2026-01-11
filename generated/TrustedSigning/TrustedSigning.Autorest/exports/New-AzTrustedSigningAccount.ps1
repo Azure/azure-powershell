@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a trusted Signing Account.
+Create a trusted Signing Account.
 .Description
-create a trusted Signing Account.
+Create a trusted Signing Account.
 .Example
 New-AzTrustedSigningAccount -AccountName test -ResourceGroupName rg-test -Location eastus -SkuName Basic
 .Example
@@ -160,8 +160,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

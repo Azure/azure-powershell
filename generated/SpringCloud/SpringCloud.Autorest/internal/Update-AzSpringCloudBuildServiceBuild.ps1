@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a KPack build.
+Update a KPack build.
 .Description
-update a KPack build.
+Update a KPack build.
 .Example
 {{ Add code here }}
 .Example

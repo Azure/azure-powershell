@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime
     /// The IContext Interface defines the communication mechanism for input customization.
     /// </summary>
     /// <remarks>
-    /// In the context, we will have client, pipeline, PSBoundParamters, default EventListener, Cancellation.
+    /// In the context, we will have client, pipeline, PSBoundParameters, default EventListener, Cancellation.
     /// </remarks>
     public interface IContext
     {

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.TrustedSigning
-Module Guid: 12df3fe9-da2f-40ef-b520-aa2ad8aee1c1
+Module Guid: 56fb6894-a03f-4da1-bc3a-2c53eec1f4ab
 Download Help Link: https://learn.microsoft.com/powershell/module/az.trustedsigning
 Help Version: 1.0.0.0
 Locale: en-US
@@ -18,10 +18,10 @@ Get a trusted Signing Account.
 Get details of a certificate profile.
 
 ### [New-AzTrustedSigningAccount](New-AzTrustedSigningAccount.md)
-create a trusted Signing Account.
+Create a trusted Signing Account.
 
 ### [New-AzTrustedSigningCertificateProfile](New-AzTrustedSigningCertificateProfile.md)
-create a certificate profile.
+Create a certificate profile.
 
 ### [Remove-AzTrustedSigningAccount](Remove-AzTrustedSigningAccount.md)
 Delete a trusted signing account.
@@ -33,5 +33,5 @@ Delete a certificate profile.
 Checks that the trusted signing account name is valid and is not already in use.
 
 ### [Update-AzTrustedSigningAccount](Update-AzTrustedSigningAccount.md)
-update a trusted signing account.
+Update a trusted signing account.
 

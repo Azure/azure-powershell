@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-list source configurations for a linker in container app.
+List source configurations for a linker in container app.
 .Description
-list source configurations for a linker in container app.
+List source configurations for a linker in container app.
 .Example
 Get-AzServiceLinkerConfigurationForContainerApp -ContainerApp servicelinker-containerapp -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker | Format-List
 
@@ -124,8 +124,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

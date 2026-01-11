@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSpringCloudAppCustomDomain
 
 ## SYNOPSIS
-update custom domain of one lifecycle application.
+Update custom domain of one lifecycle application.
 
 ## SYNTAX
 
@@ -55,7 +55,7 @@ Update-AzSpringCloudAppCustomDomain -AppName <String> -Name <String> -ResourceGr
 ```
 
 ## DESCRIPTION
-update custom domain of one lifecycle application.
+Update custom domain of one lifecycle application.
 
 ## EXAMPLES
 
