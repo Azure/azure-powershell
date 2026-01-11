@@ -47,7 +47,7 @@ https://learn.microsoft.com/powershell/module/az.cdn/start-azfrontdoorcdnprofile
 function Start-AzFrontDoorCdnProfilePrepareMigration {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult])]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
@@ -235,8 +235,10 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         Write-Debug("WAF linked to the frontdoor: $allPoliciesWithWAF")
         Write-Debug("Key vault name used for the frontdoor: $allPoliciesWithVault")
 
-        if (${MigrationWebApplicationFirewallMapping}.count -ne $allPoliciesWithWAF.count) {
-            throw "MigrationWebApplicationFirewallMapping parameter instance should be equal to the number of WAF policy instance in the profile."
+        # Check WAF mapping count - handle null/empty parameter correctly
+        $wafMappingCount = if (${MigrationWebApplicationFirewallMapping}) { ${MigrationWebApplicationFirewallMapping}.count } else { 0 }
+        if ($wafMappingCount -ne $allPoliciesWithWAF.count) {
+            throw "MigrationWebApplicationFirewallMapping parameter instance should be equal to the number of WAF policy instance in the profile. Expected: $($allPoliciesWithWAF.count), Provided: $wafMappingCount"
         }
 
         # We should raise a complaint if the customer did not enable managed identity when they have BYOC enabled. 
@@ -249,7 +251,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         Write-Host("The parameters have been validated successfully.")
 
         # Step1: Deal with Waf policy
-        if ($PSBoundParameters.ContainsKey('MigrationWebApplicationFirewallMapping')) {
+        if ($PSBoundParameters.ContainsKey('MigrationWebApplicationFirewallMapping') -and ${MigrationWebApplicationFirewallMapping} -and ${MigrationWebApplicationFirewallMapping}.count -gt 0) {
             Write-Host("Starting to configure WAF policy upgrades.")
 
             $hasManagedRule = $false
@@ -431,6 +433,11 @@ function ValidateIdentityType {
 }
 
 function ValidateWafPolicies{
+    if (-not ${MigrationWebApplicationFirewallMapping} -or ${MigrationWebApplicationFirewallMapping}.count -eq 0) {
+        Write-Debug("No WAF policies to validate.")
+        return
+    }
+    
     if (${MigrationWebApplicationFirewallMapping}.count -gt 0) {
         $wafPolicies = ${MigrationWebApplicationFirewallMapping}
         $theSubId = $wafPolicies[0].MigratedFromId.split("/")[2] 

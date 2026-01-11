@@ -15,12 +15,22 @@ The change need to be committed after this.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> [-SubscriptionId <String>]
- -ClassicResourceReferenceId <String> -ProfileName <String> [-SkuName <String>]
- [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>] [-IdentityType <String>]
+ -ClassicResourceReferenceId <String> -ProfileName <String> [-SkuName <String>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### MigrateExpanded
+```
+Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> [-SubscriptionId <String>]
+ -ClassicResourceReferenceId <String> -ProfileName <String> [-SkuName <String>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentity <Hashtable>]
+ [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -205,7 +215,7 @@ Waf mapping for the migrated profile
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationWebApplicationFirewallMapping[]
-Parameter Sets: (All)
+Parameter Sets: MigrateExpanded
 Aliases:
 
 Required: False

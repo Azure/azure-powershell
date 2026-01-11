@@ -15,21 +15,21 @@ The change need to be committed after this.
 
 ## SYNTAX
 
-### MigrateExpanded (Default)
+### CreateExpanded (Default)
+```
+Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> -ClassicResourceReferenceId <String>
+ -ProfileName <String> [-SubscriptionId <String>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-SkuName <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### MigrateExpanded
 ```
 Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> -ClassicResourceReferenceId <String>
  -ProfileName <String> [-SubscriptionId <String>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentity <Hashtable>]
  [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>] [-SkuName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> -ClassicResourceReferenceId <String>
- -ProfileName <String> [-SubscriptionId <String>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-SkuName <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
