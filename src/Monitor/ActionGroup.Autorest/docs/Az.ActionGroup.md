@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ActionGroup
-Module Guid: c9f47937-c60a-4575-b669-442455ef6728
+Module Guid: b7ca2be8-de7c-4879-b561-cd5e39c3d771
 Download Help Link: https://learn.microsoft.com/powershell/module/az.actiongroup
 Help Version: 1.0.0.0
 Locale: en-US
@@ -20,7 +20,7 @@ This operation is only supported for Email or SMS receivers.
 Get an action group.
 
 ### [New-AzActionGroup](New-AzActionGroup.md)
-create a new action group or create an existing one.
+Create a new action group or create an existing one.
 
 ### [New-AzActionGroupArmRoleReceiverObject](New-AzActionGroupArmRoleReceiverObject.md)
 Create an in-memory object for ArmRoleReceiver.
@@ -62,5 +62,5 @@ Delete an action group.
 Send test notifications to a set of provided receivers
 
 ### [Update-AzActionGroup](Update-AzActionGroup.md)
-update a new action group or update an existing one.
+Update a new action group or update an existing one.
 

@@ -30,21 +30,45 @@ Delete the subscriptions that are being monitored by the Dynatrace monitor resou
 
 ## EXAMPLES
 
-### Example 1: Remove monitoring for a single subscription
+### Example 1: Validate delete parameters (WhatIf)
 ```powershell
-$subId = (Get-AzContext).Subscription.Id
-Remove-AzDynatraceMonitoredSubscription -MonitorName "myDynatraceMonitor" -ResourceGroupName "myResourceGroup" -SubscriptionId $subId -PassThru
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+Remove-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -WhatIf
 ```
 
-Deletes the monitored subscription entry for the specified subscription. PassThru returns true when the deletion succeeds.
+Performs a dry run; this matches the recorded validation step.
 
-### Example 2: Run removal asynchronously as a background job
+### Example 2: Delete monitored subscription (explicit parameters)
 ```powershell
-$subId = "11111111-1111-1111-1111-111111111111"
-Remove-AzDynatraceMonitoredSubscription -MonitorName "myDynatraceMonitor" -ResourceGroupName "myResourceGroup" -SubscriptionId $subId -AsJob
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+Remove-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -Confirm:$false
 ```
 
-Starts the removal operation as a PowerShell job allowing you to continue other tasks while the deletion completes.
+Attempts deletion.
+If the backend is fully provisioned, this should succeed; otherwise you may see `ResourceDeletionFailed`.
+
+### Example 3: Idempotent second delete
+```powershell
+$rg = "myResourceGroup"
+$monitor = "myDynatraceMonitor"
+Remove-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -Confirm:$false -ErrorAction SilentlyContinue
+```
+
+Safe to run again; if already deleted, no change occurs.
+
+### Example 4: Handle transient backend errors
+```powershell
+$rg = "myResourceGroup"; $monitor = "myDynatraceMonitor"
+try {
+	Remove-AzDynatraceMonitoredSubscription -ResourceGroupName $rg -MonitorName $monitor -Confirm:$false
+} catch {
+	Write-Warning "Deletion failed: $($_.Exception.Message). Retry after confirming the monitored subscription was fully created."
+}
+```
+
+Provides a pattern for handling intermittent service errors gracefully.
 
 ## PARAMETERS
 

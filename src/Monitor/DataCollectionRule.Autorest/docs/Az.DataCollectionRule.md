@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DataCollectionRule
-Module Guid: cdb86053-4116-4141-b74b-b90f88b83813
+Module Guid: e9b0129c-54c9-49a9-a29d-4f8a552f0336
 Download Help Link: https://learn.microsoft.com/powershell/module/az.datacollectionrule
 Help Version: 1.0.0.0
 Locale: en-US
@@ -21,13 +21,13 @@ Returns the specified data collection rule.
 Returns the specified association.
 
 ### [New-AzDataCollectionEndpoint](New-AzDataCollectionEndpoint.md)
-create a data collection endpoint.
+Create a data collection endpoint.
 
 ### [New-AzDataCollectionRule](New-AzDataCollectionRule.md)
-create a data collection rule.
+Create a data collection rule.
 
 ### [New-AzDataCollectionRuleAssociation](New-AzDataCollectionRuleAssociation.md)
-create an association.
+Create an association.
 
 ### [New-AzDataFlowObject](New-AzDataFlowObject.md)
 Create an in-memory object for DataFlow.
@@ -87,11 +87,11 @@ Deletes a data collection rule.
 Deletes an association.
 
 ### [Update-AzDataCollectionEndpoint](Update-AzDataCollectionEndpoint.md)
-update a data collection endpoint.
+Update a data collection endpoint.
 
 ### [Update-AzDataCollectionRule](Update-AzDataCollectionRule.md)
 Update a data collection rule.
 
 ### [Update-AzDataCollectionRuleAssociation](Update-AzDataCollectionRuleAssociation.md)
-update an association.
+Update an association.
 

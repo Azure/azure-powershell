@@ -1,5 +1,5 @@
 ---
-external help file: Az.PaloAltoNetworks-help.xml
+external help file:
 Module Name: Az.PaloAltoNetworks
 online version: https://learn.microsoft.com/powershell/module/az.paloaltonetworks/get-azpaloaltonetworkspaloaltonetworkscloudngfwoperationproductserialnumberstatus
 schema: 2.0.0
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumberStatus
 
 ## SYNOPSIS
-Get Product serial number status
+
 
 ## SYNTAX
 
@@ -18,7 +18,6 @@ Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumberStatu
 ```
 
 ## DESCRIPTION
-Get Product serial number status
 
 
 ## EXAMPLES
