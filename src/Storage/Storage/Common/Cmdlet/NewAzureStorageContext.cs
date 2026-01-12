@@ -191,7 +191,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             set { isOAuth = value; }
         }
 
-        private bool isOAuth = true;
+        private bool isOAuth = false;
 
         private const string ProtocolHelpMessage = "Protocol specification (HTTP or HTTPS), default is HTTPS";
         [Parameter(HelpMessage = ProtocolHelpMessage,
@@ -635,12 +635,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                     account = GetAnonymousStorageAccountFromAzureEnvironment(StorageAccountName, useHttps, environmentName);
                     break;
                 case OAuthParameterSet:
+                    this.isOAuth = true;
                     account = GetStorageAccountByOAuth(StorageAccountName, useHttps, storageEndpoint);
                     break;
                 case OAuthServiceEndpointParameterSet:
+                    this.isOAuth = true;
                     account = GetStorageAccountByOAuth(this.BlobEndpoint, this.QueueEndpoint, this.FileEndpoint, this.TableEndpoint);
                     break;
                 case OAuthEnvironmentParameterSet:
+                    this.isOAuth = true;
                     account = GetStorageAccountByOAuthFromAzureEnvironment(StorageAccountName, useHttps, environmentName);
                     break;
                 default:

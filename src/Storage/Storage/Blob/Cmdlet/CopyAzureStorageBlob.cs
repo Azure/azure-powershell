@@ -458,14 +458,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         Track2Models.PageBlobCreateOptions pageBlobCreateOptions = new Track2Models.PageBlobCreateOptions();
                         pageBlobCreateOptions.HttpHeaders = httpHeaders;
                         pageBlobCreateOptions.Metadata = srcProperties.Metadata;
-                        pageBlobCreateOptions.Tags = blobTags ?? null;
+                        pageBlobCreateOptions.Tags = (blobTags is null || blobTags.Count == 0) ? null : blobTags;
 
                         destPageBlob.Create(srcProperties.ContentLength, pageBlobCreateOptions, this.CmdletCancellationToken);
           
                         Track2Models.PageBlobUploadPagesFromUriOptions pageBlobUploadPagesFromUriOptions = new Track2Models.PageBlobUploadPagesFromUriOptions();
                         if (sourceChannel.StorageContext != null && sourceChannel.StorageContext.Track2OauthToken != null)
                         {
-                            string oauthToken = sourceChannel.StorageContext.Track2OauthToken.GetToken(null, this.CmdletCancellationToken).TokenValue;
+                            string oauthToken = sourceChannel.StorageContext.Track2OauthToken.GetToken(new TokenRequestContext(), this.CmdletCancellationToken).Token;
                             pageBlobUploadPagesFromUriOptions.SourceAuthentication = new HttpAuthorization("Bearer", oauthToken);
                         }
 
@@ -488,7 +488,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         Track2Models.AppendBlobCreateOptions appendBlobCreateOptions = new Track2Models.AppendBlobCreateOptions();
                         appendBlobCreateOptions.HttpHeaders = httpHeaders;
                         appendBlobCreateOptions.Metadata = srcProperties.Metadata;
-                        appendBlobCreateOptions.Tags = blobTags ?? null;
+                        appendBlobCreateOptions.Tags = (blobTags is null || blobTags.Count == 0) ? null : blobTags;
 
                         destAppendBlob.Create(appendBlobCreateOptions, this.CmdletCancellationToken);
 
@@ -507,7 +507,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
                             if (sourceChannel.StorageContext != null && sourceChannel.StorageContext.Track2OauthToken != null)
                             {
-                                string oauthToken = sourceChannel.StorageContext.Track2OauthToken.GetToken(null, this.CmdletCancellationToken).TokenValue;
+                                string oauthToken = sourceChannel.StorageContext.Track2OauthToken.GetToken(new TokenRequestContext(), this.CmdletCancellationToken).Token;
                                 appendBlobAppendBlockFromUriOptions.SourceAuthentication = new HttpAuthorization("Bearer", oauthToken);
                             }
 
@@ -534,11 +534,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                             }
                             options.SourceConditions = this.BlobRequestConditions;
                             options.Metadata = srcProperties.Metadata;
-                            options.Tags = blobTags ?? null;
+                            options.Tags = (blobTags is null || blobTags.Count == 0) ? null : blobTags;
 
                             if (sourceChannel.StorageContext != null && sourceChannel.StorageContext.Track2OauthToken != null)
                             {
-                                string oauthToken = sourceChannel.StorageContext.Track2OauthToken.GetToken(null, this.CmdletCancellationToken).TokenValue;
+                                string oauthToken = sourceChannel.StorageContext.Track2OauthToken.GetToken(new TokenRequestContext(), this.CmdletCancellationToken).Token;
                                 options.SourceAuthentication = new HttpAuthorization("Bearer", oauthToken);
                             }
 
@@ -558,7 +558,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         Track2Models.CommitBlockListOptions commitBlockListOptions = new Track2Models.CommitBlockListOptions();
                         commitBlockListOptions.HttpHeaders = httpHeaders;
                         commitBlockListOptions.Metadata = srcProperties.Metadata;
-                        commitBlockListOptions.Tags = blobTags ?? null;
+                        commitBlockListOptions.Tags = (blobTags is null || blobTags.Count == 0) ? null : blobTags;
 
                         if (accesstier != null)
                         {
@@ -580,7 +580,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                             stageBlockOptions.SourceRange = new global::Azure.HttpRange(copyoffset, blocksize);
                             if (sourceChannel.StorageContext != null && sourceChannel.StorageContext.Track2OauthToken != null)
                             {
-                                string oauthToken = sourceChannel.StorageContext.Track2OauthToken.GetToken(null, this.CmdletCancellationToken).TokenValue;
+                                string oauthToken = sourceChannel.StorageContext.Track2OauthToken.GetToken(new TokenRequestContext(), this.CmdletCancellationToken).Token;
                                 stageBlockOptions.SourceAuthentication = new HttpAuthorization("Bearer", oauthToken);
                             }
                             destBlockBlob.StageBlockFromUri(srcUri, id, stageBlockOptions, cancellationToken: this.CmdletCancellationToken);

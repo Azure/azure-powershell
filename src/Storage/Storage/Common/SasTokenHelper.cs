@@ -698,7 +698,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     }
                     else
                     {
-                        sasBuilder = SetBlobPermission(sasBuilder, Permission);
+                        sasBuilder.SetPermissions(Permission, true);
                     }
                 }
             }
@@ -709,7 +709,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     BlobContainerName = containerName,
                     BlobName = blobName,
                 };
-                sasBuilder = SetBlobPermission(sasBuilder, Permission);
+                sasBuilder.SetPermissions(Permission, true);
                 if (StartTime != null)
                 {
                     sasBuilder.StartsOn = StartTime.Value.ToUniversalTime();
@@ -753,53 +753,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 sasBuilder.DelegatedUserObjectId = DelegatedUserObjectId;
             }
-            return sasBuilder;
-        }
-
-        /// <summary>
-        /// Set blob permission to SAS builder
-        /// </summary>
-        public static BlobSasBuilder SetBlobPermission(BlobSasBuilder sasBuilder, string rawPermission)
-        {
-            BlobContainerSasPermissions permission = 0;
-            foreach (char c in rawPermission)
-            {
-                switch (c)
-                {
-                    case 'r':
-                        permission = permission | BlobContainerSasPermissions.Read;
-                        break;
-                    case 'a':
-                        permission = permission | BlobContainerSasPermissions.Add;
-                        break;
-                    case 'c':
-                        permission = permission | BlobContainerSasPermissions.Create;
-                        break;
-                    case 'w':
-                        permission = permission | BlobContainerSasPermissions.Write;
-                        break;
-                    case 'd':
-                        permission = permission | BlobContainerSasPermissions.Delete;
-                        break;
-                    case 'l':
-                        permission = permission | BlobContainerSasPermissions.List;
-                        break;
-                    case 't':
-                        permission = permission | BlobContainerSasPermissions.Tag;
-                        break;
-                    case 'x':
-                        permission = permission | BlobContainerSasPermissions.DeleteBlobVersion;
-                        break;
-                    case 'i':
-                        permission = permission | BlobContainerSasPermissions.SetImmutabilityPolicy;
-                        break;
-                    default:
-                        // Can't convert to permission supported by XSCL, so use raw permission string
-                        sasBuilder.SetPermissions(rawPermission);
-                        return sasBuilder;
-                }
-            }
-            sasBuilder.SetPermissions(permission);
             return sasBuilder;
         }
 
@@ -978,55 +931,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// </summary>
         public static AccountSasBuilder SetAccountPermission(AccountSasBuilder sasBuilder, string rawPermission)
         {
-            AccountSasPermissions permission = 0;
-            foreach (char c in rawPermission)
+            if (!AccountSasPermissions.TryParse(rawPermission, out AccountSasPermissions permission))
             {
-                switch (c)
-                {
-                    case 'r':
-                        permission = permission | AccountSasPermissions.Read;
-                        break;
-                    case 'a':
-                        permission = permission | AccountSasPermissions.Add;
-                        break;
-                    case 'c':
-                        permission = permission | AccountSasPermissions.Create;
-                        break;
-                    case 'w':
-                        permission = permission | AccountSasPermissions.Write;
-                        break;
-                    case 'd':
-                        permission = permission | AccountSasPermissions.Delete;
-                        break;
-                    case 'l':
-                        permission = permission | AccountSasPermissions.List;
-                        break;
-                    case 'u':
-                        permission = permission | AccountSasPermissions.Update;
-                        break;
-                    case 'p':
-                        permission = permission | AccountSasPermissions.Process;
-                        break;
-                    case 't':
-                        permission = permission | AccountSasPermissions.Tag;
-                        break;
-                    case 'f':
-                        permission = permission | AccountSasPermissions.Filter;
-                        break;
-                    case 'x':
-                        permission = permission | AccountSasPermissions.DeleteVersion;
-                        break;
-                    case 'i':
-                        permission = permission | AccountSasPermissions.SetImmutabilityPolicy;
-                        break;
-                    case 'y':
-                        permission = permission | AccountSasPermissions.PermanentDelete;
-                        break;
-                    default:
-                        // Can't convert to permission supported by XSCL, so use raw permission string
-                        sasBuilder.SetPermissions(rawPermission);
-                        return sasBuilder;
-                }
+                // Can't convert to permission supported by XSCL, so use raw permission string
+                sasBuilder.SetPermissions(rawPermission);
+                return sasBuilder;
             }
             sasBuilder.SetPermissions(permission);
             return sasBuilder;
