@@ -13,7 +13,7 @@
     <copyright>Microsoft Corporation. All rights reserved.</copyright>
     <tags>Azure ResourceManager ARM PSModule $(service-name)</tags>
     <dependencies>
-      <dependency id="Az.Accounts" version="2.2.3" />
+      <dependency id="Az.Accounts" version="2.7.5" />
     </dependencies>
   </metadata>
   <files>

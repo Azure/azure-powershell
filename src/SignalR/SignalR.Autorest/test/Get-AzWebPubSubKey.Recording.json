@@ -1,17 +1,63 @@
 {
-  "Get-AzWebPubSubKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/listKeys?api-version=2022-08-01-preview+1": {
+  "Get-AzWebPubSubKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps1/listKeys?api-version=2022-08-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/listKeys?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps1/listKeys?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "9af28bb4-0d9c-4202-aea0-d1465832ad86" ],
+        "CommandName": [ "Get-AzWebPubSubKey" ],
+        "FullCommandName": [ "Get-AzWebPubSubKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.SignalR/2.3.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "9af28bb4-0d9c-4202-aea0-d1465832ad86" ],
+        "x-rp-server-mvid": [ "0895b6bc-4801-4f4f-8fe1-12ae1c9d7162" ],
+        "x-ms-request-id": [ "d4899599-4779-49f8-ba04-932cf6873946" ],
+        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/48b735e1-4375-4341-a186-dfb832cb446e" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "3327db90-8dc2-4208-9219-e52173c0195d" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260112T001724Z:3327db90-8dc2-4208-9219-e52173c0195d" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6FA2D7ACB8574C1C9058F0F0DDDE7A28 Ref B: SG2AA1070302052 Ref C: 2026-01-12T00:17:23Z" ],
+        "Date": [ "Mon, 12 Jan 2026 00:17:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "565" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"primaryKey\":\"REDACTED\",\"secondaryKey\":\"REDACTED\",\"primaryConnectionString\":\"Endpoint=https://azwps1.webpubsub.azure.com;AccessKey=REDACTED;Version=1.0;\",\"secondaryConnectionString\":\"Endpoint=https://azwps1.webpubsub.azure.com;AccessKey=REDACTED;Version=1.0;\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzWebPubSubKey+[NoContext]+ListViaIdentity+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps1?api-version=2022-08-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps1?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "32" ],
-        "x-ms-client-request-id": [ "dda6079a-b4a1-4154-aef6-371c332cffe7" ],
-        "CommandName": [ "Get-AzWebPubSubKey" ],
-        "FullCommandName": [ "Get-AzWebPubSubKey_List" ],
+        "x-ms-client-request-id": [ "4c2a04f8-965c-4a18-a5b4-994b4de5996c" ],
+        "CommandName": [ "Get-AzWebPubSub" ],
+        "FullCommandName": [ "Get-AzWebPubSub_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.7", "Az.SignalR/0.2.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.SignalR/2.3.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -24,80 +70,39 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "dda6079a-b4a1-4154-aef6-371c332cffe7" ],
-        "x-rp-server-mvid": [ "54bef194-19f7-4c41-9b83-6785272e94c3" ],
-        "x-ms-request-id": [ "79518fec-e830-4134-982b-ab708079f72a" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "49106f27-811e-434f-a7a2-7ccfa0958dbe" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20221109T075014Z:49106f27-811e-434f-a7a2-7ccfa0958dbe" ],
-        "Date": [ "Wed, 09 Nov 2022 07:50:13 GMT" ]
+        "x-ms-client-request-id": [ "4c2a04f8-965c-4a18-a5b4-994b4de5996c" ],
+        "x-rp-server-mvid": [ "0895b6bc-4801-4f4f-8fe1-12ae1c9d7162" ],
+        "x-ms-request-id": [ "a04c1b48-f99f-4ea9-81d7-218ab4745631" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
+        "x-ms-correlation-request-id": [ "0f7bcbd1-3f03-4d13-b04a-49072662bbc8" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260112T001725Z:0f7bcbd1-3f03-4d13-b04a-49072662bbc8" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4E8B23E6ED6F43768032CED3A32959D1 Ref B: SG2AA1070302052 Ref C: 2026-01-12T00:17:24Z" ],
+        "Date": [ "Mon, 12 Jan 2026 00:17:24 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "407" ],
+        "Content-Length": [ "1137" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryKey\":\"ziqTVrJDgckFfXFhGOJ7paAIe6DpMFmrUH2dli7CPRU=\",\"secondaryKey\":\"z8hxHJz7gY5/dpZu3H7dpXQg3fob0PBNlEYXsvsw6FA=\",\"primaryConnectionString\":\"Endpoint=https://azwps-1.webpubsub.azure.com;AccessKey=ziqTVrJDgckFfXFhGOJ7paAIe6DpMFmrUH2dli7CPRU=;Version=1.0;\",\"secondaryConnectionString\":\"Endpoint=https://azwps-1.webpubsub.azure.com;AccessKey=z8hxHJz7gY5/dpZu3H7dpXQg3fob0PBNlEYXsvsw6FA=;Version=1.0;\"}",
+      "Content": "{\"sku\":{\"name\":\"Premium_P1\",\"tier\":\"Premium\",\"size\":\"P1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Succeeded\",\"externalIP\":\"20.88.154.147\",\"hostName\":\"azwps1.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"hostNamePrefix\":\"azwps1\",\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps1\",\"name\":\"azwps1\",\"type\":\"Microsoft.SignalRService/WebPubSub\",\"systemData\":{\"createdBy\":\"v-jiasenglaw@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-12T00:12:23.6083649Z\",\"lastModifiedBy\":\"v-jiasenglaw@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-12T00:12:23.6083649Z\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzWebPubSubKey+[NoContext]+ListViaIdentity+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1?api-version=2022-08-01-preview+1": {
+  "Get-AzWebPubSubKey+[NoContext]+ListViaIdentity+$POST+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps1/listKeys?api-version=2022-08-01-preview+2": {
     "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1?api-version=2022-08-01-preview",
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps1/listKeys?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "33" ],
-        "x-ms-client-request-id": [ "9c6712aa-983b-4ff4-9afd-a045f0852265" ],
-        "CommandName": [ "Get-AzWebPubSub" ],
-        "FullCommandName": [ "Get-AzWebPubSub_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.7", "Az.SignalR/0.2.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "9c6712aa-983b-4ff4-9afd-a045f0852265" ],
-        "x-rp-server-mvid": [ "54bef194-19f7-4c41-9b83-6785272e94c3" ],
-        "x-ms-request-id": [ "a6325033-2f63-4155-a736-2a066c2f6ee0" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
-        "x-ms-correlation-request-id": [ "4724e782-0e46-4ee8-b00b-45f31cd523ed" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20221109T075015Z:4724e782-0e46-4ee8-b00b-45f31cd523ed" ],
-        "Date": [ "Wed, 09 Nov 2022 07:50:14 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1131" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Succeeded\",\"externalIP\":\"20.62.134.168\",\"hostName\":\"azwps-1.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"hostNamePrefix\":\"azwps-1\",\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T07:44:43.613864Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T07:44:43.613864Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1\",\"name\":\"azwps-1\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzWebPubSubKey+[NoContext]+ListViaIdentity+$POST+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/listKeys?api-version=2022-08-01-preview+2": {
-    "Request": {
-      "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/listKeys?api-version=2022-08-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "34" ],
-        "x-ms-client-request-id": [ "7be594bc-3da3-4c11-a865-9ccf2390caa2" ],
+        "x-ms-client-request-id": [ "7aaafeff-72b0-43d8-8d0c-4e8e50b082a4" ],
         "CommandName": [ "Az.SignalR\\Get-AzWebPubSubKey" ],
         "FullCommandName": [ "Get-AzWebPubSubKey_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.7", "Az.SignalR/0.2.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.SignalR/2.3.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -110,21 +115,24 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "7be594bc-3da3-4c11-a865-9ccf2390caa2" ],
-        "x-rp-server-mvid": [ "54bef194-19f7-4c41-9b83-6785272e94c3" ],
-        "x-ms-request-id": [ "92b18755-2aaf-409f-9bfb-8d5a5848787c" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "b76e71d7-c912-457c-8539-faf669533342" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20221109T075015Z:b76e71d7-c912-457c-8539-faf669533342" ],
-        "Date": [ "Wed, 09 Nov 2022 07:50:14 GMT" ]
+        "x-ms-client-request-id": [ "7aaafeff-72b0-43d8-8d0c-4e8e50b082a4" ],
+        "x-rp-server-mvid": [ "0895b6bc-4801-4f4f-8fe1-12ae1c9d7162" ],
+        "x-ms-request-id": [ "9917fa6b-ad6f-47a0-ab2f-ac930b5f7bfa" ],
+        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/b670890b-a8dc-41a7-9ab6-b1f5502d211d" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "55f6887d-6c83-483b-a174-7c7d3fc28507" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260112T001725Z:55f6887d-6c83-483b-a174-7c7d3fc28507" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A985D922B95949A9925A15DB50125CD3 Ref B: SG2AA1070302052 Ref C: 2026-01-12T00:17:25Z" ],
+        "Date": [ "Mon, 12 Jan 2026 00:17:24 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "407" ],
+        "Content-Length": [ "565" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryKey\":\"ziqTVrJDgckFfXFhGOJ7paAIe6DpMFmrUH2dli7CPRU=\",\"secondaryKey\":\"z8hxHJz7gY5/dpZu3H7dpXQg3fob0PBNlEYXsvsw6FA=\",\"primaryConnectionString\":\"Endpoint=https://azwps-1.webpubsub.azure.com;AccessKey=ziqTVrJDgckFfXFhGOJ7paAIe6DpMFmrUH2dli7CPRU=;Version=1.0;\",\"secondaryConnectionString\":\"Endpoint=https://azwps-1.webpubsub.azure.com;AccessKey=z8hxHJz7gY5/dpZu3H7dpXQg3fob0PBNlEYXsvsw6FA=;Version=1.0;\"}",
+      "Content": "{\"primaryKey\":\"REDACTED\",\"secondaryKey\":\"REDACTED\",\"primaryConnectionString\":\"Endpoint=https://azwps1.webpubsub.azure.com;AccessKey=REDACTED;Version=1.0;\",\"secondaryConnectionString\":\"Endpoint=https://azwps1.webpubsub.azure.com;AccessKey=REDACTED;Version=1.0;\"}",
       "isContentBase64": false
     }
   }
