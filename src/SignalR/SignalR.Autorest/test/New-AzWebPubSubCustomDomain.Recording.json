@@ -1,8 +1,8 @@
 {
-  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview+1": {
+  "New-AzWebPubSubCustomDomain+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/ps-test-rg/providers/Microsoft.SignalRService/WebPubSub/ps-test-wps/customCertificates/pstest-customCert?api-version=2022-08-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"keyVaultBaseUri\": \"https://kvcustomcertificatetest.vault.azure.net/\",\r\n    \"keyVaultSecretName\": \"manual-test\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,21 +18,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "f8597667-3b37-4f2a-9c87-d0f3b26924d7" ],
-        "x-ms-correlation-request-id": [ "f8597667-3b37-4f2a-9c87-d0f3b26924d7" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260108T031938Z:f8597667-3b37-4f2a-9c87-d0f3b26924d7" ],
+        "x-ms-request-id": [ "92167762-5b00-4b9d-afb5-3a821136a1ed" ],
+        "x-ms-correlation-request-id": [ "92167762-5b00-4b9d-afb5-3a821136a1ed" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260112T001942Z:92167762-5b00-4b9d-afb5-3a821136a1ed" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: AAC62E20CBB54FA19D2D0EFC15663C78 Ref B: SG2AA1040513040 Ref C: 2026-01-08T03:19:37Z" ],
-        "Date": [ "Thu, 08 Jan 2026 03:19:38 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2FF28504C4344944A6C6135C9D498D67 Ref B: SG2AA1070302052 Ref C: 2026-01-12T00:19:41Z" ],
+        "Date": [ "Mon, 12 Jan 2026 00:19:42 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "232" ],
+        "Content-Length": [ "102" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.SignalRService/WebPubSub/ps-test-wps\u0027 under resource group \u0027azwps-test-rg2\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "Content": "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group \u0027ps-test-rg\u0027 could not be found.\"}}",
       "isContentBase64": false
     }
   }
