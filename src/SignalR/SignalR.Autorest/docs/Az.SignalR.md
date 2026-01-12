@@ -1,6 +1,6 @@
 ---
 Module Name: Az.SignalR
-Module Guid: e0497096-b2ca-49e7-80be-ed1bfeebb28a
+Module Guid: 67498bcc-d85c-4499-9a60-e03018ac16df
 Download Help Link: https://learn.microsoft.com/powershell/module/az.signalr
 Help Version: 1.0.0.0
 Locale: en-US
