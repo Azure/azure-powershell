@@ -28,7 +28,7 @@ Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> [-Subscr
 Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> [-SubscriptionId <String>]
  -ClassicResourceReferenceId <String> -ProfileName <String> [-SkuName <String>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentity <Hashtable>]
- [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>]
+ -MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -218,7 +218,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationWebApplicationFire
 Parameter Sets: MigrateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
