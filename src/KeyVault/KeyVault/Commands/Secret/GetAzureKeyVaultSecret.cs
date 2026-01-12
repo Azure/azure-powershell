@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Models.Secret;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
@@ -23,6 +24,7 @@ using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
+    [GenericBreakingChangeWithVersion("Secrets that are automatically created and managed by certificates will no longer be returned when listing secrets. These secrets will only be accessible through Get-AzKeyVaultCertificate.", "16.0.0", "7.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSecret", DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVaultSecretIdentityItem), typeof(PSKeyVaultSecret), typeof(PSDeletedKeyVaultSecretIdentityItem), typeof(PSDeletedKeyVaultSecret), typeof(string))]
     public class GetAzureKeyVaultSecret : KeyVaultCmdletBase
