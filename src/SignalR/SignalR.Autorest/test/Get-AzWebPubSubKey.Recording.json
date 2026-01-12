@@ -41,7 +41,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryKey\":\"87yurmyfe5q44NPIopt42IeWRYdgj7bWeSh2Kig1wXzQxodN54uUJQQJ99CAACYeBjFXJ3w3AAAAAWPSvbDq\",\"secondaryKey\":\"9RW0jdIyNmjNe3jnBLMFl6Mr2Cmx4yQrw2mypoCUbARUYu2HO5bGJQQJ99CAACYeBjFXJ3w3AAAAAWPSYnu6\",\"primaryConnectionString\":\"Endpoint=https://azwps1.webpubsub.azure.com;AccessKey=87yurmyfe5q44NPIopt42IeWRYdgj7bWeSh2Kig1wXzQxodN54uUJQQJ99CAACYeBjFXJ3w3AAAAAWPSvbDq;Version=1.0;\",\"secondaryConnectionString\":\"Endpoint=https://azwps1.webpubsub.azure.com;AccessKey=9RW0jdIyNmjNe3jnBLMFl6Mr2Cmx4yQrw2mypoCUbARUYu2HO5bGJQQJ99CAACYeBjFXJ3w3AAAAAWPSYnu6;Version=1.0;\"}",
+      "Content": "{\"primaryKey\":\"REDACTED\",\"secondaryKey\":\"REDACTED\",\"primaryConnectionString\":\"Endpoint=https://azwps1.webpubsub.azure.com;AccessKey=REDACTED;Version=1.0;\",\"secondaryConnectionString\":\"Endpoint=https://azwps1.webpubsub.azure.com;AccessKey=REDACTED;Version=1.0;\"}",
       "isContentBase64": false
     }
   },
@@ -132,7 +132,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryKey\":\"87yurmyfe5q44NPIopt42IeWRYdgj7bWeSh2Kig1wXzQxodN54uUJQQJ99CAACYeBjFXJ3w3AAAAAWPSvbDq\",\"secondaryKey\":\"9RW0jdIyNmjNe3jnBLMFl6Mr2Cmx4yQrw2mypoCUbARUYu2HO5bGJQQJ99CAACYeBjFXJ3w3AAAAAWPSYnu6\",\"primaryConnectionString\":\"Endpoint=https://azwps1.webpubsub.azure.com;AccessKey=87yurmyfe5q44NPIopt42IeWRYdgj7bWeSh2Kig1wXzQxodN54uUJQQJ99CAACYeBjFXJ3w3AAAAAWPSvbDq;Version=1.0;\",\"secondaryConnectionString\":\"Endpoint=https://azwps1.webpubsub.azure.com;AccessKey=9RW0jdIyNmjNe3jnBLMFl6Mr2Cmx4yQrw2mypoCUbARUYu2HO5bGJQQJ99CAACYeBjFXJ3w3AAAAAWPSYnu6;Version=1.0;\"}",
+      "Content": "{\"primaryKey\":\"REDACTED\",\"secondaryKey\":\"REDACTED\",\"primaryConnectionString\":\"Endpoint=https://azwps1.webpubsub.azure.com;AccessKey=REDACTED;Version=1.0;\",\"secondaryConnectionString\":\"Endpoint=https://azwps1.webpubsub.azure.com;AccessKey=REDACTED;Version=1.0;\"}",
       "isContentBase64": false
     }
   }
