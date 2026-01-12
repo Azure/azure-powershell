@@ -54,7 +54,7 @@ $command = @{
     command = "command"
     arguments = "commandArguments"
 }
-Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -BareMetalMachineName bmmName -ResourceGroupName resourcceGroupName -SubscriptionId subscriptionId -Command $command -LimitTimeSecond 60
+Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -BareMetalMachineName bmmName -ResourceGroupName resourceGroupName -SubscriptionId subscriptionId -Command $command -LimitTimeSecond 60
 ```
 
 This example runs a restricted data extraction command on the specified bare metal machine with a 60-second timeout.
