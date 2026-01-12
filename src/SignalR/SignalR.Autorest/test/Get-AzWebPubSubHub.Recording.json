@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "23" ],
-        "x-ms-client-request-id": [ "b7545f7a-c555-43b6-8aff-8e49a1087733" ],
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "7d61e97e-03ec-49f6-90bc-8a3527ff4f3f" ],
         "CommandName": [ "Get-AzWebPubSubHub" ],
         "FullCommandName": [ "Get-AzWebPubSubHub_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -24,24 +24,24 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "b7545f7a-c555-43b6-8aff-8e49a1087733" ],
+        "x-ms-client-request-id": [ "7d61e97e-03ec-49f6-90bc-8a3527ff4f3f" ],
         "x-rp-server-mvid": [ "0895b6bc-4801-4f4f-8fe1-12ae1c9d7162" ],
-        "x-ms-request-id": [ "c039c61a-a018-4327-8de1-469d1f99fac6" ],
-        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/b71b4bff-b766-4c0d-97e3-8e5c54b92fd3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
-        "x-ms-correlation-request-id": [ "084a6c52-d6f8-453a-a62d-bb72906a0138" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260108T031706Z:084a6c52-d6f8-453a-a62d-bb72906a0138" ],
+        "x-ms-request-id": [ "b3b52ad3-92df-4413-9b06-5fca9afdae5e" ],
+        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/f6aad53c-c40d-48d2-8688-9bbe5bde5373" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "52143878-a9b4-4be5-9334-b74216fac9c6" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260112T001721Z:52143878-a9b4-4be5-9334-b74216fac9c6" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: AA734464967449B688298503F076DCBC Ref B: SG2AA1040513040 Ref C: 2026-01-08T03:17:06Z" ],
-        "Date": [ "Thu, 08 Jan 2026 03:17:06 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7F7B4DE824EB4D29A5299BA706341EE0 Ref B: SG2AA1070302052 Ref C: 2026-01-12T00:17:21Z" ],
+        "Date": [ "Mon, 12 Jan 2026 00:17:20 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1127" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"eventHandlers\":null,\"eventListeners\":null,\"anonymousConnectPolicy\":\"deny\"},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps1/hubs/hub1\",\"name\":\"hub1\",\"type\":\"Microsoft.SignalRService/WebPubSub/hubs\",\"systemData\":{\"createdBy\":\"v-jiasenglaw@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-08T03:15:21.1830696Z\",\"lastModifiedBy\":\"v-jiasenglaw@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-08T03:15:21.1830696Z\"}},{\"properties\":{\"eventHandlers\":null,\"eventListeners\":null,\"anonymousConnectPolicy\":\"deny\"},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps1/hubs/hub2\",\"name\":\"hub2\",\"type\":\"Microsoft.SignalRService/WebPubSub/hubs\",\"systemData\":{\"createdBy\":\"v-jiasenglaw@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-08T03:15:21.6625515Z\",\"lastModifiedBy\":\"v-jiasenglaw@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-08T03:15:21.6625515Z\"}}],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"properties\":{\"eventHandlers\":null,\"eventListeners\":null,\"anonymousConnectPolicy\":\"deny\"},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps1/hubs/hub1\",\"name\":\"hub1\",\"type\":\"Microsoft.SignalRService/WebPubSub/hubs\",\"systemData\":{\"createdBy\":\"v-jiasenglaw@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-12T00:13:30.4701838Z\",\"lastModifiedBy\":\"v-jiasenglaw@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-12T00:13:30.4701838Z\"}},{\"properties\":{\"eventHandlers\":null,\"eventListeners\":null,\"anonymousConnectPolicy\":\"deny\"},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps1/hubs/hub2\",\"name\":\"hub2\",\"type\":\"Microsoft.SignalRService/WebPubSub/hubs\",\"systemData\":{\"createdBy\":\"v-jiasenglaw@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-12T00:13:30.3480443Z\",\"lastModifiedBy\":\"v-jiasenglaw@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-12T00:13:30.3480443Z\"}}],\"nextLink\":null}",
       "isContentBase64": false
     }
   },
@@ -52,8 +52,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "24" ],
-        "x-ms-client-request-id": [ "1fe44f2e-a661-4bfd-ba43-a8591d28e33d" ],
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "242a5fb9-ac81-402d-aae7-562271a319db" ],
         "CommandName": [ "Get-AzWebPubSubHub" ],
         "FullCommandName": [ "Get-AzWebPubSubHub_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -70,24 +70,24 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "1fe44f2e-a661-4bfd-ba43-a8591d28e33d" ],
+        "x-ms-client-request-id": [ "242a5fb9-ac81-402d-aae7-562271a319db" ],
         "x-rp-server-mvid": [ "0895b6bc-4801-4f4f-8fe1-12ae1c9d7162" ],
-        "x-ms-request-id": [ "3eed27e8-fbcd-4633-8325-2a51fd030890" ],
-        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/4598bc1c-90d2-4dd0-baad-cba0f841d2a9" ],
+        "x-ms-request-id": [ "1b9b4a64-555a-4583-9fe4-9b5dfd674840" ],
+        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/10edf778-1f4b-4cb7-a876-4489702f8484" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-correlation-request-id": [ "ff9db1cb-1089-42ed-8246-702de7b0fb40" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260108T031708Z:ff9db1cb-1089-42ed-8246-702de7b0fb40" ],
+        "x-ms-correlation-request-id": [ "c3b9bb6e-cc9b-43a3-a6e5-3a626375d250" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260112T001721Z:c3b9bb6e-cc9b-43a3-a6e5-3a626375d250" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: CA133C97D0294A63A4C9EE2845153DC7 Ref B: SG2AA1040513040 Ref C: 2026-01-08T03:17:07Z" ],
-        "Date": [ "Thu, 08 Jan 2026 03:17:07 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6251E3940825444AB8A67E78C56CB019 Ref B: SG2AA1070302052 Ref C: 2026-01-12T00:17:21Z" ],
+        "Date": [ "Mon, 12 Jan 2026 00:17:21 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "549" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"eventHandlers\":null,\"eventListeners\":null,\"anonymousConnectPolicy\":\"deny\"},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps1/hubs/hub1\",\"name\":\"hub1\",\"type\":\"Microsoft.SignalRService/WebPubSub/hubs\",\"systemData\":{\"createdBy\":\"v-jiasenglaw@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-08T03:15:21.1830696Z\",\"lastModifiedBy\":\"v-jiasenglaw@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-08T03:15:21.1830696Z\"}}",
+      "Content": "{\"properties\":{\"eventHandlers\":null,\"eventListeners\":null,\"anonymousConnectPolicy\":\"deny\"},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps1/hubs/hub1\",\"name\":\"hub1\",\"type\":\"Microsoft.SignalRService/WebPubSub/hubs\",\"systemData\":{\"createdBy\":\"v-jiasenglaw@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-12T00:13:30.4701838Z\",\"lastModifiedBy\":\"v-jiasenglaw@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-12T00:13:30.4701838Z\"}}",
       "isContentBase64": false
     }
   },
@@ -98,8 +98,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "25" ],
-        "x-ms-client-request-id": [ "3648438d-1e73-4700-8601-69aa7f6a06b6" ],
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "838c4324-b3a6-4aea-8a8d-70f428b4a231" ],
         "CommandName": [ "Get-AzWebPubSubHub" ],
         "FullCommandName": [ "Get-AzWebPubSubHub_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -116,24 +116,24 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "3648438d-1e73-4700-8601-69aa7f6a06b6" ],
+        "x-ms-client-request-id": [ "838c4324-b3a6-4aea-8a8d-70f428b4a231" ],
         "x-rp-server-mvid": [ "0895b6bc-4801-4f4f-8fe1-12ae1c9d7162" ],
-        "x-ms-request-id": [ "01abc496-b529-46ca-940f-47c0beb11c27" ],
-        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/ff9df974-88c2-4ef7-a547-a282e2c07680" ],
+        "x-ms-request-id": [ "8d5cb1f9-5cf1-4dab-910c-8b4a67e69e88" ],
+        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/8ca31bc2-62e6-44ff-97a2-fba013155fe2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-correlation-request-id": [ "ef13f98f-d827-428e-b264-1b08e04c9338" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260108T031709Z:ef13f98f-d827-428e-b264-1b08e04c9338" ],
+        "x-ms-correlation-request-id": [ "cc1e0271-9dcb-4c69-a315-5e2f40e9b0d9" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260112T001722Z:cc1e0271-9dcb-4c69-a315-5e2f40e9b0d9" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 84708AF21839418CBC0859822EF6151E Ref B: SG2AA1040513040 Ref C: 2026-01-08T03:17:08Z" ],
-        "Date": [ "Thu, 08 Jan 2026 03:17:08 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D317AAE1624C4FCBBE29712B78CB15B6 Ref B: SG2AA1070302052 Ref C: 2026-01-12T00:17:22Z" ],
+        "Date": [ "Mon, 12 Jan 2026 00:17:21 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "549" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"eventHandlers\":null,\"eventListeners\":null,\"anonymousConnectPolicy\":\"deny\"},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps1/hubs/hub1\",\"name\":\"hub1\",\"type\":\"Microsoft.SignalRService/WebPubSub/hubs\",\"systemData\":{\"createdBy\":\"v-jiasenglaw@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-08T03:15:21.1830696Z\",\"lastModifiedBy\":\"v-jiasenglaw@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-08T03:15:21.1830696Z\"}}",
+      "Content": "{\"properties\":{\"eventHandlers\":null,\"eventListeners\":null,\"anonymousConnectPolicy\":\"deny\"},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps1/hubs/hub1\",\"name\":\"hub1\",\"type\":\"Microsoft.SignalRService/WebPubSub/hubs\",\"systemData\":{\"createdBy\":\"v-jiasenglaw@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-12T00:13:30.4701838Z\",\"lastModifiedBy\":\"v-jiasenglaw@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-12T00:13:30.4701838Z\"}}",
       "isContentBase64": false
     }
   },
@@ -144,8 +144,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "26" ],
-        "x-ms-client-request-id": [ "0cb13aad-d018-4509-bac2-ae36cd058736" ],
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "a6ffdd3f-26e3-457b-b2cd-d812e7e8b6a6" ],
         "CommandName": [ "Get-AzWebPubSubHub" ],
         "FullCommandName": [ "Get-AzWebPubSubHub_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -162,24 +162,24 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "0cb13aad-d018-4509-bac2-ae36cd058736" ],
+        "x-ms-client-request-id": [ "a6ffdd3f-26e3-457b-b2cd-d812e7e8b6a6" ],
         "x-rp-server-mvid": [ "0895b6bc-4801-4f4f-8fe1-12ae1c9d7162" ],
-        "x-ms-request-id": [ "5fc9ab0b-cb99-413e-b658-d8b00a8c101a" ],
-        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/becc6296-6903-44e1-a3f5-96d8b8683e44" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "247" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3747" ],
-        "x-ms-correlation-request-id": [ "c510ca5f-143b-4ce2-9547-182efdbcc715" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260108T031709Z:c510ca5f-143b-4ce2-9547-182efdbcc715" ],
+        "x-ms-request-id": [ "67e021a0-55ea-4b96-821a-832fd5dae6f9" ],
+        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/f0335dff-e1f8-4641-b48d-11d63873f71b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
+        "x-ms-correlation-request-id": [ "a44de407-be29-446b-9101-ac35b5b6c1d4" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260112T001722Z:a44de407-be29-446b-9101-ac35b5b6c1d4" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F147BD29791D497CBC857039AA2C8DE1 Ref B: SG2AA1040513040 Ref C: 2026-01-08T03:17:09Z" ],
-        "Date": [ "Thu, 08 Jan 2026 03:17:08 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 176CC6CABCDD4F639F200A86311BE9F2 Ref B: SG2AA1070302052 Ref C: 2026-01-12T00:17:22Z" ],
+        "Date": [ "Mon, 12 Jan 2026 00:17:22 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "549" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"eventHandlers\":null,\"eventListeners\":null,\"anonymousConnectPolicy\":\"deny\"},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps1/hubs/hub1\",\"name\":\"hub1\",\"type\":\"Microsoft.SignalRService/WebPubSub/hubs\",\"systemData\":{\"createdBy\":\"v-jiasenglaw@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-08T03:15:21.1830696Z\",\"lastModifiedBy\":\"v-jiasenglaw@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-08T03:15:21.1830696Z\"}}",
+      "Content": "{\"properties\":{\"eventHandlers\":null,\"eventListeners\":null,\"anonymousConnectPolicy\":\"deny\"},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps1/hubs/hub1\",\"name\":\"hub1\",\"type\":\"Microsoft.SignalRService/WebPubSub/hubs\",\"systemData\":{\"createdBy\":\"v-jiasenglaw@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-12T00:13:30.4701838Z\",\"lastModifiedBy\":\"v-jiasenglaw@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-12T00:13:30.4701838Z\"}}",
       "isContentBase64": false
     }
   }
