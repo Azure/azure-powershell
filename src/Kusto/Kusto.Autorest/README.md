@@ -67,7 +67,7 @@ subject-prefix: $(service-name)
 clear-output-folder: true
 output-folder: .
 ```
-<!-- 
+
 > Directives
 ``` yaml
 directive:
@@ -172,4 +172,4 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDataConnection Property');
-``` -->
+```
