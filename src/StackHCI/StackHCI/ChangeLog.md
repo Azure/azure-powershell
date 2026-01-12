@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Detection of CloudDeployment flow using registry key.
 
 ## Version 2.6.5
 * ARC Enablement of Nodes Before Triggering Registration in New Registration Flow.
