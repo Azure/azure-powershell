@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "31" ],
-        "x-ms-client-request-id": [ "c4e49d57-4df9-4d08-a44e-b0e10acb6dfe" ],
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "5848ff93-52e9-409b-9362-b3258f0a8770" ],
         "CommandName": [ "Get-AzWebPubSubUsage" ],
         "FullCommandName": [ "Get-AzWebPubSubUsage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -24,24 +24,24 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "c4e49d57-4df9-4d08-a44e-b0e10acb6dfe" ],
+        "x-ms-client-request-id": [ "5848ff93-52e9-409b-9362-b3258f0a8770" ],
         "x-rp-server-mvid": [ "0895b6bc-4801-4f4f-8fe1-12ae1c9d7162" ],
-        "x-ms-request-id": [ "8657158a-901b-4b1e-b8e9-84265299d558" ],
-        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/0e0de63c-2c89-4557-9b86-b2a0ea9d765d" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
-        "x-ms-correlation-request-id": [ "c08e1816-6c84-4763-8a1a-fbd9a14c1886" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260108T031713Z:c08e1816-6c84-4763-8a1a-fbd9a14c1886" ],
+        "x-ms-request-id": [ "71b84f3f-d5d0-439f-b72a-207d4ba49f97" ],
+        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=165fd2f5-bedc-48da-a8ab-46e0586f2268/eastus/40604270-8fab-44e3-96e5-a9f261cd48f8" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "098b33e0-5825-468e-b4f0-8db466d76ade" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260112T001727Z:098b33e0-5825-468e-b4f0-8db466d76ade" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0EA05122A2314DA9BD03950E30827F47 Ref B: SG2AA1040513040 Ref C: 2026-01-08T03:17:13Z" ],
-        "Date": [ "Thu, 08 Jan 2026 03:17:13 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3EF6C4DBC0C54FABB020CCA206D5032B Ref B: SG2AA1070302052 Ref C: 2026-01-12T00:17:27Z" ],
+        "Date": [ "Mon, 12 Jan 2026 00:17:26 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1091" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/providers/Microsoft.SignalRService/locations/eastus/usages/FreeTierInstances\",\"currentValue\":0,\"limit\":5,\"name\":{\"value\":\"FreeTierInstances\",\"localizedValue\":\"Free Tier SignalR Instances per subscription\"},\"unit\":\"Count\"},{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/providers/Microsoft.SignalRService/locations/eastus/usages/SignalRTotalUnits\",\"currentValue\":0,\"limit\":150,\"name\":{\"value\":\"SignalRTotalUnits\",\"localizedValue\":\"SignalRTotalUnits\"},\"unit\":\"Count\"},{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/providers/Microsoft.SignalRService/locations/eastus/usages/WebPubSubFreeTierInstances\",\"currentValue\":1,\"limit\":5,\"name\":{\"value\":\"WebPubSubFreeTierInstances\",\"localizedValue\":\"WebPubSubFreeTierInstances\"},\"unit\":\"Count\"},{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/providers/Microsoft.SignalRService/locations/eastus/usages/WebPubSubTotalUnits\",\"currentValue\":7,\"limit\":150,\"name\":{\"value\":\"WebPubSubTotalUnits\",\"localizedValue\":\"WebPubSubTotalUnits\"},\"unit\":\"Count\"}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/providers/Microsoft.SignalRService/locations/eastus/usages/FreeTierInstances\",\"currentValue\":0,\"limit\":5,\"name\":{\"value\":\"FreeTierInstances\",\"localizedValue\":\"Free Tier SignalR Instances per subscription\"},\"unit\":\"Count\"},{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/providers/Microsoft.SignalRService/locations/eastus/usages/SignalRTotalUnits\",\"currentValue\":0,\"limit\":150,\"name\":{\"value\":\"SignalRTotalUnits\",\"localizedValue\":\"SignalRTotalUnits\"},\"unit\":\"Count\"},{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/providers/Microsoft.SignalRService/locations/eastus/usages/WebPubSubFreeTierInstances\",\"currentValue\":0,\"limit\":5,\"name\":{\"value\":\"WebPubSubFreeTierInstances\",\"localizedValue\":\"WebPubSubFreeTierInstances\"},\"unit\":\"Count\"},{\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/providers/Microsoft.SignalRService/locations/eastus/usages/WebPubSubTotalUnits\",\"currentValue\":3,\"limit\":150,\"name\":{\"value\":\"WebPubSubTotalUnits\",\"localizedValue\":\"WebPubSubTotalUnits\"},\"unit\":\"Count\"}]}",
       "isContentBase64": false
     }
   }
