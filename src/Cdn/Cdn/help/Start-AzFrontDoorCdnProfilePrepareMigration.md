@@ -26,11 +26,10 @@ Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> [-Subscr
 ### MigrateExpanded
 ```
 Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> [-SubscriptionId <String>]
- -ClassicResourceReferenceId <String> -ProfileName <String> [-SkuName <String>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>]
- -MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ClassicResourceReferenceId <String> -ProfileName <String>
+ -MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]> [-SkuName <String>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
