@@ -68,6 +68,12 @@ Returns operation results.
 ### [Get-AzKustoOperationsResultLocation](Get-AzKustoOperationsResultLocation.md)
 Returns operation results.
 
+### [Get-AzKustoPrivateEndpointConnection](Get-AzKustoPrivateEndpointConnection.md)
+Gets a private endpoint connection.
+
+### [Get-AzKustoPrivateLinkResource](Get-AzKustoPrivateLinkResource.md)
+Gets a private link resource.
+
 ### [Get-AzKustoSandboxCustomImage](Get-AzKustoSandboxCustomImage.md)
 Returns a sandbox custom image
 
@@ -113,6 +119,9 @@ Create a data connection.
 ### [New-AzKustoManagedPrivateEndpoint](New-AzKustoManagedPrivateEndpoint.md)
 Create a managed private endpoint.
 
+### [New-AzKustoPrivateEndpointConnection](New-AzKustoPrivateEndpointConnection.md)
+Approve or reject a private endpoint connection with a given name.
+
 ### [New-AzKustoSandboxCustomImage](New-AzKustoSandboxCustomImage.md)
 Create a sandbox custom image.
 
@@ -148,6 +157,9 @@ Deletes the data connection with the given name.
 
 ### [Remove-AzKustoManagedPrivateEndpoint](Remove-AzKustoManagedPrivateEndpoint.md)
 Deletes a managed private endpoint.
+
+### [Remove-AzKustoPrivateEndpointConnection](Remove-AzKustoPrivateEndpointConnection.md)
+Deletes a private endpoint connection with a given name.
 
 ### [Remove-AzKustoSandboxCustomImage](Remove-AzKustoSandboxCustomImage.md)
 Deletes a sandbox custom image.
@@ -199,6 +211,9 @@ Update a data connection.
 
 ### [Update-AzKustoManagedPrivateEndpoint](Update-AzKustoManagedPrivateEndpoint.md)
 Update a managed private endpoint.
+
+### [Update-AzKustoPrivateEndpointConnection](Update-AzKustoPrivateEndpointConnection.md)
+Approve or reject a private endpoint connection with a given name.
 
 ### [Update-AzKustoSandboxCustomImage](Update-AzKustoSandboxCustomImage.md)
 Update a sandbox custom image.

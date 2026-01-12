@@ -52,7 +52,7 @@ require:
 input-file:
   - $(repo)/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2024-04-13/kusto.json
 commit: 9a38736f10946d4e41ea40b3ba43d85a738f3263
-
+keep-pec-and-plr: true
 ```
 
 > Names
