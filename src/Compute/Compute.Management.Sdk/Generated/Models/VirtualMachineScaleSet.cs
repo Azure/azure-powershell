@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="overprovision">Specifies whether the Virtual Machine Scale Set should be overprovisioned.
         /// </param>
 
-        /// <param name="doNotRunExtensionsOnOverprovisionedVms">When Overprovision is enabled, extensions are launched only on the
+        /// <param name="doNotRunExtensionsOnOverprovisionedVMS">When Overprovision is enabled, extensions are launched only on the
         /// requested number of VMs which are finally kept. This property will hence
         /// ensure that the extensions do not run on the extra overprovisioned VMs.
         /// </param>
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="highSpeedInterconnectPlacement">Specifies the high speed interconnect placement for the virtual machine
         /// scale set.
         /// Possible values include: &#39;None&#39;, &#39;Trunk&#39;</param>
-        public VirtualMachineScaleSet(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string), Placement placement = default(Placement), UpgradePolicy upgradePolicy = default(UpgradePolicy), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), string orchestrationMode = default(string), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), SkuProfile skuProfile = default(SkuProfile), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetVMProfile virtualMachineProfile = default(VirtualMachineScaleSetVMProfile), string provisioningState = default(string), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVms = default(bool?), string uniqueId = default(string), bool? singlePlacementGroup = default(bool?), bool? zoneBalance = default(bool?), int? platformFaultDomainCount = default(int?), SubResource proximityPlacementGroup = default(SubResource), SubResource hostGroup = default(SubResource), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), System.DateTime? timeCreated = default(System.DateTime?), bool? constrainedMaximumCapacity = default(bool?), string zonalPlatformFaultDomainAlignMode = default(string), string highSpeedInterconnectPlacement = default(string))
+        public VirtualMachineScaleSet(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string), Placement placement = default(Placement), UpgradePolicy upgradePolicy = default(UpgradePolicy), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), string orchestrationMode = default(string), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), SkuProfile skuProfile = default(SkuProfile), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetVMProfile virtualMachineProfile = default(VirtualMachineScaleSetVMProfile), string provisioningState = default(string), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMS = default(bool?), string uniqueId = default(string), bool? singlePlacementGroup = default(bool?), bool? zoneBalance = default(bool?), int? platformFaultDomainCount = default(int?), SubResource proximityPlacementGroup = default(SubResource), SubResource hostGroup = default(SubResource), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), System.DateTime? timeCreated = default(System.DateTime?), bool? constrainedMaximumCapacity = default(bool?), string zonalPlatformFaultDomainAlignMode = default(string), string highSpeedInterconnectPlacement = default(string))
 
         : base(location, id, name, type, tags)
         {
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.VirtualMachineProfile = virtualMachineProfile;
             this.ProvisioningState = provisioningState;
             this.Overprovision = overprovision;
-            this.DoNotRunExtensionsOnOverprovisionedVms = doNotRunExtensionsOnOverprovisionedVms;
+            this.DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMS;
             this.UniqueId = uniqueId;
             this.SinglePlacementGroup = singlePlacementGroup;
             this.ZoneBalance = zoneBalance;
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// VMs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.doNotRunExtensionsOnOverprovisionedVMs")]
-        public bool? DoNotRunExtensionsOnOverprovisionedVms {get; set; }
+        public bool? DoNotRunExtensionsOnOverprovisionedVMs {get; set; }
 
         /// <summary>
         /// Gets specifies the ID which uniquely identifies a Virtual Machine Scale

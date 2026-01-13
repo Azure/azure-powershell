@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.EncryptionSettingsCollection = encryptionSettingsCollection;
             this.DiskIOPSReadWrite = diskIopsReadWrite;
             this.DiskMBpsReadWrite = diskMBpsReadWrite;
-            this.DiskIopsReadOnly = diskIopsReadOnly;
+            this.DiskIOPSReadOnly = diskIopsReadOnly;
             this.DiskMBpsReadOnly = diskMBpsReadOnly;
             this.MaxShares = maxShares;
             this.Encryption = encryption;
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// and 256k bytes.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskIOPSReadOnly")]
-        public long? DiskIopsReadOnly {get; set; }
+        public long? DiskIOPSReadOnly {get; set; }
 
         /// <summary>
         /// Gets or sets the total throughput (MBps) that will be allowed across all

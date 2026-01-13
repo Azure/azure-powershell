@@ -118,9 +118,13 @@ directive:
     set:
       property-name: AllocatableVMs
   - where:
-      property-name: AllocatableVMS
+      property-name: DoNotRunExtensionsOnOverprovisionedVms
     set:
-      property-name: AllocatableVMs
+      property-name: DoNotRunExtensionsOnOverprovisionedVMs
+  - where:
+      property-name: VirtualMachineScaleSetVMSOperations
+    set:
+      property-name: VirtualMachineScaleSetVMsOperations
       
   # Fix GB-related properties
   - where:
@@ -137,6 +141,10 @@ directive:
       property-name: DiskIopsReadWrite
     set:
       property-name: DiskIOPSReadWrite
+  - where:
+      property-name: DiskIopsReadOnly
+    set:
+      property-name: DiskIOPSReadOnly
       
   # Fix IP-related properties
   - where:
@@ -177,6 +185,10 @@ directive:
       property-name: UltraSsdEnabled
     set:
       property-name: UltraSSDEnabled
+  - where:
+      property-name: VirtualMachineExtensionType
+    set:
+      property-name: VirtualMachineExtensionPropertiesType
   - where:
       property-name: PropertiesType
     set:

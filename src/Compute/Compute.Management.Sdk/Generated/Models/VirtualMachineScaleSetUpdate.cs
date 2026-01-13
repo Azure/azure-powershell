@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="overprovision">Specifies whether the Virtual Machine Scale Set should be overprovisioned.
         /// </param>
 
-        /// <param name="doNotRunExtensionsOnOverprovisionedVms">When Overprovision is enabled, extensions are launched only on the
+        /// <param name="doNotRunExtensionsOnOverprovisionedVMS">When Overprovision is enabled, extensions are launched only on the
         /// requested number of VMs which are finally kept. This property will hence
         /// ensure that the extensions do not run on the extra overprovisioned VMs.
         /// </param>
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="zonalPlatformFaultDomainAlignMode">Specifies the align mode between Virtual Machine Scale Set compute and
         /// storage Fault Domain count.
         /// Possible values include: &#39;Aligned&#39;, &#39;Unaligned&#39;</param>
-        public VirtualMachineScaleSetUpdate(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), UpgradePolicy upgradePolicy = default(UpgradePolicy), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), SkuProfile skuProfile = default(SkuProfile), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetUpdateVMProfile virtualMachineProfile = default(VirtualMachineScaleSetUpdateVMProfile), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVms = default(bool?), bool? singlePlacementGroup = default(bool?), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), SubResource proximityPlacementGroup = default(SubResource), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), string zonalPlatformFaultDomainAlignMode = default(string))
+        public VirtualMachineScaleSetUpdate(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), UpgradePolicy upgradePolicy = default(UpgradePolicy), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), SkuProfile skuProfile = default(SkuProfile), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetUpdateVMProfile virtualMachineProfile = default(VirtualMachineScaleSetUpdateVMProfile), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMS = default(bool?), bool? singlePlacementGroup = default(bool?), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), SubResource proximityPlacementGroup = default(SubResource), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), string zonalPlatformFaultDomainAlignMode = default(string))
 
         : base(tags)
         {
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.AutomaticRepairsPolicy = automaticRepairsPolicy;
             this.VirtualMachineProfile = virtualMachineProfile;
             this.Overprovision = overprovision;
-            this.DoNotRunExtensionsOnOverprovisionedVms = doNotRunExtensionsOnOverprovisionedVms;
+            this.DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMS;
             this.SinglePlacementGroup = singlePlacementGroup;
             this.ScaleInPolicy = scaleInPolicy;
             this.ProximityPlacementGroup = proximityPlacementGroup;
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// VMs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.doNotRunExtensionsOnOverprovisionedVMs")]
-        public bool? DoNotRunExtensionsOnOverprovisionedVms {get; set; }
+        public bool? DoNotRunExtensionsOnOverprovisionedVMs {get; set; }
 
         /// <summary>
         /// Gets or sets when true this limits the scale set to a single placement

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="overprovision">Specifies whether the Virtual Machine Scale Set should be overprovisioned.
         /// </param>
 
-        /// <param name="doNotRunExtensionsOnOverprovisionedVms">When Overprovision is enabled, extensions are launched only on the
+        /// <param name="doNotRunExtensionsOnOverprovisionedVMS">When Overprovision is enabled, extensions are launched only on the
         /// requested number of VMs which are finally kept. This property will hence
         /// ensure that the extensions do not run on the extra overprovisioned VMs.
         /// </param>
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="highSpeedInterconnectPlacement">Specifies the high speed interconnect placement for the virtual machine
         /// scale set.
         /// Possible values include: &#39;None&#39;, &#39;Trunk&#39;</param>
-        public VirtualMachineScaleSetProperties(UpgradePolicy upgradePolicy = default(UpgradePolicy), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetVMProfile virtualMachineProfile = default(VirtualMachineScaleSetVMProfile), string provisioningState = default(string), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVms = default(bool?), string uniqueId = default(string), bool? singlePlacementGroup = default(bool?), bool? zoneBalance = default(bool?), int? platformFaultDomainCount = default(int?), SubResource proximityPlacementGroup = default(SubResource), SubResource hostGroup = default(SubResource), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), string orchestrationMode = default(string), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), System.DateTime? timeCreated = default(System.DateTime?), bool? constrainedMaximumCapacity = default(bool?), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), string zonalPlatformFaultDomainAlignMode = default(string), SkuProfile skuProfile = default(SkuProfile), string highSpeedInterconnectPlacement = default(string))
+        public VirtualMachineScaleSetProperties(UpgradePolicy upgradePolicy = default(UpgradePolicy), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetVMProfile virtualMachineProfile = default(VirtualMachineScaleSetVMProfile), string provisioningState = default(string), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMS = default(bool?), string uniqueId = default(string), bool? singlePlacementGroup = default(bool?), bool? zoneBalance = default(bool?), int? platformFaultDomainCount = default(int?), SubResource proximityPlacementGroup = default(SubResource), SubResource hostGroup = default(SubResource), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), string orchestrationMode = default(string), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), System.DateTime? timeCreated = default(System.DateTime?), bool? constrainedMaximumCapacity = default(bool?), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), string zonalPlatformFaultDomainAlignMode = default(string), SkuProfile skuProfile = default(SkuProfile), string highSpeedInterconnectPlacement = default(string))
 
         {
             this.UpgradePolicy = upgradePolicy;
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.VirtualMachineProfile = virtualMachineProfile;
             this.ProvisioningState = provisioningState;
             this.Overprovision = overprovision;
-            this.DoNotRunExtensionsOnOverprovisionedVMS = doNotRunExtensionsOnOverprovisionedVms;
+            this.DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMS;
             this.UniqueId = uniqueId;
             this.SinglePlacementGroup = singlePlacementGroup;
             this.ZoneBalance = zoneBalance;
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// VMs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "doNotRunExtensionsOnOverprovisionedVMs")]
-        public bool? DoNotRunExtensionsOnOverprovisionedVMS {get; set; }
+        public bool? DoNotRunExtensionsOnOverprovisionedVMs {get; set; }
 
         /// <summary>
         /// Gets specifies the ID which uniquely identifies a Virtual Machine Scale

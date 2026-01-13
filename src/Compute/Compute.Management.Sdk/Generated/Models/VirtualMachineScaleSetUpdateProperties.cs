@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="overprovision">Specifies whether the Virtual Machine Scale Set should be overprovisioned.
         /// </param>
 
-        /// <param name="doNotRunExtensionsOnOverprovisionedVms">When Overprovision is enabled, extensions are launched only on the
+        /// <param name="doNotRunExtensionsOnOverprovisionedVMS">When Overprovision is enabled, extensions are launched only on the
         /// requested number of VMs which are finally kept. This property will hence
         /// ensure that the extensions do not run on the extra overprovisioned VMs.
         /// </param>
@@ -78,14 +78,14 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="skuProfile">Specifies the sku profile for the virtual machine scale set.
         /// </param>
-        public VirtualMachineScaleSetUpdateProperties(UpgradePolicy upgradePolicy = default(UpgradePolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetUpdateVMProfile virtualMachineProfile = default(VirtualMachineScaleSetUpdateVMProfile), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVms = default(bool?), bool? singlePlacementGroup = default(bool?), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), SubResource proximityPlacementGroup = default(SubResource), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), string zonalPlatformFaultDomainAlignMode = default(string), SkuProfile skuProfile = default(SkuProfile))
+        public VirtualMachineScaleSetUpdateProperties(UpgradePolicy upgradePolicy = default(UpgradePolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetUpdateVMProfile virtualMachineProfile = default(VirtualMachineScaleSetUpdateVMProfile), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMS = default(bool?), bool? singlePlacementGroup = default(bool?), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), SubResource proximityPlacementGroup = default(SubResource), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), string zonalPlatformFaultDomainAlignMode = default(string), SkuProfile skuProfile = default(SkuProfile))
 
         {
             this.UpgradePolicy = upgradePolicy;
             this.AutomaticRepairsPolicy = automaticRepairsPolicy;
             this.VirtualMachineProfile = virtualMachineProfile;
             this.Overprovision = overprovision;
-            this.DoNotRunExtensionsOnOverprovisionedVMS = doNotRunExtensionsOnOverprovisionedVms;
+            this.DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMS;
             this.SinglePlacementGroup = singlePlacementGroup;
             this.AdditionalCapabilities = additionalCapabilities;
             this.ScaleInPolicy = scaleInPolicy;
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// VMs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "doNotRunExtensionsOnOverprovisionedVMs")]
-        public bool? DoNotRunExtensionsOnOverprovisionedVMS {get; set; }
+        public bool? DoNotRunExtensionsOnOverprovisionedVMs {get; set; }
 
         /// <summary>
         /// Gets or sets when true this limits the scale set to a single placement

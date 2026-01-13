@@ -117,7 +117,7 @@
             ProvisioningState = provisioningState;
             DiskIOPSReadWrite = diskIOPSReadWrite;
             DiskMBpsReadWrite = diskMBpsReadWrite;
-            DiskIopsReadOnly = diskIOPSReadOnly;
+            DiskIOPSReadOnly = diskIOPSReadOnly;
             DiskMBpsReadOnly = diskMBpsReadOnly;
             DiskState = diskState;
             Encryption = encryption;
@@ -154,7 +154,7 @@
             ProvisioningState = provisioningState;
             DiskIOPSReadWrite = diskIOPSReadWrite;
             DiskMBpsReadWrite = diskMBpsReadWrite;
-            DiskIopsReadOnly = diskIOPSReadOnly;
+            DiskIOPSReadOnly = diskIOPSReadOnly;
             DiskMBpsReadOnly = diskMBpsReadOnly;
             DiskState = diskState;
             Encryption = encryption;
