@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Compute
                     Mode = this.WireServerMode,
                     InVMAccessControlProfileReferenceId = this.WireServerProfile
                 }),
-                IMDS = (this.ImdsMode == null && this.ImdsProfile == null ? null : new HostEndpointSettings()
+                Imds = (this.ImdsMode == null && this.ImdsProfile == null ? null : new HostEndpointSettings()
                 {
                     Mode = this.ImdsMode,
                     InVMAccessControlProfileReferenceId = this.ImdsProfile
