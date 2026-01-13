@@ -17,6 +17,7 @@ param (
     [string]$RepoRoot,
     [Parameter(ParameterSetName="ModuleNameSet", Mandatory=$true)]
     [string]$ModuleRootName,
+    [string]$Configuration,
     [switch]$ForceRegenerate,
     [switch]$InvokedByPipeline
 )
@@ -41,14 +42,6 @@ if (-not (Test-Path $sourceDirectory)) {
     Write-Warning "Cannot find generated directory: $generatedDirectory"
 }
 
-if (-Not (Get-Module -Name "AzDev")) {
-    $AzDevPath = Join-Path $RepoRoot "tools" "AzDev"
-    $AzDevBuildPath = Join-Path $AzDevPath "build.ps1"
-    $AzDevModulePath = Join-Path $RepoRoot "artifacts" "AzDev" "AzDev.psd1"
-    & $AzDevBuildPath
-    Import-Module $AzDevModulePath -Force
-}
-
 $isInvokedByPipeline = $false
 if ($InvokedByPipeline) {
     $isInvokedByPipeline = $true
@@ -60,6 +53,19 @@ $moduleRootSource = Join-Path $sourceDirectory $ModuleRootName
 $moduleRootGenerated = Join-Path $generatedDirectory $ModuleRootName
 Write-Host "Calculating outdated submodules for $ModuleRootName ..." -ForegroundColor DarkGreen
 $outdatedSubModule = Get-OutdatedSubModule -SourceDirectory $moduleRootSource -GeneratedDirectory $moduleRootGenerated -ForceRegenerate:$ForceRegenerate
+
+if (('Release' -eq $Configuration) -And $outdatedSubModule) {
+    $outdatedSubModuleString = $outdatedSubModule -Join ", "
+    Write-Error "Found outdated modules: $outdatedSubModuleString"
+    Exit 1
+}
+if (('Debug' -eq $Configuration) -And $outdatedSubModule -And -Not (Get-Module -Name "AzDev")) {
+    $AzDevPath = Join-Path $RepoRoot "tools" "AzDev"
+    $AzDevBuildPath = Join-Path $AzDevPath "build.ps1"
+    $AzDevModulePath = Join-Path $RepoRoot "artifacts" "AzDev" "AzDev.psd1"
+    & $AzDevBuildPath
+    Import-Module $AzDevModulePath -Force
+}
 foreach ($subModuleName in $outdatedSubModule) {
     $generateLog = Join-Path $AutorestOutputDir $ModuleRootName "$subModuleName.log"
     if (Test-Path $generateLog) {

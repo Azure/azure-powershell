@@ -17,8 +17,8 @@ Creates a virtual machine scale set.
 ```
 New-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob] [-IfMatch <String>] [-IfNoneMatch <String>]
- [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EdgeZone <String>] [-HighSpeedInterconnectPlacement <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SimpleParameterSet
@@ -41,8 +41,8 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-SecurityPostureExcludeExtension <String[]>] [-SkuProfileVmSize <String[]>]
  [-SkuProfileAllocationStrategy <String>] [-EnableProxyAgent] [-AddProxyAgentExtension]
  [-ZonePlacementPolicy <String>] [-IncludeZone <String[]>] [-ExcludeZone <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-HighSpeedInterconnectPlacement <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-SinglePlacementGroup] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -616,6 +616,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HighSpeedInterconnectPlacement
+Specifies the high speed interconnect placement for the virtual machine scale set.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: None, Trunk
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

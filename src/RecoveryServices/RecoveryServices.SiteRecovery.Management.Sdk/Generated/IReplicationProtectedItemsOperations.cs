@@ -828,6 +828,47 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateMobilityServiceHeaders>> UpdateMobilityServiceWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateMobilityServiceRequestProperties properties = default(UpdateMobilityServiceRequestProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// The operation to reinstall the installed mobility service software on a
+        /// replication protected item to the latest available version.
+        /// </summary>
+        /// <remarks>
+        /// The operation to reinstall the installed mobility service software on a
+        /// replication protected item to the latest available version.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// The name of the fabric containing the protected item.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// The name of the container containing the protected item.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// The name of the protected item on which the agent is to be updated.
+        /// </param>
+        /// <param name='properties'>
+        /// The properties of the reinstall mobility service request
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsReinstallMobilityServiceHeaders>> ReinstallMobilityServiceWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ReinstallMobilityServiceRequestProperties properties = default(ReinstallMobilityServiceRequestProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Gets the list of ASR replication protected items in the vault.
         /// </summary>
         /// <remarks>
@@ -1603,6 +1644,47 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsUpdateMobilityServiceHeaders>> BeginUpdateMobilityServiceWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, UpdateMobilityServiceRequestProperties properties = default(UpdateMobilityServiceRequestProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The operation to reinstall the installed mobility service software on a
+        /// replication protected item to the latest available version.
+        /// </summary>
+        /// <remarks>
+        /// The operation to reinstall the installed mobility service software on a
+        /// replication protected item to the latest available version.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// The name of the fabric containing the protected item.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// The name of the container containing the protected item.
+        /// </param>
+        /// <param name='replicatedProtectedItemName'>
+        /// The name of the protected item on which the agent is to be updated.
+        /// </param>
+        /// <param name='properties'>
+        /// The properties of the reinstall mobility service request
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectedItem,ReplicationProtectedItemsReinstallMobilityServiceHeaders>> BeginReinstallMobilityServiceWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, ReinstallMobilityServiceRequestProperties properties = default(ReinstallMobilityServiceRequestProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the list of ASR replication protected items in the protection
