@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a backup policy belonging to a backup vault
 ```powershell
-{{ Add code here }}
+Update-AzDataProtectionBackupPolicy -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "ResourceGroupName" -VaultName "VaultName" -Name "MyPolicy"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              Type
+----              ----
+MyPolicy       Microsoft.DataProtection/backupVaults/backupPolicies
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Update a backup policy belonging to a backup vault

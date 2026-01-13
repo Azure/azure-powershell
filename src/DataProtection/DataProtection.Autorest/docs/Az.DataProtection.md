@@ -155,9 +155,6 @@ Validate whether validate for backup instance will be successful or not
 ### [Undo-AzDataProtectionBackupInstanceDeletion](Undo-AzDataProtectionBackupInstanceDeletion.md)
 Undeletes a soft deleted backup instance
 
-### [Unlock-AzDataProtectionDppResourceGuardProxyDelete](Unlock-AzDataProtectionDppResourceGuardProxyDelete.md)
-UnlockDelete call for ResourceGuardProxy, executed before one can delete it
-
 ### [Unlock-AzDataProtectionResourceGuardOperation](Unlock-AzDataProtectionResourceGuardOperation.md)
 Unlocks the critical operation which is protected by the resource guard
 
@@ -175,7 +172,4 @@ Update a BackupVault resource belonging to a resource group.
 
 ### [Update-AzDataProtectionResourceGuard](Update-AzDataProtectionResourceGuard.md)
 Updates a resource guard belonging to a resource group
-
-### [Update-AzDataProtectionResourceGuardMapping](Update-AzDataProtectionResourceGuardMapping.md)
-Update a ResourceGuardProxy
 

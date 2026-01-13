@@ -166,6 +166,11 @@ directive:
       verb: Unlock
       variant: ^(Unlock)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
+
+  - where:
+      verb: Unlock
+      subject: ^DppResourceGuardProxyDelete$
+    remove: true
   
   - where:
       verb: Unlock
@@ -399,6 +404,11 @@ directive:
       subject: ResourceGuardMapping$
     set:
       verb: Set
+  
+  - where:
+      verb: Update
+      subject: ResourceGuardMapping$
+    hide: true
   
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/findRestorableTimeRanges"].post
