@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.OperatingSystem = operatingSystem;
             this.ComputeRole = computeRole;
             this.HandlerSchema = handlerSchema;
-            this.VMScaleSetEnabled = vmScaleSetEnabled;
+            this.VmScaleSetEnabled = vmScaleSetEnabled;
             this.SupportsMultipleExtensions = supportsMultipleExtensions;
             CustomInit();
         }
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// enabled for CRP VMs but not VMSS.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmScaleSetEnabled")]
-        public bool? VMScaleSetEnabled {get; set; }
+        public bool? VmScaleSetEnabled {get; set; }
 
         /// <summary>
         /// Gets or sets whether the handler can support multiple extensions.

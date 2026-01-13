@@ -125,6 +125,10 @@ directive:
       property-name: VirtualMachineScaleSetVMSOperations
     set:
       property-name: VirtualMachineScaleSetVMsOperations
+  - where:
+      property-name: VirtualMachineScaleSetVMS
+    set:
+      property-name: VirtualMachineScaleSetVMs
       
   # Fix GB-related properties
   - where:
@@ -193,6 +197,22 @@ directive:
       property-name: PropertiesType
     set:
       property-name: VirtualMachineExtensionType
+  - where:
+      property-name: GetSecureVMGuestStateSas
+    set:
+      property-name: GetSecureVMGuestStateSAS
+  - where:
+      property-name: Imds
+    set:
+      property-name: IMDS
+  - where:
+      property-name: VMScaleSetEnabled
+    set:
+      property-name: VmScaleSetEnabled
+  - where:
+      property-name: AccessSas
+    set:
+      property-name: AccessSAS
 
   - from: swagger-document
     where: $..definitions.OperatingSystemStateTypes

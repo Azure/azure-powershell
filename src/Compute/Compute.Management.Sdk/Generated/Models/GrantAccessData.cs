@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         {
             this.Access = access;
             this.DurationInSeconds = durationInSeconds;
-            this.GetSecureVMGuestStateSas = getSecureVMGuestStateSas;
+            this.GetSecureVMGuestStateSAS = getSecureVMGuestStateSas;
             this.FileFormat = fileFormat;
             CustomInit();
         }
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets set this flag to true to get additional SAS for VM guest state
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "getSecureVMGuestStateSAS")]
-        public bool? GetSecureVMGuestStateSas {get; set; }
+        public bool? GetSecureVMGuestStateSAS {get; set; }
 
         /// <summary>
         /// Gets or sets used to specify the file format when making request for SAS on

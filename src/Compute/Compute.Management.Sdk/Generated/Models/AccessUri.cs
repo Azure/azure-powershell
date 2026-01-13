@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public AccessUri(string accessSas = default(string), string securityDataAccessSas = default(string), string securityMetadataAccessSas = default(string))
 
         {
-            this.AccessSas = accessSas;
+            this.AccessSAS = accessSas;
             this.SecurityDataAccessSas = securityDataAccessSas;
             this.SecurityMetadataAccessSas = securityMetadataAccessSas;
             CustomInit();
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets a SAS uri for accessing a disk.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "accessSAS")]
-        public string AccessSas {get; private set; }
+        public string AccessSAS {get; private set; }
 
         /// <summary>
         /// Gets a SAS uri for accessing a VM guest state.
