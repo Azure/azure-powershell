@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.Mode = mode;
             this.KeyIncarnationId = keyIncarnationId;
             this.WireServer = wireServer;
-            this.IMDS = imds;
+            this.Imds = imds;
             this.AddProxyAgentExtension = addProxyAgentExtension;
             CustomInit();
         }
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// 2024-03-01.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "imds")]
-        public HostEndpointSettings IMDS {get; set; }
+        public HostEndpointSettings Imds {get; set; }
 
         /// <summary>
         /// Gets or sets specify whether to implicitly install the ProxyAgent

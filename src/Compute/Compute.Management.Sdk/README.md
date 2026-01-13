@@ -125,10 +125,6 @@ directive:
       property-name: VirtualMachineScaleSetVMSOperations
     set:
       property-name: VirtualMachineScaleSetVMsOperations
-  - where:
-      property-name: VirtualMachineScaleSetVMS
-    set:
-      property-name: VirtualMachineScaleSetVMs
       
   # Fix GB-related properties
   - where:
@@ -190,10 +186,6 @@ directive:
     set:
       property-name: UltraSSDEnabled
   - where:
-      property-name: VirtualMachineExtensionType
-    set:
-      property-name: VirtualMachineExtensionPropertiesType
-  - where:
       property-name: PropertiesType
     set:
       property-name: VirtualMachineExtensionType
@@ -201,10 +193,6 @@ directive:
       property-name: GetSecureVMGuestStateSas
     set:
       property-name: GetSecureVMGuestStateSAS
-  - where:
-      property-name: Imds
-    set:
-      property-name: IMDS
   - where:
       property-name: VMScaleSetEnabled
     set:
