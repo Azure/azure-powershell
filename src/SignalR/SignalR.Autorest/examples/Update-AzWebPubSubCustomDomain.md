@@ -10,4 +10,4 @@ Name     DomainName                                    ProvisioningState
 mydomain wps.manual-test.dev.signalr.azure.com Succeeded
 ```
 
-Update a custom domian.
+Update a custom domain.
