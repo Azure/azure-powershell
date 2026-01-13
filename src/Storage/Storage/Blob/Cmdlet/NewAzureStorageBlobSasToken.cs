@@ -109,7 +109,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "This value specifies the Entra ID of the user would is authorized to use the resulting SAS URL. The resulting SAS URL must be used in conjunction with an Entra ID token that has been issued to the user specified in this value. This parameter can only be specified when input Storage Context is OAuth based.")]
+        [Parameter(Mandatory = false, HelpMessage = "This value specifies the Entra ID of the user who is authorized to use the resulting SAS URL. The resulting SAS URL must be used in conjunction with an Entra ID token that has been issued to the user specified in this value. This parameter can only be specified when input Storage Context is OAuth based.")]
         [ValidateNotNullOrEmpty]
         public string DelegatedUserObjectId { get; set; }
 

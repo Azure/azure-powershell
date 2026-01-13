@@ -216,13 +216,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 || !System.IO.File.Exists(filePath)
                 || ShouldContinue(string.Format(Resources.OverwriteConfirmation, filePath), null))
             {
-                StorageTransferOptions trasnferOption = new StorageTransferOptions()
+                StorageTransferOptions transferOption = new StorageTransferOptions()
                 {
                     MaximumConcurrency = this.GetCmdletConcurrency(),
                     MaximumTransferSize = size4MB,
                     InitialTransferSize = size4MB
                 };
-                await blob.DownloadToAsync(filePath, BlobRequestConditions, trasnferOption, CmdletCancellationToken).ConfigureAwait(false);
+                await blob.DownloadToAsync(filePath, BlobRequestConditions, transferOption, CmdletCancellationToken).ConfigureAwait(false);
                 OutputStream.WriteObject(taskId, new AzureStorageBlob(blob, localChannel is null? null : localChannel.StorageContext, blobProperties, options: ClientOptions));
             }
         }

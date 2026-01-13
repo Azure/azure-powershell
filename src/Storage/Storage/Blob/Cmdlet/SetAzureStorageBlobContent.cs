@@ -488,7 +488,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                     if (string.Equals(blobType, BlockBlobType, StringComparison.InvariantCultureIgnoreCase))
                     {
                         outputBlobClient = blobClient;
-                        StorageTransferOptions trasnferOption = new StorageTransferOptions() { MaximumConcurrency = this.GetCmdletConcurrency() };
+                        StorageTransferOptions transferOption = new StorageTransferOptions() { MaximumConcurrency = this.GetCmdletConcurrency() };
                         BlobUploadOptions uploadOptions = new BlobUploadOptions();
                         if (this.BlobTag != null)
                         {
@@ -499,7 +499,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                         uploadOptions.Conditions = this.BlobRequestConditions;
                         uploadOptions.AccessTier = accesstierToSet;
                         uploadOptions.ProgressHandler = progressHandler;
-                        uploadOptions.TransferOptions = trasnferOption;
+                        uploadOptions.TransferOptions = transferOption;
 
                         await blobClient.UploadAsync(stream, uploadOptions, CmdletCancellationToken).ConfigureAwait(false);
                     }

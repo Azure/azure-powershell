@@ -184,7 +184,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [Parameter(HelpMessage = "Use OAuth storage account", Mandatory = false, ParameterSetName = SasTokenParameterSet)]
         [Parameter(HelpMessage = "Use OAuth storage account", Mandatory = false, ParameterSetName = SasTokenEnvironmentParameterSet)]
         [Parameter(HelpMessage = "Use OAuth storage account", Mandatory = false, ParameterSetName = SasTokenServiceEndpointParameterSet)]
-
         public SwitchParameter UseConnectedAccount
         {
             get { return isOAuth; }

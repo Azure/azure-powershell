@@ -165,13 +165,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 || !System.IO.File.Exists(filePath)
                 || ShouldContinue(string.Format(Resources.OverwriteConfirmation, filePath), null))
             {
-                StorageTransferOptions trasnferOption = new StorageTransferOptions()
+                StorageTransferOptions transferOption = new StorageTransferOptions()
                 {
                     MaximumConcurrency = this.GetCmdletConcurrency(),
                     MaximumTransferSize = size4MB,
                     InitialTransferSize = size4MB
                 };
-                await blob.DownloadToAsync(filePath, BlobRequestConditions, trasnferOption, CmdletCancellationToken).ConfigureAwait(false);
+                await blob.DownloadToAsync(filePath, BlobRequestConditions, transferOption, CmdletCancellationToken).ConfigureAwait(false);
             }
             
             WriteDataLakeGen2Item(localChannel, fileClient, taskId);
@@ -312,8 +312,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 DoBeginProcessing();
             }
 
-            CloudBlockBlob tr1blob = null;
-            BlockBlobClient tr2blob = null;
+            CloudBlockBlob track1Blob = null;
+            BlockBlobClient track2Blob = null;
             if (ParameterSetName == ManualParameterSet)
             {
                 DataLakeFileSystemClient fileSystem = GetFileSystemClientByName(localChannel, this.FileSystem);
@@ -326,12 +326,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (Channel.StorageContext.Track2OauthToken != null)
                 {
                     var blobServiceClient = Channel.GetBlobServiceClient();
-                    tr2blob = blobServiceClient.GetBlobContainerClient(this.FileSystem).GetBlockBlobClient(this.Path);
+                    track2Blob = blobServiceClient.GetBlobContainerClient(this.FileSystem).GetBlockBlobClient(this.Path);
                 }
                 else
                 {
                     CloudBlobContainer container = GetCloudBlobContainerByName(Channel, this.FileSystem).ConfigureAwait(false).GetAwaiter().GetResult();
-                    tr1blob = container.GetBlockBlobReference(this.Path);
+                    track1Blob = container.GetBlockBlobReference(this.Path);
                 }
             }
             else //BlobParameterSet
@@ -344,16 +344,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         // For SAS, the Uri already contains the sas token, so can't repeatedly inout the credential
                         if (Channel.StorageContext.Track2OauthToken != null)
                         {
-                            tr2blob = new BlockBlobClient(InputObject.File.Uri, Channel.StorageContext.Track2OauthToken);
+                            track2Blob = new BlockBlobClient(InputObject.File.Uri, Channel.StorageContext.Track2OauthToken);
                         }
                         else
                         {
-                            tr1blob = new CloudBlockBlob(InputObject.File.Uri);
+                            track1Blob = new CloudBlockBlob(InputObject.File.Uri);
                         }
                     }
                     else
                     {
-                        tr1blob = new CloudBlockBlob(InputObject.File.Uri, Channel.StorageContext.StorageAccount.Credentials);
+                        track1Blob = new CloudBlockBlob(InputObject.File.Uri, Channel.StorageContext.StorageAccount.Credentials);
                     }
                     fileClient = InputObject.File;
                 }
@@ -363,13 +363,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
             }
 
-            if (tr1blob != null)
+            if (track1Blob != null)
             {
-                GetBlobContent(tr1blob, FileName, true);
+                GetBlobContent(track1Blob, FileName, true);
             }
             else
             {
-                GetBlobContent(tr2blob, FileName, true);
+                GetBlobContent(track2Blob, FileName, true);
             }
 
             if (AsJob.IsPresent)

@@ -55,7 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
         private string accessPolicyIdentifier;
 
-        [Parameter(Mandatory = false, HelpMessage = "This value specifies the Entra ID of the user would is authorized to use the resulting SAS URL. The resulting SAS URL must be used in conjunction with an Entra ID token that has been issued to the user specified in this value. This parameter can only be specified when input Storage Context is OAuth based.")]
+        [Parameter(Mandatory = false, HelpMessage = "This value specifies the Entra ID of the user who is authorized to use the resulting SAS URL. The resulting SAS URL must be used in conjunction with an Entra ID token that has been issued to the user specified in this value. This parameter can only be specified when input Storage Context is OAuth based.")]
         [ValidateNotNullOrEmpty]
         public string DelegatedUserObjectId { get; set; }
 
@@ -110,7 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         snapshotTime: null, 
                         ClientOptions);
 
-            // When the input context is Oauth bases, can't generate normal SAS, but UserDelegationSas
+            // When the input context is OAuth bases, can't generate normal SAS, but UserDelegationSas
             bool generateUserDelegationSas = false;
             if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount.Credentials != null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
             {
