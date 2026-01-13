@@ -64,18 +64,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
             {
                 return;
             }
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_webTestName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("webTestName"), out var __jsonWebTestName) ? (string)__jsonWebTestName : (string)WebTestName;}
-            {_componentName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("componentName"), out var __jsonComponentName) ? (string)__jsonComponentName : (string)ComponentName;}
-            {_resourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("resourceName"), out var __jsonResourceName) ? (string)__jsonResourceName : (string)ResourceName;}
-            {_purgeId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("purgeId"), out var __jsonPurgeId) ? (string)__jsonPurgeId : (string)PurgeId;}
-            {_keyId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("keyId"), out var __jsonKeyId) ? (string)__jsonKeyId : (string)KeyId;}
-            {_annotationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("annotationId"), out var __jsonAnnotationId) ? (string)__jsonAnnotationId : (string)AnnotationId;}
-            {_exportId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("exportId"), out var __jsonExportId) ? (string)__jsonExportId : (string)ExportId;}
-            {_storageType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("storageType"), out var __jsonStorageType) ? (string)__jsonStorageType : (string)StorageType;}
-            {_revisionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("revisionId"), out var __jsonRevisionId) ? (string)__jsonRevisionId : (string)RevisionId;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_webTestName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("webTestName"), out var __jsonWebTestName) ? (string)__jsonWebTestName : (string)_webTestName;}
+            {_componentName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("componentName"), out var __jsonComponentName) ? (string)__jsonComponentName : (string)_componentName;}
+            {_resourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("resourceName"), out var __jsonResourceName) ? (string)__jsonResourceName : (string)_resourceName;}
+            {_purgeId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("purgeId"), out var __jsonPurgeId) ? (string)__jsonPurgeId : (string)_purgeId;}
+            {_keyId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("keyId"), out var __jsonKeyId) ? (string)__jsonKeyId : (string)_keyId;}
+            {_annotationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("annotationId"), out var __jsonAnnotationId) ? (string)__jsonAnnotationId : (string)_annotationId;}
+            {_exportId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("exportId"), out var __jsonExportId) ? (string)__jsonExportId : (string)_exportId;}
+            {_storageType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("storageType"), out var __jsonStorageType) ? (string)__jsonStorageType : (string)_storageType;}
+            {_revisionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("revisionId"), out var __jsonRevisionId) ? (string)__jsonRevisionId : (string)_revisionId;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 
@@ -110,8 +110,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
+            AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._webTestName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString(this._webTestName.ToString()) : null, "webTestName" ,container.Add );
             AddIf( null != (((object)this._componentName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString(this._componentName.ToString()) : null, "componentName" ,container.Add );
             AddIf( null != (((object)this._resourceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString(this._resourceName.ToString()) : null, "resourceName" ,container.Add );

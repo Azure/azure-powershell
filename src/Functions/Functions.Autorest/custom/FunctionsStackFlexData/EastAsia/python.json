@@ -1,0 +1,324 @@
+{
+  "id": null,
+  "name": "python",
+  "type": "Microsoft.Web/locations/functionAppStacks?stackOsType=All",
+  "location": "eastasia",
+  "properties": {
+    "displayText": "Python",
+    "value": "python",
+    "preferredOs": "linux",
+    "majorVersions": [
+      {
+        "displayText": "Python 3",
+        "value": "3",
+        "minorVersions": [
+          {
+            "displayText": "Python 3.13",
+            "value": "3.13",
+            "stackSettings": {
+              "linuxRuntimeSettings": {
+                "runtimeVersion": "Python|3.13",
+                "remoteDebuggingSupported": false,
+                "isPreview": true,
+                "isDefault": false,
+                "isHidden": false,
+                "appInsightsSettings": {
+                  "isSupported": true
+                },
+                "gitHubActionSettings": {
+                  "isSupported": true,
+                  "supportedVersion": "3.13"
+                },
+                "appSettingsDictionary": {
+                  "FUNCTIONS_WORKER_RUNTIME": "python"
+                },
+                "siteConfigPropertiesDictionary": {
+                  "use32BitWorkerProcess": false,
+                  "linuxFxVersion": "Python|3.13"
+                },
+                "supportedFunctionsExtensionVersions": [
+                  "~4"
+                ],
+                "supportedFunctionsExtensionVersionsInfo": [
+                  {
+                    "version": "~4",
+                    "isDeprecated": false,
+                    "isDefault": true
+                  }
+                ],
+                "Sku": [
+                  {
+                    "skuCode": "Dedicated"
+                  },
+                  {
+                    "skuCode": "ElasticPremium"
+                  },
+                  {
+                    "skuCode": "FC1",
+                    "instanceMemoryMB": [
+                      {
+                        "size": "512",
+                        "isDefault": false
+                      },
+                      {
+                        "size": "2048",
+                        "isDefault": true
+                      },
+                      {
+                        "size": "4096",
+                        "isDefault": false
+                      }
+                    ],
+                    "maximumInstanceCount": {
+                      "lowestMaximumInstanceCount": 40,
+                      "highestMaximumInstanceCount": 1000,
+                      "defaultValue": 100
+                    },
+                    "functionAppConfigProperties": {
+                      "runtime": {
+                        "name": "python",
+                        "version": "3.13"
+                      }
+                    }
+                  }
+                ],
+                "endOfLifeDate": "Wed Oct 31 2029 00:00:00 GMT+0000 (Coordinated Universal Time)"
+              }
+            }
+          },
+          {
+            "displayText": "Python 3.12",
+            "value": "3.12",
+            "stackSettings": {
+              "linuxRuntimeSettings": {
+                "runtimeVersion": "Python|3.12",
+                "remoteDebuggingSupported": false,
+                "isPreview": false,
+                "isDefault": true,
+                "isHidden": false,
+                "appInsightsSettings": {
+                  "isSupported": true
+                },
+                "gitHubActionSettings": {
+                  "isSupported": true,
+                  "supportedVersion": "3.12"
+                },
+                "appSettingsDictionary": {
+                  "FUNCTIONS_WORKER_RUNTIME": "python"
+                },
+                "siteConfigPropertiesDictionary": {
+                  "use32BitWorkerProcess": false,
+                  "linuxFxVersion": "Python|3.12"
+                },
+                "supportedFunctionsExtensionVersions": [
+                  "~4"
+                ],
+                "supportedFunctionsExtensionVersionsInfo": [
+                  {
+                    "version": "~4",
+                    "isDeprecated": false,
+                    "isDefault": true
+                  }
+                ],
+                "Sku": [
+                  {
+                    "skuCode": "Y1"
+                  },
+                  {
+                    "skuCode": "Dedicated"
+                  },
+                  {
+                    "skuCode": "ElasticPremium"
+                  },
+                  {
+                    "skuCode": "FC1",
+                    "instanceMemoryMB": [
+                      {
+                        "size": "512",
+                        "isDefault": false
+                      },
+                      {
+                        "size": "2048",
+                        "isDefault": true
+                      },
+                      {
+                        "size": "4096",
+                        "isDefault": false
+                      }
+                    ],
+                    "maximumInstanceCount": {
+                      "lowestMaximumInstanceCount": 40,
+                      "highestMaximumInstanceCount": 1000,
+                      "defaultValue": 100
+                    },
+                    "functionAppConfigProperties": {
+                      "runtime": {
+                        "name": "python",
+                        "version": "3.12"
+                      }
+                    }
+                  }
+                ],
+                "endOfLifeDate": "Tue Oct 31 2028 00:00:00 GMT+0000 (Coordinated Universal Time)"
+              }
+            }
+          },
+          {
+            "displayText": "Python 3.11",
+            "value": "3.11",
+            "stackSettings": {
+              "linuxRuntimeSettings": {
+                "runtimeVersion": "Python|3.11",
+                "remoteDebuggingSupported": false,
+                "isPreview": false,
+                "isDefault": true,
+                "isHidden": false,
+                "appInsightsSettings": {
+                  "isSupported": true
+                },
+                "gitHubActionSettings": {
+                  "isSupported": true,
+                  "supportedVersion": "3.11"
+                },
+                "appSettingsDictionary": {
+                  "FUNCTIONS_WORKER_RUNTIME": "python"
+                },
+                "siteConfigPropertiesDictionary": {
+                  "use32BitWorkerProcess": false,
+                  "linuxFxVersion": "Python|3.11"
+                },
+                "supportedFunctionsExtensionVersions": [
+                  "~4"
+                ],
+                "supportedFunctionsExtensionVersionsInfo": [
+                  {
+                    "version": "~4",
+                    "isDeprecated": false,
+                    "isDefault": true
+                  }
+                ],
+                "Sku": [
+                  {
+                    "skuCode": "Y1"
+                  },
+                  {
+                    "skuCode": "Dedicated"
+                  },
+                  {
+                    "skuCode": "ElasticPremium"
+                  },
+                  {
+                    "skuCode": "FC1",
+                    "instanceMemoryMB": [
+                      {
+                        "size": "512",
+                        "isDefault": false
+                      },
+                      {
+                        "size": "2048",
+                        "isDefault": true
+                      },
+                      {
+                        "size": "4096",
+                        "isDefault": false
+                      }
+                    ],
+                    "maximumInstanceCount": {
+                      "lowestMaximumInstanceCount": 40,
+                      "highestMaximumInstanceCount": 1000,
+                      "defaultValue": 100
+                    },
+                    "functionAppConfigProperties": {
+                      "runtime": {
+                        "name": "python",
+                        "version": "3.11"
+                      }
+                    }
+                  }
+                ],
+                "endOfLifeDate": "Sun Oct 31 2027 00:00:00 GMT+0000 (Coordinated Universal Time)"
+              }
+            }
+          },
+          {
+            "displayText": "Python 3.10",
+            "value": "3.10",
+            "stackSettings": {
+              "linuxRuntimeSettings": {
+                "runtimeVersion": "Python|3.10",
+                "remoteDebuggingSupported": false,
+                "isPreview": false,
+                "isDefault": true,
+                "isHidden": false,
+                "appInsightsSettings": {
+                  "isSupported": true
+                },
+                "gitHubActionSettings": {
+                  "isSupported": true,
+                  "supportedVersion": "3.10"
+                },
+                "appSettingsDictionary": {
+                  "FUNCTIONS_WORKER_RUNTIME": "python"
+                },
+                "siteConfigPropertiesDictionary": {
+                  "use32BitWorkerProcess": false,
+                  "linuxFxVersion": "Python|3.10"
+                },
+                "supportedFunctionsExtensionVersions": [
+                  "~4"
+                ],
+                "supportedFunctionsExtensionVersionsInfo": [
+                  {
+                    "version": "~4",
+                    "isDeprecated": false,
+                    "isDefault": true
+                  }
+                ],
+                "Sku": [
+                  {
+                    "skuCode": "Y1"
+                  },
+                  {
+                    "skuCode": "Dedicated"
+                  },
+                  {
+                    "skuCode": "ElasticPremium"
+                  },
+                  {
+                    "skuCode": "FC1",
+                    "instanceMemoryMB": [
+                      {
+                        "size": "512",
+                        "isDefault": false
+                      },
+                      {
+                        "size": "2048",
+                        "isDefault": true
+                      },
+                      {
+                        "size": "4096",
+                        "isDefault": false
+                      }
+                    ],
+                    "maximumInstanceCount": {
+                      "lowestMaximumInstanceCount": 40,
+                      "highestMaximumInstanceCount": 1000,
+                      "defaultValue": 100
+                    },
+                    "functionAppConfigProperties": {
+                      "runtime": {
+                        "name": "python",
+                        "version": "3.10"
+                      }
+                    }
+                  }
+                ],
+                "endOfLifeDate": "Sat Oct 31 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

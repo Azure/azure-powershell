@@ -19,8 +19,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -39,7 +38,7 @@ namespace Microsoft.Azure.Management.Storage
         /// Optional, when specified, will list local users enabled for the specific
         /// protocol. Lists all users by default.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<LocalUser> List(this ILocalUsersOperations operations, string resourceGroupName, string accountName, int? maxpagesize = default(int?), string filter = default(string), string include = default(string))
+        public static Microsoft.Rest.Azure.IPage<LocalUser> List(this ILocalUsersOperations operations, string resourceGroupName, string accountName, int? maxpagesize = default(int?), string filter = default(string), string include = default(string))
         {
                 return ((ILocalUsersOperations)operations).ListAsync(resourceGroupName, accountName, maxpagesize, filter, include).GetAwaiter().GetResult();
         }
@@ -51,8 +50,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -74,7 +72,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<LocalUser>> ListAsync(this ILocalUsersOperations operations, string resourceGroupName, string accountName, int? maxpagesize = default(int?), string filter = default(string), string include = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<LocalUser>> ListAsync(this ILocalUsersOperations operations, string resourceGroupName, string accountName, int? maxpagesize = default(int?), string filter = default(string), string include = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, accountName, maxpagesize, filter, include, null, cancellationToken).ConfigureAwait(false))
             {
@@ -88,8 +86,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -112,8 +109,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -143,8 +139,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -169,8 +164,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -198,8 +192,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -222,8 +215,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -248,8 +240,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -272,8 +263,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -301,8 +291,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -325,8 +314,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -343,6 +331,39 @@ namespace Microsoft.Azure.Management.Storage
         public static async System.Threading.Tasks.Task<LocalUserRegeneratePasswordResult> RegeneratePasswordAsync(this ILocalUsersOperations operations, string resourceGroupName, string accountName, string username, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.RegeneratePasswordWithHttpMessagesAsync(resourceGroupName, accountName, username, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// List the local users associated with the storage account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<LocalUser> ListNext(this ILocalUsersOperations operations, string nextPageLink)
+        {
+                return ((ILocalUsersOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// List the local users associated with the storage account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<LocalUser>> ListNextAsync(this ILocalUsersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

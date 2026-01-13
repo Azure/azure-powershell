@@ -21,12 +21,13 @@ Create an in-memory object for EndpointDependency.
 Create an in-memory object for EndpointDependency.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.EndpointDependency
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.EndpointDependency
 .Link
-https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudEndpointDependencyObject
+https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudendpointdependencyobject
 #>
 function New-AzNetworkCloudEndpointDependencyObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.EndpointDependency')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.EndpointDependency')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,7 +40,7 @@ function New-AzNetworkCloudEndpointDependencyObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.EndpointDependency]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.EndpointDependency]::New()
 
         if ($PSBoundParameters.ContainsKey('DomainName')) {
             $Object.DomainName = $DomainName

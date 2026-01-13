@@ -131,7 +131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Network Virtual Appliance resource ID ",
+        Description = @"Network Virtual Appliance resource ID",
         SerializedName = @"networkVirtualApplianceId",
         PossibleTypes = new [] { typeof(string) })]
         string NetworkVirtualApplianceId { get; set; }

@@ -46,14 +46,6 @@ input-file:
 module-version: 0.1.0
 subject-prefix: $(service-name)
 
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - from: swagger-document
     where: $.info.title
@@ -403,10 +395,12 @@ directive:
     hide: true
 
   - model-cmdlet:
-    - WebTestGeolocation
-    - WorkbookTemplateGallery
-    # Hide for custom model cmdlet.
-    # - HeaderField
+    - model-name: WebTestGeolocation
+      cmdlet-name: New-AzApplicationInsightsWebTestGeolocationObject
+    - model-name: WorkbookTemplateGallery
+      cmdlet-name: New-AzApplicationInsightsWorkbookTemplateGalleryObject
+    - model-name: HeaderField
+      cmdlet-name: New-AzApplicationInsightsWebTestHeaderFieldObject
 
   # format output table
   - where:
@@ -429,109 +423,4 @@ directive:
           - Location
           - Kind
           - Category
-
-# #breaking change message
-  - where:
-      verb: Get|Remove
-      subject: ApiKey
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - LinkedReadProperty
-          - LinkedWriteProperty
-        new-output-properties:
-          - LinkedReadProperty
-          - LinkedWriteProperty
-        change-description: The types of the properties LinkedReadProperty, LinkedWriteProperty will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-
-  - where:
-      verb: Get|New|Update
-      subject: MyWorkbook
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - PropertiesTag
-        new-output-properties:
-          - PropertiesTag
-        change-description: The types of the properties PropertiesTag will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-
-  - where:
-      verb: New
-      subject: MyWorkbook|Workbook
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - IdentityType
-          - IdentityUserAssignedIdentity
-        new-output-properties:
-          - EnableSystemAssignedIdentity
-          - UserAssignedIdentity
-        change-description: IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-
-  - where:
-      verb: Get|Update
-      subject: WebTest
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - RequestHeader
-          - PropertiesLocations
-        new-output-properties:
-          - RequestHeader
-          - PropertiesLocations
-        change-description: The type of property 'RequestHeader' will be changed from 'Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IHeaderField' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IHeaderField]'. And the property 'PropertiesLocations' of type 'Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTest' will be removed.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-
-  - where:
-      verb: Get|New|Update
-      subject: Workbook
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - PropertiesTag
-        new-output-properties:
-          - PropertiesTag
-        change-description: The type of property 'PropertiesTag' of type 'Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220401.IWorkbook' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-
-  - where:
-      verb: Get
-      subject: WorkbookRevision
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - PropertiesTag
-        new-output-properties:
-          - PropertiesTag
-        change-description: The type of property 'PropertiesTag' of type 'Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220401.IWorkbook' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-
-  - where:
-      verb: Get|New|Update
-      subject: WorkbookTemplate
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - Gallery
-        new-output-properties:
-          - Gallery
-        change-description: The type of property 'Gallery' of type 'Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplateGallery' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplateGallery]'.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
 ```

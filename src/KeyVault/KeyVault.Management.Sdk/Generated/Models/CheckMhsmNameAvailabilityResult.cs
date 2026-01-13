@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
         /// <param name="reason">The reason that a managed hsm name could not be used. The reason element is
         /// only returned if NameAvailable is false.
-        /// Possible values include: 'AccountNameInvalid', 'AlreadyExists'</param>
+        /// Possible values include: &#39;AccountNameInvalid&#39;, &#39;AlreadyExists&#39;</param>
 
         /// <param name="message">An error message explaining the Reason value in more detail.
         /// </param>

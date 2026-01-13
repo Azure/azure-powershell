@@ -107,7 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
             }
             if (content.Contains("AffectedObjectDetail"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesInternal)this).AffectedObjectDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesAffectedObjectDetails) content.GetValueForProperty("AffectedObjectDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesInternal)this).AffectedObjectDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.JobModelCustomPropertiesAffectedObjectDetailsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesInternal)this).AffectedObjectDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IAffectedObjectDetails) content.GetValueForProperty("AffectedObjectDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesInternal)this).AffectedObjectDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AffectedObjectDetailsTypeConverter.ConvertFrom);
             }
             AfterDeserializeDictionary(content);
         }
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
             }
             if (content.Contains("AffectedObjectDetail"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesInternal)this).AffectedObjectDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesAffectedObjectDetails) content.GetValueForProperty("AffectedObjectDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesInternal)this).AffectedObjectDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.JobModelCustomPropertiesAffectedObjectDetailsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesInternal)this).AffectedObjectDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IAffectedObjectDetails) content.GetValueForProperty("AffectedObjectDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModelCustomPropertiesInternal)this).AffectedObjectDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AffectedObjectDetailsTypeConverter.ConvertFrom);
             }
             AfterDeserializePSObject(content);
         }

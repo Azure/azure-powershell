@@ -89,7 +89,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="volumeType">What type of volume is this. For destination volumes in Cross Region
-        /// Replication, set type to DataProtection
+        /// Replication, set type to DataProtection. For creating clone volume, set
+        /// type to ShortTermClone
         /// </param>
 
         /// <param name="dataProtection">DataProtection type volumes include an object containing details of the
@@ -445,7 +446,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <summary>
         /// Gets or sets what type of volume is this. For destination volumes in Cross
-        /// Region Replication, set type to DataProtection
+        /// Region Replication, set type to DataProtection. For creating clone volume,
+        /// set type to ShortTermClone
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "volumeType")]
         public string VolumeType {get; set; }

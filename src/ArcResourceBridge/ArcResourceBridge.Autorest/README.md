@@ -37,14 +37,6 @@ title: ArcResourceBridge
 module-version: 0.1.0
 subject-prefix: $(service-name)
 
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - from: swagger-document 
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}"].delete.responses
@@ -68,7 +60,10 @@ directive:
       }
 
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
   - where:
       verb: Set
@@ -116,44 +111,4 @@ directive:
           - Location
           - ProvisioningState
           - ResourceGroupName
-
-  - where:
-      verb: Get
-      subject: ApplianceCredential|Credential|UpgradeGraph
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - Kubeconfig
-          - SupportedVersion
-        new-output-properties:
-          - Kubeconfig
-          - SupportedVersion
-        change-description: The types of the properties 'Kubeconfig' and 'SupportedVersion' will be changed from single object to 'List'.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-
-  - where:
-      verb: Get
-      subject: TelemetryConfig
-      variant: GetViaIdentity
-    set:
-      breaking-change:
-          deprecated-by-version: 9.0.0
-          deprecated-by-azversion: 15.0.0
-          change-effective-date: 2025/11/03
-
-  - where:
-      verb: New
-      subject: Bridge
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - IdentityType
-        new-output-properties:
-          - EnableSystemAssignedIdentity
-        change-description: IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
 ```

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzDiagnosticSettingMetricSettingsObject
+online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-azdiagnosticsettingmetricsettingsobject
 schema: 2.0.0
 ---
 
@@ -116,7 +116,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.MetricSettings
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.MetricSettings
 
 ## NOTES
 

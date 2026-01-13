@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnsResolver", "DnsResolver\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DnsResolver.Autorest", "DnsResolver.Autorest", "{FDE7DBBB-20D7-0A02-9AE8-981A0BC85643}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DnsResolver", "..\..\generated\DnsResolver\DnsResolver.Autorest\Az.DnsResolver.csproj", "{7988B2AB-F36F-4E68-87D4-CF8F3F170733}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DnsResolver", "..\..\generated\DnsResolver\DnsResolver.Autorest\Az.DnsResolver.csproj", "{18CEE785-5A6A-4299-AEAF-EE6176588D3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -129,6 +129,18 @@ Global
 		{7988B2AB-F36F-4E68-87D4-CF8F3F170733}.Release|x64.Build.0 = Release|Any CPU
 		{7988B2AB-F36F-4E68-87D4-CF8F3F170733}.Release|x86.ActiveCfg = Release|Any CPU
 		{7988B2AB-F36F-4E68-87D4-CF8F3F170733}.Release|x86.Build.0 = Release|Any CPU
+		{18CEE785-5A6A-4299-AEAF-EE6176588D3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18CEE785-5A6A-4299-AEAF-EE6176588D3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18CEE785-5A6A-4299-AEAF-EE6176588D3F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{18CEE785-5A6A-4299-AEAF-EE6176588D3F}.Debug|x64.Build.0 = Debug|Any CPU
+		{18CEE785-5A6A-4299-AEAF-EE6176588D3F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{18CEE785-5A6A-4299-AEAF-EE6176588D3F}.Debug|x86.Build.0 = Debug|Any CPU
+		{18CEE785-5A6A-4299-AEAF-EE6176588D3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18CEE785-5A6A-4299-AEAF-EE6176588D3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18CEE785-5A6A-4299-AEAF-EE6176588D3F}.Release|x64.ActiveCfg = Release|Any CPU
+		{18CEE785-5A6A-4299-AEAF-EE6176588D3F}.Release|x64.Build.0 = Release|Any CPU
+		{18CEE785-5A6A-4299-AEAF-EE6176588D3F}.Release|x86.ActiveCfg = Release|Any CPU
+		{18CEE785-5A6A-4299-AEAF-EE6176588D3F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -141,5 +153,6 @@ Global
 		{F99C62EC-BA53-4009-A220-5DCB9F88FBF1} = {883B467C-E170-4A9F-972A-45BD8CE86D96}
 		{4237E87B-DA97-4446-A0CA-F4C663F5FC84} = {883B467C-E170-4A9F-972A-45BD8CE86D96}
 		{7988B2AB-F36F-4E68-87D4-CF8F3F170733} = {FDE7DBBB-20D7-0A02-9AE8-981A0BC85643}
+		{18CEE785-5A6A-4299-AEAF-EE6176588D3F} = {FDE7DBBB-20D7-0A02-9AE8-981A0BC85643}
 	EndGlobalSection
 EndGlobal

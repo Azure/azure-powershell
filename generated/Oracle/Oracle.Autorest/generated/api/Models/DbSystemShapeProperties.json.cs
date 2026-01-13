@@ -89,6 +89,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {_computeModel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("computeModel"), out var __jsonComputeModel) ? (string)__jsonComputeModel : (string)_computeModel;}
             {_areServerTypesSupported = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonBoolean>("areServerTypesSupported"), out var __jsonAreServerTypesSupported) ? (bool?)__jsonAreServerTypesSupported : _areServerTypesSupported;}
             {_displayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("displayName"), out var __jsonDisplayName) ? (string)__jsonDisplayName : (string)_displayName;}
+            {_shapeAttribute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("shapeAttributes"), out var __jsonShapeAttributes) ? If( __jsonShapeAttributes as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _shapeAttribute;}
             AfterFromJson(json);
         }
 
@@ -147,6 +148,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             AddIf( null != (((object)this._computeModel)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._computeModel.ToString()) : null, "computeModel" ,container.Add );
             AddIf( null != this._areServerTypesSupported ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonBoolean((bool)this._areServerTypesSupported) : null, "areServerTypesSupported" ,container.Add );
             AddIf( null != (((object)this._displayName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._displayName.ToString()) : null, "displayName" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeCreate))
+            {
+                if (null != this._shapeAttribute)
+                {
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._shapeAttribute )
+                    {
+                        AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                    }
+                    container.Add("shapeAttributes",__w);
+                }
+            }
             AfterToJson(ref container);
             return container;
         }
