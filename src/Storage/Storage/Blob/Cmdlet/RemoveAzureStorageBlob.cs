@@ -344,7 +344,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
             ValidatePipelineCloudBlobContainer(container);
 
-            if (!UseTrack2Sdk())
+            if (!UseTrack2Sdk() && !Channel.IsSasWithOAuthCredential())
             {
                 AccessCondition accessCondition = null;
                 BlobRequestOptions requestOptions = null;

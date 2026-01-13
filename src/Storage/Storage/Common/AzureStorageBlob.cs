@@ -408,7 +408,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         public static CloudBlob GetTrack1Blob(BlobBaseClient track2BlobClient, StorageCredentials credentials, global::Azure.Storage.Blobs.Models.BlobType? blobType = null)
         {
             if ((Util.GetVersionIdFromBlobUri(track2BlobClient.Uri) != null)
-                || (track2BlobClient.Uri.Query.Contains("sig=") && (credentials == null || !credentials.IsSAS)))
+                || (track2BlobClient.Uri.Query.Contains("sig=") && (credentials == null || !credentials.IsSAS))
+                || track2BlobClient.Uri.Query.Contains("sduoid=")) // UD sas + bearer token
             {
                 // Track1 SDK don't support blob VersionId
                 return new InvalidCloudBlob(track2BlobClient.Uri, credentials);
@@ -452,7 +453,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         {
             BlobClient blobClient;
             if (cloubBlob.ServiceClient.Credentials.IsToken
-                || (context != null && context.Track2OauthToken != null)) //Oauth
+                || (context != null && context.Track2OauthToken != null && !cloubBlob.ServiceClient.Credentials.IsSAS && !cloubBlob.ServiceClient.Credentials.IsSharedKey)) //Oauth
             {
                 if (context == null)
                 {

@@ -105,6 +105,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
+            if (Channel.IsSasWithOAuthCredential())
+            {
+                throw new InvalidOperationException("Stop Blob Async copy doesn't support user delegation SAS with OAuth credential.");
+            }
             Func<long, Task> taskGenerator = null;
             IStorageBlobManagement localChannel = Channel;
             string target = string.Empty;
@@ -186,7 +190,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             ValidateBlobType(blob);
 
-            if (UseTrack2Sdk()) // Use Track2
+            if (UseTrack2Sdk() || Channel.IsSasWithOAuthCredential()) // Use Track2
             {
                 if (null == blob)
                 {
