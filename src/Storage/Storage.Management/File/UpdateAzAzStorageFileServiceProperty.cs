@@ -162,6 +162,40 @@ namespace Microsoft.Azure.Commands.Management.Storage
             IgnoreCase = true)]
         public string[] SmbKerberosTicketEncryption { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable Multichannel by set to $true, disable Multichannel by set to $false. Applies to Premium FileStorage only.")]
+        [ValidateNotNullOrEmpty]
+        public bool SmbEncryptionInTransitRequired
+        {
+            get
+            {
+                return smbEncryptionInTransitRequired is null ? false : smbEncryptionInTransitRequired.Value;
+            }
+            set
+            {
+                smbEncryptionInTransitRequired = value;
+            }
+        }
+        private bool? smbEncryptionInTransitRequired = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable Multichannel by set to $true, disable Multichannel by set to $false. Applies to Premium FileStorage only.")]
+        [ValidateNotNullOrEmpty]
+        public bool NfsEncryptionInTransitRequired
+        {
+            get
+            {
+                return nfsEncryptionInTransitRequired is null ? false : nfsEncryptionInTransitRequired.Value;
+            }
+            set
+            {
+                nfsEncryptionInTransitRequired = value;
+            }
+        }
+        private bool? nfsEncryptionInTransitRequired = null;
+
         [Parameter(Mandatory = false,
             HelpMessage = "Specifies CORS rules for the File service.")]
         [ValidateNotNull]
@@ -221,11 +255,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 fileServiceProperties.ShareDeleteRetentionPolicy = deleteRetentionPolicy;
 
                 ProtocolSettings protocolSettings = null;
-                if(this.SmbProtocolVersion != null ||
+                if (this.SmbProtocolVersion != null ||
                     this.SmbAuthenticationMethod != null ||
                     this.SmbKerberosTicketEncryption != null ||
                     this.SmbChannelEncryption != null ||
-                    this.enableSmbMultichannel != null)
+                    this.enableSmbMultichannel != null || 
+                    this.smbEncryptionInTransitRequired != null)
                 {
                     protocolSettings = new ProtocolSettings();
                     protocolSettings.Smb = new SmbSetting();
@@ -250,7 +285,25 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         protocolSettings.Smb.Multichannel = new Multichannel();
                         protocolSettings.Smb.Multichannel.Enabled = this.enableSmbMultichannel;
                     }
+                    if (this.smbEncryptionInTransitRequired != null)
+                    {
+                        if (protocolSettings.Smb.EncryptionInTransit == null)
+                        {
+                            protocolSettings.Smb.EncryptionInTransit = new EncryptionInTransit(this.smbEncryptionInTransitRequired);
+                        }
+                    }
                 }
+
+                if (nfsEncryptionInTransitRequired != null)
+                {
+                    if (protocolSettings == null)
+                    {
+                        protocolSettings = new ProtocolSettings();
+                    }
+                    protocolSettings.Nfs = new NfsSetting();
+                    protocolSettings.Nfs.EncryptionInTransit = new EncryptionInTransit(this.nfsEncryptionInTransitRequired);
+                }
+
                 fileServiceProperties.ProtocolSettings = protocolSettings;
 
                 if (this.CorsRule != null)
