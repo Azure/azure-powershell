@@ -74,7 +74,7 @@ The fourth command updates the policy object with lifecycles created.
 The fifth, sixth commands create the custom schedule object for the backup policy, twice weekly starting from $schDates.
 The seventh command updates the policy object with custom schedule.
 The eighth, ninth, tenth commands update the Monthly retention rule with custom lifecycles.
-The eleventh, twelth commands create a tag criteria for Monthly policy.
+The eleventh, twelfth commands create a tag criteria for Monthly policy.
 Tag criteria needs to be added for each custom retention rule (automatically added for default retention rule).
 The last command creates the policy.
 

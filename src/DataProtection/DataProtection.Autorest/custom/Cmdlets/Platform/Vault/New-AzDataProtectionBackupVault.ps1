@@ -143,7 +143,7 @@
 
     process
     {
-        if($PSBoundParameters.ContainsKey("IdentityType") -eq $false)
+        if($PSBoundParameters.ContainsKey("EnableSystemAssignedIdentity") -and $EnableSystemAssignedIdentity)
         {
             $null = $PSBoundParameters.Add("IdentityType", "SystemAssigned")
         }

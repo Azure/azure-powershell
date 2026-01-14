@@ -212,7 +212,7 @@ This example also works for datasource type AzureDatabaseForMySQL.
 The sixth command assigns the permissions to the backup vault and other permissions necessary for triggering the restore for AzureDatabaseForPGFlexServer.
 The last command triggers the restore for AzureDatabaseForPGFlexServer.
 
-### Example 10: Trigger vaulted backup conatiners ItemLevelRestore with PrefixMatch for Azureblob.
+### Example 10: Trigger vaulted backup containers ItemLevelRestore with PrefixMatch for Azureblob.
 ```powershell
 $instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" | Where-Object { $_.Name -match "storageAcountName" }
 $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -BackupInstanceName $instance.Name

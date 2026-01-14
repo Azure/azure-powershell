@@ -43,7 +43,7 @@ DatasourceType            ObjectType
 
 This command adds a weekly tag to given backup policy
 
-### Example 2: Remove Weeky tag from Backup Policy
+### Example 2: Remove Weekly tag from Backup Policy
 ```powershell
 Edit-AzDataProtectionPolicyTagClientObject -Policy $pol -Name Weekly -RemoveRule
 ```
