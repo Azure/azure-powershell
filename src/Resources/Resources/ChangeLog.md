@@ -19,6 +19,16 @@
 -->
 
 ## Upcoming Release
+* [Breaking Change] Updated `Get-AzRoleDefinition` output model:
+    - Added `Permissions` property (list of `PSPermission` objects) to `PSRoleDefinition` to preserve full permission structure including per-permission conditions
+    - Removed `Actions`, `NotActions`, `DataActions`, and `NotDataActions` properties from `PSRoleDefinition` (these are now only available inside each `PSPermission`)
+    - Removed `Condition` and `ConditionVersion` properties from `PSRoleDefinition` as they incorrectly flattened multi-permission role definitions
+    - Added `Condition` and `ConditionVersion` properties to `PSPermission`
+    - Users should now access actions via `$role.Permissions[n].Actions` and conditions via `$role.Permissions[n].Condition`
+* [Breaking Change] Updated `New-AzRoleDefinition -InputFile` JSON format:
+    - JSON input files must now use the `Permissions` array format instead of flattened `Actions`/`NotActions`/`DataActions`/`NotDataActions` properties
+    - Old format: `{ "Actions": ["*"], "NotActions": [] }`
+    - New format: `{ "Permissions": [{ "Actions": ["*"], "NotActions": [] }] }`
 
 ## Version 9.0.0
 * Removed unavailable variant Get-AzRoleEligibleChildResource cmdlet for InputObject parameter.

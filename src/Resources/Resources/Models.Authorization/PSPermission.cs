@@ -33,5 +33,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public List<string> NotDataActions { get; set; }
 
         public string NotDataActionsString { get { return string.Join(", ", NotDataActions); } }
+
+        public string Condition { get; set; }
+
+        public string ConditionVersion { get; set; }
     }
 }
