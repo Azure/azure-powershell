@@ -14,6 +14,8 @@
 # is regenerated.
 # ----------------------------------------------------------------------------------
 
+using namespace System.Management.Automation.Language
+
 # split policy ids into usable parts
 function ParsePolicyId {
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
@@ -367,6 +369,94 @@ function ConvertObjectToPSObject {
     ConvertFrom-JsonSafe $jsonString
 }
 
+# Recursive conversion function for common AST blocks from parsing
+function Convert-AstLiteral {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
+    param([Ast] $Node)
+
+    switch ($Node) {
+        # Strings like "text" or 'text'
+        { $_.GetType() -eq [StringConstantExpressionAst] } { return $_.Value }
+        { $_.GetType() -eq [ExpandableStringExpressionAst] } { return $_.Value } # unexpanded, by design
+        # Numbers, $true/$false/$null
+        { $_.GetType() -eq [ConstantExpressionAst] } { return $_.Value }
+        # This node type is essentially a wrapper node for an array
+        { $_.GetType() -eq [ArrayExpressionAst] } {
+            $arr = @()
+            foreach ($e in $_.SubExpression.Statements) {
+                $arr += Convert-AstLiteral $e
+            }
+            return $arr
+        }
+        # Arrays: @( ... )
+        { $_.GetType() -eq [ArrayLiteralAst] } {
+            $arr = @()
+            foreach ($e in $_.Elements) {
+                $arr += Convert-AstLiteral $e
+            }
+            return $arr
+        }
+        # Nested hashtables 
+        { $_.GetType() -eq [HashtableAst] } {
+            $h = @{}
+            foreach ($kv in $_.KeyValuePairs) {
+                $k = $kv.Item1.Value
+                $h[$k] = Convert-AstLiteral $kv.Item2
+            }
+            return $h
+        }
+        # Case where a literal is wrapped in a pipeline
+        { $_.GetType() -eq [PipelineAst] } {
+            if ($_.PipelineElements.Count -eq 1) {
+                return Convert-AstLiteral $_.PipelineElements[0].Expression
+            }
+            else {
+                throw "Ran into issue attempting to parse PSCustomObject."
+            }
+        }
+        # Handles variables such as $null, $true, $false
+        { $_.GetType() -eq [VariableExpressionAst] } {
+            if ($_.VariablePath.IsVariable) {
+                return $_.VariablePath.UserPath
+            }
+            else {
+                throw "Unsupported variable path for safe conversion: $($_.VariablePath.ToString()). Unable to parse PSCustomObject."
+            }
+        }
+        default {
+            # Anything else is not allowed
+            throw "Unsupported AST node for safe conversion: $($_.GetType().Name). Unable to parse PSCustomObject."
+        }
+    }
+}
+
+# Safely converts a string representation of a hashtable or PSCustomObject into a hashtable
+function ConvertTo-HashtableSafely {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [string] $InputObject
+    )
+
+    $tokens = $null; $errors = $null
+    $ast = [Parser]::ParseInput($InputObject, [ref]$tokens, [ref]$errors)
+
+    if ($errors?.Count) {
+        throw "Invalid PSCustomObject or hashtable literal: $($errors[0].Message)"
+    }
+
+    # Find the first expression in the script
+    $expr = $ast.EndBlock.Statements | ForEach-Object {
+        $_.PipelineElements | ForEach-Object { $_.Expression }
+    } | Select-Object -First 1
+
+    if (-not ($expr -is [HashtableAst])) {
+        throw "Top-level expression is not a hashtable."
+    }
+
+    return Convert-AstLiteral $expr
+}
+
 function GetPSObjectProperty {
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     param (
@@ -476,7 +566,7 @@ function ResolvePolicyMetadataParameter {
 
     if ($metadata -like '@{*') {
         # probably a PSCustomObject, try converting to hashtable
-        return (Invoke-Expression($metadata.Replace('=',"='").Replace(';',"';").Replace('}',"'}")))
+        return ConvertTo-HashtableSafely $metadata
     }
 
     # otherwise it should be a JSON string
