@@ -57,7 +57,7 @@ Lists all execution filters configured for the specified edge action.
 
 ### Example 2: Get a specific execution filter
 ```powershell
-Get-AzEdgeActionExecutionFilter -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Name "filter1"
+Get-AzEdgeActionExecutionFilter -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -ExecutionFilter "filter1"
 ```
 
 ```output
