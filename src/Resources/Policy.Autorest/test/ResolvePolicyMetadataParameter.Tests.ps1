@@ -48,6 +48,7 @@ Describe 'ResolvePolicyMetadataParameter' {
         $resolved.category | Should -Be 'ScenarioTest'
         $resolved.tags | Should -Contain 'ps'
         $resolved.details.location | Should -Be 'Redmond'
+        $resolved.config.enabled | Should -BeTrue
         $resolved.config.retries | Should -Be 3
         $resolved.config.limits.maxItems | Should -Be 100
     }
@@ -71,8 +72,8 @@ Describe 'ResolvePolicyMetadataParameter' {
     It 'Parse metadata in file content' {
         # create a temporary file with metadata content
         $fileContent = '{"TestKey": "TestValue"}'
-        Set-Content -Path ".\PolicyMetadata.json" -Value $fileContent
-        $metadata = Join-Path . "PolicyMetadata.json"
+        $metadata = Join-Path $PSScriptRoot 'PolicyMetadata.json'
+        Set-Content -Path $metadata -Value $fileContent
         try {
             $resolved = ResolvePolicyMetadataParameter -Metadata $metadata
             $resolved.TestKey | Should -Be 'TestValue'
@@ -84,6 +85,15 @@ Describe 'ResolvePolicyMetadataParameter' {
     }
 
     It 'Ensure parsing invalid JSON metadata throws' {
-        { ResolvePolicyMetadataParameter -Metadata $invalidJson } | Should -Throw "Unrecognized metadata format - value: [$($invalidJson)], type: [$($invalidJson.GetType())]"
+        { ResolvePolicyMetadataParameter -Metadata $invalidJson } | Should -Throw 'Unrecognized metadata format - value: [{ "name": "Bob", "enabled": true ], type: [string]'
+    }
+
+    It 'Parse nested arrays in metadata' {
+        $nestedArrayMetadata = '{ "name": "NestedTest", "matrix": [[1,2,3],[4,5,6],[7,8,9]], "tags": [["a","b"],["c","d"]] }'
+        $resolved = ResolvePolicyMetadataParameter -Metadata $nestedArrayMetadata
+        $resolved.name | Should -Be 'NestedTest'
+        $resolved.matrix[0] | Should -Be @(1,2,3)
+        $resolved.matrix[2][1] | Should -Be 8
+        $resolved.tags[1] | Should -Be @('c','d')
     }
 }

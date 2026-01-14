@@ -377,7 +377,7 @@ function Convert-AstLiteral {
     switch ($Node) {
         # Strings like "text" or 'text'
         { $_.GetType() -eq [StringConstantExpressionAst] } { return $_.Value }
-        { $_.GetType() -eq [ExpandableStringExpressionAst] } { return $_.Value } # unexpanded, by design
+        { $_.GetType() -eq [ExpandableStringExpressionAst] } { return $_.Value }
         # Numbers, $true/$false/$null
         { $_.GetType() -eq [ConstantExpressionAst] } { return $_.Value }
         # This node type is essentially a wrapper node for an array
@@ -441,7 +441,7 @@ function ConvertTo-HashtableSafely {
     $tokens = $null; $errors = $null
     $ast = [Parser]::ParseInput($InputObject, [ref]$tokens, [ref]$errors)
 
-    if ($errors?.Count) {
+    if ($errors -and $errors.Count -gt 0) {
         throw "Invalid PSCustomObject or hashtable literal: $($errors[0].Message)"
     }
 
