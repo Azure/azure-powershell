@@ -1,26 +1,22 @@
-### Example 1: Get version code as base64-encoded content
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzEdgeActionVersionCode -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1"
+{{ Add code here }}
 ```
 
 ```output
-Content                                                                             Name
--------                                                                             ----
-UEsDBBQAAAAIAI... (base64 encoded ZIP content)                                      v1
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command retrieves the deployed version code as a base64-encoded ZIP file. The content can be decoded and extracted to view the original source files.
+{{ Add description here }}
 
-### Example 2: Get version code and save to file
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzEdgeActionVersionCode -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1" -OutputPath "C:\Downloads"
+{{ Add code here }}
 ```
 
 ```output
-Message                      FilePath                    Name
--------                      --------                    ----
-Version code saved...        C:\Downloads\v1.zip         v1
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command retrieves the deployed version code and saves it directly to a ZIP file in the specified output directory. The file is automatically named using the version name.
+{{ Add description here }}
 

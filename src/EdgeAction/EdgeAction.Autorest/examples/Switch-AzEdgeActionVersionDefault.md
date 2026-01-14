@@ -1,14 +1,22 @@
-### Example 1: Switch the default version of an edge action
-
+### Example 1: {{ Add title here }}
 ```powershell
-Switch-AzEdgeActionVersionDefault -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v2"
+{{ Add code here }}
 ```
 
 ```output
-Name Location ProvisioningState
----- -------- -----------------
-v2   global   Succeeded
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Switches the default version of the edge action to v2. All traffic will now be routed to this version.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 

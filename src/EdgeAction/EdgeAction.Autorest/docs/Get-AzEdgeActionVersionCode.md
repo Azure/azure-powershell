@@ -12,18 +12,24 @@ A long-running resource action.
 
 ## SYNTAX
 
-### Get (Default)
+### GetCustom (Default)
+```
+Get-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
+```
+
+### Get
 ```
 Get-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### GetAndSave
+### GetAndSaveCustom
 ```
 Get-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
- -OutputPath <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -OutputPath <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -43,33 +49,27 @@ A long-running resource action.
 
 ## EXAMPLES
 
-### Example 1: Get version code as base64-encoded content
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzEdgeActionVersionCode -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1"
+{{ Add code here }}
 ```
 
 ```output
-Content                                                                             Name
--------                                                                             ----
-UEsDBBQAAAAIAI... (base64 encoded ZIP content)                                      v1
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command retrieves the deployed version code as a base64-encoded ZIP file.
-The content can be decoded and extracted to view the original source files.
+{{ Add description here }}
 
-### Example 2: Get version code and save to file
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzEdgeActionVersionCode -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1" -OutputPath "C:\Downloads"
+{{ Add code here }}
 ```
 
 ```output
-Message                      FilePath                    Name
--------                      --------                    ----
-Version code saved...        C:\Downloads\v1.zip         v1
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command retrieves the deployed version code and saves it directly to a ZIP file in the specified output directory.
-The file is automatically named using the version name.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -124,7 +124,7 @@ The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetAndSave
+Parameter Sets: Get, GetAndSaveCustom, GetCustom
 Aliases:
 
 Required: True
@@ -169,7 +169,7 @@ Output directory to save the decoded version code as a zip file.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetAndSave
+Parameter Sets: GetAndSaveCustom
 Aliases:
 
 Required: True
@@ -185,7 +185,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetAndSave
+Parameter Sets: Get, GetAndSaveCustom, GetCustom
 Aliases:
 
 Required: True
@@ -201,7 +201,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, GetAndSave
+Parameter Sets: Get, GetAndSaveCustom, GetCustom
 Aliases:
 
 Required: False
@@ -216,7 +216,7 @@ The name of the Edge Action version
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetAndSave, GetViaIdentityEdgeAction
+Parameter Sets: Get, GetAndSaveCustom, GetCustom, GetViaIdentityEdgeAction
 Aliases:
 
 Required: True

@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEdgeActionExecutionFilt
 Describe 'New-AzEdgeActionExecutionFilter' {
     BeforeAll {
         $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "eafilterfixed01"
+        $script:edgeActionName = "eafilterdec02"
         $script:version = "v1"
         $script:testFilePath = Join-Path $PSScriptRoot 'test_handler.js'
         
@@ -62,7 +62,7 @@ Describe 'New-AzEdgeActionExecutionFilter' {
 
     It 'CreateExpanded' {
         # Test creating execution filter
-        $filterName = "filternewfixed01"
+        $filterName = "filternewdec01"
         
         $result = New-AzEdgeActionExecutionFilter -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName `

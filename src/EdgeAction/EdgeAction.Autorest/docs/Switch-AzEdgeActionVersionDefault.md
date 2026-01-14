@@ -12,7 +12,14 @@ A long-running resource action.
 
 ## SYNTAX
 
-### Swap (Default)
+### SwapCustom (Default)
+```
+Switch-AzEdgeActionVersionDefault -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### Swap
 ```
 Switch-AzEdgeActionVersionDefault -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
@@ -36,19 +43,27 @@ A long-running resource action.
 
 ## EXAMPLES
 
-### Example 1: Switch the default version of an edge action
+### Example 1: {{ Add title here }}
 ```powershell
-Switch-AzEdgeActionVersionDefault -EdgeActionName "myEdgeAction" -ResourceGroupName "myResourceGroup" -Version "v2"
+{{ Add code here }}
 ```
 
-This command switches the default version of the edge action to the specified version.
-
-### Example 2: Switch default version using pipeline input
-```powershell
-Get-AzEdgeAction -Name "myEdgeAction" -ResourceGroupName "myResourceGroup" | Switch-AzEdgeActionVersionDefault -Version "v2"
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command retrieves an edge action and pipes it to switch the default version.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -103,7 +118,7 @@ The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: Swap
+Parameter Sets: Swap, SwapCustom
 Aliases:
 
 Required: True
@@ -164,7 +179,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Swap
+Parameter Sets: Swap, SwapCustom
 Aliases:
 
 Required: True
@@ -180,7 +195,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Swap
+Parameter Sets: Swap, SwapCustom
 Aliases:
 
 Required: False
@@ -195,7 +210,7 @@ The name of the Edge Action version
 
 ```yaml
 Type: System.String
-Parameter Sets: Swap, SwapViaIdentityEdgeAction
+Parameter Sets: Swap, SwapCustom, SwapViaIdentityEdgeAction
 Aliases:
 
 Required: True
