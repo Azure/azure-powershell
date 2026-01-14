@@ -13,8 +13,8 @@ Create an in-memory object for UriFolderJobOutput.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceUriFolderJobOutputObject [-Description <String>] [-Mode <String>] [-Uri <String>]
- [<CommonParameters>]
+New-AzMLWorkspaceUriFolderJobOutputObject -Type <String> [-Description <String>] [-Mode <String>]
+ [-Uri <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,6 +55,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+[Required] Specifies the type of job.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

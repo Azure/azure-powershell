@@ -13,8 +13,8 @@ Create an in-memory object for MLFlowModelJobOutput.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceMLFlowModelJobOutputObject [-Mode <String>] [-Uri <String>] [-Description <String>]
- [<CommonParameters>]
+New-AzMLWorkspaceMLFlowModelJobOutputObject -Type <String> [-Mode <String>] [-Uri <String>]
+ [-Description <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,6 +55,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+[Required] Specifies the type of job.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -16,18 +16,18 @@
 
 <#
 .Synopsis
-Create an in-memory object for CustomModelJobInput.
+Create an in-memory object for TritonModelJobInput.
 .Description
-Create an in-memory object for CustomModelJobInput.
+Create an in-memory object for TritonModelJobInput.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CustomModelJobInput
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.TritonModelJobInput
 .Link
-https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacecustommodeljobinputobject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacetritonmodeljobinputobject
 #>
-function New-AzMLWorkspaceCustomModelJobInputObject {
+function New-AzMLWorkspaceTritonModelJobInputObject {
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CustomModelJobInput')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.TritonModelJobInput')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,17 +40,11 @@ function New-AzMLWorkspaceCustomModelJobInputObject {
         $Uri,
         [Parameter(HelpMessage="Description for the input.")]
         [string]
-        $Description,
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.ParameterBreakingChangeAttribute("Type", "16.0.0", "1.3.0", "2026/05")]
-        [Parameter(Mandatory, HelpMessage="[Required] Specifies the type of job.")]
-        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType])]
-        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType]
-        [string]
-        $Type
+        $Description
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CustomModelJobInput]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.TritonModelJobInput]::New()
 
         if ($PSBoundParameters.ContainsKey('Mode')) {
             $Object.Mode = $Mode

@@ -13,7 +13,7 @@ Create an in-memory object for LiteralJobInput.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceLiteralJobInputObject -Value <String> [-Description <String>]
+New-AzMLWorkspaceLiteralJobInputObject -Value <String> -Type <String> [-Description <String>]
  [<CommonParameters>]
 ```
 
@@ -40,6 +40,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+[Required] Specifies the type of job.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -16,41 +16,35 @@
 
 <#
 .Synopsis
-Create an in-memory object for CustomModelJobInput.
+Create an in-memory object for CustomModelJobOutput.
 .Description
-Create an in-memory object for CustomModelJobInput.
+Create an in-memory object for CustomModelJobOutput.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CustomModelJobInput
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CustomModelJobOutput
 .Link
-https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacecustommodeljobinputobject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacecustommodeljoboutputobject
 #>
-function New-AzMLWorkspaceCustomModelJobInputObject {
+function New-AzMLWorkspaceCustomModelJobOutputObject {
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CustomModelJobInput')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CustomModelJobOutput')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="Input Asset Delivery Mode.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("ReadOnlyMount", "ReadWriteMount", "Download", "Direct", "EvalMount", "EvalDownload")]
+        [Parameter(HelpMessage="Output Asset Delivery Mode.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("ReadWriteMount", "Upload", "Direct")]
         [string]
         $Mode,
-        [Parameter(Mandatory, HelpMessage="[Required] Input Asset URI.")]
+        [Parameter(HelpMessage="Output Asset URI.")]
         [string]
         $Uri,
-        [Parameter(HelpMessage="Description for the input.")]
+        [Parameter(HelpMessage="Description for the output.")]
         [string]
-        $Description,
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.ParameterBreakingChangeAttribute("Type", "16.0.0", "1.3.0", "2026/05")]
-        [Parameter(Mandatory, HelpMessage="[Required] Specifies the type of job.")]
-        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType])]
-        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType]
-        [string]
-        $Type
+        $Description
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CustomModelJobInput]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CustomModelJobOutput]::New()
 
         if ($PSBoundParameters.ContainsKey('Mode')) {
             $Object.Mode = $Mode

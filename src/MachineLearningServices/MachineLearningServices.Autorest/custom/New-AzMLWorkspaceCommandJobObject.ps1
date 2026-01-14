@@ -160,9 +160,7 @@ function New-AzMLWorkspaceCommandJobObject {
             $Object.EnvironmentId = $EnvironmentId
         }
         if ($PSBoundParameters.ContainsKey('EnvironmentVariable')) {
-            $EnvironmentVariableObj = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ICommandJobEnvironmentVariables]::New()
-            $EnvironmentVariableObj.CopyFrom($EnvironmentVariable);
-            $Object.EnvironmentVariable = $EnvironmentVariableObj
+            $Object.EnvironmentVariable = $EnvironmentVariable
         }
         if ($PSBoundParameters.ContainsKey('JobInput')) {
             $Object.Input = $JobInput
