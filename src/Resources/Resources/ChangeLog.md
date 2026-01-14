@@ -19,17 +19,18 @@
 -->
 
 ## Upcoming Release
-* Fixed [#29058](https://github.com/Azure/azure-powershell/issues/29058): `Get-AzRoleDefinition` returned null `Condition` for roles with ABAC (Attribute-Based Access Control) conditions on non-first permission entries
+* Fixed `Get-AzRoleDefinition` returning null `Condition` for roles with ABAC (Attribute-Based Access Control) conditions on non-first permission entries [#29058] [#25940]
 * [Breaking Change] Updated `Get-AzRoleDefinition` output model:
     - Added `Permissions` property (list of `PSPermission` objects) to `PSRoleDefinition` to preserve full permission structure including per-permission ABAC conditions
     - Removed `Actions`, `NotActions`, `DataActions`, and `NotDataActions` properties from `PSRoleDefinition` (these are now only available inside each `PSPermission`)
     - Removed `Condition` and `ConditionVersion` properties from `PSRoleDefinition` as they incorrectly flattened multi-permission role definitions
     - Added `Condition` and `ConditionVersion` properties to `PSPermission`
-    - Users should now access actions via `$role.Permissions[n].Actions` and conditions via `$role.Permissions[n].Condition`
+    - Example - Old: `$role.Actions`, `$role.Condition`
+    - Example - New: `$role.Permissions[0].Actions`, `$role.Permissions[1].Condition` (conditions are now per-permission)
 * [Breaking Change] Updated `New-AzRoleDefinition -InputFile` JSON format:
     - JSON input files must now use the `Permissions` array format instead of flattened `Actions`/`NotActions`/`DataActions`/`NotDataActions` properties
-    - Old format: `{ "Actions": ["*"], "NotActions": [] }`
-    - New format: `{ "Permissions": [{ "Actions": ["*"], "NotActions": [] }] }`
+    - Old format: `{ "Actions": ["Microsoft.Storage/*"], "DataActions": ["Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"] }`
+    - New format: `{ "Permissions": [{ "Actions": ["Microsoft.Storage/*"], "DataActions": ["Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"], "Condition": null, "ConditionVersion": null }] }`
 
 ## Version 9.0.0
 * Removed unavailable variant Get-AzRoleEligibleChildResource cmdlet for InputObject parameter.

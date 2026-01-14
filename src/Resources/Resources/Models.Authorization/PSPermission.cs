@@ -22,22 +22,22 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public List<string> Actions { get; set; }
 
         [JsonIgnore]
-        public string ActionsString { get { return string.Join(", ", Actions); } }
+        public string ActionsString { get { return Actions != null ? string.Join(", ", Actions) : string.Empty; } }
 
         public List<string> NotActions { get; set; }
 
         [JsonIgnore]
-        public string NotActionsString { get { return string.Join(", ", NotActions); } }
+        public string NotActionsString { get { return NotActions != null ? string.Join(", ", NotActions) : string.Empty; } }
 
         public List<string> DataActions { get; set; }
 
         [JsonIgnore]
-        public string DataActionsString { get { return string.Join(", ", DataActions); } }
+        public string DataActionsString { get { return DataActions != null ? string.Join(", ", DataActions) : string.Empty; } }
 
         public List<string> NotDataActions { get; set; }
 
         [JsonIgnore]
-        public string NotDataActionsString { get { return string.Join(", ", NotDataActions); } }
+        public string NotDataActionsString { get { return NotDataActions != null ? string.Join(", ", NotDataActions) : string.Empty; } }
 
         public string Condition { get; set; }
 
