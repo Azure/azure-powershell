@@ -31,11 +31,11 @@ This file contains the configuration for generating My API from the OpenAPI spec
 
 ``` yaml
 # it's the same options as command line options, just drop the double-dash!
-commit: ebdacd9571bc8a5faad5b8d418c70c3b6b7c2965
+commit: 18609d68cf243ee3ce35d7c005ff3c7dd2cd9477
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/DataProtection/stable/2025-02-01/dataprotection.json
+  - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/DataProtection/stable/2025-09-01/dataprotection.json
 title: DataProtection
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 use-extension:
@@ -43,8 +43,29 @@ use-extension:
 
 directive:
   - from: swagger-document
+    where: $.paths..parameters[?(@.name=='backupInstanceName')]
+    transform: $["description"] = "The name of the backup instance."
+  - from: swagger-document
+    where: $.paths..parameters[?(@.name=='vaultName')]
+    transform: $["description"] = "The name of the backup vault."
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}"].put
+    transform: delete $["x-ms-long-running-operation-options"];
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}"].put
+    transform: delete $["x-ms-long-running-operation-options"];
+  - from: swagger-document
+    where: $.definitions.ResourceDeletionInfo.properties
+    transform: >
+      $["deleteActivityID"] = $["deleteActivityId"];
+      delete $["deleteActivityId"];
+  - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}"].delete
     transform: $["description"] = "Delete a backupInstances"
+  - from: swagger-document
+    where: $.definitions.BackupVault
+    transform: >
+      delete $.required;
   - where:
       parameter-name: XmsAuthorizationAuxiliary
     set:
@@ -170,6 +191,16 @@ directive:
     hide: true
   - where:
       verb: Get
+      subject: DeletedBackupVault
+      variant: ^GetViaIdentity$
+    hide: true
+  - where:
+      verb: Get
+      subject: DeletedBackupVault
+    set:
+      subject: SoftDeletedBackupVault
+  - where:
+      verb: Get
       subject: DeletedBackupInstance
     set:
       verb: Get
@@ -270,6 +301,25 @@ directive:
       subject: BackupVault
     hide: true
   - where:
+      verb: New
+      subject: BackupVault
+      parameter-name: Parameter
+    set:
+      parameter-name: Parameter
+    clear-alias: true
+  - where:
+      verb: New
+      subject: BackupVault
+      variant: ^Create$
+      parameter-name: Parameter
+    required: false
+  - where:
+      verb: New
+      subject: BackupVault
+      variant: ^CreateExpanded$
+      parameter-name: StorageSetting
+    required: false
+  - where:
       verb: Update
       subject: BackupVault
       variant: ^UpdateExpanded$
@@ -304,6 +354,18 @@ directive:
       subject: ResourceGuardMapping$
     set:
       verb: Set
+  - where:
+      verb: Get
+      subject: SoftDeletedBackupInstance
+      parameter-name: BackupInstanceName
+    set:
+      parameter-description: The name of the deleted backup instance
+  - where:
+      verb: Undo
+      subject: BackupInstanceDeletion
+      parameter-name: BackupInstanceName
+    set:
+      parameter-description: The name of the deleted backup instance
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/findRestorableTimeRanges"].post
     transform: $["description"] = "Finds the valid recovery point in time ranges for the restore."
@@ -322,35 +384,35 @@ directive:
   - where:
       verb: Test
       subject: BackupInstance
-      variant: ^Validate2$|^ValidateExpanded2$|^ValidateViaIdentity2$|^ValidateViaIdentityExpanded2$
+      variant: ^Validate1$|^ValidateExpanded1$|^ValidateViaIdentity1$|^ValidateViaIdentityExpanded1$
     set:
       subject: BackupInstanceRestore
+  - where:
+      verb: Test
+      subject: BackupInstance
+      variant: ^Validate2$|^ValidateExpanded2$|^ValidateViaIdentity2$|^ValidateViaIdentityExpanded2$
+    set:
+      subject: BackupInstanceReadiness
   - where:
       verb: Test
       subject: BackupInstance
       variant: ^Validate$|^ValidateExpanded$|^ValidateViaIdentity$|^ValidateViaIdentityExpanded$
     set:
-      subject: BackupInstanceReadiness
-  - where:
-      verb: Test
-      subject: BackupInstance
-      variant: ^Validate1$|^ValidateExpanded1$|^ValidateViaIdentity1$|^ValidateViaIdentityExpanded1$
-    set:
       subject: BackupInstanceUpdate
   - where:
       verb: Test
       subject: BackupInstanceUpdate
-      variant: ^Validate1$|^ValidateViaIdentity1$|^ValidateViaIdentityExpanded1$
-    hide: true
-  - where:
-      verb: Test
-      subject: BackupInstanceReadiness
       variant: ^Validate$|^ValidateViaIdentity$|^ValidateViaIdentityExpanded$
     hide: true
   - where:
       verb: Test
+      subject: BackupInstanceReadiness
+      variant: ^Validate2$|^ValidateViaIdentity2$|^ValidateViaIdentityExpanded2$
+    hide: true
+  - where:
+      verb: Test
       subject: BackupInstanceRestore
-      variant: ^Validate2$|^ValidateExpanded2$|^ValidateViaIdentity2$|^ValidateViaIdentityExpanded2$
+      variant: ^Validate1$|^ValidateExpanded1$|^ValidateViaIdentity1$|^ValidateViaIdentityExpanded1$
     hide: true
   - where:
       verb: Test
@@ -452,9 +514,11 @@ directive:
     - CrossRegionRestoreDetails
     - CrossRegionRestoreRequestObject
     - DeletionInfo
+    - EncryptionSettings
     - InnerError
     - ItemLevelRestoreTargetInfo
     - PolicyParameters
+    - ResourceDeletionInfo
     - RestoreFilesTargetInfo
     - RestoreTargetInfo
     - RestoreTargetInfoBase
@@ -464,22 +528,21 @@ directive:
     - UserFacingError    
     - ValidateRestoreRequestObject
     - ValidateCrossRegionRestoreRequestObject
-    - EncryptionSettings
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBaseBackupPolicy Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBaseBackupPolicy Property');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.ITriggerContext Trigger');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ITriggerContext Trigger');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupParameters BackupParameter');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupParameters BackupParameter');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IAzureBackupRecoveryPoint Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IAzureBackupRecoveryPoint Property');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.INamespacedNameResource ResourceModifierReference', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.INamespacedNameResource ResourceModifierReference');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.INamespacedNameResource ResourceModifierReference', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.INamespacedNameResource ResourceModifierReference');
 ```
 
 ## Alternate settings
