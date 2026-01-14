@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '15.2.0'
+ModuleVersion = '15.2.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -230,7 +230,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.2'; },
             @{ModuleName = 'Az.Sql'; RequiredVersion = '6.4.0'; }, 
             @{ModuleName = 'Az.SqlVirtualMachine'; RequiredVersion = '2.4.0'; }, 
             @{ModuleName = 'Az.Ssh'; RequiredVersion = '0.2.3'; }, 
-            @{ModuleName = 'Az.StackHCI'; RequiredVersion = '2.6.5'; }, 
+            @{ModuleName = 'Az.StackHCI'; RequiredVersion = '2.6.6'; }, 
             @{ModuleName = 'Az.StackHCIVM'; RequiredVersion = '1.1.0'; }, 
             @{ModuleName = 'Az.StandbyPool'; RequiredVersion = '0.3.0'; }, 
             @{ModuleName = 'Az.Storage'; RequiredVersion = '9.5.0'; }, 
