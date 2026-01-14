@@ -1,7 +1,7 @@
 ---
 external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendbackendobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorbackendobject
 schema: 2.0.0
 ---
 

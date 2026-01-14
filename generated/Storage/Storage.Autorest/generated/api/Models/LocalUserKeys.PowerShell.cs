@@ -115,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("SharedKey"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserKeysInternal)this).SharedKey = (string) content.GetValueForProperty("SharedKey",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserKeysInternal)this).SharedKey, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserKeysInternal)this).SharedKey = (System.Security.SecureString) content.GetValueForProperty("SharedKey",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserKeysInternal)this).SharedKey, (object ss) => (System.Security.SecureString)ss);
             }
             AfterDeserializeDictionary(content);
         }
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("SharedKey"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserKeysInternal)this).SharedKey = (string) content.GetValueForProperty("SharedKey",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserKeysInternal)this).SharedKey, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserKeysInternal)this).SharedKey = (System.Security.SecureString) content.GetValueForProperty("SharedKey",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserKeysInternal)this).SharedKey, (object ss) => (System.Security.SecureString)ss);
             }
             AfterDeserializePSObject(content);
         }

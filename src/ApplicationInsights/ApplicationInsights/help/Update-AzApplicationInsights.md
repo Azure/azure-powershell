@@ -15,12 +15,12 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 
 ```
 Update-AzApplicationInsights -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>]
- [-ApplicationType <ApplicationType>] [-DisableIPMasking] [-DisableLocalAuth] [-Etag <String>]
- [-FlowType <FlowType>] [-ForceCustomerStorageForProfiler] [-HockeyAppId <String>] [-ImmediatePurgeDataOn30Day]
- [-IngestionMode <IngestionMode>] [-PublicNetworkAccessForIngestion <PublicNetworkAccessType>]
- [-PublicNetworkAccessForQuery <PublicNetworkAccessType>] [-RequestSource <RequestSource>]
- [-RetentionInDays <Int32>] [-SamplingPercentage <Double>] [-Tag <Hashtable>] [-WorkspaceResourceId <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ApplicationType <String>] [-DisableIPMasking] [-DisableLocalAuth] [-Etag <String>] [-FlowType <String>]
+ [-ForceCustomerStorageForProfiler] [-HockeyAppId <String>] [-ImmediatePurgeDataOn30Day]
+ [-IngestionMode <String>] [-PublicNetworkAccessForIngestion <String>] [-PublicNetworkAccessForQuery <String>]
+ [-RequestSource <String>] [-RetentionInDays <Int32>] [-SamplingPercentage <Double>] [-Tag <Hashtable>]
+ [-WorkspaceResourceId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +42,7 @@ update application insights component "aiName" PublicNetworkAccessForIngestion/P
 Type of application being monitored.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.ApplicationType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +118,7 @@ Used by the Application Insights system to determine what kind of flow this comp
 This is to be set to 'Bluefield' when creating/updating a component via the REST API.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.FlowType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -178,7 +178,7 @@ Accept wildcard characters: False
 Indicates the flow of the ingestion.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.IngestionMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -208,7 +208,7 @@ Accept wildcard characters: False
 The network access type for accessing Application Insights ingestion.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -223,7 +223,7 @@ Accept wildcard characters: False
 The network access type for accessing Application Insights query.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -239,7 +239,7 @@ Describes what tool created this Application Insights component.
 Customers using this API should set this to the default 'rest'.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.RequestSource
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -381,7 +381,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponent
 
 ## NOTES
 

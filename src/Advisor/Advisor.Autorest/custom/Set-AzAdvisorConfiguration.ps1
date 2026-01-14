@@ -22,8 +22,7 @@ Updates or creates the Azure Advisor Configuration.
 https://learn.microsoft.com/powershell/module/az.advisor/Set-AzAdvisorConfiguration
 #>
 function Set-AzAdvisorConfiguration {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IConfigData", DeprecatedOutputProperties = ("Digest Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IDigestConfig"), NewOutputProperties = ("Digest System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IDigestConfig]"))]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IConfigData])]
     [CmdletBinding(DefaultParameterSetName='CreateByLCT', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='CreateByRG', Mandatory)]
@@ -58,9 +57,9 @@ function Set-AzAdvisorConfiguration {
     
         [Parameter(ParameterSetName='CreateByLCT')]
         [Parameter(ParameterSetName='CreateByInputObject')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Advisor.PSArgumentCompleterAttribute("5", "10", "15", "20")]
         [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold]
+        [System.String]
         # Minimum percentage threshold for Advisor low CPU utilization evaluation.
         # Valid only for subscriptions.
         # Valid values: 5 (default), 10, 15 or 20.

@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.3.2
+* Updated Azure.Core from 1.47.3 to 1.50.0
+* Fixed telemetry to capture client request ID instead of server response ID for AutoRest-generated cmdlets [#23555]
+
+## Version 5.3.1
 * Updated Azure.Core from 1.45.0 to 1.47.3
 
 ## Version 5.3.0

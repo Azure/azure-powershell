@@ -43,6 +43,11 @@ https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azm
 function New-AzMLWorkspaceConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IWorkspaceConnectionPropertiesV2BasicResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PreviewMessage("**********************************************************************************************`n
+* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *`n
+* At least one change applies to this cmdlet.                                                     *`n
+* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
+***************************************************************************************************")]
     param(
         [Parameter(ParameterSetName= 'CreateExpanded', Mandatory)]
         [Parameter(ParameterSetName= 'CreateWithProperty', Mandatory)]

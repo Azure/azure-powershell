@@ -13,45 +13,6 @@ namespace Microsoft.Azure.Management.ContainerService
     public static partial class ManagedClustersOperationsExtensions
     {
         /// <summary>
-        /// Gets supported OS options in the specified subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='location'>
-        /// The name of Azure region.
-        /// </param>
-        /// <param name='resourceType'>
-        /// The resource type for which the OS options needs to be returned
-        /// </param>
-        public static OSOptionProfile GetOSOptions(this IManagedClustersOperations operations, string location, string resourceType = default(string))
-        {
-                return ((IManagedClustersOperations)operations).GetOSOptionsAsync(location, resourceType).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets supported OS options in the specified subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='location'>
-        /// The name of Azure region.
-        /// </param>
-        /// <param name='resourceType'>
-        /// The resource type for which the OS options needs to be returned
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<OSOptionProfile> GetOSOptionsAsync(this IManagedClustersOperations operations, string location, string resourceType = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetOSOptionsWithHttpMessagesAsync(location, resourceType, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Contains extra metadata on the version, including supported patch versions,
         /// capabilities, available upgrades, and details on preview status of the
         /// version
@@ -60,7 +21,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         public static KubernetesVersionListResult ListKubernetesVersions(this IManagedClustersOperations operations, string location)
         {
@@ -76,7 +37,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -438,9 +399,15 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
         /// </param>
-        public static ManagedCluster CreateOrUpdate(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedCluster parameters)
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
+        /// <param name='ifNoneMatch'>
+        /// The request should only proceed if no entity matches this string.
+        /// </param>
+        public static ManagedCluster CreateOrUpdate(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedCluster parameters, string ifMatch = default(string), string ifNoneMatch = default(string))
         {
-                return ((IManagedClustersOperations)operations).CreateOrUpdateAsync(resourceGroupName, resourceName, parameters).GetAwaiter().GetResult();
+                return ((IManagedClustersOperations)operations).CreateOrUpdateAsync(resourceGroupName, resourceName, parameters, ifMatch, ifNoneMatch).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -455,12 +422,18 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
         /// </param>
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
+        /// <param name='ifNoneMatch'>
+        /// The request should only proceed if no entity matches this string.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ManagedCluster> CreateOrUpdateAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedCluster parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedCluster> CreateOrUpdateAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedCluster parameters, string ifMatch = default(string), string ifNoneMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -477,9 +450,12 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
         /// </param>
-        public static ManagedCluster UpdateTags(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
+        public static ManagedCluster UpdateTags(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string ifMatch = default(string))
         {
-                return ((IManagedClustersOperations)operations).UpdateTagsAsync(resourceGroupName, resourceName, tags).GetAwaiter().GetResult();
+                return ((IManagedClustersOperations)operations).UpdateTagsAsync(resourceGroupName, resourceName, tags, ifMatch).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -494,12 +470,15 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
         /// </param>
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ManagedCluster> UpdateTagsAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedCluster> UpdateTagsAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, resourceName, tags, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, resourceName, tags, ifMatch, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -516,9 +495,12 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
         /// </param>
-        public static ManagedClustersDeleteHeaders Delete(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
+        public static ManagedClustersDeleteHeaders Delete(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, string ifMatch = default(string))
         {
-                return ((IManagedClustersOperations)operations).DeleteAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
+                return ((IManagedClustersOperations)operations).DeleteAsync(resourceGroupName, resourceName, ifMatch).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -533,12 +515,15 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
         /// </param>
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ManagedClustersDeleteHeaders> DeleteAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedClustersDeleteHeaders> DeleteAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, ifMatch, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
@@ -978,6 +963,166 @@ namespace Microsoft.Azure.Management.ContainerService
             }
         }
         /// <summary>
+        /// Contains extra metadata on each revision, including supported revisions,
+        /// cluster compatibility and available upgrades
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<MeshRevisionProfile> ListMeshRevisionProfiles(this IManagedClustersOperations operations, string location)
+        {
+                return ((IManagedClustersOperations)operations).ListMeshRevisionProfilesAsync(location).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Contains extra metadata on each revision, including supported revisions,
+        /// cluster compatibility and available upgrades
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MeshRevisionProfile>> ListMeshRevisionProfilesAsync(this IManagedClustersOperations operations, string location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListMeshRevisionProfilesWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Contains extra metadata on the revision, including supported revisions,
+        /// cluster compatibility and available upgrades
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        /// <param name='mode'>
+        /// The mode of the mesh.
+        /// </param>
+        public static MeshRevisionProfile GetMeshRevisionProfile(this IManagedClustersOperations operations, string location, string mode)
+        {
+                return ((IManagedClustersOperations)operations).GetMeshRevisionProfileAsync(location, mode).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Contains extra metadata on the revision, including supported revisions,
+        /// cluster compatibility and available upgrades
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        /// <param name='mode'>
+        /// The mode of the mesh.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MeshRevisionProfile> GetMeshRevisionProfileAsync(this IManagedClustersOperations operations, string location, string mode, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetMeshRevisionProfileWithHttpMessagesAsync(location, mode, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists available upgrades for all service meshes in a specific cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the managed cluster resource.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<MeshUpgradeProfile> ListMeshUpgradeProfiles(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
+        {
+                return ((IManagedClustersOperations)operations).ListMeshUpgradeProfilesAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists available upgrades for all service meshes in a specific cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the managed cluster resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MeshUpgradeProfile>> ListMeshUpgradeProfilesAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListMeshUpgradeProfilesWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets available upgrades for a service mesh in a cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the managed cluster resource.
+        /// </param>
+        /// <param name='mode'>
+        /// The mode of the mesh.
+        /// </param>
+        public static MeshUpgradeProfile GetMeshUpgradeProfile(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, string mode)
+        {
+                return ((IManagedClustersOperations)operations).GetMeshUpgradeProfileAsync(resourceGroupName, resourceName, mode).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets available upgrades for a service mesh in a cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the managed cluster resource.
+        /// </param>
+        /// <param name='mode'>
+        /// The mode of the mesh.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MeshUpgradeProfile> GetMeshUpgradeProfileAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, string mode, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetMeshUpgradeProfileWithHttpMessagesAsync(resourceGroupName, resourceName, mode, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates or updates a managed cluster.
         /// </summary>
         /// <param name='operations'>
@@ -989,9 +1134,15 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
         /// </param>
-        public static ManagedCluster BeginCreateOrUpdate(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedCluster parameters)
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
+        /// <param name='ifNoneMatch'>
+        /// The request should only proceed if no entity matches this string.
+        /// </param>
+        public static ManagedCluster BeginCreateOrUpdate(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedCluster parameters, string ifMatch = default(string), string ifNoneMatch = default(string))
         {
-                return ((IManagedClustersOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, resourceName, parameters).GetAwaiter().GetResult();
+                return ((IManagedClustersOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, resourceName, parameters, ifMatch, ifNoneMatch).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1006,12 +1157,18 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
         /// </param>
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
+        /// <param name='ifNoneMatch'>
+        /// The request should only proceed if no entity matches this string.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ManagedCluster> BeginCreateOrUpdateAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedCluster parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedCluster> BeginCreateOrUpdateAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedCluster parameters, string ifMatch = default(string), string ifNoneMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -1028,9 +1185,12 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
         /// </param>
-        public static ManagedCluster BeginUpdateTags(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
+        public static ManagedCluster BeginUpdateTags(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string ifMatch = default(string))
         {
-                return ((IManagedClustersOperations)operations).BeginUpdateTagsAsync(resourceGroupName, resourceName, tags).GetAwaiter().GetResult();
+                return ((IManagedClustersOperations)operations).BeginUpdateTagsAsync(resourceGroupName, resourceName, tags, ifMatch).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1045,12 +1205,15 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
         /// </param>
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ManagedCluster> BeginUpdateTagsAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedCluster> BeginUpdateTagsAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, resourceName, tags, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, resourceName, tags, ifMatch, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -1067,9 +1230,12 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
         /// </param>
-        public static ManagedClustersDeleteHeaders BeginDelete(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
+        public static ManagedClustersDeleteHeaders BeginDelete(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, string ifMatch = default(string))
         {
-                return ((IManagedClustersOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
+                return ((IManagedClustersOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, ifMatch).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1084,12 +1250,15 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
         /// </param>
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ManagedClustersDeleteHeaders> BeginDeleteAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedClustersDeleteHeaders> BeginDeleteAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, ifMatch, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
@@ -1539,6 +1708,74 @@ namespace Microsoft.Azure.Management.ContainerService
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<OutboundEnvironmentEndpoint>> ListOutboundNetworkDependenciesEndpointsNextAsync(this IManagedClustersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListOutboundNetworkDependenciesEndpointsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Contains extra metadata on each revision, including supported revisions,
+        /// cluster compatibility and available upgrades
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<MeshRevisionProfile> ListMeshRevisionProfilesNext(this IManagedClustersOperations operations, string nextPageLink)
+        {
+                return ((IManagedClustersOperations)operations).ListMeshRevisionProfilesNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Contains extra metadata on each revision, including supported revisions,
+        /// cluster compatibility and available upgrades
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MeshRevisionProfile>> ListMeshRevisionProfilesNextAsync(this IManagedClustersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListMeshRevisionProfilesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists available upgrades for all service meshes in a specific cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<MeshUpgradeProfile> ListMeshUpgradeProfilesNext(this IManagedClustersOperations operations, string nextPageLink)
+        {
+                return ((IManagedClustersOperations)operations).ListMeshUpgradeProfilesNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists available upgrades for all service meshes in a specific cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MeshUpgradeProfile>> ListMeshUpgradeProfilesNextAsync(this IManagedClustersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListMeshUpgradeProfilesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

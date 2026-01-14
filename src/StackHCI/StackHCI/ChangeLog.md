@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Improved cloud deployment detection during Azure Arc repair operations to prevent duplicate enablement attempts and ensure smoother deployment experiences.
+
+## Version 2.6.5
+* ARC Enablement of Nodes Before Triggering Registration in New Registration Flow.
+* Resolved double hop authentication issue.
 
 ## Version 2.6.4
 * Fixed bug: Buse boolean in comparision

@@ -7,34 +7,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Extensions;
 
-    /// <summary>The response from the List Deleted Accounts operation.</summary>
+    /// <summary>The response of a DeletedAccount list operation.</summary>
     public partial class DeletedAccountListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountListResult,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountListResultInternal
     {
 
-        /// <summary>Internal Acessors for NextLink</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountListResultInternal.NextLink { get => this._nextLink; set { {_nextLink = value;} } }
-
-        /// <summary>Internal Acessors for Value</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccount> Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccountListResultInternal.Value { get => this._value; set { {_value = value;} } }
-
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>
-        /// Request URL that can be used to query next page of deleted accounts. Returned when total number of requested deleted accounts
-        /// exceed maximum page size.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public string NextLink { get => this._nextLink; }
+        public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccount> _value;
 
-        /// <summary>Gets the list of deleted accounts and their properties.</summary>
+        /// <summary>The DeletedAccount items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccount> Value { get => this._value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccount> Value { get => this._value; set => this._value = value; }
 
         /// <summary>Creates an new <see cref="DeletedAccountListResult" /> instance.</summary>
         public DeletedAccountListResult()
@@ -42,47 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         }
     }
-    /// The response from the List Deleted Accounts operation.
+    /// The response of a DeletedAccount list operation.
     public partial interface IDeletedAccountListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// Request URL that can be used to query next page of deleted accounts. Returned when total number of requested deleted accounts
-        /// exceed maximum page size.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Request URL that can be used to query next page of deleted accounts. Returned when total number of requested deleted accounts exceed maximum page size.",
+        Create = true,
+        Update = true,
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
-        string NextLink { get;  }
-        /// <summary>Gets the list of deleted accounts and their properties.</summary>
+        string NextLink { get; set; }
+        /// <summary>The DeletedAccount items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Gets the list of deleted accounts and their properties.",
+        Create = true,
+        Update = true,
+        Description = @"The DeletedAccount items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccount) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccount> Value { get;  }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccount> Value { get; set; }
 
     }
-    /// The response from the List Deleted Accounts operation.
+    /// The response of a DeletedAccount list operation.
     internal partial interface IDeletedAccountListResultInternal
 
     {
-        /// <summary>
-        /// Request URL that can be used to query next page of deleted accounts. Returned when total number of requested deleted accounts
-        /// exceed maximum page size.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>Gets the list of deleted accounts and their properties.</summary>
+        /// <summary>The DeletedAccount items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeletedAccount> Value { get; set; }
 
     }

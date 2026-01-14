@@ -18,12 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Preannounced breaking changes
 
+## Version 2.0.0
 * New anchor resource types and their corresponding cmdlets for resource and network anchors
 * Addition of DbSystem resource management cmdlets and documentation
 * API version updates across all resource types from 2025-03-01 to 2025-09-01
 * Parameter changes in existing cmdlets, particularly around scheduled operations handling
+  
+## Version 1.2.1
+* Preannounced breaking changes
 
 ## Version 1.2.0
 

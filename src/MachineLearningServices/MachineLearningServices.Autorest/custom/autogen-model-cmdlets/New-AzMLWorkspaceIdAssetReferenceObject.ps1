@@ -33,7 +33,12 @@ function New-AzMLWorkspaceIdAssetReferenceObject {
 
         [Parameter(Mandatory, HelpMessage="[Required] ARM resource ID of the asset.")]
         [string]
-        $AssetId
+        $AssetId,
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.ParameterBreakingChangeAttribute("ReferenceType", "16.0.0", "1.3.0", "2026/05")]
+        [Parameter(Mandatory, HelpMessage="[Required] Specifies the type of asset reference.")]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ReferenceType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ReferenceType]
+        $ReferenceType
     )
 
     process {

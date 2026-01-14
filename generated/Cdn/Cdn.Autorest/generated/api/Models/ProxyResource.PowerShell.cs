@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
 
     /// <summary>
-    /// The resource model definition for a ARM proxy resource. It will have everything other than required location and tags
+    /// The resource model definition for a Azure Resource Manager proxy resource. It will not have tags and a location
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ProxyResourceTypeConverter))]
     public partial class ProxyResource
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             return ToJsonString();
         }
     }
-    /// The resource model definition for a ARM proxy resource. It will have everything other than required location and tags
+    /// The resource model definition for a Azure Resource Manager proxy resource. It will not have tags and a location
     [System.ComponentModel.TypeConverter(typeof(ProxyResourceTypeConverter))]
     public partial interface IProxyResource
 

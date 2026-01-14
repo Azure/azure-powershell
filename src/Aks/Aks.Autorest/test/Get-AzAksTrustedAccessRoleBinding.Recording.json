@@ -1,0 +1,178 @@
+{
+  "Get-AzAksTrustedAccessRoleBinding+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/trustedAccessRoleBindings?api-version=2025-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/trustedAccessRoleBindings?api-version=2025-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "97d31728-4d12-4f5f-a693-e85008eac36a" ],
+        "CommandName": [ "Get-AzAksTrustedAccessRoleBinding" ],
+        "FullCommandName": [ "Get-AzAksTrustedAccessRoleBinding_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/eastus/2b0c0454-fda9-4dff-9ef8-55b0595a17fa" ],
+        "x-ms-correlation-request-id": [ "8804c455-d3d4-4734-a1f4-0e10a71a11c2" ],
+        "x-ms-request-id": [ "57fa7977-3a0d-4f12-b541-06f931874d93" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251111T092325Z:8804c455-d3d4-4734-a1f4-0e10a71a11c2" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BDB7880A17874E2BA6BDB8F40B2B928F Ref B: JKT201051407052 Ref C: 2025-11-11T09:23:24Z" ],
+        "Date": [ "Tue, 11 Nov 2025 09:23:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "652" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"value\": [\n  {\n   \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/trustedAccessRoleBindings/testBinding\",\n   \"name\": \"testBinding\",\n   \"type\": \"Microsoft.ContainerService/managedClusters/trustedAccessRoleBindings\",\n   \"properties\": {\n    \"provisioningState\": \"Succeeded\",\n    \"sourceResourceId\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/AKS_TEST_RG/providers/Microsoft.MachineLearningServices/workspaces/TestAML001\",\n    \"roles\": [\n     \"Microsoft.MachineLearningServices/workspaces/mlworkload\"\n    ]\n   }\n  }\n ]\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAksTrustedAccessRoleBinding+[NoContext]+GetViaIdentityManagedCluster+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/trustedAccessRoleBindings/testBinding?api-version=2025-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/trustedAccessRoleBindings/testBinding?api-version=2025-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "5329a944-c8a5-432b-95dd-a9467d392454" ],
+        "CommandName": [ "Get-AzAksTrustedAccessRoleBinding" ],
+        "FullCommandName": [ "Get-AzAksTrustedAccessRoleBinding_GetViaIdentityManagedCluster" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/eastus/97e02785-cbb9-400e-9c60-21698e539c3e" ],
+        "x-ms-correlation-request-id": [ "500cc387-3387-4821-b219-2e94734bc28a" ],
+        "x-ms-request-id": [ "0af5fe25-c3de-4252-9d93-e2cf277d1f34" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251111T092326Z:500cc387-3387-4821-b219-2e94734bc28a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 488800927E77442685197DE44181533C Ref B: JKT201051407052 Ref C: 2025-11-11T09:23:26Z" ],
+        "Date": [ "Tue, 11 Nov 2025 09:23:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "609" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/trustedAccessRoleBindings/testBinding\",\n \"name\": \"testBinding\",\n \"type\": \"Microsoft.ContainerService/managedClusters/trustedAccessRoleBindings\",\n \"properties\": {\n  \"provisioningState\": \"Succeeded\",\n  \"sourceResourceId\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/AKS_TEST_RG/providers/Microsoft.MachineLearningServices/workspaces/TestAML001\",\n  \"roles\": [\n   \"Microsoft.MachineLearningServices/workspaces/mlworkload\"\n  ]\n }\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAksTrustedAccessRoleBinding+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/trustedAccessRoleBindings/testBinding?api-version=2025-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/trustedAccessRoleBindings/testBinding?api-version=2025-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "d75f7b39-6b53-4db7-8554-ab1d5494a7d9" ],
+        "CommandName": [ "Get-AzAksTrustedAccessRoleBinding" ],
+        "FullCommandName": [ "Get-AzAksTrustedAccessRoleBinding_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/eastus/5f8f48cb-5ba9-4bc0-8086-455704f3cfbf" ],
+        "x-ms-correlation-request-id": [ "1157ce23-b018-4ea8-9459-3f2d785881ae" ],
+        "x-ms-request-id": [ "b57193a1-1944-4737-80cc-11c781ef75ce" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251111T092327Z:1157ce23-b018-4ea8-9459-3f2d785881ae" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C03B16704928442F892D3C4F6BB08F80 Ref B: JKT201051407052 Ref C: 2025-11-11T09:23:27Z" ],
+        "Date": [ "Tue, 11 Nov 2025 09:23:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "609" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/trustedAccessRoleBindings/testBinding\",\n \"name\": \"testBinding\",\n \"type\": \"Microsoft.ContainerService/managedClusters/trustedAccessRoleBindings\",\n \"properties\": {\n  \"provisioningState\": \"Succeeded\",\n  \"sourceResourceId\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/AKS_TEST_RG/providers/Microsoft.MachineLearningServices/workspaces/TestAML001\",\n  \"roles\": [\n   \"Microsoft.MachineLearningServices/workspaces/mlworkload\"\n  ]\n }\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAksTrustedAccessRoleBinding+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/trustedAccessRoleBindings/testBinding?api-version=2025-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/trustedAccessRoleBindings/testBinding?api-version=2025-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "47f8d4cd-8ce3-41fd-847c-15d5c2737b58" ],
+        "CommandName": [ "Get-AzAksTrustedAccessRoleBinding" ],
+        "FullCommandName": [ "Get-AzAksTrustedAccessRoleBinding_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/eastus/ea6ae860-914a-4554-9118-ed19289e4d8a" ],
+        "x-ms-correlation-request-id": [ "b7309058-c879-4b08-b4c4-d0e611fd4030" ],
+        "x-ms-request-id": [ "6804382a-8757-418c-8089-c1eafec950a4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251111T092328Z:b7309058-c879-4b08-b4c4-d0e611fd4030" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F0E1978ACF9C476AAAD6EDCB6742B4D9 Ref B: JKT201051407052 Ref C: 2025-11-11T09:23:28Z" ],
+        "Date": [ "Tue, 11 Nov 2025 09:23:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "609" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/trustedAccessRoleBindings/testBinding\",\n \"name\": \"testBinding\",\n \"type\": \"Microsoft.ContainerService/managedClusters/trustedAccessRoleBindings\",\n \"properties\": {\n  \"provisioningState\": \"Succeeded\",\n  \"sourceResourceId\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/AKS_TEST_RG/providers/Microsoft.MachineLearningServices/workspaces/TestAML001\",\n  \"roles\": [\n   \"Microsoft.MachineLearningServices/workspaces/mlworkload\"\n  ]\n }\n}",
+      "isContentBase64": false
+    }
+  }
+}
