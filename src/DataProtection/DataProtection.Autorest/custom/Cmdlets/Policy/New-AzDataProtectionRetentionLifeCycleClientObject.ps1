@@ -1,4 +1,5 @@
 ﻿function New-AzDataProtectionRetentionLifeCycleClientObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]
 	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ISourceLifeCycle')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Creates new Lifecycle object')]
