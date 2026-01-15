@@ -20,17 +20,21 @@
 
 ## Upcoming Release
 * Fixed `Get-AzRoleDefinition` returning null `Condition` for roles with ABAC (Attribute-Based Access Control) conditions on non-first permission entries [#29058] [#25940]
-* [Breaking Change] Updated `Get-AzRoleDefinition` output model:
+* [Breaking Change] Updated `PSRoleDefinition` output model (affects `Get-AzRoleDefinition`, `New-AzRoleDefinition`, `Set-AzRoleDefinition`, `Remove-AzRoleDefinition`):
     - Added `Permissions` property (list of `PSPermission` objects) to `PSRoleDefinition` to preserve full permission structure including per-permission ABAC conditions
     - Removed `Actions`, `NotActions`, `DataActions`, and `NotDataActions` properties from `PSRoleDefinition` (these are now only available inside each `PSPermission`)
     - Removed `Condition` and `ConditionVersion` properties from `PSRoleDefinition` as they incorrectly flattened multi-permission role definitions
     - Added `Condition` and `ConditionVersion` properties to `PSPermission`
     - Example - Old: `$role.Actions`, `$role.Condition`
     - Example - New: `$role.Permissions[0].Actions`, `$role.Permissions[1].Condition` (conditions are now per-permission)
-* [Breaking Change] Updated `New-AzRoleDefinition -InputFile` JSON format:
+* [Breaking Change] Updated `New-AzRoleDefinition` and `Set-AzRoleDefinition` `-InputFile` JSON format:
     - JSON input files must now use the `Permissions` array format instead of flattened `Actions`/`NotActions`/`DataActions`/`NotDataActions` properties
     - Old format: `{ "Actions": ["Microsoft.Storage/*"], "DataActions": ["Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"] }`
     - New format: `{ "Permissions": [{ "Actions": ["Microsoft.Storage/*"], "DataActions": ["Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"], "Condition": null, "ConditionVersion": null }] }`
+* [Breaking Change] Updated `Set-AzRoleDefinition -Role` parameter:
+    - The `PSRoleDefinition` object passed to `-Role` must now have actions in `Permissions[0].Actions` instead of `Actions`
+    - Example - Old: `$roleDef.Actions.Add("Microsoft.Compute/*")`
+    - Example - New: `$roleDef.Permissions[0].Actions.Add("Microsoft.Compute/*")`
 
 ## Version 9.0.0
 * Removed unavailable variant Get-AzRoleEligibleChildResource cmdlet for InputObject parameter.

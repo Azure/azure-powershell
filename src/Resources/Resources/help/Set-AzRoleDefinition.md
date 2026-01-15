@@ -37,7 +37,7 @@ The Set-AzRoleDefinition cmdlet updates an existing custom role in Azure Role-Ba
 ### Example 1: Update using PSRoleDefinitionObject
 ```powershell
 $roleDef = Get-AzRoleDefinition "Contoso On-Call"
-$roleDef.Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
+$roleDef.Permissions[0].Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
 $roleDef.Description = "Can monitor all resources and start and restart virtual machines"
 $roleDef.AssignableScopes = @("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
 Set-AzRoleDefinition -Role $roleDef
@@ -52,23 +52,23 @@ Following is a sample updated role definition json for Set-AzRoleDefinition:
         "Id": "52a6cc13-ff92-47a8-a39b-2a8205c3087e",
         "Name": "Updated Role",
         "Description": "Can monitor all resources and start and restart virtual machines",
-        "Actions":
-        [
-            "*/read",
-            "Microsoft.ClassicCompute/virtualmachines/restart/action",
-            "Microsoft.ClassicCompute/virtualmachines/start/action"
-        ],
-        "NotActions":
-        [
-            "*/write"
-        ],
-        "DataActions":
-        [
-            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
-        ],
-        "NotDataActions":
-        [
-            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
+        "Permissions": [
+            {
+                "Actions": [
+                    "*/read",
+                    "Microsoft.ClassicCompute/virtualmachines/restart/action",
+                    "Microsoft.ClassicCompute/virtualmachines/start/action"
+                ],
+                "NotActions": [
+                    "*/write"
+                ],
+                "DataActions": [
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+                ],
+                "NotDataActions": [
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
+                ]
+            }
         ],
         "AssignableScopes": ["/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]
 }

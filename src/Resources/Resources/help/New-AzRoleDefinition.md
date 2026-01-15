@@ -89,7 +89,8 @@ $role.Name = 'Virtual Machine Operator'
 $role.Description = 'Can monitor, start, and restart virtual machines.'
 $role.IsCustom = $true
 $role.AssignableScopes = @("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-$role.Actions = @(
+$permission = New-Object -TypeName Microsoft.Azure.Commands.Resources.Models.Authorization.PSPermission
+$permission.Actions = @(
     "Microsoft.Compute/*/read"
     "Microsoft.Compute/virtualMachines/start/action"
     "Microsoft.Compute/virtualMachines/restart/action"
@@ -102,6 +103,7 @@ $role.Actions = @(
     "Microsoft.Insights/alertRules/*"
     "Microsoft.Support/*"
 )
+$role.Permissions = @($permission)
 
 New-AzRoleDefinition -Role $role
 ```
