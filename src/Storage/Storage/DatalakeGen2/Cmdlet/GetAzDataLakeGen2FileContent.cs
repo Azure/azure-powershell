@@ -323,7 +323,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     throw new ArgumentException(String.Format("The input FileSystem '{0}', path '{1}' point to a Directory, can't download it.", this.FileSystem, this.Path));
                 }
 
-                if (Channel != null && Channel.StorageContext != null &&Channel.StorageContext.Track2OauthToken != null)
+                if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.Track2OauthToken != null)
                 {
                     var blobServiceClient = Channel.GetBlobServiceClient();
                     track2Blob = blobServiceClient.GetBlobContainerClient(this.FileSystem).GetBlockBlobClient(this.Path);

@@ -160,7 +160,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             // When the input context is OAuth bases, can't generate normal SAS, but UserDelegationSas
             bool generateUserDelegationSas = false;
-            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount.Credentials != null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
+            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount != null && Channel.StorageContext.StorageAccount.Credentials != null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
             {
                 if (ShouldProcess(Path, "Generate User Delegation SAS, since input Storage Context is OAuth based."))
                 {
@@ -179,7 +179,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 if (this.DelegatedUserObjectId != null)
                 {
-                    throw new ArgumentException("DelegatedUserObjectId can only be specified when input Storage Context is OAuth based, and without SAS.", "DelegatedUserObjectId");
+                    throw new ArgumentException("DelegatedUserObjectId can only be specified when input Storage Context is OAuth based without using SAS token.", "DelegatedUserObjectId");
                 }
             }
 

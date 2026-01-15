@@ -535,7 +535,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 return sasBuilder.ToSasQueryParameters(userDelegationKey, context.StorageAccountName).ToString();
             }
 
-            throw new InvalidOperationException("Create File service SAS only supported with SharedKey or OAuth token credential without SAS.");
+            throw new InvalidOperationException("Create File service SAS only supported with SharedKey or OAuth token credential without using SAS token.");
         }
 
         /// <summary>
@@ -567,7 +567,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 return sasBuilder.ToSasQueryParameters(userDelegationKey, context.StorageAccountName).ToString();
             }
             
-            throw new InvalidOperationException("Create Queue service SAS only supported with SharedKey or OAuth token credential without SAS.");
+            throw new InvalidOperationException("Create Queue service SAS only supported with SharedKey or OAuth token credential without using SAS token.");
         }
 
 
@@ -785,7 +785,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             else
             {
-                throw new InvalidOperationException("Create SAS only supported with SharedKey or Oauth credential without SAS.");
+                throw new InvalidOperationException("Create SAS only supported with SharedKey or OAuth token credential without using SAS token.");
             }
         }
 
@@ -818,7 +818,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             else
             {
-                throw new InvalidOperationException("Create SAS only supported with SharedKey or Oauth credential without SAS.");
+                throw new InvalidOperationException("Create SAS only supported with SharedKey or OAuth token credential without using SAS token.");
             }
         }
 

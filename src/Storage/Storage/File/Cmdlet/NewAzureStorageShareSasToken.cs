@@ -131,7 +131,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 if (this.DelegatedUserObjectId != null)
                 {
-                    throw new ArgumentException("DelegatedUserObjectId can only be specified when input Storage Context is OAuth based, and without SAS.", "DelegatedUserObjectId");
+                    throw new ArgumentException("DelegatedUserObjectId can only be specified when input Storage Context is OAuth based without using SAS token.", "DelegatedUserObjectId");
                 }
             }
 
