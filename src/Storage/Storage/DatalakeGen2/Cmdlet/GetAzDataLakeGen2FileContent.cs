@@ -323,7 +323,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     throw new ArgumentException(String.Format("The input FileSystem '{0}', path '{1}' point to a Directory, can't download it.", this.FileSystem, this.Path));
                 }
 
-                if (Channel.StorageContext.Track2OauthToken != null)
+                if (Channel != null && Channel.StorageContext != null &&Channel.StorageContext.Track2OauthToken != null)
                 {
                     var blobServiceClient = Channel.GetBlobServiceClient();
                     track2Blob = blobServiceClient.GetBlobContainerClient(this.FileSystem).GetBlockBlobClient(this.Path);
@@ -342,7 +342,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         Channel.StorageContext.StorageAccount.Credentials != null && Channel.StorageContext.StorageAccount.Credentials.IsSAS)
                     {
                         // For SAS, the Uri already contains the sas token, so can't repeatedly inout the credential
-                        if (Channel.StorageContext.Track2OauthToken != null)
+                        if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.Track2OauthToken != null)
                         {
                             track2Blob = new BlockBlobClient(InputObject.File.Uri, Channel.StorageContext.Track2OauthToken);
                         }

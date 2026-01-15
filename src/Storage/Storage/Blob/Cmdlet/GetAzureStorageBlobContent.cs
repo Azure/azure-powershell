@@ -281,9 +281,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         private bool IsSasTokenWithOAuth(CloudBlobContainer container)
         {   
-            if (container.ServiceClient.Credentials.IsSAS) //SAS
+            if (container != null && container.ServiceClient != null && container.ServiceClient.Credentials != null && container.ServiceClient.Credentials.IsSAS) //SAS
             {
-                if (Channel.StorageContext.Track2OauthToken != null)
+                if (Channel.StorageContext != null && Channel.StorageContext.Track2OauthToken != null)
                 {
                     return true;
                 }

@@ -14,23 +14,24 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 {
-    using Microsoft.WindowsAzure.Commands.Common.Storage;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using global::Azure.Storage;
+    using global::Azure.Storage.Blobs;
+    using Microsoft.Azure.Cosmos.Table;
     using Microsoft.Azure.Storage;
-    using XSCL = Microsoft.Azure.Storage;
     using Microsoft.Azure.Storage.Blob;
     using Microsoft.Azure.Storage.File;
     using Microsoft.Azure.Storage.File.Protocol;
     using Microsoft.Azure.Storage.Queue;
-    using XSCLProtocol = Microsoft.Azure.Storage.Shared.Protocol;
-    using XTable = Microsoft.Azure.Cosmos.Table;
-    using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.OData.UriParser;
+    using Microsoft.WindowsAzure.Commands.Common.Storage;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
     using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using global::Azure.Storage.Blobs;
-    using global::Azure.Storage;
+    using XSCL = Microsoft.Azure.Storage;
+    using XSCLProtocol = Microsoft.Azure.Storage.Shared.Protocol;
+    using XTable = Microsoft.Azure.Cosmos.Table;
 
     /// <summary>
     /// Blob management
@@ -183,13 +184,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                 }
                 else //sas, Anonymous
                 {
+                    string blobEndpointWithSas = this.StorageContext.StorageAccount.BlobEndpoint.ToString();
+                    if (this.StorageContext.StorageAccount.Credentials.SASToken != null)
+                    {
+                        string sasToken = this.StorageContext.StorageAccount.Credentials.SASToken;
+                        if (!string.IsNullOrEmpty(sasToken) && !sasToken.StartsWith("?"))
+                        {
+                            sasToken = "?" + sasToken;
+                        }
+                        blobEndpointWithSas += sasToken;
+                    }
+
                     if (this.StorageContext != null && this.StorageContext.Track2OauthToken != null)
                     {
-                        blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint, this.StorageContext.Track2OauthToken, options);
+                        blobServiceClient = new BlobServiceClient(new Uri(blobEndpointWithSas), this.StorageContext.Track2OauthToken, options);
                     }
                     else
                     {
-                        blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint, options);
+                        blobServiceClient = new BlobServiceClient(new Uri(blobEndpointWithSas), options);
                     }
                 }
             }
