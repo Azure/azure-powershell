@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -453,6 +454,147 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Authorization
             Assert.Empty(result.Permissions[0].Actions);
             Assert.Single(result.Permissions[0].DataActions);
             Assert.Single(result.Permissions[0].NotDataActions);
+        }
+
+        #endregion
+
+        #region ValidateRoleDefinition Tests
+
+        private static PSRoleDefinition CreatePSRoleDefinition(
+            string name = "Test Role",
+            string description = "Test Description",
+            List<string> assignableScopes = null,
+            List<PSPermission> permissions = null)
+        {
+            return new PSRoleDefinition
+            {
+                Name = name,
+                Description = description,
+                AssignableScopes = assignableScopes ?? ["/subscriptions/00000000-0000-0000-0000-000000000000"],
+                Permissions = permissions ?? [new PSPermission { Actions = ["*/read"] }]
+            };
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidateRoleDefinition_ValidRole_NoException()
+        {
+            var roleDef = CreatePSRoleDefinition();
+
+            var exception = Record.Exception(() => AuthorizationClient.ValidateRoleDefinition(roleDef));
+
+            Assert.Null(exception);
+        }
+
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("   ")]
+        public void ValidateRoleDefinition_InvalidName_ThrowsException(string name)
+        {
+            var roleDef = CreatePSRoleDefinition(name: name);
+
+            Assert.Throws<ArgumentException>(() => AuthorizationClient.ValidateRoleDefinition(roleDef));
+        }
+
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("   ")]
+        public void ValidateRoleDefinition_InvalidDescription_ThrowsException(string description)
+        {
+            var roleDef = CreatePSRoleDefinition(description: description);
+
+            Assert.Throws<ArgumentException>(() => AuthorizationClient.ValidateRoleDefinition(roleDef));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidateRoleDefinition_NullAssignableScopes_ThrowsException()
+        {
+            var roleDef = new PSRoleDefinition
+            {
+                Name = "Test Role",
+                Description = "Test Description",
+                AssignableScopes = null,
+                Permissions = [new PSPermission { Actions = ["*/read"] }]
+            };
+
+            Assert.Throws<ArgumentException>(() => AuthorizationClient.ValidateRoleDefinition(roleDef));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidateRoleDefinition_EmptyAssignableScopes_ThrowsException()
+        {
+            var roleDef = CreatePSRoleDefinition(assignableScopes: []);
+
+            Assert.Throws<ArgumentException>(() => AuthorizationClient.ValidateRoleDefinition(roleDef));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidateRoleDefinition_NullPermissions_ThrowsException()
+        {
+            var roleDef = new PSRoleDefinition
+            {
+                Name = "Test Role",
+                Description = "Test Description",
+                AssignableScopes = ["/subscriptions/00000000-0000-0000-0000-000000000000"],
+                Permissions = null
+            };
+
+            Assert.Throws<ArgumentException>(() => AuthorizationClient.ValidateRoleDefinition(roleDef));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidateRoleDefinition_EmptyPermissions_ThrowsException()
+        {
+            var roleDef = CreatePSRoleDefinition(permissions: []);
+
+            Assert.Throws<ArgumentException>(() => AuthorizationClient.ValidateRoleDefinition(roleDef));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidateRoleDefinition_PermissionsWithNoActions_ThrowsException()
+        {
+            var roleDef = CreatePSRoleDefinition(permissions:
+            [
+                new PSPermission { Actions = [], DataActions = [] }
+            ]);
+
+            Assert.Throws<ArgumentException>(() => AuthorizationClient.ValidateRoleDefinition(roleDef));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidateRoleDefinition_PermissionsWithOnlyDataActions_NoException()
+        {
+            var roleDef = CreatePSRoleDefinition(permissions:
+            [
+                new PSPermission { DataActions = ["Microsoft.Storage/*/read"] }
+            ]);
+
+            var exception = Record.Exception(() => AuthorizationClient.ValidateRoleDefinition(roleDef));
+
+            Assert.Null(exception);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidateRoleDefinition_MultiplePermissionsWithOneEmpty_ThrowsException()
+        {
+            var roleDef = CreatePSRoleDefinition(permissions:
+            [
+                new PSPermission { Actions = [] },  // Empty actions - invalid
+                new PSPermission { Actions = ["*/read"] }
+            ]);
+
+            Assert.Throws<ArgumentException>(() => AuthorizationClient.ValidateRoleDefinition(roleDef));
         }
 
         #endregion

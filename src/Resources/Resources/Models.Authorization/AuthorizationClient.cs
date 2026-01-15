@@ -666,7 +666,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             return permissions;
         }
 
-        private static void ValidateRoleDefinition(PSRoleDefinition roleDefinition)
+        internal static void ValidateRoleDefinition(PSRoleDefinition roleDefinition)
         {
             if (string.IsNullOrWhiteSpace(roleDefinition.Name))
             {
@@ -683,8 +683,13 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 throw new ArgumentException(ProjectResources.InvalidAssignableScopes);
             }
 
-            if (roleDefinition.Permissions == null || !roleDefinition.Permissions.Any(p =>
-                (p.Actions != null && p.Actions.Any()) || (p.DataActions != null && p.DataActions.Any())))
+            if (roleDefinition.Permissions == null || !roleDefinition.Permissions.Any())
+            {
+                throw new ArgumentException(ProjectResources.InvalidPermissions);
+            }
+
+            if (roleDefinition.Permissions.Any(p =>
+                (p.Actions == null || !p.Actions.Any()) && (p.DataActions == null || !p.DataActions.Any())))
             {
                 throw new ArgumentException(ProjectResources.InvalidActions);
             }
