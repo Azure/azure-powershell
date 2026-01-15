@@ -74,7 +74,7 @@ pac72,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac73,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DnsResolver.1.2.1.zip;sourceType=sa]Az.DnsResolver,1.2.1
 pac74,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DurableTask.0.1.0.zip;sourceType=sa]Az.DurableTask,0.1.0
 pac75,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DynatraceObservability.0.4.0.zip;sourceType=sa]Az.DynatraceObservability,0.4.0
-pac76,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EdgeAction.0.1.0.zip;sourceType=sa]Az.EdgeAction,0.1.0
+pac76,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EdgeAction.0.1.1.zip;sourceType=sa]Az.EdgeAction,0.1.1
 pac77,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EdgeOrder.0.2.0.zip;sourceType=sa]Az.EdgeOrder,0.2.0
 pac78,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EdgeZones.0.1.2.zip;sourceType=sa]Az.EdgeZones,0.1.2
 pac79,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Elastic.0.3.0.zip;sourceType=sa]Az.Elastic,0.3.0

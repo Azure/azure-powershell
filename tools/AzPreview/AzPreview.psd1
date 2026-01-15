@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '15.2.0'
+ModuleVersion = '15.2.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -128,7 +128,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.2'; },
             @{ModuleName = 'Az.DnsResolver'; RequiredVersion = '1.2.1'; }, 
             @{ModuleName = 'Az.DurableTask'; RequiredVersion = '0.1.0'; }, 
             @{ModuleName = 'Az.DynatraceObservability'; RequiredVersion = '0.4.0'; }, 
-            @{ModuleName = 'Az.EdgeAction'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.EdgeAction'; RequiredVersion = '0.1.1'; }, 
             @{ModuleName = 'Az.EdgeOrder'; RequiredVersion = '0.2.0'; }, 
             @{ModuleName = 'Az.EdgeZones'; RequiredVersion = '0.1.2'; }, 
             @{ModuleName = 'Az.Elastic'; RequiredVersion = '0.3.0'; }, 
@@ -195,6 +195,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.2'; },
             @{ModuleName = 'Az.Orbital'; RequiredVersion = '0.2.0'; }, 
             @{ModuleName = 'Az.PaloAltoNetworks'; RequiredVersion = '0.4.0'; }, 
             @{ModuleName = 'Az.Peering'; RequiredVersion = '0.5.0'; }, 
+            @{ModuleName = 'Az.Pinecone'; RequiredVersion = '0.1.0'; }, 
             @{ModuleName = 'Az.PolicyInsights'; RequiredVersion = '1.7.3'; }, 
             @{ModuleName = 'Az.Portal'; RequiredVersion = '0.4.0'; }, 
             @{ModuleName = 'Az.PostgreSql'; RequiredVersion = '1.4.0'; }, 
@@ -229,7 +230,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.2'; },
             @{ModuleName = 'Az.Sql'; RequiredVersion = '6.4.0'; }, 
             @{ModuleName = 'Az.SqlVirtualMachine'; RequiredVersion = '2.4.0'; }, 
             @{ModuleName = 'Az.Ssh'; RequiredVersion = '0.2.3'; }, 
-            @{ModuleName = 'Az.StackHCI'; RequiredVersion = '2.6.5'; }, 
+            @{ModuleName = 'Az.StackHCI'; RequiredVersion = '2.6.6'; }, 
             @{ModuleName = 'Az.StackHCIVM'; RequiredVersion = '1.1.0'; }, 
             @{ModuleName = 'Az.StandbyPool'; RequiredVersion = '0.3.0'; }, 
             @{ModuleName = 'Az.Storage'; RequiredVersion = '9.5.0'; }, 
@@ -249,6 +250,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.2'; },
             @{ModuleName = 'Az.VMware'; RequiredVersion = '0.8.0'; }, 
             @{ModuleName = 'Az.VoiceServices'; RequiredVersion = '0.2.0'; }, 
             @{ModuleName = 'Az.Websites'; RequiredVersion = '3.4.2'; }, 
+            @{ModuleName = 'Az.WeightsAndBiases'; RequiredVersion = '0.1.0'; }, 
             @{ModuleName = 'Az.WindowsIotServices'; RequiredVersion = '0.2.0'; }, 
             @{ModuleName = 'Az.Workloads'; RequiredVersion = '2.0.0'; })
 

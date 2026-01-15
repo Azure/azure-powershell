@@ -1,3 +1,12 @@
+## 15.2.1 - February 2026
+#### Az.EdgeAction 0.1.1
+* Updated to API version 2025-12-01-preview
+* Removed 'Add-AzEdgeActionAttachment' cmdlet (operation no longer available in API)
+* Removed 'Remove-AzEdgeActionAttachment' cmdlet (operation no longer available in API)
+
+#### Az.StackHCI 2.6.6
+* Improved cloud deployment detection during Azure Arc repair operations to prevent duplicate enablement attempts and ensure smoother deployment experiences.
+
 ## 15.2.0 - January 2026
 #### Az.Accounts 5.3.2
 * Updated Azure.Core from 1.47.3 to 1.50.0
