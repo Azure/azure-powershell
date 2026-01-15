@@ -70,48 +70,59 @@
     process
     {
         # Do Validation
-        $retentionNames = @()
-        $tagNames = @()
+        $retentionRulesExceptDefault = @()
+        $tagCriteriaExceptDefault = @()
 
+        # Collect all non-Default retention rules
         foreach($rule in $Policy.PolicyRule)
         {
-            if(($rule.ObjectType -eq "AzureRetentionRule") -and ($rule.Name -ne "Default"))
+            if($rule.ObjectType -eq "AzureRetentionRule" -and $rule.Name -ne "Default")
             {
-                $retentionNames += $rule.Name
+                $retentionRulesExceptDefault += $rule.Name
             }
+        }
 
+        # Collect all non-Default tag criteria
+        foreach($rule in $Policy.PolicyRule)
+        {
             if($rule.ObjectType -eq "AzureBackupRule")
             {
                 foreach($criteria in $rule.Trigger.TaggingCriterion)
                 {
                     if($criteria.TagInfoTagName -ne "Default")
                     {
-                        $tagNames += $criteria.TagInfoTagName
+                        $tagCriteriaExceptDefault += $criteria.TagInfoTagName
                     }
                 }
             }
         }
-        if($retentionNames.Length -gt 1) { $retentionNames = $retentionNames | Sort-Object }
-        if($tagNames.Length -gt 1) { $tagNames = $tagNames | Sort-Object }
 
-        $index = 0
-        while($index -lt $retentionNames.Length)
+        # Sort both arrays for comparison
+        if($retentionRulesExceptDefault.Length -gt 1) 
+        { 
+            $retentionRulesExceptDefault = $retentionRulesExceptDefault | Sort-Object 
+        }
+        if($tagCriteriaExceptDefault.Length -gt 1) 
+        { 
+            $tagCriteriaExceptDefault = $tagCriteriaExceptDefault | Sort-Object 
+        }
+
+        # Validate: non-Default retention rules must have matching tag criteria and vice versa
+        if($retentionRulesExceptDefault.Length -ne $tagCriteriaExceptDefault.Length)
         {
-            $retentionRuleName = $retentionNames[$index]
-            if($index -eq $tagNames.Length)
+            throw "Retention Rules and Tag Criteria mismatch. Number of non-Default retention rules (" + $retentionRulesExceptDefault.Length + ") must match number of non-Default tag criteria (" + $tagCriteriaExceptDefault.Length + ")."
+        }
+
+        # Check if each retention rule has a corresponding tag criteria with the same name
+        for($i = 0; $i -lt $retentionRulesExceptDefault.Length; $i++)
+        {
+            $retentionRuleName = $retentionRulesExceptDefault[$i]
+            $tagCriteriaName = $tagCriteriaExceptDefault[$i]
+            
+            if($retentionRuleName -ne $tagCriteriaName)
             {
-                throw "Retention Rule " + $retentionRuleName + " has no corresponding tag criteria. Please add tag criteria for " + $retentionRuleName + " retention or remove " + $retentionRuleName + " retention rule from backup policy."
+                throw "Retention Rule '" + $retentionRuleName + "' does not have a corresponding tag criteria with the same name. Please ensure each retention rule has a matching tag criteria."
             }
-            if($retentionRuleName -ne $tagNames[$index])
-            {
-                throw "Retention Rule " + $retentionRuleName + " has no corresponding tag criteria. Please add tag criteria for " + $retentionRuleName + " retention or remove " + $retentionRuleName + " retention rule from backup policy."
-            }
-            if(($index -eq ($retentionNames.Length - 1)) -and ($tagNames.Length -gt $retentionNames.Length))
-            {
-                $tagName = $tagNames[$index + 1]
-                throw "Tag Criteria " + $tagName + " has no corresponding retention rule. Please add retention rule for " + $tagName + " tag criteria or remove " + $tagName + " tag criteria from Azure Backup Rule."
-            }
-            $index += 1
         }
 
         $policyObject = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BaseBackupPolicyResource]::new()

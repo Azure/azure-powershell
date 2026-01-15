@@ -1,5 +1,5 @@
 ﻿function Edit-AzDataProtectionPolicyTagClientObject{
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Adds or removes schedule tag in an existing backup policy.')]
 
@@ -47,7 +47,8 @@
 
         $parameterSetName = $PsCmdlet.ParameterSetName
         $backupRuleIndex = -1
-        foreach($index in (0..$Policy.PolicyRule.Length))
+        $policyRuleCount = @($Policy.PolicyRule).Count
+        Foreach($index in (0..($policyRuleCount - 1)))
         {
             if($Policy.PolicyRule[$index].ObjectType -eq "AzureBackupRule")
             {
@@ -67,9 +68,12 @@
             if($parameterSetName -eq "updateTag")
             {
                 $tagIndex = -1
-                foreach($index in (0..$Policy.PolicyRule[$backupRuleIndex].Trigger.TaggingCriterion.Length))
+                $taggingCriteria = @($Policy.PolicyRule[$backupRuleIndex].Trigger.TaggingCriterion)
+                $taggingCriteriaCount = $taggingCriteria.Count
+                
+                foreach($index in (0..($taggingCriteriaCount - 1)))
                 {
-                    if($Policy.PolicyRule[$backupRuleIndex].Trigger.TaggingCriterion[$index].TagInfoTagName -eq $Name)
+                    if($taggingCriteria[$index].TagInfoTagName -eq $Name)
                     {
                         $tagIndex = $index
                     }
@@ -93,6 +97,7 @@
                 }
             }
         }
-        
+
+        return $Policy
     }
 }
