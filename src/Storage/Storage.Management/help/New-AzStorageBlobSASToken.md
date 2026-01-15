@@ -16,36 +16,36 @@ Generates a SAS token for an Azure storage blob.
 ### BlobNameWithPermission (Default)
 ```
 New-AzStorageBlobSASToken [-Container] <String> [-Blob] <String> [-Permission <String>]
- [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DelegatedUserObjectId <String>] [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>]
+ [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### BlobPipelineWithPolicy
 ```
 New-AzStorageBlobSASToken -CloudBlob <CloudBlob> [-BlobBaseClient <BlobBaseClient>] -Policy <String>
- [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DelegatedUserObjectId <String>] [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>]
+ [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### BlobPipelineWithPermission
 ```
 New-AzStorageBlobSASToken -CloudBlob <CloudBlob> [-BlobBaseClient <BlobBaseClient>] [-Permission <String>]
- [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DelegatedUserObjectId <String>] [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>]
+ [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### BlobNameWithPolicy
 ```
 New-AzStorageBlobSASToken [-Container] <String> [-Blob] <String> -Policy <String>
- [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DelegatedUserObjectId <String>] [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>]
+ [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -166,6 +166,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DelegatedUserObjectId
+This value specifies the Entra ID of the user who is authorized to use the resulting SAS URL. The resulting SAS URL must be used in conjunction with an Entra ID token that has been issued to the user specified in this value. This parameter can only be specified when input Storage Context is OAuth based.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
