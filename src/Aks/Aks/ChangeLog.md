@@ -18,13 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the default SSH key generation logic in `New-AzAksCluster` to enforce RSA key type (instead of ed25519 that became the default in OpenSSH 9.4 and above)
 
 ## Version 7.1.0
 * Bumped API version to 2025-08-01
 * Added cmdlets `Get-AzAksMachine`, `Get-AzAksManagedClusterMeshRevisionProfile`, `Get-AzAksManagedClusterMeshUpgradeProfile`, `Get-AzAksTrustedAccessRole`, `Get-AzAksTrustedAccessRoleBinding`, `New-AzAksTrustedAccessRoleBinding`, `Remove-AzAksAgentPoolMachine`, `Remove-AzAksTrustedAccessRoleBinding`, `Update-AzAksTrustedAccessRoleBinding`
 * Added necessary parameters for `New-AzAksCluster`, `Set-AzAksCluster`, `New-AzAksNodePool`, `Update-AzAksNodePool`
 * Removed cmdlet `Get-AzAksManagedClusterOSOption`
-* Fixed the default SSH key generation logic in `New-AzAksCluster` to enforce RSA key type (instead of ed25519 that became the default in OpenSSH 9.4 and above)
 
 ## Version 7.0.0
 * Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
