@@ -19,22 +19,12 @@
 -->
 
 ## Upcoming Release
-* Fixed `Get-AzRoleDefinition` returning null `Condition` for roles with ABAC (Attribute-Based Access Control) conditions on non-first permission entries [#29058] [#25940]
-* [Breaking Change] Updated `PSRoleDefinition` output model (affects `Get-AzRoleDefinition`, `New-AzRoleDefinition`, `Set-AzRoleDefinition`, `Remove-AzRoleDefinition`):
-    - Added `Permissions` property (list of `PSPermission` objects) to `PSRoleDefinition` to preserve full permission structure including per-permission ABAC conditions
-    - Removed `Actions`, `NotActions`, `DataActions`, and `NotDataActions` properties from `PSRoleDefinition` (these are now only available inside each `PSPermission`)
-    - Removed `Condition` and `ConditionVersion` properties from `PSRoleDefinition` as they incorrectly flattened multi-permission role definitions
-    - Added `Condition` and `ConditionVersion` properties to `PSPermission`
-    - Example - Old: `$role.Actions`, `$role.Condition`
-    - Example - New: `$role.Permissions[0].Actions`, `$role.Permissions[1].Condition` (conditions are now per-permission)
-* [Breaking Change] Updated `New-AzRoleDefinition` and `Set-AzRoleDefinition` `-InputFile` JSON format:
-    - JSON input files must now use the `Permissions` array format instead of flattened `Actions`/`NotActions`/`DataActions`/`NotDataActions` properties
-    - Old format: `{ "Actions": ["Microsoft.Storage/*"], "DataActions": ["Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"] }`
-    - New format: `{ "Permissions": [{ "Actions": ["Microsoft.Storage/*"], "DataActions": ["Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"], "Condition": null, "ConditionVersion": null }] }`
-* [Breaking Change] Updated `Set-AzRoleDefinition -Role` parameter:
-    - The `PSRoleDefinition` object passed to `-Role` must now have actions in `Permissions[0].Actions` instead of `Actions`
-    - Example - Old: `$roleDef.Actions.Add("Microsoft.Compute/*")`
-    - Example - New: `$roleDef.Permissions[0].Actions.Add("Microsoft.Compute/*")`
+* Fixed `Get-AzRoleDefinition` returning null `Condition` for roles with ABAC conditions on non-first permission entries [#29058] [#25940]
+* [Breaking Change] Updated role definition cmdlets (`Get-AzRoleDefinition`, `New-AzRoleDefinition`, `Set-AzRoleDefinition`, `Remove-AzRoleDefinition`) to use a permissions array with per-permission conditions
+    - `PSRoleDefinition` now uses a `Permissions` property to represent actions, data actions, and conditions, including Attribute-Based Access Control (ABAC) conditions
+    - `Get-AzRoleDefinition` and `Remove-AzRoleDefinition` output type `PSRoleDefinition` no longer has flattened `Actions`, `NotActions`, `DataActions`, `NotDataActions`, `Condition`, and `ConditionVersion` properties; use the `Permissions` collection instead
+    - JSON input files for `New-AzRoleDefinition` and `Set-AzRoleDefinition -InputFile` must define permissions in the `Permissions` array structure instead of using top-level `Actions`, `NotActions`, `DataActions`, and `NotDataActions` properties
+    - Scripts that pass a `PSRoleDefinition` object to `Set-AzRoleDefinition -Role` must update how they read and modify actions and conditions to use the `Permissions` collection
 
 ## Version 9.0.0
 * Removed unavailable variant Get-AzRoleEligibleChildResource cmdlet for InputObject parameter.
