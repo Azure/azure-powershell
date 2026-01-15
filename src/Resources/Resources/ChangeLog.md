@@ -19,7 +19,9 @@
 -->
 
 ## Upcoming Release
-* Fixed `Get-AzRoleDefinition` returning null `Condition` for roles with ABAC conditions on non-first permission entries [#29058] [#25940]
+* Fixed `Get-AzRoleDefinition` returning null `Condition` for roles with ABAC conditions on non-first permission entries
+    - Fixed issue [#29058]
+    - Fixed issue [#25940]
 * [Breaking Change] Updated role definition cmdlets (`Get-AzRoleDefinition`, `New-AzRoleDefinition`, `Set-AzRoleDefinition`, `Remove-AzRoleDefinition`) to use a permissions array with per-permission conditions
     - `PSRoleDefinition` now uses a `Permissions` property to represent actions, data actions, and conditions, including Attribute-Based Access Control (ABAC) conditions
     - `Get-AzRoleDefinition` and `Remove-AzRoleDefinition` output type `PSRoleDefinition` no longer has flattened `Actions`, `NotActions`, `DataActions`, `NotDataActions`, `Condition`, and `ConditionVersion` properties; use the `Permissions` collection instead
