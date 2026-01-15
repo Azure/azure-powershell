@@ -502,3 +502,129 @@ function Test-RDDataActionsNegativeTestCases {
     # Basic positive case - read from object
     Remove-AzRoleDefinition -Id $createdRole.Id -Force
 }
+
+<#
+.SYNOPSIS
+Tests creating a custom role definition using the new Permissions array format.
+#>
+function Test-RDNewPermissionsFormatCreate
+{
+    # Create a custom role using the new Permissions array format from PSObject
+    $rdName = 'CustomRole Permissions Format Test'
+    $subscription = (Get-AzContext).Subscription.Id
+    
+    $rd = Get-AzRoleDefinition -Name "Reader"
+    $rd.Id = $null
+    $rd.Name = $rdName
+    $rd.Description = "Test role for new Permissions array format"
+    $rd.Permissions[0].Actions.Clear()
+    $rd.Permissions[0].Actions.Add("Microsoft.Resources/subscriptions/resourceGroups/read")
+    $rd.Permissions[0].Actions.Add("Microsoft.Resources/deployments/*")
+    $rd.AssignableScopes.Clear()
+    $rd.AssignableScopes.Add("/subscriptions/$subscription")
+    
+    $createdRd = New-AzRoleDefinitionWithId -Role $rd -RoleDefinitionId a1b2c3d4-e5f6-7890-abcd-ef1234567890
+
+    # Verify the role was created correctly
+    Assert-NotNull $createdRd
+    Assert-AreEqual $rdName $createdRd.Name
+    Assert-AreEqual "Test role for new Permissions array format" $createdRd.Description
+    Assert-AreEqual $true $createdRd.IsCustom
+
+    # Verify Permissions structure
+    Assert-NotNull $createdRd.Permissions
+    Assert-True { $createdRd.Permissions.Count -eq 1 }
+    Assert-NotNull $createdRd.Permissions[0].Actions
+    Assert-AreEqual "Microsoft.Resources/subscriptions/resourceGroups/read" $createdRd.Permissions[0].Actions[0]
+    Assert-AreEqual "Microsoft.Resources/deployments/*" $createdRd.Permissions[0].Actions[1]
+    Assert-NotNull $createdRd.Permissions[0].NotActions
+    Assert-True { $createdRd.Permissions[0].NotActions.Count -eq 0 }
+    Assert-NotNull $createdRd.AssignableScopes
+
+    # Cleanup
+    Remove-AzRoleDefinition -Id $createdRd.Id -Force
+}
+
+<#
+.SYNOPSIS
+Tests updating a custom role definition using the new Permissions array format.
+#>
+function Test-RDNewPermissionsFormatUpdate
+{
+    # Create a custom role first
+    $rdName = 'CustomRole Update Test'
+    $subscription = (Get-AzContext).Subscription.Id
+    
+    $rd = Get-AzRoleDefinition -Name "Reader"
+    $rd.Id = $null
+    $rd.Name = $rdName
+    $rd.Description = "Test role for new Permissions array format"
+    $rd.Permissions[0].Actions.Clear()
+    $rd.Permissions[0].Actions.Add("Microsoft.Resources/subscriptions/resourceGroups/read")
+    $rd.Permissions[0].Actions.Add("Microsoft.Resources/deployments/*")
+    $rd.AssignableScopes.Clear()
+    $rd.AssignableScopes.Add("/subscriptions/$subscription")
+    
+    $createdRd = New-AzRoleDefinitionWithId -Role $rd -RoleDefinitionId b2c3d4e5-f6a7-8901-bcde-f23456789012
+    Assert-NotNull $createdRd "Role creation with New-AzRoleDefinitionWithId should succeed"
+    
+    $rd = Get-AzRoleDefinition -Id $createdRd.Id
+    Assert-NotNull $rd "Role should be retrievable by Id after creation"
+    Assert-NotNull $rd.Permissions "Role should have Permissions array"
+    $originalActionCount = $rd.Permissions[0].Actions.Count
+
+    # Update the role by adding an action using new Permissions format
+    $rd.Permissions[0].Actions.Add("Microsoft.Support/*")
+    $updatedRd = Set-AzRoleDefinition -Role $rd
+
+    Assert-NotNull $updatedRd
+    Assert-NotNull $updatedRd.Permissions
+    Assert-True { $updatedRd.Permissions[0].Actions.Count -eq ($originalActionCount + 1) }
+    
+    # Verify the new action is present
+    $hasNewAction = $updatedRd.Permissions[0].Actions | Where-Object { $_ -eq "Microsoft.Support/*" }
+    Assert-NotNull $hasNewAction "Updated role should have the new action"
+
+    # Cleanup
+    Remove-AzRoleDefinition -Id $rd.Id -Force
+}
+
+<#
+.SYNOPSIS
+Tests deleting a custom role definition and verifying the returned Permissions array format.
+#>
+function Test-RDNewPermissionsFormatDelete
+{
+    # Create a custom role to delete
+    $rdName = 'CustomRole Delete Test'
+    $subscription = (Get-AzContext).Subscription.Id
+    
+    $rd = Get-AzRoleDefinition -Name "Reader"
+    $rd.Id = $null
+    $rd.Name = $rdName
+    $rd.Description = "Test role for new Permissions array format"
+    $rd.Permissions[0].Actions.Clear()
+    $rd.Permissions[0].Actions.Add("Microsoft.Resources/subscriptions/resourceGroups/read")
+    $rd.Permissions[0].Actions.Add("Microsoft.Resources/deployments/*")
+    $rd.AssignableScopes.Clear()
+    $rd.AssignableScopes.Add("/subscriptions/$subscription")
+    
+    $rd = New-AzRoleDefinitionWithId -Role $rd -RoleDefinitionId c3d4e5f6-a7b8-9012-cdef-345678901234
+    $rd = Get-AzRoleDefinition -Name $rdName
+    
+    Assert-NotNull $rd
+    Assert-NotNull $rd.Permissions
+
+    # Delete the role and verify the returned object has Permissions structure
+    $deletedRd = Remove-AzRoleDefinition -Id $rd.Id -Force -PassThru
+    
+    Assert-NotNull $deletedRd
+    Assert-AreEqual $rd.Name $deletedRd.Name
+    Assert-NotNull $deletedRd.Permissions
+    Assert-True { $deletedRd.Permissions.Count -gt 0 }
+    Assert-NotNull $deletedRd.Permissions[0].Actions
+
+    # Verify the role no longer exists
+    $readRd = Get-AzRoleDefinition -Name $rd.Name
+    Assert-Null $readRd
+}
