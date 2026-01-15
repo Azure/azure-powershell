@@ -789,10 +789,6 @@
     "alias": "LoadTesting"
   },
   {
-    "alias": "MobileNetwork",
-    "module": "MobileNetwork"
-  },
-  {
     "module": "ArcResourceBridge",
     "alias": "ArcResourceBridge"
   },
@@ -1007,5 +1003,9 @@
   {
     "alias": "DisconnectedOperations",
     "module": "DisconnectedOperations"
+  },
+  {
+    "alias": "EdgeAction",
+    "module": "EdgeAction"
   }
 ]

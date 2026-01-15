@@ -8,7 +8,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
     using Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PowerShell;
 
     /// <summary>
-    /// The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+    /// The user identity associated with the managed cluster. This identity will be used in control plane. Only one user assigned
+    /// identity is allowed. The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ManagedClusterIdentityUserAssignedIdentitiesTypeConverter))]
     public partial class ManagedClusterIdentityUserAssignedIdentities
@@ -157,7 +158,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             return ToJsonString();
         }
     }
-    /// The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+    /// The user identity associated with the managed cluster. This identity will be used in control plane. Only one user assigned
+    /// identity is allowed. The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
     [System.ComponentModel.TypeConverter(typeof(ManagedClusterIdentityUserAssignedIdentitiesTypeConverter))]
     public partial interface IManagedClusterIdentityUserAssignedIdentities
 
