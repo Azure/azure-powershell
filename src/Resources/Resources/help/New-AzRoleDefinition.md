@@ -60,31 +60,29 @@ Each permission object in the Permissions array MAY contain:
 > The Azure RBAC API currently supports only a single element in the Permissions array when creating custom roles. While the data model supports multiple permission entries, create operations must use exactly one permission object.
 
 Following is a sample JSON role definition that can be provided as input:
-```json
 {
     "Name": "Custom VM Operator",
     "Description": "Can monitor all resources and start and restart virtual machines",
-    "Permissions": [
+    "Permissions": \[
         {
-            "Actions": [
+            "Actions": \[
                 "*/read",
                 "Microsoft.Compute/virtualMachines/restart/action",
                 "Microsoft.Compute/virtualMachines/start/action"
-            ],
-            "NotActions": [
+            \],
+            "NotActions": \[
                 "*/write"
-            ],
-            "DataActions": [
+            \],
+            "DataActions": \[
                 "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
-            ],
-            "NotDataActions": [
+            \],
+            "NotDataActions": \[
                 "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
-            ]
+            \]
         }
-    ],
-    "AssignableScopes": ["/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]
+    \],
+    "AssignableScopes": \["/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"\]
 }
-```
 
 ## EXAMPLES
 

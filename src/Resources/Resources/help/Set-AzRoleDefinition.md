@@ -63,34 +63,6 @@ Set-AzRoleDefinition -InputFile C:\Temp\roleDefinition.json
 
 Updates a custom role definition from a JSON file. The JSON file must include the role's Id property.
 
-Sample JSON file content:
-```json
-{
-    "Id": "52a6cc13-ff92-47a8-a39b-2a8205c3087e",
-    "Name": "Updated Role",
-    "Description": "Can monitor all resources and start and restart virtual machines",
-    "Permissions": [
-        {
-            "Actions": [
-                "*/read",
-                "Microsoft.Compute/virtualMachines/restart/action",
-                "Microsoft.Compute/virtualMachines/start/action"
-            ],
-            "NotActions": [
-                "*/write"
-            ],
-            "DataActions": [
-                "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
-            ],
-            "NotDataActions": [
-                "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
-            ]
-        }
-    ],
-    "AssignableScopes": ["/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]
-}
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile
