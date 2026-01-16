@@ -9,7 +9,7 @@ schema: 2.0.0
 # Suspend-AzAutomationJob
 
 ## SYNOPSIS
-Suspends an Automation job  (Only applicable for PowerShell Workflow jobs).
+Suspends an Automation job (Only applicable for PowerShell Workflow jobs).
 
 ## SYNTAX
 
