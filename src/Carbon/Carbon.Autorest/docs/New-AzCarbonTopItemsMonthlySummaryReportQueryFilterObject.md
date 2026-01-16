@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCarbonTopItemsMonthlySummaryReportQueryFilterObject
 
 ## SYNOPSIS
-Create an in-memory object for TopItemsMonthlySummaryReportQueryFilterObject.
+Create an in-memory object for TopItemsMonthlySummaryReportQueryFilter.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzCarbonTopItemsMonthlySummaryReportQueryFilterObject -CarbonScopeList <Stri
 ```
 
 ## DESCRIPTION
-Create an in-memory object for TopItemsMonthlySummaryReportQueryFilterObject.
+Create an in-memory object for TopItemsMonthlySummaryReportQueryFilter.
 
 ## EXAMPLES
 
@@ -42,12 +42,14 @@ SubscriptionList     : {00000000-0000-0000-0000-000000000000, 00000000-0000-0000
 TopItem              : 5
 ```
 
+
+
 ## PARAMETERS
 
 ### -CarbonScopeList
 List of carbon emission scopes.
 Required.
-Accepts one or more values from -  Scope1, Scope2, Scope3 in list form.
+Accepts one or more values from EmissionScopeEnum (e.g., Scope1, Scope2, Scope3) in list form.
 The output will include the total emissions for the specified scopes.
 
 ```yaml
@@ -64,7 +66,7 @@ Accept wildcard characters: False
 
 ### -CategoryType
 Specifies the category type to retrieve top-emitting items, aggregated by month.
-Accepts values - Resource, ResourceGroup, ResourceType, Location, Subscription.
+See supported types in CategoryTypeEnum.
 
 ```yaml
 Type: System.String
@@ -202,7 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.TopItemsMonthlySummaryReportQueryFilterObject
+### Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.TopItemsMonthlySummaryReportQueryFilter
 
 ## NOTES
 

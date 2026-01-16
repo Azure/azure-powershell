@@ -22,10 +22,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         public string Direction { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IAccessRulePropertiesInternal)Property).Direction; }
 
         /// <summary>Internal Acessors for AddressPrefix</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IAccessRuleInternal.AddressPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IAccessRulePropertiesInternal)Property).AddressPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IAccessRulePropertiesInternal)Property).AddressPrefix = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IAccessRuleInternal.AddressPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IAccessRulePropertiesInternal)Property).AddressPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IAccessRulePropertiesInternal)Property).AddressPrefix = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Direction</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IAccessRuleInternal.Direction { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IAccessRulePropertiesInternal)Property).Direction; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IAccessRulePropertiesInternal)Property).Direction = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IAccessRuleInternal.Direction { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IAccessRulePropertiesInternal)Property).Direction; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IAccessRulePropertiesInternal)Property).Direction = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IAccessRuleInternal.Name { get => this._name; set { {_name = value;} } }

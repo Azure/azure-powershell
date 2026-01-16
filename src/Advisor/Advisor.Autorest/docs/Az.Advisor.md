@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Advisor
-Module Guid: a246e719-1233-44b6-ad7b-e0cf5451c104
+Module Guid: c0739bda-52d0-46d6-a81a-b4dd73304308
 Download Help Link: https://learn.microsoft.com/powershell/module/az.advisor
 Help Version: 1.0.0.0
 Locale: en-US

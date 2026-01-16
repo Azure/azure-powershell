@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzAppConfigurationStore
 
 ## SYNOPSIS
-update a configuration store with the specified parameters.
+Update a configuration store with the specified parameters.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Update-AzAppConfigurationStore -InputObject <IAppConfigurationIdentity> [-Disabl
 ```
 
 ## DESCRIPTION
-update a configuration store with the specified parameters.
+Update a configuration store with the specified parameters.
 
 ## EXAMPLES
 

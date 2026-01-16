@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Automanage
-Module Guid: e54e2b12-08b9-4e24-8906-d2acb72fb103
+Module Guid: 9137cbf5-9fbb-4205-ab65-56b9257a4aea
 Download Help Link: https://learn.microsoft.com/powershell/module/az.automanage
 Help Version: 1.0.0.0
 Locale: en-US

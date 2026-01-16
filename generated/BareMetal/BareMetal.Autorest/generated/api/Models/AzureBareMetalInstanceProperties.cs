@@ -49,10 +49,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models
         Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IHardwareProfile Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstancePropertiesInternal.HardwareProfile { get => (this._hardwareProfile = this._hardwareProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.HardwareProfile()); set { {_hardwareProfile = value;} } }
 
         /// <summary>Internal Acessors for HardwareProfileAzureBareMetalInstanceSize</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstancePropertiesInternal.HardwareProfileAzureBareMetalInstanceSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IHardwareProfileInternal)HardwareProfile).AzureBareMetalInstanceSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IHardwareProfileInternal)HardwareProfile).AzureBareMetalInstanceSize = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstancePropertiesInternal.HardwareProfileAzureBareMetalInstanceSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IHardwareProfileInternal)HardwareProfile).AzureBareMetalInstanceSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IHardwareProfileInternal)HardwareProfile).AzureBareMetalInstanceSize = value ?? null; }
 
         /// <summary>Internal Acessors for HardwareProfileHardwareType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstancePropertiesInternal.HardwareProfileHardwareType { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IHardwareProfileInternal)HardwareProfile).HardwareType; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IHardwareProfileInternal)HardwareProfile).HardwareType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstancePropertiesInternal.HardwareProfileHardwareType { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IHardwareProfileInternal)HardwareProfile).HardwareType; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IHardwareProfileInternal)HardwareProfile).HardwareType = value ?? null; }
 
         /// <summary>Internal Acessors for HwRevision</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstancePropertiesInternal.HwRevision { get => this._hwRevision; set { {_hwRevision = value;} } }
@@ -61,16 +61,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models
         Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.INetworkProfile Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstancePropertiesInternal.NetworkProfile { get => (this._networkProfile = this._networkProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.NetworkProfile()); set { {_networkProfile = value;} } }
 
         /// <summary>Internal Acessors for NetworkProfileCircuitId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstancePropertiesInternal.NetworkProfileCircuitId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.INetworkProfileInternal)NetworkProfile).CircuitId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.INetworkProfileInternal)NetworkProfile).CircuitId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstancePropertiesInternal.NetworkProfileCircuitId { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.INetworkProfileInternal)NetworkProfile).CircuitId; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.INetworkProfileInternal)NetworkProfile).CircuitId = value ?? null; }
 
         /// <summary>Internal Acessors for OSProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IOSProfile Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstancePropertiesInternal.OSProfile { get => (this._oSProfile = this._oSProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.OSProfile()); set { {_oSProfile = value;} } }
 
         /// <summary>Internal Acessors for OSProfileOstype</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstancePropertiesInternal.OSProfileOstype { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IOSProfileInternal)OSProfile).OSType; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IOSProfileInternal)OSProfile).OSType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstancePropertiesInternal.OSProfileOstype { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IOSProfileInternal)OSProfile).OSType; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IOSProfileInternal)OSProfile).OSType = value ?? null; }
 
         /// <summary>Internal Acessors for OSProfileVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstancePropertiesInternal.OSProfileVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IOSProfileInternal)OSProfile).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IOSProfileInternal)OSProfile).Version = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstancePropertiesInternal.OSProfileVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IOSProfileInternal)OSProfile).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IOSProfileInternal)OSProfile).Version = value ?? null; }
 
         /// <summary>Internal Acessors for PowerState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstancePropertiesInternal.PowerState { get => this._powerState; set { {_powerState = value;} } }
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models
         Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IStorageProfile Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstancePropertiesInternal.StorageProfile { get => (this._storageProfile = this._storageProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.StorageProfile()); set { {_storageProfile = value;} } }
 
         /// <summary>Internal Acessors for StorageProfileNfsIPAddress</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstancePropertiesInternal.StorageProfileNfsIPAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IStorageProfileInternal)StorageProfile).NfsIPAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IStorageProfileInternal)StorageProfile).NfsIPAddress = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstancePropertiesInternal.StorageProfileNfsIPAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IStorageProfileInternal)StorageProfile).NfsIPAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IStorageProfileInternal)StorageProfile).NfsIPAddress = value ?? null; }
 
         /// <summary>Backing field for <see cref="NetworkProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.INetworkProfile _networkProfile;

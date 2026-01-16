@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new AppComplianceAutomation webhook or create an exiting AppComplianceAutomation webhook.
+Create a new AppComplianceAutomation webhook or create an exiting AppComplianceAutomation webhook.
 .Description
-create a new AppComplianceAutomation webhook or create an exiting AppComplianceAutomation webhook.
+Create a new AppComplianceAutomation webhook or create an exiting AppComplianceAutomation webhook.
 .Example
 {{ Add code here }}
 .Example

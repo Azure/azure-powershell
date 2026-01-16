@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzAlb
 
 ## SYNOPSIS
-create a TrafficController
+Create a TrafficController
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzAlb -Name <String> -ResourceGroupName <String> -Location <String> [-Subscr
 ```
 
 ## DESCRIPTION
-create a TrafficController
+Create a TrafficController
 
 ## EXAMPLES
 

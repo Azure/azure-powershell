@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a SecurityPolicy
+Update a SecurityPolicy
 .Description
-update a SecurityPolicy
+Update a SecurityPolicy
 .Example
 {{ Add code here }}
 .Example

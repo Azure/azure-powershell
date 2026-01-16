@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an exiting AppComplianceAutomation report.
+Update an exiting AppComplianceAutomation report.
 .Description
-update an exiting AppComplianceAutomation report.
+Update an exiting AppComplianceAutomation report.
 .Example
 {{ Add code here }}
 .Example

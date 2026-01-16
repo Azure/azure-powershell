@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ArcResourceBridge
-Module Guid: 72d873c3-b8fb-4c7f-8d95-0c84eb0c90cd
+Module Guid: 9ad598fb-ec3d-4ac1-a2bd-e45ec85028cd
 Download Help Link: https://learn.microsoft.com/powershell/module/az.arcresourcebridge
 Help Version: 1.0.0.0
 Locale: en-US

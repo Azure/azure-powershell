@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Carbon
-Module Guid: e849768c-aefa-4444-a7c6-ce87fd722730
+Module Guid: c700253e-73c5-43e1-a85d-f122e8418dc9
 Download Help Link: https://learn.microsoft.com/powershell/module/az.carbon
 Help Version: 1.0.0.0
 Locale: en-US
@@ -17,18 +17,18 @@ API for query carbon emission data available date range
 ### [Get-AzCarbonEmissionReport](Get-AzCarbonEmissionReport.md)
 API for Carbon Emissions Reports
 
-### [New-AzCarbonItemDetailsQueryFilter](New-AzCarbonItemDetailsQueryFilter.md)
+### [New-AzCarbonItemDetailsQueryFilterObject](New-AzCarbonItemDetailsQueryFilterObject.md)
 Create an in-memory object for ItemDetailsQueryFilter.
 
-### [New-AzCarbonMonthlySummaryReportQueryFilter](New-AzCarbonMonthlySummaryReportQueryFilter.md)
+### [New-AzCarbonMonthlySummaryReportQueryFilterObject](New-AzCarbonMonthlySummaryReportQueryFilterObject.md)
 Create an in-memory object for MonthlySummaryReportQueryFilter.
 
-### [New-AzCarbonOverallSummaryReportQueryFilter](New-AzCarbonOverallSummaryReportQueryFilter.md)
+### [New-AzCarbonOverallSummaryReportQueryFilterObject](New-AzCarbonOverallSummaryReportQueryFilterObject.md)
 Create an in-memory object for OverallSummaryReportQueryFilter.
 
-### [New-AzCarbonTopItemsMonthlySummaryReportQueryFilter](New-AzCarbonTopItemsMonthlySummaryReportQueryFilter.md)
+### [New-AzCarbonTopItemsMonthlySummaryReportQueryFilterObject](New-AzCarbonTopItemsMonthlySummaryReportQueryFilterObject.md)
 Create an in-memory object for TopItemsMonthlySummaryReportQueryFilter.
 
-### [New-AzCarbonTopItemsSummaryReportQueryFilter](New-AzCarbonTopItemsSummaryReportQueryFilter.md)
+### [New-AzCarbonTopItemsSummaryReportQueryFilterObject](New-AzCarbonTopItemsSummaryReportQueryFilterObject.md)
 Create an in-memory object for TopItemsSummaryReportQueryFilter.
 
