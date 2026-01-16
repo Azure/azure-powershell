@@ -243,7 +243,7 @@ Removes an Automation variable.
 Removes a webhook from an Automation runbook.
 
 ### [Resume-AzAutomationJob](Resume-AzAutomationJob.md)
-Resumes a suspended Automation job.
+Resumes a suspended Automation job(Only applicable for PowerShell Workflow jobs).
 
 ### [Set-AzAutomationAccount](Set-AzAutomationAccount.md)
 Modifies an Automation account.
@@ -300,7 +300,7 @@ Stops a DSC Node configuration deployment in Automation. It only stops the curre
 Stops an Automation job.
 
 ### [Suspend-AzAutomationJob](Suspend-AzAutomationJob.md)
-Suspends an Automation job.
+Suspends an Automation job(Only applicable for PowerShell Workflow jobs).
 
 ### [Unregister-AzAutomationDscNode](Unregister-AzAutomationDscNode.md)
 Removes a DSC node from management by an Automation account.
