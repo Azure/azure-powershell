@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.RegistryCredentials
 https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappregistrycredentialobject
 #>
 function New-AzContainerAppRegistryCredentialObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.RegistryCredentials')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

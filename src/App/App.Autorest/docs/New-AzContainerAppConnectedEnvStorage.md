@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppConnectedEnvStorage
 
 ## SYNOPSIS
-create storage for a connectedEnvironment.
+Create storage for a connectedEnvironment.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ New-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName <String> -Name <
 ```
 
 ## DESCRIPTION
-create storage for a connectedEnvironment.
+Create storage for a connectedEnvironment.
 
 ## EXAMPLES
 

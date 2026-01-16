@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.IdentityProviders
 https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappidentityproviderobject
 #>
 function New-AzContainerAppIdentityProviderObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.IdentityProviders')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

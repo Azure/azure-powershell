@@ -1,6 +1,6 @@
 ---
 Module Name: Az.PaloAltoNetworks
-Module Guid: 1f435755-1cd0-405c-8310-d600d24827ee
+Module Guid: 6c4c72bf-6e75-4464-ba2a-d93ddc62cf35
 Download Help Link: https://learn.microsoft.com/powershell/module/az.paloaltonetworks
 Help Version: 1.0.0.0
 Locale: en-US

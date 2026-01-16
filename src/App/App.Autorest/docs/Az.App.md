@@ -1,6 +1,6 @@
 ---
 Module Name: Az.App
-Module Guid: d26b4cc7-1502-410b-9c3d-a553c0d2d624
+Module Guid: 32b4002a-8a34-4f04-8646-5e91d3f62d09
 Download Help Link: https://learn.microsoft.com/powershell/module/az.app
 Help Version: 1.0.0.0
 Locale: en-US
@@ -114,22 +114,22 @@ Get a SourceControl of a Container App.
 Create a Container App.
 
 ### [New-AzContainerAppAuthConfig](New-AzContainerAppAuthConfig.md)
-create the AuthConfig for a Container App.
+Create the AuthConfig for a Container App.
 
 ### [New-AzContainerAppConfigurationObject](New-AzContainerAppConfigurationObject.md)
 Create an in-memory object for Configuration.
 
 ### [New-AzContainerAppConnectedEnv](New-AzContainerAppConnectedEnv.md)
-create an connectedEnvironment.
+Create an connectedEnvironment.
 
 ### [New-AzContainerAppConnectedEnvCert](New-AzContainerAppConnectedEnvCert.md)
-create a Certificate.
+Create a Certificate.
 
 ### [New-AzContainerAppConnectedEnvDapr](New-AzContainerAppConnectedEnvDapr.md)
-create a Dapr Component in a connected environment.
+Create a Dapr Component in a connected environment.
 
 ### [New-AzContainerAppConnectedEnvStorage](New-AzContainerAppConnectedEnvStorage.md)
-create storage for a connectedEnvironment.
+Create storage for a connectedEnvironment.
 
 ### [New-AzContainerAppCustomDomainObject](New-AzContainerAppCustomDomainObject.md)
 Create an in-memory object for CustomDomain.
@@ -159,19 +159,19 @@ Create an in-memory object for JobExecutionContainer.
 Create an in-memory object for JobScaleRule.
 
 ### [New-AzContainerAppManagedCert](New-AzContainerAppManagedCert.md)
-create a Managed Certificate.
+Create a Managed Certificate.
 
 ### [New-AzContainerAppManagedEnv](New-AzContainerAppManagedEnv.md)
-create a Managed Environment used to host container apps.
+Create a Managed Environment used to host container apps.
 
 ### [New-AzContainerAppManagedEnvCert](New-AzContainerAppManagedEnvCert.md)
-create a Certificate.
+Create a Certificate.
 
 ### [New-AzContainerAppManagedEnvDapr](New-AzContainerAppManagedEnvDapr.md)
-create a Dapr Component in a Managed Environment.
+Create a Dapr Component in a Managed Environment.
 
 ### [New-AzContainerAppManagedEnvStorage](New-AzContainerAppManagedEnvStorage.md)
-create storage for a managedEnvironment.
+Create storage for a managedEnvironment.
 
 ### [New-AzContainerAppProbeHeaderObject](New-AzContainerAppProbeHeaderObject.md)
 Create an in-memory object for ContainerAppProbeHttpGetHttpHeadersItem.
@@ -198,7 +198,7 @@ Create an in-memory object for SecretVolumeItem.
 Create an in-memory object for ServiceBind.
 
 ### [New-AzContainerAppSourceControl](New-AzContainerAppSourceControl.md)
-create the SourceControl for a Container App.
+Create the SourceControl for a Container App.
 
 ### [New-AzContainerAppTemplateObject](New-AzContainerAppTemplateObject.md)
 Create an in-memory object for Container.
@@ -276,17 +276,17 @@ Checks if resource name is available.
 Patches a Container App using JSON Merge Patch
 
 ### [Update-AzContainerAppAuthConfig](Update-AzContainerAppAuthConfig.md)
-update the AuthConfig for a Container App.
+Update the AuthConfig for a Container App.
 
 ### [Update-AzContainerAppConnectedEnvCert](Update-AzContainerAppConnectedEnvCert.md)
 Patches a certificate.
 Currently only patching of tags is supported
 
 ### [Update-AzContainerAppConnectedEnvDapr](Update-AzContainerAppConnectedEnvDapr.md)
-update a Dapr Component in a connected environment.
+Update a Dapr Component in a connected environment.
 
 ### [Update-AzContainerAppConnectedEnvStorage](Update-AzContainerAppConnectedEnvStorage.md)
-update storage for a connectedEnvironment.
+Update storage for a connectedEnvironment.
 
 ### [Update-AzContainerAppJob](Update-AzContainerAppJob.md)
 Patches a Container Apps Job using JSON Merge Patch
@@ -303,11 +303,11 @@ Patches a certificate.
 Currently only patching of tags is supported
 
 ### [Update-AzContainerAppManagedEnvDapr](Update-AzContainerAppManagedEnvDapr.md)
-update a Dapr Component in a Managed Environment.
+Update a Dapr Component in a Managed Environment.
 
 ### [Update-AzContainerAppManagedEnvStorage](Update-AzContainerAppManagedEnvStorage.md)
-update storage for a managedEnvironment.
+Update storage for a managedEnvironment.
 
 ### [Update-AzContainerAppSourceControl](Update-AzContainerAppSourceControl.md)
-update the SourceControl for a Container App.
+Update the SourceControl for a Container App.
 
