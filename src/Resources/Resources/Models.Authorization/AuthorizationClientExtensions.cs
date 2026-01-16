@@ -51,16 +51,19 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 roleDefinition = new PSRoleDefinition
                 {
                     Name = role.RoleName,
-                    Actions = new List<string>(role.Permissions.SelectMany(r => r.Actions)),
-                    NotActions = new List<string>(role.Permissions.SelectMany(r => r.NotActions)),
-                    DataActions = new List<string>(role.Permissions.SelectMany(r => r.DataActions)),
-                    NotDataActions = new List<string>(role.Permissions.SelectMany(r => r.NotDataActions)),
                     Id = role.Id.GuidFromFullyQualifiedId(),
                     AssignableScopes = role.AssignableScopes.ToList(),
                     Description = role.Description,
                     IsCustom = role.RoleType == CustomRole ? true : false,
-                    Condition = (role.Permissions != null && role.Permissions.Count > 0) ? role.Permissions[0].Condition : null,
-                    ConditionVersion = (role.Permissions != null && role.Permissions.Count > 0) ? role.Permissions[0].ConditionVersion : null
+                    Permissions = role.Permissions?.Select(p => new PSPermission
+                    {
+                        Actions = p.Actions?.ToList() ?? new List<string>(),
+                        NotActions = p.NotActions?.ToList() ?? new List<string>(),
+                        DataActions = p.DataActions?.ToList() ?? new List<string>(),
+                        NotDataActions = p.NotDataActions?.ToList() ?? new List<string>(),
+                        Condition = p.Condition,
+                        ConditionVersion = p.ConditionVersion
+                    }).ToList()
                 };
             }
 

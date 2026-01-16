@@ -315,6 +315,9 @@
   <data name="InvalidActions" xml:space="preserve">
     <value>Invalid value for Actions</value>
   </data>
+  <data name="InvalidPermissions" xml:space="preserve">
+    <value>Invalid value for Permissions</value>
+  </data>
   <data name="InvalidAssignableScopes" xml:space="preserve">
     <value>Invalid value for AssignableScopes</value>
   </data>

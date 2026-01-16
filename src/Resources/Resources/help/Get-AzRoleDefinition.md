@@ -33,23 +33,48 @@ Get-AzRoleDefinition [-Scope <String>] [-Custom] [-SkipClientSideScopeValidation
 
 ## DESCRIPTION
 Use the Get-AzRoleDefinition command with a particular role name to view its details.
-To inspect individual operations that a role grants access to, review the Actions and NotActions properties of the role.
+To inspect individual operations that a role grants access to, review the Permissions property of the role.
+Each permission entry contains Actions, NotActions, DataActions, NotDataActions, and optionally Condition and ConditionVersion properties.
+Roles with Attribute-Based Access Control (ABAC) conditions will have the Condition and ConditionVersion set on the appropriate permission entry.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get a role definition by name
 ```powershell
 Get-AzRoleDefinition -Name Reader
 ```
 
-Get the Reader role definition
+Retrieves the Reader role definition with all its permissions.
 
-### Example 2
+### Example 2: List all RBAC role definitions
 ```powershell
 Get-AzRoleDefinition
 ```
 
-Lists all RBAC role definitions
+Lists all Azure RBAC role definitions available in the current scope.
+
+### Example 3: Access Actions from a role definition
+```powershell
+$roleDef = Get-AzRoleDefinition -Name "Virtual Machine Contributor"
+$roleDef.Permissions[0].Actions
+```
+
+Retrieves the actions from the first permission entry of a role definition.
+
+### Example 4: Get all permissions including conditions
+```powershell
+$roleDef = Get-AzRoleDefinition -Name "Storage Blob Data Reader"
+foreach ($permission in $roleDef.Permissions) {
+    Write-Host "Actions: $($permission.Actions -join ', ')"
+    Write-Host "DataActions: $($permission.DataActions -join ', ')"
+    if ($permission.Condition) {
+        Write-Host "Condition: $($permission.Condition)"
+        Write-Host "ConditionVersion: $($permission.ConditionVersion)"
+    }
+}
+```
+
+Iterates through all permission entries and displays actions and any ABAC conditions.
 
 ## PARAMETERS
 
