@@ -9,6 +9,7 @@ Describe 'ResolvePolicyMetadataParameter' {
 @{
     version    = "1.0.0";
     category   = "ScenarioTest";
+    enabled    = false;
 }
 '@
         $complexPSObjectMetadata = @'
@@ -40,6 +41,7 @@ Describe 'ResolvePolicyMetadataParameter' {
         $resolved = ResolvePolicyMetadataParameter -Metadata $simplePSObjectMetadata
         $resolved.version | Should -Be '1.0.0'
         $resolved.category | Should -Be 'ScenarioTest'
+        $resolved.enabled | Should -BeFalse
     }
 
     It 'Parse complex PSObject metadata' {

@@ -373,13 +373,18 @@ function ConvertObjectToPSObject {
 function Convert-AstLiteral {
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     param([Ast] $Node)
+    
+    # ensure Node isn't null before checking type in switch 
+    if ($null -eq $Node) {
+        return $null
+    }
 
     switch ($Node) {
+        # Numbers, $true/$false/$null
+        { $_.GetType() -eq [ConstantExpressionAst] } { return $_.Value }
         # Strings like "text" or 'text'
         { $_.GetType() -eq [StringConstantExpressionAst] } { return $_.Value }
         { $_.GetType() -eq [ExpandableStringExpressionAst] } { return $_.Value }
-        # Numbers, $true/$false/$null
-        { $_.GetType() -eq [ConstantExpressionAst] } { return $_.Value }
         # This node type is essentially a wrapper node for an array
         { $_.GetType() -eq [ArrayExpressionAst] } {
             $arr = @()
@@ -504,22 +509,55 @@ function Get-UriContent {
     }
 }
 
+# Checks if a given path is within the system's max path length (Windows, Linux, MacOS)
+function Test-PathLength {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [string]$Path
+    )
+
+    $windowsMax = 260
+    $windowsMaxLong = 32767
+    $linuxMax = 4096
+    $macMax = 1024
+    $maxPath = 0
+
+    if ($IsWindows) {
+        $maxPath = $windowsMax
+        try {
+            $reg = Get-ItemProperty -Path "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\FileSystem" -ErrorAction Stop
+            if ($reg.LongPathsEnabled -eq 1) { $maxPath = $windowsMaxLong }
+        } catch {}
+    } elseif ($IsLinux) {
+        $maxPath = $linuxMax
+    } elseif ($IsMacOS) {
+        $maxPath = $macMax
+    } else {
+        $maxPath = 260
+    }
+
+    return $Path.Length -le $maxPath
+}
+
 # if the given string is a file path or URI, returns the contents of the file or web page
 # otherwise returns the original string
 function GetFileUriOrStringParameterValue {
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     param([string]$parameterValue)
 
-    if (Test-Path $parameterValue) {
-        Get-Content $parameterValue | Out-String
+    # check path length first to prevent exceptions on long input
+    if (Test-PathLength -Path (Join-Path $PSScriptRoot $parameterValue)) {
+        if (Test-Path $parameterValue) {
+            return Get-Content $parameterValue | Out-String
+        }
+    }
+
+    if (Test-Uri $parameterValue) {
+        return Get-UriContent $parameterValue
     }
     else {
-        if (Test-Uri $parameterValue) {
-            Get-UriContent $parameterValue
-        }
-        else {
-            $parameterValue
-        }
+        return $parameterValue
     }
 }
 

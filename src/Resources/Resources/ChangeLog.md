@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated the implementation of -Metadata parameter processing for cmdlets that use it for security. No behavior change.
 
 ## Version 9.0.0
 * Removed unavailable variant Get-AzRoleEligibleChildResource cmdlet for InputObject parameter.
