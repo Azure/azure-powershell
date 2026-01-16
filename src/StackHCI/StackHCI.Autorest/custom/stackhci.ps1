@@ -210,6 +210,8 @@ $AuthorityAzureLocal = "https://login.$DOMAINFQDNMACRO"
 $BillingServiceApiScopeAzureLocal = "https://dp.aszrp.$DOMAINFQDNMACRO/.default"
 $GraphServiceApiScopeAzureLocal = "https://graph.$DOMAINFQDNMACRO"
 
+$DefaultBillingServiceApiScope = "1322e676-dee7-41ee-a874-ac923822781c/.default"
+
 $RPAPIVersion = "2025-09-15-preview";
 $HCIArcAPIVersion = "2025-09-15-preview"
 $HCIArcExtensionAPIVersion = "2025-09-15-preview"
@@ -719,6 +721,10 @@ $registerArcScript = {
             {
                 $managementUrl = 'https://management.usgovcloudapi.net'
             }
+            elseif ($null -ne (Get-AzEnvironment -Name $EnvironmentName))
+            {
+                $managementUrl = (Get-AzEnvironment -Name $EnvironmentName).ResourceManagerUrl
+            }
             else
             {
                 throw 'Invalid Azure Environment name'
@@ -1018,6 +1024,10 @@ function Get-ManagementUrl {
     {
         $managementUrl = 'https://management.usgovcloudapi.net'
     }
+    elseif ($null -ne (Get-AzEnvironment -Name $EnvironmentName))
+    {
+        $managementUrl = (Get-AzEnvironment -Name $EnvironmentName).ResourceManagerUrl
+    }
     else
     {
         throw "Invalid Azure Environment name"
@@ -1208,6 +1218,10 @@ param(
     {
         return $AzureLocalPortalDomain;
     }
+    elseif ($null -ne (Get-AzEnvironment -Name $EnvironmentName))
+    {
+        return (Get-AzEnvironment -Name $EnvironmentName).ManagementPortalUrl
+    }
 }
 
 function Get-DefaultRegion{
@@ -1319,6 +1333,13 @@ param(
         $Authority.Value = $AuthorityAzureLocal
         $BillingServiceApiScope.Value = $BillingServiceApiScopeAzureLocal
         $GraphServiceApiScope.Value = $GraphServiceApiScopeAzureLocal
+    }
+    elseif ($null -ne (Get-AzEnvironment -Name $EnvironmentName))
+    {
+        $ServiceEndpoint.Value = "https://doesnotmatter/"
+        $Authority.Value = (Get-AzEnvironment -Name $EnvironmentName).ActiveDirectoryAuthority
+        $BillingServiceApiScope.Value = $DefaultBillingServiceApiScope
+        $GraphServiceApiScope.Value = (Get-AzEnvironment -Name $EnvironmentName).GraphEndpointResourceId + "/.default"
     }
 }
 
