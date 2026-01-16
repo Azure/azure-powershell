@@ -416,7 +416,7 @@ function Convert-AstLiteral {
                 return Convert-AstLiteral $_.PipelineElements[0].Expression
             }
             else {
-                throw "Ran into issue attempting to parse PSCustomObject."
+                throw "Pipeline contains multiple elements, expected a single literal expression when parsing PSCustomObject."
             }
         }
         # Handles variables such as $null, $true, $false
@@ -526,7 +526,7 @@ function Test-PathLength {
     if ($IsWindows) {
         $maxPath = $windowsMax
         try {
-            $reg = Get-ItemProperty -Path "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\FileSystem" -ErrorAction Stop
+            $reg = Get-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -ErrorAction Stop
             if ($reg.LongPathsEnabled -eq 1) { $maxPath = $windowsMaxLong }
         } catch {}
     } elseif ($IsLinux) {

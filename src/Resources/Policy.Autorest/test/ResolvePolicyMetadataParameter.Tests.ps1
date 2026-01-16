@@ -5,7 +5,7 @@
 Describe 'ResolvePolicyMetadataParameter' { 
 
     BeforeAll {
-        $simplePSObjectMetadata= @'
+        $simplePSObjectMetadata = @'
 @{
     version    = "1.0.0";
     category   = "ScenarioTest";
@@ -97,5 +97,10 @@ Describe 'ResolvePolicyMetadataParameter' {
         $resolved.matrix[0] | Should -Be @(1,2,3)
         $resolved.matrix[2][1] | Should -Be 8
         $resolved.tags[1] | Should -Be @('c','d')
+    }
+
+    It 'Ensure parsing invalid hashtable literal throws' {
+        $invalidHashtable = '@{ version = "1.0.0"; category "ScenarioTest"; enabled = false; }'
+        { ResolvePolicyMetadataParameter -Metadata $invalidHashtable } | Should -Throw 'Invalid PSCustomObject or hashtable literal'
     }
 }
