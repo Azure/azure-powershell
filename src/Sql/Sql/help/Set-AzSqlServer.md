@@ -59,9 +59,9 @@ This command resets the administrator password on the AzureSQL Server named serv
 Set-AzSqlServer -AssignIdentity -ResourceGroupName 'ResourceGroup01' -ServerName 'Server01'
 ```
 
-### Example 3: Enable soft-delete retention for the server (default 7 days)
+### Example 3: Enable soft-delete retention for the server
 ```powershell
-Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -EnableSoftDelete $true
+Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SoftDeleteRetentionDays 7
 ```
 
 ```output
@@ -84,11 +84,11 @@ FederatedClientId             :
 SoftDeleteRetentionDays       : 7
 ```
 
-This command enables soft-delete retention on the Azure SQL Server named server01, with a default retention period of 7 days. To customize the retention duration, use the SoftDeleteRetentionDays parameter.
+This command enables soft-delete retention on the Azure SQL Server named server01, with a retention period of 7 days.
 
 ### Example 4: Disable soft-delete retention for the server
 ```powershell
-Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -EnableSoftDelete $false -SoftDeleteRetentionDays 0
+Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SoftDeleteRetentionDays 0
 ```
 
 ```output
@@ -146,7 +146,9 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSoftDelete
-Boolean value for whether or not to enable soft-delete for the server such that the server can be restored for a default of 7 days after dropping. If you want to specify a different retention period, use the SoftDeleteRetentionDays parameter.
+**This parameter has been deprecated and will be removed in May 2026 (Az version 16.0.0 / Az.Sql version 7.0.0). Please use the SoftDeleteRetentionDays parameter instead.**
+
+Boolean value for whether or not to enable soft-delete for the server such that the server can be restored for a default of 7 days after dropping. To enable soft-delete, use `-SoftDeleteRetentionDays` with a value of 1-7 days. To disable soft-delete, use `-SoftDeleteRetentionDays 0`.
 
 ```yaml
 Type: System.Boolean
@@ -329,7 +331,7 @@ Accept wildcard characters: False
 ```
 
 ### -SoftDeleteRetentionDays
-Value for soft-delete retention days for the server such that the server can be restored for the specified number of days after dropping. Only valid values are from 0-35. If set to 0, soft-delete retention is disabled.
+Value for soft-delete retention days for the server such that the server can be restored for the specified number of days after dropping. Only valid values are from 0-7. If set to 0, soft-delete retention is disabled.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]

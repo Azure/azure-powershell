@@ -21,6 +21,13 @@
 -->
 ## Upcoming Release
 
+## Version 11.2.0
+* Added `-HighSpeedInterconnectPlacement` parameter to `New-AzVmssConfig` and `New-AzVmss` cmdlets.
+* Added new parameters `ZonePlacementPolicy`, `IncludeZone`, `ExcludeZone`, `MaxZoneCount`, `EnableMaxInstancePercentPerZone` and `MaxInstancePercentPerZoneValue` to `New-AzVmssConfig` cmdlet.
+* Added new parameters `ZonePlacementPolicy`, `IncludeZone` and `ExcludeZone` to `New-AzVmss` cmdlet.
+* Added new parameters `MaxZoneCount`, `EnableMaxInstancePercentPerZone` and `MaxInstancePercentPerZoneValue` to `Update-AzVmss` cmdlet.
+* Updated Azure.Core from 1.47.3 to 1.50.0
+
 ## Version 11.1.0
 * Added `-ResiliencyView` parameter to `Get-AzVmssVM` cmdlet
     - Retrieves the resilient VM deletion status for Virtual Machine Scale Set (VMSS) VMs
@@ -46,7 +53,7 @@
 * Updated SDK to use 2025-04-01 version of the ComputeRP API for Compute related cmdlets.
 
 ## Version 10.3.0
-* Fixed typo 'DeyAll' to 'DenyAll' in NetworkAccessPolicy description. 
+* Fixed typo 'DeyAll' to 'DenyAll' in NetworkAccessPolicy description.
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 * Updated New-AzDiskConfig to include `SecurityMetadataUri` and `SecurityDataUri` parameters.
 * Updated Grant-AzDisk to return `SecurityMetadataAccessSAS` property.

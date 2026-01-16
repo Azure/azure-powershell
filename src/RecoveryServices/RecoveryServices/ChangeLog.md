@@ -20,6 +20,11 @@
 
 ## Upcoming Release
 
+## Version 7.11.0
+* Added Cross region restore support for Bleu cloud regions
+* Added Availability Zone support in Update Protection
+* Added Platform Fault Domain support in Enable, Update, and Switch Protection workflows
+
 ## Version 7.10.0
 * Added Cross region restore support for new region - northeastus5.
 * Added support for vault soft delete feature - Get soft deleted vault, Undelete softdeleted vault, Get deleted backup items in a soft deleted vault using ARG.

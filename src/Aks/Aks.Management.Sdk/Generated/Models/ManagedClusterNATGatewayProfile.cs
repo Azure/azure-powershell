@@ -56,11 +56,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public ManagedClusterManagedOutboundIPProfile ManagedOutboundIPProfile {get; set; }
 
         /// <summary>
-        /// Gets or sets the effective outbound IP resources of the cluster NAT
-        /// gateway.
+        /// Gets the effective outbound IP resources of the cluster NAT gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "effectiveOutboundIPs")]
-        public System.Collections.Generic.IList<ResourceReference> EffectiveOutboundIPs {get; set; }
+        public System.Collections.Generic.IList<ResourceReference> EffectiveOutboundIPs {get; private set; }
 
         /// <summary>
         /// Gets or sets desired outbound flow idle timeout in minutes. Allowed values
