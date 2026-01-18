@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix console close issue by upgrading with autorest v4.0.752
 
 ## Version 0.3.0
 * Added AutoRest-generated NewRelic PowerShell module using API version 2025-05-01-preview

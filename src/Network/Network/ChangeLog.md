@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fix console close issue by upgrading with autorest v4.0.752
 * Onboarded `Microsoft.Security/privateLinks` to Private Link Common Cmdlets
 
 ## Version 7.24.0
