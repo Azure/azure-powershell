@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Fix console close issue by upgrading with autorest v4.0.752
+
+## Version 2.1.0
 * Fixed New-AzFrontDoorWafManagedRuleOverrideObject issue.
 
 ## Version 2.0.0

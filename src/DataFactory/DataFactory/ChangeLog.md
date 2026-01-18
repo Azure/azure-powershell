@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.19.7
 * Added more support for Jira V2 (Jira Version 2) and Netezza V2 (Netezza Version 2) connection properties.
 
 ## Version 1.19.6

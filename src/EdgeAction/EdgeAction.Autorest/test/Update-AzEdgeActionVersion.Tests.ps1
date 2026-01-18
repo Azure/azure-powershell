@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzEdgeActionVersion'))
 Describe 'Update-AzEdgeActionVersion' {
     BeforeAll {
         $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "eaupdateverfixed01"
+        $script:edgeActionName = "eaupdateverdec01"
         $script:version = "v1"
         
         # Create edge action and version for testing

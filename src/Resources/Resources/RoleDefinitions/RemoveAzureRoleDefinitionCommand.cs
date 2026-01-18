@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using System;
@@ -28,6 +29,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Deletes a given role definition.
     /// </summary>
+    [GenericBreakingChangeWithVersion("The -InputObject parameter type PSRoleDefinition is changing. The flattened properties 'Actions', 'NotActions', 'DataActions', 'NotDataActions', 'Condition', 'ConditionVersion' are being replaced by a 'Permissions' array containing permission objects with these properties. The output when using -PassThru is also changing accordingly.", "16.0.0", "10.0.0")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleDefinition", SupportsShouldProcess = true,DefaultParameterSetName = ParameterSet.RoleDefinitionId), OutputType(typeof(bool))]
     public class RemoveAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {

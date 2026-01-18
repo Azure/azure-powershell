@@ -71,19 +71,6 @@ v1   global   Succeeded
 
 Updates the specified edge action version with the provided tags.
 
-### Example 2: Update an edge action version using JSON file
-```powershell
-Update-AzEdgeActionVersion -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1" -JsonFilePath "C:\config\version-update.json"
-```
-
-```output
-Name Location ProvisioningState
----- -------- -----------------
-v1   global   Succeeded
-```
-
-Updates the edge action version using configuration from a JSON file.
-
 ## PARAMETERS
 
 ### -AsJob
