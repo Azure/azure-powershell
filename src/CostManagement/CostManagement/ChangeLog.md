@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fix console close issue by upgrading with autorest v4.0.752
 
 ## Version 0.4.2
 * Fixed module name in module metadata
