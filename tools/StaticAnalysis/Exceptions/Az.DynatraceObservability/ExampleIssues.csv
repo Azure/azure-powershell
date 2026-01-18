@@ -1,0 +1,2 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.DynatraceObservability","Update-AzDynatraceMonitorPlan","3","4","Invalid_Cmdlet","5000","1","\ is not a valid command name.","\","Check the spell of \."
