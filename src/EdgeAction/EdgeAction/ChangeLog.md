@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fix console close issue by upgrading with autorest v4.0.752
 * Updated to API version 2025-12-01-preview
 * Removed `Add-AzEdgeActionAttachment` cmdlet (operation no longer available in API)
 * Removed `Remove-AzEdgeActionAttachment` cmdlet (operation no longer available in API)
