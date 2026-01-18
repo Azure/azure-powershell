@@ -20,6 +20,12 @@
 
 ## Upcoming Release
 * Fix console close issue by upgrading with autorest v4.0.752
+* Added breaking change preannouncement for `PSRoleDefinition` type changes in Az.Resources 10.0.0 [#29058]
+    - The flattened properties `Actions`, `NotActions`, `DataActions`, `NotDataActions`, `Condition`, and `ConditionVersion` will be removed from `PSRoleDefinition`
+    - Use `Permissions[n].Actions`, `Permissions[n].DataActions`, etc. instead to access the full permission structure with per-permission conditions
+    - Affects output for `Get-AzRoleDefinition`, `New-AzRoleDefinition`, `Set-AzRoleDefinition`, and `Remove-AzRoleDefinition` (with `-PassThru`)
+    - Affects input format for `New-AzRoleDefinition` and `Set-AzRoleDefinition` cmdlets
+    - Affects `-InputObject` parameter for `Remove-AzRoleDefinition` cmdlet
 
 ## Version 9.0.0
 * Removed unavailable variant Get-AzRoleEligibleChildResource cmdlet for InputObject parameter.

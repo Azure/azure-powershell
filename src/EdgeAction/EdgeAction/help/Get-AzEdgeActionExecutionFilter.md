@@ -45,17 +45,30 @@ Get a EdgeActionExecutionFilter
 
 ### Example 1: List all execution filters for an edge action
 ```powershell
-Get-AzEdgeActionExecutionFilter -EdgeActionName "myEdgeAction" -ResourceGroupName "myResourceGroup"
+Get-AzEdgeActionExecutionFilter -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction"
 ```
 
-This command lists all execution filters associated with the specified edge action.
+```output
+Name      Location ProvisioningState
+----      -------- -----------------
+filter1   global   Succeeded
+filter2   global   Succeeded
+```
 
-### Example 2: Get a specific execution filter by name
+Lists all execution filters configured for the specified edge action.
+
+### Example 2: Get a specific execution filter
 ```powershell
-Get-AzEdgeActionExecutionFilter -EdgeActionName "myEdgeAction" -ResourceGroupName "myResourceGroup" -ExecutionFilter "myFilter"
+Get-AzEdgeActionExecutionFilter -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -ExecutionFilter "filter1"
 ```
 
-This command retrieves a specific execution filter by name from the specified edge action.
+```output
+Name    Location ProvisioningState
+----    -------- -----------------
+filter1 global   Succeeded
+```
+
+Gets details of the specified execution filter.
 
 ## PARAMETERS
 
