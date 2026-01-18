@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fix console close issue by upgrading with autorest v4.0.752
 
 ## Version 6.0.0
 * Added support for edge action

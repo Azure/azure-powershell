@@ -20,6 +20,7 @@
 
 
 ## Upcoming Release
+* Fix console close issue by upgrading with autorest v4.0.752
 
 ## Version 3.0.0
 * Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
