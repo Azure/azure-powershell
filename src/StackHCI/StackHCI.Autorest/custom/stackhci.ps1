@@ -3229,42 +3229,51 @@ function Invoke-MSIFlow {
         $allArcEnabled = Test-ClusterArcEnabled -ClusterNodes $ClusterNodes -Credential $Credential -ClusterDNSSuffix $ClusterDNSSuffix -SubscriptionId $SubscriptionId -ArcResourceGroupName $ArcServerResourceGroupName
         
         if (-not $allArcEnabled) {
-            Write-VerboseLog "[MSI Flow] Not all nodes are Arc-enabled. Attempting to enable Arc on nodes manually..."
-            
-            # 2. Retrieve Token Locally
-            try {
-                Write-VerboseLog "[MSI Flow] Requesting Access Token for Tenant '$TenantId'"
-                
-                $azToken = Get-AzAccessToken -TenantId $TenantId -ErrorAction Stop
-                $tokenString = $azToken.Token
+            # Check if this is a cloud deployment
+            if (ValidateCloudDeployment) {
+                # For cloud deployments, skip manual Arc enablement - let registration continue
+                Write-VerboseLog "[MSI Flow] Cloud deployment detected - skipping manual Arc enablement on nodes"
+                Write-NodeEventLog -Message "[MSI Flow] Cloud deployment detected - skipping manual Arc enablement for cloud deployment" -EventID 9136 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+            }
+            else {
+                # Non-cloud deployment - attempt manual Arc enablement
+                Write-VerboseLog "[MSI Flow] Non-cloud deployment detected - Not all nodes are Arc-enabled. Attempting to enable Arc on nodes manually..."
 
-                if ($tokenString -is [System.Security.SecureString]) {
-                    $tokenString = [System.Net.NetworkCredential]::new("", $tokenString).Password
+                # Retrieve Token Locally
+                try {
+                    Write-VerboseLog "[MSI Flow] Requesting Access Token for Tenant '$TenantId'"
+
+                    $azToken = Get-AzAccessToken -TenantId $TenantId -ErrorAction Stop
+                    $tokenString = $azToken.Token
+
+                    if ($tokenString -is [System.Security.SecureString]) {
+                        $tokenString = [System.Net.NetworkCredential]::new("", $tokenString).Password
+                    }
                 }
-            }
-            catch {
-                throw "Failed to retrieve Azure Access Token for Arc enablement. Error: $($_.Exception.Message)"
-            }
+                catch {
+                    throw "Failed to retrieve Azure Access Token for Arc enablement. Error: $($_.Exception.Message)"
+                }
 
-            # 3. Call the manual enablement function with the PlainText token
-            Enable-ArcOnNodes -ClusterNodes $ClusterNodes `
-                                    -Credential $Credential `
-                                    -ClusterDNSSuffix $ClusterDNSSuffix `
-                                    -SubscriptionId $SubscriptionId `
-                                    -ResourceGroupName $ArcServerResourceGroupName `
-                                    -TenantId $TenantId `
-                                    -Location $Region `
-                                    -EnvironmentName $EnvironmentName `
-                                    -AccessToken $tokenString `
-                                    -UseStableAgent $UseStableAgent `
-                                    -IsManagementNode $IsManagementNode `
-                                    -ComputerName $ComputerName
-            
-            # Re-verify enablement
-            $allArcEnabled = Test-ClusterArcEnabled -ClusterNodes $ClusterNodes -Credential $Credential -ClusterDNSSuffix $ClusterDNSSuffix -SubscriptionId $SubscriptionId -ArcResourceGroupName $ArcServerResourceGroupName
-            
-            if (-not $allArcEnabled) {
-                throw [System.InvalidOperationException]::new("Failed to enable Arc on all cluster nodes. Aborting registration.")
+                # Call the manual enablement function with the PlainText token
+                Enable-ArcOnNodes -ClusterNodes $ClusterNodes `
+                                        -Credential $Credential `
+                                        -ClusterDNSSuffix $ClusterDNSSuffix `
+                                        -SubscriptionId $SubscriptionId `
+                                        -ResourceGroupName $ArcServerResourceGroupName `
+                                        -TenantId $TenantId `
+                                        -Location $Region `
+                                        -EnvironmentName $EnvironmentName `
+                                        -AccessToken $tokenString `
+                                        -UseStableAgent $UseStableAgent `
+                                        -IsManagementNode $IsManagementNode `
+                                        -ComputerName $ComputerName
+
+                # Re-verify enablement
+                $allArcEnabled = Test-ClusterArcEnabled -ClusterNodes $ClusterNodes -Credential $Credential -ClusterDNSSuffix $ClusterDNSSuffix -SubscriptionId $SubscriptionId -ArcResourceGroupName $ArcServerResourceGroupName
+
+                if (-not $allArcEnabled) {
+                    throw [System.InvalidOperationException]::new("Failed to enable Arc on all cluster nodes. Aborting registration.")
+                }
             }
         }
 
