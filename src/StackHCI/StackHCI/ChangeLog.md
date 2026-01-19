@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.6.6
 * Improved cloud deployment detection during Azure Arc repair operations to prevent duplicate enablement attempts and ensure smoother deployment experiences.
 
 ## Version 2.6.5

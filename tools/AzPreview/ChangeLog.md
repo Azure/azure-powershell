@@ -1,3 +1,26 @@
+## 15.2.1 - February 2026
+#### Az.Aks 7.1.1
+* Fixed the default SSH key generation logic in 'New-AzAksCluster' to enforce RSA key type (instead of ed25519 that became the default in OpenSSH 9.4 and above)
+
+#### Az.EdgeAction 0.1.1
+* Updated to API version 2025-12-01-preview
+* Removed 'Add-AzEdgeActionAttachment' cmdlet (operation no longer available in API)
+* Removed 'Remove-AzEdgeActionAttachment' cmdlet (operation no longer available in API)
+
+#### Az.Functions 4.3.1
+* Fixed cloud portability by using dynamic endpoints for storage [#29034]
+
+#### Az.Resources 9.0.1
+* Added breaking change preannouncement for 'PSRoleDefinition' type changes in Az.Resources 10.0.0 [#29058]
+    - The flattened properties 'Actions', 'NotActions', 'DataActions', 'NotDataActions', 'Condition', and 'ConditionVersion' will be removed from 'PSRoleDefinition'
+    - Use 'Permissions[n].Actions', 'Permissions[n].DataActions', etc. instead to access the full permission structure with per-permission conditions
+    - Affects output for 'Get-AzRoleDefinition', 'New-AzRoleDefinition', 'Set-AzRoleDefinition', and 'Remove-AzRoleDefinition' (with '-PassThru')
+    - Affects input format for 'New-AzRoleDefinition' and 'Set-AzRoleDefinition' cmdlets
+    - Affects '-InputObject' parameter for 'Remove-AzRoleDefinition' cmdlet
+
+#### Az.StackHCI 2.6.6
+* Improved cloud deployment detection during Azure Arc repair operations to prevent duplicate enablement attempts and ensure smoother deployment experiences.
+
 ## 15.2.0 - January 2026
 #### Az.Accounts 5.3.2
 * Updated Azure.Core from 1.47.3 to 1.50.0

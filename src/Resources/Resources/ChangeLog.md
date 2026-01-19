@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 9.0.1
 * Added breaking change preannouncement for `PSRoleDefinition` type changes in Az.Resources 10.0.0 [#29058]
     - The flattened properties `Actions`, `NotActions`, `DataActions`, `NotDataActions`, `Condition`, and `ConditionVersion` will be removed from `PSRoleDefinition`
     - Use `Permissions[n].Actions`, `Permissions[n].DataActions`, etc. instead to access the full permission structure with per-permission conditions
