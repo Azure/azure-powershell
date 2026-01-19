@@ -504,6 +504,17 @@ True
 
 This command enables Blob Geo Priority Replication on a Storage account. 
 
+### Example 25: Enable publishing IPv6 endpoint on a Storage account
+```powershell
+$account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -PublishIpv6Endpoint $true 
+$account.DualStackEndpointPreference.PublishIpv6Endpoint
+```
+```output
+True
+```
+
+This command enabled publishing IPv6 endpoint on a Storage account.
+
 ## PARAMETERS
 
 ### -AccessTier

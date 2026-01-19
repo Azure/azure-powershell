@@ -98,6 +98,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Mandatory = false,
             ValueFromPipeline = true,
+            HelpMessage = "Storage Account NetworkRule IPv6Rules.")]
+        public PSIpv6Rule[] IPv6Rule
+        {
+            get
+            {
+                return iPv6Rules;
+            }
+            set
+            {
+                isIpv6RuleSet = true;
+                iPv6Rules = value == null ? new List<PSIpv6Rule>().ToArray() : value;
+            }
+        }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
             HelpMessage = "Storage Account NetworkRule VirtualNetworkRules.")]
         public PSVirtualNetworkRule[] VirtualNetworkRule
         {
@@ -132,9 +149,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         private PSNetWorkRuleBypassEnum? bypass = null;
         private PSNetWorkRuleDefaultActionEnum? defaultAction = null;
         private PSIpRule[] iPRules = null;
+        private PSIpv6Rule[] iPv6Rules = null;
         private PSVirtualNetworkRule[] virtualNetworkRules = null;
         private PSResourceAccessRule[] resourceAccessRule = null;
         private bool isIpRuleSet = false;
+        private bool isIpv6RuleSet = false;
         private bool isNetworkRuleSet = false;
         private bool isResourceAccessRuleSet = false;
 
@@ -148,9 +167,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (ShouldProcess(this.Name, "Update Storage Account NetworkRule"))
             {
-                if (IPRule == null && VirtualNetworkRule == null && bypass == null && defaultAction == null && resourceAccessRule == null)
+                if (IPRule == null && IPv6Rule == null && VirtualNetworkRule == null && bypass == null && defaultAction == null && resourceAccessRule == null)
                 {
-                    throw new System.ArgumentNullException("IPRules, VirtualNetworkRules, Bypass, DefaultAction", "Request must specify an account NetworkRule property to update.");
+                    throw new System.ArgumentNullException("IPRules, IPv6Rule, VirtualNetworkRules, Bypass, DefaultAction", "Request must specify an account NetworkRule property to update.");
                 }
 
                 var storageAccount = this.StorageClient.StorageAccounts.GetProperties(
@@ -168,6 +187,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 if (isIpRuleSet)
                 {
                     psNetworkRule.IpRules = IPRule;
+                }
+
+                if (isIpv6RuleSet)
+                {
+                    psNetworkRule.Ipv6Rules = IPv6Rule;
                 }
 
                 if (isNetworkRuleSet)

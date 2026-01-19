@@ -458,6 +458,17 @@ True
 
 This command creates a Storage account with Blob Geo Priority Replication enabled, which provides enhanced geo-replication with service level agreement for priority replication to improve recovery time objectives (RTO).
 
+### Example 23: Create a Storage account with publish IPv6 endpoint enabled
+```powershell
+$account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -SkuName Standard_LRS -Location eastus2euap -PublishIPv6Endpoint $true
+$account.DualStackEndpointPreference.PublishIpv6Endpoint
+```
+
+```output
+True
+```
+This command creates a Storage account with publish IPv6 endpoint enabled, and then shows the PublishIpv6Endpoint property of the created account.
+
 ## PARAMETERS
 
 ### -AccessTier

@@ -28,6 +28,7 @@ The **Update-AzStorageAccountNetworkRuleSet** cmdlet updates the NetworkRule pro
 ### Example 1: Update all properties of NetworkRule, input Rules with JSON
 ```powershell
 Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -Bypass Logging,Metrics -DefaultAction Allow -IpRule (@{IPAddressOrRange="10.0.0.0/7";Action="allow"},@{IPAddressOrRange="28.2.0.0/16";Action="allow"}) `
+-Ipv6Rule (@{IPAddressOrRange="2001:0db8:1234:5678:abcd:ef00", Action="allow"},@{IPAddressOrRange="2606:4700:4700::1111";Action="allow"}) `
 -VirtualNetworkRule (@{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"},
 @{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/subnet2";Action="allow"}) -ResourceAccessRule (@{ResourceId=$ResourceId1;TenantId=$tenantId1},@{ResourceId=$ResourceId2;TenantId=$tenantId1})
 ```
@@ -43,7 +44,7 @@ This command update Bypass property of NetworkRule (other properties won't chang
 
 ### Example 3: Clean up rules of NetworkRule of a Storage account
 ```powershell
-Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -IpRule @() -VirtualNetworkRule @() -ResourceAccessRule @()
+Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -IpRule @() -VirtualNetworkRule @() -ResourceAccessRule @() -Ipv6Rule @()
 ```
 
 This command clean up rules of NetworkRule of a Storage account (other properties not change).

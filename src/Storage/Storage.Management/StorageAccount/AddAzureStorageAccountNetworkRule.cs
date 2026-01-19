@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountNetworkRule", SupportsShouldProcess = true, DefaultParameterSetName = NetWorkRuleStringParameterSet)]
     [OutputType(typeof(PSVirtualNetworkRule), ParameterSetName = new string[] { NetWorkRuleStringParameterSet, NetworkRuleObjectParameterSet })]
     [OutputType(typeof(PSIpRule), ParameterSetName = new string[] { IpRuleStringParameterSet, IpRuleObjectParameterSet })]
+    [OutputType(typeof(PSIpv6Rule), ParameterSetName = new string[] { IpRuleStringParameterSet, IpRuleObjectParameterSet })]
     [OutputType(typeof(PSResourceAccessRule), ParameterSetName = new string[] { ResourceAccessRuleStringParameterSet, ResourceAccessRuleObjectParameterSet })]
     public class AddAzureStorageAccountNetworkRuleCommand : StorageAccountBaseCmdlet
     {
@@ -60,6 +61,16 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// </summary>
         private const string ResourceAccessRuleObjectParameterSet = "ResourceAccessRuleObject";
 
+        /// <summary>
+        /// Ipv6Rule in String paremeter set name
+        /// </summary>
+        private const string Ipv6RuleStringParameterSet = "Ipv6RuleString";
+
+        /// <summary>
+        /// Ipv6Rule Objects pipeline parameter set
+        /// </summary>
+        private const string Ipv6RuleObjectParameterSet = "Ipv6RuleObject";
+
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -86,6 +97,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = true,
+            HelpMessage = "Storage Account NetworkRule IPv6Rules.",
+            ValueFromPipeline = true, ParameterSetName = Ipv6RuleObjectParameterSet)]
+        public PSIpv6Rule[] IPv6Rule { get; set; }
+
+
+        [Parameter(
+            Mandatory = true,
             HelpMessage = "Storage Account NetworkRule VirtualNetworkRules.",
             ValueFromPipeline = true, ParameterSetName = NetworkRuleObjectParameterSet)]
         public PSVirtualNetworkRule[] VirtualNetworkRule { get; set; }
@@ -101,6 +119,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "Storage Account NetworkRule IPRules IPAddressOrRange in string.",
             ParameterSetName = IpRuleStringParameterSet)]
         public string[] IPAddressOrRange { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Storage Account NetworkRule IPv6Rules IPAddressOrRange in string.",
+            ParameterSetName = Ipv6RuleStringParameterSet)]
+        public string[] IPv6AddressOrRange { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -187,6 +211,29 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             {
                                 IPRule rule = new IPRule(s);
                                 storageACL.IPRules.Add(rule);
+                                ruleChanged = true;
+                            }
+                        }
+                        break;
+                    case Ipv6RuleStringParameterSet:
+                        if (storageACL.Ipv6Rules == null)
+                            storageACL.Ipv6Rules = new List<IPRule>();
+                        foreach (string s in IPv6AddressOrRange)
+                        {
+                            bool ruleExist = false;
+                            foreach (IPRule originRule in storageACL.Ipv6Rules)
+                            {
+                                if (originRule.IPAddressOrRange.Equals(s, System.StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    ruleExist = true;
+                                    WriteDebug(string.Format("Skip add IPv6AddressOrRange as it already exist: {0}", s));
+                                    break;
+                                }
+                            }
+                            if (!ruleExist)
+                            {
+                                IPRule rule = new IPRule(s);
+                                storageACL.Ipv6Rules.Add(rule);
                                 ruleChanged = true;
                             }
                         }
@@ -285,6 +332,29 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             }
                         }
                         break;
+                    case Ipv6RuleObjectParameterSet:
+                        if (storageACL.Ipv6Rules == null)
+                            storageACL.Ipv6Rules = new List<IPRule>();
+                        foreach (PSIpv6Rule rule in IPv6Rule)
+                        {
+                            bool ruleExist = false;
+                            foreach (IPRule originRule in storageACL.Ipv6Rules)
+                            {
+                                if (originRule.IPAddressOrRange.Equals(rule.IPAddressOrRange, System.StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    ruleExist = true;
+                                    WriteDebug(string.Format("Skip add IPv6AddressOrRange as it already exist: {0}", rule.IPAddressOrRange));
+                                    break;
+                                }
+                            }
+                            if (!ruleExist)
+                            {
+
+                                storageACL.Ipv6Rules.Add(PSNetworkRuleSet.ParseStorageNetworkRuleIPv6Rule(rule));
+                                ruleChanged = true;
+                            }
+                        }
+                        break;
                 }
 
                 if (ruleChanged)
@@ -309,6 +379,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     case IpRuleStringParameterSet:
                     case IpRuleObjectParameterSet:
                         WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet).IpRules);
+                        break;
+                    case Ipv6RuleStringParameterSet:
+                    case Ipv6RuleObjectParameterSet:
+                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet).Ipv6Rules);
                         break;
                     case ResourceAccessRuleStringParameterSet:
                     case ResourceAccessRuleObjectParameterSet:

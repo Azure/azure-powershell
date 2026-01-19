@@ -103,6 +103,18 @@ This command adds a resource access rule with TenantId and ResourceId.
 
 This command gets all resource access rules from one storage account, and adds them to another storage account.
 
+### Example 7: Add several IPv6 rules with IPv6AddressOrRange
+```powershell
+Add-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -IPAddressOrRange "2606:4700:4700::1111","2404:6800:4003:c02::6a"
+```
+
+This command add several IPv6 rules with IPv6AddressOrRange.
+
+### Example 8: Add several IPv6 rules with IPv6Rule objects
+```powershell
+Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -IPv6Rule (@{IPAddressOrRange="2606:4700:4700::1111";Action="allow"},@{IPAddressOrRange="2a00:1450:4001:82a::200e";Action="allow"})
+```
+
 ## PARAMETERS
 
 ### -AsJob

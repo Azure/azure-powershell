@@ -61,6 +61,16 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// </summary>
         private const string ResourceAccessRuleObjectParameterSet = "ResourceAccessRuleObject";
 
+        /// <summary>
+        /// Ipv6Rule in String paremeter set name
+        /// </summary>
+        private const string Ipv6RuleStringParameterSet = "Ipv6RuleString";
+
+        /// <summary>
+        /// Ipv6Rule Objects pipeline parameter set
+        /// </summary>
+        private const string Ipv6RuleObjectParameterSet = "Ipv6RuleObject";
+
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -87,6 +97,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = true,
+            HelpMessage = "Storage Account NetworkRule IPv6Rules.",
+            ValueFromPipeline = true, ParameterSetName = Ipv6RuleObjectParameterSet)]
+        public PSIpv6Rule[] IPv6Rule { get; set; }
+
+        [Parameter(
+            Mandatory = true,
             HelpMessage = "Storage Account NetworkRule VirtualNetworkRules.",
             ValueFromPipeline = true, ParameterSetName = NetworkRuleObjectParameterSet)]
         public PSVirtualNetworkRule[] VirtualNetworkRule { get; set; }
@@ -102,6 +118,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "Storage Account NetworkRule IPRules IPAddressOrRange in string.",
             ParameterSetName = IpRuleStringParameterSet)]
         public string[] IPAddressOrRange { get; set; }
+
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Storage Account NetworkRule IPv6Rules IPAddressOrRange in string.",
+            ParameterSetName = Ipv6RuleStringParameterSet)]
+        public string[] IPv6AddressOrRange { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -164,6 +187,16 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                 throw new ArgumentOutOfRangeException("IPAddressOrRange", String.Format("Can't remove IpRule with specific IPAddressOrRange since not exist: {0}", rule.IPAddressOrRange));
                         }
                         break;
+                    case Ipv6RuleStringParameterSet:
+                        if (storageACL.Ipv6Rules == null)
+                            storageACL.Ipv6Rules = new List<IPRule>();
+                        foreach (string s in IPv6AddressOrRange)
+                        {
+                            IPRule rule = new IPRule(s);
+                            if (!RemoveIpRule(storageACL.Ipv6Rules, rule))
+                                throw new ArgumentOutOfRangeException("IPv6AddressOrRange", String.Format("Can't remove Ipv6Rule with specific IPAddressOrRange since not exist: {0}", rule.IPAddressOrRange));
+                        }
+                        break;
                     case ResourceAccessRuleStringParameterSet:
                         if (storageACL.ResourceAccessRules == null)
                         {
@@ -189,6 +222,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         foreach (PSIpRule rule in IPRule)
                         {
                             if (!RemoveIpRule(storageACL.IPRules, PSNetworkRuleSet.ParseStorageNetworkRuleIPRule(rule)))
+                                throw new ArgumentOutOfRangeException("IPRule", String.Format("Can't remove IpRule with specific IPAddressOrRange since not exist: {0}", rule.IPAddressOrRange));
+                        }
+                        break;
+                    case Ipv6RuleObjectParameterSet:
+                        if (storageACL.Ipv6Rules == null)
+                            storageACL.Ipv6Rules = new List<IPRule>();
+                        foreach (PSIpv6Rule rule in IPv6Rule)
+                        {
+                            if (!RemoveIpRule(storageACL.Ipv6Rules, PSNetworkRuleSet.ParseStorageNetworkRuleIPv6Rule(rule)))
                                 throw new ArgumentOutOfRangeException("IPRule", String.Format("Can't remove IpRule with specific IPAddressOrRange since not exist: {0}", rule.IPAddressOrRange));
                         }
                         break;
@@ -224,6 +266,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     case IpRuleStringParameterSet:
                     case IpRuleObjectParameterSet:
                         WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet).IpRules);
+                        break;
+                    case Ipv6RuleStringParameterSet:
+                    case Ipv6RuleObjectParameterSet:
+                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet).Ipv6Rules);
                         break;
                     case ResourceAccessRuleStringParameterSet:
                     case ResourceAccessRuleObjectParameterSet:

@@ -671,6 +671,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Whether IPv6 storage endpoints are to be published.")]
+        [ValidateNotNullOrEmpty]
+        public bool PublishIpv6Endpoint
+        {
+            get
+            {
+                return publishIpv6Endpoint != null ? publishIpv6Endpoint.Value : false;
+            }
+            set
+            {
+                publishIpv6Endpoint = value;
+            }
+        }
+        private bool? publishIpv6Endpoint = null;
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -1058,6 +1075,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (this.enableBlobGeoPriorityReplication != null)
                     {
                         updateParameters.GeoPriorityReplicationStatus = new GeoPriorityReplicationStatus(this.enableBlobGeoPriorityReplication);
+                    }
+                    if (this.publishIpv6Endpoint != null)
+                    {
+                        updateParameters.DualStackEndpointPreference = new DualStackEndpointPreference(this.publishIpv6Endpoint);
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
