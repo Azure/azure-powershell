@@ -312,7 +312,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             destChannel = GetDestinationChannel();
             IStorageFileManagement srcChannel = Channel;
 
-            if (srcChannel.IsSasWithOAuthCredential() || destChannel.IsSasWithOAuthCredential())
+            if (this.Context != null && (srcChannel != null && srcChannel.IsSasWithOAuthCredential() || destChannel != null && destChannel.IsSasWithOAuthCredential()))
             {
                 throw new InvalidOperationException("File Async copy doesn't support user delegation SAS with OAuth credential.");
             }

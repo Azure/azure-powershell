@@ -397,7 +397,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 Func<long, Task> taskGenerator;
                 long fileSize = new FileInfo(ResolvedFileName).Length;
 
-                if (!(UseTrack2Sdk() || localChannel.IsSasWithOAuthCredential()) && (this.BlobType.ToLower() != AppendBlobType.ToLower() || fileSize <= (long)size4MB * maxBlockCount))
+                if (!(UseTrack2Sdk() || (localChannel != null && localChannel.IsSasWithOAuthCredential())) && (this.BlobType.ToLower() != AppendBlobType.ToLower() || fileSize <= (long)size4MB * maxBlockCount))
                 {
                     //Upload with DMlib
                     taskGenerator = (taskId) => Upload2Blob(taskId, localChannel, uploadRequest.Item1, uploadRequest.Item2);
