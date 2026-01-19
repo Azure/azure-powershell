@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added `-IpVersionType` parameter to `New-AzPrivateEndpoint` cmdlet to specify the IP version type for private IPs of the private endpoint. Allowed values are IPv4, IPv6, or DualStack.
 
 ## Version 7.24.1
 * Onboarded `Microsoft.Security/privateLinks` to Private Link Common Cmdlets
