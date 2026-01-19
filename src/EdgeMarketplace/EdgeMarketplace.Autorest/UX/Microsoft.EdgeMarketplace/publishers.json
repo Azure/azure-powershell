@@ -1,0 +1,42 @@
+{
+  "resourceType": "publishers",
+  "apiVersion": "2025-10-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.edgemarketplace"
+  },
+  "commands": [
+    {
+      "name": "Get-AzEdgeMarketplacePublisher",
+      "description": "Get a Publisher",
+      "path": "/{resourceUri}/providers/Microsoft.EdgeMarketplace/publishers/{publisherName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.edgemarketplace/get-azedgemarketplacepublisher"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceUri <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Publisher",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.publisherName]"
+            },
+            {
+              "name": "-ResourceUri",
+              "value": "[Path.resourceUri]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
