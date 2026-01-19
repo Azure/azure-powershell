@@ -210,7 +210,7 @@ $AuthorityAzureLocal = "https://login.$DOMAINFQDNMACRO"
 $BillingServiceApiScopeAzureLocal = "https://dp.aszrp.$DOMAINFQDNMACRO/.default"
 $GraphServiceApiScopeAzureLocal = "https://graph.$DOMAINFQDNMACRO"
 
-$DefaultBillingServiceApiScope = "1322e676-dee7-41ee-a874-ac923822781c/.default"
+$DefaultBillingServiceApiScope = "$UsageServiceFirstPartyAppId/.default"
 
 $RPAPIVersion = "2025-09-15-preview";
 $HCIArcAPIVersion = "2025-09-15-preview"
@@ -1336,6 +1336,9 @@ param(
     }
     elseif ($null -ne (Get-AzEnvironment -Name $EnvironmentName))
     {
+        # Use a dummy URL for custom Az environments. The Stack HCI service endpoint is not
+        # resolved from this value in this code path; only the authority and scopes taken
+        # from Get-AzEnvironment are used for authentication, so the exact URL does not matter.
         $ServiceEndpoint.Value = "https://doesnotmatter/"
         $Authority.Value = (Get-AzEnvironment -Name $EnvironmentName).ActiveDirectoryAuthority
         $BillingServiceApiScope.Value = $DefaultBillingServiceApiScope
