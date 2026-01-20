@@ -721,13 +721,18 @@ $registerArcScript = {
             {
                 $managementUrl = 'https://management.usgovcloudapi.net'
             }
-            elseif ($null -ne (Get-AzEnvironment -Name $EnvironmentName))
-            {
-                $managementUrl = (Get-AzEnvironment -Name $EnvironmentName).ResourceManagerUrl
-            }
             else
             {
-                throw 'Invalid Azure Environment name'
+                $azEnv = Get-AzEnvironment -Name $EnvironmentName
+
+                if ($null -ne $azEnv)
+                {
+                    $managementUrl = $azEnv.ResourceManagerUrl
+                }
+                else
+                {
+                    throw 'Invalid Azure Environment name'
+                }
             }
 
             return $managementUrl
@@ -1024,13 +1029,18 @@ function Get-ManagementUrl {
     {
         $managementUrl = 'https://management.usgovcloudapi.net'
     }
-    elseif ($null -ne (Get-AzEnvironment -Name $EnvironmentName))
-    {
-        $managementUrl = (Get-AzEnvironment -Name $EnvironmentName).ResourceManagerUrl
-    }
     else
     {
-        throw "Invalid Azure Environment name"
+        $azEnv = Get-AzEnvironment -Name $EnvironmentName
+
+        if ($null -ne $azEnv)
+        {
+            $managementUrl = $azEnv.ResourceManagerUrl
+        }
+        else
+        {
+            throw "Invalid Azure Environment name"
+        }
     }
 
     return $managementUrl
@@ -1218,9 +1228,18 @@ param(
     {
         return $AzureLocalPortalDomain;
     }
-    elseif ($null -ne (Get-AzEnvironment -Name $EnvironmentName))
+    else
     {
-        return (Get-AzEnvironment -Name $EnvironmentName).ManagementPortalUrl
+        $azEnv = Get-AzEnvironment -Name $EnvironmentName
+        
+        if ($null -ne $azEnv)
+        {
+            return $azEnv.ManagementPortalUrl
+        }
+        else
+        {
+            throw 'Invalid Azure Environment name'
+        }
     }
 }
 
@@ -1334,15 +1353,24 @@ param(
         $BillingServiceApiScope.Value = $BillingServiceApiScopeAzureLocal
         $GraphServiceApiScope.Value = $GraphServiceApiScopeAzureLocal
     }
-    elseif ($null -ne (Get-AzEnvironment -Name $EnvironmentName))
+    else
     {
-        # Use a dummy URL for custom Az environments. The Stack HCI service endpoint is not
-        # resolved from this value in this code path; only the authority and scopes taken
-        # from Get-AzEnvironment are used for authentication, so the exact URL does not matter.
-        $ServiceEndpoint.Value = "https://doesnotmatter/"
-        $Authority.Value = (Get-AzEnvironment -Name $EnvironmentName).ActiveDirectoryAuthority
-        $BillingServiceApiScope.Value = $DefaultBillingServiceApiScope
-        $GraphServiceApiScope.Value = (Get-AzEnvironment -Name $EnvironmentName).GraphEndpointResourceId + "/.default"
+        $azEnv = Get-AzEnvironment -Name $EnvironmentName
+        
+        if ($null -ne $azEnv)
+        {
+            # Use a dummy URL for custom Az environments. The Stack HCI service endpoint is not
+            # resolved from this value in this code path; only the authority and scopes taken
+            # from Get-AzEnvironment are used for authentication, so the exact URL does not matter.
+            $ServiceEndpoint.Value = "https://doesnotmatter/"
+            $Authority.Value = $azEnv.ActiveDirectoryAuthority
+            $BillingServiceApiScope.Value = $DefaultBillingServiceApiScope
+            $GraphServiceApiScope.Value = $azEnv.GraphEndpointResourceId + "/.default"
+        }
+        else
+        {
+            throw 'Invalid Azure Environment name'
+        }
     }
 }
 
