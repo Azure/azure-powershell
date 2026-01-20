@@ -11,9 +11,6 @@ Locale: en-US
 Microsoft Azure PowerShell: EdgeAction cmdlets. This module provides cmdlets for managing Azure Edge Actions, which enable serverless JavaScript execution at the edge for Azure Front Door profiles.
 
 ## Az.EdgeAction Cmdlets
-### [Add-AzEdgeActionAttachment](Add-AzEdgeActionAttachment.md)
-A long-running resource action.
-
 ### [Deploy-AzEdgeActionVersionCode](Deploy-AzEdgeActionVersionCode.md)
 Deploy Edge Action version code from a file.
 
@@ -40,9 +37,6 @@ Create a EdgeActionVersion
 
 ### [Remove-AzEdgeAction](Remove-AzEdgeAction.md)
 Delete a EdgeAction
-
-### [Remove-AzEdgeActionAttachment](Remove-AzEdgeActionAttachment.md)
-A long-running resource action.
 
 ### [Remove-AzEdgeActionExecutionFilter](Remove-AzEdgeActionExecutionFilter.md)
 Delete a EdgeActionExecutionFilter

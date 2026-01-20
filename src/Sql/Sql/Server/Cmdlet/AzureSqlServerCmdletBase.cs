@@ -72,34 +72,16 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// </summary>
         /// <param name="softDeleteRetentionDays">The explicitly provided retention days</param>
         /// <param name="enableSoftDelete">The enable soft delete flag</param>
-        /// <param name="existingValue">The existing retention days value (for Set operations)</param>
         /// <returns>The computed retention days value</returns>
-        protected int? ComputeSoftDeleteRetentionDays(int? softDeleteRetentionDays, bool? enableSoftDelete, int? existingValue = null)
+        protected int? ComputeSoftDeleteRetentionDays(int? softDeleteRetentionDays, bool? enableSoftDelete)
         {
             if (softDeleteRetentionDays.HasValue)
-            {
-                // SoftDeleteRetentionDays was explicitly provided, use it
                 return softDeleteRetentionDays.Value;
-            }
-            else if (enableSoftDelete.HasValue)
-            {
-                // Only EnableSoftDelete was provided
-                if (enableSoftDelete == true)
-                {
-                    // Enabling soft-delete without specifying days, default to 7
-                    return SoftDeleteRetentionDaysMaximum;
-                }
-                else
-                {
-                    // Disabling soft-delete, set to 0
-                    return SoftDeleteRetentionDaysDisabled;
-                }
-            }
-            else
-            {
-                // Neither parameter specified, return existing value or null
-                return existingValue;
-            }
+
+            if (enableSoftDelete.HasValue)
+                return enableSoftDelete.Value ? SoftDeleteRetentionDaysMaximum : SoftDeleteRetentionDaysDisabled;
+
+            return null;
         }
     }
 }

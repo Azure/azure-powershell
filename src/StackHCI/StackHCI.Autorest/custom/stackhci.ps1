@@ -2150,10 +2150,26 @@ function Verify-NodesArcRegistrationState{
 }
 
 function ValidateCloudDeployment {
-    if ($env:DEPLOYMENTTYPE -eq "cloud_deployment")
-    {
-        Write-VerboseLog "Cloud Deployment is enabled"
+    $regPath = "HKLM:\Software\Microsoft\AzureStackStampInformation"
+    $regName = "DeploymentLaunchType"
+    $cloudValue = "CloudDeployment"
+    # check environment variable
+    if ($env:DEPLOYMENTTYPE -eq "cloud_deployment") {
+        Write-VerboseLog "Cloud Deployment detected via environment variable"
         return $true
+    }
+    # Check registry key set in Set-IdentifierForCloudDeployment by LCM Team
+    try {
+        if (Test-Path $regPath) {
+            $regValue = Get-ItemPropertyValue -Path $regPath -Name $regName -ErrorAction SilentlyContinue
+            if ($regValue -eq $cloudValue) {
+                Write-VerboseLog "Cloud Deployment detected via registry key"
+                return $true
+            }
+        }
+    }
+    catch {
+        Write-VerboseLog "Failed to read cloud deployment flag from registry: $($_.Exception.Message)"
     }
     Write-VerboseLog "Cloud Deployment is disabled, normal deployment"
     return $false
