@@ -19,7 +19,7 @@ Describe 'Get-AzQuotaGroupQuota' {
         # Only use values from env.json plus your known management group
         $script:tenantId = $env.Tenant
         $script:subscriptionId = $env.SubscriptionId
-        $script:testManagementGroupId = "mg-demo"
+        $script:testManagementGroupId = "AzureClientToolsBAMI"  
         $script:testGroupQuotaName = $null
         
         # Try to find a group quota in the demo management group

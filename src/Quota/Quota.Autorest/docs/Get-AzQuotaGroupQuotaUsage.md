@@ -24,27 +24,21 @@ Location is required paramter.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get GroupQuota usage for a resource provider and location
 ```powershell
-{{ Add code here }}
+Get-AzQuotaGroupQuotaUsage -ManagementGroupId "admintest"  -GroupQuotaName "groupquota1" -ResourceProviderName "Microsoft.Compute" -Location "eastus"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               UsageValue Unit  IsQuotaApplicable
+----               ---------- ----  -----------------
+standardDSv3Family 10         Count True
+standardFSv2Family 5          Count True
+cores              15         Count True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command gets the current usage of compute resources within a GroupQuota for the specified resource provider and location.
+Note that the location must be enforced for the GroupQuota before usage data is available.
 
 ## PARAMETERS
 

@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzQuotaGroupQuotaLocat
 
 Describe 'Update-AzQuotaGroupQuotaLocationSetting' {
     BeforeAll {
-        $script:managementGroupId = "mg-demo"
+        $script:managementGroupId = "AzureClientToolsBAMI"  
         $script:groupQuotaName = "testlocation"
         $script:location = "eastus"
         $script:resourceProviderName = "Microsoft.Compute"

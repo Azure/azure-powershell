@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaGroupQuotaLocation
 Describe 'Get-AzQuotaGroupQuotaLocationSetting' {
     BeforeAll {
         # Use values from env.json
-        $script:managementGroupId = "mg-demo"
+        $script:managementGroupId = "AzureClientToolsBAMI"  
         $script:groupQuotaName = "testlocation"
         $script:location = "eastus"
         $script:resourceProviderName = "Microsoft.Compute"

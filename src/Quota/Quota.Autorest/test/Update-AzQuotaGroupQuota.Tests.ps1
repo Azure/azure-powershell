@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzQuotaGroupQuota'))
 Describe 'Update-AzQuotaGroupQuota' {
     It 'UpdateExpanded' {
         # Create a group quota first
-        $managementGroupId = "mg-demo"
+        $managementGroupId = "AzureClientToolsBAMI"  
         $groupQuotaName = "testquota$(Get-Random)"
         $initialDisplayName = "Test Quota Group"
         $updatedDisplayName = "Updated Test Quota Group"
@@ -37,7 +37,7 @@ Describe 'Update-AzQuotaGroupQuota' {
 
     It 'UpdateViaIdentityExpanded' {
         # Create a group quota first
-        $managementGroupId = "mg-demo"
+        $managementGroupId = "AzureClientToolsBAMI"  
         $groupQuotaName = "testquota$(Get-Random)"
         $initialDisplayName = "Test Quota Via Identity"
         $updatedDisplayName = "Updated Via Identity"

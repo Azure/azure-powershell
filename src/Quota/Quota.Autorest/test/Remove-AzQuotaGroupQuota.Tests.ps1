@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzQuotaGroupQuota'))
 Describe 'Remove-AzQuotaGroupQuota' {
     It 'Delete' {
         # Create a group quota to delete
-        $managementGroupId = "mg-demo"
+        $managementGroupId = "AzureClientToolsBAMI"  
         $groupQuotaName = "testquota$(Get-Random)"
         
         # Create the group quota
@@ -38,7 +38,7 @@ Describe 'Remove-AzQuotaGroupQuota' {
 
     It 'DeleteViaIdentity' {
         # Create a group quota to delete
-        $managementGroupId = "mg-demo"
+        $managementGroupId = "AzureClientToolsBAMI"  
         $groupQuotaName = "testquota$(Get-Random)"
         
         # Create the group quota

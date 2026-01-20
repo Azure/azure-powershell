@@ -19,7 +19,7 @@ Describe 'New-AzQuotaGroupQuotaLocationSetting' {
         # Use values from env.json
         $script:tenantId = $env.Tenant
         $script:subscriptionId = $env.SubscriptionId
-        $script:managementGroupId = "mg-demo"
+        $script:managementGroupId = "AzureClientToolsBAMI"  
         $script:groupQuotaName = "testlocation"
         $script:location = "eastus"
         $script:resourceProviderName = "Microsoft.Compute"

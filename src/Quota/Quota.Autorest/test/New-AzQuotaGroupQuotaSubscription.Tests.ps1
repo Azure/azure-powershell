@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzQuotaGroupQuotaSubscrip
 
 Describe 'New-AzQuotaGroupQuotaSubscription' {
     It 'Create' {
-        $managementGroupId = "mg-demo"
+        $managementGroupId = "AzureClientToolsBAMI"  
         $groupQuotaName = "testlocation"
         
         # First, ensure the GroupQuota exists

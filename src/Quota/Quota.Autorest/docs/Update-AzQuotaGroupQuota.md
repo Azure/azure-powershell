@@ -57,7 +57,7 @@ Once the operation gets to terminal state - Succeeded | Failed, then the URI wil
 
 ## EXAMPLES
 
-### Example 1: Update GroupQuota display name
+### Example 1: Update a GroupQuota display name
 ```powershell
 Update-AzQuotaGroupQuota -ManagementGroupId "mgId" -Name "groupquota1" -DisplayName "Updated Quota Group Name"
 ```

@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaGroupQuotaUsage'))
 
 Describe 'Get-AzQuotaGroupQuotaUsage' {
     BeforeAll {
-        $script:managementGroupId = "mg-demo"
+        $script:managementGroupId = "AzureClientToolsBAMI"  
         $script:groupQuotaName = "testlocation"
         $script:location = "eastus"
         $script:resourceProviderName = "Microsoft.Compute"

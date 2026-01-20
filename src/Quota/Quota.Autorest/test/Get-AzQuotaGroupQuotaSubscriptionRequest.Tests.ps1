@@ -19,7 +19,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaGroupQuotaSubscrip
 
 Describe 'Get-AzQuotaGroupQuotaSubscriptionRequest' {
     It 'List' {
-        $managementGroupId = "mg-demo"
+        $managementGroupId = "AzureClientToolsBAMI"  
         $groupQuotaName = "testlocation"
         
         # This command fails with async operation verification error

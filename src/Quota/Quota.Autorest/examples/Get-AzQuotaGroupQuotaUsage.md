@@ -1,6 +1,6 @@
 ### Example 1: Get GroupQuota usage for a resource provider and location
 ```powershell
-Get-AzQuotaGroupQuotaUsage -ManagementGroupId "mg-demo" -GroupQuotaName "groupquota1" -ResourceProviderName "Microsoft.Compute" -Location "eastus"
+Get-AzQuotaGroupQuotaUsage -ManagementGroupId "admintest"  -GroupQuotaName "groupquota1" -ResourceProviderName "Microsoft.Compute" -Location "eastus"
 ```
 
 ```output

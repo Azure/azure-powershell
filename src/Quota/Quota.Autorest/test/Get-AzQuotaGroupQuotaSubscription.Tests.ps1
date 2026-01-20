@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaGroupQuotaSubscrip
 
 Describe 'Get-AzQuotaGroupQuotaSubscription' {
     It 'Get' {
-        $managementGroupId = "mg-demo"
+        $managementGroupId = "AzureClientToolsBAMI"  
         $groupQuotaName = "testlocation"
         
         # Ensure the GroupQuota exists
@@ -38,7 +38,7 @@ Describe 'Get-AzQuotaGroupQuotaSubscription' {
     }
 
     It 'List' {
-        $managementGroupId = "mg-demo"
+        $managementGroupId = "AzureClientToolsBAMI"  
         $groupQuotaName = "testlocation"
         
         # Ensure the GroupQuota exists

@@ -65,7 +65,7 @@ The request's TenantId is validated against the subscription's TenantId.
 
 ### Example 1: Add a subscription to a GroupQuota
 ```powershell
-New-AzQuotaGroupQuotaSubscription -ManagementGroupId "mg-demo" -GroupQuotaName "groupquota1" -SubscriptionId "{subId}"
+New-AzQuotaGroupQuotaSubscription -ManagementGroupId "admintest"  -GroupQuotaName "groupquota1" -SubscriptionId "{subId}"
 ```
 
 ```output

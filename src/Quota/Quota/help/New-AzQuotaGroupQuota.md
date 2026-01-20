@@ -63,7 +63,7 @@ Once the operation gets to terminal state - Succeeded | Failed, then the URI wil
 
 ### Example 1: Create a new GroupQuota
 ```powershell
-New-AzQuotaGroupQuota -ManagementGroupId "mg-demo" -GroupQuotaName "groupquota1" -DisplayName "My Test Quota Group"
+New-AzQuotaGroupQuota -ManagementGroupId "admintest"  -GroupQuotaName "groupquota1" -DisplayName "My Test Quota Group"
 ```
 
 ```output

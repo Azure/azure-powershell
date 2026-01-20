@@ -1,13 +1,13 @@
 {
-  "Get-AzQuotaGroupQuotaLocationSetting+[NoContext]+Get+$GET+https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/testlocation/resourceProviders/Microsoft.Compute/locationSettings/eastus?api-version=2025-09-01+1": {
+  "Get-AzQuotaGroupQuotaLocationSetting+[NoContext]+Get+$GET+https://management.azure.com/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation/resourceProviders/Microsoft.Compute/locationSettings/eastus?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/mg-demo/providers/Microsoft.Quota/groupQuotas/testlocation/resourceProviders/Microsoft.Compute/locationSettings/eastus?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation/resourceProviders/Microsoft.Compute/locationSettings/eastus?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "20" ],
-        "x-ms-client-request-id": [ "af29b1c0-210b-4181-b7fb-02a5b64d9100" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "0fc7ca8f-995a-4a29-9087-370b5f8f2a76" ],
         "CommandName": [ "Get-AzQuotaGroupQuotaLocationSetting" ],
         "FullCommandName": [ "Get-AzQuotaGroupQuotaLocationSetting_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -18,28 +18,28 @@
       }
     },
     "Response": {
-      "StatusCode": 404,
+      "StatusCode": 400,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-operation-identifier": [ "" ],
         "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
-        "x-ms-request-id": [ "d41bce1d-8dd5-408c-8fe0-153edb3081cc" ],
-        "x-ms-correlation-request-id": [ "d41bce1d-8dd5-408c-8fe0-153edb3081cc" ],
-        "x-ms-routing-request-id": [ "AUSTRALIASOUTHEAST:20251120T053608Z:d41bce1d-8dd5-408c-8fe0-153edb3081cc" ],
+        "x-ms-request-id": [ "30f7a981-e556-4bad-8198-e6f61f127825" ],
+        "x-ms-correlation-request-id": [ "30f7a981-e556-4bad-8198-e6f61f127825" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260120T051522Z:30f7a981-e556-4bad-8198-e6f61f127825" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 38726E5AB4E64737B73067A3C7908C81 Ref B: SYD03EDGE1008 Ref C: 2025-11-20T05:36:07Z" ],
-        "Date": [ "Thu, 20 Nov 2025 05:36:07 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 9891BA29ED144566B7667D3F705FB78B Ref B: SYD03EDGE1921 Ref C: 2026-01-20T05:15:21Z" ],
+        "Date": [ "Tue, 20 Jan 2026 05:15:21 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "168" ],
+        "Content-Length": [ "173" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"EntityNotFound\",\"message\":\"EnforcementStatus is not found for GroupId: testlocation, MgId: mg-demo, TenantId: 213e87ed-8e08-4eb4-a63c-c073058f7b00.\"}}",
+      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"GroupQuota is not existing for GroupId: testlocation, MgId: azureclienttoolsbami, TenantId: 4b71fe15-44c6-47b7-94ac-5a6b2cc290e9.\"}}",
       "isContentBase64": false
     }
   }

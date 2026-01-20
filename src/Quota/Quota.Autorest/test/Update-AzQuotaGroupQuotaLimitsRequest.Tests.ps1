@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzQuotaGroupQuotaLimit
 
 Describe 'Update-AzQuotaGroupQuotaLimitsRequest' {
     It 'UpdateExpanded' {
-        $managementGroupId = "mg-demo"
+        $managementGroupId = "AzureClientToolsBAMI"  
         $groupQuotaName = "testlocation"
         $location = "eastus"
         $resourceProviderName = "Microsoft.Compute"

@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzQuotaGroupQuotaSubsc
 
 Describe 'Remove-AzQuotaGroupQuotaSubscription' {
     It 'Delete' {
-        $managementGroupId = "mg-demo"
+        $managementGroupId = "AzureClientToolsBAMI"  
         $groupQuotaName = "testlocation"
         
         # Ensure the GroupQuota exists
