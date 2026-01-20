@@ -210,6 +210,8 @@ $AuthorityAzureLocal = "https://login.$DOMAINFQDNMACRO"
 $BillingServiceApiScopeAzureLocal = "https://dp.aszrp.$DOMAINFQDNMACRO/.default"
 $GraphServiceApiScopeAzureLocal = "https://graph.$DOMAINFQDNMACRO"
 
+$DefaultBillingServiceApiScope = "$UsageServiceFirstPartyAppId/.default"
+
 $RPAPIVersion = "2025-09-15-preview";
 $HCIArcAPIVersion = "2025-09-15-preview"
 $HCIArcExtensionAPIVersion = "2025-09-15-preview"
@@ -721,7 +723,16 @@ $registerArcScript = {
             }
             else
             {
-                throw 'Invalid Azure Environment name'
+                $azEnv = Get-AzEnvironment -Name $EnvironmentName
+
+                if ($null -ne $azEnv)
+                {
+                    $managementUrl = $azEnv.ResourceManagerUrl
+                }
+                else
+                {
+                    throw 'Invalid Azure Environment name'
+                }
             }
 
             return $managementUrl
@@ -1020,7 +1031,16 @@ function Get-ManagementUrl {
     }
     else
     {
-        throw "Invalid Azure Environment name"
+        $azEnv = Get-AzEnvironment -Name $EnvironmentName
+
+        if ($null -ne $azEnv)
+        {
+            $managementUrl = $azEnv.ResourceManagerUrl
+        }
+        else
+        {
+            throw "Invalid Azure Environment name"
+        }
     }
 
     return $managementUrl
@@ -1208,6 +1228,19 @@ param(
     {
         return $AzureLocalPortalDomain;
     }
+    else
+    {
+        $azEnv = Get-AzEnvironment -Name $EnvironmentName
+        
+        if ($null -ne $azEnv)
+        {
+            return $azEnv.ManagementPortalUrl
+        }
+        else
+        {
+            throw 'Invalid Azure Environment name'
+        }
+    }
 }
 
 function Get-DefaultRegion{
@@ -1319,6 +1352,25 @@ param(
         $Authority.Value = $AuthorityAzureLocal
         $BillingServiceApiScope.Value = $BillingServiceApiScopeAzureLocal
         $GraphServiceApiScope.Value = $GraphServiceApiScopeAzureLocal
+    }
+    else
+    {
+        $azEnv = Get-AzEnvironment -Name $EnvironmentName
+        
+        if ($null -ne $azEnv)
+        {
+            # Use a dummy URL for custom Az environments. The Stack HCI service endpoint is not
+            # resolved from this value in this code path; only the authority and scopes taken
+            # from Get-AzEnvironment are used for authentication, so the exact URL does not matter.
+            $ServiceEndpoint.Value = "https://doesnotmatter/"
+            $Authority.Value = $azEnv.ActiveDirectoryAuthority
+            $BillingServiceApiScope.Value = $DefaultBillingServiceApiScope
+            $GraphServiceApiScope.Value = $azEnv.GraphEndpointResourceId + "/.default"
+        }
+        else
+        {
+            throw 'Invalid Azure Environment name'
+        }
     }
 }
 
