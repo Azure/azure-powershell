@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.24.1
 * Onboarded `Microsoft.Security/privateLinks` to Private Link Common Cmdlets
 
 ## Version 7.24.0

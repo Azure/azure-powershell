@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionExecutionFiltersCreate(string subscriptionId, string resourceGroupName, string edgeActionName, string executionFilter, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionExecutionFiltersCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter> EdgeActionExecutionFiltersCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter body, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionExecutionFiltersCreateViaJsonString(string subscriptionId, string resourceGroupName, string edgeActionName, string executionFilter, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter> EdgeActionExecutionFiltersCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, string executionFilter, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter> EdgeActionExecutionFiltersCreateWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, string executionFilter, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter body, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -682,7 +682,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionExecutionFiltersDelete(string subscriptionId, string resourceGroupName, string edgeActionName, string executionFilter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -726,7 +726,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionExecutionFiltersDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -965,7 +965,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionExecutionFiltersGet(string subscriptionId, string resourceGroupName, string edgeActionName, string executionFilter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1008,7 +1008,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionExecutionFiltersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1062,7 +1062,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter> EdgeActionExecutionFiltersGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1119,7 +1119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter> EdgeActionExecutionFiltersGetWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, string executionFilter, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1306,7 +1306,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionExecutionFiltersListByEdgeAction(string subscriptionId, string resourceGroupName, string edgeActionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1348,7 +1348,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionExecutionFiltersListByEdgeActionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1400,7 +1400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterListResult> EdgeActionExecutionFiltersListByEdgeActionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1454,7 +1454,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterListResult> EdgeActionExecutionFiltersListByEdgeActionWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1641,7 +1641,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionExecutionFiltersUpdate(string subscriptionId, string resourceGroupName, string edgeActionName, string executionFilter, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1690,7 +1690,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionExecutionFiltersUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1750,7 +1750,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter> EdgeActionExecutionFiltersUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdate body, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1814,7 +1814,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionExecutionFiltersUpdateViaJsonString(string subscriptionId, string resourceGroupName, string edgeActionName, string executionFilter, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1863,7 +1863,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter> EdgeActionExecutionFiltersUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, string executionFilter, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1913,7 +1913,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter> EdgeActionExecutionFiltersUpdateWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, string executionFilter, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdate body, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2296,7 +2296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionVersionsCreate(string subscriptionId, string resourceGroupName, string edgeActionName, string version, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2345,7 +2345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionVersionsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2405,7 +2405,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion> EdgeActionVersionsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion body, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2469,7 +2469,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionVersionsCreateViaJsonString(string subscriptionId, string resourceGroupName, string edgeActionName, string version, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2518,7 +2518,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion> EdgeActionVersionsCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, string version, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2568,7 +2568,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion> EdgeActionVersionsCreateWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, string version, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion body, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2946,7 +2946,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionVersionsDelete(string subscriptionId, string resourceGroupName, string edgeActionName, string version, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2990,7 +2990,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionVersionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3231,7 +3231,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionVersionsDeployVersionCode(string subscriptionId, string resourceGroupName, string edgeActionName, string version, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IVersionCode body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3281,7 +3281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionVersionsDeployVersionCodeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IVersionCode body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3342,7 +3342,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionProperties> EdgeActionVersionsDeployVersionCodeViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IVersionCode body, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3407,7 +3407,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionVersionsDeployVersionCodeViaJsonString(string subscriptionId, string resourceGroupName, string edgeActionName, string version, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3457,7 +3457,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionProperties> EdgeActionVersionsDeployVersionCodeViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, string version, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3508,7 +3508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionProperties> EdgeActionVersionsDeployVersionCodeWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, string version, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IVersionCode body, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3892,7 +3892,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionVersionsGet(string subscriptionId, string resourceGroupName, string edgeActionName, string version, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3938,7 +3938,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionVersionsGetVersionCode(string subscriptionId, string resourceGroupName, string edgeActionName, string version, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IVersionCode>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3982,7 +3982,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionVersionsGetVersionCodeViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IVersionCode>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4037,7 +4037,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IVersionCode> EdgeActionVersionsGetVersionCodeViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4095,7 +4095,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IVersionCode> EdgeActionVersionsGetVersionCodeWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, string version, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4467,7 +4467,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionVersionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4521,7 +4521,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion> EdgeActionVersionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4578,7 +4578,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion> EdgeActionVersionsGetWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, string version, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4763,7 +4763,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionVersionsListByEdgeAction(string subscriptionId, string resourceGroupName, string edgeActionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4805,7 +4805,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionVersionsListByEdgeActionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4857,7 +4857,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionListResult> EdgeActionVersionsListByEdgeActionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4911,7 +4911,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionListResult> EdgeActionVersionsListByEdgeActionWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5095,7 +5095,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionVersionsSwapDefault(string subscriptionId, string resourceGroupName, string edgeActionName, string version, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5140,7 +5140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionVersionsSwapDefaultViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5382,7 +5382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionVersionsUpdate(string subscriptionId, string resourceGroupName, string edgeActionName, string version, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5431,7 +5431,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionVersionsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5491,7 +5491,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion> EdgeActionVersionsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdate body, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5555,7 +5555,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionVersionsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string edgeActionName, string version, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5604,7 +5604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion> EdgeActionVersionsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, string version, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5654,7 +5654,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion> EdgeActionVersionsUpdateWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, string version, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdate body, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6018,643 +6018,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
             }
         }
 
-        /// <summary>A long-running resource action.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="edgeActionName">The name of the Edge Action</param>
-        /// <param name="body">The content of the action request</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode"/>.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task EdgeActionsAddAttachment(string subscriptionId, string resourceGroupName, string edgeActionName, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachmentResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
-        {
-            var apiVersion = @"2025-09-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.Cdn/edgeActions/"
-                        + global::System.Uri.EscapeDataString(edgeActionName)
-                        + "/addAttachment"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.EdgeActionsAddAttachment_Call (request, onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>A long-running resource action.</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="body">The content of the action request</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode"/>.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task EdgeActionsAddAttachmentViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachmentResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
-        {
-            var apiVersion = @"2025-09-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cdn/edgeActions/(?<edgeActionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}'");
-                }
-
-                // replace URI parameters with values from identity
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
-                var edgeActionName = _match.Groups["edgeActionName"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + subscriptionId
-                        + "/resourceGroups/"
-                        + resourceGroupName
-                        + "/providers/Microsoft.Cdn/edgeActions/"
-                        + edgeActionName
-                        + "/addAttachment"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.EdgeActionsAddAttachment_Call (request, onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>A long-running resource action.</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="body">The content of the action request</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode"/>.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachmentResponse>"
-        /// /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachmentResponse> EdgeActionsAddAttachmentViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachment body, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
-        {
-            var apiVersion = @"2025-09-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cdn/edgeActions/(?<edgeActionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}'");
-                }
-
-                // replace URI parameters with values from identity
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
-                var edgeActionName = _match.Groups["edgeActionName"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + subscriptionId
-                        + "/resourceGroups/"
-                        + resourceGroupName
-                        + "/providers/Microsoft.Cdn/edgeActions/"
-                        + edgeActionName
-                        + "/addAttachment"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                // make the call
-                return await this.EdgeActionsAddAttachmentWithResult_Call (request, eventListener,sender);
-            }
-        }
-
-        /// <summary>A long-running resource action.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="edgeActionName">The name of the Edge Action</param>
-        /// <param name="jsonString">Json string supplied to the EdgeActionsAddAttachment operation</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task EdgeActionsAddAttachmentViaJsonString(string subscriptionId, string resourceGroupName, string edgeActionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachmentResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2025-09-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.Cdn/edgeActions/"
-                        + global::System.Uri.EscapeDataString(edgeActionName)
-                        + "/addAttachment"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.EdgeActionsAddAttachment_Call (request, onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>A long-running resource action.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="edgeActionName">The name of the Edge Action</param>
-        /// <param name="jsonString">Json string supplied to the EdgeActionsAddAttachment operation</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachmentResponse>"
-        /// /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachmentResponse> EdgeActionsAddAttachmentViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2025-09-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.Cdn/edgeActions/"
-                        + global::System.Uri.EscapeDataString(edgeActionName)
-                        + "/addAttachment"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                // make the call
-                return await this.EdgeActionsAddAttachmentWithResult_Call (request, eventListener,sender);
-            }
-        }
-
-        /// <summary>A long-running resource action.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="edgeActionName">The name of the Edge Action</param>
-        /// <param name="body">The content of the action request</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode"/>.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachmentResponse>"
-        /// /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachmentResponse> EdgeActionsAddAttachmentWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachment body, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
-        {
-            var apiVersion = @"2025-09-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.Cdn/edgeActions/"
-                        + global::System.Uri.EscapeDataString(edgeActionName)
-                        + "/addAttachment"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                // make the call
-                return await this.EdgeActionsAddAttachmentWithResult_Call (request, eventListener,sender);
-            }
-        }
-
-        /// <summary>Actual wire call for <see cref= "EdgeActionsAddAttachmentWithResult" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachmentResponse>"
-        /// /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachmentResponse> EdgeActionsAddAttachmentWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // declared final-state-via: location
-                    var _finalUri = _response.GetFirstHeader(@"Location");
-                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                    var location = _response.GetFirstHeader(@"Location");
-                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
-                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
-                    {
-                        // delay before making the next polling request
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                        // while we wait, let's grab the headers and get ready to poll.
-                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
-                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                        }
-                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
-                            location = _response.GetFirstHeader(@"Location");
-                        }
-                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
-                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
-                        }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
-                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Method.Get);
-
-                        // and let's look at the current response body and see if we have some information we can give back to the listener
-                        var content = await _response.Content.ReadAsStringAsync();
-
-                        // drop the old response
-                        _response?.Dispose();
-
-                        // make the polling call
-                        _response = await sender.SendAsync(request, eventListener);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                          // if we got back an OK, take a peek inside and see if it's done
-                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
-                          {
-                              var error = false;
-                              try {
-                                  if( Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject json)
-                                  {
-                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonString>("status");
-                                      if( state is null )
-                                      {
-                                          // the body doesn't contain any information that has the state of the LRO
-                                          // we're going to just get out, and let the consumer have the result
-                                          break;
-                                      }
-
-                                      switch( state?.ToString()?.ToLower() )
-                                      {
-                                        case "failed":
-                                            error = true;
-                                            break;
-                                        case "succeeded":
-                                        case "canceled":
-                                          // we're done polling.
-                                          break;
-
-                                        default:
-                                          // need to keep polling!
-                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
-                                          continue;
-                                      }
-                                  }
-                              } catch {
-                                  // if we run into a problem peeking into the result,
-                                  // we really don't want to do anything special.
-                              }
-                              if (error) {
-                                  throw new Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.UndeclaredResponseException(_response);
-                              }
-                          }
-
-                        // check for terminal status code
-                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
-                        {
-                            continue;
-                        }
-                        // we are done polling, do a request on final target?
-                        // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Method.Get);
-
-                        // drop the old response
-                        _response?.Dispose();
-
-                        // make the final call
-                        _response = await sender.SendAsync(request,  eventListener);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                        break;
-                    }
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionAttachmentResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode.Parse(body.Result)) );
-                            return await _result;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode.Parse(body.Result)) );
-                            // Error Response : default
-                            var code = (await _result)?.Code;
-                            var message = (await _result)?.Message;
-                            if ((null == code || null == message))
-                            {
-                                // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>(_response, await _result);
-                                throw ex;
-                            }
-                            else
-                            {
-                                throw new global::System.Exception($"[{code}] : {message}");
-                            }
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>Actual wire call for <see cref= "EdgeActionsAddAttachment" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task EdgeActionsAddAttachment_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachmentResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // declared final-state-via: location
-                    var _finalUri = _response.GetFirstHeader(@"Location");
-                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                    var location = _response.GetFirstHeader(@"Location");
-                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
-                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
-                    {
-                        // delay before making the next polling request
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // while we wait, let's grab the headers and get ready to poll.
-                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
-                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                        }
-                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
-                            location = _response.GetFirstHeader(@"Location");
-                        }
-                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
-                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
-                        }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
-                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Method.Get);
-
-                        // and let's look at the current response body and see if we have some information we can give back to the listener
-                        var content = await _response.Content.ReadAsStringAsync();
-
-                        // drop the old response
-                        _response?.Dispose();
-
-                        // make the polling call
-                        _response = await sender.SendAsync(request, eventListener);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                          // if we got back an OK, take a peek inside and see if it's done
-                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
-                          {
-                              var error = false;
-                              try {
-                                  if( Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject json)
-                                  {
-                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonString>("status");
-                                      if( state is null )
-                                      {
-                                          // the body doesn't contain any information that has the state of the LRO
-                                          // we're going to just get out, and let the consumer have the result
-                                          break;
-                                      }
-
-                                      switch( state?.ToString()?.ToLower() )
-                                      {
-                                        case "failed":
-                                            error = true;
-                                            break;
-                                        case "succeeded":
-                                        case "canceled":
-                                          // we're done polling.
-                                          break;
-
-                                        default:
-                                          // need to keep polling!
-                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
-                                          continue;
-                                      }
-                                  }
-                              } catch {
-                                  // if we run into a problem peeking into the result,
-                                  // we really don't want to do anything special.
-                              }
-                              if (error) {
-                                  throw new Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.UndeclaredResponseException(_response);
-                              }
-                          }
-
-                        // check for terminal status code
-                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
-                        {
-                            continue;
-                        }
-                        // we are done polling, do a request on final target?
-                        // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Method.Get);
-
-                        // drop the old response
-                        _response?.Dispose();
-
-                        // make the final call
-                        _response = await sender.SendAsync(request,  eventListener);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                        break;
-                    }
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionAttachmentResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Validation method for <see cref="EdgeActionsAddAttachment" /> method. Call this like the actual call, but you will get
-        /// validation events back.
-        /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="edgeActionName">The name of the Edge Action</param>
-        /// <param name="body">The content of the action request</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task EdgeActionsAddAttachment_Validate(string subscriptionId, string resourceGroupName, string edgeActionName, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachment body, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener)
-        {
-            using( NoSynchronizationContext )
-            {
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
-                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
-                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertNotNull(nameof(edgeActionName),edgeActionName);
-                await eventListener.AssertMaximumLength(nameof(edgeActionName),edgeActionName,50);
-                await eventListener.AssertRegEx(nameof(edgeActionName), edgeActionName, @"[a-zA-Z0-9]+");
-                await eventListener.AssertNotNull(nameof(body), body);
-                await eventListener.AssertObjectIsValid(nameof(body), body);
-            }
-        }
-
         /// <summary>create a EdgeAction</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -6671,7 +6034,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionsCreate(string subscriptionId, string resourceGroupName, string edgeActionName, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6718,7 +6081,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6775,7 +6138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction> EdgeActionsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction body, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6835,7 +6198,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionsCreateViaJsonString(string subscriptionId, string resourceGroupName, string edgeActionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6881,7 +6244,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction> EdgeActionsCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6928,7 +6291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction> EdgeActionsCreateWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction body, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7299,7 +6662,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionsDelete(string subscriptionId, string resourceGroupName, string edgeActionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7328,347 +6691,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
             }
         }
 
-        /// <summary>A long-running resource action.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="edgeActionName">The name of the Edge Action</param>
-        /// <param name="body">The content of the action request</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode"/>.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task EdgeActionsDeleteAttachment(string subscriptionId, string resourceGroupName, string edgeActionName, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
-        {
-            var apiVersion = @"2025-09-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.Cdn/edgeActions/"
-                        + global::System.Uri.EscapeDataString(edgeActionName)
-                        + "/deleteAttachment"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.EdgeActionsDeleteAttachment_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>A long-running resource action.</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="body">The content of the action request</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode"/>.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task EdgeActionsDeleteAttachmentViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
-        {
-            var apiVersion = @"2025-09-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cdn/edgeActions/(?<edgeActionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}'");
-                }
-
-                // replace URI parameters with values from identity
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
-                var edgeActionName = _match.Groups["edgeActionName"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + subscriptionId
-                        + "/resourceGroups/"
-                        + resourceGroupName
-                        + "/providers/Microsoft.Cdn/edgeActions/"
-                        + edgeActionName
-                        + "/deleteAttachment"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.EdgeActionsDeleteAttachment_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>A long-running resource action.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="edgeActionName">The name of the Edge Action</param>
-        /// <param name="jsonString">Json string supplied to the EdgeActionsDeleteAttachment operation</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task EdgeActionsDeleteAttachmentViaJsonString(string subscriptionId, string resourceGroupName, string edgeActionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2025-09-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.Cdn/edgeActions/"
-                        + global::System.Uri.EscapeDataString(edgeActionName)
-                        + "/deleteAttachment"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.EdgeActionsDeleteAttachment_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Actual wire call for <see cref= "EdgeActionsDeleteAttachment" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task EdgeActionsDeleteAttachment_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // declared final-state-via: location
-                    var _finalUri = _response.GetFirstHeader(@"Location");
-                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                    var location = _response.GetFirstHeader(@"Location");
-                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
-                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
-                    {
-                        // delay before making the next polling request
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // while we wait, let's grab the headers and get ready to poll.
-                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
-                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                        }
-                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
-                            location = _response.GetFirstHeader(@"Location");
-                        }
-                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
-                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
-                        }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
-                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Method.Get);
-
-                        // and let's look at the current response body and see if we have some information we can give back to the listener
-                        var content = await _response.Content.ReadAsStringAsync();
-
-                        // drop the old response
-                        _response?.Dispose();
-
-                        // make the polling call
-                        _response = await sender.SendAsync(request, eventListener);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                          // if we got back an OK, take a peek inside and see if it's done
-                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
-                          {
-                              var error = false;
-                              try {
-                                  if( Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject json)
-                                  {
-                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonString>("status");
-                                      if( state is null )
-                                      {
-                                          // the body doesn't contain any information that has the state of the LRO
-                                          // we're going to just get out, and let the consumer have the result
-                                          break;
-                                      }
-
-                                      switch( state?.ToString()?.ToLower() )
-                                      {
-                                        case "failed":
-                                            error = true;
-                                            break;
-                                        case "succeeded":
-                                        case "canceled":
-                                          // we're done polling.
-                                          break;
-
-                                        default:
-                                          // need to keep polling!
-                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
-                                          continue;
-                                      }
-                                  }
-                              } catch {
-                                  // if we run into a problem peeking into the result,
-                                  // we really don't want to do anything special.
-                              }
-                              if (error) {
-                                  throw new Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.UndeclaredResponseException(_response);
-                              }
-                          }
-
-                        // check for terminal status code
-                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
-                        {
-                            continue;
-                        }
-                        // we are done polling, do a request on final target?
-                        // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Method.Get);
-
-                        // drop the old response
-                        _response?.Dispose();
-
-                        // make the final call
-                        _response = await sender.SendAsync(request,  eventListener);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                        break;
-                    }
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response);
-                            break;
-                        }
-                        case global::System.Net.HttpStatusCode.NoContent:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onNoContent(_response);
-                            break;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Validation method for <see cref="EdgeActionsDeleteAttachment" /> method. Call this like the actual call, but you will
-        /// get validation events back.
-        /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="edgeActionName">The name of the Edge Action</param>
-        /// <param name="body">The content of the action request</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task EdgeActionsDeleteAttachment_Validate(string subscriptionId, string resourceGroupName, string edgeActionName, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachment body, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener)
-        {
-            using( NoSynchronizationContext )
-            {
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
-                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
-                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertNotNull(nameof(edgeActionName),edgeActionName);
-                await eventListener.AssertMaximumLength(nameof(edgeActionName),edgeActionName,50);
-                await eventListener.AssertRegEx(nameof(edgeActionName), edgeActionName, @"[a-zA-Z0-9]+");
-                await eventListener.AssertNotNull(nameof(body), body);
-                await eventListener.AssertObjectIsValid(nameof(body), body);
-            }
-        }
-
         /// <summary>Delete a EdgeAction</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -7682,7 +6704,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7913,7 +6935,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionsGet(string subscriptionId, string resourceGroupName, string edgeActionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7954,7 +6976,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8005,7 +7027,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction> EdgeActionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8058,7 +7080,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction> EdgeActionsGetWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8236,7 +7258,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8276,7 +7298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8325,7 +7347,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionListResult> EdgeActionsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8375,7 +7397,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionListResult> EdgeActionsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8549,7 +7571,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionsListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8587,7 +7609,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionsListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8633,7 +7655,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionListResult> EdgeActionsListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8679,7 +7701,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionListResult> EdgeActionsListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8851,7 +7873,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionsUpdate(string subscriptionId, string resourceGroupName, string edgeActionName, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8898,7 +7920,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8955,7 +7977,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction> EdgeActionsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdate body, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9015,7 +8037,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeActionsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string edgeActionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9061,7 +8083,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction> EdgeActionsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9108,7 +8130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction> EdgeActionsUpdateWithResult(string subscriptionId, string resourceGroupName, string edgeActionName, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdate body, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

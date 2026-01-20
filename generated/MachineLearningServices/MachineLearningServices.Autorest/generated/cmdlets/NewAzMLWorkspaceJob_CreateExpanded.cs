@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs/{id}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzMLWorkspaceJob_CreateExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\r\n* At least one change applies to this cmdlet.                                            *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobBase))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Description(@"Creates and executes a Job.\r\nFor update case, the Tags in the definition passed in will replace Tags in the existing job.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Generated]
