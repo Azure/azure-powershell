@@ -42,7 +42,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestAvailabilitySetMigration()
         {
-            TestRunner.RunTestScript("Test-AvailabilitySetMigration");
+            TestRunner.RunTestScript("Test-AvailabilitySetMigration 'eastus2euap'");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestAvailabilitySetConvert()
+        {
+            TestRunner.RunTestScript("Test-AvailabilitySetConvert 'eastus2euap'");
         }
     }
 }
