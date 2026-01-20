@@ -287,10 +287,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     }
                     if (this.smbEncryptionInTransitRequired != null)
                     {
-                        if (protocolSettings.Smb.EncryptionInTransit == null)
-                        {
-                            protocolSettings.Smb.EncryptionInTransit = new EncryptionInTransit(this.smbEncryptionInTransitRequired);
-                        }
+                        protocolSettings.Smb.EncryptionInTransit = new EncryptionInTransit(this.smbEncryptionInTransitRequired);
                     }
                 }
 
