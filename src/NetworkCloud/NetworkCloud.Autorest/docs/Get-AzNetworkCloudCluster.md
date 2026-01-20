@@ -14,10 +14,17 @@ Get properties of the provided cluster.
 
 ### List (Default)
 ```
-Get-AzNetworkCloudCluster [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkCloudCluster [-SubscriptionId <String[]>] [-SkipToken <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
+```
+Get-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get1
 ```
 Get-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -29,10 +36,28 @@ Get-AzNetworkCloudCluster -InputObject <INetworkCloudIdentity> [-DefaultProfile 
  [<CommonParameters>]
 ```
 
+### GetViaIdentity1
+```
+Get-AzNetworkCloudCluster -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### List1
 ```
-Get-AzNetworkCloudCluster -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzNetworkCloudCluster -ResourceGroupName <String> [-SubscriptionId <String[]>] [-SkipToken <String>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List2
+```
+Get-AzNetworkCloudCluster [-SubscriptionId <String[]>] [-SkipToken <String>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List3
+```
+Get-AzNetworkCloudCluster -ResourceGroupName <String> [-SubscriptionId <String[]>] [-SkipToken <String>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,7 +129,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: True
@@ -119,7 +144,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, Get1
 Aliases: ClusterName
 
 Required: True
@@ -135,10 +160,26 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get, Get1, List1, List3
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipToken
+The opaque token that the server returns to indicate where to continue listing resources from.
+This is used for paging through large result sets.
+
+```yaml
+Type: System.String
+Parameter Sets: List, List1, List2, List3
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -151,12 +192,28 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: Get, Get1, List, List1, List2, List3
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Top
+The maximum number of resources to return from the operation.
+Example: '$top=10'.
+
+```yaml
+Type: System.Int32
+Parameter Sets: List, List1, List2, List3
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

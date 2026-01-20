@@ -20,12 +20,35 @@ Remove-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesC
  [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityKubernetesCluster1
+```
+Remove-AzNetworkCloudKubernetesClusterFeature -FeatureName <String>
+ -KubernetesCluster1InputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentityKubernetesCluster
 ```
 Remove-AzNetworkCloudKubernetesClusterFeature -FeatureName <String>
  -KubernetesClusterInputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### Delete1
+```
+Remove-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClusterName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity1
+```
+Remove-AzNetworkCloudKubernetesClusterFeature -InputObject <INetworkCloudIdentity> [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -85,7 +108,7 @@ The name of the feature.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityKubernetesCluster
+Parameter Sets: Delete, DeleteViaIdentityKubernetesCluster1, DeleteViaIdentityKubernetesCluster, Delete1
 Aliases:
 
 Required: True
@@ -133,7 +156,22 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: DeleteViaIdentity1, DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -KubernetesCluster1InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: DeleteViaIdentityKubernetesCluster1
 Aliases:
 
 Required: True
@@ -163,7 +201,7 @@ The name of the Kubernetes cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, Delete1
 Aliases:
 
 Required: True
@@ -209,7 +247,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, Delete1
 Aliases:
 
 Required: True
@@ -225,7 +263,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, Delete1
 Aliases:
 
 Required: False

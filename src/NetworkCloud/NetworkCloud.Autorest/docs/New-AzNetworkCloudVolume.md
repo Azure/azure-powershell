@@ -16,8 +16,24 @@ Create a new volume or create the properties of the existing one.
 ```
 New-AzNetworkCloudVolume -Name <String> -ResourceGroupName <String> -ExtendedLocationName <String>
  -ExtendedLocationType <String> -Location <String> -SizeMiB <Int64> [-SubscriptionId <String>]
- [-IfMatch <String>] [-IfNoneMatch <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-StorageApplianceId <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateExpanded1
+```
+New-AzNetworkCloudVolume -Name <String> -ResourceGroupName <String> -ExtendedLocationName <String>
+ -ExtendedLocationType <String> -Location <String> -SizeMiB <Int64> [-SubscriptionId <String>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-StorageApplianceId <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded1
+```
+New-AzNetworkCloudVolume -InputObject <INetworkCloudIdentity> -ExtendedLocationName <String>
+ -ExtendedLocationType <String> -Location <String> -SizeMiB <Int64> [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-StorageApplianceId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -27,7 +43,21 @@ New-AzNetworkCloudVolume -Name <String> -ResourceGroupName <String> -JsonFilePat
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath1
+```
+New-AzNetworkCloudVolume -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaJsonString
+```
+New-AzNetworkCloudVolume -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString1
 ```
 New-AzNetworkCloudVolume -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
@@ -90,7 +120,7 @@ The resource ID of the extended location on which the resource will be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -105,7 +135,7 @@ The extended location type, for example, CustomLocation.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -148,12 +178,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: CreateViaIdentityExpanded1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -JsonFilePath
 Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Parameter Sets: CreateViaJsonFilePath, CreateViaJsonFilePath1
 Aliases:
 
 Required: True
@@ -168,7 +213,7 @@ Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString
+Parameter Sets: CreateViaJsonString, CreateViaJsonString1
 Aliases:
 
 Required: True
@@ -183,7 +228,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -198,7 +243,7 @@ The name of the volume.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaJsonFilePath, CreateViaJsonFilePath1, CreateViaJsonString, CreateViaJsonString1
 Aliases: VolumeName
 
 Required: True
@@ -229,7 +274,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaJsonFilePath, CreateViaJsonFilePath1, CreateViaJsonString, CreateViaJsonString1
 Aliases:
 
 Required: True
@@ -240,14 +285,29 @@ Accept wildcard characters: False
 ```
 
 ### -SizeMiB
-The size of the allocation for this volume in Mebibytes.
+The requested storage allocation for the volume in Mebibytes.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageApplianceId
+The resource ID of the storage appliance that hosts the volume.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -260,7 +320,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaJsonFilePath, CreateViaJsonFilePath1, CreateViaJsonString, CreateViaJsonString1
 Aliases:
 
 Required: False
@@ -275,7 +335,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -320,6 +380,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 
 ## OUTPUTS
 

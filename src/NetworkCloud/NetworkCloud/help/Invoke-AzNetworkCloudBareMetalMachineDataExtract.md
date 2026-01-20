@@ -20,10 +20,24 @@ Invoke-AzNetworkCloudBareMetalMachineDataExtract -InputObject <INetworkCloudIden
  [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### RunViaJsonString1
+```
+Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### RunViaJsonString
 ```
 Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RunViaJsonFilePath1
+```
+Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -34,12 +48,27 @@ Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName <String> 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### RunExpanded1
+```
+Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -Command <IBareMetalMachineCommandSpecification[]> -LimitTimeSecond <Int64>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### RunExpanded
 ```
 Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Command <IBareMetalMachineCommandSpecification[]> -LimitTimeSecond <Int64>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### RunViaIdentityExpanded1
+```
+Invoke-AzNetworkCloudBareMetalMachineDataExtract -InputObject <INetworkCloudIdentity>
+ -Command <IBareMetalMachineCommandSpecification[]> -LimitTimeSecond <Int64> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +113,7 @@ The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
+Parameter Sets: RunViaJsonString1, RunViaJsonString, RunViaJsonFilePath1, RunViaJsonFilePath, RunExpanded1, RunExpanded
 Aliases:
 
 Required: True
@@ -99,7 +128,7 @@ The list of curated data extraction commands to be executed directly against the
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineCommandSpecification[]
-Parameter Sets: RunViaIdentityExpanded, RunExpanded
+Parameter Sets: RunViaIdentityExpanded, RunExpanded1, RunExpanded, RunViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -130,7 +159,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: RunViaIdentityExpanded
+Parameter Sets: RunViaIdentityExpanded, RunViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -145,7 +174,7 @@ Path of Json file supplied to the Run operation
 
 ```yaml
 Type: System.String
-Parameter Sets: RunViaJsonFilePath
+Parameter Sets: RunViaJsonFilePath1, RunViaJsonFilePath
 Aliases:
 
 Required: True
@@ -160,7 +189,7 @@ Json string supplied to the Run operation
 
 ```yaml
 Type: System.String
-Parameter Sets: RunViaJsonString
+Parameter Sets: RunViaJsonString1, RunViaJsonString
 Aliases:
 
 Required: True
@@ -171,11 +200,12 @@ Accept wildcard characters: False
 ```
 
 ### -LimitTimeSecond
-The maximum time the commands are allowed to run.If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured, and the exit code matching a timeout will be returned (252).
+The maximum time the commands are allowed to run.
+If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured, and the exit code matching a timeout will be returned (252).
 
 ```yaml
 Type: System.Int64
-Parameter Sets: RunViaIdentityExpanded, RunExpanded
+Parameter Sets: RunViaIdentityExpanded, RunExpanded1, RunExpanded, RunViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -221,7 +251,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
+Parameter Sets: RunViaJsonString1, RunViaJsonString, RunViaJsonFilePath1, RunViaJsonFilePath, RunExpanded1, RunExpanded
 Aliases:
 
 Required: True
@@ -237,7 +267,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
+Parameter Sets: RunViaJsonString1, RunViaJsonString, RunViaJsonFilePath1, RunViaJsonFilePath, RunExpanded1, RunExpanded
 Aliases:
 
 Required: False

@@ -1,6 +1,6 @@
 {
   "resourceType": "virtualMachines",
-  "apiVersion": "2025-02-01",
+  "apiVersion": "2025-09-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.networkcloud"
   },
@@ -20,10 +20,34 @@
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
             ]
+          },
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
           }
         ]
       },
       "examples": [
+        {
+          "description": "Get properties of the provided virtual machine.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.virtualMachineName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
         {
           "description": "Get properties of the provided virtual machine.",
           "parameters": [
@@ -96,10 +120,34 @@
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
             ]
+          },
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
           }
         ]
       },
       "examples": [
+        {
+          "description": "Delete the provided virtual machine.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.virtualMachineName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
         {
           "description": "Delete the provided virtual machine.",
           "parameters": [
@@ -134,10 +182,34 @@
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
             ]
+          },
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
           }
         ]
       },
       "examples": [
+        {
+          "description": "Restart the provided virtual machine.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.virtualMachineName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
         {
           "description": "Restart the provided virtual machine.",
           "parameters": [
@@ -172,10 +244,34 @@
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
             ]
+          },
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
           }
         ]
       },
       "examples": [
+        {
+          "description": "Start the provided virtual machine.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.virtualMachineName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
         {
           "description": "Start the provided virtual machine.",
           "parameters": [

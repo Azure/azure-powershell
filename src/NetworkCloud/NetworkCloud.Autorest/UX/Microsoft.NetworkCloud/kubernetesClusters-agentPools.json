@@ -1,6 +1,6 @@
 {
   "resourceType": "kubernetesClusters/agentPools",
-  "apiVersion": "2025-02-01",
+  "apiVersion": "2025-09-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.networkcloud"
   },
@@ -21,10 +21,39 @@
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
             ]
+          },
+          {
+            "parameters": [
+              "-KubernetesClusterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
           }
         ]
       },
       "examples": [
+        {
+          "description": "Get properties of the provided Kubernetes cluster agent pool.",
+          "parameters": [
+            {
+              "name": "-KubernetesClusterName",
+              "value": "[Path.kubernetesClusterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.agentPoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
         {
           "description": "Get properties of the provided Kubernetes cluster agent pool.",
           "parameters": [
@@ -64,10 +93,39 @@
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
             ]
+          },
+          {
+            "parameters": [
+              "-KubernetesClusterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
           }
         ]
       },
       "examples": [
+        {
+          "description": "Delete the provided Kubernetes cluster agent pool.",
+          "parameters": [
+            {
+              "name": "-KubernetesClusterName",
+              "value": "[Path.kubernetesClusterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.agentPoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
         {
           "description": "Delete the provided Kubernetes cluster agent pool.",
           "parameters": [

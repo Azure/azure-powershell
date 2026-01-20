@@ -21,7 +21,22 @@ Update-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -Virtual
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateExpanded1
+```
+Update-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-Enabled <String>]
+ [-Expiration <DateTime>] [-SshPublicKeyData <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
+```
+Update-AzNetworkCloudConsole -InputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-Enabled <String>] [-Expiration <DateTime>] [-SshPublicKeyData <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded1
 ```
 Update-AzNetworkCloudConsole -InputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
  [-Enabled <String>] [-Expiration <DateTime>] [-SshPublicKeyData <String>] [-Tag <Hashtable>]
@@ -36,6 +51,14 @@ Update-AzNetworkCloudConsole -Name <String> -VirtualMachineInputObject <INetwork
  [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityVirtualMachineExpanded1
+```
+Update-AzNetworkCloudConsole -Name <String> -VirtualMachineInputObject <INetworkCloudIdentity>
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-Enabled <String>] [-Expiration <DateTime>]
+ [-SshPublicKeyData <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaJsonFilePath
 ```
 Update-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
@@ -43,7 +66,21 @@ Update-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -Virtual
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath1
+```
+Update-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaJsonString
+```
+Update-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString1
 ```
 Update-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
  -JsonString <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
@@ -114,7 +151,7 @@ The indicator of whether the console access is enabled.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityVirtualMachineExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1, UpdateViaIdentityVirtualMachineExpanded, UpdateViaIdentityVirtualMachineExpanded1
 Aliases:
 
 Required: False
@@ -129,7 +166,7 @@ The date and time after which the key will be disallowed access.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityVirtualMachineExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1, UpdateViaIdentityVirtualMachineExpanded, UpdateViaIdentityVirtualMachineExpanded1
 Aliases:
 
 Required: False
@@ -177,7 +214,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -192,7 +229,7 @@ Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
+Parameter Sets: UpdateViaJsonFilePath, UpdateViaJsonFilePath1
 Aliases:
 
 Required: True
@@ -207,7 +244,7 @@ Json string supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonString
+Parameter Sets: UpdateViaJsonString, UpdateViaJsonString1
 Aliases:
 
 Required: True
@@ -222,7 +259,7 @@ The name of the virtual machine console.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityVirtualMachineExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityVirtualMachineExpanded, UpdateViaIdentityVirtualMachineExpanded1, UpdateViaJsonFilePath, UpdateViaJsonFilePath1, UpdateViaJsonString, UpdateViaJsonString1
 Aliases: ConsoleName
 
 Required: True
@@ -253,7 +290,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaJsonFilePath, UpdateViaJsonFilePath1, UpdateViaJsonString, UpdateViaJsonString1
 Aliases:
 
 Required: True
@@ -268,7 +305,7 @@ The SSH public key data.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityVirtualMachineExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1, UpdateViaIdentityVirtualMachineExpanded, UpdateViaIdentityVirtualMachineExpanded1
 Aliases:
 
 Required: False
@@ -284,7 +321,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaJsonFilePath, UpdateViaJsonFilePath1, UpdateViaJsonString, UpdateViaJsonString1
 Aliases:
 
 Required: False
@@ -299,7 +336,7 @@ The Azure resource tags that will replace the existing ones.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityVirtualMachineExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1, UpdateViaIdentityVirtualMachineExpanded, UpdateViaIdentityVirtualMachineExpanded1
 Aliases:
 
 Required: False
@@ -314,7 +351,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: UpdateViaIdentityVirtualMachineExpanded
+Parameter Sets: UpdateViaIdentityVirtualMachineExpanded, UpdateViaIdentityVirtualMachineExpanded1
 Aliases:
 
 Required: True
@@ -329,7 +366,7 @@ The name of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaJsonFilePath, UpdateViaJsonFilePath1, UpdateViaJsonString, UpdateViaJsonString1
 Aliases:
 
 Required: True

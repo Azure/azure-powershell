@@ -31,12 +31,79 @@ New-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String>
  [-AssociatedIdentityUserAssignedIdentityResourceId <String>] [-ClusterLocation <String>]
  [-ClusterServicePrincipalApplicationId <String>] [-ClusterServicePrincipalId <String>]
  [-ClusterServicePrincipalPassword <SecureString>] [-ClusterServicePrincipalTenantId <String>]
- [-CommandOutputSettingContainerUrl <String>] [-ComputeDeploymentThresholdGrouping <String>]
- [-ComputeDeploymentThresholdType <String>] [-ComputeDeploymentThresholdValue <Int64>]
- [-ComputeRackDefinition <IRackDefinition[]>] [-EnableSystemAssignedIdentity]
- [-ManagedResourceGroupConfigurationLocation <String>] [-ManagedResourceGroupConfigurationName <String>]
- [-RuntimeProtectionConfigurationEnforcementLevel <String>] [-SecretArchiveKeyVaultId <String>]
- [-SecretArchiveSettingsAssociatedIdentityType <String>]
+ [-CommandOutputSettingContainerUrl <String>] [-CommandOutputSettingOverride <ICommandOutputOverride[]>]
+ [-ComputeDeploymentThresholdGrouping <String>] [-ComputeDeploymentThresholdType <String>]
+ [-ComputeDeploymentThresholdValue <Int64>] [-ComputeRackDefinition <IRackDefinition[]>]
+ [-EnableSystemAssignedIdentity] [-ManagedResourceGroupConfigurationLocation <String>]
+ [-ManagedResourceGroupConfigurationName <String>] [-RuntimeProtectionConfigurationEnforcementLevel <String>]
+ [-SecretArchiveKeyVaultId <String>] [-SecretArchiveSettingsAssociatedIdentityType <String>]
+ [-SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
+ [-SecretArchiveSettingVaultUri <String>] [-SecretArchiveUseKeyVault <String>] [-Tag <Hashtable>]
+ [-UpdateStrategyMaxUnavailable <Int64>] [-UpdateStrategyThresholdType <String>]
+ [-UpdateStrategyThresholdValue <Int64>] [-UpdateStrategyType <String>]
+ [-UpdateStrategyWaitTimeMinute <Int64>] [-UserAssignedIdentity <String[]>]
+ [-VulnerabilityScanningSettingContainerScan <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateExpanded1
+```
+New-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String>
+ -AggregatorOrSingleRackDefinitionNetworkRackId <String>
+ -AggregatorOrSingleRackDefinitionRackSerialNumber <String>
+ -AggregatorOrSingleRackDefinitionRackSkuId <String> -ClusterType <String> -ClusterVersion <String>
+ -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String> -NetworkFabricId <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-AggregatorOrSingleRackDefinitionAvailabilityZone <String>]
+ [-AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration <IBareMetalMachineConfigurationData[]>]
+ [-AggregatorOrSingleRackDefinitionRackLocation <String>]
+ [-AggregatorOrSingleRackDefinitionStorageApplianceConfiguration <IStorageApplianceConfigurationData[]>]
+ [-AnalyticOutputSettingAnalyticsWorkspaceId <String>]
+ [-AnalyticsOutputSettingsAssociatedIdentityType <String>]
+ [-AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
+ [-AnalyticsWorkspaceId <String>] [-AssociatedIdentityType <String>]
+ [-AssociatedIdentityUserAssignedIdentityResourceId <String>] [-ClusterLocation <String>]
+ [-ClusterServicePrincipalApplicationId <String>] [-ClusterServicePrincipalId <String>]
+ [-ClusterServicePrincipalPassword <SecureString>] [-ClusterServicePrincipalTenantId <String>]
+ [-CommandOutputSettingContainerUrl <String>] [-CommandOutputSettingOverride <ICommandOutputOverride[]>]
+ [-ComputeDeploymentThresholdGrouping <String>] [-ComputeDeploymentThresholdType <String>]
+ [-ComputeDeploymentThresholdValue <Int64>] [-ComputeRackDefinition <IRackDefinition[]>]
+ [-EnableSystemAssignedIdentity] [-ManagedResourceGroupConfigurationLocation <String>]
+ [-ManagedResourceGroupConfigurationName <String>] [-RuntimeProtectionConfigurationEnforcementLevel <String>]
+ [-SecretArchiveKeyVaultId <String>] [-SecretArchiveSettingsAssociatedIdentityType <String>]
+ [-SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
+ [-SecretArchiveSettingVaultUri <String>] [-SecretArchiveUseKeyVault <String>] [-Tag <Hashtable>]
+ [-UpdateStrategyMaxUnavailable <Int64>] [-UpdateStrategyThresholdType <String>]
+ [-UpdateStrategyThresholdValue <Int64>] [-UpdateStrategyType <String>]
+ [-UpdateStrategyWaitTimeMinute <Int64>] [-UserAssignedIdentity <String[]>]
+ [-VulnerabilityScanningSettingContainerScan <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded1
+```
+New-AzNetworkCloudCluster -InputObject <INetworkCloudIdentity>
+ -AggregatorOrSingleRackDefinitionNetworkRackId <String>
+ -AggregatorOrSingleRackDefinitionRackSerialNumber <String>
+ -AggregatorOrSingleRackDefinitionRackSkuId <String> -ClusterType <String> -ClusterVersion <String>
+ -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String> -NetworkFabricId <String>
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-AggregatorOrSingleRackDefinitionAvailabilityZone <String>]
+ [-AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration <IBareMetalMachineConfigurationData[]>]
+ [-AggregatorOrSingleRackDefinitionRackLocation <String>]
+ [-AggregatorOrSingleRackDefinitionStorageApplianceConfiguration <IStorageApplianceConfigurationData[]>]
+ [-AnalyticOutputSettingAnalyticsWorkspaceId <String>]
+ [-AnalyticsOutputSettingsAssociatedIdentityType <String>]
+ [-AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
+ [-AnalyticsWorkspaceId <String>] [-AssociatedIdentityType <String>]
+ [-AssociatedIdentityUserAssignedIdentityResourceId <String>] [-ClusterLocation <String>]
+ [-ClusterServicePrincipalApplicationId <String>] [-ClusterServicePrincipalId <String>]
+ [-ClusterServicePrincipalPassword <SecureString>] [-ClusterServicePrincipalTenantId <String>]
+ [-CommandOutputSettingContainerUrl <String>] [-CommandOutputSettingOverride <ICommandOutputOverride[]>]
+ [-ComputeDeploymentThresholdGrouping <String>] [-ComputeDeploymentThresholdType <String>]
+ [-ComputeDeploymentThresholdValue <Int64>] [-ComputeRackDefinition <IRackDefinition[]>]
+ [-EnableSystemAssignedIdentity] [-ManagedResourceGroupConfigurationLocation <String>]
+ [-ManagedResourceGroupConfigurationName <String>] [-RuntimeProtectionConfigurationEnforcementLevel <String>]
+ [-SecretArchiveKeyVaultId <String>] [-SecretArchiveSettingsAssociatedIdentityType <String>]
  [-SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
  [-SecretArchiveSettingVaultUri <String>] [-SecretArchiveUseKeyVault <String>] [-Tag <Hashtable>]
  [-UpdateStrategyMaxUnavailable <Int64>] [-UpdateStrategyThresholdType <String>]
@@ -53,7 +120,21 @@ New-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> -JsonFilePa
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath1
+```
+New-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaJsonString
+```
+New-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString1
 ```
 New-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
@@ -117,7 +198,7 @@ Availability zones are used for workload placement.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -132,7 +213,7 @@ The unordered list of bare metal machine configuration.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineConfigurationData[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -147,7 +228,7 @@ The resource ID of the network rack that matches this rack definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -162,7 +243,7 @@ The free-form description of the rack's location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -178,7 +259,7 @@ An alternate unique alphanumeric value other than a serial number may be provide
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -193,7 +274,7 @@ The resource ID of the sku for the rack being added.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -208,7 +289,7 @@ The list of storage appliance configuration data for this rack.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceConfigurationData[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -223,7 +304,7 @@ The resource ID of the analytics workspace that is to be used by the specified i
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -238,7 +319,7 @@ The type of managed identity that is being selected.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -254,7 +335,7 @@ Mutually exclusive with a system assigned identity type.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -270,7 +351,7 @@ The resource ID of the Log Analytics Workspace that will be used for storing rel
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -300,7 +381,7 @@ The type of associated identity for CommandOutputSettings.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -315,7 +396,7 @@ The resource ID of the user assigned identity for CommandOutputSettings.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -330,7 +411,7 @@ The customer-provided location information to identify where the cluster resides
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -345,7 +426,7 @@ The application ID, also known as client ID, of the service principal.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -360,7 +441,7 @@ The principal ID, also known as the object ID, of the service principal.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -375,7 +456,7 @@ The password of the service principal.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -390,7 +471,7 @@ The tenant ID, also known as the directory ID, of the tenant in which the servic
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -405,7 +486,7 @@ The type of rack configuration for the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -420,7 +501,7 @@ The current runtime version of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -435,7 +516,23 @@ The URL of the storage account container that is to be used by the specified ide
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CommandOutputSettingOverride
+The list of optional overrides allowing for association of storage containers and identities to specific types of command output.
+If a type is not overridden, the default identity and storage container will be utilized.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride[]
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -450,7 +547,7 @@ Selection of how the type evaluation is applied to the cluster calculation.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -465,7 +562,7 @@ Selection of how the threshold should be evaluated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -480,7 +577,7 @@ The numeric threshold value.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -495,7 +592,7 @@ The list of rack definitions for the compute racks in a multi-rack cluster, or a
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IRackDefinition[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -526,7 +623,7 @@ Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -541,7 +638,7 @@ The resource ID of the extended location on which the resource will be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -556,7 +653,7 @@ The extended location type, for example, CustomLocation.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -599,12 +696,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: CreateViaIdentityExpanded1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -JsonFilePath
 Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Parameter Sets: CreateViaJsonFilePath, CreateViaJsonFilePath1
 Aliases:
 
 Required: True
@@ -619,7 +731,7 @@ Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString
+Parameter Sets: CreateViaJsonString, CreateViaJsonString1
 Aliases:
 
 Required: True
@@ -634,7 +746,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -650,7 +762,7 @@ If not specified, the location of the parent resource is chosen.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -666,7 +778,7 @@ If not specified, the unique name is automatically generated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -681,7 +793,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaJsonFilePath, CreateViaJsonFilePath1, CreateViaJsonString, CreateViaJsonString1
 Aliases: ClusterName
 
 Required: True
@@ -696,7 +808,7 @@ The resource ID of the Network Fabric associated with the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -727,7 +839,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaJsonFilePath, CreateViaJsonFilePath1, CreateViaJsonString, CreateViaJsonString1
 Aliases:
 
 Required: True
@@ -742,7 +854,7 @@ The mode of operation for runtime protection.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -757,7 +869,7 @@ The resource ID of the key vault to archive the secrets of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -772,7 +884,7 @@ The type of managed identity that is being selected.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -788,7 +900,7 @@ Mutually exclusive with a system assigned identity type.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -803,7 +915,7 @@ The URI for the key vault used as the secret archive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -818,7 +930,7 @@ The indicator if the specified key vault should be used to archive the secrets o
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -834,7 +946,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaJsonFilePath, CreateViaJsonFilePath1, CreateViaJsonString, CreateViaJsonString1
 Aliases:
 
 Required: False
@@ -849,7 +961,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -860,12 +972,13 @@ Accept wildcard characters: False
 ```
 
 ### -UpdateStrategyMaxUnavailable
-The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.Limited by the maximum number of machines in the increment.
+The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
+Limited by the maximum number of machines in the increment.
 Defaults to the whole increment size.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -880,7 +993,7 @@ Selection of how the threshold should be evaluated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -895,7 +1008,7 @@ The numeric threshold value.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -910,7 +1023,7 @@ The mode of operation for runtime protection.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -925,7 +1038,7 @@ The time to wait between the increments of update defined by the strategy.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -941,7 +1054,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -956,7 +1069,7 @@ The mode selection for container vulnerability scanning.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -1001,6 +1114,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 
 ## OUTPUTS
 

@@ -1,6 +1,6 @@
 {
   "resourceType": "kubernetesClusters/features",
-  "apiVersion": "2025-02-01",
+  "apiVersion": "2025-09-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.networkcloud"
   },
@@ -21,10 +21,39 @@
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
             ]
+          },
+          {
+            "parameters": [
+              "-FeatureName <String>",
+              "-KubernetesClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
           }
         ]
       },
       "examples": [
+        {
+          "description": "Get properties of the provided the Kubernetes cluster feature.",
+          "parameters": [
+            {
+              "name": "-FeatureName",
+              "value": "[Path.featureName]"
+            },
+            {
+              "name": "-KubernetesClusterName",
+              "value": "[Path.kubernetesClusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
         {
           "description": "Get properties of the provided the Kubernetes cluster feature.",
           "parameters": [
@@ -64,10 +93,39 @@
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
             ]
+          },
+          {
+            "parameters": [
+              "-FeatureName <String>",
+              "-KubernetesClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
           }
         ]
       },
       "examples": [
+        {
+          "description": "Delete the provided Kubernetes cluster feature.",
+          "parameters": [
+            {
+              "name": "-FeatureName",
+              "value": "[Path.featureName]"
+            },
+            {
+              "name": "-KubernetesClusterName",
+              "value": "[Path.kubernetesClusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
         {
           "description": "Delete the provided Kubernetes cluster feature.",
           "parameters": [

@@ -12,7 +12,57 @@ Create a new Kubernetes cluster or create the properties of the existing one.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### CreateViaIdentityExpanded1 (Default)
+```
+New-AzNetworkCloudKubernetesCluster -InputObject <INetworkCloudIdentity>
+ -ControlPlaneNodeConfigurationCount <Int64> -ControlPlaneNodeConfigurationVMSkuName <String>
+ -ExtendedLocationName <String> -ExtendedLocationType <String>
+ -InitialAgentPoolConfiguration <IInitialAgentPoolConfiguration[]> -KubernetesVersion <String>
+ -Location <String> -NetworkConfigurationCloudServicesNetworkId <String>
+ -NetworkConfigurationCniNetworkId <String> [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-AadConfigurationAdminGroupObjectId <String[]>] [-AdminUsername <String>]
+ [-AttachedNetworkConfigurationL2Network <IL2NetworkAttachmentConfiguration[]>]
+ [-AttachedNetworkConfigurationL3Network <IL3NetworkAttachmentConfiguration[]>]
+ [-AttachedNetworkConfigurationTrunkedNetwork <ITrunkedNetworkAttachmentConfiguration[]>]
+ [-BgpAdvertisement <IBgpAdvertisement[]>] [-BgpIPAddressPool <IIPAddressPool[]>]
+ [-BgpPeer <IServiceLoadBalancerBgpPeer[]>]
+ [-BgpServiceLoadBalancerConfigurationFabricPeeringEnabled <String>]
+ [-ControlPlaneNodeConfigurationAdminPublicKey <ISshPublicKey[]>]
+ [-ControlPlaneNodeConfigurationAdminUsername <String>]
+ [-ControlPlaneNodeConfigurationAvailabilityZone <String[]>]
+ [-L2ServiceLoadBalancerConfigurationIPAddressPool <IIPAddressPool[]>]
+ [-ManagedResourceGroupConfigurationLocation <String>] [-ManagedResourceGroupConfigurationName <String>]
+ [-NetworkConfigurationDnsServiceIP <String>] [-NetworkConfigurationPodCidr <String[]>]
+ [-NetworkConfigurationServiceCidr <String[]>] [-SshPublicKey <ISshPublicKey[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateExpanded
+```
+New-AzNetworkCloudKubernetesCluster -Name <String> -ResourceGroupName <String>
+ -ControlPlaneNodeConfigurationCount <Int64> -ControlPlaneNodeConfigurationVMSkuName <String>
+ -ExtendedLocationName <String> -ExtendedLocationType <String>
+ -InitialAgentPoolConfiguration <IInitialAgentPoolConfiguration[]> -KubernetesVersion <String>
+ -Location <String> -NetworkConfigurationCloudServicesNetworkId <String>
+ -NetworkConfigurationCniNetworkId <String> [-SubscriptionId <String>] [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-AadConfigurationAdminGroupObjectId <String[]>] [-AdminUsername <String>]
+ [-AttachedNetworkConfigurationL2Network <IL2NetworkAttachmentConfiguration[]>]
+ [-AttachedNetworkConfigurationL3Network <IL3NetworkAttachmentConfiguration[]>]
+ [-AttachedNetworkConfigurationTrunkedNetwork <ITrunkedNetworkAttachmentConfiguration[]>]
+ [-BgpAdvertisement <IBgpAdvertisement[]>] [-BgpIPAddressPool <IIPAddressPool[]>]
+ [-BgpPeer <IServiceLoadBalancerBgpPeer[]>]
+ [-BgpServiceLoadBalancerConfigurationFabricPeeringEnabled <String>]
+ [-ControlPlaneNodeConfigurationAdminPublicKey <ISshPublicKey[]>]
+ [-ControlPlaneNodeConfigurationAdminUsername <String>]
+ [-ControlPlaneNodeConfigurationAvailabilityZone <String[]>]
+ [-L2ServiceLoadBalancerConfigurationIPAddressPool <IIPAddressPool[]>]
+ [-ManagedResourceGroupConfigurationLocation <String>] [-ManagedResourceGroupConfigurationName <String>]
+ [-NetworkConfigurationDnsServiceIP <String>] [-NetworkConfigurationPodCidr <String[]>]
+ [-NetworkConfigurationServiceCidr <String[]>] [-SshPublicKey <ISshPublicKey[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateExpanded1
 ```
 New-AzNetworkCloudKubernetesCluster -Name <String> -ResourceGroupName <String>
  -ControlPlaneNodeConfigurationCount <Int64> -ControlPlaneNodeConfigurationVMSkuName <String>
@@ -44,7 +94,21 @@ New-AzNetworkCloudKubernetesCluster -Name <String> -ResourceGroupName <String> -
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath1
+```
+New-AzNetworkCloudKubernetesCluster -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaJsonString
+```
+New-AzNetworkCloudKubernetesCluster -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString1
 ```
 New-AzNetworkCloudKubernetesCluster -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
@@ -100,7 +164,7 @@ The list of Azure Active Directory group object IDs that will have an administra
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -116,7 +180,7 @@ If not supplied, a user name will be chosen by the service.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -146,7 +210,7 @@ The list of Layer 2 Networks and related configuration for attachment.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL2NetworkAttachmentConfiguration[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -161,7 +225,7 @@ The list of Layer 3 Networks and related configuration for attachment.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL3NetworkAttachmentConfiguration[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -176,7 +240,7 @@ The list of Trunked Networks and related configuration for attachment.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrunkedNetworkAttachmentConfiguration[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -191,7 +255,7 @@ The association of IP address pools to the communities and peers, allowing for a
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBgpAdvertisement[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -206,7 +270,7 @@ The list of pools of IP addresses that can be allocated to load balancer service
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IIPAddressPool[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -222,7 +286,7 @@ All peering must be explicitly defined.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IServiceLoadBalancerBgpPeer[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -237,7 +301,7 @@ The indicator to specify if the load balancer peers with the network fabric.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -253,7 +317,7 @@ In some cases, specification of public keys may be required to produce a working
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -269,7 +333,7 @@ If not supplied, a user name will be chosen by the service.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -285,7 +349,7 @@ If not specified, all availability zones will be used.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -300,7 +364,7 @@ The number of virtual machines that use this configuration.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -315,7 +379,7 @@ The name of the VM SKU supplied during creation.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -346,7 +410,7 @@ The resource ID of the extended location on which the resource will be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -361,7 +425,7 @@ The extended location type, for example, CustomLocation.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -411,7 +475,7 @@ After creation, the management of agent pools is done using the agentPools sub-r
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IInitialAgentPoolConfiguration[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -421,12 +485,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: CreateViaIdentityExpanded1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -JsonFilePath
 Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Parameter Sets: CreateViaJsonFilePath, CreateViaJsonFilePath1
 Aliases:
 
 Required: True
@@ -441,7 +520,7 @@ Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString
+Parameter Sets: CreateViaJsonString, CreateViaJsonString1
 Aliases:
 
 Required: True
@@ -456,7 +535,7 @@ The Kubernetes version for this cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -471,7 +550,7 @@ The list of pools of IP addresses that can be allocated to load balancer service
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IIPAddressPool[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -486,7 +565,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -502,7 +581,7 @@ If not specified, the location of the parent resource is chosen.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -518,7 +597,7 @@ If not specified, the unique name is automatically generated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -533,7 +612,7 @@ The name of the Kubernetes cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaJsonFilePath, CreateViaJsonFilePath1, CreateViaJsonString, CreateViaJsonString1
 Aliases: KubernetesClusterName
 
 Required: True
@@ -548,7 +627,7 @@ The resource ID of the associated Cloud Services network.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -563,7 +642,7 @@ The resource ID of the Layer 3 network that is used for creation of the Containe
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -579,7 +658,7 @@ It must be within the Kubernetes service address range specified in service CIDR
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -596,7 +675,7 @@ Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networ
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -613,7 +692,7 @@ Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networ
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -644,7 +723,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaJsonFilePath, CreateViaJsonFilePath1, CreateViaJsonString, CreateViaJsonString1
 Aliases:
 
 Required: True
@@ -660,7 +739,7 @@ In some cases, specification of public keys may be required to produce a working
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -676,7 +755,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaJsonFilePath, CreateViaJsonFilePath1, CreateViaJsonString, CreateViaJsonString1
 Aliases:
 
 Required: False
@@ -691,7 +770,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -736,6 +815,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 
 ## OUTPUTS
 

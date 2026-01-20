@@ -19,10 +19,24 @@ Invoke-AzNetworkCloudClusterVersionUpdate -ClusterName <String> -ResourceGroupNa
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaJsonString1
+```
+Invoke-AzNetworkCloudClusterVersionUpdate -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### UpdateViaJsonString
 ```
 Invoke-AzNetworkCloudClusterVersionUpdate -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath1
+```
+Invoke-AzNetworkCloudClusterVersionUpdate -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,6 +45,20 @@ Invoke-AzNetworkCloudClusterVersionUpdate -ClusterName <String> -ResourceGroupNa
 Invoke-AzNetworkCloudClusterVersionUpdate -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateExpanded1
+```
+Invoke-AzNetworkCloudClusterVersionUpdate -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -TargetClusterVersion <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded1
+```
+Invoke-AzNetworkCloudClusterVersionUpdate -InputObject <INetworkCloudIdentity> -TargetClusterVersion <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -80,7 +108,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonString1, UpdateViaJsonString, UpdateViaJsonFilePath1, UpdateViaJsonFilePath, UpdateExpanded1
 Aliases:
 
 Required: True
@@ -111,7 +139,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -126,7 +154,7 @@ Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
+Parameter Sets: UpdateViaJsonFilePath1, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -141,7 +169,7 @@ Json string supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonString
+Parameter Sets: UpdateViaJsonString1, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -187,7 +215,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonString1, UpdateViaJsonString, UpdateViaJsonFilePath1, UpdateViaJsonFilePath, UpdateExpanded1
 Aliases:
 
 Required: True
@@ -203,7 +231,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonString1, UpdateViaJsonString, UpdateViaJsonFilePath1, UpdateViaJsonFilePath, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -218,7 +246,7 @@ The version to be applied to the cluster during update.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
