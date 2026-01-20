@@ -332,9 +332,10 @@ directive:
   - no-inline:
     - EventListenerEndpoint
     - EventListenerFilter
+  # Add preview announcement for New/Update WebPubSub cmdlets that will have breaking changes in Az v16.0.0
   - where:
       verb: New|Update
-      subject: AzWebPubSub
+      subject: WebPubSub
     set:
       preview-announcement:
         preview-message: "**********************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *\\r\\n* The breaking changes for this cmdlet are:                                                       *\\r\\n* - IdentityType SystemAssigned will be changed to -EnableSystemAssignedIdentity                  *\\r\\n*See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n***************************************************************************************************"
