@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "instanceId");
             }
 
-            string apiVersion = "2024-11-15";
+            string apiVersion = "2025-10-15";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

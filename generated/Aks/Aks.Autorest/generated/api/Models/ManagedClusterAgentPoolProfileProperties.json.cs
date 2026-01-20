@@ -82,14 +82,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {_kubeletConfig = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonObject>("kubeletConfig"), out var __jsonKubeletConfig) ? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.KubeletConfig.FromJson(__jsonKubeletConfig) : _kubeletConfig;}
             {_linuxOSConfig = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonObject>("linuxOSConfig"), out var __jsonLinuxOSConfig) ? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.LinuxOSConfig.FromJson(__jsonLinuxOSConfig) : _linuxOSConfig;}
             {_creationData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonObject>("creationData"), out var __jsonCreationData) ? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.CreationData.FromJson(__jsonCreationData) : _creationData;}
+            {_networkProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonObject>("networkProfile"), out var __jsonNetworkProfile) ? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolNetworkProfile.FromJson(__jsonNetworkProfile) : _networkProfile;}
+            {_windowsProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonObject>("windowsProfile"), out var __jsonWindowsProfile) ? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolWindowsProfile.FromJson(__jsonWindowsProfile) : _windowsProfile;}
+            {_securityProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonObject>("securityProfile"), out var __jsonSecurityProfile) ? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolSecurityProfile.FromJson(__jsonSecurityProfile) : _securityProfile;}
+            {_gpuProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonObject>("gpuProfile"), out var __jsonGpuProfile) ? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.GpuProfile.FromJson(__jsonGpuProfile) : _gpuProfile;}
+            {_gatewayProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonObject>("gatewayProfile"), out var __jsonGatewayProfile) ? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolGatewayProfile.FromJson(__jsonGatewayProfile) : _gatewayProfile;}
+            {_virtualMachinesProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonObject>("virtualMachinesProfile"), out var __jsonVirtualMachinesProfile) ? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.VirtualMachinesProfile.FromJson(__jsonVirtualMachinesProfile) : _virtualMachinesProfile;}
+            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonObject>("status"), out var __jsonStatus) ? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolStatus.FromJson(__jsonStatus) : _status;}
+            {_eTag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("eTag"), out var __jsonETag) ? (string)__jsonETag : (string)_eTag;}
             {_count = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNumber>("count"), out var __jsonCount) ? (int?)__jsonCount : _count;}
             {_vMSize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("vmSize"), out var __jsonVMSize) ? (string)__jsonVMSize : (string)_vMSize;}
             {_oSDiskSizeGb = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNumber>("osDiskSizeGB"), out var __jsonOSDiskSizeGb) ? (int?)__jsonOSDiskSizeGb : _oSDiskSizeGb;}
             {_oSDiskType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("osDiskType"), out var __jsonOSDiskType) ? (string)__jsonOSDiskType : (string)_oSDiskType;}
             {_kubeletDiskType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("kubeletDiskType"), out var __jsonKubeletDiskType) ? (string)__jsonKubeletDiskType : (string)_kubeletDiskType;}
             {_workloadRuntime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("workloadRuntime"), out var __jsonWorkloadRuntime) ? (string)__jsonWorkloadRuntime : (string)_workloadRuntime;}
+            {_messageOfTheDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("messageOfTheDay"), out var __jsonMessageOfTheDay) ? (string)__jsonMessageOfTheDay : (string)_messageOfTheDay;}
             {_vnetSubnetId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("vnetSubnetID"), out var __jsonVnetSubnetId) ? (string)__jsonVnetSubnetId : (string)_vnetSubnetId;}
             {_podSubnetId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("podSubnetID"), out var __jsonPodSubnetId) ? (string)__jsonPodSubnetId : (string)_podSubnetId;}
+            {_podIPAllocationMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("podIPAllocationMode"), out var __jsonPodIPAllocationMode) ? (string)__jsonPodIPAllocationMode : (string)_podIPAllocationMode;}
             {_maxPod = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNumber>("maxPods"), out var __jsonMaxPods) ? (int?)__jsonMaxPods : _maxPod;}
             {_oSType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("osType"), out var __jsonOSType) ? (string)__jsonOSType : (string)_oSType;}
             {_oSSku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("osSKU"), out var __jsonOSSku) ? (string)__jsonOSSku : (string)_oSSku;}
@@ -117,7 +127,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {_enableUltraSsd = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonBoolean>("enableUltraSSD"), out var __jsonEnableUltraSsd) ? (bool?)__jsonEnableUltraSsd : _enableUltraSsd;}
             {_enableFips = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonBoolean>("enableFIPS"), out var __jsonEnableFips) ? (bool?)__jsonEnableFips : _enableFips;}
             {_gpuInstanceProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("gpuInstanceProfile"), out var __jsonGpuInstanceProfile) ? (string)__jsonGpuInstanceProfile : (string)_gpuInstanceProfile;}
+            {_capacityReservationGroupId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("capacityReservationGroupID"), out var __jsonCapacityReservationGroupId) ? (string)__jsonCapacityReservationGroupId : (string)_capacityReservationGroupId;}
             {_hostGroupId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("hostGroupID"), out var __jsonHostGroupId) ? (string)__jsonHostGroupId : (string)_hostGroupId;}
+            {_virtualMachineNodesStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonArray>("virtualMachineNodesStatus"), out var __jsonVirtualMachineNodesStatus) ? If( __jsonVirtualMachineNodesStatus as Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IVirtualMachineNodes>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IVirtualMachineNodes) (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.VirtualMachineNodes.FromJson(__k) )) ))() : null : _virtualMachineNodesStatus;}
             AfterFromJson(json);
         }
 
@@ -147,14 +159,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             AddIf( null != this._kubeletConfig ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._kubeletConfig.ToJson(null,serializationMode) : null, "kubeletConfig" ,container.Add );
             AddIf( null != this._linuxOSConfig ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._linuxOSConfig.ToJson(null,serializationMode) : null, "linuxOSConfig" ,container.Add );
             AddIf( null != this._creationData ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._creationData.ToJson(null,serializationMode) : null, "creationData" ,container.Add );
+            AddIf( null != this._networkProfile ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._networkProfile.ToJson(null,serializationMode) : null, "networkProfile" ,container.Add );
+            AddIf( null != this._windowsProfile ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._windowsProfile.ToJson(null,serializationMode) : null, "windowsProfile" ,container.Add );
+            AddIf( null != this._securityProfile ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._securityProfile.ToJson(null,serializationMode) : null, "securityProfile" ,container.Add );
+            AddIf( null != this._gpuProfile ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._gpuProfile.ToJson(null,serializationMode) : null, "gpuProfile" ,container.Add );
+            AddIf( null != this._gatewayProfile ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._gatewayProfile.ToJson(null,serializationMode) : null, "gatewayProfile" ,container.Add );
+            AddIf( null != this._virtualMachinesProfile ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._virtualMachinesProfile.ToJson(null,serializationMode) : null, "virtualMachinesProfile" ,container.Add );
+            AddIf( null != this._status ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._status.ToJson(null,serializationMode) : null, "status" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._eTag)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._eTag.ToString()) : null, "eTag" ,container.Add );
+            }
             AddIf( null != this._count ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNumber((int)this._count) : null, "count" ,container.Add );
             AddIf( null != (((object)this._vMSize)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._vMSize.ToString()) : null, "vmSize" ,container.Add );
             AddIf( null != this._oSDiskSizeGb ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNumber((int)this._oSDiskSizeGb) : null, "osDiskSizeGB" ,container.Add );
             AddIf( null != (((object)this._oSDiskType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._oSDiskType.ToString()) : null, "osDiskType" ,container.Add );
             AddIf( null != (((object)this._kubeletDiskType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._kubeletDiskType.ToString()) : null, "kubeletDiskType" ,container.Add );
             AddIf( null != (((object)this._workloadRuntime)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._workloadRuntime.ToString()) : null, "workloadRuntime" ,container.Add );
+            AddIf( null != (((object)this._messageOfTheDay)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._messageOfTheDay.ToString()) : null, "messageOfTheDay" ,container.Add );
             AddIf( null != (((object)this._vnetSubnetId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._vnetSubnetId.ToString()) : null, "vnetSubnetID" ,container.Add );
             AddIf( null != (((object)this._podSubnetId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._podSubnetId.ToString()) : null, "podSubnetID" ,container.Add );
+            AddIf( null != (((object)this._podIPAllocationMode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._podIPAllocationMode.ToString()) : null, "podIPAllocationMode" ,container.Add );
             AddIf( null != this._maxPod ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNumber((int)this._maxPod) : null, "maxPods" ,container.Add );
             AddIf( null != (((object)this._oSType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._oSType.ToString()) : null, "osType" ,container.Add );
             AddIf( null != (((object)this._oSSku)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._oSSku.ToString()) : null, "osSKU" ,container.Add );
@@ -207,7 +232,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             AddIf( null != this._enableUltraSsd ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonBoolean((bool)this._enableUltraSsd) : null, "enableUltraSSD" ,container.Add );
             AddIf( null != this._enableFips ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonBoolean((bool)this._enableFips) : null, "enableFIPS" ,container.Add );
             AddIf( null != (((object)this._gpuInstanceProfile)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._gpuInstanceProfile.ToString()) : null, "gpuInstanceProfile" ,container.Add );
+            AddIf( null != (((object)this._capacityReservationGroupId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._capacityReservationGroupId.ToString()) : null, "capacityReservationGroupID" ,container.Add );
             AddIf( null != (((object)this._hostGroupId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._hostGroupId.ToString()) : null, "hostGroupID" ,container.Add );
+            if (null != this._virtualMachineNodesStatus)
+            {
+                var __m = new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.XNodeArray();
+                foreach( var __n in this._virtualMachineNodesStatus )
+                {
+                    AddIf(__n?.ToJson(null, serializationMode) ,__m.Add);
+                }
+                container.Add("virtualMachineNodesStatus",__m);
+            }
             AfterToJson(ref container);
             return container;
         }
