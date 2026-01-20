@@ -590,7 +590,7 @@ function Test-NetworkRule
         Assert-AreEqual $ip1 $stoacl.IpRules[0].IPAddressOrRange;
         Assert-AreEqual $ip2 $stoacl.IpRules[1].IPAddressOrRange;
         Assert-AreEqual 0 $stoacl.VirtualNetworkRules.Count	
-        Assert-AreEqual 0 $stoacl.ResourceAccessRules.Count			
+        Assert-AreEqual 0 $stoacl.ResourceAccessRules.Count		
 
         $sto | Update-AzStorageAccountNetworkRuleSet -verbose -Bypass AzureServices,Metrics -DefaultAction Allow -IpRule (@{IPAddressOrRange="$ip3";Action="allow"},@{IPAddressOrRange="$ip4";Action="allow"}) -ResourceAccessRule (@{ResourceId=$resourceId1;TenantId=$tenanetId},@{ResourceId=$resourceId2;TenantId=$tenanetId})
         $stoacl = $sto | Get-AzStorageAccountNetworkRuleSet
@@ -633,7 +633,7 @@ function Test-NetworkRule
         Assert-AreEqual 0 $stoacl.IpRules.Count
         Assert-AreEqual 0 $stoacl.VirtualNetworkRules.Count
         Assert-AreEqual 0 $stoacl.ResourceAccessRules.Count	
-        
+
         foreach($iprule in $stoacliprule) {
             $job = Add-AzStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -IpRule $iprule -AsJob
             $job | Wait-Job
@@ -656,7 +656,7 @@ function Test-NetworkRule
         Assert-AreEqual $ip4 $stoacl.IpRules[1].IPAddressOrRange;
         Assert-AreEqual 0 $stoacl.VirtualNetworkRules.Count
         Assert-AreEqual 2 $stoacl.ResourceAccessRules.Count	
-        
+
         $job = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -AsJob -NetworkRuleSet (@{bypass="AzureServices";
             ipRules=(@{IPAddressOrRange="$ip1";Action="allow"},@{IPAddressOrRange="$ip2";Action="allow"});
             defaultAction="Allow";
@@ -3187,6 +3187,85 @@ function Test-StorageAccountGeoPriorityReplication
         Assert-AreEqual $true $sto.GeoPriorityReplicationStatus.IsBlobEnabled;
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test StorageAccountIpv6NetworkRuleSet
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageAccountIpv6NetworkRuleSet
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS'
+        $loc = 'eastus2euap';
+        $ip1 = "20.11.0.0/16";
+        $ip2 = "10.0.0.0/7";
+        $ip3 = "11.1.1.0/24";
+        $ip4 = "28.0.2.0/19";
+        $ipv6_1 = "2001:0db8:85a3:0000:0000:8a2e:0370:7334/64";
+        $ipv6_2 = "2001:0db8:85a3:0000:0000:8a2e:0370:1234/48";
+        $ipv6_3 = "2001:0db8:85a3:0000:0000:8a2e:0370:5678/56";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        Write-Output ("Resource Group created")
+        
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -PublishIpv6Endpoint $false 
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual $false $sto.DualStackEndpointPreference.PublishIpv6Endpoint
+        $sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -PublishIpv6Endpoint $true
+        Assert-AreEqual $true $sto.DualStackEndpointPreference.PublishIpv6Endpoint
+
+        $sto | Update-AzStorageAccountNetworkRuleSet -DefaultAction Allow -IPv6Rule (@{IPAddressOrRange="$ipv6_1";Action="allow"},@{IPAddressOrRange="$ipv6_2";Action="allow"})  -IpRule (@{IPAddressOrRange="$ip3";Action="allow"},@{IPAddressOrRange="$ip4";Action="allow"})
+        $stoacl = $sto | Get-AzStorageAccountNetworkRuleSet
+        $stoaclipv6rule = $stoacl.IPv6Rules
+        Assert-AreEqual $ipv6_1 $stoacl.IPv6Rules[0].IPAddressOrRange;
+        Assert-AreEqual $ipv6_2 $stoacl.IPv6Rules[1].IPAddressOrRange;
+        Assert-AreEqual 2 $stoacl.IpRules.Count
+        Assert-AreEqual 2 $stoacl.IPv6Rules.Count
+
+        Remove-AzStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -IPv6AddressOrRange "$ipv6_1"
+        $stoacl = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual 1 $stoacl.IPv6Rules.Count
+        Assert-AreEqual $ipv6_2 $stoacl.IPv6Rules[0].IPAddressOrRange
+
+        Update-AzStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname -Ipv6Rule @() -IpRule @()
+        $stoacl = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual 0 $stoacl.IPv6Rules.Count
+        Assert-AreEqual 0 $stoacl.IpRules.Count
+
+        foreach($ipv6rule in $stoaclipv6rule) {
+            Add-AzStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -IPv6AddressOrRange $ipv6rule.IPAddressOrRange
+            # add again should not fail
+            Add-AzStorageAccountNetworkRule -ResourceGroupName $rgname -Name $stoname -IPv6Rule $ipv6rule
+        }
+        $stoacl = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual 2 $stoacl.IPv6Rules.Count
+
+        $sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -NetworkRuleSet (@{bypass="AzureServices";
+            ipRules=(@{IPAddressOrRange="$ip1";Action="allow"},@{IPAddressOrRange="$ip2";Action="allow"});
+            ipv6Rules=(@{IPAddressOrRange="$ipv6_2";Action="allow"},@{IPAddressOrRange="$ipv6_3";Action="allow"});
+            defaultAction="Allow"}) 
+
+        $stoacl = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual 2 $stoacl.IPv6Rules.Count
+        Assert-AreEqual 2 $stoacl.IpRules.Count
+        Assert-AreEqual 4 $stoacl.Bypass
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname
     }
     finally
     {

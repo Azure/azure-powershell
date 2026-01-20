@@ -337,5 +337,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-StorageAccountGeoPriorityReplication");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageAccountIpv6NetworkRuleSet()
+        {
+            TestRunner.RunTestScript("Test-StorageAccountIpv6NetworkRuleSet");
+        }
     }
 }
