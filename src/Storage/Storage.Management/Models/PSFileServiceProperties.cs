@@ -17,7 +17,6 @@ using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
