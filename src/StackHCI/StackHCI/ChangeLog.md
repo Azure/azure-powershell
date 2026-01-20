@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Improved cloud deployment detection during Azure Arc repair operations to prevent duplicate enablement attempts and ensure smoother deployment experiences.
-* If cluster is registered through cloud deployment, arc enablement of nodes will no longer be triggered during repair registration.
+* Fixed issue where Arc enablement was incorrectly triggered during repair registration for cloud deployments
 
 ## Version 2.6.5
 * ARC Enablement of Nodes Before Triggering Registration in New Registration Flow.
