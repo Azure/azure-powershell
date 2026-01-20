@@ -40,8 +40,8 @@ function Test-AzureVMGetJobs
 		$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
 
 		# undelete backup item
-		$undeleteJob = Undo-AzRecoveryServicesBackupItemDeletion -Item $item[0] -VaultId $vault.ID
-		$undeleteJob2 = Undo-AzRecoveryServicesBackupItemDeletion -Item $item[1] -VaultId $vault.ID
+		# $undeleteJob = Undo-AzRecoveryServicesBackupItemDeletion -Item $item[0] -VaultId $vault.ID
+		# $undeleteJob2 = Undo-AzRecoveryServicesBackupItemDeletion -Item $item[1] -VaultId $vault.ID
 
 		# Enable Protection
 		Enable-Protection $vault $vm1

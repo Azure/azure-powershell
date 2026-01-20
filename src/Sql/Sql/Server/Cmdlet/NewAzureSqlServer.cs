@@ -15,7 +15,9 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -158,6 +160,22 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public Guid? FederatedClientId { get; set; }
 
         /// <summary>
+        /// Boolean Value for enabling Soft Delete Retention for server
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specify whether to enable soft-delete retention for the server. When enabled, a dropped server can be restored within the retention window (defaults to 7 days if not specified). To set a custom retention period use -SoftDeleteRetentionDays.")]
+        [PSArgumentCompleter("true", "false")]
+        [GenericBreakingChangeWithVersion("The EnableSoftDelete parameter will be removed. Please use SoftDeleteRetentionDays parameter instead. Setting SoftDeleteRetentionDays to 1-7 enables soft-delete, and setting it to 0 disables soft-delete.", "16.0.0", "7.0.0")]
+        public bool? EnableSoftDelete { get; set; }
+
+        /// <summary>
+        /// Soft-delete retention days for the server
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies the number of days to retain a deleted server for possible restoration. Valid values are 0-7. A value of 0 disables soft-delete retention.")]
+        public int? SoftDeleteRetentionDays { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -172,6 +190,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 throw new PSArgumentException(Properties.Resources.MissingSQLAdministratorCredentials, "SqlAdministratorCredentials");
             }
 
+            ValidateSoftDeleteParameters(SoftDeleteRetentionDays, EnableSoftDelete);
+
             base.ExecuteCmdlet();
         }
 
@@ -185,7 +205,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             {
                 ModelAdapter.GetServer(this.ResourceGroupName, this.ServerName);
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
@@ -215,6 +235,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 throw new PSArgumentException(string.Format(Properties.Resources.ServerNameInvalid, this.ServerName), "ServerName");
             }
 
+            int? softDeleteRetentionDays = ComputeSoftDeleteRetentionDays(this.SoftDeleteRetentionDays, this.EnableSoftDelete);
+
             List<Model.AzureSqlServerModel> newEntity = new List<Model.AzureSqlServerModel>();
             newEntity.Add(new Model.AzureSqlServerModel()
             {
@@ -237,7 +259,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                     AzureAdOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,
                     Login = this.ExternalAdminName,
                     Sid = this.ExternalAdminSID
-                }              
+                },
+                SoftDeleteRetentionDays = softDeleteRetentionDays
             });
             return newEntity;
         }

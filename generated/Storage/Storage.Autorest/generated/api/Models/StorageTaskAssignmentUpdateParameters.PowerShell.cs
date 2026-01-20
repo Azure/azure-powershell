@@ -116,10 +116,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageTaskAssignmentUpdatePropertiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("ProvisioningState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).ProvisioningState, global::System.Convert.ToString);
-            }
             if (content.Contains("ExecutionContext"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).ExecutionContext = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateExecutionContext) content.GetValueForProperty("ExecutionContext",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).ExecutionContext, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageTaskAssignmentUpdateExecutionContextTypeConverter.ConvertFrom);
@@ -143,6 +139,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("Description"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             if (content.Contains("RunStatusRunResult"))
             {
@@ -269,10 +269,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageTaskAssignmentUpdatePropertiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("ProvisioningState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).ProvisioningState, global::System.Convert.ToString);
-            }
             if (content.Contains("ExecutionContext"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).ExecutionContext = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateExecutionContext) content.GetValueForProperty("ExecutionContext",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).ExecutionContext, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageTaskAssignmentUpdateExecutionContextTypeConverter.ConvertFrom);
@@ -296,6 +292,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("Description"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateParametersInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             if (content.Contains("RunStatusRunResult"))
             {

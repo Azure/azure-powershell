@@ -30,6 +30,12 @@ Get-AzWorkloadsSapCentralInstance -InputObject <ISapVirtualInstanceIdentity> [-D
  [<CommonParameters>]
 ```
 
+### GetViaIdentitySapVirtualInstance
+```
+Get-AzWorkloadsSapCentralInstance -Name <String> -SapVirtualInstanceInputObject <ISapVirtualInstanceIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets the SAP Central Services Instance resource.
 
@@ -81,7 +87,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
@@ -100,7 +105,7 @@ Central Services Instance resource name string modeled as parameter for auto gen
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentitySapVirtualInstance
 Aliases:
 
 Required: True
@@ -123,6 +128,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SapVirtualInstanceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+Parameter Sets: GetViaIdentitySapVirtualInstance
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -166,7 +186,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapCentralServerInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapCentralServerInstance
 
 ## NOTES
 
@@ -175,3 +195,4 @@ ALIASES
 Get-AzVISCentralInstance
 
 ## RELATED LINKS
+

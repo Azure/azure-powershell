@@ -11,6 +11,18 @@ Locale: en-US
 This topic displays the help topics for the Azure Compute Cmdlets.
 
 ## Az.Compute Cmdlets
+### [Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity](Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity.md)
+Adds a Rules Identity to a PSGalleryInVmAccessControlProfileVersion object.
+
+### [Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege](Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege.md)
+Adds a Rules Privilege to a PSGalleryInVmAccessControlProfileVersion object.
+
+### [Add-AzGalleryInVMAccessControlProfileVersionRulesRole](Add-AzGalleryInVMAccessControlProfileVersionRulesRole.md)
+Adds a Rules Role to a PSGalleryInVmAccessControlProfileVersion object.
+
+### [Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment](Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment.md)
+Adds a Rules Role Assignment to a PSGalleryInVmAccessControlProfileVersion object.
+
 ### [Add-AzImageDataDisk](Add-AzImageDataDisk.md)
 Adds a data disk to an image object.
 
@@ -124,6 +136,12 @@ Get or list gallery image definitions.
 
 ### [Get-AzGalleryImageVersion](Get-AzGalleryImageVersion.md)
 Get or list gallery image versions.
+
+### [Get-AzGalleryInVMAccessControlProfile](Get-AzGalleryInVMAccessControlProfile.md)
+Gets the specified gallery inVMAccessControlProfile or a list of gallery inVMAccessControlProfiles from the specified gallery.
+
+### [Get-AzGalleryInVMAccessControlProfileVersion](Get-AzGalleryInVMAccessControlProfileVersion.md)
+Gets the specified version of a gallery inVMAccessControlProfile or a list of versions from the specified gallery inVMAccessControlProfile.
 
 ### [Get-AzHost](Get-AzHost.md)
 Get or list hosts.
@@ -314,6 +332,15 @@ Create a gallery image definition.
 ### [New-AzGalleryImageVersion](New-AzGalleryImageVersion.md)
 Create a gallery image version.
 
+### [New-AzGalleryInVMAccessControlProfile](New-AzGalleryInVMAccessControlProfile.md)
+Creates a new gallery inVMAccessControlProfile.
+
+### [New-AzGalleryInVMAccessControlProfileVersion](New-AzGalleryInVMAccessControlProfileVersion.md)
+Creates a new version of a gallery inVMAccessControlProfile.
+
+### [New-AzGalleryInVMAccessControlProfileVersionConfig](New-AzGalleryInVMAccessControlProfileVersionConfig.md)
+Creates a local PSGalleryInVmAccessControlProfileVersion object.
+
 ### [New-AzHost](New-AzHost.md)
 Creates a  host.
 
@@ -422,6 +449,24 @@ Delete a gallery image definition.
 ### [Remove-AzGalleryImageVersion](Remove-AzGalleryImageVersion.md)
 Delete a gallery image version.
 
+### [Remove-AzGalleryInVMAccessControlProfile](Remove-AzGalleryInVMAccessControlProfile.md)
+Removes a gallery inVMAccessControlProfile.
+
+### [Remove-AzGalleryInVMAccessControlProfileVersion](Remove-AzGalleryInVMAccessControlProfileVersion.md)
+Removes a specific version of a gallery inVMAccessControlProfile.
+
+### [Remove-AzGalleryInVMAccessControlProfileVersionRulesIdentity](Remove-AzGalleryInVMAccessControlProfileVersionRulesIdentity.md)
+Removes a Rules Identity from a PSGalleryInVmAccessControlProfileVersion object.
+
+### [Remove-AzGalleryInVMAccessControlProfileVersionRulesPrivilege](Remove-AzGalleryInVMAccessControlProfileVersionRulesPrivilege.md)
+Removes a Rules Privilege from a PSGalleryInVmAccessControlProfileVersion object.
+
+### [Remove-AzGalleryInVMAccessControlProfileVersionRulesRole](Remove-AzGalleryInVMAccessControlProfileVersionRulesRole.md)
+Removes a Rules Role from a PSGalleryInVmAccessControlProfileVersion object.
+
+### [Remove-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment](Remove-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment.md)
+Removes a Rules Role Assignment from a PSGalleryInVmAccessControlProfileVersion object.
+
 ### [Remove-AzHost](Remove-AzHost.md)
 Removes a host.
 
@@ -438,7 +483,7 @@ Removes a data disk from an image object.
 Delete Proximity Placement Group resource.
 
 ### [Remove-AzRestorePoint](Remove-AzRestorePoint.md)
-This cmdlet can remove a Restore Point
+This cmdlet can remove a Restore Point 
 
 ### [Remove-AzRestorePointCollection](Remove-AzRestorePointCollection.md)
 This Cmdlet can remove Restore Point Collection
@@ -638,8 +683,11 @@ Sets the operating system disk properties on a virtual machine.
 ### [Set-AzVMPlan](Set-AzVMPlan.md)
 Sets the Marketplace plan information on a virtual machine.
 
+### [Set-AzVMProxyAgentSetting](Set-AzVMProxyAgentSetting.md)
+Sets the Proxy Agent settings properties for a PSVirtualMachine object.
+
 ### [Set-AzVMRunCommand](Set-AzVMRunCommand.md)
-The operation to create or update the run command.
+The operation to update the run command.
 
 ### [Set-AzVMSecurityProfile](Set-AzVMSecurityProfile.md)
 Sets the SecurityType enum for Virtual Machines.
@@ -665,6 +713,9 @@ Sets the orchestration service state for the VMSS.
 ### [Set-AzVmssOsProfile](Set-AzVmssOsProfile.md)
 Sets the VMSS operating system profile properties.
 
+### [Set-AzVmssProxyAgentSetting](Set-AzVmssProxyAgentSetting.md)
+Sets the Proxy Agent settings properties for a PSVirtualMachineScaleSet object.
+
 ### [Set-AzVmssRollingUpgradePolicy](Set-AzVmssRollingUpgradePolicy.md)
 Sets the VMSS rolling upgrade policy properties.
 
@@ -681,7 +732,7 @@ Modifies UEFI properties of gen 2 virtual machines that are part of virtual mach
 Modifies the state of a VMSS instance.
 
 ### [Set-AzVmssVMRunCommand](Set-AzVmssVMRunCommand.md)
-The operation to create or update the VMSS VM run command.
+The operation to update the VMSS VM run command.
 
 ### [Set-AzVMUefi](Set-AzVMUefi.md)
 Modifies UEFI properties of a gen 2 virtual machine
@@ -693,7 +744,7 @@ Starts an Azure virtual machine.
 Starts the VMSS or a set of virtual machines within the VMSS.
 
 ### [Start-AzVmssRollingExtensionUpgrade](Start-AzVmssRollingExtensionUpgrade.md)
-This cmdlet starts a rolling upgrade for all extensions on the given Virtual Machine Scale Set to the latest available version.
+This cmdlet starts a rolling upgrade for all extensions on the given Virtual Machine Scale Set to the latest available version. 
 
 ### [Start-AzVmssRollingOSUpgrade](Start-AzVmssRollingOSUpgrade.md)
 Starts a rolling upgrade to move all virtual machine scale set instances to the latest available Platform Image OS version.
@@ -739,6 +790,12 @@ Update a gallery image definition.
 
 ### [Update-AzGalleryImageVersion](Update-AzGalleryImageVersion.md)
 Update a gallery image version.
+
+### [Update-AzGalleryInVMAccessControlProfile](Update-AzGalleryInVMAccessControlProfile.md)
+Updates a gallery inVMAccessControlProfile.
+
+### [Update-AzGalleryInVMAccessControlProfileVersion](Update-AzGalleryInVMAccessControlProfileVersion.md)
+Updates a specific version of a gallery inVMAccessControlProfile.
 
 ### [Update-AzHost](Update-AzHost.md)
 Updates the Dedicated Host.

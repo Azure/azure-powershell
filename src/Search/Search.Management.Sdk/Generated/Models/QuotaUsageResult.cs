@@ -8,8 +8,7 @@ namespace Microsoft.Azure.Management.Search.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes the quota usage for a particular sku supported by Azure Cognitive
-    /// Search.
+    /// Describes the quota usage for a particular SKU.
     /// </summary>
     public partial class QuotaUsageResult
     {
@@ -25,20 +24,20 @@ namespace Microsoft.Azure.Management.Search.Models
         /// Initializes a new instance of the QuotaUsageResult class.
         /// </summary>
 
-        /// <param name="id">The resource id of the quota usage sku endpoint for Microsoft.Search
+        /// <param name="id">The resource ID of the quota usage SKU endpoint for Microsoft.Search
         /// provider.
         /// </param>
 
-        /// <param name="unit">The unit of measurement for the search sku.
+        /// <param name="unit">The unit of measurement for the search SKU.
         /// </param>
 
-        /// <param name="currentValue">The currently used up value for the particular search sku.
+        /// <param name="currentValue">The currently used up value for the particular search SKU.
         /// </param>
 
-        /// <param name="limit">The quota limit for the particular search sku.
+        /// <param name="limit">The quota limit for the particular search SKU.
         /// </param>
 
-        /// <param name="name">The name of the sku supported by Azure Cognitive Search.
+        /// <param name="name">The name of the SKU supported by Azure AI Search.
         /// </param>
         public QuotaUsageResult(string id = default(string), string unit = default(string), int? currentValue = default(int?), int? limit = default(int?), QuotaUsageResultName name = default(QuotaUsageResultName))
 
@@ -58,32 +57,32 @@ namespace Microsoft.Azure.Management.Search.Models
 
 
         /// <summary>
-        /// Gets or sets the resource id of the quota usage sku endpoint for
+        /// Gets or sets the resource ID of the quota usage SKU endpoint for
         /// Microsoft.Search provider.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
         public string Id {get; set; }
 
         /// <summary>
-        /// Gets or sets the unit of measurement for the search sku.
+        /// Gets or sets the unit of measurement for the search SKU.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "unit")]
         public string Unit {get; set; }
 
         /// <summary>
-        /// Gets or sets the currently used up value for the particular search sku.
+        /// Gets or sets the currently used up value for the particular search SKU.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "currentValue")]
         public int? CurrentValue {get; set; }
 
         /// <summary>
-        /// Gets or sets the quota limit for the particular search sku.
+        /// Gets or sets the quota limit for the particular search SKU.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "limit")]
         public int? Limit {get; set; }
 
         /// <summary>
-        /// Gets the name of the sku supported by Azure Cognitive Search.
+        /// Gets the name of the SKU supported by Azure AI Search.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public QuotaUsageResultName Name {get; private set; }

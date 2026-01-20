@@ -63,10 +63,9 @@ Accept wildcard characters: False
 
 ### -Registry
 The Registry Object.
-To construct, see NOTES section for REGISTRY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry
 Parameter Sets: GetByRegistry
 Aliases:
 
@@ -160,11 +159,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.PSContainerRegistryCredential
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.PSContainerRegistryCredential
 
 ## NOTES
 

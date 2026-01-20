@@ -45,26 +45,32 @@ title: NetworkCloud
 service-name: NetworkCloud
 subject-prefix: NetworkCloud
 
-# If there are post APIs for some kinds of actions in the RP, you may need to
-# uncomment following line to support viaIdentity for these post APIs
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
+  # Fix model definition line break replacement issue
+  - from: swagger-document
+    where: $.definitions.L3NetworkProperties.properties.ipv4ConnectedPrefix
+    transform: $['description'] = 'The IPV4 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type is IPV4 or DualStack.'
+  - from: swagger-document
+    where: $.definitions.L3NetworkProperties.properties.ipv6ConnectedPrefix
+    transform: $['description'] = 'The IPV6 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type is IPV6 or DualStack.'
+  - from: swagger-document
+    where: $.definitions.BareMetalMachinePatchProperties.properties.machineDetails
+    transform: $['description'] = 'The details provided by the customer during the creation of rack manifests that allows for custom data to be associated with this machine.'
+  - from: swagger-document
+    where: $.definitions.ClusterProperties.properties.computeRackDefinitions
+    transform: $['description'] = 'The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.'
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Cordon$|^CordonViaIdentity$|^DeployViaIdentity$|^Deploy$|^Enable$|^EnableViaIdentity$|^Replace$|^ReplaceViaIdentity$|^Run$|^RunViaIdentity$|^PowerOff$|^PowerOffViaIdentity$
+      variant: ^(Create|Update|Cordon|Deploy|Enable|Replace|Run|PowerOff)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentityExpanded$
     remove: true
   - where:
       subject: KuberneteClusterNode
-      variant: ^Restart$|^RestartViaIdentity$
+      variant: ^(Restart)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   # Remove the set-* cmdlet
   - where:
@@ -287,22 +293,74 @@ directive:
   - from: swagger-document
     where: $.definitions.ServicePrincipalInformation.properties.password
     transform: $.format = "password"
-
+  # Fix required property missing mutability
+  - from: swagger-document
+    where: $.definitions.BgpAdvertisement.properties.ipAddressPools
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.ControlPlaneNodeConfiguration.properties.vmSkuName
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.InitialAgentPoolConfiguration.properties.count
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.InitialAgentPoolConfiguration.properties.mode
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.InitialAgentPoolConfiguration.properties.vmSkuName
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.InitialAgentPoolConfiguration.properties.name
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.IpAddressPool.properties.name
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.L3NetworkAttachmentConfiguration.properties.networkId
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.NetworkAttachment.properties.attachedNetworkId
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.NetworkAttachment.properties.ipAllocationMethod
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.ServiceLoadBalancerBgpPeer.properties.name
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.ServiceLoadBalancerBgpPeer.properties.peerAddress
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.ServiceLoadBalancerBgpPeer.properties.peerAsn
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.VirtualMachinePlacementHint.properties.hintType
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.VirtualMachinePlacementHint.properties.schedulingExecution
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.VirtualMachinePlacementHint.properties.resourceId
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.VirtualMachinePlacementHint.properties.scope
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  
   # Add model-cmdlet for any properties/sub-properties of complex type
   - model-cmdlet:
-    - BareMetalMachineConfigurationData
-    - BgpAdvertisement
-    - BgpServiceLoadBalancerConfiguration
-    - ControlPlaneNodeConfiguration
-    - EgressEndpoint
-    - EndpointDependency
-    - InitialAgentPoolConfiguration
-    - IpAddressPool
-    - KeySetUser
-    - L3NetworkAttachmentConfiguration
-    - NetworkAttachment
-    - RackDefinition
-    - ServiceLoadBalancerBgpPeer
-    - StorageApplianceConfigurationData
-    - VirtualMachinePlacementHint
+    - model-name: BareMetalMachineConfigurationData
+    - model-name: BgpAdvertisement
+    - model-name: BgpServiceLoadBalancerConfiguration
+    - model-name: ControlPlaneNodeConfiguration
+    - model-name: EgressEndpoint
+    - model-name: EndpointDependency
+    - model-name: InitialAgentPoolConfiguration
+    - model-name: IpAddressPool
+    - model-name: KeySetUser
+    - model-name: L3NetworkAttachmentConfiguration
+    - model-name: NetworkAttachment
+    - model-name: RackDefinition
+    - model-name: ServiceLoadBalancerBgpPeer
+    - model-name: StorageApplianceConfigurationData
+    - model-name: VirtualMachinePlacementHint
 ```

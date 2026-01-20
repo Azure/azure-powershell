@@ -17,18 +17,18 @@ Creates a streaming job or replaces an already existing streaming job.
 Update-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IfMatch <String>] [-IfNoneMatch <String>] [-DataLocale <String>]
  [-EventsLateArrivalMaxDelayInSecond <Int32>] [-EventsOutOfOrderMaxDelayInSecond <Int32>]
- [-EventsOutOfOrderPolicy <EventsOutOfOrderPolicy>] [-OutputErrorPolicy <OutputErrorPolicy>] [-Tag <Hashtable>]
- [-ClusterId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EventsOutOfOrderPolicy <String>] [-OutputErrorPolicy <String>] [-Tag <Hashtable>] [-ClusterId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzStreamAnalyticsJob -InputObject <IStreamAnalyticsIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
  [-DataLocale <String>] [-EventsLateArrivalMaxDelayInSecond <Int32>]
- [-EventsOutOfOrderMaxDelayInSecond <Int32>] [-EventsOutOfOrderPolicy <EventsOutOfOrderPolicy>]
- [-OutputErrorPolicy <OutputErrorPolicy>] [-Tag <Hashtable>] [-ClusterId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EventsOutOfOrderMaxDelayInSecond <Int32>] [-EventsOutOfOrderPolicy <String>] [-OutputErrorPolicy <String>]
+ [-Tag <Hashtable>] [-ClusterId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 Indicates the policy to apply to events that arrive out of order in the input event stream.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.EventsOutOfOrderPolicy
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -256,7 +256,7 @@ Accept wildcard characters: False
 Indicates the policy to apply to events that arrive at the output and cannot be written to the external storage due to being malformed (missing column values, column values of wrong type or size).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.OutputErrorPolicy
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -353,7 +353,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamingJob
 
 ## NOTES
 

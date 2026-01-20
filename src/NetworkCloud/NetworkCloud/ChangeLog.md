@@ -18,6 +18,19 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.0
+* Below commands to support for new Managed Identity setting.
+  * Cmdlet `New-AzNetworkCloudCluster`
+  * Cmdlet `New-AzNetworkCloudClusterManager`
+  * Cmdlet `Update-AzNetworkCloudCluster`
+  * Cmdlet `Update-AzNetworkCloudClusterManager`
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).).
+
+## Version 1.2.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+## Version 1.2.0
 * Upgraded API version to 2025-02-01
 
 ## Version 1.1.0

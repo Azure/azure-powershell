@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStorageTaskAssignment
 
 ## SYNOPSIS
-update storage task assignment properties
+Update storage task assignment properties
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Update-AzStorageTaskAssignment -Name <String> -StorageAccountInputObject <IStora
 ```
 
 ## DESCRIPTION
-update storage task assignment properties
+Update storage task assignment properties
 
 ## EXAMPLES
 
@@ -340,6 +340,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

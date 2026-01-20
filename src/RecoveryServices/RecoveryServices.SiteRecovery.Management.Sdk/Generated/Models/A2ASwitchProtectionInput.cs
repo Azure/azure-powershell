@@ -61,9 +61,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="recoveryCapacityReservationGroupId">The recovery capacity reservation group Id.
         /// </param>
 
+        /// <param name="platformFaultDomain">the platform fault domain.
+        /// </param>
+
         /// <param name="diskEncryptionInfo">The recovery disk encryption information.
         /// </param>
-        public A2ASwitchProtectionInput(string recoveryContainerId = default(string), System.Collections.Generic.IList<A2AVmDiskInputDetails> vmDisks = default(System.Collections.Generic.IList<A2AVmDiskInputDetails>), System.Collections.Generic.IList<A2AVmManagedDiskInputDetails> vmManagedDisks = default(System.Collections.Generic.IList<A2AVmManagedDiskInputDetails>), string recoveryResourceGroupId = default(string), string recoveryCloudServiceId = default(string), string recoveryAvailabilitySetId = default(string), string policyId = default(string), string recoveryBootDiagStorageAccountId = default(string), string recoveryAvailabilityZone = default(string), string recoveryProximityPlacementGroupId = default(string), string recoveryVirtualMachineScaleSetId = default(string), string recoveryCapacityReservationGroupId = default(string), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo))
+        public A2ASwitchProtectionInput(string recoveryContainerId = default(string), System.Collections.Generic.IList<A2AVmDiskInputDetails> vmDisks = default(System.Collections.Generic.IList<A2AVmDiskInputDetails>), System.Collections.Generic.IList<A2AVmManagedDiskInputDetails> vmManagedDisks = default(System.Collections.Generic.IList<A2AVmManagedDiskInputDetails>), string recoveryResourceGroupId = default(string), string recoveryCloudServiceId = default(string), string recoveryAvailabilitySetId = default(string), string policyId = default(string), string recoveryBootDiagStorageAccountId = default(string), string recoveryAvailabilityZone = default(string), string recoveryProximityPlacementGroupId = default(string), string recoveryVirtualMachineScaleSetId = default(string), string recoveryCapacityReservationGroupId = default(string), int? platformFaultDomain = default(int?), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo))
 
         {
             this.RecoveryContainerId = recoveryContainerId;
@@ -78,6 +81,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.RecoveryProximityPlacementGroupId = recoveryProximityPlacementGroupId;
             this.RecoveryVirtualMachineScaleSetId = recoveryVirtualMachineScaleSetId;
             this.RecoveryCapacityReservationGroupId = recoveryCapacityReservationGroupId;
+            this.PlatformFaultDomain = platformFaultDomain;
             this.DiskEncryptionInfo = diskEncryptionInfo;
             CustomInit();
         }
@@ -159,6 +163,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryCapacityReservationGroupId")]
         public string RecoveryCapacityReservationGroupId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the platform fault domain.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "platformFaultDomain")]
+        public int? PlatformFaultDomain {get; set; }
 
         /// <summary>
         /// Gets or sets the recovery disk encryption information.

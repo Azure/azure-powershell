@@ -789,10 +789,6 @@
     "alias": "LoadTesting"
   },
   {
-    "alias": "MobileNetwork",
-    "module": "MobileNetwork"
-  },
-  {
     "module": "ArcResourceBridge",
     "alias": "ArcResourceBridge"
   },
@@ -839,10 +835,6 @@
   {
     "alias": "NetworkCloud",
     "module": "NetworkCloud"
-  },
-  {
-    "alias": "HdInsightOnAks",
-    "module": "HdInsightOnAks"
   },
   {
     "module": "NetworkAnalytics",
@@ -991,5 +983,29 @@
   {
     "alias": "StorageDiscovery",
     "module": "StorageDiscovery"
+  },
+  {
+    "alias": "Sftp",
+    "module": "Sftp"
+  },
+  {
+    "module": "Site",
+    "alias": "Site"
+  },
+  {
+    "alias": "DnsResolver",
+    "module": "DnsResolver"
+  },
+  {
+    "module": "DurableTask",
+    "alias": "DurableTask"
+  },
+  {
+    "alias": "DisconnectedOperations",
+    "module": "DisconnectedOperations"
+  },
+  {
+    "alias": "EdgeAction",
+    "module": "EdgeAction"
   }
 ]

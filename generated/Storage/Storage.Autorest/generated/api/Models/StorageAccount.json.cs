@@ -78,11 +78,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                 return;
             }
             __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.TrackedResource(json);
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountProperties.FromJson(__jsonProperties) : _property;}
             {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Sku.FromJson(__jsonSku) : _sku;}
             {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Identity.FromJson(__jsonIdentity) : _identity;}
             {_extendedLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("extendedLocation"), out var __jsonExtendedLocation) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ExtendedLocation.FromJson(__jsonExtendedLocation) : _extendedLocation;}
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountProperties.FromJson(__jsonProperties) : _property;}
+            {_placement = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("placement"), out var __jsonPlacement) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Placement.FromJson(__jsonPlacement) : _placement;}
             {_kind = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("kind"), out var __jsonKind) ? (string)__jsonKind : (string)_kind;}
+            {_zone = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("zones"), out var __jsonZones) ? If( __jsonZones as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _zone;}
             AfterFromJson(json);
         }
 
@@ -106,16 +108,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                 return container;
             }
             __trackedResource?.ToJson(container, serializationMode);
+            AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._sku ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._sku.ToJson(null,serializationMode) : null, "sku" ,container.Add );
             }
             AddIf( null != this._identity ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._identity.ToJson(null,serializationMode) : null, "identity" ,container.Add );
             AddIf( null != this._extendedLocation ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._extendedLocation.ToJson(null,serializationMode) : null, "extendedLocation" ,container.Add );
-            AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
+            AddIf( null != this._placement ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._placement.ToJson(null,serializationMode) : null, "placement" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._kind)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._kind.ToString()) : null, "kind" ,container.Add );
+            }
+            if (null != this._zone)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.XNodeArray();
+                foreach( var __x in this._zone )
+                {
+                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                }
+                container.Add("zones",__w);
             }
             AfterToJson(ref container);
             return container;

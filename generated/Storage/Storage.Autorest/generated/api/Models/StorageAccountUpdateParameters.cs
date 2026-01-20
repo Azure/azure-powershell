@@ -23,35 +23,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string AccessTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).AccessTier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).AccessTier = value ?? null; }
 
-        /// <summary>Specifies the Active Directory account type for Azure Storage.</summary>
+        /// <summary>
+        /// Specifies the Active Directory account type for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication),
+        /// this property is optional. If provided, samAccountName should also be provided. For directoryServiceOptions AADDS (Entra
+        /// DS authentication) or AADKERB (Entra authentication), this property can be omitted.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string ActiveDirectoryPropertyAccountType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ActiveDirectoryPropertyAccountType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ActiveDirectoryPropertyAccountType = value ?? null; }
 
-        /// <summary>Specifies the security identifier (SID) for Azure Storage.</summary>
+        /// <summary>
+        /// Specifies the security identifier (SID) for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication),
+        /// this property is required. Otherwise, it can be omitted.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string ActiveDirectoryPropertyAzureStorageSid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ActiveDirectoryPropertyAzureStorageSid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ActiveDirectoryPropertyAzureStorageSid = value ?? null; }
 
-        /// <summary>Specifies the domain GUID.</summary>
+        /// <summary>
+        /// Specifies the domain GUID. If directoryServiceOptions is set to AD (AD DS authentication), this property is required.
+        /// If directoryServiceOptions is set to AADDS (Entra DS authentication), this property can be omitted. If directoryServiceOptions
+        /// is set to AADKERB (Entra authentication), this property is optional; it is needed to support configuration of directory-
+        /// and file-level permissions via Windows File Explorer, but is not required for authentication.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string ActiveDirectoryPropertyDomainGuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ActiveDirectoryPropertyDomainGuid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ActiveDirectoryPropertyDomainGuid = value ?? null; }
 
-        /// <summary>Specifies the primary domain that the AD DNS server is authoritative for.</summary>
+        /// <summary>
+        /// Specifies the primary domain that the AD DNS server is authoritative for. This property is required if directoryServiceOptions
+        /// is set to AD (AD DS authentication). If directoryServiceOptions is set to AADDS (Entra DS authentication), providing this
+        /// property is optional, as it will be inferred automatically if omitted. If directoryServiceOptions is set to AADKERB (Entra
+        /// authentication), this property is optional; it is needed to support configuration of directory- and file-level permissions
+        /// via Windows File Explorer, but is not required for authentication.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string ActiveDirectoryPropertyDomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ActiveDirectoryPropertyDomainName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ActiveDirectoryPropertyDomainName = value ?? null; }
 
-        /// <summary>Specifies the security identifier (SID).</summary>
+        /// <summary>
+        /// Specifies the security identifier (SID) of the AD domain. If directoryServiceOptions is set to AD (AD DS authentication),
+        /// this property is required. Otherwise, it can be omitted.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string ActiveDirectoryPropertyDomainSid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ActiveDirectoryPropertyDomainSid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ActiveDirectoryPropertyDomainSid = value ?? null; }
 
-        /// <summary>Specifies the Active Directory forest to get.</summary>
+        /// <summary>
+        /// Specifies the Active Directory forest to get. If directoryServiceOptions is set to AD (AD DS authentication), this property
+        /// is required. Otherwise, it can be omitted.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string ActiveDirectoryPropertyForestName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ActiveDirectoryPropertyForestName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ActiveDirectoryPropertyForestName = value ?? null; }
 
-        /// <summary>Specifies the NetBIOS domain name.</summary>
+        /// <summary>
+        /// Specifies the NetBIOS domain name. If directoryServiceOptions is set to AD (AD DS authentication), this property is required.
+        /// Otherwise, it can be omitted.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string ActiveDirectoryPropertyNetBiosDomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ActiveDirectoryPropertyNetBiosDomainName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ActiveDirectoryPropertyNetBiosDomainName = value ?? null; }
 
-        /// <summary>Specifies the Active Directory SAMAccountName for Azure Storage.</summary>
+        /// <summary>
+        /// Specifies the Active Directory SAMAccountName for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication),
+        /// this property is optional. If provided, accountType should also be provided. For directoryServiceOptions AADDS (Entra
+        /// DS authentication) or AADKERB (Entra authentication), this property can be omitted.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string ActiveDirectoryPropertySamAccountName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ActiveDirectoryPropertySamAccountName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ActiveDirectoryPropertySamAccountName = value ?? null; }
 
@@ -122,6 +153,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string DnsEndpointType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).DnsEndpointType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).DnsEndpointType = value ?? null; }
 
+        /// <summary>
+        /// A boolean flag which indicates whether IPv6 storage endpoints are to be published.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? DualStackEndpointPreferencePublishIpv6Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).DualStackEndpointPreferencePublishIpv6Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).DualStackEndpointPreferencePublishIpv6Endpoint = value ?? default(bool); }
+
         /// <summary>Enables extended group support with local users feature, if set to true</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public bool? EnableExtendedGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).EnableExtendedGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).EnableExtendedGroup = value ?? default(bool); }
@@ -135,6 +172,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryption Encryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).Encryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).Encryption = value ?? null /* model class */; }
+
+        /// <summary>
+        /// Indicates whether Blob Geo Priority Replication is enabled for the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? GeoPriorityReplicationStatusIsBlobEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).GeoPriorityReplicationStatusIsBlobEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).GeoPriorityReplicationStatusIsBlobEnabled = value ?? default(bool); }
 
         /// <summary>Backing field for <see cref="Identity" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentity _identity;
@@ -223,49 +266,61 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>
         /// Internal Acessors for AzureFileIdentityBasedAuthenticationActiveDirectoryProperty
         /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IActiveDirectoryProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.AzureFileIdentityBasedAuthenticationActiveDirectoryProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).AzureFileIdentityBasedAuthenticationActiveDirectoryProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).AzureFileIdentityBasedAuthenticationActiveDirectoryProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IActiveDirectoryProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.AzureFileIdentityBasedAuthenticationActiveDirectoryProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).AzureFileIdentityBasedAuthenticationActiveDirectoryProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).AzureFileIdentityBasedAuthenticationActiveDirectoryProperty = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for AzureFileIdentityBasedAuthenticationSmbOAuthSetting</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbOAuthSettings Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.AzureFileIdentityBasedAuthenticationSmbOAuthSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).AzureFileIdentityBasedAuthenticationSmbOAuthSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).AzureFileIdentityBasedAuthenticationSmbOAuthSetting = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for AzureFilesIdentityBasedAuthentication</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthentication Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.AzureFilesIdentityBasedAuthentication { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).AzureFilesIdentityBasedAuthentication; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).AzureFilesIdentityBasedAuthentication = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthentication Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.AzureFilesIdentityBasedAuthentication { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).AzureFilesIdentityBasedAuthentication; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).AzureFilesIdentityBasedAuthentication = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for CustomDomain</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICustomDomain Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.CustomDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).CustomDomain; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).CustomDomain = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICustomDomain Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.CustomDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).CustomDomain; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).CustomDomain = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for DualStackEndpointPreference</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDualStackEndpointPreference Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.DualStackEndpointPreference { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).DualStackEndpointPreference; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).DualStackEndpointPreference = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for GeoPriorityReplicationStatus</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatus Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.GeoPriorityReplicationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).GeoPriorityReplicationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).GeoPriorityReplicationStatus = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentity Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Identity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for ImmutableStorageWithVersioning</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IImmutableStorageAccount Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.ImmutableStorageWithVersioning { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ImmutableStorageWithVersioning; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ImmutableStorageWithVersioning = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IImmutableStorageAccount Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.ImmutableStorageWithVersioning { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ImmutableStorageWithVersioning; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ImmutableStorageWithVersioning = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ImmutableStorageWithVersioningImmutabilityPolicy</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountImmutabilityPolicyProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.ImmutableStorageWithVersioningImmutabilityPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ImmutableStorageWithVersioningImmutabilityPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ImmutableStorageWithVersioningImmutabilityPolicy = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountImmutabilityPolicyProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.ImmutableStorageWithVersioningImmutabilityPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ImmutableStorageWithVersioningImmutabilityPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).ImmutableStorageWithVersioningImmutabilityPolicy = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for KeyPolicy</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IKeyPolicy Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.KeyPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).KeyPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).KeyPolicy = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IKeyPolicy Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.KeyPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).KeyPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).KeyPolicy = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NetworkRuleSet</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkRuleSet Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.NetworkRuleSet { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).NetworkRuleSet; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).NetworkRuleSet = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkRuleSet Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.NetworkRuleSet { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).NetworkRuleSet; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).NetworkRuleSet = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for Placement</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPlacement Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.Placement { get => (this._placement = this._placement ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Placement()); set { {_placement = value;} } }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParameters Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountPropertiesUpdateParameters()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for RoutingPreference</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IRoutingPreference Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.RoutingPreference { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).RoutingPreference; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).RoutingPreference = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IRoutingPreference Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.RoutingPreference { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).RoutingPreference; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).RoutingPreference = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SasPolicy</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISasPolicy Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.SasPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).SasPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).SasPolicy = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISasPolicy Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.SasPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).SasPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).SasPolicy = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Sku()); set { {_sku = value;} } }
 
         /// <summary>Internal Acessors for SkuTier</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Tier = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersInternal.SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Tier = value ?? null; }
 
         /// <summary>
         /// Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
@@ -288,6 +343,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule> NetworkRuleSetIPRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).NetworkRuleSetIPRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).NetworkRuleSetIPRule = value ?? null /* arrayOf */; }
 
+        /// <summary>Sets the IPv6 ACL rules.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule> NetworkRuleSetIpv6Rule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).NetworkRuleSetIpv6Rule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).NetworkRuleSetIpv6Rule = value ?? null /* arrayOf */; }
+
         /// <summary>Sets the resource access rules</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceAccessRule> NetworkRuleSetResourceAccessRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).NetworkRuleSetResourceAccessRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).NetworkRuleSetResourceAccessRule = value ?? null /* arrayOf */; }
@@ -295,6 +354,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Sets the virtual network rules</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IVirtualNetworkRule> NetworkRuleSetVirtualNetworkRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).NetworkRuleSetVirtualNetworkRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).NetworkRuleSetVirtualNetworkRule = value ?? null /* arrayOf */; }
+
+        /// <summary>Backing field for <see cref="Placement" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPlacement _placement;
+
+        /// <summary>Optional. Gets or sets the zonal placement details for the storage account.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPlacement Placement { get => (this._placement = this._placement ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Placement()); set => this._placement = value; }
+
+        /// <summary>The availability zone pinning policy for the storage account.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string PlacementZonePlacementPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPlacementInternal)Placement).ZonePlacementPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPlacementInternal)Placement).ZonePlacementPolicy = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParameters _property;
@@ -358,6 +428,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Tier; }
 
+        /// <summary>
+        /// Specifies if managed identities can access SMB shares using OAuth. The default interpretation is false for this property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? SmbOAuthSettingIsSmbOauthEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).SmbOAuthSettingIsSmbOauthEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParametersInternal)Property).SmbOAuthSettingIsSmbOauthEnabled = value ?? default(bool); }
+
         /// <summary>Backing field for <see cref="Tag" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersTags _tag;
 
@@ -368,6 +444,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountUpdateParametersTags()); set => this._tag = value; }
+
+        /// <summary>Backing field for <see cref="Zone" /> property.</summary>
+        private System.Collections.Generic.List<string> _zone;
+
+        /// <summary>
+        /// Optional. Gets or sets the pinned logical availability zone for the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> Zone { get => this._zone; set => this._zone = value; }
 
         /// <summary>Creates an new <see cref="StorageAccountUpdateParameters" /> instance.</summary>
         public StorageAccountUpdateParameters()
@@ -395,92 +480,123 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Hot", "Cool", "Premium", "Cold")]
         string AccessTier { get; set; }
-        /// <summary>Specifies the Active Directory account type for Azure Storage.</summary>
+        /// <summary>
+        /// Specifies the Active Directory account type for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication),
+        /// this property is optional. If provided, samAccountName should also be provided. For directoryServiceOptions AADDS (Entra
+        /// DS authentication) or AADKERB (Entra authentication), this property can be omitted.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Specifies the Active Directory account type for Azure Storage.",
+        Description = @"Specifies the Active Directory account type for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication), this property is optional. If provided, samAccountName should also be provided. For directoryServiceOptions AADDS (Entra DS authentication) or AADKERB (Entra authentication), this property can be omitted.",
         SerializedName = @"accountType",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("User", "Computer")]
         string ActiveDirectoryPropertyAccountType { get; set; }
-        /// <summary>Specifies the security identifier (SID) for Azure Storage.</summary>
+        /// <summary>
+        /// Specifies the security identifier (SID) for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication),
+        /// this property is required. Otherwise, it can be omitted.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Specifies the security identifier (SID) for Azure Storage.",
+        Description = @"Specifies the security identifier (SID) for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication), this property is required. Otherwise, it can be omitted.",
         SerializedName = @"azureStorageSid",
         PossibleTypes = new [] { typeof(string) })]
         string ActiveDirectoryPropertyAzureStorageSid { get; set; }
-        /// <summary>Specifies the domain GUID.</summary>
+        /// <summary>
+        /// Specifies the domain GUID. If directoryServiceOptions is set to AD (AD DS authentication), this property is required.
+        /// If directoryServiceOptions is set to AADDS (Entra DS authentication), this property can be omitted. If directoryServiceOptions
+        /// is set to AADKERB (Entra authentication), this property is optional; it is needed to support configuration of directory-
+        /// and file-level permissions via Windows File Explorer, but is not required for authentication.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Specifies the domain GUID.",
+        Description = @"Specifies the domain GUID. If directoryServiceOptions is set to AD (AD DS authentication), this property is required. If directoryServiceOptions is set to AADDS (Entra DS authentication), this property can be omitted. If directoryServiceOptions is set to AADKERB (Entra authentication), this property is optional; it is needed to support configuration of directory- and file-level permissions via Windows File Explorer, but is not required for authentication.",
         SerializedName = @"domainGuid",
         PossibleTypes = new [] { typeof(string) })]
         string ActiveDirectoryPropertyDomainGuid { get; set; }
-        /// <summary>Specifies the primary domain that the AD DNS server is authoritative for.</summary>
+        /// <summary>
+        /// Specifies the primary domain that the AD DNS server is authoritative for. This property is required if directoryServiceOptions
+        /// is set to AD (AD DS authentication). If directoryServiceOptions is set to AADDS (Entra DS authentication), providing this
+        /// property is optional, as it will be inferred automatically if omitted. If directoryServiceOptions is set to AADKERB (Entra
+        /// authentication), this property is optional; it is needed to support configuration of directory- and file-level permissions
+        /// via Windows File Explorer, but is not required for authentication.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Specifies the primary domain that the AD DNS server is authoritative for.",
+        Description = @"Specifies the primary domain that the AD DNS server is authoritative for. This property is required if directoryServiceOptions is set to AD (AD DS authentication). If directoryServiceOptions is set to AADDS (Entra DS authentication), providing this property is optional, as it will be inferred automatically if omitted. If directoryServiceOptions is set to AADKERB (Entra authentication), this property is optional; it is needed to support configuration of directory- and file-level permissions via Windows File Explorer, but is not required for authentication.",
         SerializedName = @"domainName",
         PossibleTypes = new [] { typeof(string) })]
         string ActiveDirectoryPropertyDomainName { get; set; }
-        /// <summary>Specifies the security identifier (SID).</summary>
+        /// <summary>
+        /// Specifies the security identifier (SID) of the AD domain. If directoryServiceOptions is set to AD (AD DS authentication),
+        /// this property is required. Otherwise, it can be omitted.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Specifies the security identifier (SID).",
+        Description = @"Specifies the security identifier (SID) of the AD domain. If directoryServiceOptions is set to AD (AD DS authentication), this property is required. Otherwise, it can be omitted.",
         SerializedName = @"domainSid",
         PossibleTypes = new [] { typeof(string) })]
         string ActiveDirectoryPropertyDomainSid { get; set; }
-        /// <summary>Specifies the Active Directory forest to get.</summary>
+        /// <summary>
+        /// Specifies the Active Directory forest to get. If directoryServiceOptions is set to AD (AD DS authentication), this property
+        /// is required. Otherwise, it can be omitted.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Specifies the Active Directory forest to get.",
+        Description = @"Specifies the Active Directory forest to get. If directoryServiceOptions is set to AD (AD DS authentication), this property is required. Otherwise, it can be omitted.",
         SerializedName = @"forestName",
         PossibleTypes = new [] { typeof(string) })]
         string ActiveDirectoryPropertyForestName { get; set; }
-        /// <summary>Specifies the NetBIOS domain name.</summary>
+        /// <summary>
+        /// Specifies the NetBIOS domain name. If directoryServiceOptions is set to AD (AD DS authentication), this property is required.
+        /// Otherwise, it can be omitted.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Specifies the NetBIOS domain name.",
+        Description = @"Specifies the NetBIOS domain name. If directoryServiceOptions is set to AD (AD DS authentication), this property is required. Otherwise, it can be omitted.",
         SerializedName = @"netBiosDomainName",
         PossibleTypes = new [] { typeof(string) })]
         string ActiveDirectoryPropertyNetBiosDomainName { get; set; }
-        /// <summary>Specifies the Active Directory SAMAccountName for Azure Storage.</summary>
+        /// <summary>
+        /// Specifies the Active Directory SAMAccountName for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication),
+        /// this property is optional. If provided, accountType should also be provided. For directoryServiceOptions AADDS (Entra
+        /// DS authentication) or AADKERB (Entra authentication), this property can be omitted.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Specifies the Active Directory SAMAccountName for Azure Storage.",
+        Description = @"Specifies the Active Directory SAMAccountName for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication), this property is optional. If provided, accountType should also be provided. For directoryServiceOptions AADDS (Entra DS authentication) or AADKERB (Entra authentication), this property can be omitted.",
         SerializedName = @"samAccountName",
         PossibleTypes = new [] { typeof(string) })]
         string ActiveDirectoryPropertySamAccountName { get; set; }
@@ -625,6 +741,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard", "AzureDnsZone")]
         string DnsEndpointType { get; set; }
+        /// <summary>
+        /// A boolean flag which indicates whether IPv6 storage endpoints are to be published.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A boolean flag which indicates whether IPv6 storage endpoints are to be published.",
+        SerializedName = @"publishIpv6Endpoint",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? DualStackEndpointPreferencePublishIpv6Endpoint { get; set; }
         /// <summary>Enables extended group support with local users feature, if set to true</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -660,6 +789,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"encryption",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryption) })]
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryption Encryption { get; set; }
+        /// <summary>
+        /// Indicates whether Blob Geo Priority Replication is enabled for the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether Blob Geo Priority Replication is enabled for the storage account.",
+        SerializedName = @"isBlobEnabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? GeoPriorityReplicationStatusIsBlobEnabled { get; set; }
         /// <summary>The principal ID of resource identity.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -881,6 +1023,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"ipRules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule> NetworkRuleSetIPRule { get; set; }
+        /// <summary>Sets the IPv6 ACL rules.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Sets the IPv6 ACL rules.",
+        SerializedName = @"ipv6Rules",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule> NetworkRuleSetIpv6Rule { get; set; }
         /// <summary>Sets the resource access rules</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -903,6 +1056,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"virtualNetworkRules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IVirtualNetworkRule) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IVirtualNetworkRule> NetworkRuleSetVirtualNetworkRule { get; set; }
+        /// <summary>The availability zone pinning policy for the storage account.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The availability zone pinning policy for the storage account.",
+        SerializedName = @"zonePlacementPolicy",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Any", "None")]
+        string PlacementZonePlacementPolicy { get; set; }
         /// <summary>
         /// Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account.
         /// Value is optional but if passed in, must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.
@@ -1010,6 +1175,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard", "Premium")]
         string SkuTier { get;  }
         /// <summary>
+        /// Specifies if managed identities can access SMB shares using OAuth. The default interpretation is false for this property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Specifies if managed identities can access SMB shares using OAuth. The default interpretation is false for this property.",
+        SerializedName = @"isSmbOAuthEnabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? SmbOAuthSettingIsSmbOauthEnabled { get; set; }
+        /// <summary>
         /// Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this
         /// resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater
         /// in length than 128 characters and a value no greater in length than 256 characters.
@@ -1024,6 +1202,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersTags) })]
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersTags Tag { get; set; }
+        /// <summary>
+        /// Optional. Gets or sets the pinned logical availability zone for the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Optional. Gets or sets the pinned logical availability zone for the storage account.",
+        SerializedName = @"zones",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> Zone { get; set; }
 
     }
     /// The parameters that can be provided when updating the storage account properties.
@@ -1037,22 +1228,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Hot", "Cool", "Premium", "Cold")]
         string AccessTier { get; set; }
-        /// <summary>Specifies the Active Directory account type for Azure Storage.</summary>
+        /// <summary>
+        /// Specifies the Active Directory account type for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication),
+        /// this property is optional. If provided, samAccountName should also be provided. For directoryServiceOptions AADDS (Entra
+        /// DS authentication) or AADKERB (Entra authentication), this property can be omitted.
+        /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("User", "Computer")]
         string ActiveDirectoryPropertyAccountType { get; set; }
-        /// <summary>Specifies the security identifier (SID) for Azure Storage.</summary>
+        /// <summary>
+        /// Specifies the security identifier (SID) for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication),
+        /// this property is required. Otherwise, it can be omitted.
+        /// </summary>
         string ActiveDirectoryPropertyAzureStorageSid { get; set; }
-        /// <summary>Specifies the domain GUID.</summary>
+        /// <summary>
+        /// Specifies the domain GUID. If directoryServiceOptions is set to AD (AD DS authentication), this property is required.
+        /// If directoryServiceOptions is set to AADDS (Entra DS authentication), this property can be omitted. If directoryServiceOptions
+        /// is set to AADKERB (Entra authentication), this property is optional; it is needed to support configuration of directory-
+        /// and file-level permissions via Windows File Explorer, but is not required for authentication.
+        /// </summary>
         string ActiveDirectoryPropertyDomainGuid { get; set; }
-        /// <summary>Specifies the primary domain that the AD DNS server is authoritative for.</summary>
+        /// <summary>
+        /// Specifies the primary domain that the AD DNS server is authoritative for. This property is required if directoryServiceOptions
+        /// is set to AD (AD DS authentication). If directoryServiceOptions is set to AADDS (Entra DS authentication), providing this
+        /// property is optional, as it will be inferred automatically if omitted. If directoryServiceOptions is set to AADKERB (Entra
+        /// authentication), this property is optional; it is needed to support configuration of directory- and file-level permissions
+        /// via Windows File Explorer, but is not required for authentication.
+        /// </summary>
         string ActiveDirectoryPropertyDomainName { get; set; }
-        /// <summary>Specifies the security identifier (SID).</summary>
+        /// <summary>
+        /// Specifies the security identifier (SID) of the AD domain. If directoryServiceOptions is set to AD (AD DS authentication),
+        /// this property is required. Otherwise, it can be omitted.
+        /// </summary>
         string ActiveDirectoryPropertyDomainSid { get; set; }
-        /// <summary>Specifies the Active Directory forest to get.</summary>
+        /// <summary>
+        /// Specifies the Active Directory forest to get. If directoryServiceOptions is set to AD (AD DS authentication), this property
+        /// is required. Otherwise, it can be omitted.
+        /// </summary>
         string ActiveDirectoryPropertyForestName { get; set; }
-        /// <summary>Specifies the NetBIOS domain name.</summary>
+        /// <summary>
+        /// Specifies the NetBIOS domain name. If directoryServiceOptions is set to AD (AD DS authentication), this property is required.
+        /// Otherwise, it can be omitted.
+        /// </summary>
         string ActiveDirectoryPropertyNetBiosDomainName { get; set; }
-        /// <summary>Specifies the Active Directory SAMAccountName for Azure Storage.</summary>
+        /// <summary>
+        /// Specifies the Active Directory SAMAccountName for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication),
+        /// this property is optional. If provided, accountType should also be provided. For directoryServiceOptions AADDS (Entra
+        /// DS authentication) or AADKERB (Entra authentication), this property can be omitted.
+        /// </summary>
         string ActiveDirectoryPropertySamAccountName { get; set; }
         /// <summary>
         /// Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is false
@@ -1076,7 +1298,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("PrivateLink", "AAD")]
         string AllowedCopyScope { get; set; }
-        /// <summary>Required if directoryServiceOptions are AD, optional if they are AADKERB.</summary>
+        /// <summary>
+        /// Additional information about the directory service. Required if directoryServiceOptions is AD (AD DS authentication).
+        /// Optional for directoryServiceOptions AADDS (Entra DS authentication) and AADKERB (Entra authentication).
+        /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IActiveDirectoryProperties AzureFileIdentityBasedAuthenticationActiveDirectoryProperty { get; set; }
         /// <summary>
         /// Default share permission for users using Kerberos authentication if RBAC role is not assigned.
@@ -1088,6 +1313,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("None", "AADDS", "AD", "AADKERB")]
         string AzureFileIdentityBasedAuthenticationDirectoryServiceOption { get; set; }
+        /// <summary>Required for Managed Identities access using OAuth over SMB.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbOAuthSettings AzureFileIdentityBasedAuthenticationSmbOAuthSetting { get; set; }
         /// <summary>Provides the identity based authentication settings for Azure Files.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthentication AzureFilesIdentityBasedAuthentication { get; set; }
         /// <summary>
@@ -1115,6 +1342,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard", "AzureDnsZone")]
         string DnsEndpointType { get; set; }
+        /// <summary>Maintains information about the Internet protocol opted by the user.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDualStackEndpointPreference DualStackEndpointPreference { get; set; }
+        /// <summary>
+        /// A boolean flag which indicates whether IPv6 storage endpoints are to be published.
+        /// </summary>
+        bool? DualStackEndpointPreferencePublishIpv6Endpoint { get; set; }
         /// <summary>Enables extended group support with local users feature, if set to true</summary>
         bool? EnableExtendedGroup { get; set; }
         /// <summary>Allows https traffic only to storage service if sets to true.</summary>
@@ -1123,6 +1356,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// Not applicable. Azure Storage encryption at rest is enabled by default for all storage accounts and cannot be disabled.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryption Encryption { get; set; }
+        /// <summary>Status indicating whether Geo Priority Replication is enabled for the account.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatus GeoPriorityReplicationStatus { get; set; }
+        /// <summary>
+        /// Indicates whether Blob Geo Priority Replication is enabled for the storage account.
+        /// </summary>
+        bool? GeoPriorityReplicationStatusIsBlobEnabled { get; set; }
         /// <summary>The identity of the resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentity Identity { get; set; }
         /// <summary>The principal ID of resource identity.</summary>
@@ -1208,10 +1447,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         string NetworkRuleSetDefaultAction { get; set; }
         /// <summary>Sets the IP ACL rules</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule> NetworkRuleSetIPRule { get; set; }
+        /// <summary>Sets the IPv6 ACL rules.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule> NetworkRuleSetIpv6Rule { get; set; }
         /// <summary>Sets the resource access rules</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceAccessRule> NetworkRuleSetResourceAccessRule { get; set; }
         /// <summary>Sets the virtual network rules</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IVirtualNetworkRule> NetworkRuleSetVirtualNetworkRule { get; set; }
+        /// <summary>Optional. Gets or sets the zonal placement details for the storage account.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPlacement Placement { get; set; }
+        /// <summary>The availability zone pinning policy for the storage account.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Any", "None")]
+        string PlacementZonePlacementPolicy { get; set; }
         /// <summary>The parameters used when updating a storage account.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesUpdateParameters Property { get; set; }
         /// <summary>
@@ -1260,11 +1506,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard", "Premium")]
         string SkuTier { get; set; }
         /// <summary>
+        /// Specifies if managed identities can access SMB shares using OAuth. The default interpretation is false for this property.
+        /// </summary>
+        bool? SmbOAuthSettingIsSmbOauthEnabled { get; set; }
+        /// <summary>
         /// Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this
         /// resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater
         /// in length than 128 characters and a value no greater in length than 256 characters.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountUpdateParametersTags Tag { get; set; }
+        /// <summary>
+        /// Optional. Gets or sets the pinned logical availability zone for the storage account.
+        /// </summary>
+        System.Collections.Generic.List<string> Zone { get; set; }
 
     }
 }

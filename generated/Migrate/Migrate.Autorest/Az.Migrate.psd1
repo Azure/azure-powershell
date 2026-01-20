@@ -1,7 +1,7 @@
 @{
   GUID = 'c638312b-9fd1-4611-a5cc-11a8caa5b698'
   RootModule = './Az.Migrate.psm1'
-  ModuleVersion = '3.0.10'
+  ModuleVersion = '3.0.14'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'

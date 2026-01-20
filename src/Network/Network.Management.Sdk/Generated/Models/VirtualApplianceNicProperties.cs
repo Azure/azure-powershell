@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the VirtualApplianceNicProperties class.
         /// </summary>
 
-        /// <param name="nicType">NIC type - PublicNic, PrivateNic, or AdditionalNic.
+        /// <param name="nicType">NIC type - PublicNic, PrivateNic, or AdditionalNic; AdditionalPrivateNic
+        /// and AdditionalPublicNic are only supported for NVAs deployed in VNets.
         /// Possible values include: &#39;PublicNic&#39;, &#39;PrivateNic&#39;, &#39;AdditionalNic&#39;</param>
 
         /// <param name="name">NIC name.
@@ -56,7 +57,9 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets nIC type - PublicNic, PrivateNic, or AdditionalNic. Possible values include: &#39;PublicNic&#39;, &#39;PrivateNic&#39;, &#39;AdditionalNic&#39;
+        /// Gets nIC type - PublicNic, PrivateNic, or AdditionalNic;
+        /// AdditionalPrivateNic and AdditionalPublicNic are only supported for NVAs
+        /// deployed in VNets. Possible values include: &#39;PublicNic&#39;, &#39;PrivateNic&#39;, &#39;AdditionalNic&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nicType")]
         public string NicType {get; private set; }

@@ -86,7 +86,7 @@ function New-AzMigrateLocalServerReplication {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the target Resource Group Id where the migrated VM resources will reside.
+        # Specifies the target resource group ARM ID where the migrated VM resources will reside.
         ${TargetResourceGroupId},
 
         [Parameter(Mandatory)]
@@ -98,7 +98,7 @@ function New-AzMigrateLocalServerReplication {
         [Parameter(ParameterSetName = 'ByIdDefaultUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the Operating System disk for the source server to be migrated.
+        # Specifies the operating system disk for the source server to be migrated.
         ${OSDiskID},
 
         [Parameter(Mandatory)]
@@ -169,115 +169,308 @@ function New-AzMigrateLocalServerReplication {
     )
     
     process {
-        Import-Module $PSScriptRoot\Helper\AzLocalCommonSettings.ps1
-        Import-Module $PSScriptRoot\Helper\CommonHelper.ps1
+        $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonSettings.ps1")
+        Import-Module $helperPath
+        $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonHelper.ps1")
+        Import-Module $helperPath
 
         CheckResourceGraphModuleDependency
         CheckResourcesModuleDependency
 
+        $HasMachineId = $PSBoundParameters.ContainsKey('MachineId')
+        $HasTargetStoragePathId = $PSBoundParameters.ContainsKey('TargetStoragePathId')
+        $HasTargetResourceGroupId = $PSBoundParameters.ContainsKey('TargetResourceGroupId')
         $HasTargetVMCPUCore = $PSBoundParameters.ContainsKey('TargetVMCPUCore')
         $HasIsDynamicMemoryEnabled = $PSBoundParameters.ContainsKey('IsDynamicMemoryEnabled')
         if ($HasIsDynamicMemoryEnabled) {
             $isDynamicRamEnabled = [System.Convert]::ToBoolean($IsDynamicMemoryEnabled)
         }
         $HasTargetVMRam = $PSBoundParameters.ContainsKey('TargetVMRam')
+        $HasTargetVirtualSwitchId = $PSBoundParameters.ContainsKey('TargetVirtualSwitchId')
         $HasTargetTestVirtualSwitchId = $PSBoundParameters.ContainsKey('TargetTestVirtualSwitchId')
+
         $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $MachineIdArray = $MachineId.Split("/")
-        if ($MachineIdArray.Length -lt 11) {
-            throw "Invalid machine ARM ID '$MachineId'"
+
+        # Remove initial command parameters
+        $null = $PSBoundParameters.Remove('MachineId')
+        $null = $PSBoundParameters.Remove('TargetStoragePathId')
+        $null = $PSBoundParameters.Remove('TargetVMCPUCore')
+        $null = $PSBoundParameters.Remove('TargetVirtualSwitchId')
+        $null = $PSBoundParameters.Remove('TargetTestVirtualSwitchId')
+        $null = $PSBoundParameters.Remove('IsDynamicMemoryEnabled')
+        $null = $PSBoundParameters.Remove('TargetVMRam')
+        $null = $PSBoundParameters.Remove('DiskToInclude')
+        $null = $PSBoundParameters.Remove('NicToInclude')
+        $null = $PSBoundParameters.Remove('TargetResourceGroupId')
+        $null = $PSBoundParameters.Remove('TargetVMName')
+        $null = $PSBoundParameters.Remove('OSDiskID')
+        $null = $PSBoundParameters.Remove('SourceApplianceName')
+        $null = $PSBoundParameters.Remove('TargetApplianceName')
+
+        # Set common ErrorVariable and ErrorAction for get behaviors
+        $null = $PSBoundParameters.Add('ErrorVariable', 'notPresent')
+        $null = $PSBoundParameters.Add('ErrorAction', 'SilentlyContinue')
+
+        # Validate ARM ID format from inputs
+        if ($HasMachineId -and !(Test-AzureResourceIdFormat -Data $MachineId -Format $IdFormats.MachineArmIdTemplate))
+        {
+            throw New-InvalidResourceIdProvidedException `
+                -ResourceId $MachineId `
+                -ResourceType "DiscoveredMachine" `
+                -Format $IdFormats.MachineArmIdTemplate
         }
-        $SiteType = $MachineIdArray[7]
-        $SiteName = $MachineIdArray[8]
-        $ResourceGroupName = $MachineIdArray[4]
-        $MachineName = $MachineIdArray[10]
+
+        if ($HasTargetStoragePathId -and !(Test-AzureResourceIdFormat -Data $TargetStoragePathId -Format $IdFormats.StoragePathArmIdTemplate)) {
+            throw New-InvalidResourceIdProvidedException `
+                -ResourceId $TargetStoragePathId `
+                -ResourceType "StorageContainer" `
+                -Format $IdFormats.StoragePathArmIdTemplate
+        }
+
+        if ($HasTargetResourceGroupId -and !(Test-AzureResourceIdFormat -Data $TargetResourceGroupId -Format $IdFormats.ResourceGroupArmIdTemplate)) {
+            throw New-InvalidResourceIdProvidedException `
+                -ResourceId $TargetResourceGroupId `
+                -ResourceType "ResourceGroup" `
+                -Format $IdFormats.ResourceGroupArmIdTemplate
+        }
+
+        if ($HasTargetVirtualSwitchId -and !(Test-AzureResourceIdFormat -Data $TargetVirtualSwitchId -Format $IdFormats.LogicalNetworkArmIdTemplate)) {
+            throw New-InvalidResourceIdProvidedException `
+                -ResourceId $TargetVirtualSwitchId `
+                -ResourceType "LogicalNetwork" `
+                -Format $IdFormats.LogicalNetworkArmIdTemplate
+        }
+
+        if ($HasTargetTestVirtualSwitchId -and !(Test-AzureResourceIdFormat -Data $TargetTestVirtualSwitchId -Format $IdFormats.LogicalNetworkArmIdTemplate)) {
+            throw New-InvalidResourceIdProvidedException `
+                -ResourceId $TargetTestVirtualSwitchId `
+                -ResourceType "LogicalNetwork" `
+                -Format $IdFormats.LogicalNetworkArmIdTemplate
+        }
+
+        # $MachineId is in the format of
+        # "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.OffAzure/{2}/{3}/machines/{4}"
+        $MachineIdArray = $MachineId.Split("/")
+        $ResourceGroupName = $MachineIdArray[4] # {1}
+        $SiteType = $MachineIdArray[7] # {2}
+        $SiteName = $MachineIdArray[8] # {3}
+        $MachineName = $MachineIdArray[10] # {4}
 
         # Get the source site and the discovered machine
-        if (($SiteType -ne $SiteTypes.HyperVSites) -and ($SiteType -ne $SiteTypes.VMwareSites)) {
-            throw "Site type is not supported. Site type '$SiteType'. Check MachineId provided."
-        }
-        
         if ($SiteType -eq $SiteTypes.HyperVSites) {
             $instanceType = $AzLocalInstanceTypes.HyperVToAzLocal
-            $machine = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVMachine' `
-                -Parameters @{
-                    'ResourceGroupName' = $ResourceGroupName;
-                    'SiteName' = $SiteName;
-                    'MachineName' = $MachineName;
-                } `
-                -ErrorMessage "Machine '$MachineName' not found in resource group '$ResourceGroupName' and site '$SiteName'."
 
-            $siteObject = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVSite' `
-                -Parameters @{
-                    'ResourceGroupName' = $ResourceGroupName;
-                    'SiteName' = $SiteName;
-                } `
-                -ErrorMessage "Machine site '$SiteName' with Type '$SiteType' not found."
+            # Get Hyper-V site with ResourceGroupName, SiteName
+            $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
+            $null = $PSBoundParameters.Add('SiteName', $SiteName)
+            $siteObject = Az.Migrate.Internal\Get-AzMigrateHyperVSite @PSBoundParameters
+            if ($null -eq $siteObject)
+            {
+                throw New-AzMigrateSiteNotFoundException `
+                    -Name $SiteName `
+                    -ResourceGroupName $ResourceGroupName `
+                    -SiteType $SiteType
+            }
+
+            # Get Hyper-V machine with ResourceGroupName, SiteName, MachineName
+            $null = $PSBoundParameters.Add('MachineName', $MachineName)
+            $machine = Az.Migrate.Internal\Get-AzMigrateHyperVMachine @PSBoundParameters
+            if ($null -eq $machine)
+            {
+                throw New-AzMigrateDiscoveredMachineNotFoundException `
+                    -Name $MachineName `
+                    -ResourceGroupName $ResourceGroupName `
+                    -SiteName $SiteName
+            }
+            $null = $PSBoundParameters.Remove('MachineName')
+
+            # Get RunAsAccount
+            if (![string]::IsNullOrEmpty($machine.HostId))
+            {
+                # machine is on a single Hyper-V host
+                $hostIdArray = $machine.HostId.Split("/")
+                if ($hostIdArray.Length -lt 11) {
+                    throw "Invalid Hyper-V Host ARM ID '$($machine.HostId)'"
+                }
+
+                $hostResourceGroupName = $hostIdArray[4]
+                $hostSiteName = $hostIdArray[8]
+                $hostName = $hostIdArray[10]
+
+                # Get Hyper-V host with ResourceGroupName, SiteName, HostName
+                $null = $PSBoundParameters.Add('HostName', $hostName)
+                $hyperVHost = Az.Migrate.Internal\Get-AzMigrateHyperVHost @PSBoundParameters
+                if ($null -eq $hyperVHost)
+                {
+                    throw New-OffAzureResourceNotFoundException `
+                        -Scenario "HyperV" `
+                        -Type "Host" `
+                        -Name $hostName `
+                        -ResourceGroupName $hostResourceGroupName `
+                        -SiteName $hostSiteName
+                }
+                $null = $PSBoundParameters.Remove('HostName')
+                
+                $runAsAccountId = $hyperVHost.RunAsAccountId
+            }
+            elseif(![string]::IsNullOrEmpty($machine.ClusterId))
+            {
+                # machine is on a Hyper-V cluster
+                $clusterIdArray = $machine.ClusterId.Split("/")
+                if ($clusterIdArray.Length -lt 11) {
+                    throw "Invalid Hyper-V Cluster ARM ID '$($machine.ClusterId)'"
+                }
+
+                $clusterResourceGroupName = $clusterIdArray[4]
+                $clusterSiteName = $clusterIdArray[8]
+                $clusterName = $clusterIdArray[10]
+
+                # Get Hyper-V cluster with ResourceGroupName, SiteName, ClusterName
+                $null = $PSBoundParameters.Add('ClusterName', $clusterName)
+                $hyperVCluster = Az.Migrate.Internal\Get-AzMigrateHyperVCluster @PSBoundParameters
+                if ($null -eq $hyperVCluster)
+                {
+                    throw throw New-OffAzureResourceNotFoundException `
+                        -Scenario "HyperV" `
+                        -Type "Cluster" `
+                        -Name $clusterName `
+                        -ResourceGroupName $clusterResourceGroupName `
+                        -SiteName $clusterSiteName
+                }
+                $null = $PSBoundParameters.Remove('ClusterName')
+
+                $runAsAccountId = $hyperVCluster.RunAsAccountId
+            }
         }
-        else {
+        elseif ($SiteType -eq $SiteTypes.VMwareSites)
+        {
             $instanceType = $AzLocalInstanceTypes.VMwareToAzLocal
-            $machine = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName 'Az.Migrate.Internal\Get-AzMigrateMachine' `
-                -Parameters @{
-                    'ResourceGroupName' = $ResourceGroupName;
-                    'SiteName' = $SiteName;
-                    'MachineName' = $MachineName;
-                } `
-                -ErrorMessage "Machine '$MachineName' not found in resource group '$ResourceGroupName' and site '$SiteName'."
 
-            $siteObject = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName 'Az.Migrate\Get-AzMigrateSite' `
-                -Parameters @{
-                    'ResourceGroupName' = $ResourceGroupName;
-                    'SiteName' = $SiteName;
-                } `
-                -ErrorMessage "Machine site '$SiteName' with Type '$SiteType' not found."
+            # Get VMware site with ResourceGroupName, SiteName
+            $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
+            $null = $PSBoundParameters.Add('SiteName', $SiteName)
+            $siteObject = Az.Migrate.private\Get-AzMigrateSite_Get @PSBoundParameters
+            if ($null -eq $siteObject)
+            {
+                throw New-AzMigrateSiteNotFoundException `
+                    -Name $SiteName `
+                    -ResourceGroupName $ResourceGroupName `
+                    -SiteType $SiteType
+            }
+
+            # Get VMware machine with ResourceGroupName, SiteName, MachineName
+            $null = $PSBoundParameters.Add('MachineName', $MachineName)
+            $machine = Az.Migrate.Internal\Get-AzMigrateMachine @PSBoundParameters
+            if ($null -eq $machine)
+            {
+                throw New-AzMigrateDiscoveredMachineNotFoundException `
+                    -Name $MachineName `
+                    -ResourceGroupName $ResourceGroupName `
+                    -SiteName $SiteName
+            }
+            $null = $PSBoundParameters.Remove('MachineName')
+
+            # Get RunAsAccount
+            if (![string]::IsNullOrEmpty($machine.VCenterId))
+            {
+                # machine is on a single vCenter
+                $vCenterIdArray = $machine.VCenterId.Split("/")
+                if ($vCenterIdArray.Length -lt 11) {
+                    throw "Invalid VMware vCenter ARM ID '$($machine.VCenterId)'"
+                }
+
+                $vCenterResourceGroupName = $vCenterIdArray[4]
+                $vCenterSiteName = $vCenterIdArray[8]
+                $vCenterName = $vCenterIdArray[10]
+
+                # Get VMware vCenter with ResourceGroupName, SiteName, Name
+                $null = $PSBoundParameters.Add('Name', $vCenterName)
+                $vmwareVCenter = Az.Migrate.Internal\Get-AzMigrateVCenter @PSBoundParameters
+                if ($null -eq $vmwareVCenter)
+                {
+                    throw New-OffAzureResourceNotFoundException `
+                        -Scenario "VMware" `
+                        -Type "VCenter" `
+                        -Name $vCenterName `
+                        -ResourceGroupName $vCenterResourceGroupName `
+                        -SiteName $vCenterSiteName
+                }
+                $null = $PSBoundParameters.Remove('Name')
+                
+                $runAsAccountId = $vmwareVCenter.RunAsAccountId
+            }
         }
-
-        # Validate the VM
-        ValidateReplication -Machine $machine -MigrationType $instanceType
+        else
+        {
+            throw "Site type of '$SiteType' in -MachineId is not supported. Only '$($SiteTypes.HyperVSites)' and '$($SiteTypes.VMwareSites)' are supported."
+        }
+        if ([string]::IsNullOrEmpty($runAsAccountId)) {
+            throw "Unable to determine RunAsAccount for site '$SiteName' from machine '$MachineName'. Please verify your appliance setup and provided -MachineId."
+        }
+        $null = $PSBoundParameters.Remove('SiteName')
         
         # $siteObject is not null or exception would have been thrown
         $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
 
-        # Get Data Replication Service, or the AMH solution
-        $amhSolutionName = "Servers-Migration-ServerMigration_DataReplication"
-        $amhSolution = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName 'Az.Migrate\Get-AzMigrateSolution' `
-            -Parameters @{
-                "ResourceGroupName" = $ResourceGroupName;
-                "Name" = $amhSolutionName;
-                "MigrateProjectName" = $ProjectName;
-            } `
-            -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
+        # Get Data Replication Service (AMH solution) with ResourceGroupName, Name, MigrateProjectName
+        $amhSolutionName = $AzMigrateSolutions.DataReplicationSolution
+        $null = $PSBoundParameters.Add('MigrateProjectName', $ProjectName)
+        $null = $PSBoundParameters.Add('Name', $amhSolutionName)
+        $amhSolution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters
+        if ($null -eq $amhSolution)
+        {
+            throw New-AzMigrateSolutionNotFoundException `
+                -Name $amhSolutionName `
+                -ResourceGroupName $ResourceGroupName `
+                -ProjectName $ProjectName
+        }
+        $null = $PSBoundParameters.Remove('Name')
+        $null = $PSBoundParameters.Remove('MigrateProjectName')
         
         # Validate replication vault
-        $replicationVaultName = $amhSolution.DetailExtendedDetail["vaultId"].Split("/")[8]
-        if ([string]::IsNullOrEmpty($replicationVaultName)) {
-            throw "No Replication Vault found. Please verify your Azure Migrate project setup."
+        $vaultId = $amhSolution.DetailExtendedDetail["vaultId"]
+        $vaultIdArray = $vaultId.Split("/")
+        if ($vaultIdArray.Length -lt 9)
+        {
+            throw New-ReplicationVaultNotFoundInAMHSolutionException -VaultId $vaultId
         }
-        $replicationVault = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate.Internal\Get-AzMigrateVault" `
-            -Parameters @{
-                "ResourceGroupName" = $ResourceGroupName;
-                "Name" = $replicationVaultName
-            } `
-            -ErrorMessage "No Replication Vault '$replicationVaultName' found in Resource Group '$ResourceGroupName'. Please verify your Azure Migrate project setup."
+        $replicationVaultName = $vaultIdArray[8]
+
+        # Get replication vault with ResourceGroupName, Name
+        $null = $PSBoundParameters.Add('Name', $replicationVaultName)
+        $replicationVault = Az.Migrate.Internal\Get-AzMigrateVault @PSBoundParameters
+        if ($null -eq $replicationVault) 
+        {
+            throw "No Replication Vault '$replicationVaultName' found in Resource Group '$ResourceGroupName'. Please verify your Azure Migrate project setup."
+        }
+        elseif ($replicationVault.Property.ProvisioningState -ne [ProvisioningState]::Succeeded)
+        {
+            throw "The Replication Vault '$replicationVaultName' is not in a valid state. The provisioning state is '$($replicationVault.Property.ProvisioningState)'. Please verify your Azure Migrate project setup."
+        }
+        $null = $PSBoundParameters.Remove('Name')
+
+        # Validate replication prequisites
+        Test-ReplicationPrequisites `
+            -ResourceGroupName $ResourceGroupName `
+            -VaultName $replicationVaultName `
+            -ProtectedItemName $MachineName `
+            -MigrationType $instanceType
 
         # Access Discovery Service
-        $discoverySolutionName = "Servers-Discovery-ServerDiscovery"
-        $discoverySolution = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate\Get-AzMigrateSolution" `
-            -Parameters @{
-                "SubscriptionId" = $SubscriptionId;
-                "ResourceGroupName" = $ResourceGroupName;
-                "MigrateProjectName" = $ProjectName;
-                "Name" = $discoverySolutionName;
-            } `
-            -ErrorMessage "Server Discovery Solution '$discoverySolutionName' not found."
+        $discoverySolutionName = $AzMigrateSolutions.DiscoverySolution
+        # Get Discovery Solution with ResourceGroupName, Name, MigrateProjectName
+        $null = $PSBoundParameters.Add('Name', $discoverySolutionName)
+        $null = $PSBoundParameters.Add('MigrateProjectName', $ProjectName)
+        $discoverySolution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters
+        if ($null -eq $discoverySolution)
+        {
+            throw  New-AzMigrateSolutionNotFoundException `
+                -Name $discoverySolutionName `
+                -ResourceGroupName $ResourceGroupName `
+                -ProjectName $ProjectName
+        }
+        $null = $PSBoundParameters.Remove('MigrateProjectName')
+        $null = $PSBoundParameters.Remove('Name')
 
         # Get Appliances Mapping
         $appMap = @{}
@@ -314,10 +507,12 @@ function New-AzMigrateLocalServerReplication {
         }
         
         # Get healthy asrv2 fabrics in the resource group
-        $allFabrics = Az.Migrate\Get-AzMigrateLocalReplicationFabric -ResourceGroupName $ResourceGroupName | Where-Object {
-            $_.Property.ProvisioningState -eq [ProvisioningState]::Succeeded -and
-            $_.Property.CustomProperty.MigrationSolutionId -eq $amhSolution.Id
-        }
+        # Get all fabrics with ResourceGroupName
+        $allFabrics = Az.Migrate.private\Get-AzMigrateLocalReplicationFabric_List1 @PSBoundParameters `
+            | Where-Object {
+                $_.Property.ProvisioningState -eq [ProvisioningState]::Succeeded -and
+                $_.Property.CustomProperty.MigrationSolutionId -eq $amhSolution.Id
+            }
 
         # Filter for source fabric
         if ($instanceType -eq $AzLocalInstanceTypes.HyperVToAzLocal)
@@ -338,25 +533,20 @@ function New-AzMigrateLocalServerReplication {
             throw "Couldn't find connected source appliance with the name '$SourceApplianceName'. Deploy a source appliance by completing the Discover step of migration for your on-premises environment."
         }
 
-        # Get source fabric agent (dra)
-        $sourceDraErrorMessage = "The source appliance '$SourceApplianceName' is in a disconnected state. Ensure that the source appliance is running and has connectivity before proceeding."
-        $sourceDras = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName 'Az.Migrate.Internal\Get-AzMigrateFabricAgent' `
-            -Parameters @{
-                FabricName = $sourceFabric.Name;
-                ResourceGroupName = $ResourceGroupName
-            } `
-            -ErrorMessage $sourceDraErrorMessage
+        # Get source fabric agent (dra) with ResourceGroupName, FabricName
+        $null = $PSBoundParameters.Add('FabricName', $sourceFabric.Name)
+        $sourceDras = Az.Migrate.Internal\Get-AzMigrateFabricAgent @PSBoundParameters
         $sourceDra = $sourceDras | Where-Object {
             $_.Property.MachineName -eq $SourceApplianceName -and
             $_.Property.CustomProperty.InstanceType -eq $fabricInstanceType -and
             $_.Property.IsResponsive -eq $true
         }
-
         if ($null -eq $sourceDra)
         {
-            throw $sourceDraErrorMessage
+            throw "The source appliance '$SourceApplianceName' is in a disconnected state. Ensure that the source appliance is running and has connectivity before proceeding."
         }
+        $null = $PSBoundParameters.Remove('FabricName')
+
         $sourceDra = $sourceDra[0]
 
         # Filter for target fabric
@@ -371,87 +561,64 @@ function New-AzMigrateLocalServerReplication {
             throw "Couldn't find connected target appliance with the name '$TargetApplianceName'. Deploy a target appliance by completing the Configuration step of migration for your Azure Local environment."
         }
 
-        # Get target fabric agent (dra)
-        $targetDraErrorMessage = "The target appliance '$TargetApplianceName' is in a disconnected state. Ensure that the target appliance is running and has connectivity before proceeding."
-        $targetDras = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName 'Az.Migrate.Internal\Get-AzMigrateFabricAgent' `
-            -Parameters @{
-                FabricName = $targetFabric.Name;
-                ResourceGroupName = $ResourceGroupName
-            } `
-            -ErrorMessage $targetDraErrorMessage
+        # Get target fabric agent (dra) with ResourceGroupName, FabricName
+        $null = $PSBoundParameters.Add('FabricName', $targetFabric.Name)
+        $targetDras = Az.Migrate.Internal\Get-AzMigrateFabricAgent @PSBoundParameters
         $targetDra = $targetDras | Where-Object {
             $_.Property.MachineName -eq $TargetApplianceName -and
             $_.Property.CustomProperty.InstanceType -eq $fabricInstanceType -and
             $_.Property.IsResponsive -eq $true
         }
-
         if ($null -eq $targetDra)
         {
-            throw $targetDraErrorMessage
+            "The target appliance '$TargetApplianceName' is in a disconnected state. Ensure that the target appliance is running and has connectivity before proceeding."
         }
+        $null = $PSBoundParameters.Remove('FabricName')
+
         $targetDra = $targetDras[0]
 
         # Validate Policy
         $policyName = $replicationVaultName + $instanceType + "policy"
-        $policy = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName 'Az.Migrate.Internal\Get-AzMigratePolicy' `
-            -Parameters @{
-                ResourceGroupName = $ResourceGroupName;
-                Name = $policyName;
-                VaultName = $replicationVaultName;
-            } `
-            -ErrorMessage "The replication policy '$policyName' not found. The replication infrastructure is not initialized. Run the Initialize-AzMigrateLocalReplicationInfrastructure command."
-        if ($policy.Property.ProvisioningState -ne [ProvisioningState]::Succeeded) {
+        # Get replication policy with ResourceGroupName, Name, VaultName
+        $null = $PSBoundParameters.Add('Name', $policyName)
+        $null = $PSBoundParameters.Add('VaultName', $replicationVaultName)
+        $policy = Az.Migrate.Internal\Get-AzMigratePolicy @PSBoundParameters
+        if ($null -eq $policy)
+        {
+            throw "The replication policy '$policyName' not found. The replication infrastructure is not initialized. Run the Initialize-AzMigrateLocalReplicationInfrastructure command."
+        }
+        elseif ($policy.Property.ProvisioningState -ne [ProvisioningState]::Succeeded)
+        {
             throw "The replication policy '$policyName' is not in a valid state. The provisioning state is '$($policy.Property.ProvisioningState)'. Re-run the Initialize-AzMigrateLocalReplicationInfrastructure command."
         }
+        $null = $PSBoundParameters.Remove('Name')
 
         # Validate Replication Extension
         $replicationExtensionName = ($sourceFabric.Id -split '/')[-1] + "-" + ($targetFabric.Id -split '/')[-1] + "-MigReplicationExtn"
-        $replicationExtension = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName 'Az.Migrate.Internal\Get-AzMigrateReplicationExtension' `
-            -Parameters @{
-                ResourceGroupName = $ResourceGroupName;
-                Name = $replicationExtensionName;
-                VaultName = $replicationVaultName;
-            } `
-            -ErrorMessage "The replication extension '$replicationExtensionName' not found. The replication infrastructure is not initialized. Run the Initialize-AzMigrateLocalReplicationInfrastructure command."
-        if ($replicationExtension.Property.ProvisioningState -ne [ProvisioningState]::Succeeded) {
+        # Get replication extension with ResourceGroupName, Name, VaultName
+        $null = $PSBoundParameters.Add('Name', $replicationExtensionName)
+        $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension @PSBoundParameters
+        if ($null -eq $replicationExtension)
+        {
+            throw "The replication extension '$replicationExtensionName' not found. The replication infrastructure is not initialized. Run the Initialize-AzMigrateLocalReplicationInfrastructure command."
+        }
+        elseif ($replicationExtension.Property.ProvisioningState -ne [ProvisioningState]::Succeeded)
+        {
             throw "The replication extension '$replicationExtensionName' is not in a valid state. The provisioning state is '$($replicationExtension.Property.ProvisioningState)'. Re-run the Initialize-AzMigrateLocalReplicationInfrastructure command."
         }
+        $null = $PSBoundParameters.Remove('Name')
         
-        # Get Target cluster
+        # Get ARC Resource Bridge info
         $targetClusterId = $targetFabric.Property.CustomProperty.Cluster.ResourceName
         $targetClusterIdArray = $targetClusterId.Split("/")
         $targetSubscription = $targetClusterIdArray[2]
-        $hciClusterArgQuery = GetHCIClusterARGQuery -HCIClusterID $targetClusterId
-        $targetCluster = Az.ResourceGraph\Search-AzGraph -Query $hciClusterArgQuery -Subscription $targetSubscription
-        if ($null -eq $targetCluster) {
-            throw "Validate target cluster with id '$targetClusterId' exists. Check ARC resource bridge is running on this cluster."
+        $arbArgQuery = GetARGQueryForArcResourceBridge -HCIClusterID $targetClusterId
+        $arbArgResult = Az.ResourceGraph\Search-AzGraph -Query $arbArgQuery -Subscription $targetSubscription
+        if ($null -eq $arbArgResult) {
+            throw "$($ArcResourceBridgeValidationMessages.NoClusters). Validate target cluster with id '$targetClusterId' exists."
         }
-            
-        # Get source appliance RunAsAccount
-        if ($SiteType -eq $SiteTypes.HyperVSites) {
-            $runAsAccounts = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVRunAsAccount' `
-                -Parameters @{
-                    ResourceGroupName = $ResourceGroupName;
-                    SiteName = $SiteName;
-                } `
-                -ErrorMessage "No run as account found for site '$SiteName'."
-
-            $runAsAccount = $runAsAccounts | Where-Object { $_.CredentialType -eq $RunAsAccountCredentialTypes.HyperVFabric }
-        }
-        elseif ($SiteType -eq $SiteTypes.VMwareSites) {
-            $runAsAccounts = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName 'Az.Migrate\Get-AzMigrateRunAsAccount' `
-                -Parameters @{
-                    ResourceGroupName = $ResourceGroupName;
-                    SiteName = $SiteName;
-                } `
-                -ErrorMessage "No run as account found for site '$SiteName'."
-
-            $runAsAccount = $runAsAccounts | Where-Object { $_.CredentialType -eq $RunAsAccountCredentialTypes.VMwareFabric }
+        elseif ($arbArgResult.statusOfTheBridge -ne "Running") {
+            throw "$($ArcResourceBridgeValidationMessages.NotRunning). Make sure the Arc Resource Bridge is online before retrying."
         }
 
         # Validate TargetVMName
@@ -480,17 +647,16 @@ function New-AzMigrateLocalServerReplication {
         }
 
         $customProperties.InstanceType = $instanceType
-        $customProperties.CustomLocationRegion = $targetCluster.CustomLocationRegion
+        $customProperties.CustomLocationRegion = $arbArgResult.CustomLocationRegion
         $customProperties.FabricDiscoveryMachineId = $machine.Id
-        $customProperties.RunAsAccountId = $runAsAccount.Id
+        $customProperties.RunAsAccountId = $runAsAccountId
         $customProperties.SourceFabricAgentName = $sourceDra.Name
         $customProperties.StorageContainerId = $TargetStoragePathId
-        $customProperties.TargetArcClusterCustomLocationId = $targetCluster.CustomLocation
+        $customProperties.TargetArcClusterCustomLocationId = $arbArgResult.CustomLocation
         $customProperties.TargetFabricAgentName = $targetDra.Name
         $customProperties.TargetHciClusterId = $targetClusterId
         $customProperties.TargetResourceGroupId = $TargetResourceGroupId
         $customProperties.TargetVMName = $TargetVMName
-        $customProperties.TargetCpuCore = if ($HasTargetVMCPUCore) { $TargetVMCPUCore } else { $machine.NumberOfProcessorCore }
         $customProperties.IsDynamicRam = if ($HasIsDynamicMemoryEnabled) { $isDynamicRamEnabled } else {  $isSourceDynamicMemoryEnabled }
     
         # Determine target VM Hyper-V Generation
@@ -503,11 +669,37 @@ function New-AzMigrateLocalServerReplication {
             $customProperties.HyperVGeneration = if ($machine.Firmware -ieq "BIOS") { "1" } else { "2" }
         }
 
+        # Validate TargetVMCPUCore
+        if ($HasTargetVMCPUCore)
+        {
+            if ($TargetVMCPUCore -lt $TargetVMCPUCores.Min -or $TargetVMCPUCore -gt $TargetVMCPUCores.Max)
+            {
+                throw "Specify -TargetVMCPUCore between $($TargetVMCPUCores.Min) and $($TargetVMCPUCores.Max)."
+            }
+            $customProperties.TargetCpuCore = $TargetVMCPUCore
+        }
+        else
+        {
+            $customProperties.TargetCpuCore = $machine.NumberOfProcessorCore
+        }
+
         # Validate TargetVMRam
-        if ($HasTargetVMRam) {
-            # TargetVMRam needs to be greater than 0
-            if ($TargetVMRam -le 0) {
-                throw "Specify a target RAM that is greater than 0"    
+        if ($HasTargetVMRam)
+        {
+            if ($customProperties.HyperVGeneration -eq "1") {
+                # Between 512 MB and 1 TB
+                if ($TargetVMRam -lt $TargetVMRamInMB.Gen1Min -or $TargetVMRam -gt $TargetVMRamInMB.Gen1Max)
+                {
+                    throw "Specify -TargetVMRAM between $($TargetVMRamInMB.Gen1Min) and $($TargetVMRamInMB.Gen1Max) MB (i.e., 1 TB) for Hyper-V Generation 1 VM."
+                }
+            }
+            else # Hyper-V Generation 2
+            {
+                # Between 32 MB and 12 TB
+                if ($TargetVMRam -lt $TargetVMRamInMB.Gen2Min -or $TargetVMRam -gt $TargetVMRamInMB.Gen2Max)
+                {
+                    throw "Specify -TargetVMRAM between $($TargetVMRamInMB.Gen2Min) and $($TargetVMRamInMB.Gen2Max) MB (i.e., 12 TB) for Hyper-V Generation 2 VM."
+                }
             }
 
             $customProperties.TargetMemoryInMegaByte = $TargetVMRam 
@@ -534,21 +726,11 @@ function New-AzMigrateLocalServerReplication {
                 if ($null -eq $osDisk) {
                     throw "No Disk found with InstanceId $OSDiskID from discovered machine disks."
                 }
-
-                $diskName = Split-Path $osDisk.Path -leaf
-                if (IsReservedOrTrademarked($diskName)) {
-                    throw "The disk name $diskName or part of the name is a trademarked or reserved word."
-                }
             }
             elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
                 $osDisk = $machine.Disk | Where-Object { $_.Uuid -eq $OSDiskID }
                 if ($null -eq $osDisk) {
                     throw "No Disk found with Uuid $OSDiskID from discovered machine disks."
-                }
-
-                $diskName = Split-Path $osDisk.Path -leaf
-                if (IsReservedOrTrademarked($diskName)) {
-                    throw "The disk name $diskName or part of the name is a trademarked or reserved word."
                 }
             }
 
@@ -593,14 +775,14 @@ function New-AzMigrateLocalServerReplication {
             # Validate DiskToInclude
             [PSCustomObject[]]$uniqueDisks = @()
             foreach ($disk in $DiskToInclude) {
-                # VHD is not supported in Gen2 VMs
+                # Enforce VHDX for Gen2 VMs
                 if ($customProperties.HyperVGeneration -eq "2" -and $disk.DiskFileFormat -eq "VHD") {
-                    throw "VHD disks are not supported in Hyper-V Generation 2 VMs. Please replace disk with id '$($disk.DiskId)' in -DiskToInclude by re-running New-AzMigrateLocalDiskMappingObject with 'VHDX' as Format."
+                    throw "Please specify 'VHDX' as Format for the disk with id '$($disk.DiskId)' in -DiskToInclude by re-running New-AzMigrateLocalDiskMappingObject."
                 }
 
-                # PhysicalSectorSize must be 512 for VHD format
-                if ($disk.DiskFileFormat -eq "VHD" -and $disk.DiskPhysicalSectorSize -ne 512) {
-                    throw "PhysicalSectorSize must be 512 for VHD format. Please replace disk with id '$($disk.DiskId)' in -DiskToInclude by re-running New-AzMigrateLocalDiskMappingObject with 512 as PhysicalSectorSize."
+                # PhysicalSectorSize must be 512 for VHD format if it is set
+                if ($disk.DiskFileFormat -eq "VHD" -and $null -ne $disk.DiskPhysicalSectorSize -and $disk.DiskPhysicalSectorSize -ne 512) {
+                    throw "Invalid Physical sector size of $($disk.DiskPhysicalSectorSize) is found for VHD format. Please replace disk with id '$($disk.DiskId)' in -DiskToInclude by re-running New-AzMigrateLocalDiskMappingObject with 512 as -PhysicalSectorSize."
                 }
 
                 if ($SiteType -eq $SiteTypes.HyperVSites) {
@@ -614,11 +796,6 @@ function New-AzMigrateLocalServerReplication {
                     if ($null -eq $discoveredDisk) {
                         throw "No Disk found with Uuid '$($disk.DiskId)' from discovered machine disks."
                     }
-                }
-
-                $diskName = Split-Path -Path $discoveredDisk.Path -Leaf
-                if (IsReservedOrTrademarked($diskName)) {
-                    throw "The disk name $diskName or part of the name is a trademarked or reserved word."
                 }
 
                 if ($uniqueDisks.Contains($disk.DiskId)) {
@@ -668,19 +845,24 @@ function New-AzMigrateLocalServerReplication {
         
         $protectedItemProperties.CustomProperty = $customProperties
 
-        if ($PSCmdlet.ShouldProcess($MachineId, "Replicate VM.")) {
-            $operation = Az.Migrate.Internal\New-AzMigrateProtectedItem `
-                -Name $MachineName `
-                -ResourceGroupName $ResourceGroupName `
-                -VaultName $replicationVaultName `
-                -Property $protectedItemProperties `
-                -NoWait:$true
+        # Remove common ErrorVariable and ErrorAction for get behaviors
+        $null = $PSBoundParameters.Remove('ErrorVariable')
+        $null = $PSBoundParameters.Remove('ErrorAction')
 
+        if ($PSCmdlet.ShouldProcess($MachineId, "Replicate VM.")) {
+            # Create protected item with ResourceGroupName, VaultName, Name, Property
+            $null = $PSBoundParameters.Add('Name', $MachineName)
+            $null = $PSBoundParameters.Add('Property', $protectedItemProperties)
+            $null = $PSBoundParameters.Add('NoWait', $true)
+            $operation = Az.Migrate.Internal\New-AzMigrateProtectedItem @PSBoundParameters
+            $null = $PSBoundParameters.Remove('NoWait')
+            $null = $PSBoundParameters.Remove('Property')
+            $null = $PSBoundParameters.Remove('Name')
+
+            # Get job with ResourceGroupName, VaultName, Name
             $jobName = $operation.Target.Split("/")[-1].Split("?")[0].Split("_")[0]
-            return Az.Migrate.Internal\Get-AzMigrateLocalReplicationJob `
-                -Name $jobName `
-                -ResourceGroupName $ResourceGroupName `
-                -VaultName $replicationVaultName
+            $null = $PSBoundParameters.Add('Name', $jobName)
+            return Az.Migrate.Internal\Get-AzMigrateLocalReplicationJob @PSBoundParameters
         }
     }
 }

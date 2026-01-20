@@ -23,11 +23,11 @@ Get a list of SAP supported SKUs for ASCS, Application and Database tier.
 Invoke-AzWorkloadsSapSupportedSku -Location eastus -AppLocation eastus -DatabaseType HANA -DeploymentType ThreeTier -Environment Prod -SapProduct S4HANA
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapSupportedSkusRequest
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapSupportedSkusRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapSupportedSku
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapSupportedResourceSkusResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -35,11 +35,11 @@ To create the parameters described below, construct a hash table containing the 
 
 BODY <ISapSupportedSkusRequest>: The SAP request to get list of supported SKUs.
   AppLocation <String>: The geo-location where the resource is to be created.
-  DatabaseType <SapDatabaseType>: The database type. Eg: HANA, DB2, etc
-  DeploymentType <SapDeploymentType>: The deployment type. Eg: SingleServer/ThreeTier
-  Environment <SapEnvironmentType>: Defines the environment type - Production/Non Production.
-  SapProduct <SapProductType>: Defines the SAP Product type.
-  [HighAvailabilityType <SapHighAvailabilityType?>]: The high availability type.
+  DatabaseType <String>: The database type. Eg: HANA, DB2, etc
+  DeploymentType <String>: The deployment type. Eg: SingleServer/ThreeTier
+  Environment <String>: Defines the environment type - Production/Non Production.
+  SapProduct <String>: Defines the SAP Product type.
+  [HighAvailabilityType <String>]: The high availability type.
 
 INPUTOBJECT <ISapVirtualInstanceIdentity>: Identity Parameter
   [ApplicationInstanceName <String>]: The name of SAP Application Server instance resource.
@@ -55,11 +55,13 @@ https://learn.microsoft.com/powershell/module/az.workloads/invoke-azworkloadssap
 #>
 function Invoke-AzWorkloadsSapSupportedSku {
 [Alias('Invoke-AzVISSupportedSku')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapSupportedSku])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapSupportedResourceSkusResult])]
 [CmdletBinding(DefaultParameterSetName='InvokeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Invoke', Mandatory)]
     [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InvokeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='InvokeViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Path')]
     [System.String]
     # The name of the Azure region.
@@ -67,6 +69,8 @@ param(
 
     [Parameter(ParameterSetName='Invoke')]
     [Parameter(ParameterSetName='InvokeExpanded')]
+    [Parameter(ParameterSetName='InvokeViaJsonFilePath')]
+    [Parameter(ParameterSetName='InvokeViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -79,15 +83,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Invoke', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='InvokeViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapSupportedSkusRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapSupportedSkusRequest]
     # The SAP request to get list of supported SKUs.
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
@@ -99,45 +101,57 @@ param(
 
     [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
     [Parameter(ParameterSetName='InvokeViaIdentityExpanded', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.PSArgumentCompleterAttribute("HANA", "DB2")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseType]
+    [System.String]
     # The database type.
     # Eg: HANA, DB2, etc
     ${DatabaseType},
 
     [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
     [Parameter(ParameterSetName='InvokeViaIdentityExpanded', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDeploymentType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.PSArgumentCompleterAttribute("SingleServer", "ThreeTier")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDeploymentType]
+    [System.String]
     # The deployment type.
     # Eg: SingleServer/ThreeTier
     ${DeploymentType},
 
     [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
     [Parameter(ParameterSetName='InvokeViaIdentityExpanded', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.PSArgumentCompleterAttribute("NonProd", "Prod")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType]
+    [System.String]
     # Defines the environment type - Production/Non Production.
     ${Environment},
 
     [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
     [Parameter(ParameterSetName='InvokeViaIdentityExpanded', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.PSArgumentCompleterAttribute("ECC", "S4HANA", "Other")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType]
+    [System.String]
     # Defines the SAP Product type.
     ${SapProduct},
 
     [Parameter(ParameterSetName='InvokeExpanded')]
     [Parameter(ParameterSetName='InvokeViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapHighAvailabilityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.PSArgumentCompleterAttribute("AvailabilitySet", "AvailabilityZone")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapHighAvailabilityType]
+    [System.String]
     # The high availability type.
     ${HighAvailabilityType},
+
+    [Parameter(ParameterSetName='InvokeViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Invoke operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='InvokeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
+    [System.String]
+    # Json string supplied to the Invoke operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -195,6 +209,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -218,10 +241,10 @@ begin {
             InvokeExpanded = 'Az.SapVirtualInstance.private\Invoke-AzWorkloadsSapSupportedSku_InvokeExpanded';
             InvokeViaIdentity = 'Az.SapVirtualInstance.private\Invoke-AzWorkloadsSapSupportedSku_InvokeViaIdentity';
             InvokeViaIdentityExpanded = 'Az.SapVirtualInstance.private\Invoke-AzWorkloadsSapSupportedSku_InvokeViaIdentityExpanded';
+            InvokeViaJsonFilePath = 'Az.SapVirtualInstance.private\Invoke-AzWorkloadsSapSupportedSku_InvokeViaJsonFilePath';
+            InvokeViaJsonString = 'Az.SapVirtualInstance.private\Invoke-AzWorkloadsSapSupportedSku_InvokeViaJsonString';
         }
-        if (('Invoke', 'InvokeExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Invoke', 'InvokeExpanded', 'InvokeViaJsonFilePath', 'InvokeViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -235,6 +258,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

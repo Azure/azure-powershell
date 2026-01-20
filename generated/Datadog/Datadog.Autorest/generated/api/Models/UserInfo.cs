@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Extensions;
 
-    /// <summary>User info</summary>
+    /// <summary>
+    /// Includes name, email and optionally, phone number. User Information can't be null.
+    /// </summary>
     public partial class UserInfo :
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IUserInfo,
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IUserInfoInternal
@@ -40,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 
         }
     }
-    /// User info
+    /// Includes name, email and optionally, phone number. User Information can't be null.
     public partial interface IUserInfo :
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IJsonSerializable
     {
@@ -79,7 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         string PhoneNumber { get; set; }
 
     }
-    /// User info
+    /// Includes name, email and optionally, phone number. User Information can't be null.
     internal partial interface IUserInfoInternal
 
     {
