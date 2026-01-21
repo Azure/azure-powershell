@@ -73,7 +73,7 @@ The second command gets the policy assignment named PolicyAssignment07 for the s
 ### Example 3: Get all policy assignments assigned to a management group
 ```powershell
 $mgId = 'myManagementGroup'
-Get-AzPolicyAssignment -Scope "/providers/Microsoft.Management/managementgroups/$mgId"
+Get-AzPolicyAssignment -Scope '/providers/Microsoft.Management/managementgroups/$mgId'
 ```
 
 The first command specifies the ID of the management group to query.
