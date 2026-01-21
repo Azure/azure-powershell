@@ -53,7 +53,7 @@ pac51,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac52,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCI.2.6.5.zip;sourceType=sa]Az.StackHCI,2.6.5
 pac53,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCIVM.1.1.0.zip;sourceType=sa]Az.StackHCIVM,1.1.0
 pac54,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StandbyPool.0.3.0.zip;sourceType=sa]Az.StandbyPool,0.3.0
-pac55,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Storage.9.5.0.zip;sourceType=sa]Az.Storage,9.5.0
+pac55,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Storage.9.5.1.zip;sourceType=sa]Az.Storage,9.5.1
 pac56,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageAction.1.0.0.zip;sourceType=sa]Az.StorageAction,1.0.0
 pac57,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageCache.0.3.0.zip;sourceType=sa]Az.StorageCache,0.3.0
 pac58,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageDiscovery.1.0.0.zip;sourceType=sa]Az.StorageDiscovery,1.0.0

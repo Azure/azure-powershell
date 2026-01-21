@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 9.5.1
 * Supported publishing IPv6 endpoints when creating/updating a storage account and IPv6 rules in network rule set
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
