@@ -513,7 +513,7 @@ $account.DualStackEndpointPreference.PublishIpv6Endpoint
 True
 ```
 
-This command enabled publishing IPv6 endpoint on a Storage account.
+This command enables publishing IPv6 endpoint on a Storage account.
 
 ## PARAMETERS
 
