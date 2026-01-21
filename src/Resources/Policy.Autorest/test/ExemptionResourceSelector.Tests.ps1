@@ -7,6 +7,7 @@ Describe 'ExemptionResourceSelector' -Tag 'LiveOnly' {
         # setup
         $newRgName1 = Get-ResourceGroupName
         $newRgName2 = Get-ResourceGroupName
+        $newRgName3 = Get-ResourceGroupName
         $policyDefName = Get-ResourceName
         $policyAssName = Get-ResourceName
         $policyExmName = Get-ResourceName
@@ -74,11 +75,36 @@ Describe 'ExemptionResourceSelector' -Tag 'LiveOnly' {
         $rg = Get-ResourceGroup -Name $newRgName2
         $rg.Location | Should -Be 'westus2'
     }
+    
+    It 'Update exemption with identity based resource selector' {
+        # change In to NotIn
+        $resourceSelector = @{Name = "UserPrincipalIdSelector"; Selector = @(@{Kind = "UserPrincipalId"; In = @("00000000-0000-0000-0000-000000000000")})}
+        $policyExemption = Update-AzPolicyExemption -Name $policyExmName -ResourceSelector $resourceSelector
 
+        # validate exemption contains the selector
+        $policyExemption.ResourceSelector.Name | Should -Be $resourceSelector.Name
+        $policyExemption.ResourceSelector.Selector[0].Kind | Should -Be $resourceSelector.Selector[0].Kind
+        $policyExemption.ResourceSelector.Selector[0].In | Should -Be $resourceSelector.Selector[0].In
+        $policyExemption.ResourceSelector.Selector[0].NotIn | Should -BeNull
+
+        # validate exemption contains the selector after round trip
+        $policyExemption = Get-AzPolicyExemption -Name $policyExmName
+        $policyExemption.ResourceSelector.Name | Should -Be $resourceSelector.Name
+        $policyExemption.ResourceSelector.Selector[0].Kind | Should -Be $resourceSelector.Selector[0].Kind
+        $policyExemption.ResourceSelector.Selector[0].In | Should -Be $resourceSelector.Selector[0].In
+        $policyExemption.ResourceSelector.Selector[0].NotIn | Should -BeNull
+    }
+
+    It 'Validate updated identity based selector operation' {
+        # creating an RG without the non-existing user principal id should fail due to policy since it is not exempted
+        { New-ResourceGroup -Location 'eastus2' -Name $newRgName3 } | Should -Throw $disallowedByPolicy
+    }
+    
     AfterAll {
         # clean up RGs
         Remove-ResourceGroup -Name $newRgName1
         Remove-ResourceGroup -Name $newRgName2
+        Remove-ResourceGroup -Name $newRgName3
 
         # remove the exemption and assignment
         $remove = (Remove-AzPolicyExemption -Name $policyExmName -Force -PassThru)
