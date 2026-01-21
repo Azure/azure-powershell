@@ -47,6 +47,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
+        /// <param name="subnet">The reference to the subnet resource.
+        /// </param>
+
         /// <param name="bandwidthInGbps">Bandwidth of the VirtualNetworkAppliance resource in Gbps.
         /// </param>
 
@@ -55,19 +58,16 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="resourceGuid">The resource GUID property of the virtual network appliance resource.
         /// </param>
-
-        /// <param name="subnet">The reference to the subnet resource.
-        /// </param>
-        public VirtualNetworkAppliance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), string bandwidthInGbps = default(string), System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration>), string resourceGuid = default(string), Subnet subnet = default(Subnet))
+        public VirtualNetworkAppliance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), Subnet subnet = default(Subnet), string bandwidthInGbps = default(string), System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration>), string resourceGuid = default(string))
 
         : base(id, name, type, location, tags)
         {
             this.Etag = etag;
             this.ProvisioningState = provisioningState;
+            this.Subnet = subnet;
             this.BandwidthInGbps = bandwidthInGbps;
             this.IPConfigurations = ipConfigurations;
             this.ResourceGuid = resourceGuid;
-            this.Subnet = subnet;
             CustomInit();
         }
 
@@ -91,6 +91,12 @@ namespace Microsoft.Azure.Management.Network.Models
         public string ProvisioningState {get; private set; }
 
         /// <summary>
+        /// Gets or sets the reference to the subnet resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.subnet")]
+        public Subnet Subnet {get; set; }
+
+        /// <summary>
         /// Gets or sets bandwidth of the VirtualNetworkAppliance resource in Gbps.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.bandwidthInGbps")]
@@ -107,11 +113,5 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceGuid")]
         public string ResourceGuid {get; private set; }
-
-        /// <summary>
-        /// Gets or sets the reference to the subnet resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.subnet")]
-        public Subnet Subnet {get; set; }
     }
 }
