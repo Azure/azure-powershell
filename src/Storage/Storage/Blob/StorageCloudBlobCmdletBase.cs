@@ -719,7 +719,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             }
             else if (localChannel.StorageContext.StorageAccount.Credentials != null && localChannel.StorageContext.StorageAccount.Credentials.IsSAS) //SAS
             {
-                fileSystem = new DataLakeFileSystemClient(new Uri (fileSystemUri.ToString() + "?" + Util.GetSASStringWithoutQuestionMark(localChannel.StorageContext.StorageAccount.Credentials.SASToken)), this.DataLakeClientOptions);
+                if (localChannel.StorageContext.Track2OauthToken != null)
+                {
+                    fileSystem = new DataLakeFileSystemClient(new Uri(fileSystemUri.ToString() + "?" + Util.GetSASStringWithoutQuestionMark(localChannel.StorageContext.StorageAccount.Credentials.SASToken)), 
+                        localChannel.StorageContext.Track2OauthToken,
+                        this.DataLakeClientOptions);
+                }
+                else
+                {
+                    fileSystem = new DataLakeFileSystemClient(new Uri(fileSystemUri.ToString() + "?" + Util.GetSASStringWithoutQuestionMark(localChannel.StorageContext.StorageAccount.Credentials.SASToken)),
+                        this.DataLakeClientOptions);
+                }
             }
             else if (localChannel.StorageContext.StorageAccount.Credentials != null && localChannel.StorageContext.StorageAccount.Credentials.IsSharedKey) //Shared Key
             {
@@ -921,7 +931,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 {
                     fullUri = fullUri + "?" + sas;
                 }
-                blobClient = new BlobClient(new Uri(fullUri), options);
+                if (context != null && context.Track2OauthToken != null)
+                {
+                    blobClient = new BlobClient(new Uri(fullUri), context.Track2OauthToken, options);
+                }
+                else
+                {
+                    blobClient = new BlobClient(new Uri(fullUri), options);
+                }
             }
             else if (cloubBlob.ServiceClient.Credentials.IsSharedKey) //Shared Key
             {

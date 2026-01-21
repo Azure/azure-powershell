@@ -216,13 +216,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 || !System.IO.File.Exists(filePath)
                 || ShouldContinue(string.Format(Resources.OverwriteConfirmation, filePath), null))
             {
-                StorageTransferOptions trasnferOption = new StorageTransferOptions()
+                StorageTransferOptions transferOption = new StorageTransferOptions()
                 {
                     MaximumConcurrency = this.GetCmdletConcurrency(),
                     MaximumTransferSize = size4MB,
                     InitialTransferSize = size4MB
                 };
-                await blob.DownloadToAsync(filePath, BlobRequestConditions, trasnferOption, CmdletCancellationToken).ConfigureAwait(false);
+                await blob.DownloadToAsync(filePath, BlobRequestConditions, transferOption, CmdletCancellationToken).ConfigureAwait(false);
                 OutputStream.WriteObject(taskId, new AzureStorageBlob(blob, localChannel is null? null : localChannel.StorageContext, blobProperties, options: ClientOptions));
             }
         }
@@ -263,7 +263,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             ValidatePipelineCloudBlobContainer(container);
 
-            if (UseTrack2Sdk())
+            if (UseTrack2Sdk() || IsSasTokenWithOAuth(container))
             {
                 BlobContainerClient track2container = AzureStorageContainer.GetTrack2BlobContainerClient(container, Channel.StorageContext, ClientOptions);
                 BlobBaseClient blobClient = track2container.GetBlobBaseClient(blobName);
@@ -277,6 +277,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
                 GetBlobContent(blob, fileName, true);
             }
+        }
+
+        private bool IsSasTokenWithOAuth(CloudBlobContainer container)
+        {   
+            if (container != null && container.ServiceClient != null && container.ServiceClient.Credentials != null && container.ServiceClient.Credentials.IsSAS) //SAS
+            {
+                if (Channel.StorageContext != null && Channel.StorageContext.Track2OauthToken != null)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -544,7 +557,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 case BlobParameterSet:
                     if (ShouldProcess(CloudBlob.Name, "Download"))
                     {
-                        if (!(CloudBlob is InvalidCloudBlob) && !UseTrack2Sdk())
+                        if (!(CloudBlob is InvalidCloudBlob) && !UseTrack2Sdk() && !IsSasTokenWithOAuth(CloudBlob.Container))
                         {
                             GetBlobContent(CloudBlob, FileName, true);
                         }

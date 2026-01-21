@@ -14,23 +14,24 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Storage.Blob;
-    using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
-    using global::Azure.Storage.Sas;
-    using global::Azure.Storage.Blobs.Specialized;
-    using global::Azure.Storage.Blobs.Models;
     using System.Threading;
-    using global::Azure.Storage.Blobs;
+    using global::Azure.Core;
     using global::Azure.Storage;
+    using global::Azure.Storage.Blobs;
+    using global::Azure.Storage.Blobs.Models;
+    using global::Azure.Storage.Blobs.Specialized;
     using global::Azure.Storage.Files.DataLake;
     using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage.Files.Shares.Models;
-    using global::Azure.Storage.Queues.Models;
     using global::Azure.Storage.Queues;
+    using global::Azure.Storage.Queues.Models;
+    using global::Azure.Storage.Sas;
+    using Microsoft.Azure.Storage;
+    using Microsoft.Azure.Storage.Blob;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using XTable = Microsoft.Azure.Cosmos.Table;
 
     internal class SasTokenHelper
     {
@@ -231,7 +232,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? StartTime = null,
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
-            string Protocol = null)
+            string Protocol = null,
+            string delegatedUserObjectId = null)
         {
             ShareSasBuilder sasBuilder = SetShareSasBuilder(file.ShareName,
                 file.Path,
@@ -240,7 +242,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 StartTime,
                 ExpiryTime,
                 iPAddressOrRange,
-                Protocol);
+                Protocol,
+                delegatedUserObjectId);
             return sasBuilder;
         }
 
@@ -253,7 +256,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? StartTime = null,
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
-            string Protocol = null)
+            string Protocol = null,
+            string delegatedUserObjectId = null)
         {
             ShareSasBuilder sasBuilder = SetShareSasBuilder(share.Name,
                 null,
@@ -262,7 +266,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 StartTime,
                 ExpiryTime,
                 iPAddressOrRange,
-                Protocol);
+                Protocol,
+                null,
+                delegatedUserObjectId);
             return sasBuilder;
         }
 
@@ -275,7 +281,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? startTime = null,
             DateTime? expiryTime = null,
             string iPAddressOrRange = null,
-            string protocol = null)
+            string protocol = null,
+            string delegatedUserObjectId = null)
         {
             QueueSasBuilder sasBuilder = new QueueSasBuilder
             {
@@ -371,6 +378,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     sasBuilder.Protocol = SasProtocol.Https;
                 }
             }
+            if (delegatedUserObjectId != null)
+            {
+                sasBuilder.DelegatedUserObjectId = delegatedUserObjectId; 
+            }
             return sasBuilder;
         }
 
@@ -385,7 +396,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
             string Protocol = null,
-            string EncryptionScope = null)
+            string EncryptionScope = null,
+            string delegatedUserObjectId = null)
         {
             ShareSasBuilder sasBuilder;
             if (signedIdentifier != null) // Use save access policy
@@ -487,37 +499,75 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     sasBuilder.Protocol = SasProtocol.Https;
                 }
             }
+            if (delegatedUserObjectId != null)
+            {
+                sasBuilder.DelegatedUserObjectId = delegatedUserObjectId;
+            }
             return sasBuilder;
         }
 
         /// <summary>
         /// Get SAS string
         /// </summary>
-        public static string GetFileSharedAccessSignature(AzureStorageContext context, ShareSasBuilder sasBuilder, CancellationToken cancelToken)
+        public static string GetFileSharedAccessSignature(AzureStorageContext context, ShareSasBuilder sasBuilder, bool generateUserDelegationSas, CancellationToken cancelToken)
         {
             if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSharedKey)
             {
                 return sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
             }
-            else
+
+            if (generateUserDelegationSas)
             {
-                throw new InvalidOperationException("Create File service SAS only supported with SharedKey credential.");
+                if (context.StorageAccountName.StartsWith("["))
+                {
+                    throw new InvalidOperationException("Please provide '-Context' as a storage context created by cmdlet `New-AzStorageContext` with parameters include '-StorageAccountName'.");
+                }
+                global::Azure.Storage.Files.Shares.Models.UserDelegationKey userDelegationKey = null;
+                ShareServiceClient oauthService = new ShareServiceClient(context.StorageAccount.FileEndpoint, context.Track2OauthToken);
+
+                Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
+
+                userDelegationKey = oauthService.GetUserDelegationKey(
+                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
+                    expiresOn: sasBuilder.ExpiresOn.ToUniversalTime(),
+                    cancellationToken: cancelToken);
+
+                return sasBuilder.ToSasQueryParameters(userDelegationKey, context.StorageAccountName).ToString();
             }
+
+            throw new InvalidOperationException("Create File service SAS only supported with SharedKey or OAuth token credential without using SAS token.");
         }
 
         /// <summary>
         /// Get Queue SAS string
         /// </summary>
-        public static string GetQueueSharedAccessSignature(AzureStorageContext context, QueueSasBuilder sasBuilder, CancellationToken cancellationToken)
+        public static string GetQueueSharedAccessSignature(AzureStorageContext context, QueueSasBuilder sasBuilder, bool generateUserDelegationSas, CancellationToken cancellationToken)
         {
             if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSharedKey)
             {
                 return sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
             }
-            else
+
+            if (generateUserDelegationSas)
             {
-                throw new InvalidOperationException("Create Queue service SAS only supported with SharedKey credential.");
+                if (context.StorageAccountName.StartsWith("["))
+                {
+                    throw new InvalidOperationException("Please provide '-Context' as a storage context created by cmdlet `New-AzStorageContext` with parameters include '-StorageAccountName'.");
+                }
+                global::Azure.Storage.Queues.Models.UserDelegationKey userDelegationKey = null;
+                QueueServiceClient oauthService = new QueueServiceClient(context.StorageAccount.QueueEndpoint, context.Track2OauthToken);
+
+                Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
+
+                userDelegationKey = oauthService.GetUserDelegationKey(
+                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
+                    expiresOn: sasBuilder.ExpiresOn.ToUniversalTime(),
+                    cancellationToken: cancellationToken);
+
+                return sasBuilder.ToSasQueryParameters(userDelegationKey, context.StorageAccountName).ToString();
             }
+            
+            throw new InvalidOperationException("Create Queue service SAS only supported with SharedKey or OAuth token credential without using SAS token.");
         }
 
 
@@ -531,7 +581,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
             SharedAccessProtocol? Protocol = null,
-            string EncryptionScope = null)
+            string EncryptionScope = null,
+            string DelegatedUserObjectId = null)
         {
             BlobSasBuilder sasBuilder = SetBlobSasBuilder(blobClient.BlobContainerName,
                 blobClient.Name,
@@ -541,7 +592,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 ExpiryTime,
                 iPAddressOrRange,
                 Protocol,
-                EncryptionScope);
+                EncryptionScope,
+                DelegatedUserObjectId);
             if (Util.GetVersionIdFromBlobUri(blobClient.Uri) != null)
             {
                 sasBuilder.BlobVersionId = Util.GetVersionIdFromBlobUri(blobClient.Uri);
@@ -563,7 +615,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
             SharedAccessProtocol? Protocol = null,
-            string EncryptionScope = null)
+            string EncryptionScope = null,
+            string DelegatedUserObjectId = null)
         {
             BlobSasBuilder sasBuilder = SetBlobSasBuilder(container.Name,
                 null,
@@ -573,7 +626,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 ExpiryTime,
                 iPAddressOrRange,
                 Protocol,
-                EncryptionScope);
+                EncryptionScope,
+                DelegatedUserObjectId);
             return sasBuilder;
         }
 
@@ -588,7 +642,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
             SharedAccessProtocol? Protocol = null,
-            string EncryptionScope = null)
+            string EncryptionScope = null,
+            string DelegatedUserObjectId = null)
         {
             BlobSasBuilder sasBuilder;
             if (signedIdentifier != null) // Use save access policy
@@ -643,7 +698,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     }
                     else
                     {
-                        sasBuilder = SetBlobPermission(sasBuilder, Permission);
+                        sasBuilder.SetPermissions(Permission, true);
                     }
                 }
             }
@@ -654,7 +709,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     BlobContainerName = containerName,
                     BlobName = blobName,
                 };
-                sasBuilder = SetBlobPermission(sasBuilder, Permission);
+                sasBuilder.SetPermissions(Permission, true);
                 if (StartTime != null)
                 {
                     sasBuilder.StartsOn = StartTime.Value.ToUniversalTime();
@@ -694,53 +749,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 sasBuilder.EncryptionScope = EncryptionScope;
             }
-            return sasBuilder;
-        }
-
-        /// <summary>
-        /// Set blob permission to SAS builder
-        /// </summary>
-        public static BlobSasBuilder SetBlobPermission(BlobSasBuilder sasBuilder, string rawPermission)
-        {
-            BlobContainerSasPermissions permission = 0;
-            foreach (char c in rawPermission)
+            if (DelegatedUserObjectId != null)
             {
-                switch (c)
-                {
-                    case 'r':
-                        permission = permission | BlobContainerSasPermissions.Read;
-                        break;
-                    case 'a':
-                        permission = permission | BlobContainerSasPermissions.Add;
-                        break;
-                    case 'c':
-                        permission = permission | BlobContainerSasPermissions.Create;
-                        break;
-                    case 'w':
-                        permission = permission | BlobContainerSasPermissions.Write;
-                        break;
-                    case 'd':
-                        permission = permission | BlobContainerSasPermissions.Delete;
-                        break;
-                    case 'l':
-                        permission = permission | BlobContainerSasPermissions.List;
-                        break;
-                    case 't':
-                        permission = permission | BlobContainerSasPermissions.Tag;
-                        break;
-                    case 'x':
-                        permission = permission | BlobContainerSasPermissions.DeleteBlobVersion;
-                        break;
-                    case 'i':
-                        permission = permission | BlobContainerSasPermissions.SetImmutabilityPolicy;
-                        break;
-                    default:
-                        // Can't convert to permission supported by XSCL, so use raw permission string
-                        sasBuilder.SetPermissions(rawPermission);
-                        return sasBuilder;
-                }
+                sasBuilder.DelegatedUserObjectId = DelegatedUserObjectId;
             }
-            sasBuilder.SetPermissions(permission);
             return sasBuilder;
         }
 
@@ -773,7 +785,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             else
             {
-                throw new InvalidOperationException("Create SAS only supported with SharedKey or Oauth credential.");
+                throw new InvalidOperationException("Create SAS only supported with SharedKey or OAuth token credential without using SAS token.");
             }
         }
 
@@ -806,7 +818,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             else
             {
-                throw new InvalidOperationException("Create SAS only supported with SharedKey or Oauth credential.");
+                throw new InvalidOperationException("Create SAS only supported with SharedKey or OAuth token credential without using SAS token.");
             }
         }
 
@@ -919,55 +931,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// </summary>
         public static AccountSasBuilder SetAccountPermission(AccountSasBuilder sasBuilder, string rawPermission)
         {
-            AccountSasPermissions permission = 0;
-            foreach (char c in rawPermission)
+            if (!AccountSasPermissions.TryParse(rawPermission, out AccountSasPermissions permission))
             {
-                switch (c)
-                {
-                    case 'r':
-                        permission = permission | AccountSasPermissions.Read;
-                        break;
-                    case 'a':
-                        permission = permission | AccountSasPermissions.Add;
-                        break;
-                    case 'c':
-                        permission = permission | AccountSasPermissions.Create;
-                        break;
-                    case 'w':
-                        permission = permission | AccountSasPermissions.Write;
-                        break;
-                    case 'd':
-                        permission = permission | AccountSasPermissions.Delete;
-                        break;
-                    case 'l':
-                        permission = permission | AccountSasPermissions.List;
-                        break;
-                    case 'u':
-                        permission = permission | AccountSasPermissions.Update;
-                        break;
-                    case 'p':
-                        permission = permission | AccountSasPermissions.Process;
-                        break;
-                    case 't':
-                        permission = permission | AccountSasPermissions.Tag;
-                        break;
-                    case 'f':
-                        permission = permission | AccountSasPermissions.Filter;
-                        break;
-                    case 'x':
-                        permission = permission | AccountSasPermissions.DeleteVersion;
-                        break;
-                    case 'i':
-                        permission = permission | AccountSasPermissions.SetImmutabilityPolicy;
-                        break;
-                    case 'y':
-                        permission = permission | AccountSasPermissions.PermanentDelete;
-                        break;
-                    default:
-                        // Can't convert to permission supported by XSCL, so use raw permission string
-                        sasBuilder.SetPermissions(rawPermission);
-                        return sasBuilder;
-                }
+                // Can't convert to permission supported by XSCL, so use raw permission string
+                sasBuilder.SetPermissions(rawPermission);
+                return sasBuilder;
             }
             sasBuilder.SetPermissions(permission);
             return sasBuilder;

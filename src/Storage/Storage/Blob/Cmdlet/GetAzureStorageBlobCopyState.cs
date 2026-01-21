@@ -113,6 +113,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
+            if (Channel != null && Channel.IsSasWithOAuthCredential())
+            {
+                throw new InvalidOperationException("Get Blob Async copy status doesn't support user delegation SAS with OAuth credential.");
+            }
+
             CloudBlob blob = null;
 
             switch (ParameterSetName)

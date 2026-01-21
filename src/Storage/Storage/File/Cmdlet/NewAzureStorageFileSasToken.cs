@@ -91,6 +91,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "This value specifies the Entra ID of the user who is authorized to use the resulting SAS URL. The resulting SAS URL must be used in conjunction with an Entra ID token that has been issued to the user specified in this value. This parameter can only be specified when input Storage Context is OAuth based.")]
+        [ValidateNotNullOrEmpty]
+        public string DelegatedUserObjectId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Permissions for a file. Permissions can be any subset of \"rwd\".",
             ParameterSetName = NameSasPermissionParameterSet)]
         [Parameter(
@@ -152,10 +158,29 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 fileClient = shareClient.GetRootDirectoryClient().GetFileClient(this.Path);
             }
 
-
-            if (this.Context != null && this.Context is AzureStorageContext && ((AzureStorageContext)this.Context).StorageAccount != null && !((AzureStorageContext)this.Context).StorageAccount.Credentials.IsSharedKey)
+            // When the input context is OAuth bases, can't generate normal SAS, but UserDelegationSas
+            bool generateUserDelegationSas = false;
+            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount != null && Channel.StorageContext.StorageAccount.Credentials != null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
             {
-                throw new InvalidOperationException("Create File service SAS only supported with SharedKey credential.");
+                if (ShouldProcess(Path, "Generate User Delegation SAS, since input Storage Context is OAuth based."))
+                {
+                    generateUserDelegationSas = true;
+                    if (!string.IsNullOrEmpty(this.Policy))
+                    {
+                        throw new ArgumentException("When input Storage Context is OAuth based, Saved Policy is not supported.", "Policy");
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                if (this.DelegatedUserObjectId != null)
+                {
+                    throw new ArgumentException("DelegatedUserObjectId can only be specified when input Storage Context is OAuth based without using SAS token.", "DelegatedUserObjectId");
+                }
             }
 
             // Get share saved policy if any
@@ -166,10 +191,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             }
 
             //Create SAS builder
-            ShareSasBuilder sasBuilder = SasTokenHelper.SetShareSasBuilder_FromFile(fileClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol);
+            ShareSasBuilder sasBuilder = SasTokenHelper.SetShareSasBuilder_FromFile(fileClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol, this.DelegatedUserObjectId);
 
             //Create SAS and output it
-            string sasToken = SasTokenHelper.GetFileSharedAccessSignature((AzureStorageContext)this.Context, sasBuilder, CmdletCancellationToken);
+            string sasToken = SasTokenHelper.GetFileSharedAccessSignature((AzureStorageContext)this.Context, sasBuilder, generateUserDelegationSas, CmdletCancellationToken);
 
             // remove prefix "?" of SAS if any
             sasToken = Util.GetSASStringWithoutQuestionMark(sasToken);

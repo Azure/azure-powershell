@@ -68,5 +68,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         {
             return directory.ExistsAsync(options, operationContext, cancellationToken);
         }
+        public bool IsSasWithOAuthCredential()
+        {
+            return this.Client != null && this.Client.Credentials.IsSAS && this.StorageContext != null && this.StorageContext.Track2OauthToken != null;
+        }
     }
 }
