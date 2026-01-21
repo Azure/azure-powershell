@@ -420,9 +420,5 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             this.PublishIpv6Endpoint = preference.PublishIpv6Endpoint;
         }
-        //public PSDualStackEndpointPreference(bool? publishIpv6Endpoint = null)
-        //{
-        //    this.PublishIpv6Endpoint = publishIpv6Endpoint;
-        //}
     }
 }

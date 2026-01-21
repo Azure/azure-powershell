@@ -590,7 +590,7 @@ function Test-NetworkRule
         Assert-AreEqual $ip1 $stoacl.IpRules[0].IPAddressOrRange;
         Assert-AreEqual $ip2 $stoacl.IpRules[1].IPAddressOrRange;
         Assert-AreEqual 0 $stoacl.VirtualNetworkRules.Count	
-        Assert-AreEqual 0 $stoacl.ResourceAccessRules.Count		
+        Assert-AreEqual 0 $stoacl.ResourceAccessRules.Count
 
         $sto | Update-AzStorageAccountNetworkRuleSet -verbose -Bypass AzureServices,Metrics -DefaultAction Allow -IpRule (@{IPAddressOrRange="$ip3";Action="allow"},@{IPAddressOrRange="$ip4";Action="allow"}) -ResourceAccessRule (@{ResourceId=$resourceId1;TenantId=$tenanetId},@{ResourceId=$resourceId2;TenantId=$tenanetId})
         $stoacl = $sto | Get-AzStorageAccountNetworkRuleSet
