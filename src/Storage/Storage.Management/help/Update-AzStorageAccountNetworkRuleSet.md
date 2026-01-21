@@ -15,9 +15,9 @@ Update the NetworkRule property of a Storage account
 ```
 Update-AzStorageAccountNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String>
  [-Bypass <PSNetWorkRuleBypassEnum>] [-DefaultAction <PSNetWorkRuleDefaultActionEnum>] [-IPRule <PSIpRule[]>]
- [-VirtualNetworkRule <PSVirtualNetworkRule[]>] [-ResourceAccessRule <PSResourceAccessRule[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IPv6Rule <PSIpv6Rule[]>] [-VirtualNetworkRule <PSVirtualNetworkRule[]>]
+ [-ResourceAccessRule <PSResourceAccessRule[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -135,6 +135,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -IPv6Rule
+Storage Account NetworkRule IPv6Rules.
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSIpv6Rule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the Storage account.
 
@@ -147,6 +162,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -235,7 +265,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]
 
+### Microsoft.Azure.Commands.Management.Storage.Models.PSIpv6Rule[]
+
 ### Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]
+
+### Microsoft.Azure.Commands.Management.Storage.Models.PSResourceAccessRule[]
 
 ## OUTPUTS
 
