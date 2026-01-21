@@ -1,0 +1,42 @@
+{
+  "Test-AzArtifactSigningAccountNameAvailability+[NoContext]+CheckViaJsonString+$POST+https://management.azure.com/subscriptions/76a1b60e-e087-45e5-be6e-8cdeeaee8e77/providers/Microsoft.CodeSigning/checkNameAvailability?api-version=2024-09-30-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/76a1b60e-e087-45e5-be6e-8cdeeaee8e77/providers/Microsoft.CodeSigning/checkNameAvailability?api-version=2024-09-30-preview",
+      "Content": "{ \"name\": \"nonexistent\",   \"type\": \"microsoft.codesigning/codesigningaccounts\" }",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "80" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=02c431f3-68c3-468e-b558-b7aa99c1193e/westus2/b4b0460f-4fee-4fa4-af3d-e993933effde" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "53a80d68-67ec-441b-98c7-17436b705039" ],
+        "x-ms-correlation-request-id": [ "1f7af7ae-4029-47b2-af51-1064e05e2d13" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260121T215759Z:1f7af7ae-4029-47b2-af51-1064e05e2d13" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B1EC23C73B174EC2A922FCA2FAF9B9F9 Ref B: MWH011020809040 Ref C: 2026-01-21T21:57:56Z" ],
+        "Date": [ "Wed, 21 Jan 2026 21:57:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  }
+}
