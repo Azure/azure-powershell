@@ -56,6 +56,7 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         $metadata = $env.metadata | ConvertFrom-Json -Depth 100
         $enforcementModeDefault = $env.enforcementModeDefault
         $enforcementModeDoNotEnforce = $env.enforcementModeDoNotEnforce
+        $enforcementModeEnroll = $env.enforcementModeEnroll
 
         $updatedMetadataName = $env.updatedMetadataName
         $updatedMetadataValue = $env.updatedMetadataValue
@@ -69,6 +70,7 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         # values used by parameter combination tests
         $someName = $env.someName
         $someScope = $env.someScope
+        $someVersion = $env.someVersion
         $someId = $env.someId
         $someIdentityId = $env.someIdentityId
         $someManagementGroup = $env.someManagementGroup
@@ -109,6 +111,7 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         $versionRequiresNameOrId = $env.versionRequiresNameOrId
         $listVersionsRequiresNameOrId = $env.listVersionsRequiresNameOrId
         $disallowedByPolicy = $env.disallowedByPolicy
+        $invalidVersionIdentifier = $env.invalidVersionIdentifier
     }
     catch {
         Write-Host -ForegroundColor Red "Failed setting up environment for [$TargetTestName]: [$_]"

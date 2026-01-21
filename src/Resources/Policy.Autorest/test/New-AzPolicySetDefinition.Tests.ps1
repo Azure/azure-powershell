@@ -44,4 +44,16 @@ Describe 'NewPolicySetDefinition' {
             New-AzPolicySetDefinition -PolicyDefinition $someJsonArray
         } | Should -Throw $missingParameters
     }
+
+    It 'New-AzPolicySetDefinition -Name -PolicyDefinition -Version <invalid version>' {
+        {
+            New-AzPolicySetDefinition -Name $someName -PolicyDefinition $someJsonArray -Version $someName
+        } | Should -Throw $invalidVersionIdentifier
+    }
+
+    It 'New-AzPolicySetDefinition -Name -PolicyDefinition -Version <missing>' {
+        {
+            New-AzPolicySetDefinition -Name $someName -PolicyDefinition $someJsonArray -Version
+        } | Should -Throw $missingAnArgument
+    }
 }

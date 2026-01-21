@@ -15,7 +15,11 @@ This operation updates an existing policy definition in the given subscription o
 ### Name (Default)
 ```
 Update-AzPolicyDefinition -Name <String> [-DisplayName <String>] [-Description <String>] [-Policy <String>]
- [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-Version <String>]
+ [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
+ [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
+ [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-EndpointSettingKind <String>]
+ [-EndpointSettingDetail <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,31 +27,44 @@ Update-AzPolicyDefinition -Name <String> [-DisplayName <String>] [-Description <
 ```
 Update-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-DisplayName <String>]
  [-Description <String>] [-Policy <String>] [-Metadata <String>] [-Parameter <String>] [-Mode <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Version <String>] [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
+ [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
+ [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-EndpointSettingKind <String>]
+ [-EndpointSettingDetail <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
 Update-AzPolicyDefinition -Name <String> -ManagementGroupName <String> [-DisplayName <String>]
  [-Description <String>] [-Policy <String>] [-Metadata <String>] [-Parameter <String>] [-Mode <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Version <String>] [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
+ [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
+ [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-EndpointSettingKind <String>]
+ [-EndpointSettingDetail <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Id
 ```
 Update-AzPolicyDefinition -Id <String> [-DisplayName <String>] [-Description <String>] [-Policy <String>]
- [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-Version <String>]
+ [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
+ [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
+ [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-EndpointSettingKind <String>]
+ [-EndpointSettingDetail <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Update-AzPolicyDefinition [-DisplayName <String>] [-Description <String>] [-Policy <String>]
- [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-BackwardCompatible]
- -InputObject <IPolicyDefinition> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-Version <String>]
+ [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
+ [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
+ [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-EndpointSettingKind <String>]
+ [-EndpointSettingDetail <String>] [-BackwardCompatible] -InputObject <IPolicyDefinition>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,37 +72,27 @@ This operation updates an existing policy definition in the given subscription o
 
 ## EXAMPLES
 
-### Example 1: Update the description of a policy definition
+### Example 1: {{ Add title here }}
 ```powershell
-$PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition'
-Update-AzPolicyDefinition -Id $PolicyDefinition.Id -Description 'Updated policy to not allow virtual machine creation'
+{{ Add code here }}
 ```
 
-The first command gets a policy definition named VMPolicyDefinition by using the Get-AzPolicyDefinition cmdlet.
-The command stores that object in the $PolicyDefinition variable.
-The second command updates the description of the policy definition identified by the **Id** property of $PolicyDefinition.
-
-### Example 2: Update the mode of a policy definition
-```powershell
-Update-AzPolicyDefinition -Name 'VMPolicyDefinition' -Mode 'All'
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command updates the policy definition named VMPolicyDefinition by using the Update-AzPolicyDefinition cmdlet to 
-set its mode property to 'All'.
+{{ Add description here }}
 
-### Example 3: Update the metadata of a policy definition
+### Example 2: {{ Add title here }}
 ```powershell
-Update-AzPolicyDefinition -Name 'VMPolicyDefinition' -Metadata '{"category":"Virtual Machine"}'
+{{ Add code here }}
 ```
 
-This command updates the metadata of a policy definition named VMPolicyDefinition to indicate its category is "Virtual Machine".
-
-### Example 3: [Backcompat] Update the mode of a policy definition
-```powershell
-Set-AzPolicyDefinition -Name 'VMPolicyDefinition' -Mode 'All'
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command updates the policy definition named VMPolicyDefinition by using the Set-AzPolicyDefinition alias of the Update-AzPolicyDefinition cmdlet to set its mode property to 'All'.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -140,6 +147,84 @@ The display name of the policy definition.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EndpointSettingDetail
+The details of the endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EndpointSettingKind
+The kind of the endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ExternalEvaluationEnforcementSettingMissingTokenAction
+What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing.
+Possible values are Audit and Deny and language expressions are supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ExternalEvaluationEnforcementSettingResultLifespan
+The lifespan of the endpoint invocation result after which it's no longer valid.
+
+Value is expected to follow the ISO 8601 duration format and language expressions are supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ExternalEvaluationEnforcementSettingRoleDefinitionId
+An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -287,6 +372,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Version
+The policy definition version in #.#.# format.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -326,6 +426,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition
 
 ### System.String
+
+### System.String[]
 
 ## OUTPUTS
 

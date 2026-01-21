@@ -123,12 +123,12 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
-    [ValidateSet('Default', 'DoNotEnforce')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute('Default', 'DoNotEnforce')]
+    [ValidateSet('Default', 'DoNotEnforce', 'Enroll')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute('Default', 'DoNotEnforce', 'Enroll')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The policy assignment enforcement mode.
-    # Possible values are Default and DoNotEnforce.
+    # Possible values are Default, DoNotEnforce, and Enroll.
     ${EnforcementMode},
 
     [Parameter()]

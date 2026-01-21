@@ -272,8 +272,8 @@ function setupEnv() {
     # ----------------------------------------------------+
     # set up common variables used in policy legacy tests |
     # ----------------------------------------------------+
-    $env['managementGroup'] = 'AzGovPerfTest'
-    $env['managementGroupScope'] = '/providers/Microsoft.Management/managementGroups/AzGovPerfTest'
+    $env['managementGroup'] = 'PowershellTesting'
+    $env['managementGroupScope'] = '/providers/Microsoft.Management/managementGroups/PowershellTesting'
     $env['description'] = 'Unit test junk: sorry for littering. Please delete me!'
     $env['updatedDescription'] = "Updated $description"
     $env['metadataName'] = 'testName'
@@ -281,6 +281,7 @@ function setupEnv() {
     $env['metadata'] = "{'$($env.metadataName)':'$($env.metadataValue)'}"
     $env['enforcementModeDefault'] = 'Default'
     $env['enforcementModeDoNotEnforce'] = 'DoNotEnforce'
+    $env['enforcementModeEnroll'] = 'Enroll'
 
     $env['updatedMetadataName'] = 'newTestName'
     $env['updatedMetadataValue'] = 'newTestValue'
@@ -304,6 +305,7 @@ function setupEnv() {
     $env['somePolicyParameter'] = 'somePolicyParameter'
     $env['someParameterObject'] = "{'parm1': 'a', 'parm2': 'b' }"
     $env['someDisplayName'] = 'Some display name'
+    $env['someVersion'] = '2.0.0'
 
     # exception strings
     $env['parameterSetError'] = 'Parameter set cannot be resolved using the specified named parameters.'

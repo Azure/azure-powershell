@@ -76,6 +76,12 @@ param(
     # The keys are the parameter names.
     ${Parameter},
 
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The policy set definition version in #.#.# format.
+    ${Version},
+
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
@@ -166,7 +172,6 @@ begin {
     $mapping = @{
         CreateExpanded = 'Az.Policy.private\New-AzPolicySetDefinition_CreateExpanded';
         CreateExpanded1 = 'Az.Policy.private\New-AzPolicySetDefinition_CreateExpanded1';
-        CreateViaIdentityExpanded1 = 'Az.Policy.private\New-AzPolicySetDefinition_CreateViaIdentityExpanded1';
     }
 }
 

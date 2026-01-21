@@ -153,8 +153,6 @@ begin {
     $mapping = @{
         Get = 'Az.Policy.private\Get-AzPolicyAssignment_Get';
         Get1 = 'Az.Policy.private\Get-AzPolicyAssignment_Get1';
-        GetViaIdentity = 'Az.Policy.private\Get-AzPolicyAssignment_GetViaIdentity';
-        GetViaIdentity1 = 'Az.Policy.private\Get-AzPolicyAssignment_GetViaIdentity1';
         List = 'Az.Policy.private\Get-AzPolicyAssignment_List';
         List1 = 'Az.Policy.private\Get-AzPolicyAssignment_List1';
         List2 = 'Az.Policy.private\Get-AzPolicyAssignment_List2';

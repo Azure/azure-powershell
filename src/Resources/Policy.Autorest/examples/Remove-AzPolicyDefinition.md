@@ -1,23 +1,22 @@
-### Example 1: Remove the policy definition by name
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzPolicyDefinition -Name 'VMPolicyDefinition'
+{{ Add code here }}
 ```
 
-This command removes the specified policy definition.
-
-### Example 2: Remove policy definition by resource ID
-```powershell
-$PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition' 
-Remove-AzPolicyDefinition -Id $PolicyDefinition.Id -Force
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command removes the given policy definition without prompting the user.
+{{ Add description here }}
 
-### Example 3: [Backcompat] Remove policy definition by resource ID
+### Example 2: {{ Add title here }}
 ```powershell
-$PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition' -BackwardCompatible
-Remove-AzPolicyDefinition -Id $PolicyDefinition.ResourceId -Force -BackwardCompatible
-True
+{{ Add code here }}
 ```
 
-This command removes the given policy definition without prompting the user.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

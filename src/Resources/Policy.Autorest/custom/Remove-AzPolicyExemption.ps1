@@ -145,7 +145,6 @@ begin {
 
     $mapping = @{
         Delete = 'Az.Policy.private\Remove-AzPolicyExemption_Delete';
-        DeleteViaIdentity = 'Az.Policy.private\Remove-AzPolicyExemption_DeleteViaIdentity';
     }
 }
 

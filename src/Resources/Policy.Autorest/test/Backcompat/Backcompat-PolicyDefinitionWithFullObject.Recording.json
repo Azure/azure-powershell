@@ -1,8 +1,8 @@
 {
-  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+make a policy definition using full object from a file+$PUT+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject01?api-version=2023-04-01+1": {
+  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+make a policy definition using full object from a file+$PUT+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject01?api-version=2025-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject01?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject01?api-version=2025-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"Indexed\",\r\n    \"displayName\": \"Fake test policy\",\r\n    \"description\": \"Sample fake test policy for unit tests.\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters(\\u0027listOfAllowedLocations\\u0027)]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters(\\u0027effectParam\\u0027)]\"\r\n      }\r\n    },\r\n    \"metadata\": {\r\n      \"category\": \"Unit Test\",\r\n      \"createdBy\": \"3d826307-2481-45a0-a271-bcf9333f914a\",\r\n      \"createdOn\": \"2019-05-29T00:57:15Z\",\r\n      \"updatedBy\": \"3d826307-2481-45a0-a271-bcf9333f914a\",\r\n      \"updatedOn\": \"2019-06-20T19:08:27Z\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"defaultValue\": [ \"westus\" ],\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"string\",\r\n        \"defaultValue\": \"Deny\",\r\n        \"allowedValues\": [ \"Deny\", \"Disabled\" ],\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,37 +18,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-request-id": [ "4e70a83c-2516-4387-9c31-92c7ab8a4de7" ],
-        "x-ms-correlation-request-id": [ "4e70a83c-2516-4387-9c31-92c7ab8a4de7" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20241004T001447Z:4e70a83c-2516-4387-9c31-92c7ab8a4de7" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/447d4aba-ff84-4055-84bb-01eaf86c39c9" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "64cba859-ef2a-4c6b-a2f8-712322e8b955" ],
+        "x-ms-correlation-request-id": [ "64cba859-ef2a-4c6b-a2f8-712322e8b955" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260116T234319Z:64cba859-ef2a-4c6b-a2f8-712322e8b955" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: AD1B7038433040AB98C236D643BB0938 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:14:47Z" ],
-        "Date": [ "Fri, 04 Oct 2024 00:14:47 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F7C636F254E344EF874703A25A40980B Ref B: MWH011020809025 Ref C: 2026-01-16T23:43:19Z" ],
+        "Date": [ "Fri, 16 Jan 2026 23:43:19 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1386" ],
+        "Content-Length": [ "1381" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"displayName\":\"Fake test policy\",\"policyType\":\"Custom\",\"mode\":\"Indexed\",\"description\":\"Sample fake test policy for unit tests.\",\"metadata\":{\"category\":\"Unit Test\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:14:47.3851889Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"},\"defaultValue\":[\"westus\"]},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject01\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:14:47.366594Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:14:47.366594Z\"}}",
+      "Content": "{\"properties\":{\"displayName\":\"Fake test policy\",\"policyType\":\"Custom\",\"mode\":\"Indexed\",\"description\":\"Sample fake test policy for unit tests.\",\"metadata\":{\"category\":\"Unit Test\",\"createdBy\":\"638d92d9-ae3b-4f1d-be91-382dcc631f82\",\"createdOn\":\"2026-01-16T23:43:19.347738Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"},\"defaultValue\":[\"westus\"]},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject01\",\"systemData\":{\"createdBy\":\"zhaocelina@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-16T23:43:19.315852Z\",\"lastModifiedBy\":\"zhaocelina@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-16T23:43:19.315852Z\"}}",
       "isContentBase64": false
     }
   },
-  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+make a policy definition using full object from a file+$GET+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject01?api-version=2023-04-01+2": {
+  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+make a policy definition using full object from a file+$GET+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject01?api-version=2025-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject01?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject01?api-version=2025-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "174" ],
-        "x-ms-client-request-id": [ "658fd26e-4e45-4046-9cef-0a9201cb58f1" ],
+        "x-ms-unique-id": [ "183" ],
+        "x-ms-client-request-id": [ "686f45de-af47-4825-b455-fab2a667fc01" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyDefinition_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Policy/9.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -60,28 +62,30 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-request-id": [ "bdb512ae-1e97-437d-92b2-748c56c67cfe" ],
-        "x-ms-correlation-request-id": [ "bdb512ae-1e97-437d-92b2-748c56c67cfe" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20241004T001447Z:bdb512ae-1e97-437d-92b2-748c56c67cfe" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/e25420f9-c79b-4292-a2fa-54d234fa3196" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "10987746-5f34-401b-8e46-44ec2e4646b1" ],
+        "x-ms-correlation-request-id": [ "10987746-5f34-401b-8e46-44ec2e4646b1" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260116T234319Z:10987746-5f34-401b-8e46-44ec2e4646b1" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9D013DF7CEAB46DFAB8C28F10CDCD8F6 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:14:47Z" ],
-        "Date": [ "Fri, 04 Oct 2024 00:14:47 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 5185DB99F0C748F18BC6998DD4480740 Ref B: MWH011020809025 Ref C: 2026-01-16T23:43:19Z" ],
+        "Date": [ "Fri, 16 Jan 2026 23:43:19 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1386" ],
+        "Content-Length": [ "1381" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"displayName\":\"Fake test policy\",\"policyType\":\"Custom\",\"mode\":\"Indexed\",\"description\":\"Sample fake test policy for unit tests.\",\"metadata\":{\"category\":\"Unit Test\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:14:47.3851889Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"},\"defaultValue\":[\"westus\"]},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject01\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:14:47.366594Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:14:47.366594Z\"}}",
+      "Content": "{\"properties\":{\"displayName\":\"Fake test policy\",\"policyType\":\"Custom\",\"mode\":\"Indexed\",\"description\":\"Sample fake test policy for unit tests.\",\"metadata\":{\"category\":\"Unit Test\",\"createdBy\":\"638d92d9-ae3b-4f1d-be91-382dcc631f82\",\"createdOn\":\"2026-01-16T23:43:19.347738Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"},\"defaultValue\":[\"westus\"]},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject01\",\"systemData\":{\"createdBy\":\"zhaocelina@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-16T23:43:19.315852Z\",\"lastModifiedBy\":\"zhaocelina@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-16T23:43:19.315852Z\"}}",
       "isContentBase64": false
     }
   },
-  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+parameters override properties on the full object+$PUT+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject02?api-version=2023-04-01+1": {
+  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+parameters override properties on the full object+$PUT+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject02?api-version=2025-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject02?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject02?api-version=2025-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"Indexed\",\r\n    \"displayName\": \"testDisplay\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters(\\u0027listOfAllowedLocations\\u0027)]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters(\\u0027effectParam\\u0027)]\"\r\n      }\r\n    },\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"string\",\r\n        \"defaultValue\": \"Deny\",\r\n        \"allowedValues\": [ \"Deny\", \"Disabled\" ],\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -97,37 +101,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-request-id": [ "ee8d552f-1c3a-4b6c-a0ee-8b2f5c54c74a" ],
-        "x-ms-correlation-request-id": [ "ee8d552f-1c3a-4b6c-a0ee-8b2f5c54c74a" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20241004T001448Z:ee8d552f-1c3a-4b6c-a0ee-8b2f5c54c74a" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/f24cdbb7-9ffb-4946-990c-0c42c21e527e" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "96baa1c3-22f3-4bb0-b8c2-2613007ea588" ],
+        "x-ms-correlation-request-id": [ "96baa1c3-22f3-4bb0-b8c2-2613007ea588" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260116T234320Z:96baa1c3-22f3-4bb0-b8c2-2613007ea588" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0644142B6E1943C18B09CEAE23A7931E Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:14:47Z" ],
-        "Date": [ "Fri, 04 Oct 2024 00:14:47 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 0D418DBB74FF4AD080EF040C0E3D0824 Ref B: MWH011020809025 Ref C: 2026-01-16T23:43:20Z" ],
+        "Date": [ "Fri, 16 Jan 2026 23:43:20 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1372" ],
+        "Content-Length": [ "1368" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"displayName\":\"testDisplay\",\"policyType\":\"Custom\",\"mode\":\"Indexed\",\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"testName\":\"testValue\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:14:48.0456459Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"}},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject02\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:14:48.0306946Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:14:48.0306946Z\"}}",
+      "Content": "{\"properties\":{\"displayName\":\"testDisplay\",\"policyType\":\"Custom\",\"mode\":\"Indexed\",\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"testName\":\"testValue\",\"createdBy\":\"638d92d9-ae3b-4f1d-be91-382dcc631f82\",\"createdOn\":\"2026-01-16T23:43:20.4500653Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"}},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject02\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject02\",\"systemData\":{\"createdBy\":\"zhaocelina@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-16T23:43:20.4027838Z\",\"lastModifiedBy\":\"zhaocelina@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-16T23:43:20.4027838Z\"}}",
       "isContentBase64": false
     }
   },
-  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+parameters override properties on the full object+$GET+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject02?api-version=2023-04-01+2": {
+  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+parameters override properties on the full object+$GET+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject02?api-version=2025-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject02?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject02?api-version=2025-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "176" ],
-        "x-ms-client-request-id": [ "6c6c546c-5dc5-4146-9be7-4df090931304" ],
+        "x-ms-unique-id": [ "185" ],
+        "x-ms-client-request-id": [ "a42f67bd-0ace-4cf0-ba12-c5d1564d8a28" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyDefinition_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Policy/9.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -139,28 +145,30 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-request-id": [ "4678fa23-8b4f-4f82-9480-6f8adb0be4af" ],
-        "x-ms-correlation-request-id": [ "4678fa23-8b4f-4f82-9480-6f8adb0be4af" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20241004T001448Z:4678fa23-8b4f-4f82-9480-6f8adb0be4af" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/1d32cd2d-3209-446f-b0a6-d7b32be9a4e4" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "49a85707-c1ee-46f2-84bc-b2eecb3a1a53" ],
+        "x-ms-correlation-request-id": [ "49a85707-c1ee-46f2-84bc-b2eecb3a1a53" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260116T234321Z:49a85707-c1ee-46f2-84bc-b2eecb3a1a53" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 170660B605154494A10143B085C3D4C5 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:14:48Z" ],
-        "Date": [ "Fri, 04 Oct 2024 00:14:47 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 956C1803CA824A17B941D9DD1CA5777B Ref B: MWH011020809025 Ref C: 2026-01-16T23:43:21Z" ],
+        "Date": [ "Fri, 16 Jan 2026 23:43:21 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1372" ],
+        "Content-Length": [ "1368" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"displayName\":\"testDisplay\",\"policyType\":\"Custom\",\"mode\":\"Indexed\",\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"testName\":\"testValue\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:14:48.0456459Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"}},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject02\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:14:48.0306946Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:14:48.0306946Z\"}}",
+      "Content": "{\"properties\":{\"displayName\":\"testDisplay\",\"policyType\":\"Custom\",\"mode\":\"Indexed\",\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"testName\":\"testValue\",\"createdBy\":\"638d92d9-ae3b-4f1d-be91-382dcc631f82\",\"createdOn\":\"2026-01-16T23:43:20.4500653Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"}},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject02\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject02\",\"systemData\":{\"createdBy\":\"zhaocelina@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-16T23:43:20.4027838Z\",\"lastModifiedBy\":\"zhaocelina@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-16T23:43:20.4027838Z\"}}",
       "isContentBase64": false
     }
   },
-  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+update policy definition using full object from a file+$PUT+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2023-04-01+1": {
+  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+update policy definition using full object from a file+$PUT+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2025-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2025-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"mode\": \"All\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -176,37 +184,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-request-id": [ "a4b8b374-81dd-4449-ad3e-73221a89cedc" ],
-        "x-ms-correlation-request-id": [ "a4b8b374-81dd-4449-ad3e-73221a89cedc" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20241004T001449Z:a4b8b374-81dd-4449-ad3e-73221a89cedc" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/7ecb9b11-97a7-4102-9026-dfcd6fe08076" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "2cf57f20-4ff5-42d1-ab32-372600bf39ea" ],
+        "x-ms-correlation-request-id": [ "2cf57f20-4ff5-42d1-ab32-372600bf39ea" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260116T234321Z:2cf57f20-4ff5-42d1-ab32-372600bf39ea" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E838BBA59CF545AA8BE911DAEAAA9234 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:14:48Z" ],
-        "Date": [ "Fri, 04 Oct 2024 00:14:48 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: CB3F3F59F7BE4F51968400289ECCAE3D Ref B: MWH011020809025 Ref C: 2026-01-16T23:43:21Z" ],
+        "Date": [ "Fri, 16 Jan 2026 23:43:21 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "869" ],
+        "Content-Length": [ "865" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"policyType\":\"Custom\",\"mode\":\"All\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:14:48.7572751Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"policyRule\":{\"if\":{\"source\":\"action\",\"equals\":\"Microsoft.Resources/Subscriptions/ResourceGroups/write\"},\"then\":{\"effect\":\"deny\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject03\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:14:48.6290612Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:14:48.6290612Z\"}}",
+      "Content": "{\"properties\":{\"policyType\":\"Custom\",\"mode\":\"All\",\"metadata\":{\"createdBy\":\"638d92d9-ae3b-4f1d-be91-382dcc631f82\",\"createdOn\":\"2026-01-16T23:43:21.5786246Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"policyRule\":{\"if\":{\"source\":\"action\",\"equals\":\"Microsoft.Resources/Subscriptions/ResourceGroups/write\"},\"then\":{\"effect\":\"deny\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject03\",\"systemData\":{\"createdBy\":\"zhaocelina@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-16T23:43:21.5360884Z\",\"lastModifiedBy\":\"zhaocelina@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-16T23:43:21.5360884Z\"}}",
       "isContentBase64": false
     }
   },
-  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+update policy definition using full object from a file+$GET+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2023-04-01+2": {
+  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+update policy definition using full object from a file+$GET+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2025-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2025-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "178" ],
-        "x-ms-client-request-id": [ "ec36102e-9182-4bc3-87a1-a3c41745cbf7" ],
+        "x-ms-unique-id": [ "187" ],
+        "x-ms-client-request-id": [ "e8ec1b95-9a12-46ff-b242-430095319cb2" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyDefinition_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Policy/9.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -218,28 +228,30 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-request-id": [ "223f1d31-e97c-4d47-bf43-5f54908a408a" ],
-        "x-ms-correlation-request-id": [ "223f1d31-e97c-4d47-bf43-5f54908a408a" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20241004T001449Z:223f1d31-e97c-4d47-bf43-5f54908a408a" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/86260394-b787-4308-85c6-0a39054ca211" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "a9b0f68b-77c6-46b1-8564-dbfa5e10b77d" ],
+        "x-ms-correlation-request-id": [ "a9b0f68b-77c6-46b1-8564-dbfa5e10b77d" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260116T234322Z:a9b0f68b-77c6-46b1-8564-dbfa5e10b77d" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 2138578282FD4D868963DB0AC11E19F2 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:14:49Z" ],
-        "Date": [ "Fri, 04 Oct 2024 00:14:48 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 1597699D899241E98A8CBEE84E289D3D Ref B: MWH011020809025 Ref C: 2026-01-16T23:43:22Z" ],
+        "Date": [ "Fri, 16 Jan 2026 23:43:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "869" ],
+        "Content-Length": [ "865" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"policyType\":\"Custom\",\"mode\":\"All\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:14:48.7572751Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"policyRule\":{\"if\":{\"source\":\"action\",\"equals\":\"Microsoft.Resources/Subscriptions/ResourceGroups/write\"},\"then\":{\"effect\":\"deny\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject03\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:14:48.6290612Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:14:48.6290612Z\"}}",
+      "Content": "{\"properties\":{\"policyType\":\"Custom\",\"mode\":\"All\",\"metadata\":{\"createdBy\":\"638d92d9-ae3b-4f1d-be91-382dcc631f82\",\"createdOn\":\"2026-01-16T23:43:21.5786246Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"policyRule\":{\"if\":{\"source\":\"action\",\"equals\":\"Microsoft.Resources/Subscriptions/ResourceGroups/write\"},\"then\":{\"effect\":\"deny\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject03\",\"systemData\":{\"createdBy\":\"zhaocelina@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-16T23:43:21.5360884Z\",\"lastModifiedBy\":\"zhaocelina@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-16T23:43:21.5360884Z\"}}",
       "isContentBase64": false
     }
   },
-  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+update policy definition using full object from a file+$PUT+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2023-04-01+3": {
+  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+update policy definition using full object from a file+$PUT+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2025-03-01+3": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2025-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"mode\": \"Indexed\",\r\n    \"displayName\": \"Fake test policy\",\r\n    \"description\": \"Sample fake test policy for unit tests.\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters(\\u0027listOfAllowedLocations\\u0027)]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters(\\u0027effectParam\\u0027)]\"\r\n      }\r\n    },\r\n    \"metadata\": {\r\n      \"category\": \"Unit Test\",\r\n      \"createdBy\": \"3d826307-2481-45a0-a271-bcf9333f914a\",\r\n      \"createdOn\": \"2019-05-29T00:57:15Z\",\r\n      \"updatedBy\": \"3d826307-2481-45a0-a271-bcf9333f914a\",\r\n      \"updatedOn\": \"2019-06-20T19:08:27Z\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"defaultValue\": [ \"westus\" ],\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      },\r\n      \"effectParam\": {\r\n        \"type\": \"string\",\r\n        \"defaultValue\": \"Deny\",\r\n        \"allowedValues\": [ \"Deny\", \"Disabled\" ],\r\n        \"metadata\": {\r\n          \"description\": \"The effect of the policy\",\r\n          \"displayName\": \"Policy Effect\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -255,37 +267,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-request-id": [ "a944f14e-1e94-40f5-8dfd-6a19b22c8ef8" ],
-        "x-ms-correlation-request-id": [ "a944f14e-1e94-40f5-8dfd-6a19b22c8ef8" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20241004T001449Z:a944f14e-1e94-40f5-8dfd-6a19b22c8ef8" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/d8c85e7a-d04c-4b97-9904-6ae529b61ca8" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11998" ],
+        "x-ms-request-id": [ "84d31371-cf25-4567-b86f-b44857edee52" ],
+        "x-ms-correlation-request-id": [ "84d31371-cf25-4567-b86f-b44857edee52" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260116T234323Z:84d31371-cf25-4567-b86f-b44857edee52" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 36CDBE5142F147A7A6F576E210AE6204 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:14:49Z" ],
-        "Date": [ "Fri, 04 Oct 2024 00:14:49 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F19B0E8F773043779A966EC8D0535786 Ref B: MWH011020809025 Ref C: 2026-01-16T23:43:22Z" ],
+        "Date": [ "Fri, 16 Jan 2026 23:43:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1448" ],
+        "Content-Length": [ "1443" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"displayName\":\"Fake test policy\",\"policyType\":\"Custom\",\"mode\":\"Indexed\",\"description\":\"Sample fake test policy for unit tests.\",\"metadata\":{\"category\":\"Unit Test\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:14:48.7572751Z\",\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"updatedOn\":\"2024-10-04T00:14:49.6063445Z\"},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"},\"defaultValue\":[\"westus\"]},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject03\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:14:48.6290612Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:14:49.5813395Z\"}}",
+      "Content": "{\"properties\":{\"displayName\":\"Fake test policy\",\"policyType\":\"Custom\",\"mode\":\"Indexed\",\"description\":\"Sample fake test policy for unit tests.\",\"metadata\":{\"category\":\"Unit Test\",\"createdBy\":\"638d92d9-ae3b-4f1d-be91-382dcc631f82\",\"createdOn\":\"2026-01-16T23:43:21.5786246Z\",\"updatedBy\":\"638d92d9-ae3b-4f1d-be91-382dcc631f82\",\"updatedOn\":\"2026-01-16T23:43:22.6439082Z\"},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"},\"defaultValue\":[\"westus\"]},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject03\",\"systemData\":{\"createdBy\":\"zhaocelina@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-16T23:43:21.5360884Z\",\"lastModifiedBy\":\"zhaocelina@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-16T23:43:22.628387Z\"}}",
       "isContentBase64": false
     }
   },
-  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+update policy definition using full object from a file+$GET+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2023-04-01+4": {
+  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+update policy definition using full object from a file+$GET+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2025-03-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2025-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "180" ],
-        "x-ms-client-request-id": [ "a56985e8-7668-4e11-b0ac-7f8139e9b8dd" ],
+        "x-ms-unique-id": [ "189" ],
+        "x-ms-client-request-id": [ "041be8c7-ea7a-45bb-9728-f53b557341c4" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyDefinition_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Policy/9.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -297,37 +311,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-request-id": [ "41e50644-2194-474c-b136-4c3c613b1c58" ],
-        "x-ms-correlation-request-id": [ "41e50644-2194-474c-b136-4c3c613b1c58" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20241004T001450Z:41e50644-2194-474c-b136-4c3c613b1c58" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/2c876801-60d6-40c2-8089-f8bff79604e6" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "40baf43f-b253-4b58-80f1-dffc45647f70" ],
+        "x-ms-correlation-request-id": [ "40baf43f-b253-4b58-80f1-dffc45647f70" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260116T234323Z:40baf43f-b253-4b58-80f1-dffc45647f70" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8D95D09517A9459380C1217ED528CDBD Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:14:49Z" ],
-        "Date": [ "Fri, 04 Oct 2024 00:14:49 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7EFBF84424814C218FEA59B73660B10D Ref B: MWH011020809025 Ref C: 2026-01-16T23:43:23Z" ],
+        "Date": [ "Fri, 16 Jan 2026 23:43:23 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1448" ],
+        "Content-Length": [ "1443" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"displayName\":\"Fake test policy\",\"policyType\":\"Custom\",\"mode\":\"Indexed\",\"description\":\"Sample fake test policy for unit tests.\",\"metadata\":{\"category\":\"Unit Test\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:14:48.7572751Z\",\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"updatedOn\":\"2024-10-04T00:14:49.6063445Z\"},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"},\"defaultValue\":[\"westus\"]},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject03\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:14:48.6290612Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:14:49.5813395Z\"}}",
+      "Content": "{\"properties\":{\"displayName\":\"Fake test policy\",\"policyType\":\"Custom\",\"mode\":\"Indexed\",\"description\":\"Sample fake test policy for unit tests.\",\"metadata\":{\"category\":\"Unit Test\",\"createdBy\":\"638d92d9-ae3b-4f1d-be91-382dcc631f82\",\"createdOn\":\"2026-01-16T23:43:21.5786246Z\",\"updatedBy\":\"638d92d9-ae3b-4f1d-be91-382dcc631f82\",\"updatedOn\":\"2026-01-16T23:43:22.6439082Z\"},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"},\"defaultValue\":[\"westus\"]},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject03\",\"systemData\":{\"createdBy\":\"zhaocelina@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-16T23:43:21.5360884Z\",\"lastModifiedBy\":\"zhaocelina@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-16T23:43:22.628387Z\"}}",
       "isContentBase64": false
     }
   },
-  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject01?api-version=2023-04-01+5": {
+  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject01?api-version=2025-03-01+5": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject01?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject01?api-version=2025-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "181" ],
-        "x-ms-client-request-id": [ "ba2882a6-7304-4400-903b-bc0bb0f2a4af" ],
+        "x-ms-unique-id": [ "190" ],
+        "x-ms-client-request-id": [ "b087da5f-23ff-46f8-96f2-7206f5b8978a" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Remove-AzPolicyDefinition_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Policy/9.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -339,37 +355,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
-        "x-ms-request-id": [ "c8db96dc-fefe-4a15-b06b-d606b8bc5ecc" ],
-        "x-ms-correlation-request-id": [ "c8db96dc-fefe-4a15-b06b-d606b8bc5ecc" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20241004T001451Z:c8db96dc-fefe-4a15-b06b-d606b8bc5ecc" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/8235bba7-f07f-48aa-b852-6a238af56829" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-request-id": [ "870ca20d-9c8f-4682-bdfb-207a34f10556" ],
+        "x-ms-correlation-request-id": [ "870ca20d-9c8f-4682-bdfb-207a34f10556" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260116T234324Z:870ca20d-9c8f-4682-bdfb-207a34f10556" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: CFDD9C0D7B2B4265AF4AADFC84CB699B Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:14:50Z" ],
-        "Date": [ "Fri, 04 Oct 2024 00:14:50 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 0C2D1733A8A34D418B16DD328F2AB1DA Ref B: MWH011020809025 Ref C: 2026-01-16T23:43:23Z" ],
+        "Date": [ "Fri, 16 Jan 2026 23:43:24 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1386" ],
+        "Content-Length": [ "1381" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"displayName\":\"Fake test policy\",\"policyType\":\"Custom\",\"mode\":\"Indexed\",\"description\":\"Sample fake test policy for unit tests.\",\"metadata\":{\"category\":\"Unit Test\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:14:47.3851889Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"},\"defaultValue\":[\"westus\"]},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject01\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:14:47.366594Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:14:47.366594Z\"}}",
+      "Content": "{\"properties\":{\"displayName\":\"Fake test policy\",\"policyType\":\"Custom\",\"mode\":\"Indexed\",\"description\":\"Sample fake test policy for unit tests.\",\"metadata\":{\"category\":\"Unit Test\",\"createdBy\":\"638d92d9-ae3b-4f1d-be91-382dcc631f82\",\"createdOn\":\"2026-01-16T23:43:19.347738Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"},\"defaultValue\":[\"westus\"]},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject01\",\"systemData\":{\"createdBy\":\"zhaocelina@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-16T23:43:19.315852Z\",\"lastModifiedBy\":\"zhaocelina@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-16T23:43:19.315852Z\"}}",
       "isContentBase64": false
     }
   },
-  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject02?api-version=2023-04-01+6": {
+  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject02?api-version=2025-03-01+6": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject02?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject02?api-version=2025-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "182" ],
-        "x-ms-client-request-id": [ "71f4cd25-6fff-4a9e-8388-2e8995a329f7" ],
+        "x-ms-unique-id": [ "191" ],
+        "x-ms-client-request-id": [ "563207aa-3626-4d31-ba0e-77212b8073e3" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Remove-AzPolicyDefinition_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Policy/9.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -381,37 +399,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-request-id": [ "14725b99-23fa-40db-9b47-879d3a6bb004" ],
-        "x-ms-correlation-request-id": [ "14725b99-23fa-40db-9b47-879d3a6bb004" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20241004T001451Z:14725b99-23fa-40db-9b47-879d3a6bb004" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/1b4cf69f-2b1f-4ac8-8365-dc4010aa3cde" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-request-id": [ "c476e223-1593-48bc-9782-97f571a70fe5" ],
+        "x-ms-correlation-request-id": [ "c476e223-1593-48bc-9782-97f571a70fe5" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260116T234324Z:c476e223-1593-48bc-9782-97f571a70fe5" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9B0A79295DB4483FA9029A3D34B275E2 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:14:51Z" ],
-        "Date": [ "Fri, 04 Oct 2024 00:14:51 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 936EB0C5B2A041A6A7BC2B54C8D0F214 Ref B: MWH011020809025 Ref C: 2026-01-16T23:43:24Z" ],
+        "Date": [ "Fri, 16 Jan 2026 23:43:24 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1372" ],
+        "Content-Length": [ "1368" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"displayName\":\"testDisplay\",\"policyType\":\"Custom\",\"mode\":\"Indexed\",\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"testName\":\"testValue\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:14:48.0456459Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"}},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject02\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:14:48.0306946Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:14:48.0306946Z\"}}",
+      "Content": "{\"properties\":{\"displayName\":\"testDisplay\",\"policyType\":\"Custom\",\"mode\":\"Indexed\",\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"testName\":\"testValue\",\"createdBy\":\"638d92d9-ae3b-4f1d-be91-382dcc631f82\",\"createdOn\":\"2026-01-16T23:43:20.4500653Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"}},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject02\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject02\",\"systemData\":{\"createdBy\":\"zhaocelina@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-16T23:43:20.4027838Z\",\"lastModifiedBy\":\"zhaocelina@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-16T23:43:20.4027838Z\"}}",
       "isContentBase64": false
     }
   },
-  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2023-04-01+7": {
+  "Backcompat-PolicyDefinitionWithFullObject+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2025-03-01+7": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03?api-version=2025-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "183" ],
-        "x-ms-client-request-id": [ "87bb8f83-521b-4850-9068-9700a0cbc95d" ],
+        "x-ms-unique-id": [ "192" ],
+        "x-ms-client-request-id": [ "098b88e0-06ba-48d5-ad82-9e93a870b04c" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Remove-AzPolicyDefinition_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Policy/9.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -423,21 +443,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-request-id": [ "223ed543-427e-48e3-b929-cbb5a7bd1491" ],
-        "x-ms-correlation-request-id": [ "223ed543-427e-48e3-b929-cbb5a7bd1491" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20241004T001452Z:223ed543-427e-48e3-b929-cbb5a7bd1491" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/0592a8a7-275d-4203-af02-c5f5953c318c" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-request-id": [ "fa4c3a70-70ae-4f85-a9f8-a0151c01abd7" ],
+        "x-ms-correlation-request-id": [ "fa4c3a70-70ae-4f85-a9f8-a0151c01abd7" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260116T234325Z:fa4c3a70-70ae-4f85-a9f8-a0151c01abd7" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: DFE4D293E41F46F79F296405B6D7BBD4 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:14:51Z" ],
-        "Date": [ "Fri, 04 Oct 2024 00:14:51 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 1F241A68EC0C4E0C91BDD0857A6B9B4B Ref B: MWH011020809025 Ref C: 2026-01-16T23:43:24Z" ],
+        "Date": [ "Fri, 16 Jan 2026 23:43:25 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1448" ],
+        "Content-Length": [ "1443" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"displayName\":\"Fake test policy\",\"policyType\":\"Custom\",\"mode\":\"Indexed\",\"description\":\"Sample fake test policy for unit tests.\",\"metadata\":{\"category\":\"Unit Test\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:14:48.7572751Z\",\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"updatedOn\":\"2024-10-04T00:14:49.6063445Z\"},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"},\"defaultValue\":[\"westus\"]},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject03\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:14:48.6290612Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:14:49.5813395Z\"}}",
+      "Content": "{\"properties\":{\"displayName\":\"Fake test policy\",\"policyType\":\"Custom\",\"mode\":\"Indexed\",\"description\":\"Sample fake test policy for unit tests.\",\"metadata\":{\"category\":\"Unit Test\",\"createdBy\":\"638d92d9-ae3b-4f1d-be91-382dcc631f82\",\"createdOn\":\"2026-01-16T23:43:21.5786246Z\",\"updatedBy\":\"638d92d9-ae3b-4f1d-be91-382dcc631f82\",\"updatedOn\":\"2026-01-16T23:43:22.6439082Z\"},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"},\"defaultValue\":[\"westus\"]},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithFullObject03\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithFullObject03\",\"systemData\":{\"createdBy\":\"zhaocelina@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-16T23:43:21.5360884Z\",\"lastModifiedBy\":\"zhaocelina@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-16T23:43:22.628387Z\"}}",
       "isContentBase64": false
     }
   }

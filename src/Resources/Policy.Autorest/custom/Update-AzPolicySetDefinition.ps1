@@ -88,6 +88,12 @@ param(
     # The keys are the parameter names.
     ${Parameter},
 
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The policy definition version in #.#.# format.
+    ${Version},
+    
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]

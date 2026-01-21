@@ -78,6 +78,11 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The policy set definition version in #.#.# format.
+    ${Version},
+    
     [Parameter()]
     [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
     [System.Management.Automation.SwitchParameter]
@@ -148,11 +153,21 @@ begin {
     }
 
     # mapping table of generated cmdlet parameter sets
-    $mapping = @{
-        Delete = 'Az.Policy.private\Remove-AzPolicySetDefinition_Delete';
-        Delete1 = 'Az.Policy.private\Remove-AzPolicySetDefinition_Delete1';
-        DeleteViaIdentity = 'Az.Policy.private\Remove-AzPolicySetDefinition_DeleteViaIdentity';
-        DeleteViaIdentity1 = 'Az.Policy.private\Remove-AzPolicySetDefinition_DeleteViaIdentity1';
+    if ($Version) {
+        $mapping = @{
+            Delete = 'Az.Policy.private\Remove-AzPolicySetDefinitionVersion_Delete';                                           # SubscriptionId
+            Delete1 = 'Az.Policy.private\Remove-AzPolicySetDefinitionVersion_Delete1';                                         # ManagementGroupName
+            DeleteViaIdentity = 'Az.Policy.private\Remove-AzPolicySetDefinitionVersion_DeleteViaIdentityPolicySetDefinition';     # SubscriptionId
+            DeleteViaIdentity1 = 'Az.Policy.private\Remove-AzPolicySetDefinitionVersion_DeleteViaIdentityPolicySetDefinition1';   # ManagementGroupName
+        }
+    }
+    else {
+        $mapping = @{
+            Delete = 'Az.Policy.private\Remove-AzPolicySetDefinition_Delete';                           # SubscriptionId
+            Delete1 = 'Az.Policy.private\Remove-AzPolicySetDefinition_Delete1';                         # ManagementGroupName
+            DeleteViaIdentity = 'Az.Policy.private\Remove-AzPolicySetDefinition_DeleteViaIdentity';     # SubscriptionId
+            DeleteViaIdentity1 = 'Az.Policy.private\Remove-AzPolicySetDefinition_DeleteViaIdentity1';   # ManagementGroupName
+        }
     }
 }
 
@@ -201,19 +216,21 @@ process {
 
     # remove the definition if inputs resolve and user confirms
     if ($resolved.Scope -and $PSCmdlet.ShouldProcess($target)) {
-
         # fix parameters and call generated cmdlet
+        $inputObjectKey = 'InputObject'
         if ($thisId) {
             switch ($resolved.ScopeType) {
                 'mgName' {
                     $calledParameterSet = 'DeleteViaIdentity1'
+                    if ($Version){  $inputObjectKey = 'PolicySetDefinition1InputObject' }
                 }
                 default {
                     $calledParameterSet = 'DeleteViaIdentity'
+                    if ($Version){  $inputObjectKey = 'PolicySetDefinitionInputObject' }
                 }
             }
 
-            $PSBoundParameters['InputObject'] = @{ Id = $resolved.ResourceId }
+            $PSBoundParameters[$inputObjectKey] = @{ Id = $resolved.ResourceId }
             $null = $PSBoundParameters.Remove('Id')
             $null = $PSBoundParameters.Remove('Name');
             $null = $PSBoundParameters.Remove('SubscriptionId');
@@ -223,14 +240,24 @@ process {
             switch ($resolved.ScopeType) {
                 'mgName' {
                     $calledParameterSet = 'Delete1'
-                    $PSBoundParameters['ManagementGroupId'] = $resolved.ManagementGroupName
-                    $null = $PSBoundParameters.Remove('ManagementGroupName')
+                    if (!$Version)
+                    {
+                        $PSBoundParameters['ManagementGroupId'] = $resolved.ManagementGroupName
+                        $null = $PSBoundParameters.Remove('ManagementGroupName')
+                    }
                 }
                 default {
                     $calledParameterSet = 'Delete'
                     $PSBoundParameters['SubscriptionId'] = $resolved.SubscriptionId
                 }
             }
+        }
+
+        if ($Version) {
+            $PSBoundParameters['PolicyDefinitionVersion'] = $PSBoundParameters['Version']
+            if ($Name){ $PSBoundParameters['PolicySetDefinitionName'] = $PSBoundParameters['Name'] }
+            $null = $PSBoundParameters.Remove('Version')
+            $null = $PSBoundParameters.Remove('Name')
         }
 
         if ($writeln) {

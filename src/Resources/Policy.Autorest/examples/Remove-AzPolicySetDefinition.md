@@ -1,20 +1,22 @@
-### Example 1: Remove policy set definition by resource ID
+### Example 1: {{ Add title here }}
 ```powershell
-$PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
-Remove-AzPolicySetDefinition -Id $PolicySetDefinition.Id -Force
+{{ Add code here }}
 ```
 
-The first command gets a policy set definition by using the Get-AzPolicySetDefinition cmdlet.
-The command stores it in the $PolicySetDefinition variable.
-The second command removes the policy set definition identified by the **ResourceId** property of $PolicySetDefinition.
-
-### Example 2: [Backcompat] Remove policy set definition by resource ID
-```powershell
-$PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition' -BackwardCompatible
-Remove-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Force -BackwardCompatible
-True
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-The first command gets a policy set definition by using the Get-AzPolicySetDefinition cmdlet.
-The command stores it in the $PolicySetDefinition variable.
-The second command removes the policy set definition identified by the **ResourceId** property of $PolicySetDefinition.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

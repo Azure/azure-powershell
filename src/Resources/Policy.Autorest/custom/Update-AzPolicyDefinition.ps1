@@ -111,6 +111,44 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The policy definition version in #.#.# format.
+    ${Version},
+
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing.
+    # Possible values are Audit and Deny and language expressions are supported.
+    ${ExternalEvaluationEnforcementSettingMissingTokenAction},
+
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The lifespan of the endpoint invocation result after which it's no longer valid. 
+    # Value is expected to follow the ISO 8601 duration format and language expressions are supported.
+    ${ExternalEvaluationEnforcementSettingResultLifespan},
+    
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String[]]
+    # An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+    ${ExternalEvaluationEnforcementSettingRoleDefinitionId},
+    
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The kind of the endpoint.
+    ${EndpointSettingKind},
+
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The details of the endpoint.
+    ${EndpointSettingDetail},
+
     [Parameter(ParameterSetName = 'InputObject', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition]
     ${InputObject},
@@ -296,6 +334,26 @@ process {
 
     if (!$calledParameters.Metadata) {
         $calledParameters.Metadata = $existing.Metadata
+    }
+
+    if (!$calledParameters.ExternalEvaluationEnforcementSettingMissingTokenAction -and $existing.ExternalEvaluationEnforcementSettingMissingTokenAction) {
+        $calledParameters.ExternalEvaluationEnforcementSettingMissingTokenAction = $existing.ExternalEvaluationEnforcementSettingMissingTokenAction
+    }
+
+    if (!$calledParameters.ExternalEvaluationEnforcementSettingRoleDefinitionId -and $existing.ExternalEvaluationEnforcementSettingRoleDefinitionId) {
+        $calledParameters.ExternalEvaluationEnforcementSettingRoleDefinitionId = $existing.ExternalEvaluationEnforcementSettingRoleDefinitionId
+    }
+
+    if (!$calledParameters.ExternalEvaluationEnforcementSettingResultLifespan -and $existing.ExternalEvaluationEnforcementSettingResultLifespan) {
+        $calledParameters.ExternalEvaluationEnforcementSettingResultLifespan = $existing.ExternalEvaluationEnforcementSettingResultLifespan
+    }
+
+    if (!$calledParameters.EndpointSettingKind -and $existing.EndpointSettingKind) {
+        $calledParameters.EndpointSettingKind = $existing.EndpointSettingKind
+    }
+
+    if (!$calledParameters.EndpointSettingDetail -and $existing.EndpointSettingDetail) {
+        $calledParameters.EndpointSettingDetail = ConvertTo-Json $existing.EndpointSettingDetail -Depth 100
     }
 
     if ($BackwardCompatible) {

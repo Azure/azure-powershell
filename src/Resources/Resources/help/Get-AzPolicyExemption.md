@@ -35,32 +35,27 @@ The **Get-AzPolicyExemption** cmdlet gets a collection of policy exemptions or a
 
 ## EXAMPLES
 
-### Example 1 Get all policy exemptions
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzPolicyExemption
+{{ Add code here }}
 ```
 
-This command gets all the policy exemptions in the current subscription.
-If you need to list all the exemptions related to the given scope, including those from ancestor scopes and those from descendent scopes you need to pass the `-IncludeDescendent` parameter.
-
-### Example 2: Get a specific policy exemption
-```powershell
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet and stores it in the $ResourceGroup variable.
-The second command gets the policy exemption named PolicyExemption07 for the scope that the **ResourceId** property of $ResourceGroup identifies.
+{{ Add description here }}
 
-### Example 3: Get all policy exemptions associated with a policy assignment
+### Example 2: {{ Add title here }}
 ```powershell
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-$Assignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId
-Get-AzPolicyExemption -PolicyAssignmentIdFilter $Assignment.Id
+{{ Add code here }}
 ```
 
-The first command gets a policy assignment named PolicyAssignment07.
-The second command gets all of the policy exemptions that are assigned with the policy assignment.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

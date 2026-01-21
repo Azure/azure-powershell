@@ -98,4 +98,22 @@ Describe 'UpdatePolicyDefinition' {
             Update-AzPolicyDefinition -SubscriptionId $subscriptionId
         } | Should -Throw $missingParameters
     }
+    
+    It 'Update-AzPolicyDefinition -Name -Version <invalid version>' {
+        {
+            Update-AzPolicyDefinition -Name $someName -Version $someName
+        } | Should -Throw $invalidVersionIdentifier
+    }
+
+    It 'Update-AzPolicyDefinition -Name -Version' {
+        {
+            Update-AzPolicyDefinition -Name $someName -Version $someVersion
+        } | Should -Throw $policyDefinitionNotFound
+    }
+
+    It 'Update-AzPolicyDefinition -Name -Version <missing>' {
+        {
+            Update-AzPolicyDefinition -Name $someName -Version
+        } | Should -Throw $missingAnArgument
+    }
 }

@@ -1,8 +1,8 @@
 {
-  "NewPolicyDefinition+[NoContext]+New-AzPolicyDefinition -Name -Policy+$PUT+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01+1": {
+  "NewPolicyDefinition+[NoContext]+New-AzPolicyDefinition -Name -Policy+$PUT+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2025-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2025-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"mode\": \"All\",\r\n    \"policyRule\": {\r\n      \"someThing\": \"someOtherThing\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,15 +17,17 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-request-id": [ "eadc5359-02a6-464f-9d33-f20f4cc09e83" ],
-        "x-ms-correlation-request-id": [ "eadc5359-02a6-464f-9d33-f20f4cc09e83" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20241004T001752Z:eadc5359-02a6-464f-9d33-f20f4cc09e83" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/57fa83a7-4dd7-4467-985d-34585e2c6321" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "ea15a815-6ec7-465a-b0ed-3e0020f85fe9" ],
+        "x-ms-correlation-request-id": [ "ea15a815-6ec7-465a-b0ed-3e0020f85fe9" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260116T235021Z:ea15a815-6ec7-465a-b0ed-3e0020f85fe9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D565B8A78BAC4918B7484E20E404E3DA Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:17:52Z" ],
-        "Date": [ "Fri, 04 Oct 2024 00:17:51 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 989DD8D13B534D65AC17A0794A7D0FA6 Ref B: MWH011020809025 Ref C: 2026-01-16T23:50:21Z" ],
+        "Date": [ "Fri, 16 Jan 2026 23:50:21 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "176" ],
@@ -36,10 +38,10 @@
       "isContentBase64": false
     }
   },
-  "NewPolicyDefinition+[NoContext]+New-AzPolicyDefinition -Name -Policy -ManagementGroupName+$PUT+https://management.azure.com/providers/Microsoft.Management/managementGroups/someManagementGroup/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01+1": {
+  "NewPolicyDefinition+[NoContext]+New-AzPolicyDefinition -Name -Policy -ManagementGroupName+$PUT+https://management.azure.com/providers/Microsoft.Management/managementGroups/someManagementGroup/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2025-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/someManagementGroup/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/someManagementGroup/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2025-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"mode\": \"All\",\r\n    \"policyRule\": {\r\n      \"someThing\": \"someOtherThing\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -55,28 +57,28 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "d8d2f5af-9d90-4aea-96c9-27b3ecc780b7" ],
-        "x-ms-correlation-request-id": [ "d8d2f5af-9d90-4aea-96c9-27b3ecc780b7" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20241004T001753Z:d8d2f5af-9d90-4aea-96c9-27b3ecc780b7" ],
+        "x-ms-request-id": [ "cb64dac0-96bc-47eb-aef7-605a4df6470b" ],
+        "x-ms-correlation-request-id": [ "cb64dac0-96bc-47eb-aef7-605a4df6470b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260116T235023Z:cb64dac0-96bc-47eb-aef7-605a4df6470b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F57F4A04F5964864962E7F121C792810 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:17:53Z" ],
-        "Date": [ "Fri, 04 Oct 2024 00:17:52 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 26F8CF3D77AF4A308FA34EADA2BA24F9 Ref B: MWH011020809025 Ref C: 2026-01-16T23:50:23Z" ],
+        "Date": [ "Fri, 16 Jan 2026 23:50:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "475" ],
+        "Content-Length": [ "473" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"AuthorizationFailed\",\"message\":\"The client \u0027cstack@ntdev.microsoft.com\u0027 with object id \u00273d826307-2481-45a0-a271-bcf9333f914a\u0027 does not have authorization to perform action \u0027Microsoft.Authorization/policyDefinitions/write\u0027 over scope \u0027/providers/Microsoft.Management/managementGroups/someManagementGroup/providers/Microsoft.Authorization/policyDefinitions/someName\u0027 or the scope is invalid. If access was recently granted, please refresh your credentials.\"}}",
+      "Content": "{\"error\":{\"code\":\"AuthorizationFailed\",\"message\":\"The client \u0027zhaocelina@microsoft.com\u0027 with object id \u0027638d92d9-ae3b-4f1d-be91-382dcc631f82\u0027 does not have authorization to perform action \u0027Microsoft.Authorization/policyDefinitions/write\u0027 over scope \u0027/providers/Microsoft.Management/managementGroups/someManagementGroup/providers/Microsoft.Authorization/policyDefinitions/someName\u0027 or the scope is invalid. If access was recently granted, please refresh your credentials.\"}}",
       "isContentBase64": false
     }
   },
-  "NewPolicyDefinition+[NoContext]+New-AzPolicyDefinition -Name -Policy -SubscriptionId+$PUT+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01+1": {
+  "NewPolicyDefinition+[NoContext]+New-AzPolicyDefinition -Name -Policy -SubscriptionId+$PUT+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2025-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2025-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"mode\": \"All\",\r\n    \"policyRule\": {\r\n      \"someThing\": \"someOtherThing\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -91,15 +93,17 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-request-id": [ "f80fb1ca-eebc-4589-a598-318f5c596142" ],
-        "x-ms-correlation-request-id": [ "f80fb1ca-eebc-4589-a598-318f5c596142" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20241004T001754Z:f80fb1ca-eebc-4589-a598-318f5c596142" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/e12a01f0-2b07-4ee6-8833-bff685b0a2c9" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "15ef8ec6-1a25-4dbf-8420-09f8a0d0e872" ],
+        "x-ms-correlation-request-id": [ "15ef8ec6-1a25-4dbf-8420-09f8a0d0e872" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260116T235024Z:15ef8ec6-1a25-4dbf-8420-09f8a0d0e872" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C67340A4D0BD49AF97CE7BEE985ECB7D Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:17:54Z" ],
-        "Date": [ "Fri, 04 Oct 2024 00:17:53 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E0D83D6E64FC45BDA640A5D1C18E7EE1 Ref B: MWH011020809025 Ref C: 2026-01-16T23:50:24Z" ],
+        "Date": [ "Fri, 16 Jan 2026 23:50:24 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "176" ],
@@ -107,6 +111,45 @@
         "Expires": [ "-1" ]
       },
       "Content": "{\"error\":{\"code\":\"InvalidPolicyRule\",\"message\":\"Failed to parse policy rule: \u0027Could not find member \u0027someThing\u0027 on object of type \u0027PolicyRuleDefinition\u0027. Path \u0027someThing\u0027.\u0027.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "NewPolicyDefinition+[NoContext]+New-AzPolicyDefinition -Name -Policy -Version \u003cinvalid version\u003e+$PUT+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2025-03-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"mode\": \"All\",\r\n    \"policyRule\": {\r\n      \"someThing\": \"someOtherThing\"\r\n    },\r\n    \"version\": \"someName\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "141" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/317217eb-b4e4-47f6-91bb-19221d56d820" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "f64f8ed8-e8f4-4855-bb00-e3be7e27c8f6" ],
+        "x-ms-correlation-request-id": [ "f64f8ed8-e8f4-4855-bb00-e3be7e27c8f6" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260116T235025Z:f64f8ed8-e8f4-4855-bb00-e3be7e27c8f6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CB5756E50BCA4F829F47451E3E977AA1 Ref B: MWH011020809025 Ref C: 2026-01-16T23:50:25Z" ],
+        "Date": [ "Fri, 16 Jan 2026 23:50:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "305" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"InvalidVersionIdentifier\",\"message\":\"The policy resource \u0027someName\u0027 has an invalid \u0027version\u0027 value of \u0027someName\u0027. Versions must be of the form \u0027{major}.{minor}.{patch}[-preview]\u0027 where each segment is a number with no leading zeros. The major version number must be greater than zero.\"}}",
       "isContentBase64": false
     }
   }

@@ -21,13 +21,13 @@ Describe 'PolicyAssignmentVersionCRUD' {
         $oldestDefMinor = '1.0.*'
         $otherDefVersion = '1.1.1'
         $otherDefMinor = '1.1.*'
-        $newestDefVersion = '2.0.0'
+        $newestDefVersion = '2.0.1'
         $newestDefMinor = '2.0.*'
         $oldestSetVersion = '1.0.0'
         $oldestSetMinor = '1.0.*'
         $otherSetVersion = '1.1.1'
         $otherSetMinor = '1.1.*'
-        $newestSetVersion = '2.0.0'
+        $newestSetVersion = '2.0.1'
         $newestSetMinor = '2.0.*'
 
         $oldestDefinition = Get-AzPolicyDefinition -Name $policyDefName -Version $oldestDefVersion

@@ -97,5 +97,23 @@ Describe 'UpdatePolicySetDefinition' {
         {
             Update-AzPolicySetDefinition -SubscriptionId $subscriptionId
         } | Should -Throw $missingParameters
+    }    
+
+    It 'Update-AzPolicySetDefinition -Name -Version <invalid version>' {
+        {
+            Update-AzPolicySetDefinition -Name $someName -Version $someName
+        } | Should -Throw $invalidVersionIdentifier
+    }
+
+    It 'Update-AzPolicySetDefinition -Name -Version' {
+        {
+            Update-AzPolicySetDefinition -Name $someName -Version $someVersion
+        } | Should -Throw $policySetDefinitionNotFound
+    }
+
+    It 'Update-AzPolicySetDefinition -Name -Version <missing>' {
+        {
+            Update-AzPolicySetDefinition -Name $someName -Version
+        } | Should -Throw $missingAnArgument
     }
 }

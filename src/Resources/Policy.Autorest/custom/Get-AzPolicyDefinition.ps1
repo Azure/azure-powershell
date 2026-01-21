@@ -377,6 +377,7 @@ process {
         $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (ConvertObjectToPSObject $item.Parameter) -Force
         $item | Add-Member -MemberType NoteProperty -Name 'PolicyRule' -Value (ConvertObjectToPSObject $item.PolicyRule) -Force
         $item | Add-Member -MemberType NoteProperty -Name 'Versions' -Value ([array]($item.Versions)) -Force
+        $item | Add-Member -MemberType NoteProperty -Name 'EndpointSettingDetail' -Value (ConvertObjectToPSObject $item.EndpointSettingDetail) -Force
         $PSCmdlet.WriteObject($item)
     }
 }

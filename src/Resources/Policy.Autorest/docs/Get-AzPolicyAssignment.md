@@ -51,46 +51,27 @@ Identify a policy assignment to get by name and scope or by ID.
 
 ## EXAMPLES
 
-### Example 1: Get all policy assignments
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzPolicyAssignment
+{{ Add code here }}
 ```
 
-This command gets all the policy assignments.
-
-### Example 2: Get a specific policy assignment
-```powershell
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet and stores it in the $ResourceGroup variable.
-The second command gets the policy assignment named PolicyAssignment07 for the scope that the **ResourceId** property of $ResourceGroup identifies.
+{{ Add description here }}
 
-### Example 3: Get all policy assignments assigned to a management group
+### Example 2: {{ Add title here }}
 ```powershell
-$mgId = 'myManagementGroup'
-Get-AzPolicyAssignment -Scope '/providers/Microsoft.Management/managementgroups/$mgId'
+{{ Add code here }}
 ```
 
-The first command specifies the ID of the management group to query.
-The second command gets all of the policy assignments that are assigned to the management group with ID 'myManagementGroup'.
-
-### Example 4: Get the scope, policy set definition identifier, and display name of all policy assignments formatted as a list
-```powershell
-Get-AzPolicyAssignment | Select-Object -Property Scope, PolicyDefinitionID, DisplayName | Format-List
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command is useful when you need to find the reader-friendly **DisplayName** property of an Azure
-Policy assignment.
-
-### Example 5: [Backcompat] Get the scope, policy set definition identifier, and display name of all policy assignments formatted as a list
-```powershell
-Get-AzPolicyAssignment -BackwardCompatible | Select-Object -ExpandProperty properties | Select-Object -Property Scope, PolicyDefinitionID, DisplayName | Format-List
-```
-
-This command is useful when you need to find the reader-friendly **DisplayName** property of an Azure
-Policy assignment.
+{{ Add description here }}
 
 ## PARAMETERS
 

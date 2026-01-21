@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Policy
-Module Guid: 54d436a4-6f2e-4977-b339-2b40665fd8c4
+Module Guid: 508c3af2-d1e5-47ba-bd7d-0e376e6e6b8e
 Download Help Link: https://learn.microsoft.com/powershell/module/az.policy
 Help Version: 1.0.0.0
 Locale: en-US

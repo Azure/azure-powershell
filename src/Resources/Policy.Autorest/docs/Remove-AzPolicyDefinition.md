@@ -14,32 +14,32 @@ This operation deletes the policy definition in the given subscription with the 
 
 ### Name (Default)
 ```
-Remove-AzPolicyDefinition -Name <String> [-BackwardCompatible] [-Force] [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzPolicyDefinition -Name <String> [-BackwardCompatible] [-Force] [-Version <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Remove-AzPolicyDefinition -Id <String> [-BackwardCompatible] [-Force] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzPolicyDefinition -Id <String> [-BackwardCompatible] [-Force] [-Version <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Remove-AzPolicyDefinition -InputObject <IPolicyIdentity> [-BackwardCompatible] [-Force]
+Remove-AzPolicyDefinition -InputObject <IPolicyIdentity> [-BackwardCompatible] [-Force] [-Version <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
 Remove-AzPolicyDefinition -ManagementGroupName <String> -Name <String> [-BackwardCompatible] [-Force]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
 Remove-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-BackwardCompatible] [-Force]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,29 +47,27 @@ This operation deletes the policy definition in the given subscription with the 
 
 ## EXAMPLES
 
-### Example 1: Remove the policy definition by name
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzPolicyDefinition -Name 'VMPolicyDefinition'
+{{ Add code here }}
 ```
 
-This command removes the specified policy definition.
-
-### Example 2: Remove policy definition by resource ID
-```powershell
-$PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition' 
-Remove-AzPolicyDefinition -Id $PolicyDefinition.Id -Force
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command removes the given policy definition without prompting the user.
+{{ Add description here }}
 
-### Example 3: [Backcompat] Remove policy definition by resource ID
+### Example 2: {{ Add title here }}
 ```powershell
-$PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition' -BackwardCompatible
-Remove-AzPolicyDefinition -Id $PolicyDefinition.ResourceId -Force -BackwardCompatible
-True
+{{ Add code here }}
 ```
 
-This command removes the given policy definition without prompting the user.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -207,6 +205,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Version
+The policy definition version in #.#.# format.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

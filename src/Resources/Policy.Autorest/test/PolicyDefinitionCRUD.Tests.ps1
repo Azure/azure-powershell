@@ -8,6 +8,9 @@ Describe 'PolicyDefinitionCRUD' -Tag 'LiveOnly' {
         $policyName = Get-ResourceName
         $test2 = Get-ResourceName
         $test3 = Get-ResourceName
+        $test4 = Get-ResourceName
+        $oldestVersion = "1.0.0"
+        $newestVersion = "2.0.0"
     }
 
     It 'Make a policy definition from rule file' {
@@ -16,6 +19,10 @@ Describe 'PolicyDefinitionCRUD' -Tag 'LiveOnly' {
         $actual = Get-AzPolicyDefinition -Name $policyName
         $actual | Should -Not -BeNullOrEmpty
         $expected.Name | Should -Be $actual.Name
+        $actual.Version | Should -Be $oldestVersion
+        $expected.Version | Should -Be $actual.Version
+        $expected.Versions | Should -HaveCount 1
+        $expected.Versions | Should -Be $actual.Versions
         $expected.PolicyDefinitionId | Should -Be $actual.PolicyDefinitionId
         $actual.PolicyRule | Should -Not -BeNullOrEmpty
         $expected.Mode | Should -Be $actual.Mode
@@ -27,6 +34,24 @@ Describe 'PolicyDefinitionCRUD' -Tag 'LiveOnly' {
         $expected = Get-AzPolicyDefinition -Name $policyName
         $expected.DisplayName | Should -Be $actual.DisplayName
         $expected.Description | Should -Be $actual.Description
+        $actual.Version | Should -Be $oldestVersion
+        $expected.Version | Should -Be $actual.Version
+        $expected.Versions | Should -Be $actual.Versions
+        $actual.Versions | Should -Not -BeNullOrEmpty
+        $actual.Metadata | Should -Not -BeNullOrEmpty
+        $actual.Metadata.$metadataName | Should -Be $metadataValue
+    }
+
+    It 'Update policy definition version' {
+        # update the same policy definition, get it back and validate the new version
+        $actual = Update-AzPolicyDefinition -Name $policyName -DisplayName testDisplay -Description $updatedDescription -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Metadata $metadata -Version $newestVersion
+        $expected = Get-AzPolicyDefinition -Name $policyName
+        $expected.DisplayName | Should -Be $actual.DisplayName
+        $expected.Description | Should -Be $actual.Description
+        $actual.Version | Should -Be $newestVersion
+        $expected.Version | Should -Be $actual.Version
+        $expected.Versions | Should -Be $actual.Versions
+        $expected.Versions | Should -HaveCount 2
         $actual.Metadata | Should -Not -BeNullOrEmpty
         $actual.Metadata.$metadataName | Should -Be $metadataValue
     }
@@ -44,6 +69,8 @@ Describe 'PolicyDefinitionCRUD' -Tag 'LiveOnly' {
         $actual = Get-AzPolicyDefinition -Name $policyName
         $actual.DisplayName | Should -Be $expected.DisplayName
         $actual.Description | Should -Be $expected.Description
+        $expected.Version | Should -Be $actual.Version
+        $expected.Versions | Should -Be $actual.Versions
         $actual.Metadata.$metadataName | Should -Be $expected.Metadata.$metadataName
         $actual.PolicyDefinition | Should -BeLike $expected.PolicyDefinition
         $actual.Parameter | Should -BeLike $expected.Parameter
@@ -89,11 +116,27 @@ Describe 'PolicyDefinitionCRUD' -Tag 'LiveOnly' {
         $expected.PolicyRule | Should -BeLike $actual.PolicyRule
     }
 
+    It 'Make a policy definition with version from rule file' {
+        # make a policy definition with version, get it back and validate
+        $expected = New-AzPolicyDefinition -Name $test4 -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Mode Indexed -Description $description -Version $newestVersion
+        $actual = Get-AzPolicyDefinition -Name $test4
+        $actual | Should -Not -BeNullOrEmpty
+        $actual.Version | Should -Be $newestVersion
+        $actual.Versions | Should -HaveCount 1
+        $expected.Name | Should -Be $actual.Name
+        $expected.Version | Should -Be $actual.Version
+        $expected.Versions | Should -Be $actual.Versions
+        $expected.PolicyDefinitionId | Should -Be $actual.PolicyDefinitionId
+        $actual.PolicyRule | Should -Not -BeNullOrEmpty
+        $expected.Mode | Should -Be $actual.Mode
+    }
+
     AfterAll {
         # clean up
         $remove = Remove-AzPolicyDefinition -Name $policyName -Force -PassThru
         $remove = (Remove-AzPolicyDefinition -Name $test2 -Force -PassThru) -and $remove
         $remove = (Remove-AzPolicyDefinition -Name $test3 -Force -PassThru) -and $remove
+        $remove = (Remove-AzPolicyDefinition -Name $test4 -Force -PassThru) -and $remove
         $remove | Should -Be $true
 
         Write-Host -ForegroundColor Magenta "Cleanup complete."
