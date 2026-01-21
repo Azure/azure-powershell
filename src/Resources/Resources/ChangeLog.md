@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Fixed console close when az not login issue
+* Fixed issue where the PowerShell console would close when using Resources module cmdlets without being logged in. Github Issue [link](https://github.com/Azure/azure-powershell/issues/28774).
 * Fixed `Remove-AzRoleDefinition` displaying incorrect confirmation message (unformatted placeholder) and empty GUID as target when using `-Confirm` or `-WhatIf` with the `-Name` parameter [#29075]
 * Added breaking change preannouncement for `PSRoleDefinition` type changes in Az.Resources 10.0.0 [#29058]
     - The flattened properties `Actions`, `NotActions`, `DataActions`, `NotDataActions`, `Condition`, and `ConditionVersion` will be removed from `PSRoleDefinition`
