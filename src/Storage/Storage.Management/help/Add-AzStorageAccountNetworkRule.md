@@ -108,7 +108,7 @@ This command gets all resource access rules from one storage account, and adds t
 Add-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -IPAddressOrRange "2606:4700:4700::1111","2404:6800:4003:c02::6a"
 ```
 
-This command add several IPv6 rules with IPv6AddressOrRange.
+This command adds several IPv6 rules with IPv6AddressOrRange.
 
 ### Example 8: Add several IPv6 rules with IPv6Rule objects
 ```powershell
