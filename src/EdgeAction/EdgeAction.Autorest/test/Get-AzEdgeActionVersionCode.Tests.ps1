@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEdgeActionVersionCode')
 Describe 'Get-AzEdgeActionVersionCode' {
     BeforeAll {
         $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "eagetcode02"
+        $script:edgeActionName = "eagetcodedec03"
         $script:version = "v1"
         $script:testFilePath = Join-Path $PSScriptRoot 'test_handler.js'
         

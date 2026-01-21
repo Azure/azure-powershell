@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.4.0
 * Added 'Get-AzSqlDeletedServer' cmdlet to retrieve soft deleted Azure SQL servers
     - Supports retrieving deleted servers by location or specific deleted server by name
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229

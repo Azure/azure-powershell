@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.SignalR",
-  "ModuleVersion": "2.3.1",
+  "ModuleVersion": "2.3.2",
   "Cmdlets": [
     {
       "VerbName": "Add",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PublicNetwork": "Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl",
               "IPRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSIpRule]",
@@ -97,7 +97,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -125,7 +125,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule"
           },
           "ValidateNotNullOrEmpty": false
@@ -203,7 +203,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -283,7 +283,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -348,7 +348,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -382,7 +382,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -503,7 +503,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -898,7 +898,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSCustomCertificateResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomCertificateResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomCertificateResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "KeyVaultBaseUri": "System.String",
               "KeyVaultSecretName": "System.String",
@@ -991,7 +991,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -1284,7 +1284,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -1453,7 +1453,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DomainName": "System.String",
               "CustomCertificateId": "System.String",
@@ -1545,7 +1545,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -1838,7 +1838,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -2007,7 +2007,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRKeys, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRKeys, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Name": "System.String",
               "PrimaryKey": "System.String",
@@ -2093,7 +2093,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -2302,7 +2302,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -2441,7 +2441,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2536,7 +2536,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -2735,7 +2735,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -2983,7 +2983,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRUsage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRUsage, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRUsage, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CurrentValue": "System.Nullable`1[System.Int64]",
               "Limit": "System.Nullable`1[System.Int64]",
@@ -3157,7 +3157,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -3594,7 +3594,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSCustomCertificateResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomCertificateResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomCertificateResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "KeyVaultBaseUri": "System.String",
               "KeyVaultSecretName": "System.String",
@@ -3705,7 +3705,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -4058,7 +4058,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -4223,7 +4223,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DomainName": "System.String",
               "CustomCertificateId": "System.String",
@@ -4324,7 +4324,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -4647,7 +4647,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -4837,7 +4837,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -5136,7 +5136,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -5343,7 +5343,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Value": "System.String",
               "Action": "System.String"
@@ -5506,7 +5506,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -5592,7 +5592,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -6101,7 +6101,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -6355,7 +6355,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -6642,7 +6642,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -6881,7 +6881,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSCustomCertificateResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomCertificateResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomCertificateResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "KeyVaultBaseUri": "System.String",
               "KeyVaultSecretName": "System.String",
@@ -6899,7 +6899,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -7131,7 +7131,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -7244,7 +7244,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSCustomCertificateResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomCertificateResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomCertificateResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "KeyVaultBaseUri": "System.String",
                     "KeyVaultSecretName": "System.String",
@@ -7567,7 +7567,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DomainName": "System.String",
               "CustomCertificateId": "System.String",
@@ -7584,7 +7584,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -7816,7 +7816,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -7929,7 +7929,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DomainName": "System.String",
                     "CustomCertificateId": "System.String",
@@ -8211,7 +8211,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PublicNetwork": "Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl",
               "IPRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSIpRule]",
@@ -8292,7 +8292,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -8320,7 +8320,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule"
           },
           "ValidateNotNullOrEmpty": false
@@ -8398,7 +8398,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8478,7 +8478,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8543,7 +8543,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -8577,7 +8577,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8747,7 +8747,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -8775,7 +8775,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -8990,7 +8990,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -9197,7 +9197,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -9428,7 +9428,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -9715,7 +9715,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -9963,7 +9963,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -9991,7 +9991,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -10206,7 +10206,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -10413,7 +10413,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -10604,7 +10604,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Templates": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate]"
             },
@@ -10682,7 +10682,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -10719,7 +10719,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate"
           },
           "ValidateNotNullOrEmpty": false
@@ -10821,7 +10821,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10931,7 +10931,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11011,7 +11011,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -11060,7 +11060,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11155,7 +11155,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate[], Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -11242,7 +11242,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -11328,7 +11328,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -11348,7 +11348,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -11580,7 +11580,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -11693,7 +11693,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -11978,7 +11978,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -12064,7 +12064,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -12084,7 +12084,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -12316,7 +12316,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -12429,7 +12429,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -12872,7 +12872,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -12966,7 +12966,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -13523,7 +13523,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -13926,7 +13926,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DomainName": "System.String",
               "CustomCertificateId": "System.String",
@@ -14009,7 +14009,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DomainName": "System.String",
               "CustomCertificateId": "System.String",
@@ -14026,7 +14026,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -14282,7 +14282,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -14410,7 +14410,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSCustomDomainResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DomainName": "System.String",
                     "CustomCertificateId": "System.String",
@@ -14737,7 +14737,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PublicNetwork": "Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl",
               "IPRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSIpRule]",
@@ -14818,7 +14818,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -15318,7 +15318,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -15675,7 +15675,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -15761,7 +15761,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -15781,7 +15781,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -16099,7 +16099,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
@@ -16264,7 +16264,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSReplicaResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -31054,7 +31054,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Allow": "System.Collections.Generic.IList`1[System.String]",
         "Deny": "System.Collections.Generic.IList`1[System.String]"
@@ -31111,7 +31111,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSIpRule]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSIpRule]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SignalR.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SignalR.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.SignalR.Models.PSIpRule"
       ]
@@ -31119,7 +31119,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSIpRule": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Value": "System.String",
         "Action": "System.String"
@@ -31221,7 +31221,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL"
       ]
@@ -31229,7 +31229,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSPrivateEndpointACL, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Allow": "System.Collections.Generic.IList`1[System.String]",
         "Deny": "System.Collections.Generic.IList`1[System.String]",
@@ -31274,7 +31274,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSManagedIdentity, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "UserAssignedIdentities": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.SignalR.Models.PSUserAssignedIdentityProperty]",
         "Type": "System.String",
@@ -31320,7 +31320,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.SignalR.Models.PSUserAssignedIdentityProperty]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.SignalR.Models.PSUserAssignedIdentityProperty]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.SignalR.Models.PSUserAssignedIdentityProperty, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.SignalR.Models.PSUserAssignedIdentityProperty, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "System.String",
         "Microsoft.Azure.Commands.SignalR.Models.PSUserAssignedIdentityProperty"
@@ -31329,7 +31329,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSUserAssignedIdentityProperty": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSUserAssignedIdentityProperty",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUserAssignedIdentityProperty, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUserAssignedIdentityProperty, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrincipalId": "System.String",
         "ClientId": "System.String"
@@ -31373,7 +31373,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Capacity": "System.Nullable`1[System.Int32]",
         "Family": "System.String",
@@ -31428,7 +31428,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSServerlessUpstreamSettings, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Templates": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate]"
       },
@@ -31471,7 +31471,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate"
       ]
@@ -31479,7 +31479,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "HubPattern": "System.String",
         "EventPattern": "System.String",
@@ -31704,7 +31704,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRCorsSettings, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AllowedOrigins": "System.Collections.Generic.IList`1[System.String]"
       },
@@ -31747,7 +31747,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRNetworkAcls, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PublicNetwork": "Microsoft.Azure.Commands.SignalR.Models.PSNetworkAcl",
         "IPRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSIpRule]",
@@ -31802,7 +31802,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature"
       ]
@@ -31810,7 +31810,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRFeature, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=2.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Properties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "Value": "System.String",

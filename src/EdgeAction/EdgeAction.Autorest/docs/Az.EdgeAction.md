@@ -1,6 +1,6 @@
 ---
 Module Name: Az.EdgeAction
-Module Guid: 9684b1ec-34c5-477b-9878-aa83099528e2
+Module Guid: 172d8b71-731b-43bd-ab49-2d5b27a1486d
 Download Help Link: https://learn.microsoft.com/powershell/module/az.edgeaction
 Help Version: 1.0.0.0
 Locale: en-US
@@ -11,9 +11,6 @@ Locale: en-US
 Microsoft Azure PowerShell: EdgeAction cmdlets
 
 ## Az.EdgeAction Cmdlets
-### [Add-AzEdgeActionAttachment](Add-AzEdgeActionAttachment.md)
-A long-running resource action.
-
 ### [Deploy-AzEdgeActionVersionCode](Deploy-AzEdgeActionVersionCode.md)
 Deploy Edge Action version code from a file.
 
@@ -40,9 +37,6 @@ Create a EdgeActionVersion
 
 ### [Remove-AzEdgeAction](Remove-AzEdgeAction.md)
 Delete a EdgeAction
-
-### [Remove-AzEdgeActionAttachment](Remove-AzEdgeActionAttachment.md)
-A long-running resource action.
 
 ### [Remove-AzEdgeActionExecutionFilter](Remove-AzEdgeActionExecutionFilter.md)
 Delete a EdgeActionExecutionFilter
