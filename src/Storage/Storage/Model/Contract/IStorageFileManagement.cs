@@ -25,6 +25,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
     /// </summary>
     public interface IStorageFileManagement : IStorageManagement
     {
+        bool IsSasWithOAuthCredential();
+
         /// <summary>
         ///  Returns a reference to a Microsoft.Azure.Storage.File.CloudFileShare
         ///  object with the specified name.

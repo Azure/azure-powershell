@@ -15,17 +15,17 @@ Generates a SAS token for Azure DatalakeGen2 item.
 ### ReceiveManual (Default)
 ```
 New-AzDataLakeGen2SasToken [-FileSystem] <String> [-Path <String>] [-Permission <String>]
- [-Protocol <SasProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTimeOffset>]
- [-ExpiryTime <DateTimeOffset>] [-EncryptionScope <String>] [-FullUri] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DelegatedUserObjectId <String>] [-Protocol <SasProtocol>] [-IPAddressOrRange <String>]
+ [-StartTime <DateTimeOffset>] [-ExpiryTime <DateTimeOffset>] [-EncryptionScope <String>] [-FullUri]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ItemPipeline
 ```
 New-AzDataLakeGen2SasToken -InputObject <AzureDataLakeGen2Item> [-Permission <String>]
- [-Protocol <SasProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTimeOffset>]
- [-ExpiryTime <DateTimeOffset>] [-EncryptionScope <String>] [-FullUri] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DelegatedUserObjectId <String>] [-Protocol <SasProtocol>] [-IPAddressOrRange <String>]
+ [-StartTime <DateTimeOffset>] [-ExpiryTime <DateTimeOffset>] [-EncryptionScope <String>] [-FullUri]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,6 +71,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DelegatedUserObjectId
+This value specifies the Entra ID of the user who is authorized to use the resulting SAS URL. The resulting SAS URL must be used in conjunction with an Entra ID token that has been issued to the user specified in this value. This parameter can only be specified when input Storage Context is OAuth based.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

@@ -15,34 +15,33 @@ Generates a shared access signature token for a Storage file.
 
 ### NameSasPermission
 ```
-New-AzStorageFileSASToken [-ShareName] <String> [-Path] <String> [-Permission <String>] [-Protocol <String>]
- [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+New-AzStorageFileSASToken [-ShareName] <String> [-Path] <String> [-DelegatedUserObjectId <String>]
+ [-Permission <String>] [-Protocol <String>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### NameSasPolicy
 ```
-New-AzStorageFileSASToken [-ShareName] <String> [-Path] <String> -Policy <String> [-Protocol <String>]
- [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+New-AzStorageFileSASToken [-ShareName] <String> [-Path] <String> -Policy <String>
+ [-DelegatedUserObjectId <String>] [-Protocol <String>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### FileSasPermission
 ```
-New-AzStorageFileSASToken -ShareFileClient <ShareFileClient> [-Permission <String>] [-Protocol <String>]
- [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+New-AzStorageFileSASToken -ShareFileClient <ShareFileClient> [-DelegatedUserObjectId <String>]
+ [-Permission <String>] [-Protocol <String>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### FileSasPolicy
 ```
-New-AzStorageFileSASToken -ShareFileClient <ShareFileClient> -Policy <String> [-Protocol <String>]
- [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzStorageFileSASToken -ShareFileClient <ShareFileClient> -Policy <String> [-DelegatedUserObjectId <String>]
+ [-Protocol <String>] [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,6 +96,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DelegatedUserObjectId
+This value specifies the Entra ID of the user who is authorized to use the resulting SAS URL. The resulting SAS URL must be used in conjunction with an Entra ID token that has been issued to the user specified in this value. This parameter can only be specified when input Storage Context is OAuth based.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

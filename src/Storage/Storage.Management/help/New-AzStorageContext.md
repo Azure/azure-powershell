@@ -16,8 +16,7 @@ Creates an Azure Storage context.
 ### OAuthAccount (Default)
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-UseConnectedAccount] [-Protocol <String>]
- [-Endpoint <String>] [-EnableFileBackupRequestIntent]
- [<CommonParameters>]
+ [-Endpoint <String>] [-EnableFileBackupRequestIntent] [<CommonParameters>]
 ```
 
 ### AccountNameAndKey
@@ -46,28 +45,26 @@ New-AzStorageContext [-StorageAccountName] <String> [-Anonymous] [-Protocol <Str
 
 ### SasToken
 ```
-New-AzStorageContext [-StorageAccountName] <String> -SasToken <String> [-Protocol <String>]
- [-Endpoint <String>] [<CommonParameters>]
+New-AzStorageContext [-StorageAccountName] <String> -SasToken <String> [-UseConnectedAccount]
+ [-Protocol <String>] [-Endpoint <String>] [-EnableFileBackupRequestIntent] [<CommonParameters>]
 ```
 
 ### SasTokenWithAzureEnvironment
 ```
-New-AzStorageContext [-StorageAccountName] <String> -SasToken <String> -Environment <String>
- [<CommonParameters>]
+New-AzStorageContext [-StorageAccountName] <String> -SasToken <String> [-UseConnectedAccount]
+ -Environment <String> [-EnableFileBackupRequestIntent] [<CommonParameters>]
 ```
 
 ### OAuthAccountEnvironment
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-UseConnectedAccount] [-Protocol <String>]
- -Environment <String> [-EnableFileBackupRequestIntent]
- [<CommonParameters>]
+ -Environment <String> [-EnableFileBackupRequestIntent] [<CommonParameters>]
 ```
 
 ### AccountNameAndKeyServiceEndpoint
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-StorageAccountKey] <String> -BlobEndpoint <String>
- [-FileEndpoint <String>] [-QueueEndpoint <String>] [-TableEndpoint <String>]
- [<CommonParameters>]
+ [-FileEndpoint <String>] [-QueueEndpoint <String>] [-TableEndpoint <String>] [<CommonParameters>]
 ```
 
 ### OAuthAccountServiceEndpoint
@@ -79,8 +76,9 @@ New-AzStorageContext [[-StorageAccountName] <String>] [-UseConnectedAccount] [-B
 
 ### SasTokenServiceEndpoint
 ```
-New-AzStorageContext -SasToken <String> [-BlobEndpoint <String>] [-FileEndpoint <String>]
- [-QueueEndpoint <String>] [-TableEndpoint <String>] [<CommonParameters>]
+New-AzStorageContext -SasToken <String> [-UseConnectedAccount] [-BlobEndpoint <String>]
+ [-FileEndpoint <String>] [-QueueEndpoint <String>] [-TableEndpoint <String>] [-EnableFileBackupRequestIntent]
+ [<CommonParameters>]
 ```
 
 ### ConnectionString
@@ -293,7 +291,7 @@ Required parameter to use with OAuth (Microsoft Entra ID) Authentication for Fil
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: OAuthAccount, OAuthAccountEnvironment, OAuthAccountServiceEndpoint
+Parameter Sets: OAuthAccount, SasToken, SasTokenWithAzureEnvironment, OAuthAccountEnvironment, OAuthAccountServiceEndpoint, SasTokenServiceEndpoint
 Aliases:
 
 Required: False
@@ -488,7 +486,7 @@ The cmdlet will use OAuth Authentication by default, when other authentication n
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: OAuthAccount, OAuthAccountEnvironment, OAuthAccountServiceEndpoint
+Parameter Sets: OAuthAccount, SasToken, SasTokenWithAzureEnvironment, OAuthAccountEnvironment, OAuthAccountServiceEndpoint, SasTokenServiceEndpoint
 Aliases:
 
 Required: False

@@ -136,8 +136,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             bool isDirectory;
             string[] path = NamingUtil.ValidatePath(this.Path, out isDirectory);
 
-            var cloudFileToBeUploaded =
-                        BuildCloudFileInstanceFromPathAsync(localFile.Name, path, isDirectory).ConfigureAwait(false).GetAwaiter().GetResult();
             var fileClientToBeUploaded = BuildShareFileClientInstanceFromPathAsync(localFile.Name, path, isDirectory).ConfigureAwait(false).GetAwaiter().GetResult();
 
 
@@ -147,7 +145,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     && !WithOauthCredential() 
                     && (this.DisAllowTrailingDot.IsPresent || !Util.PathContainsTrailingDot(fileClientToBeUploaded.Path))
                     && this.FileMode == null && this.Owner == null && this.Group == null)
-                {                    
+                {
+                    var cloudFileToBeUploaded =
+                                BuildCloudFileInstanceFromPathAsync(localFile.Name, path, isDirectory).ConfigureAwait(false).GetAwaiter().GetResult();
                     if (ShouldProcess(cloudFileToBeUploaded.Name, "Set file content"))
                     {
                         var progressRecord = new ProgressRecord(
@@ -179,7 +179,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 }
                 else // use Track2 SDK
                 {
-                   
                     if (ShouldProcess(fileClientToBeUploaded.Path, "Set file content"))
                     {
                         var progressRecord = new ProgressRecord(
