@@ -32,7 +32,7 @@
     - `New-AzVMwareLicense`
     - `Remove-AzVMwareLicense`
     - `Update-AzVMwareLicense`
-    - `AzVMwareServiceComponentAvailability`
+    - `Test-AzVMwareServiceComponentAvailability`
 
 ## Version 0.8.0
 * Updated the AVS VMware cmdlets api version to `2024-09-01`. 
