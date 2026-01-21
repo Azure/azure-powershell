@@ -106,7 +106,7 @@ This command removes the first 3 resource access rules from a storage account.
 Remove-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -IPv6AddressOrRange "2606:4700:4700::1111"
 ```
 
-This command remove a IPv6 rule with IPv6AddressOrRange.
+This command removes a IPv6 rule with IPv6AddressOrRange.
 
 ## PARAMETERS
 
