@@ -30,39 +30,55 @@ Get-AzKustoPrivateEndpointConnection -InputObject <IKustoIdentity> [-DefaultProf
  [<CommonParameters>]
 ```
 
+### GetViaIdentityCluster
+```
+Get-AzKustoPrivateEndpointConnection -ClusterInputObject <IKustoIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets a private endpoint connection.
 
 ## EXAMPLES
 
-### Example 1: List all Kusto PrivateEndpointConnection in a cluster by name
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzKustoPrivateEndpointConnection -ClusterName "mycluster" -ResourceGroupName "testrg" -SubscriptionId "12345678-1234-1234-1234-123456789098"
+{{ Add code here }}
 ```
 
 ```output
-Name                                                       Type
-----                                                       ----
-privateEndpointConnectionName1                             Microsoft.Kusto/Clusters/PrivateEndpointConnections
-privateEndpointConnectionName2                             Microsoft.Kusto/Clusters/PrivateEndpointConnections
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-The above command returns all Kusto PrivateEndpointConnection in the cluster "mycluster" found in the resource group "testrg".
+{{ Add description here }}
 
-### Example 2: Get a specific Kusto PrivateEndpointConnection by name
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzKustoPrivateEndpointConnection -ClusterName "mycluster" -ResourceGroupName "testrg" -SubscriptionId "12345678-1234-1234-1234-123456789098" -Name "privateEndpointConnectionName"
+{{ Add code here }}
 ```
 
 ```output
-Name                                                       Type
-----                                                       ----
-privateEndpointConnectionName                              Microsoft.Kusto/Clusters/PrivateEndpointConnections
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-The above command returns the Kusto PrivateEndpointConnection named "privateEndpointConnectionName" in the cluster "mycluster" found in the resource group "testrg".
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+Parameter Sets: GetViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -ClusterName
 The name of the Kusto cluster.
@@ -97,7 +113,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
@@ -116,7 +131,7 @@ The name of the private endpoint connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityCluster
 Aliases: PrivateEndpointConnectionName
 
 Required: True
@@ -166,7 +181,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IPrivateEndpointConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IPrivateEndpointConnection
 
 ## NOTES
 

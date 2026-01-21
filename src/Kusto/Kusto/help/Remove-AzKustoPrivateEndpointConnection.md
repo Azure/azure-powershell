@@ -19,6 +19,13 @@ Remove-AzKustoPrivateEndpointConnection -ClusterName <String> -Name <String> -Re
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityCluster
+```
+Remove-AzKustoPrivateEndpointConnection -Name <String> -ClusterInputObject <IKustoIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzKustoPrivateEndpointConnection -InputObject <IKustoIdentity> [-DefaultProfile <PSObject>] [-AsJob]
@@ -30,12 +37,27 @@ Deletes a private endpoint connection with a given name.
 
 ## EXAMPLES
 
-### Example 1: Delete an existing Kusto PrivateEndpointConnection by name
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzKustoPrivateEndpointConnection -ClusterName "mycluster" -ResourceGroupName "testrg" -Name "testprivateconnection-12345678-1234-1234-1234-123456789098"
+{{ Add code here }}
 ```
 
-The above command deletes the Kusto PrivateEndpointConnection named "testprivateconnection-12345678-1234-1234-1234-123456789098" in the cluster "mycluster" found in the resource group "testrg".
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -51,6 +73,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+Parameter Sets: DeleteViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -87,7 +124,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
@@ -106,7 +142,7 @@ The name of the private endpoint connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityCluster
 Aliases: PrivateEndpointConnectionName
 
 Required: True

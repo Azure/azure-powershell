@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Kusto
-Module Guid: 18c61846-f6f0-425e-ba4b-5cf903e2bdd8
+Module Guid: bb1802ad-3127-41c9-b7d1-5842bba6fec4
 Download Help Link: https://learn.microsoft.com/powershell/module/az.kusto
 Help Version: 1.0.0.0
 Locale: en-US
@@ -99,34 +99,34 @@ Diagnoses network connectivity status for external resources on which the servic
 Generates an invitation token that allows attaching a follower database to this database.
 
 ### [New-AzKustoAttachedDatabaseConfiguration](New-AzKustoAttachedDatabaseConfiguration.md)
-Creates or updates an attached database configuration.
+Create an attached database configuration.
 
 ### [New-AzKustoCluster](New-AzKustoCluster.md)
-Create or update a Kusto cluster.
+Create a Kusto cluster.
 
 ### [New-AzKustoClusterPrincipalAssignment](New-AzKustoClusterPrincipalAssignment.md)
 Create a Kusto cluster principalAssignment.
 
 ### [New-AzKustoDatabase](New-AzKustoDatabase.md)
-Creates or updates a database.
+Create a database.
 
 ### [New-AzKustoDatabasePrincipalAssignment](New-AzKustoDatabasePrincipalAssignment.md)
-Creates a Kusto cluster database principalAssignment.
+Create a Kusto cluster database principalAssignment.
 
 ### [New-AzKustoDataConnection](New-AzKustoDataConnection.md)
-Creates or updates a data connection.
+Create a data connection.
 
 ### [New-AzKustoManagedPrivateEndpoint](New-AzKustoManagedPrivateEndpoint.md)
-Creates a managed private endpoint.
+Create a managed private endpoint.
 
 ### [New-AzKustoPrivateEndpointConnection](New-AzKustoPrivateEndpointConnection.md)
 Approve or reject a private endpoint connection with a given name.
 
 ### [New-AzKustoSandboxCustomImage](New-AzKustoSandboxCustomImage.md)
-Creates or updates a sandbox custom image.
+Create a sandbox custom image.
 
 ### [New-AzKustoScript](New-AzKustoScript.md)
-Creates a Kusto database script.
+Create a Kusto database script.
 
 ### [Remove-AzKustoAttachedDatabaseConfiguration](Remove-AzKustoAttachedDatabaseConfiguration.md)
 Deletes the attached database configuration with the given name.
@@ -204,17 +204,20 @@ Checks that the script name is valid and is not already in use.
 Update a Kusto cluster.
 
 ### [Update-AzKustoDatabase](Update-AzKustoDatabase.md)
-Updates a database.
+Update a database.
 
 ### [Update-AzKustoDataConnection](Update-AzKustoDataConnection.md)
-Updates a data connection.
+Update a data connection.
 
 ### [Update-AzKustoManagedPrivateEndpoint](Update-AzKustoManagedPrivateEndpoint.md)
-Updates a managed private endpoint.
+Update a managed private endpoint.
+
+### [Update-AzKustoPrivateEndpointConnection](Update-AzKustoPrivateEndpointConnection.md)
+Approve or reject a private endpoint connection with a given name.
 
 ### [Update-AzKustoSandboxCustomImage](Update-AzKustoSandboxCustomImage.md)
-Updates a sandbox custom image.
+Update a sandbox custom image.
 
 ### [Update-AzKustoScript](Update-AzKustoScript.md)
-Updates a database script.
+Update a database script.
 
