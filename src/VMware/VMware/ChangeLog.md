@@ -19,6 +19,21 @@
 -->
 ## Upcoming Release
 
+## Version 0.9.0
+* Updated the AVS VMware cmdlets api version to `2025-09-01`. 
+* Added cmdlet:
+    - `Get-AzVMwareLicense`
+    - `Get-AzVMwareLicenseProperty`
+    - `Get-AzVMwareMaintenance`
+    - `Get-AzVMwarePrivateCloudVcfLicense`
+    - `Invoke-AzVMwareInitiateMaintenanceCheck`
+    - `Invoke-AzVMwareRescheduleMaintenance`
+    - `Invoke-AzVMwareScheduleMaintenance`
+    - `New-AzVMwareLicense`
+    - `Remove-AzVMwareLicense`
+    - `Update-AzVMwareLicense`
+    - `AzVMwareServiceComponentAvailability`
+
 ## Version 0.8.0
 * Updated the AVS VMware cmdlets api version to `2024-09-01`. 
 * Added cmdlet:

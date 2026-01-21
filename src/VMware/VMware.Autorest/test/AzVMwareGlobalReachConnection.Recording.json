@@ -1,17 +1,17 @@
 {
-  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/authorizations/82e7ug?api-version=2024-09-01+1": {
+  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/authorizations/cy5jit?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/authorizations/82e7ug?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/authorizations/cy5jit?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "48" ],
-        "x-ms-client-request-id": [ "35476da1-b723-423a-ab77-de3c090aa271" ],
+        "x-ms-client-request-id": [ "aa883a47-a089-4415-8d9e-6cca0209024a" ],
         "CommandName": [ "Get-AzVMwareAuthorization" ],
         "FullCommandName": [ "Get-AzVMwareAuthorization_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -21,11 +21,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:25:27 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:55:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -35,19 +31,19 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud7cna?api-version=2024-09-01+2": {
+  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud8p29?api-version=2025-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud7cna?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud8p29?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "49" ],
-        "x-ms-client-request-id": [ "58d1aea8-fd65-4761-bb8c-59912dc0b5b8" ],
+        "x-ms-client-request-id": [ "500817f0-dc1f-4b7b-a63d-cdf9db7c18f3" ],
         "CommandName": [ "Get-AzVMwarePrivateCloud" ],
         "FullCommandName": [ "Get-AzVMwarePrivateCloud_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -57,24 +53,20 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:25:27 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:55:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "2233" ]
+        "Content-Length": [ "2398" ]
       },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"],\"vsanDatastoreName\":\"vsanDatastore1\"},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://nsx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"vcsa\":\"https://vc.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"hcxCloudManager\":\"https://hcx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"nsxtManagerIp\":\"192.168.50.3\",\"vcenterIp\":\"192.168.50.2\",\"hcxCloudManagerIp\":\"192.168.50.4\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"sku\":{\"name\":\"AV36\"},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"],\"vsanDatastoreName\":\"vsanDatastore1\"},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://nsx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"vcsa\":\"https://vc.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"hcxCloudManager\":\"https://hcx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"nsxtManagerIp\":\"192.168.50.3\",\"vcenterIp\":\"192.168.50.2\",\"hcxCloudManagerIp\":\"192.168.50.4\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"],\"vcfLicense\":{\"kind\":\"vcf5\",\"provisioningState\":\"Succeeded\",\"cores\":16,\"endDate\":\"2025-12-31T23:59:59Z\",\"broadcomSiteId\":\"123456\",\"broadcomContractNumber\":\"123456\"}},\"sku\":{\"name\":\"AV36\"},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/globalReachConnections/tpfesv?api-version=2024-09-01+3": {
+  "AzVMwareGlobalReachConnection+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/globalReachConnections/vumexk?api-version=2025-09-01+3": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/globalReachConnections/tpfesv?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/globalReachConnections/vumexk?api-version=2025-09-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"authorizationKey\": \"37b0db3b-3b17-4c7b-bf76-bf13b01bcadc\",\r\n    \"peerExpressRouteCircuit\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -88,11 +80,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:25:28 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:55:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -102,20 +90,20 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/globalReachConnections/tpfesv?api-version=2024-09-01+4": {
+  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/globalReachConnections/vumexk?api-version=2025-09-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/globalReachConnections/tpfesv?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/globalReachConnections/vumexk?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "51" ],
-        "x-ms-client-request-id": [ "37ed4cca-e013-4b38-ad88-4c1084fc2165" ],
+        "x-ms-client-request-id": [ "b888878d-bfac-470c-8278-c0a151037dc7" ],
         "CommandName": [ "New-AzVMwareGlobalReachConnection" ],
         "FullCommandName": [ "New-AzVMwareGlobalReachConnection_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ]
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ]
       },
       "ContentHeaders": {
       }
@@ -124,11 +112,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:25:59 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:55:50 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -138,20 +122,20 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/globalReachConnections/tpfesv?api-version=2024-09-01+5": {
+  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/globalReachConnections/vumexk?api-version=2025-09-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/globalReachConnections/tpfesv?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/globalReachConnections/vumexk?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "52" ],
-        "x-ms-client-request-id": [ "37ed4cca-e013-4b38-ad88-4c1084fc2165" ],
+        "x-ms-client-request-id": [ "b888878d-bfac-470c-8278-c0a151037dc7" ],
         "CommandName": [ "New-AzVMwareGlobalReachConnection" ],
         "FullCommandName": [ "New-AzVMwareGlobalReachConnection_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ]
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ]
       },
       "ContentHeaders": {
       }
@@ -160,11 +144,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:25:59 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:55:50 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -174,19 +154,19 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/globalReachConnections?api-version=2024-09-01+6": {
+  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/globalReachConnections?api-version=2025-09-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/globalReachConnections?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/globalReachConnections?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "53" ],
-        "x-ms-client-request-id": [ "0b1070ca-5c93-48d0-916e-5543f172fef8" ],
+        "x-ms-client-request-id": [ "e71bb9f8-06f7-4559-b200-cf281a24e606" ],
         "CommandName": [ "Get-AzVMwareGlobalReachConnection" ],
         "FullCommandName": [ "Get-AzVMwareGlobalReachConnection_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -196,11 +176,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:25:59 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:55:50 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -210,19 +186,19 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/globalReachConnections/tpfesv?api-version=2024-09-01+1": {
+  "AzVMwareGlobalReachConnection+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/globalReachConnections/vumexk?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/globalReachConnections/tpfesv?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/globalReachConnections/vumexk?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "54" ],
-        "x-ms-client-request-id": [ "22e1c581-3e34-4a33-a828-a9b08a70468e" ],
+        "x-ms-client-request-id": [ "9435c11f-6512-4e65-8e99-6654014ccae4" ],
         "CommandName": [ "Get-AzVMwareGlobalReachConnection" ],
         "FullCommandName": [ "Get-AzVMwareGlobalReachConnection_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -232,11 +208,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:25:59 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:55:50 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -246,19 +218,19 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/authorizations/82e7ug?api-version=2024-09-01+1": {
+  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/authorizations/cy5jit?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/authorizations/82e7ug?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/authorizations/cy5jit?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "55" ],
-        "x-ms-client-request-id": [ "616f3479-87dd-4d4f-babb-727e171d69e0" ],
+        "x-ms-client-request-id": [ "2f67cfa6-d689-4ebc-82e9-21ac9361a2a2" ],
         "CommandName": [ "Get-AzVMwareAuthorization" ],
         "FullCommandName": [ "Get-AzVMwareAuthorization_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -268,11 +240,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:25:59 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:55:51 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -282,19 +250,19 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud7cna?api-version=2024-09-01+2": {
+  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud8p29?api-version=2025-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud7cna?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud8p29?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "56" ],
-        "x-ms-client-request-id": [ "a05d07d5-175d-4032-af52-775d02e00e3b" ],
+        "x-ms-client-request-id": [ "3194cf75-4fbe-4a86-895d-769887d5ba35" ],
         "CommandName": [ "Get-AzVMwarePrivateCloud" ],
         "FullCommandName": [ "Get-AzVMwarePrivateCloud_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -304,24 +272,20 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:25:59 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:55:51 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "2233" ]
+        "Content-Length": [ "2398" ]
       },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"],\"vsanDatastoreName\":\"vsanDatastore1\"},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://nsx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"vcsa\":\"https://vc.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"hcxCloudManager\":\"https://hcx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"nsxtManagerIp\":\"192.168.50.3\",\"vcenterIp\":\"192.168.50.2\",\"hcxCloudManagerIp\":\"192.168.50.4\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"sku\":{\"name\":\"AV36\"},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"],\"vsanDatastoreName\":\"vsanDatastore1\"},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://nsx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"vcsa\":\"https://vc.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"hcxCloudManager\":\"https://hcx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"nsxtManagerIp\":\"192.168.50.3\",\"vcenterIp\":\"192.168.50.2\",\"hcxCloudManagerIp\":\"192.168.50.4\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"],\"vcfLicense\":{\"kind\":\"vcf5\",\"provisioningState\":\"Succeeded\",\"cores\":16,\"endDate\":\"2025-12-31T23:59:59Z\",\"broadcomSiteId\":\"123456\",\"broadcomContractNumber\":\"123456\"}},\"sku\":{\"name\":\"AV36\"},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/globalReachConnections/t54xji?api-version=2024-09-01+3": {
+  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/globalReachConnections/1dnmz6?api-version=2025-09-01+3": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/globalReachConnections/t54xji?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/globalReachConnections/1dnmz6?api-version=2025-09-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"authorizationKey\": \"37b0db3b-3b17-4c7b-bf76-bf13b01bcadc\",\r\n    \"peerExpressRouteCircuit\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -335,11 +299,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:26:00 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:55:51 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -349,20 +309,20 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/globalReachConnections/t54xji?api-version=2024-09-01+4": {
+  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/globalReachConnections/1dnmz6?api-version=2025-09-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/globalReachConnections/t54xji?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/globalReachConnections/1dnmz6?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "58" ],
-        "x-ms-client-request-id": [ "0e4e4ee7-0090-4cae-b7bd-651e976a1b7c" ],
+        "x-ms-client-request-id": [ "cbb03ad0-c4d5-4641-bbfb-e878cd417b9a" ],
         "CommandName": [ "New-AzVMwareGlobalReachConnection" ],
         "FullCommandName": [ "New-AzVMwareGlobalReachConnection_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ]
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ]
       },
       "ContentHeaders": {
       }
@@ -371,11 +331,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:26:30 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:56:22 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -385,20 +341,20 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/globalReachConnections/t54xji?api-version=2024-09-01+5": {
+  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/globalReachConnections/1dnmz6?api-version=2025-09-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/globalReachConnections/t54xji?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/globalReachConnections/1dnmz6?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "59" ],
-        "x-ms-client-request-id": [ "0e4e4ee7-0090-4cae-b7bd-651e976a1b7c" ],
+        "x-ms-client-request-id": [ "cbb03ad0-c4d5-4641-bbfb-e878cd417b9a" ],
         "CommandName": [ "New-AzVMwareGlobalReachConnection" ],
         "FullCommandName": [ "New-AzVMwareGlobalReachConnection_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ]
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ]
       },
       "ContentHeaders": {
       }
@@ -407,11 +363,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:26:30 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:56:22 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -421,19 +373,19 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/globalReachConnections/t54xji?api-version=2024-09-01+1": {
+  "AzVMwareGlobalReachConnection+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/globalReachConnections/1dnmz6?api-version=2025-09-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/globalReachConnections/t54xji?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/globalReachConnections/1dnmz6?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "60" ],
-        "x-ms-client-request-id": [ "2cfe3922-7e22-475c-9c17-135cc32f0cc0" ],
+        "x-ms-client-request-id": [ "2ad8267f-f707-4f1a-ad89-f01a5422ecf9" ],
         "CommandName": [ "Remove-AzVMwareGlobalReachConnection" ],
         "FullCommandName": [ "Remove-AzVMwareGlobalReachConnection_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -443,14 +395,9 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:26:30 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:56:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
         "Content-Length": [ "0" ]
       },
       "Content": null,

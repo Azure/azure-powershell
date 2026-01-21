@@ -1,8 +1,8 @@
 {
-  "AzVMwareCluster+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/clusters/82e7ug?api-version=2024-09-01+1": {
+  "AzVMwareCluster+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/clusters/cy5jit?api-version=2025-09-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/clusters/82e7ug?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/clusters/cy5jit?api-version=2025-09-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"clusterSize\": 3\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"av20\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -16,11 +16,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:23:22 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:53:10 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -30,20 +26,20 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCluster+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/clusters/82e7ug?api-version=2024-09-01+2": {
+  "AzVMwareCluster+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/clusters/cy5jit?api-version=2025-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/clusters/82e7ug?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/clusters/cy5jit?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "27" ],
-        "x-ms-client-request-id": [ "86ed82ff-65a5-4793-ac59-2a457bb536bc" ],
+        "x-ms-client-request-id": [ "0cb2f068-1b60-42dc-996e-489cb52bb4fb" ],
         "CommandName": [ "New-AzVMwareCluster" ],
         "FullCommandName": [ "New-AzVMwareCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ]
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ]
       },
       "ContentHeaders": {
       }
@@ -52,11 +48,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:23:53 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:53:40 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -66,20 +58,20 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCluster+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/clusters/82e7ug?api-version=2024-09-01+3": {
+  "AzVMwareCluster+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/clusters/cy5jit?api-version=2025-09-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/clusters/82e7ug?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/clusters/cy5jit?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "28" ],
-        "x-ms-client-request-id": [ "86ed82ff-65a5-4793-ac59-2a457bb536bc" ],
+        "x-ms-client-request-id": [ "0cb2f068-1b60-42dc-996e-489cb52bb4fb" ],
         "CommandName": [ "New-AzVMwareCluster" ],
         "FullCommandName": [ "New-AzVMwareCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ]
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ]
       },
       "ContentHeaders": {
       }
@@ -88,11 +80,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:23:53 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:53:40 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -102,19 +90,19 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCluster+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/clusters?api-version=2024-09-01+4": {
+  "AzVMwareCluster+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/clusters?api-version=2025-09-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/clusters?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/clusters?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "29" ],
-        "x-ms-client-request-id": [ "06d39fcc-13f0-4a51-93cd-ec191f8ba775" ],
+        "x-ms-client-request-id": [ "bdc66e80-edf4-4f48-bbaa-9ac07169aa0b" ],
         "CommandName": [ "Get-AzVMwareCluster" ],
         "FullCommandName": [ "Get-AzVMwareCluster_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -124,11 +112,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:23:53 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:53:40 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -138,19 +122,19 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCluster+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/clusters/82e7ug?api-version=2024-09-01+1": {
+  "AzVMwareCluster+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/clusters/cy5jit?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloudt8yx/clusters/82e7ug?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/clusters/cy5jit?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "30" ],
-        "x-ms-client-request-id": [ "2be9d2fc-a0f7-4e24-b80b-7c61505b59c2" ],
+        "x-ms-client-request-id": [ "365b260a-c15d-4b25-a59b-c9fc2b7c4a63" ],
         "CommandName": [ "Get-AzVMwareCluster" ],
         "FullCommandName": [ "Get-AzVMwareCluster_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -160,11 +144,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:23:53 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:53:40 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -174,10 +154,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCluster+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud0yf2/clusters/c9gjou?api-version=2024-09-01+1": {
+  "AzVMwareCluster+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tgv/clusters/7zgidn?api-version=2025-09-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud0yf2/clusters/c9gjou?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tgv/clusters/7zgidn?api-version=2025-09-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"clusterSize\": 3\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"av36\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -191,11 +171,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:23:53 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:53:41 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -205,20 +181,20 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCluster+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud0yf2/clusters/c9gjou?api-version=2024-09-01+2": {
+  "AzVMwareCluster+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tgv/clusters/7zgidn?api-version=2025-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud0yf2/clusters/c9gjou?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tgv/clusters/7zgidn?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "32" ],
-        "x-ms-client-request-id": [ "5b1a26fe-3c0e-45d6-aba6-c47324f789d5" ],
+        "x-ms-client-request-id": [ "28ee4b18-6161-4b80-be9a-0207392c87a3" ],
         "CommandName": [ "New-AzVMwareCluster" ],
         "FullCommandName": [ "New-AzVMwareCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ]
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ]
       },
       "ContentHeaders": {
       }
@@ -227,11 +203,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:24:24 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:54:11 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -241,20 +213,20 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCluster+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud0yf2/clusters/c9gjou?api-version=2024-09-01+3": {
+  "AzVMwareCluster+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tgv/clusters/7zgidn?api-version=2025-09-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud0yf2/clusters/c9gjou?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tgv/clusters/7zgidn?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "33" ],
-        "x-ms-client-request-id": [ "5b1a26fe-3c0e-45d6-aba6-c47324f789d5" ],
+        "x-ms-client-request-id": [ "28ee4b18-6161-4b80-be9a-0207392c87a3" ],
         "CommandName": [ "New-AzVMwareCluster" ],
         "FullCommandName": [ "New-AzVMwareCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ]
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ]
       },
       "ContentHeaders": {
       }
@@ -263,11 +235,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:24:24 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:54:11 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -277,10 +245,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCluster+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud0yf2/clusters/c9gjou?api-version=2024-09-01+1": {
+  "AzVMwareCluster+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tgv/clusters/7zgidn?api-version=2025-09-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud0yf2/clusters/c9gjou?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tgv/clusters/7zgidn?api-version=2025-09-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"clusterSize\": 3\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"av36\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -294,11 +262,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:24:24 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:54:11 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -308,20 +272,20 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCluster+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud0yf2/clusters/c9gjou?api-version=2024-09-01+2": {
+  "AzVMwareCluster+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tgv/clusters/7zgidn?api-version=2025-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud0yf2/clusters/c9gjou?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tgv/clusters/7zgidn?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "35" ],
-        "x-ms-client-request-id": [ "fcd9b083-76cb-4123-ae94-66963495a62a" ],
+        "x-ms-client-request-id": [ "a8d325ef-f487-40cd-a035-52aef7d1e667" ],
         "CommandName": [ "New-AzVMwareCluster" ],
         "FullCommandName": [ "New-AzVMwareCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ]
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ]
       },
       "ContentHeaders": {
       }
@@ -330,11 +294,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:24:55 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:54:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -344,20 +304,20 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCluster+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud0yf2/clusters/c9gjou?api-version=2024-09-01+3": {
+  "AzVMwareCluster+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tgv/clusters/7zgidn?api-version=2025-09-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud0yf2/clusters/c9gjou?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tgv/clusters/7zgidn?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "36" ],
-        "x-ms-client-request-id": [ "fcd9b083-76cb-4123-ae94-66963495a62a" ],
+        "x-ms-client-request-id": [ "a8d325ef-f487-40cd-a035-52aef7d1e667" ],
         "CommandName": [ "New-AzVMwareCluster" ],
         "FullCommandName": [ "New-AzVMwareCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ]
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ]
       },
       "ContentHeaders": {
       }
@@ -366,11 +326,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:24:55 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:54:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -380,10 +336,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCluster+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud0yf2/clusters/c9gjou?api-version=2024-09-01+4": {
+  "AzVMwareCluster+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tgv/clusters/7zgidn?api-version=2025-09-01+4": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud0yf2/clusters/c9gjou?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tgv/clusters/7zgidn?api-version=2025-09-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"clusterSize\": 4\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -397,11 +353,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:24:55 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:54:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -411,19 +363,19 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCluster+[NoContext]+UpdateExpanded+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud0yf2/clusters/c9gjou?api-version=2024-09-01+5": {
+  "AzVMwareCluster+[NoContext]+UpdateExpanded+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tgv/clusters/7zgidn?api-version=2025-09-01+5": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud0yf2/clusters/c9gjou?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tgv/clusters/7zgidn?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "38" ],
-        "x-ms-client-request-id": [ "bdd76ca5-fa70-4879-8e8f-efa784becaff" ],
+        "x-ms-client-request-id": [ "f187bc40-c3be-44df-9b4a-f84de73e7bd2" ],
         "CommandName": [ "Remove-AzVMwareCluster" ],
         "FullCommandName": [ "Remove-AzVMwareCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -433,33 +385,28 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:24:55 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:54:42 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
         "Content-Length": [ "0" ]
       },
       "Content": null,
       "isContentBase64": false
     }
   },
-  "AzVMwareCluster+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud0yf2/clusters/c9gjou?api-version=2024-09-01+1": {
+  "AzVMwareCluster+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tgv/clusters/7zgidn?api-version=2025-09-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupt54xji/providers/Microsoft.AVS/privateClouds/azps_test_cloud0yf2/clusters/c9gjou?api-version=2024-09-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tgv/clusters/7zgidn?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "39" ],
-        "x-ms-client-request-id": [ "7f30ebe7-1a48-4f19-9a71-74bdbed2fca0" ],
+        "x-ms-client-request-id": [ "ceaf9e53-2abd-4368-a378-0cfec761b1db" ],
         "CommandName": [ "Remove-AzVMwareCluster" ],
         "FullCommandName": [ "Remove-AzVMwareCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.VMware/0.7.2" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -469,14 +416,9 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Access-Control-Allow-Origin": [ "*" ],
-        "Access-Control-Allow-Methods": [ "PUT, GET, HEAD, POST, DELETE, PATCH, OPTIONS" ],
-        "Access-Control-Allow-Headers": [ "*" ],
-        "Access-Control-Allow-Credentials": [ "true" ],
-        "Date": [ "Mon, 16 Jun 2025 20:24:55 GMT" ]
+        "Date": [ "Wed, 21 Jan 2026 22:54:44 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
         "Content-Length": [ "0" ]
       },
       "Content": null,

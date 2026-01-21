@@ -1,0 +1,120 @@
+{
+  "AzVMwareMaintenance+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/maintenances/maintenance1?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/maintenances/maintenance1?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "85" ],
+        "x-ms-client-request-id": [ "409242ec-c71e-4d0a-902a-1b69a6945278" ],
+        "CommandName": [ "Get-AzVMwareMaintenance" ],
+        "FullCommandName": [ "Get-AzVMwareMaintenance_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:58:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2636" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000001-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/maintenances/maintenance1\",\"name\":\"maintenance1\",\"type\":\"Microsoft.AVS/privateClouds/maintenances\",\"properties\":{\"component\":\"VCSA\",\"displayName\":\"vcsa 7.0 upgrade\",\"clusterId\":1,\"infoLink\":\"https://vmwarekb/arcticle\",\"impact\":\"This upgrade will update your vcsa to 7.0. Control plance performance will be impacted for the duration\",\"scheduledByMicrosoft\":true,\"state\":{\"name\":\"Scheduled\",\"message\":\"CD rom mounted\",\"startedAt\":\"2023-01-12T11:00:11.83Z\",\"endedAt\":\"2023-01-12T11:00:11.83Z\"},\"scheduledStartTime\":\"2023-01-12T11:00:11.83Z\",\"estimatedDurationInMinutes\":960,\"provisioningState\":\"Succeeded\",\"operations\":[{\"kind\":\"Schedule\",\"isDisabled\":true,\"disabledReason\":\"Critical upgrade\",\"constraints\":[{\"kind\":\"SchedulingWindow\",\"startsAt\":\"2025-01-16T06:21:31.961Z\",\"endsAt\":\"2025-01-16T06:21:31.961Z\"},{\"kind\":\"AvailableWindowForMaintenance\",\"startsAt\":\"2025-01-16T06:21:31.961Z\",\"endsAt\":\"2025-01-16T06:21:31.961Z\"},{\"kind\":\"Blocked\",\"category\":\"HiPriorityEvent\",\"timeRanges\":[{\"startsAt\":\"2025-01-16T06:21:31.961Z\",\"endsAt\":\"2025-01-16T06:21:31.961Z\",\"reason\":\"2024 Summer Opening Ceremony\"}]},{\"kind\":\"Blocked\",\"category\":\"QuotaExhausted\",\"timeRanges\":[{\"startsAt\":\"2024-04-14T17:03:28.609Z\",\"endsAt\":\"2024-04-15T17:03:28.609Z\",\"reason\":\"No slots available\"},{\"startsAt\":\"2024-09-13T17:03:28.609Z\",\"endsAt\":\"2024-09-26T17:03:28.609Z\",\"reason\":\"No slots available\"}]}]},{\"kind\":\"Reschedule\",\"isDisabled\":true,\"disabledReason\":\"Critical Update\",\"constraints\":[{\"kind\":\"AvailableWindowForMaintenance\",\"startsAt\":\"2025-01-16T06:21:31.961Z\",\"endsAt\":\"2025-01-16T06:21:31.961Z\"},{\"kind\":\"Blocked\",\"category\":\"HiPriorityEvent\",\"timeRanges\":[{\"startsAt\":\"2025-08-10T06:21:31.961Z\",\"endsAt\":\"2025-08-19T06:21:31.961Z\",\"reason\":\"US General Election 2024\"}]}]},{\"kind\":\"MaintenanceReadinessRefresh\",\"isDisabled\":false,\"status\":\"InProgress\",\"refreshedByMicrosoft\":true}],\"maintenanceReadiness\":{\"type\":\"Precheck\",\"status\":\"NotReady\",\"message\":\"Some checks failed\",\"failedChecks\":[{\"name\":\"HostMaintPrecheck\",\"impactedResources\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster2\",\"errors\":[{\"errorCode\":\"EVCINTERNALEPR_CDUNMOUNT\",\"name\":\"CD-ROM Mounted\",\"details\":\"Failed to unmount CD ROM  mounted on vm\",\"resolutionSteps\":[\"Please remove CDROM /usr/lib/vmware/isoimages/windows.iso mounted in VD000535 VM present in esx10-r06.p01.dummy.com Host\"],\"actionRequired\":true}]}]}],\"lastUpdated\":\"2025-01-16T06:21:31.961Z\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareMaintenance+[NoContext]+Invoke Maintenance Check+$POST+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/maintenances/maintenance1/initiateChecks?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/maintenances/maintenance1/initiateChecks?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "86" ],
+        "x-ms-client-request-id": [ "a7e94fd4-654f-4fb8-8953-7670e3ff44e4" ],
+        "CommandName": [ "Invoke-AzVMwareInitiateMaintenanceCheck" ],
+        "FullCommandName": [ "Invoke-AzVMwareInitiateMaintenanceCheck_Initiate" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:58:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2636" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000001-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/maintenances/maintenance1\",\"name\":\"maintenance1\",\"type\":\"Microsoft.AVS/privateClouds/maintenances\",\"properties\":{\"component\":\"VCSA\",\"displayName\":\"vcsa 7.0 upgrade\",\"clusterId\":1,\"infoLink\":\"https://vmwarekb/arcticle\",\"impact\":\"This upgrade will update your vcsa to 7.0. Control plance performance will be impacted for the duration\",\"scheduledByMicrosoft\":true,\"state\":{\"name\":\"Scheduled\",\"message\":\"CD rom mounted\",\"startedAt\":\"2025-11-12T11:00:11.83Z\",\"endedAt\":\"2025-11-12T16:00:11.83Z\"},\"scheduledStartTime\":\"2023-01-12T11:00:11.83Z\",\"estimatedDurationInMinutes\":960,\"provisioningState\":\"Succeeded\",\"operations\":[{\"kind\":\"Schedule\",\"isDisabled\":true,\"disabledReason\":\"Critical upgrade\",\"constraints\":[{\"kind\":\"SchedulingWindow\",\"startsAt\":\"2025-01-16T06:21:31.961Z\",\"endsAt\":\"2025-01-16T06:21:31.961Z\"},{\"kind\":\"AvailableWindowForMaintenance\",\"startsAt\":\"2025-01-16T06:21:31.961Z\",\"endsAt\":\"2025-01-16T06:21:31.961Z\"},{\"kind\":\"Blocked\",\"category\":\"HiPriorityEvent\",\"timeRanges\":[{\"startsAt\":\"2025-01-16T06:21:31.961Z\",\"endsAt\":\"2025-01-16T06:21:31.961Z\",\"reason\":\"2024 Summer Opening Ceremony\"}]},{\"kind\":\"Blocked\",\"category\":\"QuotaExhausted\",\"timeRanges\":[{\"startsAt\":\"2024-04-14T17:03:28.609Z\",\"endsAt\":\"2024-04-15T17:03:28.609Z\",\"reason\":\"No slots available\"},{\"startsAt\":\"2024-09-13T17:03:28.609Z\",\"endsAt\":\"2024-09-26T17:03:28.609Z\",\"reason\":\"No slots available\"}]}]},{\"kind\":\"Reschedule\",\"isDisabled\":true,\"disabledReason\":\"Critical Update\",\"constraints\":[{\"kind\":\"AvailableWindowForMaintenance\",\"startsAt\":\"2025-01-16T06:21:31.961Z\",\"endsAt\":\"2025-01-16T06:21:31.961Z\"},{\"kind\":\"Blocked\",\"category\":\"HiPriorityEvent\",\"timeRanges\":[{\"startsAt\":\"2025-08-10T06:21:31.961Z\",\"endsAt\":\"2025-08-19T06:21:31.961Z\",\"reason\":\"US General Election 2024\"}]}]},{\"kind\":\"MaintenanceReadinessRefresh\",\"isDisabled\":false,\"status\":\"InProgress\",\"refreshedByMicrosoft\":true}],\"maintenanceReadiness\":{\"type\":\"Precheck\",\"status\":\"NotReady\",\"message\":\"Some checks failed\",\"failedChecks\":[{\"name\":\"HostMaintPrecheck\",\"impactedResources\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster2\",\"errors\":[{\"errorCode\":\"EVCINTERNALEPR_CDUNMOUNT\",\"name\":\"CD-ROM Mounted\",\"details\":\"Failed to unmount CD ROM  mounted on vm\",\"resolutionSteps\":[\"Please remove CDROM /usr/lib/vmware/isoimages/windows.iso mounted in VD000535 VM present in esx10-r06.p01.dummy.com Host\"],\"actionRequired\":true}]}]}],\"lastUpdated\":\"2025-01-16T06:21:31.961Z\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareMaintenance+[NoContext]+Invoke Reschedule Maintenance+$POST+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/maintenances/maintenance1/reschedule?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/maintenances/maintenance1/reschedule?api-version=2025-09-01",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:58:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2637" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000001-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/maintenances/maintenance1\",\"name\":\"maintenance1\",\"type\":\"Microsoft.AVS/privateClouds/maintenances\",\"properties\":{\"component\":\"VCSA\",\"displayName\":\"vcsa 7.0 upgrade\",\"clusterId\":1,\"infoLink\":\"https://vmwarekb/arcticle\",\"impact\":\"This upgrade will update your vcsa to 7.0. Control plance performance will be impacted for the duration\",\"scheduledByMicrosoft\":true,\"state\":{\"name\":\"Scheduled\",\"message\":\"CD rom mounted\",\"startedAt\":\"2023-01-12T11:00:11.83Z\",\"endedAt\":\"2023-01-12T11:00:11.83Z\"},\"scheduledStartTime\":\"2023-01-12T16:17:55.237Z\",\"estimatedDurationInMinutes\":960,\"provisioningState\":\"Succeeded\",\"operations\":[{\"kind\":\"Schedule\",\"isDisabled\":true,\"disabledReason\":\"Critical upgrade\",\"constraints\":[{\"kind\":\"SchedulingWindow\",\"startsAt\":\"2025-01-16T06:21:31.961Z\",\"endsAt\":\"2025-01-16T06:21:31.961Z\"},{\"kind\":\"AvailableWindowForMaintenance\",\"startsAt\":\"2025-01-16T06:21:31.961Z\",\"endsAt\":\"2025-01-16T06:21:31.961Z\"},{\"kind\":\"Blocked\",\"category\":\"HiPriorityEvent\",\"timeRanges\":[{\"startsAt\":\"2025-01-16T06:21:31.961Z\",\"endsAt\":\"2025-01-16T06:21:31.961Z\",\"reason\":\"2024 Summer Opening Ceremony\"}]},{\"kind\":\"Blocked\",\"category\":\"QuotaExhausted\",\"timeRanges\":[{\"startsAt\":\"2024-04-14T17:03:28.609Z\",\"endsAt\":\"2024-04-15T17:03:28.609Z\",\"reason\":\"No slots available\"},{\"startsAt\":\"2024-09-13T17:03:28.609Z\",\"endsAt\":\"2024-09-26T17:03:28.609Z\",\"reason\":\"No slots available\"}]}]},{\"kind\":\"Reschedule\",\"isDisabled\":true,\"disabledReason\":\"Critical Update\",\"constraints\":[{\"kind\":\"AvailableWindowForMaintenance\",\"startsAt\":\"2025-01-16T06:21:31.961Z\",\"endsAt\":\"2025-01-16T06:21:31.961Z\"},{\"kind\":\"Blocked\",\"category\":\"HiPriorityEvent\",\"timeRanges\":[{\"startsAt\":\"2025-08-10T06:21:31.961Z\",\"endsAt\":\"2025-08-19T06:21:31.961Z\",\"reason\":\"US General Election 2024\"}]}]},{\"kind\":\"MaintenanceReadinessRefresh\",\"isDisabled\":false,\"status\":\"InProgress\",\"refreshedByMicrosoft\":true}],\"maintenanceReadiness\":{\"type\":\"Precheck\",\"status\":\"NotReady\",\"message\":\"Some checks failed\",\"failedChecks\":[{\"name\":\"HostMaintPrecheck\",\"impactedResources\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster2\",\"errors\":[{\"errorCode\":\"EVCINTERNALEPR_CDUNMOUNT\",\"name\":\"CD-ROM Mounted\",\"details\":\"Failed to unmount CD ROM  mounted on vm\",\"resolutionSteps\":[\"Please remove CDROM /usr/lib/vmware/isoimages/windows.iso mounted in VD000535 VM present in esx10-r06.p01.dummy.com Host\"],\"actionRequired\":true}]}]}],\"lastUpdated\":\"2025-01-16T06:21:31.961Z\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareMaintenance+[NoContext]+Invoke Schedule Maintenance+$POST+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/maintenances/maintenance1/schedule?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/maintenances/maintenance1/schedule?api-version=2025-09-01",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:58:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2294" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000001-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/maintenances/maintenance1\",\"name\":\"maintenance1\",\"type\":\"Microsoft.AVS/privateClouds/maintenances\",\"properties\":{\"component\":\"VCSA\",\"displayName\":\"vcsa 7.0 upgrade\",\"clusterId\":1,\"infoLink\":\"https://vmwarekb/arcticle\",\"impact\":\"This upgrade will update your vcsa to 7.0. Control plance performance will be impacted for the duration\",\"scheduledByMicrosoft\":true,\"state\":{\"name\":\"NotScheduled\",\"message\":\"Please schedule maintenance in scheduling window\",\"startedAt\":\"2025-09-12T16:17:55.237Z\",\"endedAt\":\"2025-09-12T19:00:11.83Z\"},\"scheduledStartTime\":\"2023-01-12T16:17:55.237Z\",\"estimatedDurationInMinutes\":960,\"provisioningState\":\"Succeeded\",\"operations\":[{\"kind\":\"Schedule\",\"isDisabled\":true,\"disabledReason\":\"Critical upgrade\",\"constraints\":[{\"kind\":\"SchedulingWindow\",\"startsAt\":\"2025-01-16T06:21:31.961Z\",\"endsAt\":\"2025-01-16T06:21:31.961Z\"},{\"kind\":\"AvailableWindowForMaintenance\",\"startsAt\":\"2025-01-16T06:21:31.961Z\",\"endsAt\":\"2025-01-16T06:21:31.961Z\"},{\"kind\":\"Blocked\",\"category\":\"HiPriorityEvent\",\"timeRanges\":[{\"startsAt\":\"2025-01-16T06:21:31.961Z\",\"endsAt\":\"2025-01-16T06:21:31.961Z\",\"reason\":\"2024 Summer Opening Ceremony\"}]},{\"kind\":\"Blocked\",\"category\":\"QuotaExhausted\",\"timeRanges\":[{\"startsAt\":\"2024-04-14T17:03:28.609Z\",\"endsAt\":\"2024-04-15T17:03:28.609Z\",\"reason\":\"No slots available\"},{\"startsAt\":\"2024-09-13T17:03:28.609Z\",\"endsAt\":\"2024-09-26T17:03:28.609Z\",\"reason\":\"No slots available\"}]}]},{\"kind\":\"MaintenanceReadinessRefresh\",\"isDisabled\":false,\"status\":\"InProgress\",\"refreshedByMicrosoft\":true}],\"maintenanceReadiness\":{\"type\":\"Precheck\",\"status\":\"NotReady\",\"message\":\"Some checks failed\",\"failedChecks\":[{\"name\":\"HostMaintPrecheck\",\"impactedResources\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster2\",\"errors\":[{\"errorCode\":\"EVCINTERNALEPR_CDUNMOUNT\",\"name\":\"CD-ROM Mounted\",\"details\":\"Failed to unmount CD ROM  mounted on vm\",\"resolutionSteps\":[\"Please remove CDROM /usr/lib/vmware/isoimages/windows.iso mounted in VD000535 VM present in esx10-r06.p01.dummy.com Host\"],\"actionRequired\":true}]}]}],\"lastUpdated\":\"2025-01-16T06:21:31.961Z\"}}}",
+      "isContentBase64": false
+    }
+  }
+}
