@@ -38,6 +38,13 @@ Get-AzMigrateReplicationProtectionContainerMapping -MappingName <String>
  [<CommonParameters>]
 ```
 
+### GetViaIdentityVault
+```
+Get-AzMigrateReplicationProtectionContainerMapping -FabricName <String> -MappingName <String>
+ -ProtectionContainerName <String> -VaultInputObject <IMigrateIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### List
 ```
 Get-AzMigrateReplicationProtectionContainerMapping -FabricName <String> -ProtectionContainerName <String>
@@ -86,7 +93,7 @@ Fabric name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityVault, List
 Aliases:
 
 Required: True
@@ -101,7 +108,7 @@ Protection Container mapping name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityReplicationFabric, GetViaIdentityReplicationProtectionContainer
+Parameter Sets: Get, GetViaIdentityReplicationFabric, GetViaIdentityReplicationProtectionContainer, GetViaIdentityVault
 Aliases:
 
 Required: True
@@ -116,7 +123,7 @@ Protection container name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityReplicationFabric, List
+Parameter Sets: Get, GetViaIdentityReplicationFabric, GetViaIdentityVault, List
 Aliases:
 
 Required: True
@@ -198,6 +205,21 @@ Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VaultInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+Parameter Sets: GetViaIdentityVault
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

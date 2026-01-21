@@ -50,13 +50,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAddonProfileIdentity Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAddonProfileInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterAddonProfileIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityClientId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAddonProfileInternal.IdentityClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IUserAssignedIdentityInternal)Identity).ClientId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IUserAssignedIdentityInternal)Identity).ClientId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAddonProfileInternal.IdentityClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IUserAssignedIdentityInternal)Identity).ClientId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IUserAssignedIdentityInternal)Identity).ClientId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityObjectId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAddonProfileInternal.IdentityObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IUserAssignedIdentityInternal)Identity).ObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IUserAssignedIdentityInternal)Identity).ObjectId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAddonProfileInternal.IdentityObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IUserAssignedIdentityInternal)Identity).ObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IUserAssignedIdentityInternal)Identity).ObjectId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityResourceId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAddonProfileInternal.IdentityResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IUserAssignedIdentityInternal)Identity).ResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IUserAssignedIdentityInternal)Identity).ResourceId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAddonProfileInternal.IdentityResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IUserAssignedIdentityInternal)Identity).ResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IUserAssignedIdentityInternal)Identity).ResourceId = value ?? null; }
 
         /// <summary>Creates an new <see cref="ManagedClusterAddonProfile" /> instance.</summary>
         public ManagedClusterAddonProfile()

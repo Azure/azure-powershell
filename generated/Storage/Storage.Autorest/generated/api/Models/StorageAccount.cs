@@ -220,6 +220,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         public bool? FailoverInProgress { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).FailoverInProgress; }
 
         /// <summary>
+        /// Indicates whether Blob Geo Priority Replication is enabled for the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? GeoPriorityReplicationStatusIsBlobEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoPriorityReplicationStatusIsBlobEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoPriorityReplicationStatusIsBlobEnabled = value ?? default(bool); }
+
+        /// <summary>
         /// A boolean flag which indicates whether or not account failover is supported for the account.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
@@ -259,7 +265,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         public string GeoReplicationStatStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatStatus; }
 
         /// <summary>
-        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).Id; }
@@ -380,6 +386,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
+
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
@@ -432,6 +459,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>Internal Acessors for FailoverInProgress</summary>
         bool? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.FailoverInProgress { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).FailoverInProgress; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).FailoverInProgress = value ?? default(bool); }
+
+        /// <summary>Internal Acessors for GeoPriorityReplicationStatus</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatus Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.GeoPriorityReplicationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoPriorityReplicationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoPriorityReplicationStatus = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for GeoReplicationStat</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoReplicationStats Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.GeoReplicationStat { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStat; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStat = value ?? null /* model class */; }
@@ -786,6 +816,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string StatusOfSecondary { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StatusOfSecondary; }
 
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
+
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
         public Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ITrackedResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ITrackedResourceInternal)__trackedResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ITrackedResourceInternal)__trackedResource).Tag = value ?? null /* model class */; }
@@ -799,9 +859,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Backing field for <see cref="Zone" /> property.</summary>
         private System.Collections.Generic.List<string> _zone;
 
-        /// <summary>
-        /// Optional. Gets or sets the pinned logical availability zone for the storage account.
-        /// </summary>
+        /// <summary>The availability zones.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> Zone { get => this._zone; set => this._zone = value; }
 
@@ -1246,6 +1304,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"failoverInProgress",
         PossibleTypes = new [] { typeof(bool) })]
         bool? FailoverInProgress { get;  }
+        /// <summary>
+        /// Indicates whether Blob Geo Priority Replication is enabled for the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether Blob Geo Priority Replication is enabled for the storage account.",
+        SerializedName = @"isBlobEnabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? GeoPriorityReplicationStatusIsBlobEnabled { get; set; }
         /// <summary>
         /// A boolean flag which indicates whether or not account failover is supported for the account.
         /// </summary>
@@ -1740,7 +1811,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"Gets the status of the storage account at the time the operation was called.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Creating", "ResolvingDNS", "Succeeded", "ValidateSubscriptionQuotaBegin", "ValidateSubscriptionQuotaEnd", "Accepted", "Deleting", "Canceled", "Failed")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Creating", "ResolvingDNS", "Succeeded")]
         string ProvisioningState { get;  }
         /// <summary>
         /// Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account.
@@ -1965,16 +2036,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("available", "unavailable")]
         string StatusOfSecondary { get;  }
-        /// <summary>
-        /// Optional. Gets or sets the pinned logical availability zone for the storage account.
-        /// </summary>
+        /// <summary>The availability zones.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Optional. Gets or sets the pinned logical availability zone for the storage account.",
+        Description = @"The availability zones.",
         SerializedName = @"zones",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> Zone { get; set; }
@@ -2140,6 +2209,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// If the failover is in progress, the value will be true, otherwise, it will be null.
         /// </summary>
         bool? FailoverInProgress { get; set; }
+        /// <summary>Status indicating whether Geo Priority Replication is enabled for the account.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatus GeoPriorityReplicationStatus { get; set; }
+        /// <summary>
+        /// Indicates whether Blob Geo Priority Replication is enabled for the storage account.
+        /// </summary>
+        bool? GeoPriorityReplicationStatusIsBlobEnabled { get; set; }
         /// <summary>Geo Replication Stats</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoReplicationStats GeoReplicationStat { get; set; }
         /// <summary>
@@ -2310,7 +2385,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Properties of the storage account.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountProperties Property { get; set; }
         /// <summary>Gets the status of the storage account at the time the operation was called.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Creating", "ResolvingDNS", "Succeeded", "ValidateSubscriptionQuotaBegin", "ValidateSubscriptionQuotaEnd", "Accepted", "Deleting", "Canceled", "Failed")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Creating", "ResolvingDNS", "Succeeded")]
         string ProvisioningState { get; set; }
         /// <summary>
         /// Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account.
@@ -2394,9 +2469,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("available", "unavailable")]
         string StatusOfSecondary { get; set; }
-        /// <summary>
-        /// Optional. Gets or sets the pinned logical availability zone for the storage account.
-        /// </summary>
+        /// <summary>The availability zones.</summary>
         System.Collections.Generic.List<string> Zone { get; set; }
 
     }

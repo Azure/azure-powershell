@@ -54,6 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -HourSlot
+A list of hours in the day used to identify a time range.
 Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive).
 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC.
 Specifying [0, 1] means the 00:00 - 02:00 UTC time range.

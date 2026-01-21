@@ -336,7 +336,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Full path to the verbose report stored in the reporting container as specified in the assignment execution context for the storage account. ",
+        Description = @"Full path to the verbose report stored in the reporting container as specified in the assignment execution context for the storage account.",
         SerializedName = @"summaryReportPath",
         PossibleTypes = new [] { typeof(string) })]
         string SummaryReportPath { get;  }

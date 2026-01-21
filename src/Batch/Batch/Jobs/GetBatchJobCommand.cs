@@ -20,7 +20,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [GenericBreakingChangeWithVersion("The following properties of the PSPoolSpecification class found under the returned PSCloudJob class are being deprecated: TargetNodeCommunicationMode, ResourceTags, CertificateReferences, ApplicationLicenses, CloudServiceConfiguration","15.0.0", "4.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchJob", DefaultParameterSetName = Constants.ODataFilterParameterSet), OutputType(typeof(PSCloudJob))]
     public class GetBatchJobCommand : BatchObjectModelCmdletBase
     {

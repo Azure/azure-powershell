@@ -23,7 +23,8 @@ Set-AzMigrateServerReplication -TargetObjectID <String> [-TargetVMName <String>]
  [-UpdateVMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-UpdateVMTagOperation <String>]
  [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
  [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>]
+ [-TargetCapacityReservationGroupId <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -37,8 +38,9 @@ Set-AzMigrateServerReplication [-TargetVMName <String>] [-TargetDiskName <String
  [-UpdateVMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-UpdateVMTagOperation <String>]
  [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
  [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>] -InputObject <IMigrationItem>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>]
+ [-TargetCapacityReservationGroupId <String>] -InputObject <IMigrationItem> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -251,6 +253,21 @@ Accept wildcard characters: False
 
 ### -TargetBootDiagnosticsStorageAccount
 Specifies the storage account to be used for boot diagnostics.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetCapacityReservationGroupId
+Specifies the Target Capacity Reservation Group Id within the destination Azure subscription.
 
 ```yaml
 Type: System.String

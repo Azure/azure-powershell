@@ -8,27 +8,49 @@ schema: 2.0.0
 # New-AzWorkloadsProviderInstance
 
 ## SYNOPSIS
-Creates a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
+Create a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzWorkloadsProviderInstance -MonitorName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-ProviderSetting <IProviderSpecificProperties>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-EnableSystemAssignedIdentity] [-ProviderSetting <IProviderSpecificProperties>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityMonitorExpanded
+```
+New-AzWorkloadsProviderInstance -MonitorInputObject <IMonitorsIdentity> -Name <String>
+ [-EnableSystemAssignedIdentity] [-ProviderSetting <IProviderSpecificProperties>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzWorkloadsProviderInstance -MonitorName <String> -Name <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzWorkloadsProviderInstance -MonitorName <String> -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
+Create a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 
 ## EXAMPLES
 
 ### Example 1: Create a new provider
 ```powershell
 $providerSetting = New-AzWorkloadsProviderSqlServerInstanceObject -Password '<password>' -Port 1433 -Username '<username>' -Hostname 10.1.14.5 -SapSid X00 -SslPreference Disabled
-        $providerSetting.ProviderType | Should -Be "MsSqlServer"
-        
+
 New-AzWorkloadsProviderInstance -MonitorName suha-0202-ams9 -Name sql-prov-1 -ResourceGroupName suha-0802-rg1 -SubscriptionId 49d64d54-e966-4c46-a868-1999802b762c -ProviderSetting $providerSetting
 ```
 
@@ -86,12 +108,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of manage identity
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded
 Aliases:
 
 Required: False
@@ -101,18 +123,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityUserAssignedIdentity
-User assigned identities dictionary
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonitorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
+Parameter Sets: CreateViaIdentityMonitorExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -121,7 +173,7 @@ Name of the SAP monitor resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -163,11 +215,10 @@ Accept wildcard characters: False
 
 ### -ProviderSetting
 Defines the provider specific properties.
-To construct, see NOTES section for PROVIDERSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IProviderSpecificProperties
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderSpecificProperties
+Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded
 Aliases:
 
 Required: False
@@ -183,7 +234,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -198,12 +249,28 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -244,9 +311,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IProviderInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderInstance
 
 ## NOTES
 

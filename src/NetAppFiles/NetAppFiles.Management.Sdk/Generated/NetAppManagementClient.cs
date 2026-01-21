@@ -69,10 +69,6 @@ namespace Microsoft.Azure.Management.NetApp
         /// </summary>
         public virtual INetAppResourceOperations NetAppResource { get; private set; }
         /// <summary>
-        /// Gets the INetAppResourceUsagesOperations
-        /// </summary>
-        public virtual INetAppResourceUsagesOperations NetAppResourceUsages { get; private set; }
-        /// <summary>
         /// Gets the INetAppResourceQuotaLimitsOperations
         /// </summary>
         public virtual INetAppResourceQuotaLimitsOperations NetAppResourceQuotaLimits { get; private set; }
@@ -81,9 +77,29 @@ namespace Microsoft.Azure.Management.NetApp
         /// </summary>
         public virtual INetAppResourceRegionInfosOperations NetAppResourceRegionInfos { get; private set; }
         /// <summary>
+        /// Gets the INetAppResourceUsagesOperations
+        /// </summary>
+        public virtual INetAppResourceUsagesOperations NetAppResourceUsages { get; private set; }
+        /// <summary>
         /// Gets the IAccountsOperations
         /// </summary>
         public virtual IAccountsOperations Accounts { get; private set; }
+        /// <summary>
+        /// Gets the IBackupPoliciesOperations
+        /// </summary>
+        public virtual IBackupPoliciesOperations BackupPolicies { get; private set; }
+        /// <summary>
+        /// Gets the IBackupVaultsOperations
+        /// </summary>
+        public virtual IBackupVaultsOperations BackupVaults { get; private set; }
+        /// <summary>
+        /// Gets the IBackupsOperations
+        /// </summary>
+        public virtual IBackupsOperations Backups { get; private set; }
+        /// <summary>
+        /// Gets the IBackupsUnderBackupVaultOperations
+        /// </summary>
+        public virtual IBackupsUnderBackupVaultOperations BackupsUnderBackupVault { get; private set; }
         /// <summary>
         /// Gets the IPoolsOperations
         /// </summary>
@@ -93,49 +109,37 @@ namespace Microsoft.Azure.Management.NetApp
         /// </summary>
         public virtual IVolumesOperations Volumes { get; private set; }
         /// <summary>
+        /// Gets the IBackupsUnderVolumeOperations
+        /// </summary>
+        public virtual IBackupsUnderVolumeOperations BackupsUnderVolume { get; private set; }
+        /// <summary>
         /// Gets the ISnapshotsOperations
         /// </summary>
         public virtual ISnapshotsOperations Snapshots { get; private set; }
-        /// <summary>
-        /// Gets the ISnapshotPoliciesOperations
-        /// </summary>
-        public virtual ISnapshotPoliciesOperations SnapshotPolicies { get; private set; }
-        /// <summary>
-        /// Gets the IBackupPoliciesOperations
-        /// </summary>
-        public virtual IBackupPoliciesOperations BackupPolicies { get; private set; }
-        /// <summary>
-        /// Gets the IVolumeQuotaRulesOperations
-        /// </summary>
-        public virtual IVolumeQuotaRulesOperations VolumeQuotaRules { get; private set; }
-        /// <summary>
-        /// Gets the IVolumeGroupsOperations
-        /// </summary>
-        public virtual IVolumeGroupsOperations VolumeGroups { get; private set; }
         /// <summary>
         /// Gets the ISubvolumesOperations
         /// </summary>
         public virtual ISubvolumesOperations Subvolumes { get; private set; }
         /// <summary>
-        /// Gets the IBackupsOperations
+        /// Gets the IVolumeQuotaRulesOperations
         /// </summary>
-        public virtual IBackupsOperations Backups { get; private set; }
-        /// <summary>
-        /// Gets the IBackupVaultsOperations
-        /// </summary>
-        public virtual IBackupVaultsOperations BackupVaults { get; private set; }
-        /// <summary>
-        /// Gets the IBackupsUnderBackupVaultOperations
-        /// </summary>
-        public virtual IBackupsUnderBackupVaultOperations BackupsUnderBackupVault { get; private set; }
-        /// <summary>
-        /// Gets the IBackupsUnderVolumeOperations
-        /// </summary>
-        public virtual IBackupsUnderVolumeOperations BackupsUnderVolume { get; private set; }
+        public virtual IVolumeQuotaRulesOperations VolumeQuotaRules { get; private set; }
         /// <summary>
         /// Gets the IBackupsUnderAccountOperations
         /// </summary>
         public virtual IBackupsUnderAccountOperations BackupsUnderAccount { get; private set; }
+        /// <summary>
+        /// Gets the INetAppResourceQuotaLimitsAccountOperations
+        /// </summary>
+        public virtual INetAppResourceQuotaLimitsAccountOperations NetAppResourceQuotaLimitsAccount { get; private set; }
+        /// <summary>
+        /// Gets the ISnapshotPoliciesOperations
+        /// </summary>
+        public virtual ISnapshotPoliciesOperations SnapshotPolicies { get; private set; }
+        /// <summary>
+        /// Gets the IVolumeGroupsOperations
+        /// </summary>
+        public virtual IVolumeGroupsOperations VolumeGroups { get; private set; }
         /// <summary>
         /// Initializes a new instance of the NetAppManagementClient class.
         /// </summary>
@@ -376,25 +380,26 @@ namespace Microsoft.Azure.Management.NetApp
         {
             this.Operations = new Operations(this);
             this.NetAppResource = new NetAppResourceOperations(this);
-            this.NetAppResourceUsages = new NetAppResourceUsagesOperations(this);
             this.NetAppResourceQuotaLimits = new NetAppResourceQuotaLimitsOperations(this);
             this.NetAppResourceRegionInfos = new NetAppResourceRegionInfosOperations(this);
+            this.NetAppResourceUsages = new NetAppResourceUsagesOperations(this);
             this.Accounts = new AccountsOperations(this);
+            this.BackupPolicies = new BackupPoliciesOperations(this);
+            this.BackupVaults = new BackupVaultsOperations(this);
+            this.Backups = new BackupsOperations(this);
+            this.BackupsUnderBackupVault = new BackupsUnderBackupVaultOperations(this);
             this.Pools = new PoolsOperations(this);
             this.Volumes = new VolumesOperations(this);
-            this.Snapshots = new SnapshotsOperations(this);
-            this.SnapshotPolicies = new SnapshotPoliciesOperations(this);
-            this.BackupPolicies = new BackupPoliciesOperations(this);
-            this.VolumeQuotaRules = new VolumeQuotaRulesOperations(this);
-            this.VolumeGroups = new VolumeGroupsOperations(this);
-            this.Subvolumes = new SubvolumesOperations(this);
-            this.Backups = new BackupsOperations(this);
-            this.BackupVaults = new BackupVaultsOperations(this);
-            this.BackupsUnderBackupVault = new BackupsUnderBackupVaultOperations(this);
             this.BackupsUnderVolume = new BackupsUnderVolumeOperations(this);
+            this.Snapshots = new SnapshotsOperations(this);
+            this.Subvolumes = new SubvolumesOperations(this);
+            this.VolumeQuotaRules = new VolumeQuotaRulesOperations(this);
             this.BackupsUnderAccount = new BackupsUnderAccountOperations(this);
+            this.NetAppResourceQuotaLimitsAccount = new NetAppResourceQuotaLimitsAccountOperations(this);
+            this.SnapshotPolicies = new SnapshotPoliciesOperations(this);
+            this.VolumeGroups = new VolumeGroupsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2025-06-01";
+            this.ApiVersion = "2025-09-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

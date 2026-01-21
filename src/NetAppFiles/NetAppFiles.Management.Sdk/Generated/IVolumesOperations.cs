@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Volume>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, Volume body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Volume,VolumesCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, Volume body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Patch the specified volume
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Volume>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, VolumePatch body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Volume,VolumesUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, VolumePatch body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete the specified volume
@@ -175,13 +175,15 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, bool? forceDelete = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, bool? forceDelete = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// This operation will populate availability zone information for a volume
+        /// Starts SVM peering and returns a command to be run on the external ONTAP to
+        /// accept it.  Once the SVM have been peered a SnapMirror will be created
         /// </summary>
         /// <remarks>
-        /// This operation will populate availability zone information for a volume
+        /// Starts SVM peering and returns a command to be run on the external ONTAP to
+        /// accept it.  Once the SVM have been peered a SnapMirror will be created
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -207,13 +209,13 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Volume,VolumesPopulateAvailabilityZoneHeaders>> PopulateAvailabilityZoneWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SvmPeerCommandResponse,VolumesAuthorizeExternalReplicationHeaders>> AuthorizeExternalReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Revert a volume to the snapshot specified in the body
+        /// Authorize the replication connection on the source volume
         /// </summary>
         /// <remarks>
-        /// Revert a volume to the snapshot specified in the body
+        /// Authorize the replication connection on the source volume
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -228,7 +230,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The name of the volume
         /// </param>
         /// <param name='body'>
-        /// Object for snapshot to revert supplied in the body of the operation.
+        /// Authorize request object supplied in the body of the operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -239,68 +241,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RevertWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, VolumeRevert body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Reset cifs password from volume
-        /// </summary>
-        /// <remarks>
-        /// Reset cifs password from volume
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesResetCifsPasswordHeaders>> ResetCifsPasswordWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Split operation to convert clone volume to an independent volume.
-        /// </summary>
-        /// <remarks>
-        /// Split operation to convert clone volume to an independent volume.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Volume,VolumesSplitCloneFromParentHeaders>> SplitCloneFromParentWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesAuthorizeReplicationHeaders>> AuthorizeReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, AuthorizeRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Break all the file locks on a volume
@@ -334,6 +275,129 @@ namespace Microsoft.Azure.Management.NetApp
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesBreakFileLocksHeaders>> BreakFileLocksWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, BreakFileLocksRequest body = default(BreakFileLocksRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Break the replication connection on the destination volume
+        /// </summary>
+        /// <remarks>
+        /// Break the replication connection on the destination volume
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='body'>
+        /// Optional body to force break the replication.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesBreakReplicationHeaders>> BreakReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, BreakReplicationRequest body = default(BreakReplicationRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Delete the replication connection on the destination volume, and send
+        /// release to the source replication
+        /// </summary>
+        /// <remarks>
+        /// Delete the replication connection on the destination volume, and send
+        /// release to the source replication
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesDeleteReplicationHeaders>> DeleteReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Finalizes the migration of an external volume by releasing the replication
+        /// and breaking the external cluster peering if no other migration is active.
+        /// </summary>
+        /// <remarks>
+        /// Finalizes the migration of an external volume by releasing the replication
+        /// and breaking the external cluster peering if no other migration is active.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesFinalizeExternalReplicationHeaders>> FinalizeExternalReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Finalizes the relocation of the volume and cleans up the old volume.
+        /// </summary>
+        /// <remarks>
+        /// Finalizes the relocation of the volume and cleans up the old volume.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesFinalizeRelocationHeaders>> FinalizeRelocationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns the list of group Ids for a specific LDAP User
@@ -371,104 +435,6 @@ namespace Microsoft.Azure.Management.NetApp
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GetGroupIdListForLdapUserResponse,VolumesListGetGroupIdListForLdapUserHeaders>> ListGetGroupIdListForLdapUserWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, GetGroupIdListForLdapUserRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Break the replication connection on the destination volume
-        /// </summary>
-        /// <remarks>
-        /// Break the replication connection on the destination volume
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='body'>
-        /// Optional body to force break the replication.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BreakReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, BreakReplicationRequest body = default(BreakReplicationRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Re-establish a previously deleted replication between 2 volumes that have a
-        /// common ad-hoc or policy-based snapshots
-        /// </summary>
-        /// <remarks>
-        /// Re-establish a previously deleted replication between 2 volumes that have a
-        /// common ad-hoc or policy-based snapshots
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='body'>
-        /// body for the id of the source volume.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> ReestablishReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, ReestablishReplicationRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Get the status of the replication
-        /// </summary>
-        /// <remarks>
-        /// Get the status of the replication
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationStatus>> ReplicationStatusWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// List all replications for a specified volume
         /// </summary>
         /// <remarks>
@@ -486,6 +452,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='volumeName'>
         /// The name of the volume
         /// </param>
+        /// <param name='body'>
+        /// The content of the action request
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -498,132 +467,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<Replication>>> ListReplicationsWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Resync the connection on the destination volume. If the operation is ran on
-        /// the source volume it will reverse-resync the connection and sync from
-        /// destination to source.
-        /// </summary>
-        /// <remarks>
-        /// Resync the connection on the destination volume. If the operation is ran on
-        /// the source volume it will reverse-resync the connection and sync from
-        /// destination to source.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> ResyncReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Delete the replication connection on the destination volume, and send
-        /// release to the source replication
-        /// </summary>
-        /// <remarks>
-        /// Delete the replication connection on the destination volume, and send
-        /// release to the source replication
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Authorize the replication connection on the source volume
-        /// </summary>
-        /// <remarks>
-        /// Authorize the replication connection on the source volume
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='body'>
-        /// Authorize request object supplied in the body of the operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> AuthorizeReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, AuthorizeRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Re-Initializes the replication connection on the destination volume
-        /// </summary>
-        /// <remarks>
-        /// Re-Initializes the replication connection on the destination volume
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> ReInitializeReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Replication>>> ListReplicationsWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, ListReplicationsRequest body = default(ListReplicationsRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Starts peering the external cluster for this migration volume
@@ -659,71 +503,6 @@ namespace Microsoft.Azure.Management.NetApp
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ClusterPeerCommandResponse,VolumesPeerExternalClusterHeaders>> PeerExternalClusterWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, PeerClusterForVolumeMigrationRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Starts SVM peering and returns a command to be run on the external ONTAP to
-        /// accept it.  Once the SVM have been peered a SnapMirror will be created
-        /// </summary>
-        /// <remarks>
-        /// Starts SVM peering and returns a command to be run on the external ONTAP to
-        /// accept it.  Once the SVM have been peered a SnapMirror will be created
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SvmPeerCommandResponse,VolumesAuthorizeExternalReplicationHeaders>> AuthorizeExternalReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Finalizes the migration of an external volume by releasing the replication
-        /// and breaking the external cluster peering if no other migration is active.
-        /// </summary>
-        /// <remarks>
-        /// Finalizes the migration of an external volume by releasing the replication
-        /// and breaking the external cluster peering if no other migration is active.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesFinalizeExternalReplicationHeaders>> FinalizeExternalReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Performs an adhoc replication transfer on a volume with volumeType
@@ -786,7 +565,102 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> PoolChangeWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, PoolChangeRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesPoolChangeHeaders>> PoolChangeWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, PoolChangeRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// This operation will populate availability zone information for a volume
+        /// </summary>
+        /// <remarks>
+        /// This operation will populate availability zone information for a volume
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Volume,VolumesPopulateAvailabilityZoneHeaders>> PopulateAvailabilityZoneWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Re-establish a previously deleted replication between 2 volumes that have a
+        /// common ad-hoc or policy-based snapshots
+        /// </summary>
+        /// <remarks>
+        /// Re-establish a previously deleted replication between 2 volumes that have a
+        /// common ad-hoc or policy-based snapshots
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='body'>
+        /// body for the id of the source volume.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesReestablishReplicationHeaders>> ReestablishReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, ReestablishReplicationRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Re-Initializes the replication connection on the destination volume
+        /// </summary>
+        /// <remarks>
+        /// Re-Initializes the replication connection on the destination volume
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesReInitializeReplicationHeaders>> ReInitializeReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Relocates volume to a new stamp
@@ -818,13 +692,13 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RelocateWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, RelocateVolumeRequest body = default(RelocateVolumeRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesRelocateHeaders>> RelocateWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, RelocateVolumeRequest body = default(RelocateVolumeRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Finalizes the relocation of the volume and cleans up the old volume.
+        /// Get the status of the replication
         /// </summary>
         /// <remarks>
-        /// Finalizes the relocation of the volume and cleans up the old volume.
+        /// Get the status of the replication
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -847,7 +721,104 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> FinalizeRelocationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationStatus>> ReplicationStatusWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Reset cifs password from volume
+        /// </summary>
+        /// <remarks>
+        /// Reset cifs password from volume
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesResetCifsPasswordHeaders>> ResetCifsPasswordWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Resync the connection on the destination volume. If the operation is ran on
+        /// the source volume it will reverse-resync the connection and sync from
+        /// destination to source.
+        /// </summary>
+        /// <remarks>
+        /// Resync the connection on the destination volume. If the operation is ran on
+        /// the source volume it will reverse-resync the connection and sync from
+        /// destination to source.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesResyncReplicationHeaders>> ResyncReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Revert a volume to the snapshot specified in the body
+        /// </summary>
+        /// <remarks>
+        /// Revert a volume to the snapshot specified in the body
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='body'>
+        /// Object for snapshot to revert supplied in the body of the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesRevertHeaders>> RevertWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, VolumeRevert body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Reverts the volume relocation process, cleans up the new volume and starts
@@ -878,7 +849,39 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RevertRelocationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesRevertRelocationHeaders>> RevertRelocationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Split operation to convert clone volume to an independent volume.
+        /// </summary>
+        /// <remarks>
+        /// Split operation to convert clone volume to an independent volume.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Volume,VolumesSplitCloneFromParentHeaders>> SplitCloneFromParentWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create or update the specified volume within the capacity pool
@@ -913,7 +916,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Volume>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, Volume body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Volume,VolumesCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, Volume body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Patch the specified volume
@@ -948,7 +951,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Volume>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, VolumePatch body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Volume,VolumesUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, VolumePatch body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete the specified volume
@@ -981,13 +984,15 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, bool? forceDelete = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, bool? forceDelete = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// This operation will populate availability zone information for a volume
+        /// Starts SVM peering and returns a command to be run on the external ONTAP to
+        /// accept it.  Once the SVM have been peered a SnapMirror will be created
         /// </summary>
         /// <remarks>
-        /// This operation will populate availability zone information for a volume
+        /// Starts SVM peering and returns a command to be run on the external ONTAP to
+        /// accept it.  Once the SVM have been peered a SnapMirror will be created
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1013,13 +1018,13 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Volume,VolumesPopulateAvailabilityZoneHeaders>> BeginPopulateAvailabilityZoneWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SvmPeerCommandResponse,VolumesAuthorizeExternalReplicationHeaders>> BeginAuthorizeExternalReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Revert a volume to the snapshot specified in the body
+        /// Authorize the replication connection on the source volume
         /// </summary>
         /// <remarks>
-        /// Revert a volume to the snapshot specified in the body
+        /// Authorize the replication connection on the source volume
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1034,7 +1039,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The name of the volume
         /// </param>
         /// <param name='body'>
-        /// Object for snapshot to revert supplied in the body of the operation.
+        /// Authorize request object supplied in the body of the operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1045,68 +1050,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginRevertWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, VolumeRevert body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Reset cifs password from volume
-        /// </summary>
-        /// <remarks>
-        /// Reset cifs password from volume
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesResetCifsPasswordHeaders>> BeginResetCifsPasswordWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Split operation to convert clone volume to an independent volume.
-        /// </summary>
-        /// <remarks>
-        /// Split operation to convert clone volume to an independent volume.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Volume,VolumesSplitCloneFromParentHeaders>> BeginSplitCloneFromParentWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesAuthorizeReplicationHeaders>> BeginAuthorizeReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, AuthorizeRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Break all the file locks on a volume
@@ -1140,6 +1084,129 @@ namespace Microsoft.Azure.Management.NetApp
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesBreakFileLocksHeaders>> BeginBreakFileLocksWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, BreakFileLocksRequest body = default(BreakFileLocksRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Break the replication connection on the destination volume
+        /// </summary>
+        /// <remarks>
+        /// Break the replication connection on the destination volume
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='body'>
+        /// Optional body to force break the replication.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesBreakReplicationHeaders>> BeginBreakReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, BreakReplicationRequest body = default(BreakReplicationRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Delete the replication connection on the destination volume, and send
+        /// release to the source replication
+        /// </summary>
+        /// <remarks>
+        /// Delete the replication connection on the destination volume, and send
+        /// release to the source replication
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesDeleteReplicationHeaders>> BeginDeleteReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Finalizes the migration of an external volume by releasing the replication
+        /// and breaking the external cluster peering if no other migration is active.
+        /// </summary>
+        /// <remarks>
+        /// Finalizes the migration of an external volume by releasing the replication
+        /// and breaking the external cluster peering if no other migration is active.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesFinalizeExternalReplicationHeaders>> BeginFinalizeExternalReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Finalizes the relocation of the volume and cleans up the old volume.
+        /// </summary>
+        /// <remarks>
+        /// Finalizes the relocation of the volume and cleans up the old volume.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesFinalizeRelocationHeaders>> BeginFinalizeRelocationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns the list of group Ids for a specific LDAP User
@@ -1177,197 +1244,6 @@ namespace Microsoft.Azure.Management.NetApp
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GetGroupIdListForLdapUserResponse,VolumesListGetGroupIdListForLdapUserHeaders>> BeginListGetGroupIdListForLdapUserWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, GetGroupIdListForLdapUserRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Break the replication connection on the destination volume
-        /// </summary>
-        /// <remarks>
-        /// Break the replication connection on the destination volume
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='body'>
-        /// Optional body to force break the replication.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginBreakReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, BreakReplicationRequest body = default(BreakReplicationRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Re-establish a previously deleted replication between 2 volumes that have a
-        /// common ad-hoc or policy-based snapshots
-        /// </summary>
-        /// <remarks>
-        /// Re-establish a previously deleted replication between 2 volumes that have a
-        /// common ad-hoc or policy-based snapshots
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='body'>
-        /// body for the id of the source volume.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginReestablishReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, ReestablishReplicationRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Resync the connection on the destination volume. If the operation is ran on
-        /// the source volume it will reverse-resync the connection and sync from
-        /// destination to source.
-        /// </summary>
-        /// <remarks>
-        /// Resync the connection on the destination volume. If the operation is ran on
-        /// the source volume it will reverse-resync the connection and sync from
-        /// destination to source.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginResyncReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Delete the replication connection on the destination volume, and send
-        /// release to the source replication
-        /// </summary>
-        /// <remarks>
-        /// Delete the replication connection on the destination volume, and send
-        /// release to the source replication
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Authorize the replication connection on the source volume
-        /// </summary>
-        /// <remarks>
-        /// Authorize the replication connection on the source volume
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='body'>
-        /// Authorize request object supplied in the body of the operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginAuthorizeReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, AuthorizeRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Re-Initializes the replication connection on the destination volume
-        /// </summary>
-        /// <remarks>
-        /// Re-Initializes the replication connection on the destination volume
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginReInitializeReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Starts peering the external cluster for this migration volume
         /// </summary>
         /// <remarks>
@@ -1401,71 +1277,6 @@ namespace Microsoft.Azure.Management.NetApp
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ClusterPeerCommandResponse,VolumesPeerExternalClusterHeaders>> BeginPeerExternalClusterWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, PeerClusterForVolumeMigrationRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Starts SVM peering and returns a command to be run on the external ONTAP to
-        /// accept it.  Once the SVM have been peered a SnapMirror will be created
-        /// </summary>
-        /// <remarks>
-        /// Starts SVM peering and returns a command to be run on the external ONTAP to
-        /// accept it.  Once the SVM have been peered a SnapMirror will be created
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SvmPeerCommandResponse,VolumesAuthorizeExternalReplicationHeaders>> BeginAuthorizeExternalReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Finalizes the migration of an external volume by releasing the replication
-        /// and breaking the external cluster peering if no other migration is active.
-        /// </summary>
-        /// <remarks>
-        /// Finalizes the migration of an external volume by releasing the replication
-        /// and breaking the external cluster peering if no other migration is active.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='poolName'>
-        /// The name of the capacity pool
-        /// </param>
-        /// <param name='volumeName'>
-        /// The name of the volume
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesFinalizeExternalReplicationHeaders>> BeginFinalizeExternalReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Performs an adhoc replication transfer on a volume with volumeType
@@ -1528,7 +1339,102 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginPoolChangeWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, PoolChangeRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesPoolChangeHeaders>> BeginPoolChangeWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, PoolChangeRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// This operation will populate availability zone information for a volume
+        /// </summary>
+        /// <remarks>
+        /// This operation will populate availability zone information for a volume
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Volume,VolumesPopulateAvailabilityZoneHeaders>> BeginPopulateAvailabilityZoneWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Re-establish a previously deleted replication between 2 volumes that have a
+        /// common ad-hoc or policy-based snapshots
+        /// </summary>
+        /// <remarks>
+        /// Re-establish a previously deleted replication between 2 volumes that have a
+        /// common ad-hoc or policy-based snapshots
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='body'>
+        /// body for the id of the source volume.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesReestablishReplicationHeaders>> BeginReestablishReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, ReestablishReplicationRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Re-Initializes the replication connection on the destination volume
+        /// </summary>
+        /// <remarks>
+        /// Re-Initializes the replication connection on the destination volume
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesReInitializeReplicationHeaders>> BeginReInitializeReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Relocates volume to a new stamp
@@ -1560,13 +1466,13 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginRelocateWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, RelocateVolumeRequest body = default(RelocateVolumeRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesRelocateHeaders>> BeginRelocateWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, RelocateVolumeRequest body = default(RelocateVolumeRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Finalizes the relocation of the volume and cleans up the old volume.
+        /// Reset cifs password from volume
         /// </summary>
         /// <remarks>
-        /// Finalizes the relocation of the volume and cleans up the old volume.
+        /// Reset cifs password from volume
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1589,7 +1495,72 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginFinalizeRelocationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesResetCifsPasswordHeaders>> BeginResetCifsPasswordWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Resync the connection on the destination volume. If the operation is ran on
+        /// the source volume it will reverse-resync the connection and sync from
+        /// destination to source.
+        /// </summary>
+        /// <remarks>
+        /// Resync the connection on the destination volume. If the operation is ran on
+        /// the source volume it will reverse-resync the connection and sync from
+        /// destination to source.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesResyncReplicationHeaders>> BeginResyncReplicationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Revert a volume to the snapshot specified in the body
+        /// </summary>
+        /// <remarks>
+        /// Revert a volume to the snapshot specified in the body
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='body'>
+        /// Object for snapshot to revert supplied in the body of the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesRevertHeaders>> BeginRevertWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, VolumeRevert body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Reverts the volume relocation process, cleans up the new volume and starts
@@ -1620,7 +1591,39 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginRevertRelocationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VolumesRevertRelocationHeaders>> BeginRevertRelocationWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Split operation to convert clone volume to an independent volume.
+        /// </summary>
+        /// <remarks>
+        /// Split operation to convert clone volume to an independent volume.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Volume,VolumesSplitCloneFromParentHeaders>> BeginSplitCloneFromParentWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List all volumes within the capacity pool
@@ -1644,6 +1647,29 @@ namespace Microsoft.Azure.Management.NetApp
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Volume>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List all replications for a specified volume
+        /// </summary>
+        /// <remarks>
+        /// List all replications for a specified volume
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Replication>>> ListReplicationsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

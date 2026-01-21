@@ -35,9 +35,11 @@ namespace Microsoft.Azure.Management.Batch.Models
         [System.Runtime.Serialization.EnumMember(Value = "TaskCompletion")]
         TaskCompletion,
         /// <summary>
-        /// Allow currently running tasks to complete, then wait for all task data
-        /// retention periods to expire. Schedule no new tasks while waiting. Remove
-        /// nodes when all task retention periods have expired.
+        /// Deprecated, we encourage you to upload task data to Azure Storage in your
+        /// task and use `TaskCompletion` instead. Allow currently running tasks to
+        /// complete, then wait for all task data retention periods to expire. Schedule
+        /// no new tasks while waiting. Remove nodes when all task retention periods
+        /// have expired.
         /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "RetainedData")]
         RetainedData

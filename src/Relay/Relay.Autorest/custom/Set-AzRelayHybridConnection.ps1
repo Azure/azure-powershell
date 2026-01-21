@@ -29,9 +29,9 @@ $connection.UserMetadata = "testHybirdConnection"
 Set-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-01 -InputObject $connection                                                                     
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IHybridConnection
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IHybridConnection
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -50,7 +50,7 @@ INPUTOBJECT <IHybridConnection>: Description of hybrid connection resource.
 https://learn.microsoft.com/powershell/module/az.relay/set-azrelayhybridconnection
 #>
 function Set-AzRelayHybridConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IHybridConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -82,7 +82,7 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IHybridConnection]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection]
     # Description of hybrid connection resource.
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},

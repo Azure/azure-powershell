@@ -14,7 +14,7 @@ The operation to create a protection container mapping.
 
 ### CreateExpanded (Default)
 ```
-New-AzMigrateReplicationProtectionContainerMapping -MappingName <String> -FabricName <String>
+New-AzMigrateReplicationProtectionContainerMapping -FabricName <String> -MappingName <String>
  -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String>
  [-SubscriptionId <String>] [-PolicyId <String>]
  [-ProviderSpecificInput <IReplicationProviderSpecificContainerMappingInput>]
@@ -22,37 +22,19 @@ New-AzMigrateReplicationProtectionContainerMapping -MappingName <String> -Fabric
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonString
-```
-New-AzMigrateReplicationProtectionContainerMapping -MappingName <String> -FabricName <String>
- -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### CreateViaJsonFilePath
 ```
-New-AzMigrateReplicationProtectionContainerMapping -MappingName <String> -FabricName <String>
+New-AzMigrateReplicationProtectionContainerMapping -FabricName <String> -MappingName <String>
  -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentityReplicationFabricExpanded
+### CreateViaJsonString
 ```
-New-AzMigrateReplicationProtectionContainerMapping -MappingName <String> -ProtectionContainerName <String>
- -ReplicationFabricInputObject <IMigrateIdentity> [-PolicyId <String>]
- [-ProviderSpecificInput <IReplicationProviderSpecificContainerMappingInput>]
- [-TargetProtectionContainerId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentityReplicationProtectionContainerExpanded
-```
-New-AzMigrateReplicationProtectionContainerMapping -MappingName <String>
- -ReplicationProtectionContainerInputObject <IMigrateIdentity> [-PolicyId <String>]
- [-ProviderSpecificInput <IReplicationProviderSpecificContainerMappingInput>]
- [-TargetProtectionContainerId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+New-AzMigrateReplicationProtectionContainerMapping -FabricName <String> -MappingName <String>
+ -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -121,7 +103,7 @@ Fabric name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -196,7 +178,7 @@ Applicable policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityReplicationFabricExpanded, CreateViaIdentityReplicationProtectionContainerExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -211,7 +193,7 @@ Protection container name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityReplicationFabricExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -226,7 +208,7 @@ Provider specific input for pairing.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProviderSpecificContainerMappingInput
-Parameter Sets: CreateExpanded, CreateViaIdentityReplicationFabricExpanded, CreateViaIdentityReplicationProtectionContainerExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -236,42 +218,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReplicationFabricInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
-Parameter Sets: CreateViaIdentityReplicationFabricExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ReplicationProtectionContainerInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
-Parameter Sets: CreateViaIdentityReplicationProtectionContainerExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group where the recovery services vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -286,7 +238,7 @@ The name of the recovery services vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -301,7 +253,7 @@ Azure Subscription Id in which migrate project was created.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -316,7 +268,7 @@ The target unique protection container name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityReplicationFabricExpanded, CreateViaIdentityReplicationProtectionContainerExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -361,8 +313,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 
 ## OUTPUTS
 

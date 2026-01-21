@@ -21,11 +21,11 @@ Update a role management policy
 Update a role management policy
 .Example
 $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-$expirationRule = [RoleManagementPolicyExpirationRule]@{
+$expirationRule = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.RoleManagementPolicyExpirationRule]@{
             isExpirationRequired = "false";
             maximumDuration = "P180D";
             id = "Expiration_Admin_Eligibility";
-            ruleType = [RoleManagementPolicyRuleType]("RoleManagementPolicyExpirationRule");
+            ruleType = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RoleManagementPolicyRuleType]("RoleManagementPolicyExpirationRule");
             targetCaller = "Admin";
             targetOperation = @('All');
             targetLevel = "Eligibility";
@@ -37,11 +37,11 @@ $rules = [IRoleManagementPolicyRule[]]@($expirationRule)
 Update-AzRoleManagementPolicy -Scope $scope -Name "33b520ea-3544-4abc-8565-3588deb8e68e" -Rule $rules
 .Example
 $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-$expirationRule = [RoleManagementPolicyExpirationRule]@{
+$expirationRule = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.RoleManagementPolicyExpirationRule]@{
             isExpirationRequired = "false";
             maximumDuration = "P180D";
             id = "Expiration_Admin_Eligibility";
-            ruleType = [RoleManagementPolicyRuleType]("RoleManagementPolicyExpirationRule");
+            ruleType = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RoleManagementPolicyRuleType]("RoleManagementPolicyExpirationRule");
             targetCaller = "Admin";
             targetOperation = @('All');
             targetLevel = "Eligibility";
@@ -49,14 +49,14 @@ $expirationRule = [RoleManagementPolicyExpirationRule]@{
             targetInheritableSetting = $null;
             targetEnforcedSetting = $null;
         }
-$notificationRule = [RoleManagementPolicyNotificationRule]@{
+$notificationRule = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.RoleManagementPolicyNotificationRule]@{
             notificationType = "Email";
             recipientType = "Approver";
             isDefaultRecipientsEnabled = "false";
             notificationLevel = "Critical";
             notificationRecipient = $null;                
             id = "Notification_Approver_Admin_Eligibility";
-            ruleType = [RoleManagementPolicyRuleType]("RoleManagementPolicyNotificationRule");
+            ruleType = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RoleManagementPolicyRuleType]("RoleManagementPolicyNotificationRule");
             targetCaller = "Admin";
             targetOperation = @('All');
             targetLevel = "Eligibility";
@@ -70,7 +70,7 @@ Update-AzRoleManagementPolicy -Scope $scope -Name "33b520ea-3544-4abc-8565-3588d
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicy
+Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -89,22 +89,24 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [Scope <String>]: The scope of the role management policy.
 
 RULE <IRoleManagementPolicyRule[]>: The rule applied to the policy.
-  RuleType <RoleManagementPolicyRuleType>: The type of rule
+  RuleType <String>: The type of rule
   [Id <String>]: The id of the rule.
   [TargetCaller <String>]: The caller of the setting.
-  [TargetEnforcedSetting <String[]>]: The list of enforced settings.
-  [TargetInheritableSetting <String[]>]: The list of inheritable settings.
+  [TargetEnforcedSetting <List<String>>]: The list of enforced settings.
+  [TargetInheritableSetting <List<String>>]: The list of inheritable settings.
   [TargetLevel <String>]: The assignment level to which it is applied.
-  [TargetObject <String[]>]: The list of target objects.
-  [TargetOperation <String[]>]: The type of operation.
+  [TargetObject <List<String>>]: The list of target objects.
+  [TargetOperation <List<String>>]: The type of operation.
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/update-azrolemanagementpolicy
 #>
 function Update-AzRoleManagementPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicy])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('RoleManagementPolicyName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
     [System.String]
@@ -112,6 +114,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
     [System.String]
     # The scope of the role management policy to upsert.
@@ -121,34 +125,48 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The role management policy description.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.String]
     # The role management policy display name.
     ${DisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # The role management policy is default policy.
     ${IsOrganizationDefault},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicyRule[]]
     # The rule applied to the policy.
-    # To construct, see NOTES section for RULE properties and create a hash table.
     ${Rule},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -206,6 +224,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -227,6 +254,8 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.Authorization.private\Update-AzRoleManagementPolicy_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Authorization.private\Update-AzRoleManagementPolicy_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.Authorization.private\Update-AzRoleManagementPolicy_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Authorization.private\Update-AzRoleManagementPolicy_UpdateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -235,6 +264,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

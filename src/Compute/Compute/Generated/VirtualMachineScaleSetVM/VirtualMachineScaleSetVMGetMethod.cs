@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected const string DefaultParameterSet = "DefaultParameter",
                                FriendMethodParameterSet = "FriendMethod";
         private VmssVMInstanceViewTypes UserDataExpand = VmssVMInstanceViewTypes.UserData;
+        private VmssVMInstanceViewTypes ResiliencyViewExpand = VmssVMInstanceViewTypes.ResiliencyView;
         
         public override void ExecuteCmdlet()
         {
@@ -56,6 +57,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         var result = VirtualMachineScaleSetVMsClient.GetInstanceView(resourceGroupName, vmScaleSetName, instanceId);
                         var psObject = new PSVirtualMachineScaleSetVMInstanceView();
                         ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetVMInstanceView, PSVirtualMachineScaleSetVMInstanceView>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                    else if (this.ResiliencyView.IsPresent)
+                    {
+                        var result = VirtualMachineScaleSetVMsClient.Get(resourceGroupName, vmScaleSetName, instanceId, ResiliencyViewExpand);
+                        var psObject = new PSVirtualMachineScaleSetVM();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVM>(result, psObject);
                         WriteObject(psObject);
                     }
                     else if (this.UserData == true)
@@ -173,5 +181,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "UserData for the Vmss, which will be Base64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipelineByPropertyName = true)]
         public SwitchParameter UserData { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DefaultParameterSet,
+            HelpMessage = "Gets the resilient VM deletion status for the VM, which indicates whether retries are in progress, failed, or not started.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = FriendMethodParameterSet,
+            HelpMessage = "Gets the resilient VM deletion status for the VM, which indicates whether retries are in progress, failed, or not started.",
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter ResiliencyView { get; set; }
     }
 }

@@ -673,6 +673,24 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing role definition by id.
+        /// </summary>
+        internal static string RemovingRoleDefinitionById {
+            get {
+                return ResourceManager.GetString("RemovingRoleDefinitionById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing role definition by name.
+        /// </summary>
+        internal static string RemovingRoleDefinitionByName {
+            get {
+                return ResourceManager.GetString("RemovingRoleDefinitionByName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing service principal ....
         /// </summary>
         internal static string RemoveServicePrincipal {

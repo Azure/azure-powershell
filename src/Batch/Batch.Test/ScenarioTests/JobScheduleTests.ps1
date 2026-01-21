@@ -36,7 +36,7 @@ function Test-JobScheduleCRUD
         $jobSpec2.PoolInformation = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
         $jobSpec2.PoolInformation.PoolId = "testPool2"
         $schedule2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSSchedule
-        $schedule2.DoNotRunUntil = New-Object System.DateTime -ArgumentList @(2024, 12, 01, 12, 30, 0)
+        $schedule2.DoNotRunUntil = New-Object System.DateTime -ArgumentList @(2025, 12, 01, 12, 30, 0)
         New-AzBatchJobSchedule -Id $jsId2 -JobSpecification $jobSpec2 -Schedule $schedule2 -BatchContext $context
 
         # List the job schedules to ensure they were created
@@ -47,7 +47,7 @@ function Test-JobScheduleCRUD
         Assert-NotNull $jobSchedule2
 
         # Update a job schedule
-        $jobSchedule2.Schedule.DoNotRunUntil = $newDoNotRunUntil = New-Object System.DateTime -ArgumentList @(2025, 01, 01, 12, 30, 0)
+        $jobSchedule2.Schedule.DoNotRunUntil = $newDoNotRunUntil = New-Object System.DateTime -ArgumentList @(2026, 01, 01, 12, 30, 0)
         $jobSchedule2 | Set-AzBatchJobSchedule -BatchContext $context
         $updatedJobSchedule = Get-AzBatchJobSchedule -Id $jsId2 -BatchContext $context
         Assert-AreEqual $newDoNotRunUntil $updatedJobSchedule.Schedule.DoNotRunUntil
