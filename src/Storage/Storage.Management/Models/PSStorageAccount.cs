@@ -83,6 +83,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Zone = storageAccount.Zones is null ? null : storageAccount.Zones.ToArray();
             this.ZonePlacementPolicy = storageAccount.Placement is null ? null : storageAccount.Placement.ZonePlacementPolicy;
             this.GeoPriorityReplicationStatus = storageAccount.GeoPriorityReplicationStatus is null ? null : new PSGeoPriorityReplicationStatus(storageAccount.GeoPriorityReplicationStatus);
+            this.DualStackEndpointPreference = storageAccount.DualStackEndpointPreference is null ? null : new PSDualStackEndpointPreference(storageAccount.DualStackEndpointPreference);
         }
         public bool? AllowCrossTenantReplication { get; set; }          
 
@@ -181,6 +182,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string[] Zone { get; set; }
         public string ZonePlacementPolicy { get; set; }
         public PSGeoPriorityReplicationStatus GeoPriorityReplicationStatus { get; set; }
+        public PSDualStackEndpointPreference DualStackEndpointPreference { get; set; }
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client, IAzureContext DefaultContext)
         {
@@ -408,5 +410,15 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         }
 
         public bool? IsBlobEnabled { get; set; }
+    }
+
+    public class PSDualStackEndpointPreference
+    {
+        public bool? PublishIpv6Endpoint { get; set; }
+
+        public PSDualStackEndpointPreference(DualStackEndpointPreference preference)
+        {
+            this.PublishIpv6Endpoint = preference.PublishIpv6Endpoint;
+        }
     }
 }

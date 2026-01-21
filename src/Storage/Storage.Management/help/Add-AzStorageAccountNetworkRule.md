@@ -16,13 +16,20 @@ schema: 2.0.0
 ```
 Add-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String>
  -VirtualNetworkResourceId <String[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IpRuleObject
 ```
 Add-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String> -IPRule <PSIpRule[]> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### Ipv6RuleObject
+```
+Add-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String> -IPv6Rule <PSIpv6Rule[]>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -30,27 +37,34 @@ Add-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String> -
 ```
 Add-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String>
  -VirtualNetworkRule <PSVirtualNetworkRule[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceAccessRuleObject
 ```
 Add-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String>
  -ResourceAccessRule <PSResourceAccessRule[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IpRuleString
 ```
 Add-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String> -IPAddressOrRange <String[]>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### Ipv6RuleString
+```
+Add-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String> -IPv6AddressOrRange <String[]>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceAccessRuleString
 ```
 Add-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String> -TenantId <String>
- -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -102,6 +116,18 @@ This command adds a resource access rule with TenantId and ResourceId.
 ```
 
 This command gets all resource access rules from one storage account, and adds them to another storage account.
+
+### Example 7: Add several IPv6 rules with IPv6AddressOrRange
+```powershell
+Add-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -IPAddressOrRange "2606:4700:4700::1111","2404:6800:4003:c02::6a"
+```
+
+This command adds several IPv6 rules with IPv6AddressOrRange.
+
+### Example 8: Add several IPv6 rules with IPv6Rule objects
+```powershell
+Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -IPv6Rule (@{IPAddressOrRange="2606:4700:4700::1111";Action="allow"},@{IPAddressOrRange="2a00:1450:4001:82a::200e";Action="allow"})
+```
 
 ## PARAMETERS
 
@@ -165,6 +191,36 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -IPv6AddressOrRange
+Storage Account NetworkRule IPv6Rules IPAddressOrRange in string.
+
+```yaml
+Type: System.String[]
+Parameter Sets: Ipv6RuleString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IPv6Rule
+Storage Account NetworkRule IPv6Rules.
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSIpv6Rule[]
+Parameter Sets: Ipv6RuleObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the Storage account.
 
@@ -177,6 +233,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -310,13 +381,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]
 
+### Microsoft.Azure.Commands.Management.Storage.Models.PSIpv6Rule[]
+
 ### Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]
+
+### Microsoft.Azure.Commands.Management.Storage.Models.PSResourceAccessRule[]
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule
 
 ### Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule
+
+### Microsoft.Azure.Commands.Management.Storage.Models.PSIpv6Rule
+
+### Microsoft.Azure.Commands.Management.Storage.Models.PSResourceAccessRule
 
 ## NOTES
 

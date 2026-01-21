@@ -49,6 +49,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string IPAddressOrRange;
     }
 
+    public struct PSIpv6Rule
+    {
+        public PSNetworkRuleActionEnum? Action;
+        public string IPAddressOrRange;
+    }
+
     //Wrapper of NetworkRuleSet property NetworkRule 
     public struct PSVirtualNetworkRule
     {
@@ -68,6 +74,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         [Ps1Xml(Label = "IpRules", Target = ViewControl.List, ScriptBlock = "if (($_.ipRules -ne $null) -and ($_.ipRules.Count -ne 0)) {\"[\" + $_.ipRules[0].IPAddressOrRange + \",...]\"} else {$null}", Position = 2)]
         public PSIpRule[] IpRules { get; set; }
+        public PSIpv6Rule[] Ipv6Rules { get; set; }
 
         [Ps1Xml(Label = "VirtualNetworkRules", Target = ViewControl.List, ScriptBlock = "if ($_.virtualNetworkRules[0] -ne $null) {\"[\" + $_.virtualNetworkRules[0].VirtualNetworkResourceId + \",...]\"} else {$null}", Position = 3)]
         public PSVirtualNetworkRule[] VirtualNetworkRules { get; set; }
@@ -271,6 +278,24 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             return returnRule;
         }
 
+        //Parse single NetworkRule IpRule in SDK to wrapped property PSIpRule
+        public static PSIpv6Rule ParsePSNetworkRuleIPv6Rule(IPRule ipRule)
+        {
+            PSIpv6Rule returnRule = new PSIpv6Rule();
+            returnRule.Action = ParsePSNetworkRuleAction(ipRule.Action);
+            returnRule.IPAddressOrRange = ipRule.IPAddressOrRange;
+            return returnRule;
+        }
+
+        //Parse wrapped property PSIpRule to single NetworkRule IpRule in SDK
+        public static IPRule ParseStorageNetworkRuleIPv6Rule(PSIpv6Rule ipRule)
+        {
+            IPRule returnRule = new IPRule();
+            returnRule.Action = ParseStorageIpRuleAction(ipRule.Action);
+            returnRule.IPAddressOrRange = ipRule.IPAddressOrRange;
+            return returnRule;
+        }
+
         //Parse single NetworkRule PSResourceAccessRule in SDK to wrapped property PSPSResourceAccessRule
         public static PSResourceAccessRule ParsePSResourceAccessRule(ResourceAccessRule rule)
         {
@@ -330,6 +355,15 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 }
                 returnRules.IpRules = ipRuleList.ToArray();
             }
+            List<PSIpv6Rule> ipRulev6List = new List<PSIpv6Rule>();
+            if (rules.Ipv6Rules != null)
+            {
+                foreach (var ipRule in rules.Ipv6Rules)
+                {
+                    ipRulev6List.Add(ParsePSNetworkRuleIPv6Rule(ipRule));
+                }
+                returnRules.Ipv6Rules = ipRulev6List.ToArray();
+            }
 
             List<PSVirtualNetworkRule> virtualNetworkList = new List<PSVirtualNetworkRule>();
             if (rules.VirtualNetworkRules != null)
@@ -373,6 +407,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                     ipRuleList.Add(ParseStorageNetworkRuleIPRule(ipRule));
                 }
                 returnRules.IPRules = ipRuleList.ToArray();
+            }
+
+            List<IPRule> ipv6RuleList = new List<IPRule>();
+            if (rules.Ipv6Rules != null)
+            {
+                foreach (var ipv6Rule in rules.Ipv6Rules)
+                {
+                    ipv6RuleList.Add(ParseStorageNetworkRuleIPv6Rule(ipv6Rule));
+                }
+                returnRules.Ipv6Rules = ipv6RuleList.ToArray(); 
             }
 
             List<VirtualNetworkRule> virtualNetworkList = new List<VirtualNetworkRule>();

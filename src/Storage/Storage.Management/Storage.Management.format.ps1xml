@@ -119,6 +119,10 @@
                 <Label>IpRules</Label>
               </ListItem>
               <ListItem>
+                <ScriptBlock>if (($_.ipv6Rules -ne $null) -and ($_.ipv6Rules.Count -ne 0)) {"[" + $_.ipv6Rules[0].IPAddressOrRange + ",...]"} else {$null}</ScriptBlock>
+                <Label>Ipv6Rules</Label>
+              </ListItem>
+              <ListItem>
                 <ScriptBlock>if ($_.virtualNetworkRules[0] -ne $null) {"[" + $_.virtualNetworkRules[0].VirtualNetworkResourceId + ",...]"} else {$null}</ScriptBlock>
                 <Label>VirtualNetworkRules</Label>
               </ListItem>
@@ -1231,7 +1235,15 @@
               <ListItem>
                 <ScriptBlock>ConvertTo-Json $_.InternetEndpoints -Compress</ScriptBlock>
                 <Label>InternetEndpoints</Label>
-              </ListItem>   
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>ConvertTo-Json $_.Ipv4Endpoints -Compress</ScriptBlock>
+                <Label>InternetEndpoints</Label>
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>ConvertTo-Json $_.Ipv6Endpoints -Compress</ScriptBlock>
+                <Label>InternetEndpoints</Label>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

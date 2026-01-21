@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported publishing IPv6 endpoints when creating/updating a storage account and IPv6 rules in network rule set
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+    - `Get-AzStorageAccountNetworkRuleSet`
+    - `Add-AzStorageAccountNetworkRule`
+    - `Remove-AzStorageAccountNetworkRule`
+    - `Update-AzStorageAccountNetworkRuleSet`
 * Supported user delegation SAS + bearer token authentication in Blob, DatalakeGen2, File, Queue service.
     - `New-AzStorageContext`
     - `New-AzStorageBlobSASToken`

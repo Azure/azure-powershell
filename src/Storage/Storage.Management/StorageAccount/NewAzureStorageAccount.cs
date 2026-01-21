@@ -715,6 +715,24 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? enableBlobGeoPriorityReplication = null;
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Whether IPv6 storage endpoints are to be published.")]
+        [ValidateNotNullOrEmpty]
+        public bool PublishIpv6Endpoint
+        {
+            get
+            {
+                return publishIpv6Endpoint != null ? publishIpv6Endpoint.Value : false;
+            }
+            set
+            {
+                publishIpv6Endpoint = value;
+            }
+        }
+        private bool? publishIpv6Endpoint = null;
+
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -1048,6 +1066,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (this.enableBlobGeoPriorityReplication != null)
             {
                 createParameters.GeoPriorityReplicationStatus = new GeoPriorityReplicationStatus(this.enableBlobGeoPriorityReplication);
+            }
+            if (this.publishIpv6Endpoint != null)
+            {
+                createParameters.DualStackEndpointPreference = new DualStackEndpointPreference(this.publishIpv6Endpoint);
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

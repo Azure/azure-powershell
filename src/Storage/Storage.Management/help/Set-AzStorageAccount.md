@@ -28,8 +28,9 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>]
  [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>]
  [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
- [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob] [-PublishIpv6Endpoint <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyvaultEncryption
@@ -48,8 +49,9 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>]
  [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>]
  [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
- [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob] [-PublishIpv6Endpoint <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureActiveDirectoryKerberosForFile
@@ -68,8 +70,8 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
  [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>] [-AllowedCopyScope <String>] [-Zone <String[]>]
  [-ZonePlacementPolicy <String>] [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PublishIpv6Endpoint <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -91,8 +93,8 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
  [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>] [-AllowedCopyScope <String>] [-Zone <String[]>]
  [-ZonePlacementPolicy <String>] [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PublishIpv6Endpoint <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -503,6 +505,18 @@ True
 ```
 
 This command enables Blob Geo Priority Replication on a Storage account. 
+
+### Example 25: Enable publishing IPv6 endpoint on a Storage account
+```powershell
+$account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -PublishIpv6Endpoint $true 
+$account.DualStackEndpointPreference.PublishIpv6Endpoint
+```
+
+```output
+True
+```
+
+This command enables publishing IPv6 endpoint on a Storage account.
 
 ## PARAMETERS
 
@@ -1173,6 +1187,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 Allow or disallow public network access to Storage Account.Possible values include: 'Enabled', 'Disabled'.
 
@@ -1190,6 +1219,21 @@ Accept wildcard characters: False
 
 ### -PublishInternetEndpoint
 Indicates whether internet  routing storage endpoints are to be published
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublishIpv6Endpoint
+Whether IPv6 storage endpoints are to be published.
 
 ```yaml
 Type: System.Boolean

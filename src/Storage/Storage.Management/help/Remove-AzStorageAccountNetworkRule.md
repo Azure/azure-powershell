@@ -16,13 +16,20 @@ Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage
 ```
 Remove-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String>
  -VirtualNetworkResourceId <String[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IpRuleObject
 ```
 Remove-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String> -IPRule <PSIpRule[]> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### Ipv6RuleObject
+```
+Remove-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String> -IPv6Rule <PSIpv6Rule[]>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -30,27 +37,34 @@ Remove-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String
 ```
 Remove-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String>
  -VirtualNetworkRule <PSVirtualNetworkRule[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceAccessRuleObject
 ```
 Remove-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String>
  -ResourceAccessRule <PSResourceAccessRule[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IpRuleString
 ```
 Remove-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String> -IPAddressOrRange <String[]>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### Ipv6RuleString
+```
+Remove-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String>
+ -IPv6AddressOrRange <String[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceAccessRuleString
 ```
 Remove-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String> -TenantId <String>
- -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -100,6 +114,13 @@ This command removes a resource access rule with TenantId and ResourceId.
 ```
 
 This command removes the first 3 resource access rules from a storage account.
+
+### Example 7: Remove a IPv6 rule with IPv6AddressOrRange
+```powershell
+Remove-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -IPv6AddressOrRange "2606:4700:4700::1111"
+```
+
+This command removes a IPv6 rule with IPv6AddressOrRange.
 
 ## PARAMETERS
 
@@ -163,6 +184,36 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -IPv6AddressOrRange
+Storage Account NetworkRule IPv6Rules IPAddressOrRange in string.
+
+```yaml
+Type: System.String[]
+Parameter Sets: Ipv6RuleString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IPv6Rule
+Storage Account NetworkRule IPv6Rules.
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSIpv6Rule[]
+Parameter Sets: Ipv6RuleObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the Storage account.
 
@@ -175,6 +226,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -308,13 +374,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]
 
+### Microsoft.Azure.Commands.Management.Storage.Models.PSIpv6Rule[]
+
 ### Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]
+
+### Microsoft.Azure.Commands.Management.Storage.Models.PSResourceAccessRule[]
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule
 
 ### Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule
+
+### Microsoft.Azure.Commands.Management.Storage.Models.PSResourceAccessRule
 
 ## NOTES
 
