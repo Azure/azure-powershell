@@ -20,10 +20,24 @@ Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName <
  [-Confirm] [<CommonParameters>]
 ```
 
+### EnableViaJsonString1
+```
+Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName <String>
+ -StorageApplianceName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### EnableViaJsonString
 ```
 Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName <String>
  -StorageApplianceName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EnableViaJsonFilePath1
+```
+Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName <String>
+ -StorageApplianceName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,6 +46,21 @@ Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName <
 Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName <String>
  -StorageApplianceName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EnableExpanded1
+```
+Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName <String>
+ -StorageApplianceName <String> [-SubscriptionId <String>] [-SupportEndpoint <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### EnableViaIdentityExpanded1
+```
+Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -InputObject <INetworkCloudIdentity>
+ [-SupportEndpoint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### EnableViaIdentityExpanded
@@ -91,7 +120,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: EnableViaIdentityExpanded
+Parameter Sets: EnableViaIdentityExpanded1, EnableViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -106,7 +135,7 @@ Path of Json file supplied to the Enable operation
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableViaJsonFilePath
+Parameter Sets: EnableViaJsonFilePath1, EnableViaJsonFilePath
 Aliases:
 
 Required: True
@@ -121,7 +150,7 @@ Json string supplied to the Enable operation
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableViaJsonString
+Parameter Sets: EnableViaJsonString1, EnableViaJsonString
 Aliases:
 
 Required: True
@@ -167,7 +196,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaJsonString, EnableViaJsonFilePath
+Parameter Sets: EnableExpanded, EnableViaJsonString1, EnableViaJsonString, EnableViaJsonFilePath1, EnableViaJsonFilePath, EnableExpanded1
 Aliases:
 
 Required: True
@@ -182,7 +211,7 @@ The name of the storage appliance.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaJsonString, EnableViaJsonFilePath
+Parameter Sets: EnableExpanded, EnableViaJsonString1, EnableViaJsonString, EnableViaJsonFilePath1, EnableViaJsonFilePath, EnableExpanded1
 Aliases:
 
 Required: True
@@ -198,7 +227,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaJsonString, EnableViaJsonFilePath
+Parameter Sets: EnableExpanded, EnableViaJsonString1, EnableViaJsonString, EnableViaJsonFilePath1, EnableViaJsonFilePath, EnableExpanded1
 Aliases:
 
 Required: False
@@ -215,7 +244,7 @@ The list of IPv4 subnets (in CIDR format), IPv6 subnets (in CIDR format), or hos
 
 ```yaml
 Type: System.String[]
-Parameter Sets: EnableExpanded, EnableViaIdentityExpanded
+Parameter Sets: EnableExpanded, EnableExpanded1, EnableViaIdentityExpanded1, EnableViaIdentityExpanded
 Aliases:
 
 Required: False

@@ -20,6 +20,14 @@ Update-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesC
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateExpanded1
+```
+Update-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClusterName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-Option <IStringKeyValuePair[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkCloudKubernetesClusterFeature -InputObject <INetworkCloudIdentity> [-IfMatch <String>]
@@ -27,7 +35,22 @@ Update-AzNetworkCloudKubernetesClusterFeature -InputObject <INetworkCloudIdentit
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityExpanded1
+```
+Update-AzNetworkCloudKubernetesClusterFeature -InputObject <INetworkCloudIdentity> [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-Option <IStringKeyValuePair[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityKubernetesClusterExpanded
+```
+Update-AzNetworkCloudKubernetesClusterFeature -FeatureName <String>
+ -KubernetesClusterInputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-Option <IStringKeyValuePair[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityKubernetesClusterExpanded1
 ```
 Update-AzNetworkCloudKubernetesClusterFeature -FeatureName <String>
  -KubernetesClusterInputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
@@ -43,7 +66,23 @@ Update-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesC
  [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath1
+```
+Update-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClusterName <String>
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### UpdateViaJsonString
+```
+Update-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClusterName <String>
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString1
 ```
 Update-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClusterName <String>
  -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-IfMatch <String>]
@@ -111,7 +150,7 @@ The name of the feature.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityKubernetesClusterExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityKubernetesClusterExpanded, UpdateViaIdentityKubernetesClusterExpanded1, UpdateViaJsonFilePath, UpdateViaJsonFilePath1, UpdateViaJsonString, UpdateViaJsonString1
 Aliases:
 
 Required: True
@@ -159,7 +198,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -174,7 +213,7 @@ Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
+Parameter Sets: UpdateViaJsonFilePath, UpdateViaJsonFilePath1
 Aliases:
 
 Required: True
@@ -189,7 +228,7 @@ Json string supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonString
+Parameter Sets: UpdateViaJsonString, UpdateViaJsonString1
 Aliases:
 
 Required: True
@@ -204,7 +243,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: UpdateViaIdentityKubernetesClusterExpanded
+Parameter Sets: UpdateViaIdentityKubernetesClusterExpanded, UpdateViaIdentityKubernetesClusterExpanded1
 Aliases:
 
 Required: True
@@ -219,7 +258,7 @@ The name of the Kubernetes cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaJsonFilePath, UpdateViaJsonFilePath1, UpdateViaJsonString, UpdateViaJsonString1
 Aliases:
 
 Required: True
@@ -249,7 +288,7 @@ The configured options for the feature.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStringKeyValuePair[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityKubernetesClusterExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1, UpdateViaIdentityKubernetesClusterExpanded, UpdateViaIdentityKubernetesClusterExpanded1
 Aliases:
 
 Required: False
@@ -265,7 +304,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaJsonFilePath, UpdateViaJsonFilePath1, UpdateViaJsonString, UpdateViaJsonString1
 Aliases:
 
 Required: True
@@ -281,7 +320,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaJsonFilePath, UpdateViaJsonFilePath1, UpdateViaJsonString, UpdateViaJsonString1
 Aliases:
 
 Required: False
@@ -296,7 +335,7 @@ The Azure resource tags that will replace the existing ones.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityKubernetesClusterExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1, UpdateViaIdentityKubernetesClusterExpanded, UpdateViaIdentityKubernetesClusterExpanded1
 Aliases:
 
 Required: False

@@ -19,6 +19,20 @@ Disable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName 
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### Disable1
+```
+Disable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName <String>
+ -StorageApplianceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DisableViaIdentity1
+```
+Disable-AzNetworkCloudStorageApplianceRemoteVendorManagement -InputObject <INetworkCloudIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### DisableViaIdentity
 ```
 Disable-AzNetworkCloudStorageApplianceRemoteVendorManagement -InputObject <INetworkCloudIdentity>
@@ -76,7 +90,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: DisableViaIdentity
+Parameter Sets: DisableViaIdentity1, DisableViaIdentity
 Aliases:
 
 Required: True
@@ -122,7 +136,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Disable
+Parameter Sets: Disable, Disable1
 Aliases:
 
 Required: True
@@ -137,7 +151,7 @@ The name of the storage appliance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Disable
+Parameter Sets: Disable, Disable1
 Aliases:
 
 Required: True
@@ -153,7 +167,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Disable
+Parameter Sets: Disable, Disable1
 Aliases:
 
 Required: False

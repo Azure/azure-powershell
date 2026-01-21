@@ -22,6 +22,26 @@ New-AzNetworkCloudClusterManager -Name <String> -ResourceGroupName <String> -Fab
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateExpanded1
+```
+New-AzNetworkCloudClusterManager -Name <String> -ResourceGroupName <String> -FabricControllerId <String>
+ -Location <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-AnalyticsWorkspaceId <String>] [-AvailabilityZone <String[]>] [-EnableSystemAssignedIdentity]
+ [-ManagedResourceGroupConfigurationLocation <String>] [-ManagedResourceGroupConfigurationName <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-VMSize <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded1
+```
+New-AzNetworkCloudClusterManager -InputObject <INetworkCloudIdentity> -FabricControllerId <String>
+ -Location <String> [-IfMatch <String>] [-IfNoneMatch <String>] [-AnalyticsWorkspaceId <String>]
+ [-AvailabilityZone <String[]>] [-EnableSystemAssignedIdentity]
+ [-ManagedResourceGroupConfigurationLocation <String>] [-ManagedResourceGroupConfigurationName <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-VMSize <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaJsonFilePath
 ```
 New-AzNetworkCloudClusterManager -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
@@ -29,7 +49,21 @@ New-AzNetworkCloudClusterManager -Name <String> -ResourceGroupName <String> -Jso
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath1
+```
+New-AzNetworkCloudClusterManager -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaJsonString
+```
+New-AzNetworkCloudClusterManager -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString1
 ```
 New-AzNetworkCloudClusterManager -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
@@ -67,7 +101,7 @@ The resource ID of the Log Analytics workspace that is used for the logs collect
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -93,12 +127,11 @@ Accept wildcard characters: False
 ```
 
 ### -AvailabilityZone
-Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version.
 The Azure availability zones within the region that will be used to support the cluster manager resource.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -129,7 +162,7 @@ Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -144,7 +177,7 @@ The resource ID of the fabric controller that has one to one mapping with the cl
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -187,12 +220,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: CreateViaIdentityExpanded1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -JsonFilePath
 Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Parameter Sets: CreateViaJsonFilePath, CreateViaJsonFilePath1
 Aliases:
 
 Required: True
@@ -207,7 +255,7 @@ Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString
+Parameter Sets: CreateViaJsonString, CreateViaJsonString1
 Aliases:
 
 Required: True
@@ -222,7 +270,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -238,7 +286,7 @@ If not specified, the location of the parent resource is chosen.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -254,7 +302,7 @@ If not specified, the unique name is automatically generated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -269,7 +317,7 @@ The name of the cluster manager.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaJsonFilePath, CreateViaJsonFilePath1, CreateViaJsonString, CreateViaJsonString1
 Aliases: ClusterManagerName
 
 Required: True
@@ -300,7 +348,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaJsonFilePath, CreateViaJsonFilePath1, CreateViaJsonString, CreateViaJsonString1
 Aliases:
 
 Required: True
@@ -316,7 +364,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaJsonFilePath, CreateViaJsonFilePath1, CreateViaJsonString, CreateViaJsonString1
 Aliases:
 
 Required: False
@@ -331,7 +379,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -347,7 +395,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -358,12 +406,11 @@ Accept wildcard characters: False
 ```
 
 ### -VMSize
-Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version.
 The size of the Azure virtual machines to use for hosting the cluster manager resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -408,6 +455,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 
 ## OUTPUTS
 

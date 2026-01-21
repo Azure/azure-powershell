@@ -20,11 +20,27 @@ New-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClus
  [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonString1
+```
+New-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClusterName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### CreateViaJsonString
 ```
 New-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClusterName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
  -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath1
+```
+New-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClusterName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,12 +52,36 @@ New-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClus
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaIdentityKubernetesClusterExpanded1
+```
+New-AzNetworkCloudKubernetesClusterFeature -FeatureName <String>
+ -KubernetesClusterInputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
+ -Location <String> [-Option <IStringKeyValuePair[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### CreateViaIdentityKubernetesClusterExpanded
 ```
 New-AzNetworkCloudKubernetesClusterFeature -FeatureName <String>
  -KubernetesClusterInputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
  -Location <String> [-Option <IStringKeyValuePair[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateExpanded1
+```
+New-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClusterName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ -Location <String> [-Option <IStringKeyValuePair[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded1
+```
+New-AzNetworkCloudKubernetesClusterFeature -InputObject <INetworkCloudIdentity> [-IfMatch <String>]
+ [-IfNoneMatch <String>] -Location <String> [-Option <IStringKeyValuePair[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,7 +140,7 @@ The name of the feature.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString1, CreateViaJsonString, CreateViaJsonFilePath1, CreateViaJsonFilePath, CreateViaIdentityKubernetesClusterExpanded1, CreateViaIdentityKubernetesClusterExpanded, CreateExpanded1
 Aliases:
 
 Required: True
@@ -143,12 +183,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: CreateViaIdentityExpanded1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -JsonFilePath
 Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Parameter Sets: CreateViaJsonFilePath1, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -163,7 +218,7 @@ Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString
+Parameter Sets: CreateViaJsonString1, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -178,7 +233,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: CreateViaIdentityKubernetesClusterExpanded
+Parameter Sets: CreateViaIdentityKubernetesClusterExpanded1, CreateViaIdentityKubernetesClusterExpanded
 Aliases:
 
 Required: True
@@ -193,7 +248,7 @@ The name of the Kubernetes cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: CreateExpanded, CreateViaJsonString1, CreateViaJsonString, CreateViaJsonFilePath1, CreateViaJsonFilePath, CreateExpanded1
 Aliases:
 
 Required: True
@@ -208,7 +263,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded1, CreateViaIdentityKubernetesClusterExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -238,7 +293,7 @@ The configured options for the feature.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStringKeyValuePair[]
-Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded1, CreateViaIdentityKubernetesClusterExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -254,7 +309,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: CreateExpanded, CreateViaJsonString1, CreateViaJsonString, CreateViaJsonFilePath1, CreateViaJsonFilePath, CreateExpanded1
 Aliases:
 
 Required: True
@@ -270,7 +325,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: CreateExpanded, CreateViaJsonString1, CreateViaJsonString, CreateViaJsonFilePath1, CreateViaJsonFilePath, CreateExpanded1
 Aliases:
 
 Required: False
@@ -285,7 +340,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityKubernetesClusterExpanded1, CreateViaIdentityKubernetesClusterExpanded, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False

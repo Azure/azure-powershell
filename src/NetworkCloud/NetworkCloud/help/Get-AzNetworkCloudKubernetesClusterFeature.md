@@ -15,7 +15,14 @@ Get properties of the provided the Kubernetes cluster feature.
 ### List (Default)
 ```
 Get-AzNetworkCloudKubernetesClusterFeature -KubernetesClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityKubernetesCluster1
+```
+Get-AzNetworkCloudKubernetesClusterFeature -FeatureName <String>
+ -KubernetesCluster1InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -26,10 +33,30 @@ Get-AzNetworkCloudKubernetesClusterFeature -FeatureName <String>
  [<CommonParameters>]
 ```
 
+### Get1
+```
+Get-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClusterName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClusterName <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzNetworkCloudKubernetesClusterFeature -KubernetesClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity1
+```
+Get-AzNetworkCloudKubernetesClusterFeature -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -104,7 +131,7 @@ The name of the feature.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetViaIdentityKubernetesCluster, Get
+Parameter Sets: GetViaIdentityKubernetesCluster1, GetViaIdentityKubernetesCluster, Get1, Get
 Aliases:
 
 Required: True
@@ -119,7 +146,22 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentity1, GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -KubernetesCluster1InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: GetViaIdentityKubernetesCluster1
 Aliases:
 
 Required: True
@@ -149,7 +191,7 @@ The name of the Kubernetes cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: List, Get1, Get, List1
 Aliases:
 
 Required: True
@@ -165,10 +207,26 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: List, Get1, Get, List1
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipToken
+The opaque token that the server returns to indicate where to continue listing resources from.
+This is used for paging through large result sets.
+
+```yaml
+Type: System.String
+Parameter Sets: List, List1
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -181,12 +239,28 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: List, Get1, Get, List1
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Top
+The maximum number of resources to return from the operation.
+Example: '$top=10'.
+
+```yaml
+Type: System.Int32
+Parameter Sets: List, List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

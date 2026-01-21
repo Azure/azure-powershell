@@ -19,6 +19,19 @@ Invoke-AzNetworkCloudBareMetalMachineUncordon -BareMetalMachineName <String> -Re
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### Uncordon1
+```
+Invoke-AzNetworkCloudBareMetalMachineUncordon -BareMetalMachineName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UncordonViaIdentity1
+```
+Invoke-AzNetworkCloudBareMetalMachineUncordon -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### UncordonViaIdentity
 ```
 Invoke-AzNetworkCloudBareMetalMachineUncordon -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
@@ -59,7 +72,7 @@ The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Uncordon
+Parameter Sets: Uncordon, Uncordon1
 Aliases:
 
 Required: True
@@ -90,7 +103,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: UncordonViaIdentity
+Parameter Sets: UncordonViaIdentity1, UncordonViaIdentity
 Aliases:
 
 Required: True
@@ -136,7 +149,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Uncordon
+Parameter Sets: Uncordon, Uncordon1
 Aliases:
 
 Required: True
@@ -152,7 +165,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Uncordon
+Parameter Sets: Uncordon, Uncordon1
 Aliases:
 
 Required: False

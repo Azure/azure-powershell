@@ -19,10 +19,24 @@ Invoke-AzNetworkCloudBareMetalMachineCordon -BareMetalMachineName <String> -Reso
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CordonViaJsonString1
+```
+Invoke-AzNetworkCloudBareMetalMachineCordon -BareMetalMachineName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### CordonViaJsonString
 ```
 Invoke-AzNetworkCloudBareMetalMachineCordon -BareMetalMachineName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CordonViaJsonFilePath1
+```
+Invoke-AzNetworkCloudBareMetalMachineCordon -BareMetalMachineName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,6 +45,20 @@ Invoke-AzNetworkCloudBareMetalMachineCordon -BareMetalMachineName <String> -Reso
 Invoke-AzNetworkCloudBareMetalMachineCordon -BareMetalMachineName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CordonExpanded1
+```
+Invoke-AzNetworkCloudBareMetalMachineCordon -BareMetalMachineName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Evacuate <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CordonViaIdentityExpanded1
+```
+Invoke-AzNetworkCloudBareMetalMachineCordon -InputObject <INetworkCloudIdentity> [-Evacuate <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CordonViaIdentityExpanded
@@ -74,7 +102,7 @@ The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: CordonExpanded, CordonViaJsonString, CordonViaJsonFilePath
+Parameter Sets: CordonExpanded, CordonViaJsonString1, CordonViaJsonString, CordonViaJsonFilePath1, CordonViaJsonFilePath, CordonExpanded1
 Aliases:
 
 Required: True
@@ -105,7 +133,7 @@ The indicator of whether to evacuate the node workload when the bare metal machi
 
 ```yaml
 Type: System.String
-Parameter Sets: CordonExpanded, CordonViaIdentityExpanded
+Parameter Sets: CordonExpanded, CordonExpanded1, CordonViaIdentityExpanded1, CordonViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -120,7 +148,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: CordonViaIdentityExpanded
+Parameter Sets: CordonViaIdentityExpanded1, CordonViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -135,7 +163,7 @@ Path of Json file supplied to the Cordon operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CordonViaJsonFilePath
+Parameter Sets: CordonViaJsonFilePath1, CordonViaJsonFilePath
 Aliases:
 
 Required: True
@@ -150,7 +178,7 @@ Json string supplied to the Cordon operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CordonViaJsonString
+Parameter Sets: CordonViaJsonString1, CordonViaJsonString
 Aliases:
 
 Required: True
@@ -196,7 +224,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CordonExpanded, CordonViaJsonString, CordonViaJsonFilePath
+Parameter Sets: CordonExpanded, CordonViaJsonString1, CordonViaJsonString, CordonViaJsonFilePath1, CordonViaJsonFilePath, CordonExpanded1
 Aliases:
 
 Required: True
@@ -212,7 +240,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CordonExpanded, CordonViaJsonString, CordonViaJsonFilePath
+Parameter Sets: CordonExpanded, CordonViaJsonString1, CordonViaJsonString, CordonViaJsonFilePath1, CordonViaJsonFilePath, CordonExpanded1
 Aliases:
 
 Required: False
