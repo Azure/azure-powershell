@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates a workbook that has already been added.
+Update a workbook that has already been added.
 .Description
-Updates a workbook that has already been added.
+Update a workbook that has already been added.
 .Example
 Update-AzApplicationInsightsWorkbook -ResourceGroupName appinsights-hkrs2v-test -Name cc18e5e4-9558-4be1-b333-20b28aaca021 -DisplayName "workbook-portal"
 .Example
@@ -27,7 +27,7 @@ Get-AzApplicationInsightsWorkbook -ResourceGroupName appinsights-hkrs2v-test -Na
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220401.IWorkbook
+Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbook
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -43,23 +43,27 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the Application Insights component resource.
   [RevisionId <String>]: The id of the workbook's revision.
-  [StorageType <StorageType?>]: The type of the Application Insights component data source for the linked storage account.
+  [StorageType <String>]: The type of the Application Insights component data source for the linked storage account.
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
 https://learn.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsightsworkbook
 #>
 function Update-AzApplicationInsightsWorkbook {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220401.IWorkbook])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbook])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
     [System.String]
     # The name of the resource.
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -67,6 +71,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -77,7 +83,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -86,50 +91,69 @@ param(
     # Azure Resource Id that will fetch all linked workbooks.
     ${LinkedSourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # Workbook category, as defined by the user at creation time.
     ${Category},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # The description of the workbook.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # The user-defined name (display name) of the workbook.
     ${DisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # The unique revision id for this workbook definition
     ${Revision},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # Configuration of this particular workbook.
     # Configuration data is a string containing valid JSON
     ${SerializedData},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String[]]
     # A list of 0 or more tags that are associated with this workbook definition
     ${SourceTag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220401.IWorkbookUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -187,6 +211,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -208,17 +241,17 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.ApplicationInsights.private\Update-AzApplicationInsightsWorkbook_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.ApplicationInsights.private\Update-AzApplicationInsightsWorkbook_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.ApplicationInsights.private\Update-AzApplicationInsightsWorkbook_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ApplicationInsights.private\Update-AzApplicationInsightsWorkbook_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
         }
-        if (('UpdateExpanded', 'UpdateViaIdentityExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Kind')) {
+        if (('UpdateExpanded', 'UpdateViaIdentityExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Kind') ) {
             $PSBoundParameters['Kind'] = "shared"
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -228,6 +261,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

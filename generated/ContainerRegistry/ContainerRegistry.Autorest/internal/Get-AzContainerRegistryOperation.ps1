@@ -25,12 +25,12 @@ Lists all of the available Azure Container Registry REST API operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IOperationDefinition
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IOperationDefinition
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistryoperation
 #>
 function Get-AzContainerRegistryOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IOperationDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IOperationDefinition])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -89,12 +89,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.ContainerRegistry.private\Get-AzContainerRegistryOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

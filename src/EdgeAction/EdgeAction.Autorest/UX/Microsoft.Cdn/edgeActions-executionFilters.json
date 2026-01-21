@@ -1,0 +1,95 @@
+{
+  "resourceType": "edgeActions/executionFilters",
+  "apiVersion": "2025-12-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.edgeaction"
+  },
+  "commands": [
+    {
+      "name": "Get-AzEdgeActionExecutionFilter",
+      "description": "Get a EdgeActionExecutionFilter",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.edgeaction/get-azedgeactionexecutionfilter"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EdgeActionName <String>",
+              "-ExecutionFilter <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a EdgeActionExecutionFilter",
+          "parameters": [
+            {
+              "name": "-EdgeActionName",
+              "value": "[Path.edgeActionName]"
+            },
+            {
+              "name": "-ExecutionFilter",
+              "value": "[Path.executionFilter]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzEdgeActionExecutionFilter",
+      "description": "Delete a EdgeActionExecutionFilter",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.edgeaction/remove-azedgeactionexecutionfilter"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EdgeActionName <String>",
+              "-ExecutionFilter <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a EdgeActionExecutionFilter",
+          "parameters": [
+            {
+              "name": "-EdgeActionName",
+              "value": "[Path.edgeActionName]"
+            },
+            {
+              "name": "-ExecutionFilter",
+              "value": "[Path.executionFilter]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

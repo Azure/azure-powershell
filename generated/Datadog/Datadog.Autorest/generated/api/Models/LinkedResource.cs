@@ -20,6 +20,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
+        /// <summary>Backing field for <see cref="Location" /> property.</summary>
+        private string _location;
+
+        /// <summary>The location of the linked resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
+        public string Location { get => this._location; set => this._location = value; }
+
         /// <summary>Creates an new <see cref="LinkedResource" /> instance.</summary>
         public LinkedResource()
         {
@@ -41,6 +48,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>The location of the linked resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The location of the linked resource.",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        string Location { get; set; }
 
     }
     /// The definition of a linked resource.
@@ -49,6 +67,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
     {
         /// <summary>The ARM id of the linked resource.</summary>
         string Id { get; set; }
+        /// <summary>The location of the linked resource.</summary>
+        string Location { get; set; }
 
     }
 }

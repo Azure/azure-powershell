@@ -20,6 +20,44 @@
 
 ## Upcoming Release
 
+## Version 7.24.1
+* Onboarded `Microsoft.Security/privateLinks` to Private Link Common Cmdlets
+
+## Version 7.24.0
+* Added support for `RecordType` property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` cmdlets.
+* Added property "NvaInterfaceConfiguration" to Network Virtual Appliances, as well as support for them in following cmdlets:
+    - `New-AzNetworkVirtualAppliance`
+    - `Get-AzNetworkVirtualAppliance`
+* Added cmdlet to take the NvaInterfaceConfigurations properties on the Network Virtual Appliance:
+    - `New-AzNvaInterfaceConfiguration`  to build individual interface configuration for network virtual appliance.
+* Removed the None from the accepted value for the property 'Sensitivity'
+    - Updated `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride` cmdlet
+
+## Version 7.23.1
+* Onboarded `Microsoft.Security/privateLinks` to Private Link Common Cmdlets
+
+## Version 7.23.0
+* Added 'GeoLocationXFFHeader' and 'ClientAddrXFFHeader' as valid VariableNames in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable`.
+* Bug fix for `AzureFirewallPolicy` to ensure `BasePolicy` is properly set via `Set-AzFirewallPolicy` cmdlet either via pipe or direct value.
+
+## Version 7.22.0
+* Added new RouteTableUsageMode property for Network Manager Routing Configuration
+  - Updated `New-AzNetworkManagerRoutingConfiguration` cmdlet
+  - Updated `Set-AzNetworkManagerRoutingConfiguration` cmdlet
+* Added certificate-based authentication support for VPN Gateway connections
+    - New cmdlet `New-AzVirtualNetworkGatewayCertificateAuthentication` to create certificate authentication configuration
+    - Added `-AuthenticationType` and `-CertificateAuthentication` parameters to `New-AzVirtualNetworkGatewayConnection` and `Set-AzVirtualNetworkGatewayConnection`
+    - Added `-UserAssignedIdentityId` parameter to `Set-AzVirtualNetworkGateway` and `New-AzVirtualNetworkGateway` for managed identity configuration
+* Upgraded the api version from 2024-10-01 to 2025-01-01
+* Added property 'EnableL4ClientIpPreservation' to Application Gateway Backend Settings, as well as support for them in the following cmdlets:
+    - `New-AzApplicationGatewayBackendSetting`
+    - `Add-AzApplicationGatewayBackendSetting`
+    - `Set-AzApplicationGatewayBackendSetting`
+* Added property 'EnableProbeProxyProtocolHeader' to Application Gateway Probes, as well as support for them in the following cmdlets:
+    - `Set-AzApplicationGatewayProbeConfig`
+	- `Add-AzApplicationGatewayProbeConfig`
+	- `New-AzApplicationGatewayProbeConfig`
+
 ## Version 7.21.0
 * Added deprecation warning for cmdlet `Invoke-AzFirewallPacketCapture`
 * Added new cmdlet for Invoke PacketCaptureOperation on Azure Firewall

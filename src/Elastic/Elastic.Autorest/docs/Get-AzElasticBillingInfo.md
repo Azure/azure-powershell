@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticBillingInfo
 
 ## SYNOPSIS
-Get marketplace and organization info mapped to the given monitor.
+Retrieve marketplace and organization billing information mapped to the given Elastic monitor resource.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzElasticBillingInfo -InputObject <IElasticIdentity> [-DefaultProfile <PSObj
 ```
 
 ## DESCRIPTION
-Get marketplace and organization info mapped to the given monitor.
+Retrieve marketplace and organization billing information mapped to the given Elastic monitor resource.
 
 ## EXAMPLES
 

@@ -40,9 +40,8 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// Possible values include: &#39;TCP&#39;, &#39;UDP&#39;</param>
 
         /// <param name="backendPort">This must be unique within a Batch pool. Acceptable values are between 1
-        /// and 65535 except for 22, 3389, 29876 and 29877 as these are reserved. If
-        /// any reserved values are provided the request fails with HTTP status code
-        /// 400.
+        /// and 65535 except for 29876 and 29877 as these are reserved. If any reserved
+        /// values are provided the request fails with HTTP status code 400.
         /// </param>
 
         /// <param name="frontendPortRangeStart">Acceptable values range between 1 and 65534 except ports from 50000 to
@@ -99,9 +98,9 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <summary>
         /// Gets or sets this must be unique within a Batch pool. Acceptable values are
-        /// between 1 and 65535 except for 22, 3389, 29876 and 29877 as these are
-        /// reserved. If any reserved values are provided the request fails with HTTP
-        /// status code 400.
+        /// between 1 and 65535 except for 29876 and 29877 as these are reserved. If
+        /// any reserved values are provided the request fails with HTTP status code
+        /// 400.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backendPort")]
         public int BackendPort {get; set; }

@@ -19,9 +19,22 @@
 -->
 
 ## Upcoming Release
+* Fixed `Remove-AzRoleDefinition` displaying incorrect confirmation message (unformatted placeholder) and empty GUID as target when using `-Confirm` or `-WhatIf` with the `-Name` parameter [#29075]
+* Added breaking change preannouncement for `PSRoleDefinition` type changes in Az.Resources 10.0.0 [#29058]
+    - The flattened properties `Actions`, `NotActions`, `DataActions`, `NotDataActions`, `Condition`, and `ConditionVersion` will be removed from `PSRoleDefinition`
+    - Use `Permissions[n].Actions`, `Permissions[n].DataActions`, etc. instead to access the full permission structure with per-permission conditions
+    - Affects output for `Get-AzRoleDefinition`, `New-AzRoleDefinition`, `Set-AzRoleDefinition`, and `Remove-AzRoleDefinition` (with `-PassThru`)
+    - Affects input format for `New-AzRoleDefinition` and `Set-AzRoleDefinition` cmdlets
+    - Affects `-InputObject` parameter for `Remove-AzRoleDefinition` cmdlet
+
+## Version 9.0.0
+* Removed unavailable variant Get-AzRoleEligibleChildResource cmdlet for InputObject parameter.
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Aligned dependency versions with other modules
 
 ## Version 8.1.1
 * Fixed issue where RoleAssignment cmdlets did not properly handle insufficient MSGraph permissions [#28583]
+* Fixed bug for objectID filtering in `Get-AzRoleAssignment`. [#28640]
 
 ## Version 8.1.0
 * Added functionality for cmdlet `GetAzureResourceGroup`[#27865]
@@ -55,7 +68,7 @@
 
 ## Version 7.9.0
 * Added `-ApplicationId` as an alias of `-ServicePrincipalName`.
-* Supported getting role assignments at the exact scope via `-AtScope` for `Get-AzRoleAssignment`. 
+* Supported getting role assignments at the exact scope via `-AtScope` for `Get-AzRoleAssignment`.
 
 ## Version 7.8.1
 * Updated to use bicep parameter --documentation-uri instead of the deprecated --documentationUri

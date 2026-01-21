@@ -23,18 +23,18 @@ Create an in-memory object for VirtualMachinePlacementHint.
 New-AzNetworkCloudVirtualMachinePlacementHintObject -HintType "Affinity" -ResourceId "/subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/racks/rackName" -SchedulingExecution "Hard" -Scope "Machine"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.VirtualMachinePlacementHint
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachinePlacementHint
 .Link
-https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudVirtualMachinePlacementHintObject
+https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudvirtualmachineplacementhintobject
 #>
 function New-AzNetworkCloudVirtualMachinePlacementHintObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.VirtualMachinePlacementHint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachinePlacementHint])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachinePlacementHintType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Affinity", "AntiAffinity")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachinePlacementHintType]
+    [System.String]
     # The specification of whether this hint supports affinity or anti-affinity with the referenced resources.
     ${HintType},
 
@@ -45,16 +45,16 @@ param(
     ${ResourceId},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineSchedulingExecution])]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Hard", "Soft")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineSchedulingExecution]
+    [System.String]
     # The indicator of whether the hint is a hard or soft requirement during scheduling.
     ${SchedulingExecution},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachinePlacementHintPodAffinityScope])]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Rack", "Machine")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachinePlacementHintPodAffinityScope]
+    [System.String]
     # The scope for the virtual machine affinity or anti-affinity placement hint.
     # It should always be "Machine" in the case of node affinity.
     ${Scope}
@@ -67,6 +67,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -95,6 +98,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

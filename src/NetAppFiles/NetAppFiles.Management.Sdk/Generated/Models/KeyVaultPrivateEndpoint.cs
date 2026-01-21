@@ -12,11 +12,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// that has volumes encrypted with customer-managed keys needs its own key
     /// vault private endpoint.
     /// </summary>
-    /// <remarks>
-    /// Pairs of virtual network ID and private endpoint ID. Every virtual network
-    /// that has volumes encrypted with customer-managed keys needs its own key
-    /// vault private endpoint.
-    /// </remarks>
     public partial class KeyVaultPrivateEndpoint
     {
         /// <summary>

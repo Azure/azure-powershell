@@ -25,11 +25,11 @@ Properties not specified in the request body will be unchanged.
 Update-AzStorageMoverAzNfsFileShareEndpoint -Name myEndpointName -ResourceGroupName myResourceGroupName -StorageMoverName myStorageMover -Description "Update Description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpointBaseUpdateParameters
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBaseUpdateParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,10 +51,10 @@ INPUTOBJECT<IStorageMoverIdentity>: Identity Parameter
   [SubscriptionId<String>]: The ID of the target subscription.
 
 .Link
-https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemovernfsfileshareendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoveraznfsfileshareendpoint
 #>
 function Update-AzStorageMoverAzNfsFileShareEndpoint {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -146,9 +146,8 @@ function Update-AzStorageMoverAzNfsFileShareEndpoint {
     )
 
     process {
-        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.NfsMountEndpointUpdateProperties]::New()
-        $Properties.EndpointType = 'AzureStorageNfsFileShare'
-
+        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.AzureStorageNfsFileShareEndpointUpdateProperties]::New()
+        
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Properties.Description = $Description
         }

@@ -27,9 +27,9 @@ Get-AzAttestationDefaultProvider
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider
+Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProviderListResult
+Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProviderListResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,7 +46,7 @@ INPUTOBJECT <IAttestationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.attestation/get-azattestationdefaultprovider
 #>
 function Get-AzAttestationDefaultProvider {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider], [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProviderListResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider], [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProviderListResult])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -67,7 +67,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -126,6 +125,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -149,9 +157,7 @@ begin {
             GetViaIdentity = 'Az.Attestation.private\Get-AzAttestationDefaultProvider_GetViaIdentity';
             List = 'Az.Attestation.private\Get-AzAttestationDefaultProvider_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -165,6 +171,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

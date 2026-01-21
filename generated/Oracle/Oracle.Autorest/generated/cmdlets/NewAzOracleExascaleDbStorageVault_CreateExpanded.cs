@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVault))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"create a ExascaleDbStorageVault")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/exascaleDbStorageVaults/{exascaleDbStorageVaultName}", ApiVersion = "2025-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/exascaleDbStorageVaults/{exascaleDbStorageVaultName}", ApiVersion = "2025-09-01")]
     public partial class NewAzOracleExascaleDbStorageVault_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IContext
@@ -40,17 +40,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
         /// <summary>ExascaleDbStorageVault resource definition</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVault _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ExascaleDbStorageVault();
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>
         /// The size of additional Flash Cache in percentage of High Capacity database storage.
@@ -114,6 +105,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
         public string DisplayName { get => _resourceBody.DisplayName ?? null; set => _resourceBody.DisplayName = value; }
+
+        /// <summary>Cloud Exadata infrastructure ID</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Cloud Exadata infrastructure ID")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Cloud Exadata infrastructure ID",
+        SerializedName = @"exadataInfrastructureId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ExadataInfrastructureId { get => _resourceBody.ExadataInfrastructureId ?? null; set => _resourceBody.ExadataInfrastructureId = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -344,11 +346,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Oracle.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -664,24 +661,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVault
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

@@ -25,12 +25,12 @@ Get-AzMigrateReplicationPolicy -ResourceGroupName azmigratepwshtestasr13072020 -
 Get-AzMigrateReplicationPolicy -ResourceGroupName azmigratepwshtestasr13072020 -ResourceName AzMigrateTestProjectPWSH02aarsvault -PolicyName  migrateAzMigratePWSHTc8d1sitepolicy
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IPolicy
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IPolicy
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationpolicy
 #>
 function Get-AzMigrateReplicationPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IPolicy])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

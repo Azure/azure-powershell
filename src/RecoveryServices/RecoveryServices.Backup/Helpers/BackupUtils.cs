@@ -58,6 +58,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {"chinaeast3", "chinanorth3"},
             {"northeurope", "westeurope"},
             {"westeurope", "northeurope"},
+            {"bleufrancecentral", "bleufrancesouth"},
+            {"bleufrancesouth", "bleufrancecentral"},
             {"francecentral", "francesouth"},
             {"francesouth", "francecentral"},
             {"germanycentral", "germanynortheast"},
@@ -103,6 +105,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {"southcentralus2", "westcentralus"},
             {"southeastus3", "westus3"},
             {"eastus3", "westus3"},
+            {"northeastus5", "centralus"},
             {"southeastus5", "centralus"},
             {"southeastus", "westus3"}
         };

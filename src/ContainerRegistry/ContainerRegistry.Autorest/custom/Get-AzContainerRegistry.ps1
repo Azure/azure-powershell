@@ -29,7 +29,7 @@ Get-AzContainerRegistry
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -60,8 +60,7 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistry
 #>
 function Get-AzContainerRegistry {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry])]
-[Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry", DeprecatedOutputProperties = ("NetworkRuleSetIPRule, PrivateEndpointConnection, DataEndpointHostName"), NewOutputProperties = ("NetworkRuleSetIPRule, PrivateEndpointConnection, DataEndpointHostName. This parameter will be changed from single object to 'List'."))]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry])]
 [CmdletBinding(DefaultParameterSetName='List2', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

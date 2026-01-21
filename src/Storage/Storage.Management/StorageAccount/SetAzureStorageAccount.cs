@@ -434,6 +434,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? allowBlobPublicAccess = null;
 
+        [CmdletParameterBreakingChangeWithVersion("MinimumTlsVersion", "15.4.0", "9.7.0", ChangeDescription = "The MinimumTlsVersion parameter will no longer allow TLS 1.0 or TLS 1.1. TLS 1.2 or later will be required.")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The minimum TLS version to be permitted on requests to storage.")]
@@ -618,6 +619,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [PSArgumentCompleter("None", "Any")]
         [ValidateNotNullOrEmpty]
         public string ZonePlacementPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Status indicating whether Geo Priority Replication is enabled for the account.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableBlobGeoPriorityReplication
+        {
+            get
+            {
+                return enableBlobGeoPriorityReplication != null ? enableBlobGeoPriorityReplication.Value : false;
+            }
+            set
+            {
+                enableBlobGeoPriorityReplication = value;
+            }
+        }
+        private bool? enableBlobGeoPriorityReplication = null;
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -917,6 +935,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     }
                     if (this.minimumTlsVersion != null)
                     {
+                        if (this.minimumTlsVersion == StorageModels.MinimumTlsVersion.TLS10 || this.minimumTlsVersion == StorageModels.MinimumTlsVersion.TLS11)
+                        {
+                            WriteWarning("TLS 1.0 and TLS 1.1 are retired, so will use TLS 1.2");
+                            this.minimumTlsVersion = StorageModels.MinimumTlsVersion.TLS12;
+                        }
                         updateParameters.MinimumTlsVersion = this.minimumTlsVersion;
                     }
                     if (this.allowBlobPublicAccess != null)
@@ -996,6 +1019,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (this.ZonePlacementPolicy != null)
                     {
                         updateParameters.Placement = new Placement(this.ZonePlacementPolicy);
+                    }
+                    if (this.enableBlobGeoPriorityReplication != null)
+                    {
+                        updateParameters.GeoPriorityReplicationStatus = new GeoPriorityReplicationStatus(this.enableBlobGeoPriorityReplication);
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(

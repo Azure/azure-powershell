@@ -111,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
             }
             if (content.Contains("InstanceCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsAlwaysReadyConfigInternal)this).InstanceCount = (float?) content.GetValueForProperty("InstanceCount",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsAlwaysReadyConfigInternal)this).InstanceCount, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsAlwaysReadyConfigInternal)this).InstanceCount = (int?) content.GetValueForProperty("InstanceCount",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsAlwaysReadyConfigInternal)this).InstanceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
             }
             if (content.Contains("InstanceCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsAlwaysReadyConfigInternal)this).InstanceCount = (float?) content.GetValueForProperty("InstanceCount",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsAlwaysReadyConfigInternal)this).InstanceCount, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsAlwaysReadyConfigInternal)this).InstanceCount = (int?) content.GetValueForProperty("InstanceCount",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsAlwaysReadyConfigInternal)this).InstanceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializePSObject(content);
         }
