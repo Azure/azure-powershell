@@ -15,19 +15,42 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPostgreSqlFlexibleServe
 }
 
 Describe 'Get-AzPostgreSqlFlexibleServerFirewallRule' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $global:firewallRuleName = "test-firewall-$(Get-Random)"
+        New-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Name $global:firewallRuleName -StartIPAddress '192.168.1.1' -EndIPAddress '192.168.1.255'
     }
 
-    It 'GetViaIdentityFlexibleServer' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    AfterAll {
+        Remove-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Name $global:firewallRuleName -Force
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $rules = Get-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName
+        $rules | Should -Not -BeNullOrEmpty
+        $rules.Count | Should -BeGreaterOrEqual 1
+        $testRule = $rules | Where-Object { $_.Name -eq $global:firewallRuleName }
+        $testRule | Should -Not -BeNullOrEmpty
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $rule = Get-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Name $global:firewallRuleName
+        $rule | Should -Not -BeNullOrEmpty
+        $rule.Name | Should -Be $global:firewallRuleName
+        $rule.StartIPAddress | Should -Be '192.168.1.1'
+        $rule.EndIPAddress | Should -Be '192.168.1.255'
+    }
+
+    It 'GetViaIdentity' {
+        $rule = Get-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Name $global:firewallRuleName
+        $ruleViaIdentity = Get-AzPostgreSqlFlexibleServerFirewallRule -InputObject $rule
+        $ruleViaIdentity | Should -Not -BeNullOrEmpty
+        $ruleViaIdentity.Name | Should -Be $rule.Name
+    }
+
+    It 'GetViaIdentityFlexibleServer' {
+        $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+        $rule = Get-AzPostgreSqlFlexibleServerFirewallRule -FlexibleServerInputObject $server -Name $global:firewallRuleName
+        $rule | Should -Not -BeNullOrEmpty
+        $rule.Name | Should -Be $global:firewallRuleName
     }
 }

@@ -15,19 +15,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPostgreSqlFlexibleServe
 }
 
 Describe 'Get-AzPostgreSqlFlexibleServerDatabase' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $databases = Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName
+        $databases | Should -Not -BeNullOrEmpty
+        $databases.Count | Should -BeGreaterOrEqual 1
+        $databases[0].Name | Should -Not -BeNullOrEmpty
     }
 
-    It 'GetViaIdentityFlexibleServer' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $database = Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Name 'postgres'
+        $database | Should -Not -BeNullOrEmpty
+        $database.Name | Should -Be 'postgres'
+        $database.Charset | Should -Not -BeNullOrEmpty
+        $database.Collation | Should -Not -BeNullOrEmpty
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $database = Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Name 'postgres'
+        $databaseViaIdentity = Get-AzPostgreSqlFlexibleServerDatabase -InputObject $database
+        $databaseViaIdentity | Should -Not -BeNullOrEmpty
+        $databaseViaIdentity.Name | Should -Be $database.Name
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentityFlexibleServer' {
+        $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+        $database = Get-AzPostgreSqlFlexibleServerDatabase -FlexibleServerInputObject $server -Name 'postgres'
+        $database | Should -Not -BeNullOrEmpty
+        $database.Name | Should -Be 'postgres'
     }
 }

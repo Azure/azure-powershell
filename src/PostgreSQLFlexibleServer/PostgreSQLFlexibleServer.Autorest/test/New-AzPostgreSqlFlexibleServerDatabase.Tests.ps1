@@ -15,19 +15,52 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzPostgreSqlFlexibleServe
 }
 
 Describe 'New-AzPostgreSqlFlexibleServerDatabase' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
+        $databaseName = "testdb$(Get-Random)"
+        $database = New-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Name $databaseName -Charset 'UTF8' -Collation 'en_US.utf8'
+        $database | Should -Not -BeNullOrEmpty
+        $database.Name | Should -Be $databaseName
+        $database.Charset | Should -Be 'UTF8'
+        $database.Collation | Should -Be 'en_US.utf8'
+        
+        # Clean up
+        Remove-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Name $databaseName -Force
+    }
+
+    It 'CreateViaJsonString' {
+        $databaseName = "testdb$(Get-Random)"
+        $json = @'
+{
+  "properties": {
+    "charset": "UTF8",
+    "collation": "en_US.utf8"
+  }
+}
+'@
+        $database = New-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Name $databaseName -JsonString $json
+        $database | Should -Not -BeNullOrEmpty
+        $database.Name | Should -Be $databaseName
+        $database.Charset | Should -Be 'UTF8'
+        $database.Collation | Should -Be 'en_US.utf8'
+        
+        # Clean up
+        Remove-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Name $databaseName -Force
+    }
+
+    It 'CreateViaJsonFilePath' -Skip {
+        # Skip this test as it requires file operations
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityFlexibleServerExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaIdentityFlexibleServerExpanded' {
+        $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+        $databaseName = "testdb$(Get-Random)"
+        $database = New-AzPostgreSqlFlexibleServerDatabase -FlexibleServerInputObject $server -Name $databaseName -Charset 'UTF8'
+        $database | Should -Not -BeNullOrEmpty
+        $database.Name | Should -Be $databaseName
+        $database.Charset | Should -Be 'UTF8'
+        
+        # Clean up
+        Remove-AzPostgreSqlFlexibleServerDatabase -InputObject $database -Force
     }
 }

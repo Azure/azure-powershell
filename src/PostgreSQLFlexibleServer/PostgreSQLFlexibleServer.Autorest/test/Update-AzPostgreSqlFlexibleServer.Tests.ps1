@@ -15,11 +15,33 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzPostgreSqlFlexibleSe
 }
 
 Describe 'Update-AzPostgreSqlFlexibleServer' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        # Get current server details
+        $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+        $originalStorageSizeGB = $server.StorageSizeGB
+        
+        # Update with increased storage (cannot decrease)
+        $newStorageSize = $originalStorageSizeGB + 32
+        $updatedServer = Update-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName -StorageSizeGB $newStorageSize
+        
+        $updatedServer | Should -Not -BeNullOrEmpty
+        $updatedServer.Name | Should -Be $env.flexibleServerName
+        $updatedServer.StorageSizeGB | Should -Be $newStorageSize
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+        $originalTags = $server.Tag
+        
+        # Update tags via identity
+        $newTags = @{ 'TestKey' = 'TestValue'; 'Environment' = 'Testing' }
+        $updatedServer = Update-AzPostgreSqlFlexibleServer -InputObject $server -Tag $newTags
+        
+        $updatedServer | Should -Not -BeNullOrEmpty
+        $updatedServer.Tag['TestKey'] | Should -Be 'TestValue'
+        $updatedServer.Tag['Environment'] | Should -Be 'Testing'
+        
+        # Reset tags
+        Update-AzPostgreSqlFlexibleServer -InputObject $server -Tag $originalTags
     }
 }

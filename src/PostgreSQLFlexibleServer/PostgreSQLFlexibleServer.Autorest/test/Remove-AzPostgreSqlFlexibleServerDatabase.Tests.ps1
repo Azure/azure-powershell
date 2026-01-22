@@ -15,15 +15,46 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzPostgreSqlFlexibleSe
 }
 
 Describe 'Remove-AzPostgreSqlFlexibleServerDatabase' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        # Create a test database first
+        $databaseName = "testdb$(Get-Random)"
+        New-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Name $databaseName -Charset 'UTF8'
+        
+        # Verify it exists
+        $database = Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Name $databaseName
+        $database | Should -Not -BeNullOrEmpty
+        
+        # Remove it
+        Remove-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Name $databaseName -Force
+        
+        # Verify it's gone
+        { Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Name $databaseName } | Should -Throw
     }
 
-    It 'DeleteViaIdentityFlexibleServer' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        # Create a test database first
+        $databaseName = "testdb$(Get-Random)"
+        $database = New-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Name $databaseName -Charset 'UTF8'
+        
+        # Remove via identity
+        Remove-AzPostgreSqlFlexibleServerDatabase -InputObject $database -Force
+        
+        # Verify it's gone
+        { Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Name $databaseName } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentityFlexibleServer' {
+        # Create a test database first
+        $databaseName = "testdb$(Get-Random)"
+        New-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Name $databaseName -Charset 'UTF8'
+        
+        # Get server object
+        $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+        
+        # Remove via server identity
+        Remove-AzPostgreSqlFlexibleServerDatabase -FlexibleServerInputObject $server -Name $databaseName -Force
+        
+        # Verify it's gone
+        { Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -Name $databaseName } | Should -Throw
     }
 }

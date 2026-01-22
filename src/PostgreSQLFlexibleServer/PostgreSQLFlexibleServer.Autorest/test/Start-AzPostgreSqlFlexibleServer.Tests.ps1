@@ -15,11 +15,59 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzPostgreSqlFlexibleSer
 }
 
 Describe 'Start-AzPostgreSqlFlexibleServer' {
-    It 'Start' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        # Stop the server first to test starting
+        Stop-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+        # Wait for stop operation to complete
+        do {
+            Start-Sleep -Seconds 30
+            $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+        } while ($server.State -ne 'Stopped')
     }
 
-    It 'StartViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    AfterAll {
+        # Ensure server is started after tests
+        $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+        if ($server.State -ne 'Ready') {
+            Start-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+        }
     }
-}
+
+    It 'Start' {
+        # Verify server is stopped
+        $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+        $server.State | Should -Be 'Stopped'
+        
+        # Start the server
+        Start-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+        
+        # Wait and verify it's starting/started
+        do {
+            Start-Sleep -Seconds 30
+            $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+        } while ($server.State -notin @('Starting', 'Ready'))
+        
+        $server.State | Should -BeIn @('Starting', 'Ready')
+    }
+
+    It 'StartViaIdentity' {
+        # Stop the server first
+        Stop-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+        
+        # Wait for stop operation to complete
+        do {
+            Start-Sleep -Seconds 30
+            $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+        } while ($server.State -ne 'Stopped')
+        
+        # Start via identity
+        Start-AzPostgreSqlFlexibleServer -InputObject $server
+        
+        # Verify it's starting
+        do {
+            Start-Sleep -Seconds 30
+            $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+        } while ($server.State -notin @('Starting', 'Ready'))
+        
+        $server.State | Should -BeIn @('Starting', 'Ready')
+    }

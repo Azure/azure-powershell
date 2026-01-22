@@ -15,19 +15,39 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPostgreSqlFlexibleServe
 }
 
 Describe 'Get-AzPostgreSqlFlexibleServer' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $servers = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup
+        $servers | Should -Not -BeNullOrEmpty
+        $testServer = $servers | Where-Object { $_.Name -eq $env.flexibleServerName }
+        $testServer | Should -Not -BeNullOrEmpty
+        $testServer.Name | Should -Be $env.flexibleServerName
+        $testServer.State | Should -Be 'Ready'
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+        $server | Should -Not -BeNullOrEmpty
+        $server.Name | Should -Be $env.flexibleServerName
+        $server.State | Should -Be 'Ready'
+        $server.PostgreSqlVersion | Should -Not -BeNullOrEmpty
+        $server.SkuName | Should -Not -BeNullOrEmpty
+        $server.SkuTier | Should -Not -BeNullOrEmpty
+        $server.Location | Should -Not -BeNullOrEmpty
+        $server.AdministratorLogin | Should -Not -BeNullOrEmpty
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $servers = Get-AzPostgreSqlFlexibleServer
+        $servers | Should -Not -BeNullOrEmpty
+        $testServer = $servers | Where-Object { $_.Name -eq $env.flexibleServerName }
+        $testServer | Should -Not -BeNullOrEmpty
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+        $serverViaIdentity = Get-AzPostgreSqlFlexibleServer -InputObject $server
+        $serverViaIdentity | Should -Not -BeNullOrEmpty
+        $serverViaIdentity.Name | Should -Be $server.Name
+        $serverViaIdentity.ResourceGroupName | Should -Be $server.ResourceGroupName
     }
 }
