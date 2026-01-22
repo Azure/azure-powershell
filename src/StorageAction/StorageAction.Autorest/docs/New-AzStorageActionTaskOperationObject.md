@@ -14,7 +14,7 @@ Create an in-memory object for StorageTaskOperation.
 
 ```
 New-AzStorageActionTaskOperationObject -Name <String> [-OnFailure <String>] [-OnSuccess <String>]
- [-Parameter <IStorageTaskOperationParameters>] [<CommonParameters>]
+ [-Parameter <ITags>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 Key-value parameters for the operation.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperationParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.ITags
 Parameter Sets: (All)
 Aliases:
 
