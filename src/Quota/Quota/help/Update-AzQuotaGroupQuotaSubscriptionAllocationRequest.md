@@ -20,14 +20,14 @@ User can collect unused quotas from multiple subscriptions within the groupQuota
 Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -GroupQuotaName <String> -Location <String>
  -ManagementGroupId <String> -ResourceProviderName <String> [-SubscriptionId <String>]
  [-Value <ISubscriptionQuotaAllocations[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -GroupQuotaName <String> -Location <String>
  -ManagementGroupId <String> -ResourceProviderName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -GroupQuotaName <String> -
 ```
 Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -GroupQuotaName <String> -Location <String>
  -ManagementGroupId <String> -ResourceProviderName <String> [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -44,7 +44,7 @@ Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -GroupQuotaName <String> -
 Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -GroupQuotaName <String> -Location <String>
  -ResourceProviderName <String> -ManagementGroupInputObject <IQuotaIdentity>
  [-Value <ISubscriptionQuotaAllocations[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityManagementGroup
@@ -52,7 +52,7 @@ Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -GroupQuotaName <String> -
 Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -GroupQuotaName <String> -Location <String>
  -ResourceProviderName <String> -ManagementGroupInputObject <IQuotaIdentity>
  -AllocateQuotaRequest <ISubscriptionQuotaAllocationsList> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Update
@@ -60,14 +60,14 @@ Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -GroupQuotaName <String> -
 Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -GroupQuotaName <String> -Location <String>
  -ManagementGroupId <String> -ResourceProviderName <String> [-SubscriptionId <String>]
  -AllocateQuotaRequest <ISubscriptionQuotaAllocationsList> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityResourceProviderExpanded
 ```
 Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -Location <String>
  -ResourceProviderInputObject <IQuotaIdentity> [-Value <ISubscriptionQuotaAllocations[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -75,7 +75,7 @@ Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -Location <String>
 ```
 Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -Location <String>
  -ResourceProviderInputObject <IQuotaIdentity> -AllocateQuotaRequest <ISubscriptionQuotaAllocationsList>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -83,7 +83,7 @@ Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -Location <String>
 ```
 Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -Location <String> -ResourceProviderName <String>
  -GroupQuotaInputObject <IQuotaIdentity> [-Value <ISubscriptionQuotaAllocations[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -91,7 +91,7 @@ Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -Location <String> -Resour
 ```
 Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -Location <String> -ResourceProviderName <String>
  -GroupQuotaInputObject <IQuotaIdentity> -AllocateQuotaRequest <ISubscriptionQuotaAllocationsList>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -99,14 +99,14 @@ Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -Location <String> -Resour
 ```
 Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -InputObject <IQuotaIdentity>
  [-Value <ISubscriptionQuotaAllocations[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
 Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -InputObject <IQuotaIdentity>
  -AllocateQuotaRequest <ISubscriptionQuotaAllocationsList> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -307,21 +307,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

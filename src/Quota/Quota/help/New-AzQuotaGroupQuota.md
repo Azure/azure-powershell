@@ -20,35 +20,35 @@ Once the operation gets to terminal state - Succeeded | Failed, then the URI wil
 ### CreateExpanded (Default)
 ```
 New-AzQuotaGroupQuota -ManagementGroupId <String> -Name <String> [-DisplayName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzQuotaGroupQuota -ManagementGroupId <String> -Name <String> -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzQuotaGroupQuota -ManagementGroupId <String> -Name <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentityManagementGroupExpanded
 ```
 New-AzQuotaGroupQuota -Name <String> -ManagementGroupInputObject <IQuotaIdentity> [-DisplayName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzQuotaGroupQuota -InputObject <IQuotaIdentity> [-DisplayName <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -220,21 +220,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
