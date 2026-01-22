@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 6.4.0
+* Added 'Get-AzSqlDeletedServer' cmdlet to retrieve soft deleted Azure SQL servers
+    - Supports retrieving deleted servers by location or specific deleted server by name
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* The EnableSoftDelete parameter is deprecated from `New-AzSqlServer` and `Set-AzSqlServer` cmdlets and will be removed by May 2026.
+
 ## Version 6.3.0
 * Updated with support for Immutable Long-Term Retention Backups
     - Updated `Set-AzSqlDatabaseBackupLongTermRetentionPolicy` cmdlet to expose `TimeBasedImmutability` and `TimeBasedImmutabilityMode` parameters.

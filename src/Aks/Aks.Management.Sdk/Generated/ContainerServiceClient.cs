@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Management.ContainerService
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        public string SubscriptionId { get; set;}
+        public System.Guid SubscriptionId { get; set;}
 
         /// <summary>
         /// The preferred language for the response.
@@ -92,6 +92,18 @@ namespace Microsoft.Azure.Management.ContainerService
         /// Gets the ISnapshotsOperations
         /// </summary>
         public virtual ISnapshotsOperations Snapshots { get; private set; }
+        /// <summary>
+        /// Gets the ITrustedAccessRoleBindingsOperations
+        /// </summary>
+        public virtual ITrustedAccessRoleBindingsOperations TrustedAccessRoleBindings { get; private set; }
+        /// <summary>
+        /// Gets the ITrustedAccessRolesOperations
+        /// </summary>
+        public virtual ITrustedAccessRolesOperations TrustedAccessRoles { get; private set; }
+        /// <summary>
+        /// Gets the IMachinesOperations
+        /// </summary>
+        public virtual IMachinesOperations Machines { get; private set; }
         /// <summary>
         /// Initializes a new instance of the ContainerServiceClient class.
         /// </summary>
@@ -296,6 +308,9 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -335,8 +350,11 @@ namespace Microsoft.Azure.Management.ContainerService
             this.PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             this.ResolvePrivateLinkServiceId = new ResolvePrivateLinkServiceIdOperations(this);
             this.Snapshots = new SnapshotsOperations(this);
+            this.TrustedAccessRoleBindings = new TrustedAccessRoleBindingsOperations(this);
+            this.TrustedAccessRoles = new TrustedAccessRolesOperations(this);
+            this.Machines = new MachinesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2023-04-01";
+            this.ApiVersion = "2025-08-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

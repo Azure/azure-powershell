@@ -10,6 +10,9 @@
 - Quick start templates
 - Versioning and publishing AzDev module
 
+## 2025/12/22
+- Feature: Added cmdlet `New-DevTSPModule` for TypeSpec development.
+
 ## 2025/8/26
 - Feature: Recognize AutoRest.PowerShell version (v3/v4) for AutoRest-based projects and show as `SubType` in `Get-DevProject` output.
 
