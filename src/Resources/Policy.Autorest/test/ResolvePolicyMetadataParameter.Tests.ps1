@@ -10,6 +10,9 @@ Describe 'ResolvePolicyMetadataParameter' {
     version    = "1.0.0";
     category   = "ScenarioTest";
     enabled    = false;
+    createdOn  = "10/04/2024 00:20:02";
+    createdOnWithoutQuotes  = 10/04/2024 00:20:02;
+    dateTimeTestVal = "2024-10-04T00:20:02Z";
 }
 '@
         $complexPSObjectMetadata = @'
@@ -41,7 +44,10 @@ Describe 'ResolvePolicyMetadataParameter' {
         $resolved = ResolvePolicyMetadataParameter -Metadata $simplePSObjectMetadata
         $resolved.version | Should -Be '1.0.0'
         $resolved.category | Should -Be 'ScenarioTest'
-        $resolved.enabled | Should -BeFalse
+        $resolved.enabled | Should -Be "false"
+        $resolved.createdOn | Should -Be '10/04/2024 00:20:02'
+        $resolved.createdOnWithoutQuotes | Should -Be '10/04/2024 00:20:02'
+        $resolved.dateTimeTestVal | Should -Be '2024-10-04T00:20:02Z'
     }
 
     It 'Parse complex PSObject metadata' {

@@ -1,4 +1,3 @@
-
 # ----------------------------------------------------------------------------------
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -443,8 +442,11 @@ function ConvertTo-HashtableSafely {
         [string] $InputObject
     )
 
+    # Adding quotes to unquoted strings, datetimes, etc. to avoid parsing errors
+    $fixedInput = $InputObject -replace '(?m)(=\s*)([a-zA-Z_][\w\-\.:/]*|\d{1,2}:\d{2}:\d{2}|\d{4}-\d{2}-\d{2}(?:[T ]\d{2}:\d{2}:\d{2}Z?)?|\d{1,2}/\d{1,2}/\d{4}(?:\s+\d{1,2}:\d{2}:\d{2})?|\d{4}/\d{2}/\d{2}(?:\s+\d{1,2}:\d{2}:\d{2})?)(\s*[\r\n;}]|$)', '$1"$2"$3'
+
     $tokens = $null; $errors = $null
-    $ast = [Parser]::ParseInput($InputObject, [ref]$tokens, [ref]$errors)
+    $ast = [Parser]::ParseInput($fixedInput, [ref]$tokens, [ref]$errors)
 
     if ($errors -and $errors.Count -gt 0) {
         throw "Invalid PSCustomObject or hashtable literal: $($errors[0].Message)"
