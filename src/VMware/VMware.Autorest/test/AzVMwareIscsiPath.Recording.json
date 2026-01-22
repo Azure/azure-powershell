@@ -29,7 +29,7 @@
   "AzVMwareIscsiPath+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -61,7 +61,7 @@
   "AzVMwareIscsiPath+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -93,7 +93,7 @@
   "AzVMwareIscsiPath+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -125,7 +125,7 @@
   "AzVMwareIscsiPath+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -184,7 +184,7 @@
   "AzVMwareIscsiPath+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -216,7 +216,7 @@
   "AzVMwareIscsiPath+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -248,7 +248,7 @@
   "AzVMwareIscsiPath+[NoContext]+Remove+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/iscsiPaths/default?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

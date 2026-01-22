@@ -2,7 +2,7 @@
   "AzVMwareServiceComponentAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/serviceComponents/all/checkAvailability?api-version=2025-09-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/serviceComponents/all/checkAvailability?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/serviceComponents/all/checkAvailability?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -20,8 +20,8 @@
     "Response": {
       "StatusCode": 202,
       "Headers": {
-        "azure-asyncoperation": [ "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/serviceComponents/all/operationstatuses/12345678-1234-1234-1234-123456789012?api-version=2025-09-01" ],
-        "Location": [ "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/serviceComponents/all/checkAvailabilityResult?api-version=2025-09-01" ],
+        "azure-asyncoperation": [ "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/serviceComponents/all/operationstatuses/12345678-1234-1234-1234-123456789012?api-version=2025-09-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/serviceComponents/all/checkAvailabilityResult?api-version=2025-09-01" ],
         "Retry-After": [ "30" ],
         "Server": [ "Rocket" ],
         "Date": [ "Wed, 21 Jan 2026 23:02:59 GMT" ]
@@ -33,10 +33,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareServiceComponentAvailability+[NoContext]+Check+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/serviceComponents/all/operationstatuses/12345678-1234-1234-1234-123456789012?api-version=2025-09-01+2": {
+  "AzVMwareServiceComponentAvailability+[NoContext]+Check+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/serviceComponents/all/operationstatuses/12345678-1234-1234-1234-123456789012?api-version=2025-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/serviceComponents/all/operationstatuses/12345678-1234-1234-1234-123456789012?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/serviceComponents/all/operationstatuses/12345678-1234-1234-1234-123456789012?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -65,10 +65,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareServiceComponentAvailability+[NoContext]+Check+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/serviceComponents/all/checkAvailabilityResult?api-version=2025-09-01+3": {
+  "AzVMwareServiceComponentAvailability+[NoContext]+Check+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/serviceComponents/all/checkAvailabilityResult?api-version=2025-09-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/serviceComponents/all/checkAvailabilityResult?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/serviceComponents/all/checkAvailabilityResult?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
