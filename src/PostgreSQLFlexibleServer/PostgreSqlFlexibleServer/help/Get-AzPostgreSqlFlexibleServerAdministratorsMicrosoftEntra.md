@@ -44,27 +44,32 @@ Gets information about a server administrator associated to a Microsoft Entra pr
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all Microsoft Entra administrators for a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ResourceGroupName "myresourcegroup" -ServerName "myserver"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ObjectId                           PrincipalName                PrincipalType TenantId
+--------                           -------------                ------------- --------
+oooooooo-oooo-oooo-oooo-oooooooooooo exampleuser@contoso.com     User          tttttttt-tttt-tttt-tttt-tttttttttttt
+oooooooo-oooo-oooo-oooo-oooooooooooo PostgreSQLAdmins@contoso.com Group         tttttttt-tttt-tttt-tttt-tttttttttttt
 ```
 
-{{ Add description here }}
+Lists all Microsoft Entra administrators configured for the specified PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific Microsoft Entra administrator by Object ID
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ResourceGroupName "myresourcegroup" -ServerName "myserver" -ObjectId "oooooooo-oooo-oooo-oooo-oooooooooooo"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ObjectId                           PrincipalName           PrincipalType TenantId
+--------                           -------------           ------------- --------
+oooooooo-oooo-oooo-oooo-oooooooooooo exampleuser@contoso.com User          tttttttt-tttt-tttt-tttt-tttttttttttt
 ```
 
-{{ Add description here }}
+Gets information about the specific Microsoft Entra administrator with the specified Object ID.
 
 ## PARAMETERS
 

@@ -44,27 +44,33 @@ Gets the results of a long retention backup operation for a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all long-term retention backups for a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerBackupsLongTermRetention -ResourceGroupName "myresourcegroup" -ServerName "myserver"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                        Status      CreatedTime               ExpiryTime                SizeInBytes
+----                        ------      -----------               ----------                -----------
+ltr_backup_20240101_monthly Completed   2024-01-01T02:00:00.000Z  2025-01-01T02:00:00.000Z  2147483648
+ltr_backup_20240115_weekly  Completed   2024-01-15T02:00:00.000Z  2024-04-15T02:00:00.000Z  2147483648
+ltr_backup_20240120_daily   InProgress  2024-01-20T02:00:00.000Z  2024-02-20T02:00:00.000Z  -
 ```
 
-{{ Add description here }}
+Lists all long-term retention backup operations for the specified PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific long-term retention backup by name
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerBackupsLongTermRetention -ResourceGroupName "myresourcegroup" -ServerName "myserver" -BackupName "ltr_backup_20240101_monthly"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                        Status    CreatedTime               ExpiryTime                SizeInBytes RetentionPolicy
+----                        ------    -----------               ----------                ----------- ---------------
+ltr_backup_20240101_monthly Completed 2024-01-01T02:00:00.000Z  2025-01-01T02:00:00.000Z  2147483648  Monthly
 ```
 
-{{ Add description here }}
+Gets information about the specific long-term retention backup named 'ltr_backup_20240101_monthly'.
 
 ## PARAMETERS
 

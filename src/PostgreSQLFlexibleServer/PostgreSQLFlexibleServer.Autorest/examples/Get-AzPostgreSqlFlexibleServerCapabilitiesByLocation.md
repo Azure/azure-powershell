@@ -1,22 +1,42 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get PostgreSQL Flexible Server capabilities for East US region
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerCapabilitiesByLocation -LocationName "East US"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                 : FlexibleServerCapabilities
+FastProvisioningSupported           : Enabled
+GeoBackupSupported                  : Enabled
+OnlineResizeSupported               : Enabled
+StorageAutoGrowthSupported          : Enabled
+SupportedFastProvisioningEditions   : {Microsoft.Azure.PowerShell.Cmdlets.PostgreSqlFlexibleServer.Models.FastProvisioningEditionCapability}
+SupportedFeatures                   : {Microsoft.Azure.PowerShell.Cmdlets.PostgreSqlFlexibleServer.Models.FlexibleServerCapability}
+SupportedServerEditions             : {Microsoft.Azure.PowerShell.Cmdlets.PostgreSqlFlexibleServer.Models.FlexibleServerEditionCapability}
+SupportedServerVersions             : {Microsoft.Azure.PowerShell.Cmdlets.PostgreSqlFlexibleServer.Models.ServerVersionCapability}
+ZoneRedundantHaAndGeoBackupSupported: Enabled
+ZoneRedundantHaSupported            : Enabled
 ```
 
-{{ Add description here }}
+Gets the comprehensive PostgreSQL Flexible Server capabilities available in the East US region, including all supported features, editions, versions, and backup options.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get PostgreSQL Flexible Server capabilities for a specific subscription and location
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerCapabilitiesByLocation -LocationName "West Europe" -SubscriptionId "ssssssss-ssss-ssss-ssss-ssssssssssss"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                 : FlexibleServerCapabilities
+FastProvisioningSupported           : Enabled
+GeoBackupSupported                  : Enabled
+OnlineResizeSupported               : Enabled
+StorageAutoGrowthSupported          : Enabled
+SupportedFastProvisioningEditions   : {Microsoft.Azure.PowerShell.Cmdlets.PostgreSqlFlexibleServer.Models.FastProvisioningEditionCapability}
+SupportedFeatures                   : {Microsoft.Azure.PowerShell.Cmdlets.PostgreSqlFlexibleServer.Models.FlexibleServerCapability}
+SupportedServerEditions             : {Microsoft.Azure.PowerShell.Cmdlets.PostgreSqlFlexibleServer.Models.FlexibleServerEditionCapability}
+SupportedServerVersions             : {Microsoft.Azure.PowerShell.Cmdlets.PostgreSqlFlexibleServer.Models.ServerVersionCapability}
+ZoneRedundantHaAndGeoBackupSupported: Enabled
+ZoneRedundantHaSupported            : Enabled
 ```
 
-{{ Add description here }}
+Gets the comprehensive PostgreSQL Flexible Server capabilities available in the West Europe region for a specific subscription.
 

@@ -1,22 +1,27 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all PostgreSQL Flexible Servers in a subscription
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServer
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
+----                --------  -------         -------        ------------------ -------------
+myserver1           East US   Standard_D2s_v3 GeneralPurpose admin              128
+myserver2           West US   Standard_B1ms   Burstable      postgres           32
 ```
 
-{{ Add description here }}
+Lists all PostgreSQL Flexible Servers in the current subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServer -Name "myserver1" -ResourceGroupName "myresourcegroup"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name      Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
+----      --------  -------         -------        ------------------ -------------
+myserver1 East US   Standard_D2s_v3 GeneralPurpose admin              128
 ```
 
-{{ Add description here }}
+Gets information about the PostgreSQL Flexible Server named 'myserver1' in the specified resource group.
 
