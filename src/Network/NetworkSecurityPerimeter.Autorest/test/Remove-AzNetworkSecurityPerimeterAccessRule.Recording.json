@@ -1,13 +1,13 @@
 {
-  "Remove-AzNetworkSecurityPerimeterAccessRule+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tgtdq/providers/Microsoft.Network/networkSecurityPerimeters/tgtdqt-nspDelB1/profiles/t-prDelB1/accessRules/tmpAccessRuleDelete1?api-version=2025-03-01+1": {
+  "Remove-AzNetworkSecurityPerimeterAccessRule+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t7qc8/providers/Microsoft.Network/networkSecurityPerimeters/t7qc8t-nspDelB1/profiles/t-prDelB1/accessRules/tmpAccessRuleDelete1?api-version=2025-05-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tgtdq/providers/Microsoft.Network/networkSecurityPerimeters/tgtdqt-nspDelB1/profiles/t-prDelB1/accessRules/tmpAccessRuleDelete1?api-version=2025-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t7qc8/providers/Microsoft.Network/networkSecurityPerimeters/t7qc8t-nspDelB1/profiles/t-prDelB1/accessRules/tmpAccessRuleDelete1?api-version=2025-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "56" ],
-        "x-ms-client-request-id": [ "bd591170-bdf4-4903-8139-6ab6398f7dc7" ],
+        "x-ms-client-request-id": [ "8212e0b0-1484-4770-9333-59b0b77a6a11" ],
         "CommandName": [ "Remove-AzNetworkSecurityPerimeterAccessRule" ],
         "FullCommandName": [ "Remove-AzNetworkSecurityPerimeterAccessRule_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,16 +23,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=37ca76fe-83f1-4c59-823b-b1953db8111c/eastus2/e5b5bbbd-9a2b-46ad-8390-678c9526ea7f" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=37ca76fe-83f1-4c59-823b-b1953db8111c/eastus2/5613a162-8456-48d9-aa89-060dbd2b8f3a" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
-        "x-ms-request-id": [ "6db0104b-5464-4f8f-8d41-9cadf045f1a6" ],
-        "x-ms-correlation-request-id": [ "6db0104b-5464-4f8f-8d41-9cadf045f1a6" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20251113T101610Z:6db0104b-5464-4f8f-8d41-9cadf045f1a6" ],
+        "x-ms-request-id": [ "8b38f2c8-4167-45ef-9d34-b5590f0b55ee" ],
+        "x-ms-correlation-request-id": [ "8b38f2c8-4167-45ef-9d34-b5590f0b55ee" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20260121T113349Z:8b38f2c8-4167-45ef-9d34-b5590f0b55ee" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E63C7F7D2A004697A09ECEE29ECECE6A Ref B: MNZ221060619011 Ref C: 2025-11-13T10:16:08Z" ],
-        "Date": [ "Thu, 13 Nov 2025 10:16:09 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 36766829CB1D42DAACA60EF5573FA265 Ref B: MNZ221060610007 Ref C: 2026-01-21T11:33:49Z" ],
+        "Date": [ "Wed, 21 Jan 2026 11:33:48 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
@@ -41,15 +41,15 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkSecurityPerimeterAccessRule+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tgtdq/providers/Microsoft.Network/networkSecurityPerimeters/tgtdqt-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2?api-version=2025-03-01+1": {
+  "Remove-AzNetworkSecurityPerimeterAccessRule+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t7qc8/providers/Microsoft.Network/networkSecurityPerimeters/t7qc8t-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2?api-version=2025-05-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tgtdq/providers/Microsoft.Network/networkSecurityPerimeters/tgtdqt-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2?api-version=2025-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t7qc8/providers/Microsoft.Network/networkSecurityPerimeters/t7qc8t-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2?api-version=2025-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "57" ],
-        "x-ms-client-request-id": [ "8abc7b3e-c1f5-49c5-aa92-297508f6cdda" ],
+        "x-ms-client-request-id": [ "e43291f9-a0cb-445b-97e4-50efd3e2bf43" ],
         "CommandName": [ "Get-AzNetworkSecurityPerimeterAccessRule" ],
         "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAccessRule_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -65,35 +65,35 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=37ca76fe-83f1-4c59-823b-b1953db8111c/eastus2euap/7c48f0d5-a0f3-4bcc-a7f4-6a9bc876a570" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=37ca76fe-83f1-4c59-823b-b1953db8111c/eastus2euap/dfb69f28-ef8b-44c5-b906-239419c25905" ],
         "x-ms-throttling-version": [ "v2" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-request-id": [ "859b21f9-cd28-4d58-ba68-e118a533830c" ],
-        "x-ms-correlation-request-id": [ "859b21f9-cd28-4d58-ba68-e118a533830c" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20251113T101610Z:859b21f9-cd28-4d58-ba68-e118a533830c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-request-id": [ "575cf906-a19a-46ef-bc3d-9262245015fe" ],
+        "x-ms-correlation-request-id": [ "575cf906-a19a-46ef-bc3d-9262245015fe" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260121T113349Z:575cf906-a19a-46ef-bc3d-9262245015fe" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 940A39609F134DA3A1F62B9993829654 Ref B: MNZ221060619011 Ref C: 2025-11-13T10:16:10Z" ],
-        "Date": [ "Thu, 13 Nov 2025 10:16:09 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 1E33D13FF26C49048D81A8EBAC7E0D8C Ref B: MNZ221060610007 Ref C: 2026-01-21T11:33:49Z" ],
+        "Date": [ "Wed, 21 Jan 2026 11:33:49 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "803" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"t-arD2\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tgtdq/providers/Microsoft.Network/networkSecurityPerimeters/tgtdqt-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/profiles/accessRules\",\"properties\":{\"provisioningState\":\"Succeeded\",\"direction\":\"Inbound\",\"addressPrefixes\":[\"10.10.0.0/16\"],\"fullyQualifiedDomainNames\":[],\"subscriptions\":[],\"networkSecurityPerimeters\":[],\"emailAddresses\":[],\"phoneNumbers\":[],\"appliesTo\":[{\"resourceType\":\"*\",\"features\":[\"*\"]}]},\"systemData\":{\"createdBy\":\"karthikgumpu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-13T10:13:25.2786335Z\",\"lastModifiedBy\":\"karthikgumpu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-13T10:13:25.2786335Z\"}}",
+      "Content": "{\"name\":\"t-arD2\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t7qc8/providers/Microsoft.Network/networkSecurityPerimeters/t7qc8t-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/profiles/accessRules\",\"properties\":{\"provisioningState\":\"Succeeded\",\"direction\":\"Inbound\",\"addressPrefixes\":[\"10.10.0.0/16\"],\"fullyQualifiedDomainNames\":[],\"subscriptions\":[],\"networkSecurityPerimeters\":[],\"emailAddresses\":[],\"phoneNumbers\":[],\"appliesTo\":[{\"resourceType\":\"*\",\"features\":[\"*\"]}]},\"systemData\":{\"createdBy\":\"karthikgumpu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-21T11:31:02.2003727Z\",\"lastModifiedBy\":\"karthikgumpu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-21T11:31:02.2003727Z\"}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkSecurityPerimeterAccessRule+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tgtdq/providers/Microsoft.Network/networkSecurityPerimeters/tgtdqt-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2?api-version=2025-03-01+2": {
+  "Remove-AzNetworkSecurityPerimeterAccessRule+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t7qc8/providers/Microsoft.Network/networkSecurityPerimeters/t7qc8t-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2?api-version=2025-05-01+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tgtdq/providers/Microsoft.Network/networkSecurityPerimeters/tgtdqt-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2?api-version=2025-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t7qc8/providers/Microsoft.Network/networkSecurityPerimeters/t7qc8t-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2?api-version=2025-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "58" ],
-        "x-ms-client-request-id": [ "4fdc868e-a513-4985-a141-aee90bc2fd5f" ],
+        "x-ms-client-request-id": [ "f5a300f9-38b3-4ddb-b26e-7b6fae64c510" ],
         "CommandName": [ "Remove-AzNetworkSecurityPerimeterAccessRule" ],
         "FullCommandName": [ "Remove-AzNetworkSecurityPerimeterAccessRule_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -109,16 +109,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=37ca76fe-83f1-4c59-823b-b1953db8111c/eastus2euap/ae3e489e-1923-44a0-9342-c5133fe2f2e0" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=37ca76fe-83f1-4c59-823b-b1953db8111c/eastus2euap/58cd4c98-babf-4670-89ba-21dce5977d40" ],
         "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
-        "x-ms-request-id": [ "174cf900-cf03-4de5-b8fb-d9cdc5b6c329" ],
-        "x-ms-correlation-request-id": [ "174cf900-cf03-4de5-b8fb-d9cdc5b6c329" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20251113T101610Z:174cf900-cf03-4de5-b8fb-d9cdc5b6c329" ],
+        "x-ms-request-id": [ "462a015a-3ab3-4315-91f2-e33121166919" ],
+        "x-ms-correlation-request-id": [ "462a015a-3ab3-4315-91f2-e33121166919" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260121T113350Z:462a015a-3ab3-4315-91f2-e33121166919" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9ABCAF79EC5E42318E53F5964F78AE38 Ref B: MNZ221060619011 Ref C: 2025-11-13T10:16:10Z" ],
-        "Date": [ "Thu, 13 Nov 2025 10:16:10 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 611FAB0675214FAF91CE09B226E9AAF9 Ref B: MNZ221060610007 Ref C: 2026-01-21T11:33:50Z" ],
+        "Date": [ "Wed, 21 Jan 2026 11:33:49 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
