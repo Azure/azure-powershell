@@ -687,7 +687,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         public override void ExecuteCmdlet()
         {
+            // Call base to perform common validation (including ExportTemplateToPath requirement and standard cmdlet setup)
             base.ExecuteCmdlet();
+
+            // If DryRun was requested, base already handled output; skip real creation logic
+            if (this.DryRun.IsPresent)
+            {
+                return;
+            }
 
             CheckNameAvailabilityResult checkNameAvailabilityResult = this.StorageClient.StorageAccounts.CheckNameAvailability(this.Name);
             if (!checkNameAvailabilityResult.NameAvailable.Value)
