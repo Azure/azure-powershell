@@ -262,7 +262,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             ValidatePipelineCloudBlobContainer(container);
 
-            if (UseTrack2Sdk())
+            if (UseTrack2Sdk() || IsSasTokenWithOAuth(container))
             {
                 BlobContainerClient track2container = AzureStorageContainer.GetTrack2BlobContainerClient(container, Channel.StorageContext, ClientOptions);
                 BlobBaseClient blobClient = track2container.GetBlobBaseClient(blobName);
@@ -276,6 +276,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
                 GetBlobContent(blob, fileName, true);
             }
+        }
+
+        private bool IsSasTokenWithOAuth(CloudBlobContainer container)
+        {   
+            if (container.ServiceClient.Credentials.IsSAS) //SAS
+            {
+                if (Channel.StorageContext.Track2OauthToken != null)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -543,7 +556,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 case BlobParameterSet:
                     if (ShouldProcess(CloudBlob.Name, "Download"))
                     {
-                        if (!(CloudBlob is InvalidCloudBlob) && !UseTrack2Sdk())
+                        if (!(CloudBlob is InvalidCloudBlob) && !UseTrack2Sdk() && !IsSasTokenWithOAuth(CloudBlob.Container))
                         {
                             GetBlobContent(CloudBlob, FileName, true);
                         }

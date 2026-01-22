@@ -128,7 +128,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
 
         protected bool WithOauthCredential()
         {
-            if(this.Channel != null && this.Channel.StorageContext != null && this.Channel.StorageContext.StorageAccount != null && this.Channel.StorageContext.StorageAccount.Credentials.IsToken)
+            if (this.Channel != null && this.Channel.StorageContext != null && 
+                ((this.Channel.StorageContext.StorageAccount != null && this.Channel.StorageContext.StorageAccount.Credentials.IsToken)
+                || (this.Channel.StorageContext.Track2OauthToken != null)))
             {
                 return true;
             }
