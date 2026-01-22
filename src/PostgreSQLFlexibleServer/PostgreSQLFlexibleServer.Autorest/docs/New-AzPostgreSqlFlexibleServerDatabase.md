@@ -45,27 +45,33 @@ Create a new database.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new database with default settings
 ```powershell
-{{ Add code here }}
+New-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -Name "userdb"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name     : userdb
+Charset  : UTF8
+Collation: en_US.utf8
+Id       : /subscriptions/.../databases/userdb
 ```
 
-{{ Add description here }}
+Creates a new database named 'userdb' with default charset and collation settings.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a database with specific charset and collation
 ```powershell
-{{ Add code here }}
+New-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -Name "appdb" -Charset "UTF8" -Collation "en_US.utf8"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name     : appdb
+Charset  : UTF8
+Collation: en_US.utf8
+Id       : /subscriptions/.../databases/appdb
 ```
 
-{{ Add description here }}
+Creates a database with specific charset and collation settings for application data.
 
 ## PARAMETERS
 

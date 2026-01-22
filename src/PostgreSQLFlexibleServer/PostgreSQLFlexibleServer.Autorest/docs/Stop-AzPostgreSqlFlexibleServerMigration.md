@@ -35,27 +35,19 @@ Cancels an active migration.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Stop an ongoing migration
 ```powershell
-{{ Add code here }}
+Stop-AzPostgreSqlFlexibleServerMigration -ResourceGroupName "myResourceGroup" -TargetDbServerName "myTargetPostgreSqlServer" -MigrationName "migration-001" -SubscriptionId "12345678-1234-1234-1234-123456789abc"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Stops the specified migration operation. You will be prompted to confirm the operation as this may result in data loss.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Force stop a migration without confirmation
 ```powershell
-{{ Add code here }}
+Stop-AzPostgreSqlFlexibleServerMigration -ResourceGroupName "development-rg" -TargetDbServerName "dev-postgresql-01" -MigrationName "test-migration" -Force -SubscriptionId "12345678-1234-1234-1234-123456789abc"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Force stops the migration operation without prompting for confirmation. Use with caution as this may result in partial data migration.
 
 ## PARAMETERS
 

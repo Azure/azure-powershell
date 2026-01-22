@@ -41,27 +41,47 @@ Gets information about a specific configuration (also known as server parameter)
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all server configurations
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerConfiguration -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name           : max_connections
+Value          : 100
+DefaultValue   : 100
+DataType       : Integer
+AllowedValues  : 5-5000
+Source         : system-default
+Description    : Sets the maximum number of concurrent connections.
+
+Name           : shared_buffers
+Value          : 32768
+DefaultValue   : 32768
+DataType       : Integer
+AllowedValues  : 16-1073741823
+Source         : system-default
+Description    : Sets the amount of memory the database server uses for shared memory buffers.
 ```
 
-{{ Add description here }}
+Lists all configuration parameters for the PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific configuration parameter
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerConfiguration -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -Name "max_connections"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name           : max_connections
+Value          : 100
+DefaultValue   : 100
+DataType       : Integer
+AllowedValues  : 5-5000
+Source         : system-default
+Description    : Sets the maximum number of concurrent connections.
 ```
 
-{{ Add description here }}
+Gets the current value and settings for the max_connections parameter.
 
 ## PARAMETERS
 

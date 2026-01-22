@@ -29,27 +29,19 @@ Deletes or drops an existing server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Remove-AzPostgreSqlFlexibleServer -ResourceGroupName "myResourceGroup" -Name "myPostgreSqlServer"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Removes the specified PostgreSQL Flexible Server. You will be prompted to confirm the deletion.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a PostgreSQL Flexible Server without confirmation
 ```powershell
-{{ Add code here }}
+Remove-AzPostgreSqlFlexibleServer -ResourceGroupName "development-rg" -Name "temp-server" -Force
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Removes the PostgreSQL Flexible Server without prompting for confirmation. Use with caution.
 
 ## PARAMETERS
 

@@ -37,27 +37,19 @@ Deletes an existing firewall rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a firewall rule
 ```powershell
-{{ Add code here }}
+Remove-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -Name "AllowClientIP"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Removes the specified firewall rule from the PostgreSQL Flexible Server. You will be prompted to confirm the deletion.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a firewall rule without confirmation
 ```powershell
-{{ Add code here }}
+Remove-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName "development-rg" -ServerName "dev-postgresql-01" -Name "TempAccess" -Force
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Removes the firewall rule without prompting for confirmation. Use with caution as this will immediately block access.
 
 ## PARAMETERS
 

@@ -35,27 +35,41 @@ Gets state of advanced threat protection settings for a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get threat protection settings for a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerAdvancedThreatProtectionSetting -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -ThreatProtectionName "Default"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : Default
+ResourceGroupName : myResourceGroup
+ServerName        : myPostgreSqlServer
+State             : Enabled
+CreationTime      : 2024-01-15T10:30:00Z
+EmailAddresses    : {"admin@contoso.com"}
+DisabledAlerts    : {}
+EmailAccountAdmins: True
 ```
 
-{{ Add description here }}
+Gets the current Microsoft Defender threat protection settings for the PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Check if threat protection is disabled
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerAdvancedThreatProtectionSetting -ResourceGroupName "development-rg" -ServerName "dev-postgresql-01" -ThreatProtectionName "Default"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : Default
+ResourceGroupName : development-rg
+ServerName        : dev-postgresql-01
+State             : Disabled
+CreationTime      : 2024-01-10T08:15:00Z
+EmailAddresses    : {}
+DisabledAlerts    : {}
+EmailAccountAdmins: False
 ```
 
-{{ Add description here }}
+Shows that Microsoft Defender is disabled for the development PostgreSQL Flexible Server.
 
 ## PARAMETERS
 

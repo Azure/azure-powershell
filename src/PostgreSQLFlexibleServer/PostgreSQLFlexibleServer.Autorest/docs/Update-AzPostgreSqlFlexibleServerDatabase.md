@@ -38,27 +38,33 @@ Update a new database.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update database charset
 ```powershell
-{{ Add code here }}
+Update-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -Name "userdb" -Charset "UTF8"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name     : userdb
+Charset  : UTF8
+Collation: en_US.utf8
+Id       : /subscriptions/.../databases/userdb
 ```
 
-{{ Add description here }}
+Updates the charset of the specified database.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update database collation
 ```powershell
-{{ Add code here }}
+Update-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -Name "appdb" -Collation "C"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name     : appdb
+Charset  : UTF8
+Collation: C
+Id       : /subscriptions/.../databases/appdb
 ```
 
-{{ Add description here }}
+Updates the collation setting of the database for specific sorting requirements.
 
 ## PARAMETERS
 

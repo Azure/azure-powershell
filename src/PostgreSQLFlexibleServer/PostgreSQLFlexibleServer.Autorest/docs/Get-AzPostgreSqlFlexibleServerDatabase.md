@@ -41,27 +41,43 @@ Gets information about an existing database.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all databases on a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name     : postgres
+Charset  : UTF8
+Collation: en_US.utf8
+Id       : /subscriptions/.../databases/postgres
+
+Name     : userdb
+Charset  : UTF8
+Collation: en_US.utf8
+Id       : /subscriptions/.../databases/userdb
+
+Name     : appdb
+Charset  : UTF8
+Collation: en_US.utf8
+Id       : /subscriptions/.../databases/appdb
 ```
 
-{{ Add description here }}
+Gets all databases on the specified PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific database by name
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -Name "userdb"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name     : userdb
+Charset  : UTF8
+Collation: en_US.utf8
+Id       : /subscriptions/.../databases/userdb
 ```
 
-{{ Add description here }}
+Gets details for the specific database named 'userdb'.
 
 ## PARAMETERS
 

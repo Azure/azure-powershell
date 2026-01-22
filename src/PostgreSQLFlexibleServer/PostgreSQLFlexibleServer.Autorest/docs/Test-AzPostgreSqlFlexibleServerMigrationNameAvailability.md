@@ -58,27 +58,33 @@ Checks if a proposed migration name is valid and available.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Check if a migration name is available
 ```powershell
-{{ Add code here }}
+Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroupName "myResourceGroup" -TargetDbServerName "myTargetPostgreSqlServer" -MigrationName "my-new-migration" -SubscriptionId "12345678-1234-1234-1234-123456789abc"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name      : my-new-migration
+Available : True
+Reason    : 
+Message   : Migration name is available
 ```
 
-{{ Add description here }}
+Checks if the specified migration name is available for the target PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Check availability for an already used migration name
 ```powershell
-{{ Add code here }}
+Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroupName "production-rg" -TargetDbServerName "prod-postgresql-01" -MigrationName "existing-migration" -SubscriptionId "12345678-1234-1234-1234-123456789abc"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name      : existing-migration
+Available : False
+Reason    : AlreadyExists
+Message   : Migration name 'existing-migration' is already in use for this server
 ```
 
-{{ Add description here }}
+Checks availability for a migration name that is already in use, returning details about why it's not available.
 
 ## PARAMETERS
 

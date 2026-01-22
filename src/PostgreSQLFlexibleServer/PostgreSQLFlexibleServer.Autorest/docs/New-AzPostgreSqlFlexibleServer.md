@@ -50,27 +50,47 @@ Create a new server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a PostgreSQL Flexible Server with basic configuration
 ```powershell
-{{ Add code here }}
+New-AzPostgreSqlFlexibleServer -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -Location "East US" -AdministratorLogin "pgadmin" -AdministratorLoginPassword (ConvertTo-SecureString "MySecurePassword123!" -AsPlainText -Force) -Sku "Standard_B1ms" -StorageSizeGb 32 -Version "13"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               : myPostgreSqlServer
+ResourceGroupName  : myResourceGroup
+Location           : East US
+SkuName            : Standard_B1ms
+SkuTier            : Burstable
+StorageSizeGb      : 32
+Version            : 13
+State              : Ready
+AdministratorLogin : pgadmin
+FullyQualifiedDomainName: mypostgresqlserver.postgres.database.azure.com
 ```
 
-{{ Add description here }}
+Creates a new PostgreSQL Flexible Server with basic configuration using a Burstable SKU.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a PostgreSQL Flexible Server with high availability
 ```powershell
-{{ Add code here }}
+New-AzPostgreSqlFlexibleServer -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -Location "East US" -AdministratorLogin "pgadmin" -AdministratorLoginPassword (ConvertTo-SecureString "SecurePassword123!" -AsPlainText -Force) -Sku "Standard_D2s_v3" -StorageSizeGb 128 -Version "14" -HaEnabled "ZoneRedundant" -AvailabilityZone "1" -StandbyAvailabilityZone "2"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               : prod-postgresql-01
+ResourceGroupName  : production-rg
+Location           : East US
+SkuName            : Standard_D2s_v3
+SkuTier            : GeneralPurpose
+StorageSizeGb      : 128
+Version            : 14
+State              : Ready
+AdministratorLogin : pgadmin
+HaEnabled          : ZoneRedundant
+AvailabilityZone   : 1
+StandbyAvailabilityZone: 2
 ```
 
-{{ Add description here }}
+Creates a PostgreSQL Flexible Server with zone-redundant high availability for production workloads.
 
 ## PARAMETERS
 

@@ -23,27 +23,42 @@ Lists available object recommendations.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get tuning recommendations for a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                : shared_buffers
+CurrentValue        : 128MB
+RecommendedValue    : 256MB
+ReasonForRecommendation : Current value is too low for your workload pattern
+ExpectedImpact      : 20% improvement in query performance
+Category           : Memory
+Priority           : High
+ImplementationEffort : Medium
 ```
 
-{{ Add description here }}
+Retrieves performance tuning recommendations for the specified PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get recommendations for a specific parameter
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -TuningOptionName "checkpoint_completion_target"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                : checkpoint_completion_target
+CurrentValue        : 0.5
+RecommendedValue    : 0.8
+ReasonForRecommendation : Checkpoint I/O spikes are causing performance degradation
+ExpectedImpact      : Smoother I/O distribution
+Category           : Disk I/O
+Priority           : Medium
+ImplementationEffort : Low
+RestartRequired    : False
 ```
 
-{{ Add description here }}
+Retrieves recommendations for a specific tuning parameter.
 
 ## PARAMETERS
 

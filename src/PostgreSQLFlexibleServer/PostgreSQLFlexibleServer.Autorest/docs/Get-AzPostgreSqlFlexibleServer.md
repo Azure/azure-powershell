@@ -40,27 +40,54 @@ Gets information about an existing server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all PostgreSQL Flexible Servers in a resource group
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServer -ResourceGroupName "myResourceGroup"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               : myPostgreSqlServer
+ResourceGroupName  : myResourceGroup
+Location           : East US
+SkuName            : Standard_B1ms
+SkuTier            : Burstable
+StorageSizeGb      : 32
+Version            : 13
+State              : Ready
+AdministratorLogin : pgadmin
+
+Name               : myOtherServer
+ResourceGroupName  : myResourceGroup
+Location           : East US
+SkuName            : Standard_D2s_v3
+SkuTier            : GeneralPurpose
+StorageSizeGb      : 128
+Version            : 14
+State              : Ready
+AdministratorLogin : admin
 ```
 
-{{ Add description here }}
+Lists all PostgreSQL Flexible Servers in the specified resource group.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServer -ResourceGroupName "myResourceGroup" -Name "myPostgreSqlServer"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               : myPostgreSqlServer
+ResourceGroupName  : myResourceGroup
+Location           : East US
+SkuName            : Standard_B1ms
+SkuTier            : Burstable
+StorageSizeGb      : 32
+Version            : 13
+State              : Ready
+AdministratorLogin : pgadmin
+FullyQualifiedDomainName: mypostgresqlserver.postgres.database.azure.com
 ```
 
-{{ Add description here }}
+Gets details for a specific PostgreSQL Flexible Server.
 
 ## PARAMETERS
 

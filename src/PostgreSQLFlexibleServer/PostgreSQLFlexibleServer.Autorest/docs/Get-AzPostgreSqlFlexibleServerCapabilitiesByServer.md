@@ -22,27 +22,45 @@ Lists the capabilities available for a given server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get capabilities for a specific PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerCapabilitiesByServer -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ServerName           : myPostgreSqlServer
+CurrentVersion       : 13
+UpgradeableVersions  : {14, 15}
+CurrentSku           : Standard_B1ms
+ScalableSkus         : {Standard_B2s, Standard_D2s_v3, Standard_D4s_v3}
+CurrentStorageGb     : 32
+MaxStorageGb         : 65536
+StorageAutoGrow      : True
+HASupported          : True
+GeoBackupSupported   : True
 ```
 
-{{ Add description here }}
+Retrieves the current capabilities and upgrade options for the specified PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Check capabilities for a production server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerCapabilitiesByServer -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ServerName           : prod-postgresql-01
+CurrentVersion       : 14
+UpgradeableVersions  : {15}
+CurrentSku           : Standard_D4s_v3
+ScalableSkus         : {Standard_D8s_v3, Standard_D16s_v3}
+CurrentStorageGb     : 256
+MaxStorageGb         : 65536
+StorageAutoGrow      : True
+HASupported          : True
+GeoBackupSupported   : True
 ```
 
-{{ Add description here }}
+Retrieves capabilities for a production PostgreSQL Flexible Server showing available scaling options.
 
 ## PARAMETERS
 

@@ -45,27 +45,39 @@ Create a pair of virtual endpoints for a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a read-write virtual endpoint
 ```powershell
-{{ Add code here }}
+New-AzPostgreSqlFlexibleServerVirtualEndpoint -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -VirtualEndpointName "primary-endpoint" -EndpointType "ReadWrite" -Member @("myPostgreSqlServer", "read-replica-1")
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : primary-endpoint
+ResourceGroupName : myResourceGroup
+ServerName        : myPostgreSqlServer
+EndpointType      : ReadWrite
+VirtualEndpoints  : {"primary-endpoint.postgres.database.azure.com"}
+Members           : {"myPostgreSqlServer", "read-replica-1"}
+State             : Creating
 ```
 
-{{ Add description here }}
+Creates a new read-write virtual endpoint that includes the primary server and a read replica.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a read-only virtual endpoint for analytics
 ```powershell
-{{ Add code here }}
+New-AzPostgreSqlFlexibleServerVirtualEndpoint -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -VirtualEndpointName "analytics-endpoint" -EndpointType "ReadOnly" -Member @("analytics-replica-1", "analytics-replica-2")
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : analytics-endpoint
+ResourceGroupName : production-rg
+ServerName        : prod-postgresql-01
+EndpointType      : ReadOnly
+VirtualEndpoints  : {"analytics-endpoint.postgres.database.azure.com"}
+Members           : {"analytics-replica-1", "analytics-replica-2"}
+State             : Creating
 ```
 
-{{ Add description here }}
+Creates a new read-only virtual endpoint for analytics workloads using multiple read replicas.
 
 ## PARAMETERS
 

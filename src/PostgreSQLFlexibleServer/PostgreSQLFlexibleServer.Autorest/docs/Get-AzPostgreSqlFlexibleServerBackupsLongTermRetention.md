@@ -42,27 +42,50 @@ Gets the results of a long retention backup operation for a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all LTR backups for a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerBackupsLongTermRetention -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : ltr-backup-annual-2024
+ServerName        : myPostgreSqlServer
+ResourceGroupName : myResourceGroup
+BackupType        : Full
+CompletedTime     : 2024-01-15T10:30:00Z
+RetentionEndTime  : 2031-01-15T10:30:00Z
+SizeInBytes       : 5368709120
+RetentionPeriod   : P7Y
+
+Name              : ltr-backup-monthly-202401
+ServerName        : myPostgreSqlServer
+ResourceGroupName : myResourceGroup
+BackupType        : Full
+CompletedTime     : 2024-01-01T02:00:00Z
+RetentionEndTime  : 2029-01-01T02:00:00Z
+SizeInBytes       : 4294967296
+RetentionPeriod   : P5Y
 ```
 
-{{ Add description here }}
+Retrieves all Long Term Retention backups for the specified PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific LTR backup
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerBackupsLongTermRetention -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -BackupInstanceName "compliance-backup-2024"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : compliance-backup-2024
+ServerName        : prod-postgresql-01
+ResourceGroupName : production-rg
+BackupType        : Full
+CompletedTime     : 2024-01-20T02:00:00Z
+RetentionEndTime  : 2034-01-20T02:00:00Z
+SizeInBytes       : 8589934592
+RetentionPeriod   : P10Y
 ```
 
-{{ Add description here }}
+Retrieves details for a specific Long Term Retention backup.
 
 ## PARAMETERS
 

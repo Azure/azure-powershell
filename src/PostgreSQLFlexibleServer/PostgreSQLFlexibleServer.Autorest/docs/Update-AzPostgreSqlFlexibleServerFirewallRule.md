@@ -38,27 +38,35 @@ Update a new firewall rule or update an existing firewall rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a firewall rule IP range
 ```powershell
-{{ Add code here }}
+Update-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -Name "AllowClientIP" -StartIPAddress "192.168.1.1" -EndIPAddress "192.168.1.255"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name           : AllowClientIP
+ResourceGroupName: myResourceGroup
+ServerName     : myPostgreSqlServer
+StartIPAddress : 192.168.1.1
+EndIPAddress   : 192.168.1.255
 ```
 
-{{ Add description here }}
+Updates an existing firewall rule to allow access from a broader IP range.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update firewall rule to allow single IP
 ```powershell
-{{ Add code here }}
+Update-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName "development-rg" -ServerName "dev-postgresql-01" -Name "DevAccess" -StartIPAddress "203.0.113.15" -EndIPAddress "203.0.113.15"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name           : DevAccess
+ResourceGroupName: development-rg
+ServerName     : dev-postgresql-01
+StartIPAddress : 203.0.113.15
+EndIPAddress   : 203.0.113.15
 ```
 
-{{ Add description here }}
+Updates the firewall rule to allow access from only a specific IP address.
 
 ## PARAMETERS
 

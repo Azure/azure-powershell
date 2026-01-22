@@ -22,27 +22,39 @@ Lists the capabilities available in a given location for a specific subscription
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get PostgreSQL Flexible Server capabilities for a location
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerCapabilitiesByLocation -Location "East US"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location          : East US
+SupportedVersions : {11, 12, 13, 14, 15}
+SupportedSkus     : {Standard_B1ms, Standard_B2s, Standard_D2s_v3, Standard_D4s_v3}
+ZoneRedundantHA   : True
+GeoBackup         : True
+StorageAutoGrow   : True
+MaxStorageSizeGb  : 65536
 ```
 
-{{ Add description here }}
+Retrieves the available capabilities for PostgreSQL Flexible Server in the East US region.
 
-### Example 2: {{ Add title here }}
+### Example 2: Check capabilities for a different region
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerCapabilitiesByLocation -Location "West Europe"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location          : West Europe
+SupportedVersions : {11, 12, 13, 14, 15}
+SupportedSkus     : {Standard_B1ms, Standard_B2s, Standard_D2s_v3, Standard_D4s_v3}
+ZoneRedundantHA   : True
+GeoBackup         : True
+StorageAutoGrow   : True
+MaxStorageSizeGb  : 65536
 ```
 
-{{ Add description here }}
+Retrieves the available capabilities for PostgreSQL Flexible Server in the West Europe region.
 
 ## PARAMETERS
 

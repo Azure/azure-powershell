@@ -29,27 +29,19 @@ Starts a stopped server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Start a stopped PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Start-AzPostgreSqlFlexibleServer -ResourceGroupName "myResourceGroup" -Name "myPostgreSqlServer"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Starts the specified PostgreSQL Flexible Server if it was previously stopped.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Start a server and wait for completion
 ```powershell
-{{ Add code here }}
+Start-AzPostgreSqlFlexibleServer -ResourceGroupName "development-rg" -Name "dev-postgresql-01" -PassThru
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Starts the PostgreSQL Flexible Server and returns the server object once the operation is completed.
 
 ## PARAMETERS
 

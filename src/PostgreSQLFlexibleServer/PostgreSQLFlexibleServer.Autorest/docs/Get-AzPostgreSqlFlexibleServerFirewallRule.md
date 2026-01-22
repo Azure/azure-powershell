@@ -41,27 +41,41 @@ Gets information about a firewall rule in a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all firewall rules for a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name           : ClientIPAddress_1-15-2024_10-30
+ResourceGroupName: myResourceGroup
+ServerName     : myPostgreSqlServer
+StartIPAddress : 192.168.1.100
+EndIPAddress   : 192.168.1.100
+
+Name           : AllowAzureServices
+ResourceGroupName: myResourceGroup
+ServerName     : myPostgreSqlServer
+StartIPAddress : 0.0.0.0
+EndIPAddress   : 0.0.0.0
 ```
 
-{{ Add description here }}
+Lists all firewall rules configured for the PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific firewall rule
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -Name "ClientIPAddress_1-15-2024_10-30"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name           : ClientIPAddress_1-15-2024_10-30
+ResourceGroupName: myResourceGroup
+ServerName     : myPostgreSqlServer
+StartIPAddress : 192.168.1.100
+EndIPAddress   : 192.168.1.100
 ```
 
-{{ Add description here }}
+Gets details for a specific firewall rule by name.
 
 ## PARAMETERS
 

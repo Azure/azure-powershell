@@ -42,27 +42,48 @@ Gets information of an on demand backup, given its name.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all backups for a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : backup-20240115-103000
+ServerName        : myPostgreSqlServer
+ResourceGroupName : myResourceGroup
+BackupType        : Full
+CompletedTime     : 2024-01-15T10:30:00Z
+RetentionEndTime  : 2024-02-14T10:30:00Z
+SizeInBytes       : 1073741824
+
+Name              : backup-20240114-103000
+ServerName        : myPostgreSqlServer
+ResourceGroupName : myResourceGroup
+BackupType        : Full
+CompletedTime     : 2024-01-14T10:30:00Z
+RetentionEndTime  : 2024-02-13T10:30:00Z
+SizeInBytes       : 1048576000
 ```
 
-{{ Add description here }}
+Retrieves all available backups for the specified PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific backup by name
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -BackupName "backup-20240120-140000"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : backup-20240120-140000
+ServerName        : prod-postgresql-01
+ResourceGroupName : production-rg
+BackupType        : Full
+CompletedTime     : 2024-01-20T14:00:00Z
+RetentionEndTime  : 2024-02-19T14:00:00Z
+SizeInBytes       : 2147483648
+GeoRedundant      : True
 ```
 
-{{ Add description here }}
+Retrieves details for a specific backup by name.
 
 ## PARAMETERS
 

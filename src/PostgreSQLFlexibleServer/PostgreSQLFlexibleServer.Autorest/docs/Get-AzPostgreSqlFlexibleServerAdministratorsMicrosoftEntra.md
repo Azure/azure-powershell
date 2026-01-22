@@ -42,27 +42,47 @@ Gets information about a server administrator associated to a Microsoft Entra pr
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all Microsoft Entra administrators for a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : user@contoso.com
+ResourceGroupName : myResourceGroup
+ServerName        : myPostgreSqlServer
+PrincipalType     : User
+PrincipalName     : user@contoso.com
+ObjectId          : 12345678-1234-1234-1234-123456789abc
+TenantId          : 11111111-1111-1111-1111-111111111111
+
+Name              : PostgreSQL-Admins
+ResourceGroupName : myResourceGroup
+ServerName        : myPostgreSqlServer
+PrincipalType     : Group
+PrincipalName     : PostgreSQL-Admins
+ObjectId          : 87654321-4321-4321-4321-210987654321
+TenantId          : 11111111-1111-1111-1111-111111111111
 ```
 
-{{ Add description here }}
+Lists all Microsoft Entra administrators configured for the PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific Microsoft Entra administrator
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -ObjectId "12345678-1234-1234-1234-123456789abc"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : user@contoso.com
+ResourceGroupName : myResourceGroup
+ServerName        : myPostgreSqlServer
+PrincipalType     : User
+PrincipalName     : user@contoso.com
+ObjectId          : 12345678-1234-1234-1234-123456789abc
+TenantId          : 11111111-1111-1111-1111-111111111111
 ```
 
-{{ Add description here }}
+Gets details for a specific Microsoft Entra administrator by object ID.
 
 ## PARAMETERS
 

@@ -45,27 +45,35 @@ Create a new firewall rule or create an existing firewall rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a firewall rule for a specific IP address
 ```powershell
-{{ Add code here }}
+New-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -Name "AllowClientIP" -StartIPAddress "192.168.1.100" -EndIPAddress "192.168.1.100"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name           : AllowClientIP
+ResourceGroupName: myResourceGroup
+ServerName     : myPostgreSqlServer
+StartIPAddress : 192.168.1.100
+EndIPAddress   : 192.168.1.100
 ```
 
-{{ Add description here }}
+Creates a firewall rule that allows access from a specific client IP address.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a firewall rule for an IP range
 ```powershell
-{{ Add code here }}
+New-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -Name "AllowOfficeNetwork" -StartIPAddress "10.0.0.1" -EndIPAddress "10.0.0.254"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name           : AllowOfficeNetwork
+ResourceGroupName: production-rg
+ServerName     : prod-postgresql-01
+StartIPAddress : 10.0.0.1
+EndIPAddress   : 10.0.0.254
 ```
 
-{{ Add description here }}
+Creates a firewall rule that allows access from a range of IP addresses representing an office network.
 
 ## PARAMETERS
 
