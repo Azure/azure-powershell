@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Microsoft")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © Microsoft")]
 [assembly: System.Reflection.AssemblyProductAttribute("Microsoft Azure PowerShell")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Microsoft Azure PowerShell - Authorization")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Microsoft Azure PowerShell - DataBoundary")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("9.0.0")]
 [assembly: System.Reflection.AssemblyVersionAttribute("9.0.0")]
 [assembly: System.Runtime.InteropServices.ComVisibleAttribute(false)]
