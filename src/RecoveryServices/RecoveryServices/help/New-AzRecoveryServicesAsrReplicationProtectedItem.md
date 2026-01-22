@@ -88,6 +88,7 @@ New-AzRecoveryServicesAsrReplicationProtectedItem [-AzureToAzure]
  [-RecoveryCapacityReservationGroupId <String>] [-RecoveryAvailabilitySetId <String>]
  [-RecoveryBootDiagStorageAccountId <String>] [-DiskEncryptionVaultId <String>]
  [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>] [-KeyEncryptionVaultId <String>]
+ [-PlatformFaultDomain <Integer>]
  [-WaitForCompletion] [-RecoveryExtendedLocation <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -102,6 +103,7 @@ New-AzRecoveryServicesAsrReplicationProtectedItem [-AzureToAzure] -AzureVmId <St
  [-RecoveryCapacityReservationGroupId <String>] [-RecoveryAvailabilitySetId <String>]
  [-RecoveryBootDiagStorageAccountId <String>] [-DiskEncryptionVaultId <String>]
  [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>] [-KeyEncryptionVaultId <String>]
+ [-PlatformFaultDomain <Integer>]
  [-WaitForCompletion] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -601,6 +603,21 @@ Parameter Sets: HyperVSiteToAzure
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlatformFaultDomain
+Specify the platform fault domain to used by the failover Vm in target recovery region.
+
+```yaml
+Type: System.int32
+Parameter Sets: AzureToAzure, AzureToAzureWithoutDiskDetails
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
