@@ -20,5 +20,11 @@
 ## Upcoming Release
 
 ## Version 0.1.0
-* First preview release for module Az.PostgreSqlFlexibleServer
+
+* First release for module Az.PostgreSqlFlexibleServer
+    - Split PostgreSQL Flexible Server cmdlets from Az.PostgreSql starting with stable version 2025-08-01
+    - Added realistic usage examples to all 47 cmdlets in help documentation
+    - Added comprehensive examples to all AutoRest documentation files
+    - Examples cover server management, database operations, security, backup, migration, and monitoring scenarios
+    - Improved user experience with production-ready example configurations
 
