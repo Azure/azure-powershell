@@ -19,9 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostgreSqlFlexibleServer", "PostgreSqlFlexibleServer\PostgreSqlFlexibleServer.csproj", "{3ACDFC77-BCBE-47CC-B2EE-8F3DA9E84701}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PostgreSQLFlexibleServer.Autorest", "PostgreSQLFlexibleServer.Autorest", "{4C14BC2F-C5CA-81E0-B3AD-B9EF19176EC4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.PostgreSqlFlexibleServer", "..\..\generated\PostgreSqlFlexibleServer\PostgreSQLFlexibleServer.Autorest\Az.PostgreSqlFlexibleServer.csproj", "{176D3F6A-5926-4F4C-9F79-8DCA018AEE67}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.PostgreSqlFlexibleServer", "PostgreSQLFlexibleServer.Autorest\Az.PostgreSqlFlexibleServer.csproj", "{80E3D934-6B91-4B13-9B98-4C6BCE0AF23E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -117,18 +115,18 @@ Global
 		{3ACDFC77-BCBE-47CC-B2EE-8F3DA9E84701}.Release|x64.Build.0 = Release|Any CPU
 		{3ACDFC77-BCBE-47CC-B2EE-8F3DA9E84701}.Release|x86.ActiveCfg = Release|Any CPU
 		{3ACDFC77-BCBE-47CC-B2EE-8F3DA9E84701}.Release|x86.Build.0 = Release|Any CPU
-		{176D3F6A-5926-4F4C-9F79-8DCA018AEE67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{176D3F6A-5926-4F4C-9F79-8DCA018AEE67}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{176D3F6A-5926-4F4C-9F79-8DCA018AEE67}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{176D3F6A-5926-4F4C-9F79-8DCA018AEE67}.Debug|x64.Build.0 = Debug|Any CPU
-		{176D3F6A-5926-4F4C-9F79-8DCA018AEE67}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{176D3F6A-5926-4F4C-9F79-8DCA018AEE67}.Debug|x86.Build.0 = Debug|Any CPU
-		{176D3F6A-5926-4F4C-9F79-8DCA018AEE67}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{176D3F6A-5926-4F4C-9F79-8DCA018AEE67}.Release|Any CPU.Build.0 = Release|Any CPU
-		{176D3F6A-5926-4F4C-9F79-8DCA018AEE67}.Release|x64.ActiveCfg = Release|Any CPU
-		{176D3F6A-5926-4F4C-9F79-8DCA018AEE67}.Release|x64.Build.0 = Release|Any CPU
-		{176D3F6A-5926-4F4C-9F79-8DCA018AEE67}.Release|x86.ActiveCfg = Release|Any CPU
-		{176D3F6A-5926-4F4C-9F79-8DCA018AEE67}.Release|x86.Build.0 = Release|Any CPU
+		{80E3D934-6B91-4B13-9B98-4C6BCE0AF23E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80E3D934-6B91-4B13-9B98-4C6BCE0AF23E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80E3D934-6B91-4B13-9B98-4C6BCE0AF23E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{80E3D934-6B91-4B13-9B98-4C6BCE0AF23E}.Debug|x64.Build.0 = Debug|Any CPU
+		{80E3D934-6B91-4B13-9B98-4C6BCE0AF23E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{80E3D934-6B91-4B13-9B98-4C6BCE0AF23E}.Debug|x86.Build.0 = Debug|Any CPU
+		{80E3D934-6B91-4B13-9B98-4C6BCE0AF23E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80E3D934-6B91-4B13-9B98-4C6BCE0AF23E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80E3D934-6B91-4B13-9B98-4C6BCE0AF23E}.Release|x64.ActiveCfg = Release|Any CPU
+		{80E3D934-6B91-4B13-9B98-4C6BCE0AF23E}.Release|x64.Build.0 = Release|Any CPU
+		{80E3D934-6B91-4B13-9B98-4C6BCE0AF23E}.Release|x86.ActiveCfg = Release|Any CPU
+		{80E3D934-6B91-4B13-9B98-4C6BCE0AF23E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -140,6 +138,5 @@ Global
 		{0AA0D91A-0886-4A6E-BC9D-DCF942F664F0} = {32836310-FB5E-5A92-56B4-44D826EF11F5}
 		{1164C8DE-DB6E-4296-9096-ED4BE09625FC} = {32836310-FB5E-5A92-56B4-44D826EF11F5}
 		{9A181278-D9FF-4EAF-84AA-F2026D0B82B0} = {32836310-FB5E-5A92-56B4-44D826EF11F5}
-		{176D3F6A-5926-4F4C-9F79-8DCA018AEE67} = {4C14BC2F-C5CA-81E0-B3AD-B9EF19176EC4}
 	EndGlobalSection
 EndGlobal
