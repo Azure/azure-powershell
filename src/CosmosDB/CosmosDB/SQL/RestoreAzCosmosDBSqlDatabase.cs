@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     foreach (RestorableDatabaseAccountGetResult restorableAccount in accountsWithMatchingName)
                     {
                         if (restorableAccount.CreationTime.HasValue &&
-                            restorableAccount.CreationTime < utcRestoreDateTime )
+                            restorableAccount.CreationTime < utcRestoreDateTime)
                         {
                             if (!restorableAccount.DeletionTime.HasValue)
                             {

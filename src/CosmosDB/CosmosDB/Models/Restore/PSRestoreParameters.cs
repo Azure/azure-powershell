@@ -63,14 +63,14 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 }
             }
 
-            if (restoreParameters.RestoreWithTtlDisabled != null)
-            {
-                DisableTtl = restoreParameters.RestoreWithTtlDisabled;
-            }
-
             if (!string.IsNullOrEmpty(restoreParameters.SourceBackupLocation))
             {
                 SourceBackupLocation = restoreParameters.SourceBackupLocation;
+            }
+
+            if (restoreParameters.RestoreWithTtlDisabled != null)
+            {
+                DisableTtl = restoreParameters.RestoreWithTtlDisabled;
             }
         }
 
@@ -101,15 +101,15 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// </summary>
         public PSTablesToRestore TablesToRestore { get; set; }
 
-		/// <summary>
-        /// Gets or Sets disablement of restoring with Time-To-Live disabled.
-        /// </summary>
-        public bool? DisableTtl { get; set; }
-
         /// <summary>
         /// Gets or sets CosmosDB location of source backup for cross region restore.
         /// </summary>
         public string SourceBackupLocation { get; set; }
+
+        /// <summary>
+        /// Gets or Sets disablement of restoring with Time-To-Live disabled.
+        /// </summary>
+        public bool? DisableTtl { get; set; }
 
         public RestoreParameters ToSDKModel()
         {

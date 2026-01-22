@@ -1,0 +1,212 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/15d08dec-240b-4ba6-b837-442a4efe11bc/resourceGroups/throughput-bucketing-rg/providers/Microsoft.DocumentDB/databaseAccounts/throughput-bucketing-rp-test/sqlDatabases/dbName3?api-version=2025-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTVkMDhkZWMtMjQwYi00YmE2LWI4MzctNDQyYTRlZmUxMWJjL3Jlc291cmNlR3JvdXBzL3Rocm91Z2hwdXQtYnVja2V0aW5nLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL3Rocm91Z2hwdXQtYnVja2V0aW5nLXJwLXRlc3Qvc3FsRGF0YWJhc2VzL2RiTmFtZTM/YXBpLXZlcnNpb249MjAyNS0xMS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "47f6380c-b2e8-401d-938b-eac5228aedfb"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2225.52707",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.0.8"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "ede90f95-4abd-4754-a0b0-7b6f13ad7686"
+        ],
+        "x-ms-correlation-request-id": [
+          "ede90f95-4abd-4754-a0b0-7b6f13ad7686"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2:20251121T085233Z:ede90f95-4abd-4754-a0b0-7b6f13ad7686"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 14FF31EE53FD4B7C859B48A6DC198B2C Ref B: BL2AA2011002034 Ref C: 2025-11-21T08:52:33Z"
+        ],
+        "Date": [
+          "Fri, 21 Nov 2025 08:52:32 GMT"
+        ],
+        "Content-Length": [
+          "261"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DocumentDB/databaseAccounts/throughput-bucketing-rp-test' under resource group 'throughput-bucketing-rg' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/15d08dec-240b-4ba6-b837-442a4efe11bc/resourceGroups/throughput-bucketing-rg/providers/Microsoft.DocumentDB/databaseAccounts/throughput-bucketing-rp-test/sqlDatabases/dbName3?api-version=2025-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTVkMDhkZWMtMjQwYi00YmE2LWI4MzctNDQyYTRlZmUxMWJjL3Jlc291cmNlR3JvdXBzL3Rocm91Z2hwdXQtYnVja2V0aW5nLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL3Rocm91Z2hwdXQtYnVja2V0aW5nLXJwLXRlc3Qvc3FsRGF0YWJhc2VzL2RiTmFtZTM/YXBpLXZlcnNpb249MjAyNS0xMS0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "47f6380c-b2e8-401d-938b-eac5228aedfb"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2225.52707",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.0.8"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "97"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"dbName3\"\r\n    },\r\n    \"options\": {}\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "792d59e0-77b1-4a7d-be34-42148079bc75"
+        ],
+        "x-ms-correlation-request-id": [
+          "792d59e0-77b1-4a7d-be34-42148079bc75"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2:20251121T085233Z:792d59e0-77b1-4a7d-be34-42148079bc75"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: F60389287B8146BBB7786DEFEC97BED5 Ref B: BL2AA2011002034 Ref C: 2025-11-21T08:52:33Z"
+        ],
+        "Date": [
+          "Fri, 21 Nov 2025 08:52:32 GMT"
+        ],
+        "Content-Length": [
+          "261"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DocumentDB/databaseAccounts/throughput-bucketing-rp-test' under resource group 'throughput-bucketing-rg' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/15d08dec-240b-4ba6-b837-442a4efe11bc/resourceGroups/throughput-bucketing-rg/providers/Microsoft.DocumentDB/databaseAccounts/throughput-bucketing-rp-test/sqlDatabases/dbName3/containers/containerName?api-version=2025-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTVkMDhkZWMtMjQwYi00YmE2LWI4MzctNDQyYTRlZmUxMWJjL3Jlc291cmNlR3JvdXBzL3Rocm91Z2hwdXQtYnVja2V0aW5nLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL3Rocm91Z2hwdXQtYnVja2V0aW5nLXJwLXRlc3Qvc3FsRGF0YWJhc2VzL2RiTmFtZTMvY29udGFpbmVycy9jb250YWluZXJOYW1lP2FwaS12ZXJzaW9uPTIwMjUtMTEtMDEtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "a15b838d-a7dd-4df2-9491-004677e3be63"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2225.52707",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.0.8"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "2ac298d5-c348-4546-b4c6-c739039658fa"
+        ],
+        "x-ms-correlation-request-id": [
+          "2ac298d5-c348-4546-b4c6-c739039658fa"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2:20251121T085233Z:2ac298d5-c348-4546-b4c6-c739039658fa"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: D2764FBA47A2499EA13C0778D936010F Ref B: MNZ221060610039 Ref C: 2025-11-21T08:52:33Z"
+        ],
+        "Date": [
+          "Fri, 21 Nov 2025 08:52:32 GMT"
+        ],
+        "Content-Length": [
+          "261"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DocumentDB/databaseAccounts/throughput-bucketing-rp-test' under resource group 'throughput-bucketing-rg' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "StatusCode": 404
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "15d08dec-240b-4ba6-b837-442a4efe11bc"
+  }
+}

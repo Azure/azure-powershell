@@ -20,9 +20,8 @@ Update-AzCosmosDBSqlContainer -ResourceGroupName <String> -AccountName <String> 
  [-AutoscaleMaxThroughput <Int32>] [-TtlInSeconds <Int32>] [-UniqueKeyPolicy <PSSqlUniqueKeyPolicy>]
  [-ConflictResolutionPolicyMode <String>] [-ConflictResolutionPolicyPath <String>]
  [-ConflictResolutionPolicyProcedure <String>] [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>]
- [-vectorEmbeddingPolicy <PSSqlVectorEmbeddingPolicy>] [-AnalyticalStorageTtl <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-vectorEmbeddingPolicy <PSSqlVectorEmbeddingPolicy>] [-AnalyticalStorageTtl <Int32>] [-MaterializedViewDefinition <PSMaterializedViewDefinition>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -34,8 +33,8 @@ Update-AzCosmosDBSqlContainer [-Name <String>] [-IndexingPolicy <PSSqlIndexingPo
  [-ConflictResolutionPolicyPath <String>] [-ConflictResolutionPolicyProcedure <String>]
  [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>]
  [-vectorEmbeddingPolicy <PSSqlVectorEmbeddingPolicy>] -ParentObject <PSSqlDatabaseGetResults>
- [-AnalyticalStorageTtl <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AnalyticalStorageTtl <Int32>] [-MaterializedViewDefinition <PSMaterializedViewDefinition>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -47,8 +46,8 @@ Update-AzCosmosDBSqlContainer [-Name <String>] [-IndexingPolicy <PSSqlIndexingPo
  [-ConflictResolutionPolicyPath <String>] [-ConflictResolutionPolicyProcedure <String>]
  [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>]
  [-vectorEmbeddingPolicy <PSSqlVectorEmbeddingPolicy>] [-AnalyticalStorageTtl <Int32>]
- -InputObject <PSSqlContainerGetResults> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -InputObject <PSSqlContainerGetResults> [-MaterializedViewDefinition <PSMaterializedViewDefinition>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -236,6 +235,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MaterializedViewDefinition
+Materializedview Definition
+
+```yaml
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSMaterializedViewDefinition
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -98,13 +98,22 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
             }
+            if (EnableBurstCapacity != null)
+            {
+                databaseAccountUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
+            }
+            if(EnableMaterializedViews != null)
+            {
+                databaseAccountUpdateParameters.EnableMaterializedViews = EnableMaterializedViews;
+            }
             if (EnablePartitionMerge != null)
             {
                 databaseAccountUpdateParameters.EnablePartitionMerge = EnablePartitionMerge;
             }
-            if (EnableBurstCapacity != null)
+            if (NetworkAclBypass != null)
             {
-                databaseAccountUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
+                databaseAccountUpdateParameters.NetworkAclBypass =
+                    NetworkAclBypass == "AzureServices" ? SDKModel.NetworkAclBypass.AzureServices : SDKModel.NetworkAclBypass.None;
             }
             if (EnablePriorityBasedExecution != null)
             {
@@ -113,11 +122,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (DefaultPriorityLevel != null)
             {
                 databaseAccountUpdateParameters.DefaultPriorityLevel = DefaultPriorityLevel;
-            }
-            if (NetworkAclBypass != null)
-            {
-                databaseAccountUpdateParameters.NetworkAclBypass =
-                    NetworkAclBypass == "AzureServices" ? SDKModel.NetworkAclBypass.AzureServices : SDKModel.NetworkAclBypass.None;
             }
             if(MinimalTlsVersion != null)
             {
@@ -208,7 +212,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
-            // Update backup policy to ContinuousModeBackupPolicy
             if (!string.IsNullOrEmpty(ContinuousTier))
             {
                 if (!(!string.IsNullOrEmpty(BackupPolicyType) &&
@@ -245,7 +248,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     };
                 }
             }
-
+            
             // Update analytical storage schema type.
             databaseAccountUpdateParameters.AnalyticalStorageConfiguration = CreateAnalyticalStorageConfiguration(AnalyticalStorageSchemaType);
 

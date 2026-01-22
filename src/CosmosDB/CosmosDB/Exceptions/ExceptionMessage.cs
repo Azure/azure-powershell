@@ -30,5 +30,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions
         public const string ConflictTableRoleResourceId = "Role {0} with Id [{1}] already exists.";
         public const string NotFoundTableRoleResourceId = "Role {0} with Id [{1}] does not exist.";
         public const string NotFoundTableRoleResourceName = "Role {0} with Name [{1}] does not exist.";
+
+        public const string ConflictGremlinRoleResourceId = "Role {0} with Id [{1}] already exists.";
+        public const string NotFoundGremlinRoleResourceId = "Role {0} with Id [{1}] does not exist.";
+        public const string NotFoundGremlinRoleResourceName = "Role {0} with Name [{1}] does not exist.";
+
+        public const string ConflictCassandraRoleResourceId = "Role {0} with Id [{1}] already exists.";
+        public const string NotFoundCassandraRoleResourceId = "Role {0} with Id [{1}] does not exist.";
+        public const string NotFoundCassandraRoleResourceName = "Role {0} with Name [{1}] does not exist.";
+
+        public const string ConflictMongoMIRoleResourceId = "Role {0} with Id [{1}] already exists.";
+        public const string NotFoundMongoMIRoleResourceId = "Role {0} with Id [{1}] does not exist.";
+        public const string NotFoundMongoMIRoleResourceName = "Role {0} with Name [{1}] does not exist.";
     }
 }

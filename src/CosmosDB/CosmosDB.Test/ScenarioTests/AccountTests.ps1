@@ -21,7 +21,7 @@ function Test-AccountRelatedCmdlets
 
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
 
-  $cosmosDBAccountName = "cosmosdb678904"
+  $cosmosDBAccountName = "cosmosdb678902"
 
   #use an existing account with the following information for Account Update Operations
   $cosmosDBExistingAccountName = "dbaccount30" 
@@ -32,8 +32,8 @@ function Test-AccountRelatedCmdlets
   $publicNetworkAccess = "Enabled"
   $networkAclBypass = "AzureServices"
   $networkAclBypassResourceId = @("/subscriptions/subId/resourcegroups/rgName/providers/Microsoft.Synapse/workspaces/workspaceName")
-  
-  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $location -IpRule $IpRule -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover -ApiKind "MongoDB" -PublicNetworkAccess $publicNetworkAccess -EnableFreeTier 0 -EnableAnalyticalStorage 0 -ServerVersion "3.2" -NetworkAclBypass $NetworkAclBypass -BackupRetentionIntervalInHours 16 -BackupIntervalInMinutes 480 -EnableBurstCapacity 1 -MinimalTlsVersion "Tls12" -EnablePerRegionPerPartitionAutoscale 1 -EnablePriorityBasedExecution 1 -DefaultPriorityLevel "Low"
+
+  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $location -IpRule $IpRule -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover -ApiKind "MongoDB" -PublicNetworkAccess $publicNetworkAccess -EnableFreeTier 0 -EnableAnalyticalStorage 0 -ServerVersion "3.2" -NetworkAclBypass $NetworkAclBypass -BackupRetentionIntervalInHours 16 -BackupIntervalInMinutes 480 -EnableBurstCapacity 1 -MinimalTlsVersion "Tls12" -EnablePriorityBasedExecution 1 -DefaultPriorityLevel "Low" -EnablePerRegionPerPartitionAutoscale 1
   
   Assert-AreEqual $cosmosDBAccountName $cosmosDBAccount.Name
   Assert-AreEqual "BoundedStaleness" $cosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
@@ -51,10 +51,10 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $cosmosDBAccount.BackupPolicy.BackupIntervalInMinutes 480
   Assert-AreEqual $cosmosDBAccount.BackupPolicy.BackupRetentionIntervalInHours 16
   Assert-AreEqual $cosmosDBAccount.EnableBurstCapacity 1
-  Assert-AreEqual $cosmosDBAccount.MinimalTlsVersion "Tls12"
-  Assert-AreEqual $cosmosDBAccount.EnablePerRegionPerPartitionAutoscale 1
   Assert-AreEqual $cosmosDBAccount.EnablePriorityBasedExecution 1
   Assert-AreEqual $cosmosDBAccount.DefaultPriorityLevel "Low"
+  Assert-AreEqual $cosmosDBAccount.MinimalTlsVersion "Tls12"
+  Assert-AreEqual $cosmosDBAccount.EnablePerRegionPerPartitionAutoscale 1
 
   # create an existing database
   Try {
@@ -64,7 +64,7 @@ function Test-AccountRelatedCmdlets
     Assert-AreEqual $_.Exception.Message ("Resource with Name " + $cosmosDBAccountName + " already exists.")
   }
 
-  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRule $IpRule -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 -PublicNetworkAccess $publicNetworkAccess -NetworkAclBypassResourceId $networkAclBypassResourceId -EnablePartitionMerge 0 -EnableBurstCapacity 0 -MinimalTlsVersion "Tls12" -EnablePerRegionPerPartitionAutoscale 0 -EnablePriorityBasedExecution 0 -DefaultPriorityLevel "High"
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRule $IpRule -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 -PublicNetworkAccess $publicNetworkAccess -NetworkAclBypassResourceId $networkAclBypassResourceId -EnableBurstCapacity 0 -EnablePriorityBasedExecution 0 -DefaultPriorityLevel "High" -EnablePartitionMerge 0 -MinimalTlsVersion "Tls12" -EnablePerRegionPerPartitionAutoscale 0
 
   Assert-AreEqual $cosmosDBAccountName $updatedCosmosDBAccount.Name
   Assert-AreEqual "BoundedStaleness" $updatedCosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
@@ -79,10 +79,10 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupRetentionIntervalInHours 16
   Assert-AreEqual $updatedCosmosDBAccount.EnablePartitionMerge 0
   Assert-AreEqual $updatedCosmosDBAccount.EnableBurstCapacity 0
-  Assert-AreEqual $updatedCosmosDBAccount.MinimalTlsVersion "Tls12"
-  Assert-AreEqual $updatedCosmosDBAccount.EnablePerRegionPerPartitionAutoscale 0
   Assert-AreEqual $updatedCosmosDBAccount.EnablePriorityBasedExecution 0
   Assert-AreEqual $updatedCosmosDBAccount.DefaultPriorityLevel "High"
+  Assert-AreEqual $updatedCosmosDBAccount.MinimalTlsVersion "Tls12"
+  Assert-AreEqual $updatedCosmosDBAccount.EnablePerRegionPerPartitionAutoscale 0
 
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -EnableBurstCapacity 1
   Assert-AreEqual $updatedCosmosDBAccount.EnableBurstCapacity 1
@@ -99,6 +99,9 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupIntervalInMinutes 480
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupRetentionIntervalInHours 16
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupStorageRedundancy "Local"
+
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -EnablePerRegionPerPartitionAutoscale 1
+  Assert-AreEqual $updatedCosmosDBAccount.EnablePerRegionPerPartitionAutoscale 1
 
   $cosmosDBAccountKey = Get-AzCosmosDBAccountKey -Name $cosmosDBAccountName -ResourceGroupName $rgname
   Assert-NotNull $cosmosDBAccountKey
@@ -170,8 +173,8 @@ function Test-AccountRelatedCmdletsUsingRid
 function Test-AccountRelatedCmdletsUsingObject
 {
   #use an existing account with the following properties
-  $cosmosDBExistingAccountName = "dbaccount31" 
-  $existingResourceGroupName = "CosmosDBResourceGroup28"
+  $cosmosDBExistingAccountName = "dbaccount32" 
+  $existingResourceGroupName = "CosmosDBResourceGroup29"
   $location = "East US"
   $IpRule = "201.168.50.1"
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
@@ -231,7 +234,7 @@ function Test-AddRegionOperation
         }
 
     $updatedCosmosDBAccount = Update-AzCosmosDBAccountRegion -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $locationlist
-    Start-TestSleep -Seconds 60
+    Start-Sleep -s 60
     $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
     Assert-AreEqual $updatedCosmosDBAccount.Locations.Count 2
    }
@@ -249,8 +252,8 @@ function Test-PrivateEndpoint
   $storageAccount = "xdmsa2";
   $vnetName = "MyVnetPE"
 	
-  $cosmosDBAccountName = "db947"
-  $rgname = "CosmosDBResourceGroup9507"
+  $cosmosDBAccountName = "db948"
+  $rgname = "CosmosDBResourceGroup9508"
 
   try{
 
