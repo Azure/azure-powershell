@@ -59,6 +59,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// on an account.
         /// </param>
 
+        /// <param name="capacityMode">Indicates the capacityMode of the Cosmos DB account.
+        /// Possible values include: &#39;None&#39;, &#39;Provisioned&#39;, &#39;Serverless&#39;</param>
+
         /// <param name="locations">An array that contains the georeplication locations enabled for the Cosmos
         /// DB account.
         /// </param>
@@ -118,8 +121,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Cosmos DB account.
         /// </param>
 
+        /// <param name="diagnosticLogSettings">The Object representing the different Diagnostic log settings for the
+        /// Cosmos DB Account.
+        /// </param>
+
         /// <param name="disableLocalAuth">Opt-out of local authentication and ensure only MSI and AAD can be used
         /// exclusively for authentication.
+        /// </param>
+
+        /// <param name="enableMaterializedViews">Flag to indicate whether to enable MaterializedViews on the Cosmos DB
+        /// account
         /// </param>
 
         /// <param name="keysMetadata">This property is ignored during the update operation, as the metadata is
@@ -131,20 +142,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// account
         /// </param>
 
-        /// <param name="minimalTlsVersion">Indicates the minimum allowed Tls version. The default value is Tls 1.2.
-        /// Cassandra and Mongo APIs only work with Tls 1.2.
-        /// Possible values include: &#39;Tls&#39;, &#39;Tls11&#39;, &#39;Tls12&#39;</param>
-
-        /// <param name="enableBurstCapacity">Flag to indicate enabling/disabling of Burst Capacity feature on the
-        /// account
+        /// <param name="enableBurstCapacity">Flag to indicate enabling/disabling of Burst Capacity Preview feature on
+        /// the account
         /// </param>
+
+        /// <param name="minimalTlsVersion">Indicates the minimum allowed Tls version. The default is Tls 1.0, except
+        /// for Cassandra and Mongo API&#39;s, which only work with Tls 1.2.
+        /// Possible values include: &#39;Tls&#39;, &#39;Tls11&#39;, &#39;Tls12&#39;</param>
 
         /// <param name="customerManagedKeyStatus">Indicates the status of the Customer Managed Key feature on the account. In
         /// case there are errors, the property provides troubleshooting guidance.
-        /// </param>
-
-        /// <param name="enablePerRegionPerPartitionAutoscale">Flag to indicate enabling/disabling of PerRegionPerPartitionAutoscale
-        /// feature on the account
         /// </param>
 
         /// <param name="enablePriorityBasedExecution">Flag to indicate enabling/disabling of Priority Based Execution Preview
@@ -154,7 +161,15 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="defaultPriorityLevel">Enum to indicate default Priority Level of request for Priority Based
         /// Execution.
         /// Possible values include: &#39;High&#39;, &#39;Low&#39;</param>
-        public DatabaseAccountUpdateParameters(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string location = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), System.Collections.Generic.IList<IpAddressOrRange> ipRules = default(System.Collections.Generic.IList<IpAddressOrRange>), string connectorOffer = default(string), ApiProperties apiProperties = default(ApiProperties), BackupPolicy backupPolicy = default(BackupPolicy), Capacity capacity = default(Capacity), System.Collections.Generic.IList<Location> locations = default(System.Collections.Generic.IList<Location>), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), System.Collections.Generic.IList<Capability> capabilities = default(System.Collections.Generic.IList<Capability>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), System.Collections.Generic.IList<CorsPolicy> cors = default(System.Collections.Generic.IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), System.Collections.Generic.IList<string> networkAclBypassResourceIds = default(System.Collections.Generic.IList<string>), bool? disableLocalAuth = default(bool?), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?), string minimalTlsVersion = default(string), bool? enableBurstCapacity = default(bool?), string customerManagedKeyStatus = default(string), bool? enablePerRegionPerPartitionAutoscale = default(bool?), bool? enablePriorityBasedExecution = default(bool?), string defaultPriorityLevel = default(string))
+
+        /// <param name="enablePerRegionPerPartitionAutoscale">Flag to indicate enabling/disabling of Per-Region Per-partition autoscale
+        /// Preview feature on the account
+        /// </param>
+
+        /// <param name="enableAllVersionsAndDeletesChangeFeed">Flag to indicate if All Versions and Deletes Change feed feature is enabled
+        /// on the account
+        /// </param>
+        public DatabaseAccountUpdateParameters(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string location = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), System.Collections.Generic.IList<IpAddressOrRange> ipRules = default(System.Collections.Generic.IList<IpAddressOrRange>), string connectorOffer = default(string), ApiProperties apiProperties = default(ApiProperties), BackupPolicy backupPolicy = default(BackupPolicy), Capacity capacity = default(Capacity), string capacityMode = default(string), System.Collections.Generic.IList<Location> locations = default(System.Collections.Generic.IList<Location>), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), System.Collections.Generic.IList<Capability> capabilities = default(System.Collections.Generic.IList<Capability>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), System.Collections.Generic.IList<CorsPolicy> cors = default(System.Collections.Generic.IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), System.Collections.Generic.IList<string> networkAclBypassResourceIds = default(System.Collections.Generic.IList<string>), DiagnosticLogSettings diagnosticLogSettings = default(DiagnosticLogSettings), bool? disableLocalAuth = default(bool?), bool? enableMaterializedViews = default(bool?), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?), bool? enableBurstCapacity = default(bool?), string minimalTlsVersion = default(string), string customerManagedKeyStatus = default(string), bool? enablePriorityBasedExecution = default(bool?), string defaultPriorityLevel = default(string), bool? enablePerRegionPerPartitionAutoscale = default(bool?), bool? enableAllVersionsAndDeletesChangeFeed = default(bool?))
 
         {
             this.Tags = tags;
@@ -166,6 +181,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.ApiProperties = apiProperties;
             this.BackupPolicy = backupPolicy;
             this.Capacity = capacity;
+            this.CapacityMode = capacityMode;
             this.Locations = locations;
             this.IsVirtualNetworkFilterEnabled = isVirtualNetworkFilterEnabled;
             this.EnableAutomaticFailover = enableAutomaticFailover;
@@ -183,15 +199,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.Cors = cors;
             this.NetworkAclBypass = networkAclBypass;
             this.NetworkAclBypassResourceIds = networkAclBypassResourceIds;
+            this.DiagnosticLogSettings = diagnosticLogSettings;
             this.DisableLocalAuth = disableLocalAuth;
+            this.EnableMaterializedViews = enableMaterializedViews;
             this.KeysMetadata = keysMetadata;
             this.EnablePartitionMerge = enablePartitionMerge;
-            this.MinimalTlsVersion = minimalTlsVersion;
             this.EnableBurstCapacity = enableBurstCapacity;
+            this.MinimalTlsVersion = minimalTlsVersion;
             this.CustomerManagedKeyStatus = customerManagedKeyStatus;
-            this.EnablePerRegionPerPartitionAutoscale = enablePerRegionPerPartitionAutoscale;
             this.EnablePriorityBasedExecution = enablePriorityBasedExecution;
             this.DefaultPriorityLevel = defaultPriorityLevel;
+            this.EnablePerRegionPerPartitionAutoscale = enablePerRegionPerPartitionAutoscale;
+            this.EnableAllVersionsAndDeletesChangeFeed = enableAllVersionsAndDeletesChangeFeed;
             CustomInit();
         }
 
@@ -266,6 +285,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.capacity")]
         public Capacity Capacity {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates the capacityMode of the Cosmos DB account. Possible values include: &#39;None&#39;, &#39;Provisioned&#39;, &#39;Serverless&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.capacityMode")]
+        public string CapacityMode {get; set; }
 
         /// <summary>
         /// Gets or sets an array that contains the georeplication locations enabled
@@ -381,11 +406,25 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public System.Collections.Generic.IList<string> NetworkAclBypassResourceIds {get; set; }
 
         /// <summary>
+        /// Gets or sets the Object representing the different Diagnostic log settings
+        /// for the Cosmos DB Account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.diagnosticLogSettings")]
+        public DiagnosticLogSettings DiagnosticLogSettings {get; set; }
+
+        /// <summary>
         /// Gets or sets opt-out of local authentication and ensure only MSI and AAD
         /// can be used exclusively for authentication.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.disableLocalAuth")]
         public bool? DisableLocalAuth {get; set; }
+
+        /// <summary>
+        /// Gets or sets flag to indicate whether to enable MaterializedViews on the
+        /// Cosmos DB account
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableMaterializedViews")]
+        public bool? EnableMaterializedViews {get; set; }
 
         /// <summary>
         /// Gets this property is ignored during the update operation, as the metadata
@@ -403,18 +442,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public bool? EnablePartitionMerge {get; set; }
 
         /// <summary>
-        /// Gets or sets indicates the minimum allowed Tls version. The default value
-        /// is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2. Possible values include: &#39;Tls&#39;, &#39;Tls11&#39;, &#39;Tls12&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.minimalTlsVersion")]
-        public string MinimalTlsVersion {get; set; }
-
-        /// <summary>
-        /// Gets or sets flag to indicate enabling/disabling of Burst Capacity feature
-        /// on the account
+        /// Gets or sets flag to indicate enabling/disabling of Burst Capacity Preview
+        /// feature on the account
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableBurstCapacity")]
         public bool? EnableBurstCapacity {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates the minimum allowed Tls version. The default is Tls
+        /// 1.0, except for Cassandra and Mongo API&#39;s, which only work with Tls 1.2. Possible values include: &#39;Tls&#39;, &#39;Tls11&#39;, &#39;Tls12&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.minimalTlsVersion")]
+        public string MinimalTlsVersion {get; set; }
 
         /// <summary>
         /// Gets or sets indicates the status of the Customer Managed Key feature on
@@ -423,13 +462,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.customerManagedKeyStatus")]
         public string CustomerManagedKeyStatus {get; set; }
-
-        /// <summary>
-        /// Gets or sets flag to indicate enabling/disabling of
-        /// PerRegionPerPartitionAutoscale feature on the account
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enablePerRegionPerPartitionAutoscale")]
-        public bool? EnablePerRegionPerPartitionAutoscale {get; set; }
 
         /// <summary>
         /// Gets or sets flag to indicate enabling/disabling of Priority Based
@@ -444,6 +476,20 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.defaultPriorityLevel")]
         public string DefaultPriorityLevel {get; set; }
+
+        /// <summary>
+        /// Gets or sets flag to indicate enabling/disabling of Per-Region
+        /// Per-partition autoscale Preview feature on the account
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enablePerRegionPerPartitionAutoscale")]
+        public bool? EnablePerRegionPerPartitionAutoscale {get; set; }
+
+        /// <summary>
+        /// Gets or sets flag to indicate if All Versions and Deletes Change feed
+        /// feature is enabled on the account
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableAllVersionsAndDeletesChangeFeed")]
+        public bool? EnableAllVersionsAndDeletesChangeFeed {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -467,6 +513,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             {
                 this.Capacity.Validate();
             }
+
             if (this.Locations != null)
             {
                 foreach (var element in this.Locations)
@@ -493,6 +540,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
                     }
                 }
             }
+
 
 
 

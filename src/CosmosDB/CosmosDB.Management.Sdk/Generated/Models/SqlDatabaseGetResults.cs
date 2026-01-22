@@ -46,14 +46,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// also include &#34;Table&#34;, &#34;Graph&#34;, &#34;DocumentDB&#34;, and &#34;MongoDB&#34;.
         /// </param>
 
+        /// <param name="identity">Identity for the resource.
+        /// </param>
+
         /// <param name="resource">
         /// </param>
 
         /// <param name="options">
         /// </param>
-        public SqlDatabaseGetResults(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SqlDatabaseGetPropertiesResource resource = default(SqlDatabaseGetPropertiesResource), SqlDatabaseGetPropertiesOptions options = default(SqlDatabaseGetPropertiesOptions))
+        public SqlDatabaseGetResults(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), SqlDatabaseGetPropertiesResource resource = default(SqlDatabaseGetPropertiesResource), SqlDatabaseGetPropertiesOptions options = default(SqlDatabaseGetPropertiesOptions))
 
-        : base(id, name, type, location, tags)
+        : base(id, name, type, location, tags, identity)
         {
             this.Resource = resource;
             this.Options = options;
