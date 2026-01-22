@@ -213,6 +213,10 @@ param(
         $null = $PSBoundParameters.Remove('ResourceGroupID')
         $null = $PSBoundParameters.Remove('ProjectID')
 
+        # Set common ErrorVariable and ErrorAction for get behaviors
+        $null = $PSBoundParameters.Add('ErrorVariable', 'notPresent')
+        $null = $PSBoundParameters.Add('ErrorAction', 'SilentlyContinue')
+
         if (($parameterSet -match 'Name') -or ($parameterSet -eq 'ListById'))
         {
             if ($parameterSet -eq 'ListById')
@@ -250,9 +254,30 @@ param(
                 throw "Solution not found."
             }
 
-            $null = $PSBoundParameters.Remove("ResourceGroupName")
-            $null = $PSBoundParameters.Remove("Name")
+            # Get the migrate solution with ResourceGroupName, Name, ProjectName
+            $amhSolutionName = $AzMigrateSolutions.DataReplicationSolution
+            $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+            $null = $PSBoundParameters.Add("Name", $amhSolutionName)
+            $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
+            $solution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters
+            if ($null -eq $solution)
+            {
+                throw New-AzMigrateSolutionNotFoundException `
+                    -Name $amhSolutionName `
+                    -ResourceGroupName $ResourceGroupName `
+                    -ProjectName $ProjectName
+            }
             $null = $PSBoundParameters.Remove("MigrateProjectName")
+            $null = $PSBoundParameters.Remove("Name")
+            $null = $PSBoundParameters.Remove("ResourceGroupName")
+
+            $vaultId = $solution.DetailExtendedDetail["vaultId"]
+            $vaultIdArray = $vaultId.Split("/")
+            if ($vaultIdArray.Length -lt 9)
+            {
+                throw New-ReplicationVaultNotFoundInAMHSolutionException -VaultId $vaultId
+            }
+            $vaultName = $vaultIdArray[8]
         }
         else
         {
@@ -272,9 +297,9 @@ param(
             $Name = $jobIdArray[10]
         }
         
+        # Get job with ResourceGroupName, VaultName, JobName
         $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
         $null = $PSBoundParameters.Add('VaultName', $vaultName)
-
         if ($parameterSet -match 'Get')
         {
             $null = $PSBoundParameters.Add('JobName', $Name)

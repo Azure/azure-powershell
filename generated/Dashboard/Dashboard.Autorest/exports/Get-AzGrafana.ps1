@@ -36,7 +36,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDashboardIdentity>: Identity Parameter
+  [DashboardName <String>]: The name of the Azure Managed Dashboard.
   [Id <String>]: Resource identity path
+  [IntegrationFabricName <String>]: The integration fabric name of Azure Managed Grafana.
+  [ManagedPrivateEndpointName <String>]: The managed private endpoint name of Azure Managed Grafana.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name of Azure Managed Grafana.
   [PrivateLinkResourceName <String>]: 
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.

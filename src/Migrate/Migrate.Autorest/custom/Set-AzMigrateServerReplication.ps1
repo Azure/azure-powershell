@@ -190,6 +190,12 @@ function Set-AzMigrateServerReplication {
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
 
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the Target Capacity Reservation Group Id within the destination Azure subscription.
+        ${TargetCapacityReservationGroupId},
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
@@ -253,6 +259,7 @@ function Set-AzMigrateServerReplication {
         $HasUpdateDiskTag = $PSBoundParameters.ContainsKey('UpdateDiskTag')
         $HasUpdateDiskTagOperation = $PSBoundParameters.ContainsKey('UpdateDiskTagOperation')
         $HasTargetBootDignosticStorageAccount = $PSBoundParameters.ContainsKey('TargetBootDiagnosticsStorageAccount')
+        $HasTargetCapacityReservationGroupId = $PSBoundParameters.ContainsKey('TargetCapacityReservationGroupId')
 
         $null = $PSBoundParameters.Remove('TargetObjectID')
         $null = $PSBoundParameters.Remove('TargetVMName')
@@ -278,6 +285,7 @@ function Set-AzMigrateServerReplication {
 
         $null = $PSBoundParameters.Remove('InputObject')
         $null = $PSBoundParameters.Remove('TargetBootDiagnosticsStorageAccount')
+        $null = $PSBoundParameters.Remove('TargetCapacityReservationGroupId')
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($parameterSet -eq 'ByInputObjectVMwareCbt') {
@@ -544,6 +552,14 @@ function Set-AzMigrateServerReplication {
                 }
             }
 
+            if ($HasTargetCapacityReservationGroupId) {
+                $ProviderSpecificDetails.TargetCapacityReservationGroupId = $TargetCapacityReservationGroupId
+            }
+            else {
+                $ProviderSpecificDetails.TargetCapacityReservationGroupId = $ReplicationMigrationItem.ProviderSpecificDetail.TargetCapacityReservationGroupId
+            }
+
+
             if ($HasTargetVMName) {
                 if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
                     throw "The target virtual machine name must be between 1 and 64 characters long."
@@ -694,7 +710,6 @@ function Set-AzMigrateServerReplication {
                 if ($diskNamePresent) {
                     throw "A disk with name $($TargetDiskName)' already exists in the target resource group."
                 }
-
                 [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtUpdateDiskInput[]]$updateDisksArray = @()
                 $originalDisks = $ReplicationMigrationItem.ProviderSpecificDetail.ProtectedDisk
                 foreach ($DiskObject in $originalDisks) {

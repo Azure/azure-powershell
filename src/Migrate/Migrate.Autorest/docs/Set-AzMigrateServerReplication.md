@@ -17,8 +17,9 @@ Updates the target properties for the replicating server.
 Set-AzMigrateServerReplication -TargetObjectID <String> [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>]
  [-LinuxLicenseType <String>] [-NicToUpdate <IVMwareCbtNicInput[]>] [-SqlServerLicenseType <String>]
  [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetDiskName <String>] [-TargetNetworkId <String>]
- [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetCapacityReservationGroupId <String>]
+ [-TargetDiskName <String>] [-TargetNetworkId <String>] [-TargetResourceGroupID <String>]
+ [-TargetVMName <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
  [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
  [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
  [-UpdateTag <Hashtable>] [-UpdateTagOperation <String>]
@@ -31,8 +32,9 @@ Set-AzMigrateServerReplication -TargetObjectID <String> [-DiskToUpdate <IVMwareC
 Set-AzMigrateServerReplication -InputObject <IMigrationItem> [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>]
  [-LinuxLicenseType <String>] [-NicToUpdate <IVMwareCbtNicInput[]>] [-SqlServerLicenseType <String>]
  [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetDiskName <String>] [-TargetNetworkId <String>]
- [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetCapacityReservationGroupId <String>]
+ [-TargetDiskName <String>] [-TargetNetworkId <String>] [-TargetResourceGroupID <String>]
+ [-TargetVMName <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
  [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
  [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
  [-UpdateTag <Hashtable>] [-UpdateTagOperation <String>]
@@ -250,6 +252,21 @@ Accept wildcard characters: False
 
 ### -TargetBootDiagnosticsStorageAccount
 Specifies the storage account to be used for boot diagnostics.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetCapacityReservationGroupId
+Specifies the Target Capacity Reservation Group Id within the destination Azure subscription.
 
 ```yaml
 Type: System.String

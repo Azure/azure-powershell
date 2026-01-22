@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.JobNetworkConfiguration omObject;
         
-        public PSJobNetworkConfiguration(string subnetId = null)
+        public PSJobNetworkConfiguration(string subnetId, System.Nullable<bool> skipWithdrawFromVNet = null)
         {
-            this.omObject = new Microsoft.Azure.Batch.JobNetworkConfiguration(subnetId);
+            this.omObject = new Microsoft.Azure.Batch.JobNetworkConfiguration(subnetId, skipWithdrawFromVNet);
         }
         
         internal PSJobNetworkConfiguration(Microsoft.Azure.Batch.JobNetworkConfiguration omObject)
@@ -48,11 +48,27 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
+        public System.Boolean? SkipWithdrawFromVNet
+        {
+            get
+            {
+                return this.omObject.SkipWithdrawFromVNet;
+            }
+            set
+            {
+                this.omObject.SkipWithdrawFromVNet = value;
+            }
+        }
+        
         public string SubnetId
         {
             get
             {
                 return this.omObject.SubnetId;
+            }
+            set
+            {
+                this.omObject.SubnetId = value;
             }
         }
     }

@@ -164,7 +164,8 @@ namespace Commands.Aks.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AutoScalerProfile");
         }
 
-        [Fact]
+        //The current test tenants do not support any GPU vm size.
+        [Fact(Skip = "The only vm size for MIG is not supported with quota on all regions.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGpuInstanceProfile()
         {
@@ -178,7 +179,7 @@ namespace Commands.Aks.Test.ScenarioTests
             TestRunner.RunTestScript("Test-EnableUptimeSLA");
         }
 
-        [Fact]
+        [Fact(Skip = "All test tenants do not support edge zones.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEdgeZone()
         {
@@ -192,7 +193,7 @@ namespace Commands.Aks.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AadProfile");
         }
 
-        [Fact]
+        [Fact(Skip = "All test tenants do not support the size for a host in this test.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestHostGroupID()
         {
@@ -225,6 +226,36 @@ namespace Commands.Aks.Test.ScenarioTests
         public void TestEnableAHUB()
         {
             TestRunner.RunTestScript("Test-EnableAHUB");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAPI20250801WithoutMSI()
+        {
+            TestRunner.RunTestScript("Test-API20250801-WithoutMSI");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        // This test can be recorded but the role assignment url will contain a GUID which is not supported by test framework to playback. Mark it as LiveOnly for now.
+        public void TestAPI20250801WithMSI()
+        {
+            TestRunner.RunTestScript("Test-API20250801-WithMSI");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        // This test can be recorded but the role assignment url will contain a GUID which is not supported by test framework to playback. Mark it as LiveOnly for now.
+        public void TestAPI20250801WithMSISet()
+        {
+            TestRunner.RunTestScript("Test-API20250801-WithMSI-Set");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAPI20250801StorageProfile()
+        {
+            TestRunner.RunTestScript("Test-API20250801-StorageProfile");
         }
     }
 }

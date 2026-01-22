@@ -177,6 +177,9 @@ function New-AzMigrateLocalServerReplication {
         CheckResourceGraphModuleDependency
         CheckResourcesModuleDependency
 
+        $HasMachineId = $PSBoundParameters.ContainsKey('MachineId')
+        $HasTargetStoragePathId = $PSBoundParameters.ContainsKey('TargetStoragePathId')
+        $HasTargetResourceGroupId = $PSBoundParameters.ContainsKey('TargetResourceGroupId')
         $HasTargetVMCPUCore = $PSBoundParameters.ContainsKey('TargetVMCPUCore')
         $HasIsDynamicMemoryEnabled = $PSBoundParameters.ContainsKey('IsDynamicMemoryEnabled')
         if ($HasIsDynamicMemoryEnabled) {
@@ -209,24 +212,40 @@ function New-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Add('ErrorAction', 'SilentlyContinue')
 
         # Validate ARM ID format from inputs
-        if (!(Test-AzureResourceIdFormat -Data $MachineId -Format $IdFormats.MachineArmIdTemplate)) {
-            throw "Invalid -MachineId '$MachineId'. A valid machine ARM ID should follow the format '$($IdFormats.MachineArmIdTemplate)'."
+        if ($HasMachineId -and !(Test-AzureResourceIdFormat -Data $MachineId -Format $IdFormats.MachineArmIdTemplate))
+        {
+            throw New-InvalidResourceIdProvidedException `
+                -ResourceId $MachineId `
+                -ResourceType "DiscoveredMachine" `
+                -Format $IdFormats.MachineArmIdTemplate
         }
 
-        if (!(Test-AzureResourceIdFormat -Data $TargetStoragePathId -Format $IdFormats.StoragePathArmIdTemplate)) {
-            throw "Invalid -TargetStoragePathId '$TargetStoragePathId'. A valid storage path ARM ID should follow the format '$($IdFormats.StoragePathArmIdTemplate)'."
+        if ($HasTargetStoragePathId -and !(Test-AzureResourceIdFormat -Data $TargetStoragePathId -Format $IdFormats.StoragePathArmIdTemplate)) {
+            throw New-InvalidResourceIdProvidedException `
+                -ResourceId $TargetStoragePathId `
+                -ResourceType "StorageContainer" `
+                -Format $IdFormats.StoragePathArmIdTemplate
         }
 
-        if (!(Test-AzureResourceIdFormat -Data $TargetResourceGroupId -Format $IdFormats.ResourceGroupArmIdTemplate)) {
-            throw "Invalid -TargetResourceGroupId '$TargetResourceGroupId'. A valid resource group ARM ID should follow the format '$($IdFormats.ResourceGroupArmIdTemplate)'."
+        if ($HasTargetResourceGroupId -and !(Test-AzureResourceIdFormat -Data $TargetResourceGroupId -Format $IdFormats.ResourceGroupArmIdTemplate)) {
+            throw New-InvalidResourceIdProvidedException `
+                -ResourceId $TargetResourceGroupId `
+                -ResourceType "ResourceGroup" `
+                -Format $IdFormats.ResourceGroupArmIdTemplate
         }
 
         if ($HasTargetVirtualSwitchId -and !(Test-AzureResourceIdFormat -Data $TargetVirtualSwitchId -Format $IdFormats.LogicalNetworkArmIdTemplate)) {
-            throw "Invalid -TargetVirtualSwitchId '$TargetVirtualSwitchId'. A valid logical network ARM ID should follow the format '$($IdFormats.LogicalNetworkArmIdTemplate)'."
+            throw New-InvalidResourceIdProvidedException `
+                -ResourceId $TargetVirtualSwitchId `
+                -ResourceType "LogicalNetwork" `
+                -Format $IdFormats.LogicalNetworkArmIdTemplate
         }
 
         if ($HasTargetTestVirtualSwitchId -and !(Test-AzureResourceIdFormat -Data $TargetTestVirtualSwitchId -Format $IdFormats.LogicalNetworkArmIdTemplate)) {
-            throw "Invalid -TargetTestVirtualSwitchId '$TargetTestVirtualSwitchId'. A valid logical network ARM ID should follow the format '$($IdFormats.LogicalNetworkArmIdTemplate)'."
+            throw New-InvalidResourceIdProvidedException `
+                -ResourceId $TargetTestVirtualSwitchId `
+                -ResourceType "LogicalNetwork" `
+                -Format $IdFormats.LogicalNetworkArmIdTemplate
         }
 
         # $MachineId is in the format of
@@ -364,9 +383,7 @@ function New-AzMigrateLocalServerReplication {
         if ([string]::IsNullOrEmpty($runAsAccountId)) {
             throw "Unable to determine RunAsAccount for site '$SiteName' from machine '$MachineName'. Please verify your appliance setup and provided -MachineId."
         }
-
-        # Validate the VM
-        ValidateReplication -Machine $machine -MigrationType $instanceType
+        $null = $PSBoundParameters.Remove('SiteName')
         
         # $siteObject is not null or exception would have been thrown
         $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
@@ -384,10 +401,13 @@ function New-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Remove('MigrateProjectName')
         
         # Validate replication vault
-        $replicationVaultName = $amhSolution.DetailExtendedDetail["vaultId"].Split("/")[8]
-        if ([string]::IsNullOrEmpty($replicationVaultName)) {
-            throw "No Replication Vault found. Please verify your Azure Migrate project setup."
+        $vaultId = $amhSolution.DetailExtendedDetail["vaultId"]
+        $vaultIdArray = $vaultId.Split("/")
+        if ($vaultIdArray.Length -lt 9)
+        {
+            throw New-ReplicationVaultNotFoundInAMHSolutionException -VaultId $vaultId
         }
+        # $replicationVaultName = $vaultIdArray[8]
 
         # Get replication vault with ResourceGroupName, Name
         $null = $PSBoundParameters.Add('Name', $replicationVaultName)
@@ -401,6 +421,7 @@ function New-AzMigrateLocalServerReplication {
             throw "The Replication Vault '$replicationVaultName' is not in a valid state. The provisioning state is '$($replicationVault.Property.ProvisioningState)'. Please verify your Azure Migrate project setup."
         }
         $null = $PSBoundParameters.Remove('Name')
+
 
         # Access Discovery Service
         $discoverySolutionName = $AzMigrateSolutions.DiscoverySolution
@@ -798,6 +819,7 @@ function New-AzMigrateLocalServerReplication {
             $null = $PSBoundParameters.Add('Property', $protectedItemProperties)
             $null = $PSBoundParameters.Add('NoWait', $true)
             $operation = Az.Migrate.Internal\New-AzMigrateProtectedItem @PSBoundParameters
+
             $null = $PSBoundParameters.Remove('Name')
             $null = $PSBoundParameters.Remove('Property')
             $null = $PSBoundParameters.Remove('NoWait')

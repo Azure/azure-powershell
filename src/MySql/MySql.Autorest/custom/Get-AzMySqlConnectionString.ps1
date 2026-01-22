@@ -15,6 +15,7 @@
 function Get-AzMySqlConnectionString {
     [OutputType([System.String])]
     [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.CmdletBreakingChangeAttribute("16.0.0", "2.0.0", "2026/05")]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Description('Get the connection string according to client connection provider.')]
     param(
         [Parameter(ParameterSetName='Get', Mandatory, HelpMessage = 'The name of the server.')]

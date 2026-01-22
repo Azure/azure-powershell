@@ -79,11 +79,6 @@ namespace Microsoft.Azure.Management.NetApp
         INetAppResourceOperations NetAppResource { get; }
 
         /// <summary>
-        /// Gets the INetAppResourceUsagesOperations
-        /// </summary>
-        INetAppResourceUsagesOperations NetAppResourceUsages { get; }
-
-        /// <summary>
         /// Gets the INetAppResourceQuotaLimitsOperations
         /// </summary>
         INetAppResourceQuotaLimitsOperations NetAppResourceQuotaLimits { get; }
@@ -94,9 +89,34 @@ namespace Microsoft.Azure.Management.NetApp
         INetAppResourceRegionInfosOperations NetAppResourceRegionInfos { get; }
 
         /// <summary>
+        /// Gets the INetAppResourceUsagesOperations
+        /// </summary>
+        INetAppResourceUsagesOperations NetAppResourceUsages { get; }
+
+        /// <summary>
         /// Gets the IAccountsOperations
         /// </summary>
         IAccountsOperations Accounts { get; }
+
+        /// <summary>
+        /// Gets the IBackupPoliciesOperations
+        /// </summary>
+        IBackupPoliciesOperations BackupPolicies { get; }
+
+        /// <summary>
+        /// Gets the IBackupVaultsOperations
+        /// </summary>
+        IBackupVaultsOperations BackupVaults { get; }
+
+        /// <summary>
+        /// Gets the IBackupsOperations
+        /// </summary>
+        IBackupsOperations Backups { get; }
+
+        /// <summary>
+        /// Gets the IBackupsUnderBackupVaultOperations
+        /// </summary>
+        IBackupsUnderBackupVaultOperations BackupsUnderBackupVault { get; }
 
         /// <summary>
         /// Gets the IPoolsOperations
@@ -109,29 +129,14 @@ namespace Microsoft.Azure.Management.NetApp
         IVolumesOperations Volumes { get; }
 
         /// <summary>
+        /// Gets the IBackupsUnderVolumeOperations
+        /// </summary>
+        IBackupsUnderVolumeOperations BackupsUnderVolume { get; }
+
+        /// <summary>
         /// Gets the ISnapshotsOperations
         /// </summary>
         ISnapshotsOperations Snapshots { get; }
-
-        /// <summary>
-        /// Gets the ISnapshotPoliciesOperations
-        /// </summary>
-        ISnapshotPoliciesOperations SnapshotPolicies { get; }
-
-        /// <summary>
-        /// Gets the IBackupPoliciesOperations
-        /// </summary>
-        IBackupPoliciesOperations BackupPolicies { get; }
-
-        /// <summary>
-        /// Gets the IVolumeQuotaRulesOperations
-        /// </summary>
-        IVolumeQuotaRulesOperations VolumeQuotaRules { get; }
-
-        /// <summary>
-        /// Gets the IVolumeGroupsOperations
-        /// </summary>
-        IVolumeGroupsOperations VolumeGroups { get; }
 
         /// <summary>
         /// Gets the ISubvolumesOperations
@@ -139,29 +144,29 @@ namespace Microsoft.Azure.Management.NetApp
         ISubvolumesOperations Subvolumes { get; }
 
         /// <summary>
-        /// Gets the IBackupsOperations
+        /// Gets the IVolumeQuotaRulesOperations
         /// </summary>
-        IBackupsOperations Backups { get; }
-
-        /// <summary>
-        /// Gets the IBackupVaultsOperations
-        /// </summary>
-        IBackupVaultsOperations BackupVaults { get; }
-
-        /// <summary>
-        /// Gets the IBackupsUnderBackupVaultOperations
-        /// </summary>
-        IBackupsUnderBackupVaultOperations BackupsUnderBackupVault { get; }
-
-        /// <summary>
-        /// Gets the IBackupsUnderVolumeOperations
-        /// </summary>
-        IBackupsUnderVolumeOperations BackupsUnderVolume { get; }
+        IVolumeQuotaRulesOperations VolumeQuotaRules { get; }
 
         /// <summary>
         /// Gets the IBackupsUnderAccountOperations
         /// </summary>
         IBackupsUnderAccountOperations BackupsUnderAccount { get; }
+
+        /// <summary>
+        /// Gets the INetAppResourceQuotaLimitsAccountOperations
+        /// </summary>
+        INetAppResourceQuotaLimitsAccountOperations NetAppResourceQuotaLimitsAccount { get; }
+
+        /// <summary>
+        /// Gets the ISnapshotPoliciesOperations
+        /// </summary>
+        ISnapshotPoliciesOperations SnapshotPolicies { get; }
+
+        /// <summary>
+        /// Gets the IVolumeGroupsOperations
+        /// </summary>
+        IVolumeGroupsOperations VolumeGroups { get; }
 
     }
 }

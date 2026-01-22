@@ -12,12 +12,29 @@ The operation to create a protection container mapping.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzMigrateReplicationProtectionContainerMapping -FabricName <String> -MappingName <String>
  -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String>
  [-SubscriptionId <String>] [-PolicyId <String>]
  [-ProviderSpecificInput <IReplicationProviderSpecificContainerMappingInput>]
  [-TargetProtectionContainerId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzMigrateReplicationProtectionContainerMapping -FabricName <String> -MappingName <String>
+ -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzMigrateReplicationProtectionContainerMapping -FabricName <String> -MappingName <String>
+ -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -96,6 +113,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MappingName
 Protection container mapping name.
 
@@ -131,7 +178,7 @@ Applicable policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -161,7 +208,7 @@ Provider specific input for pairing.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProviderSpecificContainerMappingInput
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -221,7 +268,7 @@ The target unique protection container name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False

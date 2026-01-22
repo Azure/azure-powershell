@@ -1,8 +1,8 @@
 {
-  "Get-AzDevCenterAdminProjectCatalog+[NoContext]+List+$GET+https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs?api-version=2024-05-01-preview+1": {
+  "Get-AzDevCenterAdminProjectCatalog+[NoContext]+List+$GET+https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -43,10 +43,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDevCenterAdminProjectCatalog+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/proj-catalog-testing?api-version=2024-05-01-preview+1": {
+  "Get-AzDevCenterAdminProjectCatalog+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/proj-catalog-testing?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/proj-catalog-testing?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/proj-catalog-testing?api-version=2025-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

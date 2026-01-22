@@ -138,3 +138,6 @@ Cleans up the test migration for the replicating server.
 ### [Suspend-AzMigrateServerReplication](Suspend-AzMigrateServerReplication.md)
 Suspends the ongoing replication.
 
+### [Update-AzMigrateReplicationProtectionCluster](Update-AzMigrateReplicationProtectionCluster.md)
+The operation to update an ASR replication protection cluster item.
+

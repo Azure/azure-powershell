@@ -181,6 +181,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public int? RuntimeMinimumCoreCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).RuntimeMinimumCoreCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).RuntimeMinimumCoreCount = value ?? default(int); }
 
+        /// <summary>The shapeAttributes of the DB system shape..</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> ShapeAttribute { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).ShapeAttribute; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).ShapeAttribute = value ?? null /* arrayOf */; }
+
         /// <summary>The family of the shape used for the DB system.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public string ShapeFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).ShapeFamily; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystemShapePropertiesInternal)Property).ShapeFamily = value ?? null; }
@@ -512,6 +516,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"runtimeMinimumCoreCount",
         PossibleTypes = new [] { typeof(int) })]
         int? RuntimeMinimumCoreCount { get; set; }
+        /// <summary>The shapeAttributes of the DB system shape..</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"The shapeAttributes of the DB system shape..",
+        SerializedName = @"shapeAttributes",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> ShapeAttribute { get; set; }
         /// <summary>The family of the shape used for the DB system.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -608,6 +623,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// The runtime minimum number of CPU cores that can be enabled on the DB system for this shape.
         /// </summary>
         int? RuntimeMinimumCoreCount { get; set; }
+        /// <summary>The shapeAttributes of the DB system shape..</summary>
+        System.Collections.Generic.List<string> ShapeAttribute { get; set; }
         /// <summary>The family of the shape used for the DB system.</summary>
         string ShapeFamily { get; set; }
         /// <summary>The shape used for the DB system.</summary>

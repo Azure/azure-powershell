@@ -309,7 +309,9 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
 
         # Get source fabric agent (dra) with ResourceGroupName, FabricName
         $null = $PSBoundParameters.Add('FabricName', $sourceFabric.Name)
+
         $sourceDraErrorMessage = "The source appliance '$SourceApplianceName' is in a disconnected state. Ensure that the source appliance is running and has connectivity before proceeding."
+
         $sourceDras = Az.Migrate.Internal\Get-AzMigrateFabricAgent @PSBoundParameters
         $sourceDra = $sourceDras | Where-Object {
             $_.Property.MachineName -eq $SourceApplianceName -and
@@ -607,8 +609,8 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
                     -Name $amhSolution.Name `
                     -ResourceGroupName $ResourceGroupName `
                     -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties `
-                    -Tool "ServerMigration_DataReplication" `
-                    -Purpose "Migration" | Out-Null
+                    -Tool $DataReplicationSolutionSettings.Tool `
+                    -Purpose $DataReplicationSolutionSettings.Purpose | Out-Null
             }
             elseif ($null -eq $amhStoredStorageAccount -or $null -eq $amhStoredStorageAccount.ProvisioningState)
             {
@@ -629,8 +631,8 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
                         -Name $amhSolution.Name `
                         -ResourceGroupName $ResourceGroupName `
                         -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties `
-                        -Tool "ServerMigration_DataReplication" `
-                        -Purpose "Migration" | Out-Null
+                        -Tool $DataReplicationSolutionSettings.Tool `
+                        -Purpose $DataReplicationSolutionSettings.Purpose | Out-Null
                 }
             }
             else
@@ -968,8 +970,8 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
                 -Name $amhSolution.Name `
                 -ResourceGroupName $ResourceGroupName `
                 -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties `
-                -Tool "ServerMigration_DataReplication" `
-                -Purpose "Migration" | Out-Null
+                -Tool $DataReplicationSolutionSettings.Tool `
+                -Purpose $DataReplicationSolutionSettings.Purpose | Out-Null
         }
 
         Write-Host "*Selected Cache Storage Account: '$($cacheStorageAccount.StorageAccountName)' in Resource Group '$($ResourceGroupName)' at Location '$($cacheStorageAccount.Location)' for Migrate Project '$($migrateProject.Name)'"

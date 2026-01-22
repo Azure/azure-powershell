@@ -16,118 +16,67 @@
 
 <#
 .Synopsis
-Create/Overwrite Azure Advisor configuration.
+Create Overwrite Azure Advisor configuration and also delete all configurations of contained resource groups.
 .Description
-Create/Overwrite Azure Advisor configuration.
+Create Overwrite Azure Advisor configuration and also delete all configurations of contained resource groups.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData
+Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IConfigData
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-CONFIGCONTRACT <IConfigData>: The Advisor configuration data structure.
-  [Digest <IDigestConfig[]>]: Advisor digest configuration. Valid only for subscriptions
-    [ActionGroupResourceId <String>]: Action group resource id used by digest.
-    [Category <Category[]>]: Categories to send digest for. If categories are not provided, then digest will be sent for all categories.
-    [Frequency <Int32?>]: Frequency that digest will be triggered, in days. Value must be between 7 and 30 days inclusive.
-    [Language <String>]: Language for digest content body. Value must be ISO 639-1 code for one of Azure portal supported languages. Otherwise, it will be converted into one. Default value is English (en).
-    [Name <String>]: Name of digest configuration. Value is case-insensitive and must be unique within a subscription.
-    [State <DigestConfigState?>]: State of digest configuration.
-  [Exclude <Boolean?>]: Exclude the resource from Advisor evaluations. Valid values: False (default) or True.
-  [LowCpuThreshold <CpuThreshold?>]: Minimum percentage threshold for Advisor low CPU utilization evaluation. Valid only for subscriptions. Valid values: 5 (default), 10, 15 or 20.
-
 DIGEST <IDigestConfig[]>: Advisor digest configuration. Valid only for subscriptions
   [ActionGroupResourceId <String>]: Action group resource id used by digest.
-  [Category <Category[]>]: Categories to send digest for. If categories are not provided, then digest will be sent for all categories.
+  [Category <List<String>>]: Categories to send digest for. If categories are not provided, then digest will be sent for all categories.
   [Frequency <Int32?>]: Frequency that digest will be triggered, in days. Value must be between 7 and 30 days inclusive.
   [Language <String>]: Language for digest content body. Value must be ISO 639-1 code for one of Azure portal supported languages. Otherwise, it will be converted into one. Default value is English (en).
   [Name <String>]: Name of digest configuration. Value is case-insensitive and must be unique within a subscription.
-  [State <DigestConfigState?>]: State of digest configuration.
-
-INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
-  [ConfigurationName <ConfigurationName?>]: Advisor configuration name. Value must be 'default'
-  [Id <String>]: Resource identity path
-  [Name <String>]: Name of metadata entity.
-  [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
-  [RecommendationId <String>]: The recommendation ID.
-  [ResourceGroup <String>]: The name of the Azure resource group.
-  [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
-  [SubscriptionId <String>]: The Azure subscription ID.
+  [State <String>]: State of digest configuration.
 .Link
 https://learn.microsoft.com/powershell/module/az.advisor/new-azadvisorconfiguration
 #>
 function New-AzAdvisorConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IConfigData])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Create1', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded1', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
-    [System.String]
-    # The name of the Azure resource group.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Create1')]
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpanded1')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The Azure subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateViaIdentity1', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded1', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateExpanded1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
+    [System.String]
+    # The name of the Azure resource group.
+    ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Create1', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentity1', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData]
-    # The Advisor configuration data structure.
-    # To construct, see NOTES section for CONFIGCONTRACT properties and create a hash table.
-    ${ConfigContract},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpanded1')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded1')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IDigestConfig[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IDigestConfig[]]
     # Advisor digest configuration.
     # Valid only for subscriptions
-    # To construct, see NOTES section for DIGEST properties and create a hash table.
     ${Digest},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpanded1')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded1')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Exclude the resource from Advisor evaluations.
     # Valid values: False (default) or True.
     ${Exclude},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpanded1')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded1')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold])]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.PSArgumentCompleterAttribute("5", "10", "15", "20")]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold]
+    [System.String]
     # Minimum percentage threshold for Advisor low CPU utilization evaluation.
     # Valid only for subscriptions.
     # Valid values: 5 (default), 10, 15 or 20.
@@ -189,17 +138,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
-            Create1 = 'Az.Advisor.private\New-AzAdvisorConfiguration_Create1';
             CreateExpanded = 'Az.Advisor.private\New-AzAdvisorConfiguration_CreateExpanded';
             CreateExpanded1 = 'Az.Advisor.private\New-AzAdvisorConfiguration_CreateExpanded1';
-            CreateViaIdentity1 = 'Az.Advisor.private\New-AzAdvisorConfiguration_CreateViaIdentity1';
-            CreateViaIdentityExpanded1 = 'Az.Advisor.private\New-AzAdvisorConfiguration_CreateViaIdentityExpanded1';
         }
-        if (('Create1', 'CreateExpanded', 'CreateExpanded1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateExpanded1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -208,6 +155,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
