@@ -48,7 +48,7 @@ commit: 5214e009eb7f7e43df634c52803dd92bbfe4c978
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2025-09-01/vmware.json
+  - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/AVS/stable/2025-09-01/vmware.json
 
 module-version: 0.4.0
 title: VMware
