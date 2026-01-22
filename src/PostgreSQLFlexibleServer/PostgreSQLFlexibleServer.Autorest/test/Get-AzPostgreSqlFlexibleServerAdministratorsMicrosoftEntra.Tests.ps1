@@ -65,3 +65,4 @@ Describe 'Get-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra' {
             $admins[0].ObjectId | Should -Not -BeNullOrEmpty
         }
     }
+}
