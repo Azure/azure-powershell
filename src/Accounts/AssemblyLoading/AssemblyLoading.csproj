@@ -1,4 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\azure-powershell-common\src\Common\Common.csproj" />
+  </ItemGroup>
   <PropertyGroup>
     <PsModuleName>Accounts</PsModuleName>
   </PropertyGroup>
