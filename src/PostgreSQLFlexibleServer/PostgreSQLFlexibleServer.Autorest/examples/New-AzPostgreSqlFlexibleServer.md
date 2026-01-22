@@ -1,22 +1,40 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a new PostgreSQL Flexible Server with basic configuration
 ```powershell
-{{ Add code here }}
+New-AzPostgreSqlFlexibleServer -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -Location "East US" -AdministratorUserName "myadmin" -AdministratorLoginPassword (ConvertTo-SecureString "MySecurePassword123!" -AsPlainText -Force)
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               : myPostgreSqlServer
+ResourceGroupName  : myResourceGroup
+Location           : East US
+SkuName            : Standard_D2s_v3
+SkuTier            : GeneralPurpose
+StorageSizeGb      : 128
+Version            : 13
+State              : Ready
+FullyQualifiedDomainName : myPostgreSqlServer.postgres.database.azure.com
 ```
 
-{{ Add description here }}
+Creates a new PostgreSQL Flexible Server with default settings in the East US region.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a PostgreSQL Flexible Server with custom configuration
 ```powershell
-{{ Add code here }}
+$password = ConvertTo-SecureString "MyComplexPassword123!" -AsPlainText -Force
+New-AzPostgreSqlFlexibleServer -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -Location "West Europe" -AdministratorUserName "pgadmin" -AdministratorLoginPassword $password -SkuName "Standard_D4s_v3" -SkuTier "GeneralPurpose" -StorageSizeGb 256 -Version "14" -BackupRetentionDay 30
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               : prod-postgresql-01
+ResourceGroupName  : production-rg
+Location           : West Europe
+SkuName            : Standard_D4s_v3
+SkuTier            : GeneralPurpose
+StorageSizeGb      : 256
+Version            : 14
+State              : Ready
+BackupRetentionDay : 30
+FullyQualifiedDomainName : prod-postgresql-01.postgres.database.azure.com
 ```
 
-{{ Add description here }}
+Creates a production PostgreSQL Flexible Server with custom SKU, storage size, PostgreSQL version, and backup retention settings.
 

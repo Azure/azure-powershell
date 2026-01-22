@@ -1,22 +1,28 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a new database on a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+New-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -DatabaseName "myapp_db"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name     : myapp_db
+Charset  : UTF8
+Collation: en_US.utf8
+Id       : /subscriptions/ssssssss-ssss-ssss-ssss-ssssssssssss/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/myPostgreSqlServer/databases/myapp_db
 ```
 
-{{ Add description here }}
+Creates a new database with default UTF8 charset and en_US.utf8 collation.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a database with custom charset and collation
 ```powershell
-{{ Add code here }}
+New-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -DatabaseName "analytics_db" -Charset "UTF8" -Collation "en_US.utf8"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name     : analytics_db
+Charset  : UTF8
+Collation: en_US.utf8
+Id       : /subscriptions/ssssssss-ssss-ssss-ssss-ssssssssssss/resourceGroups/production-rg/providers/Microsoft.DBforPostgreSQL/flexibleServers/prod-postgresql-01/databases/analytics_db
 ```
 
-{{ Add description here }}
+Creates a new database with explicitly specified charset and collation settings.
 

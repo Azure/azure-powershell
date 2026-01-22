@@ -1,22 +1,46 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get all captured logs for a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerCapturedLog -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : postgresql-2024-01-15-10.log
+CreatedTime       : 2024-01-15T10:00:00Z
+LastModifiedTime  : 2024-01-15T10:59:59Z
+SizeInKB          : 1024
+Type              : Error
+Url               : https://mystorageaccount.blob.core.windows.net/logs/postgresql-2024-01-15-10.log
+
+Name              : postgresql-2024-01-15-09.log
+CreatedTime       : 2024-01-15T09:00:00Z
+LastModifiedTime  : 2024-01-15T09:59:59Z
+SizeInKB          : 856
+Type              : Error
+Url               : https://mystorageaccount.blob.core.windows.net/logs/postgresql-2024-01-15-09.log
 ```
 
-{{ Add description here }}
+Retrieves all captured log files for the specified PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get captured logs for a specific time range
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerCapturedLog -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -FromTimeStamp "2024-01-15T00:00:00Z" -ToTimeStamp "2024-01-15T12:00:00Z"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : postgresql-2024-01-15-10.log
+CreatedTime       : 2024-01-15T10:00:00Z
+LastModifiedTime  : 2024-01-15T10:59:59Z
+SizeInKB          : 1024
+Type              : Error
+Url               : https://prodstorageaccount.blob.core.windows.net/logs/postgresql-2024-01-15-10.log
+
+Name              : postgresql-2024-01-15-11.log
+CreatedTime       : 2024-01-15T11:00:00Z
+LastModifiedTime  : 2024-01-15T11:59:59Z
+SizeInKB          : 743
+Type              : Error
+Url               : https://prodstorageaccount.blob.core.windows.net/logs/postgresql-2024-01-15-11.log
 ```
 
-{{ Add description here }}
+Retrieves captured log files for a specific time range.
 

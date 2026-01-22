@@ -1,22 +1,49 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get all read replicas for a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerReplica -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               : myPostgreSqlServer-replica-1
+ResourceGroupName  : myResourceGroup
+Location           : East US 2
+SourceServerName   : myPostgreSqlServer
+SourceServerRegion : East US
+ReplicaRole        : AsyncReplica
+State              : Ready
+SkuName            : Standard_D2s_v3
+StorageSizeGb      : 128
+
+Name               : myPostgreSqlServer-replica-2
+ResourceGroupName  : myResourceGroup
+Location           : Central US
+SourceServerName   : myPostgreSqlServer
+SourceServerRegion : East US
+ReplicaRole        : AsyncReplica
+State              : Ready
+SkuName            : Standard_D2s_v3
+StorageSizeGb      : 128
 ```
 
-{{ Add description here }}
+Retrieves all read replicas for the specified PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get replicas across all resource groups
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerReplica -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               : prod-postgresql-01-read-replica
+ResourceGroupName  : production-rg
+Location           : West Europe
+SourceServerName   : prod-postgresql-01
+SourceServerRegion : East US
+ReplicaRole        : AsyncReplica
+State              : Ready
+SkuName            : Standard_D4s_v3
+StorageSizeGb      : 256
+ReplicationLag     : 00:00:02.150
 ```
 
-{{ Add description here }}
+Retrieves information about read replicas for a production PostgreSQL Flexible Server.
 

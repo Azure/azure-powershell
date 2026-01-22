@@ -1,22 +1,34 @@
-### Example 1: {{ Add title here }}
+### Example 1: Scale up a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Update-AzPostgreSqlFlexibleServer -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -SkuName "Standard_D4s_v3" -StorageSizeGb 256
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               : myPostgreSqlServer
+ResourceGroupName  : myResourceGroup
+Location           : East US
+SkuName            : Standard_D4s_v3
+SkuTier            : GeneralPurpose
+StorageSizeGb      : 256
+Version            : 13
+State              : Ready
 ```
 
-{{ Add description here }}
+Scales up the PostgreSQL Flexible Server to a larger SKU and increases storage size.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update backup retention settings
 ```powershell
-{{ Add code here }}
+Update-AzPostgreSqlFlexibleServer -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -BackupRetentionDay 30 -GeoRedundantBackup "Enabled"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               : prod-postgresql-01
+ResourceGroupName  : production-rg
+Location           : West Europe
+BackupRetentionDay : 30
+GeoRedundantBackup : Enabled
+State              : Ready
 ```
 
-{{ Add description here }}
+Updates the backup retention period to 30 days and enables geo-redundant backup for the server.
 

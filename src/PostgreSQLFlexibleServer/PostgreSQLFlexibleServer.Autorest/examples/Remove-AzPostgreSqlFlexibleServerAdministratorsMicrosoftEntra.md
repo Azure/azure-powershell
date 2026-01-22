@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Microsoft Entra administrator
 ```powershell
-{{ Add code here }}
+Remove-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -ObjectId "12345678-1234-1234-1234-123456789abc"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Removes the Microsoft Entra administrator with the specified object ID from the PostgreSQL Flexible Server.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove all Microsoft Entra administrators
 ```powershell
-{{ Add code here }}
+Remove-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ResourceGroupName "development-rg" -ServerName "dev-postgresql-01" -Force
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Removes all Microsoft Entra administrators from the PostgreSQL Flexible Server without prompting for confirmation.
 
