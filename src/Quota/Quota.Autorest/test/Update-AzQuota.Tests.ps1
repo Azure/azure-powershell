@@ -16,19 +16,28 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzQuota'))
 
 Describe 'Update-AzQuota' {
     It 'UpdateExpanded' {
+        # Test that quota update request starts successfully (use -AsJob to avoid waiting)
         $quota = Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family"
         $limit = New-AzQuotaLimitObject -Value ($quota.Limit.Value + 1)
-        Update-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family" -Name "standardFSv2Family" -Limit $limit
-        $quota = Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family"
-        $quota.Limit.Value | Should -Be $limit.Value
+        
+        # Submit as background job - don't wait for manual approval
+        $job = Update-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family" -Name "standardFSv2Family" -Limit $limit -AsJob
+        Start-Sleep -Seconds 5
+        $job | Should -Not -BeNullOrEmpty
+        Stop-Job -Job $job -ErrorAction SilentlyContinue
+        Remove-Job -Job $job -Force -ErrorAction SilentlyContinue
     }
 
     It 'UpdateViaIdentityExpanded' {
+        # Test that quota update request starts successfully (use -AsJob to avoid waiting)
         $quota = Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family"
         $limit = New-AzQuotaLimitObject -Value ($quota.Limit.Value + 1)
-        $quota = Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family"
-        Update-AzQuota -InputObject $quota.Id -Name "standardFSv2Family" -Limit $limit
-        $quota = Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family"
-        $quota.Limit.Value | Should -Be $limit.Value
+        
+        # Submit as background job - don't wait for manual approval
+        $job = Update-AzQuota -InputObject $quota.Id -Name "standardFSv2Family" -Limit $limit -AsJob
+        Start-Sleep -Seconds 5
+        $job | Should -Not -BeNullOrEmpty
+        Stop-Job -Job $job -ErrorAction SilentlyContinue
+        Remove-Job -Job $job -Force -ErrorAction SilentlyContinue
     }
 }

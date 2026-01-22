@@ -7,11 +7,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "f5f15170-92cc-4461-bc2e-dfcaf50d5b83" ],
+        "x-ms-client-request-id": [ "ef347b9a-a224-48cb-be6c-b02b3c32a754" ],
         "CommandName": [ "Get-AzQuotaGroupQuota" ],
         "FullCommandName": [ "Get-AzQuotaGroupQuota_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.3" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -24,15 +24,15 @@
         "Vary": [ "Accept-Encoding" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "MS-RequestId": [ "vK5HZsXerE6irKdc33UXng.0" ],
+        "MS-RequestId": [ "LuISCujk3EefrxuP6Mf4Dw.0" ],
         "x-ms-operation-identifier": [ "" ],
         "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
-        "x-ms-request-id": [ "189af170-d1c5-4a0a-9150-e8e5f3924260" ],
-        "x-ms-correlation-request-id": [ "189af170-d1c5-4a0a-9150-e8e5f3924260" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260122T022831Z:189af170-d1c5-4a0a-9150-e8e5f3924260" ],
+        "x-ms-request-id": [ "a7af94d2-38c3-46ef-8c24-b2c234b67988" ],
+        "x-ms-correlation-request-id": [ "a7af94d2-38c3-46ef-8c24-b2c234b67988" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260122T070548Z:a7af94d2-38c3-46ef-8c24-b2c234b67988" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8ABD2F902A05420FB62B555197289953 Ref B: SYD03EDGE0706 Ref C: 2026-01-22T02:28:31Z" ],
-        "Date": [ "Thu, 22 Jan 2026 02:28:31 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8FBAD7706A6B4AADB2BB0EF0F1DFA0A5 Ref B: SIN221080719053 Ref C: 2026-01-22T07:05:48Z" ],
+        "Date": [ "Thu, 22 Jan 2026 07:05:47 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "3984" ],
@@ -50,11 +50,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "4f1da99d-f438-4cc2-b0d9-8b62b8b691d8" ],
+        "x-ms-client-request-id": [ "46f6dc32-a699-4a32-9fe2-2100655bcbf3" ],
         "CommandName": [ "Get-AzQuotaGroupQuota" ],
         "FullCommandName": [ "Get-AzQuotaGroupQuota_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.3" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -67,15 +67,15 @@
         "Vary": [ "Accept-Encoding" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "MS-RequestId": [ "iKHERhb0a0aMu0zLR5maew.0" ],
+        "MS-RequestId": [ "0F5BydvzOkS3aV-tpRHQmA.0" ],
         "x-ms-operation-identifier": [ "" ],
         "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
-        "x-ms-request-id": [ "e7935b94-b4f6-467f-90c8-7e7c159e0ea1" ],
-        "x-ms-correlation-request-id": [ "e7935b94-b4f6-467f-90c8-7e7c159e0ea1" ],
-        "x-ms-routing-request-id": [ "AUSTRALIACENTRAL2:20260122T022831Z:e7935b94-b4f6-467f-90c8-7e7c159e0ea1" ],
+        "x-ms-request-id": [ "8d38d9a5-3857-4919-a396-e11d4136a806" ],
+        "x-ms-correlation-request-id": [ "8d38d9a5-3857-4919-a396-e11d4136a806" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260122T070549Z:8d38d9a5-3857-4919-a396-e11d4136a806" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F44556FA9F8B43B9BDB06B899B87D963 Ref B: SYD03EDGE0706 Ref C: 2026-01-22T02:28:31Z" ],
-        "Date": [ "Thu, 22 Jan 2026 02:28:31 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 5C0C3ACC0B434046A867D27BFF930ACC Ref B: SIN221080719053 Ref C: 2026-01-22T07:05:48Z" ],
+        "Date": [ "Thu, 22 Jan 2026 07:05:48 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "3984" ],
@@ -93,11 +93,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "ed3bdc07-3cb9-4d52-90a4-25f91f1f2d8f" ],
+        "x-ms-client-request-id": [ "b855921a-80bc-48a1-a479-e8644cbcbfcd" ],
         "CommandName": [ "Get-AzQuotaGroupQuota" ],
         "FullCommandName": [ "Get-AzQuotaGroupQuota_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.3" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -110,15 +110,15 @@
         "Vary": [ "Accept-Encoding" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "MS-RequestId": [ "hHzReeZqtEKR8_oVfUeLXA.0" ],
+        "MS-RequestId": [ "O6n4OUOCL0ORSB-4PUqmmg.0" ],
         "x-ms-operation-identifier": [ "" ],
         "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
-        "x-ms-request-id": [ "d31cbabb-5851-4819-bebb-298b3f821fd3" ],
-        "x-ms-correlation-request-id": [ "d31cbabb-5851-4819-bebb-298b3f821fd3" ],
-        "x-ms-routing-request-id": [ "AUSTRALIASOUTHEAST:20260122T022832Z:d31cbabb-5851-4819-bebb-298b3f821fd3" ],
+        "x-ms-request-id": [ "251fa84f-b3f3-416a-ba32-1625b5ed40bf" ],
+        "x-ms-correlation-request-id": [ "251fa84f-b3f3-416a-ba32-1625b5ed40bf" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260122T070550Z:251fa84f-b3f3-416a-ba32-1625b5ed40bf" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0415EFDDC125434E864F43E4414D1508 Ref B: SYD03EDGE0706 Ref C: 2026-01-22T02:28:31Z" ],
-        "Date": [ "Thu, 22 Jan 2026 02:28:32 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 43A3E8792C8047D0BCF9886305ADA298 Ref B: SIN221080719053 Ref C: 2026-01-22T07:05:49Z" ],
+        "Date": [ "Thu, 22 Jan 2026 07:05:49 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "389" ],
@@ -136,11 +136,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "2303e43f-194e-4306-a6e5-27bee02fcb51" ],
+        "x-ms-client-request-id": [ "2573869a-1b41-4757-a69e-b02d09374e00" ],
         "CommandName": [ "Get-AzQuotaGroupQuota" ],
         "FullCommandName": [ "Get-AzQuotaGroupQuota_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.3" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -153,15 +153,15 @@
         "Vary": [ "Accept-Encoding" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "MS-RequestId": [ "vr9ykifKEUiAiaXHIMm7lw.0" ],
+        "MS-RequestId": [ "i4lnXNrKakq9ffumg_k-Tg.0" ],
         "x-ms-operation-identifier": [ "" ],
         "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
-        "x-ms-request-id": [ "fb4fa244-e15c-4a05-a4a5-2df6de48be9b" ],
-        "x-ms-correlation-request-id": [ "fb4fa244-e15c-4a05-a4a5-2df6de48be9b" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260122T022833Z:fb4fa244-e15c-4a05-a4a5-2df6de48be9b" ],
+        "x-ms-request-id": [ "5ad1f3ff-e171-4334-aae5-bf27735eb75e" ],
+        "x-ms-correlation-request-id": [ "5ad1f3ff-e171-4334-aae5-bf27735eb75e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260122T070551Z:5ad1f3ff-e171-4334-aae5-bf27735eb75e" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0CFBFDAEE4654F25B3FF543047D90355 Ref B: SYD03EDGE0706 Ref C: 2026-01-22T02:28:32Z" ],
-        "Date": [ "Thu, 22 Jan 2026 02:28:33 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 89663644F0C74DE49370AB447FB98B10 Ref B: SIN221080719053 Ref C: 2026-01-22T07:05:50Z" ],
+        "Date": [ "Thu, 22 Jan 2026 07:05:50 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "389" ],
@@ -179,11 +179,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "f48fabec-c6e7-411d-8cb8-eb66a9808c92" ],
+        "x-ms-client-request-id": [ "9777fa0e-e1d5-4d0e-89fe-6890d32fb7eb" ],
         "CommandName": [ "Get-AzQuotaGroupQuota" ],
         "FullCommandName": [ "Get-AzQuotaGroupQuota_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.3" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -196,15 +196,15 @@
         "Vary": [ "Accept-Encoding" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "MS-RequestId": [ "Z3BvzKlXaUiibG_pSdQosA.0" ],
+        "MS-RequestId": [ "TA1a2ohi5k6zUrHZCjsWaA.0" ],
         "x-ms-operation-identifier": [ "" ],
         "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
-        "x-ms-request-id": [ "0e7fc845-b33a-42b4-aa3d-447370e49cd8" ],
-        "x-ms-correlation-request-id": [ "0e7fc845-b33a-42b4-aa3d-447370e49cd8" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260122T022833Z:0e7fc845-b33a-42b4-aa3d-447370e49cd8" ],
+        "x-ms-request-id": [ "4f2253ae-0f0f-4cc6-9aa3-ae2f42cce140" ],
+        "x-ms-correlation-request-id": [ "4f2253ae-0f0f-4cc6-9aa3-ae2f42cce140" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260122T070551Z:4f2253ae-0f0f-4cc6-9aa3-ae2f42cce140" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9E117CCA2D8F4428BB7C41474562FF98 Ref B: SYD03EDGE0706 Ref C: 2026-01-22T02:28:33Z" ],
-        "Date": [ "Thu, 22 Jan 2026 02:28:33 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A55DEE68A0894543A2A5F2F1BE89DE5F Ref B: SIN221080719053 Ref C: 2026-01-22T07:05:51Z" ],
+        "Date": [ "Thu, 22 Jan 2026 07:05:51 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "389" ],
