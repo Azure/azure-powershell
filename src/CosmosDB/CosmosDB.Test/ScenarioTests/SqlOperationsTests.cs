@@ -72,21 +72,21 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
             TestRunner.RunTestScript("Test-SqlThroughputCmdlets");
         }
 
-        [Fact]
+        [Fact(Skip = "Feature requires subscription registration. Will be generic in next version.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlThroughputBucketsManualCmdlets()
         {
             TestRunner.RunTestScript("Test-SqlThroughputBucketsCmdlets-ManualContainer");
         }
 
-        [Fact]
+        [Fact(Skip = "Feature requires subscription registration. Will be generic in next version.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlThroughputBucketsAutoscaleCmdlets()
         {
             TestRunner.RunTestScript("Test-SqlThroughputBucketsCmdlets-AutoscaleContainer");
         }
 
-        [Fact]
+        [Fact(Skip = "Feature requires subscription registration. Will be generic in next version.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlThroughputBucketsMigrationCmdlets()
         {

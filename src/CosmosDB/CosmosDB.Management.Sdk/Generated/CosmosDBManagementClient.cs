@@ -440,9 +440,6 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
-        /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
-        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -519,7 +516,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             this.FleetspaceAccount = new FleetspaceAccountOperations(this);
             this.MongoMiResources = new MongoMiResourcesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2025-05-01-preview";
+            this.ApiVersion = "2025-11-01-preview";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

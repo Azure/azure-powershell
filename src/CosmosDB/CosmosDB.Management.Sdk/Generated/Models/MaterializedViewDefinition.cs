@@ -35,12 +35,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="definition">The definition should be an SQL query which would be used to fetch data
         /// from the source container to populate into the Materialized View container.
         /// </param>
-        public MaterializedViewDefinition(string sourceCollectionId, string definition, string sourceCollectionRid = default(string))
+
+        /// <param name="throughputBucketForBuild">Throughput bucket assigned for the materialized view operations on target
+        /// container.
+        /// </param>
+        public MaterializedViewDefinition(string sourceCollectionId, string definition, string sourceCollectionRid = default(string), int? throughputBucketForBuild = default(int?))
 
         {
             this.SourceCollectionRid = sourceCollectionRid;
             this.SourceCollectionId = sourceCollectionId;
             this.Definition = definition;
+            this.ThroughputBucketForBuild = throughputBucketForBuild;
             CustomInit();
         }
 
@@ -71,6 +76,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "definition")]
         public string Definition {get; set; }
+
+        /// <summary>
+        /// Gets or sets throughput bucket assigned for the materialized view
+        /// operations on target container.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "throughputBucketForBuild")]
+        public int? ThroughputBucketForBuild {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

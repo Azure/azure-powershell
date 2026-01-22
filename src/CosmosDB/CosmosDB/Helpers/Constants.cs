@@ -127,6 +127,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string SpatialPathHelpMessage = "Path in JSON document to index.";
         public const string VectorIndexPathHelpMessage = "The path to the vector field in the document.";
         public const string VectorIndexTypeHelpMessage = "The index type of the vector. Currently, flat, diskANN, and quantizedFlat are supported.";
+        public const string VectorIndexQuantizationByteSizeHelpMessage = "The number of bytes used in product quantization of the vectors. A larger value may result in better recall for vector searches at the expense of latency. This is only applicable for the quantizedFlat and diskANN vector index types.";
+        public const string VectorIndexIndexingSearchListSizeHelpMessage = "This is the size of the candidate list of approximate neighbors stored while building the DiskANN index as part of the optimization processes. Large values may improve recall at the expense of latency. This is only applicable for the diskANN vector index type.";
+        public const string VectorIndexShardKeyHelpMessage = "Array of shard keys for the vector index. This is only applicable for the quantizedFlat and diskANN vector index types.";
         public const string SortOrderHelpMessage = "The sort order of the CompositeIndex";
         public const string PathHelpMessage = "String value of the path";
         public const string PartitionKeyVersionHelpMessage = "The version of the partition key definition";
@@ -242,6 +245,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ThroughputBucketsObjectHelpMessage = "Array of throughput buckets to be applied to the Cosmos DB resource.";
         public const string ThroughputBucketIdHelpMessage = "The ID of the throughput bucket.";
         public const string ThroughputBucketMaxThroughputHelpMessage = "The maximum throughput of the throughput bucket.";
+        public const string ThroughputBucketIsDefaultBucketHelpMessage = "Boolean to indicate whether this is the default throughput bucket. If not specified, the bucket is not marked as default.";
 
         // Role cmdlets help messages
         public const string PrincipalIdHelpMessage = "Object ID (Guid) of the AAD principal to which the Role Assignment is being granted. This could be user, group, service principal, or managed identity.";
@@ -313,5 +317,25 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ServiceName = "Name of the service";
         public const string ServiceInstanceSize = "Instance count of the service";
         public const string ServiceInstanceCount = "Instance size of the service";
+
+        // Fleet constants
+        public const string FleetNameHelpMessage = "Name of the Fleet.";
+        public const string FleetObjectHelpMessage = "Fleet Object.";
+        public const string TagsHelpMessage = "Hashtable of tags as key-value pairs.";
+
+        // Fleetspace constants
+        public const string FleetspaceNameHelpMessage = "Name of the Fleetspace.";
+        public const string FleetspaceObjectHelpMessage = "Fleetspace Object.";
+        public const string FleetspaceApiKindHelpMessage = "The kind of API this fleetspace belongs to. Acceptable values: 'NoSQL'";
+        public const string ServiceTierHelpMessage = "Service Tier for the fleetspace. GeneralPurpose refers to single write region accounts, BusinessCritical refers to multi write region. Possible values: 'GeneralPurpose', 'BusinessCritical'";
+        public const string DataRegionHelpMessage = "List of data regions assigned to the fleetspace. Example: westus2, eastus";
+        public const string ThroughputPoolMinThroughputHelpMessage = "Minimum throughput for the throughput pool in the fleetspace.";
+        public const string ThroughputPoolMaxThroughputHelpMessage = "Maximum throughput for the throughput pool in the fleetspace.";
+
+        // FleetspaceAccount constants
+        public const string FleetspaceAccountNameHelpMessage = "Name of the Fleetspace Account.";
+        public const string FleetspaceAccountObjectHelpMessage = "Fleetspace Account Object.";
+        public const string GlobalDatabaseAccountResourceIdHelpMessage = "Resource ID of the global database account to associate with the fleetspace account.";
+        public const string GlobalDatabaseAccountLocationHelpMessage = "Location of the global database account to associate with the fleetspace account.";
     }
 }

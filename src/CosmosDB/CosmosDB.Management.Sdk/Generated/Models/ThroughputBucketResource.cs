@@ -29,11 +29,15 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="maxThroughputPercentage">Represents maximum percentage throughput that can be used by the bucket
         /// </param>
-        public ThroughputBucketResource(int id, int maxThroughputPercentage)
+
+        /// <param name="isDefaultBucket">Indicates whether this is the default throughput bucket
+        /// </param>
+        public ThroughputBucketResource(int id, int maxThroughputPercentage, bool? isDefaultBucket = default(bool?))
 
         {
             this.Id = id;
             this.MaxThroughputPercentage = maxThroughputPercentage;
+            this.IsDefaultBucket = isDefaultBucket;
             CustomInit();
         }
 
@@ -55,6 +59,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "maxThroughputPercentage")]
         public int MaxThroughputPercentage {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether this is the default throughput bucket
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isDefaultBucket")]
+        public bool? IsDefaultBucket {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
