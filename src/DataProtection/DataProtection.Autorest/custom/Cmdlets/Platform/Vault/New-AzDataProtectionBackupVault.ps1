@@ -30,7 +30,7 @@
         ${Location},
 
         [Parameter(Mandatory, HelpMessage='Storage Settings of the vault. Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IStorageSetting[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.IStorageSetting[]]
         ${StorageSetting},
 
         [Parameter(Mandatory=$false, HelpMessage='Parameter to Enable or Disable built-in azure monitor alerts for job failures. Security alerts cannot be disabled.')]
@@ -144,10 +144,27 @@
 
     process
     {
-        if($PSBoundParameters.ContainsKey("IdentityType") -eq $false)
+        $identityTypeValue = "SystemAssigned"
+        if ($PSBoundParameters.ContainsKey("IdentityType"))
         {
-            $null = $PSBoundParameters.Add("IdentityType", "SystemAssigned")
+            $identityTypeValue = $PSBoundParameters["IdentityType"]
+            $null = $PSBoundParameters.Remove("IdentityType")
         }
+        else
+        {
+            Write-Host "[Ianna] - we have added the identity type"
+        }
+
+        $identityDetails = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.DppIdentityDetails]::new()
+        $identityDetails.Type = $identityTypeValue
+
+        if ($PSBoundParameters.ContainsKey("IdentityUserAssignedIdentity"))
+        {
+            $identityDetails.UserAssignedIdentity = $IdentityUserAssignedIdentity
+            $null = $PSBoundParameters.Remove("IdentityUserAssignedIdentity")
+        }
+
+        $PSBoundParameters["Identity"] = $identityDetails
 
         $hasCmkEncryptionState = $PSBoundParameters.Remove("CmkEncryptionState")
         $hasCmkIdentityType = $PSBoundParameters.Remove("CmkIdentityType")
@@ -156,21 +173,22 @@
         $hasCmkInfrastructureEncryption = $PSBoundParameters.Remove("CmkInfrastructureEncryption")
 
         if (-not $hasCmkEncryptionState -and -not $hasCmkIdentityType -and -not $hasCmkUserAssignedIdentityId -and -not $hasCmkEncryptionKeyUri) {
+            Write-Host "Entering Az.DataProtection.Internal\New-AzDataProtectionBackupVault line 160"
             Az.DataProtection.Internal\New-AzDataProtectionBackupVault @PSBoundParameters
             return
         }
 
-        $encryptionSettings = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.EncryptionSettings]::new()
+        $encryptionSettings = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.EncryptionSettings]::new()
         $encryptionSettings.State = $CmkEncryptionState
         $encryptionSettings.CmkInfrastructureEncryption = $CmkInfrastructureEncryption
-        $encryptionSettings.CmkIdentity = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.CmkKekIdentity]::new()
+        $encryptionSettings.CmkIdentity = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.CmkKekIdentity]::new()
         $encryptionSettings.CmkIdentity.IdentityType = $CmkIdentityType
         $encryptionSettings.CmkIdentity.IdentityId = $CmkUserAssignedIdentityId
-        $encryptionSettings.CmkKeyVaultProperty = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.CmkKeyVaultProperties]::new()
+        $encryptionSettings.CmkKeyVaultProperty = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250701.CmkKeyVaultProperties]::new()
         $encryptionSettings.CmkKeyVaultProperty.KeyUri = $CmkEncryptionKeyUri
 
         $PSBoundParameters.Add("EncryptionSetting", $encryptionSettings)
-
+        Write-Host "Entering Az.DataProtection.Internal\New-AzDataProtectionBackupVault line 175"
         Az.DataProtection.Internal\New-AzDataProtectionBackupVault @PSBoundParameters
     }
 }
