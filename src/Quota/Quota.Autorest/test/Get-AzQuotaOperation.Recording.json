@@ -1,0 +1,45 @@
+{
+  "Get-AzQuotaOperation+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Quota/operations?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Quota/operations?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "46" ],
+        "x-ms-client-request-id": [ "ea390ca8-fed4-45e9-9843-54f033a72d0f" ],
+        "CommandName": [ "Get-AzQuotaOperation" ],
+        "FullCommandName": [ "Get-AzQuotaOperation_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, must-revalidate, no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "MS-RequestId": [ "D8DuWY0jsECX5z6aHhVOiQ.0" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-request-id": [ "78f62d6f-c22a-4e61-8da4-c517441fb1f5" ],
+        "x-ms-correlation-request-id": [ "78f62d6f-c22a-4e61-8da4-c517441fb1f5" ],
+        "x-ms-routing-request-id": [ "AUSTRALIACENTRAL2:20260122T023119Z:78f62d6f-c22a-4e61-8da4-c517441fb1f5" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8BEC94CC552C41A2891E1170A2EAF8DC Ref B: SYD03EDGE0706 Ref C: 2026-01-22T02:31:19Z" ],
+        "Date": [ "Thu, 22 Jan 2026 02:31:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4690" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"value\":[{\"name\":\"Microsoft.Quota/quotas/read\",\"display\":{\"provider\":\"Microsoft.Quota\",\"resource\":\"Resource Quota limit\",\"operation\":\"Get resource Quota limit\",\"description\":\"Get the current Service limit or quota of the specified resource\"}},{\"name\":\"Microsoft.Quota/quotas/write\",\"display\":{\"provider\":\"Microsoft.Quota\",\"resource\":\"Resource Quota limit\",\"operation\":\"Creates resource Quota limit request\",\"description\":\"Creates the service limit or quota request for the specified resource\"}},{\"name\":\"Microsoft.Quota/quotaRequests/read\",\"display\":{\"provider\":\"Microsoft.Quota\",\"resource\":\"Resource Quota limit request\",\"operation\":\"Get Quota limit request\",\"description\":\"Get any service limit request for the specified resource\"}},{\"name\":\"Microsoft.Quota/usages/read\",\"display\":{\"provider\":\"Microsoft.Quota\",\"resource\":\"usages information\",\"operation\":\"Get the usages for providers\",\"description\":\"Get the usages for resource providers\"}},{\"name\":\"Microsoft.Quota/operations/read\",\"display\":{\"provider\":\"Microsoft.Quota\",\"resource\":\"Read Operation\",\"operation\":\"Get the Operations supported by Microsoft.Quota\",\"description\":\"Get the Operations supported by Microsoft.Quota\"}},{\"name\":\"Microsoft.Quota/register/action\",\"display\":{\"provider\":\"Microsoft.Quota\",\"resource\":\"Subscription registration with Resource provider\",\"operation\":\"Register the subscription with Microsoft.Quota Resource Provider\",\"description\":\"Register the subscription with Microsoft.Quota Resource Provider\"}},{\"name\":\"Microsoft.Quota/groupQuotas/read\",\"display\":{\"provider\":\"Microsoft.Quota\",\"resource\":\"GroupQuota resource\",\"operation\":\"Get GroupQuota resource\",\"description\":\"Get the GroupQuota\"}},{\"name\":\"Microsoft.Quota/groupQuotas/write\",\"display\":{\"provider\":\"Microsoft.Quota\",\"resource\":\"GroupQuota Resource\",\"operation\":\"Creates GroupQuota resource\",\"description\":\"Creates the GroupQuota resource\"}},{\"name\":\"Microsoft.Quota/groupQuotas/delete\",\"display\":{\"provider\":\"Microsoft.Quota\",\"resource\":\"GroupQuota Resource\",\"operation\":\"Deletes GroupQuota resource\",\"description\":\"Deletes the GroupQuota resource\"}},{\"name\":\"Microsoft.Quota/groupQuotas/subscriptions/read\",\"display\":{\"provider\":\"Microsoft.Quota\",\"resource\":\"Subscriptions added to GroupQuota resource\",\"operation\":\"Get GroupQuota subscriptions\",\"description\":\"Get the GroupQuota subscriptions\"}},{\"name\":\"Microsoft.Quota/groupQuotas/subscriptions/write\",\"display\":{\"provider\":\"Microsoft.Quota\",\"resource\":\"Subscriptions added to GroupQuota resource\",\"operation\":\"Adds subscription to GroupQuota resource\",\"description\":\"Add Subscriptions to GroupQuota resource\"}},{\"name\":\"Microsoft.Quota/groupQuotas/subscriptions/delete\",\"display\":{\"provider\":\"Microsoft.Quota\",\"resource\":\"Subscription deleted from GroupQuota resource\",\"operation\":\"Deletes subscription from GroupQuota resource\",\"description\":\"Deletes Subscriptions from GroupQuota resource\"}},{\"name\":\"Microsoft.Quota/groupQuotas/groupQuotaLimits/read\",\"display\":{\"provider\":\"Microsoft.Quota\",\"resource\":\"GroupQuota Resource Quota limit\",\"operation\":\"Get GroupQuota resource Quota limit\",\"description\":\"Get the current GroupQuota of the specified resource\"}},{\"name\":\"Microsoft.Quota/groupQuotas/groupQuotaLimits/write\",\"display\":{\"provider\":\"Microsoft.Quota\",\"resource\":\"GroupQuota Resource Quota limit\",\"operation\":\"Creates GroupQuota resource Quota limit request\",\"description\":\"Creates the GroupQuota request for the specified resource\"}},{\"name\":\"Microsoft.Quota/groupQuotas/groupQuotaRequests/read\",\"display\":{\"provider\":\"Microsoft.Quota\",\"resource\":\"GroupQuota request\",\"operation\":\"Get GroupQuota request status\",\"description\":\"Get the GroupQuota request status for the specific request\"}},{\"name\":\"Microsoft.Quota/groupQuotas/quotaAllocations/read\",\"display\":{\"provider\":\"Microsoft.Quota\",\"resource\":\"GroupQuota to Subscription Quota allocation\",\"operation\":\"Get GroupQuota to Subscription Quota allocation\",\"description\":\"Get the current GroupQuota to Subscription Quota allocation\"}},{\"name\":\"Microsoft.Quota/groupQuotas/quotaAllocations/write\",\"display\":{\"provider\":\"Microsoft.Quota\",\"resource\":\"GroupQuota to Subscription Quota allocation\",\"operation\":\"Creates GroupQuota to subscription Quota limit request\",\"description\":\"Creates the GroupQuota to subscription Quota limit request for the specified resource\"}},{\"name\":\"Microsoft.Quota/groupQuotas/quotaAllocationRequests/read\",\"display\":{\"provider\":\"Microsoft.Quota\",\"resource\":\"GroupQuota to Subscription Quota allocation request\",\"operation\":\"Get GroupQuota to Subscription Quota allocation request status\",\"description\":\"Get the GroupQuota to Subscription Quota allocation request status for the specific request\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

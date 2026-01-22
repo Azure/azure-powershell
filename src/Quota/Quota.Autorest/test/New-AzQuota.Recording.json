@@ -1,0 +1,46 @@
+{
+  "New-AzQuota+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/providers/Microsoft.Compute/locations/eastus/providers/Microsoft.Quota/quotas/standardFSv2Family?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/providers/Microsoft.Compute/locations/eastus/providers/Microsoft.Quota/quotas/standardFSv2Family?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "58" ],
+        "x-ms-client-request-id": [ "0ac38483-0855-417f-b56c-bbfd81f5581c" ],
+        "CommandName": [ "Get-AzQuota" ],
+        "FullCommandName": [ "Get-AzQuota_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, must-revalidate, no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "MS-RequestId": [ "xEhSnCj_UUC7YEHxEec9Qw.0" ],
+        "x-ms-operation-identifier": [ "tenantId=4b71fe15-44c6-47b7-94ac-5a6b2cc290e9,objectId=5bfb5e97-dc40-46c7-b54c-d0f256bff56e/australiaeast/2d340710-0366-4a2d-bf42-5087d9fc7f6f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "9063fe5a-3340-42a7-ad50-b4f53c75ea14" ],
+        "x-ms-correlation-request-id": [ "9063fe5a-3340-42a7-ad50-b4f53c75ea14" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260122T023312Z:9063fe5a-3340-42a7-ad50-b4f53c75ea14" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 96A43645A0B34F4F9A3732BC8685CE32 Ref B: SYD03EDGE0706 Ref C: 2026-01-22T02:33:11Z" ],
+        "Date": [ "Thu, 22 Jan 2026 02:33:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "450" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"properties\":{\"limit\":{\"limitObjectType\":\"LimitValue\",\"limitType\":\"Independent\",\"value\":22},\"name\":{\"value\":\"standardFSv2Family\",\"localizedValue\":\"Standard FSv2 Family vCPUs\"},\"properties\":{},\"unit\":\"Count\",\"isQuotaApplicable\":true},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/providers/Microsoft.Compute/locations/eastus/providers/Microsoft.Quota/quotas/standardFSv2Family\",\"type\":\"Microsoft.Quota/Quotas\",\"name\":\"standardFSv2Family\"}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "Get-AzQuotaGroupQuotaSubscriptionRequest+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation/subscriptionRequests?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation/subscriptionRequests?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "41" ],
+        "x-ms-client-request-id": [ "6053c9c6-2bdc-4130-aa9a-69a57bcb52cb" ],
+        "CommandName": [ "Get-AzQuotaGroupQuotaSubscriptionRequest" ],
+        "FullCommandName": [ "Get-AzQuotaGroupQuotaSubscriptionRequest_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 401,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-ratelimit-remaining-tenant-resource-requests": [ "2199" ],
+        "x-ms-request-id": [ "72492168-adbe-4ad4-a778-6396b6f20e33" ],
+        "x-ms-correlation-request-id": [ "72492168-adbe-4ad4-a778-6396b6f20e33" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260122T023113Z:72492168-adbe-4ad4-a778-6396b6f20e33" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AFDD5676B6D9407691BD7FFC7AD10260 Ref B: SYD03EDGE0706 Ref C: 2026-01-22T02:31:13Z" ],
+        "Date": [ "Thu, 22 Jan 2026 02:31:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "302" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"AuthorizationFailed\",\"message\":\"Unable to verify that the user that sent this request is the original caller of the asynchronous operation being polled. Please refer to https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/async-operations for more information.\"}}",
+      "isContentBase64": false
+    }
+  }
+}
