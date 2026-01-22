@@ -23,27 +23,33 @@ Lists all read replicas of a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all read replicas for a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerReplica -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                 ResourceGroupName Location    SkuName         State ReplicationRole
+----                 ----------------- --------    -------         ----- ---------------
+myPostgreSqlServer-r1 replica-rg        West US 2   Standard_D2s_v3 Ready Replica
+myPostgreSqlServer-r2 replica-rg        East US     Standard_D2s_v3 Ready Replica
 ```
 
-{{ Add description here }}
+Lists all read replicas for the specified PostgreSQL Flexible Server primary instance.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get details of read replicas across regions
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerReplica -ResourceGroupName "production-rg" -ServerName "prod-postgresql-primary"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                    ResourceGroupName Location      SkuName         State ReplicationRole ReplicationState
+----                    ----------------- --------      -------         ----- --------------- ----------------
+prod-postgresql-replica1 production-rg     West Europe   Standard_D4s_v3 Ready Replica        Active
+prod-postgresql-replica2 production-rg     North Europe  Standard_D4s_v3 Ready Replica        Active
 ```
 
-{{ Add description here }}
+Retrieves information about all read replicas, showing their geographic distribution and replication status.
 
 ## PARAMETERS
 

@@ -38,27 +38,19 @@ Deletes a specific backup, given its name.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a specific on-demand backup
 ```powershell
-{{ Add code here }}
+Remove-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -BackupName "manual-backup-20250122"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Removes the specified on-demand backup from the PostgreSQL Flexible Server. Automatic backups follow their retention policy and cannot be manually removed.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove an on-demand backup without confirmation
 ```powershell
-{{ Add code here }}
+Remove-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -ResourceGroupName "development-rg" -ServerName "dev-postgresql-01" -BackupName "test-backup" -Force
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Removes the specified backup immediately without prompting for confirmation. This is useful for cleaning up test backups in development environments.
 
 ## PARAMETERS
 

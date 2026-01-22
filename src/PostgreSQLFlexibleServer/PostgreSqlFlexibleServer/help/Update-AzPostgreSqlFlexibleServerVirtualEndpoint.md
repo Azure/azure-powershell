@@ -54,27 +54,37 @@ Update a pair of virtual endpoints for a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update virtual endpoint members
 ```powershell
-{{ Add code here }}
+Update-AzPostgreSqlFlexibleServerVirtualEndpoint -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -VirtualEndpointName "readonly-endpoint" -Members @("replica1", "replica2", "replica3")
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : readonly-endpoint
+EndpointType      : ReadOnly
+Members           : {replica1, replica2, replica3}
+VirtualEndpointType: ReadReplica
+ConnectionString  : readonly-endpoint.myPostgreSqlServer.postgres.database.azure.com
+State             : Active
 ```
 
-{{ Add description here }}
+Updates the read-only virtual endpoint to include a third replica server in the load balancing configuration.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a member from virtual endpoint
 ```powershell
-{{ Add code here }}
+Update-AzPostgreSqlFlexibleServerVirtualEndpoint -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -VirtualEndpointName "readonly-endpoint" -Members @("replica1")
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : readonly-endpoint
+EndpointType      : ReadOnly
+Members           : {replica1}
+VirtualEndpointType: ReadReplica
+ConnectionString  : readonly-endpoint.prod-postgresql-01.postgres.database.azure.com
+State             : Active
 ```
 
-{{ Add description here }}
+Updates the virtual endpoint to remove replica2 from the configuration, leaving only replica1 for read operations.
 
 ## PARAMETERS
 

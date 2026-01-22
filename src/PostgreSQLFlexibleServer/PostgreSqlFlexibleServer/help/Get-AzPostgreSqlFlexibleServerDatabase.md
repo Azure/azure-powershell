@@ -44,27 +44,34 @@ Gets information about an existing database.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all databases on a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name        Charset Collation
+----        ------- ---------
+postgres    UTF8    en_US.utf8
+myapp_db    UTF8    en_US.utf8
+testdb      UTF8    en_US.utf8
 ```
 
-{{ Add description here }}
+Lists all databases on the specified PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific database on a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -DatabaseName "myapp_db"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name     : myapp_db
+Charset  : UTF8
+Collation: en_US.utf8
+Id       : /subscriptions/ssssssss-ssss-ssss-ssss-ssssssssssss/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/myPostgreSqlServer/databases/myapp_db
 ```
 
-{{ Add description here }}
+Retrieves detailed information about a specific database on the PostgreSQL Flexible Server.
 
 ## PARAMETERS
 

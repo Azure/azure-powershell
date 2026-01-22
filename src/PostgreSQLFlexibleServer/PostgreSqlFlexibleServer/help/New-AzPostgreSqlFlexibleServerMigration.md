@@ -63,27 +63,42 @@ Create a new migration.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an online migration from source PostgreSQL server
 ```powershell
-{{ Add code here }}
+$sourceDbConnectionString = "Host=source-postgresql-server.com;Database=postgres;Username=admin;Password=SecurePassword123!"
+New-AzPostgreSqlFlexibleServerMigration -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -MigrationName "migration-001" -MigrationType "OnlineMode" -SourceServerResourceId $sourceDbConnectionString -DatabasesToMigrate @("myapp_db", "analytics_db")
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : migration-001
+Status            : InProgress
+MigrationType     : OnlineMode
+SourceServer      : source-postgresql-server.com
+TargetServer      : myPostgreSqlServer
+StartedOn         : 2025-01-22T10:30:00Z
+CurrentSubState   : Initializing
+DatabasesToMigrate: {myapp_db, analytics_db}
 ```
 
-{{ Add description here }}
+Creates a new online migration to migrate specific databases from a source PostgreSQL server to the Azure PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create an offline migration with all databases
 ```powershell
-{{ Add code here }}
+New-AzPostgreSqlFlexibleServerMigration -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -MigrationName "full-migration" -MigrationType "OfflineMode" -SourceServerResourceId "/subscriptions/ssssssss-ssss-ssss-ssss-ssssssssssss/resourceGroups/source-rg/providers/Microsoft.DBforPostgreSQL/servers/old-postgresql-server" -MigrateAllDatabases
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : full-migration
+Status            : InProgress
+MigrationType     : OfflineMode
+SourceServer      : old-postgresql-server
+TargetServer      : prod-postgresql-01
+StartedOn         : 2025-01-22T11:00:00Z
+CurrentSubState   : Initializing
+MigrateAllDatabases: True
 ```
 
-{{ Add description here }}
+Creates a new offline migration to migrate all databases from an Azure PostgreSQL single server to the PostgreSQL Flexible Server.
 
 ## PARAMETERS
 

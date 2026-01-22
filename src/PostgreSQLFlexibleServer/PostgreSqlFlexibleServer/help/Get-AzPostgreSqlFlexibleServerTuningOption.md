@@ -44,27 +44,36 @@ Gets the tuning options of a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all tuning options for a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerTuningOption -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ConfigurationName    CurrentValue RecommendedValue Description
+-----------------    ------------ ---------------- -----------
+max_connections      100          150              Increase for higher concurrency
+shared_buffers       32MB         128MB            Optimize memory usage
+work_mem             4MB          8MB              Improve query performance
+effective_cache_size 128MB        512MB            Better query planning
 ```
 
-{{ Add description here }}
+Lists all available tuning options with current and recommended values for the PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get tuning options for a specific configuration area
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerTuningOption -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -TuningOptionName "memory"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ConfigurationName    CurrentValue RecommendedValue Description                     Impact
+-----------------    ------------ ---------------- -----------                     ------
+shared_buffers       64MB         256MB            Optimize buffer pool size      High
+work_mem             4MB          16MB             Improve sorting and hashing     Medium
+effective_cache_size 256MB        1GB              Better query cost estimation   High
 ```
 
-{{ Add description here }}
+Retrieves memory-related tuning options and recommendations for optimizing the PostgreSQL Flexible Server performance.
 
 ## PARAMETERS
 

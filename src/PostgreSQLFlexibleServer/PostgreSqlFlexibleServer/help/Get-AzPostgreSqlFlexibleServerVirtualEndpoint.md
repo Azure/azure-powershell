@@ -44,27 +44,35 @@ Gets information about a pair of virtual endpoints.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all virtual endpoints for a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerVirtualEndpoint -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              EndpointType Members               VirtualEndpointType
+----              ------------ -------               -------------------
+readonly-endpoint ReadOnly     {replica1, replica2}  ReadReplica
+write-endpoint    ReadWrite    {primary}             Primary
 ```
 
-{{ Add description here }}
+Lists all virtual endpoints configured for the PostgreSQL Flexible Server, including read-only and read-write endpoints.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get details of a specific virtual endpoint
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerVirtualEndpoint -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -VirtualEndpointName "readonly-endpoint"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : readonly-endpoint
+EndpointType      : ReadOnly
+Members           : {prod-replica1, prod-replica2}
+VirtualEndpointType: ReadReplica
+ConnectionString  : readonly-endpoint.prod-postgresql-01.postgres.database.azure.com
+State             : Active
 ```
 
-{{ Add description here }}
+Retrieves detailed information about a specific virtual endpoint, including its member servers and connection details.
 
 ## PARAMETERS
 

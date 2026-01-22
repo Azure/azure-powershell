@@ -45,27 +45,35 @@ Lists the virtual network subnet usage for a given virtual network.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Check subnet usage for PostgreSQL Flexible Server deployment
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerVirtualNetworkSubnetUsage -LocationName "East US" -VirtualNetworkResourceId "/subscriptions/ssssssss-ssss-ssss-ssss-ssssssssssss/resourceGroups/network-rg/providers/Microsoft.Network/virtualNetworks/my-vnet" -SubnetName "postgresql-subnet"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+SubscriptionId         : ssssssss-ssss-ssss-ssss-ssssssssssss
+VirtualNetworkResourceId: /subscriptions/ssssssss-ssss-ssss-ssss-ssssssssssss/resourceGroups/network-rg/providers/Microsoft.Network/virtualNetworks/my-vnet
+SubnetName            : postgresql-subnet
+Usage                 : 2
+Available             : 251
 ```
 
-{{ Add description here }}
+Checks how many IP addresses are currently used and available in the specified subnet for PostgreSQL Flexible Server deployments.
 
-### Example 2: {{ Add title here }}
+### Example 2: Verify subnet capacity before server deployment
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerVirtualNetworkSubnetUsage -LocationName "West Europe" -VirtualNetworkResourceId "/subscriptions/ssssssss-ssss-ssss-ssss-ssssssssssss/resourceGroups/production-network/providers/Microsoft.Network/virtualNetworks/prod-vnet" -SubnetName "database-subnet"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+SubscriptionId         : ssssssss-ssss-ssss-ssss-ssssssssssss
+VirtualNetworkResourceId: /subscriptions/ssssssss-ssss-ssss-ssss-ssssssssssss/resourceGroups/production-network/providers/Microsoft.Network/virtualNetworks/prod-vnet
+SubnetName            : database-subnet
+Usage                 : 0
+Available             : 256
 ```
 
-{{ Add description here }}
+Verifies that the production subnet has sufficient IP addresses available before deploying new PostgreSQL Flexible Servers with private access.
 
 ## PARAMETERS
 

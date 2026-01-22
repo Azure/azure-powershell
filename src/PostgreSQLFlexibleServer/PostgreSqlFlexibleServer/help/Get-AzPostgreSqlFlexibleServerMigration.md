@@ -44,27 +44,37 @@ Gets information about a migration.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all migrations for a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerMigration -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name          Status      MigrationType SourceServer                    StartedOn
+----          ------      ------------- ------------                    ---------
+migration-001 InProgress  OnlineMode    source-postgresql-server.com   2025-01-22T10:30:00Z
+migration-002 Succeeded   OfflineMode   old-postgresql-server.com       2025-01-21T15:45:00Z
 ```
 
-{{ Add description here }}
+Lists all migration operations for the specified PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get details of a specific migration
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerMigration -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -MigrationName "migration-001"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : migration-001
+Status            : InProgress
+MigrationType     : OnlineMode
+SourceServer      : source-postgresql-server.com
+TargetServer      : myPostgreSqlServer
+StartedOn         : 2025-01-22T10:30:00Z
+CurrentSubState   : MigratingData
+DatabasesToMigrate: {myapp_db, analytics_db}
 ```
 
-{{ Add description here }}
+Retrieves detailed information about a specific migration operation, including current status and progress.
 
 ## PARAMETERS
 

@@ -59,27 +59,31 @@ Check the availability of name for resource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Test if a PostgreSQL Flexible Server name is available
 ```powershell
-{{ Add code here }}
+Test-AzPostgreSqlFlexibleServerNameAvailability -LocationName "East US" -ServerName "my-unique-postgresql-server"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+NameAvailable : True
+Reason        : 
+Message       : 
 ```
 
-{{ Add description here }}
+Checks if the specified server name is available for use in the East US region.
 
-### Example 2: {{ Add title here }}
+### Example 2: Test an unavailable server name
 ```powershell
-{{ Add code here }}
+Test-AzPostgreSqlFlexibleServerNameAvailability -LocationName "West Europe" -ServerName "common-name"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+NameAvailable : False
+Reason        : AlreadyExists
+Message       : The specified name is already in use in this location.
 ```
 
-{{ Add description here }}
+Tests a server name that is already taken and returns the reason why it's unavailable.
 
 ## PARAMETERS
 

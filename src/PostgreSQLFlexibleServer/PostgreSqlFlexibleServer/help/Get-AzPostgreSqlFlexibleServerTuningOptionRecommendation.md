@@ -23,27 +23,35 @@ Lists available object recommendations.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get tuning recommendations for a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ConfigurationName    CurrentValue RecommendedValue Reason                      Impact
+-----------------    ------------ ---------------- ------                      ------
+max_connections      100          200              High connection usage       High
+shared_buffers       32MB         128MB            Optimize for workload size  High
+work_mem             4MB          8MB              Improve query performance   Medium
 ```
 
-{{ Add description here }}
+Retrieves personalized tuning recommendations based on the current workload and usage patterns of the PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get recommendations for specific performance areas
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -RecommendationType "Memory"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ConfigurationName    CurrentValue RecommendedValue Reason                         Impact EstimatedImprovement
+-----------------    ------------ ---------------- ------                         ------ --------------------
+shared_buffers       64MB         256MB            Memory underutilized           High   15-20% query performance
+effective_cache_size 128MB        1GB              Better query cost estimation  High   10-15% planning efficiency
+work_mem             4MB          16MB             Improve sorting operations     Medium 5-10% complex query speed
 ```
 
-{{ Add description here }}
+Retrieves memory-specific tuning recommendations with estimated performance improvements.
 
 ## PARAMETERS
 

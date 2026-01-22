@@ -59,27 +59,19 @@ Restarts PostgreSQL database engine in a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Restart a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Restart-AzPostgreSqlFlexibleServer -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Restarts the specified PostgreSQL Flexible Server. This is required after certain configuration changes or to apply patches.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Restart a server with specific restart type
 ```powershell
-{{ Add code here }}
+Restart-AzPostgreSqlFlexibleServer -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -RestartWithFailover
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Restarts the PostgreSQL Flexible Server with failover enabled. This ensures high availability during the restart process for servers configured with zone redundancy.
 
 ## PARAMETERS
 

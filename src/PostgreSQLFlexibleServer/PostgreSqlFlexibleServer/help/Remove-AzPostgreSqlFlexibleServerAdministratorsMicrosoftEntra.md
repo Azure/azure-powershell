@@ -38,27 +38,19 @@ Deletes an existing server administrator associated to a Microsoft Entra princip
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Microsoft Entra administrator from PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Remove-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -ObjectId "ssssssss-ssss-ssss-ssss-ssssssssssss"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Removes the specified Microsoft Entra user or group from the PostgreSQL Flexible Server administrators. The principal will no longer have administrative access.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove administrator access without confirmation
 ```powershell
-{{ Add code here }}
+Remove-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ResourceGroupName "development-rg" -ServerName "dev-postgresql-01" -ObjectId "tttttttt-tttt-tttt-tttt-tttttttttttt" -Force
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Removes the Microsoft Entra administrator immediately without prompting for confirmation. Use with caution in production environments.
 
 ## PARAMETERS
 

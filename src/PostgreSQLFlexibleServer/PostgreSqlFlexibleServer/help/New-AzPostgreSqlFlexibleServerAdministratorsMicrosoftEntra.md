@@ -47,27 +47,33 @@ Create a new server administrator associated to a Microsoft Entra principal.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Add a Microsoft Entra user as PostgreSQL Flexible Server administrator
 ```powershell
-{{ Add code here }}
+New-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -ObjectId "ssssssss-ssss-ssss-ssss-ssssssssssss" -PrincipalType "User" -PrincipalName "admin@contoso.com"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ObjectId     : ssssssss-ssss-ssss-ssss-ssssssssssss
+PrincipalType: User
+PrincipalName: admin@contoso.com
+TenantId     : tttttttt-tttt-tttt-tttt-tttttttttttt
 ```
 
-{{ Add description here }}
+Adds a Microsoft Entra user as an administrator for the PostgreSQL Flexible Server, enabling Azure AD authentication.
 
-### Example 2: {{ Add title here }}
+### Example 2: Add a Microsoft Entra group as PostgreSQL Flexible Server administrator
 ```powershell
-{{ Add code here }}
+New-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -ObjectId "gggggggg-gggg-gggg-gggg-gggggggggggg" -PrincipalType "Group" -PrincipalName "DBA-Group"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ObjectId     : gggggggg-gggg-gggg-gggg-gggggggggggg
+PrincipalType: Group
+PrincipalName: DBA-Group
+TenantId     : tttttttt-tttt-tttt-tttt-tttttttttttt
 ```
 
-{{ Add description here }}
+Adds a Microsoft Entra group as an administrator, allowing all members of the group to have administrative access to the PostgreSQL server.
 
 ## PARAMETERS
 

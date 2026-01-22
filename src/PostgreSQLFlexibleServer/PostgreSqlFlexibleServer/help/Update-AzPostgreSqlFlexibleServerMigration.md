@@ -78,27 +78,37 @@ Certain property update initiate migration state transitions.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update migration to add more databases
 ```powershell
-{{ Add code here }}
+Update-AzPostgreSqlFlexibleServerMigration -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -MigrationName "migration-001" -DatabasesToMigrate @("myapp_db", "analytics_db", "reporting_db")
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : migration-001
+Status            : InProgress
+MigrationType     : OnlineMode
+DatabasesToMigrate: {myapp_db, analytics_db, reporting_db}
+CurrentSubState   : MigratingData
+Progress          : 45%
 ```
 
-{{ Add description here }}
+Updates an ongoing migration to include an additional database (reporting_db) in the migration scope.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update migration configuration settings
 ```powershell
-{{ Add code here }}
+Update-AzPostgreSqlFlexibleServerMigration -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -MigrationName "full-migration" -MigrationType "OfflineMode" -OverwriteDbsInTarget $true
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : full-migration
+Status            : InProgress
+MigrationType     : OfflineMode
+OverwriteDbsInTarget: True
+CurrentSubState   : PreparingTarget
+Progress          : 25%
 ```
 
-{{ Add description here }}
+Updates the migration settings to change from online to offline mode and enable overwriting of existing databases on the target server.
 
 ## PARAMETERS
 

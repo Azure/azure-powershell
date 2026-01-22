@@ -38,27 +38,19 @@ Deletes an existing database.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a database from PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Remove-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -DatabaseName "old_database"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Removes the specified database from the PostgreSQL Flexible Server. This operation permanently deletes the database and all its data.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a database without confirmation prompt
 ```powershell
-{{ Add code here }}
+Remove-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName "development-rg" -ServerName "dev-postgresql-01" -DatabaseName "temp_testdb" -Force
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Removes the database immediately without prompting for confirmation. Use with extreme caution as this operation cannot be undone.
 
 ## PARAMETERS
 

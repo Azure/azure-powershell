@@ -38,27 +38,19 @@ Deletes a pair of virtual endpoints.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a virtual endpoint
 ```powershell
-{{ Add code here }}
+Remove-AzPostgreSqlFlexibleServerVirtualEndpoint -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -VirtualEndpointName "old-readonly-endpoint"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Removes the specified virtual endpoint from the PostgreSQL Flexible Server. Applications using this endpoint will need to be updated to use alternative connection methods.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a virtual endpoint without confirmation
 ```powershell
-{{ Add code here }}
+Remove-AzPostgreSqlFlexibleServerVirtualEndpoint -ResourceGroupName "development-rg" -ServerName "dev-postgresql-01" -VirtualEndpointName "temp-endpoint" -Force
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Removes the virtual endpoint immediately without prompting for confirmation. This is useful for cleaning up temporary endpoints in development environments.
 
 ## PARAMETERS
 

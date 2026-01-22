@@ -60,27 +60,35 @@ Initiates a long term retention backup.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Start a long-term retention backup
 ```powershell
-{{ Add code here }}
+Start-AzPostgreSqlFlexibleServerBackupsLongTermRetention -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -BackupName "monthly-backup-jan-2025" -TargetDetails @{"storageAccountResourceId"="/subscriptions/ssssssss-ssss-ssss-ssss-ssssssssssss/resourceGroups/storage-rg/providers/Microsoft.Storage/storageAccounts/backupstorage"}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+BackupName          : monthly-backup-jan-2025
+Status              : InProgress
+StartTime           : 2025-01-22T10:30:00Z
+StorageAccount      : backupstorage
+RetentionPeriod     : P7Y
 ```
 
-{{ Add description here }}
+Starts a long-term retention backup that will be stored for 7 years in the specified storage account.
 
-### Example 2: {{ Add title here }}
+### Example 2: Start a quarterly backup with custom retention
 ```powershell
-{{ Add code here }}
+Start-AzPostgreSqlFlexibleServerBackupsLongTermRetention -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -BackupName "quarterly-backup-q1-2025" -TargetDetails @{"storageAccountResourceId"="/subscriptions/ssssssss-ssss-ssss-ssss-ssssssssssss/resourceGroups/backup-rg/providers/Microsoft.Storage/storageAccounts/ltrbackupstorage"} -RetentionPeriod "P10Y"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+BackupName          : quarterly-backup-q1-2025
+Status              : InProgress
+StartTime           : 2025-01-22T11:00:00Z
+StorageAccount      : ltrbackupstorage
+RetentionPeriod     : P10Y
 ```
 
-{{ Add description here }}
+Starts a long-term retention backup for quarterly compliance with a custom 10-year retention period.
 
 ## PARAMETERS
 

@@ -59,27 +59,36 @@ Performs all checks required for a long term retention backup operation to succe
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Test prerequisites for long-term retention backup
 ```powershell
-{{ Add code here }}
+Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+PrerequisitesMet      : True
+StorageAccountRequired: True
+PermissionsValid      : True
+BackupEnabled         : True
+Message               : All prerequisites are met for long-term retention backup.
 ```
 
-{{ Add description here }}
+Checks if all prerequisites are met for enabling long-term retention backups on the PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Test prerequisites and identify missing requirements
 ```powershell
-{{ Add code here }}
+Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite -ResourceGroupName "development-rg" -ServerName "dev-postgresql-01"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+PrerequisitesMet      : False
+StorageAccountRequired: True
+PermissionsValid      : False
+BackupEnabled         : True
+Message               : Missing permissions to access the storage account. Please ensure the server has Contributor role on the target storage account.
+Recommendations       : {Grant storage permissions, Verify storage account exists}
 ```
 
-{{ Add description here }}
+Identifies that the server lacks necessary permissions for long-term retention backups and provides remediation guidance.
 
 ## PARAMETERS
 

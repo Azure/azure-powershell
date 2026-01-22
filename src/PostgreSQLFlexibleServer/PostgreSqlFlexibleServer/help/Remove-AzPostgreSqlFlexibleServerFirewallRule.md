@@ -38,27 +38,19 @@ Deletes an existing firewall rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a firewall rule from PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Remove-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -FirewallRuleName "AllowOldOffice"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Removes the specified firewall rule from the PostgreSQL Flexible Server. Access from the IP range defined in this rule will no longer be allowed.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove multiple firewall rules
 ```powershell
-{{ Add code here }}
+@("TempRule1", "TempRule2") | ForEach-Object { Remove-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName "development-rg" -ServerName "dev-postgresql-01" -FirewallRuleName $_ -Force }
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Removes multiple temporary firewall rules without confirmation prompts. This is useful for cleanup operations in development environments.
 
 ## PARAMETERS
 

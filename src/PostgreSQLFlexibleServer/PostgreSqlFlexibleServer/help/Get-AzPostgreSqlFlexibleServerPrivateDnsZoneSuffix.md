@@ -22,27 +22,33 @@ Gets the private DNS zone suffix.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get private DNS zone suffix for a location
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerPrivateDnsZoneSuffix -LocationName "East US"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+PrivateDnsZoneSuffix
+--------------------
+private.postgres.database.azure.com
 ```
 
-{{ Add description here }}
+Retrieves the private DNS zone suffix used for PostgreSQL Flexible Servers with private access in the East US region.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get private DNS zone suffix for multiple locations
 ```powershell
-{{ Add code here }}
+@("East US", "West Europe", "Southeast Asia") | ForEach-Object { Get-AzPostgreSqlFlexibleServerPrivateDnsZoneSuffix -LocationName $_ }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+PrivateDnsZoneSuffix
+--------------------
+private.postgres.database.azure.com
+private.postgres.database.azure.com
+private.postgres.database.azure.com
 ```
 
-{{ Add description here }}
+Retrieves the private DNS zone suffix for PostgreSQL Flexible Servers across multiple Azure regions.
 
 ## PARAMETERS
 

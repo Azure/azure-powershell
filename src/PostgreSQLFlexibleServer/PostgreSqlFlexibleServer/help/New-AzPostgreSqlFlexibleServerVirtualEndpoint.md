@@ -46,27 +46,37 @@ Create a pair of virtual endpoints for a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a read-only virtual endpoint for replicas
 ```powershell
-{{ Add code here }}
+New-AzPostgreSqlFlexibleServerVirtualEndpoint -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -VirtualEndpointName "readonly-endpoint" -EndpointType "ReadOnly" -Members @("replica1", "replica2")
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : readonly-endpoint
+EndpointType      : ReadOnly
+Members           : {replica1, replica2}
+VirtualEndpointType: ReadReplica
+ConnectionString  : readonly-endpoint.myPostgreSqlServer.postgres.database.azure.com
+State             : Active
 ```
 
-{{ Add description here }}
+Creates a read-only virtual endpoint that distributes read traffic across multiple read replicas.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a write virtual endpoint for high availability
 ```powershell
-{{ Add code here }}
+New-AzPostgreSqlFlexibleServerVirtualEndpoint -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -VirtualEndpointName "ha-write-endpoint" -EndpointType "ReadWrite" -Members @("prod-postgresql-primary")
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : ha-write-endpoint
+EndpointType      : ReadWrite
+Members           : {prod-postgresql-primary}
+VirtualEndpointType: Primary
+ConnectionString  : ha-write-endpoint.prod-postgresql-01.postgres.database.azure.com
+State             : Active
 ```
 
-{{ Add description here }}
+Creates a write virtual endpoint for the primary server, providing a consistent connection string even during failover scenarios.
 
 ## PARAMETERS
 

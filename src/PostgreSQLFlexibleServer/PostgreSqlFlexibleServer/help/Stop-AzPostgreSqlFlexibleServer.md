@@ -30,27 +30,19 @@ Stops a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Stop a running PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Stop-AzPostgreSqlFlexibleServer -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Stops the specified PostgreSQL Flexible Server. All active connections will be terminated, and the server will no longer accept new connections.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Stop a server without confirmation prompt
 ```powershell
-{{ Add code here }}
+Stop-AzPostgreSqlFlexibleServer -ResourceGroupName "development-rg" -ServerName "dev-postgresql-01" -Force
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Stops the PostgreSQL Flexible Server immediately without prompting for confirmation. Use with caution as this will terminate all active connections.
 
 ## PARAMETERS
 

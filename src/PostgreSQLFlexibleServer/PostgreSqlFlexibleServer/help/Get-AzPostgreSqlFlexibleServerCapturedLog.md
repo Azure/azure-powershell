@@ -23,27 +23,33 @@ Lists all captured logs for download in a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all captured logs for a PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerCapturedLog -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+LogType    Size(KB) CreatedTime         LastModifiedTime     DownloadUrl
+-------    -------- -----------         ----------------     -----------
+postgresql 1024     2025-01-22T08:00:00Z 2025-01-22T09:30:00Z https://logs.../postgresql_2025-01-22.log
+error      256      2025-01-22T08:00:00Z 2025-01-22T09:15:00Z https://logs.../error_2025-01-22.log
 ```
 
-{{ Add description here }}
+Lists all captured log files available for the specified PostgreSQL Flexible Server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get specific log files by type and date range
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerCapturedLog -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -LogType "postgresql" -StartTime "2025-01-21T00:00:00Z" -EndTime "2025-01-22T00:00:00Z"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+LogType    Size(KB) CreatedTime         LastModifiedTime     DownloadUrl
+-------    -------- -----------         ----------------     -----------
+postgresql 2048     2025-01-21T00:00:00Z 2025-01-21T23:59:59Z https://logs.../postgresql_2025-01-21.log
+postgresql 1024     2025-01-21T12:00:00Z 2025-01-21T23:30:00Z https://logs.../postgresql_2025-01-21_12.log
 ```
 
-{{ Add description here }}
+Retrieves PostgreSQL log files captured within a specific date range for analysis and troubleshooting.
 
 ## PARAMETERS
 

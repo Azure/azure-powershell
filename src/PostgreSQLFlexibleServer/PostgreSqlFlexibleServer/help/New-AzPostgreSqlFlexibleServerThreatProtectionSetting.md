@@ -38,27 +38,35 @@ Create a server's Advanced Threat Protection settings.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Enable basic threat protection for PostgreSQL Flexible Server
 ```powershell
-{{ Add code here }}
+New-AzPostgreSqlFlexibleServerThreatProtectionSetting -ResourceGroupName "myResourceGroup" -ServerName "myPostgreSqlServer" -State "Enabled"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+State               : Enabled
+CreationTime        : 2025-01-22T10:30:00Z
+RetentionDays       : 30
+StorageEndpoint     : 
+StorageAccountAccessKey: 
 ```
 
-{{ Add description here }}
+Enables threat protection for the PostgreSQL Flexible Server with default settings, providing security monitoring and alerting.
 
-### Example 2: {{ Add title here }}
+### Example 2: Enable threat protection with custom storage for logs
 ```powershell
-{{ Add code here }}
+New-AzPostgreSqlFlexibleServerThreatProtectionSetting -ResourceGroupName "production-rg" -ServerName "prod-postgresql-01" -State "Enabled" -StorageEndpoint "https://mystorageaccount.blob.core.windows.net" -StorageAccountAccessKey (ConvertTo-SecureString "StorageKey123!" -AsPlainText -Force) -RetentionDays 90
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+State               : Enabled
+CreationTime        : 2025-01-22T11:00:00Z
+RetentionDays       : 90
+StorageEndpoint     : https://mystorageaccount.blob.core.windows.net
+StorageAccountAccessKey: [SecureString]
 ```
 
-{{ Add description here }}
+Enables threat protection with a custom storage account for security logs and extends the retention period to 90 days.
 
 ## PARAMETERS
 

@@ -22,27 +22,36 @@ Get quota usages at specified location in a given subscription.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get quota usage for PostgreSQL Flexible Server in a location
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerQuotaUsage -LocationName "East US"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                        CurrentValue Limit Unit
+----                        ------------ ----- ----
+servers                     5            20    Count
+vCores                      16           100   Count
+storageGB                   512          10240 Count
 ```
 
-{{ Add description here }}
+Displays the current quota usage for PostgreSQL Flexible Servers in the East US region.
 
-### Example 2: {{ Add title here }}
+### Example 2: Check quota usage for a specific subscription and location
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerQuotaUsage -LocationName "West Europe" -SubscriptionId "ssssssss-ssss-ssss-ssss-ssssssssssss"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                        CurrentValue Limit Unit Description
+----                        ------------ ----- ---- -----------
+servers                     12           50    Count Maximum number of PostgreSQL Flexible Servers
+vCores                      48           200   Count Total vCores across all servers
+storageGB                   2048         51200 Count Total storage in GB across all servers
+backupStorageGB             1024         10240 Count Backup storage usage in GB
 ```
 
-{{ Add description here }}
+Retrrieves detailed quota usage information for PostgreSQL Flexible Servers in a specific subscription and region.
 
 ## PARAMETERS
 

@@ -43,27 +43,31 @@ Checks the validity and availability of the given name, to assign it to a new se
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Test server name availability across all Azure regions
 ```powershell
-{{ Add code here }}
+Test-AzPostgreSqlFlexibleServerNameAvailabilityGlobally -ServerName "globally-unique-postgresql-2025"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+NameAvailable : True
+Reason        : 
+Message       : 
 ```
 
-{{ Add description here }}
+Checks if the specified server name is globally available across all Azure regions.
 
-### Example 2: {{ Add title here }}
+### Example 2: Test a name that conflicts globally
 ```powershell
-{{ Add code here }}
+Test-AzPostgreSqlFlexibleServerNameAvailabilityGlobally -ServerName "postgresql-server"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+NameAvailable : False
+Reason        : AlreadyExists
+Message       : The specified name is already in use globally.
 ```
 
-{{ Add description here }}
+Tests a server name that already exists globally and confirms it's unavailable for use.
 
 ## PARAMETERS
 
