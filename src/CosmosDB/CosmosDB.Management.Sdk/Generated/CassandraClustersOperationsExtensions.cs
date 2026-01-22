@@ -267,6 +267,45 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
+        /// Invoke a command like nodetool for cassandra maintenance asynchronously
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        public static CommandPublicResource InvokeCommandAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, CommandAsyncPostBody body)
+        {
+                return ((ICassandraClustersOperations)operations).InvokeCommandAsyncAsync(resourceGroupName, clusterName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Invoke a command like nodetool for cassandra maintenance asynchronously
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CommandPublicResource> InvokeCommandAsyncAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, CommandAsyncPostBody body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.InvokeCommandAsyncWithHttpMessagesAsync(resourceGroupName, clusterName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// List all commands currently running on ring info
         /// </summary>
         /// <param name='operations'>
@@ -720,6 +759,45 @@ namespace Microsoft.Azure.Management.CosmosDB
         public static async System.Threading.Tasks.Task<CommandOutput> BeginInvokeCommandAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, CommandPostBody body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginInvokeCommandWithHttpMessagesAsync(resourceGroupName, clusterName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Invoke a command like nodetool for cassandra maintenance asynchronously
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        public static CommandPublicResource BeginInvokeCommandAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, CommandAsyncPostBody body)
+        {
+                return ((ICassandraClustersOperations)operations).BeginInvokeCommandAsyncAsync(resourceGroupName, clusterName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Invoke a command like nodetool for cassandra maintenance asynchronously
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CommandPublicResource> BeginInvokeCommandAsyncAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, CommandAsyncPostBody body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginInvokeCommandAsyncWithHttpMessagesAsync(resourceGroupName, clusterName, body, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
