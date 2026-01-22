@@ -54,18 +54,23 @@ directive:
     where: $
     transform: $ = $.replace(/global::System.Text.RegularExpressions.Regex\(\"\^\/\(\?\<scope\>\[\^\/\]\+\)/g, 'global::System.Text.RegularExpressions.Regex("^/(?<scope>.+)');
 
+  # Remove GroupQuotaSubscriptionRequest cmdlets - no longer needed
+  - where:
+      subject: GroupQuotaSubscriptionRequest
+    remove: true
+  
   # Keep only useful parameter set variants (Expanded, JsonFilePath, JsonString)
   # But preserve all variants for subscription/allocation management operations
   - where:
       variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
-      subject: ^(?!GroupQuotaSubscription|GroupQuotaLimitsRequest|GroupQuotaSubscriptionAllocation|GroupQuotaSubscriptionRequest).*$
+      subject: ^(?!GroupQuotaSubscription|GroupQuotaLimitsRequest|GroupQuotaSubscriptionAllocation).*$
     remove: true
   
   # Rename Set to New for operations that don't have POST equivalents
   # These are PUT-only operations where New is more semantically appropriate
   - where:
       verb: Set
-      subject: ^(GroupQuotaSubscription|GroupQuotaLimitsRequest|GroupQuotaSubscriptionAllocation|GroupQuotaSubscriptionRequest)$
+      subject: ^(GroupQuotaSubscription|GroupQuotaLimitsRequest|GroupQuotaSubscriptionAllocation)$
     set:
       verb: New
   

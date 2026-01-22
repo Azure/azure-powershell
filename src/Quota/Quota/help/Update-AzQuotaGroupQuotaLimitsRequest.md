@@ -20,28 +20,28 @@ This API provides the finals status with the request details and status.
 ```
 Update-AzQuotaGroupQuotaLimitsRequest -GroupQuotaName <String> -Location <String> -ManagementGroupId <String>
  -ResourceProviderName <String> [-Value <IGroupQuotaLimit[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzQuotaGroupQuotaLimitsRequest -GroupQuotaName <String> -Location <String> -ManagementGroupId <String>
  -ResourceProviderName <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzQuotaGroupQuotaLimitsRequest -GroupQuotaName <String> -Location <String> -ManagementGroupId <String>
  -ResourceProviderName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityManagementGroupExpanded
 ```
 Update-AzQuotaGroupQuotaLimitsRequest -GroupQuotaName <String> -Location <String>
  -ResourceProviderName <String> -ManagementGroupInputObject <IQuotaIdentity> [-Value <IGroupQuotaLimit[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -50,55 +50,55 @@ Update-AzQuotaGroupQuotaLimitsRequest -GroupQuotaName <String> -Location <String
 Update-AzQuotaGroupQuotaLimitsRequest -GroupQuotaName <String> -Location <String>
  -ResourceProviderName <String> -ManagementGroupInputObject <IQuotaIdentity>
  -GroupQuotaRequest <IGroupQuotaLimitList> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Update-AzQuotaGroupQuotaLimitsRequest -GroupQuotaName <String> -Location <String> -ManagementGroupId <String>
  -ResourceProviderName <String> -GroupQuotaRequest <IGroupQuotaLimitList> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityResourceProviderExpanded
 ```
 Update-AzQuotaGroupQuotaLimitsRequest -Location <String> -ResourceProviderInputObject <IQuotaIdentity>
  [-Value <IGroupQuotaLimit[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityResourceProvider
 ```
 Update-AzQuotaGroupQuotaLimitsRequest -Location <String> -ResourceProviderInputObject <IQuotaIdentity>
  -GroupQuotaRequest <IGroupQuotaLimitList> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityGroupQuotaExpanded
 ```
 Update-AzQuotaGroupQuotaLimitsRequest -Location <String> -ResourceProviderName <String>
  -GroupQuotaInputObject <IQuotaIdentity> [-Value <IGroupQuotaLimit[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityGroupQuota
 ```
 Update-AzQuotaGroupQuotaLimitsRequest -Location <String> -ResourceProviderName <String>
  -GroupQuotaInputObject <IQuotaIdentity> -GroupQuotaRequest <IGroupQuotaLimitList> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzQuotaGroupQuotaLimitsRequest -InputObject <IQuotaIdentity> [-Value <IGroupQuotaLimit[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
 Update-AzQuotaGroupQuotaLimitsRequest -InputObject <IQuotaIdentity> -GroupQuotaRequest <IGroupQuotaLimitList>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -301,6 +301,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

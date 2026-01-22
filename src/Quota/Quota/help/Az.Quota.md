@@ -42,11 +42,6 @@ Only the Group quota allocated to the subscription can be allocated back to the 
 ### [Get-AzQuotaGroupQuotaSubscriptionAllocationRequest](Get-AzQuotaGroupQuotaSubscriptionAllocationRequest.md)
 Get the quota allocation request status for the subscriptionId by allocationId.
 
-### [Get-AzQuotaGroupQuotaSubscriptionRequest](Get-AzQuotaGroupQuotaSubscriptionRequest.md)
-Get API to check the status of a subscriptionIds request by requestId.
-Use the polling API - OperationsStatus URI specified in Azure-AsyncOperation header field, with retry-after duration in seconds to check the intermediate status.
-This API provides the finals status with the request details and status.
-
 ### [Get-AzQuotaGroupQuotaUsage](Get-AzQuotaGroupQuotaUsage.md)
 Gets the GroupQuotas usages and limits(quota).
 Location is required paramter.
