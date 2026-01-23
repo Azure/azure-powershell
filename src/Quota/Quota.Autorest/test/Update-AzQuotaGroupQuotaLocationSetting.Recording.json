@@ -1,0 +1,169 @@
+{
+  "Update-AzQuotaGroupQuotaLocationSetting+[NoContext]+[NoScenario]+$GET+https://management.azure.com/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "109" ],
+        "x-ms-client-request-id": [ "665b3ef7-9f91-4d54-9fb7-4bbcc0a80880" ],
+        "CommandName": [ "Get-AzQuotaGroupQuota" ],
+        "FullCommandName": [ "Get-AzQuotaGroupQuota_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, must-revalidate, no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "MS-RequestId": [ "x89UuWQx9k-tas6y7aRcuw.0" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-request-id": [ "d5e6e920-9666-4282-a372-e678da12bf91" ],
+        "x-ms-correlation-request-id": [ "d5e6e920-9666-4282-a372-e678da12bf91" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260122T235853Z:d5e6e920-9666-4282-a372-e678da12bf91" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2A54B170EC204BA79A6B94422077AED0 Ref B: SYD03EDGE0705 Ref C: 2026-01-22T23:58:53Z" ],
+        "Date": [ "Thu, 22 Jan 2026 23:58:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "389" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"properties\":{\"displayName\":\"Test Location Group Quota\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testlocation\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzQuotaGroupQuotaLocationSetting+[NoContext]+[NoScenario]+$GET+https://management.azure.com/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation/resourceProviders/Microsoft.Compute/locationSettings/eastus?api-version=2025-09-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation/resourceProviders/Microsoft.Compute/locationSettings/eastus?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "110" ],
+        "x-ms-client-request-id": [ "fb1f4408-04d0-4d89-9e21-61d97594120b" ],
+        "CommandName": [ "Get-AzQuotaGroupQuotaLocationSetting" ],
+        "FullCommandName": [ "Get-AzQuotaGroupQuotaLocationSetting_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-request-id": [ "7cf85e05-a399-407f-bf62-aa28bcb6c8e9" ],
+        "x-ms-correlation-request-id": [ "7cf85e05-a399-407f-bf62-aa28bcb6c8e9" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260122T235854Z:7cf85e05-a399-407f-bf62-aa28bcb6c8e9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D46AE56B651F480A9D108A2D94E4B568 Ref B: SYD03EDGE0705 Ref C: 2026-01-22T23:58:53Z" ],
+        "Date": [ "Thu, 22 Jan 2026 23:58:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "181" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"EntityNotFound\",\"message\":\"EnforcementStatus is not found for GroupId: testlocation, MgId: azureclienttoolsbami, TenantId: 4b71fe15-44c6-47b7-94ac-5a6b2cc290e9.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzQuotaGroupQuotaLocationSetting+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation/resourceProviders/Microsoft.Compute/locationSettings/eastus?api-version=2025-09-01+3": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation/resourceProviders/Microsoft.Compute/locationSettings/eastus?api-version=2025-09-01",
+      "Content": "{\n  \"properties\": {\n    \"enforcementEnabled\": \"Enabled\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "61" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-store, must-revalidate, no-cache" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation/locationSettingsOperationsStatus/3ddc208a-c673-40c5-83f1-2fc308645f13?api-version=2025-09-01\u0026t=639047231347580121\u0026c=MIIHhzCCBm-gAwIBAgITfAliWrpjBSY9pIWiWwAACWJaujANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDUwHhcNMjUxMDIzMTU1MDAwWhcNMjYwNDIxMTU1MDAwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL8j9Fn7m-PWd9LTCELBAfORFxOBUSW6T_rqFbdYJ4YOnNAB7tVItzoMoJw8e-pnO08jfjUfSvUWTlpv3eucFl0fxldeNXGJAVmzm0UJT2Dl_PmzUWpaQo6fWfdU_ftOo9s7Qhukpgo7qkipC9v7M2S74B4MQBJYjlhzRhQCbHYR_NFNh4r76eINqyCpHKEJQ-eVmxQjYpbEh0JyPvYinrHsaqqoHE3y0hbjU55f_GGfrjmJXpukPy2NsSA8vs4Ag88sHFRBb8hoN0Gm4qQjXWZKW2ajrQST2HrXur3nQ5CBhIyG8zLCKVUZlCj2ZSxIfPWF3UkxGQyntEj38EL4uDUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9DTzFQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA1LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MB0GA1UdDgQWBBQYFmIzFslrsvIUuc3hpTEu0_qKxzAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBR61hmFKHlscXYeYPjzS--iBUIWHTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAKlSX41eFADGdI3KvASOaLIGbzdXyCfGMEVRejOUryDuw_izK6mUxxKtyqsQsXjCxXutoQl13MUGdto4lSIIWmDpP8b4_wkdHA1rQJ8oNIG0tgNlpq1TT93CyHBgUcepSyaNMrClvol7WT_m6hORvI5HlHZMsJHTJzyPFmg5a_Sa6XOkWsqMENQ2T2fn8Cv_XceoZisPbjQGa-woFqss4-yoT_wGJ02BysmqA2ACJaExAokW28FpZ69mkHNtWe6e8w8GLYMO8XaiNlaIQW-ITSKQ7KciNg4Jocg-_WICDxumUshxK00qI2lcy4ILbSkPYX7OtP4i2oWYLhT1i_L_ses\u0026s=mu57sLq0z30R8TS3gbObYAqcWwdDQtHBjKXrno7THhvpiHdaiS1qnLqiABlb6wIk8lnIDgxOqM62sOlOEnV2ZF7558EkRu7WHYMLGPaMA-T9wFGfqqNEaSOtNstyoALmL8JHD1N6Pm8-NZjBvDAc59S5Or_hCKxfNiul1pTI_30HpeUmDUeJffV_-u7ce7kpGGZmO2KcJSvMdPw2bXkKWLcy6PUFF9W6VOxfWmHuIIZqRsYzLs6rTq0ysGTn3JB8ypSyKY9N4VY5ZFw5PFRMiulJuTwgdU3KJQ4D_hW6N8gsYsdqvTcd1bxOQHfoweNR3j-a-KAZoRI1pQTvSNt0Og\u0026h=bE4HbfTnWRpJrT--JDB0lsPkWvP_i4ay79wYvV1wIQE" ],
+        "Retry-After": [ "30" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "MS-RequestId": [ "jC6SRRTDCkqFnk4S26rUKQ.0" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation/locationSettingsOperationsStatus/3ddc208a-c673-40c5-83f1-2fc308645f13?api-version=2025-09-01\u0026t=639047231347580121\u0026c=MIIHhzCCBm-gAwIBAgITfAliWrpjBSY9pIWiWwAACWJaujANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDUwHhcNMjUxMDIzMTU1MDAwWhcNMjYwNDIxMTU1MDAwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL8j9Fn7m-PWd9LTCELBAfORFxOBUSW6T_rqFbdYJ4YOnNAB7tVItzoMoJw8e-pnO08jfjUfSvUWTlpv3eucFl0fxldeNXGJAVmzm0UJT2Dl_PmzUWpaQo6fWfdU_ftOo9s7Qhukpgo7qkipC9v7M2S74B4MQBJYjlhzRhQCbHYR_NFNh4r76eINqyCpHKEJQ-eVmxQjYpbEh0JyPvYinrHsaqqoHE3y0hbjU55f_GGfrjmJXpukPy2NsSA8vs4Ag88sHFRBb8hoN0Gm4qQjXWZKW2ajrQST2HrXur3nQ5CBhIyG8zLCKVUZlCj2ZSxIfPWF3UkxGQyntEj38EL4uDUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9DTzFQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA1LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MB0GA1UdDgQWBBQYFmIzFslrsvIUuc3hpTEu0_qKxzAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBR61hmFKHlscXYeYPjzS--iBUIWHTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAKlSX41eFADGdI3KvASOaLIGbzdXyCfGMEVRejOUryDuw_izK6mUxxKtyqsQsXjCxXutoQl13MUGdto4lSIIWmDpP8b4_wkdHA1rQJ8oNIG0tgNlpq1TT93CyHBgUcepSyaNMrClvol7WT_m6hORvI5HlHZMsJHTJzyPFmg5a_Sa6XOkWsqMENQ2T2fn8Cv_XceoZisPbjQGa-woFqss4-yoT_wGJ02BysmqA2ACJaExAokW28FpZ69mkHNtWe6e8w8GLYMO8XaiNlaIQW-ITSKQ7KciNg4Jocg-_WICDxumUshxK00qI2lcy4ILbSkPYX7OtP4i2oWYLhT1i_L_ses\u0026s=mu57sLq0z30R8TS3gbObYAqcWwdDQtHBjKXrno7THhvpiHdaiS1qnLqiABlb6wIk8lnIDgxOqM62sOlOEnV2ZF7558EkRu7WHYMLGPaMA-T9wFGfqqNEaSOtNstyoALmL8JHD1N6Pm8-NZjBvDAc59S5Or_hCKxfNiul1pTI_30HpeUmDUeJffV_-u7ce7kpGGZmO2KcJSvMdPw2bXkKWLcy6PUFF9W6VOxfWmHuIIZqRsYzLs6rTq0ysGTn3JB8ypSyKY9N4VY5ZFw5PFRMiulJuTwgdU3KJQ4D_hW6N8gsYsdqvTcd1bxOQHfoweNR3j-a-KAZoRI1pQTvSNt0Og\u0026h=bE4HbfTnWRpJrT--JDB0lsPkWvP_i4ay79wYvV1wIQE" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "199" ],
+        "x-ms-request-id": [ "29f644a6-0f5f-4834-9269-a357d9d92580" ],
+        "x-ms-correlation-request-id": [ "29f644a6-0f5f-4834-9269-a357d9d92580" ],
+        "x-ms-routing-request-id": [ "AUSTRALIASOUTHEAST:20260122T235854Z:29f644a6-0f5f-4834-9269-a357d9d92580" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 36CA261D0D644761BD43FEB2C19E9F6B Ref B: SYD03EDGE0705 Ref C: 2026-01-22T23:58:54Z" ],
+        "Date": [ "Thu, 22 Jan 2026 23:58:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "334" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"properties\":{\"enforcedGroupName\":\"testlocation-eastus\",\"provisioningState\":\"ACCEPTED\"},\"id\":\"providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation/resourceProviders/Microsoft.Compute/locationSettings/eastus\",\"type\":\"Microsoft.Quota/locationSettings\",\"name\":\"eastus\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzQuotaGroupQuotaLocationSetting+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation/resourceProviders/Microsoft.Compute/locationSettings/eastus?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation/resourceProviders/Microsoft.Compute/locationSettings/eastus?api-version=2025-09-01",
+      "Content": "{\n  \"properties\": {\n    \"enforcementEnabled\": \"Enabled\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "61" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 409,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "199" ],
+        "x-ms-request-id": [ "a7f12b72-cf87-4b64-8fa8-9ca790d7a77a" ],
+        "x-ms-correlation-request-id": [ "a7f12b72-cf87-4b64-8fa8-9ca790d7a77a" ],
+        "x-ms-routing-request-id": [ "AUSTRALIASOUTHEAST:20260122T235900Z:a7f12b72-cf87-4b64-8fa8-9ca790d7a77a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6263CAD0D10248A2AF2A27D9420E837F Ref B: SYD03EDGE0705 Ref C: 2026-01-22T23:58:59Z" ],
+        "Date": [ "Thu, 22 Jan 2026 23:59:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "201" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"EntityAlreadyExists\",\"message\":\"GroupQuota enforcement is already in progress for GroupId: testlocation, MgId: azureclienttoolsbami, TenantId: 4b71fe15-44c6-47b7-94ac-5a6b2cc290e9.\"}}",
+      "isContentBase64": false
+    }
+  }
+}
