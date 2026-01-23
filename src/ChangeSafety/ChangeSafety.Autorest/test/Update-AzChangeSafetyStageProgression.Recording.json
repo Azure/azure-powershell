@@ -1,0 +1,546 @@
+{
+  "Update-AzChangeSafetyStageProgression+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "73" ],
+        "x-ms-client-request-id": [ "e524641e-a989-44e0-bee4-3e9c6ca51bae" ],
+        "CommandName": [ "Remove-AzChangeSafetyChangeRecord" ],
+        "FullCommandName": [ "Remove-AzChangeSafetyChangeRecord_Delete1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.0.0", "PSVersion/v7.4.13", "Az.ChangeSafety/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/001bd452-06b4-4df2-a859-52ce11264cf7" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "36f4c24b-2a09-48de-b03f-c8a155aed6e0" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224619Z:36f4c24b-2a09-48de-b03f-c8a155aed6e0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0D2531558A544A69894752AB542F51D1 Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:19Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Update-AzChangeSafetyStageProgression+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/sm-update-prog-file-v5?api-version=2026-01-01-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/sm-update-prog-file-v5?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "74" ],
+        "x-ms-client-request-id": [ "c2e2761c-0556-4f90-9d47-3fdd4ff6d2a7" ],
+        "CommandName": [ "Remove-AzChangeSafetyStageMap" ],
+        "FullCommandName": [ "Remove-AzChangeSafetyStageMap_Delete2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.0.0", "PSVersion/v7.4.13", "Az.ChangeSafety/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/6caf3967-1fc6-471c-90ff-6530de236fb2" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "57b2341c-f538-40c6-b79a-95320a5d1d9d" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224620Z:57b2341c-f538-40c6-b79a-95320a5d1d9d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 85BCC97BBF1C417E9250341417356D48 Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:19Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Update-AzChangeSafetyStageProgression+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/sm-update-prog-file-v5?api-version=2026-01-01-preview+3": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/sm-update-prog-file-v5?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"stages\": [\r\n      {\r\n        \"name\": \"canary\",\r\n        \"sequence\": 1\r\n      },\r\n      {\r\n        \"name\": \"production\",\r\n        \"sequence\": 2\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "193" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"31004912-0000-0600-0000-6973fa3c0000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/cc66e82b-1f93-414f-9894-15faa7e1ac27" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "ec5f7978-7594-410b-bd55-ff48e432b2a2" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "a40caae0-33f6-4e13-814f-5deeb63beb02" ],
+        "x-ms-correlation-request-id": [ "8ce0759f-6108-446e-ac1c-de71190d6e47" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224621Z:8ce0759f-6108-446e-ac1c-de71190d6e47" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F000DF624FFA4957AD25CED317E2DFA0 Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:20Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "702" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/sm-update-prog-file-v5\",\"name\":\"sm-update-prog-file-v5\",\"type\":\"microsoft.changesafety/stagemaps\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:46:20.4123834Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:20.4123834Z\"},\"properties\":{\"parameters\":null,\"stages\":[{\"name\":\"canary\",\"sequence\":1,\"stageVariables\":null,\"nestedStageMap\":null},{\"name\":\"production\",\"sequence\":2,\"stageVariables\":null,\"nestedStageMap\":null}],\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzChangeSafetyStageProgression+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5?api-version=2026-01-01-preview+4": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"stageMap\": {\r\n      \"resourceId\": \"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/sm-update-prog-file-v5\"\r\n    },\r\n    \"changeDefinition\": {\r\n      \"name\": \"TargetSelection\",\r\n      \"kind\": \"Targets\",\r\n      \"details\": {\r\n        \"targets\": [\r\n          {\r\n            \"resourceId\": \"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/update-prog-v5-vm-001\"\r\n          },\r\n          {\r\n            \"resourceId\": \"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/update-prog-v5-vm-002\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"changeType\": \"AppDeployment\",\r\n    \"rolloutType\": \"Normal\",\r\n    \"anticipatedStartTime\": \"2026-01-23T14:41:21.0776510-08:00\",\r\n    \"anticipatedEndTime\": \"2026-01-23T16:46:21.0792890-08:00\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1003" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0e003324-0000-0600-0000-6973fa3d0000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/013e9a8c-1b0d-47e6-bd8c-602ecbc3b284" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "01dc5028-79aa-4242-8681-a45883456786" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "568001c6-b6f5-477c-8754-5f610823c541" ],
+        "x-ms-correlation-request-id": [ "548c6ad3-d90a-4da6-b02f-ecaa6a31d622" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224622Z:548c6ad3-d90a-4da6-b02f-ecaa6a31d622" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DAC44977838342B196BCF815580CC27E Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:21Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2104" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5\",\"name\":\"cr-update-prog-file-v5\",\"type\":\"microsoft.changesafety/changerecords\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:46:21.271069Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:21.271069Z\"},\"properties\":{\"changeType\":\"AppDeployment\",\"rolloutType\":\"Normal\",\"description\":null,\"stageMap\":{\"resourceId\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/sm-update-prog-file-v5\",\"parameters\":null},\"parameters\":null,\"comments\":null,\"changeDefinition\":{\"name\":\"TargetSelection\",\"kind\":\"Targets\",\"details\":{\"targets\":[{\"resourceId\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/update-prog-v5-vm-001\"},{\"resourceId\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/update-prog-v5-vm-002\"}]}},\"releaseLabel\":null,\"anticipatedStartTime\":\"2026-01-23T22:41:21.077651+00:00\",\"anticipatedEndTime\":\"2026-01-24T00:46:21.079289+00:00\",\"orchestrationTool\":null,\"links\":null,\"additionalData\":null,\"stageMapSnapshot\":[{\"key\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/sm-update-prog-file-v5\",\"value\":{\"properties\":{\"parameters\":null,\"stages\":[{\"name\":\"canary\",\"sequence\":1,\"stageVariables\":null,\"nestedStageMap\":null},{\"name\":\"production\",\"sequence\":2,\"stageVariables\":null,\"nestedStageMap\":null}]},\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/sm-update-prog-file-v5\",\"name\":\"sm-update-prog-file-v5\",\"type\":\"microsoft.changesafety/stagemaps\"}}],\"status\":\"Initialized\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzChangeSafetyStageProgression+[NoContext]+Update - Transition from InProgress to Completed+$PUT+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5/stageProgressions/update-complete-prog-v2?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5/stageProgressions/update-complete-prog-v2?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"stageReference\": \"canary\",\r\n    \"status\": \"InProgress\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "89" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3b008915-0000-0600-0000-6973fa3f0000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/4f747471-2c26-47fa-9aaa-a0fad59e8ba5" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "945b01ae-3b3e-406d-8135-97f5de74969f" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "45f9c8cf-e3e9-4e2f-8872-439a7da634ae" ],
+        "x-ms-correlation-request-id": [ "fffcbd78-7244-4f8f-9799-079fa66b860d" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224623Z:fffcbd78-7244-4f8f-9799-079fa66b860d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 764E60B0FDEA48B2B19A15B124FD475F Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:22Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "738" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5/stageProgressions/update-complete-prog-v2\",\"name\":\"update-complete-prog-v2\",\"type\":\"microsoft.changesafety/changerecords/stageprogressions\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:46:22.2864834Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:22.2864834Z\"},\"properties\":{\"stageReference\":\"canary\",\"sequence\":1,\"status\":\"InProgress\",\"comments\":null,\"stageVariables\":{},\"links\":null,\"additionalData\":null,\"parameters\":null,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzChangeSafetyStageProgression+[NoContext]+Update - Transition from InProgress to Completed+$PATCH+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5/stageProgressions/update-complete-prog-v2?api-version=2026-01-01-preview+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5/stageProgressions/update-complete-prog-v2?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"status\": \"Completed\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "55" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3b008b15-0000-0600-0000-6973fa400000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/dbde1d45-7af4-4737-9a62-81182a5b80d6" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "75dac6a8-79c5-449c-bce3-359769899731" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "4cce5bed-0375-45f8-a364-c3cbe0afbc22" ],
+        "x-ms-correlation-request-id": [ "7d85acb9-1575-4b22-ab83-de585695bed5" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224624Z:7d85acb9-1575-4b22-ab83-de585695bed5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B63155F3338A4341BD20B97C90521DD9 Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:23Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "668" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5/stageProgressions/update-complete-prog-v2\",\"name\":\"update-complete-prog-v2\",\"type\":\"microsoft.changesafety/changerecords/stageprogressions\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:46:22.2864834Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:23.4625264Z\"},\"properties\":{\"stageReference\":\"canary\",\"sequence\":1,\"status\":\"Completed\",\"stageVariables\":{},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzChangeSafetyStageProgression+[NoContext]+Update - Transition from InProgress to Completed+$DELETE+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5/stageProgressions/update-complete-prog-v2?api-version=2026-01-01-preview+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5/stageProgressions/update-complete-prog-v2?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "79" ],
+        "x-ms-client-request-id": [ "c4976add-3c1f-488e-a221-f3bbb5d85918" ],
+        "CommandName": [ "Remove-AzChangeSafetyStageProgression" ],
+        "FullCommandName": [ "Remove-AzChangeSafetyStageProgression_Delete1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.0.0", "PSVersion/v7.4.13", "Az.ChangeSafety/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Set-Cookie": [ "ARRAffinity=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "bab42229-3476-45ae-b1db-e0696fbd5931" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/1636a975-146f-45c7-b3ac-27ead296eebb" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "f312ff95-c9b8-49a7-9f96-5f636b7bd4af" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224625Z:f312ff95-c9b8-49a7-9f96-5f636b7bd4af" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 36FFB43C71204F1BB14A3F0697CA2C80 Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:24Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Update-AzChangeSafetyStageProgression+[NoContext]+Update - Set to Failed status+$DELETE+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5/stageProgressions/test-progression-fail-01?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5/stageProgressions/test-progression-fail-01?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "80" ],
+        "x-ms-client-request-id": [ "06bf6abd-02f8-4605-ab51-58ab166621a0" ],
+        "CommandName": [ "Remove-AzChangeSafetyStageProgression" ],
+        "FullCommandName": [ "Remove-AzChangeSafetyStageProgression_Delete1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.0.0", "PSVersion/v7.4.13", "Az.ChangeSafety/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/c12fe048-b95c-4888-9259-458c21118c78" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "0be95606-eb99-4773-9f81-b258e78a051d" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224625Z:0be95606-eb99-4773-9f81-b258e78a051d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2E0A6832C183409092FDFB695CD25398 Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:25Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Update-AzChangeSafetyStageProgression+[NoContext]+Update - Set to Failed status+$PUT+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5/stageProgressions/test-progression-fail-01?api-version=2026-01-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5/stageProgressions/test-progression-fail-01?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"stageReference\": \"canary\",\r\n    \"status\": \"InProgress\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "89" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3b00be15-0000-0600-0000-6973fa420000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/b741ffa2-68c6-436f-9f5e-f503587f9b86" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "031c99e1-a5cf-450c-aaf1-01250bb17e77" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "f2f92623-b4b7-47b7-9c9a-0887ce9a2dc5" ],
+        "x-ms-correlation-request-id": [ "b761a2eb-f44b-4277-bdb0-af058c1bc164" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224626Z:b761a2eb-f44b-4277-bdb0-af058c1bc164" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DFAB89186090476092F7B90E1D9B0F40 Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:25Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "740" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5/stageProgressions/test-progression-fail-01\",\"name\":\"test-progression-fail-01\",\"type\":\"microsoft.changesafety/changerecords/stageprogressions\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:46:25.7904922Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:25.7904922Z\"},\"properties\":{\"stageReference\":\"canary\",\"sequence\":1,\"status\":\"InProgress\",\"comments\":null,\"stageVariables\":{},\"links\":null,\"additionalData\":null,\"parameters\":null,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzChangeSafetyStageProgression+[NoContext]+Update - Set to Failed status+$PATCH+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5/stageProgressions/test-progression-fail-01?api-version=2026-01-01-preview+3": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5/stageProgressions/test-progression-fail-01?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"status\": \"Failed\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "52" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3b00c015-0000-0600-0000-6973fa430000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/f987a087-1fb0-4033-beb9-0e04ffc6041f" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "2e365309-f354-47cc-8744-0815330207bc" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "d312c495-391d-4b3f-8ffb-1e1d24b33c8e" ],
+        "x-ms-correlation-request-id": [ "d7016002-3977-4cfe-af2a-c3a4b48d48b8" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224627Z:d7016002-3977-4cfe-af2a-c3a4b48d48b8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2CA6A2253ACB4D7C896A30A8CEFE6406 Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:26Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "667" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5/stageProgressions/test-progression-fail-01\",\"name\":\"test-progression-fail-01\",\"type\":\"microsoft.changesafety/changerecords/stageprogressions\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:46:25.7904922Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:26.7844157Z\"},\"properties\":{\"stageReference\":\"canary\",\"sequence\":1,\"status\":\"Failed\",\"stageVariables\":{},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzChangeSafetyStageProgression+[NoContext]+Update - Set to Failed status+$DELETE+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5/stageProgressions/test-progression-fail-01?api-version=2026-01-01-preview+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5/stageProgressions/test-progression-fail-01?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "83" ],
+        "x-ms-client-request-id": [ "8e7be8e6-a8a7-4ac1-a69c-b8df18f7fa29" ],
+        "CommandName": [ "Remove-AzChangeSafetyStageProgression" ],
+        "FullCommandName": [ "Remove-AzChangeSafetyStageProgression_Delete1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.0.0", "PSVersion/v7.4.13", "Az.ChangeSafety/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Set-Cookie": [ "ARRAffinity=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/dd1fd256-8e04-42da-9a51-e34824436a1f" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "fa9889bd-9000-4302-aaf1-ef40475593ab" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-request-id": [ "022d84d5-4c2e-4401-8692-327fa9cd5fdf" ],
+        "x-ms-correlation-request-id": [ "b4b6932c-5d23-4071-97f5-a46ac68edbcc" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224628Z:b4b6932c-5d23-4071-97f5-a46ac68edbcc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5E6B058038014A539F4B908D96128B3D Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:27Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "147" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"StageProgressionMustBeTerminal\",\"message\":\"The StageProgression \u0027test-progression-fail-01\u0027 cannot be deleted in state \u0027Failed\u0027\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzChangeSafetyStageProgression+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5?api-version=2026-01-01-preview+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-update-prog-file-v5?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "84" ],
+        "x-ms-client-request-id": [ "f35cafe5-d1ec-4d55-af3c-3bb4fe2b7737" ],
+        "CommandName": [ "Remove-AzChangeSafetyChangeRecord" ],
+        "FullCommandName": [ "Remove-AzChangeSafetyChangeRecord_Delete1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.0.0", "PSVersion/v7.4.13", "Az.ChangeSafety/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Set-Cookie": [ "ARRAffinity=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/5943ba7d-417b-481c-9c8e-3fad45194a88" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "851f16c3-15cd-4111-b58c-323e0caf44c1" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-request-id": [ "7b8c5833-3db8-4ac5-b433-2b06f607ebc5" ],
+        "x-ms-correlation-request-id": [ "21b1cd44-b068-4eef-b3b3-668478c606d5" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224628Z:21b1cd44-b068-4eef-b3b3-668478c606d5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 197C3FE1FDB54DF1BAFC17CD7E5BD159 Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:28Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "126" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ChangeStateIsActive\",\"message\":\"The ChangeState resource is in non-terminal state, and cannot be deleted.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

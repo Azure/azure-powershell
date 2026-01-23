@@ -1,0 +1,12 @@
+{
+  "StageMapName": "test-stagemap-1maef4",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "SubscriptionId": "53012dcb-5039-4e96-8e6c-5d913da1cdb5",
+  "StageMapNameNested": "test-stagemap-nested-dky5vw",
+  "ChangeRecordName2": "test-changerecord2-q3demc",
+  "StageMapName2": "test-stagemap2-gh2m5d",
+  "ResourceGroupName": "rg-changesafety-test",
+  "StageProgressionName": "test-stageprogression-w3nc80",
+  "Location": "eastus",
+  "ChangeRecordName": "test-changerecord-mg5ek3"
+}

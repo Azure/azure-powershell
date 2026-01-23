@@ -1,0 +1,93 @@
+{
+  "Update-AzChangeSafetyChangeRecord+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/test-changerecord-xkca7l?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/test-changerecord-xkca7l?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "68" ],
+        "x-ms-client-request-id": [ "cbfc1f9a-aa00-4e59-a36d-0e0b26e03099" ],
+        "CommandName": [ "Get-AzChangeSafetyChangeRecord" ],
+        "FullCommandName": [ "Get-AzChangeSafetyChangeRecord_Get1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.0.0", "PSVersion/v7.4.13", "Az.ChangeSafety/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0e002123-0000-0600-0000-6973f9d70000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/b4ff6b6a-f0d2-4107-983d-6b123ccf541f" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "41c5509f-cd33-4116-a7fe-c03ca61c0826" ],
+        "x-ms-correlation-request-id": [ "3e14bc0f-b462-4dc1-8745-76a0777e048b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224615Z:3e14bc0f-b462-4dc1-8745-76a0777e048b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F44BBE49D9CC4D8E9A480DDE263FB95E Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:15Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1280" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/test-changerecord-xkca7l\",\"name\":\"test-changerecord-xkca7l\",\"type\":\"microsoft.changesafety/changerecords\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:44:39.0346899Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:44:39.0346899Z\"},\"properties\":{\"changeType\":\"AppDeployment\",\"rolloutType\":\"Normal\",\"description\":null,\"stageMap\":null,\"parameters\":null,\"comments\":null,\"changeDefinition\":{\"name\":\"TargetSelection\",\"kind\":\"Targets\",\"details\":{\"targets\":[{\"resourceId\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/test-vm-001\"},{\"resourceId\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/test-vm-002\"}]}},\"releaseLabel\":null,\"anticipatedStartTime\":\"0001-01-01T00:00:00Z\",\"anticipatedEndTime\":\"0001-01-01T00:00:00Z\",\"orchestrationTool\":null,\"links\":null,\"additionalData\":null,\"stageMapSnapshot\":null,\"status\":\"NotApplicable\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzChangeSafetyChangeRecord+[NoContext]+Update - Modify description+$PATCH+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/test-changerecord-xkca7l?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/test-changerecord-xkca7l?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"description\": \"Updated description for testing\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "82" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0e001324-0000-0600-0000-6973fa380000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/4516277d-c11d-4ae0-9012-084a93057189" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "4a91db0f-8f48-46b9-b704-b575fd2a6d38" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "efc84bee-7e5b-4b66-a3a6-3a7c98c195f0" ],
+        "x-ms-correlation-request-id": [ "54f38769-ec8c-4be0-95c8-bd0951a98929" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224616Z:54f38769-ec8c-4be0-95c8-bd0951a98929" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DDA540494DEF45999B11A2B9D36163E6 Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:15Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1154" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/test-changerecord-xkca7l\",\"name\":\"test-changerecord-xkca7l\",\"type\":\"microsoft.changesafety/changerecords\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:44:39.0346899Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:16.060471Z\"},\"properties\":{\"changeType\":\"AppDeployment\",\"rolloutType\":\"Normal\",\"description\":\"Updated description for testing\",\"changeDefinition\":{\"name\":\"TargetSelection\",\"kind\":\"Targets\",\"details\":{\"targets\":[{\"resourceId\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/test-vm-001\"},{\"resourceId\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/test-vm-002\"}]}},\"anticipatedStartTime\":\"0001-01-01T00:00:00Z\",\"anticipatedEndTime\":\"0001-01-01T00:00:00Z\",\"status\":\"NotApplicable\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

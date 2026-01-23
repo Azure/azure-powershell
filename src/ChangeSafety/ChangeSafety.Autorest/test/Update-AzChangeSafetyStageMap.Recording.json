@@ -1,0 +1,137 @@
+{
+  "Update-AzChangeSafetyStageMap+[NoContext]+Update - Add stage to existing StageMap+$PUT+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-update-k3p8wy?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-update-k3p8wy?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"stages\": [\r\n      {\r\n        \"name\": \"canary\",\r\n        \"sequence\": 1\r\n      },\r\n      {\r\n        \"name\": \"staging\",\r\n        \"sequence\": 2\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "190" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"31003612-0000-0600-0000-6973fa390000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/0d2f34cc-feb6-450e-9095-aacbf5a9422c" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "6e2c6710-75e0-41b6-b2b4-778814afe23f" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "7d459f40-51ea-48c8-943f-da7f7d4ce540" ],
+        "x-ms-correlation-request-id": [ "652d66ab-ac15-489c-83a4-315978ff1088" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224617Z:652d66ab-ac15-489c-83a4-315978ff1088" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FB8E1F0B25CB4BB1AA455C092F4E22D2 Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:16Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "708" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-update-k3p8wy\",\"name\":\"test-stagemap-update-k3p8wy\",\"type\":\"microsoft.changesafety/stagemaps\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T00:02:15.2076555Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:16.956793Z\"},\"properties\":{\"parameters\":null,\"stages\":[{\"name\":\"canary\",\"sequence\":1,\"stageVariables\":null,\"nestedStageMap\":null},{\"name\":\"staging\",\"sequence\":2,\"stageVariables\":null,\"nestedStageMap\":null}],\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzChangeSafetyStageMap+[NoContext]+Update - Add stage to existing StageMap+$PATCH+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-update-k3p8wy?api-version=2026-01-01-preview+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-update-k3p8wy?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"stages\": [\r\n      {\r\n        \"name\": \"canary\",\r\n        \"sequence\": 1\r\n      },\r\n      {\r\n        \"name\": \"staging\",\r\n        \"sequence\": 2\r\n      },\r\n      {\r\n        \"name\": \"production\",\r\n        \"sequence\": 3\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "263" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"31003712-0000-0600-0000-6973fa3a0000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/3b9f1f02-0438-4565-843f-d94015a5b14d" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "6189f3cb-109c-47e7-a778-7c1d4f03f6a0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "c6413a1b-4bc1-4693-9fbf-b92ce973b55d" ],
+        "x-ms-correlation-request-id": [ "6665e7b0-c65c-4689-8139-046dc1ea311c" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224618Z:6665e7b0-c65c-4689-8139-046dc1ea311c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A02D005626774572AE17827FD8F28802 Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:17Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "638" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-update-k3p8wy\",\"name\":\"test-stagemap-update-k3p8wy\",\"type\":\"microsoft.changesafety/stagemaps\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T00:02:15.2076555Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:17.8581585Z\"},\"properties\":{\"stages\":[{\"name\":\"canary\",\"sequence\":1},{\"name\":\"staging\",\"sequence\":2},{\"name\":\"production\",\"sequence\":3}],\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzChangeSafetyStageMap+[NoContext]+Update - Modify stage variables+$PATCH+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-update-k3p8wy?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-update-k3p8wy?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"stages\": [\r\n      {\r\n        \"name\": \"canary\",\r\n        \"sequence\": 1\r\n      },\r\n      {\r\n        \"name\": \"production\",\r\n        \"sequence\": 2\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "193" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"31003b12-0000-0600-0000-6973fa3a0000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/6aec208b-b603-4b73-b2f6-f1b4c799c3b6" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "fcdaadcd-b1b2-4167-981f-ccd182fca1e7" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "8e6b204e-d604-4c84-90ac-3d58f87dcaec" ],
+        "x-ms-correlation-request-id": [ "b71958ec-7244-421b-a887-18ed4ec93e8a" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224619Z:b71958ec-7244-421b-a887-18ed4ec93e8a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 61CCEECFEA154DD4B375957DA43EB15C Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:18Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "606" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-update-k3p8wy\",\"name\":\"test-stagemap-update-k3p8wy\",\"type\":\"microsoft.changesafety/stagemaps\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T00:02:15.2076555Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:18.6134641Z\"},\"properties\":{\"stages\":[{\"name\":\"canary\",\"sequence\":1},{\"name\":\"production\",\"sequence\":2}],\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

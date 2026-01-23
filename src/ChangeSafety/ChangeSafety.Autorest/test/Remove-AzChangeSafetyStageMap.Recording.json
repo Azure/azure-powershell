@@ -1,0 +1,137 @@
+{
+  "Remove-AzChangeSafetyStageMap+[NoContext]+Delete - By name+$PUT+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-delete-x7m2nq?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-delete-x7m2nq?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"stages\": [\r\n      {\r\n        \"name\": \"stage1\",\r\n        \"sequence\": 1\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "120" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"31001312-0000-0600-0000-6973fa2a0000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/707471bb-db06-4aaf-9f20-f93ae8086976" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "35ac7e9e-4a3d-4d58-9b33-2813af836733" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "5292a180-5e7a-46ea-a046-8cfc0f4b4fc6" ],
+        "x-ms-correlation-request-id": [ "b34f0be3-8a1e-489c-ad1c-c936de0db191" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224602Z:b34f0be3-8a1e-489c-ad1c-c936de0db191" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 337584BA7096479F8D47A3C440D5FB74 Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:01Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "633" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-delete-x7m2nq\",\"name\":\"test-stagemap-delete-x7m2nq\",\"type\":\"microsoft.changesafety/stagemaps\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:46:01.9092377Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:01.9092377Z\"},\"properties\":{\"parameters\":null,\"stages\":[{\"name\":\"stage1\",\"sequence\":1,\"stageVariables\":null,\"nestedStageMap\":null}],\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzChangeSafetyStageMap+[NoContext]+Delete - By name+$DELETE+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-delete-x7m2nq?api-version=2026-01-01-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-delete-x7m2nq?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "52" ],
+        "x-ms-client-request-id": [ "b39bb8ac-ada3-45dc-afa2-8c67d692949c" ],
+        "CommandName": [ "Remove-AzChangeSafetyStageMap" ],
+        "FullCommandName": [ "Remove-AzChangeSafetyStageMap_Delete2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.0.0", "PSVersion/v7.4.13", "Az.ChangeSafety/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/d337d3c3-e4be-4162-a7ee-a41285ef08c8" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "26d685c5-0096-4481-9250-c57415adb161" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224603Z:26d685c5-0096-4481-9250-c57415adb161" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AE45C8C37C7D47FD83983AAA38AFBC94 Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:02Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzChangeSafetyStageMap+[NoContext]+Delete - By name+$GET+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-delete-x7m2nq?api-version=2026-01-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-delete-x7m2nq?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "53" ],
+        "x-ms-client-request-id": [ "f960fba7-3187-4646-bf49-4c99c0e57a79" ],
+        "CommandName": [ "Get-AzChangeSafetyStageMap" ],
+        "FullCommandName": [ "Get-AzChangeSafetyStageMap_Get2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.0.0", "PSVersion/v7.4.13", "Az.ChangeSafety/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/b3bd58d1-f912-4bf1-a8d9-afdfd9d1fa71" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "8977aa47-f5a0-48a0-9af1-0a5bc5466099" ],
+        "x-ms-correlation-request-id": [ "de8fd236-2985-4145-a3d4-22baac37a58d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T224603Z:de8fd236-2985-4145-a3d4-22baac37a58d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 59006A8FC4004437ACA6FF57C4B21CD5 Ref B: CO6AA3150219029 Ref C: 2026-01-23T22:46:03Z" ],
+        "Date": [ "Fri, 23 Jan 2026 22:46:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "145" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The resource \u0027Microsoft.ChangeSafety/stageMaps/test-stagemap-delete-x7m2nq\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  }
+}
