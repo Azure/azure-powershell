@@ -180,13 +180,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         long? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal.MaxBurstCreditsForIop { get => this._maxBurstCreditsForIop; set { {_maxBurstCreditsForIop = value;} } }
 
         /// <summary>Internal Acessors for NextAllowedProvisionedBandwidthDowngradeTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal.NextAllowedProvisionedBandwidthDowngradeTime { get => this._nextAllowedProvisionedBandwidthDowngradeTime; set { {_nextAllowedProvisionedBandwidthDowngradeTime = value;} } }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal.NextAllowedProvisionedBandwidthDowngradeTime { get => this._nextAllowedProvisionedBandwidthDowngradeTime; set { {_nextAllowedProvisionedBandwidthDowngradeTime = value;} } }
 
         /// <summary>Internal Acessors for NextAllowedProvisionedIopsDowngradeTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal.NextAllowedProvisionedIopsDowngradeTime { get => this._nextAllowedProvisionedIopsDowngradeTime; set { {_nextAllowedProvisionedIopsDowngradeTime = value;} } }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal.NextAllowedProvisionedIopsDowngradeTime { get => this._nextAllowedProvisionedIopsDowngradeTime; set { {_nextAllowedProvisionedIopsDowngradeTime = value;} } }
 
         /// <summary>Internal Acessors for NextAllowedQuotaDowngradeTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal.NextAllowedQuotaDowngradeTime { get => this._nextAllowedQuotaDowngradeTime; set { {_nextAllowedQuotaDowngradeTime = value;} } }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal.NextAllowedQuotaDowngradeTime { get => this._nextAllowedQuotaDowngradeTime; set { {_nextAllowedQuotaDowngradeTime = value;} } }
 
         /// <summary>Internal Acessors for RemainingRetentionDay</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileSharePropertiesInternal.RemainingRetentionDay { get => this._remainingRetentionDay; set { {_remainingRetentionDay = value;} } }
@@ -203,36 +203,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>
         /// Backing field for <see cref="NextAllowedProvisionedBandwidthDowngradeTime" /> property.
         /// </summary>
-        private global::System.DateTime? _nextAllowedProvisionedBandwidthDowngradeTime;
+        private string _nextAllowedProvisionedBandwidthDowngradeTime;
 
         /// <summary>
         /// Returns the next allowed provisioned bandwidth downgrade time for the share. This property is only for file shares created
         /// under Files Provisioned v2 account type.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public global::System.DateTime? NextAllowedProvisionedBandwidthDowngradeTime { get => this._nextAllowedProvisionedBandwidthDowngradeTime; }
+        public string NextAllowedProvisionedBandwidthDowngradeTime { get => this._nextAllowedProvisionedBandwidthDowngradeTime; }
 
         /// <summary>
         /// Backing field for <see cref="NextAllowedProvisionedIopsDowngradeTime" /> property.
         /// </summary>
-        private global::System.DateTime? _nextAllowedProvisionedIopsDowngradeTime;
+        private string _nextAllowedProvisionedIopsDowngradeTime;
 
         /// <summary>
         /// Returns the next allowed provisioned IOPS downgrade time for the share. This property is only for file shares created
         /// under Files Provisioned v2 account type.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public global::System.DateTime? NextAllowedProvisionedIopsDowngradeTime { get => this._nextAllowedProvisionedIopsDowngradeTime; }
+        public string NextAllowedProvisionedIopsDowngradeTime { get => this._nextAllowedProvisionedIopsDowngradeTime; }
 
         /// <summary>Backing field for <see cref="NextAllowedQuotaDowngradeTime" /> property.</summary>
-        private global::System.DateTime? _nextAllowedQuotaDowngradeTime;
+        private string _nextAllowedQuotaDowngradeTime;
 
         /// <summary>
         /// Returns the next allowed provisioned storage size downgrade time for the share. This property is only for file shares
         /// created under Files Provisioned v1 SSD and Files Provisioned v2 account type
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public global::System.DateTime? NextAllowedQuotaDowngradeTime { get => this._nextAllowedQuotaDowngradeTime; }
+        public string NextAllowedQuotaDowngradeTime { get => this._nextAllowedQuotaDowngradeTime; }
 
         /// <summary>Backing field for <see cref="ProvisionedBandwidthMibp" /> property.</summary>
         private int? _provisionedBandwidthMibp;
@@ -539,8 +539,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Update = false,
         Description = @"Returns the next allowed provisioned bandwidth downgrade time for the share. This property is only for file shares created under Files Provisioned v2 account type.",
         SerializedName = @"nextAllowedProvisionedBandwidthDowngradeTime",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? NextAllowedProvisionedBandwidthDowngradeTime { get;  }
+        PossibleTypes = new [] { typeof(string) })]
+        string NextAllowedProvisionedBandwidthDowngradeTime { get;  }
         /// <summary>
         /// Returns the next allowed provisioned IOPS downgrade time for the share. This property is only for file shares created
         /// under Files Provisioned v2 account type.
@@ -553,8 +553,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Update = false,
         Description = @"Returns the next allowed provisioned IOPS downgrade time for the share. This property is only for file shares created under Files Provisioned v2 account type.",
         SerializedName = @"nextAllowedProvisionedIopsDowngradeTime",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? NextAllowedProvisionedIopsDowngradeTime { get;  }
+        PossibleTypes = new [] { typeof(string) })]
+        string NextAllowedProvisionedIopsDowngradeTime { get;  }
         /// <summary>
         /// Returns the next allowed provisioned storage size downgrade time for the share. This property is only for file shares
         /// created under Files Provisioned v1 SSD and Files Provisioned v2 account type
@@ -567,8 +567,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Update = false,
         Description = @"Returns the next allowed provisioned storage size downgrade time for the share. This property is only for file shares created under Files Provisioned v1 SSD and Files Provisioned v2 account type",
         SerializedName = @"nextAllowedQuotaDowngradeTime",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? NextAllowedQuotaDowngradeTime { get;  }
+        PossibleTypes = new [] { typeof(string) })]
+        string NextAllowedQuotaDowngradeTime { get;  }
         /// <summary>
         /// The provisioned bandwidth of the share, in mebibytes per second. This property is only for file shares created under Files
         /// Provisioned v2 account type. Please refer to the GetFileServiceUsage API response for the minimum and maximum allowed
@@ -757,17 +757,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// Returns the next allowed provisioned bandwidth downgrade time for the share. This property is only for file shares created
         /// under Files Provisioned v2 account type.
         /// </summary>
-        global::System.DateTime? NextAllowedProvisionedBandwidthDowngradeTime { get; set; }
+        string NextAllowedProvisionedBandwidthDowngradeTime { get; set; }
         /// <summary>
         /// Returns the next allowed provisioned IOPS downgrade time for the share. This property is only for file shares created
         /// under Files Provisioned v2 account type.
         /// </summary>
-        global::System.DateTime? NextAllowedProvisionedIopsDowngradeTime { get; set; }
+        string NextAllowedProvisionedIopsDowngradeTime { get; set; }
         /// <summary>
         /// Returns the next allowed provisioned storage size downgrade time for the share. This property is only for file shares
         /// created under Files Provisioned v1 SSD and Files Provisioned v2 account type
         /// </summary>
-        global::System.DateTime? NextAllowedQuotaDowngradeTime { get; set; }
+        string NextAllowedQuotaDowngradeTime { get; set; }
         /// <summary>
         /// The provisioned bandwidth of the share, in mebibytes per second. This property is only for file shares created under Files
         /// Provisioned v2 account type. Please refer to the GetFileServiceUsage API response for the minimum and maximum allowed

@@ -8,14 +8,15 @@ schema: 2.0.0
 # New-AzDatadogTagRule
 
 ## SYNOPSIS
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given monitor resource.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzDatadogTagRule -MonitorName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog]
+ [-SubscriptionId <String>] [-AgentRuleEnableAgentMonitoring] [-AgentRuleFilteringTag <IFilteringTag[]>]
+ [-Automuting] [-CustomMetric] [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog]
  [-LogRuleSendResourceLog] [-LogRuleSendSubscriptionLog] [-MetricRuleFilteringTag <IFilteringTag[]>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -36,7 +37,8 @@ New-AzDatadogTagRule -MonitorName <String> -Name <String> -ResourceGroupName <St
 
 ### CreateViaIdentityMonitorExpanded
 ```
-New-AzDatadogTagRule -Name <String> -MonitorInputObject <IDatadogIdentity>
+New-AzDatadogTagRule -Name <String> -MonitorInputObject <IDatadogIdentity> [-AgentRuleEnableAgentMonitoring]
+ [-AgentRuleFilteringTag <IFilteringTag[]>] [-Automuting] [-CustomMetric]
  [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog] [-LogRuleSendResourceLog]
  [-LogRuleSendSubscriptionLog] [-MetricRuleFilteringTag <IFilteringTag[]>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -44,14 +46,15 @@ New-AzDatadogTagRule -Name <String> -MonitorInputObject <IDatadogIdentity>
 
 ### CreateViaIdentityExpanded
 ```
-New-AzDatadogTagRule -InputObject <IDatadogIdentity> [-LogRuleFilteringTag <IFilteringTag[]>]
- [-LogRuleSendAadLog] [-LogRuleSendResourceLog] [-LogRuleSendSubscriptionLog]
- [-MetricRuleFilteringTag <IFilteringTag[]>] [-DefaultProfile <PSObject>]
+New-AzDatadogTagRule -InputObject <IDatadogIdentity> [-AgentRuleEnableAgentMonitoring]
+ [-AgentRuleFilteringTag <IFilteringTag[]>] [-Automuting] [-CustomMetric]
+ [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog] [-LogRuleSendResourceLog]
+ [-LogRuleSendSubscriptionLog] [-MetricRuleFilteringTag <IFilteringTag[]>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given monitor resource.
 
 ## EXAMPLES
 
@@ -88,6 +91,70 @@ default microsoft.Datadog/monitors/tagrules
 This command creates or updates a tag rule set for a given monitor resource by pipeline.
 
 ## PARAMETERS
+
+### -AgentRuleEnableAgentMonitoring
+Flag specifying if agent monitoring should be enabled for the Monitor resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AgentRuleFilteringTag
+List of filtering tags to be used for capturing metrics.
+If empty, all resources will be captured.
+If only Exclude action is specified, the rules will apply to the list of all available resources.
+If Include actions are specified, the rules will only include resources with the associated tags.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag[]
+Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Automuting
+Configuration to enable/disable auto-muting flag
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomMetric
+Configuration to enable/disable custom metrics.
+If enabled, custom metrics from app insights will be sent.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.

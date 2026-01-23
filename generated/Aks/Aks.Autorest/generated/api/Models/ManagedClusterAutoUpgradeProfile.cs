@@ -13,11 +13,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAutoUpgradeProfileInternal
     {
 
+        /// <summary>Backing field for <see cref="NodeOSUpgradeChannel" /> property.</summary>
+        private string _nodeOSUpgradeChannel;
+
+        /// <summary>
+        /// Node OS Upgrade Channel. Manner in which the OS on your nodes is updated. The default is NodeImage.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        public string NodeOSUpgradeChannel { get => this._nodeOSUpgradeChannel; set => this._nodeOSUpgradeChannel = value; }
+
         /// <summary>Backing field for <see cref="UpgradeChannel" /> property.</summary>
         private string _upgradeChannel;
 
         /// <summary>
-        /// For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
+        /// The upgrade channel for auto upgrade. The default is 'none'. For more information see [setting the AKS cluster auto-upgrade
+        /// channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string UpgradeChannel { get => this._upgradeChannel; set => this._upgradeChannel = value; }
@@ -33,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IJsonSerializable
     {
         /// <summary>
-        /// For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
+        /// Node OS Upgrade Channel. Manner in which the OS on your nodes is updated. The default is NodeImage.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -41,7 +51,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).",
+        Description = @"Node OS Upgrade Channel. Manner in which the OS on your nodes is updated. The default is NodeImage.",
+        SerializedName = @"nodeOSUpgradeChannel",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("None", "Unmanaged", "NodeImage", "SecurityPatch")]
+        string NodeOSUpgradeChannel { get; set; }
+        /// <summary>
+        /// The upgrade channel for auto upgrade. The default is 'none'. For more information see [setting the AKS cluster auto-upgrade
+        /// channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The upgrade channel for auto upgrade. The default is 'none'. For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).",
         SerializedName = @"upgradeChannel",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("rapid", "stable", "patch", "node-image", "none")]
@@ -53,7 +78,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
 
     {
         /// <summary>
-        /// For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
+        /// Node OS Upgrade Channel. Manner in which the OS on your nodes is updated. The default is NodeImage.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("None", "Unmanaged", "NodeImage", "SecurityPatch")]
+        string NodeOSUpgradeChannel { get; set; }
+        /// <summary>
+        /// The upgrade channel for auto upgrade. The default is 'none'. For more information see [setting the AKS cluster auto-upgrade
+        /// channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("rapid", "stable", "patch", "node-image", "none")]
         string UpgradeChannel { get; set; }

@@ -8,8 +8,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Extensions;
 
     /// <summary>
-    /// See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned
-    /// maintenance.
+    /// Planned maintenance configuration, used to configure when updates can be deployed to a Managed Cluster. See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance)
+    /// for more information about planned maintenance.
     /// </summary>
     public partial class MaintenanceConfiguration
     {

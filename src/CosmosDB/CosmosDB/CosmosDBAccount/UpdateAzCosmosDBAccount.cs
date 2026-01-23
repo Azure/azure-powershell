@@ -106,6 +106,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
             }
+            if (EnablePriorityBasedExecution != null)
+            {
+                databaseAccountUpdateParameters.EnablePriorityBasedExecution = EnablePriorityBasedExecution;
+            }
+            if (DefaultPriorityLevel != null)
+            {
+                databaseAccountUpdateParameters.DefaultPriorityLevel = DefaultPriorityLevel;
+            }
             if (NetworkAclBypass != null)
             {
                 databaseAccountUpdateParameters.NetworkAclBypass =

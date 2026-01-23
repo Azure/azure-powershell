@@ -117,9 +117,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).MetricRule = (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMetricRules) content.GetValueForProperty("MetricRule",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).MetricRule, Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.MetricRulesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("AgentRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).AgentRule = (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IAgentRules) content.GetValueForProperty("AgentRule",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).AgentRule, Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.AgentRulesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("Automuting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).Automuting = (bool?) content.GetValueForProperty("Automuting",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).Automuting, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("CustomMetric"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).CustomMetric = (bool?) content.GetValueForProperty("CustomMetric",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).CustomMetric, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("LogRuleFilteringTag"))
             {
@@ -128,6 +140,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             if (content.Contains("MetricRuleFilteringTag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).MetricRuleFilteringTag = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag>) content.GetValueForProperty("MetricRuleFilteringTag",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).MetricRuleFilteringTag, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag>(__y, Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.FilteringTagTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AgentRuleFilteringTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).AgentRuleFilteringTag = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag>) content.GetValueForProperty("AgentRuleFilteringTag",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).AgentRuleFilteringTag, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag>(__y, Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.FilteringTagTypeConverter.ConvertFrom));
             }
             if (content.Contains("LogRuleSendAadLog"))
             {
@@ -140,6 +156,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             if (content.Contains("LogRuleSendResourceLog"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).LogRuleSendResourceLog = (bool?) content.GetValueForProperty("LogRuleSendResourceLog",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).LogRuleSendResourceLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("AgentRuleEnableAgentMonitoring"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).AgentRuleEnableAgentMonitoring = (bool?) content.GetValueForProperty("AgentRuleEnableAgentMonitoring",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).AgentRuleEnableAgentMonitoring, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -166,9 +186,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).MetricRule = (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMetricRules) content.GetValueForProperty("MetricRule",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).MetricRule, Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.MetricRulesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("AgentRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).AgentRule = (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IAgentRules) content.GetValueForProperty("AgentRule",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).AgentRule, Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.AgentRulesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("Automuting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).Automuting = (bool?) content.GetValueForProperty("Automuting",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).Automuting, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("CustomMetric"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).CustomMetric = (bool?) content.GetValueForProperty("CustomMetric",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).CustomMetric, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("LogRuleFilteringTag"))
             {
@@ -177,6 +209,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             if (content.Contains("MetricRuleFilteringTag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).MetricRuleFilteringTag = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag>) content.GetValueForProperty("MetricRuleFilteringTag",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).MetricRuleFilteringTag, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag>(__y, Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.FilteringTagTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AgentRuleFilteringTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).AgentRuleFilteringTag = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag>) content.GetValueForProperty("AgentRuleFilteringTag",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).AgentRuleFilteringTag, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag>(__y, Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.FilteringTagTypeConverter.ConvertFrom));
             }
             if (content.Contains("LogRuleSendAadLog"))
             {
@@ -189,6 +225,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             if (content.Contains("LogRuleSendResourceLog"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).LogRuleSendResourceLog = (bool?) content.GetValueForProperty("LogRuleSendResourceLog",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).LogRuleSendResourceLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("AgentRuleEnableAgentMonitoring"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).AgentRuleEnableAgentMonitoring = (bool?) content.GetValueForProperty("AgentRuleEnableAgentMonitoring",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRulesPropertiesInternal)this).AgentRuleEnableAgentMonitoring, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }

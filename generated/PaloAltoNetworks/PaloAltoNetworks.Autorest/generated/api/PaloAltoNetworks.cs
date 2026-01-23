@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
     public partial class PaloAltoNetworks
     {
 
-        /// <summary>Update a CertificateObjectGlobalRulestackResource</summary>
+        /// <summary>update a CertificateObjectGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">certificate name</param>
         /// <param name="body">Resource create parameters.</param>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task CertificateObjectGlobalRulestackCreateOrUpdate(string globalRulestackName, string name, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectGlobalRulestackResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectGlobalRulestackResource</summary>
+        /// <summary>update a CertificateObjectGlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task CertificateObjectGlobalRulestackCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectGlobalRulestackResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectGlobalRulestackResource</summary>
+        /// <summary>update a CertificateObjectGlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectGlobalRulestackResource> CertificateObjectGlobalRulestackCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectGlobalRulestackResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectGlobalRulestackResource</summary>
+        /// <summary>update a CertificateObjectGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">certificate name</param>
         /// <param name="jsonString">Json string supplied to the CertificateObjectGlobalRulestackCreateOrUpdate operation</param>
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task CertificateObjectGlobalRulestackCreateOrUpdateViaJsonString(string globalRulestackName, string name, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectGlobalRulestackResource</summary>
+        /// <summary>update a CertificateObjectGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">certificate name</param>
         /// <param name="jsonString">Json string supplied to the CertificateObjectGlobalRulestackCreateOrUpdate operation</param>
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectGlobalRulestackResource> CertificateObjectGlobalRulestackCreateOrUpdateViaJsonStringWithResult(string globalRulestackName, string name, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectGlobalRulestackResource</summary>
+        /// <summary>update a CertificateObjectGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">certificate name</param>
         /// <param name="body">Resource create parameters.</param>
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectGlobalRulestackResource> CertificateObjectGlobalRulestackCreateOrUpdateWithResult(string globalRulestackName, string name, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectGlobalRulestackResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -318,16 +318,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -340,7 +341,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -470,16 +474,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -492,7 +497,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -627,7 +635,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task CertificateObjectGlobalRulestackDelete(string globalRulestackName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -667,7 +675,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task CertificateObjectGlobalRulestackDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -725,17 +733,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -748,7 +757,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -885,7 +897,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task CertificateObjectGlobalRulestackGet(string globalRulestackName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -924,7 +936,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task CertificateObjectGlobalRulestackGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -972,7 +984,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectGlobalRulestackResource> CertificateObjectGlobalRulestackGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1021,7 +1033,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectGlobalRulestackResource> CertificateObjectGlobalRulestackGetWithResult(string globalRulestackName, string name, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1193,7 +1205,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task CertificateObjectGlobalRulestackList(string globalRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectGlobalRulestackResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1231,7 +1243,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task CertificateObjectGlobalRulestackListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectGlobalRulestackResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1277,7 +1289,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectGlobalRulestackResourceListResult> CertificateObjectGlobalRulestackListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1323,7 +1335,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectGlobalRulestackResourceListResult> CertificateObjectGlobalRulestackListWithResult(string globalRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1480,7 +1492,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectLocalRulestackResource</summary>
+        /// <summary>update a CertificateObjectLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -1497,7 +1509,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task CertificateObjectLocalRulestackCreateOrUpdate(string subscriptionId, string resourceGroupName, string localRulestackName, string name, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1532,7 +1544,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectLocalRulestackResource</summary>
+        /// <summary>update a CertificateObjectLocalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1546,7 +1558,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task CertificateObjectLocalRulestackCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1594,7 +1606,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectLocalRulestackResource</summary>
+        /// <summary>update a CertificateObjectLocalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1606,7 +1618,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource> CertificateObjectLocalRulestackCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1654,7 +1666,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectLocalRulestackResource</summary>
+        /// <summary>update a CertificateObjectLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -1670,7 +1682,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task CertificateObjectLocalRulestackCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string localRulestackName, string name, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1705,7 +1717,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectLocalRulestackResource</summary>
+        /// <summary>update a CertificateObjectLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -1719,7 +1731,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource> CertificateObjectLocalRulestackCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string name, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1754,7 +1766,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a CertificateObjectLocalRulestackResource</summary>
+        /// <summary>update a CertificateObjectLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -1769,7 +1781,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource> CertificateObjectLocalRulestackCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string name, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1821,16 +1833,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -1843,7 +1856,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -1973,16 +1989,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -1995,7 +2012,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -2139,7 +2159,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task CertificateObjectLocalRulestackDelete(string subscriptionId, string resourceGroupName, string localRulestackName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2183,7 +2203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task CertificateObjectLocalRulestackDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2247,17 +2267,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -2270,7 +2291,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -2416,7 +2440,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task CertificateObjectLocalRulestackGet(string subscriptionId, string resourceGroupName, string localRulestackName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2459,7 +2483,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task CertificateObjectLocalRulestackGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2513,7 +2537,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource> CertificateObjectLocalRulestackGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2570,7 +2594,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource> CertificateObjectLocalRulestackGetWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string name, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2753,7 +2777,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task CertificateObjectLocalRulestackListByLocalRulestacks(string subscriptionId, string resourceGroupName, string localRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2795,7 +2819,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task CertificateObjectLocalRulestackListByLocalRulestacksViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2847,7 +2871,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResourceListResult> CertificateObjectLocalRulestackListByLocalRulestacksViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2901,7 +2925,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResourceListResult> CertificateObjectLocalRulestackListByLocalRulestacksWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3083,7 +3107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallStatusGet(string subscriptionId, string resourceGroupName, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3125,7 +3149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallStatusGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3177,7 +3201,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResource> FirewallStatusGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3231,7 +3255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResource> FirewallStatusGetWithResult(string subscriptionId, string resourceGroupName, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3392,6 +3416,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(firewallName),firewallName);
+                await eventListener.AssertRegEx(nameof(firewallName), firewallName, @"^(?![-_])(?!.*[-_]{2})(?!.*[-_]$)[a-zA-Z0-9][a-zA-Z0-9-]{0,127}$");
             }
         }
 
@@ -3409,7 +3434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallStatusListByFirewalls(string subscriptionId, string resourceGroupName, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3451,7 +3476,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallStatusListByFirewallsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3503,7 +3528,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceListResult> FirewallStatusListByFirewallsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3557,7 +3582,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusResourceListResult> FirewallStatusListByFirewallsWithResult(string subscriptionId, string resourceGroupName, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3720,10 +3745,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(firewallName),firewallName);
+                await eventListener.AssertRegEx(nameof(firewallName), firewallName, @"^(?![-_])(?!.*[-_]{2})(?!.*[-_]$)[a-zA-Z0-9][a-zA-Z0-9-]{0,127}$");
             }
         }
 
-        /// <summary>Update a FirewallResource</summary>
+        /// <summary>update a FirewallResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="firewallName">Firewall resource name</param>
@@ -3739,7 +3765,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsCreateOrUpdate(string subscriptionId, string resourceGroupName, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3772,7 +3798,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FirewallResource</summary>
+        /// <summary>update a FirewallResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3786,7 +3812,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3831,7 +3857,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FirewallResource</summary>
+        /// <summary>update a FirewallResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3843,7 +3869,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource> FirewallsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3888,7 +3914,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FirewallResource</summary>
+        /// <summary>update a FirewallResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="firewallName">Firewall resource name</param>
@@ -3903,7 +3929,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string firewallName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3936,7 +3962,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FirewallResource</summary>
+        /// <summary>update a FirewallResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="firewallName">Firewall resource name</param>
@@ -3949,7 +3975,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource> FirewallsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string firewallName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3982,7 +4008,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FirewallResource</summary>
+        /// <summary>update a FirewallResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="firewallName">Firewall resource name</param>
@@ -3996,7 +4022,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource> FirewallsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4044,16 +4070,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4066,7 +4093,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4194,16 +4224,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4216,7 +4247,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4337,6 +4371,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(firewallName),firewallName);
+                await eventListener.AssertRegEx(nameof(firewallName), firewallName, @"^(?![-_])(?!.*[-_]{2})(?!.*[-_]$)[a-zA-Z0-9][a-zA-Z0-9-]{0,127}$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -4357,7 +4392,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsDelete(string subscriptionId, string resourceGroupName, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4399,7 +4434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4458,17 +4493,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4481,7 +4517,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4607,6 +4646,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(firewallName),firewallName);
+                await eventListener.AssertRegEx(nameof(firewallName), firewallName, @"^(?![-_])(?!.*[-_]{2})(?!.*[-_]$)[a-zA-Z0-9][a-zA-Z0-9-]{0,127}$");
             }
         }
 
@@ -4624,7 +4664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsGet(string subscriptionId, string resourceGroupName, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4667,7 +4707,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsGetGlobalRulestack(string subscriptionId, string resourceGroupName, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4709,7 +4749,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsGetGlobalRulestackViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4761,7 +4801,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackInfo> FirewallsGetGlobalRulestackViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4815,7 +4855,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackInfo> FirewallsGetGlobalRulestackWithResult(string subscriptionId, string resourceGroupName, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4978,6 +5018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(firewallName),firewallName);
+                await eventListener.AssertRegEx(nameof(firewallName), firewallName, @"^(?![-_])(?!.*[-_]{2})(?!.*[-_]$)[a-zA-Z0-9][a-zA-Z0-9-]{0,127}$");
             }
         }
 
@@ -4995,7 +5036,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsGetLogProfile(string subscriptionId, string resourceGroupName, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILogSettings>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5037,7 +5078,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsGetLogProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILogSettings>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5089,7 +5130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILogSettings> FirewallsGetLogProfileViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5143,7 +5184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILogSettings> FirewallsGetLogProfileWithResult(string subscriptionId, string resourceGroupName, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5304,6 +5345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(firewallName),firewallName);
+                await eventListener.AssertRegEx(nameof(firewallName), firewallName, @"^(?![-_])(?!.*[-_]{2})(?!.*[-_]$)[a-zA-Z0-9][a-zA-Z0-9-]{0,127}$");
             }
         }
 
@@ -5322,7 +5364,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsGetSupportInfo(string subscriptionId, string resourceGroupName, string firewallName, string email, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISupportInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5367,7 +5409,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsGetSupportInfoViaIdentity(global::System.String viaIdentity, string email, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISupportInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5422,7 +5464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISupportInfo> FirewallsGetSupportInfoViaIdentityWithResult(global::System.String viaIdentity, string email, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5479,7 +5521,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISupportInfo> FirewallsGetSupportInfoWithResult(string subscriptionId, string resourceGroupName, string firewallName, string email, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5643,6 +5685,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(firewallName),firewallName);
+                await eventListener.AssertRegEx(nameof(firewallName), firewallName, @"^(?![-_])(?!.*[-_]{2})(?!.*[-_]$)[a-zA-Z0-9][a-zA-Z0-9-]{0,127}$");
                 await eventListener.AssertNotNull(nameof(email),email);
             }
         }
@@ -5659,7 +5702,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5710,7 +5753,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource> FirewallsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5763,7 +5806,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource> FirewallsGetWithResult(string subscriptionId, string resourceGroupName, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5923,6 +5966,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(firewallName),firewallName);
+                await eventListener.AssertRegEx(nameof(firewallName), firewallName, @"^(?![-_])(?!.*[-_]{2})(?!.*[-_]$)[a-zA-Z0-9][a-zA-Z0-9-]{0,127}$");
             }
         }
 
@@ -5939,7 +5983,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5979,7 +6023,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6028,7 +6072,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceListResult> FirewallsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6078,7 +6122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceListResult> FirewallsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6252,7 +6296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6290,7 +6334,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6336,7 +6380,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceListResult> FirewallsListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6382,7 +6426,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceListResult> FirewallsListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6554,7 +6598,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsSaveLogProfile(string subscriptionId, string resourceGroupName, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILogSettings body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6602,7 +6646,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsSaveLogProfileViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILogSettings body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6663,7 +6707,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsSaveLogProfileViaJsonString(string subscriptionId, string resourceGroupName, string firewallName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6769,6 +6813,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(firewallName),firewallName);
+                await eventListener.AssertRegEx(nameof(firewallName), firewallName, @"^(?![-_])(?!.*[-_]{2})(?!.*[-_]$)[a-zA-Z0-9][a-zA-Z0-9-]{0,127}$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -6790,7 +6835,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsUpdate(string subscriptionId, string resourceGroupName, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6837,7 +6882,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6894,7 +6939,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource> FirewallsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6954,7 +6999,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FirewallsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string firewallName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7000,7 +7045,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource> FirewallsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string firewallName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7047,7 +7092,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource> FirewallsUpdateWithResult(string subscriptionId, string resourceGroupName, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7212,12 +7257,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(firewallName),firewallName);
+                await eventListener.AssertRegEx(nameof(firewallName), firewallName, @"^(?![-_])(?!.*[-_]{2})(?!.*[-_]$)[a-zA-Z0-9][a-zA-Z0-9-]{0,127}$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
-        /// <summary>Update a FqdnListGlobalRulestackResource</summary>
+        /// <summary>update a FqdnListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">fqdn list name</param>
         /// <param name="body">Resource create parameters.</param>
@@ -7232,7 +7278,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FqdnListGlobalRulestackCreateOrUpdate(string globalRulestackName, string name, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListGlobalRulestackResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7263,7 +7309,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListGlobalRulestackResource</summary>
+        /// <summary>update a FqdnListGlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7277,7 +7323,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FqdnListGlobalRulestackCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListGlobalRulestackResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7319,7 +7365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListGlobalRulestackResource</summary>
+        /// <summary>update a FqdnListGlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7331,7 +7377,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListGlobalRulestackResource> FqdnListGlobalRulestackCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListGlobalRulestackResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7373,7 +7419,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListGlobalRulestackResource</summary>
+        /// <summary>update a FqdnListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">fqdn list name</param>
         /// <param name="jsonString">Json string supplied to the FqdnListGlobalRulestackCreateOrUpdate operation</param>
@@ -7387,7 +7433,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FqdnListGlobalRulestackCreateOrUpdateViaJsonString(string globalRulestackName, string name, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7418,7 +7464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListGlobalRulestackResource</summary>
+        /// <summary>update a FqdnListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">fqdn list name</param>
         /// <param name="jsonString">Json string supplied to the FqdnListGlobalRulestackCreateOrUpdate operation</param>
@@ -7430,7 +7476,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListGlobalRulestackResource> FqdnListGlobalRulestackCreateOrUpdateViaJsonStringWithResult(string globalRulestackName, string name, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7461,7 +7507,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListGlobalRulestackResource</summary>
+        /// <summary>update a FqdnListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">fqdn list name</param>
         /// <param name="body">Resource create parameters.</param>
@@ -7474,7 +7520,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListGlobalRulestackResource> FqdnListGlobalRulestackCreateOrUpdateWithResult(string globalRulestackName, string name, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListGlobalRulestackResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7522,16 +7568,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -7544,7 +7591,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -7674,16 +7724,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -7696,7 +7747,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -7831,7 +7885,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FqdnListGlobalRulestackDelete(string globalRulestackName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7871,7 +7925,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FqdnListGlobalRulestackDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7927,17 +7981,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -7950,7 +8005,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -8087,7 +8145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FqdnListGlobalRulestackGet(string globalRulestackName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8126,7 +8184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FqdnListGlobalRulestackGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8174,7 +8232,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListGlobalRulestackResource> FqdnListGlobalRulestackGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8223,7 +8281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListGlobalRulestackResource> FqdnListGlobalRulestackGetWithResult(string globalRulestackName, string name, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8393,7 +8451,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FqdnListGlobalRulestackList(string globalRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListGlobalRulestackResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8431,7 +8489,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FqdnListGlobalRulestackListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListGlobalRulestackResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8477,7 +8535,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListGlobalRulestackResourceListResult> FqdnListGlobalRulestackListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8523,7 +8581,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListGlobalRulestackResourceListResult> FqdnListGlobalRulestackListWithResult(string globalRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8678,7 +8736,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListLocalRulestackResource</summary>
+        /// <summary>update a FqdnListLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -8695,7 +8753,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FqdnListLocalRulestackCreateOrUpdate(string subscriptionId, string resourceGroupName, string localRulestackName, string name, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8730,7 +8788,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListLocalRulestackResource</summary>
+        /// <summary>update a FqdnListLocalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8744,7 +8802,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FqdnListLocalRulestackCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8792,7 +8850,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListLocalRulestackResource</summary>
+        /// <summary>update a FqdnListLocalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8804,7 +8862,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResource> FqdnListLocalRulestackCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8852,7 +8910,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListLocalRulestackResource</summary>
+        /// <summary>update a FqdnListLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -8868,7 +8926,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FqdnListLocalRulestackCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string localRulestackName, string name, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8903,7 +8961,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListLocalRulestackResource</summary>
+        /// <summary>update a FqdnListLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -8917,7 +8975,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResource> FqdnListLocalRulestackCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string name, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8952,7 +9010,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a FqdnListLocalRulestackResource</summary>
+        /// <summary>update a FqdnListLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -8967,7 +9025,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResource> FqdnListLocalRulestackCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string name, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9019,16 +9077,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -9041,7 +9100,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -9171,16 +9233,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -9193,7 +9256,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -9337,7 +9403,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FqdnListLocalRulestackDelete(string subscriptionId, string resourceGroupName, string localRulestackName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9381,7 +9447,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FqdnListLocalRulestackDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9443,17 +9509,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -9466,7 +9533,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -9612,7 +9682,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FqdnListLocalRulestackGet(string subscriptionId, string resourceGroupName, string localRulestackName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9655,7 +9725,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FqdnListLocalRulestackGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9709,7 +9779,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResource> FqdnListLocalRulestackGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9766,7 +9836,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResource> FqdnListLocalRulestackGetWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string name, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9949,7 +10019,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FqdnListLocalRulestackListByLocalRulestacks(string subscriptionId, string resourceGroupName, string localRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9991,7 +10061,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task FqdnListLocalRulestackListByLocalRulestacksViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10043,7 +10113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResourceListResult> FqdnListLocalRulestackListByLocalRulestacksViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10097,7 +10167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResourceListResult> FqdnListLocalRulestackListByLocalRulestacksWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10267,6 +10337,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
 
         /// <summary>Commit rulestack configuration</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10274,9 +10345,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GlobalRulestackCommit(string globalRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GlobalRulestackCommit(string globalRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10298,12 +10369,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GlobalRulestackCommit_Call (request, onDefault,eventListener,sender);
+                await this.GlobalRulestackCommit_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Commit rulestack configuration</summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10311,9 +10383,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GlobalRulestackCommitViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GlobalRulestackCommitViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10345,12 +10417,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.GlobalRulestackCommit_Call (request, onDefault,eventListener,sender);
+                await this.GlobalRulestackCommit_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "GlobalRulestackCommit" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10358,24 +10431,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GlobalRulestackCommit_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GlobalRulestackCommit_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -10388,7 +10462,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -10463,6 +10540,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -10498,7 +10581,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a GlobalRulestackResource</summary>
+        /// <summary>update a GlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10512,7 +10595,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackCreateOrUpdate(string globalRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10541,7 +10624,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a GlobalRulestackResource</summary>
+        /// <summary>update a GlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10555,7 +10638,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10594,7 +10677,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a GlobalRulestackResource</summary>
+        /// <summary>update a GlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10606,7 +10689,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource> GlobalRulestackCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10645,7 +10728,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a GlobalRulestackResource</summary>
+        /// <summary>update a GlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="jsonString">Json string supplied to the GlobalRulestackCreateOrUpdate operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10658,7 +10741,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackCreateOrUpdateViaJsonString(string globalRulestackName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10687,7 +10770,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a GlobalRulestackResource</summary>
+        /// <summary>update a GlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="jsonString">Json string supplied to the GlobalRulestackCreateOrUpdate operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10698,7 +10781,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource> GlobalRulestackCreateOrUpdateViaJsonStringWithResult(string globalRulestackName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10727,7 +10810,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a GlobalRulestackResource</summary>
+        /// <summary>update a GlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10739,7 +10822,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource> GlobalRulestackCreateOrUpdateWithResult(string globalRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10785,16 +10868,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -10807,7 +10891,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -10935,16 +11022,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -10957,7 +11045,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -11089,7 +11180,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackDelete(string globalRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11127,7 +11218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11180,17 +11271,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -11203,7 +11295,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -11337,7 +11432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackGet(string globalRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11374,7 +11469,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackGetChangeLog(string globalRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IChangelog>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11412,7 +11507,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackGetChangeLogViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IChangelog>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11458,7 +11553,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IChangelog> GlobalRulestackGetChangeLogViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11504,7 +11599,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IChangelog> GlobalRulestackGetChangeLogWithResult(string globalRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11671,7 +11766,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11716,7 +11811,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource> GlobalRulestackGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11761,7 +11856,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource> GlobalRulestackGetWithResult(string globalRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11924,7 +12019,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11963,7 +12058,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackListAdvancedSecurityObjects(string globalRulestackName, string skip, int? top, string type, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IAdvSecurityObjectListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12010,7 +12105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackListAdvancedSecurityObjectsViaIdentity(global::System.String viaIdentity, string skip, int? top, string type, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IAdvSecurityObjectListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12065,7 +12160,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IAdvSecurityObjectListResponse> GlobalRulestackListAdvancedSecurityObjectsViaIdentityWithResult(global::System.String viaIdentity, string skip, int? top, string type, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12120,7 +12215,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IAdvSecurityObjectListResponse> GlobalRulestackListAdvancedSecurityObjectsWithResult(string globalRulestackName, string skip, int? top, string type, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12304,7 +12399,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackListAppIds(string globalRulestackName, string appIdVersion, string appPrefix, string skip, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IListAppIdResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12354,7 +12449,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackListAppIdsViaIdentity(global::System.String viaIdentity, string appIdVersion, string appPrefix, string skip, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IListAppIdResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12412,7 +12507,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IListAppIdResponse> GlobalRulestackListAppIdsViaIdentityWithResult(global::System.String viaIdentity, string appIdVersion, string appPrefix, string skip, int? top, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12470,7 +12565,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IListAppIdResponse> GlobalRulestackListAppIdsWithResult(string globalRulestackName, string appIdVersion, string appPrefix, string skip, int? top, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12654,7 +12749,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackListCountries(string globalRulestackName, string skip, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICountriesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12698,7 +12793,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackListCountriesViaIdentity(global::System.String viaIdentity, string skip, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICountriesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12750,7 +12845,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICountriesResponse> GlobalRulestackListCountriesViaIdentityWithResult(global::System.String viaIdentity, string skip, int? top, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12802,7 +12897,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICountriesResponse> GlobalRulestackListCountriesWithResult(string globalRulestackName, string skip, int? top, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12976,7 +13071,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackListFirewalls(string globalRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IListFirewallsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13014,7 +13109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackListFirewallsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IListFirewallsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13060,7 +13155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IListFirewallsResponse> GlobalRulestackListFirewallsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13106,7 +13201,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IListFirewallsResponse> GlobalRulestackListFirewallsWithResult(string globalRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13275,7 +13370,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackListPredefinedUrlCategories(string globalRulestackName, string skip, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPredefinedUrlCategoriesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13319,7 +13414,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackListPredefinedUrlCategoriesViaIdentity(global::System.String viaIdentity, string skip, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPredefinedUrlCategoriesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13371,7 +13466,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPredefinedUrlCategoriesResponse> GlobalRulestackListPredefinedUrlCategoriesViaIdentityWithResult(global::System.String viaIdentity, string skip, int? top, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13423,7 +13518,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPredefinedUrlCategoriesResponse> GlobalRulestackListPredefinedUrlCategoriesWithResult(string globalRulestackName, string skip, int? top, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13602,7 +13697,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackListSecurityServices(string globalRulestackName, string skip, int? top, string type, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISecurityServicesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13649,7 +13744,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackListSecurityServicesViaIdentity(global::System.String viaIdentity, string skip, int? top, string type, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISecurityServicesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13704,7 +13799,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISecurityServicesResponse> GlobalRulestackListSecurityServicesViaIdentityWithResult(global::System.String viaIdentity, string skip, int? top, string type, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13759,7 +13854,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISecurityServicesResponse> GlobalRulestackListSecurityServicesWithResult(string globalRulestackName, string skip, int? top, string type, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13939,7 +14034,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13982,7 +14077,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResourceListResult> GlobalRulestackListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14024,7 +14119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResourceListResult> GlobalRulestackListWithResult(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14186,7 +14281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackRevert(string globalRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14224,7 +14319,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackRevertViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14341,7 +14436,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackUpdate(string globalRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResourceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14384,7 +14479,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResourceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14435,7 +14530,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource> GlobalRulestackUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResourceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14487,7 +14582,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task GlobalRulestackUpdateViaJsonString(string globalRulestackName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14527,7 +14622,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource> GlobalRulestackUpdateViaJsonStringWithResult(string globalRulestackName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14568,7 +14663,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResource> GlobalRulestackUpdateWithResult(string globalRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IGlobalRulestackResourceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14727,7 +14822,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulesResource</summary>
+        /// <summary>update a LocalRulesResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -14744,7 +14839,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulesCreateOrUpdate(string subscriptionId, string resourceGroupName, string localRulestackName, string priority, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulesResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulesResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14779,7 +14874,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulesResource</summary>
+        /// <summary>update a LocalRulesResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -14793,7 +14888,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulesResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulesResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14841,7 +14936,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulesResource</summary>
+        /// <summary>update a LocalRulesResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -14853,7 +14948,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulesResource> LocalRulesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulesResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14901,7 +14996,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulesResource</summary>
+        /// <summary>update a LocalRulesResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -14917,7 +15012,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string localRulestackName, string priority, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulesResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14952,7 +15047,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulesResource</summary>
+        /// <summary>update a LocalRulesResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -14966,7 +15061,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulesResource> LocalRulesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string priority, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15001,7 +15096,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulesResource</summary>
+        /// <summary>update a LocalRulesResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -15016,7 +15111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulesResource> LocalRulesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string priority, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulesResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15066,16 +15161,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -15088,7 +15184,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -15216,16 +15315,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -15238,7 +15338,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -15382,7 +15485,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulesDelete(string subscriptionId, string resourceGroupName, string localRulestackName, string priority, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15426,7 +15529,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15488,17 +15591,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -15511,7 +15615,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -15657,7 +15764,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulesGet(string subscriptionId, string resourceGroupName, string localRulestackName, string priority, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulesResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15704,7 +15811,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulesGetCounters(string subscriptionId, string resourceGroupName, string localRulestackName, string priority, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15751,7 +15858,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulesGetCountersViaIdentity(global::System.String viaIdentity, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15809,7 +15916,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounter> LocalRulesGetCountersViaIdentityWithResult(global::System.String viaIdentity, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15870,7 +15977,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounter> LocalRulesGetCountersWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string priority, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16054,7 +16161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulesResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16108,7 +16215,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulesResource> LocalRulesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16165,7 +16272,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulesResource> LocalRulesGetWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string priority, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16346,7 +16453,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulesListByLocalRulestacks(string subscriptionId, string resourceGroupName, string localRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulesResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16388,7 +16495,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulesListByLocalRulestacksViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulesResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16440,7 +16547,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulesResourceListResult> LocalRulesListByLocalRulestacksViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16494,7 +16601,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulesResourceListResult> LocalRulesListByLocalRulestacksWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16676,7 +16783,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulesRefreshCounters(string subscriptionId, string resourceGroupName, string localRulestackName, string priority, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16723,7 +16830,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulesRefreshCountersViaIdentity(global::System.String viaIdentity, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16864,7 +16971,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulesResetCounters(string subscriptionId, string resourceGroupName, string localRulestackName, string priority, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterReset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16911,7 +17018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulesResetCountersViaIdentity(global::System.String viaIdentity, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterReset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16969,7 +17076,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterReset> LocalRulesResetCountersViaIdentityWithResult(global::System.String viaIdentity, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17030,7 +17137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterReset> LocalRulesResetCountersWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string priority, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17216,7 +17323,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksCommit(string subscriptionId, string resourceGroupName, string localRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17258,7 +17365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksCommitViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17317,17 +17424,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -17340,7 +17448,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -17463,7 +17574,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulestackResource</summary>
+        /// <summary>update a LocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -17479,7 +17590,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksCreateOrUpdate(string subscriptionId, string resourceGroupName, string localRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17512,7 +17623,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulestackResource</summary>
+        /// <summary>update a LocalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -17526,7 +17637,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17571,7 +17682,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulestackResource</summary>
+        /// <summary>update a LocalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -17583,7 +17694,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource> LocalRulestacksCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17628,7 +17739,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulestackResource</summary>
+        /// <summary>update a LocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -17643,7 +17754,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string localRulestackName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17676,7 +17787,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulestackResource</summary>
+        /// <summary>update a LocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -17689,7 +17800,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource> LocalRulestacksCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17722,7 +17833,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a LocalRulestackResource</summary>
+        /// <summary>update a LocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -17736,7 +17847,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource> LocalRulestacksCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17786,16 +17897,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -17808,7 +17920,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -17936,16 +18051,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -17958,7 +18074,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -18099,7 +18218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksDelete(string subscriptionId, string resourceGroupName, string localRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18141,7 +18260,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18200,17 +18319,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -18223,7 +18343,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -18366,7 +18489,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksGet(string subscriptionId, string resourceGroupName, string localRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18409,7 +18532,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksGetChangeLog(string subscriptionId, string resourceGroupName, string localRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IChangelog>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18451,7 +18574,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksGetChangeLogViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IChangelog>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18503,7 +18626,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IChangelog> LocalRulestacksGetChangeLogViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18557,7 +18680,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IChangelog> LocalRulestacksGetChangeLogWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18738,7 +18861,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksGetSupportInfo(string subscriptionId, string resourceGroupName, string localRulestackName, string email, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISupportInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18783,7 +18906,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksGetSupportInfoViaIdentity(global::System.String viaIdentity, string email, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISupportInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18838,7 +18961,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISupportInfo> LocalRulestacksGetSupportInfoViaIdentityWithResult(global::System.String viaIdentity, string email, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18895,7 +19018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISupportInfo> LocalRulestacksGetSupportInfoWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string email, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19077,7 +19200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19128,7 +19251,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource> LocalRulestacksGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19181,7 +19304,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource> LocalRulestacksGetWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19361,7 +19484,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksListAdvancedSecurityObjects(string subscriptionId, string resourceGroupName, string localRulestackName, string skip, int? top, string type, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IAdvSecurityObjectListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19412,7 +19535,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksListAdvancedSecurityObjectsViaIdentity(global::System.String viaIdentity, string skip, int? top, string type, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IAdvSecurityObjectListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19473,7 +19596,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IAdvSecurityObjectListResponse> LocalRulestacksListAdvancedSecurityObjectsViaIdentityWithResult(global::System.String viaIdentity, string skip, int? top, string type, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19536,7 +19659,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IAdvSecurityObjectListResponse> LocalRulestacksListAdvancedSecurityObjectsWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string skip, int? top, string type, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19733,7 +19856,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksListAppIds(string subscriptionId, string resourceGroupName, string localRulestackName, string appIdVersion, string appPrefix, string skip, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IListAppIdResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19787,7 +19910,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksListAppIdsViaIdentity(global::System.String viaIdentity, string appIdVersion, string appPrefix, string skip, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IListAppIdResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19851,7 +19974,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IListAppIdResponse> LocalRulestacksListAppIdsViaIdentityWithResult(global::System.String viaIdentity, string appIdVersion, string appPrefix, string skip, int? top, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19917,7 +20040,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IListAppIdResponse> LocalRulestacksListAppIdsWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string appIdVersion, string appPrefix, string skip, int? top, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20111,7 +20234,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20151,7 +20274,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20200,7 +20323,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResourceListResult> LocalRulestacksListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20250,7 +20373,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResourceListResult> LocalRulestacksListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20424,7 +20547,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20462,7 +20585,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20508,7 +20631,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResourceListResult> LocalRulestacksListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20554,7 +20677,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResourceListResult> LocalRulestacksListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20726,7 +20849,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksListCountries(string subscriptionId, string resourceGroupName, string localRulestackName, string skip, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICountriesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20774,7 +20897,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksListCountriesViaIdentity(global::System.String viaIdentity, string skip, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICountriesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20832,7 +20955,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICountriesResponse> LocalRulestacksListCountriesViaIdentityWithResult(global::System.String viaIdentity, string skip, int? top, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20892,7 +21015,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICountriesResponse> LocalRulestacksListCountriesWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string skip, int? top, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21079,7 +21202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksListFirewalls(string subscriptionId, string resourceGroupName, string localRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IListFirewallsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21121,7 +21244,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksListFirewallsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IListFirewallsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21173,7 +21296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IListFirewallsResponse> LocalRulestacksListFirewallsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21227,7 +21350,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IListFirewallsResponse> LocalRulestacksListFirewallsWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21409,7 +21532,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksListPredefinedUrlCategories(string subscriptionId, string resourceGroupName, string localRulestackName, string skip, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPredefinedUrlCategoriesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21457,7 +21580,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksListPredefinedUrlCategoriesViaIdentity(global::System.String viaIdentity, string skip, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPredefinedUrlCategoriesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21515,7 +21638,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPredefinedUrlCategoriesResponse> LocalRulestacksListPredefinedUrlCategoriesViaIdentityWithResult(global::System.String viaIdentity, string skip, int? top, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21575,7 +21698,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPredefinedUrlCategoriesResponse> LocalRulestacksListPredefinedUrlCategoriesWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string skip, int? top, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21767,7 +21890,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksListSecurityServices(string subscriptionId, string resourceGroupName, string localRulestackName, string skip, int? top, string type, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISecurityServicesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21818,7 +21941,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksListSecurityServicesViaIdentity(global::System.String viaIdentity, string skip, int? top, string type, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISecurityServicesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21879,7 +22002,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISecurityServicesResponse> LocalRulestacksListSecurityServicesViaIdentityWithResult(global::System.String viaIdentity, string skip, int? top, string type, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21942,7 +22065,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISecurityServicesResponse> LocalRulestacksListSecurityServicesWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string skip, int? top, string type, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22136,7 +22259,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksRevert(string subscriptionId, string resourceGroupName, string localRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22179,7 +22302,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksRevertViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22318,7 +22441,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksUpdate(string subscriptionId, string resourceGroupName, string localRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResourceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22365,7 +22488,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResourceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22422,7 +22545,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource> LocalRulestacksUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResourceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22482,7 +22605,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocalRulestacksUpdateViaJsonString(string subscriptionId, string resourceGroupName, string localRulestackName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22528,7 +22651,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource> LocalRulestacksUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22575,7 +22698,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource> LocalRulestacksUpdateWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResourceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22745,6 +22868,1577 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
+        /// <summary>update a MetricsObjectFirewallResource</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="firewallName">Firewall resource name</param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MetricsObjectFirewallCreateOrUpdate(string subscriptionId, string resourceGroupName, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/PaloAltoNetworks.Cloudngfw/firewalls/"
+                        + global::System.Uri.EscapeDataString(firewallName)
+                        + "/metrics/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MetricsObjectFirewallCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update a MetricsObjectFirewallResource</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MetricsObjectFirewallCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/PaloAltoNetworks.Cloudngfw/firewalls/(?<firewallName>[^/]+)/metrics/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/firewalls/{firewallName}/metrics/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var firewallName = _match.Groups["firewallName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/PaloAltoNetworks.Cloudngfw/firewalls/"
+                        + firewallName
+                        + "/metrics/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MetricsObjectFirewallCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update a MetricsObjectFirewallResource</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource> MetricsObjectFirewallCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/PaloAltoNetworks.Cloudngfw/firewalls/(?<firewallName>[^/]+)/metrics/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/firewalls/{firewallName}/metrics/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var firewallName = _match.Groups["firewallName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/PaloAltoNetworks.Cloudngfw/firewalls/"
+                        + firewallName
+                        + "/metrics/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MetricsObjectFirewallCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a MetricsObjectFirewallResource</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="firewallName">Firewall resource name</param>
+        /// <param name="jsonString">Json string supplied to the MetricsObjectFirewallCreateOrUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MetricsObjectFirewallCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string firewallName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/PaloAltoNetworks.Cloudngfw/firewalls/"
+                        + global::System.Uri.EscapeDataString(firewallName)
+                        + "/metrics/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MetricsObjectFirewallCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update a MetricsObjectFirewallResource</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="firewallName">Firewall resource name</param>
+        /// <param name="jsonString">Json string supplied to the MetricsObjectFirewallCreateOrUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource> MetricsObjectFirewallCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string firewallName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/PaloAltoNetworks.Cloudngfw/firewalls/"
+                        + global::System.Uri.EscapeDataString(firewallName)
+                        + "/metrics/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MetricsObjectFirewallCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a MetricsObjectFirewallResource</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="firewallName">Firewall resource name</param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource> MetricsObjectFirewallCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/PaloAltoNetworks.Cloudngfw/firewalls/"
+                        + global::System.Uri.EscapeDataString(firewallName)
+                        + "/metrics/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MetricsObjectFirewallCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "MetricsObjectFirewallCreateOrUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource> MetricsObjectFirewallCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.MetricsObjectFirewallResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "MetricsObjectFirewallCreateOrUpdate" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MetricsObjectFirewallCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.MetricsObjectFirewallResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MetricsObjectFirewallCreateOrUpdate" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="firewallName">Firewall resource name</param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MetricsObjectFirewallCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(firewallName),firewallName);
+                await eventListener.AssertRegEx(nameof(firewallName), firewallName, @"^(?![-_])(?!.*[-_]{2})(?!.*[-_]$)[a-zA-Z0-9][a-zA-Z0-9-]{0,127}$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Delete a MetricsObjectFirewallResource</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="firewallName">Firewall resource name</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MetricsObjectFirewallDelete(string subscriptionId, string resourceGroupName, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/PaloAltoNetworks.Cloudngfw/firewalls/"
+                        + global::System.Uri.EscapeDataString(firewallName)
+                        + "/metrics/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MetricsObjectFirewallDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Delete a MetricsObjectFirewallResource</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MetricsObjectFirewallDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/PaloAltoNetworks.Cloudngfw/firewalls/(?<firewallName>[^/]+)/metrics/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/firewalls/{firewallName}/metrics/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var firewallName = _match.Groups["firewallName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/PaloAltoNetworks.Cloudngfw/firewalls/"
+                        + firewallName
+                        + "/metrics/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MetricsObjectFirewallDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MetricsObjectFirewallDelete" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MetricsObjectFirewallDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: azure-async-operation
+                    var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MetricsObjectFirewallDelete" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="firewallName">Firewall resource name</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MetricsObjectFirewallDelete_Validate(string subscriptionId, string resourceGroupName, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(firewallName),firewallName);
+                await eventListener.AssertRegEx(nameof(firewallName), firewallName, @"^(?![-_])(?!.*[-_]{2})(?!.*[-_]$)[a-zA-Z0-9][a-zA-Z0-9-]{0,127}$");
+            }
+        }
+
+        /// <summary>Get a MetricsObjectFirewallResource</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="firewallName">Firewall resource name</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MetricsObjectFirewallGet(string subscriptionId, string resourceGroupName, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/PaloAltoNetworks.Cloudngfw/firewalls/"
+                        + global::System.Uri.EscapeDataString(firewallName)
+                        + "/metrics/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MetricsObjectFirewallGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a MetricsObjectFirewallResource</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MetricsObjectFirewallGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/PaloAltoNetworks.Cloudngfw/firewalls/(?<firewallName>[^/]+)/metrics/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/firewalls/{firewallName}/metrics/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var firewallName = _match.Groups["firewallName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/PaloAltoNetworks.Cloudngfw/firewalls/"
+                        + firewallName
+                        + "/metrics/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MetricsObjectFirewallGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a MetricsObjectFirewallResource</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource> MetricsObjectFirewallGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/PaloAltoNetworks.Cloudngfw/firewalls/(?<firewallName>[^/]+)/metrics/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/firewalls/{firewallName}/metrics/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var firewallName = _match.Groups["firewallName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/PaloAltoNetworks.Cloudngfw/firewalls/"
+                        + firewallName
+                        + "/metrics/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MetricsObjectFirewallGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a MetricsObjectFirewallResource</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="firewallName">Firewall resource name</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource> MetricsObjectFirewallGetWithResult(string subscriptionId, string resourceGroupName, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/PaloAltoNetworks.Cloudngfw/firewalls/"
+                        + global::System.Uri.EscapeDataString(firewallName)
+                        + "/metrics/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MetricsObjectFirewallGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MetricsObjectFirewallGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource> MetricsObjectFirewallGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.MetricsObjectFirewallResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MetricsObjectFirewallGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MetricsObjectFirewallGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.MetricsObjectFirewallResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MetricsObjectFirewallGet" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="firewallName">Firewall resource name</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MetricsObjectFirewallGet_Validate(string subscriptionId, string resourceGroupName, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(firewallName),firewallName);
+                await eventListener.AssertRegEx(nameof(firewallName), firewallName, @"^(?![-_])(?!.*[-_]{2})(?!.*[-_]$)[a-zA-Z0-9][a-zA-Z0-9-]{0,127}$");
+            }
+        }
+
+        /// <summary>List MetricsObjectFirewallResource resources by Firewalls</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="firewallName">Firewall resource name</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MetricsObjectFirewallListByFirewalls(string subscriptionId, string resourceGroupName, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/PaloAltoNetworks.Cloudngfw/firewalls/"
+                        + global::System.Uri.EscapeDataString(firewallName)
+                        + "/metrics"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MetricsObjectFirewallListByFirewalls_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List MetricsObjectFirewallResource resources by Firewalls</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MetricsObjectFirewallListByFirewallsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/PaloAltoNetworks.Cloudngfw/firewalls/(?<firewallName>[^/]+)/metrics$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/firewalls/{firewallName}/metrics'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var firewallName = _match.Groups["firewallName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/PaloAltoNetworks.Cloudngfw/firewalls/"
+                        + firewallName
+                        + "/metrics"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MetricsObjectFirewallListByFirewalls_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List MetricsObjectFirewallResource resources by Firewalls</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResourceListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResourceListResult> MetricsObjectFirewallListByFirewallsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/PaloAltoNetworks.Cloudngfw/firewalls/(?<firewallName>[^/]+)/metrics$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/firewalls/{firewallName}/metrics'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var firewallName = _match.Groups["firewallName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/PaloAltoNetworks.Cloudngfw/firewalls/"
+                        + firewallName
+                        + "/metrics"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MetricsObjectFirewallListByFirewallsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>List MetricsObjectFirewallResource resources by Firewalls</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="firewallName">Firewall resource name</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResourceListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResourceListResult> MetricsObjectFirewallListByFirewallsWithResult(string subscriptionId, string resourceGroupName, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/PaloAltoNetworks.Cloudngfw/firewalls/"
+                        + global::System.Uri.EscapeDataString(firewallName)
+                        + "/metrics"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MetricsObjectFirewallListByFirewallsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "MetricsObjectFirewallListByFirewallsWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResourceListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResourceListResult> MetricsObjectFirewallListByFirewallsWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.MetricsObjectFirewallResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "MetricsObjectFirewallListByFirewalls" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MetricsObjectFirewallListByFirewalls_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMetricsObjectFirewallResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.MetricsObjectFirewallResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MetricsObjectFirewallListByFirewalls" /> method. Call this like the actual call, but
+        /// you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="firewallName">Firewall resource name</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MetricsObjectFirewallListByFirewalls_Validate(string subscriptionId, string resourceGroupName, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(firewallName),firewallName);
+                await eventListener.AssertRegEx(nameof(firewallName), firewallName, @"^(?![-_])(?!.*[-_]{2})(?!.*[-_]$)[a-zA-Z0-9][a-zA-Z0-9-]{0,127}$");
+            }
+        }
+
         /// <summary>List the operations for the provider</summary>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -22756,7 +24450,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22792,7 +24486,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22835,7 +24529,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22877,7 +24571,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23027,7 +24721,1205 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PostRulesResource</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PaloAltoNetworksCloudngfwOperationsCreateProductSerialNumber(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IProductSerialNumberRequestStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/PaloAltoNetworks.Cloudngfw/createProductSerialNumber"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PaloAltoNetworksCloudngfwOperationsCreateProductSerialNumber_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PaloAltoNetworksCloudngfwOperationsCreateProductSerialNumberViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IProductSerialNumberRequestStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/PaloAltoNetworks.Cloudngfw$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/PaloAltoNetworks.Cloudngfw'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/PaloAltoNetworks.Cloudngfw/createProductSerialNumber"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PaloAltoNetworksCloudngfwOperationsCreateProductSerialNumber_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IProductSerialNumberRequestStatus>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IProductSerialNumberRequestStatus> PaloAltoNetworksCloudngfwOperationsCreateProductSerialNumberViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/PaloAltoNetworks.Cloudngfw$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/PaloAltoNetworks.Cloudngfw'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/PaloAltoNetworks.Cloudngfw/createProductSerialNumber"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.PaloAltoNetworksCloudngfwOperationsCreateProductSerialNumberWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IProductSerialNumberRequestStatus>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IProductSerialNumberRequestStatus> PaloAltoNetworksCloudngfwOperationsCreateProductSerialNumberWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/PaloAltoNetworks.Cloudngfw/createProductSerialNumber"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.PaloAltoNetworksCloudngfwOperationsCreateProductSerialNumberWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "PaloAltoNetworksCloudngfwOperationsCreateProductSerialNumberWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IProductSerialNumberRequestStatus>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IProductSerialNumberRequestStatus> PaloAltoNetworksCloudngfwOperationsCreateProductSerialNumberWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ProductSerialNumberRequestStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "PaloAltoNetworksCloudngfwOperationsCreateProductSerialNumber" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PaloAltoNetworksCloudngfwOperationsCreateProductSerialNumber_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IProductSerialNumberRequestStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ProductSerialNumberRequestStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="PaloAltoNetworksCloudngfwOperationsCreateProductSerialNumber" /> method. Call this like
+        /// the actual call, but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PaloAltoNetworksCloudngfwOperationsCreateProductSerialNumber_Validate(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+            }
+        }
+
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PaloAltoNetworksCloudngfwOperationsListCloudManagerTenants(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICloudManagerTenantList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/PaloAltoNetworks.Cloudngfw/listCloudManagerTenants"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PaloAltoNetworksCloudngfwOperationsListCloudManagerTenants_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PaloAltoNetworksCloudngfwOperationsListCloudManagerTenantsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICloudManagerTenantList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/PaloAltoNetworks.Cloudngfw$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/PaloAltoNetworks.Cloudngfw'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/PaloAltoNetworks.Cloudngfw/listCloudManagerTenants"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PaloAltoNetworksCloudngfwOperationsListCloudManagerTenants_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICloudManagerTenantList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICloudManagerTenantList> PaloAltoNetworksCloudngfwOperationsListCloudManagerTenantsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/PaloAltoNetworks.Cloudngfw$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/PaloAltoNetworks.Cloudngfw'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/PaloAltoNetworks.Cloudngfw/listCloudManagerTenants"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.PaloAltoNetworksCloudngfwOperationsListCloudManagerTenantsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICloudManagerTenantList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICloudManagerTenantList> PaloAltoNetworksCloudngfwOperationsListCloudManagerTenantsWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/PaloAltoNetworks.Cloudngfw/listCloudManagerTenants"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.PaloAltoNetworksCloudngfwOperationsListCloudManagerTenantsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "PaloAltoNetworksCloudngfwOperationsListCloudManagerTenantsWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICloudManagerTenantList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICloudManagerTenantList> PaloAltoNetworksCloudngfwOperationsListCloudManagerTenantsWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.CloudManagerTenantList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "PaloAltoNetworksCloudngfwOperationsListCloudManagerTenants" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PaloAltoNetworksCloudngfwOperationsListCloudManagerTenants_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICloudManagerTenantList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.CloudManagerTenantList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="PaloAltoNetworksCloudngfwOperationsListCloudManagerTenants" /> method. Call this like
+        /// the actual call, but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PaloAltoNetworksCloudngfwOperationsListCloudManagerTenants_Validate(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+            }
+        }
+
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PaloAltoNetworksCloudngfwOperationsListProductSerialNumberStatus(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IProductSerialNumberStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/PaloAltoNetworks.Cloudngfw/listProductSerialNumberStatus"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PaloAltoNetworksCloudngfwOperationsListProductSerialNumberStatus_Call (request, onOk,onNotFound,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PaloAltoNetworksCloudngfwOperationsListProductSerialNumberStatusViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IProductSerialNumberStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/PaloAltoNetworks.Cloudngfw$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/PaloAltoNetworks.Cloudngfw'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/PaloAltoNetworks.Cloudngfw/listProductSerialNumberStatus"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PaloAltoNetworksCloudngfwOperationsListProductSerialNumberStatus_Call (request, onOk,onNotFound,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IProductSerialNumberStatus>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IProductSerialNumberStatus> PaloAltoNetworksCloudngfwOperationsListProductSerialNumberStatusViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/PaloAltoNetworks.Cloudngfw$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/PaloAltoNetworks.Cloudngfw'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/PaloAltoNetworks.Cloudngfw/listProductSerialNumberStatus"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.PaloAltoNetworksCloudngfwOperationsListProductSerialNumberStatusWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IProductSerialNumberStatus>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IProductSerialNumberStatus> PaloAltoNetworksCloudngfwOperationsListProductSerialNumberStatusWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/PaloAltoNetworks.Cloudngfw/listProductSerialNumberStatus"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.PaloAltoNetworksCloudngfwOperationsListProductSerialNumberStatusWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "PaloAltoNetworksCloudngfwOperationsListProductSerialNumberStatusWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IProductSerialNumberStatus>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IProductSerialNumberStatus> PaloAltoNetworksCloudngfwOperationsListProductSerialNumberStatusWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ProductSerialNumberStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        case global::System.Net.HttpStatusCode.NotFound:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.UndeclaredResponseException(_response);
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "PaloAltoNetworksCloudngfwOperationsListProductSerialNumberStatus" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PaloAltoNetworksCloudngfwOperationsListProductSerialNumberStatus_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IProductSerialNumberStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ProductSerialNumberStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NotFound:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNotFound(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="PaloAltoNetworksCloudngfwOperationsListProductSerialNumberStatus" /> method. Call this
+        /// like the actual call, but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PaloAltoNetworksCloudngfwOperationsListProductSerialNumberStatus_Validate(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+            }
+        }
+
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PaloAltoNetworksCloudngfwOperationsListSupportInfo(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISupportInfoModel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/PaloAltoNetworks.Cloudngfw/listSupportInfo"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PaloAltoNetworksCloudngfwOperationsListSupportInfo_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PaloAltoNetworksCloudngfwOperationsListSupportInfoViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISupportInfoModel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/PaloAltoNetworks.Cloudngfw$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/PaloAltoNetworks.Cloudngfw'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/PaloAltoNetworks.Cloudngfw/listSupportInfo"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PaloAltoNetworksCloudngfwOperationsListSupportInfo_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISupportInfoModel>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISupportInfoModel> PaloAltoNetworksCloudngfwOperationsListSupportInfoViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/PaloAltoNetworks.Cloudngfw$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/PaloAltoNetworks.Cloudngfw'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/PaloAltoNetworks.Cloudngfw/listSupportInfo"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.PaloAltoNetworksCloudngfwOperationsListSupportInfoWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISupportInfoModel>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISupportInfoModel> PaloAltoNetworksCloudngfwOperationsListSupportInfoWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-10-08";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/PaloAltoNetworks.Cloudngfw/listSupportInfo"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.PaloAltoNetworksCloudngfwOperationsListSupportInfoWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "PaloAltoNetworksCloudngfwOperationsListSupportInfoWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISupportInfoModel>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISupportInfoModel> PaloAltoNetworksCloudngfwOperationsListSupportInfoWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.SupportInfoModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "PaloAltoNetworksCloudngfwOperationsListSupportInfo" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PaloAltoNetworksCloudngfwOperationsListSupportInfo_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ISupportInfoModel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.SupportInfoModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="PaloAltoNetworksCloudngfwOperationsListSupportInfo" /> method. Call this like the actual
+        /// call, but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PaloAltoNetworksCloudngfwOperationsListSupportInfo_Validate(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+            }
+        }
+
+        /// <summary>update a PostRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Post Rule priority</param>
         /// <param name="body">Resource create parameters.</param>
@@ -23042,7 +25934,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PostRulesCreateOrUpdate(string globalRulestackName, string priority, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPostRulesResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPostRulesResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23073,7 +25965,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PostRulesResource</summary>
+        /// <summary>update a PostRulesResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -23087,7 +25979,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PostRulesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPostRulesResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPostRulesResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23129,7 +26021,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PostRulesResource</summary>
+        /// <summary>update a PostRulesResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -23141,7 +26033,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPostRulesResource> PostRulesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPostRulesResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23183,7 +26075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PostRulesResource</summary>
+        /// <summary>update a PostRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Post Rule priority</param>
         /// <param name="jsonString">Json string supplied to the PostRulesCreateOrUpdate operation</param>
@@ -23197,7 +26089,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PostRulesCreateOrUpdateViaJsonString(string globalRulestackName, string priority, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPostRulesResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23228,7 +26120,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PostRulesResource</summary>
+        /// <summary>update a PostRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Post Rule priority</param>
         /// <param name="jsonString">Json string supplied to the PostRulesCreateOrUpdate operation</param>
@@ -23240,7 +26132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPostRulesResource> PostRulesCreateOrUpdateViaJsonStringWithResult(string globalRulestackName, string priority, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23271,7 +26163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PostRulesResource</summary>
+        /// <summary>update a PostRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Post Rule priority</param>
         /// <param name="body">Resource create parameters.</param>
@@ -23284,7 +26176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPostRulesResource> PostRulesCreateOrUpdateWithResult(string globalRulestackName, string priority, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPostRulesResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23330,16 +26222,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -23352,7 +26245,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -23480,16 +26376,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -23502,7 +26399,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -23637,7 +26537,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PostRulesDelete(string globalRulestackName, string priority, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23677,7 +26577,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PostRulesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23733,17 +26633,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -23756,7 +26657,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -23893,7 +26797,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PostRulesGet(string globalRulestackName, string priority, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPostRulesResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23934,7 +26838,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PostRulesGetCounters(string globalRulestackName, string priority, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23977,7 +26881,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PostRulesGetCountersViaIdentity(global::System.String viaIdentity, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24029,7 +26933,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounter> PostRulesGetCountersViaIdentityWithResult(global::System.String viaIdentity, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24082,7 +26986,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounter> PostRulesGetCountersWithResult(string globalRulestackName, string priority, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24255,7 +27159,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PostRulesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPostRulesResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24303,7 +27207,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPostRulesResource> PostRulesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24352,7 +27256,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPostRulesResource> PostRulesGetWithResult(string globalRulestackName, string priority, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24520,7 +27424,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PostRulesList(string globalRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPostRulesResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24558,7 +27462,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PostRulesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPostRulesResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24604,7 +27508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPostRulesResourceListResult> PostRulesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24650,7 +27554,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPostRulesResourceListResult> PostRulesListWithResult(string globalRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24817,7 +27721,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PostRulesRefreshCounters(string globalRulestackName, string priority, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24860,7 +27764,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PostRulesRefreshCountersViaIdentity(global::System.String viaIdentity, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24986,7 +27890,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PostRulesResetCounters(string globalRulestackName, string priority, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterReset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25029,7 +27933,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PostRulesResetCountersViaIdentity(global::System.String viaIdentity, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterReset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25081,7 +27985,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterReset> PostRulesResetCountersViaIdentityWithResult(global::System.String viaIdentity, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25134,7 +28038,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterReset> PostRulesResetCountersWithResult(string globalRulestackName, string priority, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25295,7 +28199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PreRulesResource</summary>
+        /// <summary>update a PreRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Pre Rule priority</param>
         /// <param name="body">Resource create parameters.</param>
@@ -25310,7 +28214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PreRulesCreateOrUpdate(string globalRulestackName, string priority, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25341,7 +28245,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PreRulesResource</summary>
+        /// <summary>update a PreRulesResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -25355,7 +28259,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PreRulesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25397,7 +28301,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PreRulesResource</summary>
+        /// <summary>update a PreRulesResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -25409,7 +28313,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResource> PreRulesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25451,7 +28355,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PreRulesResource</summary>
+        /// <summary>update a PreRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Pre Rule priority</param>
         /// <param name="jsonString">Json string supplied to the PreRulesCreateOrUpdate operation</param>
@@ -25465,7 +28369,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PreRulesCreateOrUpdateViaJsonString(string globalRulestackName, string priority, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25496,7 +28400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PreRulesResource</summary>
+        /// <summary>update a PreRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Pre Rule priority</param>
         /// <param name="jsonString">Json string supplied to the PreRulesCreateOrUpdate operation</param>
@@ -25508,7 +28412,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResource> PreRulesCreateOrUpdateViaJsonStringWithResult(string globalRulestackName, string priority, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25539,7 +28443,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PreRulesResource</summary>
+        /// <summary>update a PreRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Pre Rule priority</param>
         /// <param name="body">Resource create parameters.</param>
@@ -25552,7 +28456,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResource> PreRulesCreateOrUpdateWithResult(string globalRulestackName, string priority, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25598,16 +28502,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -25620,7 +28525,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -25748,16 +28656,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -25770,7 +28679,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -25905,7 +28817,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PreRulesDelete(string globalRulestackName, string priority, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25945,7 +28857,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PreRulesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26001,17 +28913,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -26024,7 +28937,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -26161,7 +29077,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PreRulesGet(string globalRulestackName, string priority, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26202,7 +29118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PreRulesGetCounters(string globalRulestackName, string priority, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26245,7 +29161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PreRulesGetCountersViaIdentity(global::System.String viaIdentity, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26297,7 +29213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounter> PreRulesGetCountersViaIdentityWithResult(global::System.String viaIdentity, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26350,7 +29266,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounter> PreRulesGetCountersWithResult(string globalRulestackName, string priority, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26523,7 +29439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PreRulesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26571,7 +29487,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResource> PreRulesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26620,7 +29536,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResource> PreRulesGetWithResult(string globalRulestackName, string priority, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26788,7 +29704,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PreRulesList(string globalRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26826,7 +29742,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PreRulesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26872,7 +29788,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResourceListResult> PreRulesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26918,7 +29834,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPreRulesResourceListResult> PreRulesListWithResult(string globalRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27085,7 +30001,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PreRulesRefreshCounters(string globalRulestackName, string priority, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27128,7 +30044,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PreRulesRefreshCountersViaIdentity(global::System.String viaIdentity, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27254,7 +30170,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PreRulesResetCounters(string globalRulestackName, string priority, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterReset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27297,7 +30213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PreRulesResetCountersViaIdentity(global::System.String viaIdentity, string firewallName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterReset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27349,7 +30265,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterReset> PreRulesResetCountersViaIdentityWithResult(global::System.String viaIdentity, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27402,7 +30318,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IRuleCounterReset> PreRulesResetCountersWithResult(string globalRulestackName, string priority, string firewallName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27563,7 +30479,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListGlobalRulestackResource</summary>
+        /// <summary>update a PrefixListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">Local Rule priority</param>
         /// <param name="body">Resource create parameters.</param>
@@ -27578,7 +30494,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PrefixListGlobalRulestackCreateOrUpdate(string globalRulestackName, string name, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListGlobalRulestackResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27609,7 +30525,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListGlobalRulestackResource</summary>
+        /// <summary>update a PrefixListGlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -27623,7 +30539,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PrefixListGlobalRulestackCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListGlobalRulestackResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27665,7 +30581,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListGlobalRulestackResource</summary>
+        /// <summary>update a PrefixListGlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -27677,7 +30593,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListGlobalRulestackResource> PrefixListGlobalRulestackCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListGlobalRulestackResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27719,7 +30635,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListGlobalRulestackResource</summary>
+        /// <summary>update a PrefixListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">Local Rule priority</param>
         /// <param name="jsonString">Json string supplied to the PrefixListGlobalRulestackCreateOrUpdate operation</param>
@@ -27733,7 +30649,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PrefixListGlobalRulestackCreateOrUpdateViaJsonString(string globalRulestackName, string name, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27764,7 +30680,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListGlobalRulestackResource</summary>
+        /// <summary>update a PrefixListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">Local Rule priority</param>
         /// <param name="jsonString">Json string supplied to the PrefixListGlobalRulestackCreateOrUpdate operation</param>
@@ -27776,7 +30692,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListGlobalRulestackResource> PrefixListGlobalRulestackCreateOrUpdateViaJsonStringWithResult(string globalRulestackName, string name, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27807,7 +30723,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListGlobalRulestackResource</summary>
+        /// <summary>update a PrefixListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">Local Rule priority</param>
         /// <param name="body">Resource create parameters.</param>
@@ -27820,7 +30736,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListGlobalRulestackResource> PrefixListGlobalRulestackCreateOrUpdateWithResult(string globalRulestackName, string name, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListGlobalRulestackResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27868,16 +30784,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -27890,7 +30807,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -28020,16 +30940,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -28042,7 +30963,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -28177,7 +31101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PrefixListGlobalRulestackDelete(string globalRulestackName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28217,7 +31141,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PrefixListGlobalRulestackDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28273,17 +31197,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -28296,7 +31221,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -28433,7 +31361,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PrefixListGlobalRulestackGet(string globalRulestackName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28472,7 +31400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PrefixListGlobalRulestackGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListGlobalRulestackResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28520,7 +31448,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListGlobalRulestackResource> PrefixListGlobalRulestackGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28569,7 +31497,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListGlobalRulestackResource> PrefixListGlobalRulestackGetWithResult(string globalRulestackName, string name, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28739,7 +31667,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PrefixListGlobalRulestackList(string globalRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListGlobalRulestackResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28777,7 +31705,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PrefixListGlobalRulestackListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListGlobalRulestackResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28823,7 +31751,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListGlobalRulestackResourceListResult> PrefixListGlobalRulestackListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28869,7 +31797,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListGlobalRulestackResourceListResult> PrefixListGlobalRulestackListWithResult(string globalRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29024,7 +31952,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListResource</summary>
+        /// <summary>update a PrefixListResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -29041,7 +31969,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PrefixListLocalRulestackCreateOrUpdate(string subscriptionId, string resourceGroupName, string localRulestackName, string name, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29076,7 +32004,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListResource</summary>
+        /// <summary>update a PrefixListResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -29090,7 +32018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PrefixListLocalRulestackCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29138,7 +32066,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListResource</summary>
+        /// <summary>update a PrefixListResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -29150,7 +32078,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResource> PrefixListLocalRulestackCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29198,7 +32126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListResource</summary>
+        /// <summary>update a PrefixListResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -29214,7 +32142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PrefixListLocalRulestackCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string localRulestackName, string name, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29249,7 +32177,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListResource</summary>
+        /// <summary>update a PrefixListResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -29263,7 +32191,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResource> PrefixListLocalRulestackCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string name, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29298,7 +32226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Update a PrefixListResource</summary>
+        /// <summary>update a PrefixListResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -29313,7 +32241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResource> PrefixListLocalRulestackCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string name, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResource body, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29365,16 +32293,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -29387,7 +32316,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -29517,16 +32449,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -29539,7 +32472,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -29683,7 +32619,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PrefixListLocalRulestackDelete(string subscriptionId, string resourceGroupName, string localRulestackName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29727,7 +32663,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PrefixListLocalRulestackDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29789,17 +32725,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -29812,7 +32749,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -29958,7 +32898,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PrefixListLocalRulestackGet(string subscriptionId, string resourceGroupName, string localRulestackName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30001,7 +32941,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PrefixListLocalRulestackGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30055,7 +32995,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResource> PrefixListLocalRulestackGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30112,7 +33052,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResource> PrefixListLocalRulestackGetWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, string name, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30295,7 +33235,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PrefixListLocalRulestackListByLocalRulestacks(string subscriptionId, string resourceGroupName, string localRulestackName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30337,7 +33277,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task PrefixListLocalRulestackListByLocalRulestacksViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30389,7 +33329,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResourceListResult> PrefixListLocalRulestackListByLocalRulestacksViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30443,7 +33383,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResourceListResult> PrefixListLocalRulestackListByLocalRulestacksWithResult(string subscriptionId, string resourceGroupName, string localRulestackName, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01";
+            var apiVersion = @"2025-10-08";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
