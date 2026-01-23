@@ -14,9 +14,9 @@ A long-running resource action.
 
 ### GenerateExpanded (Default)
 ```
-New-AzEdgeMarketplaceOfferAccessToken -OfferId <String> -ResourceUri <String> -EdgeMarketPlaceRegion <String>
- [-DeviceSku <String>] [-DeviceVersion <String>] [-EgeMarketPlaceResourceId <String>]
- [-HypervGeneration <String>] [-MarketPlaceSku <String>] [-MarketPlaceSkuVersion <String>]
+New-AzEdgeMarketplaceOfferAccessToken -OfferId <String> -ResourceUri <String> -EdgeMarketplaceRegion <String>
+ [-DeviceSku <String>] [-DeviceVersion <String>] [-EdgeMarketplaceResourceId <String>]
+ [-HypervGeneration <String>] [-MarketplaceSku <String>] [-MarketplaceSkuVersion <String>]
  [-PublisherName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -35,9 +35,9 @@ New-AzEdgeMarketplaceOfferAccessToken -InputObject <IEdgeMarketplaceIdentity> -B
 
 ### GenerateViaIdentityExpanded
 ```
-New-AzEdgeMarketplaceOfferAccessToken -InputObject <IEdgeMarketplaceIdentity> -EdgeMarketPlaceRegion <String>
- [-DeviceSku <String>] [-DeviceVersion <String>] [-EgeMarketPlaceResourceId <String>]
- [-HypervGeneration <String>] [-MarketPlaceSku <String>] [-MarketPlaceSkuVersion <String>]
+New-AzEdgeMarketplaceOfferAccessToken -InputObject <IEdgeMarketplaceIdentity> -EdgeMarketplaceRegion <String>
+ [-DeviceSku <String>] [-DeviceVersion <String>] [-EdgeMarketplaceResourceId <String>]
+ [-HypervGeneration <String>] [-MarketplaceSku <String>] [-MarketplaceSkuVersion <String>]
  [-PublisherName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -159,7 +159,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EdgeMarketPlaceRegion
+### -EdgeMarketplaceRegion
 The region where the disk will be created.
 
 ```yaml
@@ -174,7 +174,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EgeMarketPlaceResourceId
+### -EdgeMarketplaceResourceId
 The region where the disk will be created.
 
 ```yaml
@@ -249,7 +249,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MarketPlaceSku
+### -MarketplaceSku
 The marketplace sku.
 
 ```yaml
@@ -264,7 +264,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MarketPlaceSkuVersion
+### -MarketplaceSkuVersion
 The marketplace sku version.
 
 ```yaml

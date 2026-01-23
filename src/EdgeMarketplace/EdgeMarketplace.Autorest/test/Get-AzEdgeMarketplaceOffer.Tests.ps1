@@ -15,15 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEdgeMarketplaceOffer'))
 }
 
 Describe 'Get-AzEdgeMarketplaceOffer' {
-    It 'List1' -skip {
+    It 'List' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'List' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 

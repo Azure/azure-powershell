@@ -12,9 +12,10 @@ Get a Offer
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
-Get-AzEdgeMarketplaceOffer [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzEdgeMarketplaceOffer -ResourceUri <String> [-Filter <String>] [-Maxpagesize <Int32>] [-Skip <Int32>]
+ [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -27,12 +28,6 @@ Get-AzEdgeMarketplaceOffer -Id <String> -ResourceUri <String> [-DefaultProfile <
 ```
 Get-AzEdgeMarketplaceOffer -InputObject <IEdgeMarketplaceIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### List
-```
-Get-AzEdgeMarketplaceOffer -ResourceUri <String> [-Filter <String>] [-Maxpagesize <Int32>] [-Skip <Int32>]
- [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -181,22 +176,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-The ID of the target subscription.
-The value must be an UUID.
-
-```yaml
-Type: System.String[]
-Parameter Sets: List1
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

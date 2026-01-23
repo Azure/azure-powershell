@@ -17,9 +17,6 @@ Get a Offer
 ### [Get-AzEdgeMarketplaceOfferAccessToken](Get-AzEdgeMarketplaceOfferAccessToken.md)
 Get access token.
 
-### [Get-AzEdgeMarketplacePublisher](Get-AzEdgeMarketplacePublisher.md)
-Get a Publisher
-
 ### [New-AzEdgeMarketplaceOfferAccessToken](New-AzEdgeMarketplaceOfferAccessToken.md)
 A long-running resource action.
 
