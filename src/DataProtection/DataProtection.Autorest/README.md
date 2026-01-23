@@ -66,6 +66,111 @@ directive:
     where: $.definitions.BackupVault
     transform: >
       delete $.required;
+  # Fix breaking change: Rename Operation to ClientDiscoveryValueForSingleApi to maintain backward compatibility
+  - from: swagger-document
+    where: $.definitions
+    transform: >
+      if ($["Operation"]) {
+        $["ClientDiscoveryValueForSingleApi"] = $["Operation"];
+        delete $["Operation"];
+      }
+  # Fix breaking change: Update OperationListResult to use ClientDiscoveryValueForSingleApi
+  - from: swagger-document
+    where: $.definitions.OperationListResult.properties.value.items
+    transform: >
+      $["$ref"] = "#/definitions/ClientDiscoveryValueForSingleApi";
+  # Fix breaking change: Add DppProxyResource definition (removed in new swagger)
+  - from: swagger-document
+    where: $.definitions
+    transform: >
+      $["DppProxyResource"] = {
+        "type": "object",
+        "x-ms-azure-resource": true,
+        "properties": {
+          "id": {
+            "description": "Proxy Resource Id represents the complete path to the resource.",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "description": "Proxy Resource name associated with the resource.",
+            "readOnly": true,
+            "type": "string"
+          },
+          "type": {
+            "description": "Proxy Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...",
+            "readOnly": true,
+            "type": "string"
+          },
+          "tags": {
+            "$ref": "#/definitions/DppProxyResourceTags"
+          },
+          "systemData": {
+            "$ref": "#/definitions/DppSystemData"
+          }
+        }
+      };
+      $["DppProxyResourceTags"] = {
+        "type": "object",
+        "description": "Proxy Resource tags.",
+        "additionalProperties": {
+          "type": "string"
+        }
+      };
+      $["DppSystemData"] = {
+        "description": "Metadata pertaining to creation and last modification of the resource.",
+        "type": "object",
+        "readOnly": true,
+        "properties": {
+          "createdBy": {
+            "type": "string",
+            "description": "The identity that created the resource."
+          },
+          "createdByType": {
+            "type": "string",
+            "description": "The type of identity that created the resource.",
+            "enum": ["User", "Application", "ManagedIdentity", "Key"],
+            "x-ms-enum": {
+              "name": "createdByType",
+              "modelAsString": true
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The timestamp of resource creation (UTC)."
+          },
+          "lastModifiedBy": {
+            "type": "string",
+            "description": "The identity that last modified the resource."
+          },
+          "lastModifiedByType": {
+            "type": "string",
+            "description": "The type of identity that last modified the resource.",
+            "enum": ["User", "Application", "ManagedIdentity", "Key"],
+            "x-ms-enum": {
+              "name": "createdByType",
+              "modelAsString": true
+            }
+          },
+          "lastModifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The timestamp of resource last modification (UTC)"
+          }
+        }
+      };
+  # Fix breaking change: Revert BackupInstanceResource to old definition (inherit from DppProxyResource, remove explicit tags)
+  - from: swagger-document
+    where: $.definitions.BackupInstanceResource
+    transform: >
+      delete $.properties.tags;
+      delete $.type;
+      $.allOf = [{ "$ref": "#/definitions/DppProxyResource" }];
+  - from: swagger-document
+    where: $.definitions
+    transform: >
+      delete $["BackupInstanceResourceTags"];
   - where:
       parameter-name: XmsAuthorizationAuxiliary
     set:
