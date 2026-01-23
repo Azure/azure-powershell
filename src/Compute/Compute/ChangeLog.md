@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Updated Compute SDK to be generated with autorest.powershell, replacing track 1 SDK
 
 ## Version 11.2.0
 * Added `-HighSpeedInterconnectPlacement` parameter to `New-AzVmssConfig` and `New-AzVmss` cmdlets.
