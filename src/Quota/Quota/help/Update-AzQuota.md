@@ -55,7 +55,7 @@ Please check the URI in location header for the detailed status of the request.
 ```powershell
 $quota = Get-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family"
 $limit = New-AzQuotaLimitObject -Value ($quota.Limit.Value + 1)
-Update-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family" -Name "standardFSv2Family" -Limit $limit
+Update-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family" -Limit $limit
 ```
 
 ```output
@@ -70,7 +70,7 @@ This command update the quota limit for a specific resource to the specified val
 ```powershell
 $quota = Get-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family"
 $limit = New-AzQuotaLimitObject -Value ($quota.Limit.Value + 1)
-Get-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family" | Update-AzQuota -Name "standardFSv2Family" -Limit $limit
+Get-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family" | Update-AzQuota -Limit $limit
 ```
 
 ```output
