@@ -1,8 +1,8 @@
 {
-  "Get-AzMigrateReplicationPolicy+[NoContext]+List+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationPolicies?api-version=2024-01-01+1": {
+  "Get-AzMigrateReplicationPolicy+[NoContext]+List+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationPolicies?api-version=2025-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationPolicies?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationPolicies?api-version=2025-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -44,10 +44,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzMigrateReplicationPolicy+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationPolicies/migrateecygqlapp4055sitepolicy?api-version=2024-01-01+1": {
+  "Get-AzMigrateReplicationPolicy+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationPolicies/migrateecygqlapp4055sitepolicy?api-version=2025-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationPolicies/migrateecygqlapp4055sitepolicy?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationPolicies/migrateecygqlapp4055sitepolicy?api-version=2025-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

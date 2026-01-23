@@ -25,7 +25,7 @@ The current list includes the following: Administrative, Security, ServiceHealth
 Gets the active subscription diagnostic settings for the specified resource.
 
 ### [New-AzDiagnosticSetting](New-AzDiagnosticSetting.md)
-Creates or updates diagnostic settings for the specified resource.
+Create diagnostic settings for the specified resource.
 
 ### [New-AzDiagnosticSettingLogSettingsObject](New-AzDiagnosticSettingLogSettingsObject.md)
 Create an in-memory object for LogSettings.
@@ -37,11 +37,17 @@ Create an in-memory object for MetricSettings.
 Create an in-memory object for SubscriptionLogSettings.
 
 ### [New-AzSubscriptionDiagnosticSetting](New-AzSubscriptionDiagnosticSetting.md)
-Creates or updates subscription diagnostic settings for the specified resource.
+Create subscription diagnostic settings for the specified resource.
 
 ### [Remove-AzDiagnosticSetting](Remove-AzDiagnosticSetting.md)
 Deletes existing diagnostic settings for the specified resource.
 
 ### [Remove-AzSubscriptionDiagnosticSetting](Remove-AzSubscriptionDiagnosticSetting.md)
 Deletes existing subscription diagnostic settings for the specified resource.
+
+### [Update-AzDiagnosticSetting](Update-AzDiagnosticSetting.md)
+Update diagnostic settings for the specified resource.
+
+### [Update-AzSubscriptionDiagnosticSetting](Update-AzSubscriptionDiagnosticSetting.md)
+Update subscription diagnostic settings for the specified resource.
 

@@ -1,0 +1,80 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers?api-version=2024-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI3MTYwMWItNDQ0Mi00NjJlLThhZTEtYzliNTU2NGQ0ODZmL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9jZW50cmFsdXMvZGVsZXRlZFNlcnZlcnM/YXBpLXZlcnNpb249MjAyNC0xMS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "85270fc0-e6ad-4860-b2f9-9aa735ad1cdd"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2225.52707",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/6.3.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c68941b1-f453-4bd3-86bb-bc03dd051bf9"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=291664dd-5ef7-4989-bcf5-c04f0d1b370d,objectId=23054630-f9c0-4e69-bec2-276da4339e9b/centralus/1f799fcb-30dc-4819-b995-a6e63ea64fc7"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "3749"
+        ],
+        "x-ms-correlation-request-id": [
+          "3e9a972e-baea-48de-b856-2552f8b3d7aa"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20260101T133813Z:3e9a972e-baea-48de-b856-2552f8b3d7aa"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: CA9D04FAA1A0412D99FDC932575F201D Ref B: SG2AA1070301031 Ref C: 2026-01-01T13:38:12Z"
+        ],
+        "Date": [
+          "Thu, 01 Jan 2026 13:38:12 GMT"
+        ],
+        "Content-Length": [
+          "1226"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"version\": \"12.0\",\r\n        \"deletionTime\": \"2026-01-01T07:54:27.427Z\",\r\n        \"originalId\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/resourceGroups/ps7936/providers/Microsoft.Sql/servers/ps2598\",\r\n        \"fullyQualifiedDomainName\": \"ps2598.database.windows.net\"\r\n      },\r\n      \"id\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers/ps2598\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"version\": \"12.0\",\r\n        \"deletionTime\": \"2026-01-01T13:06:10.68Z\",\r\n        \"originalId\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/resourceGroups/testold/providers/Microsoft.Sql/servers/ramyal0101181203\",\r\n        \"fullyQualifiedDomainName\": \"ramyal0101181203.database.windows.net\"\r\n      },\r\n      \"id\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers/ramyal0101181203\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"version\": \"12.0\",\r\n        \"deletionTime\": \"2025-12-31T07:58:58.247Z\",\r\n        \"originalId\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/resourceGroups/RG1/providers/Microsoft.Sql/servers/ramyal1231132321\",\r\n        \"fullyQualifiedDomainName\": \"ramyal1231132321.database.windows.net\"\r\n      },\r\n      \"id\": \"/subscriptions/5271601b-4442-462e-8ae1-c9b5564d486f/providers/Microsoft.Sql/locations/centralus/deletedServers/ramyal1231132321\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "5271601b-4442-462e-8ae1-c9b5564d486f"
+  }
+}

@@ -22,7 +22,8 @@ New-AzMigrateServerReplication -LicenseType <String> -TargetResourceGroupId <Str
  [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
  [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-Tag <Hashtable>]
  [-TargetBootDiagnosticsStorageAccount <String>] [-DiskEncryptionSetID <String>] [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-TargetCapacityReservationGroupId <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### ByIdPowerUser
@@ -35,8 +36,8 @@ New-AzMigrateServerReplication -LicenseType <String> -TargetResourceGroupId <Str
  [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
  [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-Tag <Hashtable>]
  [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>]
- -DiskToInclude <IVMwareCbtDiskInput[]> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-TargetCapacityReservationGroupId <String>] -DiskToInclude <IVMwareCbtDiskInput[]>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByInputObjectDefaultUser
@@ -49,7 +50,7 @@ New-AzMigrateServerReplication -LicenseType <String> -TargetResourceGroupId <Str
  [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
  [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-Tag <Hashtable>]
  [-TargetBootDiagnosticsStorageAccount <String>] [-DiskEncryptionSetID <String>] [-SubscriptionId <String>]
- -InputObject <IVMwareMachine> [-DefaultProfile <PSObject>]
+ [-TargetCapacityReservationGroupId <String>] -InputObject <IVMwareMachine> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -63,7 +64,8 @@ New-AzMigrateServerReplication -LicenseType <String> -TargetResourceGroupId <Str
  [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
  [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-Tag <Hashtable>]
  [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>]
- -DiskToInclude <IVMwareCbtDiskInput[]> -InputObject <IVMwareMachine> [-DefaultProfile <PSObject>]
+ [-TargetCapacityReservationGroupId <String>] -DiskToInclude <IVMwareCbtDiskInput[]>
+ -InputObject <IVMwareMachine> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -397,6 +399,21 @@ Accept wildcard characters: False
 
 ### -TargetBootDiagnosticsStorageAccount
 Specifies the storage account to be used for boot diagnostics.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetCapacityReservationGroupId
+Specifies the Target Capacity Reservation Group Id within the destination Azure subscription.
 
 ```yaml
 Type: System.String

@@ -74,12 +74,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_deploymentName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonString>("deploymentName"), out var __jsonDeploymentName) ? (string)__jsonDeploymentName : (string)DeploymentName;}
-            {_certificateName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonString>("certificateName"), out var __jsonCertificateName) ? (string)__jsonCertificateName : (string)CertificateName;}
-            {_configurationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonString>("configurationName"), out var __jsonConfigurationName) ? (string)__jsonConfigurationName : (string)ConfigurationName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_deploymentName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonString>("deploymentName"), out var __jsonDeploymentName) ? (string)__jsonDeploymentName : (string)_deploymentName;}
+            {_certificateName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonString>("certificateName"), out var __jsonCertificateName) ? (string)__jsonCertificateName : (string)_certificateName;}
+            {_configurationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonString>("configurationName"), out var __jsonConfigurationName) ? (string)__jsonConfigurationName : (string)_configurationName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

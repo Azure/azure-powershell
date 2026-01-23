@@ -53,8 +53,7 @@ POLICYSIGNINGCERTIFICATEKEY <IJsonWebKey[]>: The value of the "keys" parameter i
 https://learn.microsoft.com/powershell/module/az.attestation/new-azattestationprovider
 #>
 function New-AzAttestationProvider {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider])]
-[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider", DeprecatedOutputProperties = ("PrivateEndpointConnection Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IPrivateEndpointConnection"), NewOutputProperties = ("PrivateEndpointConnection System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IPrivateEndpointConnection]"))]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -78,13 +77,13 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Body')]
     [System.String]
     # The supported Azure location where the attestation provider should be created.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Body')]
     [System.String]
@@ -94,19 +93,32 @@ param(
     # To construct, see NOTES section for POLICYSIGNINGCERTIFICATEKEY properties and create a hash table.
     ${PolicySigningCertificateKeyPath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationServiceCreationParamsTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationServiceCreationParamsTags]))]
     [System.Collections.Hashtable]
     # The tags that will be assigned to the attestation provider.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -152,7 +164,7 @@ param(
 process {
     if($PSBoundParameters.ContainsKey("PolicySigningCertificateKeyPath")){
         $PolicySigningCertificateKeyPath = (Resolve-Path -Path $PolicySigningCertificateKeyPath).Path 
-        $PolicySigningCertificateKey = [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.JsonWebKeyHelper]::GetJsonWebKeys($PolicySigningCertificateKeyPath)
+        $PolicySigningCertificateKey = [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.JsonWebKeyHelper]::GetJsonWebKeys($PolicySigningCertificateKeyPath)
         $null = $PSBoundParameters.Add("PolicySigningCertificateKey", $PolicySigningCertificateKey)
         $null = $PSBoundParameters.Remove("PolicySigningCertificateKeyPath")
     }

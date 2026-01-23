@@ -5495,6 +5495,10 @@
 							  <Label>Tag</Label>
 							  <PropertyName>Tag</PropertyName>
 						  </ListItem>
+							<ListItem>
+								<Label>NvaInterfaceConfigurations</Label>
+								<PropertyName>NvaInterfaceConfigurations</PropertyName>
+							</ListItem>
 					  </ListItems>
 				  </ListEntry>
 			  </ListEntries>

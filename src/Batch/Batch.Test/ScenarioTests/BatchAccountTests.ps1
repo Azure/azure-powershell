@@ -84,7 +84,7 @@ function Test-BatchAccountEndToEnd
         {
             # Delete the account
             Remove-AzBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Force
-            $errorMessage = "The specified account does not exist."
+            $errorMessage = "was not found"
             Assert-ThrowsContains { Get-AzBatchAccount -Name $accountName -ResourceGroupName $resourceGroup } $errorMessage
         }
         finally

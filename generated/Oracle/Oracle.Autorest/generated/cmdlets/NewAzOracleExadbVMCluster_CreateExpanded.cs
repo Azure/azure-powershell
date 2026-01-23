@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMCluster))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"create a ExadbVmCluster")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/exadbVmClusters/{exadbVmClusterName}", ApiVersion = "2025-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/exadbVmClusters/{exadbVmClusterName}", ApiVersion = "2025-09-01")]
     public partial class NewAzOracleExadbVMCluster_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IContext
@@ -40,17 +40,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
         /// <summary>ExadbVmCluster resource definition</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMCluster _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ExadbVMCluster();
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -393,6 +384,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string Shape { get => _resourceBody.Shape ?? null; set => _resourceBody.Shape = value; }
 
+        /// <summary>The type of Exascale storage used for Exadata VM cluster.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of Exascale storage used for Exadata VM cluster.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of Exascale storage used for Exadata VM cluster.",
+        SerializedName = @"shapeAttribute",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("SMART_STORAGE", "BLOCK_STORAGE")]
+        public string ShapeAttribute { get => _resourceBody.ShapeAttribute ?? null; set => _resourceBody.ShapeAttribute = value; }
+
         /// <summary>
         /// The public key portion of one or more key pairs used for SSH access to the Exadata VM cluster on Exascale Infrastructure.
         /// </summary>
@@ -587,11 +590,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Oracle.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -907,24 +905,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMCluster
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

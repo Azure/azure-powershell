@@ -6,20 +6,22 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a new Kubernetes cluster or update the properties of the existing one.</summary>
+    /// <summary>create a new Kubernetes cluster or create the properties of the existing one.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzNetworkCloudKubernetesCluster_CreateExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesCluster", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"AadConfigurationAdminGroupObjectId","AdministratorConfigurationSshPublicKey","AttachedNetworkConfigurationL2Network","AttachedNetworkConfigurationL3Network","AttachedNetworkConfigurationTrunkedNetwork","AttachedNetworkId","AvailabilityZone","AvailableUpgrade","BgpServiceLoadBalancerConfigurationBgpAdvertisement","BgpServiceLoadBalancerConfigurationBgpPeer","BgpServiceLoadBalancerConfigurationIPAddressPool","ControlPlaneNodeConfigurationAdministratorConfigurationSshPublicKey","ControlPlaneNodeConfigurationAvailabilityZone","FeatureStatuses","InitialAgentPoolConfiguration","L2ServiceLoadBalancerConfigurationIPAddressPool","Label","NetworkConfigurationPodCidr","NetworkConfigurationServiceCidr","Node","SshPublicKey","Taint"}, NewOutputProperties=new string[] {"AadConfigurationAdminGroupObjectId","AdministratorConfigurationSshPublicKey","AttachedNetworkConfigurationL2Network","AttachedNetworkConfigurationL3Network","AttachedNetworkConfigurationTrunkedNetwork","AttachedNetworkId","AvailabilityZone","AvailableUpgrade","BgpServiceLoadBalancerConfigurationBgpAdvertisement","BgpServiceLoadBalancerConfigurationBgpPeer","BgpServiceLoadBalancerConfigurationIPAddressPool","ControlPlaneNodeConfigurationAdministratorConfigurationSshPublicKey","ControlPlaneNodeConfigurationAvailabilityZone","FeatureStatuses","InitialAgentPoolConfiguration","L2ServiceLoadBalancerConfigurationIPAddressPool","Label","NetworkConfigurationPodCidr","NetworkConfigurationServiceCidr","Node","SshPublicKey","Taint"}, ChangeDescription="The type of properties will be changed from fixed array to 'List'.")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesCluster))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Create a new Kubernetes cluster or update the properties of the existing one.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesCluster))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"create a new Kubernetes cluster or create the properties of the existing one.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}", ApiVersion = "2025-02-01")]
     public partial class NewAzNetworkCloudKubernetesCluster_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -35,8 +37,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>KubernetesCluster represents the Kubernetes cluster hosted on Network Cloud.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesCluster _kubernetesClusterParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.KubernetesCluster();
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesCluster _kubernetesClusterParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.KubernetesCluster();
 
         /// <summary>
         /// The list of Azure Active Directory group object IDs that will have an administrative role on the Kubernetes cluster.
@@ -50,7 +55,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The list of Azure Active Directory group object IDs that will have an administrative role on the Kubernetes cluster.",
         SerializedName = @"adminGroupObjectIds",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] AadConfigurationAdminGroupObjectId { get => _kubernetesClusterParametersBody.AadConfigurationAdminGroupObjectId ?? null /* arrayOf */; set => _kubernetesClusterParametersBody.AadConfigurationAdminGroupObjectId = value; }
+        public string[] AadConfigurationAdminGroupObjectId { get => _kubernetesClusterParametersBody.AadConfigurationAdminGroupObjectId?.ToArray() ?? null /* fixedArrayOf */; set => _kubernetesClusterParametersBody.AadConfigurationAdminGroupObjectId = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>
         /// The user name for the administrator that will be applied to the operating systems that run Kubernetes nodes. If not supplied,
@@ -80,8 +85,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The list of Layer 2 Networks and related configuration for attachment.",
         SerializedName = @"l2Networks",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL2NetworkAttachmentConfiguration) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL2NetworkAttachmentConfiguration[] AttachedNetworkConfigurationL2Network { get => _kubernetesClusterParametersBody.AttachedNetworkConfigurationL2Network ?? null /* arrayOf */; set => _kubernetesClusterParametersBody.AttachedNetworkConfigurationL2Network = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL2NetworkAttachmentConfiguration) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL2NetworkAttachmentConfiguration[] AttachedNetworkConfigurationL2Network { get => _kubernetesClusterParametersBody.AttachedNetworkConfigurationL2Network?.ToArray() ?? null /* fixedArrayOf */; set => _kubernetesClusterParametersBody.AttachedNetworkConfigurationL2Network = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL2NetworkAttachmentConfiguration>(value) : null); }
 
         /// <summary>The list of Layer 3 Networks and related configuration for attachment.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -92,8 +97,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The list of Layer 3 Networks and related configuration for attachment.",
         SerializedName = @"l3Networks",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL3NetworkAttachmentConfiguration) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL3NetworkAttachmentConfiguration[] AttachedNetworkConfigurationL3Network { get => _kubernetesClusterParametersBody.AttachedNetworkConfigurationL3Network ?? null /* arrayOf */; set => _kubernetesClusterParametersBody.AttachedNetworkConfigurationL3Network = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL3NetworkAttachmentConfiguration) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL3NetworkAttachmentConfiguration[] AttachedNetworkConfigurationL3Network { get => _kubernetesClusterParametersBody.AttachedNetworkConfigurationL3Network?.ToArray() ?? null /* fixedArrayOf */; set => _kubernetesClusterParametersBody.AttachedNetworkConfigurationL3Network = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL3NetworkAttachmentConfiguration>(value) : null); }
 
         /// <summary>The list of Trunked Networks and related configuration for attachment.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -104,8 +109,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The list of Trunked Networks and related configuration for attachment.",
         SerializedName = @"trunkedNetworks",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ITrunkedNetworkAttachmentConfiguration) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ITrunkedNetworkAttachmentConfiguration[] AttachedNetworkConfigurationTrunkedNetwork { get => _kubernetesClusterParametersBody.AttachedNetworkConfigurationTrunkedNetwork ?? null /* arrayOf */; set => _kubernetesClusterParametersBody.AttachedNetworkConfigurationTrunkedNetwork = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrunkedNetworkAttachmentConfiguration) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrunkedNetworkAttachmentConfiguration[] AttachedNetworkConfigurationTrunkedNetwork { get => _kubernetesClusterParametersBody.AttachedNetworkConfigurationTrunkedNetwork?.ToArray() ?? null /* fixedArrayOf */; set => _kubernetesClusterParametersBody.AttachedNetworkConfigurationTrunkedNetwork = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrunkedNetworkAttachmentConfiguration>(value) : null); }
 
         /// <summary>
         /// The association of IP address pools to the communities and peers, allowing for announcement of IPs.
@@ -118,8 +123,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The association of IP address pools to the communities and peers, allowing for announcement of IPs.",
         SerializedName = @"bgpAdvertisements",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBgpAdvertisement) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBgpAdvertisement[] BgpAdvertisement { get => _kubernetesClusterParametersBody.BgpServiceLoadBalancerConfigurationBgpAdvertisement ?? null /* arrayOf */; set => _kubernetesClusterParametersBody.BgpServiceLoadBalancerConfigurationBgpAdvertisement = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBgpAdvertisement) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBgpAdvertisement[] BgpAdvertisement { get => _kubernetesClusterParametersBody.BgpServiceLoadBalancerConfigurationBgpAdvertisement?.ToArray() ?? null /* fixedArrayOf */; set => _kubernetesClusterParametersBody.BgpServiceLoadBalancerConfigurationBgpAdvertisement = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBgpAdvertisement>(value) : null); }
 
         /// <summary>
         /// The list of pools of IP addresses that can be allocated to load balancer services.
@@ -132,8 +137,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The list of pools of IP addresses that can be allocated to load balancer services.",
         SerializedName = @"ipAddressPools",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IIPAddressPool) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IIPAddressPool[] BgpIPAddressPool { get => _kubernetesClusterParametersBody.BgpServiceLoadBalancerConfigurationIPAddressPool ?? null /* arrayOf */; set => _kubernetesClusterParametersBody.BgpServiceLoadBalancerConfigurationIPAddressPool = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IIPAddressPool) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IIPAddressPool[] BgpIPAddressPool { get => _kubernetesClusterParametersBody.BgpServiceLoadBalancerConfigurationIPAddressPool?.ToArray() ?? null /* fixedArrayOf */; set => _kubernetesClusterParametersBody.BgpServiceLoadBalancerConfigurationIPAddressPool = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IIPAddressPool>(value) : null); }
 
         /// <summary>
         /// The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.
@@ -146,8 +151,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.",
         SerializedName = @"bgpPeers",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IServiceLoadBalancerBgpPeer) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IServiceLoadBalancerBgpPeer[] BgpPeer { get => _kubernetesClusterParametersBody.BgpServiceLoadBalancerConfigurationBgpPeer ?? null /* arrayOf */; set => _kubernetesClusterParametersBody.BgpServiceLoadBalancerConfigurationBgpPeer = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IServiceLoadBalancerBgpPeer) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IServiceLoadBalancerBgpPeer[] BgpPeer { get => _kubernetesClusterParametersBody.BgpServiceLoadBalancerConfigurationBgpPeer?.ToArray() ?? null /* fixedArrayOf */; set => _kubernetesClusterParametersBody.BgpServiceLoadBalancerConfigurationBgpPeer = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IServiceLoadBalancerBgpPeer>(value) : null); }
 
         /// <summary>The indicator to specify if the load balancer peers with the network fabric.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The indicator to specify if the load balancer peers with the network fabric.")]
@@ -157,14 +162,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The indicator to specify if the load balancer peers with the network fabric.",
         SerializedName = @"fabricPeeringEnabled",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.FabricPeeringEnabled) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.FabricPeeringEnabled))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.FabricPeeringEnabled BgpServiceLoadBalancerConfigurationFabricPeeringEnabled { get => _kubernetesClusterParametersBody.BgpServiceLoadBalancerConfigurationFabricPeeringEnabled ?? ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.FabricPeeringEnabled)""); set => _kubernetesClusterParametersBody.BgpServiceLoadBalancerConfigurationFabricPeeringEnabled = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
+        public string BgpServiceLoadBalancerConfigurationFabricPeeringEnabled { get => _kubernetesClusterParametersBody.BgpServiceLoadBalancerConfigurationFabricPeeringEnabled ?? null; set => _kubernetesClusterParametersBody.BgpServiceLoadBalancerConfigurationFabricPeeringEnabled = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.NetworkCloud Client => Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Module.Instance.ClientAPI;
@@ -181,8 +189,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.",
         SerializedName = @"sshPublicKeys",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ISshPublicKey) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ISshPublicKey[] ControlPlaneNodeConfigurationAdminPublicKey { get => _kubernetesClusterParametersBody.ControlPlaneNodeConfigurationAdministratorConfigurationSshPublicKey ?? null /* arrayOf */; set => _kubernetesClusterParametersBody.ControlPlaneNodeConfigurationAdministratorConfigurationSshPublicKey = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey[] ControlPlaneNodeConfigurationAdminPublicKey { get => _kubernetesClusterParametersBody.ControlPlaneNodeConfigurationAdministratorConfigurationSshPublicKey?.ToArray() ?? null /* fixedArrayOf */; set => _kubernetesClusterParametersBody.ControlPlaneNodeConfigurationAdministratorConfigurationSshPublicKey = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey>(value) : null); }
 
         /// <summary>
         /// The user name for the administrator that will be applied to the operating systems that run Kubernetes nodes. If not supplied,
@@ -211,7 +219,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The list of availability zones of the Network Cloud cluster to be used for the provisioning of nodes in the control plane. If not specified, all availability zones will be used.",
         SerializedName = @"availabilityZones",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] ControlPlaneNodeConfigurationAvailabilityZone { get => _kubernetesClusterParametersBody.ControlPlaneNodeConfigurationAvailabilityZone ?? null /* arrayOf */; set => _kubernetesClusterParametersBody.ControlPlaneNodeConfigurationAvailabilityZone = value; }
+        public string[] ControlPlaneNodeConfigurationAvailabilityZone { get => _kubernetesClusterParametersBody.ControlPlaneNodeConfigurationAvailabilityZone?.ToArray() ?? null /* fixedArrayOf */; set => _kubernetesClusterParametersBody.ControlPlaneNodeConfigurationAvailabilityZone = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>The number of virtual machines that use this configuration.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The number of virtual machines that use this configuration.")]
@@ -266,6 +274,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         public string ExtendedLocationType { get => _kubernetesClusterParametersBody.ExtendedLocationType ?? null; set => _kubernetesClusterParametersBody.ExtendedLocationType = value; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -326,25 +337,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The agent pools that are created with this Kubernetes cluster for running critical system services and workloads. This data in this field is only used during creation, and the field will be empty following the creation of the Kubernetes Cluster. After creation, the management of agent pools is done using the agentPools sub-resource.",
         SerializedName = @"initialAgentPoolConfigurations",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IInitialAgentPoolConfiguration) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IInitialAgentPoolConfiguration[] InitialAgentPoolConfiguration { get => _kubernetesClusterParametersBody.InitialAgentPoolConfiguration ?? null /* arrayOf */; set => _kubernetesClusterParametersBody.InitialAgentPoolConfiguration = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IInitialAgentPoolConfiguration) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IInitialAgentPoolConfiguration[] InitialAgentPoolConfiguration { get => _kubernetesClusterParametersBody.InitialAgentPoolConfiguration?.ToArray() ?? null /* fixedArrayOf */; set => _kubernetesClusterParametersBody.InitialAgentPoolConfiguration = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IInitialAgentPoolConfiguration>(value) : null); }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
-
-        /// <summary>Backing field for <see cref="KubernetesClusterName" /> property.</summary>
-        private string _kubernetesClusterName;
-
-        /// <summary>The name of the Kubernetes cluster.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the Kubernetes cluster.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The name of the Kubernetes cluster.",
-        SerializedName = @"kubernetesClusterName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Path)]
-        public string KubernetesClusterName { get => this._kubernetesClusterName; set => this._kubernetesClusterName = value; }
 
         /// <summary>The Kubernetes version for this cluster.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The Kubernetes version for this cluster.")]
@@ -368,8 +365,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The list of pools of IP addresses that can be allocated to load balancer services.",
         SerializedName = @"ipAddressPools",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IIPAddressPool) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IIPAddressPool[] L2ServiceLoadBalancerConfigurationIPAddressPool { get => _kubernetesClusterParametersBody.L2ServiceLoadBalancerConfigurationIPAddressPool ?? null /* arrayOf */; set => _kubernetesClusterParametersBody.L2ServiceLoadBalancerConfigurationIPAddressPool = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IIPAddressPool) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IIPAddressPool[] L2ServiceLoadBalancerConfigurationIPAddressPool { get => _kubernetesClusterParametersBody.L2ServiceLoadBalancerConfigurationIPAddressPool?.ToArray() ?? null /* fixedArrayOf */; set => _kubernetesClusterParametersBody.L2ServiceLoadBalancerConfigurationIPAddressPool = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IIPAddressPool>(value) : null); }
 
         /// <summary>The geo-location where the resource lives</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The geo-location where the resource lives")]
@@ -415,6 +412,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
 
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
+
+        /// <summary>Backing field for <see cref="Name" /> property.</summary>
+        private string _name;
+
+        /// <summary>The name of the Kubernetes cluster.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the Kubernetes cluster.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The name of the Kubernetes cluster.",
+        SerializedName = @"kubernetesClusterName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("KubernetesClusterName")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Path)]
+        public string Name { get => this._name; set => this._name = value; }
 
         /// <summary>The resource ID of the associated Cloud Services network.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The resource ID of the associated Cloud Services network.")]
@@ -467,7 +479,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.",
         SerializedName = @"podCidrs",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] NetworkConfigurationPodCidr { get => _kubernetesClusterParametersBody.NetworkConfigurationPodCidr ?? null /* arrayOf */; set => _kubernetesClusterParametersBody.NetworkConfigurationPodCidr = value; }
+        public string[] NetworkConfigurationPodCidr { get => _kubernetesClusterParametersBody.NetworkConfigurationPodCidr?.ToArray() ?? null /* fixedArrayOf */; set => _kubernetesClusterParametersBody.NetworkConfigurationPodCidr = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>
         /// The CIDR notation IP ranges from which to assign service IPs. One IPv4 CIDR is expected for single-stack networking. Two
@@ -482,7 +494,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The CIDR notation IP ranges from which to assign service IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.",
         SerializedName = @"serviceCidrs",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] NetworkConfigurationServiceCidr { get => _kubernetesClusterParametersBody.NetworkConfigurationServiceCidr ?? null /* arrayOf */; set => _kubernetesClusterParametersBody.NetworkConfigurationServiceCidr = value; }
+        public string[] NetworkConfigurationServiceCidr { get => _kubernetesClusterParametersBody.NetworkConfigurationServiceCidr?.ToArray() ?? null /* fixedArrayOf */; set => _kubernetesClusterParametersBody.NetworkConfigurationServiceCidr = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
@@ -495,7 +507,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -539,8 +551,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.",
         SerializedName = @"sshPublicKeys",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ISshPublicKey) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ISshPublicKey[] SshPublicKey { get => _kubernetesClusterParametersBody.SshPublicKey ?? null /* arrayOf */; set => _kubernetesClusterParametersBody.SshPublicKey = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey[] SshPublicKey { get => _kubernetesClusterParametersBody.SshPublicKey?.ToArray() ?? null /* fixedArrayOf */; set => _kubernetesClusterParametersBody.SshPublicKey = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey>(value) : null); }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -556,7 +568,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -569,32 +582,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.ITrackedResourceTags Tag { get => _kubernetesClusterParametersBody.Tag ?? null /* object */; set => _kubernetesClusterParametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceTags Tag { get => _kubernetesClusterParametersBody.Tag ?? null /* object */; set => _kubernetesClusterParametersBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesCluster">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesCluster</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesCluster">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesCluster</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesCluster> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesCluster> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -634,7 +647,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
             clone._kubernetesClusterParametersBody = this._kubernetesClusterParametersBody;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
-            clone.KubernetesClusterName = this.KubernetesClusterName;
+            clone.Name = this.Name;
             clone.IfMatch = this.IfMatch;
             clone.IfNoneMatch = this.IfNoneMatch;
             return clone;
@@ -707,11 +720,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -723,10 +761,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -736,7 +790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzNetworkCloudKubernetesCluster_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzNetworkCloudKubernetesCluster_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzNetworkCloudKubernetesCluster_CreateExpanded()
         {
@@ -802,7 +856,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -815,12 +869,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.KubernetesClustersCreateOrUpdate(SubscriptionId, ResourceGroupName, KubernetesClusterName, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _kubernetesClusterParametersBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.KubernetesClustersCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _kubernetesClusterParametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,KubernetesClusterName=KubernetesClusterName,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null,body=_kubernetesClusterParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -858,12 +912,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -880,15 +934,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, KubernetesClusterName=KubernetesClusterName, IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, body=_kubernetesClusterParametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, KubernetesClusterName=KubernetesClusterName, IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, body=_kubernetesClusterParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -898,12 +952,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesCluster">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesCluster</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesCluster">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesCluster</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesCluster> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesCluster> response)
         {
             using( NoSynchronizationContext )
             {
@@ -915,8 +969,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesCluster
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesCluster
+                var result = (await response);
+                WriteObject(result, false);
             }
         }
     }

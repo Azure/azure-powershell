@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzDiagnosticSettingSubscriptionLogSettingsObject
+online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-azdiagnosticsettingsubscriptionlogsettingsobject
 schema: 2.0.0
 ---
 
@@ -83,7 +83,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.SubscriptionLogSettings
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.SubscriptionLogSettings
 
 ## NOTES
 

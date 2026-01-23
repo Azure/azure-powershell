@@ -20,9 +20,10 @@ New-AzMigrateServerReplication -DiskType <String> -LicenseType <String> -Machine
  [-LinuxLicenseType <String>] [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
  [-PerformAutoResync <String>] [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
- [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
- [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetCapacityReservationGroupId <String>]
+ [-TargetVMSize <String>] [-TestNetworkId <String>] [-TestSubnetName <String>]
+ [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-VMWarerunasaccountID <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByIdPowerUser
@@ -33,9 +34,10 @@ New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -LicenseTy
  [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-PerformAutoResync <String>]
  [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
- [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
- [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetCapacityReservationGroupId <String>]
+ [-TargetVMSize <String>] [-TestNetworkId <String>] [-TestSubnetName <String>]
+ [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-VMWarerunasaccountID <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByInputObjectDefaultUser
@@ -47,9 +49,10 @@ New-AzMigrateServerReplication -DiskType <String> -InputObject <IVMwareMachine> 
  [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-PerformAutoResync <String>]
  [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
- [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
- [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetCapacityReservationGroupId <String>]
+ [-TargetVMSize <String>] [-TestNetworkId <String>] [-TestSubnetName <String>]
+ [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-VMWarerunasaccountID <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByInputObjectPowerUser
@@ -60,9 +63,10 @@ New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -InputObje
  [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-PerformAutoResync <String>]
  [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
- [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
- [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetCapacityReservationGroupId <String>]
+ [-TargetVMSize <String>] [-TestNetworkId <String>] [-TestSubnetName <String>]
+ [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-VMWarerunasaccountID <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -395,6 +399,21 @@ Accept wildcard characters: False
 
 ### -TargetBootDiagnosticsStorageAccount
 Specifies the storage account to be used for boot diagnostics.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetCapacityReservationGroupId
+Specifies the Target Capacity Reservation Group Id within the destination Azure subscription.
 
 ```yaml
 Type: System.String

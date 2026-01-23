@@ -199,6 +199,11 @@ param(
 )
 
     process {
+        $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonSettings.ps1")
+        Import-Module $helperPath
+        $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonHelper.ps1")
+        Import-Module $helperPath
+
         $parameterSet = $PSCmdlet.ParameterSetName
         $null = $PSBoundParameters.Remove('ID')
         $null = $PSBoundParameters.Remove('ResourceGroupName')
@@ -208,11 +213,21 @@ param(
         $null = $PSBoundParameters.Remove('ResourceGroupID')
         $null = $PSBoundParameters.Remove('ProjectID')
 
-        if (($parameterSet -match 'Name') -or ($parameterSet -eq 'ListById')) {
-            if ($parameterSet -eq 'ListById') {
+        # Set common ErrorVariable and ErrorAction for get behaviors
+        $null = $PSBoundParameters.Add('ErrorVariable', 'notPresent')
+        $null = $PSBoundParameters.Add('ErrorAction', 'SilentlyContinue')
+
+        if (($parameterSet -match 'Name') -or ($parameterSet -eq 'ListById'))
+        {
+            if ($parameterSet -eq 'ListById')
+            {
                 $ProjectIdArray = $ProjectID.Split("/")
-                if ($ProjectIdArray.Length -lt 9) {
-                    throw "Invalid Project ID '$ProjectID'"
+                if ($ProjectIdArray.Length -lt 9)
+                {
+                    throw New-InvalidResourceIdProvidedException `
+                        -ResourceId $ProjectID `
+                        -ResourceType "MigrateProject" `
+                        -Format $IdFormats.MigrateProjectArmIdTemplate
                 }
                 $ProjectName = $ProjectIdArray[8]
                 $ResourceGroupName = $ResourceGroupID.Split("/")[4]
@@ -234,29 +249,62 @@ param(
                 throw "Solution not found."
             }
 
-            $null = $PSBoundParameters.Remove("ResourceGroupName")
-            $null = $PSBoundParameters.Remove("Name")
+            # Get the migrate solution with ResourceGroupName, Name, ProjectName
+            $amhSolutionName = $AzMigrateSolutions.DataReplicationSolution
+            $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+            $null = $PSBoundParameters.Add("Name", $amhSolutionName)
+            $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
+            $solution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters
+            if ($null -eq $solution)
+            {
+                throw New-AzMigrateSolutionNotFoundException `
+                    -Name $amhSolutionName `
+                    -ResourceGroupName $ResourceGroupName `
+                    -ProjectName $ProjectName
+            }
             $null = $PSBoundParameters.Remove("MigrateProjectName")
+            $null = $PSBoundParameters.Remove("Name")
+            $null = $PSBoundParameters.Remove("ResourceGroupName")
+
+            $vaultId = $solution.DetailExtendedDetail["vaultId"]
+            $vaultIdArray = $vaultId.Split("/")
+            if ($vaultIdArray.Length -lt 9)
+            {
+                throw New-ReplicationVaultNotFoundInAMHSolutionException -VaultId $vaultId
+            }
+            $vaultName = $vaultIdArray[8]
         }
-        else {
-            if ($parameterSet -eq 'GetByInputObject') {
+        else
+        {
+            if ($parameterSet -eq 'GetByInputObject')
+            {
                 $ID = $InputObject.Id
             }
             $jobIdArray = $ID.split('/')
-            if ($jobIdArray.Length -lt 11) {
-                throw "Invalid Job ID '$ID'"
+            if ($jobIdArray.Length -lt 11)
+            {
+                throw New-InvalidResourceIdProvidedException `
+                    -ResourceId $ID `
+                    -ResourceType "Job" `
+                    -Format $IdFormats.ToLocalJobArmIdTemplate
             }
             $ResourceGroupName = $jobIdArray[4]
             $vaultName = $jobIdArray[8]
             $Name = $jobIdArray[10]
         }
         
+        # Get job with ResourceGroupName, VaultName, JobName
         $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
         $null = $PSBoundParameters.Add('VaultName', $vaultName)
-        if ($parameterSet -match 'Get') {
+        if ($parameterSet -match 'Get')
+        {
             $null = $PSBoundParameters.Add('JobName', $Name)
         }
 
-        return  Az.Migrate.Internal\Get-AzMigrateLocalReplicationJob @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+        # Remove common ErrorVariable and ErrorAction for get behaviors
+        $null = $PSBoundParameters.Remove('ErrorVariable')
+        $null = $PSBoundParameters.Remove('ErrorAction')
+
+        return  Az.Migrate.Internal\Get-AzMigrateLocalReplicationJob @PSBoundParameters
     }
 }

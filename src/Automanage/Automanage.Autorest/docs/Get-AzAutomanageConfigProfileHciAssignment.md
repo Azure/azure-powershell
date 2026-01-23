@@ -24,6 +24,12 @@ Get-AzAutomanageConfigProfileHciAssignment -InputObject <IAutomanageIdentity> [-
  [<CommonParameters>]
 ```
 
+### GetViaIdentityCluster
+```
+Get-AzAutomanageConfigProfileHciAssignment -ClusterInputObject <IAutomanageIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get information about a configuration profile assignment
 
@@ -71,6 +77,21 @@ This command gets information about a configuration profile assignment.
 
 ## PARAMETERS
 
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
+Parameter Sets: GetViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the Arc machine.
 
@@ -104,7 +125,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
@@ -158,7 +178,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment
+### Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment
 
 ## NOTES
 

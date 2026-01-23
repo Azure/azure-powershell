@@ -14,6 +14,10 @@
 [CmdletBinding(DefaultParameterSetName = "AllSet")]
 param (
     [string]$RepoRoot,
+    [ArgumentCompleter({
+        param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)
+        @('Debug', 'Release') | Where-Object { $_ -like "$wordToComplete*" }
+    })]
     [string]$Configuration = 'Debug',
     [Parameter(ParameterSetName = "AllSet")]
     [string]$TestsToRun = 'All',
@@ -137,7 +141,7 @@ if ($InvokedByPipeline) {
 }
 foreach ($moduleRootName in $TargetModule) {
     Write-Host "Preparing $moduleRootName ..." -ForegroundColor DarkGreen
-    & $prepareScriptPath -ModuleRootName $moduleRootName -RepoRoot $RepoRoot -ForceRegenerate:$ForceRegenerate -InvokedByPipeline:$isInvokedByPipeline
+    & $prepareScriptPath -ModuleRootName $moduleRootName -RepoRoot $RepoRoot -Configuration $Configuration -ForceRegenerate:$ForceRegenerate -InvokedByPipeline:$isInvokedByPipeline
 }
 
 $buildCsprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -RepoRoot $RepoRoot -Configuration $Configuration

@@ -1,8 +1,8 @@
 {
-  "New-AzMigrateReplicationPolicy+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationPolicies/migratesignoff2105app1452sitepolicy?api-version=2024-01-01+1": {
+  "New-AzMigrateReplicationPolicy+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationPolicies/migratesignoff2105app1452sitepolicy?api-version=2025-08-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationPolicies/migratesignoff2105app1452sitepolicy?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationPolicies/migratesignoff2105app1452sitepolicy?api-version=2025-08-01",
       "Content": "{\n  \"properties\": {\n    \"providerSpecificInput\": {\n      \"instanceType\": \"VMwareCbt\",\n      \"recoveryPointHistoryInMinutes\": 4320,\n      \"crashConsistentFrequencyInMinutes\": 60,\n      \"appConsistentFrequencyInMinutes\": 240\n    }\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -86,10 +86,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzMigrateReplicationPolicy+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationPolicies/migratesignoff2105app1452sitepolicy?api-version=2024-01-01+3": {
+  "New-AzMigrateReplicationPolicy+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationPolicies/migratesignoff2105app1452sitepolicy?api-version=2025-08-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationPolicies/migratesignoff2105app1452sitepolicy?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationPolicies/migratesignoff2105app1452sitepolicy?api-version=2025-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

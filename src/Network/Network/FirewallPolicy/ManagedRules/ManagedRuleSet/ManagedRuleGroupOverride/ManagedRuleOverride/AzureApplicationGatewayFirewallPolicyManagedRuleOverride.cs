@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Sensitivity of the Rule.")]
-        [ValidateSet("None", "Low", "Medium", "High", IgnoreCase = true)]
+        [ValidateSet("Low", "Medium", "High", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Sensitivity { get; set; }
 
