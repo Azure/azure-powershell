@@ -215,6 +215,12 @@ function New-AzMigrateServerReplication {
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the Target Capacity Reservation Group Id within the destination Azure subscription.
+        ${TargetCapacityReservationGroupId},
     
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
@@ -290,6 +296,7 @@ function New-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('TestSubnetName')
         $null = $PSBoundParameters.Remove('TargetVMName')
         $null = $PSBoundParameters.Remove('TargetVMSize')
+        $null = $PSBoundParameters.Remove('TargetCapacityReservationGroupId')
         $null = $PSBoundParameters.Remove('PerformAutoResync')
         $null = $PSBoundParameters.Remove('DiskType')
         $null = $PSBoundParameters.Remove('OSDiskID')
@@ -655,6 +662,7 @@ public static int hashForArtifact(String artifact)
         $ProviderSpecificDetails.TargetSubnetName = $TargetSubnetName
         $ProviderSpecificDetails.TestNetworkId = $TestNetworkId
         $ProviderSpecificDetails.TestSubnetName = $TestSubnetName
+        $ProviderSpecificDetails.TargetCapacityReservationGroupId = $TargetCapacityReservationGroupId
 
         if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
             throw "The target virtual machine name must be between 1 and 64 characters long."

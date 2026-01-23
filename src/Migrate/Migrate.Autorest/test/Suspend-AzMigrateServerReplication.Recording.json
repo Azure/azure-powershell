@@ -1,8 +1,8 @@
 {
-  "Suspend-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037d276-0d72-7b96-7f6d-2ce50a4c05e5?api-version=2024-01-01+1": {
+  "Suspend-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037d276-0d72-7b96-7f6d-2ce50a4c05e5?api-version=2025-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037d276-0d72-7b96-7f6d-2ce50a4c05e5?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037d276-0d72-7b96-7f6d-2ce50a4c05e5?api-version=2025-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -44,10 +44,10 @@
       "isContentBase64": false
     }
   },
-  "Suspend-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$POST+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037d276-0d72-7b96-7f6d-2ce50a4c05e5/pauseReplication?api-version=2024-01-01+2": {
+  "Suspend-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$POST+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037d276-0d72-7b96-7f6d-2ce50a4c05e5/pauseReplication?api-version=2025-08-01+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037d276-0d72-7b96-7f6d-2ce50a4c05e5/pauseReplication?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037d276-0d72-7b96-7f6d-2ce50a4c05e5/pauseReplication?api-version=2025-08-01",
       "Content": "{\n  \"properties\": {\n    \"instanceType\": \"VMwarecbt\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -86,10 +86,10 @@
       "isContentBase64": false
     }
   },
-  "Suspend-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationJobs/b13e5d97-0889-4851-a7a7-afbf7f2d1bb3?api-version=2024-01-01+3": {
+  "Suspend-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationJobs/b13e5d97-0889-4851-a7a7-afbf7f2d1bb3?api-version=2025-08-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationJobs/b13e5d97-0889-4851-a7a7-afbf7f2d1bb3?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationJobs/b13e5d97-0889-4851-a7a7-afbf7f2d1bb3?api-version=2025-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -131,10 +131,10 @@
       "isContentBase64": false
     }
   },
-  "Suspend-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912?api-version=2024-01-01+1": {
+  "Suspend-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912?api-version=2025-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912?api-version=2025-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -176,10 +176,10 @@
       "isContentBase64": false
     }
   },
-  "Suspend-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912?api-version=2024-01-01+2": {
+  "Suspend-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912?api-version=2025-08-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912?api-version=2025-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -221,10 +221,10 @@
       "isContentBase64": false
     }
   },
-  "Suspend-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$POST+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912/pauseReplication?api-version=2024-01-01+3": {
+  "Suspend-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$POST+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912/pauseReplication?api-version=2025-08-01+3": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912/pauseReplication?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_5037a8fa-3594-21fd-5221-ca92924a7912/pauseReplication?api-version=2025-08-01",
       "Content": "{\n  \"properties\": {\n    \"instanceType\": \"VMwarecbt\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -263,10 +263,10 @@
       "isContentBase64": false
     }
   },
-  "Suspend-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationJobs/c1953b4c-f5f3-4e85-8928-a28dcca74499?api-version=2024-01-01+4": {
+  "Suspend-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationJobs/c1953b4c-f5f3-4e85-8928-a28dcca74499?api-version=2025-08-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationJobs/c1953b4c-f5f3-4e85-8928-a28dcca74499?api-version=2024-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationJobs/c1953b4c-f5f3-4e85-8928-a28dcca74499?api-version=2025-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

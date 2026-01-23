@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create Datadog marketplace agreement in the subscription.
+Create Datadog marketplace agreement in the subscription.
 .Description
-create Datadog marketplace agreement in the subscription.
+Create Datadog marketplace agreement in the subscription.
 .Example
 New-AzDatadogMarketplaceAgreement -Accepted
 

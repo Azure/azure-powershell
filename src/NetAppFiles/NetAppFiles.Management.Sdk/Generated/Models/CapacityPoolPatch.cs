@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// Capacity pool patch resource
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class CapacityPoolPatch : Microsoft.Rest.Azure.IResource
+    public partial class CapacityPoolPatch
     {
         /// <summary>
         /// Initializes a new instance of the CapacityPoolPatch class.
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// be accepted as input only for manual qosType pool with Flexible service
         /// level
         /// </param>
-        public CapacityPoolPatch(string location = default(string), string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string qosType = default(string), long? size = default(long?), bool? coolAccess = default(bool?), double? customThroughputMibps = default(double?))
+        public CapacityPoolPatch(string location = default(string), string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string qosType = default(string), long? size = default(long?), bool? coolAccess = default(bool?), int? customThroughputMibps = default(int?))
 
         {
             this.Location = location;
@@ -131,6 +131,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Flexible service level
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.customThroughputMibps")]
-        public double? CustomThroughputMibps {get; set; }
+        public int? CustomThroughputMibps {get; set; }
     }
 }

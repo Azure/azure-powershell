@@ -1,8 +1,8 @@
 {
     "Entries":  [
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMjQtMTAtMDE=",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -51,7 +51,7 @@
                                                                                 "CENTRALUSEUAP:20210407T052718Z:760f65f1-ff86-4b8d-b7c7-46994b6242ad"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Mar 2025 08:27:29 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:20 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "474"
@@ -67,8 +67,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationEvents?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkV2ZW50cz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationEvents?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkV2ZW50cz9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -121,7 +121,7 @@
                                                                                 "CENTRALUSEUAP:20210407T052726Z:eba99e8c-6783-4295-b938-84ae1ba86588"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Mar 2025 08:27:29 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:20 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "126319"
@@ -137,8 +137,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationEvents?$filter=Severity%20eq%20\u0027OK\u0027\u0026api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkV2ZW50cz8kZmlsdGVyPVNldmVyaXR5JTIwZXElMjAnT0snJmFwaS12ZXJzaW9uPTIwMjQtMTAtMDE=",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationEvents?$filter=Severity%20eq%20\u0027OK\u0027\u0026api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkV2ZW50cz8kZmlsdGVyPVNldmVyaXR5JTIwZXElMjAnT0snJmFwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -191,7 +191,7 @@
                                                                                 "CENTRALUSEUAP:20210407T052728Z:08bb7da4-11a9-4510-a623-ddab3d596f8e"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Mar 2025 08:27:29 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:20 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "46663"
@@ -207,8 +207,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationEvents?$filter=EventType%20eq%20\u0027VmHealth\u0027\u0026api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkV2ZW50cz8kZmlsdGVyPUV2ZW50VHlwZSUyMGVxJTIwJ1ZtSGVhbHRoJyZhcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationEvents?$filter=EventType%20eq%20\u0027VmHealth\u0027\u0026api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkV2ZW50cz8kZmlsdGVyPUV2ZW50VHlwZSUyMGVxJTIwJ1ZtSGVhbHRoJyZhcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -261,7 +261,7 @@
                                                                                 "CENTRALUSEUAP:20210407T052728Z:84b04d12-3fde-41d5-8138-26284feb21f4"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Mar 2025 08:27:29 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:20 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "91131"
@@ -277,8 +277,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationEvents?$filter=EventType%20eq%20\u0027VmHealth\u0027%20and%20AffectedObjectFriendlyName%20eq%20\u0027V2A-W2K19-202\u0027\u0026api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkV2ZW50cz8kZmlsdGVyPUV2ZW50VHlwZSUyMGVxJTIwJ1ZtSGVhbHRoJyUyMGFuZCUyMEFmZmVjdGVkT2JqZWN0RnJpZW5kbHlOYW1lJTIwZXElMjAnVjJBLVcySzE5LTIwMicmYXBpLXZlcnNpb249MjAyNC0xMC0wMQ==",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationEvents?$filter=EventType%20eq%20\u0027VmHealth\u0027%20and%20AffectedObjectFriendlyName%20eq%20\u0027V2A-W2K19-202\u0027\u0026api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkV2ZW50cz8kZmlsdGVyPUV2ZW50VHlwZSUyMGVxJTIwJ1ZtSGVhbHRoJyUyMGFuZCUyMEFmZmVjdGVkT2JqZWN0RnJpZW5kbHlOYW1lJTIwZXElMjAnVjJBLVcySzE5LTIwMicmYXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -331,7 +331,7 @@
                                                                                 "CENTRALUSEUAP:20210407T052729Z:54f52742-cfd1-4c3d-b6bd-3cad89d177bc"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Mar 2025 08:27:29 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:20 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "24111"
@@ -347,8 +347,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationEvents?$filter=EventType%20eq%20\u0027VmHealth\u0027%20and%20FabricName%20eq%20\u00279a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed\u0027\u0026api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkV2ZW50cz8kZmlsdGVyPUV2ZW50VHlwZSUyMGVxJTIwJ1ZtSGVhbHRoJyUyMGFuZCUyMEZhYnJpY05hbWUlMjBlcSUyMCc5YTYwZDI4YjY1NTQzNDM1ZTUyZTFiODEwNzNjNmEzYWNhN2RkNWQwMGQyMDFlNDlmYmU0ZTg2ODQ4YzQ5NWVkJyZhcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationEvents?$filter=EventType%20eq%20\u0027VmHealth\u0027%20and%20FabricName%20eq%20\u00279a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed\u0027\u0026api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkV2ZW50cz8kZmlsdGVyPUV2ZW50VHlwZSUyMGVxJTIwJ1ZtSGVhbHRoJyUyMGFuZCUyMEZhYnJpY05hbWUlMjBlcSUyMCc5YTYwZDI4YjY1NTQzNDM1ZTUyZTFiODEwNzNjNmEzYWNhN2RkNWQwMGQyMDFlNDlmYmU0ZTg2ODQ4YzQ5NWVkJyZhcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -401,7 +401,7 @@
                                                                                 "CENTRALUSEUAP:20210407T052729Z:1492c585-62de-480e-8bcb-7f5dcf8de75b"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Mar 2025 08:27:29 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:20 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "91131"
@@ -417,8 +417,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3M/YXBpLXZlcnNpb249MjAyNC0xMC0wMQ==",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3M/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -471,7 +471,7 @@
                                                                                 "CENTRALUSEUAP:20210407T052730Z:bc7f310c-b02c-4652-9467-24d88cced5c9"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Mar 2025 08:27:29 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:20 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "6342"
@@ -487,8 +487,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed?api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZD9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationFabrics/9a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed?api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvOWE2MGQyOGI2NTU0MzQzNWU1MmUxYjgxMDczYzZhM2FjYTdkZDVkMDBkMjAxZTQ5ZmJlNGU4Njg0OGM0OTVlZD9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -541,7 +541,7 @@
                                                                                 "CENTRALUSEUAP:20210407T052731Z:bfd968f0-52c5-494d-8969-11366593cfb1"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Mar 2025 08:27:29 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:20 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "6262"
@@ -557,8 +557,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationEvents?$filter=FabricName%20eq%20\u00279a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed\u0027\u0026api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkV2ZW50cz8kZmlsdGVyPUZhYnJpY05hbWUlMjBlcSUyMCc5YTYwZDI4YjY1NTQzNDM1ZTUyZTFiODEwNzNjNmEzYWNhN2RkNWQwMGQyMDFlNDlmYmU0ZTg2ODQ4YzQ5NWVkJyZhcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationEvents?$filter=FabricName%20eq%20\u00279a60d28b65543435e52e1b81073c6a3aca7dd5d00d201e49fbe4e86848c495ed\u0027\u0026api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkV2ZW50cz8kZmlsdGVyPUZhYnJpY05hbWUlMjBlcSUyMCc5YTYwZDI4YjY1NTQzNDM1ZTUyZTFiODEwNzNjNmEzYWNhN2RkNWQwMGQyMDFlNDlmYmU0ZTg2ODQ4YzQ5NWVkJyZhcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -611,7 +611,7 @@
                                                                                 "CENTRALUSEUAP:20210407T052731Z:307a2779-77a2-4ed8-841c-6d9ebcac830b"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Mar 2025 08:27:29 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:20 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "126319"
@@ -627,8 +627,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationEvents?$filter=AffectedObjectFriendlyName%20eq%20\u0027V2A-W2K19-202\u0027\u0026api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkV2ZW50cz8kZmlsdGVyPUFmZmVjdGVkT2JqZWN0RnJpZW5kbHlOYW1lJTIwZXElMjAnVjJBLVcySzE5LTIwMicmYXBpLXZlcnNpb249MjAyNC0xMC0wMQ==",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationEvents?$filter=AffectedObjectFriendlyName%20eq%20\u0027V2A-W2K19-202\u0027\u0026api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkV2ZW50cz8kZmlsdGVyPUFmZmVjdGVkT2JqZWN0RnJpZW5kbHlOYW1lJTIwZXElMjAnVjJBLVcySzE5LTIwMicmYXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -681,7 +681,7 @@
                                                                                 "CENTRALUSEUAP:20210407T052732Z:1d0f9496-547f-4505-8151-8c7337217c7a"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Mar 2025 08:27:29 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:20 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "37431"
@@ -697,8 +697,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationEvents?$filter=StartTime%20eq%20\u00274/4/2021%2010:57:32%20AM\u0027\u0026api-version=2024-10-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkV2ZW50cz8kZmlsdGVyPVN0YXJ0VGltZSUyMGVxJTIwJzQvNC8yMDIxJTIwMTA6NTc6MzIlMjBBTScmYXBpLXZlcnNpb249MjAyNC0xMC0wMQ==",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults/PwsTestVault/replicationEvents?$filter=StartTime%20eq%20\u00274/4/2021%2010:57:32%20AM\u0027\u0026api-version=2025-08-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1B3c1Rlc3RWYXVsdC9yZXBsaWNhdGlvbkV2ZW50cz8kZmlsdGVyPVN0YXJ0VGltZSUyMGVxJTIwJzQvNC8yMDIxJTIwMTA6NTc6MzIlMjBBTScmYXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -751,7 +751,7 @@
                                                                                 "CENTRALUSEUAP:20210407T052732Z:2705d058-f8a2-4d0a-be0d-2b5590e4eed8"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Mar 2025 08:27:29 GMT"
+                                                             "Thu, 13 Nov 2025 08:59:20 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "123118"

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Description(@"update a NamespaceAsset")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}", ApiVersion = "2025-07-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}", ApiVersion = "2025-10-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.NotSuggestDefaultParameterSet]
     public partial class UpdateAzDeviceRegistryNamespaceAsset_UpdateViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener,

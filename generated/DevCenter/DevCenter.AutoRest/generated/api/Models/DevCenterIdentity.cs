@@ -19,6 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
         public string AttachedNetworkConnectionName { get => this._attachedNetworkConnectionName; set => this._attachedNetworkConnectionName = value; }
 
+        /// <summary>Backing field for <see cref="BuildName" /> property.</summary>
+        private string _buildName;
+
+        /// <summary>The ID of the Image Definition Build.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
+        public string BuildName { get => this._buildName; set => this._buildName = value; }
+
         /// <summary>Backing field for <see cref="CatalogName" /> property.</summary>
         private string _catalogName;
 
@@ -75,6 +82,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
+        /// <summary>Backing field for <see cref="ImageDefinitionName" /> property.</summary>
+        private string _imageDefinitionName;
+
+        /// <summary>The name of the Image Definition.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
+        public string ImageDefinitionName { get => this._imageDefinitionName; set => this._imageDefinitionName = value; }
+
         /// <summary>Backing field for <see cref="ImageName" /> property.</summary>
         private string _imageName;
 
@@ -88,13 +102,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         /// <summary>The Azure region</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
-
-        /// <summary>Backing field for <see cref="MemberName" /> property.</summary>
-        private string _memberName;
-
-        /// <summary>The name of a devcenter plan member.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
-        public string MemberName { get => this._memberName; set => this._memberName = value; }
 
         /// <summary>Backing field for <see cref="NetworkConnectionName" /> property.</summary>
         private string _networkConnectionName;
@@ -110,13 +117,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
         public string OperationId { get => this._operationId; set => this._operationId = value; }
 
-        /// <summary>Backing field for <see cref="PlanName" /> property.</summary>
-        private string _planName;
-
-        /// <summary>The name of the devcenter plan.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
-        public string PlanName { get => this._planName; set => this._planName = value; }
-
         /// <summary>Backing field for <see cref="PoolName" /> property.</summary>
         private string _poolName;
 
@@ -130,6 +130,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         /// <summary>The name of the project.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
         public string ProjectName { get => this._projectName; set => this._projectName = value; }
+
+        /// <summary>Backing field for <see cref="ProjectPolicyName" /> property.</summary>
+        private string _projectPolicyName;
+
+        /// <summary>The name of the project policy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
+        public string ProjectPolicyName { get => this._projectPolicyName; set => this._projectPolicyName = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -183,6 +190,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         SerializedName = @"attachedNetworkConnectionName",
         PossibleTypes = new [] { typeof(string) })]
         string AttachedNetworkConnectionName { get; set; }
+        /// <summary>The ID of the Image Definition Build.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The ID of the Image Definition Build.",
+        SerializedName = @"buildName",
+        PossibleTypes = new [] { typeof(string) })]
+        string BuildName { get; set; }
         /// <summary>The name of the Catalog.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
         Required = false,
@@ -247,6 +262,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>The name of the Image Definition.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the Image Definition.",
+        SerializedName = @"imageDefinitionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ImageDefinitionName { get; set; }
         /// <summary>The name of the image.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
         Required = false,
@@ -263,14 +286,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
-        /// <summary>The name of a devcenter plan member.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The name of a devcenter plan member.",
-        SerializedName = @"memberName",
-        PossibleTypes = new [] { typeof(string) })]
-        string MemberName { get; set; }
         /// <summary>Name of the Network Connection that can be applied to a Pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
         Required = false,
@@ -287,14 +302,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         SerializedName = @"operationId",
         PossibleTypes = new [] { typeof(string) })]
         string OperationId { get; set; }
-        /// <summary>The name of the devcenter plan.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The name of the devcenter plan.",
-        SerializedName = @"planName",
-        PossibleTypes = new [] { typeof(string) })]
-        string PlanName { get; set; }
         /// <summary>Name of the pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
         Required = false,
@@ -311,6 +318,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         SerializedName = @"projectName",
         PossibleTypes = new [] { typeof(string) })]
         string ProjectName { get; set; }
+        /// <summary>The name of the project policy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the project policy.",
+        SerializedName = @"projectPolicyName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ProjectPolicyName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
         Required = false,
@@ -358,6 +373,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
     {
         /// <summary>The name of the attached NetworkConnection.</summary>
         string AttachedNetworkConnectionName { get; set; }
+        /// <summary>The ID of the Image Definition Build.</summary>
+        string BuildName { get; set; }
         /// <summary>The name of the Catalog.</summary>
         string CatalogName { get; set; }
         /// <summary>The name of the Dev Box definition.</summary>
@@ -374,22 +391,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         string GalleryName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>The name of the Image Definition.</summary>
+        string ImageDefinitionName { get; set; }
         /// <summary>The name of the image.</summary>
         string ImageName { get; set; }
         /// <summary>The Azure region</summary>
         string Location { get; set; }
-        /// <summary>The name of a devcenter plan member.</summary>
-        string MemberName { get; set; }
         /// <summary>Name of the Network Connection that can be applied to a Pool.</summary>
         string NetworkConnectionName { get; set; }
         /// <summary>The ID of an ongoing async operation</summary>
         string OperationId { get; set; }
-        /// <summary>The name of the devcenter plan.</summary>
-        string PlanName { get; set; }
         /// <summary>Name of the pool.</summary>
         string PoolName { get; set; }
         /// <summary>The name of the project.</summary>
         string ProjectName { get; set; }
+        /// <summary>The name of the project policy.</summary>
+        string ProjectPolicyName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The name of the schedule that uniquely identifies it.</summary>

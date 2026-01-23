@@ -15,14 +15,14 @@ Starts the migration for the replicating server.
 ### ByIDVMwareCbt (Default)
 ```
 Start-AzMigrateServerMigration -TargetObjectID <String> [-OsUpgradeVersion <String>] [-TurnOffSourceServer]
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] [-TargetCapacityReservationGroupId <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
 Start-AzMigrateServerMigration [-OsUpgradeVersion <String>] [-TurnOffSourceServer] [-SubscriptionId <String>]
- -InputObject <IMigrationItem> [-DefaultProfile <PSObject>]
+ [-TargetCapacityReservationGroupId <String>] -InputObject <IMigrationItem> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -121,6 +121,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetCapacityReservationGroupId
+Specifies the Target Capacity Reservation Group Id within the destination Azure subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

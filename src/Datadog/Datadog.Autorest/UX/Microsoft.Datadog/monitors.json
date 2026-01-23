@@ -1,10 +1,48 @@
 {
   "resourceType": "monitors",
-  "apiVersion": "2021-03-01",
+  "apiVersion": "2025-06-11",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.datadog"
   },
   "commands": [
+    {
+      "name": "Get-AzDatadogBillingInfo",
+      "description": "Get marketplace and organization info mapped to the given monitor.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/getBillingInfo",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogbillinginfo"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MonitorName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get marketplace and organization info mapped to the given monitor.",
+          "parameters": [
+            {
+              "name": "-MonitorName",
+              "value": "[Path.monitorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": "Get-AzDatadogMonitorDefaultKey",
       "description": "Get the default api key.",

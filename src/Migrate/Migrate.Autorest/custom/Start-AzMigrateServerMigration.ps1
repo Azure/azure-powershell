@@ -63,6 +63,12 @@ function Start-AzMigrateServerMigration {
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the Target Capacity Reservation Group Id within the destination Azure subscription.
+        ${TargetCapacityReservationGroupId},
     
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
@@ -113,6 +119,7 @@ function Start-AzMigrateServerMigration {
         }
         $null = $PSBoundParameters.Remove('TurnOffSourceServer')
         $null = $PSBoundParameters.Remove('OsUpgradeVersion')
+        $null = $PSBoundParameters.Remove('TargetCapacityReservationGroupId')
         $null = $PSBoundParameters.Remove('TargetObjectID')
         $null = $PSBoundParameters.Remove('ResourceGroupName')
         $null = $PSBoundParameters.Remove('ProjectName')
@@ -143,6 +150,9 @@ function Start-AzMigrateServerMigration {
             $ProviderSpecificDetailInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareCbtMigrateInput]::new()
             $ProviderSpecificDetailInput.InstanceType = 'VMwareCbt'
             $ProviderSpecificDetailInput.PerformShutdown = $PerformShutDown
+            if ($TargetCapacityReservationGroupId) {
+                $ProviderSpecificDetailInput.TargetCapacityReservationGroupId = $TargetCapacityReservationGroupId
+            }
             if ($OsUpgradeVersion) {
                 $SupportedOSVersions = $ReplicationMigrationItem.ProviderSpecificDetail.SupportedOSVersion
                 if ($null -eq $SupportedOSVersions) {

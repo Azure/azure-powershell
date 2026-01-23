@@ -7,18 +7,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Extensions;
 
+    /// <summary>
+    /// Concrete tracked resource types can be created by aliasing this type using a specific property type.
+    /// </summary>
     public partial class DatadogMonitorResource :
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResource,
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal,
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IValidates
     {
+        /// <summary>
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ITrackedResource" />
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ITrackedResource __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.TrackedResource();
 
         /// <summary>Api key associated to the Datadog organization.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public string DatadogOrganizationPropertyApiKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyApiKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyApiKey = value ?? null; }
+        public System.Security.SecureString DatadogOrganizationPropertyApiKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyApiKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyApiKey = value ?? null; }
 
         /// <summary>Application key associated to the Datadog organization.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public string DatadogOrganizationPropertyApplicationKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyApplicationKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyApplicationKey = value ?? null; }
+        public System.Security.SecureString DatadogOrganizationPropertyApplicationKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyApplicationKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyApplicationKey = value ?? null; }
+
+        /// <summary>
+        /// The configuration which describes the state of cloud security posture management. This collects configuration information
+        /// for all resources in a subscription and track conformance to industry benchmarks.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
+        public bool? DatadogOrganizationPropertyCspm { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyCspm; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyCspm = value ?? default(bool); }
 
         /// <summary>The Id of the Enterprise App used for Single sign on.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
@@ -26,32 +41,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 
         /// <summary>Id of the Datadog organization.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public string DatadogOrganizationPropertyId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyId; }
+        public string DatadogOrganizationPropertyId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyId = value ?? null; }
 
-        /// <summary>The auth code used to linking to an existing datadog organization.</summary>
+        /// <summary>The auth code used to linking to an existing Datadog organization.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public string DatadogOrganizationPropertyLinkingAuthCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyLinkingAuthCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyLinkingAuthCode = value ?? null; }
+        public System.Security.SecureString DatadogOrganizationPropertyLinkingAuthCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyLinkingAuthCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyLinkingAuthCode = value ?? null; }
 
         /// <summary>
         /// The client_id from an existing in exchange for an auth token to link organization.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public string DatadogOrganizationPropertyLinkingClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyLinkingClientId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyLinkingClientId = value ?? null; }
+        public System.Security.SecureString DatadogOrganizationPropertyLinkingClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyLinkingClientId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyLinkingClientId = value ?? null; }
 
         /// <summary>Name of the Datadog organization.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public string DatadogOrganizationPropertyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyName; }
+        public string DatadogOrganizationPropertyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyName = value ?? null; }
 
-        /// <summary>The redirect uri for linking.</summary>
+        /// <summary>The redirect URI for linking.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
         public string DatadogOrganizationPropertyRedirectUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyRedirectUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyRedirectUri = value ?? null; }
 
-        /// <summary>Backing field for <see cref="Id" /> property.</summary>
-        private string _id;
+        /// <summary>
+        /// The configuration which describes the state of resource collection. This collects configuration information for all resources
+        /// in a subscription.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
+        public bool? DatadogOrganizationPropertyResourceCollection { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyResourceCollection; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyResourceCollection = value ?? default(bool); }
 
-        /// <summary>ARM id of the monitor resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        public string Id { get => this._id; }
+        /// <summary>
+        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).Id; }
 
         /// <summary>Backing field for <see cref="Identity" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityProperties _identity;
@@ -67,7 +88,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
         public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityPropertiesInternal)Identity).TenantId; }
 
-        /// <summary>Identity type</summary>
+        /// <summary>
+        /// Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
         public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityPropertiesInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityPropertiesInternal)Identity).Type = value ?? null; }
 
@@ -78,11 +101,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
         public int? LiftrResourcePreference { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).LiftrResourcePreference; }
 
-        /// <summary>Backing field for <see cref="Location" /> property.</summary>
-        private string _location;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        public string Location { get => this._location; set => this._location = value; }
+        /// <summary>The geo-location where the resource lives</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>
         /// Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will
@@ -92,84 +113,75 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         public string MarketplaceSubscriptionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionStatus; }
 
         /// <summary>Internal Acessors for DatadogOrganizationProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationProperties Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.DatadogOrganizationProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationProperty = value; }
-
-        /// <summary>Internal Acessors for DatadogOrganizationPropertyId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.DatadogOrganizationPropertyId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyId = value; }
-
-        /// <summary>Internal Acessors for DatadogOrganizationPropertyName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.DatadogOrganizationPropertyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationPropertyName = value; }
-
-        /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.Id { get => this._id; set { {_id = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationProperties Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.DatadogOrganizationProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).DatadogOrganizationProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityProperties Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IdentityProperties()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityPropertiesInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityPropertiesInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityPropertiesInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityPropertiesInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityPropertiesInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityPropertiesInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityPropertiesInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityPropertiesInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for LiftrResourceCategory</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.LiftrResourceCategory { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).LiftrResourceCategory; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).LiftrResourceCategory = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.LiftrResourceCategory { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).LiftrResourceCategory; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).LiftrResourceCategory = value ?? null; }
 
         /// <summary>Internal Acessors for LiftrResourcePreference</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.LiftrResourcePreference { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).LiftrResourcePreference; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).LiftrResourcePreference = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.LiftrResourcePreference { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).LiftrResourcePreference; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).LiftrResourcePreference = value ?? default(int); }
 
         /// <summary>Internal Acessors for MarketplaceSubscriptionStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.MarketplaceSubscriptionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionStatus = value; }
-
-        /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.Name { get => this._name; set { {_name = value;} } }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.MarketplaceSubscriptionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionStatus = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorProperties Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.MonitorProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceSku Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ResourceSku()); set { {_sku = value;} } }
 
+        /// <summary>Internal Acessors for UserInfo</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IUserInfo Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.UserInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).UserInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).UserInfo = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for Id</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
+
+        /// <summary>Internal Acessors for Name</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
+
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.SystemData()); set { {_systemData = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedByType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.Type { get => this._type; set { {_type = value;} } }
-
-        /// <summary>Internal Acessors for UserInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IUserInfo Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.UserInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).UserInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).UserInfo = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>Flag specifying if the resource monitoring is enabled or disabled.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
         public string MonitoringStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MonitoringStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MonitoringStatus = value ?? null; }
 
-        /// <summary>Backing field for <see cref="Name" /> property.</summary>
-        private string _name;
-
-        /// <summary>Name of the monitor resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        public string Name { get => this._name; }
+        /// <summary>The name of the resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).Name; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorProperties _property;
@@ -191,54 +203,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceSku Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ResourceSku()); set => this._sku = value; }
 
-        /// <summary>Name of the SKU.</summary>
+        /// <summary>
+        /// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
         public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceSkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceSkuInternal)Sku).Name = value ?? null; }
 
-        /// <summary>Backing field for <see cref="SystemData" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData _systemData;
-
-        /// <summary>Metadata pertaining to creation and last modification of the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.SystemData()); }
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedAt; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedBy; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).CreatedByType; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedAt; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedBy; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemDataInternal)SystemData).LastModifiedByType; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
-        /// <summary>Backing field for <see cref="Tag" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceTags _tag;
+        /// <summary>Resource tags.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ITrackedResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ITrackedResourceInternal)__trackedResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ITrackedResourceInternal)__trackedResource).Tag = value ?? null /* model class */; }
 
-        /// <summary>Dictionary of <string></summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.DatadogMonitorResourceTags()); set => this._tag = value; }
-
-        /// <summary>Backing field for <see cref="Type" /> property.</summary>
-        private string _type;
-
-        /// <summary>The type of the monitor resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        public string Type { get => this._type; }
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceInternal)__trackedResource).Type; }
 
         /// <summary>Email of the user used by Datadog for contacting them if needed</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
@@ -257,9 +266,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         {
 
         }
+
+        /// <summary>Validates that this object meets the validation criteria.</summary>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IEventListener" /> instance that will receive validation
+        /// events.</param>
+        /// <returns>
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IEventListener eventListener)
+        {
+            await eventListener.AssertNotNull(nameof(__trackedResource), __trackedResource);
+            await eventListener.AssertObjectIsValid(nameof(__trackedResource), __trackedResource);
+        }
     }
+    /// Concrete tracked resource types can be created by aliasing this type using a specific property type.
     public partial interface IDatadogMonitorResource :
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IJsonSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IJsonSerializable,
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ITrackedResource
     {
         /// <summary>Api key associated to the Datadog organization.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
@@ -270,8 +293,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         Update = false,
         Description = @"Api key associated to the Datadog organization.",
         SerializedName = @"apiKey",
-        PossibleTypes = new [] { typeof(string) })]
-        string DatadogOrganizationPropertyApiKey { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString DatadogOrganizationPropertyApiKey { get; set; }
         /// <summary>Application key associated to the Datadog organization.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
@@ -281,8 +304,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         Update = false,
         Description = @"Application key associated to the Datadog organization.",
         SerializedName = @"applicationKey",
-        PossibleTypes = new [] { typeof(string) })]
-        string DatadogOrganizationPropertyApplicationKey { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString DatadogOrganizationPropertyApplicationKey { get; set; }
+        /// <summary>
+        /// The configuration which describes the state of cloud security posture management. This collects configuration information
+        /// for all resources in a subscription and track conformance to industry benchmarks.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.",
+        SerializedName = @"cspm",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? DatadogOrganizationPropertyCspm { get; set; }
         /// <summary>The Id of the Enterprise App used for Single sign on.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
@@ -297,25 +334,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         /// <summary>Id of the Datadog organization.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
+        Create = true,
         Update = false,
         Description = @"Id of the Datadog organization.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
-        string DatadogOrganizationPropertyId { get;  }
-        /// <summary>The auth code used to linking to an existing datadog organization.</summary>
+        string DatadogOrganizationPropertyId { get; set; }
+        /// <summary>The auth code used to linking to an existing Datadog organization.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = false,
         Create = true,
         Update = false,
-        Description = @"The auth code used to linking to an existing datadog organization.",
+        Description = @"The auth code used to linking to an existing Datadog organization.",
         SerializedName = @"linkingAuthCode",
-        PossibleTypes = new [] { typeof(string) })]
-        string DatadogOrganizationPropertyLinkingAuthCode { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString DatadogOrganizationPropertyLinkingAuthCode { get; set; }
         /// <summary>
         /// The client_id from an existing in exchange for an auth token to link organization.
         /// </summary>
@@ -327,41 +364,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         Update = false,
         Description = @"The client_id from an existing in exchange for an auth token to link organization.",
         SerializedName = @"linkingClientId",
-        PossibleTypes = new [] { typeof(string) })]
-        string DatadogOrganizationPropertyLinkingClientId { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString DatadogOrganizationPropertyLinkingClientId { get; set; }
         /// <summary>Name of the Datadog organization.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
+        Create = true,
         Update = false,
         Description = @"Name of the Datadog organization.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        string DatadogOrganizationPropertyName { get;  }
-        /// <summary>The redirect uri for linking.</summary>
+        string DatadogOrganizationPropertyName { get; set; }
+        /// <summary>The redirect URI for linking.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = false,
         Create = true,
         Update = false,
-        Description = @"The redirect uri for linking.",
+        Description = @"The redirect URI for linking.",
         SerializedName = @"redirectUri",
         PossibleTypes = new [] { typeof(string) })]
         string DatadogOrganizationPropertyRedirectUri { get; set; }
-        /// <summary>ARM id of the monitor resource.</summary>
+        /// <summary>
+        /// The configuration which describes the state of resource collection. This collects configuration information for all resources
+        /// in a subscription.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"ARM id of the monitor resource.",
-        SerializedName = @"id",
-        PossibleTypes = new [] { typeof(string) })]
-        string Id { get;  }
+        Create = true,
+        Update = true,
+        Description = @"The configuration which describes the state of resource collection. This collects configuration information for all resources in a subscription.",
+        SerializedName = @"resourceCollection",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? DatadogOrganizationPropertyResourceCollection { get; set; }
         /// <summary>The identity ID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
@@ -384,14 +424,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         SerializedName = @"tenantId",
         PossibleTypes = new [] { typeof(string) })]
         string IdentityTenantId { get;  }
-        /// <summary>Identity type</summary>
+        /// <summary>
+        /// Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Identity type",
+        Description = @"Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned")]
@@ -419,17 +461,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         SerializedName = @"liftrResourcePreference",
         PossibleTypes = new [] { typeof(int) })]
         int? LiftrResourcePreference { get;  }
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"",
-        SerializedName = @"location",
-        PossibleTypes = new [] { typeof(string) })]
-        string Location { get; set; }
         /// <summary>
         /// Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will
         /// go in Suspended state.
@@ -457,17 +488,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string MonitoringStatus { get; set; }
-        /// <summary>Name of the monitor resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Name of the monitor resource.",
-        SerializedName = @"name",
-        PossibleTypes = new [] { typeof(string) })]
-        string Name { get;  }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
@@ -480,107 +500,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("Accepted", "Creating", "Updating", "Deleting", "Succeeded", "Failed", "Canceled", "Deleted", "NotSpecified")]
         string ProvisioningState { get;  }
-        /// <summary>Name of the SKU.</summary>
+        /// <summary>
+        /// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Name of the SKU.",
+        Description = @"Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string SkuName { get; set; }
-        /// <summary>The timestamp of resource creation (UTC).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The timestamp of resource creation (UTC).",
-        SerializedName = @"createdAt",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? SystemDataCreatedAt { get;  }
-        /// <summary>The identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The identity that created the resource.",
-        SerializedName = @"createdBy",
-        PossibleTypes = new [] { typeof(string) })]
-        string SystemDataCreatedBy { get;  }
-        /// <summary>The type of identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The type of identity that created the resource.",
-        SerializedName = @"createdByType",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataCreatedByType { get;  }
-        /// <summary>The timestamp of resource last modification (UTC)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The timestamp of resource last modification (UTC)",
-        SerializedName = @"lastModifiedAt",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? SystemDataLastModifiedAt { get;  }
-        /// <summary>The identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The identity that last modified the resource.",
-        SerializedName = @"lastModifiedBy",
-        PossibleTypes = new [] { typeof(string) })]
-        string SystemDataLastModifiedBy { get;  }
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The type of identity that last modified the resource.",
-        SerializedName = @"lastModifiedByType",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataLastModifiedByType { get;  }
-        /// <summary>Dictionary of <string></summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Dictionary of <string>",
-        SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceTags) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceTags Tag { get; set; }
-        /// <summary>The type of the monitor resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The type of the monitor resource.",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(string) })]
-        string Type { get;  }
         /// <summary>Email of the user used by Datadog for contacting them if needed</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
@@ -616,38 +548,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         string UserInfoPhoneNumber { get; set; }
 
     }
-    internal partial interface IDatadogMonitorResourceInternal
-
+    /// Concrete tracked resource types can be created by aliasing this type using a specific property type.
+    internal partial interface IDatadogMonitorResourceInternal :
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ITrackedResourceInternal
     {
-        /// <summary>Datadog organization properties</summary>
+        /// <summary>
+        /// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey
+        /// is required as well.
+        /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationProperties DatadogOrganizationProperty { get; set; }
         /// <summary>Api key associated to the Datadog organization.</summary>
-        string DatadogOrganizationPropertyApiKey { get; set; }
+        System.Security.SecureString DatadogOrganizationPropertyApiKey { get; set; }
         /// <summary>Application key associated to the Datadog organization.</summary>
-        string DatadogOrganizationPropertyApplicationKey { get; set; }
+        System.Security.SecureString DatadogOrganizationPropertyApplicationKey { get; set; }
+        /// <summary>
+        /// The configuration which describes the state of cloud security posture management. This collects configuration information
+        /// for all resources in a subscription and track conformance to industry benchmarks.
+        /// </summary>
+        bool? DatadogOrganizationPropertyCspm { get; set; }
         /// <summary>The Id of the Enterprise App used for Single sign on.</summary>
         string DatadogOrganizationPropertyEnterpriseAppId { get; set; }
         /// <summary>Id of the Datadog organization.</summary>
         string DatadogOrganizationPropertyId { get; set; }
-        /// <summary>The auth code used to linking to an existing datadog organization.</summary>
-        string DatadogOrganizationPropertyLinkingAuthCode { get; set; }
+        /// <summary>The auth code used to linking to an existing Datadog organization.</summary>
+        System.Security.SecureString DatadogOrganizationPropertyLinkingAuthCode { get; set; }
         /// <summary>
         /// The client_id from an existing in exchange for an auth token to link organization.
         /// </summary>
-        string DatadogOrganizationPropertyLinkingClientId { get; set; }
+        System.Security.SecureString DatadogOrganizationPropertyLinkingClientId { get; set; }
         /// <summary>Name of the Datadog organization.</summary>
         string DatadogOrganizationPropertyName { get; set; }
-        /// <summary>The redirect uri for linking.</summary>
+        /// <summary>The redirect URI for linking.</summary>
         string DatadogOrganizationPropertyRedirectUri { get; set; }
-        /// <summary>ARM id of the monitor resource.</summary>
-        string Id { get; set; }
+        /// <summary>
+        /// The configuration which describes the state of resource collection. This collects configuration information for all resources
+        /// in a subscription.
+        /// </summary>
+        bool? DatadogOrganizationPropertyResourceCollection { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IIdentityProperties Identity { get; set; }
         /// <summary>The identity ID.</summary>
         string IdentityPrincipalId { get; set; }
         /// <summary>The tenant ID of resource.</summary>
         string IdentityTenantId { get; set; }
-        /// <summary>Identity type</summary>
+        /// <summary>
+        /// Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
+        /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned")]
         string IdentityType { get; set; }
 
@@ -655,8 +601,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         string LiftrResourceCategory { get; set; }
         /// <summary>The priority of the resource.</summary>
         int? LiftrResourcePreference { get; set; }
-
-        string Location { get; set; }
         /// <summary>
         /// Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will
         /// go in Suspended state.
@@ -666,8 +610,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         /// <summary>Flag specifying if the resource monitoring is enabled or disabled.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string MonitoringStatus { get; set; }
-        /// <summary>Name of the monitor resource.</summary>
-        string Name { get; set; }
         /// <summary>Properties specific to the monitor resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorProperties Property { get; set; }
 
@@ -675,29 +617,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         string ProvisioningState { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceSku Sku { get; set; }
-        /// <summary>Name of the SKU.</summary>
+        /// <summary>
+        /// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
+        /// </summary>
         string SkuName { get; set; }
-        /// <summary>Metadata pertaining to creation and last modification of the resource.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISystemData SystemData { get; set; }
-        /// <summary>The timestamp of resource creation (UTC).</summary>
-        global::System.DateTime? SystemDataCreatedAt { get; set; }
-        /// <summary>The identity that created the resource.</summary>
-        string SystemDataCreatedBy { get; set; }
-        /// <summary>The type of identity that created the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataCreatedByType { get; set; }
-        /// <summary>The timestamp of resource last modification (UTC)</summary>
-        global::System.DateTime? SystemDataLastModifiedAt { get; set; }
-        /// <summary>The identity that last modified the resource.</summary>
-        string SystemDataLastModifiedBy { get; set; }
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataLastModifiedByType { get; set; }
-        /// <summary>Dictionary of <string></summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceTags Tag { get; set; }
-        /// <summary>The type of the monitor resource.</summary>
-        string Type { get; set; }
-        /// <summary>User info</summary>
+        /// <summary>
+        /// Includes name, email and optionally, phone number. User Information can't be null.
+        /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IUserInfo UserInfo { get; set; }
         /// <summary>Email of the user used by Datadog for contacting them if needed</summary>
         string UserInfoEmailAddress { get; set; }

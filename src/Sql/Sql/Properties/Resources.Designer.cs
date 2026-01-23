@@ -457,6 +457,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No deleted server named &apos;{0}&apos; found in location &apos;{1}&apos;..
+        /// </summary>
+        internal static string DeletedServerNotFoundInLocation {
+            get {
+                return ResourceManager.GetString("DeletedServerNotFoundInLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} cmdlet is deprecated and will be removed in a future release..
         /// </summary>
         internal static string DeprecatedCmdletUsageWarning {
@@ -747,7 +756,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SoftDeleteRetentionDays must be between 1 and 35 when EnableSoftDelete is true..
+        ///   Looks up a localized string similar to SoftDeleteRetentionDays must be between 1 and 7 when EnableSoftDelete is true..
         /// </summary>
         internal static string InvalidSoftDeleteRetentionDaysRange {
             get {
@@ -788,6 +797,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string LedgerEnableConfirmActionProcessMessage {
             get {
                 return ResourceManager.GetString("LedgerEnableConfirmActionProcessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Locking the time-based immutability for the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos;..
+        /// </summary>
+        internal static string LockAzureSqlDatabaseLongTermRetentionBackupDescription {
+            get {
+                return ResourceManager.GetString("LockAzureSqlDatabaseLongTermRetentionBackupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to lock the time-based immutability for the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos;? Once locked, the backup cannot be dropped until expiration. .
+        /// </summary>
+        internal static string LockAzureSqlDatabaseLongTermRetentionBackupWarning {
+            get {
+                return ResourceManager.GetString("LockAzureSqlDatabaseLongTermRetentionBackupWarning", resourceCulture);
             }
         }
         
@@ -1377,11 +1404,74 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing the time-based immutability for the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos;..
+        /// </summary>
+        internal static string RemoveImmutabilityAzureSqlDatabaseLongTermRetentionBackupDescription {
+            get {
+                return ResourceManager.GetString("RemoveImmutabilityAzureSqlDatabaseLongTermRetentionBackupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the time-based immutability for the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos;? Once removed, it will be possible to delete the backup. .
+        /// </summary>
+        internal static string RemoveImmutabilityAzureSqlDatabaseLongTermRetentionBackupWarning {
+            get {
+                return ResourceManager.GetString("RemoveImmutabilityAzureSqlDatabaseLongTermRetentionBackupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure SQL Instance pool &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveInstancePoolWarning {
             get {
                 return ResourceManager.GetString("RemoveInstancePoolWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing the legal hold immutability for the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos;..
+        /// </summary>
+        internal static string RemoveLegalHoldAzureSqlDatabaseLongTermRetentionBackupDescription {
+            get {
+                return ResourceManager.GetString("RemoveLegalHoldAzureSqlDatabaseLongTermRetentionBackupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning! The Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos; is expired, and removing the legal hold will cause the backup to be dropped immediately..
+        /// </summary>
+        internal static string RemoveLegalHoldAzureSqlDatabaseLongTermRetentionBackupExpiredWarning {
+            get {
+                return ResourceManager.GetString("RemoveLegalHoldAzureSqlDatabaseLongTermRetentionBackupExpiredWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove a legal hold for the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos;? Once removed, it will be possible to delete the backup..
+        /// </summary>
+        internal static string RemoveLegalHoldAzureSqlDatabaseLongTermRetentionBackupWarning {
+            get {
+                return ResourceManager.GetString("RemoveLegalHoldAzureSqlDatabaseLongTermRetentionBackupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified resource group &apos;{0}&apos; does not match the deleted server&apos;s original resource group &apos;{1}&apos;. Server &apos;{2}&apos; must be restored to its original resource group..
+        /// </summary>
+        internal static string ResourceGroupMismatchForRestore {
+            get {
+                return ResourceManager.GetString("ResourceGroupMismatchForRestore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot restore deleted server &apos;{0}&apos; because resource group &apos;{1}&apos; does not exist. Please create the resource group before restoring the server..
+        /// </summary>
+        internal static string ResourceGroupNotFoundForRestore {
+            get {
+                return ResourceManager.GetString("ResourceGroupNotFoundForRestore", resourceCulture);
             }
         }
         
@@ -1697,6 +1787,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string SetDisasterRecoveryConfigurationNoOptionProvided {
             get {
                 return ResourceManager.GetString("SetDisasterRecoveryConfigurationNoOptionProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting legal hold immutability for the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos;..
+        /// </summary>
+        internal static string SetLegalHoldAzureSqlDatabaseLongTermRetentionBackupDescription {
+            get {
+                return ResourceManager.GetString("SetLegalHoldAzureSqlDatabaseLongTermRetentionBackupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to set a legal hold for the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos;? The backup will not be deleted, even once expired, until the legal hold is removed. .
+        /// </summary>
+        internal static string SetLegalHoldAzureSqlDatabaseLongTermRetentionBackupWarning {
+            get {
+                return ResourceManager.GetString("SetLegalHoldAzureSqlDatabaseLongTermRetentionBackupWarning", resourceCulture);
             }
         }
         
