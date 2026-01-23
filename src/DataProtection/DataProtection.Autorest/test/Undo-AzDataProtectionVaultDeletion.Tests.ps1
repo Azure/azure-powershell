@@ -27,14 +27,17 @@ Describe 'Undo-AzDataProtectionVaultDeletion' {
             $targetVault.OriginalBackupVaultName | Should -Not -BeNullOrEmpty
             $targetVault.OriginalBackupVaultResourceGroup | Should -Not -BeNullOrEmpty
             
-            # Step 2: Search for soft deleted backup instances in the deleted vault
-            $deletedBI = Search-AzDataProtectionSoftDeletedVaultBackupInstanceInAzGraph -DeletedVaultId $targetVault.Id -Subscription $env.TestDPPVaultSoftDelete.SubscriptionId
-            
-            # Step 3: Verify soft deleted backup instances exist
-            $deletedBI | Should -Not -BeNullOrEmpty
-            $deletedBI.Count | Should -BeGreaterThan 0
-            $deletedBI[0].CurrentProtectionState | Should -Be "SoftDeleted"
-            $deletedBI[0].FriendlyName | Should -Not -BeNullOrEmpty
+            # Step 2: Search for soft deleted backup instances in the deleted vault (skip in playback - requires Az.ResourceGraph module)
+            $deletedBI = $null
+            if ($TestMode -ne 'playback') {
+                $deletedBI = Search-AzDataProtectionSoftDeletedVaultBackupInstanceInAzGraph -DeletedVaultId $targetVault.Id -Subscription $env.TestDPPVaultSoftDelete.SubscriptionId
+                
+                # Step 3: Verify soft deleted backup instances exist
+                $deletedBI | Should -Not -BeNullOrEmpty
+                $deletedBI.Count | Should -BeGreaterThan 0
+                $deletedBI[0].CurrentProtectionState | Should -Be "SoftDeleted"
+                $deletedBI[0].FriendlyName | Should -Not -BeNullOrEmpty
+            }
             
             # Step 4: Undo the vault deletion
             $restoredVault = Undo-AzDataProtectionVaultDeletion -DeletedVaultName $targetVault.Name -Location $targetVault.Location -SubscriptionId $env.TestDPPVaultSoftDelete.SubscriptionId -ResourceGroupName $targetVault.OriginalBackupVaultResourceGroup
@@ -53,13 +56,16 @@ Describe 'Undo-AzDataProtectionVaultDeletion' {
             # Get backup instances in the restored vault
             $backupInstances = Get-AzDataProtectionSoftDeletedBackupInstance -SubscriptionId $env.TestDPPVaultSoftDelete.SubscriptionId -ResourceGroupName $targetVault.OriginalBackupVaultResourceGroup -VaultName $targetVault.OriginalBackupVaultName
             
-            # Verify backup instances match the count of previously soft deleted instances
+            # Verify backup instances exist in the restored vault
             $backupInstances | Should -Not -BeNullOrEmpty
-            $backupInstances.Count | Should -BeGreaterOrEqual $deletedBI.Count
+            if ($null -ne $deletedBI) {
+                # In live mode, verify count matches previously soft deleted instances
+                $backupInstances.Count | Should -BeGreaterOrEqual $deletedBI.Count
+            }
         }
         finally {
-            # Step 7: Soft delete the vault again to restore original state
-            if ($null -ne $targetVault) {
+            # Step 7: Soft delete the vault again to restore original state (skip in playback)
+            if ($TestMode -ne 'playback' -and $null -ne $targetVault) {
                 Remove-AzDataProtectionBackupVault -ResourceGroupName $targetVault.OriginalBackupVaultResourceGroup -VaultName $targetVault.OriginalBackupVaultName -SubscriptionId $env.TestDPPVaultSoftDelete.SubscriptionId
                 
                 # Verify the vault is soft deleted again

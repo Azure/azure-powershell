@@ -100,10 +100,20 @@ function Undo-AzDataProtectionVaultDeletion
             $getDeletedVaultParams.Add("DefaultProfile", $DefaultProfile)
         }
 
+        if($PSBoundParameters.ContainsKey("HttpPipelinePrepend"))
+        {
+            $getDeletedVaultParams.Add("HttpPipelinePrepend", $HttpPipelinePrepend)
+        }
+
+        if($PSBoundParameters.ContainsKey("HttpPipelineAppend"))
+        {
+            $getDeletedVaultParams.Add("HttpPipelineAppend", $HttpPipelineAppend)
+        }
+
         try 
         {
             # Get the specific deleted vault by its GUID name
-            $deletedVault = Get-AzDataProtectionSoftDeletedBackupVault @getDeletedVaultParams
+            $deletedVault = Az.DataProtection\Get-AzDataProtectionSoftDeletedBackupVault @getDeletedVaultParams
             
             if($null -eq $deletedVault)
             {
