@@ -383,6 +383,9 @@ directive:
   - where:
       verb: Invoke
       subject: FindRestorableTimeRange
+    set:
+      verb: Find
+      subject: RestorableTimeRange
 
   - where:
       verb: New
@@ -395,9 +398,6 @@ directive:
       subject: BackupVault
       parameter-name: IdentityUserAssignedIdentity
     clear-alias: true
-    set:
-      verb: Find
-      subject: RestorableTimeRange
   
   - where:
       verb: New
