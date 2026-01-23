@@ -1,0 +1,42 @@
+{
+  "resourceType": "offers",
+  "apiVersion": "2025-10-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.edgemarketplace"
+  },
+  "commands": [
+    {
+      "name": "Get-AzEdgeMarketplaceOffer",
+      "description": "Get a Offer",
+      "path": "/{resourceUri}/providers/Microsoft.EdgeMarketplace/offers/{offerId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.edgemarketplace/get-azedgemarketplaceoffer"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Id <String>",
+              "-ResourceUri <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Offer",
+          "parameters": [
+            {
+              "name": "-Id",
+              "value": "[Path.offerId]"
+            },
+            {
+              "name": "-ResourceUri",
+              "value": "[Path.resourceUri]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
