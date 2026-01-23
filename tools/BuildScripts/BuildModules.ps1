@@ -35,16 +35,17 @@ param (
     [boolean]$CodeSign = $false
 
 )
+# Start timing
+$ScriptStartTime = Get-Date
+
 if (($null -eq $RepoRoot) -or (0 -eq $RepoRoot.Length)) {
     $RepoRoot = Resolve-Path (Join-Path $PSScriptRoot '..' '..')
-
 }
 
 $notModules = @('lib', 'shared', 'helpers')
 $coreTestModule = @('Compute', 'Network', 'Resources', 'Sql', 'Websites')
 $RepoArtifacts = Join-Path $RepoRoot "artifacts"
 
-$csprojFiles = @()
 $testModule = @()
 $toolDirectory = Join-Path $RepoRoot "tools"
 $sourceDirectory = Join-Path $RepoRoot "src"
@@ -155,12 +156,17 @@ if (Test-Path $buildSln) {
 }
 & dotnet new sln -n Azure.PowerShell -o $RepoArtifacts --force
 
-foreach ($file in $buildCsprojFiles) {
-    & dotnet sln $buildSln add "$file"
+# Batch add projects to solution file in chunks to avoid command line length limit
+# Optimized from 6 min (one-by-one) to ~30 seconds (batched)
+$batchSize = 50
+for ($i = 0; $i -lt $buildCsprojFiles.Count; $i += $batchSize) {
+    $end = [Math]::Min($i + $batchSize, $buildCsprojFiles.Count)
+    $batch = $buildCsprojFiles[$i..($end - 1)]
+    Write-Host "Adding projects $($i + 1) to $end of $($buildCsprojFiles.Count)"
+    & dotnet sln $buildSln add @batch
 }
 Write-Output "Modules are added to build sln file"
 
-$LogFile = Join-Path $RepoArtifacts 'Build.log'
 if ('Release' -eq $Configuration) {
     $BuildAction = 'publish'
 }
@@ -179,6 +185,7 @@ else {
     Write-Output "Modules are added to test sln file"
 }
 
+$LogFile = Join-Path $RepoArtifacts 'Build.log'
 $buildCmdArgs = @("$BuildAction", "$Buildsln", "-c", "$Configuration", "-fl", "/flp1:logFile=$LogFile;verbosity=quiet")
 If ($GenerateDocumentationFile -eq "false") {
     $buildCmdArgs += "-p:GenerateDocumentationFile=false"
@@ -186,6 +193,7 @@ If ($GenerateDocumentationFile -eq "false") {
 if ($EnableTestCoverage -eq "true") {
     $buildCmdArgs += "-p:TestCoverage=TESTCOVERAGE"
 }
+Write-Host "dotnet" @buildCmdArgs
 # Use argument splatting to prevent injection
 & dotnet @buildCmdArgs
 
@@ -197,3 +205,11 @@ $removeScriptPath = Join-Path $toolDirectory 'BuildScripts' 'RemoveUnwantedFiles
 
 $updateModuleScriptPath = Join-Path $toolDirectory 'UpdateModules.ps1'
 pwsh $updateModuleScriptPath -BuildConfig $Configuration -Scope $Scope
+
+# Calculate and display elapsed time
+$ScriptEndTime = Get-Date
+$ElapsedTime = $ScriptEndTime - $ScriptStartTime
+Write-Host "`n==========================================" -ForegroundColor Cyan
+Write-Host "Script execution completed" -ForegroundColor Green
+Write-Host "Total time elapsed: $($ElapsedTime.ToString('hh\:mm\:ss'))" -ForegroundColor Cyan
+Write-Host "==========================================" -ForegroundColor Cyan

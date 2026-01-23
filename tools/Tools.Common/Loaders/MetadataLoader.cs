@@ -36,11 +36,12 @@ namespace Tools.Common.Loaders
         {
             // bez: notice that this search way always find artifacts/Debug/{moduleName}/psd1 first, which may cause some issues
             // to work around this issue, clear Debug folder if we are intended to bump version for Release
-            string modulePsd1Path = Directory.GetFiles(Path.Combine(_rootPath, "artifacts"), $"{moduleName}.psd1", SearchOption.AllDirectories)[0];
-            if (modulePsd1Path == null)
+            string[] modulePsd1Paths = Directory.GetFiles(Path.Combine(_rootPath, "artifacts"), $"{moduleName}.psd1", SearchOption.AllDirectories);
+            if (modulePsd1Paths == null || modulePsd1Paths.Length == 0)
             {
-                Console.Error.WriteLine($"Cannot find {moduleName}.psd1 in {Path.Combine(_rootPath, "artifacts")}!");
+                throw new Exception($"Cannot find {moduleName}.psd1 in {Path.Combine(_rootPath, "artifacts")}!");
             }
+            string modulePsd1Path = modulePsd1Paths[0];
             return GetModuleMetadata(moduleName, modulePsd1Path);
         }
 

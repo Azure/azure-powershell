@@ -31,6 +31,9 @@ Param(
     [string]$ReleaseType = "STS"
 )
 
+# Start timing
+$ScriptStartTime = Get-Date
+
 Import-Module -Name "$PSScriptRoot/ReleaseTools/VersionBumpUtils.psm1" -Force
 
 enum PSVersion
@@ -293,14 +296,18 @@ function Bump-AzVersion
         throw "Please check artifacts output path: $resolvedArtifactsOutputPath whether exists."
     }
 
-    # Update-ModuleManifest requires all required modules in Az.psd1 installed in local
-    # Add artifacts as PSModulePath to skip installation
-    if(!($env:PSModulePath.Split(";").Contains($resolvedArtifactsOutputPath)))
-    {
-        $env:PSModulePath = "$resolvedArtifactsOutputPath;" + $env:PSModulePath
-    }
-
-    Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
+    # Update Az.psd1 using string replacement
+    $azPsd1Path = "$PSScriptRoot\Az\Az.psd1"
+    $azPsd1Content = Get-Content -Path $azPsd1Path -Raw
+    
+    # Update ModuleVersion
+    $azPsd1Content = $azPsd1Content -replace "(?m)(^\s*)ModuleVersion\s*=\s*'[\d\.]+(')","$`1ModuleVersion = '$newVersion`$2"
+    
+    # Update ReleaseNotes
+    $releaseNotesString = ($releaseNotes -join "`r`n").Replace("'", "''")
+    $azPsd1Content = $azPsd1Content -replace "(?s)ReleaseNotes\s*=\s*@'\r?\n.*?\r?\n'@", "ReleaseNotes = @'`r`n$releaseNotesString`r`n'@"
+    
+    Set-Content -Path $azPsd1Path -Value $azPsd1Content -Encoding UTF8 -NoNewline
     Update-ChangeLog -Content $changeLog -FilePath "$rootPath\ChangeLog.md"
 
     New-CommandMappingFile
@@ -505,34 +512,11 @@ switch ($PSCmdlet.ParameterSetName)
 
     {$PSItem.StartsWith("ReleaseAz")}
     {
-        # clean the unnecessary SerializedCmdlets json file
-        $ExistSerializedCmdletJsonFile = Get-ExistSerializedCmdletJsonFile
-        $GAModules = @() # with "Az."
-        $ExpectJsonHashSet = @{}
-        $SrcPath = Join-Path -Path $PSScriptRoot -ChildPath "..\src"
-        foreach ($ModuleName in $(Get-ChildItem $SrcPath -Directory).Name)
-        {
-            $ModulePath = $(Join-Path -Path $SrcPath -ChildPath $ModuleName)
-            $Psd1FileName = "Az.{0}.psd1" -f $ModuleName
-            $Psd1FilePath = $(Get-ChildItem $ModulePath -Depth 2 -Recurse -Filter $Psd1FileName)
-            if ($null -ne $Psd1FilePath)
-            {
-                $Psd1Object = Import-PowerShellDataFile $Psd1FilePath
-                if ([Version]$Psd1Object.ModuleVersion -ge [Version]"1.0.0")
-                {
-                    $ExpectJsonHashSet.Add("Az.${ModuleName}.json", $true)
-                    $GAModules += "Az.${ModuleName}"
-                }
-            }
-        }
-        foreach ($JsonFile in $ExistSerializedCmdletJsonFile)
-        {
-            $ModuleName = $JsonFile.Replace('.json', '')
-            if (!$ExpectJsonHashSet.Contains($JsonFile))
-            {
-                Write-Host "Module ${ModuleName} is pre-GA. The serialized cmdlets file: ${JsonFile} is for reference only"
-            }
-        }
+        # $ExistSerializedCmdletJsonFile = Get-ExistSerializedCmdletJsonFile
+        # $ExistSerializedCmdletJsonFile | ForEach-Object { Write-Host $_ }
+        
+        $ModifiedGAModules = & $PSScriptRoot/BuildScripts/CollectModifiedModules.ps1 -GAOnly
+        $ModifiedGAModules = $ModifiedGAModules | ForEach-Object { "Az.$_" }
 
         Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $ReleaseType
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $ReleaseType
@@ -546,9 +530,17 @@ switch ($PSCmdlet.ParameterSetName)
 
         # Update the doc of upcoming breaking change
         Import-Module $PSScriptRoot/BreakingChanges/GetUpcomingBreakingChange.psm1
-        Export-AllBreakingChangeMessageUnderArtifacts -ArtifactsPath $PSScriptRoot/../artifacts/Release/ -MarkdownPath $PSScriptRoot/../documentation/breaking-changes/upcoming-breaking-changes.md -Module $GAModules
+        Export-AllBreakingChangeMessageUnderArtifacts -ArtifactsPath $PSScriptRoot/../artifacts/Release/ -MarkdownPath $PSScriptRoot/../documentation/breaking-changes/upcoming-breaking-changes.md -Module $ModifiedGAModules
     }
 }
 
 # Generate dotnet csv
-&$PSScriptRoot/Docs/GenerateDotNetCsv.ps1 -FeedPsd1FullPath "$PSScriptRoot\AzPreview\AzPreview.psd1"
+& $PSScriptRoot/Docs/GenerateDotNetCsv.ps1 -FeedPsd1FullPath "$PSScriptRoot\AzPreview\AzPreview.psd1"
+
+# Calculate and display elapsed time
+$ScriptEndTime = Get-Date
+$ElapsedTime = $ScriptEndTime - $ScriptStartTime
+Write-Host "`n==========================================" -ForegroundColor Cyan
+Write-Host "Script execution completed" -ForegroundColor Green
+Write-Host "Total time elapsed: $($ElapsedTime.ToString('hh\:mm\:ss'))" -ForegroundColor Cyan
+Write-Host "=========================================="  -ForegroundColor Cyan

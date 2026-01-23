@@ -394,8 +394,11 @@ function Update-NugetPackage {
         $modulePath = Join-Path $DirPath -ChildPath ($ModuleName + ".nuspec")
 
         # Cleanup
+        Write-Output "[!] Removing _rels directory: $relDir"
         Remove-Item -Recurse -Path $relDir -Force
+        Write-Output "[!] Removing package directory: $packPath"
         Remove-Item -Recurse -Path $packPath -Force
+        Write-Output "[!] Removing Content_Types file: $contentPath"
         Remove-Item -Path $contentPath -Force
 
         # Create new output
@@ -476,9 +479,9 @@ function Save-PackageLocally {
 
     # Only check for the modules that specifies = required exact dependency version
     if ($RequiredVersion -ne $null) {
-        Write-Output "Checking for required module $ModuleName, $RequiredVersion"
+        # Write-Output "Checking for required module $ModuleName, $RequiredVersion"
         if (Find-Module -Name $ModuleName -RequiredVersion $RequiredVersion -Repository $TempRepo -ErrorAction SilentlyContinue) {
-            Write-Output "Required dependency $ModuleName, $RequiredVersion found in the repo $TempRepo"
+            # Write-Output "Required dependency $ModuleName, $RequiredVersion found in the repo $TempRepo"
         } else {
             if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
                 $PSRepositoryUrl = $Env:DEFAULT_PS_REPOSITORY_URL
@@ -624,6 +627,7 @@ function Add-AllModules {
     
     foreach ($package in $packages) {
         if ($package.FullName -ne $latestPackage.FullName) {
+            Write-Output "[!] Removing package file: $($package.FullName)"
             Remove-Item $package.FullName -Force
         }
     }
@@ -710,11 +714,11 @@ function Add-Module {
         {
             Write-Output "Existing module found: $moduleName"
             $moduleNupkgPath = Join-Path -Path $TempRepoPath -ChildPath ($moduleName + "." + $moduleVersion + ".nupkg")
-            Write-Output "Deleting the module: $moduleNupkgPath"
+            Write-Output "[!] Removing the module: $moduleNupkgPath"
             Remove-Item -Path $moduleNupkgPath -Force
         }
 
-        Write-Output "Publishing the module $moduleName"
+        Write-Output "Publishing the module $moduleName to local repository $TempRepo from path $Path"
         Publish-Module -Path $Path -Repository $TempRepo -Force | Out-Null
         Write-Output "$moduleName published"
 
@@ -759,11 +763,12 @@ function Add-Module {
             Write-Output "Removing module manifest dependencies for $unzippedManifest"
             Remove-ModuleDependencies -Path (Join-Path $TempRepoPath $unzippedManifest -Resolve)
 
+            Write-Output "[!] Removing zip file: $zipPath"
             Remove-Item -Path $zipPath -Force
 
             Write-Output "Repackaging $dirPath"
             Update-NugetPackage -TempRepoPath $TempRepoPath -ModuleName $moduleName -DirPath $dirPath -NugetExe $NugetExe
-            Write-Output "Removing temporary folder $dirPath"
+            Write-Output "[!] Removing temporary folder $dirPath"
             Remove-Item -Recurse $dirPath -Force -ErrorAction Stop
         } finally {
             Pop-Location
