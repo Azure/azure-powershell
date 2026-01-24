@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 11.2.1
 * Updated Compute SDK to be generated with autorest.powershell, replacing track 1 SDK
 
 ## Version 11.2.0
