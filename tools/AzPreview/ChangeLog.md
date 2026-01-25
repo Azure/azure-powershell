@@ -1,3 +1,62 @@
+## 15.2.1 - February 2026
+#### Az.Aks 7.1.1
+* Fixed the default SSH key generation logic in 'New-AzAksCluster' to enforce RSA key type (instead of ed25519 that became the default in OpenSSH 9.4 and above)
+
+#### Az.Compute 11.2.1
+* Updated Compute SDK to be generated with autorest.powershell, replacing track 1 SDK
+
+#### Az.EdgeAction 0.1.1
+* Updated to API version 2025-12-01-preview
+* Removed 'Add-AzEdgeActionAttachment' cmdlet (operation no longer available in API)
+* Removed 'Remove-AzEdgeActionAttachment' cmdlet (operation no longer available in API)
+
+#### Az.Functions 4.3.1
+* Fixed cloud portability by using dynamic endpoints for storage [#29034]
+
+#### Az.RecoveryServices 7.11.1
+* Added Cross region restore support for upcoming regions IndiaSouthCentral
+
+#### Az.Resources 9.0.1
+* Fixed issue where the PowerShell console would close when using Resources module cmdlets without being logged in. Github Issue [link](https://github.com/Azure/azure-powershell/issues/28774).
+* Fixed 'Remove-AzRoleDefinition' displaying incorrect confirmation message (unformatted placeholder) and empty GUID as target when using '-Confirm' or '-WhatIf' with the '-Name' parameter [#29075]
+* Added breaking change preannouncement for 'PSRoleDefinition' type changes in Az.Resources 10.0.0 [#29058]
+    - The flattened properties 'Actions', 'NotActions', 'DataActions', 'NotDataActions', 'Condition', and 'ConditionVersion' will be removed from 'PSRoleDefinition'
+    - Use 'Permissions[n].Actions', 'Permissions[n].DataActions', etc. instead to access the full permission structure with per-permission conditions
+    - Affects output for 'Get-AzRoleDefinition', 'New-AzRoleDefinition', 'Set-AzRoleDefinition', and 'Remove-AzRoleDefinition' (with '-PassThru')
+    - Affects input format for 'New-AzRoleDefinition' and 'Set-AzRoleDefinition' cmdlets
+    - Affects '-InputObject' parameter for 'Remove-AzRoleDefinition' cmdlet
+
+#### Az.SignalR 2.3.3
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+#### Az.StackHCI 2.6.6
+* Improved cloud deployment detection during Azure Arc repair operations to prevent duplicate enablement attempts and ensure smoother deployment experiences.
+* Added ability to register in custom Azure Environments
+* Fixed issue where Arc enablement was incorrectly triggered during repair registration for cloud deployments
+
+#### Az.Storage 9.5.2
+* When users input TLS 1.0 or TLS 1.1 to create or update a Storage account, automatically upgrade to TLS 1.2
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Added breaking change warnings for TLS 1.0 and TLS 1.1 deprecation when creating or updating a Storage account
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+
+#### Az.VMware 0.9.0
+* Updated the AVS VMware cmdlets api version to '2025-09-01'. 
+* Added cmdlet:
+    - 'Get-AzVMwareLicense'
+    - 'Get-AzVMwareLicenseProperty'
+    - 'Get-AzVMwareMaintenance'
+    - 'Get-AzVMwarePrivateCloudVcfLicense'
+    - 'Invoke-AzVMwareInitiateMaintenanceCheck'
+    - 'Invoke-AzVMwareRescheduleMaintenance'
+    - 'Invoke-AzVMwareScheduleMaintenance'
+    - 'New-AzVMwareLicense'
+    - 'Remove-AzVMwareLicense'
+    - 'Update-AzVMwareLicense'
+    - 'Test-AzVMwareServiceComponentAvailability'
+
 ## 15.2.0 - January 2026
 #### Az.Accounts 5.3.2
 * Updated Azure.Core from 1.47.3 to 1.50.0
