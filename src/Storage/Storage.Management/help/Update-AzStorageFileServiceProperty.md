@@ -17,8 +17,9 @@ Modifies the service properties for the Azure Storage File service.
 Update-AzStorageFileServiceProperty [-ResourceGroupName] <String> [-StorageAccountName] <String>
  [-EnableShareDeleteRetentionPolicy <Boolean>] [-ShareRetentionDays <Int32>] [-EnableSmbMultichannel <Boolean>]
  [-SmbProtocolVersion <String[]>] [-SmbAuthenticationMethod <String[]>] [-SmbChannelEncryption <String[]>]
- [-SmbKerberosTicketEncryption <String[]>] [-CorsRule <PSCorsRule[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SmbKerberosTicketEncryption <String[]>] [-SmbEncryptionInTransitRequired <Boolean>]
+ [-NfsEncryptionInTransitRequired <Boolean>] [-CorsRule <PSCorsRule[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -27,8 +28,9 @@ Update-AzStorageFileServiceProperty [-ResourceGroupName] <String> [-StorageAccou
 Update-AzStorageFileServiceProperty -StorageAccount <PSStorageAccount>
  [-EnableShareDeleteRetentionPolicy <Boolean>] [-ShareRetentionDays <Int32>] [-EnableSmbMultichannel <Boolean>]
  [-SmbProtocolVersion <String[]>] [-SmbAuthenticationMethod <String[]>] [-SmbChannelEncryption <String[]>]
- [-SmbKerberosTicketEncryption <String[]>] [-CorsRule <PSCorsRule[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SmbKerberosTicketEncryption <String[]>] [-SmbEncryptionInTransitRequired <Boolean>]
+ [-NfsEncryptionInTransitRequired <Boolean>] [-CorsRule <PSCorsRule[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -37,8 +39,9 @@ Update-AzStorageFileServiceProperty -StorageAccount <PSStorageAccount>
 Update-AzStorageFileServiceProperty [-ResourceId] <String> [-EnableShareDeleteRetentionPolicy <Boolean>]
  [-ShareRetentionDays <Int32>] [-EnableSmbMultichannel <Boolean>] [-SmbProtocolVersion <String[]>]
  [-SmbAuthenticationMethod <String[]>] [-SmbChannelEncryption <String[]>]
- [-SmbKerberosTicketEncryption <String[]>] [-CorsRule <PSCorsRule[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SmbKerberosTicketEncryption <String[]>] [-SmbEncryptionInTransitRequired <Boolean>]
+ [-NfsEncryptionInTransitRequired <Boolean>] [-CorsRule <PSCorsRule[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -171,7 +174,22 @@ The second command sets the rules in $CorsRules to the File service of a Storage
 Update-AzStorageFileServiceProperty -ResourceGroupName myresourcegroup -StorageAccountName mystorageaccount -CorsRule @()
 ```
 
-This command cleans up the CORS rules of a Storage account by inputting @() to parameter CorsRule. 
+This command cleans up the CORS rules of a Storage account by inputting @() to parameter CorsRule
+
+### Example 7: Enable SMB encryption in transit
+```powershell
+Update-AzStorageFileServiceProperty -ResourceGroupName myresourcegroup -StorageAccountName mystorageaccount -SmbEncryptionInTransitRequired $true
+```
+
+This command enabled SMB encryption in transit for the specified storage account.
+
+### Example 8: Enable NFS encryption in transit
+```powershell
+Update-AzStorageFileServiceProperty -ResourceGroupName myresourcegroup -StorageAccountName mystorageaccount -NfsEncryptionInTransitRequired $true
+```
+
+This command enabled NFS encryption in transit for the specified storage account.
+ 
 
 ## PARAMETERS
 
@@ -227,6 +245,36 @@ Enable Multichannel by set to $true, disable Multichannel by set to $false. Appl
 Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NfsEncryptionInTransitRequired
+Enable Multichannel by set to $true, disable Multichannel by set to $false. Applies to Premium FileStorage only.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -305,6 +353,21 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: AES-128-CCM, AES-128-GCM, AES-256-GCM
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SmbEncryptionInTransitRequired
+Enable Multichannel by set to $true, disable Multichannel by set to $false. Applies to Premium FileStorage only.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
