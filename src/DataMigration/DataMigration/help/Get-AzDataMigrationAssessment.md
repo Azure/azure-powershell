@@ -78,6 +78,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Config File Format
+
+```json
+{
+    "action": "Assess",
+    "outputFolder": "C:\\Output",
+    "overwrite": "true",
+    "sqlConnectionStrings": [
+        "Data Source=<SERVER_NAME>;Initial Catalog=<DATABASE_NAME>;User ID=<USERNAME>;Password=<PASSWORD>;TrustServerCertificate=True;Encrypt=True"
+    ]
+}
+```
+
 ### -ConnectionString
 Sql Server Connection Strings
 
