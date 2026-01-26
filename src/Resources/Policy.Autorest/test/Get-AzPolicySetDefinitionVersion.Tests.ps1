@@ -7,28 +7,106 @@ Describe 'GetPolicySetDefinitionVersion' -Tag 'LiveOnly' {
         $customSetDefinition = $env.customSubSetDefinition
     }
 
-    It 'Get-AzPolicySetDefinition -Name <nonexistent>' {
-        {
-            Get-AzPolicySetDefinition -Name $someName
-        } | Should -Throw $PolicySetDefinitionNotFound
-    }
-
     It 'Get-AzPolicySetDefinition -Version' {
         {
-            Get-AzPolicySetDefinition -Version '1.0.0'
+            Get-AzPolicySetDefinition -Version $defaultVersion
+        } | Should -Throw $versionRequiresNameOrId
+    }
+
+    It 'Get-AzPolicySetDefinition -Name -Version <missing>' {
+        {
+            Get-AzPolicySetDefinition -Name $someName -Version
+        } | Should -Throw $missingAnArgument
+    }
+
+    It 'Get-AzPolicySetDefinition -Name -Id -Version' {
+        {
+            Get-AzPolicySetDefinition -Name $someName -Id $someId -Version $someNewVersion 
+        } | Should -Throw $nameOrIdIdentifier
+    }
+
+    It 'Get-AzPolicySetDefinition -ManagementGroupName -Id -Version' {
+        {
+            Get-AzPolicySetDefinition -ManagementGroupName $someManagementGroup -Id $someId -Version $someNewVersion 
+        } | Should -Throw $managementGroupSubscriptionWithName
+    }
+
+    It 'Get-AzPolicySetDefinition -SubscriptionId -Id -Version' {
+        {
+            Get-AzPolicySetDefinition -SubscriptionId $subscriptionId -Id $someId -Version $someNewVersion 
+        } | Should -Throw $managementGroupSubscriptionWithName
+    }
+
+    It 'Get-AzPolicySetDefinition -Name -ManagementGroupName -Version' {
+        {
+            Get-AzPolicySetDefinition -Name $someName -ManagementGroupName $someManagementGroup -Version $someNewVersion 
+        } | Should -Throw $policySetDefinitionNotFound
+    }
+
+    It 'Get-AzPolicySetDefinition -Name -SubscriptionId -Version' {
+        {
+            Get-AzPolicySetDefinition -Name $someName -SubscriptionId $subscriptionId -Version $someNewVersion 
+        } | Should -Throw $policySetDefinitionNotFound
+    }
+
+    It 'Get-AzPolicySetDefinition -ManagementGroupName -Version' {
+        {
+            Get-AzPolicySetDefinition -ManagementGroupName $someManagementGroup -Version $someNewVersion 
+        } | Should -Throw $versionRequiresNameOrId
+    }
+
+    It 'Get-AzPolicySetDefinition -SubscriptionId -Version' {
+        {
+            Get-AzPolicySetDefinition -SubscriptionId $subscriptionId -Version $someNewVersion 
         } | Should -Throw $versionRequiresNameOrId
     }
 
     It 'Get-AzPolicySetDefinition -ListVersion' {
         {
             Get-AzPolicySetDefinition -ListVersion
-        } | Should -Throw $ListVersionRequiresNameOrId
+        } | Should -Throw $listVersionRequiresNameOrId
     }
 
-    It 'Get-AzPolicySetDefinition -Name <nonexistent> -Version <missing>' {
+    It 'Get-AzPolicySetDefinition -Name -Id -ListVersion' {
         {
-            Get-AzPolicySetDefinition -Name $someName -Version
-        } | Should -Throw $missingAnArgument
+            Get-AzPolicySetDefinition -Name $someName -Id $someId -ListVersion
+        } | Should -Throw $nameOrIdIdentifier
+    }
+
+    It 'Get-AzPolicySetDefinition -ManagementGroupName -Id -ListVersion' {
+        {
+            Get-AzPolicySetDefinition -ManagementGroupName $someManagementGroup -Id $someId -ListVersion
+        } | Should -Throw $managementGroupSubscriptionWithName
+    }
+
+    It 'Get-AzPolicySetDefinition -SubscriptionId -Id -ListVersion' {
+        {
+            Get-AzPolicySetDefinition -SubscriptionId $subscriptionId -Id $someId -ListVersion 
+        } | Should -Throw $managementGroupSubscriptionWithName
+    }
+
+    It 'Get-AzPolicySetDefinition -Name -ManagementGroupName -ListVersion' {
+        {
+            Get-AzPolicySetDefinition -Name $someName -ManagementGroupName $someManagementGroup -ListVersion
+        } | Should -Throw $policySetDefinitionNotFound
+    }
+
+    It 'Get-AzPolicySetDefinition -Name -SubscriptionId -ListVersion' {
+        {
+            Get-AzPolicySetDefinition -Name $someName -SubscriptionId $subscriptionId -ListVersion
+        } | Should -Throw $policySetDefinitionNotFound
+    }
+
+    It 'Get-AzPolicySetDefinition -ManagementGroupName -ListVersion' {
+        {
+            Get-AzPolicySetDefinition -ManagementGroupName $someManagementGroup -ListVersion
+        } | Should -Throw $listVersionRequiresNameOrId
+    }
+
+    It 'Get-AzPolicySetDefinition -SubscriptionId -ListVersion' {
+        {
+            Get-AzPolicySetDefinition -SubscriptionId $subscriptionId -ListVersion
+        } | Should -Throw $listVersionRequiresNameOrId
     }
 
     It 'Get-AzPolicySetDefinition -Name <custom>' {
@@ -40,14 +118,14 @@ Describe 'GetPolicySetDefinitionVersion' -Tag 'LiveOnly' {
     }
 
     It 'Get-AzPolicySetDefinition -Name <custom> -Version' {
-        $result = Get-AzPolicySetDefinition -Name $customSetDefinition.Name -Version '1.0.0'
-        $result.Version | Should -Be '1.0.0'
+        $result = Get-AzPolicySetDefinition -Name $customSetDefinition.Name -Version $defaultVersion
+        $result.Version | Should -Be $defaultVersion
         $result.Versions | Should -BeNull
     }
 
     It 'Get-AzPolicySetDefinition -Name <custom> -ListVersion' {
         $result = Get-AzPolicySetDefinition -Name $customSetDefinition.Name -ListVersion
-        $result.Version | Should -Be '1.0.0'
+        $result.Version | Should -Be $defaultVersion
         $result.Versions | Should -BeNull
     }
 
@@ -79,14 +157,14 @@ Describe 'GetPolicySetDefinitionVersion' -Tag 'LiveOnly' {
     }
 
     It 'Get-AzPolicySetDefinition -Id <custom> -Version' {
-        $result = Get-AzPolicySetDefinition -Id $customSetDefinition.Id -Version '1.0.0'
-        $result.Version | Should -Be '1.0.0'
+        $result = Get-AzPolicySetDefinition -Id $customSetDefinition.Id -Version $defaultVersion
+        $result.Version | Should -Be $defaultVersion
         $result.Versions | Should -BeNull
     }
 
     It 'Get-AzPolicySetDefinition -Id <custom> -ListVersion' {
         $result = Get-AzPolicySetDefinition -Id $customSetDefinition.Id -ListVersion
-        $result.Version | Should -Be '1.0.0'
+        $result.Version | Should -Be $defaultVersion
         $result.Versions | Should -BeNull
     }
 

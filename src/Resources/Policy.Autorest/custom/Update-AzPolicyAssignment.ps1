@@ -175,12 +175,6 @@ param(
     ${ResourceSelector},
 
     [Parameter()]
-    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible} = $false,
-
-    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Azure')]
@@ -362,10 +356,6 @@ process {
 
     if (!$calledParameters.EnforcementMode -and $calledParameters.EnforcementMode) {
         $calledParameters.EnforcementMode = $existing.EnforcementMode
-    }
-
-    if ($BackwardCompatible) {
-        $calledParameters.BackwardCompatible = $true
     }
 
     if ($writeln) {

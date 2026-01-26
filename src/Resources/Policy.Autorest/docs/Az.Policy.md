@@ -29,11 +29,17 @@ Creates or updates a policy assignment.
 ### [New-AzPolicyDefinition](New-AzPolicyDefinition.md)
 Creates or updates a policy definition.
 
+### [New-AzPolicyDefinitionVersion](New-AzPolicyDefinitionVersion.md)
+Creates a policy definition version.
+
 ### [New-AzPolicyExemption](New-AzPolicyExemption.md)
 Creates or updates a policy exemption.
 
 ### [New-AzPolicySetDefinition](New-AzPolicySetDefinition.md)
 Creates or updates a policy set definition.
+
+### [New-AzPolicySetDefinitionVersion](New-AzPolicySetDefinitionVersion.md)
+Creates or updates a policy set definition version.
 
 ### [Remove-AzPolicyAssignment](Remove-AzPolicyAssignment.md)
 This operation deletes a policy assignment, given its name and the scope it was created in.

@@ -7,7 +7,6 @@ Describe 'PolicySetDefinitionReferencePolicyDefinitionVersion' {
         # setup
         $policySetDefName = Get-ResourceName
         $policyDefName = '36fd7371-8eb7-4321-9c30-a7100022d048'
-        $oldestVersion = '1.0.0'
         $oldestVersionReference = '1.0.*'
         $newestVersionReference = '2.*.*'
 
@@ -35,7 +34,7 @@ Describe 'PolicySetDefinitionReferencePolicyDefinitionVersion' {
 
         $expected.Name | Should -Be $actual.Name
         $expected.Id | Should -Be $actual.Id
-        $expected.Version | Should -Be $oldestVersion
+        $expected.Version | Should -Be $defaultVersion
         $expected.Version | Should -Be $actual.Version
         $expected.Versions | Should -HaveCount 1
         $expected.Versions | Should -Be $actual.Versions
@@ -70,7 +69,7 @@ Describe 'PolicySetDefinitionReferencePolicyDefinitionVersion' {
 
         $update.Name | Should -Be $actual.Name
         $update.Id | Should -Be $actual.Id
-        $update.Version | Should -Be $oldestVersion
+        $update.Version | Should -Be $defaultVersion
         $update.Version | Should -Be $actual.Version
         $update.Versions | Should -HaveCount 1
         $update.Versions | Should -Be $actual.Versions

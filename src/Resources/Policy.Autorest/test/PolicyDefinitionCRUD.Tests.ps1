@@ -9,8 +9,6 @@ Describe 'PolicyDefinitionCRUD' -Tag 'LiveOnly' {
         $test2 = Get-ResourceName
         $test3 = Get-ResourceName
         $test4 = Get-ResourceName
-        $oldestVersion = "1.0.0"
-        $newestVersion = "2.0.0"
     }
 
     It 'Make a policy definition from rule file' {
@@ -19,7 +17,7 @@ Describe 'PolicyDefinitionCRUD' -Tag 'LiveOnly' {
         $actual = Get-AzPolicyDefinition -Name $policyName
         $actual | Should -Not -BeNullOrEmpty
         $expected.Name | Should -Be $actual.Name
-        $actual.Version | Should -Be $oldestVersion
+        $actual.Version | Should -Be $defaultVersion
         $expected.Version | Should -Be $actual.Version
         $expected.Versions | Should -HaveCount 1
         $expected.Versions | Should -Be $actual.Versions
@@ -34,7 +32,7 @@ Describe 'PolicyDefinitionCRUD' -Tag 'LiveOnly' {
         $expected = Get-AzPolicyDefinition -Name $policyName
         $expected.DisplayName | Should -Be $actual.DisplayName
         $expected.Description | Should -Be $actual.Description
-        $actual.Version | Should -Be $oldestVersion
+        $actual.Version | Should -Be $defaultVersion
         $expected.Version | Should -Be $actual.Version
         $expected.Versions | Should -Be $actual.Versions
         $actual.Versions | Should -Not -BeNullOrEmpty
@@ -44,11 +42,11 @@ Describe 'PolicyDefinitionCRUD' -Tag 'LiveOnly' {
 
     It 'Update policy definition version' {
         # update the same policy definition, get it back and validate the new version
-        $actual = Update-AzPolicyDefinition -Name $policyName -DisplayName testDisplay -Description $updatedDescription -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Metadata $metadata -Version $newestVersion
+        $actual = Update-AzPolicyDefinition -Name $policyName -DisplayName testDisplay -Description $updatedDescription -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Metadata $metadata -Version $someNewVersion
         $expected = Get-AzPolicyDefinition -Name $policyName
         $expected.DisplayName | Should -Be $actual.DisplayName
         $expected.Description | Should -Be $actual.Description
-        $actual.Version | Should -Be $newestVersion
+        $actual.Version | Should -Be $someNewVersion
         $expected.Version | Should -Be $actual.Version
         $expected.Versions | Should -Be $actual.Versions
         $expected.Versions | Should -HaveCount 2
@@ -69,6 +67,7 @@ Describe 'PolicyDefinitionCRUD' -Tag 'LiveOnly' {
         $actual = Get-AzPolicyDefinition -Name $policyName
         $actual.DisplayName | Should -Be $expected.DisplayName
         $actual.Description | Should -Be $expected.Description
+        $expected.Version | Should -Be $someNewVersion
         $expected.Version | Should -Be $actual.Version
         $expected.Versions | Should -Be $actual.Versions
         $actual.Metadata.$metadataName | Should -Be $expected.Metadata.$metadataName
@@ -118,10 +117,10 @@ Describe 'PolicyDefinitionCRUD' -Tag 'LiveOnly' {
 
     It 'Make a policy definition with version from rule file' {
         # make a policy definition with version, get it back and validate
-        $expected = New-AzPolicyDefinition -Name $test4 -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Mode Indexed -Description $description -Version $newestVersion
+        $expected = New-AzPolicyDefinition -Name $test4 -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Mode Indexed -Description $description -Version $someNewVersion
         $actual = Get-AzPolicyDefinition -Name $test4
         $actual | Should -Not -BeNullOrEmpty
-        $actual.Version | Should -Be $newestVersion
+        $actual.Version | Should -Be $someNewVersion
         $actual.Versions | Should -HaveCount 1
         $expected.Name | Should -Be $actual.Name
         $expected.Version | Should -Be $actual.Version

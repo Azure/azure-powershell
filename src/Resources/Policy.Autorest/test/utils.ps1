@@ -305,7 +305,10 @@ function setupEnv() {
     $env['somePolicyParameter'] = 'somePolicyParameter'
     $env['someParameterObject'] = "{'parm1': 'a', 'parm2': 'b' }"
     $env['someDisplayName'] = 'Some display name'
-    $env['someVersion'] = '2.0.0'
+    $env['someNewVersion'] = '2.0.1'
+    $env['somePreviewVersion'] = '1.3.0-preview'
+    $env['someOldVersion'] = '1.3.1'
+    $env['defaultVersion'] = '1.0.0'
 
     # exception strings
     $env['parameterSetError'] = 'Parameter set cannot be resolved using the specified named parameters.'
@@ -334,9 +337,13 @@ function setupEnv() {
     $env['invalidPolicyDefinitionReference'] = 'InvalidPolicyDefinitionReference'
     $env['invalidPolicySetDefinitionRequest'] = "[InvalidCreatePolicySetDefinitionRequest] : The policy set definition 'someName' create request is invalid. At least one policy definition must be referenced."
     $env['multiplePolicyDefinitionParams'] = "Cannot bind parameter because parameter 'PolicyDefinition' is specified more than once"
-    $env['versionRequiresNameOrId'] = 'Version is only allowed if Name or Id  are provided.'
-    $env['listVersionsRequiresNameOrId'] = 'ListVersions is only allowed if Name or Id  are provided.'
+    $env['versionRequiresNameOrId'] = 'Version is only allowed if Name or Id are provided.'
+    $env['listVersionsRequiresNameOrId'] = 'ListVersions is only allowed if Name or Id are provided.'
+    $env['nameOrIdIdentifier'] = 'Only one identifier can be provided: specify either Name or Id.'
+    $env['managementGroupSubscriptionWithName'] = 'Id cannot be combined with ManagementGroupName or SubscriptionId.'
     $env['disallowedByPolicy'] = "was disallowed by policy."
+    $env['invalidLatestDefVersionDeletion'] = "[InvalidDeletePolicyDefinitionRequest] : Deleting the latest version"
+    $env['invalidLatestSetDefVersionDeletion'] = "[InvalidDeletePolicySetDefinitionRequest] : Deleting the latest version"
 
     $env['rgName'] = Get-ResourceGroupName
     $rg = New-ResourceGroup -Name $env.rgName -Location "west us"

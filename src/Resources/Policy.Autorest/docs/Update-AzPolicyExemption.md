@@ -16,27 +16,26 @@ This operation updates a policy exemption with the given scope and name.
 ```
 Update-AzPolicyExemption -Name <String> [-ExemptionCategory <String>]
  [-PolicyDefinitionReferenceId <String[]>] [-Scope <String>] [-AssignmentScopeValidation <String>]
- [-BackwardCompatible] [-ClearExpiration] [-Description <String>] [-DisplayName <String>]
- [-ExpiresOn <DateTime?>] [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ClearExpiration] [-Description <String>] [-DisplayName <String>] [-ExpiresOn <DateTime?>]
+ [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Id
 ```
 Update-AzPolicyExemption -Id <String> [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>]
- [-AssignmentScopeValidation <String>] [-BackwardCompatible] [-ClearExpiration] [-Description <String>]
- [-DisplayName <String>] [-ExpiresOn <DateTime?>] [-Metadata <String>]
- [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AssignmentScopeValidation <String>] [-ClearExpiration] [-Description <String>] [-DisplayName <String>]
+ [-ExpiresOn <DateTime?>] [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Update-AzPolicyExemption -InputObject <IPolicyExemption> [-ExemptionCategory <String>]
- [-PolicyDefinitionReferenceId <String[]>] [-AssignmentScopeValidation <String>] [-BackwardCompatible]
- [-ClearExpiration] [-Description <String>] [-DisplayName <String>] [-ExpiresOn <DateTime?>]
- [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-PolicyDefinitionReferenceId <String[]>] [-AssignmentScopeValidation <String>] [-ClearExpiration]
+ [-Description <String>] [-DisplayName <String>] [-ExpiresOn <DateTime?>] [-Metadata <String>]
+ [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,21 +72,6 @@ The option whether validate the exemption is at or under the assignment scope.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

@@ -112,6 +112,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(ValueFromPipelineByPropertyName)]
+    [Alias('PolicyDefinitionVersion')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The policy definition version in #.#.# format.
@@ -152,12 +153,6 @@ param(
     [Parameter(ParameterSetName = 'InputObject', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition]
     ${InputObject},
-
-    [Parameter()]
-    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible} = $false,
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -354,10 +349,6 @@ process {
 
     if (!$calledParameters.EndpointSettingDetail -and $existing.EndpointSettingDetail) {
         $calledParameters.EndpointSettingDetail = ConvertTo-Json $existing.EndpointSettingDetail -Depth 100
-    }
-
-    if ($BackwardCompatible) {
-        $calledParameters.BackwardCompatible = $true
     }
 
     if ($writeln) {

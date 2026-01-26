@@ -1,7 +1,7 @@
 # setup the Pester environment for policy tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'PolicySetDefinitionCRUD'
 
-Describe 'PolicySetDefinitionCRUD' {
+Describe 'PolicySetDefinitionCRUD' -Tag 'LiveOnly' {
 
     BeforeAll {
         # setup
@@ -9,8 +9,6 @@ Describe 'PolicySetDefinitionCRUD' {
         $policySetDefName2 = Get-ResourceName
         $policyDefName = Get-ResourceName
         $policyDefinitionReferenceId = "Definition-Reference-1"
-        $oldestVersion = "1.0.0"
-        $newestVersion = "2.0.0"
 
         # make a policy definition and policy set definition that references it, get the policy set definition back and validate
         $policyDefinition = New-AzPolicyDefinition -Name $policyDefName -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description
@@ -30,7 +28,7 @@ Describe 'PolicySetDefinitionCRUD' {
         $actual = Get-AzPolicySetDefinition -Name $policySetDefName
         $expected.Name | Should -Be $actual.Name
         $expected.Id | Should -Be $actual.Id
-        $expected.Version | Should -Be $oldestVersion
+        $expected.Version | Should -Be $defaultVersion
         $expected.Version | Should -Be $actual.Version
         $expected.Versions | Should -HaveCount 1
         $expected.Versions | Should -Be $actual.Versions
@@ -51,7 +49,7 @@ Describe 'PolicySetDefinitionCRUD' {
         $actual = Get-AzPolicySetDefinition -Name $policySetDefName
         $update.DisplayName | Should -Be $actual.DisplayName
         $update.Description | Should -Be $actual.Description
-        $update.Version | Should -Be $oldestVersion
+        $update.Version | Should -Be $defaultVersion
         $update.Version | Should -Be $actual.Version
         $update.Versions | Should -HaveCount 1
         $update.Versions | Should -Be $actual.Versions
@@ -66,7 +64,7 @@ Describe 'PolicySetDefinitionCRUD' {
         $actual.PolicyDefinition | Should -Not -BeNullOrEmpty
         $update.DisplayName | Should -Be $actual.DisplayName
         $update.Description | Should -Be $actual.Description
-        $update.Version | Should -Be $oldestVersion
+        $update.Version | Should -Be $defaultVersion
         $update.Version | Should -Be $actual.Version
         $update.Versions | Should -HaveCount 1
         $update.Versions | Should -Be $actual.Versions
@@ -77,11 +75,11 @@ Describe 'PolicySetDefinitionCRUD' {
 
     It 'Update policy set definition version' {
         # update the policy set definition version, get it back and validate
-        $update = Update-AzPolicySetDefinition -Name $policySetDefName -DisplayName testDisplay -Description $updatedDescription -Version $newestVersion
+        $update = Update-AzPolicySetDefinition -Name $policySetDefName -DisplayName testDisplay -Description $updatedDescription -Version $someNewVersion
         $actual = Get-AzPolicySetDefinition -Name $policySetDefName
         $update.DisplayName | Should -Be $actual.DisplayName
         $update.Description | Should -Be $actual.Description
-        $update.Version | Should -Be $newestVersion
+        $update.Version | Should -Be $someNewVersion
         $update.Version | Should -Be $actual.Version
         $update.Versions | Should -HaveCount 2
         $update.Versions | Should -Be $actual.Versions
@@ -96,7 +94,7 @@ Describe 'PolicySetDefinitionCRUD' {
         $actual.PolicyDefinition | Should -Not -BeNullOrEmpty
         $update.DisplayName | Should -Be $actual.DisplayName
         $update.Description | Should -Be $actual.Description
-        $update.Version | Should -Be $newestVersion
+        $update.Version | Should -Be $someNewVersion
         $update.Version | Should -Be $actual.Version
         $update.Versions | Should -HaveCount 2
         $update.Versions | Should -Be $actual.Versions
@@ -122,15 +120,18 @@ Describe 'PolicySetDefinitionCRUD' {
         $actual.PolicyRule | Should -BeLike $expected.PolicyRule
         $actual.Parameter | Should -BeLike $expected.Parameter
         $actual.PolicyDefinitionGroup | Should -BeLike $expected.PolicyDefinitionGroup
+        $actual.Version | Should -Be $someNewVersion
+        $actual.Version | Should -Be $expected.Version
+        $actual.Versions | Should -HaveCount 2
     }
 
     It 'Make a policy set definition with version from rule file' {
         # make a policy set definition with version, get it back and validate
-        $expected = New-AzPolicySetDefinition -Name $policySetDefName2 -PolicyDefinition $policySet -Description $description -Metadata $metadata -Version $newestVersion
+        $expected = New-AzPolicySetDefinition -Name $policySetDefName2 -PolicyDefinition $policySet -Description $description -Metadata $metadata -Version $someNewVersion
         $actual = Get-AzPolicySetDefinition -Name $policySetDefName2
         $expected.Name | Should -Be $actual.Name
         $expected.Id | Should -Be $actual.Id
-        $expected.Version | Should -Be $newestVersion
+        $expected.Version | Should -Be $someNewVersion
         $expected.Version | Should -Be $actual.Version
         $expected.Versions | Should -HaveCount 1
         $expected.Versions | Should -Be $actual.Versions

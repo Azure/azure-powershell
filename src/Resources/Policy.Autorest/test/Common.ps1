@@ -70,7 +70,6 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         # values used by parameter combination tests
         $someName = $env.someName
         $someScope = $env.someScope
-        $someVersion = $env.someVersion
         $someId = $env.someId
         $someIdentityId = $env.someIdentityId
         $someManagementGroup = $env.someManagementGroup
@@ -81,6 +80,10 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         $somePolicyParameter = $env.somePolicyParameter
         $someParameterObject = $env.someParameterObject | ConvertFrom-Json -Depth 100 -AsHashtable
         $someDisplayName = $env.someDisplayName
+        $someNewVersion = $env.someNewVersion
+        $someOldVersion = $env.someOldVersion
+        $somePreviewVersion = $env.somePreviewVersion
+        $defaultVersion = $env.defaultVersion
 
         # exception strings
         $parameterSetError = $env.parameterSetError
@@ -112,6 +115,8 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         $listVersionsRequiresNameOrId = $env.listVersionsRequiresNameOrId
         $disallowedByPolicy = $env.disallowedByPolicy
         $invalidVersionIdentifier = $env.invalidVersionIdentifier
+        $invalidLatestDefVersionDeletion = $env.invalidLatestDefVersionDeletion
+        $invalidLatestSetDefVersionDeletion = $env.invalidLatestSetDefVersionDeletion
     }
     catch {
         Write-Host -ForegroundColor Red "Failed setting up environment for [$TargetTestName]: [$_]"

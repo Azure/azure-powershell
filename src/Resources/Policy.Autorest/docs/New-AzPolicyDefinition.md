@@ -14,8 +14,8 @@ Creates or updates a policy definition.
 
 ### Name (Default)
 ```
-New-AzPolicyDefinition -Name <String> -Policy <String> [-BackwardCompatible] [-Description <String>]
- [-DisplayName <String>] [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
+New-AzPolicyDefinition -Name <String> -Policy <String> [-Description <String>] [-DisplayName <String>]
+ [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
  [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
  [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
@@ -25,9 +25,9 @@ New-AzPolicyDefinition -Name <String> -Policy <String> [-BackwardCompatible] [-D
 
 ### ManagementGroupName
 ```
-New-AzPolicyDefinition -ManagementGroupName <String> -Name <String> -Policy <String> [-BackwardCompatible]
- [-Description <String>] [-DisplayName <String>] [-EndpointSettingDetail <String>]
- [-EndpointSettingKind <String>] [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
+New-AzPolicyDefinition -ManagementGroupName <String> -Name <String> -Policy <String> [-Description <String>]
+ [-DisplayName <String>] [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
+ [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
  [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
  [-Parameter <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -36,9 +36,9 @@ New-AzPolicyDefinition -ManagementGroupName <String> -Name <String> -Policy <Str
 
 ### SubscriptionId
 ```
-New-AzPolicyDefinition -Name <String> -SubscriptionId <String> -Policy <String> [-BackwardCompatible]
- [-Description <String>] [-DisplayName <String>] [-EndpointSettingDetail <String>]
- [-EndpointSettingKind <String>] [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
+New-AzPolicyDefinition -Name <String> -SubscriptionId <String> -Policy <String> [-Description <String>]
+ [-DisplayName <String>] [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
+ [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
  [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
  [-Parameter <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -73,21 +73,6 @@ The **New-AzPolicyDefinition** cmdlet creates or updates a policy definition tha
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.

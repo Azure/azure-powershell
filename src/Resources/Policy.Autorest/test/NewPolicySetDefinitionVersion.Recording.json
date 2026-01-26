@@ -1,0 +1,234 @@
+{
+  "NewPolicySetDefinitionVersion+[NoContext]+New-AzPolicySetDefinitionVersion -Name -PolicyDefinition -Version+$PUT+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policySetDefinitions/someName/versions/1.3.1?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policySetDefinitions/someName/versions/1.3.1?api-version=2025-03-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"policyDefinitions\": [ ],\r\n    \"version\": \"1.3.1\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "83" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westcentralus/9d7b8318-9077-4096-9e3b-c2fb97fba949" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "5ac04b22-1813-49cd-b19a-52d1aee08717" ],
+        "x-ms-correlation-request-id": [ "5ac04b22-1813-49cd-b19a-52d1aee08717" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20260126T184728Z:5ac04b22-1813-49cd-b19a-52d1aee08717" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1C3B34EE23D345659C6E1ADE1E281880 Ref B: MWH011020809031 Ref C: 2026-01-26T18:47:28Z" ],
+        "Date": [ "Mon, 26 Jan 2026 18:47:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "117" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"PolicySetDefinitionNotFound\",\"message\":\"The policy set definition \u0027someName\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "NewPolicySetDefinitionVersion+[NoContext]+New-AzPolicySetDefinitionVersion -Name -PolicyDefinition -ManagementGroupName -Version+$PUT+https://management.azure.com/providers/Microsoft.Management/managementGroups/someManagementGroup/providers/Microsoft.Authorization/policySetDefinitions/someName/versions/1.3.1?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/someManagementGroup/providers/Microsoft.Authorization/policySetDefinitions/someName/versions/1.3.1?api-version=2025-03-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"policyDefinitions\": [ ],\r\n    \"version\": \"1.3.1\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "83" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 403,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "d02eb91f-48b5-4a0d-9db7-0fb65f65513d" ],
+        "x-ms-correlation-request-id": [ "d02eb91f-48b5-4a0d-9db7-0fb65f65513d" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20260126T184730Z:d02eb91f-48b5-4a0d-9db7-0fb65f65513d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AB24B446AA8942F9B16D032D09DAE3FC Ref B: MWH011020809031 Ref C: 2026-01-26T18:47:29Z" ],
+        "Date": [ "Mon, 26 Jan 2026 18:47:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "503" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"AuthorizationFailed\",\"message\":\"The client \u0027zhaocelina@microsoft.com\u0027 with object id \u0027638d92d9-ae3b-4f1d-be91-382dcc631f82\u0027 does not have authorization to perform action \u0027Microsoft.Authorization/policySetDefinitions/versions/write\u0027 over scope \u0027/providers/Microsoft.Management/managementGroups/someManagementGroup/providers/Microsoft.Authorization/policySetDefinitions/someName/versions/1.3.1\u0027 or the scope is invalid. If access was recently granted, please refresh your credentials.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "NewPolicySetDefinitionVersion+[NoContext]+New-AzPolicySetDefinitionVersion -Name -PolicyDefinition -SubscriptionId -Version+$PUT+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policySetDefinitions/someName/versions/1.3.1?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policySetDefinitions/someName/versions/1.3.1?api-version=2025-03-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"policyDefinitions\": [ ],\r\n    \"version\": \"1.3.1\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "83" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus/962eeed5-fad7-4544-a5d4-d57ac81f6172" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "57614394-0e81-410a-9236-6bf1e0244845" ],
+        "x-ms-correlation-request-id": [ "57614394-0e81-410a-9236-6bf1e0244845" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260126T184732Z:57614394-0e81-410a-9236-6bf1e0244845" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9E1BAF53BFB040078421976BAF0822AB Ref B: MWH011020809031 Ref C: 2026-01-26T18:47:31Z" ],
+        "Date": [ "Mon, 26 Jan 2026 18:47:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "117" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"PolicySetDefinitionNotFound\",\"message\":\"The policy set definition \u0027someName\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "NewPolicySetDefinitionVersion+[NoContext]+New-AzPolicySetDefinitionVersion -Name -PolicyDefinition -Version \u003cinvalid version\u003e+$PUT+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policySetDefinitions/someName/versions/someName?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policySetDefinitions/someName/versions/someName?api-version=2025-03-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"policyDefinitions\": [ ],\r\n    \"version\": \"someName\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "86" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus/89842c17-0131-4d11-8bd0-87d7e2456c6e" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "4ec40a20-374e-4333-b477-9d417d397ed2" ],
+        "x-ms-correlation-request-id": [ "4ec40a20-374e-4333-b477-9d417d397ed2" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260126T184733Z:4ec40a20-374e-4333-b477-9d417d397ed2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EE580B43221D42C99E78873EF9814414 Ref B: MWH011020809031 Ref C: 2026-01-26T18:47:33Z" ],
+        "Date": [ "Mon, 26 Jan 2026 18:47:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "117" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"PolicySetDefinitionNotFound\",\"message\":\"The policy set definition \u0027someName\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "NewPolicySetDefinitionVersion+[NoContext]+New-AzPolicySetDefinitionVersion -Name -PolicyDefinition -Version \u003cvalid version\u003e+$PUT+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policySetDefinitions/someName/versions/1.3.1?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policySetDefinitions/someName/versions/1.3.1?api-version=2025-03-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"policyDefinitions\": [ ],\r\n    \"version\": \"1.3.1\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "83" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/centralus/81e61bbc-fe1e-434f-b4b1-2f2ca55337b9" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "77897660-2e9c-4230-b897-cc7abf1b8f2d" ],
+        "x-ms-correlation-request-id": [ "77897660-2e9c-4230-b897-cc7abf1b8f2d" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260126T184735Z:77897660-2e9c-4230-b897-cc7abf1b8f2d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8E6B4DF7712642CA804EA0EAC6964038 Ref B: MWH011020809031 Ref C: 2026-01-26T18:47:34Z" ],
+        "Date": [ "Mon, 26 Jan 2026 18:47:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "117" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"PolicySetDefinitionNotFound\",\"message\":\"The policy set definition \u0027someName\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "NewPolicySetDefinitionVersion+[NoContext]+New-AzPolicySetDefinitionVersion -Name -PolicyDefinition -Version \u003cvalid preview version\u003e+$PUT+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policySetDefinitions/someName/versions/1.3.0-preview?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policySetDefinitions/someName/versions/1.3.0-preview?api-version=2025-03-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"policyDefinitions\": [ ],\r\n    \"version\": \"1.3.0-preview\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "91" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westcentralus/71f2d1a2-0d8a-4486-ab0a-1487b7d571b4" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "a35b606e-bfeb-492c-b544-6c23b430c608" ],
+        "x-ms-correlation-request-id": [ "a35b606e-bfeb-492c-b544-6c23b430c608" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20260126T184736Z:a35b606e-bfeb-492c-b544-6c23b430c608" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 16509DD8CBED4BA2B5F7B9E20780020E Ref B: MWH011020809031 Ref C: 2026-01-26T18:47:36Z" ],
+        "Date": [ "Mon, 26 Jan 2026 18:47:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "117" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"PolicySetDefinitionNotFound\",\"message\":\"The policy set definition \u0027someName\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

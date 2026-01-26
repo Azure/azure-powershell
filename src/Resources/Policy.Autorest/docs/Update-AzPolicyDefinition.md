@@ -14,7 +14,7 @@ This operation updates an existing policy definition in the given subscription o
 
 ### Name (Default)
 ```
-Update-AzPolicyDefinition -Name <String> [-BackwardCompatible] [-Description <String>] [-DisplayName <String>]
+Update-AzPolicyDefinition -Name <String> [-Description <String>] [-DisplayName <String>]
  [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
  [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
@@ -25,7 +25,7 @@ Update-AzPolicyDefinition -Name <String> [-BackwardCompatible] [-Description <St
 
 ### Id
 ```
-Update-AzPolicyDefinition -Id <String> [-BackwardCompatible] [-Description <String>] [-DisplayName <String>]
+Update-AzPolicyDefinition -Id <String> [-Description <String>] [-DisplayName <String>]
  [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
  [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
@@ -36,8 +36,8 @@ Update-AzPolicyDefinition -Id <String> [-BackwardCompatible] [-Description <Stri
 
 ### InputObject
 ```
-Update-AzPolicyDefinition -InputObject <IPolicyDefinition> [-BackwardCompatible] [-Description <String>]
- [-DisplayName <String>] [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
+Update-AzPolicyDefinition -InputObject <IPolicyDefinition> [-Description <String>] [-DisplayName <String>]
+ [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
  [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
  [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
@@ -47,9 +47,9 @@ Update-AzPolicyDefinition -InputObject <IPolicyDefinition> [-BackwardCompatible]
 
 ### ManagementGroupName
 ```
-Update-AzPolicyDefinition -ManagementGroupName <String> -Name <String> [-BackwardCompatible]
- [-Description <String>] [-DisplayName <String>] [-EndpointSettingDetail <String>]
- [-EndpointSettingKind <String>] [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
+Update-AzPolicyDefinition -ManagementGroupName <String> -Name <String> [-Description <String>]
+ [-DisplayName <String>] [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
+ [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
  [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
  [-Parameter <String>] [-Policy <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm]
@@ -58,9 +58,9 @@ Update-AzPolicyDefinition -ManagementGroupName <String> -Name <String> [-Backwar
 
 ### SubscriptionId
 ```
-Update-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-BackwardCompatible]
- [-Description <String>] [-DisplayName <String>] [-EndpointSettingDetail <String>]
- [-EndpointSettingKind <String>] [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
+Update-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-Description <String>]
+ [-DisplayName <String>] [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
+ [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
  [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
  [-Parameter <String>] [-Policy <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm]
@@ -95,21 +95,6 @@ This operation updates an existing policy definition in the given subscription o
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -379,7 +364,7 @@ The policy definition version in #.#.# format.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: PolicyDefinitionVersion
 
 Required: False
 Position: Named

@@ -71,12 +71,6 @@ param(
     # Causes the list of returned policy exemptions to include all exemptions related to the given scope, including those from ancestor scopes and those from descendent scopes. If not provided, only exemptions at and above the given scope are included.
     ${IncludeDescendent},
 
-    [Parameter()]
-    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible} = $false,
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.String]
@@ -237,7 +231,6 @@ process {
     $null = $calledParameters.Remove('Id')
     $null = $calledParameters.Remove('PolicyAssignmentIdFilter')
     $null = $calledParameters.Remove('IncludeDescendent')
-    $null = $calledParameters.Remove('BackwardCompatible')
 
     if ($writeln) {
         Write-Host -ForegroundColor Blue -> $mapping[$calledParameterSet]'(' $calledParameters ')'
@@ -250,24 +243,6 @@ process {
     $object = Invoke-Command -ScriptBlock $scriptCmd
 
     foreach ($item in $object) {
-        # add property bag for backward compatibility with previous SDK cmdlets
-        if ($BackwardCompatible) {
-            $propertyBag = @{
-                Description = $item.Description;
-                DisplayName = $item.DisplayName;
-                ExpiresOn = $item.ExpiresOn;
-                ExemptionCategory = $item.ExemptionCategory;
-                Metadata = (ConvertObjectToPSObject $item.Metadata);
-                PolicyDefinitionReferenceIds = (ConvertObjectToPSObject $item.PolicyDefinitionReferenceId);
-                PolicyAssignmentId = $item.PolicyAssignmentId
-            }
-
-            $item | Add-Member -MemberType NoteProperty -Name 'Properties' -Value ([PSCustomObject]($propertyBag))
-            $item | Add-Member -MemberType NoteProperty -Name 'ResourceId' -Value $item.Id
-            $item | Add-Member -MemberType NoteProperty -Name 'ResourceName' -Value $item.Name
-            $item | Add-Member -MemberType NoteProperty -Name 'ResourceType' -Value $item.Type
-        }
-
         $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
         $item | Add-Member -MemberType NoteProperty -Name 'PolicyDefinitionReferenceId' -Value (ConvertObjectToPSObject $item.PolicyDefinitionReferenceId) -Force
         $PSCmdlet.WriteObject($item)

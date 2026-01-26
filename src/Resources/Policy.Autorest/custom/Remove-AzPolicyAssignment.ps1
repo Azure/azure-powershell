@@ -75,12 +75,6 @@ param(
     ${Force},
 
     [Parameter()]
-    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible} = $false,
-
-    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Azure')]
@@ -181,18 +175,6 @@ process {
         $null = $PSBoundParameters.Remove('Force')
     }
 
-    # use passthru for backward compatibility with previous SDK cmdlets: remove cmdlet always returned a value
-    if ($PSBoundParameters.ContainsKey('PassThru')) {
-        $BackwardCompatible = $PassThru
-        $PSBoundParameters['PassThru'] = $PassThru
-    }
-    elseif ($BackwardCompatible) {
-        $PSBoundParameters['PassThru'] = $BackwardCompatible
-    }
-
-    # remove non-generated parameters
-    $null = $PSBoundParameters.Remove('BackwardCompatible')
-
     # remove the assignment if inputs resolve and user confirms
     if ($resolved.Scope -and $PSCmdlet.ShouldProcess($target)) {
         if ($Name) {
@@ -215,16 +197,9 @@ process {
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $result = Invoke-Command -ScriptBlock $scriptCmd
     }
-
-    # return result of remove
-    if ($BackwardCompatible) {
-        if ($result -is [boolean]) {
-            $PSCmdlet.WriteObject($result)
-        }
-        else {
-            # $result is the assignment instead of a boolean for some reason, so return constant $true
-            $PSCmdlet.WriteObject($true)
-        }
+    
+    if ($PassThru) {
+        $PSCmdlet.WriteObject($result)
     }
 }
 

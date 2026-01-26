@@ -14,23 +14,21 @@ This operation updates an existing policy set definition in the given subscripti
 
 ### Name (Default)
 ```
-Update-AzPolicySetDefinition -Name <String> [-BackwardCompatible] [-Description <String>]
- [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>]
- [-PolicyDefinitionGroup <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzPolicySetDefinition -Name <String> [-Description <String>] [-DisplayName <String>]
+ [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>] [-PolicyDefinitionGroup <String>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Update-AzPolicySetDefinition -Id <String> [-BackwardCompatible] [-Description <String>]
- [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>]
- [-PolicyDefinitionGroup <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzPolicySetDefinition -Id <String> [-Description <String>] [-DisplayName <String>] [-Metadata <String>]
+ [-Parameter <String>] [-PolicyDefinition <String>] [-PolicyDefinitionGroup <String>] [-Version <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Update-AzPolicySetDefinition -InputObject <IPolicySetDefinition> [-BackwardCompatible] [-Description <String>]
+Update-AzPolicySetDefinition -InputObject <IPolicySetDefinition> [-Description <String>]
  [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>]
  [-PolicyDefinitionGroup <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -38,18 +36,18 @@ Update-AzPolicySetDefinition -InputObject <IPolicySetDefinition> [-BackwardCompa
 
 ### ManagementGroupName
 ```
-Update-AzPolicySetDefinition -ManagementGroupName <String> -Name <String> [-BackwardCompatible]
- [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinition <String>] [-PolicyDefinitionGroup <String>] [-Version <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzPolicySetDefinition -ManagementGroupName <String> -Name <String> [-Description <String>]
+ [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>]
+ [-PolicyDefinitionGroup <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
-Update-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-BackwardCompatible]
- [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinition <String>] [-PolicyDefinitionGroup <String>] [-Version <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-Description <String>]
+ [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>]
+ [-PolicyDefinitionGroup <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,21 +78,6 @@ This operation updates an existing policy set definition in the given subscripti
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -286,7 +269,7 @@ The policy definition version in #.#.# format.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: PolicyDefinitionVersion
 
 Required: False
 Position: Named

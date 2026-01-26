@@ -14,32 +14,32 @@ This operation deletes the policy definition in the given subscription with the 
 
 ### Name (Default)
 ```
-Remove-AzPolicyDefinition -Name <String> [-BackwardCompatible] [-Force] [-Version <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzPolicyDefinition -Name <String> [-Version <String>] [-Force] [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Remove-AzPolicyDefinition -Id <String> [-BackwardCompatible] [-Force] [-Version <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzPolicyDefinition -Id <String> [-Version <String>] [-Force] [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Remove-AzPolicyDefinition -InputObject <IPolicyIdentity> [-BackwardCompatible] [-Force] [-Version <String>]
+Remove-AzPolicyDefinition -InputObject <IPolicyIdentity> [-Version <String>] [-Force]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
-Remove-AzPolicyDefinition -ManagementGroupName <String> -Name <String> [-BackwardCompatible] [-Force]
- [-Version <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzPolicyDefinition -ManagementGroupName <String> -Name <String> [-Version <String>] [-Force]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
-Remove-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-BackwardCompatible] [-Force]
- [-Version <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-Version <String>] [-Force]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,21 +70,6 @@ This operation deletes the policy definition in the given subscription with the 
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -214,7 +199,7 @@ The policy definition version in #.#.# format.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: PolicyDefinitionVersion
 
 Required: False
 Position: Named

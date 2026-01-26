@@ -14,26 +14,25 @@ Creates or updates a policy set definition.
 
 ### Name (Default)
 ```
-New-AzPolicySetDefinition -Name <String> -PolicyDefinition <String> [-BackwardCompatible]
- [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzPolicySetDefinition -Name <String> -PolicyDefinition <String> [-Description <String>]
+ [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
 New-AzPolicySetDefinition -ManagementGroupName <String> -Name <String> -PolicyDefinition <String>
- [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-Metadata <String>]
- [-Parameter <String>] [-PolicyDefinitionGroup <String>] [-Version <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>]
+ [-PolicyDefinitionGroup <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
 New-AzPolicySetDefinition -Name <String> -SubscriptionId <String> -PolicyDefinition <String>
- [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-Metadata <String>]
- [-Parameter <String>] [-PolicyDefinitionGroup <String>] [-Version <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>]
+ [-PolicyDefinitionGroup <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,21 +63,6 @@ The **New-AzPolicySetDefinition** cmdlet creates or updates a policy set definit
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.

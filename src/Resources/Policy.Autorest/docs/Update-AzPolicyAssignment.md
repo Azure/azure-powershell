@@ -16,16 +16,16 @@ For example, when you assign a policy at resource group scope, that policy appli
 
 ### Name (Default)
 ```
-Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-BackwardCompatible] [-Description <String>]
- [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>]
- [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
- [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-Description <String>] [-DisplayName <String>]
+ [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>] [-Location <String>]
+ [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-Override <IOverride[]>]
+ [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Id
 ```
-Update-AzPolicyAssignment -Id <String> [-BackwardCompatible] [-Description <String>] [-DisplayName <String>]
+Update-AzPolicyAssignment -Id <String> [-Description <String>] [-DisplayName <String>]
  [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>] [-Location <String>]
  [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-Override <IOverride[]>]
  [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -34,16 +34,16 @@ Update-AzPolicyAssignment -Id <String> [-BackwardCompatible] [-Description <Stri
 
 ### IdParameterObject
 ```
-Update-AzPolicyAssignment -Id <String> -PolicyParameterObject <PSObject> [-BackwardCompatible]
- [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>]
- [-IdentityType <String>] [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>]
- [-NotScope <String[]>] [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzPolicyAssignment -Id <String> -PolicyParameterObject <PSObject> [-Description <String>]
+ [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>]
+ [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
+ [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### IdParameterString
 ```
-Update-AzPolicyAssignment -Id <String> -PolicyParameter <String> [-BackwardCompatible] [-Description <String>]
+Update-AzPolicyAssignment -Id <String> -PolicyParameter <String> [-Description <String>]
  [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>]
  [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
  [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm]
@@ -52,30 +52,29 @@ Update-AzPolicyAssignment -Id <String> -PolicyParameter <String> [-BackwardCompa
 
 ### InputObject
 ```
-Update-AzPolicyAssignment -InputObject <IPolicyAssignment> [-BackwardCompatible] [-Description <String>]
- [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>]
- [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
- [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzPolicyAssignment -InputObject <IPolicyAssignment> [-Description <String>] [-DisplayName <String>]
+ [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>] [-Location <String>]
+ [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-Override <IOverride[]>]
+ [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### NameParameterObject
 ```
 Update-AzPolicyAssignment -Name <String> -PolicyParameterObject <PSObject> [-Scope <String>]
- [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
- [-IdentityId <String>] [-IdentityType <String>] [-Location <String>] [-Metadata <String>]
- [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-Override <IOverride[]>]
- [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### NameParameterString
-```
-Update-AzPolicyAssignment -Name <String> -PolicyParameter <String> [-Scope <String>] [-BackwardCompatible]
  [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>]
  [-IdentityType <String>] [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>]
  [-NotScope <String[]>] [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### NameParameterString
+```
+Update-AzPolicyAssignment -Name <String> -PolicyParameter <String> [-Scope <String>] [-Description <String>]
+ [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>]
+ [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
+ [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,21 +107,6 @@ For example, when you assign a policy at resource group scope, that policy appli
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
