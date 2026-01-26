@@ -8,10 +8,14 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Linq;
 
     /// <summary>
-    /// The resource model definition for an Azure Resource Manager proxy resource.
+    /// The resource model definition for a Azure Resource Manager proxy resource.
     /// It will not have tags and a location
     /// </summary>
-    public partial class ProxyResource : Microsoft.Rest.Azure.IResource
+    /// <remarks>
+    /// The resource model definition for a Azure Resource Manager proxy resource.
+    /// It will not have tags and a location
+    /// </remarks>
+    public partial class ProxyResource : Resource
     {
         /// <summary>
         /// Initializes a new instance of the ProxyResource class.
@@ -25,20 +29,20 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the ProxyResource class.
         /// </summary>
 
-        /// <param name="id">Resource Id
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">Resource name
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
         public ProxyResource(string id = default(string), string name = default(string), string type = default(string))
 
+        : base(id, name, type)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
             CustomInit();
         }
 
@@ -47,23 +51,5 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets resource Id
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets resource name
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets resource type
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
     }
 }

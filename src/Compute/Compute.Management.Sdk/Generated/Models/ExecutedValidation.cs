@@ -59,11 +59,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string Type {get; set; }
 
         /// <summary>
-        /// Gets or sets this property specifies the status of the validationProfile of
-        /// the image version. Possible values include: &#39;Unknown&#39;, &#39;Failed&#39;, &#39;Succeeded&#39;
+        /// Gets this property specifies the status of the validationProfile of the
+        /// image version. Possible values include: &#39;Unknown&#39;, &#39;Failed&#39;, &#39;Succeeded&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
-        public string Status {get; set; }
+        public string Status {get; private set; }
 
         /// <summary>
         /// Gets or sets this property specifies the valid version of the validation.

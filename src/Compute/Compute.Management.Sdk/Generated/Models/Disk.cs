@@ -25,19 +25,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the Disk class.
         /// </summary>
 
-        /// <param name="id">Resource Id
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">Resource name
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource location
+        /// <param name="tags">Resource tags.
         /// </param>
 
-        /// <param name="tags">Resource tags
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
 
         /// <param name="managedBy">A relative URI containing the ID of the VM that has the disk attached.
