@@ -74,7 +74,7 @@ The fourth command updates the policy object with lifecycles created.
 The fifth, sixth commands create the custom schedule object for the backup policy, twice weekly starting from $schDates.
 The seventh command updates the policy object with custom schedule.
 The eighth, ninth, tenth commands update the Monthly retention rule with custom lifecycles.
-The eleventh, twelth commands create a tag criteria for Monthly policy.
+The eleventh, twelfth commands create a tag criteria for Monthly policy.
 Tag criteria needs to be added for each custom retention rule (automatically added for default retention rule).
 The last command creates the policy.
 
@@ -299,10 +299,9 @@ Accept wildcard characters: False
 
 ### -Policy
 Policy Request Object
-To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupPolicy
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -396,7 +395,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBaseBackupPolicyResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResource
 
 ## NOTES
 

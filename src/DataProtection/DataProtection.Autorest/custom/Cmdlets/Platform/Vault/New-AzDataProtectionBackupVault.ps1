@@ -5,10 +5,6 @@
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Creates or updates a BackupVault resource belonging to a resource group.')]
 
     param(
-        [Parameter(Mandatory=$false, HelpMessage='Subscription Id of the vault')]
-        [System.String]
-        ${SubscriptionId},
-
         [Parameter(Mandatory, HelpMessage='Resource Group Name of the backup vault')]
         [System.String]
         ${ResourceGroupName},
@@ -17,48 +13,52 @@
         [System.String]
         ${VaultName},
 
+        [Parameter(Mandatory=$false, HelpMessage='Subscription Id of the vault')]
+        [System.String]
+        ${SubscriptionId},
+
+        [Parameter(Mandatory, HelpMessage='Storage Settings of the vault. Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IStorageSetting[]]
+        ${StorageSetting},
+
+        [Parameter(Mandatory=$false, HelpMessage='Parameter to Enable or Disable built-in azure monitor alerts for job failures. Security alerts cannot be disabled.')]
+        [System.String]
+        [ValidateSet('Enabled','Disabled')]
+        ${AzureMonitorAlertsForAllJobFailure},
+
+        [Parameter(Mandatory=$false, HelpMessage='Cross region restore state of the vault. Allowed values are Disabled, Enabled.')]
+        [System.String]
+        [ValidateSet('Disabled','Enabled')]
+        ${CrossRegionRestoreState},
+
+        [Parameter(Mandatory=$false, HelpMessage='Cross subscription restore state of the vault. Allowed values are Disabled, Enabled, PermanentlyDisabled.')]
+        [System.String]
+        [ValidateSet('Disabled','Enabled', 'PermanentlyDisabled')]
+        ${CrossSubscriptionRestoreState},
+
         [Parameter(HelpMessage='Optional ETag.')]
         [System.String]
         ${ETag},
 
-        [Parameter(HelpMessage='The identityType can take values - "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned", "None".')]
+        [Parameter(HelpMessage='Determines whether to enable a system-assigned identity for the resource.')]
+        [System.Management.Automation.SwitchParameter]
+        ${EnableSystemAssignedIdentity},
+
+        [Parameter(Mandatory=$false, HelpMessage='Immutability state of the vault. Allowed values are Disabled, Unlocked, Locked.')]
         [System.String]
-        ${IdentityType},
+        [ValidateSet('Disabled','Unlocked', 'Locked')]
+        ${ImmutabilityState},
 
         [Parameter(Mandatory, HelpMessage='Resource location.')]
         [System.String]
         ${Location},
-
-        [Parameter(Mandatory, HelpMessage='Storage Settings of the vault. Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IStorageSetting[]]
-        ${StorageSetting},
-
-        [Parameter(Mandatory=$false, HelpMessage='Parameter to Enable or Disable built-in azure monitor alerts for job failures. Security alerts cannot be disabled.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AlertsState]
-        [ValidateSet('Enabled','Disabled')]
-        ${AzureMonitorAlertsForAllJobFailure},
-
-        [Parameter(Mandatory=$false, HelpMessage='Immutability state of the vault. Allowed values are Disabled, Unlocked, Locked.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ImmutabilityState]
-        [ValidateSet('Disabled','Unlocked', 'Locked')]
-        ${ImmutabilityState},
-
-        [Parameter(Mandatory=$false, HelpMessage='Cross region restore state of the vault. Allowed values are Disabled, Enabled.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossRegionRestoreState]
-        [ValidateSet('Disabled','Enabled')]
-        ${CrossRegionRestoreState},
-        
-        [Parameter(Mandatory=$false, HelpMessage='Cross subscription restore state of the vault. Allowed values are Disabled, Enabled, PermanentlyDisabled.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossSubscriptionRestoreState]
-        [ValidateSet('Disabled','Enabled', 'PermanentlyDisabled')]
-        ${CrossSubscriptionRestoreState},
         
         [Parameter(Mandatory=$false, HelpMessage='Soft delete retention duration in days')]
         [System.Double]
         ${SoftDeleteRetentionDurationInDay},
 
         [Parameter(Mandatory=$false, HelpMessage='Soft delete state of the vault. Allowed values are Off, On, AlwaysOn')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SoftDeleteState]
+        [System.String]
         [ValidateSet('Off','On', 'AlwaysOn')]  
         ${SoftDeleteState},
 
@@ -66,21 +66,20 @@
         [System.Collections.Hashtable]
         ${Tag},
 
-        [Parameter(Mandatory=$false, HelpMessage='Gets or sets the user assigned identities.')]
-        [Alias('UserAssignedIdentity', 'AssignUserIdentity')]
-        [System.Collections.Hashtable]
-        ${IdentityUserAssignedIdentity},
+        [Parameter(Mandatory=$false, HelpMessage='The array of user assigned identities associated with the resource.')]
+        [System.String[]]
+        ${UserAssignedIdentity},
 
         [Parameter(Mandatory=$false, HelpMessage='Enable CMK encryption state for a Backup Vault.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.EncryptionState]
+        [System.String]
         ${CmkEncryptionState},
 
         [Parameter(Mandatory=$false, HelpMessage='Enable infrastructure encryption with CMK on this vault. Infrastructure encryption must be configured only when creating the vault.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.InfrastructureEncryptionState]
+        [System.String]
         ${CmkInfrastructureEncryption},
 
         [Parameter(Mandatory=$false, HelpMessage='The identity type to be used for CMK encryption - SystemAssigned or UserAssigned Identity.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.IdentityType]
+        [System.String]
         ${CmkIdentityType},
 
         [Parameter(Mandatory=$false, HelpMessage='This parameter is required if the identity type is UserAssigned. Add the user assigned managed identity id to be used which has access permissions to the Key Vault.')]
@@ -119,16 +118,16 @@
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-    
-        [Parameter(DontShow)]
-        [System.Uri]
-        # The URI for the proxy server to use
-        ${Proxy},
 
         [Parameter()]
         [System.Management.Automation.SwitchParameter]
         # Run the command asynchronously
         ${NoWait},
+    
+        [Parameter(DontShow)]
+        [System.Uri]
+        # The URI for the proxy server to use
+        ${Proxy},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]
@@ -144,7 +143,7 @@
 
     process
     {
-        if($PSBoundParameters.ContainsKey("IdentityType") -eq $false)
+        if($PSBoundParameters.ContainsKey("EnableSystemAssignedIdentity") -and $EnableSystemAssignedIdentity)
         {
             $null = $PSBoundParameters.Add("IdentityType", "SystemAssigned")
         }
@@ -160,13 +159,13 @@
             return
         }
 
-        $encryptionSettings = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.EncryptionSettings]::new()
+        $encryptionSettings = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.EncryptionSettings]::new()
         $encryptionSettings.State = $CmkEncryptionState
         $encryptionSettings.CmkInfrastructureEncryption = $CmkInfrastructureEncryption
-        $encryptionSettings.CmkIdentity = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.CmkKekIdentity]::new()
+        $encryptionSettings.CmkIdentity = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.CmkKekIdentity]::new()
         $encryptionSettings.CmkIdentity.IdentityType = $CmkIdentityType
         $encryptionSettings.CmkIdentity.IdentityId = $CmkUserAssignedIdentityId
-        $encryptionSettings.CmkKeyVaultProperty = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.CmkKeyVaultProperties]::new()
+        $encryptionSettings.CmkKeyVaultProperty = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.CmkKeyVaultProperties]::new()
         $encryptionSettings.CmkKeyVaultProperty.KeyUri = $CmkEncryptionKeyUri
 
         $PSBoundParameters.Add("EncryptionSetting", $encryptionSettings)

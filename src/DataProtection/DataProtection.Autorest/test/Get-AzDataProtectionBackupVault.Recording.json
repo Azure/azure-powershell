@@ -1,17 +1,17 @@
 {
-  "Get-AzDataProtectionBackupVault+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault?api-version=2025-02-01+1": {
+  "Get-AzDataProtectionBackupVault+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/jkjk-rg/providers/Microsoft.DataProtection/backupVaults/jktest-vault?api-version=2025-02-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/jkjk-rg/providers/Microsoft.DataProtection/backupVaults/jktest-vault?api-version=2025-02-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "482" ],
-        "x-ms-client-request-id": [ "df98f60a-8733-4b32-90bc-0e4df7e51fb1" ],
+        "x-ms-unique-id": [ "50" ],
+        "x-ms-client-request-id": [ "c3ad2165-a558-4ffe-aaee-2830875bd686" ],
         "CommandName": [ "Get-AzDataProtectionBackupVault" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupVault_Get2" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.DataProtection/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.DataProtection/2.8.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -24,20 +24,20 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "0d785eb1-c9dc-4f81-8f7a-7cb074c3df76" ],
-        "x-ms-correlation-request-id": [ "0d785eb1-c9dc-4f81-8f7a-7cb074c3df76" ],
-        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20251026T044421Z:0d785eb1-c9dc-4f81-8f7a-7cb074c3df76" ],
+        "x-ms-request-id": [ "7b58deb3-1020-4393-9676-d9e150256815" ],
+        "x-ms-correlation-request-id": [ "7b58deb3-1020-4393-9676-d9e150256815" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260123T074616Z:7b58deb3-1020-4393-9676-d9e150256815" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: DA47F4F8A7AB4FF9B4B7F1D0A278E63E Ref B: SN4AA2022301027 Ref C: 2025-10-26T04:44:21Z" ],
-        "Date": [ "Sun, 26 Oct 2025 04:44:21 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3B0A0C408BEF411480DD540BA4DFDBF5 Ref B: SG2AA1070301023 Ref C: 2026-01-23T07:46:16Z" ],
+        "Date": [ "Fri, 23 Jan 2026 07:46:15 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "709" ],
+        "Content-Length": [ "822" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"centraluseuap\",\"tags\":{\"A\":\"b\"},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"fcb264a5-d728-46c8-8565-69fc1fbe4e0c\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"featureSettings\":{\"crossSubscriptionRestoreSettings\":{\"state\":\"Enabled\"}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[]},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/sarath-rg/providers/Microsoft.DataProtection/BackupVaults/sarath-vault\",\"name\":\"sarath-vault\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "Content": "{\"location\":\"eastus\",\"tags\":{},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"f3601a59-7b1f-49b9-9c47-fa253ca22979\",\"tenantId\":\"4b71fe15-44c6-47b7-94ac-5a6b2cc290e9\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"ZoneRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"ON\",\"retentionDurationInDays\":14.0},\"immutabilitySettings\":{\"state\":\"Disabled\"}},\"featureSettings\":{\"crossSubscriptionRestoreSettings\":{\"state\":\"Enabled\"}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[]},\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourcegroups/jkjk-rg/providers/Microsoft.DataProtection/BackupVaults/jktest-vault\",\"name\":\"jktest-vault\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
       "isContentBase64": false
     }
   }

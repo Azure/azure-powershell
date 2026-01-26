@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
 {
     public partial class BackupInstanceResource
     {
         private string backupInstanceName;
         public string BackupInstanceName
         {
-            get 
+            get
             {
-                if(this.Name != null && this.Name != "")
+                if (this.Name != null && this.Name != "")
                 {
                     return this.Name;
                 }
