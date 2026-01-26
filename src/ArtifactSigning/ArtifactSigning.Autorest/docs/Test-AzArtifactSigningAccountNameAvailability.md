@@ -8,13 +8,13 @@ schema: 2.0.0
 # Test-AzArtifactSigningAccountNameAvailability
 
 ## SYNOPSIS
-Checks that the artifact signing account name is valid and is not already in use.
+Checks that the trusted signing account name is valid and is not already in use.
 
 ## SYNTAX
 
 ### CheckExpanded (Default)
 ```
-Test-AzArtifactSigningAccountNameAvailability -Name <String> [-SubscriptionId <String>]
+Test-AzArtifactSigningAccountNameAvailability -Name <String> -Type <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Test-AzArtifactSigningAccountNameAvailability -JsonString <String> [-Subscriptio
 ```
 
 ## DESCRIPTION
-Checks that the artifact signing account name is valid and is not already in use.
+Checks that the trusted signing account name is valid and is not already in use.
 
 ## EXAMPLES
 
@@ -72,7 +72,7 @@ The results shows `available` is not occupied.
 ## PARAMETERS
 
 ### -Body
-The parameters used to check the availability of the artifact signing account name.
+The parameters used to check the availability of the trusted signing account name.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICheckNameAvailability
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Artifact signing account name.
+Trusted signing account name.
 
 ```yaml
 Type: System.String
@@ -159,6 +159,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+The type of the resource, "Microsoft.CodeSigning/codeSigningAccounts".
+
+```yaml
+Type: System.String
+Parameter Sets: CheckExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

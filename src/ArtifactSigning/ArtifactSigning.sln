@@ -1,6 +1,7 @@
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.2.11415.280 d18.0
+VisualStudioVersion = 18.2.11415.280
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtifactSigning", "ArtifactSigning\ArtifactSigning.csproj", "{E29E2561-D7BD-4020-9224-9301333C6705}"
 EndProject
@@ -20,7 +21,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceMana
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{86128D66-090F-3D0D-B081-F8F6D609F8F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ArtifactSigning", "ArtifactSigning.Autorest\Az.ArtifactSigning.csproj", "{47302A90-AD47-884A-7A48-655B4BFFF241}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ArtifactSigning.Autorest", "ArtifactSigning.Autorest", "{27C3CFE4-D080-21A4-D75B-67960E846559}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ArtifactSigning", "..\..\generated\ArtifactSigning\ArtifactSigning.Autorest\Az.ArtifactSigning.csproj", "{ECDB6B32-DA2D-4C37-8D65-314350143065}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -128,18 +131,18 @@ Global
 		{86128D66-090F-3D0D-B081-F8F6D609F8F2}.Release|x64.Build.0 = Release|Any CPU
 		{86128D66-090F-3D0D-B081-F8F6D609F8F2}.Release|x86.ActiveCfg = Release|Any CPU
 		{86128D66-090F-3D0D-B081-F8F6D609F8F2}.Release|x86.Build.0 = Release|Any CPU
-		{47302A90-AD47-884A-7A48-655B4BFFF241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{47302A90-AD47-884A-7A48-655B4BFFF241}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{47302A90-AD47-884A-7A48-655B4BFFF241}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{47302A90-AD47-884A-7A48-655B4BFFF241}.Debug|x64.Build.0 = Debug|Any CPU
-		{47302A90-AD47-884A-7A48-655B4BFFF241}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{47302A90-AD47-884A-7A48-655B4BFFF241}.Debug|x86.Build.0 = Debug|Any CPU
-		{47302A90-AD47-884A-7A48-655B4BFFF241}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{47302A90-AD47-884A-7A48-655B4BFFF241}.Release|Any CPU.Build.0 = Release|Any CPU
-		{47302A90-AD47-884A-7A48-655B4BFFF241}.Release|x64.ActiveCfg = Release|Any CPU
-		{47302A90-AD47-884A-7A48-655B4BFFF241}.Release|x64.Build.0 = Release|Any CPU
-		{47302A90-AD47-884A-7A48-655B4BFFF241}.Release|x86.ActiveCfg = Release|Any CPU
-		{47302A90-AD47-884A-7A48-655B4BFFF241}.Release|x86.Build.0 = Release|Any CPU
+		{ECDB6B32-DA2D-4C37-8D65-314350143065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECDB6B32-DA2D-4C37-8D65-314350143065}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECDB6B32-DA2D-4C37-8D65-314350143065}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{ECDB6B32-DA2D-4C37-8D65-314350143065}.Debug|x64.Build.0 = Debug|Any CPU
+		{ECDB6B32-DA2D-4C37-8D65-314350143065}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{ECDB6B32-DA2D-4C37-8D65-314350143065}.Debug|x86.Build.0 = Debug|Any CPU
+		{ECDB6B32-DA2D-4C37-8D65-314350143065}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECDB6B32-DA2D-4C37-8D65-314350143065}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECDB6B32-DA2D-4C37-8D65-314350143065}.Release|x64.ActiveCfg = Release|Any CPU
+		{ECDB6B32-DA2D-4C37-8D65-314350143065}.Release|x64.Build.0 = Release|Any CPU
+		{ECDB6B32-DA2D-4C37-8D65-314350143065}.Release|x86.ActiveCfg = Release|Any CPU
+		{ECDB6B32-DA2D-4C37-8D65-314350143065}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -150,6 +153,7 @@ Global
 		{47781554-F876-4272-B3BC-9A74EF2320AD} = {15E8C72D-59CB-4572-AAB4-4EF4FC545519}
 		{12074A13-9693-479C-8205-A97630BAF075} = {15E8C72D-59CB-4572-AAB4-4EF4FC545519}
 		{7A062235-C440-491C-AB28-1BEF6066B5C5} = {15E8C72D-59CB-4572-AAB4-4EF4FC545519}
+		{ECDB6B32-DA2D-4C37-8D65-314350143065} = {27C3CFE4-D080-21A4-D75B-67960E846559}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5E85B4CC-D1A9-466B-98AC-E0AD0C5AE585}

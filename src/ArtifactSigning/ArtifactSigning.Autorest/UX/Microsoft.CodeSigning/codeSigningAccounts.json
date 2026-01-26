@@ -1,13 +1,13 @@
 {
   "resourceType": "codeSigningAccounts",
-  "apiVersion": "2024-09-30-preview",
+  "apiVersion": "2025-10-13",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.artifactsigning"
   },
   "commands": [
     {
       "name": "Get-AzArtifactSigningAccount",
-      "description": "Get a artifact signing Account.",
+      "description": "Get a trusted Signing Account.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
       "help": {
         "learnMore": {
@@ -25,7 +25,7 @@
       },
       "examples": [
         {
-          "description": "Get a artifact signing Account.",
+          "description": "Get a trusted Signing Account.",
           "parameters": [
             {
               "name": "-AccountName",
@@ -45,7 +45,7 @@
     },
     {
       "name": "Remove-AzArtifactSigningAccount",
-      "description": "Delete a artifact signing account.",
+      "description": "Delete a trusted signing account.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
       "help": {
         "learnMore": {
@@ -63,7 +63,7 @@
       },
       "examples": [
         {
-          "description": "Delete a artifact signing account.",
+          "description": "Delete a trusted signing account.",
           "parameters": [
             {
               "name": "-AccountName",

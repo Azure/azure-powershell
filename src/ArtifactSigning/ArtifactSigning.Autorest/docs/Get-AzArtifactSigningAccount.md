@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzArtifactSigningAccount
 
 ## SYNOPSIS
-Get a artifact signing Account.
+Get a trusted Signing Account.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Get-AzArtifactSigningAccount -ResourceGroupName <String> [-SubscriptionId <Strin
 ```
 
 ## DESCRIPTION
-Get a artifact signing Account.
+Get a trusted Signing Account.
 
 ## EXAMPLES
 
@@ -70,7 +70,7 @@ This command lists artifact signing accounts in a resource group
 ## PARAMETERS
 
 ### -AccountName
-Artifact signing account name.
+Trusted Signing account name.
 
 ```yaml
 Type: System.String

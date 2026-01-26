@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzArtifactSigningAccount
 
 ## SYNOPSIS
-update a artifact signing account.
+update a trusted signing account.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ Update-AzArtifactSigningAccount -InputObject <IArtifactSigningIdentity> [-SkuNam
 ```
 
 ## DESCRIPTION
-update a artifact signing account.
+update a trusted signing account.
 
 ## EXAMPLES
 
@@ -74,7 +74,7 @@ This command updates a Artifact signing Account SKU from Premium to Basic
 ## PARAMETERS
 
 ### -AccountName
-Artifact signing account name.
+Trusted Signing account name.
 
 ```yaml
 Type: System.String

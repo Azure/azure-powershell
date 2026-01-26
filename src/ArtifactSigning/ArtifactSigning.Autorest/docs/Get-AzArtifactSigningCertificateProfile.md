@@ -71,7 +71,7 @@ This command lists artifact signing certificate profiles
 ## PARAMETERS
 
 ### -AccountName
-Artifact signing account name.
+Trusted Signing account name.
 
 ```yaml
 Type: System.String

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzArtifactSigningAccount
 
 ## SYNOPSIS
-Delete a artifact signing account.
+Delete a trusted signing account.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Remove-AzArtifactSigningAccount -InputObject <IArtifactSigningIdentity> [-Defaul
 ```
 
 ## DESCRIPTION
-Delete a artifact signing account.
+Delete a trusted signing account.
 
 ## EXAMPLES
 
@@ -39,7 +39,7 @@ This command deletes a artifact signing account.
 ## PARAMETERS
 
 ### -AccountName
-Artifact signing account name.
+Trusted Signing account name.
 
 ```yaml
 Type: System.String

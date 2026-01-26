@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzArtifactSigningAccount
 
 ## SYNOPSIS
-create a artifact signing Account.
+create a trusted Signing Account.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzArtifactSigningAccount -AccountName <String> -ResourceGroupName <String> -
 ```
 
 ## DESCRIPTION
-create a artifact signing Account.
+create a trusted Signing Account.
 
 ## EXAMPLES
 
@@ -67,7 +67,7 @@ This command creates a new artifact signing account with a Premium SKU
 ## PARAMETERS
 
 ### -AccountName
-Artifact signing account name.
+Trusted Signing account name.
 
 ```yaml
 Type: System.String

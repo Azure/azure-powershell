@@ -56,7 +56,7 @@ This command creates new artifact signing certificate profile.
 ## PARAMETERS
 
 ### -AccountName
-Artifact signing account name.
+Trusted Signing account name.
 
 ```yaml
 Type: System.String

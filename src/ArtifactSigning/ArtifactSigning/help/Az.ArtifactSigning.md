@@ -12,7 +12,7 @@ Microsoft Azure PowerShell: ArtifactSigning cmdlets
 
 ## Az.ArtifactSigning Cmdlets
 ### [Get-AzArtifactSigningAccount](Get-AzArtifactSigningAccount.md)
-Get a artifact signing Account.
+Get a trusted Signing Account.
 
 ### [Get-AzArtifactSigningCertificateChain](Get-AzArtifactSigningCertificateChain.md)
 Retrieve Azure.ArtifactSigning Certificate Chain
@@ -30,20 +30,20 @@ Retrieve Azure.CodeSigning customer Eku
 Invoke CI Policy signing to Azure.ArtifactSigning
 
 ### [New-AzArtifactSigningAccount](New-AzArtifactSigningAccount.md)
-create a artifact signing Account.
+create a trusted Signing Account.
 
 ### [New-AzArtifactSigningCertificateProfile](New-AzArtifactSigningCertificateProfile.md)
 create a certificate profile.
 
 ### [Remove-AzArtifactSigningAccount](Remove-AzArtifactSigningAccount.md)
-Delete a artifact signing account.
+Delete a trusted signing account.
 
 ### [Remove-AzArtifactSigningCertificateProfile](Remove-AzArtifactSigningCertificateProfile.md)
 Delete a certificate profile.
 
 ### [Test-AzArtifactSigningAccountNameAvailability](Test-AzArtifactSigningAccountNameAvailability.md)
-Checks that the artifact signing account name is valid and is not already in use.
+Checks that the trusted signing account name is valid and is not already in use.
 
 ### [Update-AzArtifactSigningAccount](Update-AzArtifactSigningAccount.md)
-update a artifact signing account.
+update a trusted signing account.
 
