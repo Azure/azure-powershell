@@ -46,10 +46,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = false, HelpMessage = Constants.PhysicalPartitionIdsHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public string[] PhysicalPartitionIds { get; set; }
+        public string[] PhysicalPartitionIdList { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.GetAllPhysicalPartitionsThroughputHelpMessage)]        
-        public SwitchParameter AllPartitions { get; set; }
+        public SwitchParameter EnableAllPartitionsThroughput { get; set; }
 
         public void PopulateFromInputObject()
         {
@@ -69,18 +69,18 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (ShouldProcess(DatabaseName, "Retrieving throughput distribution."))
             {
                 List<PhysicalPartitionId> physicalPartitionIds = new List<PhysicalPartitionId>();
-                if (this.AllPartitions.IsPresent)
+                if (this.EnableAllPartitionsThroughput.IsPresent)
                 {
                     physicalPartitionIds.Add(new PhysicalPartitionId("-1"));
                 }
                 else
                 {
-                    if(this.PhysicalPartitionIds == null)
+                    if(this.PhysicalPartitionIdList == null)
                     {
-                        throw new ArgumentException("List of PhysicalPartitionId cannot be null if the 'AllPartitions' switch is not enabled.");
+                        throw new ArgumentException("List of PhysicalPartitionId cannot be null if the 'EnableAllPartitionsThroughput' switch is not enabled.");
                     }
 
-                    foreach (string physicalPartitionId in this.PhysicalPartitionIds)
+                    foreach (string physicalPartitionId in this.PhysicalPartitionIdList)
                     {
                         if(string.IsNullOrEmpty(physicalPartitionId))
                         {

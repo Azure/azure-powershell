@@ -15,14 +15,14 @@ Gets the Partition throughput distribution for a MongoDB database.
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput -ResourceGroupName <String> -DatabaseName <String>
- [-PhysicalPartitionIds <String[]>] [-AllPartitions] [-DefaultProfile <IAzureContextContainer>]
+ [-PhysicalPartitionIdList <String[]>] [-EnableAllPartitionsThroughput] [-DefaultProfile <IAzureContextContainer>]
  -AccountName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput -InputObject <PSSqlDatabaseGetResults>
- [-PhysicalPartitionIds <String[]>] [-AllPartitions] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-PhysicalPartitionIdList <String[]>] [-EnableAllPartitionsThroughput] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ This cmdlet can be used to retrieve the throughput distribution on the partition
 
 ### Example 1
 ```powershell
-$partitions = Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -AllPartitions
+$partitions = Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -EnableAllPartitionsThroughput
       $sources = @()
       $targets = @()
       $oldPartitions = @()
@@ -56,7 +56,7 @@ $partitions = Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput -ResourceGroup
       
       $resetPartitions = Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -EqualDistributionPolicy
 
-      $somePartitions = Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -PhysicalPartitionIds ($oldPartitions[0].Id, $oldPartitions[1].Id)
+      $somePartitions = Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -PhysicalPartitionIdList ($oldPartitions[0].Id, $oldPartitions[1].Id)
 ```
 
 ## PARAMETERS
@@ -76,7 +76,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AllPartitions
+### -EnableAllPartitionsThroughput
 Set this switch to get the throughput for all physical partitions.
 
 ```yaml
@@ -136,7 +136,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PhysicalPartitionIds
+### -PhysicalPartitionIdList
 List of PhysicalPartitionId for which throughput needs to be retrieved.
 
 ```yaml

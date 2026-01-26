@@ -15,21 +15,21 @@ Gets the CosmosDB Sql Container Partition throughput.
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName <String> -DatabaseName <String>
- [-Name <String>] [-PhysicalPartitionIds <String[]>] [-AllPartitions]
+ [-Name <String>] [-PhysicalPartitionIdList <String[]>] [-EnableAllPartitionsThroughput]
  [-DefaultProfile <IAzureContextContainer>] -AccountName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Get-AzCosmosDBSqlContainerPerPartitionThroughput [-Name <String>] -ParentObject <PSSqlDatabaseGetResults>
- [-PhysicalPartitionIds <String[]>] [-AllPartitions] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-PhysicalPartitionIdList <String[]>] [-EnableAllPartitionsThroughput] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Get-AzCosmosDBSqlContainerPerPartitionThroughput [-Name <String>] -InputObject <PSSqlContainerGetResults>
- [-PhysicalPartitionIds <String[]>] [-AllPartitions] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-PhysicalPartitionIdList <String[]>] [-EnableAllPartitionsThroughput] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ This cmdlet can be used to retrieve the throughput applied at partition level on
 
 ### Example 1
 ```powershell
-$partitions = Get-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -AllPartitions
+$partitions = Get-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -EnableAllPartitionsThroughput
       
       $sources = @()
       $targets = @()
@@ -62,7 +62,7 @@ $partitions = Get-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupNam
       $newPartitions = Update-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -SourcePhysicalPartitionThroughputObject $sources -TargetPhysicalPartitionThroughputObject $targets
       
       $resetPartitions = Update-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -EqualDistributionPolicy      
-      $somePartitions = Get-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -PhysicalPartitionIds ('0', '1')
+      $somePartitions = Get-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -PhysicalPartitionIdList ('0', '1')
 ```
 
 ## PARAMETERS
@@ -82,7 +82,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AllPartitions
+### -EnableAllPartitionsThroughput
 Set this switch to get the throughput for all physical partitions.
 
 ```yaml
@@ -172,7 +172,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PhysicalPartitionIds
+### -PhysicalPartitionIdList
 Source physical partitions
 
 ```yaml
