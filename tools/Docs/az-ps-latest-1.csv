@@ -1,7 +1,7 @@
 pac0,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Accounts.5.3.2.zip;sourceType=sa]Az.Accounts,5.3.2
 pac1,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ADDomainServices.0.3.0.zip;sourceType=sa]Az.ADDomainServices,0.3.0
 pac2,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Advisor.3.0.0.zip;sourceType=sa]Az.Advisor,3.0.0
-pac3,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Aks.7.1.0.zip;sourceType=sa]Az.Aks,7.1.0
+pac3,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Aks.7.1.1.zip;sourceType=sa]Az.Aks,7.1.1
 pac4,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.AksArc.0.1.4.zip;sourceType=sa]Az.AksArc,0.1.4
 pac5,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Alb.0.1.4.zip;sourceType=sa]Az.Alb,0.1.4
 pac6,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.AlertsManagement.0.7.0.zip;sourceType=sa]Az.AlertsManagement,0.7.0
@@ -32,7 +32,7 @@ pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CloudService.2.1.1.zip;sourceType=sa]Az.CloudService,2.1.1
 pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CognitiveServices.1.16.0.zip;sourceType=sa]Az.CognitiveServices,1.16.0
 pac33,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Communication.0.6.0.zip;sourceType=sa]Az.Communication,0.6.0
-pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Compute.11.2.0.zip;sourceType=sa]Az.Compute,11.2.0
+pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Compute.11.3.0.zip;sourceType=sa]Az.Compute,11.3.0
 pac35,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ComputeFleet.0.1.1.zip;sourceType=sa]Az.ComputeFleet,0.1.1
 pac36,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ComputeSchedule.0.1.1.zip;sourceType=sa]Az.ComputeSchedule,0.1.1
 pac37,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConfidentialLedger.2.0.0.zip;sourceType=sa]Az.ConfidentialLedger,2.0.0
@@ -74,7 +74,7 @@ pac72,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac73,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DnsResolver.1.2.1.zip;sourceType=sa]Az.DnsResolver,1.2.1
 pac74,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DurableTask.0.1.0.zip;sourceType=sa]Az.DurableTask,0.1.0
 pac75,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DynatraceObservability.0.4.0.zip;sourceType=sa]Az.DynatraceObservability,0.4.0
-pac76,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EdgeAction.0.1.0.zip;sourceType=sa]Az.EdgeAction,0.1.0
+pac76,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EdgeAction.0.1.1.zip;sourceType=sa]Az.EdgeAction,0.1.1
 pac77,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EdgeOrder.0.2.0.zip;sourceType=sa]Az.EdgeOrder,0.2.0
 pac78,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EdgeZones.0.1.2.zip;sourceType=sa]Az.EdgeZones,0.1.2
 pac79,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Elastic.0.3.0.zip;sourceType=sa]Az.Elastic,0.3.0
@@ -86,7 +86,7 @@ pac84,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac85,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Fleet.0.2.2.zip;sourceType=sa]Az.Fleet,0.2.2
 pac86,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.FluidRelay.0.2.0.zip;sourceType=sa]Az.FluidRelay,0.2.0
 pac87,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.FrontDoor.2.1.0.zip;sourceType=sa]Az.FrontDoor,2.1.0
-pac88,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Functions.4.3.0.zip;sourceType=sa]Az.Functions,4.3.0
+pac88,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Functions.4.3.1.zip;sourceType=sa]Az.Functions,4.3.1
 pac89,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.GraphServices.0.2.0.zip;sourceType=sa]Az.GraphServices,0.2.0
 pac90,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.GuestConfiguration.0.12.0.zip;sourceType=sa]Az.GuestConfiguration,0.12.0
 pac91,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.HanaOnAzure.0.4.0.zip;sourceType=sa]Az.HanaOnAzure,0.4.0

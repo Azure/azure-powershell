@@ -1,3 +1,14 @@
+## 15.3.0 - February 2026
+#### Az.Compute 11.3.0 
+* Added cmdlet `Convert-AzAvailabilitySet`, `Move-AzVirtualMachineToVmss`, `Start-AzAvailabilitySetMigration`, `Stop-AzAvailabilitySetMigration`, `Test-AzAvailabilitySetMigration`
+#### Az.Network 7.25.0 
+* Modified cmdlet `New-AzPrivateEndpoint`
+   - Added parameter `-IpVersionType`
+* Added cmdlet `Get-AzVirtualNetworkAppliance`, `New-AzVirtualNetworkAppliance`, `Remove-AzVirtualNetworkAppliance`, `Update-AzVirtualNetworkAppliance`
+#### Az.Storage 9.6.0 
+* Modified cmdlet `Update-AzStorageFileServiceProperty`
+   - Added parameters `-SmbEncryptionInTransitRequired`, `-NfsEncryptionInTransitRequired`
+
 ## 15.2.0 - January 2026
 #### Az.Aks 7.1.0 
 * Modified cmdlet `New-AzAksCluster`
@@ -1203,6 +1214,7 @@
    - Changed the type of parameter `-ManagedResourcesNetworkAccessType` from `ManagedResourcesNetworkAccessType` to `String`
    - Changed the type of parameter `-UserAssignedIdentity` from `Hashtable` to `String[]`
 * Added cmdlet `Update-AzWorkloadsProviderInstance`
+
 
 
 
