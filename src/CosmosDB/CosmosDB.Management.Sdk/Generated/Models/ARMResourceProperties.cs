@@ -44,7 +44,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// with &#34;defaultExperience&#34;: &#34;Cassandra&#34;. Current &#34;defaultExperience&#34; values
         /// also include &#34;Table&#34;, &#34;Graph&#34;, &#34;DocumentDB&#34;, and &#34;MongoDB&#34;.
         /// </param>
-        public ARMResourceProperties(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+
+        /// <param name="identity">Identity for the resource.
+        /// </param>
+        public ARMResourceProperties(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity))
 
         {
             this.Id = id;
@@ -52,6 +55,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.Type = type;
             this.Location = location;
             this.Tags = tags;
+            this.Identity = identity;
             CustomInit();
         }
 
@@ -98,5 +102,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
         public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+
+        /// <summary>
+        /// Gets or sets identity for the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
+        public ManagedServiceIdentity Identity {get; set; }
     }
 }

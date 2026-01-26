@@ -267,6 +267,215 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
+        /// Invoke a command like nodetool for cassandra maintenance asynchronously
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        public static CommandPublicResource InvokeCommandAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, CommandAsyncPostBody body)
+        {
+                return ((ICassandraClustersOperations)operations).InvokeCommandAsyncAsync(resourceGroupName, clusterName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Invoke a command like nodetool for cassandra maintenance asynchronously
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CommandPublicResource> InvokeCommandAsyncAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, CommandAsyncPostBody body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.InvokeCommandAsyncWithHttpMessagesAsync(resourceGroupName, clusterName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// List all commands currently running on ring info
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        public static System.Collections.Generic.IEnumerable<CommandPublicResource> ListCommand(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName)
+        {
+                return ((ICassandraClustersOperations)operations).ListCommandAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// List all commands currently running on ring info
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<CommandPublicResource>> ListCommandAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListCommandWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get details about a specified command that was run asynchronously.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        /// <param name='commandId'>
+        /// Managed Cassandra cluster command id.
+        /// </param>
+        public static CommandPublicResource GetCommandAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, string commandId)
+        {
+                return ((ICassandraClustersOperations)operations).GetCommandAsyncAsync(resourceGroupName, clusterName, commandId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get details about a specified command that was run asynchronously.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        /// <param name='commandId'>
+        /// Managed Cassandra cluster command id.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CommandPublicResource> GetCommandAsyncAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, string commandId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetCommandAsyncWithHttpMessagesAsync(resourceGroupName, clusterName, commandId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// List the backups of this cluster that are available to restore.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        public static System.Collections.Generic.IEnumerable<BackupResource> ListBackups(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName)
+        {
+                return ((ICassandraClustersOperations)operations).ListBackupsAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// List the backups of this cluster that are available to restore.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<BackupResource>> ListBackupsAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListBackupsWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get the properties of an individual backup of this cluster that is
+        /// available to restore.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        /// <param name='backupId'>
+        /// Id of a restorable backup of a Cassandra cluster.
+        /// </param>
+        public static BackupResource GetBackup(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, string backupId)
+        {
+                return ((ICassandraClustersOperations)operations).GetBackupAsync(resourceGroupName, clusterName, backupId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get the properties of an individual backup of this cluster that is
+        /// available to restore.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        /// <param name='backupId'>
+        /// Id of a restorable backup of a Cassandra cluster.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<BackupResource> GetBackupAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, string backupId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetBackupWithHttpMessagesAsync(resourceGroupName, clusterName, backupId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deallocate the Managed Cassandra Cluster and Associated Data Centers.
         /// Deallocation will deallocate the host virtual machine of this cluster, and
         /// reserved the data disk. This won&#39;t do anything on an already deallocated
@@ -281,9 +490,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='clusterName'>
         /// Managed Cassandra cluster name.
         /// </param>
-        public static void Deallocate(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName)
+        /// <param name='xMsForceDeallocate'>
+        /// Force to deallocate a cluster of Cluster Type Production. Force to
+        /// deallocate a cluster of Cluster Type Production might cause data loss
+        /// </param>
+        public static void Deallocate(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, string xMsForceDeallocate = default(string))
         {
-                ((ICassandraClustersOperations)operations).DeallocateAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
+                ((ICassandraClustersOperations)operations).DeallocateAsync(resourceGroupName, clusterName, xMsForceDeallocate).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -301,12 +514,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='clusterName'>
         /// Managed Cassandra cluster name.
         /// </param>
+        /// <param name='xMsForceDeallocate'>
+        /// Force to deallocate a cluster of Cluster Type Production. Force to
+        /// deallocate a cluster of Cluster Type Production might cause data loss
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeallocateAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeallocateAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, string xMsForceDeallocate = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeallocateWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeallocateWithHttpMessagesAsync(resourceGroupName, clusterName, xMsForceDeallocate, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Start the Managed Cassandra Cluster and Associated Data Centers. Start will
@@ -547,6 +764,45 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
+        /// Invoke a command like nodetool for cassandra maintenance asynchronously
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        public static CommandPublicResource BeginInvokeCommandAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, CommandAsyncPostBody body)
+        {
+                return ((ICassandraClustersOperations)operations).BeginInvokeCommandAsyncAsync(resourceGroupName, clusterName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Invoke a command like nodetool for cassandra maintenance asynchronously
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CommandPublicResource> BeginInvokeCommandAsyncAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, CommandAsyncPostBody body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginInvokeCommandAsyncWithHttpMessagesAsync(resourceGroupName, clusterName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deallocate the Managed Cassandra Cluster and Associated Data Centers.
         /// Deallocation will deallocate the host virtual machine of this cluster, and
         /// reserved the data disk. This won&#39;t do anything on an already deallocated
@@ -561,9 +817,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='clusterName'>
         /// Managed Cassandra cluster name.
         /// </param>
-        public static void BeginDeallocate(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName)
+        /// <param name='xMsForceDeallocate'>
+        /// Force to deallocate a cluster of Cluster Type Production. Force to
+        /// deallocate a cluster of Cluster Type Production might cause data loss
+        /// </param>
+        public static void BeginDeallocate(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, string xMsForceDeallocate = default(string))
         {
-                ((ICassandraClustersOperations)operations).BeginDeallocateAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
+                ((ICassandraClustersOperations)operations).BeginDeallocateAsync(resourceGroupName, clusterName, xMsForceDeallocate).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -581,12 +841,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='clusterName'>
         /// Managed Cassandra cluster name.
         /// </param>
+        /// <param name='xMsForceDeallocate'>
+        /// Force to deallocate a cluster of Cluster Type Production. Force to
+        /// deallocate a cluster of Cluster Type Production might cause data loss
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeallocateAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeallocateAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, string xMsForceDeallocate = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeallocateWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.BeginDeallocateWithHttpMessagesAsync(resourceGroupName, clusterName, xMsForceDeallocate, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Start the Managed Cassandra Cluster and Associated Data Centers. Start will

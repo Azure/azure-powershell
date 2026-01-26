@@ -131,10 +131,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 RestoreSource = sourceAccountToRestore.Id,
                 RestoreTimestampInUtc = utcRestoreDateTime,
+                DisableTtl = DisableTtl,
                 DatabasesToRestore = DatabasesToRestore,
                 TablesToRestore = TablesToRestore,
                 GremlinDatabasesToRestore = GremlinDatabasesToRestore,
-                DisableTtl = DisableTtl,
                 SourceBackupLocation = SourceBackupLocation
             };
 

@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-Cosmos DB Account object
+CosmosDB Account object
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccountGetResults

@@ -7,18 +7,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
     using System.Linq;
 
-    public partial class ServiceCreateHeaders
+    public partial class FleetAnalyticsDeleteHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the ServiceCreateHeaders class.
+        /// Initializes a new instance of the FleetAnalyticsDeleteHeaders class.
         /// </summary>
-        public ServiceCreateHeaders()
+        public FleetAnalyticsDeleteHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ServiceCreateHeaders class.
+        /// Initializes a new instance of the FleetAnalyticsDeleteHeaders class.
         /// </summary>
 
         /// <param name="azureAsyncOperation">
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="location">
         /// </param>
-        public ServiceCreateHeaders(string azureAsyncOperation = default(string), string location = default(string))
+        public FleetAnalyticsDeleteHeaders(string azureAsyncOperation = default(string), string location = default(string))
 
         {
             this.AzureAsyncOperation = azureAsyncOperation;
