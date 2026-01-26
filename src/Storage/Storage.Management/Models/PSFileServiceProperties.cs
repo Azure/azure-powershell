@@ -102,7 +102,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         }
     }
 
-    public class PSEncryptionInTransit { 
+    public class PSEncryptionInTransit 
+    { 
         public bool? Required { get; set; }
 
         public PSEncryptionInTransit(EncryptionInTransit encryptionInTransit)
