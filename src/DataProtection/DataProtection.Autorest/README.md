@@ -79,6 +79,55 @@ directive:
     where: $.definitions.OperationListResult.properties.value.items
     transform: >
       $["$ref"] = "#/definitions/ClientDiscoveryValueForSingleApi";
+  # Fix breaking change: Add ServiceSpecification properties to ClientDiscoveryValueForSingleApi (removed in common-types v5)
+  - from: swagger-document
+    where: $.definitions
+    transform: >
+      $["ClientDiscoveryForServiceSpecification"] = {
+        "type": "object",
+        "description": "Class to represent shoebox service specification in json client discovery.",
+        "properties": {
+          "logSpecifications": {
+            "type": "array",
+            "description": "List of log specifications of this operation.",
+            "items": {
+              "$ref": "#/definitions/ClientDiscoveryForLogSpecification"
+            }
+          }
+        }
+      };
+      $["ClientDiscoveryForLogSpecification"] = {
+        "type": "object",
+        "description": "Class to represent shoebox log specification in json client discovery.",
+        "properties": {
+          "blobDuration": {
+            "type": "string",
+            "description": "Blob duration of the log"
+          },
+          "displayName": {
+            "type": "string",
+            "description": "Localized display name"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the log"
+          }
+        }
+      };
+  - from: swagger-document
+    where: $.definitions.ClientDiscoveryValueForSingleApi.properties
+    transform: >
+      $["serviceSpecification"] = {
+        "$ref": "#/definitions/ClientDiscoveryForServiceSpecification",
+        "description": "Operation properties."
+      };
+  # Fix breaking change: Change Origin property from enum back to string
+  - from: swagger-document
+    where: $.definitions.ClientDiscoveryValueForSingleApi.properties.origin
+    transform: >
+      delete $["x-ms-enum"];
+      delete $["enum"];
+      $["type"] = "string";
   # Fix breaking change: Add DppProxyResource definition (removed in new swagger)
   - from: swagger-document
     where: $.definitions
@@ -106,7 +155,7 @@ directive:
             "$ref": "#/definitions/DppProxyResourceTags"
           },
           "systemData": {
-            "$ref": "#/definitions/DppSystemData"
+            "$ref": "#/definitions/SystemData"
           }
         }
       };
@@ -117,7 +166,7 @@ directive:
           "type": "string"
         }
       };
-      $["DppSystemData"] = {
+      $["SystemData"] = {
         "description": "Metadata pertaining to creation and last modification of the resource.",
         "type": "object",
         "readOnly": true,
