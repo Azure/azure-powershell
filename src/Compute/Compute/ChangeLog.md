@@ -20,8 +20,9 @@
 
 -->
 ## Upcoming Release
-* Updated Compute SDK to be generated with autorest.powershell, replacing track 1 SDK
-* Updated Compute SDK to be generating from remote swagger instead of local swagger files.
+* Compute SDK generation updates:
+    - Generation now uses autorest.powershell, replacing deprecated track 1 SDK.
+    - Removed local swagger files and replaced references with remote swagger files.
 * Added new cmdlets for Availability Set to Virtual Machine Scale Set (VMSS) Flex migration (Public Preview)
     - `Convert-AzAvailabilitySet`: Converts an Availability Set to a new Flexible Virtual Machine Scale Set without downtime
     - `Test-AzAvailabilitySetMigration`: Validates that VMs in an Availability Set can be migrated to a VMSS
