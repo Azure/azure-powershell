@@ -22,6 +22,12 @@
 ## Upcoming Release
 * Updated Compute SDK to be generated with autorest.powershell, replacing track 1 SDK
 * Updated Compute SDK to be generating from remote swagger instead of local swagger files.
+* Added new cmdlets for Availability Set to Virtual Machine Scale Set (VMSS) Flex migration (Public Preview)
+    - `Convert-AzAvailabilitySet`: Converts an Availability Set to a new Flexible Virtual Machine Scale Set without downtime
+    - `Test-AzAvailabilitySetMigration`: Validates that VMs in an Availability Set can be migrated to a VMSS
+    - `Start-AzAvailabilitySetMigration`: Starts migration of an Availability Set to an existing Flexible VMSS    
+    - `Stop-AzAvailabilitySetMigration`: Cancels a migration operation on an Availability Set
+    - `Move-AzVirtualMachineToVmss`: Migrates a VM from an Availability Set to a Flexible VMSS
 
 ## Version 11.2.0
 * Added `-HighSpeedInterconnectPlacement` parameter to `New-AzVmssConfig` and `New-AzVmss` cmdlets.

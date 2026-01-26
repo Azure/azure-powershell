@@ -37,5 +37,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AvailabilitySetVM");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAvailabilitySetMigration()
+        {
+            TestRunner.RunTestScript("Test-AvailabilitySetMigration 'eastus2euap'");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAvailabilitySetConvert()
+        {
+            TestRunner.RunTestScript("Test-AvailabilitySetConvert 'eastus2euap'");
+        }
     }
 }
