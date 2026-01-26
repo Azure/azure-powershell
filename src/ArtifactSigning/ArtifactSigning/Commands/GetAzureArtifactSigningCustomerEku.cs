@@ -18,7 +18,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ArtifactSigning
 {
-    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "CodeSigningCustomerEku", "Get" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "TrustedSigningCustomerEku")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "ArtifactSigningCustomerEku", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
     [OutputType(typeof(string[]))]
     public class GetAzureArtifactSigningCustomerEku : ArtifactSigningCmdletBase

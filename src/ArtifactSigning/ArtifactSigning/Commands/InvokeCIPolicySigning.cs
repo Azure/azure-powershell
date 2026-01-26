@@ -21,7 +21,6 @@ using System.Xml.Linq;
 
 namespace Microsoft.Azure.Commands.ArtifactSigning
 {
-    [Alias("Invoke-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "CodeSigningCIPolicySigning", VerbsLifecycle.Invoke + ResourceManager.Common.AzureRMConstants.AzurePrefix + "TrustedSigningCIPolicySigning")]
     [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzurePrefix + "ArtifactSigningCIPolicySigning", DefaultParameterSetName = ByAccountProfileNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(string))]
     public class InvokeCIPolicySigning : ArtifactSigningCmdletBase

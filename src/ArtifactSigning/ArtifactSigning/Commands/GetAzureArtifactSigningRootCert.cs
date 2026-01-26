@@ -19,7 +19,6 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.ArtifactSigning
 {
-    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "CodeSigningRootCert", "Get" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "TrustedSigningCertificateRoot")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "ArtifactSigningCertificateRoot", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
     [OutputType(typeof(PSSigningCertificate))]
     public class GetAzureArtifactSigningRootCert : ArtifactSigningCmdletBase
