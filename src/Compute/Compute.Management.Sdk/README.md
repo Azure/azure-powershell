@@ -6,15 +6,15 @@ In this directory, run AutoRest:
 ```
 .\Rest-api-specs\preprocess-rest-api-spec.ps1
 autorest --reset
-autorest --use:@microsoft.azure/autorest.csharp@2.3.90
-autorest.cmd README.md --version=v2
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
@@ -38,6 +38,169 @@ namespace: Microsoft.Azure.Management.Compute
 
 directive:
 
+  # Fix OS-related properties
+  - where:
+      property-name: OSType
+    set:
+      property-name: OsType
+  - where:
+      property-name: OSDisk
+    set:
+      property-name: OsDisk
+  - where:
+      property-name: OSState
+    set:
+      property-name: OsState
+  - where:
+      property-name: OSName
+    set:
+      property-name: OsName
+  - where:
+      property-name: OSVersion
+    set:
+      property-name: OsVersion
+  - where:
+      property-name: OSProfile
+    set:
+      property-name: OsProfile
+  - where:
+      property-name: OSDiskImage
+    set:
+      property-name: OsDiskImage
+  - where:
+      property-name: OSRollingUpgradeDeferral
+    set:
+      property-name: OsRollingUpgradeDeferral
+  - where:
+      property-name: OSImageNotificationProfile
+    set:
+      property-name: OsImageNotificationProfile
+      
+  # Fix VM-related properties
+  - where:
+      property-name: VMAgent
+    set:
+      property-name: VmAgent
+  - where:
+      property-name: VMHealth
+    set:
+      property-name: VmHealth
+  - where:
+      property-name: VMSize
+    set:
+      property-name: VmSize
+  - where:
+      property-name: VMSizes
+    set:
+      property-name: VmSizes
+  - where:
+      property-name: VMSizeProperties
+    set:
+      property-name: VmSizeProperties
+  - where:
+      property-name: VMUri
+    set:
+      property-name: VmUri
+  - where:
+      property-name: VMId
+    set:
+      property-name: VmId
+  - where:
+      property-name: VMAgentVersion
+    set:
+      property-name: VmAgentVersion
+  - where:
+      property-name: PrioritizeUnhealthyVMS
+    set:
+      property-name: PrioritizeUnhealthyVMs
+  - where:
+      property-name: AllocatableVMS
+    set:
+      property-name: AllocatableVMs
+  - where:
+      property-name: DoNotRunExtensionsOnOverprovisionedVms
+    set:
+      property-name: DoNotRunExtensionsOnOverprovisionedVMs
+  - where:
+      property-name: VirtualMachineScaleSetVMSOperations
+    set:
+      property-name: VirtualMachineScaleSetVMsOperations
+      
+  # Fix GB-related properties
+  - where:
+      property-name: DiskSizeGb
+    set:
+      property-name: DiskSizeGB
+  - where:
+      property-name: SizeInGb
+    set:
+      property-name: SizeInGB
+      
+  # Fix IOPS-related properties
+  - where:
+      property-name: DiskIopsReadWrite
+    set:
+      property-name: DiskIOPSReadWrite
+  - where:
+      property-name: DiskIopsReadOnly
+    set:
+      property-name: DiskIOPSReadOnly
+      
+  # Fix IP-related properties
+  - where:
+      property-name: IPConfigurations
+    set:
+      property-name: IpConfigurations
+  - where:
+      property-name: IPTags
+    set:
+      property-name: IpTags
+  - where:
+      property-name: IPTagType
+    set:
+      property-name: IpTagType
+      
+  # Fix other acronyms
+  - where:
+      property-name: VCpUs
+    set:
+      property-name: VCPUs
+  - where:
+      property-name: VCpUsAvailable
+    set:
+      property-name: VCPUsAvailable
+  - where:
+      property-name: VCpUsPerCore
+    set:
+      property-name: VCPUsPerCore
+  - where:
+      property-name: MeterId
+    set:
+      property-name: MeterID
+  - where:
+      property-name: WinRm
+    set:
+      property-name: WinRM
+  - where:
+      property-name: UltraSsdEnabled
+    set:
+      property-name: UltraSSDEnabled
+  - where:
+      property-name: PropertiesType
+    set:
+      property-name: VirtualMachineExtensionType
+  - where:
+      property-name: GetSecureVMGuestStateSas
+    set:
+      property-name: GetSecureVMGuestStateSAS
+  - where:
+      property-name: VMScaleSetEnabled
+    set:
+      property-name: VmScaleSetEnabled
+  - where:
+      property-name: AccessSas
+    set:
+      property-name: AccessSAS
 
   - from: swagger-document
     where: $..definitions.OperatingSystemStateTypes
@@ -168,21 +331,32 @@ directive:
       }
       return $;
 
-  # Remove PurchasePlan definitions
+  # Normalize PurchasePlan in ComputeRP.json
   - from: ComputeRP.json
-    where: $.definitions
+    where: $.definitions.PurchasePlan
     transform: |
-      // Delete existing definitions if they exist
-      if ($.PurchasePlan) {
-        delete $.PurchasePlan;
+      if ($.required) {
+        $.required = ["publisher", "name", "product"];
       }
+      // Add promotionCode property to match DiskPurchasePlan
+      if (!$.properties.promotionCode) {
+        $.properties.promotionCode = {
+          "type": "string",
+          "description": "The Offer Promotion Code."
+        };
+      }
+      return $;
 
-  # Rename DiskPurchasePlan to PurchasePlan
+  # Rename DiskPurchasePlan to PurchasePlan and normalize required fields
   - from: DiskRP.json
     where: $.definitions
     transform: |
       if ($.DiskPurchasePlan) {
         $.PurchasePlan = $.DiskPurchasePlan;
+        // Normalize the required array order to match ComputeRP.json
+        if ($.PurchasePlan.required) {
+          $.PurchasePlan.required = ["publisher", "name", "product"];
+        }
         delete $.DiskPurchasePlan;
       }
       return $;
@@ -258,36 +432,6 @@ directive:
         }
       };
       return $;
-
-  # Rename TrackedResource definition to Resource
-  - from: swagger-document
-    where: $.definitions
-    transform: |
-      if ($.TrackedResource) {
-        $.Resource = $.TrackedResource;
-        delete $.TrackedResource;
-      }
-      return $;
-      
-  # Fix all references to TrackedResource
-  - from: swagger-document
-    where: $
-    transform: |
-      const traverse = (obj) => {
-        if (obj === null || typeof obj !== 'object') return obj;
-        
-        if (obj.$ref === '#/definitions/TrackedResource') {
-          obj.$ref = '#/definitions/Resource';
-        }
-        
-        Object.keys(obj).forEach(key => {
-          obj[key] = traverse(obj[key]);
-        });
-        
-        return obj;
-      };
-      
-      return traverse($);
 
   # Update OrchestrationServiceNames enum consistently
   - from: ComputeRP.json
