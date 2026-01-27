@@ -27,12 +27,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="id">Disk restore point Id.
         /// </param>
 
+        /// <param name="snapshotAccessState">The state of snapshot which determines the access availability of the
+        /// snapshot.
+        /// Possible values include: &#39;Unknown&#39;, &#39;Pending&#39;, &#39;Available&#39;,
+        /// &#39;InstantAccess&#39;, &#39;AvailableWithInstantAccess&#39;</param>
+
         /// <param name="replicationStatus">The disk restore point replication status information.
         /// </param>
-        public DiskRestorePointInstanceView(string id = default(string), DiskRestorePointReplicationStatus replicationStatus = default(DiskRestorePointReplicationStatus))
+        public DiskRestorePointInstanceView(string id = default(string), string snapshotAccessState = default(string), DiskRestorePointReplicationStatus replicationStatus = default(DiskRestorePointReplicationStatus))
 
         {
             this.Id = id;
+            this.SnapshotAccessState = snapshotAccessState;
             this.ReplicationStatus = replicationStatus;
             CustomInit();
         }
@@ -48,6 +54,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
         public string Id {get; set; }
+
+        /// <summary>
+        /// Gets or sets the state of snapshot which determines the access availability
+        /// of the snapshot. Possible values include: &#39;Unknown&#39;, &#39;Pending&#39;, &#39;Available&#39;, &#39;InstantAccess&#39;, &#39;AvailableWithInstantAccess&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "snapshotAccessState")]
+        public string SnapshotAccessState {get; set; }
 
         /// <summary>
         /// Gets or sets the disk restore point replication status information.

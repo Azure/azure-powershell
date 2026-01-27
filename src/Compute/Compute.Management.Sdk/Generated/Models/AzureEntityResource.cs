@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// The resource model definition for an Azure Resource Manager resource with
     /// an etag.
     /// </remarks>
-    public partial class AzureEntityResource : ResourceOriginal
+    public partial class AzureEntityResource : Resource
     {
         /// <summary>
         /// Initializes a new instance of the AzureEntityResource class.
@@ -29,26 +29,22 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the AzureEntityResource class.
         /// </summary>
 
-        /// <param name="id">Resource Id
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">Resource name
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type
-        /// </param>
-
-        /// <param name="location">Resource location
-        /// </param>
-
-        /// <param name="tags">Resource tags.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
         /// <param name="etag">Resource Etag.
         /// </param>
-        public AzureEntityResource(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string))
+        public AzureEntityResource(string id = default(string), string name = default(string), string type = default(string), string etag = default(string))
 
-        : base(location, id, name, type, tags)
+        : base(id, name, type)
         {
             this.Etag = etag;
             CustomInit();
@@ -65,16 +61,5 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-
-        }
     }
 }

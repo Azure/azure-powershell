@@ -25,13 +25,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the RestorePoint class.
         /// </summary>
 
-        /// <param name="id">Resource Id
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">Resource name
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
         /// <param name="excludeDisks">List of disk resource ids that the customer wishes to exclude from the
@@ -60,7 +62,12 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="instanceView">The restore point instance view.
         /// </param>
-        public RestorePoint(string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IList<ApiEntityReference> excludeDisks = default(System.Collections.Generic.IList<ApiEntityReference>), RestorePointSourceMetadata sourceMetadata = default(RestorePointSourceMetadata), string provisioningState = default(string), string consistencyMode = default(string), System.DateTime? timeCreated = default(System.DateTime?), ApiEntityReference sourceRestorePoint = default(ApiEntityReference), RestorePointInstanceView instanceView = default(RestorePointInstanceView))
+
+        /// <param name="instantAccessDurationMinutes">This property determines the time in minutes the snapshot is retained as
+        /// instant access for restoring Premium SSD v2 or Ultra disk with fast restore
+        /// performance in this restore point.
+        /// </param>
+        public RestorePoint(string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IList<ApiEntityReference> excludeDisks = default(System.Collections.Generic.IList<ApiEntityReference>), RestorePointSourceMetadata sourceMetadata = default(RestorePointSourceMetadata), string provisioningState = default(string), string consistencyMode = default(string), System.DateTime? timeCreated = default(System.DateTime?), ApiEntityReference sourceRestorePoint = default(ApiEntityReference), RestorePointInstanceView instanceView = default(RestorePointInstanceView), int? instantAccessDurationMinutes = default(int?))
 
         : base(id, name, type)
         {
@@ -71,6 +78,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.TimeCreated = timeCreated;
             this.SourceRestorePoint = sourceRestorePoint;
             this.InstanceView = instanceView;
+            this.InstantAccessDurationMinutes = instantAccessDurationMinutes;
             CustomInit();
         }
 
@@ -128,6 +136,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.instanceView")]
         public RestorePointInstanceView InstanceView {get; private set; }
+
+        /// <summary>
+        /// Gets or sets this property determines the time in minutes the snapshot is
+        /// retained as instant access for restoring Premium SSD v2 or Ultra disk with
+        /// fast restore performance in this restore point.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.instantAccessDurationMinutes")]
+        public int? InstantAccessDurationMinutes {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

@@ -34,7 +34,7 @@ Deletes a BackupVault resource from the resource group.
 Remove-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
 ```
 
-This command deletes an existing vault.
+This command soft deletes an existing vault.
 
 ## PARAMETERS
 

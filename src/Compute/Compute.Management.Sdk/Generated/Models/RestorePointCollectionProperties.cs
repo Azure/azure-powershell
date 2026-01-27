@@ -37,13 +37,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="restorePoints">A list containing all restore points created under this restore point
         /// collection.
         /// </param>
-        public RestorePointCollectionProperties(RestorePointCollectionSourceProperties source = default(RestorePointCollectionSourceProperties), string provisioningState = default(string), string restorePointCollectionId = default(string), System.Collections.Generic.IList<RestorePoint> restorePoints = default(System.Collections.Generic.IList<RestorePoint>))
+
+        /// <param name="instantAccess">This property determines whether instant access snapshot is enabled for
+        /// restore points created under this restore point collection for Premium SSD
+        /// v2 or Ultra disk. Instant access snapshot for Premium SSD v2 or Ultra disk
+        /// is instantaneously available for restoring disk with fast restore
+        /// performance.
+        /// </param>
+        public RestorePointCollectionProperties(RestorePointCollectionSourceProperties source = default(RestorePointCollectionSourceProperties), string provisioningState = default(string), string restorePointCollectionId = default(string), System.Collections.Generic.IList<RestorePoint> restorePoints = default(System.Collections.Generic.IList<RestorePoint>), bool? instantAccess = default(bool?))
 
         {
             this.Source = source;
             this.ProvisioningState = provisioningState;
             this.RestorePointCollectionId = restorePointCollectionId;
             this.RestorePoints = restorePoints;
+            this.InstantAccess = instantAccess;
             CustomInit();
         }
 
@@ -78,5 +86,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "restorePoints")]
         public System.Collections.Generic.IList<RestorePoint> RestorePoints {get; private set; }
+
+        /// <summary>
+        /// Gets or sets this property determines whether instant access snapshot is
+        /// enabled for restore points created under this restore point collection for
+        /// Premium SSD v2 or Ultra disk. Instant access snapshot for Premium SSD v2 or
+        /// Ultra disk is instantaneously available for restoring disk with fast
+        /// restore performance.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "instantAccess")]
+        public bool? InstantAccess {get; set; }
     }
 }

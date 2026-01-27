@@ -24,19 +24,169 @@ license-header: MICROSOFT_MIT_NO_VERSION
 title: ComputeManagementClient
 payload-flattening-threshold: 1
 
+# Azure REST API Specs commit
+commit: 5df56443d7ed2402adbea31f30eb68e71b469536
+
 input-file: 
-  - ./Rest-api-specs/types.json
-  - ./Rest-api-specs/common.json
-  - ./Rest-api-specs/ComputeRP.json
-  - ./Rest-api-specs/DiskRP.json
-  - ./Rest-api-specs/GalleryRP.json
-  - ./Rest-api-specs/skus.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/common-types/resource-management/v3/types.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/common-types/v1/common.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2025-04-01/ComputeRP.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2025-01-02/DiskRP.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2025-03-03/GalleryRP.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Skus/stable/2021-07-01/skus.json
 
 output-folder: Generated
 namespace: Microsoft.Azure.Management.Compute
 
 
 directive:
+
+  # Remove SystemData from Resource and TrackedResource definitions in swagger
+  # This will make them generate with the old constructor signature
+  - from: swagger-document
+    where: $.definitions.Resource
+    transform: |
+      if ($.properties && $.properties.systemData) {
+        delete $.properties.systemData;
+      }
+      if ($.allOf) {
+        $.allOf = $.allOf.filter(item => !item.$ref || !item.$ref.includes('SystemData'));
+      }
+      return $;
+      
+  - from: swagger-document
+    where: $.definitions.TrackedResource
+    transform: |
+      if ($.properties && $.properties.systemData) {
+        delete $.properties.systemData;
+      }
+      if ($.allOf) {
+        $.allOf = $.allOf.filter(item => !item.$ref || !item.$ref.includes('SystemData'));
+      }
+      return $;
+
+  # Remove ResourceModelWithAllowedPropertySet from definitions - not used in Compute
+  - from: swagger-document
+    where: $.definitions
+    transform: |
+      if ($.ResourceModelWithAllowedPropertySet) {
+        delete $.ResourceModelWithAllowedPropertySet;
+      }
+      return $;
+
+  # Simplify 202 responses by removing headers for specific async operations
+  # This matches the preprocessing script logic exactly
+  - from: swagger-document
+    where: $.paths
+    transform: |
+      const operationsToSimplify = [
+        'AvailabilitySets_ConvertToVirtualMachineScaleSet',
+        'CapacityReservations_Delete',
+        'CapacityReservations_Update',
+        'DedicatedHosts_Delete',
+        'DiskAccesses_CreateOrUpdate',
+        'DiskAccesses_Delete',
+        'DiskAccesses_DeleteAPrivateEndpointConnection',
+        'DiskAccesses_Update',
+        'DiskAccesses_UpdateAPrivateEndpointConnection',
+        'DiskEncryptionSets_CreateOrUpdate',
+        'DiskEncryptionSets_Delete',
+        'DiskEncryptionSets_Update',
+        'DiskRestorePoint_GrantAccess',
+        'DiskRestorePoint_RevokeAccess',
+        'Disks_CreateOrUpdate',
+        'Disks_Delete',
+        'Disks_GrantAccess',
+        'Disks_RevokeAccess',
+        'Disks_Update',
+        'Galleries_CreateOrUpdate',
+        'Galleries_Delete',
+        'GalleryApplicationVersions_CreateOrUpdate',
+        'GalleryApplicationVersions_Delete',
+        'GalleryApplications_CreateOrUpdate',
+        'GalleryApplications_Delete',
+        'GalleryImageVersions_CreateOrUpdate',
+        'GalleryImageVersions_Delete',
+        'GalleryImages_CreateOrUpdate',
+        'GalleryImages_Delete',
+        'GallerySharingProfile_Update',
+        'Images_Delete',
+        'LogAnalytics_ExportRequestRateByInterval',
+        'LogAnalytics_ExportThrottledRequests',
+        'RestorePointCollections_Delete',
+        'RestorePoints_Delete',
+        'Snapshots_CreateOrUpdate',
+        'Snapshots_Delete',
+        'Snapshots_GrantAccess',
+        'Snapshots_RevokeAccess',
+        'Snapshots_Update',
+        'VirtualMachineExtensions_Delete',
+        'VirtualMachineRunCommands_Delete',
+        'VirtualMachineScaleSetExtensions_Delete',
+        'VirtualMachineScaleSetRollingUpgrades_Cancel',
+        'VirtualMachineScaleSetRollingUpgrades_StartExtensionUpgrade',
+        'VirtualMachineScaleSetRollingUpgrades_StartOSUpgrade',
+        'VirtualMachineScaleSetVMExtensions_Delete',
+        'VirtualMachineScaleSetVMRunCommands_Delete',
+        'VirtualMachineScaleSetVMs_Deallocate',
+        'VirtualMachineScaleSetVMs_Delete',
+        'VirtualMachineScaleSetVMs_PerformMaintenance',
+        'VirtualMachineScaleSetVMs_PowerOff',
+        'VirtualMachineScaleSetVMs_Redeploy',
+        'VirtualMachineScaleSetVMs_Reimage',
+        'VirtualMachineScaleSetVMs_ReimageAll',
+        'VirtualMachineScaleSetVMs_Restart',
+        'VirtualMachineScaleSetVMs_RunCommand',
+        'VirtualMachineScaleSetVMs_Start',
+        'VirtualMachineScaleSetVMs_Update',
+        'VirtualMachineScaleSets_Deallocate',
+        'VirtualMachineScaleSets_Delete',
+        'VirtualMachineScaleSets_DeleteInstances',
+        'VirtualMachineScaleSets_PerformMaintenance',
+        'VirtualMachineScaleSets_PowerOff',
+        'VirtualMachineScaleSets_Redeploy',
+        'VirtualMachineScaleSets_Reimage',
+        'VirtualMachineScaleSets_ReimageAll',
+        'VirtualMachineScaleSets_Restart',
+        'VirtualMachineScaleSets_SetOrchestrationServiceState',
+        'VirtualMachineScaleSets_Start',
+        'VirtualMachineScaleSets_UpdateInstances',
+        'VirtualMachines_AssessPatches',
+        'VirtualMachines_Capture',
+        'VirtualMachines_ConvertToManagedDisks',
+        'VirtualMachines_Deallocate',
+        'VirtualMachines_Delete',
+        'VirtualMachines_InstallPatches',
+        'VirtualMachines_PerformMaintenance',
+        'VirtualMachines_PowerOff',
+        'VirtualMachines_Reapply',
+        'VirtualMachines_Redeploy',
+        'VirtualMachines_Reimage',
+        'VirtualMachines_Restart',
+        'VirtualMachines_RunCommand',
+        'VirtualMachines_Start',
+        'VirtualMachines_migrateToVMScaleSet'
+      ];
+      
+      for (const path in $) {
+        for (const method in $[path]) {
+          if (typeof $[path][method] === 'object' && $[path][method].operationId) {
+            const operationId = $[path][method].operationId;
+            const response202 = $[path][method].responses && $[path][method].responses['202'];
+            
+            // Only modify if in the included list
+            if (response202 && operationsToSimplify.includes(operationId)) {
+              if (response202.headers) {
+                delete response202.headers;
+              }
+              if (!response202.description) {
+                response202.description = "Accepted";
+              }
+            }
+          }
+        }
+      }
+      return $;
 
   # Fix OS-related properties
   - where:

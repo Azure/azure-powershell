@@ -79,14 +79,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </param>
 
         /// <param name="diskIopsReadWrite">Specifies the Read-Write IOPS for the managed disk when StorageAccountType
-        /// is UltraSSD_LRS. Returned only for VirtualMachine ScaleSet VM disks. Can be
-        /// updated only via updates to the VirtualMachine Scale Set.
+        /// is UltraSSD_LRS.
         /// </param>
 
         /// <param name="diskMBpsReadWrite">Specifies the bandwidth in MB per second for the managed disk when
-        /// StorageAccountType is UltraSSD_LRS. Returned only for VirtualMachine
-        /// ScaleSet VM disks. Can be updated only via updates to the VirtualMachine
-        /// Scale Set.
+        /// StorageAccountType is UltraSSD_LRS.
         /// </param>
 
         /// <param name="detachOption">Specifies the detach behavior to be used while detaching a disk or which is
@@ -223,22 +220,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         public bool? ToBeDetached {get; set; }
 
         /// <summary>
-        /// Gets specifies the Read-Write IOPS for the managed disk when
-        /// StorageAccountType is UltraSSD_LRS. Returned only for VirtualMachine
-        /// ScaleSet VM disks. Can be updated only via updates to the VirtualMachine
-        /// Scale Set.
+        /// Gets or sets specifies the Read-Write IOPS for the managed disk when
+        /// StorageAccountType is UltraSSD_LRS.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskIOPSReadWrite")]
-        public long? DiskIOPSReadWrite {get; private set; }
+        public long? DiskIOPSReadWrite {get; set; }
 
         /// <summary>
-        /// Gets specifies the bandwidth in MB per second for the managed disk when
-        /// StorageAccountType is UltraSSD_LRS. Returned only for VirtualMachine
-        /// ScaleSet VM disks. Can be updated only via updates to the VirtualMachine
-        /// Scale Set.
+        /// Gets or sets specifies the bandwidth in MB per second for the managed disk
+        /// when StorageAccountType is UltraSSD_LRS.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskMBpsReadWrite")]
-        public long? DiskMBpsReadWrite {get; private set; }
+        public long? DiskMBpsReadWrite {get; set; }
 
         /// <summary>
         /// Gets or sets specifies the detach behavior to be used while detaching a
