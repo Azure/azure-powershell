@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Aks",
-  "ModuleVersion": "7.1.0",
+  "ModuleVersion": "7.1.1",
   "Cmdlets": [
     {
       "VerbName": "Disable",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -189,7 +189,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -424,7 +424,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -665,7 +665,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -856,7 +856,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -1231,7 +1231,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -1422,7 +1422,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -1980,7 +1980,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "GatewayProfile": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolGatewayProfile",
               "NetworkProfile": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
@@ -2092,7 +2092,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -2316,7 +2316,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -2662,7 +2662,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -2852,7 +2852,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -3537,7 +3537,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSRunCommandResult",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSRunCommandResult, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSRunCommandResult, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StartedAt": "System.Nullable`1[System.DateTime]",
               "FinishedAt": "System.Nullable`1[System.DateTime]",
@@ -3588,7 +3588,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -3779,7 +3779,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -4468,7 +4468,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -4724,7 +4724,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
             "Name": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AllowedUnsafeSysctls": "System.Collections.Generic.IList`1[System.String]",
               "CpuCfsQuota": "System.Nullable`1[System.Boolean]",
@@ -4746,7 +4746,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
             "Name": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sysctls": "Microsoft.Azure.Management.ContainerService.Models.SysctlConfig",
               "SwapFileSizeMb": "System.Nullable`1[System.Int32]",
@@ -4788,7 +4788,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
             "Name": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NodePublicIPTags": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IPTag]",
               "AllowedHostPorts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.PortRange]",
@@ -4919,7 +4919,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
             "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DaemonsetEvictionForEmptyNodes": "System.Nullable`1[System.Boolean]",
               "DaemonsetEvictionForOccupiedNodes": "System.Nullable`1[System.Boolean]",
@@ -5130,7 +5130,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
             "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdminGroupObjectIDs": "System.Collections.Generic.IList`1[System.String]",
               "Managed": "System.Nullable`1[System.Boolean]",
@@ -6160,7 +6160,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AllowedUnsafeSysctls": "System.Collections.Generic.IList`1[System.String]",
                     "CpuCfsQuota": "System.Nullable`1[System.Boolean]",
@@ -6188,7 +6188,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sysctls": "Microsoft.Azure.Management.ContainerService.Models.SysctlConfig",
                     "SwapFileSizeMb": "System.Nullable`1[System.Int32]",
@@ -6254,7 +6254,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NodePublicIPTags": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IPTag]",
                     "AllowedHostPorts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.PortRange]",
@@ -6469,7 +6469,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DaemonsetEvictionForEmptyNodes": "System.Nullable`1[System.Boolean]",
                     "DaemonsetEvictionForOccupiedNodes": "System.Nullable`1[System.Boolean]",
@@ -6776,7 +6776,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AdminGroupObjectIDs": "System.Collections.Generic.IList`1[System.String]",
                     "Managed": "System.Nullable`1[System.Boolean]",
@@ -8375,7 +8375,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AllowedUnsafeSysctls": "System.Collections.Generic.IList`1[System.String]",
                     "CpuCfsQuota": "System.Nullable`1[System.Boolean]",
@@ -8403,7 +8403,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sysctls": "Microsoft.Azure.Management.ContainerService.Models.SysctlConfig",
                     "SwapFileSizeMb": "System.Nullable`1[System.Int32]",
@@ -8469,7 +8469,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NodePublicIPTags": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IPTag]",
                     "AllowedHostPorts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.PortRange]",
@@ -8684,7 +8684,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DaemonsetEvictionForEmptyNodes": "System.Nullable`1[System.Boolean]",
                     "DaemonsetEvictionForOccupiedNodes": "System.Nullable`1[System.Boolean]",
@@ -8991,7 +8991,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AdminGroupObjectIDs": "System.Collections.Generic.IList`1[System.String]",
                     "Managed": "System.Nullable`1[System.Boolean]",
@@ -10385,7 +10385,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "GatewayProfile": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolGatewayProfile",
               "NetworkProfile": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
@@ -10512,7 +10512,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -10779,7 +10779,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
             "Name": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sysctls": "Microsoft.Azure.Management.ContainerService.Models.SysctlConfig",
               "SwapFileSizeMb": "System.Nullable`1[System.Int32]",
@@ -10794,7 +10794,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
             "Name": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AllowedUnsafeSysctls": "System.Collections.Generic.IList`1[System.String]",
               "CpuCfsQuota": "System.Nullable`1[System.Boolean]",
@@ -10973,7 +10973,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
             "Name": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NodePublicIPTags": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IPTag]",
               "AllowedHostPorts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.PortRange]",
@@ -11491,7 +11491,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sysctls": "Microsoft.Azure.Management.ContainerService.Models.SysctlConfig",
                     "SwapFileSizeMb": "System.Nullable`1[System.Int32]",
@@ -11512,7 +11512,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AllowedUnsafeSysctls": "System.Collections.Generic.IList`1[System.String]",
                     "CpuCfsQuota": "System.Nullable`1[System.Boolean]",
@@ -11799,7 +11799,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NodePublicIPTags": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IPTag]",
                     "AllowedHostPorts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.PortRange]",
@@ -12033,7 +12033,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -12438,7 +12438,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sysctls": "Microsoft.Azure.Management.ContainerService.Models.SysctlConfig",
                     "SwapFileSizeMb": "System.Nullable`1[System.Int32]",
@@ -12459,7 +12459,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AllowedUnsafeSysctls": "System.Collections.Generic.IList`1[System.String]",
                     "CpuCfsQuota": "System.Nullable`1[System.Boolean]",
@@ -12746,7 +12746,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NodePublicIPTags": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IPTag]",
                     "AllowedHostPorts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.PortRange]",
@@ -13296,7 +13296,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sysctls": "Microsoft.Azure.Management.ContainerService.Models.SysctlConfig",
                     "SwapFileSizeMb": "System.Nullable`1[System.Int32]",
@@ -13317,7 +13317,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AllowedUnsafeSysctls": "System.Collections.Generic.IList`1[System.String]",
                     "CpuCfsQuota": "System.Nullable`1[System.Boolean]",
@@ -13604,7 +13604,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NodePublicIPTags": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IPTag]",
                     "AllowedHostPorts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.PortRange]",
@@ -13843,7 +13843,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -14015,7 +14015,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -14593,7 +14593,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "GatewayProfile": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolGatewayProfile",
               "NetworkProfile": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
@@ -14699,7 +14699,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -14841,7 +14841,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "GatewayProfile": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolGatewayProfile",
                     "NetworkProfile": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
@@ -15319,7 +15319,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -15618,7 +15618,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -15773,7 +15773,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -15889,7 +15889,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
             "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DaemonsetEvictionForEmptyNodes": "System.Nullable`1[System.Boolean]",
               "DaemonsetEvictionForOccupiedNodes": "System.Nullable`1[System.Boolean]",
@@ -15983,7 +15983,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
             "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdminGroupObjectIDs": "System.Collections.Generic.IList`1[System.String]",
               "Managed": "System.Nullable`1[System.Boolean]",
@@ -16846,7 +16846,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -16980,7 +16980,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DaemonsetEvictionForEmptyNodes": "System.Nullable`1[System.Boolean]",
                     "DaemonsetEvictionForOccupiedNodes": "System.Nullable`1[System.Boolean]",
@@ -17092,7 +17092,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AdminGroupObjectIDs": "System.Collections.Generic.IList`1[System.String]",
                     "Managed": "System.Nullable`1[System.Boolean]",
@@ -18539,7 +18539,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DaemonsetEvictionForEmptyNodes": "System.Nullable`1[System.Boolean]",
                     "DaemonsetEvictionForOccupiedNodes": "System.Nullable`1[System.Boolean]",
@@ -18651,7 +18651,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AdminGroupObjectIDs": "System.Collections.Generic.IList`1[System.String]",
                     "Managed": "System.Nullable`1[System.Boolean]",
@@ -20116,7 +20116,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DaemonsetEvictionForEmptyNodes": "System.Nullable`1[System.Boolean]",
                     "DaemonsetEvictionForOccupiedNodes": "System.Nullable`1[System.Boolean]",
@@ -20228,7 +20228,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AdminGroupObjectIDs": "System.Collections.Generic.IList`1[System.String]",
                     "Managed": "System.Nullable`1[System.Boolean]",
@@ -21720,7 +21720,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DaemonsetEvictionForEmptyNodes": "System.Nullable`1[System.Boolean]",
                     "DaemonsetEvictionForOccupiedNodes": "System.Nullable`1[System.Boolean]",
@@ -21832,7 +21832,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AdminGroupObjectIDs": "System.Collections.Generic.IList`1[System.String]",
                     "Managed": "System.Nullable`1[System.Boolean]",
@@ -23239,7 +23239,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -23420,7 +23420,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -24030,7 +24030,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks",
             "Name": "Microsoft.Azure.Commands.Aks.KubeTunnelJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.KubeTunnelJob, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.KubeTunnelJob, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HasMoreData": "System.Boolean",
               "ChildJobs": "System.Collections.Generic.IList`1[System.Management.Automation.Job]",
@@ -24222,7 +24222,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -24394,7 +24394,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -25114,7 +25114,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "GatewayProfile": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolGatewayProfile",
               "NetworkProfile": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
@@ -25241,7 +25241,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -25309,7 +25309,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "GatewayProfile": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolGatewayProfile",
               "NetworkProfile": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
@@ -25524,7 +25524,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
             "Name": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NodePublicIPTags": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IPTag]",
               "AllowedHostPorts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.PortRange]",
@@ -25937,7 +25937,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NodePublicIPTags": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IPTag]",
                     "AllowedHostPorts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.PortRange]",
@@ -26171,7 +26171,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -26471,7 +26471,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NodePublicIPTags": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IPTag]",
                     "AllowedHostPorts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.PortRange]",
@@ -26690,7 +26690,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "GatewayProfile": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolGatewayProfile",
                     "NetworkProfile": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
@@ -26989,7 +26989,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NodePublicIPTags": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IPTag]",
                     "AllowedHostPorts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.PortRange]",
@@ -27452,7 +27452,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NodePublicIPTags": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IPTag]",
                     "AllowedHostPorts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.PortRange]",
@@ -27897,7 +27897,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
                   "Name": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NodePublicIPTags": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IPTag]",
                     "AllowedHostPorts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.PortRange]",
@@ -55623,7 +55623,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Ssh": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration",
         "AdminUsername": "System.String"
@@ -55674,7 +55674,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PublicKeys": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey]"
       },
@@ -55720,7 +55720,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey"
       ]
@@ -55728,7 +55728,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "KeyData": "System.String"
       },
@@ -55779,7 +55779,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "LoadBalancerProfile": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile",
         "AdvancedNetworking": "Microsoft.Azure.Management.ContainerService.Models.AdvancedNetworking",
@@ -55833,7 +55833,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ManagedOutboundIPs": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs",
         "OutboundIPPrefixes": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes",
@@ -55877,7 +55877,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Count": "System.Nullable`1[System.Int32]",
         "CountIPv6": "System.Nullable`1[System.Int32]"
@@ -55932,7 +55932,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PublicIPPrefixes": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSResourceReference]"
       },
@@ -55969,7 +55969,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSResourceReference]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSResourceReference]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSResourceReference, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSResourceReference, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Aks.Models.PSResourceReference"
       ]
@@ -55977,7 +55977,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSResourceReference": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSResourceReference",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSResourceReference, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSResourceReference, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String"
       },
@@ -56014,7 +56014,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPs": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPs",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPs, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPs, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PublicIPs": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSResourceReference]"
       },
@@ -56059,7 +56059,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.AdvancedNetworking": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.AdvancedNetworking",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AdvancedNetworking, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AdvancedNetworking, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Observability": "Microsoft.Azure.Management.ContainerService.Models.AdvancedNetworkingObservability",
         "Security": "Microsoft.Azure.Management.ContainerService.Models.AdvancedNetworkingSecurity",
@@ -56115,7 +56115,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.AdvancedNetworkingObservability": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.AdvancedNetworkingObservability",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AdvancedNetworkingObservability, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AdvancedNetworkingObservability, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Nullable`1[System.Boolean]"
       },
@@ -56161,7 +56161,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.AdvancedNetworkingSecurity": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.AdvancedNetworkingSecurity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AdvancedNetworkingSecurity, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AdvancedNetworkingSecurity, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Nullable`1[System.Boolean]",
         "AdvancedNetworkPolicies": "System.String"
@@ -56212,7 +56212,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterNATGatewayProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterNATGatewayProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterNATGatewayProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterNATGatewayProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ManagedOutboundIPProfile": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterManagedOutboundIPProfile",
         "EffectiveOutboundIPs": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.ResourceReference]",
@@ -56272,7 +56272,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterManagedOutboundIPProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterManagedOutboundIPProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterManagedOutboundIPProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterManagedOutboundIPProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Count": "System.Nullable`1[System.Int32]"
       },
@@ -56327,7 +56327,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.ResourceReference]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.ResourceReference]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.ResourceReference, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.ResourceReference, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.ContainerService.Models.ResourceReference"
       ]
@@ -56335,7 +56335,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ResourceReference": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ResourceReference",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ResourceReference, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ResourceReference, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String"
       },
@@ -56381,7 +56381,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStaticEgressGatewayProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStaticEgressGatewayProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStaticEgressGatewayProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStaticEgressGatewayProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Nullable`1[System.Boolean]"
       },
@@ -56435,7 +56435,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ClientId": "System.String",
         "Secret": "System.String"
@@ -56486,7 +56486,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAadProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAadProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAadProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAadProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AdminGroupObjectIDs": "System.Collections.Generic.IList`1[System.String]",
         "Managed": "System.Nullable`1[System.Boolean]",
@@ -56529,7 +56529,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAPIServerAccessProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAPIServerAccessProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAPIServerAccessProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAPIServerAccessProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AuthorizedIPRanges": "System.Collections.Generic.IList`1[System.String]",
         "EnablePrivateCluster": "System.Nullable`1[System.Boolean]",
@@ -56572,7 +56572,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAutoUpgradeProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAutoUpgradeProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAutoUpgradeProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAutoUpgradeProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "UpgradeChannel": "System.String",
         "NodeOSUpgradeChannel": "System.String"
@@ -56610,7 +56610,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterHTTPProxyConfig": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterHTTPProxyConfig",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterHTTPProxyConfig, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterHTTPProxyConfig, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "NoProxy": "System.Collections.Generic.IList`1[System.String]",
         "HttpProxy": "System.String",
@@ -56650,7 +56650,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentity": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentity, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentity, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "UserAssignedIdentities": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentityUserAssignedIdentitiesValue]",
         "Type": "System.Nullable`1[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType]",
@@ -56690,7 +56690,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentityUserAssignedIdentitiesValue]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentityUserAssignedIdentitiesValue]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentityUserAssignedIdentitiesValue, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentityUserAssignedIdentitiesValue, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "System.String",
         "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentityUserAssignedIdentitiesValue"
@@ -56699,7 +56699,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentityUserAssignedIdentitiesValue": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentityUserAssignedIdentitiesValue",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentityUserAssignedIdentitiesValue, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentityUserAssignedIdentitiesValue, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrincipalId": "System.String",
         "ClientId": "System.String"
@@ -56737,7 +56737,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType"
       ]
@@ -56745,7 +56745,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "HasFlag",
@@ -56837,7 +56837,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "UserAssignedIdentities": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentity]",
         "UserAssignedIdentityExceptions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityException]",
@@ -56877,7 +56877,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentity]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentity]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentity, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentity, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentity"
       ]
@@ -56885,7 +56885,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentity": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentity, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentity, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Identity": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProfileUserAssignedIdentity",
         "ProvisioningInfo": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningInfo",
@@ -56927,7 +56927,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProfileUserAssignedIdentity": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProfileUserAssignedIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProfileUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProfileUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ResourceId": "System.String",
         "ClientId": "System.String",
@@ -56966,7 +56966,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningInfo": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningInfo, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningInfo, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Error": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningError"
       },
@@ -57003,7 +57003,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningError": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningError",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningError, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningError, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Error": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningErrorBody"
       },
@@ -57040,7 +57040,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningErrorBody": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningErrorBody",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningErrorBody, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningErrorBody, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Details": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningErrorBody]",
         "Code": "System.String",
@@ -57080,7 +57080,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningErrorBody]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningErrorBody]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningErrorBody, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningErrorBody, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityProvisioningErrorBody"
       ]
@@ -57088,7 +57088,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityException]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityException]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityException, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityException, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityException"
       ]
@@ -57096,7 +57096,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityException": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityException",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityException, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPodIdentityException, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PodLabels": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "NamespaceProperty": "System.String",
@@ -57144,7 +57144,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "GmsaProfile": "Microsoft.Azure.Management.ContainerService.Models.WindowsGmsaProfile",
         "EnableCSIProxy": "System.Nullable`1[System.Boolean]",
@@ -57185,7 +57185,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.WindowsGmsaProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.WindowsGmsaProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.WindowsGmsaProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.WindowsGmsaProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Nullable`1[System.Boolean]",
         "DnsServer": "System.String",
@@ -57241,7 +57241,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSPowerState": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSPowerState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSPowerState, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSPowerState, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Code": "System.String"
       },
@@ -57278,7 +57278,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ClusterUpgradeSettings": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ClusterUpgradeSettings",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ClusterUpgradeSettings, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ClusterUpgradeSettings, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "OverrideSettings": "Microsoft.Azure.Management.ContainerService.Models.UpgradeOverrideSettings"
       },
@@ -57324,7 +57324,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.UpgradeOverrideSettings": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.UpgradeOverrideSettings",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.UpgradeOverrideSettings, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.UpgradeOverrideSettings, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ForceUpgrade": "System.Nullable`1[System.Boolean]",
         "Until": "System.Nullable`1[System.DateTime]"
@@ -57388,7 +57388,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ExtendedLocation": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ExtendedLocation",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ExtendedLocation, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ExtendedLocation, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String",
         "Type": "System.String"
@@ -57439,7 +57439,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAIToolchainOperatorProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAIToolchainOperatorProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAIToolchainOperatorProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAIToolchainOperatorProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Nullable`1[System.Boolean]"
       },
@@ -57485,7 +57485,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAzureMonitorProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAzureMonitorProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAzureMonitorProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAzureMonitorProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Metrics": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAzureMonitorProfileMetrics"
       },
@@ -57535,7 +57535,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAzureMonitorProfileMetrics": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAzureMonitorProfileMetrics",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAzureMonitorProfileMetrics, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAzureMonitorProfileMetrics, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "KubeStateMetrics": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAzureMonitorProfileKubeStateMetrics",
         "Enabled": "System.Boolean"
@@ -57590,7 +57590,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAzureMonitorProfileKubeStateMetrics": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAzureMonitorProfileKubeStateMetrics",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAzureMonitorProfileKubeStateMetrics, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAzureMonitorProfileKubeStateMetrics, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "MetricLabelsAllowlist": "System.String",
         "MetricAnnotationsAllowList": "System.String"
@@ -57641,7 +57641,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterBootstrapProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterBootstrapProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterBootstrapProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterBootstrapProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ArtifactSource": "System.String",
         "ContainerRegistryId": "System.String"
@@ -57692,7 +57692,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterIngressProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterIngressProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterIngressProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterIngressProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "WebAppRouting": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterIngressProfileWebAppRouting"
       },
@@ -57742,7 +57742,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterIngressProfileWebAppRouting": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterIngressProfileWebAppRouting",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterIngressProfileWebAppRouting, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterIngressProfileWebAppRouting, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Nginx": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterIngressProfileNginx",
         "Identity": "Microsoft.Azure.Management.ContainerService.Models.UserAssignedIdentity",
@@ -57807,7 +57807,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterIngressProfileNginx": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterIngressProfileNginx",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterIngressProfileNginx, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterIngressProfileNginx, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DefaultIngressControllerType": "System.String"
       },
@@ -57853,7 +57853,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.UserAssignedIdentity": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.UserAssignedIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.UserAssignedIdentity, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.UserAssignedIdentity, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ResourceId": "System.String",
         "ClientId": "System.String",
@@ -57909,7 +57909,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterMetricsProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterMetricsProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterMetricsProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterMetricsProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "CostAnalysis": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterCostAnalysis"
       },
@@ -57955,7 +57955,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterCostAnalysis": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterCostAnalysis",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterCostAnalysis, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterCostAnalysis, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Nullable`1[System.Boolean]"
       },
@@ -58001,7 +58001,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterNodeProvisioningProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterNodeProvisioningProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterNodeProvisioningProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterNodeProvisioningProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Mode": "System.String",
         "DefaultNodePools": "System.String"
@@ -58052,7 +58052,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterNodeResourceGroupProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterNodeResourceGroupProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterNodeResourceGroupProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterNodeResourceGroupProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "RestrictionLevel": "System.String"
       },
@@ -58098,7 +58098,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterOidcIssuerProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterOidcIssuerProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterOidcIssuerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterOidcIssuerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Nullable`1[System.Boolean]",
         "IssuerUrl": "System.String"
@@ -58149,7 +58149,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DaemonsetEvictionForEmptyNodes": "System.Nullable`1[System.Boolean]",
         "DaemonsetEvictionForOccupiedNodes": "System.Nullable`1[System.Boolean]",
@@ -58290,7 +58290,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AzureKeyVaultKms": "Microsoft.Azure.Management.ContainerService.Models.AzureKeyVaultKms",
         "Defender": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfileDefender",
@@ -58360,7 +58360,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.AzureKeyVaultKms": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.AzureKeyVaultKms",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AzureKeyVaultKms, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AzureKeyVaultKms, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Nullable`1[System.Boolean]",
         "KeyId": "System.String",
@@ -58421,7 +58421,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfileDefender": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfileDefender",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfileDefender, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfileDefender, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "SecurityMonitoring": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfileDefenderSecurityMonitoring",
         "LogAnalyticsWorkspaceResourceId": "System.String"
@@ -58472,7 +58472,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfileDefenderSecurityMonitoring": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfileDefenderSecurityMonitoring",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfileDefenderSecurityMonitoring, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfileDefenderSecurityMonitoring, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Nullable`1[System.Boolean]"
       },
@@ -58518,7 +58518,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfileImageCleaner": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfileImageCleaner",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfileImageCleaner, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfileImageCleaner, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Nullable`1[System.Boolean]",
         "IntervalHours": "System.Nullable`1[System.Int32]"
@@ -58569,7 +58569,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfileWorkloadIdentity": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfileWorkloadIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfileWorkloadIdentity, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSecurityProfileWorkloadIdentity, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Nullable`1[System.Boolean]"
       },
@@ -58629,7 +58629,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSKU": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSKU",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSKU, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterSKU, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String",
         "Tier": "System.String"
@@ -58680,7 +58680,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStatus": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStatus, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStatus, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ProvisioningError": "Microsoft.Azure.Management.ContainerService.Models.ErrorDetail"
       },
@@ -58726,7 +58726,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ErrorDetail": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ErrorDetail",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ErrorDetail, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ErrorDetail, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AdditionalInfo": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.ErrorAdditionalInfo]",
         "Details": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.ErrorDetail]",
@@ -58792,7 +58792,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.ErrorAdditionalInfo]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.ErrorAdditionalInfo]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.ErrorAdditionalInfo, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.ErrorAdditionalInfo, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.ContainerService.Models.ErrorAdditionalInfo"
       ]
@@ -58800,7 +58800,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ErrorAdditionalInfo": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ErrorAdditionalInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ErrorAdditionalInfo, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ErrorAdditionalInfo, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Info": "System.Object",
         "Type": "System.String"
@@ -58856,7 +58856,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.ErrorDetail]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.ErrorDetail]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.ErrorDetail, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.ErrorDetail, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.ContainerService.Models.ErrorDetail"
       ]
@@ -58864,7 +58864,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "BlobCsiDriver": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfileBlobCSIDriver",
         "DiskCsiDriver": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfileDiskCSIDriver",
@@ -58925,7 +58925,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfileBlobCSIDriver": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfileBlobCSIDriver",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfileBlobCSIDriver, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfileBlobCSIDriver, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Nullable`1[System.Boolean]"
       },
@@ -58971,7 +58971,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfileDiskCSIDriver": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfileDiskCSIDriver",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfileDiskCSIDriver, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfileDiskCSIDriver, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Nullable`1[System.Boolean]"
       },
@@ -59017,7 +59017,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfileFileCSIDriver": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfileFileCSIDriver",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfileFileCSIDriver, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfileFileCSIDriver, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Nullable`1[System.Boolean]"
       },
@@ -59063,7 +59063,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfileSnapshotController": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfileSnapshotController",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfileSnapshotController, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterStorageProfileSnapshotController, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Nullable`1[System.Boolean]"
       },
@@ -59109,7 +59109,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterWorkloadAutoScalerProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterWorkloadAutoScalerProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterWorkloadAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterWorkloadAutoScalerProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Keda": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterWorkloadAutoScalerProfileKeda",
         "VerticalPodAutoscaler": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler"
@@ -59164,7 +59164,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterWorkloadAutoScalerProfileKeda": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterWorkloadAutoScalerProfileKeda",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterWorkloadAutoScalerProfileKeda, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterWorkloadAutoScalerProfileKeda, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Boolean"
       },
@@ -59214,7 +59214,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Boolean"
       },
@@ -59264,7 +59264,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ServiceMeshProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ServiceMeshProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ServiceMeshProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ServiceMeshProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Istio": "Microsoft.Azure.Management.ContainerService.Models.IstioServiceMesh",
         "Mode": "System.String"
@@ -59319,7 +59319,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.IstioServiceMesh": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.IstioServiceMesh",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.IstioServiceMesh, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.IstioServiceMesh, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "CertificateAuthority": "Microsoft.Azure.Management.ContainerService.Models.IstioCertificateAuthority",
         "Components": "Microsoft.Azure.Management.ContainerService.Models.IstioComponents",
@@ -59379,7 +59379,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.IstioCertificateAuthority": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.IstioCertificateAuthority",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.IstioCertificateAuthority, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.IstioCertificateAuthority, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Plugin": "Microsoft.Azure.Management.ContainerService.Models.IstioPluginCertificateAuthority"
       },
@@ -59425,7 +59425,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.IstioPluginCertificateAuthority": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.IstioPluginCertificateAuthority",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.IstioPluginCertificateAuthority, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.IstioPluginCertificateAuthority, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "KeyVaultId": "System.String",
         "CertObjectName": "System.String",
@@ -59491,7 +59491,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.IstioComponents": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.IstioComponents",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.IstioComponents, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.IstioComponents, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "EgressGateways": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IstioEgressGateway]",
         "IngressGateways": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IstioIngressGateway]"
@@ -59542,7 +59542,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IstioEgressGateway]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IstioEgressGateway]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.IstioEgressGateway, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.IstioEgressGateway, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.ContainerService.Models.IstioEgressGateway"
       ]
@@ -59550,7 +59550,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.IstioEgressGateway": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.IstioEgressGateway",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.IstioEgressGateway, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.IstioEgressGateway, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Boolean"
       },
@@ -59600,7 +59600,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IstioIngressGateway]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IstioIngressGateway]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.IstioIngressGateway, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.IstioIngressGateway, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.ContainerService.Models.IstioIngressGateway"
       ]
@@ -59608,7 +59608,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.IstioIngressGateway": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.IstioIngressGateway",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.IstioIngressGateway, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.IstioIngressGateway, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Boolean",
         "Mode": "System.String"
@@ -59663,7 +59663,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "System.String",
         "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile"
@@ -59672,7 +59672,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Identity": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAddonProfileIdentity",
         "Enabled": "System.Boolean",
@@ -59711,7 +59711,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAddonProfileIdentity": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAddonProfileIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAddonProfileIdentity, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAddonProfileIdentity, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ResourceId": "System.String",
         "ClientId": "System.String",
@@ -59767,7 +59767,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPropertiesIdentityProfile]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPropertiesIdentityProfile]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPropertiesIdentityProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPropertiesIdentityProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "System.String",
         "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPropertiesIdentityProfile"
@@ -59776,7 +59776,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPropertiesIdentityProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPropertiesIdentityProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPropertiesIdentityProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterPropertiesIdentityProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ResourceId": "System.String",
         "ClientId": "System.String",
@@ -59829,7 +59829,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile"
       ]
@@ -59837,7 +59837,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "GatewayProfile": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolGatewayProfile",
         "NetworkProfile": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
@@ -59931,7 +59931,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.AgentPoolGatewayProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolGatewayProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolGatewayProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolGatewayProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PublicIPPrefixSize": "System.Nullable`1[System.Int32]"
       },
@@ -59981,7 +59981,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolNetworkProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "NodePublicIPTags": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IPTag]",
         "AllowedHostPorts": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.PortRange]",
@@ -60037,7 +60037,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IPTag]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.IPTag]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.IPTag, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.IPTag, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.ContainerService.Models.IPTag"
       ]
@@ -60045,7 +60045,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.IPTag": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.IPTag",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.IPTag, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.IPTag, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "IPTagType": "System.String",
         "Tag": "System.String"
@@ -60096,7 +60096,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.PortRange]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.PortRange]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.PortRange, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.PortRange, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.ContainerService.Models.PortRange"
       ]
@@ -60104,7 +60104,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.PortRange": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.PortRange",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.PortRange, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.PortRange, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PortStart": "System.Nullable`1[System.Int32]",
         "PortEnd": "System.Nullable`1[System.Int32]",
@@ -60164,7 +60164,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.AgentPoolSecurityProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolSecurityProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolSecurityProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolSecurityProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "EnableVtpm": "System.Nullable`1[System.Boolean]",
         "EnableSecureBoot": "System.Nullable`1[System.Boolean]",
@@ -60220,7 +60220,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.AgentPoolStatus": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolStatus, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolStatus, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ProvisioningError": "Microsoft.Azure.Management.ContainerService.Models.ErrorDetail"
       },
@@ -60266,7 +60266,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.AgentPoolUpgradeSettings": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolUpgradeSettings",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolUpgradeSettings, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolUpgradeSettings, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DrainTimeoutInMinutes": "System.Nullable`1[System.Int32]",
         "NodeSoakDurationInMinutes": "System.Nullable`1[System.Int32]",
@@ -60336,7 +60336,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.AgentPoolWindowsProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolWindowsProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolWindowsProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.AgentPoolWindowsProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DisableOutboundNat": "System.Nullable`1[System.Boolean]"
       },
@@ -60382,7 +60382,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.CreationData": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.CreationData",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.CreationData, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.CreationData, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "SourceResourceId": "System.String"
       },
@@ -60428,7 +60428,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.GPUProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.GPUProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.GPUProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.GPUProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Driver": "System.String"
       },
@@ -60474,7 +60474,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.KubeletConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AllowedUnsafeSysctls": "System.Collections.Generic.IList`1[System.String]",
         "CpuCfsQuota": "System.Nullable`1[System.Boolean]",
@@ -60574,7 +60574,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Sysctls": "Microsoft.Azure.Management.ContainerService.Models.SysctlConfig",
         "SwapFileSizeMb": "System.Nullable`1[System.Int32]",
@@ -60639,7 +60639,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.SysctlConfig": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.SysctlConfig",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.SysctlConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.SysctlConfig, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "NetIpv4TcpTwReuse": "System.Nullable`1[System.Boolean]",
         "VMMaxMapCount": "System.Nullable`1[System.Int32]",
@@ -60824,7 +60824,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.PowerState": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.PowerState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.PowerState, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.PowerState, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Code": "System.String"
       },
@@ -60870,7 +60870,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.VirtualMachinesProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.VirtualMachinesProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.VirtualMachinesProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.VirtualMachinesProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Scale": "Microsoft.Azure.Management.ContainerService.Models.ScaleProfile"
       },
@@ -60916,7 +60916,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ScaleProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ScaleProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ScaleProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ScaleProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Manual": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.ManualScaleProfile]"
       },
@@ -60962,7 +60962,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.ManualScaleProfile]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.ManualScaleProfile]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.ManualScaleProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.ManualScaleProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.ContainerService.Models.ManualScaleProfile"
       ]
@@ -60970,7 +60970,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.ManualScaleProfile": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.ManualScaleProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManualScaleProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.ManualScaleProfile, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Count": "System.Nullable`1[System.Int32]",
         "Size": "System.String"
@@ -61021,7 +61021,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.VirtualMachineNodes]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.VirtualMachineNodes]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.VirtualMachineNodes, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.VirtualMachineNodes, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.ContainerService.Models.VirtualMachineNodes"
       ]
@@ -61029,7 +61029,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.VirtualMachineNodes": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.VirtualMachineNodes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.VirtualMachineNodes, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.VirtualMachineNodes, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Count": "System.Nullable`1[System.Int32]",
         "Size": "System.String"
@@ -61096,7 +61096,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.PrivateLinkResource]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerService.Models.PrivateLinkResource]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.PrivateLinkResource, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerService.Models.PrivateLinkResource, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.ContainerService.Models.PrivateLinkResource"
       ]
@@ -61104,7 +61104,7 @@
     "Microsoft.Azure.Management.ContainerService.Models.PrivateLinkResource": {
       "Namespace": "Microsoft.Azure.Management.ContainerService.Models",
       "Name": "Microsoft.Azure.Management.ContainerService.Models.PrivateLinkResource",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.PrivateLinkResource, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerService.Models.PrivateLinkResource, Microsoft.Azure.PowerShell.Aks.Management.Sdk, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "RequiredMembers": "System.Collections.Generic.IList`1[System.String]",
         "Id": "System.String",

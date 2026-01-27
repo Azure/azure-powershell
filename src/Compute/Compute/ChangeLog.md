@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 11.3.0
 * Compute SDK generation updates:
     - Generation now uses autorest.powershell, replacing deprecated track 1 SDK.
     - Removed local swagger files and replaced references with remote swagger files.
