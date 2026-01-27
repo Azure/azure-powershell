@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'AzVMwarePureStoragePolicy' {
     It 'Create' {
         {
-            $result = New-AzVMwarePureStoragePolicy -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1 -StoragePolicyName "storagePolicy1"
+            $result = New-AzVMwarePureStoragePolicy -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1 -StoragePolicyName "storagePolicy1" -StoragePolicyDefinition "storagePolicyDefinition1" -StoragePoolId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/PureStorage.Block/storagePools/storagePool1"
             $result.Name | Should -Be "storagePolicy1"
         } | Should -Not -Throw
     }

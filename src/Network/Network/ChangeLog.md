@@ -19,6 +19,12 @@
 --->
 
 ## Upcoming Release
+* Added `-IpVersionType` parameter to `New-AzPrivateEndpoint` cmdlet to specify the IP version type for private IPs of the private endpoint. Allowed values are IPv4, IPv6, or DualStack.
+* Added new cmdlets for VirtualNetworkAppliance resource:
+    - `Get-AzVirtualNetworkAppliance`: Get a Virtual Network Appliance resource by name, resource group, or list all.
+    - `New-AzVirtualNetworkAppliance`: Create a new Virtual Network Appliance resource.
+    - `Remove-AzVirtualNetworkAppliance`: Remove a Virtual Network Appliance resource.
+    - `Update-AzVirtualNetworkAppliance`: Update tags on a Virtual Network Appliance resource.
 
 ## Version 7.24.1
 * Onboarded `Microsoft.Security/privateLinks` to Private Link Common Cmdlets
