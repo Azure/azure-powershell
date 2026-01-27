@@ -65,8 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50
             {
                 return;
             }
-            {_info = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonObject>("info"), out var __jsonInfo) ? Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Any.FromJson(__jsonInfo) : Info;}
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)Type;}
+            {_info = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonObject>("info"), out var __jsonInfo) ? Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Any.FromJson(__jsonInfo) : Info;}
             AfterFromJson(json);
         }
 
@@ -103,11 +103,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != this._info ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) this._info.ToJson(null,serializationMode) : null, "info" ,container.Add );
+                AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
+                AddIf( null != this._info ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) this._info.ToJson(null,serializationMode) : null, "info" ,container.Add );
             }
             AfterToJson(ref container);
             return container;
