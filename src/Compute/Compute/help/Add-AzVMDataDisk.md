@@ -18,8 +18,7 @@ Adds a data disk to a virtual machine.
 Add-AzVMDataDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>] [[-Caching] <CachingTypes>]
  [[-DiskSizeInGB] <Int32>] [-Lun] <Int32> [-CreateOption] <String> [[-SourceImageUri] <String>]
  [-DiskEncryptionSetId <String>] [-DeleteOption <String>] [-SourceResourceId <String>]
- [-DiskIOPSReadWrite <Int64>] [-DiskMBpsReadWrite <Int64>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### VmManagedDiskParameterSetName
@@ -368,7 +367,7 @@ This parameter is used during implicit disk creation to set custom IOPS values f
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
-Parameter Sets: (All)
+Parameter Sets: VmManagedDiskParameterSetName
 Aliases:
 
 Required: False
@@ -384,7 +383,7 @@ This parameter is used during implicit disk creation to set custom throughput va
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
-Parameter Sets: (All)
+Parameter Sets: VmManagedDiskParameterSetName
 Aliases:
 
 Required: False
