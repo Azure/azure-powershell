@@ -37,27 +37,28 @@ The scope of a policy exemption is the part of its ID preceding '/providers/Micr
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove policy exemption by name and scope
 ```powershell
-{{ Add code here }}
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
+Remove-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId -Confirm
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet.
+The command stores that object in the $ResourceGroup variable.
+The second command removes the policy exemption named PolicyExemption07 that was assigned at a resource group level.
+The **ResourceId** property of $ResourceGroup identifies the resource group.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove policy exemption by ID
 ```powershell
-{{ Add code here }}
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
+$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
+Remove-AzPolicyExemption -Id $PolicyExemption.Id -Confirm
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+The first command gets a resource group named ResourceGroup11, and then stores that object in the $ResourceGroup variable.
+The second command gets the policy exemption at a resource group level, and then stores it in the $PolicyExemption variable.
+The **ResourceId** property of $ResourceGroup identifies the resource group.
+The final command removes the policy exemption that the **ResourceId** property of $PolicyExemption identifies.
 
 ## PARAMETERS
 
@@ -156,7 +157,7 @@ Accept wildcard characters: False
 
 ### -Scope
 The scope of the policy exemption.
-Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
 
 ```yaml
 Type: System.String

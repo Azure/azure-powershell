@@ -53,27 +53,38 @@ Identify a policy assignment to get by name and scope or by ID.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all policy assignments
 ```powershell
-{{ Add code here }}
+Get-AzPolicyAssignment
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command gets all the policy assignments.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific policy assignment
 ```powershell
-{{ Add code here }}
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
+Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet and stores it in the $ResourceGroup variable.
+The second command gets the policy assignment named PolicyAssignment07 for the scope that the **ResourceId** property of $ResourceGroup identifies.
+
+### Example 3: Get all policy assignments assigned to a management group
+```powershell
+$mgId = 'myManagementGroup'
+Get-AzPolicyAssignment -Scope '/providers/Microsoft.Management/managementgroups/$mgId'
 ```
 
-{{ Add description here }}
+The first command specifies the ID of the management group to query.
+The second command gets all of the policy assignments that are assigned to the management group with ID 'myManagementGroup'.
+
+### Example 4: Get the scope, policy set definition identifier, and display name of all policy assignments formatted as a list
+```powershell
+Get-AzPolicyAssignment | Select-Object -Property Scope, PolicyDefinitionID, DisplayName | Format-List
+```
+
+This command is useful when you need to find the reader-friendly **DisplayName** property of an Azure
+Policy assignment.
 
 ## PARAMETERS
 
@@ -173,7 +184,7 @@ Accept wildcard characters: False
 
 ### -Scope
 The scope of the policy assignment.
-Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
 
 ```yaml
 Type: System.String

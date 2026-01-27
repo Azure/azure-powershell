@@ -49,27 +49,27 @@ This operation deletes the policy definition in the given subscription with the 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove the policy definition by name
 ```powershell
-{{ Add code here }}
+Remove-AzPolicyDefinition -Name 'VMPolicyDefinition'
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command removes the specified policy definition.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove policy definition by resource ID
 ```powershell
-{{ Add code here }}
+$PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition' 
+Remove-AzPolicyDefinition -Id $PolicyDefinition.Id -Force
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+This command removes the given policy definition without prompting the user.
+
+### Example 3: Remove policy definition version by name
+```powershell
+Remove-AzPolicyDefinition -Name 'VMPolicyDefinition' -Version '1.0.1' -PassThru
 ```
 
-{{ Add description here }}
+This command removes the specified policy definition version and will return true when the command succeeds.
 
 ## PARAMETERS
 
