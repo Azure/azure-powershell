@@ -27,11 +27,25 @@
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
 				"ms-dotnettools.csharp"
-			]
+			],
+			// Minimal settings to improve file search and git performance
+			"settings": {
+				"files.watcherExclude": {
+					"**/artifacts/**": true,
+					"**/.git/objects/**": true,
+					"**/node_modules/**": true
+				},
+				"search.exclude": {
+					"**/artifacts/**": true
+				}
+			}
 		}
 	},
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// this will allow us to call pwsh in scripts
-	"remoteUser": "root"
+	"remoteUser": "root",
+
+	// Mount optimization for macOS
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind,consistency=cached"
 }
