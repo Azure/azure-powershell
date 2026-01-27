@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "45" ],
-        "x-ms-client-request-id": [ "19e8bbaf-5d50-4cc5-931c-39c8147e2bb7" ],
+        "x-ms-client-request-id": [ "ca48407d-f614-41b7-a546-670398c83005" ],
         "CommandName": [ "Get-AzQuotaOperation" ],
         "FullCommandName": [ "Get-AzQuotaOperation_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -24,15 +24,15 @@
         "Vary": [ "Accept-Encoding" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "MS-RequestId": [ "IR4UvHvb4Uqx2PUu6Lf8Cg.0" ],
+        "MS-RequestId": [ "s-Db_6Le40OgIpP_jkTB_w.0" ],
         "x-ms-operation-identifier": [ "" ],
         "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
-        "x-ms-request-id": [ "38272ab9-c9ec-4fee-b585-969e859860fc" ],
-        "x-ms-correlation-request-id": [ "38272ab9-c9ec-4fee-b585-969e859860fc" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260127T013521Z:38272ab9-c9ec-4fee-b585-969e859860fc" ],
+        "x-ms-request-id": [ "9adc2e16-457a-474a-b250-fed801bfc317" ],
+        "x-ms-correlation-request-id": [ "9adc2e16-457a-474a-b250-fed801bfc317" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260127T031605Z:9adc2e16-457a-474a-b250-fed801bfc317" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F615FB4F36984B2891B411A642748B9E Ref B: SYD03EDGE0806 Ref C: 2026-01-27T01:35:20Z" ],
-        "Date": [ "Tue, 27 Jan 2026 01:35:20 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E7D1C4F54F3A44C1B5E9E65FC00DBC97 Ref B: SYD03EDGE2110 Ref C: 2026-01-27T03:16:05Z" ],
+        "Date": [ "Tue, 27 Jan 2026 03:16:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "4690" ],
