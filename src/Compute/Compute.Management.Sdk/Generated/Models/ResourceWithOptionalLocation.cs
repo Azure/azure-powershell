@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// <summary>
     /// The Resource model definition with location property as optional.
     /// </summary>
-    public partial class ResourceWithOptionalLocation
+    public partial class ResourceWithOptionalLocation : Microsoft.Rest.Azure.IResource
     {
         /// <summary>
         /// Initializes a new instance of the ResourceWithOptionalLocation class.

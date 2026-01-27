@@ -34,11 +34,17 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="hibernationEnabled">The flag that enables or disables hibernation capability on the VM.
         /// </param>
-        public AdditionalCapabilities(bool? ultraSsdEnabled = default(bool?), bool? hibernationEnabled = default(bool?))
+
+        /// <param name="enableFips1403Encryption">The flag enables the usage of FIPS 140-3 compliant cryptography on the
+        /// protectedSettings of an extension. Learn more at:
+        /// https://aka.ms/linuxagentfipssupport.
+        /// </param>
+        public AdditionalCapabilities(bool? ultraSsdEnabled = default(bool?), bool? hibernationEnabled = default(bool?), bool? enableFips1403Encryption = default(bool?))
 
         {
             this.UltraSSDEnabled = ultraSsdEnabled;
             this.HibernationEnabled = hibernationEnabled;
+            this.EnableFips1403Encryption = enableFips1403Encryption;
             CustomInit();
         }
 
@@ -64,5 +70,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "hibernationEnabled")]
         public bool? HibernationEnabled {get; set; }
+
+        /// <summary>
+        /// Gets or sets the flag enables the usage of FIPS 140-3 compliant
+        /// cryptography on the protectedSettings of an extension. Learn more at:
+        /// https://aka.ms/linuxagentfipssupport.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableFips1403Encryption")]
+        public bool? EnableFips1403Encryption {get; set; }
     }
 }
