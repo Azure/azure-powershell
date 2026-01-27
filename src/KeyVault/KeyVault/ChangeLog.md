@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 6.4.2
+* Updated Azure.Core from 1.47.3 to 1.50.0
+
 ## Version 6.4.1
 * Updated Azure.Core from 1.45.0 to 1.47.3
 
@@ -52,13 +55,13 @@
 * [Breaking change] Removed parameter `Value` from `Invoke-AzKeyVaultKeyOperation`.
 * [Breaking change] Removed property `Result` from the output type `PSKeyOperationResult` of `Invoke-AzKeyVaultKeyOperation`.
 * [Breaking Change] Replaced parameter `EnableRbacAuthorization` by `DisableRbacAuthorization` in `New-AzKeyVault` and `Update-AzKeyVault`.
-    - RBAC will be enabled by default during the process of key vault creation. 
-    
+    - RBAC will be enabled by default during the process of key vault creation.
+
 ## Version 5.3.0
 * Introduced secrets detection feature to safeguard sensitive data.
 * [Upcoming Breaking Change] Added breaking change warning message for parameter `UseDefaultCVMPolicy` of `Add-AzKeyVaultKey`.
     - The offline fallback policy will be removed. Key creation will fail if unable to get regional default CVM SKR policy from MAA Service Discovery API.
-* Added parameter `PolicyPath` in `Add-AzKeyVaultCertificate` to support custom policy in the process of certificate enrollment. 
+* Added parameter `PolicyPath` in `Add-AzKeyVaultCertificate` to support custom policy in the process of certificate enrollment.
 * Upgraded the API version of merging certificate to 7.5. [#24323]
 
 ## Version 5.2.2
@@ -78,11 +81,11 @@
 
 ## Version 5.1.0
 * Added parameter `ByteArrayValue` in `Invoke-AzKeyVaultKeyOperation` to support operating byte array without conversion to secure string.
-* Added Property `RawResult` in the output type `PSKeyOperationResult` of `Invoke-AzKeyVaultKeyOperation`. 
-* [Upcoming Breaking Change] Added breaking change warning message for parameter `Value` in `Invoke-AzKeyVaultKeyOperation`. 
+* Added Property `RawResult` in the output type `PSKeyOperationResult` of `Invoke-AzKeyVaultKeyOperation`.
+* [Upcoming Breaking Change] Added breaking change warning message for parameter `Value` in `Invoke-AzKeyVaultKeyOperation`.
     - Parameter `Value` is expected to be removed in Az.KeyVault 6.0.0
     - `ByteArrayValue` is the alternative of parameter `Value` in byte array format
-* [Upcoming Breaking Change] Added breaking change warning message for the output type `PSKeyOperationResult` of `Invoke-AzKeyVaultKeyOperation`. 
+* [Upcoming Breaking Change] Added breaking change warning message for the output type `PSKeyOperationResult` of `Invoke-AzKeyVaultKeyOperation`.
     - Property `Result` is expected to be removed in Az.KeyVault 6.0.0
     - Property `RawResult` is the alternative of parameter `Result` in byte array format
 
@@ -91,7 +94,7 @@
 
 ## Version 5.0.0
 * Removed non-core types creation in PowerShell scripts to be compatible in constrained language mode.
-* Supported user assigned identity for Managed HSM in `New/Update-AzKeyVaultManagedHsm` 
+* Supported user assigned identity for Managed HSM in `New/Update-AzKeyVaultManagedHsm`
 * [Breaking Change] Changed parameter `SoftDeleteRetentionInDays` in `New-AzKeyVaultManagedHsm` to mandatory.
 * Upgraded Azure.Core to 1.35.0.
 
@@ -123,7 +126,7 @@
 * Added parameter `PolicyPath` and `PolicyObject` in `Import-AzKeyVaultCertificate` to support custom policy [#20780]
 
 ## Version 4.9.3
-* Added breaking change announcement for `Invoke-AzKeyVaultKeyOperation`. The encoded/decoded way between string and bytes in `Invoke-AzKeyVaultKeyOperation` will change to UTF8. 
+* Added breaking change announcement for `Invoke-AzKeyVaultKeyOperation`. The encoded/decoded way between string and bytes in `Invoke-AzKeyVaultKeyOperation` will change to UTF8.
     - This change will take effect on 5/23/2023
     - The change is expected to take effect from the version 5.0.0
 * Updated Azure.Core to 1.31.0.

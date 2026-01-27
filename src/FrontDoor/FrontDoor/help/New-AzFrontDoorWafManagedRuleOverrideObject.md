@@ -14,7 +14,8 @@ Create an in-memory object for ManagedRuleOverride.
 
 ```
 New-AzFrontDoorWafManagedRuleOverrideObject -RuleId <String> [-Action <String>] [-Disabled]
- [-Exclusion <IManagedRuleExclusion[]>] [<CommonParameters>]
+ [-Exclusion <IManagedRuleExclusion[]>] [-Sensitivity <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,6 +93,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Sensitivity
+Describes the override sensitivity to be applied when rule matches.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

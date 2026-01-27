@@ -37,5 +37,11 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// configuration.
         /// </summary>
         public const string UserAssignedNATGateway = "userAssignedNATGateway";
+        /// <summary>
+        /// The AKS cluster is not set with any outbound-type. All AKS nodes follows
+        /// Azure VM default outbound behavior. Please refer to
+        /// https://azure.microsoft.com/en-us/updates/default-outbound-access-for-vms-in-azure-will-be-retired-transition-to-a-new-method-of-internet-access/
+        /// </summary>
+        public const string None = "none";
     }
 }

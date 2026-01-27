@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 using Newtonsoft.Json;
 
@@ -28,6 +29,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Creates a new role definition.
     /// </summary>
+    [GenericBreakingChangeWithVersion("The -InputFile JSON format and -Role parameter are changing. The flattened properties 'Actions', 'NotActions', 'DataActions', 'NotDataActions' at the root level are being replaced by a 'Permissions' array. Each permission object contains 'Actions', 'NotActions', 'DataActions', 'NotDataActions', 'Condition', and 'ConditionVersion' properties. The output type PSRoleDefinition is also changing accordingly.", "16.0.0", "10.0.0")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleDefinition"), OutputType(typeof(PSRoleDefinition))]
     public class NewAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {

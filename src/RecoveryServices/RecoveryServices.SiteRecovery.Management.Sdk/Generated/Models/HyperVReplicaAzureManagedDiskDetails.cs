@@ -42,7 +42,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="sectorSizeInBytes">The logical sector size (in bytes), 512 by default.
         /// </param>
-        public HyperVReplicaAzureManagedDiskDetails(string diskId = default(string), string seedManagedDiskId = default(string), string replicaDiskType = default(string), string diskEncryptionSetId = default(string), string targetDiskAccountType = default(string), int? sectorSizeInBytes = default(int?))
+
+        /// <param name="iops">The number of IOPS allowed for Premium V2 and Ultra disks.
+        /// </param>
+
+        /// <param name="throughputInMbps">The total throughput in Mbps for Premium V2 and Ultra disks.
+        /// </param>
+
+        /// <param name="diskSizeInGb">The target disk size in GB.
+        /// </param>
+        public HyperVReplicaAzureManagedDiskDetails(string diskId = default(string), string seedManagedDiskId = default(string), string replicaDiskType = default(string), string diskEncryptionSetId = default(string), string targetDiskAccountType = default(string), int? sectorSizeInBytes = default(int?), long? iops = default(long?), long? throughputInMbps = default(long?), long? diskSizeInGb = default(long?))
 
         {
             this.DiskId = diskId;
@@ -51,6 +60,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.DiskEncryptionSetId = diskEncryptionSetId;
             this.TargetDiskAccountType = targetDiskAccountType;
             this.SectorSizeInBytes = sectorSizeInBytes;
+            this.Iops = iops;
+            this.ThroughputInMbps = throughputInMbps;
+            this.DiskSizeInGb = diskSizeInGb;
             CustomInit();
         }
 
@@ -95,5 +107,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sectorSizeInBytes")]
         public int? SectorSizeInBytes {get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of IOPS allowed for Premium V2 and Ultra disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "iops")]
+        public long? Iops {get; set; }
+
+        /// <summary>
+        /// Gets or sets the total throughput in Mbps for Premium V2 and Ultra disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "throughputInMbps")]
+        public long? ThroughputInMbps {get; set; }
+
+        /// <summary>
+        /// Gets or sets the target disk size in GB.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "diskSizeInGB")]
+        public long? DiskSizeInGb {get; set; }
     }
 }

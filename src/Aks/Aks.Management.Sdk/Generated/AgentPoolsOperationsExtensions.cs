@@ -162,9 +162,15 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='agentPoolName'>
         /// The name of the agent pool.
         /// </param>
-        public static AgentPool CreateOrUpdate(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, AgentPool parameters)
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
+        /// <param name='ifNoneMatch'>
+        /// The request should only proceed if no entity matches this string.
+        /// </param>
+        public static AgentPool CreateOrUpdate(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, AgentPool parameters, string ifMatch = default(string), string ifNoneMatch = default(string))
         {
-                return ((IAgentPoolsOperations)operations).CreateOrUpdateAsync(resourceGroupName, resourceName, agentPoolName, parameters).GetAwaiter().GetResult();
+                return ((IAgentPoolsOperations)operations).CreateOrUpdateAsync(resourceGroupName, resourceName, agentPoolName, parameters, ifMatch, ifNoneMatch).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -182,12 +188,18 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='agentPoolName'>
         /// The name of the agent pool.
         /// </param>
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
+        /// <param name='ifNoneMatch'>
+        /// The request should only proceed if no entity matches this string.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<AgentPool> CreateOrUpdateAsync(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, AgentPool parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<AgentPool> CreateOrUpdateAsync(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, AgentPool parameters, string ifMatch = default(string), string ifNoneMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, parameters, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -207,9 +219,16 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='agentPoolName'>
         /// The name of the agent pool.
         /// </param>
-        public static AgentPoolsDeleteHeaders Delete(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName)
+        /// <param name='ignorePodDisruptionBudget'>
+        /// ignore-pod-disruption-budget=true to delete those pods on a node without
+        /// considering Pod Disruption Budget
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
+        public static AgentPoolsDeleteHeaders Delete(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, bool? ignorePodDisruptionBudget = default(bool?), string ifMatch = default(string))
         {
-                return ((IAgentPoolsOperations)operations).DeleteAsync(resourceGroupName, resourceName, agentPoolName).GetAwaiter().GetResult();
+                return ((IAgentPoolsOperations)operations).DeleteAsync(resourceGroupName, resourceName, agentPoolName, ignorePodDisruptionBudget, ifMatch).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -227,12 +246,19 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='agentPoolName'>
         /// The name of the agent pool.
         /// </param>
+        /// <param name='ignorePodDisruptionBudget'>
+        /// ignore-pod-disruption-budget=true to delete those pods on a node without
+        /// considering Pod Disruption Budget
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<AgentPoolsDeleteHeaders> DeleteAsync(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<AgentPoolsDeleteHeaders> DeleteAsync(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, bool? ignorePodDisruptionBudget = default(bool?), string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, ignorePodDisruptionBudget, ifMatch, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
@@ -280,6 +306,51 @@ namespace Microsoft.Azure.Management.ContainerService
             using (var _result = await operations.GetUpgradeProfileWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes specific machines in an agent pool.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the managed cluster resource.
+        /// </param>
+        /// <param name='agentPoolName'>
+        /// The name of the agent pool.
+        /// </param>
+        public static AgentPoolsDeleteMachinesHeaders DeleteMachines(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, System.Collections.Generic.IList<string> machineNames)
+        {
+                return ((IAgentPoolsOperations)operations).DeleteMachinesAsync(resourceGroupName, resourceName, agentPoolName, machineNames).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes specific machines in an agent pool.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the managed cluster resource.
+        /// </param>
+        /// <param name='agentPoolName'>
+        /// The name of the agent pool.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<AgentPoolsDeleteMachinesHeaders> DeleteMachinesAsync(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, System.Collections.Generic.IList<string> machineNames, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteMachinesWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, machineNames, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>
@@ -442,9 +513,15 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='agentPoolName'>
         /// The name of the agent pool.
         /// </param>
-        public static AgentPool BeginCreateOrUpdate(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, AgentPool parameters)
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
+        /// <param name='ifNoneMatch'>
+        /// The request should only proceed if no entity matches this string.
+        /// </param>
+        public static AgentPool BeginCreateOrUpdate(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, AgentPool parameters, string ifMatch = default(string), string ifNoneMatch = default(string))
         {
-                return ((IAgentPoolsOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, resourceName, agentPoolName, parameters).GetAwaiter().GetResult();
+                return ((IAgentPoolsOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, resourceName, agentPoolName, parameters, ifMatch, ifNoneMatch).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -462,12 +539,18 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='agentPoolName'>
         /// The name of the agent pool.
         /// </param>
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
+        /// <param name='ifNoneMatch'>
+        /// The request should only proceed if no entity matches this string.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<AgentPool> BeginCreateOrUpdateAsync(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, AgentPool parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<AgentPool> BeginCreateOrUpdateAsync(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, AgentPool parameters, string ifMatch = default(string), string ifNoneMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, parameters, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -487,9 +570,16 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='agentPoolName'>
         /// The name of the agent pool.
         /// </param>
-        public static AgentPoolsDeleteHeaders BeginDelete(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName)
+        /// <param name='ignorePodDisruptionBudget'>
+        /// ignore-pod-disruption-budget=true to delete those pods on a node without
+        /// considering Pod Disruption Budget
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
+        public static AgentPoolsDeleteHeaders BeginDelete(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, bool? ignorePodDisruptionBudget = default(bool?), string ifMatch = default(string))
         {
-                return ((IAgentPoolsOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, agentPoolName).GetAwaiter().GetResult();
+                return ((IAgentPoolsOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, agentPoolName, ignorePodDisruptionBudget, ifMatch).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -507,12 +597,64 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='agentPoolName'>
         /// The name of the agent pool.
         /// </param>
+        /// <param name='ignorePodDisruptionBudget'>
+        /// ignore-pod-disruption-budget=true to delete those pods on a node without
+        /// considering Pod Disruption Budget
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The request should only proceed if an entity matches this string.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<AgentPoolsDeleteHeaders> BeginDeleteAsync(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<AgentPoolsDeleteHeaders> BeginDeleteAsync(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, bool? ignorePodDisruptionBudget = default(bool?), string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, ignorePodDisruptionBudget, ifMatch, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Deletes specific machines in an agent pool.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the managed cluster resource.
+        /// </param>
+        /// <param name='agentPoolName'>
+        /// The name of the agent pool.
+        /// </param>
+        public static AgentPoolsDeleteMachinesHeaders BeginDeleteMachines(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, System.Collections.Generic.IList<string> machineNames)
+        {
+                return ((IAgentPoolsOperations)operations).BeginDeleteMachinesAsync(resourceGroupName, resourceName, agentPoolName, machineNames).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes specific machines in an agent pool.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the managed cluster resource.
+        /// </param>
+        /// <param name='agentPoolName'>
+        /// The name of the agent pool.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<AgentPoolsDeleteMachinesHeaders> BeginDeleteMachinesAsync(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, System.Collections.Generic.IList<string> machineNames, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteMachinesWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, machineNames, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
