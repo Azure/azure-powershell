@@ -22,31 +22,11 @@ New-AzQuotaGroupQuotaSubscription -GroupQuotaName <String> -ManagementGroupId <S
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityManagementGroup
-```
-New-AzQuotaGroupQuotaSubscription -GroupQuotaName <String> -ManagementGroupInputObject <IQuotaIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### Update
-```
-New-AzQuotaGroupQuotaSubscription -GroupQuotaName <String> -ManagementGroupId <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### CreateViaIdentityManagementGroup
 ```
 New-AzQuotaGroupQuotaSubscription -GroupQuotaName <String> -ManagementGroupInputObject <IQuotaIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-New-AzQuotaGroupQuotaSubscription -InputObject <IQuotaIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -114,7 +94,7 @@ The name should be unique for the provided context tenantId/MgId.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, UpdateViaIdentityManagementGroup, Update, CreateViaIdentityManagementGroup
+Parameter Sets: Create, CreateViaIdentityManagementGroup
 Aliases:
 
 Required: True
@@ -129,7 +109,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
-Parameter Sets: UpdateViaIdentity, CreateViaIdentity
+Parameter Sets: CreateViaIdentity
 Aliases:
 
 Required: True
@@ -144,7 +124,7 @@ Management Group Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, Update
+Parameter Sets: Create
 Aliases:
 
 Required: True
@@ -159,7 +139,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
-Parameter Sets: UpdateViaIdentityManagementGroup, CreateViaIdentityManagementGroup
+Parameter Sets: CreateViaIdentityManagementGroup
 Aliases:
 
 Required: True
@@ -190,7 +170,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, Update
+Parameter Sets: Create
 Aliases:
 
 Required: False

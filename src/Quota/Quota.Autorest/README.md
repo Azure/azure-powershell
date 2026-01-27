@@ -66,14 +66,6 @@ directive:
       subject: ^(?!GroupQuotaSubscription|GroupQuotaLimitsRequest|GroupQuotaSubscriptionAllocation).*$
     remove: true
   
-  # Rename Set to New for operations that don't have POST equivalents
-  # These are PUT-only operations where New is more semantically appropriate
-  - where:
-      verb: Set
-      subject: ^(GroupQuotaSubscription|GroupQuotaLimitsRequest|GroupQuotaSubscriptionAllocation)$
-    set:
-      verb: New
-  
   # Remove any remaining Set verbs (for operations that have New equivalents from POST)
   - where:
       verb: Set

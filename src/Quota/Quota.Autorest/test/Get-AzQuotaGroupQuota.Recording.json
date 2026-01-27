@@ -7,11 +7,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "76727c66-b53b-4b7d-9924-e75278fe3d1e" ],
+        "x-ms-client-request-id": [ "88603fc1-6caa-4aaa-9bf1-78338d11ebe9" ],
         "CommandName": [ "Get-AzQuotaGroupQuota" ],
         "FullCommandName": [ "Get-AzQuotaGroupQuota_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.3" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -24,21 +24,21 @@
         "Vary": [ "Accept-Encoding" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "MS-RequestId": [ "Fd2Nm9lpLEWgQiiUH7OlWw.0" ],
+        "MS-RequestId": [ "jYq5XyRGHU671iGCwtNyag.0" ],
         "x-ms-operation-identifier": [ "" ],
         "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
-        "x-ms-request-id": [ "c4481338-61d2-4b33-894a-173b7cdd8ec4" ],
-        "x-ms-correlation-request-id": [ "c4481338-61d2-4b33-894a-173b7cdd8ec4" ],
-        "x-ms-routing-request-id": [ "AUSTRALIASOUTHEAST:20260122T234436Z:c4481338-61d2-4b33-894a-173b7cdd8ec4" ],
+        "x-ms-request-id": [ "3e8ce14c-c9c6-4583-84bc-fb62c06ab16c" ],
+        "x-ms-correlation-request-id": [ "3e8ce14c-c9c6-4583-84bc-fb62c06ab16c" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260127T012912Z:3e8ce14c-c9c6-4583-84bc-fb62c06ab16c" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 885C81534E21494E8BD6FEE89FA4706D Ref B: SYD03EDGE1311 Ref C: 2026-01-22T23:44:35Z" ],
-        "Date": [ "Thu, 22 Jan 2026 23:44:35 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 99B0557CA07D4BD2BC2A1E61F165157A Ref B: SYD03EDGE1422 Ref C: 2026-01-27T01:29:12Z" ],
+        "Date": [ "Tue, 27 Jan 2026 01:29:11 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "4379" ],
+        "Content-Length": [ "5572" ],
         "Content-Type": [ "application/json" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"displayName\":\"Test Location Group Quota\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testlocation\"},{\"properties\":{\"displayName\":\"Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1976787973\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1976787973\"},{\"properties\":{\"displayName\":\"Updated Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota902315257\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota902315257\"},{\"properties\":{\"displayName\":\"Updated Via Identity\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1111257898\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1111257898\"},{\"properties\":{\"displayName\":\"Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota2145821213\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota2145821213\"},{\"properties\":{\"displayName\":\"Updated Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1016821303\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1016821303\"},{\"properties\":{\"displayName\":\"Updated Via Identity\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota635826063\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota635826063\"},{\"properties\":{\"displayName\":\"Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1053679825\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1053679825\"},{\"properties\":{\"displayName\":\"Updated Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota331507793\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota331507793\"},{\"properties\":{\"displayName\":\"Updated Via Identity\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota682640338\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota682640338\"},{\"properties\":{\"displayName\":\"Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1575869025\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1575869025\"}]}",
+      "Content": "{\"value\":[{\"properties\":{\"displayName\":\"Test Location Group Quota\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testlocation\"},{\"properties\":{\"displayName\":\"Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1976787973\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1976787973\"},{\"properties\":{\"displayName\":\"Updated Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota902315257\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota902315257\"},{\"properties\":{\"displayName\":\"Updated Via Identity\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1111257898\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1111257898\"},{\"properties\":{\"displayName\":\"Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota2145821213\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota2145821213\"},{\"properties\":{\"displayName\":\"Updated Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1016821303\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1016821303\"},{\"properties\":{\"displayName\":\"Updated Via Identity\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota635826063\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota635826063\"},{\"properties\":{\"displayName\":\"Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1053679825\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1053679825\"},{\"properties\":{\"displayName\":\"Updated Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota331507793\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota331507793\"},{\"properties\":{\"displayName\":\"Updated Via Identity\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota682640338\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota682640338\"},{\"properties\":{\"displayName\":\"Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1575869025\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1575869025\"},{\"properties\":{\"displayName\":\"Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1127604200\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1127604200\"},{\"properties\":{\"displayName\":\"Updated Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota297664964\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota297664964\"},{\"properties\":{\"displayName\":\"Updated Via Identity\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota165491198\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota165491198\"}]}",
       "isContentBase64": false
     }
   },
@@ -50,11 +50,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "99d854c4-9227-4465-b3de-6e14a36ac702" ],
+        "x-ms-client-request-id": [ "a2ddbbd3-2c84-42d1-866a-6f3195f6ac37" ],
         "CommandName": [ "Get-AzQuotaGroupQuota" ],
         "FullCommandName": [ "Get-AzQuotaGroupQuota_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.3" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -67,21 +67,21 @@
         "Vary": [ "Accept-Encoding" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "MS-RequestId": [ "Ec3iPswyBE2RYsC9xwYOnQ.0" ],
+        "MS-RequestId": [ "vXlla1-lY0Ks9q5B0sV3TA.0" ],
         "x-ms-operation-identifier": [ "" ],
         "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
-        "x-ms-request-id": [ "ffb63c40-512b-487f-a4bd-f308f31660d2" ],
-        "x-ms-correlation-request-id": [ "ffb63c40-512b-487f-a4bd-f308f31660d2" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260122T234436Z:ffb63c40-512b-487f-a4bd-f308f31660d2" ],
+        "x-ms-request-id": [ "eaafb2ef-bb25-4df5-a518-848b9e69018c" ],
+        "x-ms-correlation-request-id": [ "eaafb2ef-bb25-4df5-a518-848b9e69018c" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260127T012913Z:eaafb2ef-bb25-4df5-a518-848b9e69018c" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: ECA8DB0110E147B98C7609BB0BA11DA5 Ref B: SYD03EDGE1311 Ref C: 2026-01-22T23:44:36Z" ],
-        "Date": [ "Thu, 22 Jan 2026 23:44:35 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: DAC110C032BF4DEA919BD5B869EB342B Ref B: SYD03EDGE1422 Ref C: 2026-01-27T01:29:13Z" ],
+        "Date": [ "Tue, 27 Jan 2026 01:29:12 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "4379" ],
+        "Content-Length": [ "5572" ],
         "Content-Type": [ "application/json" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"displayName\":\"Test Location Group Quota\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testlocation\"},{\"properties\":{\"displayName\":\"Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1976787973\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1976787973\"},{\"properties\":{\"displayName\":\"Updated Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota902315257\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota902315257\"},{\"properties\":{\"displayName\":\"Updated Via Identity\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1111257898\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1111257898\"},{\"properties\":{\"displayName\":\"Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota2145821213\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota2145821213\"},{\"properties\":{\"displayName\":\"Updated Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1016821303\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1016821303\"},{\"properties\":{\"displayName\":\"Updated Via Identity\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota635826063\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota635826063\"},{\"properties\":{\"displayName\":\"Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1053679825\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1053679825\"},{\"properties\":{\"displayName\":\"Updated Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota331507793\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota331507793\"},{\"properties\":{\"displayName\":\"Updated Via Identity\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota682640338\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota682640338\"},{\"properties\":{\"displayName\":\"Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1575869025\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1575869025\"}]}",
+      "Content": "{\"value\":[{\"properties\":{\"displayName\":\"Test Location Group Quota\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testlocation\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testlocation\"},{\"properties\":{\"displayName\":\"Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1976787973\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1976787973\"},{\"properties\":{\"displayName\":\"Updated Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota902315257\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota902315257\"},{\"properties\":{\"displayName\":\"Updated Via Identity\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1111257898\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1111257898\"},{\"properties\":{\"displayName\":\"Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota2145821213\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota2145821213\"},{\"properties\":{\"displayName\":\"Updated Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1016821303\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1016821303\"},{\"properties\":{\"displayName\":\"Updated Via Identity\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota635826063\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota635826063\"},{\"properties\":{\"displayName\":\"Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1053679825\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1053679825\"},{\"properties\":{\"displayName\":\"Updated Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota331507793\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota331507793\"},{\"properties\":{\"displayName\":\"Updated Via Identity\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota682640338\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota682640338\"},{\"properties\":{\"displayName\":\"Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1575869025\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1575869025\"},{\"properties\":{\"displayName\":\"Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota1127604200\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota1127604200\"},{\"properties\":{\"displayName\":\"Updated Test Quota Group\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota297664964\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota297664964\"},{\"properties\":{\"displayName\":\"Updated Via Identity\",\"groupType\":\"AllocationGroup\",\"provisioningState\":\"Succeeded\",\"additionalAttributes\":{\"groupId\":{\"groupingIdType\":\"None\"},\"environment\":\"None\"}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzureClientToolsBAMI/providers/Microsoft.Quota/groupQuotas/testquota165491198\",\"type\":\"Microsoft.Quota/groupQuotas\",\"name\":\"testquota165491198\"}]}",
       "isContentBase64": false
     }
   },
@@ -93,11 +93,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "1fee1409-942c-49f1-9a53-5d0de2faaf0d" ],
+        "x-ms-client-request-id": [ "35adbab3-4fb0-42f4-811d-7b57ae8419fe" ],
         "CommandName": [ "Get-AzQuotaGroupQuota" ],
         "FullCommandName": [ "Get-AzQuotaGroupQuota_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.3" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -110,15 +110,15 @@
         "Vary": [ "Accept-Encoding" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "MS-RequestId": [ "01PiAZinDE-xhu76-seZvw.0" ],
+        "MS-RequestId": [ "lzeHd3ROW0u_m2k7WUKmxg.0" ],
         "x-ms-operation-identifier": [ "" ],
         "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
-        "x-ms-request-id": [ "b58bf1a6-b853-4f62-86f8-1374b88fa764" ],
-        "x-ms-correlation-request-id": [ "b58bf1a6-b853-4f62-86f8-1374b88fa764" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260122T234436Z:b58bf1a6-b853-4f62-86f8-1374b88fa764" ],
+        "x-ms-request-id": [ "509f1042-4aa0-4ec7-aade-78551e27af86" ],
+        "x-ms-correlation-request-id": [ "509f1042-4aa0-4ec7-aade-78551e27af86" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260127T012914Z:509f1042-4aa0-4ec7-aade-78551e27af86" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 317F51D18C034CF1BF2B569B05F07AD2 Ref B: SYD03EDGE1311 Ref C: 2026-01-22T23:44:36Z" ],
-        "Date": [ "Thu, 22 Jan 2026 23:44:35 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 1CD4B0D144714434A755E65F30A24F32 Ref B: SYD03EDGE1422 Ref C: 2026-01-27T01:29:13Z" ],
+        "Date": [ "Tue, 27 Jan 2026 01:29:13 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "389" ],
@@ -136,11 +136,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "82ce30e6-57c9-449a-a040-2eab3025f8ad" ],
+        "x-ms-client-request-id": [ "23fc7197-152e-41c8-8345-6953f0163754" ],
         "CommandName": [ "Get-AzQuotaGroupQuota" ],
         "FullCommandName": [ "Get-AzQuotaGroupQuota_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.3" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -153,15 +153,15 @@
         "Vary": [ "Accept-Encoding" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "MS-RequestId": [ "3yEd43jJwke1Jk3-c0Awkg.0" ],
+        "MS-RequestId": [ "5ofq6EZDNUaNZQ7UNwpEHA.0" ],
         "x-ms-operation-identifier": [ "" ],
         "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
-        "x-ms-request-id": [ "3fcf14db-8f55-4d4d-8377-5f477f09401a" ],
-        "x-ms-correlation-request-id": [ "3fcf14db-8f55-4d4d-8377-5f477f09401a" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260122T234437Z:3fcf14db-8f55-4d4d-8377-5f477f09401a" ],
+        "x-ms-request-id": [ "4e416492-da0e-4d62-8ed5-8fb5ceddcff7" ],
+        "x-ms-correlation-request-id": [ "4e416492-da0e-4d62-8ed5-8fb5ceddcff7" ],
+        "x-ms-routing-request-id": [ "AUSTRALIASOUTHEAST:20260127T012915Z:4e416492-da0e-4d62-8ed5-8fb5ceddcff7" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: FC2D568ADA67422E883B651A90859F62 Ref B: SYD03EDGE1311 Ref C: 2026-01-22T23:44:36Z" ],
-        "Date": [ "Thu, 22 Jan 2026 23:44:36 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 50E5E9BBE8074C4F8F1E20C496871458 Ref B: SYD03EDGE1422 Ref C: 2026-01-27T01:29:14Z" ],
+        "Date": [ "Tue, 27 Jan 2026 01:29:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "389" ],
@@ -179,11 +179,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "4d6d27b4-2351-48e5-8c52-f0ee275e9f83" ],
+        "x-ms-client-request-id": [ "66f5cbfb-37cb-4fb2-9e55-937ea6bc26b1" ],
         "CommandName": [ "Get-AzQuotaGroupQuota" ],
         "FullCommandName": [ "Get-AzQuotaGroupQuota_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.3" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.12", "Az.Quota/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -196,15 +196,15 @@
         "Vary": [ "Accept-Encoding" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "MS-RequestId": [ "j6LTxxv6hk6Fw8Agsxel3w.0" ],
+        "MS-RequestId": [ "acRVF7UMuEClI352pJxPcw.0" ],
         "x-ms-operation-identifier": [ "" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "248" ],
-        "x-ms-request-id": [ "165dbc00-808a-4651-9e8c-26e6427721ce" ],
-        "x-ms-correlation-request-id": [ "165dbc00-808a-4651-9e8c-26e6427721ce" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260122T234437Z:165dbc00-808a-4651-9e8c-26e6427721ce" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-request-id": [ "e8cd2d38-4875-448d-95f3-6ba9f9b3981b" ],
+        "x-ms-correlation-request-id": [ "e8cd2d38-4875-448d-95f3-6ba9f9b3981b" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260127T012916Z:e8cd2d38-4875-448d-95f3-6ba9f9b3981b" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 582398E64946414783E6B4D7C36E08B7 Ref B: SYD03EDGE1311 Ref C: 2026-01-22T23:44:37Z" ],
-        "Date": [ "Thu, 22 Jan 2026 23:44:36 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: BCC239D7626849CCA020DB0698AAF170 Ref B: SYD03EDGE1422 Ref C: 2026-01-27T01:29:15Z" ],
+        "Date": [ "Tue, 27 Jan 2026 01:29:15 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "389" ],

@@ -34,25 +34,6 @@ New-AzQuotaGroupQuotaSubscription -GroupQuotaName <String> -ManagementGroupInput
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-New-AzQuotaGroupQuotaSubscription -GroupQuotaName <String> -ManagementGroupId <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-New-AzQuotaGroupQuotaSubscription -InputObject <IQuotaIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityManagementGroup
-```
-New-AzQuotaGroupQuotaSubscription -GroupQuotaName <String> -ManagementGroupInputObject <IQuotaIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Adds a subscription to GroupQuotas.
 The subscriptions will be validated based on the additionalAttributes defined in the GroupQuota.
@@ -112,7 +93,7 @@ The name should be unique for the provided context tenantId/MgId.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateViaIdentityManagementGroup, Update, UpdateViaIdentityManagementGroup
+Parameter Sets: Create, CreateViaIdentityManagementGroup
 Aliases:
 
 Required: True
@@ -127,7 +108,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
-Parameter Sets: CreateViaIdentity, UpdateViaIdentity
+Parameter Sets: CreateViaIdentity
 Aliases:
 
 Required: True
@@ -142,7 +123,7 @@ Management Group Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, Update
+Parameter Sets: Create
 Aliases:
 
 Required: True
@@ -157,7 +138,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
-Parameter Sets: CreateViaIdentityManagementGroup, UpdateViaIdentityManagementGroup
+Parameter Sets: CreateViaIdentityManagementGroup
 Aliases:
 
 Required: True
@@ -188,7 +169,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, Update
+Parameter Sets: Create
 Aliases:
 
 Required: False
