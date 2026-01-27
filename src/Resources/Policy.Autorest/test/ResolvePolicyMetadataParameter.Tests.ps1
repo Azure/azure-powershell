@@ -13,6 +13,7 @@ Describe 'ResolvePolicyMetadataParameter' {
     createdOn  = "10/04/2024 00:20:02";
     createdOnWithoutQuotes  = 10/04/2024 00:20:02;
     dateTimeTestVal = "2024-10-04T00:20:02Z";
+    mixedStringNumber = "Test123 Value";
 }
 '@
         $complexPSObjectMetadata = @'
@@ -41,17 +42,18 @@ Describe 'ResolvePolicyMetadataParameter' {
     }
 
     It 'Parse simple PSObject metadata' {
-        $resolved = ResolvePolicyMetadataParameter -Metadata $simplePSObjectMetadata
+        $resolved = ResolvePolicyMetadataParameter -MetadataValue $simplePSObjectMetadata
         $resolved.version | Should -Be '1.0.0'
         $resolved.category | Should -Be 'ScenarioTest'
         $resolved.enabled | Should -Be "false"
         $resolved.createdOn | Should -Be '10/04/2024 00:20:02'
         $resolved.createdOnWithoutQuotes | Should -Be '10/04/2024 00:20:02'
         $resolved.dateTimeTestVal | Should -Be '2024-10-04T00:20:02Z'
+        $resolved.mixedStringNumber | Should -Be 'Test123 Value'
     }
 
     It 'Parse complex PSObject metadata' {
-        $resolved = ResolvePolicyMetadataParameter -Metadata $complexPSObjectMetadata
+        $resolved = ResolvePolicyMetadataParameter -MetadataValue $complexPSObjectMetadata
         $resolved.version | Should -Be '1.0.0'
         $resolved.category | Should -Be 'ScenarioTest'
         $resolved.tags | Should -Contain 'ps'
@@ -62,14 +64,14 @@ Describe 'ResolvePolicyMetadataParameter' {
     }
 
     It 'Parse hashtable string metadata' {
-        $resolved = ResolvePolicyMetadataParameter -Metadata $hashtableStringMetadata
+        $resolved = ResolvePolicyMetadataParameter -MetadataValue $hashtableStringMetadata
         $resolved.name | Should -Be 'Alice'
         $resolved.enabled | Should -BeFalse
         $resolved.count | Should -Be 5
     }
 
     It 'Parse complex hashtable string metadata' {
-        $resolved = ResolvePolicyMetadataParameter -Metadata $complexHashtableStringMetadata
+        $resolved = ResolvePolicyMetadataParameter -MetadataValue $complexHashtableStringMetadata
         $resolved.name | Should -Be 'Bob'
         $resolved.enabled | Should -BeTrue
         $resolved.details.location | Should -Be 'NYC'
@@ -83,7 +85,7 @@ Describe 'ResolvePolicyMetadataParameter' {
         $metadata = Join-Path $PSScriptRoot 'PolicyMetadata.json'
         Set-Content -Path $metadata -Value $fileContent
         try {
-            $resolved = ResolvePolicyMetadataParameter -Metadata $metadata
+            $resolved = ResolvePolicyMetadataParameter -MetadataValue $metadata
             $resolved.TestKey | Should -Be 'TestValue'
         }
         finally {
@@ -93,12 +95,12 @@ Describe 'ResolvePolicyMetadataParameter' {
     }
 
     It 'Ensure parsing invalid JSON metadata throws' {
-        { ResolvePolicyMetadataParameter -Metadata $invalidJson } | Should -Throw 'Unrecognized metadata format - value: [{ "name": "Bob", "enabled": true ], type: [string]'
+        { ResolvePolicyMetadataParameter -MetadataValue $invalidJson } | Should -Throw 'Unrecognized metadata format - value: [{ "name": "Bob", "enabled": true ], type: [string]'
     }
 
     It 'Parse nested arrays in metadata' {
         $nestedArrayMetadata = '{ "name": "NestedTest", "matrix": [[1,2,3],[4,5,6],[7,8,9]], "tags": [["a","b"],["c","d"]] }'
-        $resolved = ResolvePolicyMetadataParameter -Metadata $nestedArrayMetadata
+        $resolved = ResolvePolicyMetadataParameter -MetadataValue $nestedArrayMetadata
         $resolved.name | Should -Be 'NestedTest'
         $resolved.matrix[0] | Should -Be @(1,2,3)
         $resolved.matrix[2][1] | Should -Be 8
@@ -107,6 +109,20 @@ Describe 'ResolvePolicyMetadataParameter' {
 
     It 'Ensure parsing invalid hashtable literal throws' {
         $invalidHashtable = '@{ version = "1.0.0"; category "ScenarioTest"; enabled = false; }'
-        { ResolvePolicyMetadataParameter -Metadata $invalidHashtable } | Should -Throw 'Invalid PSCustomObject or hashtable literal'
+        { ResolvePolicyMetadataParameter -MetadataValue $invalidHashtable } | Should -Throw 'Invalid PSCustomObject or hashtable literal'
+    }
+
+    It 'Parse hashtable converted to PSCustomObject' {
+        $metadataPreConversion = "{'Meta1': 'Value1', 'Meta2': { 'Meta22': 'Value22' }, 'Meta3': null}"
+        
+        # Convert string to JSON format seen when piped between cmdlets
+        $jsonString = $metadataPreConversion | ConvertFrom-Json
+
+        # Convert to PSCustomObject and then attempt to resolve
+        $psCustomObject = ConvertObjectToPSObject $jsonString
+        $resolved = ResolvePolicyMetadataParameter -MetadataValue $psCustomObject
+        $resolved.Meta1 | Should -Be 'Value1'
+        $resolved.Meta2.Meta22 | Should -Be 'Value22'
+        $resolved.Meta3 | Should -Be $null
     }
 }

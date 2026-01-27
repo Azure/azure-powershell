@@ -449,6 +449,11 @@ function ConvertTo-HashtableSafely {
     $ast = [Parser]::ParseInput($fixedInput, [ref]$tokens, [ref]$errors)
 
     if ($errors -and $errors.Count -gt 0) {
+        # if the error is due to colon usage, try ConvertFrom-JsonSafe
+        if ($errors[0].Message -like "*Missing statement after `'=`' in hash literal*") {
+            return $InputObject.Substring(1) | ConvertTo-Json -Depth 10 | ConvertFrom-JsonSafe -AsHashtable
+        }
+
         throw "Invalid PSCustomObject or hashtable literal: $($errors[0].Message)"
     }
 
@@ -458,7 +463,7 @@ function ConvertTo-HashtableSafely {
     } | Select-Object -First 1
 
     if (-not ($expr -is [HashtableAst])) {
-        throw "Top-level expression is not a hashtable."
+        throw "Top-level expression is not a hashtable. It is of type: $($expr.GetType())"
     }
 
     return Convert-AstLiteral $expr
@@ -597,6 +602,11 @@ function ResolvePolicyMetadataParameter {
 
     if ([System.String]::IsNullOrEmpty($metadataValue)) {
         return $metadataValue
+    }
+
+    # This function will usually be passed a string, but can have an issue if passed a PSCustomObject that isn't converted to string
+    if ($MetadataValue -isnot [string]) {
+        $metadataValue = $metadataValue | ConvertTo-Json -Depth 30
     }
 
     $metadata = (GetFileUriOrStringParameterValue $metadataValue).Trim()
