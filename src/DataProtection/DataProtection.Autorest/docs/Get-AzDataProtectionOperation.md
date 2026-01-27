@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataProtectionOperation
 
 ## SYNOPSIS
-Returns the list of available operations.
+List the operations for the provider
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-AzDataProtectionOperation [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the list of available operations.
+List the operations for the provider
 
 ## EXAMPLES
 
@@ -110,7 +110,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IClientDiscoveryValueForSingleApi
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IClientDiscoveryValueForSingleApi
 
 ## NOTES
 
