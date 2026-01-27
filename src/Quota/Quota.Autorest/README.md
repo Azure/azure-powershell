@@ -35,7 +35,7 @@ input-file:
   - $(repo)/specification/quota/resource-manager/Microsoft.Quota/Quota/stable/2025-09-01/openapi.json
 
 title: Quota
-module-version: 0.2.0
+module-version: 0.1.0
 
 identity-correction-for-post: true
 resourcegroup-append: true
