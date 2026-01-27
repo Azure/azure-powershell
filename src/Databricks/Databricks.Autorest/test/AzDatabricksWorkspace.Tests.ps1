@@ -84,3 +84,79 @@ Describe 'AzDatabricksWorkspace' {
         } | Should -Not -Throw
     }
 }
+
+Describe 'AzDatabricksWorkspaceServerless' {
+    It 'CreateExpanded' {
+        {
+            $config = New-AzDatabricksWorkspace -Name $env.workSpaceName2 -ResourceGroupName $env.resourceGroup2 -Location $env.location -ComputeMode 'Serverless' -Sku premium
+            $config.Name | Should -Be $env.workSpaceName2
+            $config.ComputeMode | Should -Be 'Serverless'
+        } | Should -Not -Throw
+    }
+
+    It 'List' {
+        {
+            $config = Get-AzDatabricksWorkspace -ResourceGroupName $env.resourceGroup2
+            $config.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
+    }
+
+    It 'List1' {
+        {
+            $config = Get-AzDatabricksWorkspace
+            $config.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
+    }
+
+    It 'Get' {
+        {
+            $config = Get-AzDatabricksWorkspace -Name $env.workSpaceName2 -ResourceGroupName $env.resourceGroup2
+            $config.Name | Should -Be $env.workSpaceName2
+        } | Should -Not -Throw
+    }
+
+    It 'UpdateExpanded' {
+        {
+            $config = Update-AzDatabricksWorkspace -Name $env.workSpaceName2 -ResourceGroupName $env.resourceGroup2 -Tag @{"key" = "value" }
+            $config.Name | Should -Be $env.workSpaceName2
+        } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityExpanded' {
+        {
+            $config = Get-AzDatabricksWorkspace -Name $env.workSpaceName2 -ResourceGroupName $env.resourceGroup2
+            $config = Update-AzDatabricksWorkspace -InputObject $config -Tag @{"key" = "value" }
+            $config.Name | Should -Be $env.workSpaceName2
+        } | Should -Not -Throw
+    }
+
+    It 'UpdateRequiredNsgRule' {
+        {
+            $config = Update-AzDatabricksWorkspace -Name $env.workSpaceName2 -ResourceGroupName $env.resourceGroup2 -RequiredNsgRule 'AllRules'
+        } | Should -Throw
+    }
+
+    It 'EnableNoPublicIP' {
+        {
+            $config = Update-AzDatabricksWorkspace -Name $env.workSpaceName2 -ResourceGroupName $env.resourceGroup2 -EnableNoPublicIP:$true 
+        } | Should -Throw
+    }
+
+    It 'Default Catalog' {
+        {
+            $config = Update-AzDatabricksWorkspace -Name $env.workSpaceName2 -ResourceGroupName $env.resourceGroup2 -DefaultCatalogInitialType 'UnityCatalog'
+        } | Should -Throw
+    }
+
+    It 'Managed Resource Group' {
+        {
+            $config = Update-AzDatabricksWorkspace -Name $env.workSpaceName2 -ResourceGroupName $env.resourceGroup2 -ManagedResourceGroupId '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'
+        } | Should -Throw
+    }
+
+    It 'Delete' {
+        { 
+            Remove-AzDatabricksWorkspace -Name $env.workSpaceName2 -ResourceGroupName $env.resourceGroup2
+        } | Should -Not -Throw
+    }
+}
