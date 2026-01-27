@@ -152,6 +152,18 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string SourceResourceId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the Read-Write IOPS for the managed disk when StorageAccountType is UltraSSD_LRS or PremiumV2_LRS.")]
+        public long? DiskIOPSReadWrite { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the bandwidth in MB per second for the managed disk when StorageAccountType is UltraSSD_LRS or PremiumV2_LRS.")]
+        public long? DiskMBpsReadWrite { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.ParameterSetName.Equals(VmNormalDiskParameterSet))
@@ -229,7 +241,9 @@ namespace Microsoft.Azure.Commands.Compute
                     SourceResource = string.IsNullOrEmpty(this.SourceResourceId) ? null : new ApiEntityReference
                     {
                         Id = this.SourceResourceId
-                    }
+                    },
+                    DiskIOPSReadWrite = this.DiskIOPSReadWrite,
+                    DiskMBpsReadWrite = this.DiskMBpsReadWrite
                 });
 
                 this.VM.StorageProfile = storageProfile;

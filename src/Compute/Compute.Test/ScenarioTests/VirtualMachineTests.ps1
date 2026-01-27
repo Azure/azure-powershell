@@ -8116,3 +8116,69 @@ function Test-VirtualMachineGalleryApplicationFlags
         Clean-ResourceGroup $resourceGroupName
     }
 }
+<#
+.SYNOPSIS
+Test Virtual Machine Data Disk with IOPS and MBPS parameters
+#>
+function Test-VMDataDiskIOPSMBPS
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_D4s_v3';
+        $vmname = 'vm' + $rgname;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
+
+        # Test adding data disk with DiskIOPSReadWrite and DiskMBpsReadWrite parameters
+        $diskName = 'testdisk1';
+        $diskLun = 0;
+        $diskSize = 10;
+        $diskIOPS = 5000;
+        $diskMBPS = 200;
+        
+        # Add data disk with IOPS and MBPS for managed disk (implicit creation scenario)
+        $p = Add-AzVMDataDisk -VM $p -Name $diskName -Lun $diskLun -CreateOption Empty `
+            -DiskSizeInGB $diskSize -StorageAccountType UltraSSD_LRS -Caching None `
+            -DiskIOPSReadWrite $diskIOPS -DiskMBpsReadWrite $diskMBPS;
+
+        # Verify the disk was added with correct properties
+        Assert-AreEqual $p.StorageProfile.DataDisks.Count 1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Name $diskName;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun $diskLun;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB $diskSize;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].CreateOption 'Empty';
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskIOPSReadWrite $diskIOPS;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskMBpsReadWrite $diskMBPS;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].ManagedDisk.StorageAccountType 'UltraSSD_LRS';
+
+        # Test adding another data disk without IOPS/MBPS parameters
+        $diskName2 = 'testdisk2';
+        $diskLun2 = 1;
+        $diskSize2 = 20;
+        
+        $p = Add-AzVMDataDisk -VM $p -Name $diskName2 -Lun $diskLun2 -CreateOption Empty `
+            -DiskSizeInGB $diskSize2 -StorageAccountType Premium_LRS -Caching ReadOnly;
+
+        # Verify the second disk was added without IOPS/MBPS
+        Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Name $diskName2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun $diskLun2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB $diskSize2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].ManagedDisk.StorageAccountType 'Premium_LRS';
+        Assert-Null $p.StorageProfile.DataDisks[1].DiskIOPSReadWrite;
+        Assert-Null $p.StorageProfile.DataDisks[1].DiskMBpsReadWrite;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
