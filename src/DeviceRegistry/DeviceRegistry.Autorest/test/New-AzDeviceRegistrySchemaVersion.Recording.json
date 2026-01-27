@@ -1,8 +1,8 @@
 {
-  "New-AzDeviceRegistrySchemaVersion+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/1?api-version=2025-11-01-preview+1": {
+  "New-AzDeviceRegistrySchemaVersion+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/1?api-version=2025-10-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/1?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/1?api-version=2025-10-01",
       "Content": "{\n  \"properties\": {\n    \"description\": \"Schema version 1\",\n    \"schemaContent\": \"{\\\"$schema\\\": \\\"http://json-schema.org/draft-07/schema#\\\",\\\"type\\\": \\\"object\\\",\\\"properties\\\": {\\\"humidity\\\": {\\\"type\\\": \\\"string\\\"},\\\"temperature\\\": {\\\"type\\\":\\\"number\\\"}}}\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -43,10 +43,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDeviceRegistrySchemaVersion+[NoContext]+CreateViaJsonFilePath+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/2?api-version=2025-11-01-preview+1": {
+  "New-AzDeviceRegistrySchemaVersion+[NoContext]+CreateViaJsonFilePath+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/2?api-version=2025-10-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/2?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/2?api-version=2025-10-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"description\": \"Schema version 1\",\r\n    \"schemaContent\": \"{\\\"$schema\\\": \\\"http://json-schema.org/draft-07/schema#\\\",\\\"type\\\": \\\"object\\\",\\\"properties\\\": {\\\"humidity\\\": {\\\"type\\\": \\\"string\\\"},\\\"temperature\\\": {\\\"type\\\":\\\"number\\\"}}}\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -87,10 +87,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDeviceRegistrySchemaVersion+[NoContext]+CreateViaJsonString+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/3?api-version=2025-11-01-preview+1": {
+  "New-AzDeviceRegistrySchemaVersion+[NoContext]+CreateViaJsonString+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/3?api-version=2025-10-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/3?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/3?api-version=2025-10-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"description\": \"Schema version 1\",\r\n    \"schemaContent\": \"{\\\"$schema\\\": \\\"http://json-schema.org/draft-07/schema#\\\",\\\"type\\\": \\\"object\\\",\\\"properties\\\": {\\\"humidity\\\": {\\\"type\\\": \\\"string\\\"},\\\"temperature\\\": {\\\"type\\\":\\\"number\\\"}}}\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {

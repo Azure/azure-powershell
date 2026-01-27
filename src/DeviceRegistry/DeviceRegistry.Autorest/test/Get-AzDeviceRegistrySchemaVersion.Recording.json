@@ -1,8 +1,8 @@
 {
-  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/4?api-version=2025-11-01-preview+1": {
+  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/4?api-version=2025-10-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/4?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/4?api-version=2025-10-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"description\": \"Schema version 1\",\r\n    \"schemaContent\": \"{\\\"$schema\\\": \\\"http://json-schema.org/draft-07/schema#\\\",\\\"type\\\": \\\"object\\\",\\\"properties\\\": {\\\"humidity\\\": {\\\"type\\\": \\\"string\\\"},\\\"temperature\\\": {\\\"type\\\":\\\"number\\\"}}}\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -43,10 +43,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/5?api-version=2025-11-01-preview+2": {
+  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/5?api-version=2025-10-01+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/5?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/5?api-version=2025-10-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"description\": \"Schema version 1\",\r\n    \"schemaContent\": \"{\\\"$schema\\\": \\\"http://json-schema.org/draft-07/schema#\\\",\\\"type\\\": \\\"object\\\",\\\"properties\\\": {\\\"humidity\\\": {\\\"type\\\": \\\"string\\\"},\\\"temperature\\\": {\\\"type\\\":\\\"number\\\"}}}\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -87,10 +87,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions?api-version=2025-11-01-preview+3": {
+  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions?api-version=2025-10-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions?api-version=2025-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -135,10 +135,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+GetViaIdentitySchemaRegistry+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/7?api-version=2025-11-01-preview+1": {
+  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+GetViaIdentitySchemaRegistry+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/7?api-version=2025-10-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/7?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/7?api-version=2025-10-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"description\": \"Schema version 1\",\r\n    \"schemaContent\": \"{\\\"$schema\\\": \\\"http://json-schema.org/draft-07/schema#\\\",\\\"type\\\": \\\"object\\\",\\\"properties\\\": {\\\"humidity\\\": {\\\"type\\\": \\\"string\\\"},\\\"temperature\\\": {\\\"type\\\":\\\"number\\\"}}}\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -179,10 +179,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+GetViaIdentitySchemaRegistry+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875?api-version=2025-11-01-preview+2": {
+  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+GetViaIdentitySchemaRegistry+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875?api-version=2025-10-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875?api-version=2025-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -223,10 +223,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+GetViaIdentitySchemaRegistry+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/7?api-version=2025-11-01-preview+3": {
+  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+GetViaIdentitySchemaRegistry+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/7?api-version=2025-10-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/7?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/7?api-version=2025-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -271,10 +271,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+GetViaIdentitySchema+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/8?api-version=2025-11-01-preview+1": {
+  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+GetViaIdentitySchema+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/8?api-version=2025-10-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/8?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/8?api-version=2025-10-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"description\": \"Schema version 1\",\r\n    \"schemaContent\": \"{\\\"$schema\\\": \\\"http://json-schema.org/draft-07/schema#\\\",\\\"type\\\": \\\"object\\\",\\\"properties\\\": {\\\"humidity\\\": {\\\"type\\\": \\\"string\\\"},\\\"temperature\\\": {\\\"type\\\":\\\"number\\\"}}}\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -315,10 +315,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+GetViaIdentitySchema+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema?api-version=2025-11-01-preview+2": {
+  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+GetViaIdentitySchema+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema?api-version=2025-10-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema?api-version=2025-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -363,10 +363,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+GetViaIdentitySchema+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/8?api-version=2025-11-01-preview+3": {
+  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+GetViaIdentitySchema+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/8?api-version=2025-10-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/8?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/8?api-version=2025-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -411,10 +411,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+Get+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/6?api-version=2025-11-01-preview+1": {
+  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+Get+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/6?api-version=2025-10-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/6?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/6?api-version=2025-10-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"description\": \"Schema version 1\",\r\n    \"schemaContent\": \"{\\\"$schema\\\": \\\"http://json-schema.org/draft-07/schema#\\\",\\\"type\\\": \\\"object\\\",\\\"properties\\\": {\\\"humidity\\\": {\\\"type\\\": \\\"string\\\"},\\\"temperature\\\": {\\\"type\\\":\\\"number\\\"}}}\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -455,10 +455,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/6?api-version=2025-11-01-preview+2": {
+  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/6?api-version=2025-10-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/6?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/6?api-version=2025-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -503,10 +503,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+GetViaIdentity+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/9?api-version=2025-11-01-preview+1": {
+  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+GetViaIdentity+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/9?api-version=2025-10-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/9?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/9?api-version=2025-10-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"description\": \"Schema version 1\",\r\n    \"schemaContent\": \"{\\\"$schema\\\": \\\"http://json-schema.org/draft-07/schema#\\\",\\\"type\\\": \\\"object\\\",\\\"properties\\\": {\\\"humidity\\\": {\\\"type\\\": \\\"string\\\"},\\\"temperature\\\": {\\\"type\\\":\\\"number\\\"}}}\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -547,10 +547,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/9?api-version=2025-11-01-preview+2": {
+  "Get-AzDeviceRegistrySchemaVersion+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/9?api-version=2025-10-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/9?api-version=2025-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875/schemas/myschema/schemaVersions/9?api-version=2025-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

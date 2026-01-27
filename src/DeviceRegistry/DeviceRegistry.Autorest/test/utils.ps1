@@ -1047,90 +1047,6 @@ function setupEnv() {
         }
     })
 
-    $env.Add("credentialsTests", @{
-        namespaceName = "adr-azpowershell-test-ns-2"
-        resourceGroup = "adr-azpowershell-test-cms-2"
-        location = "eastus2euap"
-        createTests = @{
-            CreateExpanded = @{
-                hubName = "adr-azpowershell-cms-test-hub-2"
-                dpsName = "adr-azpowershell-cms-test-dps-2"
-            }
-        }
-        getTests = @{
-            Get = @{}
-            List = @{}
-            GetViaIdentity = @{}
-        }
-        updateTests = @{
-            UpdateExpanded = @{
-                userIdentity = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourcegroups/adr-azpowershell-test-cms-2/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cms-test-azpowershell-uami-2"
-            }
-            UpdateViaIdentity = @{
-                userIdentity = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourcegroups/adr-azpowershell-test-cms-2/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cms-test-azpowershell-uami-2"
-            }
-        }
-        deleteTests = @{
-            Delete = @{}
-            DeleteViaIdentity = @{}
-        }
-        syncTests = @{
-            Sync = @{}
-        }
-    })
-
-    $env.Add("policyTests", @{
-        namespaceName = "adr-azpowershell-test-ns-2"
-        resourceGroup = "adr-azpowershell-test-cms-2"
-        location = "eastus2euap"
-        createTests = @{
-            CreateExpanded = @{
-                policyName = "test-policy-create-expanded"
-                hubName = "adr-azpowershell-cms-test-hub-2"
-                dpsName = "adr-azpowershell-cms-test-dps-2"
-            }
-            CreateViaJsonFilePath = @{
-                policyName = "test-policy-create-expanded"
-                jsonFilePath = "./jsonFiles/CreatePolicy.json"
-            }
-            CreateViaJsonString = @{
-                policyName = "test-policy-create-expanded"
-                jsonFilePath = "./jsonFiles/CreatePolicy.json"
-            }
-        }
-        getTests = @{
-            Get = @{
-                policyName = "test-policy-create-expanded"
-            }
-        }
-        updateTests = @{
-            UpdateExpanded = @{
-                policyName = "test-policy-create-expanded"
-                hubName = "adr-azpowershell-cms-test-hub-2"
-            }
-            UpdateViaJsonFilePath = @{
-                policyName = "test-policy-create-expanded"
-                updateJsonFilePath = "./jsonFiles/UpdatePolicy.json"
-            }
-            UpdateViaJsonString = @{
-                policyName = "test-policy-create-expanded"
-                updateJsonFilePath = "./jsonFiles/UpdatePolicy.json"
-            }
-            UpdateViaIdentity = @{
-                policyName = "test-policy-create-expanded"
-                hubName = "adr-azpowershell-cms-test-hub-2"
-            }
-        }
-        deleteTests = @{
-            Delete = @{
-                policyName = "test-policy-create-expanded"
-            }
-            DeleteViaIdentity = @{
-                policyName = "test-policy-create-expanded"
-            }
-        }
-    })
-
     # Save the $env to a file
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -1141,3 +1057,4 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
 }
+

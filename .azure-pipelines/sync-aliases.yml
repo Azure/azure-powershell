@@ -28,6 +28,10 @@ jobs:
       packageType: sdk
       version: 8.x
 
+  - task: NuGetAuthenticate@1
+    inputs:
+      forceReinstallCredentialProvider: false
+
   - pwsh: |
       dotnet --version
       dotnet new tool-manifest --force

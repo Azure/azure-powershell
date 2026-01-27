@@ -54,18 +54,33 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The default number of nodes for the node pools.")]
         public int OsDiskSize { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os).")]
+        [PSArgumentCompleter("Managed", "Ephemeral")]
+        public string OSDiskType { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "The size of the Virtual Machine. Default value is dynamically selected by the AKS resource provider based on quota and capacity.")]
         public string VmSize { get; set; } = "";
 
         [Parameter(Mandatory = false, HelpMessage = "VNet SubnetID specifies the VNet's subnet identifier.")]
         public string VnetSubnetID { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The type of workload a node can run.")]
+        [PSArgumentCompleter("OCIContainer", "WasmWasi")]
+        public string WorkloadRuntime { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Maximum number of pods that can run on node.")]
         public int MaxPodCount { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The message of the day for Linux nodes, base64-encoded. A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script).")]
+        public string MessageOfTheDay { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.")]
         [PSArgumentCompleter("Linux", "Windows")]
         public string OsType { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The Pod IP Allocation Mode. The IP allocation mode for pods in the agent pool. Must be used with podSubnetId. The default is 'DynamicIndividual'.")]
+        [PSArgumentCompleter("DynamicIndividual", "StaticBlock")]
+        public string PodIPAllocationMode { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "OsSKU to be used to specify OS SKU. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows.")]
         [PSArgumentCompleter("Ubuntu", "CBLMariner", "AzureLinux", "Windows2019", "Windows2022")]
@@ -87,7 +102,7 @@ namespace Microsoft.Azure.Commands.Aks
         public string ScaleSetEvictionPolicy { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Represents types of an node pool. Possible values include: 'VirtualMachineScaleSets', 'AvailabilitySet'")]
-        [PSArgumentCompleter("AvailabilitySet", "VirtualMachineScaleSets")]
+        [PSArgumentCompleter("AvailabilitySet", "VirtualMachineScaleSets", "VirtualMachines")]
         public string VmSetType { get; set; }
 
         [Parameter(
@@ -104,14 +119,18 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "whether to enable UltraSSD")]
         public SwitchParameter EnableUltraSSD { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The Gateway agent pool associates one public IPPrefix for each static egress gateway to provide public egress. The size of Public IPPrefix should be selected by the user. Each node in the agent pool is assigned with one IP from the IPPrefix. The IPPrefix size thus serves as a cap on the size of the Gateway agent pool. Due to Azure public IPPrefix size limitation, the valid value range is [28, 31] (/31 = 2 nodes/IPs, /30 = 4 nodes/IPs, /29 = 8 nodes/IPs, /28 = 16 nodes/IPs). The default value is 31.")]
+        public int GatewayPublicIPPrefixSize { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to install GPU drivers. When it's not specified, default is Install.")]
+        [PSArgumentCompleter("Install", "None")]
+        public string GPUDriver { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "The OS configuration of Linux agent nodes.")]
         public LinuxOSConfig LinuxOSConfig { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The Kubelet configuration on the agent pool nodes.")]
         public KubeletConfig KubeletConfig { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The maximum number or percentage of nodes that ar surged during upgrade.")]
-        public string MaxSurge { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The ID for Proximity Placement Group.")]
         public string PPG { get; set; }
@@ -195,9 +214,21 @@ namespace Microsoft.Azure.Commands.Aks
                     WriteWarning("The OsSKU 'AzureLinux' should be used going forward instead of 'CBLMariner' or 'Mariner'. The OsSKU 'CBLMariner' and 'Mariner' will eventually be deprecated.");
                 }
             }
+            if (this.IsParameterBound(c => c.OSDiskType))
+            {
+                agentPool.OSDiskType = OSDiskType;
+            }
+            if (this.IsParameterBound(c => c.PodIPAllocationMode))
+            {
+                agentPool.PodIPAllocationMode = PodIPAllocationMode;
+            }
             if (this.IsParameterBound(c => c.MaxPodCount))
             {
                 agentPool.MaxPods = MaxPodCount;
+            }
+            if (this.IsParameterBound(c => c.MessageOfTheDay))
+            {
+                agentPool.MessageOfTheDay = MessageOfTheDay;
             }
             if (this.IsParameterBound(c => c.MinCount))
             {
@@ -263,6 +294,18 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 agentPool.EnableUltraSsd = EnableUltraSSD.ToBool(); 
             }
+            if (this.IsParameterBound(c => c.GatewayPublicIPPrefixSize))
+            {
+                agentPool.GatewayProfile = new AgentPoolGatewayProfile(GatewayPublicIPPrefixSize);
+            }
+            if (this.IsParameterBound(c => c.GPUDriver))
+            {
+                agentPool.GpuProfile = new GPUProfile(GPUDriver);
+            }
+            if (this.IsParameterBound(c => c.WorkloadRuntime))
+            {
+                agentPool.WorkloadRuntime = WorkloadRuntime;
+            }
             if (this.IsParameterBound(c => c.LinuxOSConfig))
             {
                 agentPool.LinuxOSConfig = LinuxOSConfig;
@@ -270,10 +313,6 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.KubeletConfig))
             {
                 agentPool.KubeletConfig = KubeletConfig;
-            }
-            if (this.IsParameterBound(c => c.MaxSurge))
-            {
-                agentPool.UpgradeSettings = new AgentPoolUpgradeSettings(MaxSurge);
             }
             if (this.IsParameterBound(c => c.PPG))
             {
@@ -298,6 +337,16 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.PodSubnetID)) {
                 agentPool.PodSubnetId = PodSubnetID;
             }
+            if (this.IsParameterBound(c => c.ScaleDownMode))
+            {
+                agentPool.ScaleDownMode = ScaleDownMode;
+            }
+            if (this.IsParameterBound(c => c.NetworkProfile))
+            {
+                agentPool.NetworkProfile = NetworkProfile;
+            }
+            agentPool.SecurityProfile = CreateOrUpdateSecurityProfile();
+            agentPool.UpgradeSettings = CreateOrUpdateUpgradeSettings();
 
             return agentPool;
         }
