@@ -5,6 +5,8 @@ Describe 'GetPolicySetDefinitionVersion' -Tag 'LiveOnly' {
 
     BeforeAll {
         $customSetDefinition = $env.customSubSetDefinition
+        $goodScope = "/subscriptions/$subscriptionId"
+        $goodId = "$goodScope/providers/Microsoft.Authorization/policySetDefinitions/$someName"
     }
 
     It 'Get-AzPolicySetDefinition -Version' {
@@ -28,13 +30,13 @@ Describe 'GetPolicySetDefinitionVersion' -Tag 'LiveOnly' {
     It 'Get-AzPolicySetDefinition -ManagementGroupName -Id -Version' {
         {
             Get-AzPolicySetDefinition -ManagementGroupName $someManagementGroup -Id $someId -Version $someNewVersion 
-        } | Should -Throw $managementGroupSubscriptionWithName
+        } | Should -Throw $scopeRequiresName
     }
 
     It 'Get-AzPolicySetDefinition -SubscriptionId -Id -Version' {
         {
             Get-AzPolicySetDefinition -SubscriptionId $subscriptionId -Id $someId -Version $someNewVersion 
-        } | Should -Throw $managementGroupSubscriptionWithName
+        } | Should -Throw $scopeRequiresName
     }
 
     It 'Get-AzPolicySetDefinition -Name -ManagementGroupName -Version' {
@@ -76,13 +78,13 @@ Describe 'GetPolicySetDefinitionVersion' -Tag 'LiveOnly' {
     It 'Get-AzPolicySetDefinition -ManagementGroupName -Id -ListVersion' {
         {
             Get-AzPolicySetDefinition -ManagementGroupName $someManagementGroup -Id $someId -ListVersion
-        } | Should -Throw $managementGroupSubscriptionWithName
+        } | Should -Throw $scopeRequiresName
     }
 
     It 'Get-AzPolicySetDefinition -SubscriptionId -Id -ListVersion' {
         {
             Get-AzPolicySetDefinition -SubscriptionId $subscriptionId -Id $someId -ListVersion 
-        } | Should -Throw $managementGroupSubscriptionWithName
+        } | Should -Throw $scopeRequiresName
     }
 
     It 'Get-AzPolicySetDefinition -Name -ManagementGroupName -ListVersion' {
@@ -107,6 +109,96 @@ Describe 'GetPolicySetDefinitionVersion' -Tag 'LiveOnly' {
         {
             Get-AzPolicySetDefinition -SubscriptionId $subscriptionId -ListVersion
         } | Should -Throw $listVersionRequiresNameOrId
+    }
+
+    It 'Get-AzPolicySetDefinition -Expand <missing> -Version' {
+        {
+            Get-AzPolicySetDefinition -Expand -Version $someNewVersion 
+        } | Should -Throw $missingAnArgument
+    }
+
+    It 'Get-AzPolicySetDefinition -Expand <missing> -ListVersion' {
+        {
+            Get-AzPolicySetDefinition -Version $someNewVersion -Expand -ListVersion
+        } | Should -Throw $missingAnArgument
+    }
+
+    It 'Get-AzPolicySetDefinition -Expand -Version' {
+        {
+            Get-AzPolicySetDefinition -Expand "LatestDefinitionVersion" -Version $someNewVersion 
+        } | Should -Throw $versionRequiresNameOrId
+    }
+
+    It 'Get-AzPolicySetDefinition -ManagementGroupName -Expand -Version' {
+        {
+            Get-AzPolicySetDefinition -ManagementGroupName $someManagementGroup -Expand "EffectiveDefinitionVersion" -Version $someNewVersion 
+        } | Should -Throw $versionRequiresNameOrId
+    }
+
+    It 'Get-AzPolicySetDefinition -SubscriptionId -Expand -Version' {
+        {
+            Get-AzPolicySetDefinition -SubscriptionId $subscriptionId -Expand "EffectiveDefinitionVersion" -Version $someNewVersion 
+        } | Should -Throw $versionRequiresNameOrId
+    }
+
+    It 'Get-AzPolicySetDefinition -Custom -Expand -Version' {
+        {
+            Get-AzPolicySetDefinition -Custom -Expand "EffectiveDefinitionVersion" -Version $someNewVersion 
+        } | Should -Throw $parameterSetError
+    }
+
+    It 'Get-AzPolicySetDefinition -BuiltIn -Expand -Version' {
+        {
+            Get-AzPolicySetDefinition -BuiltIn -Expand "EffectiveDefinitionVersion" -Version $someNewVersion 
+        } | Should -Throw $parameterSetError
+    }
+    
+    It 'Get-AzPolicySetDefinition -ManagementGroupName -Name -Expand <invalid value> -Version' {
+        {
+            Get-AzPolicySetDefinition -ManagementGroupName $someManagementGroup -Name $someName -Expand $someName -Version $someNewVersion 
+        } | Should -Throw $unsupportedFilterValue
+    }
+
+    It 'Get-AzPolicySetDefinition -SubscriptionId -Name -Expand <invalid value> -Version' {
+        {
+            Get-AzPolicySetDefinition -SubscriptionId $subscriptionId -Name $someName -Expand $someName -Version $someNewVersion 
+        } | Should -Throw $unsupportedFilterValue
+    }
+
+    It 'Get-AzPolicySetDefinition -ManagementGroupName -Name -Expand -Version' {
+        {
+            Get-AzPolicySetDefinition -ManagementGroupName $someManagementGroup -Name $someName -Expand "EffectiveDefinitionVersion" -Version $someNewVersion
+        } | Should -Throw $PolicySetDefinitionNotFound
+    }
+
+    It 'Get-AzPolicySetDefinition -SubscriptionId -Name -Expand -Version' {
+        {
+            Get-AzPolicySetDefinition -SubscriptionId $subscriptionId -Name $someName -Expand "EffectiveDefinitionVersion" -Version $someNewVersion 
+        } | Should -Throw $PolicySetDefinitionNotFound
+    }
+
+    It 'Get-AzPolicySetDefinition -Id -Expand <invalid value> -Version' {
+        {
+            Get-AzPolicySetDefinition -Id $goodId -Expand $someName -Version $someNewVersion 
+        } | Should -Throw $unsupportedFilterValue
+    }
+
+    It 'Get-AzPolicySetDefinition -Id -Expand -Version' {
+        {
+            Get-AzPolicySetDefinition -Id $goodId -Expand "LatestDefinitionVersion, EffectiveDefinitionVersion" -Version $someNewVersion 
+        } | Should -Throw $policySetDefinitionNotFound
+    }
+
+    It 'Get-AzPolicySetDefinition -ManagementGroupName -Id -Expand -Version' {
+        {
+            Get-AzPolicySetDefinition -ManagementGroupName $someManagementGroup -Id $goodId -Expand "LatestDefinitionVersion, EffectiveDefinitionVersion" -Version $someNewVersion 
+        } | Should -Throw $scopeRequiresName
+    }
+    
+    It 'Get-AzPolicySetDefinition -SubscriptionId -Id -Expand -Version' {
+        {
+            Get-AzPolicySetDefinition -SubscriptionId $subscriptionId -Id $goodId -Expand "LatestDefinitionVersion, EffectiveDefinitionVersion" -Version $someNewVersion 
+        } | Should -Throw $scopeRequiresName
     }
 
     It 'Get-AzPolicySetDefinition -Name <custom>' {

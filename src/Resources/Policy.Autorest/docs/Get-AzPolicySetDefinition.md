@@ -21,13 +21,13 @@ Get-AzPolicySetDefinition [-Name <String>] [-Expand <String>] [-DefaultProfile <
 ### Builtin
 ```
 Get-AzPolicySetDefinition -Builtin [-ManagementGroupName <String>] [-SubscriptionId <String>]
- [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Custom
 ```
 Get-AzPolicySetDefinition -Custom [-ManagementGroupName <String>] [-SubscriptionId <String>]
- [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Id
@@ -38,7 +38,7 @@ Get-AzPolicySetDefinition -Id <String> [-Expand <String>] [-DefaultProfile <PSOb
 ### ListVersion
 ```
 Get-AzPolicySetDefinition -ListVersion [-Id <String>] [-ManagementGroupName <String>] [-Name <String>]
- [-SubscriptionId <String>] [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
@@ -140,13 +140,13 @@ Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Id, ManagementGroupName, Name, SubscriptionId, Version
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -231,7 +231,7 @@ The policy set definition version in #.#.# format.
 ```yaml
 Type: System.String
 Parameter Sets: Version
-Aliases: PolicyDefinitionVersion
+Aliases: PolicySetDefinitionVersion, PolicyDefinitionVersion
 
 Required: True
 Position: Named

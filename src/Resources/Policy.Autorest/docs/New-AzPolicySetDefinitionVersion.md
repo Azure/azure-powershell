@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPolicySetDefinitionVersion
 
 ## SYNOPSIS
-Creates or updates a policy set definition version.
+Creates an old policy set definition version.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzPolicySetDefinitionVersion -Name <String> -SubscriptionId <String> -Policy
 ```
 
 ## DESCRIPTION
-The **New-AzPolicySetDefinitionVersion** cmdlet creates or updates a policy set definition in the given subscription or management group with the given name.
+The **New-AzPolicySetDefinitionVersion** cmdlet creates an old policy set definition version in the given subscription or management group with the given name.
 
 ## EXAMPLES
 

@@ -91,7 +91,7 @@ param(
     [Parameter(ParameterSetName='Version', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [ValidateNotNullOrEmpty()]
-    [Alias('PolicyDefinitionVersion')]
+    [Alias('PolicySetDefinitionVersion', 'PolicyDefinitionVersion')]
     [System.String]
     # The policy set definition version in #.#.# format.
     ${Version},
@@ -114,7 +114,11 @@ param(
     # If $filter='category -eq {value}' is provided, the returned list only includes all policy set definitions whose category match the {value}.
     ${Filter},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.String]
     # Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
@@ -228,6 +232,10 @@ process {
         throw 'ListVersion is only allowed if Name or Id are provided.'
     }
 
+    if ($PSBoundParameters['Expand'] -and !$PSBoundParameters['Name'] -and !$PSBoundParameters['Id']) {
+        throw 'Expand is only allowed if Name or Id are provided.'
+    }
+
     if ($PSBoundParameters['Name'] -and $PSBoundParameters['Id']) {
         throw 'Only one identifier can be provided: specify either Name or Id.'
     }
@@ -266,7 +274,7 @@ process {
                     }
                     'builtin' {
                         $calledParameterSet = 'BuiltinId'
-                        $PSBoundParameters['Name'] = $parsed['Name']
+                        $PSBoundParameters['PolicySetDefinitionName'] = $parsed['Name']
                     }
                 }
             }

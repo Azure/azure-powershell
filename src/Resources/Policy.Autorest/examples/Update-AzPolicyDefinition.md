@@ -1,22 +1,24 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update the description of a policy definition
 ```powershell
-{{ Add code here }}
+$PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition'
+Update-AzPolicyDefinition -Id $PolicyDefinition.Id -Description 'Updated policy to not allow virtual machine creation'
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+The first command gets a policy definition named VMPolicyDefinition by using the Get-AzPolicyDefinition cmdlet.
+The command stores that object in the $PolicyDefinition variable.
+The second command updates the description of the policy definition identified by the **Id** property of $PolicyDefinition.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Update the mode of a policy definition
 ```powershell
-{{ Add code here }}
+Update-AzPolicyDefinition -Name 'VMPolicyDefinition' -Mode 'All'
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+This command updates the policy definition named VMPolicyDefinition by using the Update-AzPolicyDefinition cmdlet to 
+set its mode property to 'All'.
+
+### Example 3: Update the metadata of a policy definition
+```powershell
+Update-AzPolicyDefinition -Name 'VMPolicyDefinition' -Metadata '{"category":"Virtual Machine"}'
 ```
 
-{{ Add description here }}
-
+This command updates the metadata of a policy definition named VMPolicyDefinition to indicate its category is "Virtual Machine".

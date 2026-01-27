@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-Creates or updates a policy set definition version.
+Creates an old policy set definition version.
 .Description
-The **New-AzPolicySetDefinitionVersion** cmdlet creates or updates a policy set definition in the given subscription or management group with the given name.
+The **New-AzPolicySetDefinitionVersion** cmdlet creates an old policy set definition version in the given subscription or management group with the given name.
 .Notes
 ## RELATED LINKS
 

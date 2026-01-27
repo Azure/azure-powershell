@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPolicyDefinitionVersion
 
 ## SYNOPSIS
-Creates a policy definition version.
+Creates an old policy definition version.
 
 ## SYNTAX
 
@@ -43,7 +43,7 @@ New-AzPolicyDefinitionVersion -Name <String> -SubscriptionId <String> -Policy <S
 ```
 
 ## DESCRIPTION
-The **New-AzPolicyDefinitionVersion** cmdlet creates a policy definition version that includes a policy rule JSON format.
+The **New-AzPolicyDefinitionVersion** cmdlet creates an old policy definition version that includes a policy rule JSON format.
 
 ## EXAMPLES
 

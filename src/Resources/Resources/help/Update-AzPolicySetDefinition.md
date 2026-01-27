@@ -16,15 +16,15 @@ This operation updates an existing policy set definition in the given subscripti
 ```
 Update-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
  [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-Version <String>]
- [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
 Update-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-DisplayName <String>]
  [-Description <String>] [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>]
- [-Version <String>] [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-Version <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Update-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-Disp
 ```
 Update-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-DisplayName <String>]
  [-Description <String>] [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>]
- [-Version <String>] [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-Version <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,15 +40,15 @@ Update-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-DisplayNa
 ```
 Update-AzPolicySetDefinition -Id <String> [-DisplayName <String>] [-Description <String>]
  [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-Version <String>]
- [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Update-AzPolicySetDefinition [-DisplayName <String>] [-Description <String>] [-PolicyDefinition <String>]
  [-Metadata <String>] [-Parameter <String>] [-Version <String>] [-PolicyDefinitionGroup <String>]
- [-BackwardCompatible] -InputObject <IPolicySetDefinition> [-DefaultProfile <PSObject>]
+ -InputObject <IPolicySetDefinition> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -80,21 +80,6 @@ This operation updates an existing policy set definition in the given subscripti
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -285,7 +270,7 @@ The policy definition version in #.#.# format.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: PolicyDefinitionVersion
 
 Required: False
 Position: Named

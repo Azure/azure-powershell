@@ -241,4 +241,94 @@ Describe 'GetPolicySetDefinition' -Tag 'LiveOnly' {
     It 'Get-AzPolicySetDefinition -Custom' {
         Get-AzPolicySetDefinition -Custom | Should -BeOfType 'System.Object'
     }
+    
+    It 'Get-AzPolicySetDefinition -Expand <missing>' {
+        {
+            Get-AzPolicySetDefinition -Expand
+        } | Should -Throw $missingAnArgument
+    }
+
+    It 'Get-AzPolicySetDefinition -Expand' {
+        {
+            Get-AzPolicySetDefinition -Expand "LatestDefinitionVersion"
+        } | Should -Throw $expandRequiresNameOrId
+    }
+
+    It 'Get-AzPolicySetDefinition -ManagementGroupName -Expand' {
+        {
+            Get-AzPolicySetDefinition -ManagementGroupName $someManagementGroup -Expand "EffectiveDefinitionVersion"
+        } | Should -Throw $expandRequiresNameOrId
+    }
+
+    It 'Get-AzPolicySetDefinition -SubscriptionId -Expand' {
+        {
+            Get-AzPolicySetDefinition -SubscriptionId $subscriptionId -Expand "EffectiveDefinitionVersion"
+        } | Should -Throw $expandRequiresNameOrId
+    }
+
+    It 'Get-AzPolicySetDefinition -Custom -Expand' {
+        {
+            Get-AzPolicySetDefinition -Custom -Expand "EffectiveDefinitionVersion"
+        } | Should -Throw $parameterSetError
+    }
+
+    It 'Get-AzPolicySetDefinition -BuiltIn -Expand' {
+        {
+            Get-AzPolicySetDefinition -BuiltIn -Expand "EffectiveDefinitionVersion"
+        } | Should -Throw $parameterSetError
+    }
+    
+    It 'Get-AzPolicySetDefinition -ManagementGroupName -Name -Expand <invalid value>' {
+        {
+            Get-AzPolicySetDefinition -ManagementGroupName $someManagementGroup -Name $someName -Expand $someName
+        } | Should -Throw $unsupportedFilterValue
+    }
+
+    It 'Get-AzPolicySetDefinition -SubscriptionId -Name -Expand <invalid value>' {
+        {
+            Get-AzPolicySetDefinition -SubscriptionId $subscriptionId -Name $someName -Expand $someName
+        } | Should -Throw $unsupportedFilterValue
+    }
+
+    It 'Get-AzPolicySetDefinition -ManagementGroupName -Name -Expand' {
+        {
+            Get-AzPolicySetDefinition -ManagementGroupName $someManagementGroup -Name $someName -Expand "EffectiveDefinitionVersion"
+        } | Should -Throw $PolicySetDefinitionNotFound
+    }
+
+    It 'Get-AzPolicySetDefinition -SubscriptionId -Name -Expand' {
+        {
+            Get-AzPolicySetDefinition -SubscriptionId $subscriptionId -Name $someName -Expand "EffectiveDefinitionVersion"
+        } | Should -Throw $PolicySetDefinitionNotFound
+    }
+
+    It 'Get-AzPolicySetDefinition -Id -Expand <invalid value>' {
+        {
+            Get-AzPolicySetDefinition -Id $goodId -Expand $someName
+        } | Should -Throw $unsupportedFilterValue
+    }
+
+    It 'Get-AzPolicySetDefinition -Id -Expand' {
+        {
+            Get-AzPolicySetDefinition -Id $goodId -Expand "LatestDefinitionVersion, EffectiveDefinitionVersion"
+        } | Should -Throw $policySetDefinitionNotFound
+    }
+
+    It 'Get-AzPolicySetDefinition -ManagementGroupName -Id -Expand' {
+        {
+            Get-AzPolicySetDefinition -ManagementGroupName $someManagementGroup -Id $goodId -Expand "LatestDefinitionVersion, EffectiveDefinitionVersion"
+        } | Should -Throw $missingParameters
+    }
+    
+    It 'Get-AzPolicySetDefinition -SubscriptionId -Id -Expand' {
+        {
+            Get-AzPolicySetDefinition -SubscriptionId $subscriptionId -Id $goodId -Expand "LatestDefinitionVersion, EffectiveDefinitionVersion"
+        } | Should -Throw $missingParameters
+    }
+    
+    It 'Get-AzPolicySetDefinition -Id -Name -Expand' {
+        {
+            Get-AzPolicySetDefinition -Id $goodId -Name $someName -Expand "LatestDefinitionVersion, EffectiveDefinitionVersion"
+        } | Should -Throw $missingParameters
+    }
 }

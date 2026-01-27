@@ -6,11 +6,10 @@ Describe 'PolicySetDefinitionReferencePolicyDefinitionVersion' {
     BeforeAll {
         # setup
         $policySetDefName = Get-ResourceName
-        $policyDefName = '36fd7371-8eb7-4321-9c30-a7100022d048'
         $oldestVersionReference = '1.0.*'
         $newestVersionReference = '2.*.*'
 
-        $baseDefinition = Get-AzPolicyDefinition -Name $policyDefName
+        $baseDefinition = Get-AzPolicyDefinition -Name $builtInDefName
     }
 
     It 'Make and validate a policy set definition with version reference' {

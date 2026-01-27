@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-Creates a policy definition version.
+Creates an old policy definition version.
 .Description
-The **New-AzPolicyDefinitionVersion** cmdlet creates a policy definition version that includes a policy rule JSON format.
+The **New-AzPolicyDefinitionVersion** cmdlet creates an old policy definition version that includes a policy rule JSON format.
 .Notes
 ## RELATED LINKS
 

@@ -312,7 +312,6 @@ function setupEnv() {
 
     # exception strings
     $env['parameterSetError'] = 'Parameter set cannot be resolved using the specified named parameters.'
-    $env['parameterNullError'] = '. The argument is null. Provide a valid value for the argument, and then try running the command again.'
     $env['missingParameters'] = 'Cannot process command because of one or more missing mandatory parameters:'
     $env['missingAnArgument'] = 'Missing an argument for parameter '
     $env['onlyManagementGroupOrSubscription'] = 'Only ManagementGroupName or SubscriptionId can be provided, not both.'
@@ -339,11 +338,13 @@ function setupEnv() {
     $env['multiplePolicyDefinitionParams'] = "Cannot bind parameter because parameter 'PolicyDefinition' is specified more than once"
     $env['versionRequiresNameOrId'] = 'Version is only allowed if Name or Id are provided.'
     $env['listVersionsRequiresNameOrId'] = 'ListVersions is only allowed if Name or Id are provided.'
+    $env['expandRequiresNameOrId'] = 'Expand is only allowed if Name or Id are provided.'
     $env['nameOrIdIdentifier'] = 'Only one identifier can be provided: specify either Name or Id.'
-    $env['managementGroupSubscriptionWithName'] = 'Id cannot be combined with ManagementGroupName or SubscriptionId.'
+    $env['scopeRequiresName'] = 'Id cannot be combined with ManagementGroupName or SubscriptionId.'
     $env['disallowedByPolicy'] = "was disallowed by policy."
     $env['invalidLatestDefVersionDeletion'] = "[InvalidDeletePolicyDefinitionRequest] : Deleting the latest version"
     $env['invalidLatestSetDefVersionDeletion'] = "[InvalidDeletePolicySetDefinitionRequest] : Deleting the latest version"
+    $env['unsupportedFilterValue'] = "[UnsupportedFilterValue] : "
 
     $env['rgName'] = Get-ResourceGroupName
     $rg = New-ResourceGroup -Name $env.rgName -Location "west us"
@@ -353,6 +354,9 @@ function setupEnv() {
     $env['userAssignedIdentityName'] = "test-user-msi"
     $userAssignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName $env.rgName -Name $env.userAssignedIdentityName -Location $env.location
     $env['userAssignedIdentityId'] = $userAssignedIdentity.Id
+
+    $env['builtInDefName'] = '36fd7371-8eb7-4321-9c30-a7100022d048'
+    $env['builtInSetName'] = '1bb84455-9e6e-434c-8db6-fa6d03a67e87'
 
     # create a couple of test objects
     $env['customSubDefName'] = Get-ResourceName

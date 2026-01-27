@@ -84,10 +84,11 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         $someOldVersion = $env.someOldVersion
         $somePreviewVersion = $env.somePreviewVersion
         $defaultVersion = $env.defaultVersion
+        $builtInDefName = $env.builtInDefName
+        $builtInSetName = $env.builtInSetName
 
         # exception strings
         $parameterSetError = $env.parameterSetError
-        $parameterNullError = $env.parameterNullError
         $missingParameters = $env.missingParameters
         $missingAnArgument = $env.missingAnArgument
         $onlyManagementGroupOrSubscription = $env.onlyManagementGroupOrSubscription
@@ -113,10 +114,13 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         $multiplePolicyDefinitionParams = $env.multiplePolicyDefinitionParams
         $versionRequiresNameOrId = $env.versionRequiresNameOrId
         $listVersionsRequiresNameOrId = $env.listVersionsRequiresNameOrId
+        $scopeRequiresName = $env.scopeRequiresName
+        $expandRequiresNameOrId = $env.expandRequiresNameOrId
         $disallowedByPolicy = $env.disallowedByPolicy
         $invalidVersionIdentifier = $env.invalidVersionIdentifier
         $invalidLatestDefVersionDeletion = $env.invalidLatestDefVersionDeletion
         $invalidLatestSetDefVersionDeletion = $env.invalidLatestSetDefVersionDeletion
+        $unsupportedFilterValue = $env.unsupportedFilterValue
     }
     catch {
         Write-Host -ForegroundColor Red "Failed setting up environment for [$TargetTestName]: [$_]"

@@ -270,7 +270,7 @@ process {
                     }
                     'builtin' {
                         $calledParameterSet = 'BuiltinId'
-                        $PSBoundParameters['Name'] = $parsed['Name']
+                        $PSBoundParameters['PolicyDefinitionName'] = $parsed['Name']
                     }
                 }
             }

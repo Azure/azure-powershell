@@ -14,7 +14,7 @@ Gets policy assignments.
 
 ### Default (Default)
 ```
-Get-AzPolicyAssignment [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyAssignment [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Id
@@ -24,8 +24,7 @@ Get-AzPolicyAssignment -Id <String> [-Expand <String>] [-DefaultProfile <PSObjec
 
 ### IncludeDescendent
 ```
-Get-AzPolicyAssignment -IncludeDescendent [-Scope <String>] [-Expand <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzPolicyAssignment -IncludeDescendent [-Scope <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Name
@@ -36,13 +35,13 @@ Get-AzPolicyAssignment -Name <String> [-Scope <String>] [-Expand <String>] [-Def
 
 ### PolicyDefinitionId
 ```
-Get-AzPolicyAssignment -PolicyDefinitionId <String> [-Scope <String>] [-Expand <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyAssignment -PolicyDefinitionId <String> [-Scope <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Scope
 ```
-Get-AzPolicyAssignment -Scope <String> [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyAssignment -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,13 +96,13 @@ Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Id, Name
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

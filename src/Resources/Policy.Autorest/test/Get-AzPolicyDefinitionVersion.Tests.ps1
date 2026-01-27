@@ -28,13 +28,13 @@ Describe 'GetPolicyDefinitionVersion' -Tag 'LiveOnly' {
     It 'Get-AzPolicyDefinition -ManagementGroupName -Id -Version' {
         {
             Get-AzPolicyDefinition -ManagementGroupName $someManagementGroup -Id $someId -Version $someNewVersion 
-        } | Should -Throw $managementGroupSubscriptionWithName
+        } | Should -Throw $scopeRequiresName
     }
 
     It 'Get-AzPolicyDefinition -SubscriptionId -Id -Version' {
         {
             Get-AzPolicyDefinition -SubscriptionId $subscriptionId -Id $someId -Version $someNewVersion 
-        } | Should -Throw $managementGroupSubscriptionWithName
+        } | Should -Throw $scopeRequiresName
     }
 
     It 'Get-AzPolicyDefinition -Name -ManagementGroupName -Version' {
@@ -76,13 +76,13 @@ Describe 'GetPolicyDefinitionVersion' -Tag 'LiveOnly' {
     It 'Get-AzPolicyDefinition -ManagementGroupName -Id -ListVersion' {
         {
             Get-AzPolicyDefinition -ManagementGroupName $someManagementGroup -Id $someId -ListVersion
-        } | Should -Throw $managementGroupSubscriptionWithName
+        } | Should -Throw $scopeRequiresName
     }
 
     It 'Get-AzPolicyDefinition -SubscriptionId -Id -ListVersion' {
         {
             Get-AzPolicyDefinition -SubscriptionId $subscriptionId -Id $someId -ListVersion 
-        } | Should -Throw $managementGroupSubscriptionWithName
+        } | Should -Throw $scopeRequiresName
     }
 
     It 'Get-AzPolicyDefinition -Name -ManagementGroupName -ListVersion' {

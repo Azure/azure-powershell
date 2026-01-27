@@ -26,8 +26,8 @@ Remove-AzPolicySetDefinition -Id <String> [-Force] [-Version <String>] [-Default
 
 ### InputObject
 ```
-Remove-AzPolicySetDefinition -InputObject <IPolicyIdentity> [-Force] [-Version <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzPolicySetDefinition -InputObject <IPolicyIdentity> [-Force] [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
@@ -198,13 +198,13 @@ The policy set definition version in #.#.# format.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Id, ManagementGroupName, Name, SubscriptionId
 Aliases: PolicyDefinitionVersion
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

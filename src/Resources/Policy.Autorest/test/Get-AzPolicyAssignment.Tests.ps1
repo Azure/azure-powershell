@@ -183,4 +183,64 @@ Describe 'GetPolicyAssignment' {
     It 'Get-AzPolicyAssignment -IncludeDescendent' {
         Get-AzPolicyAssignment -IncludeDescendent | Should -BeOfType 'System.Object'
     }
+
+    It 'Get-AzPolicyAssignment -Expand <missing>' {
+        {
+            Get-AzPolicyAssignment -Expand
+        } | Should -Throw $missingAnArgument
+    }
+
+    It 'Get-AzPolicyAssignment -Expand' {
+        {
+            Get-AzPolicyAssignment -Expand "LatestDefinitionVersion"
+        } | Should -Throw $parameterSetError
+    }
+
+    It 'Get-AzPolicyAssignment -Scope -Expand' {
+        {
+            Get-AzPolicyAssignment -Scope $goodScope -Expand "EffectiveDefinitionVersion"
+        } | Should -Throw $missingParameters
+    }
+
+    It 'Get-AzPolicyAssignment -PolicyDefinitionId -Expand' {
+        {
+            Get-AzPolicyAssignment -PolicyDefinitionId $someId -Expand "EffectiveDefinitionVersion"
+        } | Should -Throw $parameterSetError
+    }
+
+    It 'Get-AzPolicyAssignment -Scope -Name -Expand <invalid value>' {
+        {
+            Get-AzPolicyAssignment -Scope $goodScope -Name $someName -Expand $someName
+        } | Should -Throw $unsupportedFilterValue
+    }
+
+    It 'Get-AzPolicyAssignment -Scope -Name -Expand' {
+        {
+            Get-AzPolicyAssignment -Scope $goodScope -Name $someName -Expand "EffectiveDefinitionVersion"
+        } | Should -Throw $policyAssignmentNotFound
+    }
+
+    It 'Get-AzPolicyAssignment -Id -Expand <invalid value>' {
+        {
+            Get-AzPolicyAssignment -Id $goodId -Expand $someName
+        } | Should -Throw $unsupportedFilterValue
+    }
+
+    It 'Get-AzPolicyAssignment -Id -Expand' {
+        {
+            Get-AzPolicyAssignment -Id $goodId -Expand "LatestDefinitionVersion, EffectiveDefinitionVersion"
+        } | Should -Throw $policyAssignmentNotFound
+    }
+
+    It 'Get-AzPolicyAssignment -Scope -Id -Expand' {
+        {
+            Get-AzPolicyAssignment -Scope $goodSCope -Id $goodId -Expand "LatestDefinitionVersion, EffectiveDefinitionVersion"
+        } | Should -Throw $parameterSetError
+    }
+    
+    It 'Get-AzPolicyAssignment -Id -Name -Expand' {
+        {
+            Get-AzPolicyAssignment -Id $goodId -Name $someName -Expand "LatestDefinitionVersion, EffectiveDefinitionVersion"
+        } | Should -Throw $parameterSetError
+    }
 }

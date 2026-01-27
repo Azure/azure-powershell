@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove policy assignment by name and scope
 ```powershell
-{{ Add code here }}
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
+Remove-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId -Force
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet.
+The command stores that object in the $ResourceGroup variable.
+The second command removes the policy assignment named PolicyAssignment07 that was assigned at a resource group level.
+The **ResourceId** property of $ResourceGroup identifies the resource group.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove policy assignment by ID
 ```powershell
-{{ Add code here }}
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
+$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId
+Remove-AzPolicyAssignment -Id $PolicyAssignment.Id -Confirm:$false
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+The first command gets a resource group named ResourceGroup11, and then stores that object in the $ResourceGroup variable.
+The second command gets the policy assignment at a resource group level, and then stores it in the $PolicyAssignment variable.
+The **ResourceId** property of $ResourceGroup identifies the resource group.
+The final command removes the policy assignment that the **ResourceId** property of $PolicyAssignment identifies.
