@@ -151,6 +151,54 @@ function Get-ModuleInfoFromPsd1 {
     }
 }
 
+function Get-BumpedModulesFromAzPreview {
+    param([string]$AzPreviewPsd1Path)
+    
+    Write-Host "`nChecking for uncommitted module changes in AzPreview.psd1..."
+    
+    if (-not (Test-Path -Path $AzPreviewPsd1Path)) {
+        Write-Warning "AzPreview.psd1 not found at: $AzPreviewPsd1Path"
+        return @{}
+    }
+    
+    $bumpedModules = @{}
+    
+    try {
+        # Get uncommitted diff for AzPreview.psd1
+        $diffOutput = git -C (Split-Path -Parent $AzPreviewPsd1Path) diff HEAD -- (Split-Path -Leaf $AzPreviewPsd1Path) 2>&1
+        
+        if ($LASTEXITCODE -ne 0) {
+            Write-Warning "Failed to get git diff for AzPreview.psd1"
+            return @{}
+        }
+        
+        if ([string]::IsNullOrWhiteSpace($diffOutput)) {
+            Write-Host "  No uncommitted changes found in AzPreview.psd1"
+            return @{}
+        }
+        
+        # Parse diff output to find added/modified module lines
+        foreach ($line in $diffOutput) {
+            # Look for added modules: +            @{ModuleName = 'Az.StackHCI'; RequiredVersion = '2.6.5'; },
+            if ($line -match '^\+\s*@\{ModuleName\s*=\s*''Az\.([^'']+)''\s*;\s*RequiredVersion\s*=\s*''([^'']+)''') {
+                $moduleName = $matches[1]
+                $version = $matches[2]
+                
+                if (-not $bumpedModules.ContainsKey($moduleName)) {
+                    Write-Host "  Found bumped module: $moduleName (version $version)"
+                    $bumpedModules[$moduleName] = $version
+                }
+            }
+        }
+        
+        return $bumpedModules
+    }
+    catch {
+        Write-Warning "Error while checking uncommitted module changes: $_"
+        return @{}
+    }
+}
+
 function Get-ModuleChangesFromAzPreview {
     param([string]$AzPreviewPsd1Path)
     
@@ -261,8 +309,6 @@ foreach ($moduleDir in $moduleDirectories) {
     $changeLogFile = $changeLogFiles[0]
     $changeLogParentDir = $changeLogFile.Directory
     
-    Write-Host "  Found ChangeLog.md at: $($changeLogFile.FullName)"
-    
     # Find psd1 files in ChangeLog.md parent directory
     $psd1Files = Get-ChildItem -Path $changeLogParentDir.FullName -Filter "*.psd1" -File
     
@@ -277,14 +323,13 @@ foreach ($moduleDir in $moduleDirectories) {
     }
     
     $psd1File = $psd1Files[0]
-    Write-Host "  Found psd1 file at: $($psd1File.FullName)"
     
     # Read ChangeLog.md content and check for modifications
     $upcomingReleaseInfo = Get-UpcomingReleaseContent -ChangeLogPath $changeLogFile.FullName
     $hasModifications, $hasValidBulletPoint = Test-HasModifications -Lines $upcomingReleaseInfo.Content
     
     if ($hasModifications) {
-        Write-Host "  Modifications detected in ChangeLog.md"
+        Write-Host "  Modifications detected in $($changeLogFile.FullName)"
         
         if (-not $hasValidBulletPoint) {
             Write-Warning "Modifications found but no lines start with '-' or '*' in module: $($moduleDir.Name)"
@@ -299,7 +344,7 @@ foreach ($moduleDir in $moduleDirectories) {
         }
     }
     else {
-        Write-Host "  No modifications detected in ChangeLog.md"
+        # Write-Host "  No modifications detected in ChangeLog.md"
         
         # Additional check: if next version is 0.1.0 and not in AzPreview, consider it modified
         if ($upcomingReleaseInfo.NextVersion -eq '0.1.0') {
@@ -332,6 +377,17 @@ foreach ($oobModule in $oobModules.Keys) {
     if (-not $modifiedModules.ContainsKey($oobModule)) {
         $modifiedModules[$oobModule] = $oobModules[$oobModule]
         Write-Host "Added OOB module: $oobModule (version $($oobModules[$oobModule]))" -ForegroundColor Green
+    }
+}
+
+# Get bumped modules from uncommitted changes in AzPreview.psd1
+$bumpedModules = Get-BumpedModulesFromAzPreview -AzPreviewPsd1Path $azPreviewPsd1Path
+
+# Add bumped modules to the result
+foreach ($bumpedModule in $bumpedModules.Keys) {
+    if (-not $modifiedModules.ContainsKey($bumpedModule)) {
+        $modifiedModules[$bumpedModule] = $bumpedModules[$bumpedModule]
+        Write-Host "Added bumped module: $bumpedModule (version $($bumpedModules[$bumpedModule]))" -ForegroundColor Green
     }
 }
 
