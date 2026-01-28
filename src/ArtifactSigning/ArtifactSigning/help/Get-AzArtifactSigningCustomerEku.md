@@ -25,7 +25,7 @@ Get-AzArtifactSigningCustomerEku [-MetadataFilePath] <String> [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-The **Get-AzCodeSigningCustomerEku ** cmdlet retrieves customer Eku.
+The **Get-AzArtifactSigningCustomerEku ** cmdlet retrieves customer Eku.
 Use this cmdlet to retrieve customer Eku.
 There are two sets of parameters. One set uses AccountName, ProfileName, and EndpointUrl. 
 Another set uses MetadataFilePath.
@@ -34,7 +34,7 @@ Another set uses MetadataFilePath.
 
 ### Example 1: Retrieve customer Eku by account and profile name
 ```powershell
-Get-AzCodeSigningCustomerEku -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net'
+Get-AzArtifactSigningCustomerEku -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net'
 ```
 
 ```output
@@ -46,7 +46,7 @@ This command retrieves the customer eku by account and profile name.
 ### Example 2: Retrieve customer Eku by metadata file path
 
 ```powershell
-Get-AzCodeSigningCustomerEku -MetadataFilePath 'c:\cisigning\metadata_input.json'
+Get-AzArtifactSigningCustomerEku -MetadataFilePath 'c:\cisigning\metadata_input.json'
 ```
 
 ```output
