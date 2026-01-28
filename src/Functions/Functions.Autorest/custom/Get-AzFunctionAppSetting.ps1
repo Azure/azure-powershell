@@ -1,5 +1,5 @@
 function Get-AzFunctionAppSetting {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionary])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Gets app settings for a function app.')]
     [CmdletBinding(DefaultParameterSetName='ByName', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     param(
@@ -23,7 +23,7 @@ function Get-AzFunctionAppSetting {
         ${SubscriptionId},
 
         [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite]
         [ValidateNotNull()]
         ${InputObject},
 
