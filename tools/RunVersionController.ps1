@@ -116,22 +116,23 @@ function Get-ModuleMetadata
 {
     Param(
         [Parameter(Mandatory = $true)]
-        [string]$Module,
+        [string]$Module, # e.g., Az.Compute
         [Parameter(Mandatory = $true)]
         [string]$RootPath
     )
-
-    $ProjectPaths = @( "$RootPath\src" )
+    $ProjectPath = Join-Path -Path $RootPath -ChildPath "src"
 
     .($PSScriptRoot + "\PreloadToolDll.ps1")
-    $ModuleManifestFile = $ProjectPaths | % { Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | where { $_.Name.Replace(".psd1", "") -eq $Module -and `
+    
     # Skip psd1 of generated modules in HYBRID modules because they are not really used
     # This is based on an assumption that the path of the REAL psd1 of a HYBRID module should always not contain "Autorest"
-                                                                                                          $_.FullName -inotlike "*autorest*" -and `
-                                                                                                          $_.FullName -notlike "*Debug*" -and `
-                                                                                                          $_.FullName -notlike "*Netcore*" -and `
-                                                                                                          $_.FullName -notlike "*dll-Help.psd1*" -and `
-                                                                                                          (-not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName)) } }
+    $ModuleManifestFile = Get-ChildItem -Path $ProjectPath -Filter "*.psd1" -Recurse -Depth 2 `
+        | Where-Object { $_.Name -eq "$($Module).psd1" } `
+        | Where-Object { $_.FullName -inotlike "*autorest*" } `
+        | Where-Object { $_.FullName -inotlike "*Debug*" } `
+        | Where-Object { $_.FullName -inotlike "*Netcore*" } `
+        | Where-Object { $_.FullName -inotlike "*dll-Help.psd1*" } `
+        | Where-Object { -not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName) }
 
     if($ModuleManifestFile.Count -gt 1)
     {
@@ -348,6 +349,7 @@ function Update-AzPreviewChangelog
 {
     $AzPreviewVersion = (Import-PowerShellDataFile "$PSScriptRoot\Az\Az.psd1").ModuleVersion
     $updatedModules = & $PSScriptRoot/BuildScripts/CollectModifiedModules.ps1
+    $updatedModules = $updatedModules | ForEach-Object { "Az.$_" }
 
     $releaseNotes = @()
     $releaseNotes += "$AzPreviewVersion - $Release"
@@ -433,7 +435,7 @@ function New-CommandMappingFile
 
 function Get-Psd1Path {
     $paths = @()
-    $SrcPath = Join-Path -Path $PSScriptRoot -ChildPath "..\src"
+    $SrcPath = Join-Path $PSScriptRoot ".." "src"
     foreach ($DirName in $(Get-ChildItem $SrcPath -Directory).Name)
     {
         $ModulePath = $(Join-Path -Path $SrcPath -ChildPath $DirName)
