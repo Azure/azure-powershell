@@ -14,34 +14,35 @@ This operation deletes the policy definition in the given subscription with the 
 
 ### Name (Default)
 ```
-Remove-AzPolicyDefinition -Name <String> [-Version <String>] [-Force] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicyDefinition -Name <String> [-Force] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
-Remove-AzPolicyDefinition -Name <String> [-Version <String>] -ManagementGroupName <String> [-Force]
+Remove-AzPolicyDefinition -Name <String> -ManagementGroupName <String> [-Force] [-BackwardCompatible]
  [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
-Remove-AzPolicyDefinition -Name <String> [-Version <String>] -SubscriptionId <String> [-Force]
+Remove-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-Force] [-BackwardCompatible]
  [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### Id
 ```
-Remove-AzPolicyDefinition [-Version <String>] -Id <String> [-Force] [-DefaultProfile <PSObject>] [-PassThru]
+Remove-AzPolicyDefinition -Id <String> [-Force] [-BackwardCompatible] [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Remove-AzPolicyDefinition -InputObject <IPolicyIdentity> [-Force] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicyDefinition -InputObject <IPolicyIdentity> [-Force] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,6 +73,21 @@ Remove-AzPolicyDefinition -Name 'VMPolicyDefinition' -Version '1.0.1' -PassThru
 This command removes the specified policy definition version and will return true when the command succeeds.
 
 ## PARAMETERS
+
+### -BackwardCompatible
+Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -201,21 +217,6 @@ Parameter Sets: SubscriptionId
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Version
-The policy definition version in #.#.# format.
-
-```yaml
-Type: System.String
-Parameter Sets: Name, ManagementGroupName, SubscriptionId, Id
-Aliases: PolicyDefinitionVersion
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

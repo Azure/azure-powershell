@@ -73,11 +73,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MSGraph", "..\..\generat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Policy.Autorest", "Policy.Autorest", "{0567B7C9-54F9-0997-BF7F-7DE1169E1F14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Policy", "..\..\generated\Resources\Policy.Autorest\Az.Policy.csproj", "{5B41F620-5E96-4F37-A368-FCB554550D55}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Policy.Autorest", "Policy.Autorest", "{0567B7C9-54F9-0997-BF7F-7DE1169E1F14}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Policy", "..\..\generated\Resources\Policy.Autorest\Az.Policy.csproj", "{4B167047-3052-4C0F-9A3A-4BC581A8882E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Policy", "..\..\generated\Resources\..\..\generated\Resources\..\..\generated\Resources\..\..\generated\Resources\Policy.Autorest\Az.Policy.csproj", "{5B41F620-5E96-4F37-A368-FCB554550D55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

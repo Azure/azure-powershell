@@ -14,58 +14,56 @@ Gets policy set definitions.
 
 ### Name (Default)
 ```
-Get-AzPolicyDefinition [-Name <String>] [-DefaultProfile <PSObject>]
+Get-AzPolicyDefinition [-Name <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
-Get-AzPolicyDefinition [-Name <String>] -ManagementGroupName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzPolicyDefinition [-Name <String>] -ManagementGroupName <String> [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
-Get-AzPolicyDefinition [-Name <String>] -SubscriptionId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzPolicyDefinition [-Name <String>] -SubscriptionId <String> [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Version
 ```
-Get-AzPolicyDefinition [-Name <String>] [-Id <String>] [-ManagementGroupName <String>]
- [-SubscriptionId <String>] -Version <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzPolicyDefinition [-Name <String>] [-Id <String>] [-BackwardCompatible] -Version <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListVersion
 ```
-Get-AzPolicyDefinition [-Name <String>] [-Id <String>] [-ManagementGroupName <String>]
- [-SubscriptionId <String>] [-ListVersion] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzPolicyDefinition [-Name <String>] [-Id <String>] [-ListVersion] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Get-AzPolicyDefinition -Id <String> [-DefaultProfile <PSObject>]
+Get-AzPolicyDefinition -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Builtin
 ```
-Get-AzPolicyDefinition [-ManagementGroupName <String>] [-SubscriptionId <String>] [-Builtin]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Builtin]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Custom
 ```
-Get-AzPolicyDefinition [-ManagementGroupName <String>] [-SubscriptionId <String>] [-Custom]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Custom]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Static
 ```
-Get-AzPolicyDefinition [-ManagementGroupName <String>] [-SubscriptionId <String>] [-Static]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Static]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,6 +130,21 @@ Policy definition.
 You can parse the **Metadata** property to discover the policy definition's version number and category assignment.
 
 ## PARAMETERS
+
+### -BackwardCompatible
+Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Builtin
 Causes cmdlet to return only built-in policy definitions.
@@ -237,7 +250,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Version, ListVersion, Builtin, Custom, Static
+Parameter Sets: Builtin, Custom, Static
 Aliases:
 
 Required: False
@@ -294,7 +307,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Version, ListVersion, Builtin, Custom, Static
+Parameter Sets: Builtin, Custom, Static
 Aliases:
 
 Required: False

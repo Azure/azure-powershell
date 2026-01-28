@@ -27,6 +27,13 @@
     - Affects output for `Get-AzRoleDefinition`, `New-AzRoleDefinition`, `Set-AzRoleDefinition`, and `Remove-AzRoleDefinition` (with `-PassThru`)
     - Affects input format for `New-AzRoleDefinition` and `Set-AzRoleDefinition` cmdlets
     - Affects `-InputObject` parameter for `Remove-AzRoleDefinition` cmdlet
+* Updated Policy.Autorest api-version to 2025-03-01
+    - Introduced support for `-Expand` query parameter in `Get-AzPolicyAssignment` and `Get-AzPolicySetDefinition`
+    - Removed the -BackwardCompatible parameter from all Policy cmdlets, including Get/Update/New/Remove‑PolicyAssignment, PolicyDefinition, PolicySetDefinition, and PolicyExemption.
+    - Addressed an issue enabling the `-Version` parameter and parameter set to be used with `-ManagementGroupName`, `-SubscriptionId`, and `-Id` in `Get-AzPolicyDefinition` and `Get-AzPolicySetDefinition`.
+    - Updated `New-AzPolicyAssignment` and `Update-AzPolicyAssignment` to support enforcementMode = Enroll.
+    - Added support for ExternalEvaluationEnforcementSettings to `New-AzPolicyDefinition` and `Update-AzPolicyDefinition`, including: `-ExternalEvaluationEnforcementSettingMissingTokenAction`, `-ExternalEvaluationEnforcementSettingResultLifespan`, `-ExternalEvaluationEnforcementSettingRoleDefinitionId`, `-EndpointSettingKind`, and `-EndpointSettingDetail` parameters
+    - Added support for `-Version` parameter in Update/New/Remove-PolicyDefinition, and PolicySetDefinition where the Update and Remove commands target old versions.
 
 ## Version 9.0.0
 * Removed unavailable variant Get-AzRoleEligibleChildResource cmdlet for InputObject parameter.

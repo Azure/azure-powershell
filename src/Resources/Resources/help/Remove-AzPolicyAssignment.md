@@ -15,20 +15,22 @@ The scope of a policy assignment is the part of its ID preceding '/providers/Mic
 
 ### Name (Default)
 ```
-Remove-AzPolicyAssignment -Name <String> [-Scope <String>] [-Force] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicyAssignment -Name <String> [-Scope <String>] [-Force] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Id
 ```
-Remove-AzPolicyAssignment -Id <String> [-Force] [-DefaultProfile <PSObject>] [-PassThru]
+Remove-AzPolicyAssignment -Id <String> [-Force] [-BackwardCompatible] [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Remove-AzPolicyAssignment -InputObject <IPolicyIdentity> [-Force] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicyAssignment -InputObject <IPolicyIdentity> [-Force] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,6 +63,21 @@ The **ResourceId** property of $ResourceGroup identifies the resource group.
 The final command removes the policy assignment that the **ResourceId** property of $PolicyAssignment identifies.
 
 ## PARAMETERS
+
+### -BackwardCompatible
+Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.

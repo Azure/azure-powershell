@@ -14,69 +14,40 @@ This operation updates an existing policy definition in the given subscription o
 
 ### Name (Default)
 ```
-Update-AzPolicyDefinition -Name <String> [-Policy <String>] [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] [-Parameter <String>] [-Mode <String>]
- [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
- [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
- [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-EndpointSettingKind <String>]
- [-EndpointSettingDetail <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzPolicyDefinition -Name <String> [-DisplayName <String>] [-Description <String>] [-Policy <String>]
+ [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
-Update-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-Policy <String>] [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-Mode <String>]
- [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
- [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
- [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-EndpointSettingKind <String>]
- [-EndpointSettingDetail <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-DisplayName <String>]
+ [-Description <String>] [-Policy <String>] [-Metadata <String>] [-Parameter <String>] [-Mode <String>]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
-Update-AzPolicyDefinition -Name <String> -ManagementGroupName <String> [-Policy <String>]
- [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-Mode <String>]
- [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
- [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
- [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-EndpointSettingKind <String>]
- [-EndpointSettingDetail <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### Version
-```
-Update-AzPolicyDefinition [-Name <String>] [-Id <String>] [-ManagementGroupName <String>]
- [-SubscriptionId <String>] [-Policy <String>] [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] [-Parameter <String>] [-Mode <String>]
- [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
- [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
- [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-EndpointSettingKind <String>]
- [-EndpointSettingDetail <String>] -Version <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzPolicyDefinition -Name <String> -ManagementGroupName <String> [-DisplayName <String>]
+ [-Description <String>] [-Policy <String>] [-Metadata <String>] [-Parameter <String>] [-Mode <String>]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Id
 ```
-Update-AzPolicyDefinition -Id <String> [-Policy <String>] [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] [-Parameter <String>] [-Mode <String>]
- [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
- [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
- [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-EndpointSettingKind <String>]
- [-EndpointSettingDetail <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzPolicyDefinition -Id <String> [-DisplayName <String>] [-Description <String>] [-Policy <String>]
+ [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Update-AzPolicyDefinition [-Policy <String>] [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] [-Parameter <String>] [-Mode <String>]
- [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
- [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
- [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-EndpointSettingKind <String>]
- [-EndpointSettingDetail <String>] -InputObject <IPolicyDefinition> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzPolicyDefinition [-DisplayName <String>] [-Description <String>] [-Policy <String>]
+ [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-BackwardCompatible]
+ -InputObject <IPolicyDefinition> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -128,6 +99,21 @@ Example content for the LocationPolicy.json file is provided above.
 
 ## PARAMETERS
 
+### -BackwardCompatible
+Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -174,98 +160,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -EndpointSettingDetail
-The details of the endpoint.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -EndpointSettingKind
-The kind of the endpoint.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ExternalEvaluationEnforcementSettingMissingTokenAction
-What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing.
-Possible values are Audit and Deny and language expressions are supported.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ExternalEvaluationEnforcementSettingResultLifespan
-The lifespan of the endpoint invocation result after which it's no longer valid.
-
-Value is expected to follow the ISO 8601 duration format and language expressions are supported.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ExternalEvaluationEnforcementSettingRoleDefinitionId
-An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Id
 The resource Id of the policy definition to update.
-
-```yaml
-Type: System.String
-Parameter Sets: Version
-Aliases: ResourceId
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ```yaml
 Type: System.String
@@ -302,18 +198,6 @@ Parameter Sets: ManagementGroupName
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: Version
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -367,18 +251,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-```yaml
-Type: System.String
-Parameter Sets: Version
-Aliases: PolicyDefinitionName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Parameter
 The parameter definitions for parameters used in the policy rule.
 The keys are the parameter names.
@@ -417,33 +289,6 @@ The ID of the target subscription.
 Type: System.String
 Parameter Sets: SubscriptionId
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: Version
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Version
-The policy definition version in #.#.# format.
-
-```yaml
-Type: System.String
-Parameter Sets: Version
-Aliases: PolicyDefinitionVersion
 
 Required: True
 Position: Named
