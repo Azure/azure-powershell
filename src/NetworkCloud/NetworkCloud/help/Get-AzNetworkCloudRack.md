@@ -14,8 +14,8 @@ Get properties of the provided rack.
 
 ### List (Default)
 ```
-Get-AzNetworkCloudRack [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzNetworkCloudRack [-SubscriptionId <String[]>] [-SkipToken <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -26,8 +26,8 @@ Get-AzNetworkCloudRack -Name <String> -ResourceGroupName <String> [-Subscription
 
 ### List1
 ```
-Get-AzNetworkCloudRack -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzNetworkCloudRack -ResourceGroupName <String> [-SubscriptionId <String[]>] [-SkipToken <String>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -144,6 +144,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkipToken
+The opaque token that the server returns to indicate where to continue listing resources from.
+This is used for paging through large result sets.
+
+```yaml
+Type: System.String
+Parameter Sets: List, List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -156,6 +172,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Top
+The maximum number of resources to return from the operation.
+Example: '$top=10'.
+
+```yaml
+Type: System.Int32
+Parameter Sets: List, List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
