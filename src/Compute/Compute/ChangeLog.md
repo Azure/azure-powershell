@@ -20,6 +20,10 @@
 
 -->
 ## Upcoming Release
+* Added support for Disk IOPS and MBPS parameters in `Add-AzVMDataDisk` cmdlet
+    - Added `-DiskIOPSReadWrite` parameter to specify Read-Write IOPS for UltraSSD_LRS or PremiumV2_LRS data disks
+    - Added `-DiskMBpsReadWrite` parameter to specify bandwidth in MB per second for UltraSSD_LRS or PremiumV2_LRS data disks
+    - These parameters allow setting IOPS and MBPS values during implicit disk creation for Single Instance (SI) Virtual Machines
 * Compute SDK generation updates:
     - Generation now uses autorest.powershell, replacing deprecated track 1 SDK.
     - Removed local swagger files and replaced references with remote swagger files.
