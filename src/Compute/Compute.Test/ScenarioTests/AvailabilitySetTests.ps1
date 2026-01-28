@@ -397,3 +397,54 @@ function New-TestVmInAvailabilitySet {
     New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $vmConfig;
     return Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName;
 }
+
+<#
+.SYNOPSIS
+Test Availability Set ScheduledEventsPolicy
+Note: This test requires a region where ScheduledEventsPolicy is enabled
+#>
+function Test-AvailabilitySetScheduledEventsPolicy
+{
+    param ($loc)
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        if ($loc -eq $null)
+        {
+            $loc = Get-ComputeVMLocation;
+        }
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $asetName = 'avs' + $rgname;
+        $nonDefaultUD = 2;
+        $nonDefaultFD = 2;
+
+        # Create Availability Set
+        New-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc `
+            -PlatformUpdateDomainCount $nonDefaultUD -PlatformFaultDomainCount $nonDefaultFD -Sku 'Aligned';
+
+        $aset = Get-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
+        Assert-NotNull $aset;
+
+        # Update with ScheduledEventsPolicy
+        $apiVersion = "2020-07-01";
+        $asetUpdated = $aset | Update-AzAvailabilitySet `
+            -ScheduledEventsApiVersion $apiVersion -EnableAllInstancesDown $true;
+
+        # Verify the properties are set
+        Assert-NotNull $asetUpdated.ScheduledEventsPolicy;
+        Assert-NotNull $asetUpdated.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets;
+        Assert-NotNull $asetUpdated.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph;
+        Assert-AreEqual $apiVersion $asetUpdated.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph.ScheduledEventsApiVersion;
+        Assert-NotNull $asetUpdated.ScheduledEventsPolicy.AllInstancesDown;
+        Assert-AreEqual $true $asetUpdated.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}

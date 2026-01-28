@@ -514,5 +514,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetHighSpeedInterconnectPlacement");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetScheduledEventsPolicy()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetScheduledEventsPolicy 'eastus2euap'");
+        }
     }
 }

@@ -20,6 +20,9 @@
 
 -->
 ## Upcoming Release
+* Added `-ScheduledEventsApiVersion` and `-EnableAllInstancesDown` parameters to `Update-AzAvailabilitySet`, `Update-AzVM`, and `Update-AzVmss` cmdlets for configuring ScheduledEventsPolicy.
+    - `-ScheduledEventsApiVersion` specifies the api-version to determine which Scheduled Events configuration schema version will be delivered (Format: YYYY-MM-DD)
+    - `-EnableAllInstancesDown` specifies if Scheduled Events should be auto-approved when all instances are down
 * Compute SDK generation updates:
     - Generation now uses autorest.powershell, replacing deprecated track 1 SDK.
     - Removed local swagger files and replaced references with remote swagger files.
