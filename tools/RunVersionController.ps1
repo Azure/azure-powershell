@@ -490,6 +490,7 @@ switch ($PSCmdlet.ParameterSetName)
         Update-AzSyntaxChangelog
 
         # Update the doc of upcoming breaking change
+        Import-Module $PSScriptRoot/../artifacts/Release/Az.Accounts/Az.Accounts.psd1 -Global
         Import-Module $PSScriptRoot/BreakingChanges/GetUpcomingBreakingChange.psm1
         Export-AllBreakingChangeMessageUnderArtifacts -ArtifactsPath $PSScriptRoot/../artifacts/Release/ -MarkdownPath $PSScriptRoot/../documentation/breaking-changes/upcoming-breaking-changes.md -Module $ModifiedGAModules
     }
