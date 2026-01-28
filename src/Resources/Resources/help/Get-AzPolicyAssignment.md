@@ -14,37 +14,36 @@ Gets policy assignments.
 
 ### Default (Default)
 ```
-Get-AzPolicyAssignment [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzPolicyAssignment [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Name
 ```
-Get-AzPolicyAssignment -Name <String> [-Scope <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+Get-AzPolicyAssignment -Name <String> [-Scope <String>] [-Expand <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### PolicyDefinitionId
 ```
-Get-AzPolicyAssignment [-Scope <String>] -PolicyDefinitionId <String> [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyAssignment [-Scope <String>] -PolicyDefinitionId <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### IncludeDescendent
 ```
-Get-AzPolicyAssignment [-Scope <String>] [-IncludeDescendent] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyAssignment [-Scope <String>] [-IncludeDescendent] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Scope
 ```
-Get-AzPolicyAssignment -Scope <String> [-BackwardCompatible] [-DefaultProfile <PSObject>]
+Get-AzPolicyAssignment -Scope <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Id
 ```
-Get-AzPolicyAssignment -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>]
+Get-AzPolicyAssignment -Id <String> [-Expand <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -89,21 +88,6 @@ Policy assignment.
 
 ## PARAMETERS
 
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -117,6 +101,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Expand
+Comma-separated list of additional properties to be included in the response.
+Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+
+```yaml
+Type: System.String
+Parameter Sets: Name, Id
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

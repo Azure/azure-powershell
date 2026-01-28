@@ -19,7 +19,7 @@ For example, when you assign a policy at resource group scope, that policy appli
 Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>]
  [-IdentityType <String>] [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
- [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,8 +28,8 @@ Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>
 Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>]
  [-IdentityType <String>] [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
- [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] -PolicyParameterObject <PSObject>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceSelector <IResourceSelector[]>] -PolicyParameterObject <PSObject> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NameParameterString
@@ -37,8 +37,8 @@ Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>
 Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>]
  [-IdentityType <String>] [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
- [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] -PolicyParameter <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceSelector <IResourceSelector[]>] -PolicyParameter <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Id
@@ -46,7 +46,7 @@ Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>
 Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
  [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
  [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
- [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -55,8 +55,8 @@ Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <Str
 Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
  [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
  [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
- [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] -PolicyParameterObject <PSObject>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceSelector <IResourceSelector[]>] -PolicyParameterObject <PSObject> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterString
@@ -64,8 +64,8 @@ Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <Str
 Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
  [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
  [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
- [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] -PolicyParameter <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceSelector <IResourceSelector[]>] -PolicyParameter <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
@@ -73,8 +73,8 @@ Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <Str
 Update-AzPolicyAssignment [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
  [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
  [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
- [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] -InputObject <IPolicyAssignment>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceSelector <IResourceSelector[]>] -InputObject <IPolicyAssignment> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -194,21 +194,6 @@ The second command creates an override object that will be used to specify that 
 The final command updates the policy assignment named VirtualMachinePolicyAssignment with the override specified by $Override.
 
 ## PARAMETERS
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.

@@ -14,40 +14,46 @@ This operation updates an existing policy set definition in the given subscripti
 
 ### Name (Default)
 ```
-Update-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
- [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzPolicySetDefinition -Name <String> [-PolicyDefinition <String>] [-DisplayName <String>]
+ [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
-Update-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-DisplayName <String>]
- [-Description <String>] [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-PolicyDefinition <String>]
+ [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
-Update-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-DisplayName <String>]
- [-Description <String>] [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-PolicyDefinition <String>]
+ [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### Version
+```
+Update-AzPolicySetDefinition [-Name <String>] [-Id <String>] [-ManagementGroupName <String>]
+ [-SubscriptionId <String>] [-PolicyDefinition <String>] [-DisplayName <String>] [-Description <String>]
+ [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>] -Version <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Update-AzPolicySetDefinition -Id <String> [-DisplayName <String>] [-Description <String>]
- [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzPolicySetDefinition -Id <String> [-PolicyDefinition <String>] [-DisplayName <String>]
+ [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Update-AzPolicySetDefinition [-DisplayName <String>] [-Description <String>] [-PolicyDefinition <String>]
- [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>] [-BackwardCompatible]
+Update-AzPolicySetDefinition [-PolicyDefinition <String>] [-DisplayName <String>] [-Description <String>]
+ [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
  -InputObject <IPolicySetDefinition> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -116,21 +122,6 @@ Example content of the VMPolicy.json is provided above.
 
 ## PARAMETERS
 
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -182,6 +173,18 @@ The resource Id of the policy definition to update.
 
 ```yaml
 Type: System.String
+Parameter Sets: Version
+Aliases: ResourceId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
 Parameter Sets: Id
 Aliases: ResourceId
 
@@ -221,6 +224,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: System.String
+Parameter Sets: Version
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Metadata
 The policy set definition metadata.
 Metadata is an open ended object and is typically a collection of key value pairs.
@@ -246,6 +261,18 @@ Parameter Sets: Name, ManagementGroupName, SubscriptionId
 Aliases: PolicySetDefinitionName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: Version
+Aliases: PolicySetDefinitionName
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -306,6 +333,33 @@ The ID of the target subscription.
 Type: System.String
 Parameter Sets: SubscriptionId
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: Version
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Version
+The policy definition version in #.#.# format.
+
+```yaml
+Type: System.String
+Parameter Sets: Version
+Aliases: PolicyDefinitionVersion, PolicySetDefinitionVersion
 
 Required: True
 Position: Named

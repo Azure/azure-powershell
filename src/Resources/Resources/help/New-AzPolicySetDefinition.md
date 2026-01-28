@@ -15,25 +15,25 @@ Creates or updates a policy set definition.
 ### Name (Default)
 ```
 New-AzPolicySetDefinition -Name <String> -PolicyDefinition <String> [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-Version <String>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
 New-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> -PolicyDefinition <String>
- [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-Version <String>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
 New-AzPolicySetDefinition -Name <String> -SubscriptionId <String> -PolicyDefinition <String>
- [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-Version <String>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,21 +120,6 @@ This command creates a policy set definition named VMPolicySetDefinition with in
 Example content of the VMPolicy.json is provided above.
 
 ## PARAMETERS
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -284,6 +269,21 @@ Parameter Sets: SubscriptionId
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Version
+The policy set definition version in #.#.# format.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
