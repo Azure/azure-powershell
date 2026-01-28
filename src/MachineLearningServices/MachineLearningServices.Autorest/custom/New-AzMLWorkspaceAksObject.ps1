@@ -21,12 +21,13 @@ Create an in-memory object for Aks.
 Create an in-memory object for Aks.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.Aks
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Aks
 .Link
 https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceAksObject
 #>
 function New-AzMLWorkspaceAksObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.Aks')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Aks')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PreviewMessage("**********************************************************************************************`n
     * This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *`n
@@ -66,15 +67,15 @@ function New-AzMLWorkspaceAksObject {
         [string]
         $ClusterFqdn,
         [Parameter(HelpMessage="Intended usage of the cluster.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ClusterPurpose])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ClusterPurpose]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("FastProd", "DenseProd", "DevTest")]
+        [string]
         $ClusterPurpose,
         [Parameter(HelpMessage="Load Balancer Subnet.")]
         [string]
         $LoadBalancerSubnet,
         [Parameter(HelpMessage="Load Balancer Type.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.LoadBalancerType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.LoadBalancerType]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("PublicIp", "InternalLoadBalancer")]
+        [string]
         $LoadBalancerType,
         [Parameter(HelpMessage="Cert data.")]
         [string]
@@ -92,14 +93,13 @@ function New-AzMLWorkspaceAksObject {
         [bool]
         $SslOverwriteExistingDomain,
         [Parameter(HelpMessage="Enable or disable ssl for scoring.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SslConfigStatus])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SslConfigStatus]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Disabled", "Enabled", "Auto")]
+        [string]
         $SslStatus
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.Aks]::New()
-        $Object.Type = 'AKS'
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Aks]::New()
 
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description

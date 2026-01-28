@@ -13,13 +13,12 @@ Create an in-memory object for ComputeStartStopSchedule.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceComputeStartStopScheduleObject [-Action <ComputePowerAction>] [-CronExpression <String>]
- [-CronStartTime <String>] [-CronTimeZone <String>] [-RecurrenceFrequency <ComputeRecurrenceFrequency>]
+New-AzMLWorkspaceComputeStartStopScheduleObject [-Action <String>] [-CronExpression <String>]
+ [-CronStartTime <String>] [-CronTimeZone <String>] [-RecurrenceFrequency <String>]
  [-RecurrenceInterval <Int32>] [-RecurrenceStartTime <String>] [-RecurrenceTimeZone <String>]
  [-ScheduleHour <Int32[]>] [-ScheduleId <String>] [-ScheduleMinute <Int32[]>] [-ScheduleMonthDay <Int32[]>]
- [-ScheduleProvisioningStatus <ScheduleProvisioningState>] [-ScheduleStatus <ScheduleStatus>]
- [-ScheduleWeekDay <ComputeWeekDay[]>] [-Status <ScheduleStatus>] [-TriggerType <ComputeTriggerType>]
- [<CommonParameters>]
+ [-ScheduleProvisioningStatus <String>] [-ScheduleStatus <String>] [-ScheduleWeekDay <String[]>]
+ [-Status <String>] [-TriggerType <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +39,7 @@ Create an in-memory object for ComputeStartStopSchedule
 [Required] The compute power action.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputePowerAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -103,7 +102,7 @@ Accept wildcard characters: False
 [Required] The frequency to trigger schedule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeRecurrenceFrequency
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -225,7 +224,7 @@ Accept wildcard characters: False
 The current deployment state of schedule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleProvisioningState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -240,7 +239,7 @@ Accept wildcard characters: False
 Is the schedule enabled or disabled?.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -255,7 +254,7 @@ Accept wildcard characters: False
 List of days for the schedule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeWeekDay[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -270,7 +269,7 @@ Accept wildcard characters: False
 Is the schedule enabled or disabled?.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -285,7 +284,7 @@ Accept wildcard characters: False
 [Required] The schedule trigger type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeTriggerType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

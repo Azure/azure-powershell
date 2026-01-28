@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceHDInsightObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacehdinsightobject
 schema: 2.0.0
 ---
 
@@ -16,7 +16,7 @@ Create an in-memory object for HDInsight.
 New-AzMLWorkspaceHDInsightObject [-Address <String>] [-AdministratorAccountPassword <String>]
  [-AdministratorAccountPrivateKeyData <String>] [-AdministratorAccountPublicKeyData <String>]
  [-AdministratorAccountUsername <String>] [-Description <String>] [-DisableLocalAuth <Boolean>]
- [-ResourceId <String>] [-SshPort <Int32>] [<CommonParameters>]
+ [-Location <String>] [-ResourceId <String>] [-SshPort <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,6 +138,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Location
+Location for the underlying compute.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 ARM resource id of the underlying compute.
 
@@ -175,7 +190,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.HdInsight
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.HdInsight
 
 ## NOTES
 

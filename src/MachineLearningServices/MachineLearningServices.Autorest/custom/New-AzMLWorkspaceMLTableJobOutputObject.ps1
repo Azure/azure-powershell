@@ -21,18 +21,19 @@ Create an in-memory object for MLTableJobOutput.
 Create an in-memory object for MLTableJobOutput.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.MLTableJobOutput
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.MLTableJobOutput
 .Link
-https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceMLTableJobOutputObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacemltablejoboutputobject
 #>
 function New-AzMLWorkspaceMLTableJobOutputObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.MLTableJobOutput')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.MLTableJobOutput')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Output Asset Delivery Mode.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OutputDeliveryMode])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OutputDeliveryMode]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("ReadWriteMount", "Upload", "Direct")]
+        [string]
         $Mode,
         [Parameter(HelpMessage="Output Asset URI.")]
         [string]
@@ -42,13 +43,14 @@ function New-AzMLWorkspaceMLTableJobOutputObject {
         $Description,
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.ParameterBreakingChangeAttribute("Type", "16.0.0", "1.3.0", "2026/05")]
         [Parameter(Mandatory, HelpMessage="[Required] Specifies the type of job.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobOutputType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobOutputType]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobOutputType])]
+        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobOutputType]
+        [string]
         $Type
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.MLTableJobOutput]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.MLTableJobOutput]::New()
 
         if ($PSBoundParameters.ContainsKey('Mode')) {
             $Object.Mode = $Mode
@@ -58,9 +60,6 @@ function New-AzMLWorkspaceMLTableJobOutputObject {
         }
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description
-        }
-        if ($PSBoundParameters.ContainsKey('Type')) {
-            $Object.Type = $Type
         }
         return $Object
     }

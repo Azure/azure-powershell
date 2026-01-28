@@ -1,17 +1,17 @@
 {
-  "Get-AzMLWorkspaceOnlineDeploymentSku+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/onlineEndpoints/online-pwsh01/deployments/online-pwsh01-blue01/skus?api-version=2024-04-01+1": {
+  "Get-AzMLWorkspaceOnlineDeploymentSku+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/onlineEndpoints/online-pwsh01/deployments/online-pwsh01-blue01/skus?api-version=2024-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/onlineEndpoints/online-pwsh01/deployments/online-pwsh01-blue01/skus?api-version=2024-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/onlineEndpoints/online-pwsh01/deployments/online-pwsh01-blue01/skus?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "c6caec41-ea47-4ba5-b4d3-44d5a503827b" ],
+        "x-ms-unique-id": [ "151" ],
+        "x-ms-client-request-id": [ "82992b31-49f7-41bf-bba8-bf795b6e3e47" ],
         "CommandName": [ "Get-AzMLWorkspaceOnlineDeploymentSku" ],
         "FullCommandName": [ "Get-AzMLWorkspaceOnlineDeploymentSku_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v14.3.0", "PSVersion/v7.5.4", "Az.MachineLearningServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,19 +23,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "1ef2a888-30bb-4c5f-9e71-b0438d569796" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/eastus/7cc7863c-4f5d-4367-9c53-992fb5adfb44" ],
         "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
         "x-ms-response-type": [ "standard" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-aml-cluster": [ "vienna-eastus-02" ],
-        "x-request-time": [ "0.055" ],
-        "x-ms-correlation-request-id": [ "1ef2a888-30bb-4c5f-9e71-b0438d569796" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240725T081958Z:1ef2a888-30bb-4c5f-9e71-b0438d569796" ],
+        "azureml-served-by-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.052" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "620805e8-886b-4c60-ab04-07a17dc2e095" ],
+        "x-ms-correlation-request-id": [ "620805e8-886b-4c60-ab04-07a17dc2e095" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251104T094005Z:620805e8-886b-4c60-ab04-07a17dc2e095" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 002733E67C5D466FA10F574C61FE4AE0 Ref B: MAA201060515047 Ref C: 2024-07-25T08:19:56Z" ],
-        "Date": [ "Thu, 25 Jul 2024 08:19:57 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 812783EC5CED4A67841BA0CD3B5EC0C2 Ref B: JKT201051406023 Ref C: 2025-11-04T09:40:04Z" ],
+        "Date": [ "Tue, 04 Nov 2025 09:40:04 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "320" ],

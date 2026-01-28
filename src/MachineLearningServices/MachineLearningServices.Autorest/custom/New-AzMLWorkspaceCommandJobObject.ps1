@@ -21,12 +21,13 @@ Create an in-memory object for CommandJob.
 Create an in-memory object for CommandJob.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.CommandJob
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CommandJob
 .Link
-https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceCommandJobObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacecommandjobobject
 #>
 function New-AzMLWorkspaceCommandJobObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.CommandJob')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CommandJob')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PreviewMessage("**********************************************************************************************`n
     * This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *`n
@@ -42,25 +43,32 @@ function New-AzMLWorkspaceCommandJobObject {
         [string]
         $Command,
         [Parameter(HelpMessage="[Required] Specifies the type of distribution framework.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DistributionType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DistributionType]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("PyTorch", "TensorFlow", "Mpi")]
+        [string]
         $DistributionType,
-        [Parameter(Mandatory, HelpMessage="[Required] The ARM resource ID of the Environment specification for the job.")]
+        [Parameter(HelpMessage="[Required] The ARM resource ID of the Environment specification for the job.")]
         [string]
         $EnvironmentId,
         [Parameter(HelpMessage="Environment variables included in the job.")]
-        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICommandJobEnvironmentVariables]
+        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ICommandJobEnvironmentVariables]
         [hashtable]
         $EnvironmentVariable,
         [Parameter(HelpMessage="Mapping of input data bindings used in the job.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICommandJobInputs]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ICommandJobInputs]
         $JobInput,
         [Parameter(HelpMessage="The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.")]
         [System.TimeSpan]
         $LimitTimeout,
         [Parameter(HelpMessage="Mapping of output data bindings used in the job.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICommandJobOutputs]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ICommandJobOutputs]
         $JobOutput,
+        [Parameter(HelpMessage="Controls the compute job tier.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Null", "Spot", "Basic", "Standard", "Premium")]
+        [string]
+        $QueueSettingJobTier,
+        [Parameter(HelpMessage="Extra arguments to pass to the Docker run command. This would override any parameters that have already been set by the system, or in this section. This parameter is only supported for Azure ML compute types.")]
+        [string]
+        $ResourceDockerArg,
         [Parameter(HelpMessage="Optional number of instances or nodes used by the compute target.")]
         [int]
         $ResourceInstanceCount,
@@ -68,8 +76,14 @@ function New-AzMLWorkspaceCommandJobObject {
         [string]
         $ResourceInstanceType,
         [Parameter(HelpMessage="Additional properties bag.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceConfigurationProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IResourceConfigurationProperties]
         $ResourceProperty,
+        [Parameter(HelpMessage="Size of the docker container's shared memory block. This should be in the format of (number)(unit) where number as to be greater than 0 and the unit can be one of b(bytes), k(kilobytes), m(megabytes), or g(gigabytes).")]
+        [string]
+        $ResourceShmSize,
+        [Parameter(HelpMessage="ARM resource ID of the component resource.")]
+        [string]
+        $ComponentId,
         [Parameter(HelpMessage="ARM resource ID of the compute resource.")]
         [string]
         $ComputeId,
@@ -80,17 +94,26 @@ function New-AzMLWorkspaceCommandJobObject {
         [string]
         $ExperimentName,
         [Parameter(HelpMessage="[Required] Specifies the type of identity framework.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IdentityConfigurationType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IdentityConfigurationType]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Managed", "AMLToken", "UserIdentity")]
+        [string]
         $IdentityType,
         [Parameter(HelpMessage="Is the asset archived?.")]
         [bool]
         $IsArchived,
+        [Parameter(HelpMessage="This is the email recipient list which has a limitation of 499 characters in total concat with comma separator.")]
+        [string[]]
+        $NotificationSettingEmail,
+        [Parameter(HelpMessage="Send email notification to user on specified notification type.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("JobCompleted", "JobFailed", "JobCancelled")]
+        [string[]]
+        $NotificationSettingEmailOn,
+        [Parameter(HelpMessage="Send webhook callback to a service. Key is a user-provided name for the webhook.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.INotificationSettingWebhooks]
+        $NotificationSettingWebhook,
         # [Parameter(HelpMessage="List of JobEndpoints.
         # For local jobs, a job endpoint will have an endpoint value of FileStreamObject.")]
-        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobBaseServices]
+        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobBaseServices]
         # $Service,
-        
         [Parameter(HelpMessage="Url for endpoint.")]
         [string]
         $ServiceEndpoint,
@@ -98,7 +121,7 @@ function New-AzMLWorkspaceCommandJobObject {
         [int]
         $ServicePort,
         [Parameter(HelpMessage="Additional properties to set on the endpoint.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobServiceProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobServiceProperties]
         $ServiceProperty,
         [Parameter(HelpMessage="Endpoint type.")]
         [string]
@@ -108,19 +131,22 @@ function New-AzMLWorkspaceCommandJobObject {
         [string]
         $Description,
         [Parameter(HelpMessage="The asset property dictionary.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IResourceBaseProperties]
         $Property,
         [Parameter(HelpMessage="Tag dictionary. Tags can be added, removed, and updated.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IResourceBaseTags]
         $Tag
+        # [Parameter(HelpMessage="[Required] Job limit type.")]
+        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Command", "Sweep")]
+        # [string]
+        # $LimitJobLimitsType
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.CommandJob]::New()
-        $Object.JobType = 'Command'
-        $Object.LimitJobLimitsType = 'Command' # Required define in swagger.
-        $Service = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.JobBaseServices]::New()
-
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CommandJob]::New()
+        $Object.LimitJobLimitsType = 'Command'
+        $Service = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.JobBaseServices]::New()
+        
         if ($PSBoundParameters.ContainsKey('CodeId')) {
             $Object.CodeId = $CodeId
         }
@@ -134,20 +160,25 @@ function New-AzMLWorkspaceCommandJobObject {
             $Object.EnvironmentId = $EnvironmentId
         }
         if ($PSBoundParameters.ContainsKey('EnvironmentVariable')) {
-            $EnvironmentVariableObj = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICommandJobEnvironmentVariables]::New()
-            $EnvironmentVariableObj.CopyFrom($EnvironmentVariable);
-            $Object.EnvironmentVariable = $EnvironmentVariableObj
+            $Object.EnvironmentVariable = $EnvironmentVariable
         }
         if ($PSBoundParameters.ContainsKey('JobInput')) {
             $Object.Input = $JobInput
         }
-        if ($PSBoundParameters.ContainsKey('LimitJobLimitsType')) {
-        }
+        # if ($PSBoundParameters.ContainsKey('LimitJobLimitsType')) {
+        #     $Object.LimitJobLimitsType = $LimitJobLimitsType
+        # }
         if ($PSBoundParameters.ContainsKey('LimitTimeout')) {
             $Object.LimitTimeout = $LimitTimeout
         }
         if ($PSBoundParameters.ContainsKey('JobOutput')) {
             $Object.Output = $JobOutput
+        }
+        if ($PSBoundParameters.ContainsKey('QueueSettingJobTier')) {
+            $Object.QueueSettingJobTier = $QueueSettingJobTier
+        }
+        if ($PSBoundParameters.ContainsKey('ResourceDockerArg')) {
+            $Object.ResourceDockerArg = $ResourceDockerArg
         }
         if ($PSBoundParameters.ContainsKey('ResourceInstanceCount')) {
             $Object.ResourceInstanceCount = $ResourceInstanceCount
@@ -157,6 +188,12 @@ function New-AzMLWorkspaceCommandJobObject {
         }
         if ($PSBoundParameters.ContainsKey('ResourceProperty')) {
             $Object.ResourceProperty = $ResourceProperty
+        }
+        if ($PSBoundParameters.ContainsKey('ResourceShmSize')) {
+            $Object.ResourceShmSize = $ResourceShmSize
+        }
+        if ($PSBoundParameters.ContainsKey('ComponentId')) {
+            $Object.ComponentId = $ComponentId
         }
         if ($PSBoundParameters.ContainsKey('ComputeId')) {
             $Object.ComputeId = $ComputeId
@@ -173,6 +210,15 @@ function New-AzMLWorkspaceCommandJobObject {
         if ($PSBoundParameters.ContainsKey('IsArchived')) {
             $Object.IsArchived = $IsArchived
         }
+        if ($PSBoundParameters.ContainsKey('NotificationSettingEmail')) {
+            $Object.NotificationSettingEmail = $NotificationSettingEmail
+        }
+        if ($PSBoundParameters.ContainsKey('NotificationSettingEmailOn')) {
+            $Object.NotificationSettingEmailOn = $NotificationSettingEmailOn
+        }
+        if ($PSBoundParameters.ContainsKey('NotificationSettingWebhook')) {
+            $Object.NotificationSettingWebhook = $NotificationSettingWebhook
+        }
         # if ($PSBoundParameters.ContainsKey('Service')) {
         #     $Object.Service = $Service
         # }
@@ -188,6 +234,7 @@ function New-AzMLWorkspaceCommandJobObject {
         if ($PSBoundParameters.ContainsKey('ServiceType')) {
             $Service.Type = $ServiceType
         }
+        $Object.Service = $Service
         
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description
@@ -198,7 +245,6 @@ function New-AzMLWorkspaceCommandJobObject {
         if ($PSBoundParameters.ContainsKey('Tag')) {
             $Object.Tag = $Tag
         }
-        $Object.Service = $Service
         return $Object
     }
 }
