@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Lists all the Global Policy definitions of the Api Management service.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Api Management service.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Get the Global policy definition of the Api Management service.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// service.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Deletes the global policy configuration of the Api Management Service.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.

@@ -51,7 +51,11 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// <param name="operationNameFormat">The format of the Operation Name for Application Insights telemetries.
         /// Default is Name.
         /// Possible values include: &#39;Name&#39;, &#39;Url&#39;</param>
-        public DiagnosticContractProperties(string loggerId, string alwaysLog = default(string), SamplingSettings sampling = default(SamplingSettings), PipelineDiagnosticSettings frontend = default(PipelineDiagnosticSettings), PipelineDiagnosticSettings backend = default(PipelineDiagnosticSettings), bool? logClientIP = default(bool?), string httpCorrelationProtocol = default(string), string verbosity = default(string), string operationNameFormat = default(string))
+
+        /// <param name="metrics">Emit custom metrics via emit-metric policy. Applicable only to Application
+        /// Insights diagnostic settings.
+        /// </param>
+        public DiagnosticContractProperties(string loggerId, string alwaysLog = default(string), SamplingSettings sampling = default(SamplingSettings), PipelineDiagnosticSettings frontend = default(PipelineDiagnosticSettings), PipelineDiagnosticSettings backend = default(PipelineDiagnosticSettings), bool? logClientIP = default(bool?), string httpCorrelationProtocol = default(string), string verbosity = default(string), string operationNameFormat = default(string), bool? metrics = default(bool?))
 
         {
             this.AlwaysLog = alwaysLog;
@@ -63,6 +67,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
             this.HttpCorrelationProtocol = httpCorrelationProtocol;
             this.Verbosity = verbosity;
             this.OperationNameFormat = operationNameFormat;
+            this.Metrics = metrics;
             CustomInit();
         }
 
@@ -131,6 +136,13 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "operationNameFormat")]
         public string OperationNameFormat {get; set; }
+
+        /// <summary>
+        /// Gets or sets emit custom metrics via emit-metric policy. Applicable only to
+        /// Application Insights diagnostic settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "metrics")]
+        public bool? Metrics {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
