@@ -267,6 +267,7 @@ process {
     $null = $calledParameters.Remove('Id')
     $null = $calledParameters.Remove('InputObject')
 
+    # the versions API should be called when updating with version parameter
     if ($PSBoundParameters['Version']) {
         if ($writeln) {
             Write-Host -ForegroundColor Cyan "begin:New-AzPolicySetDefinitionVersion(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
