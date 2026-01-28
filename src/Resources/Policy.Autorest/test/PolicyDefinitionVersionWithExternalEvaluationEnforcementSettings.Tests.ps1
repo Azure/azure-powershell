@@ -32,7 +32,7 @@ Describe 'PolicyDefinitionVersionWithExternalEvaluationEnforcementSettings' {
     }
 
     It 'Make a policy definition version with external evaluation enforcement settings' {
-        $actual = New-AzPolicyDefinitionVersion `
+        $actual = Update-AzPolicyDefinition `
             -Name $policyName `
             -Policy $policyRule `
             -EndpointSettingKind $endpointKind `

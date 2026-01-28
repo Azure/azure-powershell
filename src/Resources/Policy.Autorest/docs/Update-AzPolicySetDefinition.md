@@ -16,13 +16,13 @@ This operation updates an existing policy set definition in the given subscripti
 ```
 Update-AzPolicySetDefinition -Name <String> [-Description <String>] [-DisplayName <String>]
  [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>] [-PolicyDefinitionGroup <String>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Id
 ```
 Update-AzPolicySetDefinition -Id <String> [-Description <String>] [-DisplayName <String>] [-Metadata <String>]
- [-Parameter <String>] [-PolicyDefinition <String>] [-PolicyDefinitionGroup <String>] [-Version <String>]
+ [-Parameter <String>] [-PolicyDefinition <String>] [-PolicyDefinitionGroup <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -30,24 +30,29 @@ Update-AzPolicySetDefinition -Id <String> [-Description <String>] [-DisplayName 
 ```
 Update-AzPolicySetDefinition -InputObject <IPolicySetDefinition> [-Description <String>]
  [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>]
- [-PolicyDefinitionGroup <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
 Update-AzPolicySetDefinition -ManagementGroupName <String> -Name <String> [-Description <String>]
  [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>]
- [-PolicyDefinitionGroup <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
 Update-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-Description <String>]
  [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>]
- [-PolicyDefinitionGroup <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Version
+```
+Update-AzPolicySetDefinition -PolicyDefinition <String> -Version <String> [-Id <String>]
+ [-ManagementGroupName <String>] [-Name <String>] [-SubscriptionId <String>] [-Description <String>]
+ [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,6 +91,31 @@ Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $gro
 ```
 
 This command updates the groups of a policy set definition named VMPolicySetDefinition from a hash table.
+
+### Example 5: Update a policy set definition to add an older version by using a policy set file
+```powershell
+[
+   {
+      "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
+      "parameters": {
+         "tagName": {
+            "value": "Business Unit"
+         },
+         "tagValue": {
+            "value": "Finance"
+         }
+      }
+   },
+   {
+      "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/464dbb85-3d5f-4a1d-bb09-95a9b5dd19cf"
+   }
+]
+
+Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicySet.json -Version '1.1.0'
+```
+
+This command updates the existing policy set definition named VMPolicySetDefinition by adding a new older version 1.1.0 that contains the policy definitions specified in C:\VMPolicy.json.
+Example content of the VMPolicy.json is provided above.
 
 ## PARAMETERS
 
@@ -140,7 +170,7 @@ The resource Id of the policy definition to update.
 
 ```yaml
 Type: System.String
-Parameter Sets: Id
+Parameter Sets: Id, Version
 Aliases: ResourceId
 
 Required: True
@@ -170,7 +200,7 @@ The ID of the management group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName
+Parameter Sets: ManagementGroupName, Version
 Aliases:
 
 Required: True
@@ -201,7 +231,7 @@ The name of the policy set definition to update.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName, Name, SubscriptionId
+Parameter Sets: ManagementGroupName, Name, SubscriptionId, Version
 Aliases: PolicySetDefinitionName
 
 Required: True
@@ -235,7 +265,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -263,7 +293,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionId
+Parameter Sets: SubscriptionId, Version
 Aliases:
 
 Required: True
@@ -278,10 +308,10 @@ The policy definition version in #.#.# format.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: PolicyDefinitionVersion
+Parameter Sets: Version
+Aliases: PolicyDefinitionVersion, PolicySetDefinitionVersion
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

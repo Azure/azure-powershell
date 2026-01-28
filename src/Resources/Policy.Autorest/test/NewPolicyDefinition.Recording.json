@@ -17,17 +17,17 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/1cc1776f-cae1-4ed2-9066-72092d34305f" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus/7ee31da5-78aa-4649-91e6-3df744265871" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-request-id": [ "e64ed18a-f9fb-44b4-b054-506aedd9e19f" ],
-        "x-ms-correlation-request-id": [ "e64ed18a-f9fb-44b4-b054-506aedd9e19f" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260127T002434Z:e64ed18a-f9fb-44b4-b054-506aedd9e19f" ],
+        "x-ms-request-id": [ "858153bd-120b-470f-851c-52ce4268e4cf" ],
+        "x-ms-correlation-request-id": [ "858153bd-120b-470f-851c-52ce4268e4cf" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260128T065543Z:858153bd-120b-470f-851c-52ce4268e4cf" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0D917971B82D44E1AEA6C0B399F8ADC8 Ref B: MWH011020808034 Ref C: 2026-01-27T00:24:34Z" ],
-        "Date": [ "Tue, 27 Jan 2026 00:24:34 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 1E3AE806517C47FF82FC489C82430D88 Ref B: MWH011020807054 Ref C: 2026-01-28T06:55:43Z" ],
+        "Date": [ "Wed, 28 Jan 2026 06:55:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "176" ],
@@ -57,14 +57,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "a806d4dd-a6d6-4851-9984-faafed0f875d" ],
-        "x-ms-correlation-request-id": [ "a806d4dd-a6d6-4851-9984-faafed0f875d" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260127T002435Z:a806d4dd-a6d6-4851-9984-faafed0f875d" ],
+        "x-ms-request-id": [ "69eb2bec-fa39-4b85-bfe7-0de00ffa1335" ],
+        "x-ms-correlation-request-id": [ "69eb2bec-fa39-4b85-bfe7-0de00ffa1335" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260128T065543Z:69eb2bec-fa39-4b85-bfe7-0de00ffa1335" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: BD689C0DBBF844C6BD42651A24288D92 Ref B: MWH011020808034 Ref C: 2026-01-27T00:24:35Z" ],
-        "Date": [ "Tue, 27 Jan 2026 00:24:35 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C85EFB1D85FA44A7BB8C90D3EB29D482 Ref B: MWH011020807054 Ref C: 2026-01-28T06:55:43Z" ],
+        "Date": [ "Wed, 28 Jan 2026 06:55:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "473" ],
@@ -93,17 +93,17 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/3c507565-dfcc-4af3-af47-5f61717794cb" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus/76d6b657-5ed1-4978-8ae7-00a6e42b17c0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-request-id": [ "02e8466c-90fd-4789-9314-22ea3bd2e5f4" ],
-        "x-ms-correlation-request-id": [ "02e8466c-90fd-4789-9314-22ea3bd2e5f4" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260127T002435Z:02e8466c-90fd-4789-9314-22ea3bd2e5f4" ],
+        "x-ms-request-id": [ "a44327dd-f507-408e-a447-d020af7b21bb" ],
+        "x-ms-correlation-request-id": [ "a44327dd-f507-408e-a447-d020af7b21bb" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260128T065545Z:a44327dd-f507-408e-a447-d020af7b21bb" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3281FDD6DDBB4435BFB883F19E3E24FB Ref B: MWH011020808034 Ref C: 2026-01-27T00:24:35Z" ],
-        "Date": [ "Tue, 27 Jan 2026 00:24:35 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F9269A753A4A43C89B2EDE1E6CB9D1D9 Ref B: MWH011020807054 Ref C: 2026-01-28T06:55:45Z" ],
+        "Date": [ "Wed, 28 Jan 2026 06:55:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "176" ],
@@ -111,45 +111,6 @@
         "Expires": [ "-1" ]
       },
       "Content": "{\"error\":{\"code\":\"InvalidPolicyRule\",\"message\":\"Failed to parse policy rule: \u0027Could not find member \u0027someThing\u0027 on object of type \u0027PolicyRuleDefinition\u0027. Path \u0027someThing\u0027.\u0027.\"}}",
-      "isContentBase64": false
-    }
-  },
-  "NewPolicyDefinition+[NoContext]+New-AzPolicyDefinition -Name -Policy -Version \u003cinvalid version\u003e+$PUT+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2025-03-01+1": {
-    "Request": {
-      "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2025-03-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"mode\": \"All\",\r\n    \"policyRule\": {\r\n      \"someThing\": \"someOtherThing\"\r\n    },\r\n    \"version\": \"someName\"\r\n  }\r\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "141" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 400,
-      "Headers": {
-        "Cache-Control": [ "no-store, no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/04347ec6-fb0e-4240-84c0-b03f5d2ad8a2" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-request-id": [ "6408fac6-be0d-49de-8574-2c36136863d5" ],
-        "x-ms-correlation-request-id": [ "6408fac6-be0d-49de-8574-2c36136863d5" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260127T002437Z:6408fac6-be0d-49de-8574-2c36136863d5" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3A83B4B7D1FE4AA19AC0612E04231183 Ref B: MWH011020808034 Ref C: 2026-01-27T00:24:37Z" ],
-        "Date": [ "Tue, 27 Jan 2026 00:24:37 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "305" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"error\":{\"code\":\"InvalidVersionIdentifier\",\"message\":\"The policy resource \u0027someName\u0027 has an invalid \u0027version\u0027 value of \u0027someName\u0027. Versions must be of the form \u0027{major}.{minor}.{patch}[-preview]\u0027 where each segment is a number with no leading zeros. The major version number must be greater than zero.\"}}",
       "isContentBase64": false
     }
   }

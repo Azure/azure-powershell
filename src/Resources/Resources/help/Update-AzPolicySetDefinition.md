@@ -14,40 +14,46 @@ This operation updates an existing policy set definition in the given subscripti
 
 ### Name (Default)
 ```
-Update-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
- [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-Version <String>]
- [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzPolicySetDefinition -Name <String> [-PolicyDefinition <String>] [-DisplayName <String>]
+ [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
-Update-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-DisplayName <String>]
- [-Description <String>] [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>]
- [-Version <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### SubscriptionId
-```
-Update-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-DisplayName <String>]
- [-Description <String>] [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>]
- [-Version <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Id
-```
-Update-AzPolicySetDefinition -Id <String> [-DisplayName <String>] [-Description <String>]
- [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-Version <String>]
+Update-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-PolicyDefinition <String>]
+ [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>]
  [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
+### SubscriptionId
+```
+Update-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-PolicyDefinition <String>]
+ [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### Version
+```
+Update-AzPolicySetDefinition [-Name <String>] [-Id <String>] [-ManagementGroupName <String>]
+ [-SubscriptionId <String>] [-PolicyDefinition <String>] [-DisplayName <String>] [-Description <String>]
+ [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>] -Version <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Id
+```
+Update-AzPolicySetDefinition -Id <String> [-PolicyDefinition <String>] [-DisplayName <String>]
+ [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### InputObject
 ```
-Update-AzPolicySetDefinition [-DisplayName <String>] [-Description <String>] [-PolicyDefinition <String>]
- [-Metadata <String>] [-Parameter <String>] [-Version <String>] [-PolicyDefinitionGroup <String>]
+Update-AzPolicySetDefinition [-PolicyDefinition <String>] [-DisplayName <String>] [-Description <String>]
+ [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
  -InputObject <IPolicySetDefinition> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -88,6 +94,31 @@ Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $gro
 ```
 
 This command updates the groups of a policy set definition named VMPolicySetDefinition from a hash table.
+
+### Example 5: Update a policy set definition to add an older version by using a policy set file
+```powershell
+[
+   {
+      "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
+      "parameters": {
+         "tagName": {
+            "value": "Business Unit"
+         },
+         "tagValue": {
+            "value": "Finance"
+         }
+      }
+   },
+   {
+      "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/464dbb85-3d5f-4a1d-bb09-95a9b5dd19cf"
+   }
+]
+
+Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicySet.json -Version '1.1.0'
+```
+
+This command updates the existing policy set definition named VMPolicySetDefinition by adding a new older version 1.1.0 that contains the policy definitions specified in C:\VMPolicy.json.
+Example content of the VMPolicy.json is provided above.
 
 ## PARAMETERS
 
@@ -142,6 +173,18 @@ The resource Id of the policy definition to update.
 
 ```yaml
 Type: System.String
+Parameter Sets: Version
+Aliases: ResourceId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
 Parameter Sets: Id
 Aliases: ResourceId
 
@@ -181,6 +224,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: System.String
+Parameter Sets: Version
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Metadata
 The policy set definition metadata.
 Metadata is an open ended object and is typically a collection of key value pairs.
@@ -206,6 +261,18 @@ Parameter Sets: Name, ManagementGroupName, SubscriptionId
 Aliases: PolicySetDefinitionName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: Version
+Aliases: PolicySetDefinitionName
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -274,15 +341,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: System.String
+Parameter Sets: Version
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Version
 The policy definition version in #.#.# format.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: PolicyDefinitionVersion
+Parameter Sets: Version
+Aliases: PolicyDefinitionVersion, PolicySetDefinitionVersion
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

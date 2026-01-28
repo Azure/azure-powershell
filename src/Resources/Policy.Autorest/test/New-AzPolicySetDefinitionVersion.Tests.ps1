@@ -3,81 +3,57 @@
 
 Describe 'NewPolicySetDefinitionVersion' {
 
-    It 'New-AzPolicySetDefinitionVersion' {
+    It 'New-AzPolicySetDefinition -Version' {
         {
-            New-AzPolicySetDefinitionVersion
+            New-AzPolicySetDefinition -Version $someNewVersion
         } | Should -Throw $missingParameters
     }
 
-    It 'New-AzPolicySetDefinitionVersion -Name' {
+    It 'New-AzPolicySetDefinition -Name -Version' {
         {
-            New-AzPolicySetDefinitionVersion -Name $someName
+            New-AzPolicySetDefinition -Name $someName -Version $someNewVersion
         } | Should -Throw $missingParameters
     }
 
-    It 'New-AzPolicySetDefinitionVersion -Name -PolicyDefinition' {
+    It 'New-AzPolicySetDefinition -Name -PolicyDefinition -Version' {
         {
-            New-AzPolicySetDefinitionVersion -Name $someName -PolicyDefinition $someJsonArray
-        } | Should -Throw $missingParameters
+            New-AzPolicySetDefinition -Name $someName -PolicyDefinition $someJsonArray -Version $someNewVersion
+        } | Should -Throw $invalidPolicySetDefinitionRequest
     }
 
-    It 'New-AzPolicySetDefinitionVersion -Name -PolicyDefinition -Version' {
+    It 'New-AzPolicySetDefinition -Name -PolicyDefinition -ManagementGroupName -Version' {
         {
-            New-AzPolicySetDefinitionVersion -Name $someName -PolicyDefinition $someJsonArray -Version $someOldVersion
-        } | Should -Throw $policySetDefinitionNotFound
-    }
-
-    It 'New-AzPolicySetDefinitionVersion -Name -PolicyDefinition -ManagementGroupName' {
-        {
-            New-AzPolicySetDefinitionVersion -Name $someName -PolicyDefinition $someJsonArray -ManagementGroupName $someManagementGroup
-        } | Should -Throw $missingParameters
-    }
-
-    It 'New-AzPolicySetDefinitionVersion -Name -PolicyDefinition -ManagementGroupName -Version' {
-        {
-            New-AzPolicySetDefinitionVersion -Name $someName -PolicyDefinition $someJsonArray -ManagementGroupName $someManagementGroup -Version $someOldVersion
+            New-AzPolicySetDefinition -Name $someName -PolicyDefinition $someJsonArray -ManagementGroupName $someManagementGroup -Version $someNewVersion
         } | Should -Throw $authorizationFailed
     }
 
-    It 'New-AzPolicySetDefinitionVersion -Name -PolicyDefinition -SubscriptionId' {
+    It 'New-AzPolicySetDefinition -Name -PolicyDefinition -SubscriptionId -Version' {
         {
-            New-AzPolicySetDefinitionVersion -Name $someName -PolicyDefinition $someJsonArray -SubscriptionId $subscriptionId
-        } | Should -Throw $missingParameters
+            New-AzPolicySetDefinition -Name $someName -PolicyDefinition $someJsonArray -SubscriptionId $subscriptionId -Version $someNewVersion
+        } | Should -Throw $invalidPolicySetDefinitionRequest
     }
 
-    It 'New-AzPolicySetDefinitionVersion -Name -PolicyDefinition -SubscriptionId -Version' {
+    It 'New-AzPolicySetDefinition -Name -PolicyDefinition -ManagementGroupName -SubscriptionId -Version' {
         {
-            New-AzPolicySetDefinitionVersion -Name $someName -PolicyDefinition $someJsonArray -SubscriptionId $subscriptionId -Version $someOldVersion
-        } | Should -Throw $policySetDefinitionNotFound
-    }
-
-    It 'New-AzPolicySetDefinitionVersion -Name -PolicyDefinition -ManagementGroupName -SubscriptionId -Version' {
-        {
-            New-AzPolicySetDefinitionVersion -Name $someName -PolicyDefinition $someJsonArray -ManagementGroupName $someManagementGroup -SubscriptionId $subscriptionId -Version $someOldVersion
+            New-AzPolicySetDefinition -Name $someName -PolicyDefinition $someJsonArray -ManagementGroupName $someManagementGroup -SubscriptionId $subscriptionId -Version $someNewVersion
         } | Should -Throw $parameterSetError
     }
 
-    It 'New-AzPolicySetDefinitionVersion -Name -PolicyDefinition -Version <missing>' {
+    It 'New-AzPolicySetDefinition -PolicyDefinition -Version' {
         {
-            New-AzPolicySetDefinitionVersion -Name $someName -PolicyDefinition $someJsonArray -Version
-        } | Should -Throw $missingAnArgument
+            New-AzPolicySetDefinition -PolicyDefinition $someJsonArray -Version $someNewVersion
+        } | Should -Throw $missingParameters
     }
 
-    It 'New-AzPolicySetDefinitionVersion -Name -PolicyDefinition -Version <invalid version>' {
+    It 'New-AzPolicySetDefinition -Name -PolicyDefinition -Version <invalid version>' {
         {
-            New-AzPolicySetDefinitionVersion -Name $someName -PolicyDefinition $someJsonArray -Version $someName
+            New-AzPolicySetDefinition -Name $someName -PolicyDefinition $someJsonArray -Version $someName
         } | Should -Throw $invalidVersionIdentifier
     }
 
-    It 'New-AzPolicySetDefinitionVersion -Name -PolicyDefinition -Version <valid version>' {
+    It 'New-AzPolicySetDefinition -Name -PolicyDefinition -Version <missing>' {
         {
-            New-AzPolicySetDefinitionVersion -Name $someName -PolicyDefinition $someJsonArray -Version $someOldVersion
-        } | Should -Throw $policySetDefinitionNotFound
-    }
-
-    It 'New-AzPolicySetDefinitionVersion -Name -PolicyDefinition -Version <valid preview version>' {
-        {
-            New-AzPolicySetDefinitionVersion -Name $someName -PolicyDefinition $someJsonArray -Version $somePreviewVersion
-        } | Should -Throw $policySetDefinitionNotFound
+            New-AzPolicySetDefinition -Name $someName -PolicyDefinition $someJsonArray -Version
+        } | Should -Throw $missingAnArgument
     }
 }

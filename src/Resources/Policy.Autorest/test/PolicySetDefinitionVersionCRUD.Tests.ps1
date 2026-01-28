@@ -24,7 +24,7 @@ Describe 'PolicySetDefinitionVersionCRUD' -Tag 'LiveOnly' {
     }
 
     It 'Make policy set definition version' {
-        $expected = New-AzPolicySetDefinitionVersion -Name $policySetDefName -PolicyDefinition $policySet -Description $description -Version $someOldVersion
+        $expected = Update-AzPolicySetDefinition -Name $policySetDefName -PolicyDefinition $policySet -Description $description -Version $someOldVersion
         $actual = Get-AzPolicySetDefinition -Name $policySetDefName -Version $someOldVersion
         $expected.Name | Should -Be $someOldVersion
         $expected.Description | Should -Be $actual.Description

@@ -30,7 +30,7 @@ Describe 'PolicySetDefinitionVersionReferencePolicyDefinitionVersion' {
 
     It 'Make and validate a policy set definition with version reference' {
         # make a policy set definition that references an old definition version
-        $expected = New-AzPolicySetDefinitionVersion -Name $policySetDefName -PolicyDefinition $policySet -Parameter "{ 'tagName': { 'type': 'string' } }" -Description $description -Metadata $metadata -Version $someOldVersion
+        $expected = Update-AzPolicySetDefinition -Name $policySetDefName -PolicyDefinition $policySet -Parameter "{ 'tagName': { 'type': 'string' } }" -Description $description -Metadata $metadata -Version $someOldVersion
         $actual = Get-AzPolicySetDefinition -Name $policySetDefName -Version $someOldVersion
         $expected.Name | Should -Be $someOldVersion
         $expected.Name | Should -Be $actual.Name

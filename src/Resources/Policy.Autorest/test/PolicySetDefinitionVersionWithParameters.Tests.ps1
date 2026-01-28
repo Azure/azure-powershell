@@ -17,7 +17,7 @@ Describe 'PolicySetDefinitionVersionWithParameters' {
     }
 
     It 'make a policy set definition version with parameters' {
-        $actual = New-AzPolicySetDefinitionVersion -Name $policySetDefName -PolicyDefinition $policySet -Description $description -Metadata $metadata -Parameter $parameterDefinition -Version $someOldVersion
+        $actual = Update-AzPolicySetDefinition -Name $policySetDefName -PolicyDefinition $policySet -Description $description -Metadata $metadata -Parameter $parameterDefinition -Version $someOldVersion
         $expected = Get-AzPolicySetDefinition -Name $policySetDefName -Version $someOldVersion
         $expected.Name | Should -Be $someOldVersion
         $expected.Name | Should -Be $actual.Name

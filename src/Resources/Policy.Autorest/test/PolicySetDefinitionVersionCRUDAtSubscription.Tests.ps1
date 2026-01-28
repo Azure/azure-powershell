@@ -25,7 +25,7 @@ Describe 'PolicySetDefinitionVersionCRUDAtSubscription' -Tag 'LiveOnly' {
 
     It 'Make policy set definition version at subscription level' {
         # make a policy set definition version, get it back and validate
-        $expected = New-AzPolicySetDefinitionVersion -Name $policySetDefName -SubscriptionId $subscriptionId -PolicyDefinition $policySet -Description $description -Version $someOldVersion
+        $expected = Update-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -PolicyDefinition $policySet -Description $description -Version $someOldVersion
         $actual = Get-AzPolicySetDefinition -Id $baseDefinition.Id -Version $someOldVersion
         $expected.Name | Should -Be $someOldVersion
         $expected.Name | Should -Be $actual.Name

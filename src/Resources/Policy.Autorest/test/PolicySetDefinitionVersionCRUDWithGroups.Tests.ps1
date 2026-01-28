@@ -16,7 +16,7 @@ Describe 'PolicySetDefinitionVersionCRUDWithGroups' {
 
     It 'Make a policy set definition version with groups' {
         # update the policy set definition, get it back and validate
-        $expected = New-AzPolicySetDefinitionVersion -Name $policySetDefName -PolicyDefinition $policySet -Description $description -Metadata $metadata -GroupDefinition "[{ 'name': 'group2' }]" -Version $someOldVersion
+        $expected = Update-AzPolicySetDefinition -Name $policySetDefName -PolicyDefinition $policySet -Description $description -Metadata $metadata -GroupDefinition "[{ 'name': 'group2' }]" -Version $someOldVersion
         $actual = Get-AzPolicySetDefinition -Name $policySetDefName -Version $someOldVersion
         $expected.Name | Should -Be $someOldVersion
         $expected.Name | Should -Be $actual.Name

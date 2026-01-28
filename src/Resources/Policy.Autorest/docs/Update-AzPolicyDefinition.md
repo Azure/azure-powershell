@@ -19,8 +19,8 @@ Update-AzPolicyDefinition -Name <String> [-Description <String>] [-DisplayName <
  [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
  [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
- [-Parameter <String>] [-Policy <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Parameter <String>] [-Policy <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Id
@@ -30,8 +30,8 @@ Update-AzPolicyDefinition -Id <String> [-Description <String>] [-DisplayName <St
  [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
  [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
- [-Parameter <String>] [-Policy <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Parameter <String>] [-Policy <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### InputObject
@@ -41,8 +41,8 @@ Update-AzPolicyDefinition -InputObject <IPolicyDefinition> [-Description <String
  [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
  [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
- [-Parameter <String>] [-Policy <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Parameter <String>] [-Policy <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ManagementGroupName
@@ -52,8 +52,8 @@ Update-AzPolicyDefinition -ManagementGroupName <String> -Name <String> [-Descrip
  [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
  [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
- [-Parameter <String>] [-Policy <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Parameter <String>] [-Policy <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### SubscriptionId
@@ -63,8 +63,19 @@ Update-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-Description 
  [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
  [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
- [-Parameter <String>] [-Policy <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Parameter <String>] [-Policy <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### Version
+```
+Update-AzPolicyDefinition -Policy <String> -Version <String> [-Id <String>] [-ManagementGroupName <String>]
+ [-Name <String>] [-SubscriptionId <String>] [-Description <String>] [-DisplayName <String>]
+ [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
+ [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
+ [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
+ [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
+ [-Parameter <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,6 +107,23 @@ Update-AzPolicyDefinition -Name 'VMPolicyDefinition' -Metadata '{"category":"Vir
 ```
 
 This command updates the metadata of a policy definition named VMPolicyDefinition to indicate its category is "Virtual Machine".
+
+### Example 4: Update a policy definition to add an older version by using a policy file
+```powershell
+{
+   "if": {
+      "field": "location",
+      "notIn": ["eastus", "westus", "centralus"]
+   },
+   "then": {
+      "effect": "audit"
+   }
+}
+Update-AzPolicyDefinition -Name 'LocationDefinition' -Policy C:\LocationPolicy.json -Version '1.1.0'
+```
+
+This command updates the existing policy definition named LocationDefinition by adding a new older version 1.1.0 that contains the policy rule specified in C:\LocationPolicy.json.
+Example content for the LocationPolicy.json file is provided above.
 
 ## PARAMETERS
 
@@ -228,7 +256,7 @@ The resource Id of the policy definition to update.
 
 ```yaml
 Type: System.String
-Parameter Sets: Id
+Parameter Sets: Id, Version
 Aliases: ResourceId
 
 Required: True
@@ -258,7 +286,7 @@ The ID of the management group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName
+Parameter Sets: ManagementGroupName, Version
 Aliases:
 
 Required: True
@@ -305,7 +333,7 @@ The name of the policy definition to update.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName, Name, SubscriptionId
+Parameter Sets: ManagementGroupName, Name, SubscriptionId, Version
 Aliases: PolicyDefinitionName
 
 Required: True
@@ -339,7 +367,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -351,7 +379,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionId
+Parameter Sets: SubscriptionId, Version
 Aliases:
 
 Required: True
@@ -366,10 +394,10 @@ The policy definition version in #.#.# format.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Version
 Aliases: PolicyDefinitionVersion
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

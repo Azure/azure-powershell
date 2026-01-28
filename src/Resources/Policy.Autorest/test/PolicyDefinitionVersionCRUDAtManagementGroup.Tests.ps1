@@ -22,7 +22,7 @@ Describe 'PolicyDefinitionVersionCRUDAtManagementGroup' -Tag 'LiveOnly' {
 
     It 'Make policy definition version at MG level' {
         # make a policy definition version, get it back and validate
-        $expected = New-AzPolicyDefinitionVersion -Name $policyName -ManagementGroupName $managementGroup -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Mode Indexed -Description $description -Version $someOldVersion
+        $expected = Update-AzPolicyDefinition -Name $policyName -ManagementGroupName $managementGroup -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Mode Indexed -Description $description -Version $someOldVersion
         $actual = Get-AzPolicyDefinition -Id $baseDefinition.Id -Version $someOldVersion
         $actual | Should -Not -BeNullOrEmpty
         $expected.Name | Should -Be $actual.Name

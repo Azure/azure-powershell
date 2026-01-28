@@ -22,7 +22,7 @@ Describe 'PolicyDefinitionVersionWithUri' {
 
     It 'Make a policy definition version using a URI to the policy rule' {
         # make a policy definition version using a Uri to the policy rule, get it back and validate
-        $actual = New-AzPolicyDefinitionVersion -Name $policyName -Policy "https://raw.githubusercontent.com/vivsriaus/armtemplates/master/policyDef.json" -Mode All -Description $description -Version $someOldVersion
+        $actual = Update-AzPolicyDefinition -Name $policyName -Policy "https://raw.githubusercontent.com/vivsriaus/armtemplates/master/policyDef.json" -Mode All -Description $description -Version $someOldVersion
         $expected = Get-AzPolicyDefinition -Name $policyName -Version $someOldVersion
         $expected.Name | Should -Be $someOldVersion
         $expected.Version | Should -Be $actual.Version

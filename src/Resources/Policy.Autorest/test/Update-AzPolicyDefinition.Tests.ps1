@@ -30,7 +30,7 @@ Describe 'UpdatePolicyDefinition' {
     It 'Update-AzPolicyDefinition -Name -Id' {
         {
             Update-AzPolicyDefinition -Name $someName -Id $someId
-        } | Should -Throw $parameterSetError
+        } | Should -Throw $missingParameters
     }
 
     It 'Update-AzPolicyDefinition -Name -ManagementGroupName' {
@@ -60,13 +60,13 @@ Describe 'UpdatePolicyDefinition' {
     It 'Update-AzPolicyDefinition -Id -ManagementGroupName' {
         {
             Update-AzPolicyDefinition -Id $someId -ManagementGroupName $someManagementGroup
-        } | Should -Throw $parameterSetError
+        } | Should -Throw $missingParameters
     }
 
     It 'Update-AzPolicyDefinition -Id -SubscriptionId' {
         {
             Update-AzPolicyDefinition -Id $someId -SubscriptionId $subscriptionId
-        } | Should -Throw $parameterSetError
+        } | Should -Throw $missingParameters
     }
 
     It 'Update-AzPolicyDefinition -ManagementGroupName <missing>' {
@@ -78,13 +78,13 @@ Describe 'UpdatePolicyDefinition' {
     It 'Update-AzPolicyDefinition -ManagementGroupName' {
         {
             Update-AzPolicyDefinition -ManagementGroupName $someManagementGroup
-        } | Should -Throw $missingParameters
+        } | Should -Throw $parameterSetError
     }
 
     It 'Update-AzPolicyDefinition -ManagementGroupName -SubscriptionId' {
         {
             Update-AzPolicyDefinition -ManagementGroupName $someManagementGroup -SubscriptionId $subscriptionId
-        } | Should -Throw $parameterSetError
+        } | Should -Throw $missingParameters
     }
 
     It 'Update-AzPolicyDefinition -SubscriptionId <missing>' {
@@ -96,72 +96,6 @@ Describe 'UpdatePolicyDefinition' {
     It 'Update-AzPolicyDefinition -SubscriptionId' {
         {
             Update-AzPolicyDefinition -SubscriptionId $subscriptionId
-        } | Should -Throw $missingParameters
-    }
-    
-    It 'Update-AzPolicyDefinition -Name -Version <invalid version>' {
-        {
-            Update-AzPolicyDefinition -Name $someName -Version $someName
-        } | Should -Throw $invalidVersionIdentifier
-    }
-
-    It 'Update-AzPolicyDefinition -Id -Name -Version' {
-        {
-            Update-AzPolicyDefinition -Id $someId -Name $someName -Version $someNewVersion
         } | Should -Throw $parameterSetError
-    }
-
-    It 'Update-AzPolicyDefinition -Id -SubscriptionId -Version' {
-        {
-            Update-AzPolicyDefinition -Id $someId -SubscriptionId $subscriptionId -Version $someNewVersion
-        } | Should -Throw $parameterSetError
-    }
-    
-    It 'Update-AzPolicyDefinition -Id -ManagementGroupName -Version' {
-        {
-            Update-AzPolicyDefinition -Id $someId -ManagementGroupName $someManagementGroup -Version $someNewVersion
-        } | Should -Throw $parameterSetError
-    }
-
-    It 'Update-AzPolicyDefinition -Name -SubscriptionId -Version' {
-        {
-            Update-AzPolicyDefinition -Name $someName -SubscriptionId $subscriptionId -Version $someNewVersion
-        } | Should -Throw $policyDefinitionNotFound
-    }
-
-    It 'Update-AzPolicyDefinition -Name -ManagementGroupName -Version' {
-        {
-            Update-AzPolicyDefinition -Name $someName -ManagementGroupName $someManagementGroup -Version $someNewVersion
-        } | Should -Throw $policyDefinitionNotFound
-    }
-
-    It 'Update-AzPolicyDefinition -Name -Version' {
-        {
-            Update-AzPolicyDefinition -Name $someName -Version $someNewVersion
-        } | Should -Throw $policyDefinitionNotFound
-    }
-
-    It 'Update-AzPolicyDefinition -Name -Version <missing>' {
-        {
-            Update-AzPolicyDefinition -Name $someName -Version
-        } | Should -Throw $missingAnArgument
-    }
-
-    It 'Update-AzPolicyDefinition -Id -Version <missing>' {
-        {
-            Update-AzPolicyDefinition -Id $someId -Version
-        } | Should -Throw $missingAnArgument
-    }
-
-    It 'Update-AzPolicyDefinition -Name -SubscriptionId -Version <missing>' {
-        {
-            Update-AzPolicyDefinition -Name $someName -SubscriptionId $subscriptionId -Version
-        } | Should -Throw $missingAnArgument
-    }
-
-    It 'Update-AzPolicyDefinition -Name -ManagementGroupName -Version <missing>' {
-        {
-            Update-AzPolicyDefinition -Name $someName -ManagementGroupName $someManagementGroup -Version
-        } | Should -Throw $missingAnArgument
     }
 }

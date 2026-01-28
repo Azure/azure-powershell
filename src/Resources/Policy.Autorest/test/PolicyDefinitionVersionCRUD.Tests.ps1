@@ -10,7 +10,7 @@ Describe 'PolicyDefinitionVersionCRUD' -Tag 'LiveOnly' {
     }
 
     It 'Make policy definition version from command line rule' {
-        $actual = New-AzPolicyDefinitionVersion -Name $policyName -Policy "{""if"":{""source"":""action"",""equals"":""blah""},""then"":{""effect"":""deny""}}" -Description $description -Version $somePreviewVersion
+        $actual = Update-AzPolicyDefinition -Name $policyName -Policy "{""if"":{""source"":""action"",""equals"":""blah""},""then"":{""effect"":""deny""}}" -Description $description -Version $somePreviewVersion
         $expected = Get-AzPolicyDefinition -Name $policyName -Version $somePreviewVersion
         $expected.Name | Should -Be $somePreviewVersion
         $expected.Description | Should -Be $actual.Description
@@ -20,7 +20,7 @@ Describe 'PolicyDefinitionVersionCRUD' -Tag 'LiveOnly' {
     }
 
     It 'Make policy definition version from rule file' {
-        $actual = New-AzPolicyDefinitionVersion -Name $policyName -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description -Version $someOldVersion
+        $actual = Update-AzPolicyDefinition -Name $policyName -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description -Version $someOldVersion
         $expected = Get-AzPolicyDefinition -Name $policyName -Version $someOldVersion
         $expected.Name | Should -Be $someOldVersion
         $expected.Description | Should -Be $actual.Description

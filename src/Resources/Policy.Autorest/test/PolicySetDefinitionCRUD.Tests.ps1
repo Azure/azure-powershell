@@ -6,7 +6,6 @@ Describe 'PolicySetDefinitionCRUD' -Tag 'LiveOnly' {
     BeforeAll {
         # setup
         $policySetDefName = Get-ResourceName
-        $policySetDefName2 = Get-ResourceName
         $policyDefName = Get-ResourceName
         $policyDefinitionReferenceId = "Definition-Reference-1"
 
@@ -73,36 +72,6 @@ Describe 'PolicySetDefinitionCRUD' -Tag 'LiveOnly' {
         $actual.Metadata.$metadataName | Should -Be $metadataValue
     }
 
-    It 'Update policy set definition version' {
-        # update the policy set definition version, get it back and validate
-        $update = Update-AzPolicySetDefinition -Name $policySetDefName -DisplayName testDisplay -Description $updatedDescription -Version $someNewVersion
-        $actual = Get-AzPolicySetDefinition -Name $policySetDefName
-        $update.DisplayName | Should -Be $actual.DisplayName
-        $update.Description | Should -Be $actual.Description
-        $update.Version | Should -Be $someNewVersion
-        $update.Version | Should -Be $actual.Version
-        $update.Versions | Should -HaveCount 2
-        $update.Versions | Should -Be $actual.Versions
-        $actual.Metadata | Should -Not -BeNullOrEmpty
-        $actual.PolicyDefinitionGroup | Should -BeNull
-        $actual.Metadata.$metadataName | Should -Be $metadataValue
-
-        # get it from full listing and validate
-        $actual = Get-AzPolicySetDefinition | ?{ $_.Name -eq $policySetDefName }
-        $expected.Name | Should -Be $actual.Name
-        $expected.Id | Should -Be $actual.Id
-        $actual.PolicyDefinition | Should -Not -BeNullOrEmpty
-        $update.DisplayName | Should -Be $actual.DisplayName
-        $update.Description | Should -Be $actual.Description
-        $update.Version | Should -Be $someNewVersion
-        $update.Version | Should -Be $actual.Version
-        $update.Versions | Should -HaveCount 2
-        $update.Versions | Should -Be $actual.Versions
-        $actual.Metadata | Should -Not -BeNullOrEmpty
-        $actual.PolicyDefinitionGroup | Should -BeNull
-        $actual.Metadata.$metadataName | Should -Be $metadataValue
-    }
-
     It 'Validate parameter round-trip' {
         # get the set definition, do an update with no changes, validate nothing is changed in response or backend
         $expected = Get-AzPolicySetDefinition -Name $policySetDefName
@@ -120,21 +89,20 @@ Describe 'PolicySetDefinitionCRUD' -Tag 'LiveOnly' {
         $actual.PolicyRule | Should -BeLike $expected.PolicyRule
         $actual.Parameter | Should -BeLike $expected.Parameter
         $actual.PolicyDefinitionGroup | Should -BeLike $expected.PolicyDefinitionGroup
-        $actual.Version | Should -Be $someNewVersion
+        $actual.Version | Should -Be $defaultVersion
         $actual.Version | Should -Be $expected.Version
-        $actual.Versions | Should -HaveCount 2
+        $actual.Versions | Should -HaveCount 1
     }
 
     It 'Make a policy set definition with version from rule file' {
         # make a policy set definition with version, get it back and validate
-        $expected = New-AzPolicySetDefinition -Name $policySetDefName2 -PolicyDefinition $policySet -Description $description -Metadata $metadata -Version $someNewVersion
-        $actual = Get-AzPolicySetDefinition -Name $policySetDefName2
+        $expected = New-AzPolicySetDefinition -Name $policySetDefName -PolicyDefinition $policySet -Description $description -Metadata $metadata -Version $someNewVersion
+        $actual = Get-AzPolicySetDefinition -Name $policySetDefName
         $expected.Name | Should -Be $actual.Name
         $expected.Id | Should -Be $actual.Id
         $expected.Version | Should -Be $someNewVersion
         $expected.Version | Should -Be $actual.Version
-        $expected.Versions | Should -HaveCount 1
-        $expected.Versions | Should -Be $actual.Versions
+        $actual.Versions | Should -HaveCount 2
         $expected.PolicyDefinition | Should -Not -BeNullOrEmpty
         $expected.PolicyDefinition.policyDefinitionId | Should -Be $policyDefinition.Id
         $expected.PolicyDefinition.policyDefinitionReferenceId | Should -Be $policyDefinitionReferenceId
@@ -158,7 +126,6 @@ Describe 'PolicySetDefinitionCRUD' -Tag 'LiveOnly' {
     AfterAll {
         # clean up
         $remove = Remove-AzPolicySetDefinition -Name $policySetDefName -Force -PassThru
-        $remove = Remove-AzPolicySetDefinition -Name $policySetDefName2 -Force -PassThru
         $remove = (Remove-AzPolicyDefinition -Name $policyDefName -Force -PassThru) -and $remove
         $remove | Should -Be $true
 

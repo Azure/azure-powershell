@@ -31,7 +31,7 @@ Describe 'PolicyDefinitionVersionWithParameters' {
 
     It 'make a policy definition version with parameters from a file' {
         # make a policy definition with parameters from the command line, get it back and validate
-        $actual = New-AzPolicyDefinitionVersion -Name $testPDWP -Policy "$testFilesFolder\SamplePolicyDefinitionWithParameters.json" -Parameter "$testFilesFolder\SamplePolicyDefinitionParameters.json" -Description $description -Version $defaultVersion
+        $actual = Update-AzPolicyDefinition -Name $testPDWP -Policy "$testFilesFolder\SamplePolicyDefinitionWithParameters.json" -Parameter "$testFilesFolder\SamplePolicyDefinitionParameters.json" -Description $description -Version $defaultVersion
         $expected = Get-AzPolicyDefinition -Name $testPDWP -Version $defaultVersion
         $expected.Name | Should -Be $actual.Name
         $expected.PolicyDefinitionId | Should -Be $actual.PolicyDefinitionId
@@ -48,7 +48,7 @@ Describe 'PolicyDefinitionVersionWithParameters' {
 
     It 'make a policy definition version with parameters on the command line' {
         # make a policy definition with parameters from the command line, get it back and validate
-        $actual = New-AzPolicyDefinitionVersion -Name $testPDWP -Policy "$testFilesFolder\SamplePolicyDefinitionWithParameters.json" -Parameter $fullParameterDefinition -Description $description -Version $somePreviewVersion
+        $actual = Update-AzPolicyDefinition -Name $testPDWP -Policy "$testFilesFolder\SamplePolicyDefinitionWithParameters.json" -Parameter $fullParameterDefinition -Description $description -Version $somePreviewVersion
         $expected = Get-AzPolicyDefinition -Name $testPDWP -Version $somePreviewVersion
         $expected.Name | Should -Be $actual.Name
         $expected.PolicyDefinitionId | Should -Be $actual.PolicyDefinitionId
