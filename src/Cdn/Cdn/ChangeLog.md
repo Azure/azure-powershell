@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed default parameter set issue.
 
 ## Version 6.0.0
 * Added support for edge action

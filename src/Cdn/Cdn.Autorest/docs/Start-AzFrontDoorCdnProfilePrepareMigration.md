@@ -15,21 +15,20 @@ The change need to be committed after this.
 
 ## SYNTAX
 
-### MigrateExpanded (Default)
-```
-Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> -ClassicResourceReferenceId <String>
- -ProfileName <String> [-SubscriptionId <String>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>]
- [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>] [-SkuName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> -ClassicResourceReferenceId <String>
  -ProfileName <String> [-SubscriptionId <String>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-SkuName <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### MigrateExpanded
+```
+Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> -ClassicResourceReferenceId <String>
+ -MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]> -ProfileName <String>
+ [-SubscriptionId <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-SkuName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -217,7 +216,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationWebApplicationFire
 Parameter Sets: MigrateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
