@@ -179,21 +179,23 @@ function Bump-AzVersion
     $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\Az\Az.psd1"
     Write-Host "Getting Az $ReleaseType information from gallery..." -ForegroundColor Yellow
 
-    if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
-        if ((Get-PSResourceRepository -Name $Env:DEFAULT_PS_REPOSITORY_NAME).Count -eq 0) {
-            Register-PSResourceRepository -Name $Env:DEFAULT_PS_REPOSITORY_NAME -Uri $Env:DEFAULT_PS_REPOSITORY_URL
-        }
-        Write-Host "Using DEFAULT_PS_REPOSITORY_NAME: $Env:DEFAULT_PS_REPOSITORY_NAME"
-        $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
-        $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
-        $galleryAz = Find-PSResource -Name AzPreview -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject
-    }
-    else {
-        $galleryAz = Find-PSResource -Name AzPreview -Repository $GalleryName -Version *
-    }
+    
     if("LTS" -eq $ReleaseType){
-        
+        if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
+            if ((Get-PSResourceRepository -Name $Env:DEFAULT_PS_REPOSITORY_NAME).Count -eq 0) {
+                Register-PSResourceRepository -Name $Env:DEFAULT_PS_REPOSITORY_NAME -Uri $Env:DEFAULT_PS_REPOSITORY_URL
+            }
+            Write-Host "Using DEFAULT_PS_REPOSITORY_NAME: $Env:DEFAULT_PS_REPOSITORY_NAME"
+            $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
+            $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
+            $galleryAz = Find-PSResource -Name AzPreview -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject
+        }
+        else {
+            $galleryAz = Find-PSResource -Name AzPreview -Repository $GalleryName -Version *
+        }
         $galleryAz = $galleryAz | Where-Object { ([System.Version]($_.Version)).Major%2 -eq 0 } | Sort-Object {[System.Version]$_.Version} -Descending
+    }else{
+        $galleryAz = & $PSScriptRoot/BuildScripts/CollectLastReleaseModules.ps1
     }
 
     $versionBump = [PSVersion]::NONE
@@ -345,45 +347,7 @@ function Update-AzPreview
 function Update-AzPreviewChangelog
 {
     $AzPreviewVersion = (Import-PowerShellDataFile "$PSScriptRoot\Az\Az.psd1").ModuleVersion
-    $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\AzPreview\AzPreview.psd1"
-    Write-Host "Getting gallery AzPreview information..." -ForegroundColor Yellow
-    if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
-        if ((Get-PSResourceRepository -Name $Env:DEFAULT_PS_REPOSITORY_NAME).Count -eq 0) {
-            Register-PSResourceRepository -Name $Env:DEFAULT_PS_REPOSITORY_NAME -Uri $Env:DEFAULT_PS_REPOSITORY_URL
-        }
-        Write-Host "Using DEFAULT_PS_REPOSITORY_NAME: $Env:DEFAULT_PS_REPOSITORY_NAME"
-        $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
-        $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
-        $galleryAz = Find-PSResource -Name AzPreview -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject
-    }
-    else {
-        $galleryAz = Find-PSResource -Name AzPreview -Repository $GalleryName
-    }
-    $updatedModules = @()
-    foreach ($localDependency in $localAz.RequiredModules)
-    {
-        $galleryDependency = $galleryAz.Dependencies | where { $_.Name -eq $localDependency.ModuleName }
-        if ($null -eq $galleryDependency)
-        {
-            $updatedModules += $localDependency.ModuleName
-            Write-Host "Found new added module $($localDependency.ModuleName)"
-            continue
-        }
-
-        $galleryVersion = $galleryDependency.VersionRange.MinVersion.OriginalVersion
-
-        $localVersion = $localDependency.RequiredVersion
-        # Az.Accounts uses ModuleVersion to annote Version
-        if ([string]::IsNullOrEmpty($localVersion))
-        {
-            $localVersion = $localDependency.ModuleVersion
-        }
-
-        if ($galleryVersion.ToString() -ne $localVersion)
-        {
-            $updatedModules += $localDependency.ModuleName
-        }
-    }
+    $updatedModules = & $PSScriptRoot/BuildScripts/CollectModifiedModules.ps1
 
     $releaseNotes = @()
     $releaseNotes += "$AzPreviewVersion - $Release"

@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory=$false)]
-    [string]$SrcDirectory = (Join-Path $PSScriptRoot "../.." "src"),
+    [string]$SrcDirectory = (Join-Path $PSScriptRoot ".." ".." "src"),
     
     [Parameter(Mandatory=$false)]
     [switch]$GAOnly = $false
