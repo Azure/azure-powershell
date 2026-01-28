@@ -310,6 +310,98 @@ Preview modules are not included in this list. Read more about [module version t
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect from version : '2.0.0'
 
+## Az.MachineLearningServices
+
+### `New-AzMLWorkspaceCustomModelJobInputObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Type`
+    
+
+### `New-AzMLWorkspaceCustomModelJobOutputObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Type`
+    
+
+### `New-AzMLWorkspaceDataPathAssetReferenceObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-ReferenceType`
+    
+
+### `New-AzMLWorkspaceIdAssetReferenceObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-ReferenceType`
+    
+
+### `New-AzMLWorkspaceLiteralJobInputObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Type`
+    
+
+### `New-AzMLWorkspaceMLFlowModelJobInputObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Type`
+    
+
+### `New-AzMLWorkspaceMLFlowModelJobOutputObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Type`
+    
+
+### `New-AzMLWorkspaceMLTableJobInputObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Type`
+    
+
+### `New-AzMLWorkspaceMLTableJobOutputObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Type`
+    
+
+### `New-AzMLWorkspaceTritonModelJobInputObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Type`
+    
+
+### `New-AzMLWorkspaceTritonModelJobOutputObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Type`
+    
+
+### `New-AzMLWorkspaceUriFileJobInputObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Type`
+    
+
+### `New-AzMLWorkspaceUriFileJobOutputObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Type`
+    
+
+### `New-AzMLWorkspaceUriFolderJobInputObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Type`
+    
+
+### `New-AzMLWorkspaceUriFolderJobOutputObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Type`
+    
+
 ## Az.ManagedServices
 
 ### `Get-AzManagedServicesAssignment`
@@ -483,7 +575,7 @@ Preview modules are not included in this list. Read more about [module version t
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
 
-- Parameter breaking-change will happen to parameter set `NewAzSubscriptionDiagnosticSetting_CreateExpanded`
+- Parameter breaking-change will happen to all parameter sets
   - `-Log`
     - The parameter : 'Log' is changing.
     The type of the parameter is changing from 'Array' to 'List'.
@@ -723,7 +815,7 @@ Preview modules are not included in this list. Read more about [module version t
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect in 'Az.Resources' from version : '9.0.0'
 
-- Parameter breaking-change will happen to parameter set `UpdateAzRoleManagementPolicy_UpdateExpanded`
+- Parameter breaking-change will happen to all parameter sets
   - `-Rule`
     - The parameter : 'Rule' is changing.
     The type of the parameter is changing from 'Array' to 'List'.
@@ -731,11 +823,6 @@ Preview modules are not included in this list. Read more about [module version t
     - The change is expected to take effect in 'Az.Resources' from version : '9.0.0'
 
 - Parameter breaking-change will happen to parameter set `UpdateAzRoleManagementPolicy_UpdateViaIdentityExpanded`
-  - `-Rule`
-    - The parameter : 'Rule' is changing.
-    The type of the parameter is changing from 'Array' to 'List'.
-    - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
-    - The change is expected to take effect in 'Az.Resources' from version : '9.0.0'
 
 ## Az.SecurityInsights
 
@@ -801,6 +888,22 @@ Preview modules are not included in this list. Read more about [module version t
   The cmdlet parameter set is being deprecated. There will be no replacement for it.
   - This change will take effect on '11/19/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect from version : '4.0.0'
+
+## Az.Sql
+
+### `New-AzSqlServer`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-EnableSoftDelete`
+    - The EnableSoftDelete parameter will be removed. Please use SoftDeleteRetentionDays parameter instead. Setting SoftDeleteRetentionDays to 1-7 enables soft-delete, and setting it to 0 disables soft-delete.
+    - This change is expected to take effect from Az.Sql version: 7.0.0 and Az version: 16.0.0
+
+### `Set-AzSqlServer`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-EnableSoftDelete`
+    - The EnableSoftDelete parameter will be removed. Please use SoftDeleteRetentionDays parameter instead. Setting SoftDeleteRetentionDays to 1-7 enables soft-delete, and setting it to 0 disables soft-delete.
+    - This change is expected to take effect from Az.Sql version: 7.0.0 and Az version: 16.0.0
 
 ## Az.StackHCI
 
