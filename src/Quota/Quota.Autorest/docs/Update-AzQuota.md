@@ -18,14 +18,14 @@ Please check the URI in location header for the detailed status of the request.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzQuota -ResourceName <String> -Scope <String> [-Limit <ILimitJsonObject>] [-Name <String>]
+Update-AzQuota -ResourceName <String> -Scope <String> [-Limit <ILimitJsonObject>] [-NameValue <String>]
  [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzQuota -InputObject <IQuotaIdentity> [-Limit <ILimitJsonObject>] [-Name <String>]
+Update-AzQuota -InputObject <IQuotaIdentity> [-Limit <ILimitJsonObject>] [-NameValue <String>]
  [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -53,28 +53,30 @@ Please check the URI in location header for the detailed status of the request.
 
 ### Example 1: Update the quota limit for a specific resource to the specified value
 ```powershell
-$limit = New-AzQuotaLimitObject -Value 1001
-Update-AzQuota -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses" -Name "PublicIPAddresses" -Limit $limit
+$quota = Get-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family"
+$limit = New-AzQuotaLimitObject -Value ($quota.Limit.Value + 1)
+Update-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family" -Limit $limit
 ```
 
 ```output
-Name              NameLocalizedValue  Unit  ETag
-----              ------------------  ----  ----
-PublicIPAddresses Public IP Addresses Count
+Name               NameLocalizedValue         Unit  ETag
+----               ------------------         ----  ----
+standardFSv2Family Standard FSv2 Family vCPUs Count
 ```
 
 This command update the quota limit for a specific resource to the specified value.
 
 ### Example 2: Update the quota limit for a specific resource to the specified value by pipeline
 ```powershell
-$limit = New-AzQuotaLimitObject -Value 1007
-Get-AzQuota -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses" | Update-AzQuota -Name "PublicIPAddresses" -Limit $limit
+$quota = Get-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family"
+$limit = New-AzQuotaLimitObject -Value ($quota.Limit.Value + 1)
+Get-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family" | Update-AzQuota -Limit $limit
 ```
 
 ```output
-Name              NameLocalizedValue  Unit  ETag
-----              ------------------  ----  ----
-PublicIPAddresses Public IP Addresses Count
+Name               NameLocalizedValue         Unit  ETag
+----               ------------------         ----  ----
+standardFSv2Family Standard FSv2 Family vCPUs Count
 ```
 
 This command update the quota limit for a specific resource to the specified value by pipeline.
@@ -172,7 +174,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -NameValue
 Resource name.
 
 ```yaml
@@ -238,10 +240,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-The target Azure resource URI.
-For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
-This is the target Azure resource URI for the List GET operation.
-If a `{resourceName}` is added after `/quotas`, then it's the target Azure resource URI in the GET operation for the specific resource.
+The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml
 Type: System.String
