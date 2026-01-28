@@ -253,5 +253,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// Storage sync service managed identity type parameter error.
         /// </summary>
         public const string StorageSyncServiceIdentityParameterError = "UserAssignIdentityId should only be specified when AssignIdentityType is UserAssigned or SystemAssignedUserAssigned.";
+        
+        /// <summary>
+        /// The change enumeration interval day parameter
+        /// </summary>
+        public const string ChangeEnumerationIntervalDayParameter = "Change Enumeration Interval Days. This parameter defines the interval in days between change enumeration operations for the cloud endpoint. Valid values range from 1 to 20 days.";
     }
 }
