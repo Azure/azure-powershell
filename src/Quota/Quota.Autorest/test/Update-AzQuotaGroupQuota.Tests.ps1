@@ -18,7 +18,7 @@ Describe 'Update-AzQuotaGroupQuota' {
     It 'UpdateExpanded' {
         # Create a group quota first
         $managementGroupId = "AzureClientToolsBAMI"  
-        $groupQuotaName = "testquota$(Get-Random)"
+        $groupQuotaName = "testquota-update"
         $initialDisplayName = "Test Quota Group"
         $updatedDisplayName = "Updated Test Quota Group"
         
@@ -38,7 +38,7 @@ Describe 'Update-AzQuotaGroupQuota' {
     It 'UpdateViaIdentityExpanded' {
         # Create a group quota first
         $managementGroupId = "AzureClientToolsBAMI"  
-        $groupQuotaName = "testquota$(Get-Random)"
+        $groupQuotaName = "testquota-update-identity"
         $initialDisplayName = "Test Quota Via Identity"
         $updatedDisplayName = "Updated Via Identity"
         

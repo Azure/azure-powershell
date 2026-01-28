@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaGroupQuotaLimitsRe
 Describe 'Get-AzQuotaGroupQuotaLimitsRequest' {
     It 'List' {
         $managementGroupId = "AzureClientToolsBAMI"  
-        $groupQuotaName = "testquota$(Get-Random)"
+        $groupQuotaName = "testquota-limits-req"
         
         # Create a GroupQuota
         $groupQuota = New-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -DisplayName "Test Quota for Requests"

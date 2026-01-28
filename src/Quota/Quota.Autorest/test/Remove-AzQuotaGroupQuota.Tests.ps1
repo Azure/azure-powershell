@@ -18,7 +18,7 @@ Describe 'Remove-AzQuotaGroupQuota' {
     It 'Delete' {
         # Create a group quota to delete
         $managementGroupId = "AzureClientToolsBAMI"  
-        $groupQuotaName = "testquota$(Get-Random)"
+        $groupQuotaName = "testquota-remove"
         
         # Create the group quota
         $created = New-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -DisplayName "Test Quota for Deletion"
@@ -39,7 +39,7 @@ Describe 'Remove-AzQuotaGroupQuota' {
     It 'DeleteViaIdentity' {
         # Create a group quota to delete
         $managementGroupId = "AzureClientToolsBAMI"  
-        $groupQuotaName = "testquota$(Get-Random)"
+        $groupQuotaName = "testquota-remove-identity"
         
         # Create the group quota
         $created = New-AzQuotaGroupQuota -ManagementGroupId $managementGroupId -GroupQuotaName $groupQuotaName -DisplayName "Test Quota for Identity Deletion"

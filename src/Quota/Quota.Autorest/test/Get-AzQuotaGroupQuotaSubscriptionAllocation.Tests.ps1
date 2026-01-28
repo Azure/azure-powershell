@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaGroupQuotaSubscrip
 Describe 'Get-AzQuotaGroupQuotaSubscriptionAllocation' {
     It 'List' {
         $managementGroupId = "AzureClientToolsBAMI"  
-        $groupQuotaName = "testquota$(Get-Random)"
+        $groupQuotaName = "testquota-subsc-alloc"
         $subscriptionId = $env.SubscriptionId
         
         # Create a GroupQuota and add subscription

@@ -90,7 +90,15 @@ Describe 'Get-AzQuotaGroupQuotaUsage' {
             $result | Should -Not -Be $null
         } catch {
             # Expected error when location is not yet enforced
-            $_.Exception.Message | Should -Match "enforced groups only"
+            # In playback mode, the error message may be base64-encoded, so decode it first
+            $errorMessage = $_.Exception.Message
+            try {
+                $decodedMessage = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($errorMessage))
+                $errorMessage = $decodedMessage
+            } catch {
+                # Not base64, use original message
+            }
+            $errorMessage | Should -Match "enforced groups only"
         }
     }
 }
