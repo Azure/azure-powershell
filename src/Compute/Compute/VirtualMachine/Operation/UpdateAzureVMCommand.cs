@@ -21,6 +21,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
+using ArmCompute = Azure.ResourceManager.Compute.Models;
+using Azure;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -200,6 +202,17 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Specifies whether the regional disks should be aligned/moved to the VM zone. This is applicable only for VMs with placement property set. Please note that this change is irreversible.")]
         [ValidateNotNullOrEmpty]
         public bool? AlignRegionalDisksToVMZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the API version for Event Grid and Resource Graph scheduled events in YYYY-MM-DD format.")]
+        [ValidatePattern(@"^\d{4}-\d{2}-\d{2}$")]
+        public string ScheduledEventsApiVersion { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether Scheduled Events should be auto-approved when all instances are down.")]
+        public bool EnableAllInstancesDown { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -444,26 +457,53 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.StorageProfile.AlignRegionalDisksToVMZone = this.AlignRegionalDisksToVMZone;
                     }
 
+                    if (this.IsParameterBound(c => c.ScheduledEventsApiVersion) || this.IsParameterBound(c => c.EnableAllInstancesDown))
+                    {
+                        // Initialize the policy if it doesn't exist
+                        var scheduledEventsPolicy = new ArmCompute.ScheduledEventsPolicy();
+
+                        // Configure EventGrid and Resource Graph
+                        if (this.IsParameterBound(c => c.ScheduledEventsApiVersion))
+                        {
+                            scheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargetsEventGridAndResourceGraph =
+                                new ArmCompute.EventGridAndResourceGraph
+                                {
+                                    IsEnabled = true,
+                                    ScheduledEventsApiVersion = this.ScheduledEventsApiVersion
+                                };
+                        }
+
+                        // Configure AllInstancesDown
+                        if (this.IsParameterBound(c => c.EnableAllInstancesDown))
+                        {
+                            scheduledEventsPolicy.AllInstancesDown = new ArmCompute.AllInstancesDown
+                            {
+                                AutomaticallyApprove = this.EnableAllInstancesDown
+                            };
+                        }
+                    }
+                    var vmResource = this.ComputeClientTrack2.GetVirtualMachineAsync(
+                        this.ResourceGroupName,
+                        this.VM.Name).GetAwaiter().GetResult();
+
+                    ArmCompute.VirtualMachinePatch vmPatch = ComputeAutoMapperProfile.Mapper.Map<ArmCompute.VirtualMachinePatch>(parameters);
+                    
                     if (NoWait.IsPresent)
                     {
-                        var op = this.VirtualMachineClient.BeginCreateOrUpdateWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.VM.Name,
-                            parameters,
-                            this.IfMatch,
-                            this.IfNoneMatch).GetAwaiter().GetResult();
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                        var updateOperation = vmResource.Update(WaitUntil.Started, vmPatch);
+                        var result = new PSAzureOperationResponse
+                        {
+                            StatusCode = System.Net.HttpStatusCode.Accepted
+                        };
                         WriteObject(result);
                     }
                     else
                     {
-                        var op = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.VM.Name,
-                            parameters,
-                            this.IfMatch,
-                            this.IfNoneMatch).GetAwaiter().GetResult();
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                        var updateOperation = vmResource.Update(WaitUntil.Completed, vmPatch);
+                        var result = new PSAzureOperationResponse
+                        {
+                            StatusCode = System.Net.HttpStatusCode.OK
+                        };
                         WriteObject(result);
                     }
                 });

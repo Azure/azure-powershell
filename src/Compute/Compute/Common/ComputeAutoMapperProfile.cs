@@ -18,8 +18,15 @@ using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using FROM = Microsoft.Azure.Management.Compute.Models;
 using TO = Microsoft.Azure.Commands.Compute.Models;
+using FROMTrack2 = Azure.ResourceManager.Compute.Models;
+using Azure.ResourceManager.Models;
+using Azure.ResourceManager.Compute;
+using Azure.ResourceManager.Resources.Models;
+using Track2Models = Microsoft.Azure.Commands.Compute.Models.Track2;
+using AutomationModels = Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -76,6 +83,108 @@ namespace Microsoft.Azure.Commands.Compute
         {
             var config = new MapperConfiguration(cfg => {
                 cfg.AddProfile<ComputeAutoMapperProfile>();
+
+                // Track2 PSModels => Track1 PSModels
+                // PSVirtualMachineTrack2 => PSVirtualMachine
+                cfg.CreateMap<Track2Models.PSVirtualMachine, TO.PSVirtualMachine>()
+                    // Direct property mappings
+                    .ForMember(d => d.ResourceGroupName, opt => opt.MapFrom(s => s.ResourceGroupName))
+                    .ForMember(d => d.Id, opt => opt.MapFrom(s => s.Id))
+                    .ForMember(d => d.VmId, opt => opt.MapFrom(s => s.VmId))
+                    .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Name))
+                    .ForMember(d => d.Type, opt => opt.MapFrom(s => s.ResourceType))
+                    .ForMember(d => d.Location, opt => opt.MapFrom(s => s.Location))
+                    .ForMember(d => d.Tags, opt => opt.MapFrom(s => s.Tags))
+                    .ForMember(d => d.Zones, opt => opt.MapFrom(s => s.Zones))
+                    // Convert flattened string IDs to SubResource objects
+                    .ForMember(d => d.AvailabilitySetReference, opt => opt.MapFrom(s => 
+                        !string.IsNullOrEmpty(s.AvailabilitySetId) ? new FROM.SubResource(s.AvailabilitySetId) : null))
+                    .ForMember(d => d.VirtualMachineScaleSet, opt => opt.MapFrom(s => 
+                        !string.IsNullOrEmpty(s.VirtualMachineScaleSetId) ? new FROM.SubResource(s.VirtualMachineScaleSetId) : null))
+                    .ForMember(d => d.ProximityPlacementGroup, opt => opt.MapFrom(s => 
+                        !string.IsNullOrEmpty(s.ProximityPlacementGroupId) ? new FROM.SubResource(s.ProximityPlacementGroupId) : null))
+                    .ForMember(d => d.Host, opt => opt.MapFrom(s => 
+                        !string.IsNullOrEmpty(s.HostId) ? new FROM.SubResource(s.HostId) : null))
+                    .ForMember(d => d.HostGroup, opt => opt.MapFrom(s => 
+                        !string.IsNullOrEmpty(s.HostGroupId) ? new FROM.SubResource(s.HostGroupId) : null))
+                    // Convert BootDiagnostics to DiagnosticsProfile wrapper
+                    .ForMember(d => d.DiagnosticsProfile, opt => opt.MapFrom(s => 
+                        s.BootDiagnostics != null ? new FROM.DiagnosticsProfile 
+                        { 
+                            BootDiagnostics = new FROM.BootDiagnostics 
+                            { 
+                                Enabled = s.BootDiagnostics.Enabled,
+                                StorageUri = s.BootDiagnostics.StorageUri
+                            } 
+                        } : null))
+                    // Convert BillingMaxPrice to BillingProfile wrapper
+                    .ForMember(d => d.BillingProfile, opt => opt.MapFrom(s => 
+                        s.BillingMaxPrice.HasValue ? new FROM.BillingProfile { MaxPrice = s.BillingMaxPrice.Value } : null))
+                    // Convert GalleryApplications list to ApplicationProfile wrapper
+                    .ForMember(d => d.ApplicationProfile, opt => opt.MapFrom(s => 
+                        s.GalleryApplications != null && s.GalleryApplications.Count > 0 
+                            ? new AutomationModels.PSApplicationProfile 
+                            { 
+                                GalleryApplications = s.GalleryApplications.Select(ga => new AutomationModels.PSVMGalleryApplication
+                                {
+                                    PackageReferenceId = ga.PackageReferenceId,
+                                    ConfigurationReference = ga.ConfigurationReference,
+                                    Tags = ga.Tags,
+                                    Order = ga.Order,
+                                    TreatFailureAsDeploymentFailure = ga.TreatFailureAsDeploymentFailure,
+                                    EnableAutomaticUpgrade = ga.EnableAutomaticUpgrade
+                                }).ToList()
+                            } 
+                            : null))
+                    // Convert CapacityReservationGroupId to CapacityReservationProfile
+                    .ForMember(d => d.CapacityReservation, opt => opt.MapFrom(s => 
+                        !string.IsNullOrEmpty(s.CapacityReservationGroupId) 
+                            ? new FROM.CapacityReservationProfile 
+                            { 
+                                CapacityReservationGroup = new FROM.SubResource(s.CapacityReservationGroupId) 
+                            } 
+                            : null))
+                    // Map profiles - AutoMapper will handle nested conversions if we set them up
+                    .ForMember(d => d.HardwareProfile, opt => opt.MapFrom(s => s.HardwareProfile))
+                    .ForMember(d => d.StorageProfile, opt => opt.MapFrom(s => s.StorageProfile))
+                    .ForMember(d => d.NetworkProfile, opt => opt.MapFrom(s => s.NetworkProfile))
+                    .ForMember(d => d.OSProfile, opt => opt.MapFrom(s => s.OSProfile))
+                    .ForMember(d => d.SecurityProfile, opt => opt.MapFrom(s => s.SecurityProfile))
+                    .ForMember(d => d.AdditionalCapabilities, opt => opt.MapFrom(s => s.AdditionalCapabilities))
+                    // Map extensions (Resources -> Extensions)
+                    .ForMember(d => d.Extensions, opt => opt.MapFrom(s => s.Resources))
+                    // Map instance view and extract top-level properties
+                    .ForMember(d => d.InstanceView, opt => opt.MapFrom(s => s.InstanceView))
+                    .ForMember(d => d.OsName, opt => opt.MapFrom(s => s.InstanceView != null ? s.InstanceView.OsName : null))
+                    .ForMember(d => d.OsVersion, opt => opt.MapFrom(s => s.InstanceView != null ? s.InstanceView.OsVersion : null))
+                    .ForMember(d => d.HyperVGeneration, opt => opt.MapFrom(s => s.InstanceView != null ? s.InstanceView.HyperVGeneration : null))
+                    // Map other properties
+                    .ForMember(d => d.Plan, opt => opt.MapFrom(s => s.Plan))
+                    .ForMember(d => d.Identity, opt => opt.MapFrom(s => s.Identity))
+                    .ForMember(d => d.ExtendedLocation, opt => opt.MapFrom(s => s.ExtendedLocation))
+                    .ForMember(d => d.LicenseType, opt => opt.MapFrom(s => s.LicenseType))
+                    .ForMember(d => d.ProvisioningState, opt => opt.MapFrom(s => s.ProvisioningState))
+                    .ForMember(d => d.Priority, opt => opt.MapFrom(s => s.Priority))
+                    .ForMember(d => d.EvictionPolicy, opt => opt.MapFrom(s => s.EvictionPolicy))
+                    .ForMember(d => d.UserData, opt => opt.MapFrom(s => s.UserData))
+                    .ForMember(d => d.PlatformFaultDomain, opt => opt.MapFrom(s => s.PlatformFaultDomain))
+                    .ForMember(d => d.TimeCreated, opt => opt.MapFrom(s => s.TimeCreated))
+                    .ForMember(d => d.Etag, opt => opt.MapFrom(s => s.ETag))
+                    .ForMember(d => d.Placement, opt => opt.MapFrom(s => s.Placement))
+                    // Ignore properties not in Track2 or are response-only
+                    .ForMember(d => d.StatusCode, opt => opt.Ignore())
+                    .ForMember(d => d.RequestId, opt => opt.Ignore())
+                    .ForMember(d => d.FullyQualifiedDomainName, opt => opt.Ignore())
+                    .ForMember(d => d.DisplayHint, opt => opt.Ignore())
+                    .ForMember(d => d.AddProxyAgentExtension, opt => opt.Ignore());
+
+                // Explicit mappings for nested profile types used by Track2 PSVirtualMachine
+                cfg.CreateMap<Track2Models.PSHardwareProfileTrack2, FROM.HardwareProfile>();
+                cfg.CreateMap<Track2Models.PSStorageProfileTrack2, FROM.StorageProfile>();
+                cfg.CreateMap<Track2Models.PSNetworkProfileTrack2, FROM.NetworkProfile>();
+                cfg.CreateMap<Track2Models.PSOSProfileTrack2, FROM.OSProfile>();
+                cfg.CreateMap<Track2Models.PSSecurityProfileTrack2, FROM.SecurityProfile>();
+                cfg.CreateMap<Track2Models.PSDiagnosticsProfileTrack2, FROM.DiagnosticsProfile>();
 
                 // => PSComputeLongrunningOperation
                 cfg.CreateMap<Rest.Azure.AzureOperationResponse, TO.PSComputeLongRunningOperation>()
