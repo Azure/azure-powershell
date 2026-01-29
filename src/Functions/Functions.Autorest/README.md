@@ -109,7 +109,6 @@ metadata:
     - Get-AzFunctionApp
     - Get-AzFunctionAppAvailableLocation
     - Get-AzFunctionAppFlexConsumptionRuntime
-    - Get-AzFunctionAppFlexConsumptionRuntime
     - Get-AzFunctionAppPlan
     - Get-AzFunctionAppSetting
     - New-AzFunctionApp

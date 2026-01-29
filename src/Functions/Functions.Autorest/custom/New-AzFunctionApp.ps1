@@ -447,30 +447,15 @@ Example:
         }
 
         # Set function app managed identity
-        if ($EnableSystemAssignedIdentity.IsPresent -or ($UserAssignedIdentity -and $UserAssignedIdentity.Count -gt 0))
+        if ($EnableSystemAssignedIdentity.IsPresent)
         {
-            if ($EnableSystemAssignedIdentity.IsPresent -and ($UserAssignedIdentity -and $UserAssignedIdentity.Count -gt 0))
-            {
-                # Both SystemAssigned and UserAssigned
-                $functionAppDef.IdentityType = "SystemAssigned, UserAssigned"
-            }
-            elseif ($EnableSystemAssignedIdentity.IsPresent)
-            {
-                # SystemAssigned only
-                $functionAppDef.IdentityType = "SystemAssigned"
-            }
-            elseif ($UserAssignedIdentity -and $UserAssignedIdentity.Count -gt 0)
-            {
-                # UserAssigned only
-                $functionAppDef.IdentityType = "UserAssigned"
-            }
-
-            if ($functionAppDef.IdentityType -eq "UserAssigned")
-            {
-                # Set UserAssigned managed identity
-                $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $UserAssignedIdentity
-                $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
-            }
+            $functionAppDef.IdentityType = "SystemAssigned"
+        }
+        elseif ($UserAssignedIdentity -and $UserAssignedIdentity.Count -gt 0)
+        {
+            $functionAppDef.IdentityType = "UserAssigned"
+            $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $UserAssignedIdentity
+            $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
         }
 
         $servicePlan = $null
