@@ -135,8 +135,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSDisk, FROM.Disk>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
-                cfg.CreateMap<FROM.AccessUri, TO.PSAccessUri>();
-                cfg.CreateMap<TO.PSAccessUri, FROM.AccessUri>();
+                cfg.CreateMap<FROM.AccessUri, TO.PSAccessUri>()
+                    .ForMember(c => c.SecurityDataAccessSAS, o => o.MapFrom(r => r.SecurityDataAccessSas))
+                    .ForMember(c => c.SecurityMetadataAccessSAS, o => o.MapFrom(r => r.SecurityMetadataAccessSas));
+                cfg.CreateMap<TO.PSAccessUri, FROM.AccessUri>()
+                    .ForMember(c => c.SecurityDataAccessSas, o => o.MapFrom(r => r.SecurityDataAccessSAS))
+                    .ForMember(c => c.SecurityMetadataAccessSas, o => o.MapFrom(r => r.SecurityMetadataAccessSAS));
                 cfg.CreateMap<FROM.Gallery, TO.PSGallery>();
                 cfg.CreateMap<TO.PSGallery, FROM.Gallery>();
                 cfg.CreateMap<FROM.GalleryImage, TO.PSGalleryImage>();
@@ -183,17 +187,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSVirtualMachineCaptureResult, FROM.VirtualMachineCaptureResult>();
                 cfg.CreateMap<FROM.VirtualMachineInstanceView, TO.PSVirtualMachineInstanceView>();
                 cfg.CreateMap<TO.PSVirtualMachineInstanceView, FROM.VirtualMachineInstanceView>();
-                cfg.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>();
-                cfg.CreateMap<TO.PSVirtualMachineSize, FROM.VirtualMachineSize>();
+                cfg.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>()
+                    .ForMember(c => c.MemoryInMB, o => o.MapFrom(r => r.MemoryInMb))
+                    .ForMember(c => c.OsDiskSizeInMB, o => o.MapFrom(r => r.OSDiskSizeInMb))
+                    .ForMember(c => c.ResourceDiskSizeInMB, o => o.MapFrom(r => r.ResourceDiskSizeInMb));
+                cfg.CreateMap<TO.PSVirtualMachineSize, FROM.VirtualMachineSize>()
+                    .ForMember(c => c.MemoryInMb, o => o.MapFrom(r => r.MemoryInMB))
+                    .ForMember(c => c.OSDiskSizeInMb, o => o.MapFrom(r => r.OsDiskSizeInMB))
+                    .ForMember(c => c.ResourceDiskSizeInMb, o => o.MapFrom(r => r.ResourceDiskSizeInMB));
 
                 cfg.CreateMap<FROM.VirtualMachineScaleSetVMProfile, TO.PSVirtualMachineScaleSetVMProfile>();
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetVMProfile, FROM.VirtualMachineScaleSetVMProfile>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSetExtensionProfile, TO.PSVirtualMachineScaleSetExtensionProfile>();
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetExtensionProfile, FROM.VirtualMachineScaleSetExtensionProfile>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSetExtension, TO.PSVirtualMachineScaleSetExtension>()
-                    .ForMember(c => c.Type, o => o.MapFrom(r => r.VirtualMachineScaleSetExtensionPropertiesType));
+                    .ForMember(c => c.Type, o => o.MapFrom(r => r.VirtualMachineExtensionType));
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetExtension, FROM.VirtualMachineScaleSetExtension>()
-                    .ForMember(c => c.VirtualMachineScaleSetExtensionPropertiesType, o => o.MapFrom(r => r.Type));
+                    .ForMember(c => c.VirtualMachineExtensionType, o => o.MapFrom(r => r.Type));
 
                 cfg.CreateMap<FROM.DiskAccess, TO.PSDiskAccess>();
                 cfg.CreateMap<TO.PSDiskAccess, FROM.DiskAccess>();
@@ -215,9 +225,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.SharedGallery, TO.PSSharedGalleryList>();
                 cfg.CreateMap<TO.PSSharedGalleryList, TO.PSSharedGallery>();
                 cfg.CreateMap<TO.PSSharedGallery, TO.PSSharedGalleryList>();
-                cfg.CreateMap<FROM.SharedGalleryImage, TO.PSSharedGalleryImage>();
-                cfg.CreateMap<TO.PSSharedGalleryImage, FROM.SharedGalleryImage>();
-                cfg.CreateMap<FROM.SharedGalleryImage, TO.PSSharedGalleryImageList>();
+                cfg.CreateMap<FROM.SharedGalleryImage, TO.PSSharedGalleryImage>()
+                    .ForMember(c => c.Identifier, o => o.MapFrom(r => r.PropertiesIdentifier));
+                cfg.CreateMap<TO.PSSharedGalleryImage, FROM.SharedGalleryImage>()
+                    .ForMember(c => c.PropertiesIdentifier, o => o.MapFrom(r => r.Identifier));
+                cfg.CreateMap<FROM.SharedGalleryImage, TO.PSSharedGalleryImageList>()
+                    .ForMember(c => c.Identifier, o => o.MapFrom(r => r.PropertiesIdentifier));
                 cfg.CreateMap<TO.PSSharedGalleryImageList, TO.PSSharedGalleryImage>();
                 cfg.CreateMap<TO.PSSharedGalleryImage, TO.PSSharedGalleryImageList>();
                 cfg.CreateMap<FROM.SharedGalleryImageVersion, TO.PSSharedGalleryImageVersion>();

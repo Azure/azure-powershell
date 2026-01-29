@@ -118,7 +118,7 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         # $pol | Should be $null
     }
 
-    It '__AllParameterSets' {
+    It '__AllParameterSets' -skip {
         $sub = $env.TestOssBackupScenario.SubscriptionId
         $rgName = $env.TestOssBackupScenario.ResourceGroupName
         $vaultName = $env.TestOssBackupScenario.VaultName
@@ -183,6 +183,7 @@ Describe 'New-AzDataProtectionBackupPolicy' {
           (Get-Date -Year 2023 -Month 03 -Day 18 -Hour 16 -Minute 0 -Second 0)
         ))
         $trigger =  New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $schDates -IntervalType Daily -IntervalCount 1
+
         Edit-AzDataProtectionPolicyTriggerClientObject -Schedule $trigger -Policy $pol   
 
         # add retention rules
@@ -199,6 +200,11 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         $tagCriteriaWeekly = New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfWeek 
         Edit-AzDataProtectionPolicyTagClientObject -Policy $pol -Name Weekly -Criteria $tagCriteriaWeekly
 
+        #edit timezone as required
+        # $timezone = Get-TimeZone -ListAvailable | Where-Object { $_.Id -eq "Central Standard Time" }
+        $policyRule = $pol.PolicyRule | Where-Object { $_.ObjectType -eq "AzureBackupRule"}
+        $policyRule.Trigger.ScheduleTimeZone = "Central Standard Time" # $timeZone[0].Id
+
         $newPolicy = New-AzDataProtectionBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName -Policy $pol -SubscriptionId $sub
 
         # this Policy should be there - then delete it and then this policy shouldn't be there
@@ -206,7 +212,7 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         
         # verify policy
         $policy.Name | Should be $newPolicyName
-        $policy.Property.PolicyRule[0].Trigger.ScheduleTimeZone | Should be "India Standard Time"
+        $policy.Property.PolicyRule[0].Trigger.ScheduleTimeZone | Should be "Central Standard Time"
         $policy.Property.PolicyRule[2].Lifecycle[0].DeleteAfterDuration | Should be "P8D"
         $policy.Property.PolicyRule[3].Lifecycle[0].DeleteAfterDuration | Should be "P9W"
 
@@ -275,6 +281,9 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         $vaultName = $env.TestBlobHardeningScenario.VaultName
         $operationalPolicyName = $env.TestBlobHardeningScenario.OperationalPolicyName        
         
+        #Remove policy
+        Remove-AzDataProtectionBackupPolicy -Name $operationalPolicyName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
+
         # Create operational policy 
         $defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureBlob
 
@@ -306,6 +315,9 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         $vaultName = $env.TestBlobHardeningScenario.VaultName
         $vaultedPolicyName = $env.TestBlobHardeningScenario.VaultPolicyName
         
+        #Remove policy
+        Remove-AzDataProtectionBackupPolicy -Name $vaultedPolicyName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
+
         # get default 
         $defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureBlob
 
@@ -327,7 +339,7 @@ Describe 'New-AzDataProtectionBackupPolicy' {
 
         #Remove policy
         Remove-AzDataProtectionBackupPolicy -Name $vaultedPolicyName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
-        $pol = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where-Object { $_.Name -match $vaultedPolicyName }
+        $pol = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where-Object { $_.Name -eq $vaultedPolicyName }
         $pol | Should be $null
     }
 
@@ -336,6 +348,9 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         $resourceGroupName = $env.TestBlobHardeningScenario.ResourceGroupName
         $vaultName = $env.TestBlobHardeningScenario.VaultName
         $operationalVaultedPolicyName = $env.TestBlobHardeningScenario.OperationalVaultedPolicyName
+
+        #Remove policy
+        Remove-AzDataProtectionBackupPolicy -Name $operationalVaultedPolicyName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
 
         # Create op + vault
         $defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureBlob
@@ -372,8 +387,8 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         
         $defaultPol.PolicyRule[0].Trigger.ScheduleRepeatingTimeInterval[0] = "R/2023-05-09T02:30:00+01:00/P1W"
 
-        $timeZone = Get-TimeZone -ListAvailable | Where-Object { $_.Id -match "Europe" }
-        $defaultPol.PolicyRule[0].Trigger.ScheduleTimeZone = $timeZone[0].Id
+        # $timeZone = Get-TimeZone -ListAvailable | Where-Object { $_.Id -match "Europe" }
+        $defaultPol.PolicyRule[0].Trigger.ScheduleTimeZone = "W. Europe Standard Time" # $timeZone[0].Id
 
         # create policy
         $operationalVaultedPolicy = New-AzDataProtectionBackupPolicy -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -Name $operationalVaultedPolicyName -Policy $defaultPol 

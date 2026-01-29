@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.signalr/add-azsignalrnetworkiprule
 schema: 2.0.0
 ---
 
@@ -15,20 +15,20 @@ Add one or more IP rules to the Network ACLs of an Azure SignalR Service instanc
 ### ResourceGroupParameterSet (Default)
 ```
 Add-AzSignalRNetworkIpRule [-ResourceGroupName <String>] [-Name] <String> -IpRule <PSIpRule[]>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Add-AzSignalRNetworkIpRule -ResourceId <String> -IpRule <PSIpRule[]> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Add-AzSignalRNetworkIpRule -InputObject <PSSignalRResource> -IpRule <PSIpRule[]>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -46,6 +46,7 @@ $rule2 = New-AzSignalRNetworkIpRuleObject -Value "20.2.2.2" -Action Deny
 $acls = Add-AzSignalRNetworkIpRule -ResourceGroupName $rg -Name $signalrName -IpRule $rule1,$rule2
 $acls.IPRules
 ```
+
 Adds two rules (an allow CIDR and a deny single IP) to the SignalR instance identified by resource group and name.
 
 ### Example 2: Add IP rule using resource ID (ResourceIdParameterSet)
@@ -54,6 +55,7 @@ $signalr = Get-AzSignalR -ResourceGroupName "my-rg" -Name "mysignalr"
 $rule = New-AzSignalRNetworkIpRuleObject -Value "30.3.3.3" -Action Allow
 $acls = Add-AzSignalRNetworkIpRule -ResourceId $signalr.Id -IpRule $rule
 ```
+
 Retrieves the SignalR instance, then adds a single allow rule using the resource ID parameter set.
 
 ### Example 3: Add IP rules via pipeline SignalR object (InputObjectParameterSet)
@@ -62,6 +64,7 @@ $ruleAllow = New-AzSignalRNetworkIpRuleObject -Value "40.4.0.0/24" -Action Allow
 $ruleDeny  = New-AzSignalRNetworkIpRuleObject -Value "50.5.5.5" -Action Deny
 Get-AzSignalR -ResourceGroupName "my-rg" -Name "mysignalr" | Add-AzSignalRNetworkIpRule -IpRule $ruleAllow,$ruleDeny
 ```
+
 Pipes a SignalR resource object into the cmdlet and adds two IP rules.
 
 ## PARAMETERS
@@ -70,7 +73,7 @@ Pipes a SignalR resource object into the cmdlet and adds two IP rules.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -85,7 +88,7 @@ Accept wildcard characters: False
 The SignalR resource object.
 
 ```yaml
-Type: PSSignalRResource
+Type: Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -100,7 +103,7 @@ Accept wildcard characters: False
 IP rule object(s) created by New-AzSignalRNetworkIpRuleObject.
 
 ```yaml
-Type: PSIpRule[]
+Type: Microsoft.Azure.Commands.SignalR.Models.PSIpRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -115,7 +118,7 @@ Accept wildcard characters: False
 The SignalR service name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -126,26 +129,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-Determines how PowerShell handles progress updates for the cmdlet. Specify SilentlyContinue to suppress progress output.
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group name. The default one will be used if not specified.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -160,7 +148,7 @@ Accept wildcard characters: False
 The SignalR service resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -175,7 +163,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -190,7 +178,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

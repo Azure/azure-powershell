@@ -1,8 +1,8 @@
 {
-  "New-AzNetworkSecurityPerimeterProfile+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tklmb/providers/Microsoft.Network/networkSecurityPerimeters/tklmbt-nsp1/profiles/psprofile1?api-version=2025-01-01+1": {
+  "New-AzNetworkSecurityPerimeterProfile+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t7qc8/providers/Microsoft.Network/networkSecurityPerimeters/t7qc8t-nsp1/profiles/psprofile1?api-version=2025-05-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tklmb/providers/Microsoft.Network/networkSecurityPerimeters/tklmbt-nsp1/profiles/psprofile1?api-version=2025-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t7qc8/providers/Microsoft.Network/networkSecurityPerimeters/t7qc8t-nsp1/profiles/psprofile1?api-version=2025-05-01",
       "Content": "{\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,23 +18,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=37ca76fe-83f1-4c59-823b-b1953db8111c/eastus2euap/4b5e3f3f-d3fe-46e0-8007-e2e2ddb270a3" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=37ca76fe-83f1-4c59-823b-b1953db8111c/eastus2euap/f2ff1f26-167d-49b3-be8a-0de0e3c165d1" ],
         "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-request-id": [ "0c27ee2b-04fc-444b-8786-0714841c57c4" ],
-        "x-ms-correlation-request-id": [ "0c27ee2b-04fc-444b-8786-0714841c57c4" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20251009T100841Z:0c27ee2b-04fc-444b-8786-0714841c57c4" ],
+        "x-ms-request-id": [ "5e5915f7-493f-4b07-ad49-1acfe705a406" ],
+        "x-ms-correlation-request-id": [ "5e5915f7-493f-4b07-ad49-1acfe705a406" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260121T113243Z:5e5915f7-493f-4b07-ad49-1acfe705a406" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6FF68E0EC7F641D49578D8F69F974AAE Ref B: MNZ221060610027 Ref C: 2025-10-09T10:08:40Z" ],
-        "Date": [ "Thu, 09 Oct 2025 10:08:40 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 60113EF9C3E148DEBBDD2D7B22C68094 Ref B: MNZ221060610007 Ref C: 2026-01-21T11:32:42Z" ],
+        "Date": [ "Wed, 21 Jan 2026 11:32:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "595" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"psprofile1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tklmb/providers/Microsoft.Network/networkSecurityPerimeters/tklmbt-nsp1/profiles/psprofile1\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/profiles\",\"properties\":{\"accessRulesVersion\":\"0\",\"diagnosticSettingsVersion\":\"0\"},\"location\":\"eastus2euap\",\"systemData\":{\"createdBy\":\"karthikgumpu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T10:08:40.9396489Z\",\"lastModifiedBy\":\"karthikgumpu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T10:08:40.9396489Z\"}}",
+      "Content": "{\"name\":\"psprofile1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t7qc8/providers/Microsoft.Network/networkSecurityPerimeters/t7qc8t-nsp1/profiles/psprofile1\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/profiles\",\"properties\":{\"accessRulesVersion\":\"0\",\"diagnosticSettingsVersion\":\"0\"},\"location\":\"eastus2euap\",\"systemData\":{\"createdBy\":\"karthikgumpu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-21T11:32:43.0575314Z\",\"lastModifiedBy\":\"karthikgumpu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-21T11:32:43.0575314Z\"}}",
       "isContentBase64": false
     }
   }

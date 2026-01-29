@@ -214,6 +214,10 @@ Get-AzFunctionAppAvailableLocation
 Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux
 .Example
 Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows
+.Example
+Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption
+.Example
+Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundancy
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IGeoRegion
@@ -245,6 +249,12 @@ param(
     [System.String]
     # The OS type for the service plan.
     ${OSType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Filter the list to return only locations which support zone redundancy.
+    ${ZoneRedundancy},
 
     [Parameter(Position=3)]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -324,6 +334,143 @@ begin {
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Functions.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets the Flex Consumption function app runtimes supported at the specified location.
+.Description
+Gets the Flex Consumption function app runtimes supported at the specified location.
+.Example
+Get-AzFunctionAppFlexConsumptionRuntime -Location 'East Asia'
+.Example
+Get-AzFunctionAppFlexConsumptionRuntime -Location 'East Asia' -Runtime Python
+.Example
+Get-AzFunctionAppFlexConsumptionRuntime -Location 'east asia' -Runtime PowerShell -DefaultOrLatest
+.Example
+Get-AzFunctionAppFlexConsumptionRuntime -Location 'East Asia' -Runtime Python -Version 3.12
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.FunctionAppFlexConsumptionRuntime
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionappflexconsumptionruntime
+#>
+function Get-AzFunctionAppFlexConsumptionRuntime {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.FunctionAppFlexConsumptionRuntime])]
+[CmdletBinding(DefaultParameterSetName='AllRuntimes', PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # The location where Flex Consumption function apps are supported.
+    ${Location},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # The Azure subscription ID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DefaultOrLatest', Mandatory)]
+    [Parameter(ParameterSetName='ByVersion', Mandatory)]
+    [Parameter(ParameterSetName='AllVersions', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # The Flex Consumption function app runtime.
+    ${Runtime},
+
+    [Parameter(ParameterSetName='DefaultOrLatest', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Get the default or latest version of the specified runtime.
+    ${DefaultOrLatest},
+
+    [Parameter(ParameterSetName='ByVersion', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # The function app runtime version.
+    ${Version}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Functions.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            AllRuntimes = 'Az.Functions.custom\Get-AzFunctionAppFlexConsumptionRuntime';
+            DefaultOrLatest = 'Az.Functions.custom\Get-AzFunctionAppFlexConsumptionRuntime';
+            ByVersion = 'Az.Functions.custom\Get-AzFunctionAppFlexConsumptionRuntime';
+            AllVersions = 'Az.Functions.custom\Get-AzFunctionAppFlexConsumptionRuntime';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -628,7 +775,7 @@ INPUTOBJECT <ISite>:
     [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
     [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
       [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
       [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
       [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
       [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -758,6 +905,7 @@ INPUTOBJECT <ISite>:
   [DnsConfigurationDnsRetryAttemptTimeout <Int32?>]: Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.
   [DnsConfigurationDnsServer <String[]>]: List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
   [Enabled <Boolean?>]: <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
+  [EndToEndEncryptionEnabled <Boolean?>]: Whether to use end to end encryption between the FrontEnd and the Worker
   [ExtendedLocationName <String>]: Name of extended location.
   [HostNameSslState <IHostNameSslState[]>]: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
     [HostType <HostType?>]: Indicates whether the hostname is a standard or repository hostname.
@@ -768,7 +916,7 @@ INPUTOBJECT <ISite>:
     [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
   [HostNamesDisabled <Boolean?>]: <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.          If <code>true</code>, the app is only accessible via API management process.
   [HostingEnvironmentProfileId <String>]: Resource ID of the App Service Environment.
-  [HttpPerInstanceConcurrency <Single?>]: The maximum number of concurrent HTTP trigger invocations per instance.
+  [HttpPerInstanceConcurrency <Int32?>]: The maximum number of concurrent HTTP trigger invocations per instance.
   [HttpsOnly <Boolean?>]: HttpsOnly: configures a web site to accept only https requests. Issues redirect for         http requests
   [HyperV <Boolean?>]: Hyper-V sandbox.
   [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity.
@@ -785,10 +933,10 @@ INPUTOBJECT <ISite>:
   [RuntimeName <RuntimeName?>]: Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
   [RuntimeVersion <String>]: Function app runtime version. Example: 8 (for dotnet-isolated)
   [ScaleAndConcurrencyAlwaysReady <IFunctionsAlwaysReadyConfig[]>]: 'Always Ready' configuration for the function app.
-    [InstanceCount <Single?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+    [InstanceCount <Int32?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
     [Name <String>]: Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
-  [ScaleAndConcurrencyInstanceMemoryMb <Single?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-  [ScaleAndConcurrencyMaximumInstanceCount <Single?>]: The maximum number of instances for the function app.
+  [ScaleAndConcurrencyInstanceMemoryMb <Int32?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
+  [ScaleAndConcurrencyMaximumInstanceCount <Int32?>]: The maximum number of instances for the function app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   [StorageAccountRequired <Boolean?>]: Checks if Customer provided storage account is required
@@ -991,6 +1139,12 @@ New-AzFunctionApp -Name MyUniqueFunctionAppName `
                   -StorageAccountName MyStorageAccountName `
                   -Environment MyEnvironment `
                   -WorkloadProfileName MyWorkloadProfileName
+.Example
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -FlexConsumptionLocation LocationWhereFlexConsumptionIsSupported `
+                  -StorageAccountName MyStorageAccountName `
+                  -Runtime PowerShell
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
@@ -1026,6 +1180,7 @@ param(
     ${Location},
 
     [Parameter(ParameterSetName='Consumption', Mandatory)]
+    [Parameter(ParameterSetName='FlexConsumption', Mandatory)]
     [Parameter(ParameterSetName='ByAppServicePlan', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
@@ -1062,6 +1217,7 @@ param(
     ${OSType},
 
     [Parameter(ParameterSetName='Consumption')]
+    [Parameter(ParameterSetName='FlexConsumption')]
     [Parameter(ParameterSetName='ByAppServicePlan')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
@@ -1121,6 +1277,74 @@ param(
     #             The user identity references will be ARM resource ids in the form:
     #             '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
     ${IdentityID},
+
+    [Parameter(ParameterSetName='FlexConsumption', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Location to create Flex Consumption function app.
+    ${FlexConsumptionLocation},
+
+    [Parameter(ParameterSetName='FlexConsumption')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Name of deployment storage account to be used for function app artifacts.
+    ${DeploymentStorageName},
+
+    [Parameter(ParameterSetName='FlexConsumption')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Deployment storage container name.
+    ${DeploymentStorageContainerName},
+
+    [Parameter(ParameterSetName='FlexConsumption')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Deployment storage authentication type.
+    # Allowed values: StorageAccountConnectionString, SystemAssignedIdentity, UserAssignedIdentity
+    ${DeploymentStorageAuthType},
+
+    [Parameter(ParameterSetName='FlexConsumption')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Deployment storage authentication value used for the chosen auth type (eg: connection string, or user-assigned identity resource id).
+    ${DeploymentStorageAuthValue},
+
+    [Parameter(ParameterSetName='FlexConsumption')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Collections.Hashtable[]]
+    # Array of hashtables describing the AlwaysReady configuration.
+    # Each hashtable must include:
+    # - name: The function name or route name.
+    # - instanceCount: The number of pre-warmed instances for that function.
+    # 
+    # Example:
+    # @(@{ name = "http"; instanceCount = 2 }).
+    ${AlwaysReady},
+
+    [Parameter(ParameterSetName='FlexConsumption')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Int32]
+    # Maximum instance count for Flex Consumption.
+    ${MaximumInstanceCount},
+
+    [Parameter(ParameterSetName='FlexConsumption')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Int32]
+    # Per-instance memory in MB for Flex Consumption instances.
+    ${InstanceMemoryMB},
+
+    [Parameter(ParameterSetName='FlexConsumption')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Int32]
+    # The maximum number of concurrent HTTP trigger invocations per instance.
+    ${HttpPerInstanceConcurrency},
+
+    [Parameter(ParameterSetName='FlexConsumption')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable zone redundancy for high availability.
+    # Applies to Flex Consumption SKU only.
+    ${EnableZoneRedundancy},
 
     [Parameter(ParameterSetName='EnvironmentForContainerApp', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
@@ -1272,11 +1496,12 @@ begin {
 
         $mapping = @{
             Consumption = 'Az.Functions.custom\New-AzFunctionApp';
+            FlexConsumption = 'Az.Functions.custom\New-AzFunctionApp';
             EnvironmentForContainerApp = 'Az.Functions.custom\New-AzFunctionApp';
             CustomDockerImage = 'Az.Functions.custom\New-AzFunctionApp';
             ByAppServicePlan = 'Az.Functions.custom\New-AzFunctionApp';
         }
-        if (('Consumption', 'EnvironmentForContainerApp', 'CustomDockerImage', 'ByAppServicePlan') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Consumption', 'FlexConsumption', 'EnvironmentForContainerApp', 'CustomDockerImage', 'ByAppServicePlan') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -1635,7 +1860,7 @@ INPUTOBJECT <ISite>:
     [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
     [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
       [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
       [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
       [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
       [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -1765,6 +1990,7 @@ INPUTOBJECT <ISite>:
   [DnsConfigurationDnsRetryAttemptTimeout <Int32?>]: Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.
   [DnsConfigurationDnsServer <String[]>]: List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
   [Enabled <Boolean?>]: <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
+  [EndToEndEncryptionEnabled <Boolean?>]: Whether to use end to end encryption between the FrontEnd and the Worker
   [ExtendedLocationName <String>]: Name of extended location.
   [HostNameSslState <IHostNameSslState[]>]: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
     [HostType <HostType?>]: Indicates whether the hostname is a standard or repository hostname.
@@ -1775,7 +2001,7 @@ INPUTOBJECT <ISite>:
     [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
   [HostNamesDisabled <Boolean?>]: <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.          If <code>true</code>, the app is only accessible via API management process.
   [HostingEnvironmentProfileId <String>]: Resource ID of the App Service Environment.
-  [HttpPerInstanceConcurrency <Single?>]: The maximum number of concurrent HTTP trigger invocations per instance.
+  [HttpPerInstanceConcurrency <Int32?>]: The maximum number of concurrent HTTP trigger invocations per instance.
   [HttpsOnly <Boolean?>]: HttpsOnly: configures a web site to accept only https requests. Issues redirect for         http requests
   [HyperV <Boolean?>]: Hyper-V sandbox.
   [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity.
@@ -1792,10 +2018,10 @@ INPUTOBJECT <ISite>:
   [RuntimeName <RuntimeName?>]: Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
   [RuntimeVersion <String>]: Function app runtime version. Example: 8 (for dotnet-isolated)
   [ScaleAndConcurrencyAlwaysReady <IFunctionsAlwaysReadyConfig[]>]: 'Always Ready' configuration for the function app.
-    [InstanceCount <Single?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+    [InstanceCount <Int32?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
     [Name <String>]: Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
-  [ScaleAndConcurrencyInstanceMemoryMb <Single?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-  [ScaleAndConcurrencyMaximumInstanceCount <Single?>]: The maximum number of instances for the function app.
+  [ScaleAndConcurrencyInstanceMemoryMb <Int32?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
+  [ScaleAndConcurrencyMaximumInstanceCount <Int32?>]: The maximum number of instances for the function app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   [StorageAccountRequired <Boolean?>]: Checks if Customer provided storage account is required
@@ -2282,7 +2508,7 @@ INPUTOBJECT <ISite>:
     [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
     [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
       [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
       [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
       [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
       [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -2412,6 +2638,7 @@ INPUTOBJECT <ISite>:
   [DnsConfigurationDnsRetryAttemptTimeout <Int32?>]: Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.
   [DnsConfigurationDnsServer <String[]>]: List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
   [Enabled <Boolean?>]: <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
+  [EndToEndEncryptionEnabled <Boolean?>]: Whether to use end to end encryption between the FrontEnd and the Worker
   [ExtendedLocationName <String>]: Name of extended location.
   [HostNameSslState <IHostNameSslState[]>]: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
     [HostType <HostType?>]: Indicates whether the hostname is a standard or repository hostname.
@@ -2422,7 +2649,7 @@ INPUTOBJECT <ISite>:
     [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
   [HostNamesDisabled <Boolean?>]: <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.          If <code>true</code>, the app is only accessible via API management process.
   [HostingEnvironmentProfileId <String>]: Resource ID of the App Service Environment.
-  [HttpPerInstanceConcurrency <Single?>]: The maximum number of concurrent HTTP trigger invocations per instance.
+  [HttpPerInstanceConcurrency <Int32?>]: The maximum number of concurrent HTTP trigger invocations per instance.
   [HttpsOnly <Boolean?>]: HttpsOnly: configures a web site to accept only https requests. Issues redirect for         http requests
   [HyperV <Boolean?>]: Hyper-V sandbox.
   [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity.
@@ -2439,10 +2666,10 @@ INPUTOBJECT <ISite>:
   [RuntimeName <RuntimeName?>]: Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
   [RuntimeVersion <String>]: Function app runtime version. Example: 8 (for dotnet-isolated)
   [ScaleAndConcurrencyAlwaysReady <IFunctionsAlwaysReadyConfig[]>]: 'Always Ready' configuration for the function app.
-    [InstanceCount <Single?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+    [InstanceCount <Int32?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
     [Name <String>]: Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
-  [ScaleAndConcurrencyInstanceMemoryMb <Single?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-  [ScaleAndConcurrencyMaximumInstanceCount <Single?>]: The maximum number of instances for the function app.
+  [ScaleAndConcurrencyInstanceMemoryMb <Int32?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
+  [ScaleAndConcurrencyMaximumInstanceCount <Int32?>]: The maximum number of instances for the function app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   [StorageAccountRequired <Boolean?>]: Checks if Customer provided storage account is required
@@ -2702,7 +2929,7 @@ INPUTOBJECT <ISite>:
     [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
     [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
       [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
       [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
       [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
       [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -2832,6 +3059,7 @@ INPUTOBJECT <ISite>:
   [DnsConfigurationDnsRetryAttemptTimeout <Int32?>]: Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.
   [DnsConfigurationDnsServer <String[]>]: List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
   [Enabled <Boolean?>]: <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
+  [EndToEndEncryptionEnabled <Boolean?>]: Whether to use end to end encryption between the FrontEnd and the Worker
   [ExtendedLocationName <String>]: Name of extended location.
   [HostNameSslState <IHostNameSslState[]>]: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
     [HostType <HostType?>]: Indicates whether the hostname is a standard or repository hostname.
@@ -2842,7 +3070,7 @@ INPUTOBJECT <ISite>:
     [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
   [HostNamesDisabled <Boolean?>]: <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.          If <code>true</code>, the app is only accessible via API management process.
   [HostingEnvironmentProfileId <String>]: Resource ID of the App Service Environment.
-  [HttpPerInstanceConcurrency <Single?>]: The maximum number of concurrent HTTP trigger invocations per instance.
+  [HttpPerInstanceConcurrency <Int32?>]: The maximum number of concurrent HTTP trigger invocations per instance.
   [HttpsOnly <Boolean?>]: HttpsOnly: configures a web site to accept only https requests. Issues redirect for         http requests
   [HyperV <Boolean?>]: Hyper-V sandbox.
   [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity.
@@ -2859,10 +3087,10 @@ INPUTOBJECT <ISite>:
   [RuntimeName <RuntimeName?>]: Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
   [RuntimeVersion <String>]: Function app runtime version. Example: 8 (for dotnet-isolated)
   [ScaleAndConcurrencyAlwaysReady <IFunctionsAlwaysReadyConfig[]>]: 'Always Ready' configuration for the function app.
-    [InstanceCount <Single?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+    [InstanceCount <Int32?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
     [Name <String>]: Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
-  [ScaleAndConcurrencyInstanceMemoryMb <Single?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-  [ScaleAndConcurrencyMaximumInstanceCount <Single?>]: The maximum number of instances for the function app.
+  [ScaleAndConcurrencyInstanceMemoryMb <Int32?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
+  [ScaleAndConcurrencyMaximumInstanceCount <Int32?>]: The maximum number of instances for the function app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   [StorageAccountRequired <Boolean?>]: Checks if Customer provided storage account is required
@@ -3122,7 +3350,7 @@ INPUTOBJECT <ISite>:
     [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
     [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
       [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
       [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
       [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
       [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -3252,6 +3480,7 @@ INPUTOBJECT <ISite>:
   [DnsConfigurationDnsRetryAttemptTimeout <Int32?>]: Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.
   [DnsConfigurationDnsServer <String[]>]: List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
   [Enabled <Boolean?>]: <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
+  [EndToEndEncryptionEnabled <Boolean?>]: Whether to use end to end encryption between the FrontEnd and the Worker
   [ExtendedLocationName <String>]: Name of extended location.
   [HostNameSslState <IHostNameSslState[]>]: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
     [HostType <HostType?>]: Indicates whether the hostname is a standard or repository hostname.
@@ -3262,7 +3491,7 @@ INPUTOBJECT <ISite>:
     [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
   [HostNamesDisabled <Boolean?>]: <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.          If <code>true</code>, the app is only accessible via API management process.
   [HostingEnvironmentProfileId <String>]: Resource ID of the App Service Environment.
-  [HttpPerInstanceConcurrency <Single?>]: The maximum number of concurrent HTTP trigger invocations per instance.
+  [HttpPerInstanceConcurrency <Int32?>]: The maximum number of concurrent HTTP trigger invocations per instance.
   [HttpsOnly <Boolean?>]: HttpsOnly: configures a web site to accept only https requests. Issues redirect for         http requests
   [HyperV <Boolean?>]: Hyper-V sandbox.
   [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity.
@@ -3279,10 +3508,10 @@ INPUTOBJECT <ISite>:
   [RuntimeName <RuntimeName?>]: Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
   [RuntimeVersion <String>]: Function app runtime version. Example: 8 (for dotnet-isolated)
   [ScaleAndConcurrencyAlwaysReady <IFunctionsAlwaysReadyConfig[]>]: 'Always Ready' configuration for the function app.
-    [InstanceCount <Single?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+    [InstanceCount <Int32?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
     [Name <String>]: Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
-  [ScaleAndConcurrencyInstanceMemoryMb <Single?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-  [ScaleAndConcurrencyMaximumInstanceCount <Single?>]: The maximum number of instances for the function app.
+  [ScaleAndConcurrencyInstanceMemoryMb <Int32?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
+  [ScaleAndConcurrencyMaximumInstanceCount <Int32?>]: The maximum number of instances for the function app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   [StorageAccountRequired <Boolean?>]: Checks if Customer provided storage account is required
@@ -3536,7 +3765,7 @@ INPUTOBJECT <ISite>:
     [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
     [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
       [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
       [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
       [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
       [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -3666,6 +3895,7 @@ INPUTOBJECT <ISite>:
   [DnsConfigurationDnsRetryAttemptTimeout <Int32?>]: Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.
   [DnsConfigurationDnsServer <String[]>]: List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
   [Enabled <Boolean?>]: <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
+  [EndToEndEncryptionEnabled <Boolean?>]: Whether to use end to end encryption between the FrontEnd and the Worker
   [ExtendedLocationName <String>]: Name of extended location.
   [HostNameSslState <IHostNameSslState[]>]: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
     [HostType <HostType?>]: Indicates whether the hostname is a standard or repository hostname.
@@ -3676,7 +3906,7 @@ INPUTOBJECT <ISite>:
     [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
   [HostNamesDisabled <Boolean?>]: <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.          If <code>true</code>, the app is only accessible via API management process.
   [HostingEnvironmentProfileId <String>]: Resource ID of the App Service Environment.
-  [HttpPerInstanceConcurrency <Single?>]: The maximum number of concurrent HTTP trigger invocations per instance.
+  [HttpPerInstanceConcurrency <Int32?>]: The maximum number of concurrent HTTP trigger invocations per instance.
   [HttpsOnly <Boolean?>]: HttpsOnly: configures a web site to accept only https requests. Issues redirect for         http requests
   [HyperV <Boolean?>]: Hyper-V sandbox.
   [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity.
@@ -3693,10 +3923,10 @@ INPUTOBJECT <ISite>:
   [RuntimeName <RuntimeName?>]: Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
   [RuntimeVersion <String>]: Function app runtime version. Example: 8 (for dotnet-isolated)
   [ScaleAndConcurrencyAlwaysReady <IFunctionsAlwaysReadyConfig[]>]: 'Always Ready' configuration for the function app.
-    [InstanceCount <Single?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+    [InstanceCount <Int32?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
     [Name <String>]: Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
-  [ScaleAndConcurrencyInstanceMemoryMb <Single?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-  [ScaleAndConcurrencyMaximumInstanceCount <Single?>]: The maximum number of instances for the function app.
+  [ScaleAndConcurrencyInstanceMemoryMb <Int32?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
+  [ScaleAndConcurrencyMaximumInstanceCount <Int32?>]: The maximum number of instances for the function app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   [StorageAccountRequired <Boolean?>]: Checks if Customer provided storage account is required
@@ -3959,7 +4189,7 @@ INPUTOBJECT <ISite>:
     [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
     [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
       [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
       [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
       [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
       [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -4089,6 +4319,7 @@ INPUTOBJECT <ISite>:
   [DnsConfigurationDnsRetryAttemptTimeout <Int32?>]: Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.
   [DnsConfigurationDnsServer <String[]>]: List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
   [Enabled <Boolean?>]: <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
+  [EndToEndEncryptionEnabled <Boolean?>]: Whether to use end to end encryption between the FrontEnd and the Worker
   [ExtendedLocationName <String>]: Name of extended location.
   [HostNameSslState <IHostNameSslState[]>]: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
     [HostType <HostType?>]: Indicates whether the hostname is a standard or repository hostname.
@@ -4099,7 +4330,7 @@ INPUTOBJECT <ISite>:
     [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
   [HostNamesDisabled <Boolean?>]: <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.          If <code>true</code>, the app is only accessible via API management process.
   [HostingEnvironmentProfileId <String>]: Resource ID of the App Service Environment.
-  [HttpPerInstanceConcurrency <Single?>]: The maximum number of concurrent HTTP trigger invocations per instance.
+  [HttpPerInstanceConcurrency <Int32?>]: The maximum number of concurrent HTTP trigger invocations per instance.
   [HttpsOnly <Boolean?>]: HttpsOnly: configures a web site to accept only https requests. Issues redirect for         http requests
   [HyperV <Boolean?>]: Hyper-V sandbox.
   [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity.
@@ -4116,10 +4347,10 @@ INPUTOBJECT <ISite>:
   [RuntimeName <RuntimeName?>]: Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
   [RuntimeVersion <String>]: Function app runtime version. Example: 8 (for dotnet-isolated)
   [ScaleAndConcurrencyAlwaysReady <IFunctionsAlwaysReadyConfig[]>]: 'Always Ready' configuration for the function app.
-    [InstanceCount <Single?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+    [InstanceCount <Int32?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
     [Name <String>]: Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
-  [ScaleAndConcurrencyInstanceMemoryMb <Single?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-  [ScaleAndConcurrencyMaximumInstanceCount <Single?>]: The maximum number of instances for the function app.
+  [ScaleAndConcurrencyInstanceMemoryMb <Int32?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
+  [ScaleAndConcurrencyMaximumInstanceCount <Int32?>]: The maximum number of instances for the function app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   [StorageAccountRequired <Boolean?>]: Checks if Customer provided storage account is required
@@ -4699,7 +4930,7 @@ INPUTOBJECT <ISite>:
     [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
     [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
       [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
       [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
       [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
       [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -4829,6 +5060,7 @@ INPUTOBJECT <ISite>:
   [DnsConfigurationDnsRetryAttemptTimeout <Int32?>]: Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.
   [DnsConfigurationDnsServer <String[]>]: List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
   [Enabled <Boolean?>]: <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
+  [EndToEndEncryptionEnabled <Boolean?>]: Whether to use end to end encryption between the FrontEnd and the Worker
   [ExtendedLocationName <String>]: Name of extended location.
   [HostNameSslState <IHostNameSslState[]>]: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
     [HostType <HostType?>]: Indicates whether the hostname is a standard or repository hostname.
@@ -4839,7 +5071,7 @@ INPUTOBJECT <ISite>:
     [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
   [HostNamesDisabled <Boolean?>]: <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.          If <code>true</code>, the app is only accessible via API management process.
   [HostingEnvironmentProfileId <String>]: Resource ID of the App Service Environment.
-  [HttpPerInstanceConcurrency <Single?>]: The maximum number of concurrent HTTP trigger invocations per instance.
+  [HttpPerInstanceConcurrency <Int32?>]: The maximum number of concurrent HTTP trigger invocations per instance.
   [HttpsOnly <Boolean?>]: HttpsOnly: configures a web site to accept only https requests. Issues redirect for         http requests
   [HyperV <Boolean?>]: Hyper-V sandbox.
   [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity.
@@ -4856,10 +5088,10 @@ INPUTOBJECT <ISite>:
   [RuntimeName <RuntimeName?>]: Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
   [RuntimeVersion <String>]: Function app runtime version. Example: 8 (for dotnet-isolated)
   [ScaleAndConcurrencyAlwaysReady <IFunctionsAlwaysReadyConfig[]>]: 'Always Ready' configuration for the function app.
-    [InstanceCount <Single?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+    [InstanceCount <Int32?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
     [Name <String>]: Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
-  [ScaleAndConcurrencyInstanceMemoryMb <Single?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-  [ScaleAndConcurrencyMaximumInstanceCount <Single?>]: The maximum number of instances for the function app.
+  [ScaleAndConcurrencyInstanceMemoryMb <Int32?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
+  [ScaleAndConcurrencyMaximumInstanceCount <Int32?>]: The maximum number of instances for the function app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   [StorageAccountRequired <Boolean?>]: Checks if Customer provided storage account is required

@@ -1,17 +1,17 @@
 {
-  "Get-AzContainerRegistryUsage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/rfkqmj/listUsages?api-version=2023-01-01-preview+1": {
+  "Get-AzContainerRegistryUsage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/beauxq/listUsages?api-version=2023-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/rfkqmj/listUsages?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ContainerTest/providers/Microsoft.ContainerRegistry/registries/beauxq/listUsages?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "108" ],
-        "x-ms-client-request-id": [ "0c40dd67-c390-478b-b0b0-601ef33bcec6" ],
+        "x-ms-unique-id": [ "92" ],
+        "x-ms-client-request-id": [ "8d46096b-10e5-4200-a033-f438375b60e1" ],
         "CommandName": [ "Get-AzContainerRegistryUsage" ],
         "FullCommandName": [ "Get-AzContainerRegistryUsage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.10", "Az.ContainerRegistry/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.ContainerRegistry/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,22 +22,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "api-supported-versions": [ "2023-01-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11911" ],
-        "x-ms-request-id": [ "9d764738-46f0-4ad1-9b73-880074b17f4b" ],
-        "x-ms-correlation-request-id": [ "9d764738-46f0-4ad1-9b73-880074b17f4b" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230416T210024Z:9d764738-46f0-4ad1-9b73-880074b17f4b" ],
+        "api-supported-versions": [ "2023-01-01-preview" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=6f20525e-bd2b-4c30-bd2a-c1b766142389/eastus/0e1f61ca-2b71-4fe8-a661-fc75ee8db964" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
+        "x-ms-request-id": [ "ab27510e-d916-47b6-990b-35294850ba9a" ],
+        "x-ms-correlation-request-id": [ "ab27510e-d916-47b6-990b-35294850ba9a" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250909T081440Z:ab27510e-d916-47b6-990b-35294850ba9a" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sun, 16 Apr 2023 21:00:23 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 72B0745508104A6E8F33D3D3F8C5B778 Ref B: TYO201100113027 Ref C: 2025-09-09T08:14:40Z" ],
+        "Date": [ "Tue, 09 Sep 2025 08:14:39 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "556" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"name\":\"Size\",\"limit\":536870912000,\"currentValue\":0,\"unit\":\"Bytes\"},{\"name\":\"Webhooks\",\"limit\":500,\"currentValue\":2,\"unit\":\"Count\"},{\"name\":\"Geo-replications\",\"limit\":-1,\"currentValue\":3,\"unit\":\"Count\"},{\"name\":\"IPRules\",\"limit\":100,\"currentValue\":0,\"unit\":\"Count\"},{\"name\":\"VNetRules\",\"limit\":100,\"currentValue\":0,\"unit\":\"Count\"},{\"name\":\"PrivateEndpointConnections\",\"limit\":200,\"currentValue\":0,\"unit\":\"Count\"},{\"name\":\"ScopeMaps\",\"limit\":50000,\"currentValue\":2,\"unit\":\"Count\"},{\"name\":\"Tokens\",\"limit\":50000,\"currentValue\":2,\"unit\":\"Count\"}]}",
+      "Content": "{\"value\":[{\"name\":\"Size\",\"limit\":536870912000,\"currentValue\":0,\"unit\":\"Bytes\"},{\"name\":\"Webhooks\",\"limit\":500,\"currentValue\":2,\"unit\":\"Count\"},{\"name\":\"Geo-replications\",\"limit\":-1,\"currentValue\":3,\"unit\":\"Count\"},{\"name\":\"IPRules\",\"limit\":200,\"currentValue\":0,\"unit\":\"Count\"},{\"name\":\"VNetRules\",\"limit\":100,\"currentValue\":0,\"unit\":\"Count\"},{\"name\":\"PrivateEndpointConnections\",\"limit\":200,\"currentValue\":0,\"unit\":\"Count\"},{\"name\":\"ScopeMaps\",\"limit\":50000,\"currentValue\":2,\"unit\":\"Count\"},{\"name\":\"Tokens\",\"limit\":50000,\"currentValue\":2,\"unit\":\"Count\"}]}",
       "isContentBase64": false
     }
   }

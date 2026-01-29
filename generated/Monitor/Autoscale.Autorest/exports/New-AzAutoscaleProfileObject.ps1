@@ -25,7 +25,7 @@ $rule1=New-AzAutoscaleScaleRuleObject -MetricTriggerMetricName "Percentage CPU" 
 New-AzAutoscaleProfileObject -Name "adios" -CapacityDefault 1 -CapacityMaximum 10 -CapacityMinimum 1 -Rule $rule1 -FixedDateEnd ([System.DateTime]::Parse("2022-12-31T14:00:00Z")) -FixedDateStart ([System.DateTime]::Parse("2022-12-31T13:00:00Z")) -FixedDateTimeZone "UTC"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleProfile
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -34,28 +34,28 @@ To create the parameters described below, construct a hash table containing the 
 RULE <IScaleRule[]>: the collection of rules that provide the triggers and parameters for the scaling action. A maximum of 10 rules can be specified.
   MetricTriggerMetricName <String>: the name of the metric that defines what the rule monitors.
   MetricTriggerMetricResourceUri <String>: the resource identifier of the resource the rule monitors.
-  MetricTriggerOperator <ComparisonOperationType>: the operator that is used to compare the metric data and the threshold.
-  MetricTriggerStatistic <MetricStatisticType>: the metric statistic type. How the metrics from multiple instances are combined.
+  MetricTriggerOperator <String>: the operator that is used to compare the metric data and the threshold.
+  MetricTriggerStatistic <String>: the metric statistic type. How the metrics from multiple instances are combined.
   MetricTriggerThreshold <Double>: the threshold of the metric that triggers the scale action.
-  MetricTriggerTimeAggregation <TimeAggregationType>: time aggregation type. How the data that is collected should be combined over time. The default value is Average.
+  MetricTriggerTimeAggregation <String>: time aggregation type. How the data that is collected should be combined over time. The default value is Average.
   MetricTriggerTimeGrain <TimeSpan>: the granularity of metrics the rule monitors. Must be one of the predefined values returned from metric definitions for the metric. Must be between 12 hours and 1 minute.
   MetricTriggerTimeWindow <TimeSpan>: the range of time in which instance data is collected. This value must be greater than the delay in metric collection, which can vary from resource-to-resource. Must be between 12 hours and 5 minutes.
   ScaleActionCooldown <TimeSpan>: the amount of time to wait since the last scaling action before this action occurs. It must be between 1 week and 1 minute in ISO 8601 format.
-  ScaleActionDirection <ScaleDirection>: the scale direction. Whether the scaling action increases or decreases the number of instances.
-  ScaleActionType <ScaleType>: the type of action that should occur when the scale rule fires.
-  [MetricTriggerDimension <IScaleRuleMetricDimension[]>]: List of dimension conditions. For example: [{"DimensionName":"AppName","Operator":"Equals","Values":["App1"]},{"DimensionName":"Deployment","Operator":"Equals","Values":["default"]}].
+  ScaleActionDirection <String>: the scale direction. Whether the scaling action increases or decreases the number of instances.
+  ScaleActionType <String>: the type of action that should occur when the scale rule fires.
+  [MetricTriggerDimension <List<IScaleRuleMetricDimension>>]: List of dimension conditions. For example: [{"DimensionName":"AppName","Operator":"Equals","Values":["App1"]},{"DimensionName":"Deployment","Operator":"Equals","Values":["default"]}].
     DimensionName <String>: Name of the dimension.
-    Operator <ScaleRuleMetricDimensionOperationType>: the dimension operator. Only 'Equals' and 'NotEquals' are supported. 'Equals' being equal to any of the values. 'NotEquals' being not equal to all of the values
-    Value <String[]>: list of dimension values. For example: ["App1","App2"].
+    Operator <String>: the dimension operator. Only 'Equals' and 'NotEquals' are supported. 'Equals' being equal to any of the values. 'NotEquals' being not equal to all of the values
+    Value <List<String>>: list of dimension values. For example: ["App1","App2"].
   [MetricTriggerDividePerInstance <Boolean?>]: a value indicating whether metric should divide per instance.
   [MetricTriggerMetricNamespace <String>]: the namespace of the metric that defines what the rule monitors.
   [MetricTriggerMetricResourceLocation <String>]: the location of the resource the rule monitors.
   [ScaleActionValue <String>]: the number of instances that are involved in the scaling action. This value must be 1 or greater. The default value is 1.
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleProfileObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azautoscaleprofileobject
 #>
 function New-AzAutoscaleProfileObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleProfile])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -86,10 +86,9 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IScaleRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IScaleRule[]]
     # the collection of rules that provide the triggers and parameters for the scaling action.
     # A maximum of 10 rules can be specified.
-    # To construct, see NOTES section for RULE properties and create a hash table.
     ${Rule},
 
     [Parameter()]
@@ -121,9 +120,9 @@ param(
     ${FixedDateTimeZone},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.RecurrenceFrequency])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.PSArgumentCompleterAttribute("None", "Second", "Minute", "Hour", "Day", "Week", "Month", "Year")]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.RecurrenceFrequency]
+    [System.String]
     # the recurrence frequency.
     # How often the schedule profile should take effect.
     # This value must be Week, meaning each week will have the same set of profiles.
@@ -175,6 +174,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -203,6 +205,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

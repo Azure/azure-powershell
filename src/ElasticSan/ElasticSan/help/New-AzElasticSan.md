@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzElasticSan
 
 ## SYNOPSIS
-create ElasticSan.
+Create ElasticSan.
 
 ## SYNTAX
 
@@ -29,7 +29,7 @@ New-AzElasticSan -InputObject <IElasticSanIdentity> -Location <String> -SkuName 
 ```
 
 ## DESCRIPTION
-create ElasticSan.
+Create ElasticSan.
 
 ## EXAMPLES
 

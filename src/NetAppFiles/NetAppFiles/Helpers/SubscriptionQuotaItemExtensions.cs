@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
 {
     public static class SubscriptionQuotaItemExtensions
     {
-        public static PSNetAppFilesSubscriptionQuotaLimit ConvertToPs(this SubscriptionQuotaItem quotaItem)
+        public static PSNetAppFilesSubscriptionQuotaLimit ConvertToPs(this Microsoft.Azure.Management.NetApp.Models.QuotaItem quotaItem)
         {
             return new PSNetAppFilesSubscriptionQuotaLimit{ Name = quotaItem.Name, Current = quotaItem.Current, Default = quotaItem.DefaultProperty };
         }
 
-        public static IEnumerable<PSNetAppFilesSubscriptionQuotaLimit> ConvertToPS(this IEnumerable<SubscriptionQuotaItem> quotaItems)
+        public static IEnumerable<PSNetAppFilesSubscriptionQuotaLimit> ConvertToPS(this IEnumerable<Microsoft.Azure.Management.NetApp.Models.QuotaItem> quotaItems)
         {
             return quotaItems.Select(e => e.ConvertToPs()).ToList();
         }

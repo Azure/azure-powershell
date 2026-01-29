@@ -98,6 +98,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the cluster.",
         SerializedName = @"clusterName",
         PossibleTypes = new [] { typeof(string) })]
@@ -106,6 +109,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the function.",
         SerializedName = @"functionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -114,6 +120,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -122,6 +131,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the input.",
         SerializedName = @"inputName",
         PossibleTypes = new [] { typeof(string) })]
@@ -130,6 +142,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the streaming job.",
         SerializedName = @"jobName",
         PossibleTypes = new [] { typeof(string) })]
@@ -141,6 +156,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The region in which to retrieve the subscription's quota information. You can find out which regions Azure Stream Analytics is supported in here: https://azure.microsoft.com/en-us/regions/",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -149,6 +167,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the output.",
         SerializedName = @"outputName",
         PossibleTypes = new [] { typeof(string) })]
@@ -157,6 +178,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -165,6 +189,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -173,6 +200,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the transformation.",
         SerializedName = @"transformationName",
         PossibleTypes = new [] { typeof(string) })]

@@ -15,19 +15,19 @@ Gets service properties for Azure Storage File services.
 ### AccountName (Default)
 ```
 Get-AzStorageFileServiceProperty [-ResourceGroupName] <String> [-StorageAccountName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Get-AzStorageFileServiceProperty -StorageAccount <PSStorageAccount> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### FileServicePropertiesResourceId
 ```
 Get-AzStorageFileServiceProperty [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,15 +41,17 @@ Get-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountNa
 ```
 
 ```output
-StorageAccountName                            : mystorageaccount
-ResourceGroupName                             : myresourcegroup
-ShareDeleteRetentionPolicy.Enabled            : True
-ShareDeleteRetentionPolicy.Days               : 3
-ProtocolSettings.Smb.Multichannel.Enabled     : False
-ProtocolSettings.Smb.Versions                 : {SMB2.1, SMB3.0, SMB3.1.1}
-ProtocolSettings.Smb.AuthenticationMethods    : {Kerberos, NTLMv2}
-ProtocolSettings.Smb.KerberosTicketEncryption : {RC4-HMAC, AES-256}
-ProtocolSettings.Smb.ChannelEncryption        : {AES-128-CCM, AES-128-GCM, AES-256-GCM}
+StorageAccountName                                : mystorageaccount
+ResourceGroupName                                 : myresourcegroup
+ShareDeleteRetentionPolicy.Enabled                : True
+ShareDeleteRetentionPolicy.Days                   : 3
+ProtocolSettings.Smb.Multichannel.Enabled         : False
+ProtocolSettings.Smb.Versions                     : {SMB2.1, SMB3.0, SMB3.1.1}
+ProtocolSettings.Smb.AuthenticationMethods        : {Kerberos, NTLMv2}
+ProtocolSettings.Smb.KerberosTicketEncryption     : {RC4-HMAC, AES-256}
+ProtocolSettings.Smb.ChannelEncryption            : {AES-128-CCM, AES-128-GCM, AES-256-GCM}
+ProtocolSettings.Smb.EncryptionInTransit.Required : True 
+ProtocolSettings.Nfs.EncryptionInTransit.Required :
 ```
 
 This command gets the File services property of a specified Storage Account.
@@ -63,6 +65,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

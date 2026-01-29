@@ -17,7 +17,7 @@ Creates or updates an Application Insights web test definition.
 New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ContentIgnoreCase] [-ContentMatch <String>] [-ContentPassIfTextFound]
  [-Description <String>] [-Enabled] [-Frequency <Int32>] [-GeoLocation <IWebTestGeolocation[]>]
- [-Kind <WebTestKindEnum>] [-RequestBody <String>] [-RequestFollowRedirect] [-RequestHeader <IHeaderField[]>]
+ [-Kind <String>] [-RequestBody <String>] [-RequestFollowRedirect] [-RequestHeader <IHeaderField[]>]
  [-RequestHttpVerb <String>] [-RequestParseDependent] [-RequestUrl <String>] [-RetryEnabled]
  [-RuleExpectedHttpStatusCode <Int32>] [-RuleIgnoreHttpsStatusCode]
  [-RuleSslCertRemainingLifetimeCheck <Int32>] [-RuleSslCheck] [-Tag <Hashtable>] [-TestName <String>]
@@ -28,9 +28,10 @@ New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> -Loc
 ```
 New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-Configuration <String>] [-ContentMatch <String>] [-Description <String>]
- [-Enabled] [-Frequency <Int32>] [-GeoLocation <IWebTestGeolocation[]>] [-Kind <WebTestKindEnum>]
+ [-Enabled] [-Frequency <Int32>] [-GeoLocation <IWebTestGeolocation[]>] [-Kind <String>]
  [-RequestParseDependent] [-RequestUrl <String>] [-RetryEnabled] [-RuleExpectedHttpStatusCode <Int32>]
- [-Tag <Hashtable>] [-TestName <String>] [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-RuleIgnoreHttpsStatusCode] [-RuleSslCertRemainingLifetimeCheck <Int32>] [-RuleSslCheck] [-Tag <Hashtable>]
+ [-TestName <String>] [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -214,7 +215,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -276,10 +278,9 @@ Accept wildcard characters: False
 
 ### -GeoLocation
 A list of where to physically run the tests from to give global coverage for accessibility of your application.
-To construct, see NOTES section for GEOLOCATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTestGeolocation[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWebTestGeolocation[]
 Parameter Sets: (All)
 Aliases:
 
@@ -294,7 +295,7 @@ Accept wildcard characters: False
 The kind of web test this is, valid choices are ping, multistep, and standard.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.WebTestKindEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -367,10 +368,9 @@ Accept wildcard characters: False
 
 ### -RequestHeader
 List of headers and their values to add to the WebTest call.
-To construct, see NOTES section for REQUESTHEADER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IHeaderField[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IHeaderField[]
 Parameter Sets: CreateStandard
 Aliases:
 
@@ -477,7 +477,7 @@ When set, validation will ignore the status code.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateStandard
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -493,7 +493,7 @@ Value must be positive and the SSLCheck must be set to true.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateStandard
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -508,7 +508,7 @@ Checks to see if the SSL cert is still valid.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateStandard
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -617,7 +617,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTest
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWebTest
 
 ## NOTES
 

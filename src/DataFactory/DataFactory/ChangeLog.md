@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.19.7
+* Added more support for Jira V2 (Jira Version 2) and Netezza V2 (Netezza Version 2) connection properties.
+
+## Version 1.19.6
+* Added support for clusterResourceGroupAuthType property in HDInsightOnDemand linked services properties.
+
 ## Version 1.19.5
 * Added support for Salesforce V2 partitionOption feature.
 * Added support MI In Lakehouse And Warehouse connection.

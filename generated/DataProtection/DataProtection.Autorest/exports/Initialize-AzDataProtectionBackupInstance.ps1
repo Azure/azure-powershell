@@ -46,19 +46,19 @@ $backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType Azur
 $backupInstance
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupInstanceResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BACKUPCONFIGURATION <IBackupDatasourceParameters>: Backup configuration for backup. Use this parameter to configure protection for AzureKubernetesService,AzureBlob.
+BACKUPCONFIGURATION <IBackupDatasourceParameters>: Backup configuration for backup. Use this parameter to configure protection for AzureKubernetesService, AzureBlob, AzureDataLakeStorage.
   ObjectType <String>: Type of the specific object - used for deserializing
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/initialize-azdataprotectionbackupinstance
 #>
 function Initialize-AzDataProtectionBackupInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupInstanceResource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -76,7 +76,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
-    # Policy Id to be assiciated to Datasource
+    # Policy Id to be associated to Datasource
     ${PolicyId},
 
     [Parameter()]
@@ -102,7 +102,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
-    # Sanpshot Resource Group
+    # Snapshot Resource Group
     ${SnapshotResourceGroupId},
 
     [Parameter()]
@@ -113,9 +113,9 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupDatasourceParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupDatasourceParameters]
     # Backup configuration for backup.
-    # Use this parameter to configure protection for AzureKubernetesService,AzureBlob.
+    # Use this parameter to configure protection for AzureKubernetesService, AzureBlob, AzureDataLakeStorage.
     # To construct, see NOTES section for BACKUPCONFIGURATION properties and create a hash table.
     ${BackupConfiguration},
 

@@ -34,20 +34,22 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
-  [FileServiceUsagesName <String>]: The name of the file service usage. File Service Usage Name must be "default"
-  [FileServicesName <String>]: The name of the file Service within the specified storage account. File Service Name must be "default"
   [Id <String>]: Resource identity path
-  [Location <String>]: The location of the deleted storage account.
+  [Location <String>]: The name of the Azure region.
   [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [MigrationName <String>]: The name of the Storage Account Migration. It should always be 'default'
+  [NetworkSecurityPerimeterConfigurationName <String>]: The name for Network Security Perimeter configuration
   [ObjectReplicationPolicyId <String>]: For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
+  [QueueName <String>]: A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ShareName <String>]: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [StorageTaskAssignmentName <String>]: The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TableName <String>]: A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
   [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
 .Link
 https://learn.microsoft.com/powershell/module/az.storage/get-azstorageaccountmigration
@@ -66,7 +68,7 @@ param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
     [System.String]
-    # The name of the resource group within the user's subscription.
+    # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
@@ -75,6 +77,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -250,20 +253,22 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
-  [FileServiceUsagesName <String>]: The name of the file service usage. File Service Usage Name must be "default"
-  [FileServicesName <String>]: The name of the file Service within the specified storage account. File Service Name must be "default"
   [Id <String>]: Resource identity path
-  [Location <String>]: The location of the deleted storage account.
+  [Location <String>]: The name of the Azure region.
   [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [MigrationName <String>]: The name of the Storage Account Migration. It should always be 'default'
+  [NetworkSecurityPerimeterConfigurationName <String>]: The name for Network Security Perimeter configuration
   [ObjectReplicationPolicyId <String>]: For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
+  [QueueName <String>]: A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ShareName <String>]: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [StorageTaskAssignmentName <String>]: The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TableName <String>]: A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
   [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
 .Link
 https://learn.microsoft.com/powershell/module/az.storage/get-azstoragefileserviceusage
@@ -276,7 +281,7 @@ param(
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
     [System.String]
-    # The name of the resource group within the user's subscription.
+    # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
@@ -294,6 +299,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -458,6 +464,267 @@ end {
 
 <#
 .Synopsis
+Gets effective NetworkSecurityPerimeterConfiguration for association
+.Description
+Gets effective NetworkSecurityPerimeterConfiguration for association
+.Example
+Get-AzStorageNetworkSecurityPerimeterConfiguration -ResourceGroupName "nsprg" -AccountName "nspaccount" -Name "00000000-0000-0000-0000-000000000000.associationame"
+.Example
+Get-AzStorageNetworkSecurityPerimeterConfiguration -ResourceGroupName "nsprg" -AccountName "nspaccount"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfiguration
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IStorageIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DeletedAccountName <String>]: Name of the deleted storage account.
+  [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [MigrationName <String>]: The name of the Storage Account Migration. It should always be 'default'
+  [NetworkSecurityPerimeterConfigurationName <String>]: The name for Network Security Perimeter configuration
+  [ObjectReplicationPolicyId <String>]: For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [QueueName <String>]: A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ShareName <String>]: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [StorageTaskAssignmentName <String>]: The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TableName <String>]: A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
+  [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
+
+STORAGEACCOUNTINPUTOBJECT <IStorageIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DeletedAccountName <String>]: Name of the deleted storage account.
+  [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [MigrationName <String>]: The name of the Storage Account Migration. It should always be 'default'
+  [NetworkSecurityPerimeterConfigurationName <String>]: The name for Network Security Perimeter configuration
+  [ObjectReplicationPolicyId <String>]: For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [QueueName <String>]: A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ShareName <String>]: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [StorageTaskAssignmentName <String>]: The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TableName <String>]: A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
+  [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
+.Link
+https://learn.microsoft.com/powershell/module/az.storage/get-azstoragenetworksecurityperimeterconfiguration
+#>
+function Get-AzStorageNetworkSecurityPerimeterConfiguration {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfiguration])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+    [System.String]
+    # The name of the storage account within the specified resource group.
+    # Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+    ${AccountName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityStorageAccount', Mandatory)]
+    [Alias('NetworkSecurityPerimeterConfigurationName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+    [System.String]
+    # The name for Network Security Perimeter configuration
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityStorageAccount', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity]
+    # Identity Parameter
+    ${StorageAccountInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Storage.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.Storage.private\Get-AzStorageNetworkSecurityPerimeterConfiguration_Get';
+            GetViaIdentity = 'Az.Storage.private\Get-AzStorageNetworkSecurityPerimeterConfiguration_GetViaIdentity';
+            GetViaIdentityStorageAccount = 'Az.Storage.private\Get-AzStorageNetworkSecurityPerimeterConfiguration_GetViaIdentityStorageAccount';
+            List = 'Az.Storage.private\Get-AzStorageNetworkSecurityPerimeterConfiguration_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Storage.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Lists the available SKUs supported by Microsoft.Storage for given subscription.
 .Description
 Lists the available SKUs supported by Microsoft.Storage for given subscription.
@@ -478,6 +745,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter()]
@@ -648,39 +916,43 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
-  [FileServiceUsagesName <String>]: The name of the file service usage. File Service Usage Name must be "default"
-  [FileServicesName <String>]: The name of the file Service within the specified storage account. File Service Name must be "default"
   [Id <String>]: Resource identity path
-  [Location <String>]: The location of the deleted storage account.
+  [Location <String>]: The name of the Azure region.
   [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [MigrationName <String>]: The name of the Storage Account Migration. It should always be 'default'
+  [NetworkSecurityPerimeterConfigurationName <String>]: The name for Network Security Perimeter configuration
   [ObjectReplicationPolicyId <String>]: For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
+  [QueueName <String>]: A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ShareName <String>]: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [StorageTaskAssignmentName <String>]: The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TableName <String>]: A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
   [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
 
 STORAGEACCOUNTINPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
-  [FileServiceUsagesName <String>]: The name of the file service usage. File Service Usage Name must be "default"
-  [FileServicesName <String>]: The name of the file Service within the specified storage account. File Service Name must be "default"
   [Id <String>]: Resource identity path
-  [Location <String>]: The location of the deleted storage account.
+  [Location <String>]: The name of the Azure region.
   [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [MigrationName <String>]: The name of the Storage Account Migration. It should always be 'default'
+  [NetworkSecurityPerimeterConfigurationName <String>]: The name for Network Security Perimeter configuration
   [ObjectReplicationPolicyId <String>]: For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
+  [QueueName <String>]: A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ShareName <String>]: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [StorageTaskAssignmentName <String>]: The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TableName <String>]: A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
   [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
 .Link
 https://learn.microsoft.com/powershell/module/az.storage/get-azstoragetaskassignmentinstancesreport
@@ -719,6 +991,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -918,39 +1191,43 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
-  [FileServiceUsagesName <String>]: The name of the file service usage. File Service Usage Name must be "default"
-  [FileServicesName <String>]: The name of the file Service within the specified storage account. File Service Name must be "default"
   [Id <String>]: Resource identity path
-  [Location <String>]: The location of the deleted storage account.
+  [Location <String>]: The name of the Azure region.
   [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [MigrationName <String>]: The name of the Storage Account Migration. It should always be 'default'
+  [NetworkSecurityPerimeterConfigurationName <String>]: The name for Network Security Perimeter configuration
   [ObjectReplicationPolicyId <String>]: For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
+  [QueueName <String>]: A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ShareName <String>]: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [StorageTaskAssignmentName <String>]: The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TableName <String>]: A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
   [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
 
 STORAGEACCOUNTINPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
-  [FileServiceUsagesName <String>]: The name of the file service usage. File Service Usage Name must be "default"
-  [FileServicesName <String>]: The name of the file Service within the specified storage account. File Service Name must be "default"
   [Id <String>]: Resource identity path
-  [Location <String>]: The location of the deleted storage account.
+  [Location <String>]: The name of the Azure region.
   [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [MigrationName <String>]: The name of the Storage Account Migration. It should always be 'default'
+  [NetworkSecurityPerimeterConfigurationName <String>]: The name for Network Security Perimeter configuration
   [ObjectReplicationPolicyId <String>]: For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
+  [QueueName <String>]: A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ShareName <String>]: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [StorageTaskAssignmentName <String>]: The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TableName <String>]: A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
   [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
 .Link
 https://learn.microsoft.com/powershell/module/az.storage/get-azstoragetaskassignment
@@ -990,6 +1267,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -1162,6 +1440,278 @@ end {
 
 <#
 .Synopsis
+Refreshes any information about the association.
+.Description
+Refreshes any information about the association.
+.Example
+Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration -ResourceGroupName "nsprg" -AccountName "nspaccount" -NetworkSecurityPerimeterConfigurationName "00000000-0000-0000-0000-000000000000.associationame"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IStorageIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DeletedAccountName <String>]: Name of the deleted storage account.
+  [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [MigrationName <String>]: The name of the Storage Account Migration. It should always be 'default'
+  [NetworkSecurityPerimeterConfigurationName <String>]: The name for Network Security Perimeter configuration
+  [ObjectReplicationPolicyId <String>]: For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [QueueName <String>]: A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ShareName <String>]: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [StorageTaskAssignmentName <String>]: The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TableName <String>]: A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
+  [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
+
+STORAGEACCOUNTINPUTOBJECT <IStorageIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DeletedAccountName <String>]: Name of the deleted storage account.
+  [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [MigrationName <String>]: The name of the Storage Account Migration. It should always be 'default'
+  [NetworkSecurityPerimeterConfigurationName <String>]: The name for Network Security Perimeter configuration
+  [ObjectReplicationPolicyId <String>]: For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [QueueName <String>]: A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ShareName <String>]: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [StorageTaskAssignmentName <String>]: The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TableName <String>]: A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
+  [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
+.Link
+https://learn.microsoft.com/powershell/module/az.storage/invoke-azstoragereconcilenetworksecurityperimeterconfiguration
+#>
+function Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Reconcile', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Reconcile', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+    [System.String]
+    # The name of the storage account within the specified resource group.
+    # Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+    ${AccountName},
+
+    [Parameter(ParameterSetName='Reconcile', Mandatory)]
+    [Parameter(ParameterSetName='ReconcileViaIdentityStorageAccount', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+    [System.String]
+    # The name for Network Security Perimeter configuration
+    ${NetworkSecurityPerimeterConfigurationName},
+
+    [Parameter(ParameterSetName='Reconcile', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Reconcile')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='ReconcileViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='ReconcileViaIdentityStorageAccount', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity]
+    # Identity Parameter
+    ${StorageAccountInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Storage.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Reconcile = 'Az.Storage.private\Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration_Reconcile';
+            ReconcileViaIdentity = 'Az.Storage.private\Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration_ReconcileViaIdentity';
+            ReconcileViaIdentityStorageAccount = 'Az.Storage.private\Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration_ReconcileViaIdentityStorageAccount';
+        }
+        if (('Reconcile') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Storage.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Asynchronously create a new storage task assignment sub-resource with the specified parameters.
 If a storage task assignment is already created and a subsequent create request is issued with different properties, the storage task assignment properties will be updated.
 If a storage task assignment is already created and a subsequent create request is issued with the exact same set of properties, the request will succeed.
@@ -1214,6 +1764,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(Mandatory)]
@@ -1476,39 +2027,43 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
-  [FileServiceUsagesName <String>]: The name of the file service usage. File Service Usage Name must be "default"
-  [FileServicesName <String>]: The name of the file Service within the specified storage account. File Service Name must be "default"
   [Id <String>]: Resource identity path
-  [Location <String>]: The location of the deleted storage account.
+  [Location <String>]: The name of the Azure region.
   [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [MigrationName <String>]: The name of the Storage Account Migration. It should always be 'default'
+  [NetworkSecurityPerimeterConfigurationName <String>]: The name for Network Security Perimeter configuration
   [ObjectReplicationPolicyId <String>]: For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
+  [QueueName <String>]: A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ShareName <String>]: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [StorageTaskAssignmentName <String>]: The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TableName <String>]: A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
   [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
 
 STORAGEACCOUNTINPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
-  [FileServiceUsagesName <String>]: The name of the file service usage. File Service Usage Name must be "default"
-  [FileServicesName <String>]: The name of the file Service within the specified storage account. File Service Name must be "default"
   [Id <String>]: Resource identity path
-  [Location <String>]: The location of the deleted storage account.
+  [Location <String>]: The name of the Azure region.
   [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [MigrationName <String>]: The name of the Storage Account Migration. It should always be 'default'
+  [NetworkSecurityPerimeterConfigurationName <String>]: The name for Network Security Perimeter configuration
   [ObjectReplicationPolicyId <String>]: For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
+  [QueueName <String>]: A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ShareName <String>]: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [StorageTaskAssignmentName <String>]: The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TableName <String>]: A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
   [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
 .Link
 https://learn.microsoft.com/powershell/module/az.storage/remove-azstoragetaskassignment
@@ -1545,6 +2100,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
@@ -1747,39 +2303,43 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
-  [FileServiceUsagesName <String>]: The name of the file service usage. File Service Usage Name must be "default"
-  [FileServicesName <String>]: The name of the file Service within the specified storage account. File Service Name must be "default"
   [Id <String>]: Resource identity path
-  [Location <String>]: The location of the deleted storage account.
+  [Location <String>]: The name of the Azure region.
   [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [MigrationName <String>]: The name of the Storage Account Migration. It should always be 'default'
+  [NetworkSecurityPerimeterConfigurationName <String>]: The name for Network Security Perimeter configuration
   [ObjectReplicationPolicyId <String>]: For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
+  [QueueName <String>]: A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ShareName <String>]: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [StorageTaskAssignmentName <String>]: The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TableName <String>]: A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
   [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
 
 STORAGEACCOUNTINPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
-  [FileServiceUsagesName <String>]: The name of the file service usage. File Service Usage Name must be "default"
-  [FileServicesName <String>]: The name of the file Service within the specified storage account. File Service Name must be "default"
   [Id <String>]: Resource identity path
-  [Location <String>]: The location of the deleted storage account.
+  [Location <String>]: The name of the Azure region.
   [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [MigrationName <String>]: The name of the Storage Account Migration. It should always be 'default'
+  [NetworkSecurityPerimeterConfigurationName <String>]: The name for Network Security Perimeter configuration
   [ObjectReplicationPolicyId <String>]: For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
+  [QueueName <String>]: A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ShareName <String>]: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [StorageTaskAssignmentName <String>]: The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TableName <String>]: A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
   [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
 .Link
 https://learn.microsoft.com/powershell/module/az.storage/update-azstoragetaskassignment
@@ -1816,6 +2376,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -2102,20 +2663,22 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
-  [FileServiceUsagesName <String>]: The name of the file service usage. File Service Usage Name must be "default"
-  [FileServicesName <String>]: The name of the file Service within the specified storage account. File Service Name must be "default"
   [Id <String>]: Resource identity path
-  [Location <String>]: The location of the deleted storage account.
+  [Location <String>]: The name of the Azure region.
   [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [MigrationName <String>]: The name of the Storage Account Migration. It should always be 'default'
+  [NetworkSecurityPerimeterConfigurationName <String>]: The name for Network Security Perimeter configuration
   [ObjectReplicationPolicyId <String>]: For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
+  [QueueName <String>]: A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ShareName <String>]: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [StorageTaskAssignmentName <String>]: The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TableName <String>]: A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
   [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
 .Link
 https://learn.microsoft.com/powershell/module/az.storage/start-azstorageaccountmigration

@@ -33,15 +33,6 @@
       "component": {
         "type": "nuget",
         "nuget": {
-          "name": "System.Diagnostics.DiagnosticSource",
-          "version": "6.0.1"
-        }
-      }
-    },
-    {
-      "component": {
-        "type": "nuget",
-        "nuget": {
           "name": "System.Reflection.DispatchProxy",
           "version": "4.5.0"
         }
@@ -69,8 +60,17 @@
       "component": {
         "type": "nuget",
         "nuget": {
+          "name": "System.Diagnostics.DiagnosticSource",
+          "version": "8.0.1"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
           "name": "System.Text.Encodings.Web",
-          "version": "6.0.1"
+          "version": "8.0.0"
         }
       }
     },
@@ -88,7 +88,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Azure.Core",
-          "version": "1.45.0"
+          "version": "1.50.0"
         }
       }
     },
@@ -115,7 +115,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Microsoft.Bcl.AsyncInterfaces",
-          "version": "6.0.0"
+          "version": "8.0.0"
         }
       }
     },
@@ -178,7 +178,7 @@
         "type": "nuget",
         "nuget": {
           "name": "System.ClientModel",
-          "version": "1.2.1"
+          "version": "1.8.0"
         }
       }
     },
@@ -187,7 +187,7 @@
         "type": "nuget",
         "nuget": {
           "name": "System.Memory.Data",
-          "version": "6.0.1"
+          "version": "8.0.1"
         }
       }
     },
@@ -259,7 +259,7 @@
         "type": "nuget",
         "nuget": {
           "name": "System.Text.Json",
-          "version": "6.0.11"
+          "version": "8.0.6"
         }
       }
     },
@@ -268,7 +268,7 @@
         "type": "nuget",
         "nuget": {
           "name": "System.Threading.Tasks.Extensions",
-          "version": "4.5.4"
+          "version": "4.6.0"
         }
       }
     }
