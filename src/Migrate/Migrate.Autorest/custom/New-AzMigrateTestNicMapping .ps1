@@ -22,6 +22,7 @@ The New-AzMigrateTestNicMapping cmdlet creates a mapping of the source NIC attac
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratetestnicmapping
 #>
 function New-AzMigrateTestNicMapping {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.ModelCmdletAttribute()]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtNicInput])]
     [CmdletBinding(DefaultParameterSetName = 'VMwareCbt', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(

@@ -23,6 +23,7 @@ https://learn.microsoft.com/powershell/module/az.migrate/new-azmigrateproject
 #>
 
 function New-AzMigrateProject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.ModelCmdletAttribute()]
     [CmdletBinding(DefaultParameterSetName='PutExpandedCustom', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param (
         [Parameter(ParameterSetName='PutExpandedCustom', Mandatory)]

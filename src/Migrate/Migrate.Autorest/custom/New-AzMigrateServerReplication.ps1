@@ -1,4 +1,4 @@
-
+﻿
 # ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
@@ -22,6 +22,7 @@ The New-AzMigrateServerReplication cmdlet starts the replication for a particula
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigrateserverreplication
 #>
 function New-AzMigrateServerReplication {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.ModelCmdletAttribute()]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob])]
     [CmdletBinding(DefaultParameterSetName = 'ByIdDefaultUser', PositionalBinding = $false)]
     param(

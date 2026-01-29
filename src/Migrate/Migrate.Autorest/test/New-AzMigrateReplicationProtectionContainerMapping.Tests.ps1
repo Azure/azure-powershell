@@ -11,7 +11,7 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'New-AzMigrateReplicationProtectionContainerMapping' {
+Describe 'New-AzMigrateReplicationProtectionContainerMapping' -Tag 'LiveOnly' {
     It 'CreateExpanded' {
     $providerSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareCbtContainerMappingInput]::new()
     $providerSpecificInput.InstanceType = "VMwareCbt"
@@ -22,7 +22,7 @@ Describe 'New-AzMigrateReplicationProtectionContainerMapping' {
         $providerSpecificInput.StorageAccountSasSecretName = "migrategwsa1612849844-gwySas"
         $providerSpecificInput.TargetLocation = "centraluseuap"
 
-        $output = New-AzMigrateReplicationProtectionContainerMapping -FabricName $env.srsFabricName -MappingName $env.srsMappingName -ProtectionContainerName $env.srsProtectionContainerName -ResourceGroupName $env.migResourceGroup -ResourceName $env.srsVaultName -SubscriptionId $env.srsSubscriptionId -PolicyId $env.srsPolicyId -ProviderSpecificInput $providerSpecificInput -TargetProtectionContainerId $env.srsTargetPCId
+        $output = New-AzMigrateReplicationProtectionContainerMapping -FabricName $env.srsFabricName -MappingName $env.srsMappingName -ProtectionContainerName $env.srsProtectionContainerName -ResourceGroupName $env.migResourceGroup2 -ResourceName $env.srsVaultName -SubscriptionId $env.srsSubscriptionId -PolicyId $env.srsPolicyId -ProviderSpecificInput $providerSpecificInput -TargetProtectionContainerId $env.srsTargetPCId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 }

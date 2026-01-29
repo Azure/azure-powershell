@@ -42,6 +42,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareMachine
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratediscoveredserver
 #>
 function Get-AzMigrateDiscoveredServer {
+[Microsoft.Azure.PowerShell.Cmdlets.Migrate.ModelCmdletAttribute()]
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareMachine], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVMachine])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(

@@ -11,10 +11,11 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'New-AzMigrateProject' {
+Describe 'New-AzMigrateProject' -Tag 'LiveOnly' {
     It 'PutExpandedCustom' {
         $projName = "AzMigratePwshTestProj1234"
-        $project = New-AzMigrateProject -Name $projName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId -Location "centralus"
+        $rgName = "singhabh-rg"
+        $project = New-AzMigrateProject -Name $projName -ResourceGroupName $rgName -SubscriptionId $env.migSubscriptionId -Location "centralus"
         $project.Name | Should -Be $projName
     }
 }
