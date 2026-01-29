@@ -477,15 +477,14 @@ Describe 'New-AzFunctionApp' {
                               -Runtime $runtime `
                               -RuntimeVersion $runtimeVersion `
                               -FunctionsVersion 4 `
-                              -IdentityType UserAssigned `
-                              -IdentityID $identityInfo.Id `
+                              -UserAssignedIdentity $identityInfo.Id `
                               -OSType Windows
 
             Write-Verbose "Validating function app properties..." -Verbose
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             $functionApp.OSType | Should -Be "Windows"
             $functionApp.Runtime | Should -Be $runtime
-            $functionApp.IdentityType | Should -Be "UserAssigned"
+            $functionApp.UserAssignedIdentity | Should -Be $identityInfo.Id
         }
         finally
         {
@@ -533,14 +532,14 @@ Describe 'New-AzFunctionApp' {
                               -Runtime $runtime `
                               -RuntimeVersion $runtimeVersion `
                               -FunctionsVersion 4 `
-                              -IdentityType SystemAssigned `
+                              -EnableSystemAssignedIdentity `
                               -AppSetting $appSetting
 
             Write-Verbose "Validating function app properties..." -Verbose
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $env.resourceGroupNameWindowsPremium
             $functionApp.OSType | Should -Be "Windows"
             $functionApp.Runtime | Should -Be $runtime
-            $functionApp.IdentityType | Should -Be "SystemAssigned"
+            $functionApp.EnableSystemAssignedIdentity | Should -Be $true
 
             # Get app settings
             Write-Verbose "Validating app settings..." -Verbose
@@ -595,7 +594,7 @@ Describe 'New-AzFunctionApp' {
                               -Runtime $runtime `
                               -RuntimeVersion $runtimeVersion `
                               -FunctionsVersion 4 `
-                              -IdentityType UserAssigned
+                              -UserAssignedIdentity @()
         }
         Write-Verbose "Validate that the expected expetedErrorId is thrown" -Verbose
         $scriptblock | Should -Throw -ErrorId $expectedErrorId

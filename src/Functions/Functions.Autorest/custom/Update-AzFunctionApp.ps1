@@ -56,7 +56,7 @@ function Update-AzFunctionApp {
 
         [Parameter(HelpMessage="Determines whether to enable a system-assigned identity for the resource.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-        [System.Nullable[System.Boolean]]
+        [System.Boolean]
         ${EnableSystemAssignedIdentity},
 
         [Parameter(HelpMessage="The array of user assigned identities associated with the function app.
@@ -174,25 +174,30 @@ function Update-AzFunctionApp {
 
         # Identity information
         $userProvidedIdentitySettings = $PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity') -or
-                                         ($UserAssignedIdentity -and $UserAssignedIdentity.Count -gt 0)
+                                         ($UserAssignedIdentity)
 
         if ($userProvidedIdentitySettings)
         {
-            # User is explicitly setting identity configuration
             $enableSystemAssigned = $EnableSystemAssignedIdentity -eq $true
-            $hasUserAssigned = $UserAssignedIdentity -and $UserAssignedIdentity.Count -gt 0
+            $hasUserAssigned = $UserAssignedIdentity
 
             if ($enableSystemAssigned)
             {
-                # SystemAssigned only
                 $functionAppDef.IdentityType = "SystemAssigned"
             }
             elseif ($hasUserAssigned)
             {
-                # UserAssigned only
-                $functionAppDef.IdentityType = "UserAssigned"
+                if ($UserAssignedIdentity.Count -eq 0)
+                {
+                    $errorMessage = "IdentityID is required for UserAssigned identity"
+                    $exception = [System.InvalidOperationException]::New($errorMessage)
+                    ThrowTerminatingError -ErrorId "IdentityIDIsRequiredForUserAssignedIdentity" `
+                                            -ErrorMessage $errorMessage `
+                                            -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                            -Exception $exception
+                }
 
-                # Set UserAssigned managed identity
+                $functionAppDef.IdentityType = "UserAssigned"
                 $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $UserAssignedIdentity
                 $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
             }

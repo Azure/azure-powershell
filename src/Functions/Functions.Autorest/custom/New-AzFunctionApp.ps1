@@ -216,12 +216,12 @@ function New-AzFunctionApp {
         ${DeploymentStorageAuthValue},
 
         [Parameter(ParameterSetName="FlexConsumption", HelpMessage=
-'Array of hashtables describing the AlwaysReady configuration. Each hashtable must include:
-- name: The function name or route name.
-- instanceCount: The number of pre-warmed instances for that function.
+            'Array of hashtables describing the AlwaysReady configuration. Each hashtable must include:
+            - name: The function name or route name.
+            - instanceCount: The number of pre-warmed instances for that function.
 
-Example:
-@(@{ name = "http"; instanceCount = 2 }).')]
+            Example:
+            @(@{ name = "http"; instanceCount = 2 }).')]
         [ValidateNotNullOrEmpty()]
         [Hashtable[]]
         ${AlwaysReady},
@@ -451,8 +451,18 @@ Example:
         {
             $functionAppDef.IdentityType = "SystemAssigned"
         }
-        elseif ($UserAssignedIdentity -and $UserAssignedIdentity.Count -gt 0)
+        elseif ($UserAssignedIdentity)
         {
+            if ($UserAssignedIdentity.Count -eq 0)
+            {
+                $errorMessage = "IdentityID is required for UserAssigned identity"
+                $exception = [System.InvalidOperationException]::New($errorMessage)
+                ThrowTerminatingError -ErrorId "IdentityIDIsRequiredForUserAssignedIdentity" `
+                                        -ErrorMessage $errorMessage `
+                                        -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                        -Exception $exception
+            }
+
             $functionAppDef.IdentityType = "UserAssigned"
             $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $UserAssignedIdentity
             $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity

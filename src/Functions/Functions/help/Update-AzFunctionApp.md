@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 

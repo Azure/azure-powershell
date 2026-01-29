@@ -15,7 +15,7 @@ Updates a function app.
 ### ByName (Default)
 ```
 Update-AzFunctionApp -Name <String> -ResourceGroupName <String> [-ApplicationInsightsKey <String>]
- [-ApplicationInsightsName <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-Force] [-PlanName <String>]
+ [-ApplicationInsightsName <String>] [-EnableSystemAssignedIdentity <Boolean>] [-Force] [-PlanName <String>]
  [-SubscriptionId <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Update-AzFunctionApp -Name <String> -ResourceGroupName <String> [-ApplicationIns
 ### ByObjectInput
 ```
 Update-AzFunctionApp -InputObject <ISite> [-ApplicationInsightsKey <String>]
- [-ApplicationInsightsName <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-Force] [-PlanName <String>]
+ [-ApplicationInsightsName <String>] [-EnableSystemAssignedIdentity <Boolean>] [-Force] [-PlanName <String>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
