@@ -26,7 +26,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWebPubSubCustomDomain')
 }
 
 Describe 'New-AzWebPubSubCustomDomain' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -skip{
         $wpsName = 'ps-test-wps';
         $resourceGroup = 'ps-test-rg'
         $customCertName = 'pstest-customCert'

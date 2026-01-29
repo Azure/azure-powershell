@@ -25,6 +25,12 @@ Get-AzWebPubSubHub -Name <String> -ResourceGroupName <String> -ResourceName <Str
  [<CommonParameters>]
 ```
 
+### GetViaIdentityHub
+```
+Get-AzWebPubSubHub -ResourceName <String> -HubInputObject <IWebPubSubIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzWebPubSubHub -InputObject <IWebPubSubIdentity> [-DefaultProfile <PSObject>]
@@ -92,9 +98,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HubInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
+Parameter Sets: GetViaIdentityHub
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
@@ -144,7 +164,7 @@ The name of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: List, Get, GetViaIdentityHub
 Aliases:
 
 Required: True
@@ -179,7 +199,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubHub
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubHub
 
 ## NOTES
 

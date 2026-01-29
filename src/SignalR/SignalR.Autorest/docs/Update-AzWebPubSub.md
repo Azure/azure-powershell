@@ -8,44 +8,43 @@ schema: 2.0.0
 # Update-AzWebPubSub
 
 ## SYNOPSIS
-Operation to update an exiting resource.
+Update a resource.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzWebPubSub -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-DisableAadAuth]
- [-DisableLocalAuth] [-EnableTlsClientCert] [-IdentityType <ManagedIdentityType>]
- [-LiveTraceCategory <ILiveTraceCategory[]>] [-LiveTraceEnabled <String>]
- [-NetworkAcLDefaultAction <AclAction>] [-PrivateEndpointAcl <IPrivateEndpointAcl[]>]
- [-PublicNetworkAccess <String>] [-PublicNetworkAllow <WebPubSubRequestType[]>]
- [-PublicNetworkDeny <WebPubSubRequestType[]>] [-ResourceLogCategory <IResourceLogCategory[]>]
- [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <WebPubSubSkuTier>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DisableLocalAuth] [-EnableSystemAssignedIdentity <Boolean?>] [-EnableTlsClientCert]
+ [-LiveTraceCategory <ILiveTraceCategory[]>] [-LiveTraceEnabled <String>] [-NetworkAcLDefaultAction <String>]
+ [-PrivateEndpointAcl <IPrivateEndpointAcl[]>] [-PublicNetworkAccess <String>]
+ [-PublicNetworkAllow <String[]>] [-PublicNetworkDeny <String[]>]
+ [-ResourceLogCategory <IResourceLogCategory[]>] [-SkuCapacity <Int32>] [-SkuName <String>]
+ [-SkuTier <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWebPubSub -InputObject <IWebPubSubIdentity> [-DisableAadAuth] [-DisableLocalAuth]
- [-EnableTlsClientCert] [-IdentityType <ManagedIdentityType>] [-LiveTraceCategory <ILiveTraceCategory[]>]
- [-LiveTraceEnabled <String>] [-NetworkAcLDefaultAction <AclAction>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-EnableTlsClientCert] [-LiveTraceCategory <ILiveTraceCategory[]>]
+ [-LiveTraceEnabled <String>] [-NetworkAcLDefaultAction <String>]
  [-PrivateEndpointAcl <IPrivateEndpointAcl[]>] [-PublicNetworkAccess <String>]
- [-PublicNetworkAllow <WebPubSubRequestType[]>] [-PublicNetworkDeny <WebPubSubRequestType[]>]
+ [-PublicNetworkAllow <String[]>] [-PublicNetworkDeny <String[]>]
  [-ResourceLogCategory <IResourceLogCategory[]>] [-SkuCapacity <Int32>] [-SkuName <String>]
- [-SkuTier <WebPubSubSkuTier>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SkuTier <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Operation to update an exiting resource.
+Update a resource.
 
 ## EXAMPLES
 
 ### Example 1: Update a Web PubSub resource
 ```powershell
 $wps = Update-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps `
--IdentityType SystemAssigned -LiveTraceEnabled true `
+-EnableSystemAssignedIdentity $true -LiveTraceEnabled true `
 -LiveTraceCategory @{ Name='ConnectivityLogs' ; Enabled = 'true' }, @{ Name='MessageLogs' ; Enabled = 'true' }
 ```
 
@@ -143,6 +142,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableTlsClientCert
 Request client certificate during TLS handshake if enabled
 
@@ -158,24 +172,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Represents the identity type: systemAssigned, userAssigned, None
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
@@ -191,10 +189,9 @@ Accept wildcard characters: False
 
 ### -LiveTraceCategory
 Gets or sets the list of category configurations.
-To construct, see NOTES section for LIVETRACECATEGORY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ILiveTraceCategory[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ILiveTraceCategory[]
 Parameter Sets: (All)
 Aliases:
 
@@ -239,7 +236,7 @@ Accept wildcard characters: False
 Azure Networking ACL Action.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -267,10 +264,9 @@ Accept wildcard characters: False
 
 ### -PrivateEndpointAcl
 ACLs for requests from private endpoints
-To construct, see NOTES section for PRIVATEENDPOINTACL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IPrivateEndpointAcl[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IPrivateEndpointAcl[]
 Parameter Sets: (All)
 Aliases:
 
@@ -302,7 +298,7 @@ Allowed request types.
 The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -318,7 +314,7 @@ Denied request types.
 The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -347,10 +343,9 @@ Accept wildcard characters: False
 
 ### -ResourceLogCategory
 Gets or sets the list of category configurations.
-To construct, see NOTES section for RESOURCELOGCATEGORY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IResourceLogCategory[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceLogCategory[]
 Parameter Sets: (All)
 Aliases:
 
@@ -400,7 +395,7 @@ Optional tier of this particular SKU.
 `Basic` is deprecated, use `Standard` instead.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -443,10 +438,11 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-Get or set the user assigned identities
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -497,7 +493,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubResource
 
 ## NOTES
 
