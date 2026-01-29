@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a OpenAI integration rule for a given monitor resource.
+Create an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and monitoring.
 .Description
-create a OpenAI integration rule for a given monitor resource.
+Create an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and monitoring.
 .Example
 New-AzElasticOpenAi -IntegrationName default -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -32,6 +32,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -40,6 +41,7 @@ INPUTOBJECT <IElasticIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 MONITORINPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -108,6 +110,14 @@ param(
     [System.String]
     # Value of API key for Open AI resource
     ${Key},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMonitorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # The connector id of Open AI resource
+    ${OpenAiConnectorId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]

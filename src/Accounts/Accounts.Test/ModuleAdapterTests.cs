@@ -447,6 +447,45 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public async Task TestClientRequestIdPreservedFromRequestNotOverwrittenByResponse()
+        {
+            var store = new EventStore();
+            var provider = MockTelemetryProvider.Create(store) as MockTelemetryProvider;
+            var module = new AzModule(new MockCommandRuntime(), store, provider);
+            var signalEvents = new List<EventArgs>();
+            
+            string clientRequestId = Guid.NewGuid().ToString();
+            string serverRequestId = Guid.NewGuid().ToString();
+            
+            var request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = new Uri("https://microsoft.azure.com/subscriptions")};
+            request.Headers.Add("x-ms-client-request-id", clientRequestId);
+            
+            var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
+            response.Headers.Add("x-ms-request-id", serverRequestId);
+            
+            var data = new EventData { Id = Events.CmdletProcessRecordAsyncStart, RequestMessage = request, ResponseMessage = response};
+            
+            await module.OnProcessRecordAsyncStart(Events.CmdletProcessRecordAsyncStart, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), clientRequestId, null, "", clientRequestId);
+            
+            data.Id = Events.BeforeCall;
+            await module.OnBeforeCall(Events.BeforeCall, CancellationToken.None, () => data,
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), clientRequestId);
+            
+            data.Id = Events.ResponseCreated;
+            await module.OnResponseCreated(Events.ResponseCreated, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), clientRequestId);
+            
+            Assert.True(provider.ContainsKey(clientRequestId));
+            var qos = provider[clientRequestId];
+            Assert.NotNull(qos);
+            Assert.Equal(clientRequestId, qos.ClientRequestId);
+            Assert.NotEqual(serverRequestId, qos.ClientRequestId);
+            provider.Clear();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public async Task TestResponseCreatedNegative()
         {
             // setup

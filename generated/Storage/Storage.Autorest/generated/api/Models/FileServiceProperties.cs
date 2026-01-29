@@ -14,9 +14,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResource" />
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProxyResource" />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Resource();
+        private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ProxyResource();
 
         /// <summary>
         /// The List of CORS rules. You can include up to five CorsRule elements in the request.
@@ -32,43 +32,76 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1 FileServiceProperty { get => (this._fileServiceProperty = this._fileServiceProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileServiceProperties1()); set => this._fileServiceProperty = value; }
 
         /// <summary>
-        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Id; }
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Id; }
 
         /// <summary>Internal Acessors for FileServiceProperty</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1 Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal.FileServiceProperty { get => (this._fileServiceProperty = this._fileServiceProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileServiceProperties1()); set { {_fileServiceProperty = value;} } }
 
         /// <summary>Internal Acessors for FileServicePropertyCor</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICorsRules Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal.FileServicePropertyCor { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).Cor; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).Cor = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICorsRules Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal.FileServicePropertyCor { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).Cor; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).Cor = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for FileServicePropertyProtocolSetting</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProtocolSettings Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal.FileServicePropertyProtocolSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).ProtocolSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).ProtocolSetting = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProtocolSettings Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal.FileServicePropertyProtocolSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).ProtocolSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).ProtocolSetting = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for FileServicePropertyShareDeleteRetentionPolicy</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeleteRetentionPolicy Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal.FileServicePropertyShareDeleteRetentionPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).ShareDeleteRetentionPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).ShareDeleteRetentionPolicy = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeleteRetentionPolicy Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal.FileServicePropertyShareDeleteRetentionPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).ShareDeleteRetentionPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).ShareDeleteRetentionPolicy = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for NfEncryptionInTransit</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionInTransit Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal.NfEncryptionInTransit { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).NfEncryptionInTransit; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).NfEncryptionInTransit = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for ProtocolSettingNf</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INfsSetting Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal.ProtocolSettingNf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).ProtocolSettingNf; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).ProtocolSettingNf = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ProtocolSettingSmb</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSetting Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal.ProtocolSettingSmb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).ProtocolSettingSmb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).ProtocolSettingSmb = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSetting Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal.ProtocolSettingSmb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).ProtocolSettingSmb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).ProtocolSettingSmb = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Sku()); set { {_sku = value;} } }
 
+        /// <summary>Internal Acessors for SkuName</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal.SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Name = value ?? null; }
+
         /// <summary>Internal Acessors for SkuTier</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal.SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Tier = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal.SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Tier = value ?? null; }
+
+        /// <summary>Internal Acessors for SmbEncryptionInTransit</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionInTransit Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal.SmbEncryptionInTransit { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).SmbEncryptionInTransit; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).SmbEncryptionInTransit = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SmbMultichannel</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IMultichannel Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal.SmbMultichannel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).SmbMultichannel; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).SmbMultichannel = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IMultichannel Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal.SmbMultichannel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).SmbMultichannel; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).SmbMultichannel = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>Indicates whether multichannel is enabled</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
@@ -76,7 +109,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Name; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Name; }
+
+        /// <summary>Indicates whether encryption in transit is required</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? NfsEncryptionInTransitRequired { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).NfsEncryptionInTransitRequired; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).NfsEncryptionInTransitRequired = value ?? default(bool); }
 
         /// <summary>Gets the resource group name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
@@ -111,7 +148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Name = value ?? null; }
+        public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Name; }
 
         /// <summary>The SKU tier. This is based on the SKU name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
@@ -131,6 +168,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string SmbChannelEncryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).SmbChannelEncryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).SmbChannelEncryption = value ?? null; }
 
+        /// <summary>Indicates whether encryption in transit is required</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? SmbEncryptionInTransitRequired { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).SmbEncryptionInTransitRequired; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).SmbEncryptionInTransitRequired = value ?? default(bool); }
+
         /// <summary>
         /// Kerberos ticket encryption supported by server. Valid values are RC4-HMAC, AES-256. Should be passed as a string with
         /// delimiter ';'
@@ -146,10 +187,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         public string SmbVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).SmbVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal)FileServiceProperty).SmbVersion = value ?? null; }
 
         /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
+
+        /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Type; }
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Type; }
 
         /// <summary>Creates an new <see cref="FileServiceProperties" /> instance.</summary>
         public FileServiceProperties()
@@ -165,14 +236,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener)
         {
-            await eventListener.AssertNotNull(nameof(__resource), __resource);
-            await eventListener.AssertObjectIsValid(nameof(__resource), __resource);
+            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
         }
     }
     /// The properties of File services in storage account.
     public partial interface IFileServiceProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResource
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProxyResource
     {
         /// <summary>
         /// The List of CORS rules. You can include up to five CorsRule elements in the request.
@@ -183,7 +254,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The List of CORS rules. You can include up to five CorsRule elements in the request. ",
+        Description = @"The List of CORS rules. You can include up to five CorsRule elements in the request.",
         SerializedName = @"corsRules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICorsRule) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICorsRule> CorCorsRule { get; set; }
@@ -198,6 +269,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"enabled",
         PossibleTypes = new [] { typeof(bool) })]
         bool? MultichannelEnabled { get; set; }
+        /// <summary>Indicates whether encryption in transit is required</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether encryption in transit is required",
+        SerializedName = @"required",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? NfsEncryptionInTransitRequired { get; set; }
         /// <summary>
         /// This property when set to true allows deletion of the soft deleted blob versions and snapshots. This property cannot be
         /// used blob restore policy. This property only applies to blob service and does not apply to containers or file share.
@@ -291,6 +373,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"channelEncryption",
         PossibleTypes = new [] { typeof(string) })]
         string SmbChannelEncryption { get; set; }
+        /// <summary>Indicates whether encryption in transit is required</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether encryption in transit is required",
+        SerializedName = @"required",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? SmbEncryptionInTransitRequired { get; set; }
         /// <summary>
         /// Kerberos ticket encryption supported by server. Valid values are RC4-HMAC, AES-256. Should be passed as a string with
         /// delimiter ';'
@@ -323,7 +416,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
     }
     /// The properties of File services in storage account.
     internal partial interface IFileServicePropertiesInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProxyResourceInternal
     {
         /// <summary>
         /// The List of CORS rules. You can include up to five CorsRule elements in the request.
@@ -342,6 +435,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeleteRetentionPolicy FileServicePropertyShareDeleteRetentionPolicy { get; set; }
         /// <summary>Indicates whether multichannel is enabled</summary>
         bool? MultichannelEnabled { get; set; }
+        /// <summary>Encryption in transit setting.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionInTransit NfEncryptionInTransit { get; set; }
+        /// <summary>Indicates whether encryption in transit is required</summary>
+        bool? NfsEncryptionInTransitRequired { get; set; }
+        /// <summary>Setting for NFS protocol</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INfsSetting ProtocolSettingNf { get; set; }
         /// <summary>Setting for SMB protocol</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSetting ProtocolSettingSmb { get; set; }
         /// <summary>
@@ -376,6 +475,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// a string with delimiter ';'.
         /// </summary>
         string SmbChannelEncryption { get; set; }
+        /// <summary>Encryption in transit setting.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionInTransit SmbEncryptionInTransit { get; set; }
+        /// <summary>Indicates whether encryption in transit is required</summary>
+        bool? SmbEncryptionInTransitRequired { get; set; }
         /// <summary>
         /// Kerberos ticket encryption supported by server. Valid values are RC4-HMAC, AES-256. Should be passed as a string with
         /// delimiter ';'

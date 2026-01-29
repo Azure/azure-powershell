@@ -110,6 +110,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SkuTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SystemDataTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).Id, global::System.Convert.ToString);
@@ -162,9 +190,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).ProtocolSettingSmb = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSetting) content.GetValueForProperty("ProtocolSettingSmb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).ProtocolSettingSmb, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SmbSettingTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ProtocolSettingNf"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).ProtocolSettingNf = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INfsSetting) content.GetValueForProperty("ProtocolSettingNf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).ProtocolSettingNf, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.NfsSettingTypeConverter.ConvertFrom);
+            }
             if (content.Contains("SmbMultichannel"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).SmbMultichannel = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IMultichannel) content.GetValueForProperty("SmbMultichannel",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).SmbMultichannel, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.MultichannelTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SmbEncryptionInTransit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).SmbEncryptionInTransit = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionInTransit) content.GetValueForProperty("SmbEncryptionInTransit",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).SmbEncryptionInTransit, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionInTransitTypeConverter.ConvertFrom);
             }
             if (content.Contains("SmbVersion"))
             {
@@ -182,9 +218,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).SmbChannelEncryption = (string) content.GetValueForProperty("SmbChannelEncryption",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).SmbChannelEncryption, global::System.Convert.ToString);
             }
+            if (content.Contains("NfEncryptionInTransit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).NfEncryptionInTransit = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionInTransit) content.GetValueForProperty("NfEncryptionInTransit",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).NfEncryptionInTransit, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionInTransitTypeConverter.ConvertFrom);
+            }
             if (content.Contains("MultichannelEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).MultichannelEnabled = (bool?) content.GetValueForProperty("MultichannelEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).MultichannelEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SmbEncryptionInTransitRequired"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).SmbEncryptionInTransitRequired = (bool?) content.GetValueForProperty("SmbEncryptionInTransitRequired",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).SmbEncryptionInTransitRequired, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("NfsEncryptionInTransitRequired"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).NfsEncryptionInTransitRequired = (bool?) content.GetValueForProperty("NfsEncryptionInTransitRequired",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).NfsEncryptionInTransitRequired, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -211,6 +259,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SkuTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SystemDataTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).Id, global::System.Convert.ToString);
@@ -263,9 +339,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).ProtocolSettingSmb = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSetting) content.GetValueForProperty("ProtocolSettingSmb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).ProtocolSettingSmb, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SmbSettingTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ProtocolSettingNf"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).ProtocolSettingNf = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INfsSetting) content.GetValueForProperty("ProtocolSettingNf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).ProtocolSettingNf, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.NfsSettingTypeConverter.ConvertFrom);
+            }
             if (content.Contains("SmbMultichannel"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).SmbMultichannel = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IMultichannel) content.GetValueForProperty("SmbMultichannel",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).SmbMultichannel, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.MultichannelTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SmbEncryptionInTransit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).SmbEncryptionInTransit = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionInTransit) content.GetValueForProperty("SmbEncryptionInTransit",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).SmbEncryptionInTransit, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionInTransitTypeConverter.ConvertFrom);
             }
             if (content.Contains("SmbVersion"))
             {
@@ -283,9 +367,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).SmbChannelEncryption = (string) content.GetValueForProperty("SmbChannelEncryption",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).SmbChannelEncryption, global::System.Convert.ToString);
             }
+            if (content.Contains("NfEncryptionInTransit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).NfEncryptionInTransit = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionInTransit) content.GetValueForProperty("NfEncryptionInTransit",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).NfEncryptionInTransit, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionInTransitTypeConverter.ConvertFrom);
+            }
             if (content.Contains("MultichannelEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).MultichannelEnabled = (bool?) content.GetValueForProperty("MultichannelEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).MultichannelEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SmbEncryptionInTransitRequired"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).SmbEncryptionInTransitRequired = (bool?) content.GetValueForProperty("SmbEncryptionInTransitRequired",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).SmbEncryptionInTransitRequired, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("NfsEncryptionInTransitRequired"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).NfsEncryptionInTransitRequired = (bool?) content.GetValueForProperty("NfsEncryptionInTransitRequired",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServicePropertiesInternal)this).NfsEncryptionInTransitRequired, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }

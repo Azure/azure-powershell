@@ -14,6 +14,67 @@ namespace Microsoft.Azure.Management.StorageSync
     public partial interface ICloudEndpointsOperations
     {
         /// <summary>
+        /// Get a CloudEndpoint List.
+        /// </summary>
+        /// <remarks>
+        /// Get a CloudEndpoint List.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CloudEndpoint>,CloudEndpointsListBySyncGroupHeaders>> ListBySyncGroupWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get a given CloudEndpoint.
+        /// </summary>
+        /// <remarks>
+        /// Get a given CloudEndpoint.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CloudEndpoint,CloudEndpointsGetHeaders>> GetWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Create a new CloudEndpoint.
         /// </summary>
         /// <remarks>
@@ -49,38 +110,6 @@ namespace Microsoft.Azure.Management.StorageSync
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CloudEndpoint,CloudEndpointsCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, CloudEndpointCreateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get a given CloudEndpoint.
-        /// </summary>
-        /// <remarks>
-        /// Get a given CloudEndpoint.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='cloudEndpointName'>
-        /// Name of Cloud Endpoint object.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CloudEndpoint,CloudEndpointsGetHeaders>> GetWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Delete a given CloudEndpoint.
         /// </summary>
         /// <remarks>
@@ -110,39 +139,10 @@ namespace Microsoft.Azure.Management.StorageSync
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CloudEndpointsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get a CloudEndpoint List.
+        /// Get the AFS file share metadata signing certificate public keys.
         /// </summary>
         /// <remarks>
-        /// Get a CloudEndpoint List.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<CloudEndpoint>,CloudEndpointsListBySyncGroupHeaders>> ListBySyncGroupWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Pre Backup a given CloudEndpoint.
-        /// </summary>
-        /// <remarks>
-        /// Pre Backup a given CloudEndpoint.
+        /// Get the AFS file share metadata signing certificate public keys.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -156,9 +156,6 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='cloudEndpointName'>
         /// Name of Cloud Endpoint object.
         /// </param>
-        /// <param name='azureFileShare'>
-        /// Azure File Share.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -168,7 +165,10 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CloudEndpointsPreBackupHeaders>> PreBackupWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, string azureFileShare = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CloudEndpointAfsShareMetadataCertificatePublicKeys,CloudEndpointsAfsShareMetadataCertificatePublicKeysHeaders>> AfsShareMetadataCertificatePublicKeysWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Post Backup a given CloudEndpoint.
@@ -204,6 +204,70 @@ namespace Microsoft.Azure.Management.StorageSync
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PostBackupResponse,CloudEndpointsPostBackupHeaders>> PostBackupWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, string azureFileShare = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Post Restore a given CloudEndpoint.
+        /// </summary>
+        /// <remarks>
+        /// Post Restore a given CloudEndpoint.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        /// <param name='parameters'>
+        /// Body of Cloud Endpoint object.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CloudEndpointsPostRestoreHeaders>> PostRestoreWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, PostRestoreRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Pre Backup a given CloudEndpoint.
+        /// </summary>
+        /// <remarks>
+        /// Pre Backup a given CloudEndpoint.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        /// <param name='azureFileShare'>
+        /// Azure File Share.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CloudEndpointsPreBackupHeaders>> PreBackupWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, string azureFileShare = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Pre Restore a given CloudEndpoint.
@@ -267,38 +331,6 @@ namespace Microsoft.Azure.Management.StorageSync
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CloudEndpointsRestoreheartbeatHeaders>> RestoreheartbeatWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Post Restore a given CloudEndpoint.
-        /// </summary>
-        /// <remarks>
-        /// Post Restore a given CloudEndpoint.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='cloudEndpointName'>
-        /// Name of Cloud Endpoint object.
-        /// </param>
-        /// <param name='parameters'>
-        /// Body of Cloud Endpoint object.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CloudEndpointsPostRestoreHeaders>> PostRestoreWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, PostRestoreRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Triggers detection of changes performed on Azure File share connected to
         /// the specified Azure File Sync Cloud Endpoint.
         /// </summary>
@@ -331,38 +363,6 @@ namespace Microsoft.Azure.Management.StorageSync
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CloudEndpointsTriggerChangeDetectionHeaders>> TriggerChangeDetectionWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, TriggerChangeDetectionParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Get the AFS file share metadata signing certificate public keys.
-        /// </summary>
-        /// <remarks>
-        /// Get the AFS file share metadata signing certificate public keys.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='cloudEndpointName'>
-        /// Name of Cloud Endpoint object.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CloudEndpointAfsShareMetadataCertificatePublicKeys,CloudEndpointsAfsShareMetadataCertificatePublicKeysHeaders>> AfsShareMetadataCertificatePublicKeysWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create a new CloudEndpoint.
@@ -429,38 +429,6 @@ namespace Microsoft.Azure.Management.StorageSync
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CloudEndpointsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Pre Backup a given CloudEndpoint.
-        /// </summary>
-        /// <remarks>
-        /// Pre Backup a given CloudEndpoint.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='cloudEndpointName'>
-        /// Name of Cloud Endpoint object.
-        /// </param>
-        /// <param name='azureFileShare'>
-        /// Azure File Share.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CloudEndpointsPreBackupHeaders>> BeginPreBackupWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, string azureFileShare = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Post Backup a given CloudEndpoint.
         /// </summary>
         /// <remarks>
@@ -496,38 +464,6 @@ namespace Microsoft.Azure.Management.StorageSync
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PostBackupResponse,CloudEndpointsPostBackupHeaders>> BeginPostBackupWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, string azureFileShare = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Pre Restore a given CloudEndpoint.
-        /// </summary>
-        /// <remarks>
-        /// Pre Restore a given CloudEndpoint.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='cloudEndpointName'>
-        /// Name of Cloud Endpoint object.
-        /// </param>
-        /// <param name='parameters'>
-        /// Body of Cloud Endpoint object.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CloudEndpointsPreRestoreHeaders>> BeginPreRestoreWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, PreRestoreRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Post Restore a given CloudEndpoint.
         /// </summary>
         /// <remarks>
@@ -558,6 +494,70 @@ namespace Microsoft.Azure.Management.StorageSync
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CloudEndpointsPostRestoreHeaders>> BeginPostRestoreWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, PostRestoreRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Pre Backup a given CloudEndpoint.
+        /// </summary>
+        /// <remarks>
+        /// Pre Backup a given CloudEndpoint.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        /// <param name='azureFileShare'>
+        /// Azure File Share.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CloudEndpointsPreBackupHeaders>> BeginPreBackupWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, string azureFileShare = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Pre Restore a given CloudEndpoint.
+        /// </summary>
+        /// <remarks>
+        /// Pre Restore a given CloudEndpoint.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cloudEndpointName'>
+        /// Name of Cloud Endpoint object.
+        /// </param>
+        /// <param name='parameters'>
+        /// Body of Cloud Endpoint object.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CloudEndpointsPreRestoreHeaders>> BeginPreRestoreWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, PreRestoreRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Triggers detection of changes performed on Azure File share connected to
@@ -592,6 +592,29 @@ namespace Microsoft.Azure.Management.StorageSync
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CloudEndpointsTriggerChangeDetectionHeaders>> BeginTriggerChangeDetectionWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string syncGroupName, string cloudEndpointName, TriggerChangeDetectionParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get a CloudEndpoint List.
+        /// </summary>
+        /// <remarks>
+        /// Get a CloudEndpoint List.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CloudEndpoint>,CloudEndpointsListBySyncGroupHeaders>> ListBySyncGroupNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

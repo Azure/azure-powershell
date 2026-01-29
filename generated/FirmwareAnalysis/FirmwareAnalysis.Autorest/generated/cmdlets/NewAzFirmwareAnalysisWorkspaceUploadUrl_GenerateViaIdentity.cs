@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Cmdlets;
     using System;
 
-    /// <summary>The operation to get a url for file upload.</summary>
+    /// <summary>Generate a URL for uploading a firmware image.</summary>
     /// <remarks>
     /// [OpenAPI] GenerateUploadUrl=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/generateUploadUrl"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzFirmwareAnalysisWorkspaceUploadUrl_GenerateViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Description(@"The operation to get a url for file upload.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Description(@"Generate a URL for uploading a firmware image.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/generateUploadUrl", ApiVersion = "2024-01-10")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/generateUploadUrl", ApiVersion = "2025-08-02")]
     public partial class NewAzFirmwareAnalysisWorkspaceUploadUrl_GenerateViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IContext
@@ -49,6 +49,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
         /// </summary>
         private int _responseSize = 0;
 
+        /// <summary>Backing field for <see cref="Body" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest _body;
+
+        /// <summary>Properties for generating an upload URL</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Properties for generating an upload URL", ValueFromPipeline = true)]
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"Properties for generating an upload URL",
+        SerializedName = @"body",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.ParameterCategory.Body)]
+        public Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest Body { get => this._body; set => this._body = value; }
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.ParameterCategory.Runtime)]
@@ -72,20 +86,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
-
-        /// <summary>Backing field for <see cref="GenerateUploadUrl" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest _generateUploadUrl;
-
-        /// <summary>Properties for generating an upload URL</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Properties for generating an upload URL", ValueFromPipeline = true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"Properties for generating an upload URL",
-        SerializedName = @"generateUploadUrl",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.ParameterCategory.Body)]
-        public Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest GenerateUploadUrl { get => this._generateUploadUrl; set => this._generateUploadUrl = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.WorkspacesGenerateUploadUrlViaIdentity(InputObject.Id, GenerateUploadUrl, onOk, onDefault, this, Pipeline);
+                        await this.Client.WorkspacesGenerateUploadUrlViaIdentity(InputObject.Id, Body, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.WorkspaceName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.WorkspacesGenerateUploadUrl(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.WorkspaceName ?? null, GenerateUploadUrl, onOk, onDefault, this, Pipeline);
+                        await this.Client.WorkspacesGenerateUploadUrl(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.WorkspaceName ?? null, Body, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

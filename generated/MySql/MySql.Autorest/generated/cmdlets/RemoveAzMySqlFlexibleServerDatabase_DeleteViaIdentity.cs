@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
     /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/databases/{databaseName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzMySqlFlexibleServerDatabase_DeleteViaIdentity", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released in May 2026. *\r\n* At least one change applies to this cmdlet.                                                     *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.Description(@"Deletes a database.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.Generated]

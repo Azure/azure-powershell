@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzContainerRegistryToken
 
 ## SYNOPSIS
-Updates a token with the specified parameters.
+Update a token with the specified parameters.
 
 ## SYNTAX
 
@@ -16,7 +16,7 @@ Updates a token with the specified parameters.
 ```
 Update-AzContainerRegistryToken -Name <String> -RegistryName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-CredentialsCertificate <ITokenCertificate[]>]
- [-CredentialsPassword <ITokenPassword[]>] [-ScopeMapId <String>] [-Status <TokenStatus>]
+ [-CredentialsPassword <ITokenPassword[]>] [-ScopeMapId <String>] [-Status <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -24,12 +24,34 @@ Update-AzContainerRegistryToken -Name <String> -RegistryName <String> -ResourceG
 ```
 Update-AzContainerRegistryToken -InputObject <IContainerRegistryIdentity>
  [-CredentialsCertificate <ITokenCertificate[]>] [-CredentialsPassword <ITokenPassword[]>]
- [-ScopeMapId <String>] [-Status <TokenStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-ScopeMapId <String>] [-Status <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityRegistryExpanded
+```
+Update-AzContainerRegistryToken -Name <String> -RegistryInputObject <IContainerRegistryIdentity>
+ [-CredentialsCertificate <ITokenCertificate[]>] [-CredentialsPassword <ITokenPassword[]>]
+ [-ScopeMapId <String>] [-Status <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzContainerRegistryToken -Name <String> -RegistryName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzContainerRegistryToken -Name <String> -RegistryName <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a token with the specified parameters.
+Update a token with the specified parameters.
 
 ## EXAMPLES
 
@@ -67,11 +89,10 @@ Accept wildcard characters: False
 
 ### -CredentialsCertificate
 .
-To construct, see NOTES section for CREDENTIALSCERTIFICATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.ITokenCertificate[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITokenCertificate[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityRegistryExpanded
 Aliases:
 
 Required: False
@@ -83,11 +104,10 @@ Accept wildcard characters: False
 
 ### -CredentialsPassword
 .
-To construct, see NOTES section for CREDENTIALSPASSWORD properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.ITokenPassword[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITokenPassword[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityRegistryExpanded
 Aliases:
 
 Required: False
@@ -115,7 +135,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
@@ -129,12 +148,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the token.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityRegistryExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: TokenName
 
 Required: True
@@ -159,12 +208,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RegistryInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+Parameter Sets: UpdateViaIdentityRegistryExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -RegistryName
 The name of the container registry.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -180,7 +244,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -195,7 +259,7 @@ The resource ID of the scope map to which the token will be associated with.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityRegistryExpanded
 Aliases:
 
 Required: False
@@ -209,8 +273,8 @@ Accept wildcard characters: False
 The status of the token example enabled or disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TokenStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityRegistryExpanded
 Aliases:
 
 Required: False
@@ -226,7 +290,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -276,7 +340,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IToken
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IToken
 
 ## NOTES
 

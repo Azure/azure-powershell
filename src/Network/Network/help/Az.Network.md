@@ -84,7 +84,7 @@ Adds a delegation to a subnet.
 Adds an ExpressRoute circuit authorization.
 
 ### [Add-AzExpressRouteCircuitConnectionConfig](Add-AzExpressRouteCircuitConnectionConfig.md)
-Adds a circuit connection configuration to Private Peering of an Express Route Circuit.
+Adds a circuit connection configuration to Private Peering of an Express Route Circuit. 
 
 ### [Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig](Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig.md)
 Adds prefix validation properties required to validate the advertised public prefixes in Microsoft peering.
@@ -144,7 +144,7 @@ Add a Routing Policy to the Routing Intent object.
 Adds a service endpoint policy definition to a specified policy.
 
 ### [Add-AzVirtualHubRoute](Add-AzVirtualHubRoute.md)
-Creates a VirtualHubRoute object which can be passed as parameter to the Add-AzVirtualHubRouteTable command.
+Creates a VirtualHubRoute object which can be passed as parameter to the Add-AzVirtualHubRouteTable command. 
 
 ### [Add-AzVirtualHubRouteTable](Add-AzVirtualHubRouteTable.md)
 Creates a Virtual Hub Route Table resource which is a child of VirtualHub.
@@ -171,7 +171,7 @@ Adds a VPN client root certificate.
 Approves a private endpoint connection.
 
 ### [Convert-AzNetworkWatcherClassicConnectionMonitor](Convert-AzNetworkWatcherClassicConnectionMonitor.md)
-Convert a classic connection monitor into connection monitor v2 with specified name.
+Convert a classic connection monitor into connection monitor v2 with specified name. 
 
 ### [Deny-AzPrivateEndpointConnection](Deny-AzPrivateEndpointConnection.md)
 denies a private endpoint connection.
@@ -187,6 +187,12 @@ Disconnect given connected vpn client connections with a given p2s vpn gateway
 
 ### [Disconnect-AzVirtualNetworkGatewayVpnConnection](Disconnect-AzVirtualNetworkGatewayVpnConnection.md)
 Disconnect given connected vpn client connections with a given virtual network gateway.
+
+### [Get-AzAllVirtualNetworkGatewayRadiusServerSecret](Get-AzAllVirtualNetworkGatewayRadiusServerSecret.md)
+Lists the Radius servers and corresponding radius secrets set on VirtualNetworkGateway PointToSite VpnClientConfiguration.
+
+### [Get-AzAllVpnServerConfigurationRadiusServerSecret](Get-AzAllVpnServerConfigurationRadiusServerSecret.md)
+Lists the Radius servers and corresponding radius secrets set on VpnServerConfiguration.
 
 ### [Get-AzApplicationGateway](Get-AzApplicationGateway.md)
 Gets an application gateway.
@@ -228,7 +234,7 @@ Gets the connection draining configuration of a back-end HTTP settings object.
 Gets custom error(s) from an application gateway.
 
 ### [Get-AzApplicationGatewayFirewallPolicy](Get-AzApplicationGatewayFirewallPolicy.md)
-Gets an application gateway firewall policy.
+Gets an application gateway or application gateway for containers firewall policy.
 
 ### [Get-AzApplicationGatewayFrontendIPConfig](Get-AzApplicationGatewayFrontendIPConfig.md)
 Gets the front-end IP configuration of an application gateway.
@@ -441,7 +447,7 @@ Gets a load balancer.
 Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping retrieves inbound nat rule port mapping list for one backend address.
 
 ### [Get-AzLoadBalancerBackendAddressPool](Get-AzLoadBalancerBackendAddressPool.md)
-Get-AzLoadBalancerBackendAddressPool retrieves one or more backend address pools associated with a load balancer.
+Get-AzLoadBalancerBackendAddressPool retrieves one or more backend address pools associated with a load balancer. 
 
 ### [Get-AzLoadBalancerBackendAddressPoolConfig](Get-AzLoadBalancerBackendAddressPoolConfig.md)
 Gets a backend address pool configuration for a load balancer.
@@ -579,7 +585,8 @@ Gets the specified network security perimeter by the name.
 Gets the specified NSP access rule by name.
 
 ### [Get-AzNetworkSecurityPerimeterAssociableResourceType](Get-AzNetworkSecurityPerimeterAssociableResourceType.md)
-Gets the list of resources that are onboarded with NSP. These resources can be associated with a network security perimeter
+Gets the list of resources that are onboarded with NSP.
+These resources can be associated with a network security perimeter
 
 ### [Get-AzNetworkSecurityPerimeterAssociation](Get-AzNetworkSecurityPerimeterAssociation.md)
 Gets the specified NSP association by name.
@@ -595,6 +602,10 @@ Gets the NSP logging configuration.
 
 ### [Get-AzNetworkSecurityPerimeterProfile](Get-AzNetworkSecurityPerimeterProfile.md)
 Gets the specified NSP profile.
+
+### [Get-AzNetworkSecurityPerimeterServiceTag](Get-AzNetworkSecurityPerimeterServiceTag.md)
+Gets the list of service tags supported by NSP.
+These service tags can be used to list access rules in NSP.
 
 ### [Get-AzNetworkSecurityRuleConfig](Get-AzNetworkSecurityRuleConfig.md)
 Get a network security rule configuration for a network security group.
@@ -779,11 +790,23 @@ Displays the shared key used for the connection.
 ### [Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript](Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript.md)
 This cmdlet takes the connection resource, VPN device brand, model, firmware version, and return the corresponding configuration script that customers can apply directly on their on-premises VPN devices. The script will follow the syntax of the selected device, and fill in the necessary parameters such as Azure gateway public IP addresses, virtual network address prefixes, VPN tunnel pre-shared key, etc. so customers can simply copy-paste to their VPN device configurations.
 
+### [Get-AzVirtualNetworkGatewayFailoverAllTestsDetail](Get-AzVirtualNetworkGatewayFailoverAllTestsDetail.md)
+Retrieves the details of all failover tests for a specified virtual network gateway.
+
+### [Get-AzVirtualNetworkGatewayFailoverSingleTestDetail](Get-AzVirtualNetworkGatewayFailoverSingleTestDetail.md)
+Retrieves detailed information about a specific failover test for a virtual network gateway.
+
 ### [Get-AzVirtualNetworkGatewayLearnedRoute](Get-AzVirtualNetworkGatewayLearnedRoute.md)
 Lists routes learned by an Azure virtual network gateway
 
 ### [Get-AzVirtualNetworkGatewayNatRule](Get-AzVirtualNetworkGatewayNatRule.md)
 Gets a Virtual Network Gateway NatRule.
+
+### [Get-AzVirtualNetworkGatewayResiliencyInformation](Get-AzVirtualNetworkGatewayResiliencyInformation.md)
+Retrieves the resiliency information for an ExpressRoute Gateway, including its current resiliency score and recommendations for improvement.
+
+### [Get-AzVirtualNetworkGatewayRoutesInformation](Get-AzVirtualNetworkGatewayRoutesInformation.md)
+Retrieves the route set information for an ExpressRoute Gateway, based on its resiliency.
 
 ### [Get-AzVirtualNetworkGatewaySupportedVpnDevice](Get-AzVirtualNetworkGatewaySupportedVpnDevice.md)
 This cmdlet returns a list of supported VPN device brands, models, and firmware versions.
@@ -819,7 +842,8 @@ List routes learned by a specific virtual router peer
 Gets a Virtual WAN or all Virtual WANs in a resource group or subscription.
 
 ### [Get-AzVirtualWanVpnConfiguration](Get-AzVirtualWanVpnConfiguration.md)
-Gets the Vpn configuration for a subset of VpnSites connected to this WAN via VpnConnections. Uploads the generated Vpn configuration to a storage blob specified by the customer.
+Gets the Vpn configuration for a subset of VpnSites connected to this WAN via VpnConnections. Uploads the generated Vpn
+configuration to a storage blob specified by the customer.
 
 ### [Get-AzVirtualWanVpnServerConfiguration](Get-AzVirtualWanVpnServerConfiguration.md)
 Gets the list of all VpnServerConfigurations that are associated with this VirtualWan.
@@ -843,7 +867,10 @@ Gets information about VPN client-revocation certificates.
 Gets information about VPN root certificates.
 
 ### [Get-AzVpnConnection](Get-AzVpnConnection.md)
-Gets a vpn connection by name or lists all vpn connections connected to a VpnGateway.  >[!NOTE] > This Powershell command is for customers using Virtual WAN Site-to-site VPN Gateway only.
+Gets a vpn connection by name or lists all vpn connections connected to a VpnGateway.
+
+>[!NOTE]
+> This Powershell command is for customers using Virtual WAN Site-to-site VPN Gateway only. 
 
 ### [Get-AzVpnGateway](Get-AzVpnGateway.md)
 Gets a VpnGateway resource using ResourceGroupName and GatewayName OR lists all gateways by ResourceGroupName or SubscriptionId.
@@ -858,13 +885,18 @@ Gets an existing VpnServerConfiguration for point to site connectivity.
 Gets VpnServerConfigurationPolicyGroup that can be attached to P2SVpnGateway.
 
 ### [Get-AzVpnSite](Get-AzVpnSite.md)
-Gets an Azure VpnSite resource by name OR lists all VpnSites in a ResourceGroup or SubscriptionId.   This is an RM representation of customer branches that are uploaded to Azure for S2S connectivity with a Cortex virtual hub.
+Gets an Azure VpnSite resource by name OR lists all VpnSites in a ResourceGroup or SubscriptionId. 
+
+This is an RM representation of customer branches that are uploaded to Azure for S2S connectivity with a Cortex virtual hub.
 
 ### [Get-AzVpnSiteLinkConnectionIkeSa](Get-AzVpnSiteLinkConnectionIkeSa.md)
 Get IKE Security Associations of VPN Site Link Connections
 
 ### [Invoke-AzFirewallPacketCapture](Invoke-AzFirewallPacketCapture.md)
 Invoke Packet Capture on Azure Firewall
+
+### [Invoke-AzFirewallPacketCaptureOperation](Invoke-AzFirewallPacketCaptureOperation.md)
+Invokes a Start/Status/Stop packet capture operation request on Azure Firewall
 
 ### [Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic](Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic.md)
 Invoke network configuration diagnostic session for specified network profiles on target resource.
@@ -909,7 +941,7 @@ Creates a new client authentication configuration for SSL profile.
 Creates a new connection draining configuration for back-end HTTP settings.
 
 ### [New-AzApplicationGatewayCustomError](New-AzApplicationGatewayCustomError.md)
-Creates a custom error with http status code and custom error page url
+Creates a custom error with http status code and custom error page url 
 
 ### [New-AzApplicationGatewayFirewallCondition](New-AzApplicationGatewayFirewallCondition.md)
 Creates a match condition for custom rule
@@ -1155,7 +1187,7 @@ Creates a new DNS Setting for Azure Firewall Policy
 Creates a new Azure Firewall Policy draft.
 
 ### [New-AzFirewallPolicyExplicitProxy](New-AzFirewallPolicyExplicitProxy.md)
-Creates a new Explicit Proxy
+Creates a new Explicit Proxy 
 
 ### [New-AzFirewallPolicyFilterRuleCollection](New-AzFirewallPolicyFilterRuleCollection.md)
 Create a new Azure Firewall Policy Filter Rule Collection
@@ -1221,10 +1253,10 @@ Creates a traffic selector policy.
 Creates a load balancer.
 
 ### [New-AzLoadBalancerBackendAddressConfig](New-AzLoadBalancerBackendAddressConfig.md)
-Returns a load balancer backend address config.
+Returns a load balancer backend address config. 
 
 ### [New-AzLoadBalancerBackendAddressPool](New-AzLoadBalancerBackendAddressPool.md)
-Creates a backend address pool on a loadbalancer.
+Creates a backend address pool on a loadbalancer. 
 
 ### [New-AzLoadBalancerBackendAddressPoolConfig](New-AzLoadBalancerBackendAddressPoolConfig.md)
 Creates a backend address pool configuration for a load balancer.
@@ -1416,7 +1448,8 @@ Create a connection monitor test group.
 Create or update a flow log resource for the specified network security group.
 
 ### [New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile](New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile.md)
-Creates a new network configuration diagnostic profile object.  This object is used to restrict the network configuration during a diagnostic session using the specified criteria.
+Creates a new network configuration diagnostic profile object. 
+This object is used to restrict the network configuration during a diagnostic session using the specified criteria.
 
 ### [New-AzNetworkWatcherPacketCapture](New-AzNetworkWatcherPacketCapture.md)
 Creates a new packet capture resource and starts a packet capture session on a VM.
@@ -1426,6 +1459,9 @@ V2 Version of Packet Capture Cmdlet which creates a new packet capture resource 
 
 ### [New-AzNetworkWatcherProtocolConfiguration](New-AzNetworkWatcherProtocolConfiguration.md)
 Creates a new protocol configuration object.
+
+### [New-AzNvaInterfaceConfiguration](New-AzNvaInterfaceConfiguration.md)
+Create a NVA Interface configuration
 
 ### [New-AzO365PolicyProperty](New-AzO365PolicyProperty.md)
 Create an office 365 traffic breakout policy object.
@@ -1515,7 +1551,7 @@ Creates a RoutingConfiguration object.
 Creates a routing intent resource associated with a VirtualHub.
 
 ### [New-AzRoutingPolicy](New-AzRoutingPolicy.md)
-Returns an in-memory routing policy object.
+Returns an in-memory routing policy object. 
 
 ### [New-AzSaaSNetworkVirtualAppliance](New-AzSaaSNetworkVirtualAppliance.md)
 Create a SaaS Network Virtual Appliance resource.
@@ -1582,6 +1618,9 @@ Creates a virtual network.
 
 ### [New-AzVirtualNetworkGateway](New-AzVirtualNetworkGateway.md)
 Creates a Virtual Network Gateway
+
+### [New-AzVirtualNetworkGatewayCertificateAuthentication](New-AzVirtualNetworkGatewayCertificateAuthentication.md)
+Creates a certificate authentication configuration object for VPN gateway connections.
 
 ### [New-AzVirtualNetworkGatewayConnection](New-AzVirtualNetworkGatewayConnection.md)
 Creates the Site-to-Site VPN connection between the virtual network gateway and the on-prem VPN device.
@@ -1650,7 +1689,8 @@ Create a new VpnServerConfiguration for point to site connectivity.
 Creates a new VpnServerConfigurationPolicyGroup that can be attached to P2SVpnGateway.
 
 ### [New-AzVpnSite](New-AzVpnSite.md)
-Creates a new Azure VpnSite resource. This is an RM representation of customer branches that are uploaded to Azure for S2S connectivity with a Cortex virtual hub.
+Creates a new Azure VpnSite resource. This is an RM representation of customer branches that are uploaded to Azure
+for S2S connectivity with a Cortex virtual hub.
 
 ### [New-AzVpnSiteLink](New-AzVpnSiteLink.md)
 Creates an Azure VpnSiteLink object.
@@ -1920,10 +1960,10 @@ Removes a network manager static member.
 Remove a network manager subscription connection.
 
 ### [Remove-AzNetworkManagerVerifierWorkspace](Remove-AzNetworkManagerVerifierWorkspace.md)
-To remove network manager verifier workspace.
+To remove network manager verifier workspace. 
 
 ### [Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent](Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent.md)
-To remove network manager verifier workspace reachability analysis intent.
+To remove network manager verifier workspace reachability analysis intent. 
 
 ### [Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun](Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun.md)
 To remove network manager verifier workspace reachability analysis run.
@@ -2241,7 +2281,7 @@ Updates the Bastion Resource.
 Modifies an ExpressRoute circuit.
 
 ### [Set-AzExpressRouteCircuitConnectionConfig](Set-AzExpressRouteCircuitConnectionConfig.md)
-Updates a circuit connection configuration created in Private Peerings for an Express Route Circuit.
+Updates a circuit connection configuration created in Private Peerings for an Express Route Circuit. 
 
 ### [Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig](Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig.md)
 Modifies prefix validation properties required to validate the advertised public prefixes in Microsoft peering.
@@ -2337,7 +2377,7 @@ Updates a network manager group.
 Updates an IPAM pool.
 
 ### [Set-AzNetworkManagerIpamPoolStaticCidr](Set-AzNetworkManagerIpamPoolStaticCidr.md)
-Updates an IPAM pool's static cidr.
+Updates a static CIDR allocation in an IPAM pool.
 
 ### [Set-AzNetworkManagerManagementGroupConnection](Set-AzNetworkManagerManagementGroupConnection.md)
 Update a network manger management group connection
@@ -2483,6 +2523,9 @@ Starts Packet Capture Operation on a Virtual Network Gateway Connection.
 ### [Start-AzVirtualnetworkGatewayPacketCapture](Start-AzVirtualnetworkGatewayPacketCapture.md)
 Starts Packet Capture Operation on a Virtual Network Gateway.
 
+### [Start-AzVirtualNetworkGatewaySiteFailoverTest](Start-AzVirtualNetworkGatewaySiteFailoverTest.md)
+Starts a failover simulation on the virtual network gateway for the specified peering location.
+
 ### [Start-AzVpnConnectionPacketCapture](Start-AzVpnConnectionPacketCapture.md)
 Starts Packet Capture Operation on a Vpn Connection.
 
@@ -2503,6 +2546,9 @@ Stops Packet Capture Operation on a Virtual Network Gateway connection
 
 ### [Stop-AzVirtualNetworkGatewayPacketCapture](Stop-AzVirtualNetworkGatewayPacketCapture.md)
 Stops Packet Capture Operation on a Virtual Network Gateway.
+
+### [Stop-AzVirtualNetworkGatewaySiteFailoverTest](Stop-AzVirtualNetworkGatewaySiteFailoverTest.md)
+Stops the failover simulation on the virtual network gateway for the specified peering location.
 
 ### [Stop-AzVpnConnectionPacketCapture](Stop-AzVpnConnectionPacketCapture.md)
 Stops Packet Capture Operation on a Vpn connection
@@ -2586,7 +2632,7 @@ Updates an existing HubVirtualNetworkConnection.
 Updates a Virtual Network Gateway NatRule.
 
 ### [Update-AzVirtualRouter](Update-AzVirtualRouter.md)
-Updates a Virtual Router.
+Updates a Virtual Router. 
 
 ### [Update-AzVirtualRouterPeer](Update-AzVirtualRouterPeer.md)
 Update a Peer in an Azure VirtualRouter

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationprotectioncontainermapping
 schema: 2.0.0
@@ -17,8 +17,8 @@ New-AzMigrateReplicationProtectionContainerMapping -FabricName <String> -Mapping
  -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String>
  [-SubscriptionId <String>] [-PolicyId <String>]
  [-ProviderSpecificInput <IReplicationProviderSpecificContainerMappingInput>]
- [-TargetProtectionContainerId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-TargetProtectionContainerId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -161,7 +161,7 @@ Provider specific input for pairing.
 To construct, see NOTES section for PROVIDERSPECIFICINPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IReplicationProviderSpecificContainerMappingInput
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IReplicationProviderSpecificContainerMappingInput
 Parameter Sets: (All)
 Aliases:
 
@@ -270,9 +270,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IProtectionContainerMapping
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IProtectionContainerMapping
 
 ## NOTES
 
 ## RELATED LINKS
-

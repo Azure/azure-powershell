@@ -19,6 +19,21 @@
 -->
 ## Upcoming Release
 
+## Version 2.6.6
+* Improved cloud deployment detection during Azure Arc repair operations to prevent duplicate enablement attempts and ensure smoother deployment experiences.
+* Added ability to register in custom Azure Environments
+* Fixed issue where Arc enablement was incorrectly triggered during repair registration for cloud deployments
+
+## Version 2.6.5
+* ARC Enablement of Nodes Before Triggering Registration in New Registration Flow.
+* Resolved double hop authentication issue.
+
+## Version 2.6.4
+* Fixed bug: Buse boolean in comparision
+
+## Version 2.6.3
+* Modified the Cluster Registration to use Managed Service Identity instead of AAD App based registration for new OS versions.
+
 ## Version 2.6.2
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 

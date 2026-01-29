@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.10.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
 ## Version 1.10.0
 * Upgraded nuget package to signed package.
 * Updated Az.Databricks to use more intuitive parameter names for the ESC feature.

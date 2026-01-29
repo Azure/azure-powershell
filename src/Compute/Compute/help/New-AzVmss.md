@@ -17,8 +17,8 @@ Creates a virtual machine scale set.
 ```
 New-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob] [-IfMatch <String>] [-IfNoneMatch <String>]
- [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EdgeZone <String>] [-HighSpeedInterconnectPlacement <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SimpleParameterSet
@@ -39,7 +39,9 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-DiskControllerType <String>] [-SharedGalleryImageId <String>] [-SecurityType <String>]
  [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-SecurityPostureId <String>]
  [-SecurityPostureExcludeExtension <String[]>] [-SkuProfileVmSize <String[]>]
- [-SkuProfileAllocationStrategy <String>] [-EnableProxyAgent] [-DefaultProfile <IAzureContextContainer>]
+ [-SkuProfileAllocationStrategy <String>] [-EnableProxyAgent] [-AddProxyAgentExtension]
+ [-ZonePlacementPolicy <String>] [-IncludeZone <String[]>] [-ExcludeZone <String[]>]
+ [-HighSpeedInterconnectPlacement <String>] [-DefaultProfile <IAzureContextContainer>]
  [-SinglePlacementGroup] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -289,6 +291,21 @@ $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 The virtual machine scale set above has Trusted Launch enabled by default. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
 
 ## PARAMETERS
+
+### -AddProxyAgentExtension
+Specifies whether to implicitly install the ProxyAgent Extension. This option is currently applicable only for Linux OS.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -AllocationMethod
 Allocation method for the Public IP Address of the Scale Set (Static or Dynamic).  If no value is supplied, allocation will be static.
@@ -572,6 +589,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ExcludeZone
+This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.
+
+```yaml
+Type: System.String[]
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FrontendPoolName
 The name of the frontend address pool to use in the Scale Set load balancer.  If no value is supplied, a new Frontend Address Pool will be created, with the same name as the scale set.
 
@@ -584,6 +616,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HighSpeedInterconnectPlacement
+Specifies the high speed interconnect placement for the virtual machine scale set.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: None, Trunk
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -652,6 +700,21 @@ Specified the shared gallery image unique id for vmss deployment. This can be fe
 
 ```yaml
 Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeZone
+This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.
+
+```yaml
+Type: System.String[]
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -1179,6 +1242,21 @@ A list of availability zones denoting the IP allocated for the resource needs to
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ZonePlacementPolicy
+Specifies the policy for resource's placement in availability zone. Possible values are: **Any** (used for Virtual Machines), **Auto** (used for Virtual Machine Scale Sets) - An availability zone will be automatically picked by system as part of resource creation.
+
+```yaml
+Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
 

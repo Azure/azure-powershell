@@ -23,11 +23,11 @@ Creates an AzStorageContainer endpoint resource, which represents a data transfe
 New-AzStorageMoverAzStorageContainerEndpoint -Name myendpointName -ResourceGroupName myResourceGroup -BlobContainerName myContainer -StorageMoverName myStorageMover -StorageAccountResourceId myAccountResourceId
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,7 +37,7 @@ To create the parameters described below, construct a hash table containing the 
 https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverazstoragecontainerendpoint
 #>
 function New-AzStorageMoverAzStorageContainerEndpoint {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IEndpoint])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -131,7 +131,7 @@ function New-AzStorageMoverAzStorageContainerEndpoint {
     )
 
     process {
-        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.AzureStorageBlobContainerEndpointProperties]::New()
+        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.AzureStorageBlobContainerEndpointProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('BlobContainerName')) {
             $Properties.BlobContainerName = $BlobContainerName
@@ -146,8 +146,9 @@ function New-AzStorageMoverAzStorageContainerEndpoint {
             $null = $PSBoundParameters.Remove("Description")
         }
 
-        $Properties.EndpointType = "AzureStorageBlobContainer"
         $PSBoundParameters.Add("Property", $Properties)
+        $Identity = "SystemAssigned"
+        $PSBoundParameters.Add("IdentityType", $Identity)
 
         Az.StorageMover.internal\New-AzStorageMoverEndpoint @PSBoundParameters
     }

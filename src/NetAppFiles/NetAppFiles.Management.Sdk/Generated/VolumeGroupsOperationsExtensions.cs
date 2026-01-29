@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='accountName'>
         /// The name of the NetApp account
         /// </param>
-        public static System.Collections.Generic.IEnumerable<VolumeGroup> ListByNetAppAccount(this IVolumeGroupsOperations operations, string resourceGroupName, string accountName)
+        public static Microsoft.Rest.Azure.IPage<VolumeGroup> ListByNetAppAccount(this IVolumeGroupsOperations operations, string resourceGroupName, string accountName)
         {
                 return ((IVolumeGroupsOperations)operations).ListByNetAppAccountAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<VolumeGroup>> ListByNetAppAccountAsync(this IVolumeGroupsOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VolumeGroup>> ListByNetAppAccountAsync(this IVolumeGroupsOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByNetAppAccountWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -157,9 +157,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='volumeGroupName'>
         /// The name of the volumeGroup
         /// </param>
-        public static void Delete(this IVolumeGroupsOperations operations, string resourceGroupName, string accountName, string volumeGroupName)
+        public static VolumeGroupsDeleteHeaders Delete(this IVolumeGroupsOperations operations, string resourceGroupName, string accountName, string volumeGroupName)
         {
-                ((IVolumeGroupsOperations)operations).DeleteAsync(resourceGroupName, accountName, volumeGroupName).GetAwaiter().GetResult();
+                return ((IVolumeGroupsOperations)operations).DeleteAsync(resourceGroupName, accountName, volumeGroupName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -181,9 +181,12 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IVolumeGroupsOperations operations, string resourceGroupName, string accountName, string volumeGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VolumeGroupsDeleteHeaders> DeleteAsync(this IVolumeGroupsOperations operations, string resourceGroupName, string accountName, string volumeGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, volumeGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, volumeGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Create a volume group along with specified volumes
@@ -246,9 +249,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='volumeGroupName'>
         /// The name of the volumeGroup
         /// </param>
-        public static void BeginDelete(this IVolumeGroupsOperations operations, string resourceGroupName, string accountName, string volumeGroupName)
+        public static VolumeGroupsDeleteHeaders BeginDelete(this IVolumeGroupsOperations operations, string resourceGroupName, string accountName, string volumeGroupName)
         {
-                ((IVolumeGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, accountName, volumeGroupName).GetAwaiter().GetResult();
+                return ((IVolumeGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, accountName, volumeGroupName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -270,9 +273,45 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVolumeGroupsOperations operations, string resourceGroupName, string accountName, string volumeGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VolumeGroupsDeleteHeaders> BeginDeleteAsync(this IVolumeGroupsOperations operations, string resourceGroupName, string accountName, string volumeGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, volumeGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, volumeGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// List all volume groups for given account
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<VolumeGroup> ListByNetAppAccountNext(this IVolumeGroupsOperations operations, string nextPageLink)
+        {
+                return ((IVolumeGroupsOperations)operations).ListByNetAppAccountNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// List all volume groups for given account
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VolumeGroup>> ListByNetAppAccountNextAsync(this IVolumeGroupsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByNetAppAccountNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigrateserverreplication
 schema: 2.0.0
@@ -14,55 +14,59 @@ Starts replication for the specified server.
 
 ### ByIdDefaultUser (Default)
 ```
-New-AzMigrateServerReplication -DiskType <String> -LicenseType <String> -MachineId <String> -OSDiskID <String>
- -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetVMName <String>
- [-DiskEncryptionSetID <String>] [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>]
- [-LinuxLicenseType <String>] [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
- [-PerformAutoResync <String>] [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
- [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
- [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
- [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+New-AzMigrateServerReplication -LicenseType <String> -TargetResourceGroupId <String> -TargetNetworkId <String>
+ -TargetSubnetName <String> -TargetVMName <String> -MachineId <String> -DiskType <String> -OSDiskID <String>
+ [-SqlServerLicenseType <String>] [-LinuxLicenseType <String>] [-TestNetworkId <String>]
+ [-TestSubnetName <String>] [-VMWarerunasaccountID <String>] [-TargetVMSize <String>]
+ [-PerformAutoResync <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
+ [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-Tag <Hashtable>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-DiskEncryptionSetID <String>] [-SubscriptionId <String>]
+ [-TargetCapacityReservationGroupId <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### ByIdPowerUser
 ```
-New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -LicenseType <String>
- -MachineId <String> -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String>
- -TargetVMName <String> [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-LinuxLicenseType <String>]
- [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-PerformAutoResync <String>]
- [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
+New-AzMigrateServerReplication -LicenseType <String> -TargetResourceGroupId <String> -TargetNetworkId <String>
+ -TargetSubnetName <String> -TargetVMName <String> -MachineId <String> [-SqlServerLicenseType <String>]
+ [-LinuxLicenseType <String>] [-TestNetworkId <String>] [-TestSubnetName <String>]
+ [-VMWarerunasaccountID <String>] [-TargetVMSize <String>] [-PerformAutoResync <String>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
- [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
- [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
+ [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-Tag <Hashtable>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>]
+ [-TargetCapacityReservationGroupId <String>] -DiskToInclude <IVMwareCbtDiskInput[]>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByInputObjectDefaultUser
 ```
-New-AzMigrateServerReplication -DiskType <String> -InputObject <IVMwareMachine> -LicenseType <String>
- -OSDiskID <String> -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String>
- -TargetVMName <String> [-DiskEncryptionSetID <String>]
- [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-LinuxLicenseType <String>]
- [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-PerformAutoResync <String>]
- [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
- [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
- [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
- [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+New-AzMigrateServerReplication -LicenseType <String> -TargetResourceGroupId <String> -TargetNetworkId <String>
+ -TargetSubnetName <String> -TargetVMName <String> -DiskType <String> -OSDiskID <String>
+ [-SqlServerLicenseType <String>] [-LinuxLicenseType <String>] [-TestNetworkId <String>]
+ [-TestSubnetName <String>] [-VMWarerunasaccountID <String>] [-TargetVMSize <String>]
+ [-PerformAutoResync <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
+ [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-Tag <Hashtable>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-DiskEncryptionSetID <String>] [-SubscriptionId <String>]
+ [-TargetCapacityReservationGroupId <String>] -InputObject <IVMwareMachine> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### ByInputObjectPowerUser
 ```
-New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -InputObject <IVMwareMachine>
- -LicenseType <String> -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String>
- -TargetVMName <String> [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-LinuxLicenseType <String>]
- [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-PerformAutoResync <String>]
- [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
+New-AzMigrateServerReplication -LicenseType <String> -TargetResourceGroupId <String> -TargetNetworkId <String>
+ -TargetSubnetName <String> -TargetVMName <String> [-SqlServerLicenseType <String>]
+ [-LinuxLicenseType <String>] [-TestNetworkId <String>] [-TestSubnetName <String>]
+ [-VMWarerunasaccountID <String>] [-TargetVMSize <String>] [-PerformAutoResync <String>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
- [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
- [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
+ [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-Tag <Hashtable>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>]
+ [-TargetCapacityReservationGroupId <String>] -DiskToInclude <IVMwareCbtDiskInput[]>
+ -InputObject <IVMwareMachine> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -172,7 +176,7 @@ Specifies the tag to be used for disk creation.
 To construct, see NOTES section for DISKTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetDiskTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IVMwareCbtEnableMigrationInputTargetDiskTags
 Parameter Sets: (All)
 Aliases:
 
@@ -188,7 +192,7 @@ Specifies the disks on the source server to be included for replication.
 To construct, see NOTES section for DISKTOINCLUDE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtDiskInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IVMwareCbtDiskInput[]
 Parameter Sets: ByIdPowerUser, ByInputObjectPowerUser
 Aliases:
 
@@ -281,7 +285,7 @@ Specifies the tag to be used for NIC creation.
 To construct, see NOTES section for NICTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetNicTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IVMwareCbtEnableMigrationInputTargetNicTags
 Parameter Sets: (All)
 Aliases:
 
@@ -412,6 +416,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TargetCapacityReservationGroupId
+Specifies the Target Capacity Reservation Group Id within the destination Azure subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TargetNetworkId
 Specifies the Virtual Network id within the destination Azure subscription to which the server needs to be migrated.
 
@@ -522,7 +541,7 @@ Specifies the tag to be used for VM creation.
 To construct, see NOTES section for VMTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetVmtags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IVMwareCbtEnableMigrationInputTargetVmtags
 Parameter Sets: (All)
 Aliases:
 
@@ -555,9 +574,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IJob
 
 ## NOTES
 
 ## RELATED LINKS
-

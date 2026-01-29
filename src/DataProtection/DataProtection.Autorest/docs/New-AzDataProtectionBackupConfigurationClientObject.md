@@ -62,7 +62,7 @@ Hook reference to be executed during backup.
 To construct, see NOTES section for BACKUPHOOKREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.NamespacedNameResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.NamespacedNameResource[]
 Parameter Sets: (All)
 Aliases:
 

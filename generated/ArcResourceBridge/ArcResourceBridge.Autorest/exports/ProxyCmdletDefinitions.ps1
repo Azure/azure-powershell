@@ -23,12 +23,12 @@ Returns the cluster user credentials for the dedicated appliance.
 Get-AzArcResourceBridgeApplianceCredential -ResourceGroupName azps_test_group -Name azps-resource-bridge
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListCredentialResults
+Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceListCredentialResults
 .Link
 https://learn.microsoft.com/powershell/module/az.arcresourcebridge/get-azarcresourcebridgeappliancecredential
 #>
 function Get-AzArcResourceBridgeApplianceCredential {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListCredentialResults])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceListCredentialResults])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -107,6 +107,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -128,9 +137,7 @@ begin {
         $mapping = @{
             List = 'Az.ArcResourceBridge.private\Get-AzArcResourceBridgeApplianceCredential_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -144,6 +151,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -196,12 +206,12 @@ Returns the cluster customer credentials for the dedicated appliance.
 Get-AzArcResourceBridgeCredential -ResourceGroupName azps_test_group -Name azps-resource-bridge
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListKeysResults
+Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceListKeysResults
 .Link
 https://learn.microsoft.com/powershell/module/az.arcresourcebridge/get-azarcresourcebridgecredential
 #>
 function Get-AzArcResourceBridgeCredential {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListKeysResults])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceListKeysResults])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -280,6 +290,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -301,9 +320,7 @@ begin {
         $mapping = @{
             List = 'Az.ArcResourceBridge.private\Get-AzArcResourceBridgeCredential_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -317,6 +334,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -368,41 +388,21 @@ Gets the telemetry config.
 .Example
 Get-AzArcResourceBridgeTelemetryConfig
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity
 .Outputs
-System.String
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IArcResourceBridgeIdentity>: Identity Parameter
-  [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: Appliances name.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [UpgradeGraph <String>]: Upgrade graph version, ex - stable
+Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceGetTelemetryConfigResult
 .Link
 https://learn.microsoft.com/powershell/module/az.arcresourcebridge/get-azarcresourcebridgetelemetryconfig
 #>
 function Get-AzArcResourceBridgeTelemetryConfig {
-[OutputType([System.String])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IApplianceGetTelemetryConfigResult])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
-    [Parameter(ParameterSetName='Get')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -460,6 +460,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -480,11 +489,8 @@ begin {
 
         $mapping = @{
             Get = 'Az.ArcResourceBridge.private\Get-AzArcResourceBridgeTelemetryConfig_Get';
-            GetViaIdentity = 'Az.ArcResourceBridge.private\Get-AzArcResourceBridgeTelemetryConfig_GetViaIdentity';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -498,6 +504,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -552,11 +561,18 @@ Get-AzArcResourceBridgeUpgradeGraph -ResourceGroupName azps_test_group -Name azp
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IUpgradeGraph
+Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IUpgradeGraph
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+APPLIANCEINPUTOBJECT <IArcResourceBridgeIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: Appliances name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UpgradeGraph <String>]: Upgrade graph version, ex - stable
 
 INPUTOBJECT <IArcResourceBridgeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
@@ -568,7 +584,7 @@ INPUTOBJECT <IArcResourceBridgeIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.arcresourcebridge/get-azarcresourcebridgeupgradegraph
 #>
 function Get-AzArcResourceBridgeUpgradeGraph {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IUpgradeGraph])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IUpgradeGraph])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -592,6 +608,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityAppliance', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Path')]
     [System.String]
     # Upgrade graph version, ex - stable
@@ -601,8 +618,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityAppliance', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity]
+    # Identity Parameter
+    ${ApplianceInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -660,6 +682,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -681,10 +712,9 @@ begin {
         $mapping = @{
             Get = 'Az.ArcResourceBridge.private\Get-AzArcResourceBridgeUpgradeGraph_Get';
             GetViaIdentity = 'Az.ArcResourceBridge.private\Get-AzArcResourceBridgeUpgradeGraph_GetViaIdentity';
+            GetViaIdentityAppliance = 'Az.ArcResourceBridge.private\Get-AzArcResourceBridgeUpgradeGraph_GetViaIdentityAppliance';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -698,6 +728,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -756,7 +789,7 @@ Get-AzArcResourceBridge -ResourceGroupName azps_test_group -Name azps-resource-b
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance
+Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IAppliance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -772,7 +805,7 @@ INPUTOBJECT <IArcResourceBridgeIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.arcresourcebridge/get-azarcresourcebridge
 #>
 function Get-AzArcResourceBridge {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IAppliance])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -802,7 +835,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -861,6 +893,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -885,9 +926,7 @@ begin {
             List = 'Az.ArcResourceBridge.private\Get-AzArcResourceBridge_List';
             List1 = 'Az.ArcResourceBridge.private\Get-AzArcResourceBridge_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -901,6 +940,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -946,19 +988,19 @@ end {
 
 <#
 .Synopsis
-Creates or updates an Appliance in the specified Subscription and Resource Group.
+Create an Appliance in the specified Subscription and Resource Group.
 .Description
-Creates or updates an Appliance in the specified Subscription and Resource Group.
+Create an Appliance in the specified Subscription and Resource Group.
 .Example
-New-AzArcResourceBridge -Name azps-resource-bridge -ResourceGroupName azps_test_group -Location eastus -IdentityType 'SystemAssigned' -Distro 'AKSEdge' -InfrastructureConfigProvider 'VMware' -Tag @{"123"="abc"}
+New-AzArcResourceBridge -Name azps-resource-bridge -ResourceGroupName azps_test_group -Location eastus -EnableSystemAssignedIdentity -Distro 'AKSEdge' -InfrastructureConfigProvider 'VMware' -Tag @{"123"="abc"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance
+Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IAppliance
 .Link
 https://learn.microsoft.com/powershell/module/az.arcresourcebridge/new-azarcresourcebridge
 #>
 function New-AzArcResourceBridge {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IAppliance])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -981,53 +1023,64 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.PSArgumentCompleterAttribute("AKSEdge")]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro]
+    [System.String]
     # Represents a supported Fabric/Infra.
     # (AKSEdge etc...).
     ${Distro},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType]
-    # The identity type.
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.PSArgumentCompleterAttribute("VMWare", "HCI", "SCVMM", "KubeVirt", "OpenStack")]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider]
+    [System.String]
     # Information about the connected appliance.
     ${InfrastructureConfigProvider},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
     [System.String]
     # Certificates pair used to download MSI certificate from HIS.
     # Can only be set once.
     ${PublicKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
     [System.String]
     # Version of the Appliance
     ${Version},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1097,6 +1150,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1117,10 +1179,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.ArcResourceBridge.private\New-AzArcResourceBridge_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.ArcResourceBridge.private\New-AzArcResourceBridge_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ArcResourceBridge.private\New-AzArcResourceBridge_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1134,6 +1196,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1233,7 +1298,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1310,6 +1374,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1332,9 +1405,7 @@ begin {
             Delete = 'Az.ArcResourceBridge.private\Remove-AzArcResourceBridge_Delete';
             DeleteViaIdentity = 'Az.ArcResourceBridge.private\Remove-AzArcResourceBridge_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1348,6 +1419,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1393,9 +1467,9 @@ end {
 
 <#
 .Synopsis
-Updates an Appliance with the specified Resource Name in the specified Resource Group and Subscription.
+Update an Appliance with the specified Resource Name in the specified Resource Group and Subscription.
 .Description
-Updates an Appliance with the specified Resource Name in the specified Resource Group and Subscription.
+Update an Appliance with the specified Resource Name in the specified Resource Group and Subscription.
 .Example
 Update-AzArcResourceBridge -Name azps-resource-bridge -ResourceGroupName azps_test_group -Tag @{"111"="222";"aaa"="bbb"}
 .Example
@@ -1404,7 +1478,7 @@ Get-AzArcResourceBridge -ResourceGroupName azps_test_group -Name azps-resource-b
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance
+Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IAppliance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1420,16 +1494,20 @@ INPUTOBJECT <IArcResourceBridgeIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.arcresourcebridge/update-azarcresourcebridge
 #>
 function Update-AzArcResourceBridge {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IAppliance])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Path')]
     [System.String]
     # Appliances name.
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -1437,6 +1515,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -1447,15 +1527,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IPatchableApplianceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IPatchableApplianceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1513,6 +1605,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1534,10 +1635,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.ArcResourceBridge.private\Update-AzArcResourceBridge_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.ArcResourceBridge.private\Update-AzArcResourceBridge_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.ArcResourceBridge.private\Update-AzArcResourceBridge_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ArcResourceBridge.private\Update-AzArcResourceBridge_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1551,6 +1652,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

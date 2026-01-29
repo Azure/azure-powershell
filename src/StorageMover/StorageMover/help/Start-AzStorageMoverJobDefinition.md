@@ -8,7 +8,7 @@ schema: 2.0.0
 # Start-AzStorageMoverJobDefinition
 
 ## SYNOPSIS
-Creates a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
+Start a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
 
 ## SYNTAX
 
@@ -19,6 +19,19 @@ Start-AzStorageMoverJobDefinition -JobDefinitionName <String> -ProjectName <Stri
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### StartViaIdentityStorageMover
+```
+Start-AzStorageMoverJobDefinition -JobDefinitionName <String> -ProjectName <String>
+ -StorageMoverInputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StartViaIdentityProject
+```
+Start-AzStorageMoverJobDefinition -JobDefinitionName <String> -ProjectInputObject <IStorageMoverIdentity>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### StartViaIdentity
 ```
 Start-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>]
@@ -26,7 +39,7 @@ Start-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity> [-Default
 ```
 
 ## DESCRIPTION
-Creates a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
+Start a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
 
 ## EXAMPLES
 
@@ -67,7 +80,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
@@ -86,7 +98,7 @@ The name of the Job Definition resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Start, StartViaIdentityStorageMover, StartViaIdentityProject
 Aliases:
 
 Required: True
@@ -96,12 +108,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProjectInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+Parameter Sets: StartViaIdentityProject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The name of the Project resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Start, StartViaIdentityStorageMover
 Aliases:
 
 Required: True
@@ -124,6 +151,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageMoverInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+Parameter Sets: StartViaIdentityStorageMover
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -197,7 +239,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunResourceId
 
 ## NOTES
 

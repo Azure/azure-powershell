@@ -125,6 +125,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkRuleSetInternal)this).IPRule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule>) content.GetValueForProperty("IPRule",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkRuleSetInternal)this).IPRule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPRuleTypeConverter.ConvertFrom));
             }
+            if (content.Contains("Ipv6Rule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkRuleSetInternal)this).Ipv6Rule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule>) content.GetValueForProperty("Ipv6Rule",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkRuleSetInternal)this).Ipv6Rule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPRuleTypeConverter.ConvertFrom));
+            }
             if (content.Contains("DefaultAction"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkRuleSetInternal)this).DefaultAction = (string) content.GetValueForProperty("DefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkRuleSetInternal)this).DefaultAction, global::System.Convert.ToString);
@@ -161,6 +165,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("IPRule"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkRuleSetInternal)this).IPRule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule>) content.GetValueForProperty("IPRule",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkRuleSetInternal)this).IPRule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPRuleTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Ipv6Rule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkRuleSetInternal)this).Ipv6Rule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule>) content.GetValueForProperty("Ipv6Rule",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkRuleSetInternal)this).Ipv6Rule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPRuleTypeConverter.ConvertFrom));
             }
             if (content.Contains("DefaultAction"))
             {

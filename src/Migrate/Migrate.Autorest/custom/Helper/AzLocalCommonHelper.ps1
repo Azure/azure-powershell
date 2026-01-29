@@ -258,20 +258,31 @@ function InvokeAzMigrateGetCommandWithRetries {
     }
 }
 
-function ValidateReplication {
+function Test-ReplicationPrequisites {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
     param (
         [Parameter(Mandatory)]
-        [PSCustomObject]
-        ${Machine},
+        [string]
+        ${ResourceGroupName},
+
+        [Parameter(Mandatory)]
+        [string]
+        ${VaultName},
+
+        [Parameter(Mandatory)]
+        [string]
+        ${ProtectedItemName},
 
         [Parameter(Mandatory)]
         [System.String]
         ${MigrationType}
     )
+
     # Check if the VM is already protected
-    $protectedItem = Az.Migrate\Get-AzMigrateLocalServerReplication `
-        -DiscoveredMachineId $Machine.Id  `
+    $protectedItem = Az.Migrate.Internal\Get-AzMigrateProtectedItem `
+        -ResourceGroupName $ResourceGroupName `
+        -VaultName $VaultName `
+        -Name $ProtectedItemName `
         -ErrorAction SilentlyContinue
     if ($null -ne $protectedItem) {
         throw $VmReplicationValidationMessages.AlreadyInReplication
@@ -315,4 +326,209 @@ function ValidateReplication {
     {
         Write-Warning $VmReplicationValidationMessages.OsTypeNotSupported
     }
+}
+
+function Test-AzureResourceIdFormat {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [string] $Data,
+        
+        [Parameter(Mandatory = $true)]
+        [string] $Format
+    )
+
+    try {
+        if ([string]::IsNullOrWhiteSpace($Data)) {
+            return $false
+        }
+
+        # Find where format string starts (after first /)
+        $firstTokenEnd = $Format.IndexOf("/", 1)
+        if ($firstTokenEnd -eq -1) {
+            return $false
+        }
+
+        $formatPrefix = $Format.Substring(0, $firstTokenEnd)
+        $matchIndex = $Data.ToLower().IndexOf($formatPrefix.ToLower())
+
+        if ($matchIndex -eq -1) {
+            return $false
+        }
+
+        $processData = $Data.Substring($matchIndex)
+        $processFormat = $Format
+        $tokens = @()
+        
+        $counter = 0
+        while ($true) {
+            $markerPattern = "{$counter}"
+            $markerStartIndex = $processFormat.IndexOf($markerPattern)
+
+            if ($markerStartIndex -eq -1) {
+                break
+            }
+
+            $markerEndIndex = $processData.IndexOf("/", $markerStartIndex)
+
+            if ($markerEndIndex -eq -1) {
+                $token = $processData.Substring($markerStartIndex)
+                if ([string]::IsNullOrWhiteSpace($token)) {
+                    return $false
+                }
+                $tokens += $token
+            }
+            else {
+                $token = $processData.Substring($markerStartIndex, $markerEndIndex - $markerStartIndex)
+                if ([string]::IsNullOrWhiteSpace($token)) {
+                    return $false
+                }
+                $tokens += $token
+                $processData = $processData.Substring($markerEndIndex)
+                $processFormat = $processFormat.Substring($markerStartIndex + $markerPattern.Length)
+            }
+
+            $counter++
+        }
+
+        # Verify format matches with the extracted tokens
+        $formatWithTokens = $Format
+        for ($i = 0; $i -lt $tokens.Count; $i++) {
+            $formatWithTokens = $formatWithTokens -replace "\{$i\}", $tokens[$i]
+        }
+
+        return $Data.ToLower() -like $formatWithTokens.ToLower()
+    }
+    catch
+    {
+        return $false
+    }
+}
+
+function New-AzMigrateSolutionNotFoundException {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [string]
+        ${Name},
+
+        [Parameter(Mandatory)]
+        [string]
+        ${ResourceGroupName},
+
+        [Parameter(Mandatory)]
+        [string]
+        ${ProjectName}
+    )
+
+    return "No Azure Migrate Solution '$Name' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
+}
+
+function New-ReplicationVaultNotFoundInAMHSolutionException {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [string]
+        ${VaultId}
+    )
+
+    return "Invalid replication vault ID '$VaultId' found in Azure Migrate Solution 'Servers-Migration-ServerMigration_DataReplication'. Please reach out to Microsoft support for assistance if this issue persists."
+}
+
+function New-InvalidResourceIdProvidedException {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [string]
+        ${ResourceId},
+
+        [Parameter(Mandatory)]
+        [ValidateSet("MigrateProject", "Job", "ProtectedItem", "ResourceGroup", "DiscoveredMachine", "StorageContainer", "LogicalNetwork")]
+        [string]
+        ${ResourceType},
+
+        [Parameter(Mandatory)]
+        [string]
+        ${Format}
+    )
+
+    return "Invalid '$ResourceType' Id '$ResourceId' provided. Please provide a valid '$ResourceType' ARM id with format '$Format'."
+}
+
+function New-AzMigrateSiteNotFoundException {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [string]
+        ${Name},
+
+        [Parameter(Mandatory)]
+        [string]
+        ${ResourceGroupName},
+
+        [Parameter(Mandatory)]
+        [string]
+        ${SiteType}
+    )
+
+    return "Machine site '$Name' with Type '$SiteType' not found. Please verify in your Azure Migrate project resource group '$ResourceGroupName' and re-run this command if exists."
+}
+
+function New-AzMigrateProtectedItemNotFoundException {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [string]
+        ${Id}
+    )
+
+    return "Replication item is not found with Id '$Id'. Re-run this command if exists."
+}
+
+function New-AzMigrateDiscoveredMachineNotFoundException {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [string]
+        ${Name},
+
+        [Parameter(Mandatory)]
+        [string]
+        ${ResourceGroupName},
+
+        [Parameter(Mandatory)]
+        [string]
+        ${SiteName}
+    )
+
+    return "Machine '$Name' not found in resource group '$ResourceGroupName' and site '$SiteName'."
+}
+
+function New-OffAzureResourceNotFoundException {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [ValidateSet("HyperV", "VMware")]
+        [string]
+        ${Scenario},
+
+        [Parameter(Mandatory)]
+        [string]
+        [ValidateSet("Host", "Cluster", "VCenter")]
+        ${Type},
+
+        [Parameter(Mandatory)]
+        [string]
+        ${Name},
+
+        [Parameter(Mandatory)]
+        [string]
+        ${ResourceGroupName},
+
+        [Parameter(Mandatory)]
+        [string]
+        ${SiteName}
+    )
+
+    return "'$Scenario' '$Name' not found in resource group '$ResourceGroupName' and site '$SiteName'."
 }

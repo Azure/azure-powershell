@@ -5,14 +5,14 @@
       "inbound": {
         "endpoint1": {
           "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
-          "endpointType": "Microsoft.IotHub",
+          "endpointType": "Microsoft.Devices/IotHubs",
           "authentication": {
             "method": "Anonymous"
           }
         },
         "endpoint2": {
           "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
-          "endpointType": "Microsoft.IotHub",
+          "endpointType": "Microsoft.Devices/IotHubs",
           "authentication": {
             "method": "UsernamePassword",
             "usernamePasswordCredentials": {
