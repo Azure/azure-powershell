@@ -54,7 +54,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $functionApp.AppServicePlan | Should -Be $planName
 
             Write-Verbose "Update function app -> enable a SystemAssigned managed identity" -Verbose
-            $updateFunctionAppJob = Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -IdentityType SystemAssigned -Force -AsJob
+            $updateFunctionAppJob = Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -EnableSystemAssignedIdentity -Force -AsJob
             $result = WaitForJobToComplete -JobId $updateFunctionAppJob.Id
             $result.State | Should -Be "Completed"
             $result | Remove-Job -ErrorAction SilentlyContinue
@@ -122,8 +122,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             Write-Verbose "Identity id: $($identityInfo.Id)" -Verbose
             Update-AzFunctionApp -Name $appName `
                                  -ResourceGroupName $resourceGroupName `
-                                 -IdentityType UserAssigned `
-                                 -IdentityID $identityInfo.Id `
+                                 -UserAssignedIdentity $identityInfo.Id `
                                  -Force
 
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
@@ -199,7 +198,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
                               -Runtime PowerShell `
                               -RuntimeVersion 7.4 `
                               -FunctionsVersion 4 `
-                              -IdentityType SystemAssigned `
+                              -EnableSystemAssignedIdentity `
                               -Tag $tags
 
             Write-Verbose "Run: Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName" -Verbose
@@ -240,11 +239,11 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $functionApp.AppServicePlan | Should -Be $newPlanName
 
             # Update test to use -InputObject when https://github.com/Azure/azure-powershell/issues/23266 is fixed
-            # Update-AzFunctionApp -InputObject $functionApp -IdentityType None -Force
-            # Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -IdentityType None -Force
+            # Update-AzFunctionApp -InputObject $functionApp -EnableSystemAssignedIdentity:$false -Force
+            # Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -EnableSystemAssignedIdentity:$false -Force
 
             Write-Verbose "Update function -> remove SystemAssigned managed identity" -Verbose
-            Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -IdentityType None -Force
+            Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -EnableSystemAssignedIdentity:$false -Force
 
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             Write-Verbose "FunctionApp after identity removal. Validate IdentityType" -Verbose

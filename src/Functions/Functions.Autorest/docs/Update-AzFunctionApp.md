@@ -15,17 +15,17 @@ Updates a function app.
 ### ByName (Default)
 ```
 Update-AzFunctionApp -Name <String> -ResourceGroupName <String> [-ApplicationInsightsKey <String>]
- [-ApplicationInsightsName <String>] [-Force] [-IdentityID <String[]>]
- [-IdentityType <ManagedServiceIdentityType>] [-PlanName <String>] [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ApplicationInsightsName <String>] [-EnableSystemAssignedIdentity <Boolean>] [-Force] [-PlanName <String>]
+ [-SubscriptionId <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
 Update-AzFunctionApp -InputObject <ISite> [-ApplicationInsightsKey <String>]
- [-ApplicationInsightsName <String>] [-Force] [-IdentityID <String[]>]
- [-IdentityType <ManagedServiceIdentityType>] [-PlanName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ApplicationInsightsName <String>] [-EnableSystemAssignedIdentity <Boolean>] [-Force] [-PlanName <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +42,7 @@ This command updates function app hosting plan.
 
 ### Example 2: Set a SystemAssigned managed identity for a function app.
 ```powershell
-Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType SystemAssigned -Force
+Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -EnableSystemAssignedIdentity 1 -Force
 ```
 
 This command sets a SystemAssigned managed identity for a function app.
@@ -56,7 +56,7 @@ This command updates function app Application Insights.
 
 ### Example 3: Remove managed identity from a function app.
 ```powershell
-Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType None -Force
+Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -EnableSystemAssignedIdentity 0 -Force
 ```
 
 This command removes a managed identity from a function app.
@@ -123,6 +123,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 Forces the cmdlet to update the function app without prompting for confirmation.
 
@@ -138,48 +153,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityID
-Specifies the list of user identities associated with the function app.
-            The user identity references will be ARM resource ids in the form:
-            '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Specifies the type of identity used for the function app.
-            The type 'None' will remove any identities from the function app.
-The acceptable values for this parameter are:
-            - SystemAssigned
-            - UserAssigned
-            - None
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
+Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite
 Parameter Sets: ByObjectInput
 Aliases:
 
@@ -281,6 +259,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserAssignedIdentity
+The array of user assigned identities associated with the function app.
+            The user identity references will be ARM resource ids in the form:
+            '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -317,11 +312,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite
 
 ## NOTES
 
