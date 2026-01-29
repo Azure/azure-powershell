@@ -23,7 +23,7 @@ https://learn.microsoft.com/powershell/module/az.migrate/set-azmigratelocalserve
 #>
 function Set-AzMigrateLocalServerReplication {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is based on a preview API version and may experience breaking changes in future releases.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel])]
     [CmdletBinding(DefaultParameterSetName = 'ById', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -48,7 +48,7 @@ function Set-AzMigrateLocalServerReplication {
         
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemDynamicMemoryConfig]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedItemDynamicMemoryConfig]
         # Specifies the dynamic memory configuration of RAM.
         ${DynamicMemoryConfig},
 
@@ -60,7 +60,7 @@ function Set-AzMigrateLocalServerReplication {
 		
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalNicInput[]]
         # Specifies the nics on the source server to be included for replication.
         ${NicToInclude},
 
@@ -201,11 +201,11 @@ function Set-AzMigrateLocalServerReplication {
         }
 
         if ($SiteType -eq $SiteTypes.HyperVSites) {     
-            $customPropertiesUpdate = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHCIProtectedItemModelCustomPropertiesUpdate]::new()
+            $customPropertiesUpdate = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.HyperVToAzStackHCIProtectedItemModelCustomPropertiesUpdate]::new()
             $customPropertiesUpdate.InstanceType = $AzLocalInstanceTypes.HyperVToAzLocal
         }
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
-            $customPropertiesUpdate = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHCIProtectedItemModelCustomPropertiesUpdate]::new()
+            $customPropertiesUpdate = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHCIProtectedItemModelCustomPropertiesUpdate]::new()
             $customPropertiesUpdate.InstanceType = $AzLocalInstanceTypes.VMwareToAzLocal
         }
 
@@ -269,7 +269,7 @@ function Set-AzMigrateLocalServerReplication {
         # Dynamic memory is enabled - set default configuration
         if ($customPropertiesUpdate.IsDynamicRam -and !$HasDynamicMemoryConfig) {
             if ($null -eq $customProperties.DynamicMemoryConfig) {
-                $memoryConfig = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemDynamicMemoryConfig]::new()
+                $memoryConfig = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedItemDynamicMemoryConfig]::new()
                 $memoryConfig.MinimumMemoryInMegaByte = [System.Math]::Min($targetMemory, $RAMConfig.DefaultMinDynamicMemoryInMB)
                 $memoryConfig.MaximumMemoryInMegaByte = [System.Math]::Max($targetMemory, $RAMConfig.DefaultMaxDynamicMemoryInMB)
                 $memoryConfig.TargetMemoryBufferPercentage = $RAMConfig.DefaultTargetMemoryBufferPercentage
@@ -329,10 +329,10 @@ function Set-AzMigrateLocalServerReplication {
             }
 
             if ($SiteType -eq $SiteTypes.HyperVSites) {     
-                $customPropertiesUpdate.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHCINicInput[]]$nics
+                $customPropertiesUpdate.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.HyperVToAzStackHCINicInput[]]$nics
             }
             elseif ($SiteType -eq $SiteTypes.VMwareSites) {     
-                $customPropertiesUpdate.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHCINicInput[]]$nics
+                $customPropertiesUpdate.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHCINicInput[]]$nics
             }
         }
 
@@ -341,7 +341,7 @@ function Set-AzMigrateLocalServerReplication {
             $customPropertiesUpdate.OsType = $OsType
         }
 
-        $protectedItemPropertiesUpdate = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemModelPropertiesUpdate]::new()
+        $protectedItemPropertiesUpdate = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedItemModelPropertiesUpdate]::new()
         $protectedItemPropertiesUpdate.CustomProperty = $customPropertiesUpdate
 
         # Remove common ErrorVariable and ErrorAction for get behaviors
