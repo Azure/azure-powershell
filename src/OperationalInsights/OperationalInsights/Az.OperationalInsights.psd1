@@ -54,7 +54,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '4.0.1'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.OperationalInsights.dll', 
+RequiredAssemblies = 'Microsoft.Azure.PowerShell.OperationalInsights.Management.Sdk.dll', 
                'Microsoft.Azure.OperationalInsights.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
