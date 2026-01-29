@@ -215,6 +215,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ComputeMode
+The compute mode of the workspace.
+Possible values (case-insensitive): Hybrid, Serverless
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultCatalogInitialType
 Defines the initial type of the default catalog.
 Possible values (case-insensitive): HiveMetastore, UnityCatalog
