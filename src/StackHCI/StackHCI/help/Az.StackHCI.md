@@ -77,6 +77,12 @@ Extends Software Assurance Benefit to a cluster
 ### [Invoke-AzStackHciUpdate](Invoke-AzStackHciUpdate.md)
 Apply Update
 
+### [Invoke-MSIFlow](Invoke-MSIFlow.md)
+Handles MSI-based registration logic for an Arc-enabled HCI cluster.
+
+### [Invoke-MSIUnregistrationFlow](Invoke-MSIUnregistrationFlow.md)
+
+
 ### [New-AzStackHciArcSetting](New-AzStackHciArcSetting.md)
 Create ArcSetting for HCI cluster.
 
@@ -155,8 +161,20 @@ Put Update runs for a specified update
 ### [Set-AzStackHciUpdateSummary](Set-AzStackHciUpdateSummary.md)
 Put Update summaries under the HCI cluster
 
+### [Test-ArcNodeClusterLink](Test-ArcNodeClusterLink.md)
+
+
 ### [Test-AzStackHciEdgeDevice](Test-AzStackHciEdgeDevice.md)
 A long-running resource action.
+
+### [Test-ClusterArcEnabled](Test-ClusterArcEnabled.md)
+
+
+### [Test-ClusterMsiSupport](Test-ClusterMsiSupport.md)
+
+
+### [Test-ComputerNameHasDnsSuffix](Test-ComputerNameHasDnsSuffix.md)
+
 
 ### [Unregister-AzStackHCI](Unregister-AzStackHCI.md)
 Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and unregisters the on-premises cluster with Azure.
