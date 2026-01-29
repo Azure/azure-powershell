@@ -534,3 +534,7 @@ directive:
       model-name: Fabric
     set:
       suppress-format: true
+  - where:
+      verb: Update
+      subject: ReplicationProtectionCluster
+    remove: true

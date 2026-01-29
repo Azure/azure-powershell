@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Migrate
-Module Guid: 4fd54160-8fcb-41bc-b7db-13fef725ded6
+Module Guid: 05c027a0-3e74-477c-9032-cf5a1aff0776
 Download Help Link: https://learn.microsoft.com/powershell/module/az.migrate
 Help Version: 1.0.0.0
 Locale: en-US
@@ -137,7 +137,4 @@ Cleans up the test migration for the replicating server.
 
 ### [Suspend-AzMigrateServerReplication](Suspend-AzMigrateServerReplication.md)
 Suspends the ongoing replication.
-
-### [Update-AzMigrateReplicationProtectionCluster](Update-AzMigrateReplicationProtectionCluster.md)
-The operation to update an ASR replication protection cluster item.
 
