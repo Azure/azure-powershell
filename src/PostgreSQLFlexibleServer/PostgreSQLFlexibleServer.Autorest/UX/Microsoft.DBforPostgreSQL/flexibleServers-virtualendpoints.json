@@ -1,0 +1,95 @@
+{
+  "resourceType": "flexibleServers/virtualendpoints",
+  "apiVersion": "2025-08-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.postgresqlflexibleserver"
+  },
+  "commands": [
+    {
+      "name": "Get-AzPostgreSqlFlexibleServerVirtualEndpoint",
+      "description": "Gets information about a pair of virtual endpoints.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints/{virtualEndpointName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.postgresqlflexibleserver/get-azpostgresqlflexibleservervirtualendpoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServerName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets information about a pair of virtual endpoints.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.virtualEndpointName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServerName",
+              "value": "[Path.serverName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzPostgreSqlFlexibleServerVirtualEndpoint",
+      "description": "Deletes a pair of virtual endpoints.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints/{virtualEndpointName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.postgresqlflexibleserver/remove-azpostgresqlflexibleservervirtualendpoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServerName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a pair of virtual endpoints.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.virtualEndpointName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServerName",
+              "value": "[Path.serverName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

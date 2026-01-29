@@ -1,0 +1,198 @@
+---
+external help file: Az.PostgreSqlFlexibleServer-help.xml
+Module Name: Az.PostgreSqlFlexibleServer
+online version: https://learn.microsoft.com/powershell/module/az.postgresqlflexibleserver/get-azpostgresqlflexibleserverbackupsautomaticandondemand
+schema: 2.0.0
+---
+
+# Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand
+
+## SYNOPSIS
+Gets information of an on demand backup, given its name.
+
+## SYNTAX
+
+### List (Default)
+```
+Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -ResourceGroupName <String> -ServerName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityFlexibleServer
+```
+Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -BackupName <String>
+ -FlexibleServerInputObject <IPostgreSqlFlexibleServerIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -BackupName <String> -ResourceGroupName <String>
+ -ServerName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -InputObject <IPostgreSqlFlexibleServerIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Gets information of an on demand backup, given its name.
+
+## EXAMPLES
+
+### Example 1: List all backups for a PostgreSQL Flexible Server
+```powershell
+Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -ResourceGroupName "myresourcegroup" -ServerName "myserver"
+```
+
+```output
+Name                          BackupType  CompletedTime             SizeInBytes
+----                          ----------  -------------             -----------
+automatic_20240115_100000     Automatic   2024-01-15T10:00:00.000Z  1073741824
+ondemand_backup_20240115      OnDemand    2024-01-15T14:30:00.000Z  1157627904
+automatic_20240116_100000     Automatic   2024-01-16T10:00:00.000Z  1073741824
+```
+
+Lists all automatic and on-demand backups for the specified PostgreSQL Flexible Server.
+
+### Example 2: Get a specific backup by name
+```powershell
+Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -ResourceGroupName "myresourcegroup" -ServerName "myserver" -BackupName "ondemand_backup_20240115"
+```
+
+```output
+Name                     BackupType  CompletedTime             SizeInBytes Status
+----                     ----------  -------------             ----------- ------
+ondemand_backup_20240115 OnDemand    2024-01-15T14:30:00.000Z  1157627904  Completed
+```
+
+Gets information about the specific on-demand backup named 'ondemand_backup_20240115'.
+
+## PARAMETERS
+
+### -BackupName
+Name of the backup.
+
+```yaml
+Type: System.String
+Parameter Sets: GetViaIdentityFlexibleServer, Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FlexibleServerInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSqlFlexibleServer.Models.IPostgreSqlFlexibleServerIdentity
+Parameter Sets: GetViaIdentityFlexibleServer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSqlFlexibleServer.Models.IPostgreSqlFlexibleServerIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: List, Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServerName
+The name of the server.
+
+```yaml
+Type: System.String
+Parameter Sets: List, Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List, Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.PostgreSqlFlexibleServer.Models.IPostgreSqlFlexibleServerIdentity
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.PostgreSqlFlexibleServer.Models.IBackupAutomaticAndOnDemand
+
+## NOTES
+
+## RELATED LINKS

@@ -1003,5 +1003,9 @@
   {
     "alias": "EdgeAction",
     "module": "EdgeAction"
+  },
+  {
+    "alias": "PostgreSqlFlexibleServer",
+    "module": "PostgreSqlFlexibleServer"
   }
 ]
