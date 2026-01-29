@@ -18,4 +18,8 @@ Describe 'Restore-AzMySqlFlexibleServer' {
     It 'PointInTimeRestore' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
+
+    It 'GeoRestore' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 }

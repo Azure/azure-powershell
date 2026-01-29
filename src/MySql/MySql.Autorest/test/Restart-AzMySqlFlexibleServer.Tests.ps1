@@ -19,6 +19,14 @@ Describe 'Restart-AzMySqlFlexibleServer' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'RestartViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'RestartViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'Restart' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

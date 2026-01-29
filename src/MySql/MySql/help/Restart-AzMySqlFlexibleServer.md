@@ -15,8 +15,22 @@ Restarts a server.
 ### RestartExpanded (Default)
 ```
 Restart-AzMySqlFlexibleServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-MaxFailoverSecond <Int32>] [-RestartWithFailover <EnableStatusEnum>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MaxFailoverSecond <Int32>] [-RestartWithFailover <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RestartViaJsonString
+```
+Restart-AzMySqlFlexibleServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RestartViaJsonFilePath
+```
+Restart-AzMySqlFlexibleServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Restart
@@ -29,7 +43,7 @@ Restart-AzMySqlFlexibleServer -Name <String> -ResourceGroupName <String> [-Subsc
 ### RestartViaIdentityExpanded
 ```
 Restart-AzMySqlFlexibleServer -InputObject <IMySqlIdentity> [-MaxFailoverSecond <Int32>]
- [-RestartWithFailover <EnableStatusEnum>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-RestartWithFailover <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -102,7 +116,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
@@ -113,6 +126,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Restart operation
+
+```yaml
+Type: System.String
+Parameter Sets: RestartViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Restart operation
+
+```yaml
+Type: System.String
+Parameter Sets: RestartViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -136,7 +179,7 @@ The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, Restart
+Parameter Sets: RestartExpanded, RestartViaJsonString, RestartViaJsonFilePath, Restart
 Aliases: ServerName
 
 Required: True
@@ -163,10 +206,9 @@ Accept wildcard characters: False
 
 ### -Parameter
 Server restart parameters.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameter
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServerRestartParameter
 Parameter Sets: Restart, RestartViaIdentity
 Aliases:
 
@@ -198,7 +240,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, Restart
+Parameter Sets: RestartExpanded, RestartViaJsonString, RestartViaJsonFilePath, Restart
 Aliases:
 
 Required: True
@@ -212,7 +254,7 @@ Accept wildcard characters: False
 Whether or not failover to standby server when restarting a server with high availability enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum
+Type: System.String
 Parameter Sets: RestartExpanded, RestartViaIdentityExpanded
 Aliases:
 
@@ -228,7 +270,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, Restart
+Parameter Sets: RestartExpanded, RestartViaJsonString, RestartViaJsonFilePath, Restart
 Aliases:
 
 Required: False
@@ -274,9 +316,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameter
-
 ### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServerRestartParameter
 
 ## OUTPUTS
 
