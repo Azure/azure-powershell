@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '15.2.0'
+ModuleVersion = '15.2.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -54,7 +54,7 @@ DotNetFrameworkVersion = '4.7.2'
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.2'; }, 
                @{ModuleName = 'Az.Advisor'; RequiredVersion = '3.0.0'; }, 
-               @{ModuleName = 'Az.Aks'; RequiredVersion = '7.1.0'; }, 
+               @{ModuleName = 'Az.Aks'; RequiredVersion = '7.1.1'; }, 
                @{ModuleName = 'Az.AnalysisServices'; RequiredVersion = '1.2.0'; }, 
                @{ModuleName = 'Az.ApiManagement'; RequiredVersion = '4.1.0'; }, 
                @{ModuleName = 'Az.App'; RequiredVersion = '2.0.1'; }, 
@@ -97,7 +97,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.2'; },
                @{ModuleName = 'Az.Fabric'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.FirmwareAnalysis'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.FrontDoor'; RequiredVersion = '2.1.0'; }, 
-               @{ModuleName = 'Az.Functions'; RequiredVersion = '4.3.0'; }, 
+               @{ModuleName = 'Az.Functions'; RequiredVersion = '4.3.1'; }, 
                @{ModuleName = 'Az.HDInsight'; RequiredVersion = '6.4.0'; }, 
                @{ModuleName = 'Az.HealthcareApis'; RequiredVersion = '3.0.0'; }, 
                @{ModuleName = 'Az.HealthDataAIServices'; RequiredVersion = '1.0.0'; }, 
@@ -133,7 +133,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.2'; },
                @{ModuleName = 'Az.Relay'; RequiredVersion = '3.0.0'; }, 
                @{ModuleName = 'Az.ResourceGraph'; RequiredVersion = '1.2.1'; }, 
                @{ModuleName = 'Az.ResourceMover'; RequiredVersion = '1.3.1'; }, 
-               @{ModuleName = 'Az.Resources'; RequiredVersion = '9.0.0'; }, 
+               @{ModuleName = 'Az.Resources'; RequiredVersion = '9.0.1'; }, 
                @{ModuleName = 'Az.Security'; RequiredVersion = '1.8.0'; }, 
                @{ModuleName = 'Az.SecurityInsights'; RequiredVersion = '3.2.1'; }, 
                @{ModuleName = 'Az.ServiceBus'; RequiredVersion = '4.1.1'; }, 
@@ -141,9 +141,9 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.2'; },
                @{ModuleName = 'Az.SignalR'; RequiredVersion = '2.3.2'; }, 
                @{ModuleName = 'Az.Sql'; RequiredVersion = '6.4.0'; }, 
                @{ModuleName = 'Az.SqlVirtualMachine'; RequiredVersion = '2.4.0'; }, 
-               @{ModuleName = 'Az.StackHCI'; RequiredVersion = '2.6.5'; }, 
+               @{ModuleName = 'Az.StackHCI'; RequiredVersion = '2.6.7'; }, 
                @{ModuleName = 'Az.StackHCIVM'; RequiredVersion = '1.1.0'; }, 
-               @{ModuleName = 'Az.Storage'; RequiredVersion = '9.5.0'; }, 
+               @{ModuleName = 'Az.Storage'; RequiredVersion = '9.5.2'; }, 
                @{ModuleName = 'Az.StorageAction'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.StorageDiscovery'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.StorageMover'; RequiredVersion = '2.0.0'; }, 

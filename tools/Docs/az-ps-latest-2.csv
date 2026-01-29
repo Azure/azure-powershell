@@ -33,7 +33,7 @@ pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Reservations.0.14.1.zip;sourceType=sa]Az.Reservations,0.14.1
 pac33,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ResourceGraph.1.2.1.zip;sourceType=sa]Az.ResourceGraph,1.2.1
 pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ResourceMover.1.3.1.zip;sourceType=sa]Az.ResourceMover,1.3.1
-pac35,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Resources.9.0.0.zip;sourceType=sa]Az.Resources,9.0.0
+pac35,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Resources.9.0.1.zip;sourceType=sa]Az.Resources,9.0.1
 pac36,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ScVmm.0.1.1.zip;sourceType=sa]Az.ScVmm,0.1.1
 pac37,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Search.0.11.0.zip;sourceType=sa]Az.Search,0.11.0
 pac38,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Security.1.8.0.zip;sourceType=sa]Az.Security,1.8.0
@@ -50,10 +50,10 @@ pac48,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac49,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Sql.6.4.0.zip;sourceType=sa]Az.Sql,6.4.0
 pac50,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SqlVirtualMachine.2.4.0.zip;sourceType=sa]Az.SqlVirtualMachine,2.4.0
 pac51,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Ssh.0.2.3.zip;sourceType=sa]Az.Ssh,0.2.3
-pac52,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCI.2.6.5.zip;sourceType=sa]Az.StackHCI,2.6.5
+pac52,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCI.2.6.7.zip;sourceType=sa]Az.StackHCI,2.6.7
 pac53,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCIVM.1.1.0.zip;sourceType=sa]Az.StackHCIVM,1.1.0
 pac54,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StandbyPool.0.3.0.zip;sourceType=sa]Az.StandbyPool,0.3.0
-pac55,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Storage.9.5.0.zip;sourceType=sa]Az.Storage,9.5.0
+pac55,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Storage.9.5.2.zip;sourceType=sa]Az.Storage,9.5.2
 pac56,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageAction.1.0.0.zip;sourceType=sa]Az.StorageAction,1.0.0
 pac57,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageCache.0.3.0.zip;sourceType=sa]Az.StorageCache,0.3.0
 pac58,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageDiscovery.1.0.0.zip;sourceType=sa]Az.StorageDiscovery,1.0.0
