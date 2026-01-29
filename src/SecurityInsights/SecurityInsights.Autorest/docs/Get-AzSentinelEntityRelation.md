@@ -31,6 +31,12 @@ Get-AzSentinelEntityRelation -InputObject <ISecurityInsightsIdentity> [-DefaultP
  [<CommonParameters>]
 ```
 
+### GetViaIdentityEntity
+```
+Get-AzSentinelEntityRelation -EntityInputObject <ISecurityInsightsIdentity> -RelationName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets an entity relation.
 
@@ -91,6 +97,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EntityInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+Parameter Sets: GetViaIdentityEntity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Filter
 Filters the results, based on a Boolean condition.
 Optional.
@@ -109,7 +130,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
@@ -144,7 +164,7 @@ Relation Name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityEntity
 Aliases:
 
 Required: True
@@ -242,7 +262,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IRelation
 
 ## NOTES
 
