@@ -459,4 +459,7 @@
   <data name="UpdatingNodePoolLabels" xml:space="preserve">
     <value>Updating node pool labels</value>
   </data>
+  <data name="UpdatingNodeOSDiskType" xml:space="preserve">
+    <value>Updating node OS disk type</value>
+  </data>
 </root>

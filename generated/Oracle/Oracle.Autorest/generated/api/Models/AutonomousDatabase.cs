@@ -191,10 +191,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public string DatabaseEdition { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).DatabaseEdition; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).DatabaseEdition = value ?? null; }
 
-        /// <summary>Name of the day of the week.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string DayOfWeekName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).DayOfWeekName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).DayOfWeekName = value ?? null; }
-
         /// <summary>A valid Oracle Database version for Autonomous Database.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public string DbVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).DbVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).DbVersion = value ?? null; }
@@ -504,12 +500,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// </summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseInternal.RemoteDisasterRecoveryConfigurationTimeSnapshotStandbyEnabledTill { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).RemoteDisasterRecoveryConfigurationTimeSnapshotStandbyEnabledTill; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).RemoteDisasterRecoveryConfigurationTimeSnapshotStandbyEnabledTill = value ?? default(global::System.DateTime); }
 
-        /// <summary>Internal Acessors for ScheduledOperation</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseInternal.ScheduledOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).ScheduledOperation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).ScheduledOperation = value ?? null /* model class */; }
-
-        /// <summary>Internal Acessors for ScheduledOperationDayOfWeek</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDayOfWeek Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseInternal.ScheduledOperationDayOfWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).ScheduledOperationDayOfWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).ScheduledOperationDayOfWeek = value ?? null /* model class */; }
-
         /// <summary>Internal Acessors for ServiceConsoleUrl</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseInternal.ServiceConsoleUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).ServiceConsoleUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).ServiceConsoleUrl = value ?? null; }
 
@@ -704,13 +694,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
         public string Role { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).Role; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).Role = value ?? null; }
 
-        /// <summary>auto start time. value must be of ISO-8601 format HH:mm</summary>
+        /// <summary>The list of scheduled operations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string ScheduledOperationScheduledStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).ScheduledOperationScheduledStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).ScheduledOperationScheduledStartTime = value ?? null; }
-
-        /// <summary>auto stop time. value must be of ISO-8601 format HH:mm</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string ScheduledOperationScheduledStopTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).ScheduledOperationScheduledStopTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).ScheduledOperationScheduledStopTime = value ?? null; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType> ScheduledOperationsList { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).ScheduledOperationsList; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)Property).ScheduledOperationsList = value ?? null /* arrayOf */; }
 
         /// <summary>The URL of the Service Console for the Autonomous Database.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
@@ -1287,18 +1273,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("StandardEdition", "EnterpriseEdition")]
         string DatabaseEdition { get; set; }
-        /// <summary>Name of the day of the week.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Name of the day of the week.",
-        SerializedName = @"name",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
-        string DayOfWeekName { get; set; }
         /// <summary>A valid Oracle Database version for Autonomous Database.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -1864,28 +1838,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Primary", "Standby", "DisabledStandby", "BackupCopy", "SnapshotStandby")]
         string Role { get; set; }
-        /// <summary>auto start time. value must be of ISO-8601 format HH:mm</summary>
+        /// <summary>The list of scheduled operations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"auto start time. value must be of ISO-8601 format HH:mm",
-        SerializedName = @"scheduledStartTime",
-        PossibleTypes = new [] { typeof(string) })]
-        string ScheduledOperationScheduledStartTime { get; set; }
-        /// <summary>auto stop time. value must be of ISO-8601 format HH:mm</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"auto stop time. value must be of ISO-8601 format HH:mm",
-        SerializedName = @"scheduledStopTime",
-        PossibleTypes = new [] { typeof(string) })]
-        string ScheduledOperationScheduledStopTime { get; set; }
+        Description = @"The list of scheduled operations.",
+        SerializedName = @"scheduledOperationsList",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType> ScheduledOperationsList { get; set; }
         /// <summary>The URL of the Service Console for the Autonomous Database.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -2251,9 +2214,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>The Oracle Database Edition that applies to the Autonomous databases.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("StandardEdition", "EnterpriseEdition")]
         string DatabaseEdition { get; set; }
-        /// <summary>Name of the day of the week.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
-        string DayOfWeekName { get; set; }
         /// <summary>A valid Oracle Database version for Autonomous Database.</summary>
         string DbVersion { get; set; }
         /// <summary>The Autonomous Database workload type</summary>
@@ -2414,13 +2374,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Primary", "Standby", "DisabledStandby", "BackupCopy", "SnapshotStandby")]
         string Role { get; set; }
         /// <summary>The list of scheduled operations.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType ScheduledOperation { get; set; }
-        /// <summary>Day of week</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDayOfWeek ScheduledOperationDayOfWeek { get; set; }
-        /// <summary>auto start time. value must be of ISO-8601 format HH:mm</summary>
-        string ScheduledOperationScheduledStartTime { get; set; }
-        /// <summary>auto stop time. value must be of ISO-8601 format HH:mm</summary>
-        string ScheduledOperationScheduledStopTime { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType> ScheduledOperationsList { get; set; }
         /// <summary>The URL of the Service Console for the Autonomous Database.</summary>
         string ServiceConsoleUrl { get; set; }
         /// <summary>The SQL Web Developer URL for the Oracle Autonomous Database.</summary>

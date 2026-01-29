@@ -1,0 +1,181 @@
+{
+  "Get-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/providers/Microsoft.Edge/disconnectedOperations?api-version=2025-06-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/providers/Microsoft.Edge/disconnectedOperations?api-version=2025-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "26ed35e4-9893-4655-84e9-b6c7d74550ce" ],
+        "CommandName": [ "Get-AzDisconnectedOperationsDisconnectedOperation" ],
+        "FullCommandName": [ "Get-AzDisconnectedOperationsDisconnectedOperation_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.6.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "c0758023-277f-4f46-a6bd-ac137edb16e4", "db4697d9-aa7b-4b2e-8344-5d4b58b2259b", "8e4a3994-0200-419e-9b49-cadae6614424", "157902bc-0238-4ed4-b41b-9fe2c04c2bad" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "ee598b27-f011-4507-9854-960a96948b3d" ],
+        "x-ms-correlation-request-id": [ "ee598b27-f011-4507-9854-960a96948b3d" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T085622Z:ee598b27-f011-4507-9854-960a96948b3d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CF4CBD4EB79149D1848697F3860D669A Ref B: SIN221080712007 Ref C: 2025-11-14T08:56:21Z" ],
+        "Date": [ "Fri, 14 Nov 2025 08:56:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4386" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/anponnet-rg/providers/Microsoft.Edge/disconnectedOperations/demo-winfield-ecy\",\"name\":\"demo-winfield-ecy\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"eastus2euap\",\"tags\":{},\"systemData\":{\"createdBy\":\"anponnet@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-16T00:04:48.3303866Z\",\"lastModifiedBy\":\"anponnet@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-16T00:04:48.3303866Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"65619471-8556-4e26-a47d-3ba3cb4d09e8\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Unregistered\"}},{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedoperations/test-automation\",\"name\":\"test-automation\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"West US 3\",\"tags\":{},\"systemData\":{\"createdBy\":\"anponnet@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-19T21:23:25.932068Z\",\"lastModifiedBy\":\"aviranjan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-14T06:52:34.8353496Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"594e3edd-b7e8-40f8-b350-68c9fccde5b6\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Unregistered\"}},{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/anponnet-rg/providers/Microsoft.Edge/disconnectedOperations/demo-winfield-wus3-1\",\"name\":\"demo-winfield-wus3-1\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"westus3\",\"tags\":{},\"systemData\":{\"createdBy\":\"anponnet@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-22T20:08:35.1314518Z\",\"lastModifiedBy\":\"anponnet@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-22T20:08:35.1314518Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"967e3a01-4412-4725-971f-0ec10c9a52bc\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Unregistered\"}},{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/anponnet-rg/providers/Microsoft.Edge/disconnectedOperations/demo-winfield-we-1\",\"name\":\"demo-winfield-we-1\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"westeurope\",\"tags\":{},\"systemData\":{\"createdBy\":\"anponnet@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-28T18:29:10.9976156Z\",\"lastModifiedBy\":\"anponnet@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-28T18:29:10.9976156Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"e7635a03-088f-4066-a97e-97e00096808d\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Unregistered\"}},{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/anponnet-rg/providers/Microsoft.Edge/disconnectedOperations/demo-winfield-uksouth-1\",\"name\":\"demo-winfield-uksouth-1\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"uksouth\",\"tags\":{},\"systemData\":{\"createdBy\":\"anponnet@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-24T19:05:08.2779242Z\",\"lastModifiedBy\":\"anponnet@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-24T19:05:08.2779242Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"a236040b-dd0e-4644-af8c-7ad5d6b5ea43\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Unregistered\"}},{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/sdktest-rg/providers/Microsoft.Edge/disconnectedOperations/demo-winfield-test\",\"name\":\"demo-winfield-test\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"uksouth\",\"tags\":{\"key1\":\"value1\"},\"systemData\":{\"createdBy\":\"aviranjan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-09-11T09:03:10.970501Z\",\"lastModifiedBy\":\"aviranjan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-11T09:03:10.970501Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"ba38e4ac-c551-4558-b560-de363fe7280d\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Unregistered\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "2ee3b9ae-0d15-4851-bb5f-4bee69c299c3" ],
+        "CommandName": [ "Get-AzDisconnectedOperationsDisconnectedOperation" ],
+        "FullCommandName": [ "Get-AzDisconnectedOperationsDisconnectedOperation_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.6.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"08001afb-0000-4d00-0000-6916d1b20000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "63875b1f-a908-46a8-b6f6-68b45a1e82d8" ],
+        "x-ms-correlation-request-id": [ "5ab0ce7c-ccfe-4f77-89d2-e90c969bd4ed" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251114T085623Z:5ab0ce7c-ccfe-4f77-89d2-e90c969bd4ed" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9FEAAB766BBD48B28FCAA9543D4DECD9 Ref B: SIN221080712007 Ref C: 2025-11-14T08:56:23Z" ],
+        "Date": [ "Fri, 14 Nov 2025 08:56:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "726" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedoperations/test-automation\",\"name\":\"test-automation\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"West US 3\",\"tags\":{},\"systemData\":{\"createdBy\":\"anponnet@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-19T21:23:25.932068Z\",\"lastModifiedBy\":\"aviranjan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-14T06:52:34.8353496Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"594e3edd-b7e8-40f8-b350-68c9fccde5b6\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Unregistered\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+List+$GET+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations?api-version=2025-06-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations?api-version=2025-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "2580d72c-384c-4db4-8ce3-1e32d89869b8" ],
+        "CommandName": [ "Get-AzDisconnectedOperationsDisconnectedOperation" ],
+        "FullCommandName": [ "Get-AzDisconnectedOperationsDisconnectedOperation_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.6.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "f0115c08-8b06-4c9a-828f-9e6dbe5555ee" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "7ccaa0de-cd88-4778-8bb6-ac2ef38549aa" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-request-id": [ "7ccaa0de-cd88-4778-8bb6-ac2ef38549aa" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T085624Z:7ccaa0de-cd88-4778-8bb6-ac2ef38549aa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A935F65CF10148DD85798FA426D80F9D Ref B: SIN221080712007 Ref C: 2025-11-14T08:56:24Z" ],
+        "Date": [ "Fri, 14 Nov 2025 08:56:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "738" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedoperations/test-automation\",\"name\":\"test-automation\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"West US 3\",\"tags\":{},\"systemData\":{\"createdBy\":\"anponnet@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-19T21:23:25.932068Z\",\"lastModifiedBy\":\"aviranjan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-14T06:52:34.8353496Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"594e3edd-b7e8-40f8-b350-68c9fccde5b6\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Unregistered\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDisconnectedOperationsDisconnectedOperation+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation?api-version=2025-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "f83cb876-d19b-4a88-bac4-61731d02734c" ],
+        "CommandName": [ "Get-AzDisconnectedOperationsDisconnectedOperation" ],
+        "FullCommandName": [ "Get-AzDisconnectedOperationsDisconnectedOperation_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.6.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"08001afb-0000-4d00-0000-6916d1b20000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1097" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "57f0f11b-8f86-4b0c-8337-9b9bc7240320" ],
+        "x-ms-correlation-request-id": [ "ed65bd69-af8b-4741-a593-47d68ebf8d82" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16497" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20251114T085624Z:ed65bd69-af8b-4741-a593-47d68ebf8d82" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 705250943F9D43B0B2F1131957A9B3EA Ref B: SIN221080712007 Ref C: 2025-11-14T08:56:24Z" ],
+        "Date": [ "Fri, 14 Nov 2025 08:56:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "726" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedoperations/test-automation\",\"name\":\"test-automation\",\"type\":\"microsoft.edge/disconnectedoperations\",\"location\":\"West US 3\",\"tags\":{},\"systemData\":{\"createdBy\":\"anponnet@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-19T21:23:25.932068Z\",\"lastModifiedBy\":\"aviranjan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-14T06:52:34.8353496Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"stampId\":\"594e3edd-b7e8-40f8-b350-68c9fccde5b6\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"connectionStatus\":\"Disconnected\",\"registrationStatus\":\"Unregistered\"}}",
+      "isContentBase64": false
+    }
+  }
+}

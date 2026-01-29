@@ -8,15 +8,16 @@ schema: 2.0.0
 # Update-AzDatadogMonitor
 
 ## SYNOPSIS
-update a monitor resource.
+Update a monitor resource.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzDatadogMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-MonitoringStatus <String>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDatadogMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Cspm]
+ [-MonitoringStatus <String>] [-ResourceCollection] [-SkuName <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
@@ -35,13 +36,13 @@ Update-AzDatadogMonitor -Name <String> -ResourceGroupName <String> [-Subscriptio
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDatadogMonitor -InputObject <IDatadogIdentity> [-MonitoringStatus <String>] [-SkuName <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Update-AzDatadogMonitor -InputObject <IDatadogIdentity> [-Cspm] [-MonitoringStatus <String>]
+ [-ResourceCollection] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update a monitor resource.
+Update a monitor resource.
 
 ## EXAMPLES
 
@@ -79,6 +80,22 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Cspm
+The new cloud security posture management value of the monitor resource.
+This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -194,6 +211,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceCollection
+The new resource collection value of the monitor resource.
+This collects configuration information for all resources in a subscription.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -211,7 +244,8 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-Name of the SKU.
+Name of the SKU in {PlanId} format.
+For Terraform, the only allowed value is 'Linked'.
 
 ```yaml
 Type: System.String

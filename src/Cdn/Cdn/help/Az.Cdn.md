@@ -11,11 +11,17 @@ Locale: en-US
 Microsoft Azure PowerShell: Cdn cmdlets
 
 ## Az.Cdn Cmdlets
+### [Add-AzCdnEdgeActionAttachment](Add-AzCdnEdgeActionAttachment.md)
+A long-running operation for adding an EdgeAction attachment.
+
 ### [Clear-AzCdnEndpointContent](Clear-AzCdnEndpointContent.md)
 Removes a content from CDN.
 
 ### [Clear-AzFrontDoorCdnEndpointContent](Clear-AzFrontDoorCdnEndpointContent.md)
 Removes a content from AzureFrontDoor.
+
+### [Deploy-AzCdnEdgeActionVersionCode](Deploy-AzCdnEdgeActionVersionCode.md)
+A long-running operation to deploy versioncode to EdgeActionVersion resource.
 
 ### [Disable-AzCdnCustomDomainCustomHttps](Disable-AzCdnCustomDomainCustomHttps.md)
 Disable https delivery of the custom domain.
@@ -28,6 +34,18 @@ Commit the migrated Azure Front Door(Standard/Premium) profile..
 
 ### [Get-AzCdnCustomDomain](Get-AzCdnCustomDomain.md)
 Gets an existing custom domain within an endpoint.
+
+### [Get-AzCdnEdgeAction](Get-AzCdnEdgeAction.md)
+Get EdgeAction resource
+
+### [Get-AzCdnEdgeActionExecutionFilter](Get-AzCdnEdgeActionExecutionFilter.md)
+Get EdgeActionExecutionFilter resource
+
+### [Get-AzCdnEdgeActionVersion](Get-AzCdnEdgeActionVersion.md)
+Get EdgeActionVersion resource
+
+### [Get-AzCdnEdgeActionVersionCode](Get-AzCdnEdgeActionVersionCode.md)
+A long-running operation to get versioncode deployed to EdgeActionVersion resource.
 
 ### [Get-AzCdnEdgeNode](Get-AzCdnEdgeNode.md)
 Edgenodes are the global Point of Presence (POP) locations used to deliver CDN content to end users.
@@ -172,6 +190,15 @@ Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 
 ### [New-AzCdnDeliveryRuleUrlPathConditionObject](New-AzCdnDeliveryRuleUrlPathConditionObject.md)
 Create an in-memory object for DeliveryRuleUrlPathCondition.
+
+### [New-AzCdnEdgeAction](New-AzCdnEdgeAction.md)
+Create EdgeAction resource
+
+### [New-AzCdnEdgeActionExecutionFilter](New-AzCdnEdgeActionExecutionFilter.md)
+Create EdgeActionExecutionFilter resource
+
+### [New-AzCdnEdgeActionVersion](New-AzCdnEdgeActionVersion.md)
+Create EdgeActionVersion version
 
 ### [New-AzCdnEndpoint](New-AzCdnEndpoint.md)
 Create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
@@ -380,6 +407,18 @@ Create an in-memory object for SecurityPolicyWebApplicationFirewallParameters.
 ### [Remove-AzCdnCustomDomain](Remove-AzCdnCustomDomain.md)
 Deletes an existing custom domain within an endpoint.
 
+### [Remove-AzCdnEdgeAction](Remove-AzCdnEdgeAction.md)
+Delete EdgeAction resource
+
+### [Remove-AzCdnEdgeActionAttachment](Remove-AzCdnEdgeActionAttachment.md)
+A long-running operation for deleting an EdgeAction attachment that returns no content.
+
+### [Remove-AzCdnEdgeActionExecutionFilter](Remove-AzCdnEdgeActionExecutionFilter.md)
+Delete EdgeActionExecutionFilter resource
+
+### [Remove-AzCdnEdgeActionVersion](Remove-AzCdnEdgeActionVersion.md)
+Delete EdgeActionVersion resource
+
 ### [Remove-AzCdnEndpoint](Remove-AzCdnEndpoint.md)
 Deletes an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 
@@ -468,6 +507,15 @@ Validates the custom domain mapping to ensure it maps to the correct Azure Front
 
 ### [Test-AzFrontDoorCdnProfileMigration](Test-AzFrontDoorCdnProfileMigration.md)
 Check if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile.
+
+### [Update-AzCdnEdgeAction](Update-AzCdnEdgeAction.md)
+Update EdgeAction resource
+
+### [Update-AzCdnEdgeActionExecutionFilter](Update-AzCdnEdgeActionExecutionFilter.md)
+Update EdgeActionExecutionFilter resource
+
+### [Update-AzCdnEdgeActionVersion](Update-AzCdnEdgeActionVersion.md)
+Update EdgeActionVersion resource
 
 ### [Update-AzCdnEndpoint](Update-AzCdnEndpoint.md)
 Update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.

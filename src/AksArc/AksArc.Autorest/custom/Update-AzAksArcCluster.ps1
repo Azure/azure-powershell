@@ -62,7 +62,7 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -75,19 +75,19 @@ param(
     [System.String[]]
     ${AdminGroupObjectID},
 
-    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.Int32]
     # Min nodes in autoscalar
     ${MinCount},
 
-    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.Int32]
     # Max nodes in autoscalar
     ${MaxCount},
 
-    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicates whether to enable autoscalar.
@@ -296,7 +296,9 @@ param(
 )
 
 process {
-    $Scope = GetConnectedClusterResourceURI -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName
+    $Scope = GetConnectedClusterResourceURI -SubscriptionId $SubscriptionId `
+        -ResourceGroupName $ResourceGroupName `
+        -ClusterName $ClusterName
     $null = $PSBoundParameters.Remove("SubscriptionId")
     $null = $PSBoundParameters.Remove("ResourceGroupName")
     $null = $PSBoundParameters.Remove("ClusterName")
@@ -308,7 +310,10 @@ process {
     }
 
     if ($ShouldUpdateConnectedCluster) {
-        UpdateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -AdminGroupObjectID $AdminGroupObjectID
+        $null = UpdateConnectedCluster -SubscriptionId $SubscriptionId `
+            -ResourceGroupName $ResourceGroupName `
+            -ClusterName $ClusterName `
+            -AdminGroupObjectID $AdminGroupObjectID
         $null = $PSBoundParameters.Remove("AdminGroupObjectID")
     }
 
@@ -317,31 +322,34 @@ process {
     {
         $ShouldUpdateDefaultNodepool = $true
     }
-
     if ($PSBoundParameters.ContainsKey("MaxCount"))
     {
         $ShouldUpdateDefaultNodepool = $true
     }
-
     if ($PSBoundParameters.ContainsKey("EnableAutoScaling"))
     {
         $ShouldUpdateDefaultNodepool = $true
     }
 
     if ($ShouldUpdateDefaultNodepool) {
-        $nodepools = Get-AzAksArcNodepool -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+        $nodepools = Get-AzAksArcNodepool -ClusterName $ClusterName `
+            -ResourceGroupName $ResourceGroupName `
+            -SubscriptionId $SubscriptionId
         if ($nodepools.length -ne 1) {
-            Write-Error "Error invalid number of nodepools."
+            Write-Error "Please use Update-AzAksArcNodepool to update nodepools in a cluster with multiple nodepools."
             return
         }
-
-        Update-AzAksArcNodepool -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -Name $nodepools.Name -EnableAutoScaling:$EnableAutoScaling -MinCount $MinCount -MaxCount $MaxCount
+        $null = Update-AzAksArcNodepool -ClusterName $ClusterName `
+            -ResourceGroupName $ResourceGroupName `
+            -SubscriptionId $SubscriptionId `
+            -Name $nodepools.Name `
+            -EnableAutoScaling:$EnableAutoScaling `
+            -MinCount $MinCount `
+            -MaxCount $MaxCount
         $null = $PSBoundParameters.Remove("MinCount")
         $null = $PSBoundParameters.Remove("MaxCount")
         $null = $PSBoundParameters.Remove("EnableAutoScaling")
-        return
     }
-
     # Update Provisioned Cluster
     if ($EnableAzureHybridBenefit) {
         $null = $PSBoundParameters.Add("LicenseProfileAzureHybridBenefit", $true)

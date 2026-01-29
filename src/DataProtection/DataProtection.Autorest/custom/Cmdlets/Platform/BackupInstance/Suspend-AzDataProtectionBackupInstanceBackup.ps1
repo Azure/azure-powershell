@@ -98,7 +98,7 @@ function Suspend-AzDataProtectionBackupInstanceBackup
     {
         $parameterSetName = $PsCmdlet.ParameterSetName
         if($parameterSetName -eq "SuspendViaIdentity"){
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.SuspendBackupRequest]::new()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.SuspendBackupRequest]::new()
 
             $hasResourceGuardOperationRequest = $PSBoundParameters.Remove("ResourceGuardOperationRequest")
             if($hasResourceGuardOperationRequest){

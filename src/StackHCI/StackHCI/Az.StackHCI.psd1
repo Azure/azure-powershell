@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.6.4'
+ModuleVersion = '2.6.6'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'StackHCI.Autorest/bin/Az.StackHCI.private.dll'
@@ -137,7 +137,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed bug: Buse boolean in comparision'
+        ReleaseNotes = '* Improved cloud deployment detection during Azure Arc repair operations to prevent duplicate enablement attempts and ensure smoother deployment experiences.
+* Added ability to register in custom Azure Environments
+* Fixed issue where Arc enablement was incorrectly triggered during repair registration for cloud deployments'
 
         # Prerelease string of this module
         # Prerelease = ''

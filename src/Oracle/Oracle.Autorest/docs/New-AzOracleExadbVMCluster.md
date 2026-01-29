@@ -21,10 +21,10 @@ New-AzOracleExadbVMCluster -Name <String> -ResourceGroupName <String> -Location 
  [-EnabledEcpuCount <Int32>] [-ExascaleDbStorageVaultId <String>] [-GridImageOcid <String>]
  [-Hostname <String>] [-LicenseModel <String>] [-NodeCount <Int32>] [-NsgCidr <INsgCidr[]>]
  [-PrivateZoneOcid <String>] [-ScanListenerPortTcp <Int32>] [-ScanListenerPortTcpSsl <Int32>]
- [-Shape <String>] [-SshPublicKey <String[]>] [-SubnetId <String>] [-SystemVersion <String>]
- [-Tag <Hashtable>] [-TimeZone <String>] [-TotalEcpuCount <Int32>] [-VMFileSystemStorageTotalSizeInGb <Int32>]
- [-VnetId <String>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Shape <String>] [-ShapeAttribute <String>] [-SshPublicKey <String[]>] [-SubnetId <String>]
+ [-SystemVersion <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-TotalEcpuCount <Int32>]
+ [-VMFileSystemStorageTotalSizeInGb <Int32>] [-VnetId <String>] [-Zone <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -502,6 +502,21 @@ Accept wildcard characters: False
 
 ### -Shape
 The shape of the Exadata VM cluster on Exascale Infrastructure resource
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShapeAttribute
+The type of Exascale storage used for Exadata VM cluster.
 
 ```yaml
 Type: System.String

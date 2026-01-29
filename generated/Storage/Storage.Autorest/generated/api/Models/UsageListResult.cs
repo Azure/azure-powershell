@@ -13,6 +13,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsageListResultInternal
     {
 
+        /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
+        private string _nextLink;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public string NextLink { get => this._nextLink; set => this._nextLink = value; }
+
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsage> _value;
 
@@ -30,6 +36,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
     public partial interface IUsageListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IJsonSerializable
     {
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"",
+        SerializedName = @"nextLink",
+        PossibleTypes = new [] { typeof(string) })]
+        string NextLink { get; set; }
         /// <summary>Gets or sets the list of Storage Resource Usages.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -47,6 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
     internal partial interface IUsageListResultInternal
 
     {
+        string NextLink { get; set; }
         /// <summary>Gets or sets the list of Storage Resource Usages.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IUsage> Value { get; set; }
 

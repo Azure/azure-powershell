@@ -15,15 +15,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDatadogTagRule'))
 }
 
 Describe 'Update-AzDatadogTagRule' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { Update-AzDatadogTagRule -MonitorName $env.monitorName01 -ResourceGroupName $env.resourceGroup -Name default -LogRuleSendSubscriptionLog -LogRuleSendResourceLog } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityMonitorExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityMonitorExpanded' {
+        {
+          $obj =  Get-AzDatadogMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName01 
+          Update-AzDatadogTagRule -MonitorInputObject $obj -Name default -LogRuleSendSubscriptionLog -LogRuleSendResourceLog
+        } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+          $obj =  Get-AzDatadogMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName01 
+          Update-AzDatadogTagRule -InputObject $obj -LogRuleSendSubscriptionLog -LogRuleSendResourceLog
+        } | Should -Not -Throw
     }
 }

@@ -18,12 +18,13 @@ Describe 'Get-AzDeviceRegistryNamespaceDevice' {
     It 'List' {
         $testConfig = $env.namespaceDeviceTests.getTests.List
         $namespaceName = $env.namespaceDeviceTests.namespaceName
+        $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceDeviceTests.getTests.jsonFilePath
-        New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -DeviceName $testConfig.name1 -JsonFilePath $jsonFilePath
-        New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -DeviceName $testConfig.name2 -JsonFilePath $jsonFilePath
-        
-        $result = Get-AzDeviceRegistryNamespaceDevice -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName
-        
+        New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -DeviceName $testConfig.name1 -JsonFilePath $jsonFilePath
+        New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -DeviceName $testConfig.name2 -JsonFilePath $jsonFilePath
+
+        $result = Get-AzDeviceRegistryNamespaceDevice -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
+
         $result | Should -Not -BeNullOrEmpty
         $result.Count | Should -BeGreaterOrEqual 2
         $deviceNames = $result | ForEach-Object { $_.Name }
@@ -34,20 +35,23 @@ Describe 'Get-AzDeviceRegistryNamespaceDevice' {
     It 'GetViaIdentityNamespace' {
         $testConfig = $env.namespaceDeviceTests.getTests.GetViaIdentityNamespace
         $namespaceName = $env.namespaceDeviceTests.namespaceName
+        $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName
+        $extendedLocationName = $env.namespaceDeviceTests.extendedLocationName
+        $location = $env.namespaceDeviceTests.location
         $commonProperties = $env.namespaceDeviceTests.createTests.commonProperties
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceDeviceTests.getTests.jsonFilePath
-        $createdDevice = New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -DeviceName $testConfig.name -JsonFilePath $jsonFilePath
+        $createdDevice = New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -DeviceName $testConfig.name -JsonFilePath $jsonFilePath
         $namespaceIdentity = @{
             SubscriptionId = $env.SubscriptionId
-            ResourceGroupName = $env.resourceGroup
+            ResourceGroupName = $resourceGroupName
             NamespaceName = $namespaceName
         }
         
         $result = Get-AzDeviceRegistryNamespaceDevice -NamespaceInputObject $namespaceIdentity -DeviceName $testConfig.name
         
         $result.Name | Should -Be $testConfig.name
-        $result.Location | Should -Be $env.location
-        $result.ExtendedLocationName | Should -Be $env.extendedLocationName
+        $result.Location | Should -Be $location
+        $result.ExtendedLocationName | Should -Be $extendedLocationName
         $result.ExtendedLocationType | Should -Be $env.extendedLocationType
         $result.Enabled | Should -Be $commonProperties.enabled
         $result.Manufacturer | Should -Be $commonProperties.manufacturer
@@ -61,15 +65,18 @@ Describe 'Get-AzDeviceRegistryNamespaceDevice' {
     It 'Get' {
         $testConfig = $env.namespaceDeviceTests.getTests.Get
         $namespaceName = $env.namespaceDeviceTests.namespaceName
+        $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName
+        $extendedLocationName = $env.namespaceDeviceTests.extendedLocationName
+        $location = $env.namespaceDeviceTests.location
         $commonProperties = $env.namespaceDeviceTests.createTests.commonProperties
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceDeviceTests.getTests.jsonFilePath
-        $createdDevice = New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -DeviceName $testConfig.name -JsonFilePath $jsonFilePath
-        
-        $result = Get-AzDeviceRegistryNamespaceDevice -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -DeviceName $testConfig.name
+        $createdDevice = New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -DeviceName $testConfig.name -JsonFilePath $jsonFilePath
+
+        $result = Get-AzDeviceRegistryNamespaceDevice -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -DeviceName $testConfig.name
         
         $result.Name | Should -Be $testConfig.name
-        $result.Location | Should -Be $env.location
-        $result.ExtendedLocationName | Should -Be $env.extendedLocationName
+        $result.Location | Should -Be $location
+        $result.ExtendedLocationName | Should -Be $extendedLocationName
         $result.ExtendedLocationType | Should -Be $env.extendedLocationType
         $result.Enabled | Should -Be $commonProperties.enabled
         $result.Manufacturer | Should -Be $commonProperties.manufacturer
@@ -91,12 +98,15 @@ Describe 'Get-AzDeviceRegistryNamespaceDevice' {
     It 'GetViaIdentity' {
         $testConfig = $env.namespaceDeviceTests.getTests.GetViaIdentity
         $namespaceName = $env.namespaceDeviceTests.namespaceName
+        $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName
+        $extendedLocationName = $env.namespaceDeviceTests.extendedLocationName
+        $location = $env.namespaceDeviceTests.location
         $commonProperties = $env.namespaceDeviceTests.createTests.commonProperties
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceDeviceTests.getTests.jsonFilePath
-        $createdDevice = New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -DeviceName $testConfig.name -JsonFilePath $jsonFilePath
+        $createdDevice = New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -DeviceName $testConfig.name -JsonFilePath $jsonFilePath
         $identity = @{
             SubscriptionId = $env.SubscriptionId
-            ResourceGroupName = $env.resourceGroup
+            ResourceGroupName = $resourceGroupName
             NamespaceName = $namespaceName
             DeviceName = $testConfig.name
         }
@@ -104,8 +114,8 @@ Describe 'Get-AzDeviceRegistryNamespaceDevice' {
         $result = Get-AzDeviceRegistryNamespaceDevice -InputObject $identity
         
         $result.Name | Should -Be $testConfig.name
-        $result.Location | Should -Be $env.location
-        $result.ExtendedLocationName | Should -Be $env.extendedLocationName
+        $result.Location | Should -Be $location
+        $result.ExtendedLocationName | Should -Be $extendedLocationName
         $result.ExtendedLocationType | Should -Be $env.extendedLocationType
         $result.Enabled | Should -Be $commonProperties.enabled
         $result.Manufacturer | Should -Be $commonProperties.manufacturer

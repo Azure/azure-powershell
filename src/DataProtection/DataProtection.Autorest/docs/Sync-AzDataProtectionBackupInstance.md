@@ -8,7 +8,7 @@ schema: 2.0.0
 # Sync-AzDataProtectionBackupInstance
 
 ## SYNOPSIS
-Sync backup instance again in case of failure\r\nThis action will retry last failed operation and will bring backup instance to valid state
+Sync backup instance again in case of failure\nThis action will retry last failed operation and will bring backup instance to valid state
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Sync-AzDataProtectionBackupInstance -Name <String> -ResourceGroupName <String> -
 ```
 
 ## DESCRIPTION
-Sync backup instance again in case of failure\r\nThis action will retry last failed operation and will bring backup instance to valid state
+Sync backup instance again in case of failure\nThis action will retry last failed operation and will bring backup instance to valid state
 
 ## EXAMPLES
 

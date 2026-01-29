@@ -1,8 +1,8 @@
 {
-  "New-AzNetworkSecurityPerimeter+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9-psnsp1?api-version=2024-07-01+1": {
+  "New-AzNetworkSecurityPerimeter+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t7qc8/providers/Microsoft.Network/networkSecurityPerimeters/t7qc8-psnsp1?api-version=2025-05-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9-psnsp1?api-version=2024-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t7qc8/providers/Microsoft.Network/networkSecurityPerimeters/t7qc8-psnsp1?api-version=2025-05-01",
       "Content": "{\r\n  \"location\": \"eastus2euap\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,23 +18,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=37ca76fe-83f1-4c59-823b-b1953db8111c/eastus/b1ad7c0f-aa21-4df0-ad0f-b20c588fa9eb" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=37ca76fe-83f1-4c59-823b-b1953db8111c/eastus/1af940ed-7d53-4d0e-8dcc-55051b96b479" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-request-id": [ "336fd53a-e5f5-4ca7-9128-46b0b5cd0dce" ],
-        "x-ms-correlation-request-id": [ "336fd53a-e5f5-4ca7-9128-46b0b5cd0dce" ],
-        "x-ms-routing-request-id": [ "EASTUS:20250516T091316Z:336fd53a-e5f5-4ca7-9128-46b0b5cd0dce" ],
+        "x-ms-request-id": [ "2f0c8183-1d09-43fd-882a-b3cd79c5abd6" ],
+        "x-ms-correlation-request-id": [ "2f0c8183-1d09-43fd-882a-b3cd79c5abd6" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260121T113158Z:2f0c8183-1d09-43fd-882a-b3cd79c5abd6" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E01021CE2AC1448E913BC872987EF9D4 Ref B: MNZ221060618051 Ref C: 2025-05-16T09:13:15Z" ],
-        "Date": [ "Fri, 16 May 2025 09:13:15 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D1A884DE240A4D05A91299565025666D Ref B: MNZ221060610007 Ref C: 2026-01-21T11:31:56Z" ],
+        "Date": [ "Wed, 21 Jan 2026 11:31:57 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "375" ],
+        "Content-Length": [ "619" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"t0zm9-psnsp1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t0zm9/providers/Microsoft.Network/networkSecurityPerimeters/t0zm9-psnsp1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"e2e72b87-c311-4587-bef5-f94af4540787\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"name\":\"t7qc8-psnsp1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t7qc8/providers/Microsoft.Network/networkSecurityPerimeters/t7qc8-psnsp1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"1b173a78-a4b7-4bb9-b396-99e6da2a7fc7\",\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"karthikgumpu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-21T11:31:58.4784482Z\",\"lastModifiedBy\":\"karthikgumpu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-21T11:31:58.4784482Z\"}}",
       "isContentBase64": false
     }
   }

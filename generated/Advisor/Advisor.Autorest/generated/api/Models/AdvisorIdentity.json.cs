@@ -64,14 +64,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models
             {
                 return;
             }
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_configurationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Json.JsonString>("configurationName"), out var __jsonConfigurationName) ? (string)__jsonConfigurationName : (string)ConfigurationName;}
-            {_resourceGroup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Json.JsonString>("resourceGroup"), out var __jsonResourceGroup) ? (string)__jsonResourceGroup : (string)ResourceGroup;}
-            {_operationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Json.JsonString>("operationId"), out var __jsonOperationId) ? (string)__jsonOperationId : (string)OperationId;}
-            {_resourceUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Json.JsonString>("resourceUri"), out var __jsonResourceUri) ? (string)__jsonResourceUri : (string)ResourceUri;}
-            {_recommendationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Json.JsonString>("recommendationId"), out var __jsonRecommendationId) ? (string)__jsonRecommendationId : (string)RecommendationId;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_configurationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Json.JsonString>("configurationName"), out var __jsonConfigurationName) ? (string)__jsonConfigurationName : (string)_configurationName;}
+            {_resourceGroup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Json.JsonString>("resourceGroup"), out var __jsonResourceGroup) ? (string)__jsonResourceGroup : (string)_resourceGroup;}
+            {_operationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Json.JsonString>("operationId"), out var __jsonOperationId) ? (string)__jsonOperationId : (string)_operationId;}
+            {_resourceUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Json.JsonString>("resourceUri"), out var __jsonResourceUri) ? (string)__jsonResourceUri : (string)_resourceUri;}
+            {_recommendationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Json.JsonString>("recommendationId"), out var __jsonRecommendationId) ? (string)__jsonRecommendationId : (string)_recommendationId;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

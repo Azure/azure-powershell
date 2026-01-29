@@ -21,17 +21,18 @@ Create an in-memory object for ScaleRule.
 Create an in-memory object for ScaleRule.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRule
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.ScaleRule
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleScaleRuleObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azautoscalescaleruleobject
 #>
 function New-AzAutoscaleScaleRuleObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRule')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.ScaleRule')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.ParameterBreakingChange("MetricTriggerDimension", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(HelpMessage="List of dimension conditions. For example: [{`"DimensionName`":`"AppName`",`"Operator`":`"Equals`",`"Values`":[`"App1`"]},{`"DimensionName`":`"Deployment`",`"Operator`":`"Equals`",`"Values`":[`"default`"]}].")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IScaleRuleMetricDimension[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IScaleRuleMetricDimension[]]
         $MetricTriggerDimension,
         [Parameter(HelpMessage="a value indicating whether metric should divide per instance.")]
         [bool]
@@ -49,19 +50,19 @@ function New-AzAutoscaleScaleRuleObject {
         [string]
         $MetricTriggerMetricResourceUri,
         [Parameter(Mandatory, HelpMessage="the operator that is used to compare the metric data and the threshold.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ComparisonOperationType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ComparisonOperationType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.PSArgumentCompleterAttribute("Equals", "NotEquals", "GreaterThan", "GreaterThanOrEqual", "LessThan", "LessThanOrEqual")]
+        [string]
         $MetricTriggerOperator,
         [Parameter(Mandatory, HelpMessage="the metric statistic type. How the metrics from multiple instances are combined.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.MetricStatisticType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.MetricStatisticType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.PSArgumentCompleterAttribute("Average", "Min", "Max", "Sum", "Count")]
+        [string]
         $MetricTriggerStatistic,
         [Parameter(Mandatory, HelpMessage="the threshold of the metric that triggers the scale action.")]
         [double]
         $MetricTriggerThreshold,
         [Parameter(Mandatory, HelpMessage="time aggregation type. How the data that is collected should be combined over time. The default value is Average.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.TimeAggregationType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.TimeAggregationType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.PSArgumentCompleterAttribute("Average", "Minimum", "Maximum", "Total", "Count", "Last")]
+        [string]
         $MetricTriggerTimeAggregation,
         [Parameter(Mandatory, HelpMessage="the granularity of metrics the rule monitors. Must be one of the predefined values returned from metric definitions for the metric. Must be between 12 hours and 1 minute.")]
         [System.TimeSpan]
@@ -73,12 +74,12 @@ function New-AzAutoscaleScaleRuleObject {
         [System.TimeSpan]
         $ScaleActionCooldown,
         [Parameter(Mandatory, HelpMessage="the scale direction. Whether the scaling action increases or decreases the number of instances.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ScaleDirection])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ScaleDirection]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.PSArgumentCompleterAttribute("None", "Increase", "Decrease")]
+        [string]
         $ScaleActionDirection,
         [Parameter(Mandatory, HelpMessage="the type of action that should occur when the scale rule fires.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ScaleType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ScaleType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.PSArgumentCompleterAttribute("ChangeCount", "PercentChangeCount", "ExactCount", "ServiceAllowedNextValue")]
+        [string]
         $ScaleActionType,
         [Parameter(HelpMessage="the number of instances that are involved in the scaling action. This value must be 1 or greater. The default value is 1.")]
         [string]
@@ -86,7 +87,7 @@ function New-AzAutoscaleScaleRuleObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRule]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.ScaleRule]::New()
 
         if ($PSBoundParameters.ContainsKey('MetricTriggerDimension')) {
             $Object.MetricTriggerDimension = $MetricTriggerDimension
