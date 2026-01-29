@@ -100,7 +100,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
 
         protected override void ProcessRecord()
         {
-            WriteDebug($"Starting SFTP connection to storage account: {StorageAccount}");
+            WriteDebug($"[Connect-AzSftp] Starting SFTP connection");
+            WriteDebug($"[Connect-AzSftp] Target storage account: '{StorageAccount}'");
+            WriteDebug($"[Connect-AzSftp] Parameter set: '{ParameterSetName}'");
+            WriteDebug($"[Connect-AzSftp] Buffer size: {BufferSizeBytes} bytes ({BufferSizeBytes / 1024} KB)");
+            if (!string.IsNullOrEmpty(StorageAccountEndpoint))
+            {
+                WriteDebug($"[Connect-AzSftp] Custom endpoint: '{StorageAccountEndpoint}'");
+            }
 
             if (!ShouldProcess($"Connect to SFTP storage account '{StorageAccount}'", 
                               $"Do you want to connect to SFTP storage account '{StorageAccount}'?",
@@ -131,22 +138,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                     // Microsoft Entra authentication (automatic certificate generation)
                     if (string.IsNullOrEmpty(CertificateFile) && string.IsNullOrEmpty(PublicKeyFile) && string.IsNullOrEmpty(PrivateKeyFile))
                     {
-                        WriteVerbose("Fully managed mode: No credentials provided, using Microsoft Entra authentication");
+                        WriteVerbose("[Auth] Fully managed mode: No credentials provided, will generate temporary certificate using Microsoft Entra authentication");
                         autoGenerateCert = true;
                         deleteCert = true;
                         deleteKeys = true;
                         credentialsFolder = Path.Combine(Path.GetTempPath(), $"aadsftp{Guid.NewGuid():N}");
                         Directory.CreateDirectory(credentialsFolder);
+                        WriteDebug($"[Auth] Temporary credentials folder created: '{credentialsFolder}'");
                     }
                     else if (!string.IsNullOrEmpty(CertificateFile))
                     {
-                        WriteVerbose("Using provided certificate file for authentication");
+                        WriteVerbose($"[Auth] Using provided certificate file: '{CertificateFile}'");
                         // Certificate file provided, don't auto-generate
                         autoGenerateCert = false;
                     }
                     else
                     {
-                        WriteVerbose("Using provided keys for Microsoft Entra certificate generation");
+                        WriteVerbose("[Auth] Using provided SSH keys for Microsoft Entra certificate generation");
+                        if (!string.IsNullOrEmpty(PrivateKeyFile))
+                        {
+                            WriteDebug($"[Auth] Private key file: '{PrivateKeyFile}'");
+                        }
+                        if (!string.IsNullOrEmpty(PublicKeyFile))
+                        {
+                            WriteDebug($"[Auth] Public key file: '{PublicKeyFile}'");
+                        }
                         autoGenerateCert = true;
                         deleteCert = true;
                     }
@@ -156,13 +172,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                         var profile = DefaultContext;
                         if (profile?.Subscription == null)
                         {
-                            throw new AzPSInvalidOperationException("No active Azure subscription found. Please run Connect-AzAccount.");
+                            throw new AzPSInvalidOperationException(
+                                "No active Azure subscription found. Microsoft Entra authentication requires an active Azure session. " +
+                                "Please run 'Connect-AzAccount' to sign in to your Azure account before using this cmdlet.");
                         }
+                        WriteDebug($"[Auth] Azure context found - Subscription: '{profile.Subscription.Name}' ({profile.Subscription.Id})");
                     }
-                    catch
+                    catch (AzPSInvalidOperationException)
                     {
                         if (!string.IsNullOrEmpty(credentialsFolder) && Directory.Exists(credentialsFolder))
                         {
+                            WriteDebug($"[Cleanup] Removing temporary credentials folder due to authentication error");
                             Directory.Delete(credentialsFolder, true);
                         }
                         throw;
@@ -174,32 +194,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                     break;
 
                 case CertificateAuthParameterSet:
-                    WriteVerbose("Using provided certificate and private key for authentication");
+                    WriteVerbose($"[Auth] Certificate authentication mode - using provided certificate and private key");
                     if (!File.Exists(CertificateFile))
                     {
-                        throw new AzPSIOException($"Certificate file {CertificateFile} not found.");
+                        throw new AzPSIOException(
+                            $"Certificate file not found: '{CertificateFile}'. " +
+                            "Please verify the file path is correct. You can generate a new certificate using 'New-AzSftpCertificate'.");
                     }
                     if (!File.Exists(PrivateKeyFile))
                     {
-                        throw new AzPSIOException($"Private key file {PrivateKeyFile} not found.");
+                        throw new AzPSIOException(
+                            $"Private key file not found: '{PrivateKeyFile}'. " +
+                            "The private key must correspond to the certificate's public key. " +
+                            "You can generate a new key pair and certificate using 'New-AzSftpCertificate'.");
                     }
+                    WriteDebug($"[Auth] Certificate file: '{CertificateFile}'");
+                    WriteDebug($"[Auth] Private key file: '{PrivateKeyFile}'");
                     autoGenerateCert = false;
                     break;
 
                 case PublicKeyAuthParameterSet:
-                    WriteVerbose("Using SSH public key authentication");
+                    WriteVerbose($"[Auth] Public key authentication mode - using provided public key");
                     if (!File.Exists(PublicKeyFile))
                     {
-                        throw new AzPSIOException($"Public key file {PublicKeyFile} not found.");
+                        throw new AzPSIOException(
+                            $"Public key file not found: '{PublicKeyFile}'. " +
+                            "Please verify the file path is correct. The public key must be configured on the storage account's local user.");
                     }
+                    WriteDebug($"[Auth] Public key file: '{PublicKeyFile}'");
                     break;
 
                 case LocalUserAuthParameterSet:
-                    WriteVerbose($"Using local user authentication for user: {LocalUser}");
+                    WriteVerbose($"[Auth] Local user authentication mode for user: '{LocalUser}'");
                     // For local user authentication, we can optionally use private key or fall back to interactive
                     if (!string.IsNullOrEmpty(PrivateKeyFile) && !File.Exists(PrivateKeyFile))
                     {
-                        throw new AzPSIOException($"Private key file {PrivateKeyFile} not found.");
+                        throw new AzPSIOException(
+                            $"Private key file not found: '{PrivateKeyFile}'. " +
+                            "For local user authentication, either provide a valid private key file or omit the parameter for password authentication.");
+                    }
+                    if (!string.IsNullOrEmpty(PrivateKeyFile))
+                    {
+                        WriteDebug($"[Auth] Using private key file: '{PrivateKeyFile}'");
+                    }
+                    else
+                    {
+                        WriteDebug($"[Auth] No private key provided - will use password authentication if required");
                     }
                     break;
             }
@@ -221,12 +261,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 }
                 else if (autoGenerateCert)
                 {
+                    WriteVerbose("[CertGen] Generating SSH key pair and certificate...");
                     var (pubKey, privKey, delKeys) = FileUtils.CheckOrCreatePublicPrivateFiles(
                         PublicKeyFile, PrivateKeyFile, credentialsFolder, SshClientFolder);
                     PublicKeyFile = pubKey;
                     PrivateKeyFile = privKey;
 
-                    WriteDebug($"Generated keys - Public: {PublicKeyFile}, Private: {PrivateKeyFile}");
+                    WriteDebug($"[CertGen] SSH keys ready - Public: '{PublicKeyFile}', Private: '{PrivateKeyFile}'");
 
                     // Generate certificate with proper naming for SSH client discovery
                     // SSH clients automatically look for <private_key>-cert.pub when using -i <private_key>
@@ -243,17 +284,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                     }
                     else
                     {
-                        throw new AzPSInvalidOperationException("Unable to determine certificate path - no key files available");
+                        throw new AzPSInvalidOperationException(
+                            "Unable to determine certificate path - no SSH key files are available. " +
+                            "Please provide either a public key file (-PublicKeyFile) or a private key file (-PrivateKeyFile).");
                     }
 
-                    WriteDebug($"Certificate will be created at: {certPath}");
+                    WriteDebug($"[CertGen] Certificate will be created at: '{certPath}'");
+                    WriteVerbose("[CertGen] Requesting certificate from Microsoft Entra...");
 
                     var (cert, certUsername) = FileUtils.GetAndWriteCertificate(DefaultContext, PublicKeyFile, certPath, SshClientFolder, CmdletCancellationToken);
 
                     CertificateFile = cert;
                     user = certUsername;
 
-                    WriteDebug($"Certificate created: {CertificateFile}, Certificate principal: {user}");
+                    WriteDebug($"[CertGen] Certificate successfully created: '{CertificateFile}'");
+                    WriteDebug($"[CertGen] Certificate principal: '{user}'");
 
                     // For Azure Storage SFTP with Entra ID authentication (per design document):
                     // Username format: {storage-account}.{principal-name}
@@ -269,12 +314,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                     // Public key authentication mode
                     if (!File.Exists(PublicKeyFile))
                     {
-                        throw new AzPSIOException($"Public key file {PublicKeyFile} not found.");
+                        throw new AzPSIOException(
+                            $"Public key file not found: '{PublicKeyFile}'. " +
+                            "Please verify the file path exists and is accessible.");
                     }
 
                     // For public key auth, we need to determine the username from the storage account configuration
                     // This is more complex and may require additional API calls or configuration
-                    WriteWarning("Public key authentication requires the corresponding private key and proper user configuration on the storage account.");
+                    WriteWarning(
+                        "Public key authentication requires: (1) A corresponding private key file, and " +
+                        "(2) The public key to be configured on the storage account's local user. " +
+                        "Consider using Microsoft Entra authentication for a simpler setup.");
 
                     // Extract username from key file name or use a default pattern
                     string keyFileName = Path.GetFileNameWithoutExtension(PublicKeyFile);
@@ -290,20 +340,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 }
                 else
                 {
-                    WriteDebug("Using provided certificate file...");
+                    WriteDebug("[Auth] Using provided certificate file for authentication");
                     if (!File.Exists(CertificateFile))
                     {
-                        throw new AzPSIOException($"Certificate file {CertificateFile} not found.");
+                        throw new AzPSIOException(
+                            $"Certificate file not found: '{CertificateFile}'. " +
+                            "Please verify the file path is correct and the file exists.");
                     }
 
+                    WriteVerbose($"[Auth] Extracting principals from certificate: '{CertificateFile}'");
                     var principals = SftpUtils.GetSshCertPrincipals(CertificateFile, SshClientFolder);
                     if (principals.Count == 0)
                     {
-                        throw new AzPSInvalidOperationException("No principals found in certificate.");
+                        throw new AzPSInvalidOperationException(
+                            $"No principals found in certificate '{CertificateFile}'. " +
+                            "The certificate may be invalid or corrupted. Please generate a new certificate using 'New-AzSftpCertificate'.");
                     }
                     user = principals[0].ToLower();
 
-                    WriteDebug($"Certificate principal found: {user}");
+                    WriteDebug($"[Auth] Certificate principal extracted: '{user}'");
 
                     // For Azure Storage SFTP with Entra ID authentication (per design document):
                     // Username format: {storage-account}.{principal-name}
@@ -329,19 +384,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                     sshClientFolder: SshClientFolder,
                     sshProxyFolder: null,
                     credentialsFolder: credentialsFolder,
-                    yesWithoutPrompt: false
+                    yesWithoutPrompt: false,
+                    bufferSizeBytes: BufferSizeBytes
                 );
 
                 sftpSession.LocalUser = user;
                 sftpSession.ResolveConnectionInfo();
 
-                WriteDebug($"Final session details:");
-                WriteDebug($"  StorageAccount: {sftpSession.StorageAccount}");
-                WriteDebug($"  Username: {sftpSession.Username}");
-                WriteDebug($"  LocalUser: {sftpSession.LocalUser}");
-                WriteDebug($"  Host: {sftpSession.Host}");
-                WriteDebug($"  CertFile: {sftpSession.CertFile}");
-                WriteDebug($"  PrivateKeyFile: {sftpSession.PrivateKeyFile}");
+                WriteDebug($"[Session] Connection details:");
+                WriteDebug($"[Session]   Storage Account: '{sftpSession.StorageAccount}'");
+                WriteDebug($"[Session]   Username: '{sftpSession.Username}'");
+                WriteDebug($"[Session]   Local User: '{sftpSession.LocalUser}'");
+                WriteDebug($"[Session]   Host: '{sftpSession.Host}'");
+                WriteDebug($"[Session]   Port: {sftpSession.Port}");
+                WriteDebug($"[Session]   Buffer Size: {BufferSizeBytes} bytes");
+                if (!string.IsNullOrEmpty(sftpSession.CertFile))
+                {
+                    WriteDebug($"[Session]   Certificate: '{sftpSession.CertFile}'");
+                }
+                if (!string.IsNullOrEmpty(sftpSession.PrivateKeyFile))
+                {
+                    WriteDebug($"[Session]   Private Key: '{sftpSession.PrivateKeyFile}'");
+                }
 
                 if (Port.HasValue)
                 {
@@ -355,21 +419,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 }
 
                 // Start SFTP operation
+                WriteVerbose("[SFTP] Starting SFTP client process...");
                 var process = DoSftpOp(sftpSession, SftpUtils.StartSftpConnection);
                 // Wait for the SFTP process to complete before cleaning up credentials
                 if (process != null)
                 {
-                    WriteDebug($"Waiting for SFTP process (PID: {process.Id}) to exit before cleanup...");
+                    WriteDebug($"[SFTP] SFTP process started (PID: {process.Id})");
+                    WriteDebug($"[SFTP] Waiting for SFTP session to complete before cleanup...");
                     process.WaitForExit();
                     // Wait up to 5 minutes (300,000 ms) for the process to exit
                     bool exited = process.WaitForExit(300000);
                     if (!exited)
                     {
-                        WriteWarning($"SFTP process (PID: {process.Id}) did not exit within 5 minutes. Cleanup will proceed, but the process may still be running.");
+                        WriteWarning(
+                            $"SFTP process (PID: {process.Id}) did not exit within 5 minutes. " +
+                            "Credential cleanup will proceed, but the SFTP process may still be running. " +
+                            "You may need to manually terminate the process.");
                     }
                     else
                     {
-                        WriteDebug($"SFTP process exited (PID: {process.Id}), cleaning up credentials...");
+                        WriteDebug($"[SFTP] SFTP process exited with code: {process.ExitCode}");
+                        WriteVerbose("[Cleanup] SFTP session ended, cleaning up temporary credentials...");
                     }
                     CleanupCredentials(deleteKeys, deleteCert, credentialsFolder, CertificateFile, PrivateKeyFile, PublicKeyFile);
                 }
@@ -377,9 +447,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
             }
             catch (Exception ex)
             {
+                WriteDebug($"[Error] SFTP connection failed: {ex.GetType().Name}: {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    WriteDebug($"[Error] Inner exception: {ex.InnerException.Message}");
+                }
                 if (deleteKeys || deleteCert)
                 {
-                    WriteDebug($"An error occurred: {ex.Message}. Cleaning up generated credentials.");
+                    WriteDebug($"[Cleanup] Cleaning up temporary credentials after error");
                     CleanupCredentials(deleteKeys, deleteCert, credentialsFolder, CertificateFile, PrivateKeyFile, PublicKeyFile);
                 }
                 throw;
@@ -399,7 +474,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
             {
                 if (deleteCert && !string.IsNullOrEmpty(certFile) && File.Exists(certFile))
                 {
-                    WriteDebug($"Deleting generated certificate {certFile}");
+                    WriteDebug($"[Cleanup] Deleting temporary certificate: '{certFile}'");
                     FileUtils.DeleteFile(certFile);
                 }
 
@@ -407,15 +482,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 {
                     var keyFiles = new[]
                     {
-                        (privateKeyFile, "private"),
-                        (publicKeyFile, "public")
+                        (privateKeyFile, "private key"),
+                        (publicKeyFile, "public key")
                     };
 
                     foreach (var (keyFile, keyType) in keyFiles)
                     {
                         if (!string.IsNullOrEmpty(keyFile) && File.Exists(keyFile))
                         {
-                            WriteDebug($"Deleting generated {keyType} key {keyFile}");
+                            WriteDebug($"[Cleanup] Deleting temporary {keyType}: '{keyFile}'");
                             FileUtils.DeleteFile(keyFile);
                         }
                     }
@@ -423,13 +498,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
 
                 if (!string.IsNullOrEmpty(credentialsFolder) && Directory.Exists(credentialsFolder))
                 {
-                    WriteDebug($"Deleting credentials folder {credentialsFolder}");
+                    WriteDebug($"[Cleanup] Removing temporary credentials folder: '{credentialsFolder}'");
                     Directory.Delete(credentialsFolder, true);
                 }
+
+                WriteDebug("[Cleanup] Credential cleanup completed");
             }
             catch (IOException ex)
             {
-                WriteWarning($"Failed to clean up credentials: {ex.Message}");
+                WriteWarning(
+                    $"Failed to clean up temporary credentials: {ex.Message}. " +
+                    "You may need to manually delete temporary files from the temp directory.");
             }
         }
 
