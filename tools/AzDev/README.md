@@ -128,7 +128,7 @@ Prerequisite: You need to install [GitHub CLI](https://cli.github.com/) and set 
 
 With the `-AllArchivePR` switch, the cmdlet lists all the matching PRs, ordered by CreatedAt ascending, and prompts you to confirm before merging. Use the `-Force` switch to skip the confirmation. For safety, this parameter set only supports merging PRs with the "[skip ci]" prefix in the title and created by the `azure-powershell-bot` user, which are the archive PRs for generated modules.
 
-The cmdlet returns the list of merged PRs. In case any PR fails to merge, an error is thrown, and the successfully merged PRs are still returned.
+The cmdlet returns the list of merged PRs. If any PR fails to merge, an error is thrown and no results are returned.
 
 ```powershell
 PS C:\> Merge-DevPullRequest -Approve -Number 28690
