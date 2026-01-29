@@ -19,6 +19,14 @@
 -->
 
 ## Upcoming Release
+* Added `BufferSizeBytes` parameter to `Connect-AzSftp` cmdlet
+    - Allows users to specify buffer size in bytes for SFTP file transfers
+    - Default value is 262144 (256 KB)
+* Added `StorageAccountEndpoint` parameter to `Connect-AzSftp` cmdlet
+    - Allows users to specify a custom storage account endpoint suffix
+    - Useful for connecting to storage accounts with custom endpoints
+* Added `StorageAccountEndpoint` parameter to `New-AzSftpCertificate` cmdlet
+    - Allows users to specify a custom storage account endpoint suffix for certificate generation
 
 ## Version 0.1.0
 * Initial release of Az.Sftp module

@@ -84,6 +84,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
         [ValidateNotNullOrEmpty]
         public string SshClientFolder { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = DefaultParameterSet, HelpMessage = "Buffer size in bytes for SFTP file transfers. Default: 262144 (256 KB).")]
+        [Parameter(Mandatory = false, ParameterSetName = CertificateAuthParameterSet, HelpMessage = "Buffer size in bytes for SFTP file transfers. Default: 262144 (256 KB).")]
+        [Parameter(Mandatory = false, ParameterSetName = PublicKeyAuthParameterSet, HelpMessage = "Buffer size in bytes for SFTP file transfers. Default: 262144 (256 KB).")]
+        [Parameter(Mandatory = false, ParameterSetName = LocalUserAuthParameterSet, HelpMessage = "Buffer size in bytes for SFTP file transfers. Default: 262144 (256 KB).")]
+        [ValidateRange(1, int.MaxValue)]
+        public int BufferSizeBytes { get; set; } = 256 * 1024;
+
+        [Parameter(Mandatory = false, ParameterSetName = DefaultParameterSet, HelpMessage = "Custom storage account endpoint suffix. Default: Uses endpoint based on Azure environment (e.g., blob.core.windows.net).")]
+        [Parameter(Mandatory = false, ParameterSetName = CertificateAuthParameterSet, HelpMessage = "Custom storage account endpoint suffix. Default: Uses endpoint based on Azure environment (e.g., blob.core.windows.net).")]
+        [Parameter(Mandatory = false, ParameterSetName = PublicKeyAuthParameterSet, HelpMessage = "Custom storage account endpoint suffix. Default: Uses endpoint based on Azure environment (e.g., blob.core.windows.net).")]
+        [Parameter(Mandatory = false, ParameterSetName = LocalUserAuthParameterSet, HelpMessage = "Custom storage account endpoint suffix. Default: Uses endpoint based on Azure environment (e.g., blob.core.windows.net).")]
+        [ValidateNotNullOrEmpty]
+        public string StorageAccountEndpoint { get; set; }
+
         protected override void ProcessRecord()
         {
             WriteDebug($"Starting SFTP connection to storage account: {StorageAccount}");
@@ -421,6 +435,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
 
         private string GetStorageEndpointSuffix()
         {
+            // Use custom endpoint if provided
+            if (!string.IsNullOrEmpty(StorageAccountEndpoint))
+            {
+                return StorageAccountEndpoint;
+            }
+
             string cloudName = DefaultContext?.Environment?.Name?.ToLower() ?? "azurecloud";
 
             switch (cloudName)

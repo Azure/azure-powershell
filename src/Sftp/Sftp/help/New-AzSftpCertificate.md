@@ -15,25 +15,25 @@ Generate SSH certificates for SFTP authentication using Microsoft Entra credenti
 ### Default (Default)
 ```
 New-AzSftpCertificate [-CertificatePath <String>] [-PrivateKeyFile <String>] [-SshClientFolder <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-StorageAccountEndpoint <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FromPublicKey
 ```
 New-AzSftpCertificate [-CertificatePath <String>] -PublicKeyFile <String> [-SshClientFolder <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-StorageAccountEndpoint <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FromPrivateKey
 ```
 New-AzSftpCertificate [-CertificatePath <String>] -PrivateKeyFile <String> [-SshClientFolder <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-StorageAccountEndpoint <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### LocalUser
 ```
 New-AzSftpCertificate [-CertificatePath <String>] -LocalUser <String> [-PrivateKeyFile <String>]
- [-SshClientFolder <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SshClientFolder <String>] [-StorageAccountEndpoint <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -220,6 +220,21 @@ Accept wildcard characters: False
 
 ### -SshClientFolder
 Directory containing SSH executables (ssh-keygen).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountEndpoint
+Custom storage account endpoint suffix. Default: Uses endpoint based on Azure environment (e.g., blob.core.windows.net).
 
 ```yaml
 Type: System.String

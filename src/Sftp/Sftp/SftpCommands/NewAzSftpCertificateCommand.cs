@@ -66,6 +66,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
         [ValidateNotNullOrEmpty]
         public string SshClientFolder { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = DefaultParameterSet, HelpMessage = "Custom storage account endpoint suffix. Default: Uses endpoint based on Azure environment (e.g., blob.core.windows.net).")]
+        [Parameter(Mandatory = false, ParameterSetName = FromPublicKeyParameterSet, HelpMessage = "Custom storage account endpoint suffix. Default: Uses endpoint based on Azure environment (e.g., blob.core.windows.net).")]
+        [Parameter(Mandatory = false, ParameterSetName = FromPrivateKeyParameterSet, HelpMessage = "Custom storage account endpoint suffix. Default: Uses endpoint based on Azure environment (e.g., blob.core.windows.net).")]
+        [Parameter(Mandatory = false, ParameterSetName = LocalUserParameterSet, HelpMessage = "Custom storage account endpoint suffix. Default: Uses endpoint based on Azure environment (e.g., blob.core.windows.net).")]
+        [ValidateNotNullOrEmpty]
+        public string StorageAccountEndpoint { get; set; }
+
         protected override void ProcessRecord()
         {
             WriteDebug("Starting SFTP certificate generation");
