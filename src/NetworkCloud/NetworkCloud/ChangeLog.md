@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.1
+* Preannounced breaking changes.
+
 ## Version 2.0.0
 * Below commands to support for new Managed Identity setting.
   * Cmdlet `New-AzNetworkCloudCluster`
