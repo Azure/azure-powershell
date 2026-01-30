@@ -78,10 +78,10 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [Alias('PolicyDefinitionVersion')]
     [System.String]
@@ -152,13 +152,15 @@ begin {
     }
 
     # mapping table of generated cmdlet parameter sets
+    $versionMapping = @{
+        Delete = 'Az.Policy.private\Remove-AzPolicyDefinitionVersion_Delete';                                           # SubscriptionId
+        Delete1 = 'Az.Policy.private\Remove-AzPolicyDefinitionVersion_Delete1';                                         # ManagementGroupName
+        DeleteViaIdentity = 'Az.Policy.private\Remove-AzPolicyDefinitionVersion_DeleteViaIdentityPolicyDefinition';     # SubscriptionId
+        DeleteViaIdentity1 = 'Az.Policy.private\Remove-AzPolicyDefinitionVersion_DeleteViaIdentityPolicyDefinition1';   # ManagementGroupName
+    }
+
     if ($Version) {
-        $mapping = @{
-            Delete = 'Az.Policy.private\Remove-AzPolicyDefinitionVersion_Delete';                                           # SubscriptionId
-            Delete1 = 'Az.Policy.private\Remove-AzPolicyDefinitionVersion_Delete1';                                         # ManagementGroupName
-            DeleteViaIdentity = 'Az.Policy.private\Remove-AzPolicyDefinitionVersion_DeleteViaIdentityPolicyDefinition';     # SubscriptionId
-            DeleteViaIdentity1 = 'Az.Policy.private\Remove-AzPolicyDefinitionVersion_DeleteViaIdentityPolicyDefinition1';   # ManagementGroupName
-        }
+        $mapping = $versionMapping
     }
     else {
         $mapping = @{
@@ -190,6 +192,11 @@ process {
     # make a friendly prompt
     if ($thisId) {
         $target = $resolved.ResourceId
+        if ($resolved.Version) {
+            $mapping = $versionMapping
+            $target = $resolved.Artifact
+            $PSBoundParameters['Version'] = $resolved.Version
+        }
     }
     else {
         $target = "$($Name) from $($resolved.ScopeName)"
@@ -211,18 +218,20 @@ process {
                 'mgName' {
                     $calledParameterSet = 'DeleteViaIdentity1'
                     if ($PSBoundParameters['Version']) {
+                        $null = $PSBoundParameters.Remove($inputObjectKey)
                         $inputObjectKey = 'PolicyDefinition1InputObject'
                     }
                 }
                 default {
                     $calledParameterSet = 'DeleteViaIdentity'
                     if ($PSBoundParameters['Version']) {
+                        $null = $PSBoundParameters.Remove($inputObjectKey)
                         $inputObjectKey = 'PolicyDefinitionInputObject'
                     }
                 }
             }
 
-            $PSBoundParameters[$inputObjectKey] = @{ Id = $resolved.ResourceId }
+            $PSBoundParameters[$inputObjectKey] = @{ Id = $target }
             $null = $PSBoundParameters.Remove('Id')
             $null = $PSBoundParameters.Remove('Name');
             $null = $PSBoundParameters.Remove('SubscriptionId');

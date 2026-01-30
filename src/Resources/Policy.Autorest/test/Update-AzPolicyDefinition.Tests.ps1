@@ -30,7 +30,7 @@ Describe 'UpdatePolicyDefinition' {
     It 'Update-AzPolicyDefinition -Name -Id' {
         {
             Update-AzPolicyDefinition -Name $someName -Id $someId
-        } | Should -Throw $missingParameters
+        } | Should -Throw $parameterSetError
     }
 
     It 'Update-AzPolicyDefinition -Name -ManagementGroupName' {
@@ -60,13 +60,13 @@ Describe 'UpdatePolicyDefinition' {
     It 'Update-AzPolicyDefinition -Id -ManagementGroupName' {
         {
             Update-AzPolicyDefinition -Id $someId -ManagementGroupName $someManagementGroup
-        } | Should -Throw $missingParameters
+        } | Should -Throw $parameterSetError
     }
 
     It 'Update-AzPolicyDefinition -Id -SubscriptionId' {
         {
             Update-AzPolicyDefinition -Id $someId -SubscriptionId $subscriptionId
-        } | Should -Throw $missingParameters
+        } | Should -Throw $parameterSetError
     }
 
     It 'Update-AzPolicyDefinition -ManagementGroupName <missing>' {
@@ -78,13 +78,13 @@ Describe 'UpdatePolicyDefinition' {
     It 'Update-AzPolicyDefinition -ManagementGroupName' {
         {
             Update-AzPolicyDefinition -ManagementGroupName $someManagementGroup
-        } | Should -Throw $parameterSetError
+        } | Should -Throw $missingParameters
     }
 
     It 'Update-AzPolicyDefinition -ManagementGroupName -SubscriptionId' {
         {
             Update-AzPolicyDefinition -ManagementGroupName $someManagementGroup -SubscriptionId $subscriptionId
-        } | Should -Throw $missingParameters
+        } | Should -Throw $parameterSetError
     }
 
     It 'Update-AzPolicyDefinition -SubscriptionId <missing>' {
@@ -96,6 +96,6 @@ Describe 'UpdatePolicyDefinition' {
     It 'Update-AzPolicyDefinition -SubscriptionId' {
         {
             Update-AzPolicyDefinition -SubscriptionId $subscriptionId
-        } | Should -Throw $parameterSetError
+        } | Should -Throw $missingParameters
     }
 }

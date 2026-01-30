@@ -14,58 +14,44 @@ Gets policy set definitions.
 
 ### Name (Default)
 ```
-Get-AzPolicyDefinition [-Name <String>] [-DefaultProfile <PSObject>]
+Get-AzPolicyDefinition [-Name <String>] [-ListVersion] [-Version <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
-Get-AzPolicyDefinition [-Name <String>] -ManagementGroupName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzPolicyDefinition [-Name <String>] -ManagementGroupName <String> [-ListVersion] [-Version <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
-Get-AzPolicyDefinition [-Name <String>] -SubscriptionId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### Version
-```
-Get-AzPolicyDefinition [-Name <String>] [-Id <String>] [-ManagementGroupName <String>]
- [-SubscriptionId <String>] -Version <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### ListVersion
-```
-Get-AzPolicyDefinition [-Name <String>] [-Id <String>] [-ManagementGroupName <String>]
- [-SubscriptionId <String>] [-ListVersion] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### Id
-```
-Get-AzPolicyDefinition -Id <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzPolicyDefinition [-Name <String>] -SubscriptionId <String> [-ListVersion] [-Version <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Builtin
 ```
-Get-AzPolicyDefinition [-ManagementGroupName <String>] [-SubscriptionId <String>] [-Builtin]
+Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Builtin]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Custom
 ```
-Get-AzPolicyDefinition [-ManagementGroupName <String>] [-SubscriptionId <String>] [-Custom]
+Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Custom]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Static
 ```
-Get-AzPolicyDefinition [-ManagementGroupName <String>] [-SubscriptionId <String>] [-Static]
+Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Static]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Id
+```
+Get-AzPolicyDefinition -Id <String> [-ListVersion] [-Version <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -183,18 +169,6 @@ The full Id of the policy definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Version, ListVersion
-Aliases: ResourceId
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
 Parameter Sets: Id
 Aliases: ResourceId
 
@@ -210,10 +184,10 @@ Causes cmdlet to return only custom policy definitions.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ListVersion
+Parameter Sets: Name, ManagementGroupName, SubscriptionId, Id
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -237,7 +211,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Version, ListVersion, Builtin, Custom, Static
+Parameter Sets: Builtin, Custom, Static
 Aliases:
 
 Required: False
@@ -252,7 +226,7 @@ The name of the policy definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name, ManagementGroupName, SubscriptionId, Version, ListVersion
+Parameter Sets: Name, ManagementGroupName, SubscriptionId
 Aliases: PolicyDefinitionName
 
 Required: False
@@ -294,7 +268,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Version, ListVersion, Builtin, Custom, Static
+Parameter Sets: Builtin, Custom, Static
 Aliases:
 
 Required: False
@@ -309,10 +283,10 @@ The policy definition version in #.#.# format.
 
 ```yaml
 Type: System.String
-Parameter Sets: Version
+Parameter Sets: Name, ManagementGroupName, SubscriptionId, Id
 Aliases: PolicyDefinitionVersion
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

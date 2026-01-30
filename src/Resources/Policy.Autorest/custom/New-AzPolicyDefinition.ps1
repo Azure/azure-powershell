@@ -84,11 +84,13 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Alias('PolicyDefinitionVersion')]
     [System.String]
     # The policy definition version in #.#.# format.
     ${Version},
 
     [Parameter(ValueFromPipelineByPropertyName)]
+    [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing.
@@ -96,6 +98,7 @@ param(
     ${ExternalEvaluationEnforcementSettingMissingTokenAction},
 
     [Parameter(ValueFromPipelineByPropertyName)]
+    [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The lifespan of the endpoint invocation result after which it's no longer valid. 
@@ -103,18 +106,21 @@ param(
     ${ExternalEvaluationEnforcementSettingResultLifespan},
     
     [Parameter(ValueFromPipelineByPropertyName)]
+    [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String[]]
     # An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
     ${ExternalEvaluationEnforcementSettingRoleDefinitionId},
     
     [Parameter(ValueFromPipelineByPropertyName)]
+    [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The kind of the endpoint.
     ${EndpointSettingKind},
 
     [Parameter(ValueFromPipelineByPropertyName)]
+    [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The details of the endpoint.

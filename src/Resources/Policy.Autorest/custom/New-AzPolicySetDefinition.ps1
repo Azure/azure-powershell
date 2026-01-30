@@ -78,6 +78,7 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Alias('PolicySetDefinitionVersion')]
     [System.String]
     # The policy set definition version in #.#.# format.
     ${Version},

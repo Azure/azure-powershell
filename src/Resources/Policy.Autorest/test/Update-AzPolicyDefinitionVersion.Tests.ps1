@@ -2,34 +2,21 @@
 . (Join-Path $PSScriptRoot 'Common.ps1') 'UpdatePolicyDefinitionVersion'
 
 Describe 'UpdatePolicyDefinitionVersion' {
-
-    It 'Update-AzPolicyDefinition -Id -Version' {
-        {
-            Update-AzPolicyDefinition -Id $someId -Version $someOldVersion
-        } | Should -Throw $missingParameters
-    }
-
     It 'Update-AzPolicyDefinition -Name -ManagementGroupName -Version' {
         {
             Update-AzPolicyDefinition -Name $someName -ManagementGroupName $someManagementGroup -Version $someOldVersion
-        } | Should -Throw $missingParameters
+        } | Should -Throw $versionRequiresPolicy
     }
 
     It 'Update-AzPolicyDefinition -Name -Version' {
         {
             Update-AzPolicyDefinition -Name $someName -Version $someOldVersion
-        } | Should -Throw $missingParameters
+        } | Should -Throw $versionRequiresPolicy
     }
 
     It 'Update-AzPolicyDefinition -Name -Version <missing>' {
         {
             Update-AzPolicyDefinition -Name $someName -Version
-        } | Should -Throw $missingAnArgument
-    }
-
-    It 'Update-AzPolicyDefinition -Id -Version <missing>' {
-        {
-            Update-AzPolicyDefinition -Id $someId -Version
         } | Should -Throw $missingAnArgument
     }
 
@@ -42,37 +29,31 @@ Describe 'UpdatePolicyDefinitionVersion' {
     It 'Update-AzPolicyDefinition -Name -Policy -SubscriptionId -Version' {
         {
             Update-AzPolicyDefinition -Name $someName -Policy $someJsonSnippet -SubscriptionId $subscriptionId -Version $someOldVersion
-        } | Should -Throw $PolicyDefinitionNotFound
-    }
-
-    It 'Update-AzPolicyDefinition -Name -Id -Policy -Version' {
-        {
-            Update-AzPolicyDefinition -Name $someName -Id $someId -Policy $someJsonSnippet -Version $someOldVersion
-        } | Should -Throw $nameOrIdIdentifier
+        } | Should -Throw $policyDefinitionNotFound
     }
 
     It 'Update-AzPolicyDefinition -Id -Policy -ManagementGroupName -Version' {
         {
             Update-AzPolicyDefinition -Id $someId -Policy $someJsonSnippet -ManagementGroupName $someManagementGroup -Version $someOldVersion
-        } | Should -Throw $scopeRequiresName
+        } | Should -Throw $parameterSetError
     }
 
     It 'Update-AzPolicyDefinition -Id -Policy -SubscriptionId -Version' {
         {
             Update-AzPolicyDefinition -Id $someId -Policy $someJsonSnippet -SubscriptionId $subscriptionId -Version $someOldVersion
-        } | Should -Throw $scopeRequiresName
+        } | Should -Throw $parameterSetError
     }
 
     It 'Update-AzPolicyDefinition -Name -Policy -ManagementGroupName -SubscriptionId -Version' {
         {
             Update-AzPolicyDefinition -Name $someName -Policy $someJsonSnippet -ManagementGroupName $someManagementGroup -SubscriptionId $subscriptionId -Version $someOldVersion
-        } | Should -Throw $onlyManagementGroupOrSubscription
+        } | Should -Throw $parameterSetError
     }
 
     It 'Update-AzPolicyDefinition -Policy -Version' {
         {
             Update-AzPolicyDefinition -Policy $someJsonSnippet -Version $someOldVersion
-        } | Should -Throw $versionRequiresNameOrId
+        } | Should -Throw $missingParameters
     }
     
     It 'Update-AzPolicyDefinition -Name -Policy -Version <missing>' {

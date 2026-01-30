@@ -1,7 +1,7 @@
 # setup the Pester environment for policy cmdlet tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'GetPolicySetDefinitionVersion'
 
-Describe 'GetPolicySetDefinitionVersion' -Tag 'LiveOnly' {
+Describe 'GetPolicySetDefinitionVersion' {
 
     BeforeAll {
         $customSetDefinition = $env.customSubSetDefinition
@@ -24,19 +24,19 @@ Describe 'GetPolicySetDefinitionVersion' -Tag 'LiveOnly' {
     It 'Get-AzPolicySetDefinition -Name -Id -Version' {
         {
             Get-AzPolicySetDefinition -Name $someName -Id $someId -Version $someNewVersion 
-        } | Should -Throw $nameOrIdIdentifier
+        } | Should -Throw $parameterSetError
     }
 
     It 'Get-AzPolicySetDefinition -ManagementGroupName -Id -Version' {
         {
             Get-AzPolicySetDefinition -ManagementGroupName $someManagementGroup -Id $someId -Version $someNewVersion 
-        } | Should -Throw $scopeRequiresName
+        } | Should -Throw $parameterSetError
     }
 
     It 'Get-AzPolicySetDefinition -SubscriptionId -Id -Version' {
         {
             Get-AzPolicySetDefinition -SubscriptionId $subscriptionId -Id $someId -Version $someNewVersion 
-        } | Should -Throw $scopeRequiresName
+        } | Should -Throw $parameterSetError
     }
 
     It 'Get-AzPolicySetDefinition -Name -ManagementGroupName -Version' {
@@ -72,19 +72,19 @@ Describe 'GetPolicySetDefinitionVersion' -Tag 'LiveOnly' {
     It 'Get-AzPolicySetDefinition -Name -Id -ListVersion' {
         {
             Get-AzPolicySetDefinition -Name $someName -Id $someId -ListVersion
-        } | Should -Throw $nameOrIdIdentifier
+        } | Should -Throw $parameterSetError
     }
 
     It 'Get-AzPolicySetDefinition -ManagementGroupName -Id -ListVersion' {
         {
             Get-AzPolicySetDefinition -ManagementGroupName $someManagementGroup -Id $someId -ListVersion
-        } | Should -Throw $scopeRequiresName
+        } | Should -Throw $parameterSetError
     }
 
     It 'Get-AzPolicySetDefinition -SubscriptionId -Id -ListVersion' {
         {
             Get-AzPolicySetDefinition -SubscriptionId $subscriptionId -Id $someId -ListVersion 
-        } | Should -Throw $scopeRequiresName
+        } | Should -Throw $parameterSetError
     }
 
     It 'Get-AzPolicySetDefinition -Name -ManagementGroupName -ListVersion' {
@@ -192,13 +192,13 @@ Describe 'GetPolicySetDefinitionVersion' -Tag 'LiveOnly' {
     It 'Get-AzPolicySetDefinition -ManagementGroupName -Id -Expand -Version' {
         {
             Get-AzPolicySetDefinition -ManagementGroupName $someManagementGroup -Id $goodId -Expand "LatestDefinitionVersion, EffectiveDefinitionVersion" -Version $someNewVersion 
-        } | Should -Throw $scopeRequiresName
+        } | Should -Throw $parameterSetError
     }
     
     It 'Get-AzPolicySetDefinition -SubscriptionId -Id -Expand -Version' {
         {
             Get-AzPolicySetDefinition -SubscriptionId $subscriptionId -Id $goodId -Expand "LatestDefinitionVersion, EffectiveDefinitionVersion" -Version $someNewVersion 
-        } | Should -Throw $scopeRequiresName
+        } | Should -Throw $parameterSetError
     }
 
     It 'Get-AzPolicySetDefinition -Name <custom>' {

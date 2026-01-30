@@ -35,30 +35,24 @@ param(
     [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Alias('PolicySetDefinitionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
-    # The name of the policy definition to get.
+    # The name of the policy set definition to get.
     ${Name},
 
     [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Alias('ResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
-    # The full Id of the policy definition to get.
+    # The full Id of the policy set definition to get.
     ${Id},
 
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Builtin', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Custom', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
@@ -68,8 +62,6 @@ param(
     [Parameter(ParameterSetName='SubscriptionId', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Builtin', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Custom', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
@@ -79,27 +71,33 @@ param(
     [Parameter(ParameterSetName='Builtin', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return only built-in policy definitions.
+    # Causes cmdlet to return only built-in policy set definitions.
     ${Builtin},
 
     [Parameter(ParameterSetName='Custom', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return only custom policy definitions.
+    # Causes cmdlet to return only custom policy set definitions.
     ${Custom},
 
-    [Parameter(ParameterSetName='Version', Mandatory, ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [ValidateNotNullOrEmpty()]
-    [Alias('PolicySetDefinitionVersion', 'PolicyDefinitionVersion')]
+    [Alias('PolicySetDefinitionVersion')]
     [System.String]
     # The policy set definition version in #.#.# format.
     ${Version},
 
-    [Parameter(ParameterSetName='ListVersion', Mandatory, ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return only custom policy definitions.
+    # Causes cmdlet to return only custom policy set definitions.
     ${ListVersion},
 
     [Parameter(DontShow)]
@@ -118,7 +116,6 @@ param(
     [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.String]
     # Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
@@ -224,24 +221,16 @@ process {
         throw 'Only ManagementGroupName or SubscriptionId can be provided, not both.'
     }
 
-    if ($PSBoundParameters['Version'] -and !$PSBoundParameters['Name'] -and !$PSBoundParameters['Id']) {
-        throw 'Version is only allowed if Name or Id are provided.'
+    if ($PSBoundParameters['Version'] -and !(($PSBoundParameters['Name'] -xor $PSBoundParameters['Id']))) {
+        throw 'Version is only allowed when exactly one of Name or Id is provided.'
     }
 
-    if ($PSBoundParameters['ListVersion'] -and !$PSBoundParameters['Name'] -and !$PSBoundParameters['Id']) {
-        throw 'ListVersion is only allowed if Name or Id are provided.'
+    if ($PSBoundParameters['ListVersion'] -and !(($PSBoundParameters['Name'] -xor $PSBoundParameters['Id']))) {
+        throw 'ListVersion is only allowed when exactly one of Name or Id is provided.'
     }
 
-    if ($PSBoundParameters['Expand'] -and !$PSBoundParameters['Name'] -and !$PSBoundParameters['Id']) {
-        throw 'Expand is only allowed if Name or Id are provided.'
-    }
-
-    if ($PSBoundParameters['Name'] -and $PSBoundParameters['Id']) {
-        throw 'Only one identifier can be provided: specify either Name or Id.'
-    }
-    
-    if ($PSBoundParameters['Id'] -and ($PSBoundParameters['ManagementGroupName'] -or $PSBoundParameters['SubscriptionId'])) {
-        throw 'Id cannot be combined with ManagementGroupName or SubscriptionId.'
+    if ($PSBoundParameters['Expand'] -and !(($PSBoundParameters['Name'] -xor $PSBoundParameters['Id']))) {
+        throw 'Expand is only allowed when exactly one of Name or Id is provided.'
     }
     
     # handle specific parameter sets

@@ -1,7 +1,7 @@
 # setup the Pester environment for policy cmdlet tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'GetPolicyDefinitionVersion'
 
-Describe 'GetPolicyDefinitionVersion' -Tag 'LiveOnly' {
+Describe 'GetPolicyDefinitionVersion' {
 
     BeforeAll {
         $customDefinition = $env.customSubDefinition
@@ -28,13 +28,13 @@ Describe 'GetPolicyDefinitionVersion' -Tag 'LiveOnly' {
     It 'Get-AzPolicyDefinition -ManagementGroupName -Id -Version' {
         {
             Get-AzPolicyDefinition -ManagementGroupName $someManagementGroup -Id $someId -Version $someNewVersion 
-        } | Should -Throw $scopeRequiresName
+        } | Should -Throw $parameterSetError
     }
 
     It 'Get-AzPolicyDefinition -SubscriptionId -Id -Version' {
         {
             Get-AzPolicyDefinition -SubscriptionId $subscriptionId -Id $someId -Version $someNewVersion 
-        } | Should -Throw $scopeRequiresName
+        } | Should -Throw $parameterSetError
     }
 
     It 'Get-AzPolicyDefinition -Name -ManagementGroupName -Version' {
@@ -70,19 +70,19 @@ Describe 'GetPolicyDefinitionVersion' -Tag 'LiveOnly' {
     It 'Get-AzPolicyDefinition -Name -Id -ListVersion' {
         {
             Get-AzPolicyDefinition -Name $someName -Id $someId -ListVersion
-        } | Should -Throw $nameOrIdIdentifier
+        } | Should -Throw $parameterSetError
     }
 
     It 'Get-AzPolicyDefinition -ManagementGroupName -Id -ListVersion' {
         {
             Get-AzPolicyDefinition -ManagementGroupName $someManagementGroup -Id $someId -ListVersion
-        } | Should -Throw $scopeRequiresName
+        } | Should -Throw $parameterSetError
     }
 
     It 'Get-AzPolicyDefinition -SubscriptionId -Id -ListVersion' {
         {
             Get-AzPolicyDefinition -SubscriptionId $subscriptionId -Id $someId -ListVersion 
-        } | Should -Throw $scopeRequiresName
+        } | Should -Throw $parameterSetError
     }
 
     It 'Get-AzPolicyDefinition -Name -ManagementGroupName -ListVersion' {

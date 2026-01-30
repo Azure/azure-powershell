@@ -113,9 +113,11 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         $invalidPolicySetDefinitionRequest = $env.invalidPolicySetDefinitionRequest
         $multiplePolicyDefinitionParams = $env.multiplePolicyDefinitionParams
         $versionRequiresNameOrId = $env.versionRequiresNameOrId
+        $versionRequiresPolicy = $env.versionRequiresPolicy
+        $versionRequiresPolicyDefinition = $env.versionRequiresPolicyDefinition
         $listVersionsRequiresNameOrId = $env.listVersionsRequiresNameOrId
-        $scopeRequiresName = $env.scopeRequiresName
         $expandRequiresNameOrId = $env.expandRequiresNameOrId
+        $oldVersionsImmutable = $env.oldVersionsImmutable
         $disallowedByPolicy = $env.disallowedByPolicy
         $invalidVersionIdentifier = $env.invalidVersionIdentifier
         $invalidLatestDefVersionDeletion = $env.invalidLatestDefVersionDeletion

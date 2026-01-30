@@ -1,7 +1,7 @@
 # setup the Pester environment for policy tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'ExemptionResourceSelector'
 
-Describe 'ExemptionResourceSelector' -Tag 'LiveOnly' {
+Describe 'ExemptionResourceSelector' {
 
     BeforeAll {
         # setup

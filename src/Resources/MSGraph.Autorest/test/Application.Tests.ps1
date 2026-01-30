@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Application'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Application' -Tag 'LiveOnly' {
+Describe 'Application' {
     It 'CRUD' {
         { 
             New-AzADApplication -DisplayName $env.appName1 -ReplyUrls $env.reply1 -HomePage $env.homepage1 -AvailableToOtherTenants $true -StartDate (Get-Date)

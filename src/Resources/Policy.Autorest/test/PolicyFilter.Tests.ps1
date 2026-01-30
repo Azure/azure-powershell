@@ -1,7 +1,7 @@
 # setup the Pester environment for policy cmdlet tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'PolicyFilter'
 
-Describe 'PolicyFilter' -Tag 'LiveOnly' {
+Describe 'PolicyFilter' {
 
     It 'Get and validate PolicyType of Get-AzPolicyDefinition -BuiltIn' {
         # builtin policy definitions

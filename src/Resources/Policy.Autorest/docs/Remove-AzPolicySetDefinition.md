@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzPolicySetDefinition
 
 ## SYNOPSIS
-This operation deletes the policy definition in the given subscription with the given name.
+This operation deletes the policy set definition in the given subscription with the given name.
 
 ## SYNTAX
 
@@ -43,7 +43,7 @@ Remove-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-Force] [-
 ```
 
 ## DESCRIPTION
-This operation deletes the policy definition in the given subscription with the given name.
+This operation deletes the policy set definition in the given subscription with the given name.
 
 ## EXAMPLES
 
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The full Id of the policy definition to get.
+The full Id of the policy set definition to get.
 
 ```yaml
 Type: System.String
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the policy definition to get.
+The name of the policy set definition to get.
 
 ```yaml
 Type: System.String

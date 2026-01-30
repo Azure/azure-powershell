@@ -375,7 +375,7 @@ The policy definition version in #.#.# format.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: PolicyDefinitionVersion
 
 Required: False
 Position: Named

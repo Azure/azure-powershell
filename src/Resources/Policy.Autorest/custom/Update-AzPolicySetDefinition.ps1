@@ -38,7 +38,6 @@ param(
     [Parameter(ParameterSetName='Name', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='SubscriptionId', Mandatory, ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Alias('PolicySetDefinitionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
@@ -47,12 +46,11 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Alias('ResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
-    # The resource Id of the policy definition to update.
+    # The resource Id of the policy set definition to update.
     ${Id},
 
     [Parameter(ValueFromPipelineByPropertyName)]
@@ -67,7 +65,6 @@ param(
     # The policy set definition description.
     ${Description},
     
-    [Parameter(ParameterSetName='Version', Mandatory)]
     [Parameter(ParameterSetName='Name')]
     [Parameter(ParameterSetName='ManagementGroupName')]
     [Parameter(ParameterSetName='SubscriptionId')]
@@ -77,7 +74,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReference[]]))]
     [System.String]
-    # The policy definition array in JSON string form.
+    # The policy set definition array in JSON string form.
     ${PolicyDefinition},
 
     [Parameter(ValueFromPipelineByPropertyName)]
@@ -95,15 +92,16 @@ param(
     # The keys are the parameter names.
     ${Parameter},
 
-    [Parameter(ParameterSetName='Version', Mandatory, ValueFromPipelineByPropertyName)]
-    [Alias('PolicyDefinitionVersion', 'PolicySetDefinitionVersion')]
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Alias('PolicySetDefinitionVersion')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
-    # The policy definition version in #.#.# format.
+    # The policy set definition version in #.#.# format.
     ${Version},
     
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
@@ -111,7 +109,6 @@ param(
     ${ManagementGroupName},
 
     [Parameter(ParameterSetName='SubscriptionId', Mandatory, ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
@@ -195,32 +192,26 @@ process {
         Write-Host -ForegroundColor Cyan "process:Update-AzPolicySetDefinition(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
 
-    # handle disallowed cases not handled by PS parameter attributes
-    if ($PSBoundParameters['SubscriptionId'] -and $PSBoundParameters['ManagementGroupName']) {
-        throw 'Only ManagementGroupName or SubscriptionId can be provided, not both.'
-    }
-
-    if ($PSBoundParameters['Version'] -and !$PSBoundParameters['Name'] -and !$PSBoundParameters['Id']) {
-        throw 'Version is only allowed if Name or Id are provided.'
-    }
-
-    if ($PSBoundParameters['Name'] -and $PSBoundParameters['Id']) {
-        throw 'Only one identifier can be provided: specify either Name or Id.'
-    }
-    
-    if ($PSBoundParameters['Id'] -and ($PSBoundParameters['ManagementGroupName'] -or $PSBoundParameters['SubscriptionId'])) {
-        throw 'Id cannot be combined with ManagementGroupName or SubscriptionId.'
-    }
-
     # Id can be a parameter or from the input object
     if ($Id) {
         $thisId = $Id
-    } else {
+    } elseif ($InputObject.Id) {
         $thisId = $InputObject.Id
+    } else {
+        $thisId = $_.Id
     }
 
     # construct id for definition to update
     $resolved = ResolvePolicySetDefinition $Name $SubscriptionId $ManagementGroupName $thisId
+
+    # handle disallowed cases not handled by PS parameter attributes
+    if ($resolved.Version) {
+        throw 'Old versions are immutable.'
+    }
+
+    if ($PSBoundParameters['Version'] -and !$PSBoundParameters['PolicyDefinition']) {
+        throw 'Version is only allowed if PolicyDefinition is provided.'
+    }
 
     $getParameters = Get-ExtraParameters @PSBoundParameters
     $getParameters['Id'] = $resolved.ResourceId

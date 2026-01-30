@@ -336,11 +336,12 @@ function setupEnv() {
     $env['invalidPolicyDefinitionReference'] = 'InvalidPolicyDefinitionReference'
     $env['invalidPolicySetDefinitionRequest'] = "[InvalidCreatePolicySetDefinitionRequest] : The policy set definition 'someName' create request is invalid. At least one policy definition must be referenced."
     $env['multiplePolicyDefinitionParams'] = "Cannot bind parameter because parameter 'PolicyDefinition' is specified more than once"
-    $env['versionRequiresNameOrId'] = 'Version is only allowed if Name or Id are provided.'
-    $env['listVersionsRequiresNameOrId'] = 'ListVersions is only allowed if Name or Id are provided.'
-    $env['expandRequiresNameOrId'] = 'Expand is only allowed if Name or Id are provided.'
-    $env['nameOrIdIdentifier'] = 'Only one identifier can be provided: specify either Name or Id.'
-    $env['scopeRequiresName'] = 'Id cannot be combined with ManagementGroupName or SubscriptionId.'
+    $env['versionRequiresNameOrId'] = 'Version is only allowed when exactly one of Name or Id is provided.'
+    $env['versionRequiresPolicy'] = 'Version is only allowed if Policy is provided.'
+    $env['versionRequiresPolicyDefinition'] = 'Version is only allowed if PolicyDefinition is provided.'
+    $env['listVersionsRequiresNameOrId'] = 'ListVersion is only allowed when exactly one of Name or Id is provided.'
+    $env['expandRequiresNameOrId'] = 'Expand is only allowed when exactly one of Name or Id is provided.'
+    $env['oldVersionsImmutable'] = 'Old versions are immutable.'
     $env['disallowedByPolicy'] = "was disallowed by policy."
     $env['invalidLatestDefVersionDeletion'] = "[InvalidDeletePolicyDefinitionRequest] : Deleting the latest version"
     $env['invalidLatestSetDefVersionDeletion'] = "[InvalidDeletePolicySetDefinitionRequest] : Deleting the latest version"

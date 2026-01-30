@@ -281,7 +281,7 @@ The policy set definition version in #.#.# format.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: PolicySetDefinitionVersion
 
 Required: False
 Position: Named

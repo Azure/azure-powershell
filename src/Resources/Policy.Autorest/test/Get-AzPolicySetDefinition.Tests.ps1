@@ -1,7 +1,7 @@
 # setup the Pester environment for policy cmdlet tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'GetPolicySetDefinition'
 
-Describe 'GetPolicySetDefinition' -Tag 'LiveOnly' {
+Describe 'GetPolicySetDefinition' {
 
     BeforeAll {
         $goodScope = "/subscriptions/$subscriptionId"
@@ -317,18 +317,18 @@ Describe 'GetPolicySetDefinition' -Tag 'LiveOnly' {
     It 'Get-AzPolicySetDefinition -ManagementGroupName -Id -Expand' {
         {
             Get-AzPolicySetDefinition -ManagementGroupName $someManagementGroup -Id $goodId -Expand "LatestDefinitionVersion, EffectiveDefinitionVersion"
-        } | Should -Throw $missingParameters
+        } | Should -Throw $parameterSetError
     }
     
     It 'Get-AzPolicySetDefinition -SubscriptionId -Id -Expand' {
         {
             Get-AzPolicySetDefinition -SubscriptionId $subscriptionId -Id $goodId -Expand "LatestDefinitionVersion, EffectiveDefinitionVersion"
-        } | Should -Throw $missingParameters
+        } | Should -Throw $parameterSetError
     }
     
     It 'Get-AzPolicySetDefinition -Id -Name -Expand' {
         {
             Get-AzPolicySetDefinition -Id $goodId -Name $someName -Expand "LatestDefinitionVersion, EffectiveDefinitionVersion"
-        } | Should -Throw $missingParameters
+        } | Should -Throw $parameterSetError
     }
 }

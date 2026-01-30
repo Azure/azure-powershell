@@ -19,8 +19,8 @@ Update-AzPolicyDefinition -Name <String> [-Description <String>] [-DisplayName <
  [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
  [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
- [-Parameter <String>] [-Policy <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Parameter <String>] [-Policy <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Id
@@ -30,8 +30,7 @@ Update-AzPolicyDefinition -Id <String> [-Description <String>] [-DisplayName <St
  [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
  [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
- [-Parameter <String>] [-Policy <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Parameter <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InputObject
@@ -52,8 +51,8 @@ Update-AzPolicyDefinition -ManagementGroupName <String> -Name <String> [-Descrip
  [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
  [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
- [-Parameter <String>] [-Policy <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Parameter <String>] [-Policy <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### SubscriptionId
@@ -63,19 +62,8 @@ Update-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-Description 
  [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
  [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
  [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
- [-Parameter <String>] [-Policy <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Version
-```
-Update-AzPolicyDefinition -Policy <String> -Version <String> [-Id <String>] [-ManagementGroupName <String>]
- [-Name <String>] [-SubscriptionId <String>] [-Description <String>] [-DisplayName <String>]
- [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
- [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
- [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
- [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
- [-Parameter <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Parameter <String>] [-Policy <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -256,7 +244,7 @@ The resource Id of the policy definition to update.
 
 ```yaml
 Type: System.String
-Parameter Sets: Id, Version
+Parameter Sets: Id
 Aliases: ResourceId
 
 Required: True
@@ -286,7 +274,7 @@ The ID of the management group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName, Version
+Parameter Sets: ManagementGroupName
 Aliases:
 
 Required: True
@@ -333,7 +321,7 @@ The name of the policy definition to update.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName, Name, SubscriptionId, Version
+Parameter Sets: ManagementGroupName, Name, SubscriptionId
 Aliases: PolicyDefinitionName
 
 Required: True
@@ -364,10 +352,10 @@ The policy rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: InputObject, ManagementGroupName, Name, SubscriptionId
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -379,7 +367,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionId, Version
+Parameter Sets: SubscriptionId
 Aliases:
 
 Required: True
@@ -394,10 +382,10 @@ The policy definition version in #.#.# format.
 
 ```yaml
 Type: System.String
-Parameter Sets: Version
+Parameter Sets: ManagementGroupName, Name, SubscriptionId
 Aliases: PolicyDefinitionVersion
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

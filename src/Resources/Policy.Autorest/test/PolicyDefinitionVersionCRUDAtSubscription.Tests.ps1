@@ -1,7 +1,7 @@
 # setup the Pester environment for policy tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'PolicyDefinitionVersionCRUDAtSubscription'
 
-Describe 'PolicyDefinitionVersionCRUDAtSubscription' -Tag 'LiveOnly' {
+Describe 'PolicyDefinitionVersionCRUDAtSubscription' {
 
     BeforeAll {
         # setup

@@ -14,45 +14,38 @@ This operation updates an existing policy set definition in the given subscripti
 
 ### Name (Default)
 ```
-Update-AzPolicySetDefinition -Name <String> [-PolicyDefinition <String>] [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
+ [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-Version <String>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
-Update-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-PolicyDefinition <String>]
- [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-DisplayName <String>]
+ [-Description <String>] [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>]
+ [-Version <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
-Update-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-PolicyDefinition <String>]
- [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### Version
-```
-Update-AzPolicySetDefinition [-Name <String>] [-Id <String>] [-ManagementGroupName <String>]
- [-SubscriptionId <String>] [-PolicyDefinition <String>] [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>] -Version <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-DisplayName <String>]
+ [-Description <String>] [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>]
+ [-Version <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Update-AzPolicySetDefinition -Id <String> [-PolicyDefinition <String>] [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
+Update-AzPolicySetDefinition -Id <String> [-DisplayName <String>] [-Description <String>]
+ [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Update-AzPolicySetDefinition [-PolicyDefinition <String>] [-DisplayName <String>] [-Description <String>]
+Update-AzPolicySetDefinition [-DisplayName <String>] [-Description <String>] [-PolicyDefinition <String>]
  [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
  -InputObject <IPolicySetDefinition> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -169,19 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The resource Id of the policy definition to update.
-
-```yaml
-Type: System.String
-Parameter Sets: Version
-Aliases: ResourceId
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
+The resource Id of the policy set definition to update.
 
 ```yaml
 Type: System.String
@@ -224,18 +205,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-```yaml
-Type: System.String
-Parameter Sets: Version
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Metadata
 The policy set definition metadata.
 Metadata is an open ended object and is typically a collection of key value pairs.
@@ -267,18 +236,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-```yaml
-Type: System.String
-Parameter Sets: Version
-Aliases: PolicySetDefinitionName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Parameter
 The parameter definitions for parameters used in the policy set.
 The keys are the parameter names.
@@ -296,7 +253,7 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyDefinition
-The policy definition array in JSON string form.
+The policy set definition array in JSON string form.
 
 ```yaml
 Type: System.String
@@ -341,27 +298,15 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Version
+The policy set definition version in #.#.# format.
+
 ```yaml
 Type: System.String
-Parameter Sets: Version
-Aliases:
+Parameter Sets: Name, ManagementGroupName, SubscriptionId
+Aliases: PolicySetDefinitionVersion
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Version
-The policy definition version in #.#.# format.
-
-```yaml
-Type: System.String
-Parameter Sets: Version
-Aliases: PolicyDefinitionVersion, PolicySetDefinitionVersion
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
