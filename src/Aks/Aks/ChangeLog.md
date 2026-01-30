@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.1.1
 * Fixed the default SSH key generation logic in `New-AzAksCluster` to enforce RSA key type (instead of ed25519 that became the default in OpenSSH 9.4 and above)
 
 ## Version 7.1.0

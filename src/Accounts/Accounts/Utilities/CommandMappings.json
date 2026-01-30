@@ -2942,7 +2942,6 @@
       "Update-AzDynatraceMonitorTagRule": {}
     },
     "Az.EdgeAction": {
-      "Add-AzEdgeActionAttachment": {},
       "Deploy-AzEdgeActionVersionCode": {},
       "Get-AzEdgeAction": {},
       "Get-AzEdgeActionExecutionFilter": {},
@@ -2952,7 +2951,6 @@
       "New-AzEdgeActionExecutionFilter": {},
       "New-AzEdgeActionVersion": {},
       "Remove-AzEdgeAction": {},
-      "Remove-AzEdgeActionAttachment": {},
       "Remove-AzEdgeActionExecutionFilter": {},
       "Remove-AzEdgeActionVersion": {},
       "Switch-AzEdgeActionVersionDefault": {},
