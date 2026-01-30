@@ -182,7 +182,7 @@ Accept wildcard characters: False
 ```
 
 ### -ListVersion
-Causes cmdlet to return only custom policy set definitions.
+Causes cmdlet to return only custom policy set definition versions.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

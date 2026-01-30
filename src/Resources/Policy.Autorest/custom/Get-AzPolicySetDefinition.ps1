@@ -97,7 +97,7 @@ param(
     [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return only custom policy set definitions.
+    # Causes cmdlet to return only custom policy set definition versions.
     ${ListVersion},
 
     [Parameter(DontShow)]

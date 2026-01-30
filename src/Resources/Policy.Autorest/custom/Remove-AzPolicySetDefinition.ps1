@@ -153,22 +153,14 @@ begin {
 
     # mapping table of generated cmdlet parameter sets
     $versionMapping = @{
-        Delete = 'Az.Policy.private\Remove-AzPolicySetDefinitionVersion_Delete';                                           # SubscriptionId
-        Delete1 = 'Az.Policy.private\Remove-AzPolicySetDefinitionVersion_Delete1';                                         # ManagementGroupName
-        DeleteViaIdentity = 'Az.Policy.private\Remove-AzPolicySetDefinitionVersion_DeleteViaIdentityPolicySetDefinition';     # SubscriptionId
-        DeleteViaIdentity1 = 'Az.Policy.private\Remove-AzPolicySetDefinitionVersion_DeleteViaIdentityPolicySetDefinition1';   # ManagementGroupName
+        Delete = 'Az.Policy.private\Remove-AzPolicySetDefinitionVersion_Delete';                                                # SubscriptionId
+        Delete1 = 'Az.Policy.private\Remove-AzPolicySetDefinitionVersion_Delete1';                                              # ManagementGroupName
+        DeleteViaIdentity = 'Az.Policy.private\Remove-AzPolicySetDefinitionVersion_DeleteViaIdentityPolicySetDefinition';       # SubscriptionId
+        DeleteViaIdentity1 = 'Az.Policy.private\Remove-AzPolicySetDefinitionVersion_DeleteViaIdentityPolicySetDefinition1';     # ManagementGroupName
     }
 
     if ($Version) {
         $mapping = $versionMapping
-    }
-    if ($Version) {
-        $mapping = @{
-            Delete = 'Az.Policy.private\Remove-AzPolicySetDefinitionVersion_Delete';                                           # SubscriptionId
-            Delete1 = 'Az.Policy.private\Remove-AzPolicySetDefinitionVersion_Delete1';                                         # ManagementGroupName
-            DeleteViaIdentity = 'Az.Policy.private\Remove-AzPolicySetDefinitionVersion_DeleteViaIdentityPolicySetDefinition';     # SubscriptionId
-            DeleteViaIdentity1 = 'Az.Policy.private\Remove-AzPolicySetDefinitionVersion_DeleteViaIdentityPolicySetDefinition1';   # ManagementGroupName
-        }
     }
     else {
         $mapping = @{
