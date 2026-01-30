@@ -5,6 +5,11 @@ function Stop-AzDataProtectionBackupInstanceProtection
 	[OutputType('System.Boolean')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('This operation will stop protection of a backup instance and data will be held forever')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("**********************************************************************************************`n
+    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
+    * At least one change applies to this cmdlet.                                                     *`n
+    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
+    ***************************************************************************************************")]
 
     param(        
         [Parameter(ParameterSetName="Stop", Mandatory=$false, HelpMessage='Subscription Id of the backup vault')]
