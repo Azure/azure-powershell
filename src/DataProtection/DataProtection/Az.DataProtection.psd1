@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.8.0'
+ModuleVersion = '2.9.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -85,6 +85,7 @@ FunctionsToExport = 'Backup-AzDataProtectionBackupInstanceAdhoc',
                'Get-AzDataProtectionResourceGuard', 
                'Get-AzDataProtectionResourceGuardMapping', 
                'Get-AzDataProtectionSoftDeletedBackupInstance', 
+               'Get-AzDataProtectionSoftDeletedBackupVault', 
                'Initialize-AzDataProtectionBackupInstance', 
                'Initialize-AzDataProtectionRestoreRequest', 
                'New-AzDataProtectionBackupConfigurationClientObject', 
@@ -106,6 +107,7 @@ FunctionsToExport = 'Backup-AzDataProtectionBackupInstanceAdhoc',
                'Search-AzDataProtectionBackupInstanceInAzGraph', 
                'Search-AzDataProtectionBackupVaultInAzGraph', 
                'Search-AzDataProtectionJobInAzGraph', 
+               'Search-AzDataProtectionSoftDeletedVaultBackupInstanceInAzGraph', 
                'Set-AzDataProtectionMSIPermission', 
                'Set-AzDataProtectionResourceGuardMapping', 
                'Start-AzDataProtectionBackupInstanceRestore', 
@@ -116,6 +118,7 @@ FunctionsToExport = 'Backup-AzDataProtectionBackupInstanceAdhoc',
                'Test-AzDataProtectionBackupInstanceRestore', 
                'Test-AzDataProtectionBackupInstanceUpdate', 
                'Undo-AzDataProtectionBackupInstanceDeletion', 
+               'Undo-AzDataProtectionVaultDeletion', 
                'Unlock-AzDataProtectionResourceGuardOperation', 
                'Update-AzDataProtectionBackupInstance', 
                'Update-AzDataProtectionBackupInstanceAssociatedPolicy', 
@@ -158,7 +161,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added support for AzureDataLakeStorage workload'
+        ReleaseNotes = '* Added support for Data Protection Platform vault soft delete feature'
 
         # Prerelease string of this module
         # Prerelease = ''

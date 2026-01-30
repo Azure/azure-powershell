@@ -42,7 +42,7 @@ Returns resource collection belonging to a subscription.
 Gets or lists jobs in a backup vault
 
 ### [Get-AzDataProtectionOperation](Get-AzDataProtectionOperation.md)
-Returns the list of available operations.
+List the operations for the provider
 
 ### [Get-AzDataProtectionOperationStatus](Get-AzDataProtectionOperationStatus.md)
 Gets the operation status for a resource.
@@ -61,6 +61,9 @@ Returns the ResourceGuardProxy object associated with the vault, and that matche
 
 ### [Get-AzDataProtectionSoftDeletedBackupInstance](Get-AzDataProtectionSoftDeletedBackupInstance.md)
 Gets a deleted backup instance with name in a backup vault
+
+### [Get-AzDataProtectionSoftDeletedBackupVault](Get-AzDataProtectionSoftDeletedBackupVault.md)
+Gets a deleted backup vault
 
 ### [Initialize-AzDataProtectionBackupInstance](Initialize-AzDataProtectionBackupInstance.md)
 Initializes Backup instance Request object for configuring backup
@@ -125,6 +128,9 @@ Searches for Backup vaults in Azure Resource Graph and retrieves the expected en
 ### [Search-AzDataProtectionJobInAzGraph](Search-AzDataProtectionJobInAzGraph.md)
 Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entries
 
+### [Search-AzDataProtectionSoftDeletedVaultBackupInstanceInAzGraph](Search-AzDataProtectionSoftDeletedVaultBackupInstanceInAzGraph.md)
+Gets soft deleted backup instances from a deleted vault using Azure Resource Graph
+
 ### [Set-AzDataProtectionMSIPermission](Set-AzDataProtectionMSIPermission.md)
 Grants required permissions to the backup vault and other resources for configure backup and restore scenarios
 
@@ -141,7 +147,7 @@ This operation will stop protection of a backup instance and data will be held f
 This operation will stop backup for a backup instance and retains the backup data as per the policy except latest Recovery point, which will be retained forever
 
 ### [Sync-AzDataProtectionBackupInstance](Sync-AzDataProtectionBackupInstance.md)
-Sync backup instance again in case of failure\r\nThis action will retry last failed operation and will bring backup instance to valid state
+Sync backup instance again in case of failure\nThis action will retry last failed operation and will bring backup instance to valid state
 
 ### [Test-AzDataProtectionBackupInstanceReadiness](Test-AzDataProtectionBackupInstanceReadiness.md)
 Validate whether adhoc backup will be successful or not
@@ -154,6 +160,9 @@ Validate whether update for backup instance will be successful or not
 
 ### [Undo-AzDataProtectionBackupInstanceDeletion](Undo-AzDataProtectionBackupInstanceDeletion.md)
 Undeletes a soft deleted backup instance
+
+### [Undo-AzDataProtectionVaultDeletion](Undo-AzDataProtectionVaultDeletion.md)
+Undeletes a soft deleted backup vault
 
 ### [Unlock-AzDataProtectionResourceGuardOperation](Unlock-AzDataProtectionResourceGuardOperation.md)
 Unlocks the critical operation which is protected by the resource guard

@@ -87,7 +87,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool? addProxyAgentExtension = null,
             string zonePlacementPolicy = null,
             string[] includeZone = null,
-            string[] excludeZone = null
+            string[] excludeZone = null,
+            string highSpeedInterconnectPlacement = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -210,7 +211,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             ZonePlacementPolicy = zonePlacementPolicy,
                             IncludeZones = includeZone,
                             ExcludeZones = excludeZone
-                        } : null
+                        } : null,
+                        HighSpeedInterconnectPlacement = highSpeedInterconnectPlacement
                     };
                     if (auxAuthHeader != null)
                     {
@@ -266,7 +268,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool? addProxyAgentExtension = null,
             string zonePlacementPolicy = null,
             string[] includeZone = null,
-            string[] excludeZone = null
+            string[] excludeZone = null,
+            string highSpeedInterconnectPlacement = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -371,7 +374,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             ZonePlacementPolicy = zonePlacementPolicy,
                             IncludeZones = includeZone,
                             ExcludeZones = excludeZone
-                        } : null
+                        } : null,
+                        HighSpeedInterconnectPlacement = highSpeedInterconnectPlacement
                     };
                     if (auxAuthHeader != null)
                     {

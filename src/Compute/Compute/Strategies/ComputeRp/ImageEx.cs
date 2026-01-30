@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             }
 
             return new ImageAndOsType(
-                localImage.OsType,
+                localImage.OsType.Value,
                 imageRef,
                 null);
         }

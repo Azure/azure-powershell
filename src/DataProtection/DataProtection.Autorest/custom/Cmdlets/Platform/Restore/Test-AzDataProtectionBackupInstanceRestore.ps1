@@ -2,7 +2,7 @@
 
 function Test-AzDataProtectionBackupInstanceRestore
 {   
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IOperationJobExtendedInfo')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IOperationJobExtendedInfo')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Validates if Restore can be triggered for a DataSource')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("**********************************************************************************************`n
@@ -29,7 +29,7 @@ function Test-AzDataProtectionBackupInstanceRestore
         ${VaultName},
 
         [Parameter(ParameterSetName="ValidateRestore", Mandatory, HelpMessage='Restore request object for which to validate')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IAzureBackupRestoreRequest]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IAzureBackupRestoreRequest]
         ${RestoreRequest},
 
         [Parameter(Mandatory=$false, HelpMessage='Switch parameter to trigger restore to secondary region')]
@@ -113,10 +113,10 @@ function Test-AzDataProtectionBackupInstanceRestore
             
             $backupInstanceId = "/subscriptions/" + $SubscriptionId + "/resourceGroups/" + $ResourceGroupName + "/providers/Microsoft.DataProtection/backupVaults/" + $VaultName + "/backupInstances/" + $Name
             
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.ValidateCrossRegionRestoreRequestObject]::new()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ValidateCrossRegionRestoreRequestObject]::new()
             $Parameter.RestoreRequestObject = $RestoreRequest
 
-            $Parameter.CrossRegionRestoreDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.CrossRegionRestoreDetails]::new()
+            $Parameter.CrossRegionRestoreDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CrossRegionRestoreDetails]::new()
             $Parameter.CrossRegionRestoreDetail.SourceBackupInstanceId = $backupInstanceId
             $Parameter.CrossRegionRestoreDetail.SourceRegion = $vault.Location
 
@@ -126,7 +126,7 @@ function Test-AzDataProtectionBackupInstanceRestore
             Az.DataProtection.Internal\Test-AzDataProtectionBackupInstanceCrossRegionRestore @PSBoundParameters
         }
         else{
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.ValidateRestoreRequestObject]::new()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ValidateRestoreRequestObject]::new()
             $Parameter.RestoreRequestObject = $RestoreRequest            
 
             $null = $PSBoundParameters.Add("Parameter", $Parameter)

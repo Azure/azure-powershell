@@ -57,19 +57,18 @@ Update a EdgeActionVersion
 
 ## EXAMPLES
 
-### Example 1: Update edge action version tags
+### Example 1: Update an edge action version with tags
 ```powershell
-Update-AzEdgeActionVersion -EdgeActionName "myEdgeAction" -ResourceGroupName "myResourceGroup" -Version "v1" -Tag @{Environment="staging"}
+Update-AzEdgeActionVersion -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1" -Tag @{ Environment = "Production"; Team = "Platform" }
 ```
 
-This command updates the tags on the specified edge action version.
-
-### Example 2: Update edge action version using pipeline input
-```powershell
-Get-AzEdgeActionVersion -EdgeActionName "myEdgeAction" -ResourceGroupName "myResourceGroup" -Version "v1" | Update-AzEdgeActionVersion -Tag @{Environment="production"}
+```output
+Name Location ProvisioningState
+---- -------- -----------------
+v1   global   Succeeded
 ```
 
-This command retrieves an edge action version and pipes it to update the tags.
+Updates the specified edge action version with the provided tags.
 
 ## PARAMETERS
 
