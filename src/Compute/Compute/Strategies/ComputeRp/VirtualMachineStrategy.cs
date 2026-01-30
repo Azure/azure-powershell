@@ -86,7 +86,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string[] excludeZone = null,
             bool? alignRegionalDisksToVMZone = null,
             bool? enableProxyAgent = null,
-            bool? addProxyAgentExtension = null
+            bool? addProxyAgentExtension = null,
+            string scheduledEventsApiVersion = null,
+            bool? enableAllInstancesDown = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -178,6 +180,20 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             ZonePlacementPolicy = zonePlacementPolicy,
                             IncludeZones = includeZone,
                             ExcludeZones = excludeZone
+                        },
+                        ScheduledEventsPolicy = (scheduledEventsApiVersion == null && enableAllInstancesDown == null) ? null : new ScheduledEventsPolicy
+                        {
+                            ScheduledEventsAdditionalPublishingTargets = string.IsNullOrEmpty(scheduledEventsApiVersion) ? null : new ScheduledEventsAdditionalPublishingTargets
+                            {
+                                EventGridAndResourceGraph = new EventGridAndResourceGraph
+                                {
+                                    ScheduledEventsApiVersion = scheduledEventsApiVersion
+                                }
+                            },
+                            AllInstancesDown = enableAllInstancesDown == null ? null : new AllInstancesDown
+                            {
+                                AutomaticallyApprove = enableAllInstancesDown
+                            }
                         }
                     };
                     if(auxAuthHeader != null)

@@ -18,7 +18,7 @@ Creates a virtual machine scale set.
 New-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-EdgeZone <String>] [-HighSpeedInterconnectPlacement <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SimpleParameterSet
@@ -41,8 +41,9 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-SecurityPostureExcludeExtension <String[]>] [-SkuProfileVmSize <String[]>]
  [-SkuProfileAllocationStrategy <String>] [-EnableProxyAgent] [-AddProxyAgentExtension]
  [-ZonePlacementPolicy <String>] [-IncludeZone <String[]>] [-ExcludeZone <String[]>]
- [-HighSpeedInterconnectPlacement <String>] [-DefaultProfile <IAzureContextContainer>]
- [-SinglePlacementGroup] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-HighSpeedInterconnectPlacement <String>] [-ScheduledEventsApiVersion <String>]
+ [-EnableAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -483,6 +484,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EnableAllInstancesDown
+Specifies if Scheduled Events should be auto-approved when all instances are down.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EnableAutomaticOSUpgrade
 Whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the image becomes available.
 
@@ -626,7 +642,6 @@ Specifies the high speed interconnect placement for the virtual machine scale se
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, Trunk
 
 Required: False
 Position: Named
@@ -851,6 +866,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProximityPlacementGroupId
 The resource id of the Proximity Placement Group to use with this scale set.
 
@@ -920,6 +950,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduledEventsApiVersion
+Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
