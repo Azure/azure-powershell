@@ -14,13 +14,12 @@ Creates or updates a BackupVault resource belonging to a resource group.
 
 ```
 New-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> -Location <String>
- -StorageSetting <IStorageSetting[]> [-SubscriptionId <String>] [-ETag <String>] [-IdentityType <String>]
- [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-ImmutabilityState <ImmutabilityState>]
- [-CrossRegionRestoreState <CrossRegionRestoreState>]
- [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-SoftDeleteRetentionDurationInDay <Double>]
- [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-CmkEncryptionState <EncryptionState>] [-CmkInfrastructureEncryption <InfrastructureEncryptionState>]
- [-CmkIdentityType <IdentityType>] [-CmkUserAssignedIdentityId <String>] [-CmkEncryptionKeyUri <String>]
+ -StorageSetting <IStorageSetting[]> [-SubscriptionId <String>] [-ETag <String>]
+ [-EnableSystemAssignedIdentity] [-AzureMonitorAlertsForAllJobFailure <String>] [-ImmutabilityState <String>]
+ [-CrossRegionRestoreState <String>] [-CrossSubscriptionRestoreState <String>]
+ [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-CmkEncryptionState <String>] [-CmkInfrastructureEncryption <String>]
+ [-CmkIdentityType <String>] [-CmkUserAssignedIdentityId <String>] [-CmkEncryptionKeyUri <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -63,22 +62,13 @@ This command creates a new backup vault while setting Immutability state, cross 
 ### Example 3: Create a Backup Vault with CMK
 ```powershell
 $storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType VaultStore -Type LocallyRedundant
-$userAssignedIdentity = @{
-    "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/samplerg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuami" = @{
-        clientId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-        principalId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    }
-    "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/samplerg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuami2" = @{
-        clientId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-        principalId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    }
-}
+$userAssignedIdentity = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/samplerg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuami","/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/samplerg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuami2"
 
 $cmkIdentityId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/samplerg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuami"
 
 $cmkKeyUri = "https://samplekvazbckp.vault.azure.net/keys/testkey/3cd5235ad6ac4c11b40a6f35444bcbe1"
 
-New-AzDataProtectionBackupVault -SubscriptionId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Location "location" -StorageSetting $storagesetting -IdentityType UserAssigned -UserAssignedIdentity $userAssignedIdentity -CmkEncryptionState Enabled -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId $cmkIdentityId -CmkEncryptionKeyUri $cmkKeyUri -CmkInfrastructureEncryption Enabled
+New-AzDataProtectionBackupVault -SubscriptionId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Location "location" -StorageSetting $storagesetting -UserAssignedIdentity $userAssignedIdentity -CmkEncryptionState Enabled -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId $cmkIdentityId -CmkEncryptionKeyUri $cmkKeyUri -CmkInfrastructureEncryption Enabled
 ```
 
 ```output
@@ -110,7 +100,7 @@ Parameter to Enable or Disable built-in azure monitor alerts for job failures.
 Security alerts cannot be disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AlertsState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -141,7 +131,7 @@ Accept wildcard characters: False
 Enable CMK encryption state for a Backup Vault.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.EncryptionState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -156,7 +146,7 @@ Accept wildcard characters: False
 The identity type to be used for CMK encryption - SystemAssigned or UserAssigned Identity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.IdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -172,7 +162,7 @@ Enable infrastructure encryption with CMK on this vault.
 Infrastructure encryption must be configured only when creating the vault.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.InfrastructureEncryptionState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -204,7 +194,7 @@ Cross region restore state of the vault.
 Allowed values are Disabled, Enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossRegionRestoreState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -220,7 +210,7 @@ Cross subscription restore state of the vault.
 Allowed values are Disabled, Enabled, PermanentlyDisabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossSubscriptionRestoreState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -245,6 +235,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ETag
 Optional ETag.
 
@@ -260,42 +265,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The identityType can take values - "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned", "None".
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-Gets or sets the user assigned identities.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases: UserAssignedIdentity, AssignUserIdentity
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ImmutabilityState
 Immutability state of the vault.
 Allowed values are Disabled, Unlocked, Locked.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ImmutabilityState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -370,7 +345,7 @@ Soft delete state of the vault.
 Allowed values are Off, On, AlwaysOn
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SoftDeleteState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -384,10 +359,9 @@ Accept wildcard characters: False
 ### -StorageSetting
 Storage Settings of the vault.
 Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.
-To construct, see NOTES section for STORAGESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IStorageSetting[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IStorageSetting[]
 Parameter Sets: (All)
 Aliases:
 
@@ -418,6 +392,22 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}."
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

@@ -18,6 +18,13 @@ Get-AzDataProtectionSoftDeletedBackupInstance -ResourceGroupName <String> [-Subs
  -VaultName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityBackupVault
+```
+Get-AzDataProtectionSoftDeletedBackupInstance -BackupInstanceName <String>
+ -BackupVaultInputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzDataProtectionSoftDeletedBackupInstance -BackupInstanceName <String> -ResourceGroupName <String>
@@ -56,13 +63,28 @@ The name of the deleted backup instance
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityBackupVault, Get
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupVaultInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+Parameter Sets: GetViaIdentityBackupVault
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -84,7 +106,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
@@ -154,7 +175,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IDeletedBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupInstanceResource
 
 ## NOTES
 

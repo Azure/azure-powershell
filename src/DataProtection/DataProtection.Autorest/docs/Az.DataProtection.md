@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DataProtection
-Module Guid: ade2ccd6-f7d8-4e4a-a8f2-4c0184d8ca79
+Module Guid: daaf2bca-338c-48c9-a89a-62fd22512cc5
 Download Help Link: https://learn.microsoft.com/powershell/module/az.dataprotection
 Help Version: 1.0.0.0
 Locale: en-US
@@ -135,7 +135,7 @@ Gets soft deleted backup instances from a deleted vault using Azure Resource Gra
 Grants required permissions to the backup vault and other resources for configure backup and restore scenarios
 
 ### [Set-AzDataProtectionResourceGuardMapping](Set-AzDataProtectionResourceGuardMapping.md)
-Creates or Updates a ResourceGuardProxy
+Create a ResourceGuardProxy
 
 ### [Start-AzDataProtectionBackupInstanceRestore](Start-AzDataProtectionBackupInstanceRestore.md)
 Triggers restore for a BackupInstance
@@ -144,7 +144,7 @@ Triggers restore for a BackupInstance
 This operation will stop protection of a backup instance and data will be held forever
 
 ### [Suspend-AzDataProtectionBackupInstanceBackup](Suspend-AzDataProtectionBackupInstanceBackup.md)
-This operation will stop backup for a backup instance and retains the backup data as per the policy except latest Recovery point, which will be retained forever
+This operation will stop backup for a backup instance and retains the backup data as per the policy (except latest Recovery point, which will be retained forever)
 
 ### [Sync-AzDataProtectionBackupInstance](Sync-AzDataProtectionBackupInstance.md)
 Sync backup instance again in case of failure\nThis action will retry last failed operation and will bring backup instance to valid state
@@ -156,7 +156,7 @@ Validate whether adhoc backup will be successful or not
 Validates if Restore can be triggered for a DataSource
 
 ### [Test-AzDataProtectionBackupInstanceUpdate](Test-AzDataProtectionBackupInstanceUpdate.md)
-Validate whether update for backup instance will be successful or not
+Validate whether validate for backup instance will be successful or not
 
 ### [Undo-AzDataProtectionBackupInstanceDeletion](Undo-AzDataProtectionBackupInstanceDeletion.md)
 Undeletes a soft deleted backup instance
@@ -168,14 +168,13 @@ Undeletes a soft deleted backup vault
 Unlocks the critical operation which is protected by the resource guard
 
 ### [Update-AzDataProtectionBackupInstance](Update-AzDataProtectionBackupInstance.md)
-Updates a given backup instance
+Update a backup instance in a backup vault
 
 ### [Update-AzDataProtectionBackupInstanceAssociatedPolicy](Update-AzDataProtectionBackupInstanceAssociatedPolicy.md)
 Updates associated policy for a given backup instance
 
 ### [Update-AzDataProtectionBackupVault](Update-AzDataProtectionBackupVault.md)
-Updates a BackupVault resource belonging to a resource group.
-For example, updating tags for a resource.
+Update a BackupVault resource belonging to a resource group.
 
 ### [Update-AzDataProtectionResourceGuard](Update-AzDataProtectionResourceGuard.md)
 Updates a resource guard belonging to a resource group

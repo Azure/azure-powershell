@@ -8,18 +8,47 @@ schema: 2.0.0
 # Set-AzDataProtectionResourceGuardMapping
 
 ## SYNOPSIS
-Creates or Updates a ResourceGuardProxy
+Create a ResourceGuardProxy
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 Set-AzDataProtectionResourceGuardMapping -ResourceGroupName <String> -VaultName <String>
  [-SubscriptionId <String>] [-ResourceGuardId <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath
+```
+Set-AzDataProtectionResourceGuardMapping -ResourceGroupName <String> -VaultName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+Set-AzDataProtectionResourceGuardMapping -ResourceGroupName <String> -VaultName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Set-AzDataProtectionResourceGuardMapping -ResourceGroupName <String> -VaultName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+Set-AzDataProtectionResourceGuardMapping -ResourceGroupName <String> -VaultName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or Updates a ResourceGuardProxy
+Create a ResourceGuardProxy
 
 ## EXAMPLES
 
@@ -64,6 +93,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath, CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString, CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -85,7 +144,7 @@ Resource Guard ARM Id to enable MUA protection for Backup Vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -164,7 +223,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IResourceGuardProxyBaseResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResource
 
 ## NOTES
 

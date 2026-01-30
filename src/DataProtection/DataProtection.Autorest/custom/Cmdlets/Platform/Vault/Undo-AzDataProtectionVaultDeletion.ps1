@@ -1,6 +1,6 @@
 function Undo-AzDataProtectionVaultDeletion
 {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupVaultResource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Undeletes a soft deleted backup vault')]
 
@@ -27,7 +27,7 @@ function Undo-AzDataProtectionVaultDeletion
         ${IdentityType},
 
         [Parameter(Mandatory=$false, HelpMessage='Gets or sets the user assigned identities.')]
-        [Alias('UserAssignedIdentity', 'AssignUserIdentity')]
+        [Alias('AssignUserIdentity')]
         [System.Collections.Hashtable]
         ${IdentityUserAssignedIdentity},
         

@@ -161,7 +161,7 @@ Gets or sets the user assigned identities.
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: UserAssignedIdentity, AssignUserIdentity
+Aliases: AssignUserIdentity
 
 Required: False
 Position: Named
@@ -269,7 +269,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource
 
 ## NOTES
 

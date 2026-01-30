@@ -24,8 +24,8 @@ Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String>
 ### TriggerExpanded
 ```
 Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String> -ObjectType <String>
- -ResourceGroupName <String> -RestoreTargetInfo <IRestoreTargetInfoBase>
- -SourceDataStoreType <SourceDataStoreType> -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>]
+ -ResourceGroupName <String> -RestoreTargetInfo <IRestoreTargetInfoBase> -SourceDataStoreType <String>
+ -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>]
  [-IdentityDetailUserAssignedIdentityArmUrl <String>] [-IdentityDetailUseSystemAssignedIdentity] [-NoWait]
  [-ResourceGuardOperationRequest <String[]>] [-RestoreToSecondaryRegion] [-SecureToken <SecureString>]
  [-SourceResourceId <String>] [-SubscriptionId <String>] [-Token <String>] [-Confirm] [-WhatIf]
@@ -384,10 +384,9 @@ Accept wildcard characters: False
 
 ### -Parameter
 Restore request object to be initialized using Initialize-AzDataProtectionRestoreRequest cmdlet
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest
 Parameter Sets: Trigger
 Aliases:
 
@@ -431,10 +430,9 @@ Accept wildcard characters: False
 
 ### -RestoreTargetInfo
 Gets or sets the restore target information
-To construct, see NOTES section for RESTORETARGETINFO properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IRestoreTargetInfoBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IRestoreTargetInfoBase
 Parameter Sets: TriggerExpanded
 Aliases:
 
@@ -480,7 +478,7 @@ Accept wildcard characters: False
 Type of the source data store
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SourceDataStoreType
+Type: System.String
 Parameter Sets: TriggerExpanded
 Aliases:
 
@@ -588,11 +586,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo
 
 ## NOTES
 
