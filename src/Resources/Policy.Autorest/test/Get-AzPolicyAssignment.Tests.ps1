@@ -234,7 +234,7 @@ Describe 'GetPolicyAssignment' {
 
     It 'Get-AzPolicyAssignment -Scope -Id -Expand' {
         {
-            Get-AzPolicyAssignment -Scope $goodSCope -Id $goodId -Expand "LatestDefinitionVersion, EffectiveDefinitionVersion"
+            Get-AzPolicyAssignment -Scope $goodScope -Id $goodId -Expand "LatestDefinitionVersion, EffectiveDefinitionVersion"
         } | Should -Throw $parameterSetError
     }
     
