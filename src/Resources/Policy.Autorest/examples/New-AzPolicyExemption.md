@@ -52,3 +52,4 @@ New-AzPolicyExemption -Name 'VirtualMachinePolicyExemption' -PolicyAssignment $A
 The first command gets the policy assignment named VirtualMachineAssignment by using the Get-AzPolicyAssignment cmdlet and stores it in the $Assignment variable.
 The second command creates a resource selector object that will be used to specify the exemption should only apply to resources located in East US or East US 2 and stores it in the $ResourceSelector variable.
 The final command creates a policy exemption for the assignment $Assignment with the resource selector specified by $ResourceSelector.
+
