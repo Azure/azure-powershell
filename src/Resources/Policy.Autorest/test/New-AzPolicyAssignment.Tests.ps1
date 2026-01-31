@@ -1,7 +1,7 @@
 # setup the Pester environment for policy cmdlet tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'NewPolicyAssignment'
 
-Describe 'NewPolicyAssignment' {
+Describe 'NewPolicyAssignment' -Tag 'LiveOnly' {
 
     BeforeAll {
         $goodScope = "/subscriptions/$subscriptionId"

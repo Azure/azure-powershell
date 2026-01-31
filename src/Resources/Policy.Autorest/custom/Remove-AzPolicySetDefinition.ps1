@@ -83,7 +83,7 @@ param(
     [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Alias('PolicyDefinitionVersion')]
+    [Alias('PolicySetDefinitionVersion')]
     [System.String]
     # The policy set definition version in #.#.# format.
     ${Version},

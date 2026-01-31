@@ -77,7 +77,6 @@ Describe 'ExemptionResourceSelector' {
     }
     
     It 'Update exemption with identity based resource selector' {
-        # change In to NotIn
         $resourceSelector = @{Name = "UserPrincipalIdSelector"; Selector = @(@{Kind = "UserPrincipalId"; In = @("00000000-0000-0000-0000-000000000000")})}
         $policyExemption = Update-AzPolicyExemption -Name $policyExmName -ResourceSelector $resourceSelector
 

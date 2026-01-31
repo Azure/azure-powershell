@@ -115,7 +115,7 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         $versionRequiresNameOrId = $env.versionRequiresNameOrId
         $versionRequiresPolicy = $env.versionRequiresPolicy
         $versionRequiresPolicyDefinition = $env.versionRequiresPolicyDefinition
-        $listVersionsRequiresNameOrId = $env.listVersionsRequiresNameOrId
+        $listVersionRequiresNameOrId = $env.listVersionRequiresNameOrId
         $expandRequiresNameOrId = $env.expandRequiresNameOrId
         $oldVersionsImmutable = $env.oldVersionsImmutable
         $disallowedByPolicy = $env.disallowedByPolicy

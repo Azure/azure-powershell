@@ -100,7 +100,7 @@ This command gets version 1.1.1 of policy definition with ID /providers/Microsof
 Get-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -ListVersion
 ```
 
-This command gets all policy set definition versions of the policy definition named VMPolicySetDefinition from the current default subscription.
+This command gets all policy set definition versions of the policy set definition named VMPolicySetDefinition from the current default subscription.
 
 ## PARAMETERS
 

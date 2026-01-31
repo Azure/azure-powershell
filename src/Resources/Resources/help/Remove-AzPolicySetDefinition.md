@@ -215,7 +215,7 @@ The policy set definition version in #.#.# format.
 ```yaml
 Type: System.String
 Parameter Sets: Name, ManagementGroupName, SubscriptionId, Id
-Aliases: PolicyDefinitionVersion
+Aliases: PolicySetDefinitionVersion
 
 Required: False
 Position: Named

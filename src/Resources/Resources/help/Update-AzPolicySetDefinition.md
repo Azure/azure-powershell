@@ -110,8 +110,8 @@ This command updates the groups of a policy set definition named VMPolicySetDefi
 Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicySet.json -Version '1.1.0'
 ```
 
-This command updates the existing policy set definition named VMPolicySetDefinition by adding a new older version 1.1.0 that contains the policy definitions specified in C:\VMPolicy.json.
-Example content of the VMPolicy.json is provided above.
+This command updates the existing policy set definition named VMPolicySetDefinition by adding a new older version 1.1.0 that contains the policy definitions specified in C:\VMPolicySet.json.
+Example content of the VMPolicySet.json is provided above.
 
 ## PARAMETERS
 

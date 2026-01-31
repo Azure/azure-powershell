@@ -339,7 +339,7 @@ function setupEnv() {
     $env['versionRequiresNameOrId'] = 'Version is only allowed when exactly one of Name or Id is provided.'
     $env['versionRequiresPolicy'] = 'Version is only allowed if Policy is provided.'
     $env['versionRequiresPolicyDefinition'] = 'Version is only allowed if PolicyDefinition is provided.'
-    $env['listVersionsRequiresNameOrId'] = 'ListVersion is only allowed when exactly one of Name or Id is provided.'
+    $env['listVersionRequiresNameOrId'] = 'ListVersion is only allowed when exactly one of Name or Id is provided.'
     $env['expandRequiresNameOrId'] = 'Expand is only allowed when exactly one of Name or Id is provided.'
     $env['oldVersionsImmutable'] = 'Old versions are immutable.'
     $env['disallowedByPolicy'] = "was disallowed by policy."
