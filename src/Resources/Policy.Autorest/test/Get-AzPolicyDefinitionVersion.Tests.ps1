@@ -1,7 +1,7 @@
 # setup the Pester environment for policy cmdlet tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'GetPolicyDefinitionVersion'
 
-Describe 'GetPolicyDefinitionVersion' {
+Describe 'GetPolicyDefinitionVersion' -Tag 'LiveOnly' {
 
     BeforeAll {
         $customDefinition = $env.customSubDefinition

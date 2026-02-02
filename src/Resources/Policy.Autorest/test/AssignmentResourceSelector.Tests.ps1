@@ -1,7 +1,7 @@
 # setup the Pester environment for policy tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'AssignmentResourceSelector'
 
-Describe 'AssignmentResourceSelector' {
+Describe 'AssignmentResourceSelector' -Tag 'LiveOnly' {
 
     BeforeAll {
         # setup

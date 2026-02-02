@@ -1,7 +1,7 @@
 # setup the Pester environment for policy cmdlet tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'LocationCompleter'
 
-Describe 'LocationCompleter' {
+Describe 'LocationCompleter' -Tag 'LiveOnly' {
 
     BeforeAll {
         # Get the current set of locations
