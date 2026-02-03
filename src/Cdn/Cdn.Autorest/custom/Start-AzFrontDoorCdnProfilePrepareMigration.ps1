@@ -75,8 +75,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         # Name of the pricing tier.
         ${SkuName},
 
-        [Parameter(ParameterSetName='MigrateExpanded')]
-        [AllowEmptyCollection()]
+        [Parameter(ParameterSetName='MigrateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationWebApplicationFirewallMapping[]]
         # Waf mapping for the migrated profile
@@ -235,8 +234,18 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         Write-Debug("WAF linked to the frontdoor: $allPoliciesWithWAF")
         Write-Debug("Key vault name used for the frontdoor: $allPoliciesWithVault")
 
-        if (${MigrationWebApplicationFirewallMapping}.count -ne $allPoliciesWithWAF.count) {
-            throw "MigrationWebApplicationFirewallMapping parameter instance should be equal to the number of WAF policy instance in the profile."
+        # Validate WAF mapping based on parameter set
+        if ($PSCmdlet.ParameterSetName -eq 'MigrateExpanded') {
+            # In MigrateExpanded, MigrationWebApplicationFirewallMapping is mandatory
+            # Validate the count matches
+            if (${MigrationWebApplicationFirewallMapping}.count -ne $allPoliciesWithWAF.count) {
+                throw "MigrationWebApplicationFirewallMapping parameter instance should be equal to the number of WAF policy instance in the profile. Expected: $($allPoliciesWithWAF.count), Provided: $($MigrationWebApplicationFirewallMapping.count)"
+            }
+        } else {
+            # In CreateExpanded, if Front Door has WAF policies, user must use MigrateExpanded parameter set
+            if ($allPoliciesWithWAF.count -gt 0) {
+                throw "The Front Door has $($allPoliciesWithWAF.count) WAF policy/policies associated. Please provide the -MigrationWebApplicationFirewallMapping parameter with WAF policy mappings."
+            }
         }
 
         # We should raise a complaint if the customer did not enable managed identity when they have BYOC enabled. 
@@ -249,7 +258,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         Write-Host("The parameters have been validated successfully.")
 
         # Step1: Deal with Waf policy
-        if ($PSBoundParameters.ContainsKey('MigrationWebApplicationFirewallMapping')) {
+        if ($PSBoundParameters.ContainsKey('MigrationWebApplicationFirewallMapping') -and ${MigrationWebApplicationFirewallMapping} -and ${MigrationWebApplicationFirewallMapping}.count -gt 0) {
             Write-Host("Starting to configure WAF policy upgrades.")
 
             $hasManagedRule = $false
@@ -431,6 +440,11 @@ function ValidateIdentityType {
 }
 
 function ValidateWafPolicies{
+    if (-not ${MigrationWebApplicationFirewallMapping} -or ${MigrationWebApplicationFirewallMapping}.count -eq 0) {
+        Write-Debug("No WAF policies to validate.")
+        return
+    }
+    
     if (${MigrationWebApplicationFirewallMapping}.count -gt 0) {
         $wafPolicies = ${MigrationWebApplicationFirewallMapping}
         $theSubId = $wafPolicies[0].MigratedFromId.split("/")[2] 
