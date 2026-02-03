@@ -24,6 +24,18 @@ Get-AzMigrateRunAsAccount -AccountName <String> -ResourceGroupName <String> -Sit
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentitySubscription
+```
+Get-AzMigrateRunAsAccount -AccountName <String> -SiteName <String> -SubscriptionInputObject <IMigrateIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityVMwareSite
+```
+Get-AzMigrateRunAsAccount -AccountName <String> -VMwareSiteInputObject <IMigrateIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Method to get run as account.
 
@@ -62,7 +74,7 @@ Run as account ARM name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentitySubscription, GetViaIdentityVMwareSite
 Aliases:
 
 Required: True
@@ -94,7 +106,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -109,7 +121,7 @@ Site name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetViaIdentitySubscription, List
 Aliases:
 
 Required: True
@@ -124,7 +136,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -134,14 +146,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SubscriptionInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+Parameter Sets: GetViaIdentitySubscription
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -VMwareSiteInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+Parameter Sets: GetViaIdentityVMwareSite
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareRunAsAccount
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareRunAsAccount
 
 ## NOTES
 

@@ -89,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IVMwareCbtUpdateDiskInput
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtUpdateDiskInput
 
 ## NOTES
 

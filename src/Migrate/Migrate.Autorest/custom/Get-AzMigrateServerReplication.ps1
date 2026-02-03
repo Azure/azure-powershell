@@ -22,7 +22,7 @@ The Get-AzMigrateServerReplication cmdlet retrieves the object for the replicati
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateserverreplication
 #>
 function Get-AzMigrateServerReplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrationItem])]
     [CmdletBinding(DefaultParameterSetName = 'ListByName', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'GetBySRSID', Mandatory)]
@@ -53,7 +53,7 @@ function Get-AzMigrateServerReplication {
 
         [Parameter(ParameterSetName = 'GetByInputObject', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrationItem]
         # Specifies the machine object of the replicating server.
         ${InputObject},
 
@@ -172,22 +172,22 @@ function Get-AzMigrateServerReplication {
 
             $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
             $null = $PSBoundParameters.Add('SiteName', $SiteName)
-            $siteObject = Az.Migrate\Get-AzMigrateSite @PSBoundParameters
+            $siteObject = Az.Migrate.private\Get-AzMigrateSite_Get @PSBoundParameters
             $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
                 
             $null = $PSBoundParameters.Remove('SiteName')
 
             $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration")
             $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
-                
-            $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
+
+            $solution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters
             if ($solution -and ($solution.Count -ge 1)) {
                 $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
                    
                 $null = $PSBoundParameters.Remove("Name")
                 $null = $PSBoundParameters.Remove("MigrateProjectName")
                 $null = $PSBoundParameters.Add('ResourceName', $VaultName)
-                $allFabrics = Az.Migrate\Get-AzMigrateReplicationFabric @PSBoundParameters
+                $allFabrics = Az.Migrate.private\Get-AzMigrateReplicationFabric_List @PSBoundParameters
                 $FabricName = ""
                 if ($allFabrics -and ($allFabrics.length -gt 0)) {
                     foreach ($fabric in $allFabrics) {
@@ -202,7 +202,7 @@ function Get-AzMigrateServerReplication {
                 }
     
                 $null = $PSBoundParameters.Add('FabricName', $FabricName)
-                $peContainers = Az.Migrate\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
+                $peContainers = Az.Migrate.private\Get-AzMigrateReplicationProtectionContainer_List @PSBoundParameters
                 $ProtectionContainerName = ""
                 if ($peContainers -and ($peContainers.length -gt 0)) {
                     $ProtectionContainerName = $peContainers[0].Name
@@ -231,7 +231,7 @@ function Get-AzMigrateServerReplication {
             $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration")
             $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
                 
-            $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
+            $solution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters
             if ($solution -and ($solution.Count -ge 1)) {
                 $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
             }

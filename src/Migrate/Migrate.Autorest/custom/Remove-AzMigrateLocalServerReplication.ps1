@@ -23,7 +23,7 @@ https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigratelocalse
 #>
 function Remove-AzMigrateLocalServerReplication {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is based on a preview API version and may experience breaking changes in future releases.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel])]
     [CmdletBinding(DefaultParameterSetName = 'ByID', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName = 'ByID', Mandatory)]

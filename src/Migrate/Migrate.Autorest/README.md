@@ -58,9 +58,6 @@ module-version: 3.0.14
 title: Migrate 
 subject-prefix: 'Migrate'
 
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   # Correct some swagger operationIds
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
@@ -163,11 +160,17 @@ directive:
       subject: ^ReplicationMigrationItemReplication
       variant: ^ResumeViaIdentityExpanded$|^Resume$|^ResumeViaIdentity$
     remove: true
+  # - from: Microsoft.RecoveryServices/SiteRecovery/stable/2025-08-01/service.json
+  #   where:
+  #     verb: Invoke$
+  #     subject: ^ResyncReplicationMigrationItem
+  #     variant: ^ResyncViaIdentityExpanded$|^ResyncViaIdentity$|^Resync$
+  #   remove: true
   - from: Microsoft.RecoveryServices/SiteRecovery/stable/2025-08-01/service.json
     where:
       verb: Invoke$
       subject: ^ResyncReplicationMigrationItem
-      variant: ^ResyncViaIdentityExpanded$|^ResyncViaIdentity$|^Resync$
+      variant: ^(?!ResyncExpanded$).*
     remove: true
   - from: Microsoft.RecoveryServices/SiteRecovery/stable/2025-08-01/service.json
     where:
@@ -272,6 +275,16 @@ directive:
     where:
       verb: Update$
       subject: Project$
+    remove: true
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
+      verb: Remove
+      subject: VCenterVcenter
+    remove: true
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
+      verb: Update
+      subject: ReplicationRecoveryServicesProvider|VCenter
     remove: true
   - from: Microsoft.RecoveryServices/SiteRecovery/stable/2025-08-01/service.json
     where:
@@ -493,14 +506,9 @@ directive:
       subject: ^HyperV(Cluster|Host)$
     hide: true
   - where:
-      verb: New$|Update$
-      variant: ^(Update|Create)(?!.*?Expanded)
-    hide: true
-  - where:
-      verb: New$
-      variant: ^CreateViaIdentity
-    hide: true
-  - from: Microsoft.DataReplication/DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+      variant: ^(Update|Create)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$|^CreateViaIdentity
+    remove: true
+  - from:  Microsoft.DataReplication/DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
     where:
       verb: Get$|Invoke$|New$|Remove$|Test$|Update$
       subject: ^FabricAgent|^Fabric|^Policy|^EmailConfiguration|^ProtectedItem|^ReplicationExtension|^Vault
@@ -526,3 +534,7 @@ directive:
       model-name: Fabric
     set:
       suppress-format: true
+  - where:
+      verb: Update
+      subject: ReplicationProtectionCluster
+    remove: true
