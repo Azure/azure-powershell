@@ -46,6 +46,20 @@ service-name: NetworkCloud
 subject-prefix: NetworkCloud
 
 directive:
+  #breaking change announcement
+  - where:
+      verb: Update
+      subject: NetworkCloudVirtualMachine
+    set:
+      breaking-change:
+        change-description: The Update-AzNetworkCloudVirtualMachine cmdlet no longer supports
+          the JsonString and JsonFilePath parameters. The parameter sets
+          UpdateViaJsonString and UpdateViaJsonFilePath have been removed.
+          Users must now use the expanded parameter set instead.
+        deprecated-by-version: 2.0.3
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2026/05/01
+
   # Fix model definition line break replacement issue
   - from: swagger-document
     where: $.definitions.L3NetworkProperties.properties.ipv4ConnectedPrefix
