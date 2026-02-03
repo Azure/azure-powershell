@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdgeMarketplace", "EdgeMarketplace\EdgeMarketplace.csproj", "{5AC22EE6-F900-4546-A8C4-FFF1418E27DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EdgeMarketplace", "EdgeMarketplace.Autorest\Az.EdgeMarketplace.csproj", "{8D77F01F-E728-4AF6-8FA6-1D2BC5D6DF3C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EdgeMarketplace", "EdgeMarketplace.Autorest\Az.EdgeMarketplace.csproj", "{45B88597-3897-42C6-9A76-050CCE6807C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{5AC22EE6-F900-4546-A8C4-FFF1418E27DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AC22EE6-F900-4546-A8C4-FFF1418E27DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AC22EE6-F900-4546-A8C4-FFF1418E27DD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D77F01F-E728-4AF6-8FA6-1D2BC5D6DF3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D77F01F-E728-4AF6-8FA6-1D2BC5D6DF3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D77F01F-E728-4AF6-8FA6-1D2BC5D6DF3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D77F01F-E728-4AF6-8FA6-1D2BC5D6DF3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45B88597-3897-42C6-9A76-050CCE6807C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45B88597-3897-42C6-9A76-050CCE6807C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45B88597-3897-42C6-9A76-050CCE6807C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45B88597-3897-42C6-9A76-050CCE6807C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E7BE0C83-FC54-4D33-BF4E-FFA3B2857385} = {29469871-9FB4-4326-9FB9-8CB5FD728707}

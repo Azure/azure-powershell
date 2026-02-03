@@ -17,6 +17,8 @@ Get a Offer
 ### [Get-AzEdgeMarketplaceOfferAccessToken](Get-AzEdgeMarketplaceOfferAccessToken.md)
 Get access token.
 
+### [Invoke-AzEdgeMarketplaceOfferAccessTokenGeneration](Invoke-AzEdgeMarketplaceOfferAccessTokenGeneration.md)
+Invoke Edge Marketplace Offer Access Token Generation.
+
 ### [New-AzEdgeMarketplaceOfferAccessToken](New-AzEdgeMarketplaceOfferAccessToken.md)
 A long-running resource action.
-

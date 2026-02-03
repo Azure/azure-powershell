@@ -44,6 +44,14 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+    $env.Add("OfferId", "microsoftwindowsserver:windowsserver")
+    $env.Add("ResourceUri", "/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation")
+    $env.Add("EdgeMarketplaceRegion", "eastus")
+    $env.Add("HypervGeneration", "1")
+    $env.Add("MarketplaceSku", "2019-datacenter")
+    $env.Add("MarketplaceSkuVersion", "17763.7314.250509")
+    $env.Add("RequestId", "7057ead36dab4f93b6c7021d56efbb03")
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

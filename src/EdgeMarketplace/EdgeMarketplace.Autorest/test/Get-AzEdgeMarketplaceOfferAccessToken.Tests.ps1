@@ -15,27 +15,44 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEdgeMarketplaceOfferAcc
 }
 
 Describe 'Get-AzEdgeMarketplaceOfferAccessToken' {
-    It 'GetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetExpanded' {
+        $result = Get-AzEdgeMarketplaceOfferAccessToken -OfferId $env.OfferId -ResourceUri $env.ResourceUri -RequestId $env.RequestId
     }
 
-    It 'GetViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaJsonString' {
+        $result = Get-AzEdgeMarketplaceOfferAccessToken -OfferId $env.OfferId -ResourceUri $env.ResourceUri -JsonString '{"requestId": "7057ead36dab4f93b6c7021d56efbb03"}'
     }
 
-    It 'GetViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaJsonFilePath' {
+        $result = Get-AzEdgeMarketplaceOfferAccessToken -OfferId $env.OfferId -ResourceUri $env.ResourceUri -JsonFilePath (Join-Path $PSScriptRoot './jsonFiles/GetOfferAccessToken.json')
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $requestBody = @{
+            "requestId" = $env.RequestId
+        }
+        $result = Get-AzEdgeMarketplaceOfferAccessToken -OfferId $env.OfferId -ResourceUri $env.ResourceUri -Body $requestBody
     }
 
-    It 'GetViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentityExpanded' {
+        $offerIdentity = @{
+            "OfferId" = $env.OfferId;
+            "ResourceUri" = $env.ResourceUri;
+        }
+
+        $result = Get-AzEdgeMarketplaceOfferAccessToken -InputObject $offerIdentity -RequestId $env.RequestId
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $requestBody = @{
+            "requestId" = $env.RequestId
+        }
+
+        $offerIdentity = @{
+            "OfferId" = $env.OfferId;
+            "ResourceUri" = $env.ResourceUri;
+        }
+
+        $result = Get-AzEdgeMarketplaceOfferAccessToken -InputObject $offerIdentity -Body $requestBody
     }
 }

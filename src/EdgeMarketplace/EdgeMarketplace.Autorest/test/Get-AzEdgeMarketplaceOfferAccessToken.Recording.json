@@ -1,0 +1,249 @@
+{
+  "Get-AzEdgeMarketplaceOfferAccessToken+[NoContext]+GetExpanded+$POST+https://management.azure.com//subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/providers/Microsoft.EdgeMarketplace/offers/microsoftwindowsserver%3Awindowsserver/getAccessToken?api-version=2025-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com//subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/providers/Microsoft.EdgeMarketplace/offers/microsoftwindowsserver%3Awindowsserver/getAccessToken?api-version=2025-10-01-preview",
+      "Content": "{\n  \"requestId\": \"7057ead36dab4f93b6c7021d56efbb03\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "53" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Set-Cookie": [ "ApplicationGatewayAffinityCORS=6d9bb3403f286d8468b6ce289289a7c4; Path=/; SameSite=None; Secure", "ApplicationGatewayAffinity=6d9bb3403f286d8468b6ce289289a7c4; Path=/" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/13b6b743-653e-4f02-bc1f-01f5e54881d7" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Mise-Correlation-Id": [ "71567925-d7fc-46bf-b9c0-229544611aec" ],
+        "x-ms-request-id": [ "9b7a6f62-a22a-40af-bc8c-310f0c079968" ],
+        "x-ms-correlation-request-id": [ "5a17480c-4c55-4479-9bc6-d2ac45ab838d" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20260203T132404Z:5a17480c-4c55-4479-9bc6-d2ac45ab838d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 97BAA6C62EDC46AFB25A54D0945F893F Ref B: MAA201060516023 Ref C: 2026-02-03T13:24:03Z" ],
+        "Date": [ "Tue, 03 Feb 2026 13:24:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "298" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"diskId\":\"microsoftwindowsserver:windowsserver:2019-datacenter:17763.7314.250509__1__eastus__4\",\"accessToken\":\"https://md-hdd-xhq5bmqrvx3j.z11.blob.storage.azure.net/qpw3qkrbjt3b/abcd?sv=2018-03-28\u0026sr=b\u0026si=2c385917-aa31-428e-9bdf-9146b05e00a4\u0026sig=gkWmKrFhheBt%2F89J0jqO5QfGjy4UEYCjaSqHtwA1Rcc%3D\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzEdgeMarketplaceOfferAccessToken+[NoContext]+GetViaJsonString+$POST+https://management.azure.com//subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/providers/Microsoft.EdgeMarketplace/offers/microsoftwindowsserver%3Awindowsserver/getAccessToken?api-version=2025-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com//subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/providers/Microsoft.EdgeMarketplace/offers/microsoftwindowsserver%3Awindowsserver/getAccessToken?api-version=2025-10-01-preview",
+      "Content": "{\"requestId\": \"7057ead36dab4f93b6c7021d56efbb03\"}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "49" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/75955b0e-c913-4f92-87a6-4a274181419f" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Mise-Correlation-Id": [ "203176a5-ea3d-4d3d-a1ae-cc3eef3dfb67" ],
+        "x-ms-request-id": [ "701b81bc-d9a8-4aab-a285-637d17af0c45" ],
+        "x-ms-correlation-request-id": [ "d4e0cefa-2185-4fe4-bc83-2fe8a92f666f" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11998" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20260203T132405Z:d4e0cefa-2185-4fe4-bc83-2fe8a92f666f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 54457C8117094185AB9E1FEF0447CB55 Ref B: MAA201060516023 Ref C: 2026-02-03T13:24:05Z" ],
+        "Date": [ "Tue, 03 Feb 2026 13:24:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "298" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"diskId\":\"microsoftwindowsserver:windowsserver:2019-datacenter:17763.7314.250509__1__eastus__4\",\"accessToken\":\"https://md-hdd-xhq5bmqrvx3j.z11.blob.storage.azure.net/qpw3qkrbjt3b/abcd?sv=2018-03-28\u0026sr=b\u0026si=2c385917-aa31-428e-9bdf-9146b05e00a4\u0026sig=gkWmKrFhheBt%2F89J0jqO5QfGjy4UEYCjaSqHtwA1Rcc%3D\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzEdgeMarketplaceOfferAccessToken+[NoContext]+GetViaJsonFilePath+$POST+https://management.azure.com//subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/providers/Microsoft.EdgeMarketplace/offers/microsoftwindowsserver%3Awindowsserver/getAccessToken?api-version=2025-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com//subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/providers/Microsoft.EdgeMarketplace/offers/microsoftwindowsserver%3Awindowsserver/getAccessToken?api-version=2025-10-01-preview",
+      "Content": "{\r\n  \"requestId\": \"7057ead36dab4f93b6c7021d56efbb03\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "55" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/3a67e097-50ca-4476-af42-b711e4b78669" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Mise-Correlation-Id": [ "dcbe8287-b694-41e4-8852-2878a1a093a7" ],
+        "x-ms-request-id": [ "f911e82a-4e36-4eaf-929d-8356a95b483f" ],
+        "x-ms-correlation-request-id": [ "bc48ac6e-4c75-418f-a278-cf5dd5aed560" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "797" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11997" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20260203T132406Z:bc48ac6e-4c75-418f-a278-cf5dd5aed560" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 942A87902949436298241F9837A4383F Ref B: MAA201060516023 Ref C: 2026-02-03T13:24:06Z" ],
+        "Date": [ "Tue, 03 Feb 2026 13:24:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "298" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"diskId\":\"microsoftwindowsserver:windowsserver:2019-datacenter:17763.7314.250509__1__eastus__4\",\"accessToken\":\"https://md-hdd-xhq5bmqrvx3j.z11.blob.storage.azure.net/qpw3qkrbjt3b/abcd?sv=2018-03-28\u0026sr=b\u0026si=2c385917-aa31-428e-9bdf-9146b05e00a4\u0026sig=gkWmKrFhheBt%2F89J0jqO5QfGjy4UEYCjaSqHtwA1Rcc%3D\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzEdgeMarketplaceOfferAccessToken+[NoContext]+Get+$POST+https://management.azure.com//subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/providers/Microsoft.EdgeMarketplace/offers/microsoftwindowsserver%3Awindowsserver/getAccessToken?api-version=2025-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com//subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/providers/Microsoft.EdgeMarketplace/offers/microsoftwindowsserver%3Awindowsserver/getAccessToken?api-version=2025-10-01-preview",
+      "Content": "{\n  \"requestId\": \"7057ead36dab4f93b6c7021d56efbb03\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "53" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/eec88ae8-6b46-48cf-97aa-83f743b8da9a" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Mise-Correlation-Id": [ "cab22475-23be-48e6-a08c-c8f1bf49d0df" ],
+        "x-ms-request-id": [ "a76d9ab3-8bc7-4340-988e-2b2ef1aeb2ec" ],
+        "x-ms-correlation-request-id": [ "aa187f1c-ead8-4041-9121-b53d6bb847cf" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20260203T132408Z:aa187f1c-ead8-4041-9121-b53d6bb847cf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B60D26E0109444028626B3DFDEC4EF16 Ref B: MAA201060516023 Ref C: 2026-02-03T13:24:07Z" ],
+        "Date": [ "Tue, 03 Feb 2026 13:24:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "298" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"diskId\":\"microsoftwindowsserver:windowsserver:2019-datacenter:17763.7314.250509__1__eastus__4\",\"accessToken\":\"https://md-hdd-xhq5bmqrvx3j.z11.blob.storage.azure.net/qpw3qkrbjt3b/abcd?sv=2018-03-28\u0026sr=b\u0026si=2c385917-aa31-428e-9bdf-9146b05e00a4\u0026sig=gkWmKrFhheBt%2F89J0jqO5QfGjy4UEYCjaSqHtwA1Rcc%3D\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzEdgeMarketplaceOfferAccessToken+[NoContext]+GetViaIdentityExpanded+$POST+https://management.azure.com//subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/providers/Microsoft.EdgeMarketplace/offers/microsoftwindowsserver%3Awindowsserver/getAccessToken?api-version=2025-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com//subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/providers/Microsoft.EdgeMarketplace/offers/microsoftwindowsserver%3Awindowsserver/getAccessToken?api-version=2025-10-01-preview",
+      "Content": "{\n  \"requestId\": \"7057ead36dab4f93b6c7021d56efbb03\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "53" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/2312970d-ddda-4d08-a242-230dfb5ab889" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Mise-Correlation-Id": [ "7aa0d16b-575b-4d52-92e9-96f3fac911e0" ],
+        "x-ms-request-id": [ "1ca7c5bf-0cac-461c-89a0-e182a7e3d053" ],
+        "x-ms-correlation-request-id": [ "5d131049-0bc6-460e-8763-4d467bf4dc3a" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11998" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20260203T132409Z:5d131049-0bc6-460e-8763-4d467bf4dc3a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5A9AF476225B40A9AA56A14E4F5F6220 Ref B: MAA201060516023 Ref C: 2026-02-03T13:24:08Z" ],
+        "Date": [ "Tue, 03 Feb 2026 13:24:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "298" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"diskId\":\"microsoftwindowsserver:windowsserver:2019-datacenter:17763.7314.250509__1__eastus__4\",\"accessToken\":\"https://md-hdd-xhq5bmqrvx3j.z11.blob.storage.azure.net/qpw3qkrbjt3b/abcd?sv=2018-03-28\u0026sr=b\u0026si=2c385917-aa31-428e-9bdf-9146b05e00a4\u0026sig=gkWmKrFhheBt%2F89J0jqO5QfGjy4UEYCjaSqHtwA1Rcc%3D\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzEdgeMarketplaceOfferAccessToken+[NoContext]+GetViaIdentity+$POST+https://management.azure.com//subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/providers/Microsoft.EdgeMarketplace/offers/microsoftwindowsserver%3Awindowsserver/getAccessToken?api-version=2025-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com//subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/providers/Microsoft.EdgeMarketplace/offers/microsoftwindowsserver%3Awindowsserver/getAccessToken?api-version=2025-10-01-preview",
+      "Content": "{\n  \"requestId\": \"7057ead36dab4f93b6c7021d56efbb03\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "53" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/98c9be49-fd5d-41ea-852b-6d5725f6bde9" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Mise-Correlation-Id": [ "b461bc34-33ee-4a82-8b8b-daf782d7b515" ],
+        "x-ms-request-id": [ "5f54227c-0cdc-4f62-bd4e-162648800d66" ],
+        "x-ms-correlation-request-id": [ "65aa48d1-a4d9-4de4-9b36-7408cb790996" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "797" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11997" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20260203T132410Z:65aa48d1-a4d9-4de4-9b36-7408cb790996" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 53B7BDC6C2CE414384A33EC86B9F956E Ref B: MAA201060516023 Ref C: 2026-02-03T13:24:09Z" ],
+        "Date": [ "Tue, 03 Feb 2026 13:24:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "298" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"diskId\":\"microsoftwindowsserver:windowsserver:2019-datacenter:17763.7314.250509__1__eastus__4\",\"accessToken\":\"https://md-hdd-xhq5bmqrvx3j.z11.blob.storage.azure.net/qpw3qkrbjt3b/abcd?sv=2018-03-28\u0026sr=b\u0026si=2c385917-aa31-428e-9bdf-9146b05e00a4\u0026sig=gkWmKrFhheBt%2F89J0jqO5QfGjy4UEYCjaSqHtwA1Rcc%3D\"}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -15,27 +15,51 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEdgeMarketplaceOfferAcc
 }
 
 Describe 'New-AzEdgeMarketplaceOfferAccessToken' {
-    It 'GenerateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GenerateExpanded' {
+        $result = New-AzEdgeMarketplaceOfferAccessToken -OfferId microsoftwindowsserver:windowsserver -ResourceUri /subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation -EdgeMarketplaceRegion eastus -HypervGeneration 1 -MarketplaceSku 2019-datacenter -MarketplaceSkuVersion 17763.7314.250509
     }
 
-    It 'GenerateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GenerateViaJsonString' {
+        $result = New-AzEdgeMarketplaceOfferAccessToken -OfferId $env.OfferId -ResourceUri $env.ResourceUri -JsonString '{"edgeMarketPlaceRegion": "eastus","hypervGeneration": "1","marketPlaceSku": "2019-datacenter","marketPlaceSkuVersion": "17763.7314.250509"}'
     }
 
-    It 'GenerateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GenerateViaJsonFilePath' {
+        $result = New-AzEdgeMarketplaceOfferAccessToken -OfferId $env.OfferId -ResourceUri $env.ResourceUri -JsonFilePath (Join-Path $PSScriptRoot './jsonFiles/CreateOfferAccessToken.json')
     }
 
-    It 'Generate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Generate' {
+        $requestBody = @{
+            "EdgeMarketplaceRegion" = $env.EdgeMarketplaceRegion;
+            "HypervGeneration" = $env.HypervGeneration;
+            "MarketplaceSku" = $env.MarketplaceSku;
+            "MarketplaceSkuVersion" = $env.MarketplaceSkuVersion;
+        }
+
+        $result = New-AzEdgeMarketplaceOfferAccessToken -OfferId $env.OfferId -ResourceUri $env.ResourceUri -Body $requestBody
     }
 
-    It 'GenerateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GenerateViaIdentityExpanded' {
+        $offerIdentity = @{
+            "ResourceUri" = $env.ResourceUri;
+            "OfferId" = $env.OfferId;
+        }
+
+        $result = New-AzEdgeMarketplaceOfferAccessToken -InputObject $offerIdentity -EdgeMarketplaceRegion $env.EdgeMarketplaceRegion -HypervGeneration $env.HypervGeneration -MarketplaceSku $env.MarketplaceSku -MarketplaceSkuVersion $env.MarketplaceSkuVersion
     }
 
-    It 'GenerateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GenerateViaIdentity' {
+        $offerIdentity = @{
+            "ResourceUri" = $env.ResourceUri;
+            "OfferId" = $env.OfferId;
+        }
+
+        $requestBody = @{
+            "EdgeMarketplaceRegion" = $env.EdgeMarketplaceRegion;
+            "HypervGeneration" = $env.HypervGeneration;
+            "MarketplaceSku" = $env.MarketplaceSku;
+            "MarketplaceSkuVersion" = $env.MarketplaceSkuVersion;
+        }
+
+        $result = New-AzEdgeMarketplaceOfferAccessToken -InputObject $offerIdentity -Body $requestBody
     }
 }

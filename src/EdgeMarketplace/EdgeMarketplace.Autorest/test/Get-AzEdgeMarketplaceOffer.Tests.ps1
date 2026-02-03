@@ -15,15 +15,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEdgeMarketplaceOffer'))
 }
 
 Describe 'Get-AzEdgeMarketplaceOffer' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $result = Get-AzEdgeMarketplaceOffer -ResourceUri $env.ResourceUri
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $result = Get-AzEdgeMarketplaceOffer -OfferId $env.OfferId -ResourceUri $env.ResourceUri
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $offerInputObject = @{
+            "OfferId" = $env.OfferId;
+            "ResourceUri" = $env.ResourceUri;
+        }
+
+        $result = Get-AzEdgeMarketplaceOffer -InputObject $offerInputObject
     }
 }
