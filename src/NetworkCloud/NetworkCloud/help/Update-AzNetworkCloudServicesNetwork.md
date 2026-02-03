@@ -17,7 +17,8 @@ Properties and tag update can be done independently.
 ```
 Update-AzNetworkCloudServicesNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IfMatch <String>] [-IfNoneMatch <String>] [-AdditionalEgressEndpoint <IEgressEndpoint[]>]
- [-EnableDefaultEgressEndpoint <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-EnableDefaultEgressEndpoint <String>] [-StorageOptionMode <String>] [-StorageOptionSizeMiB <Int64>]
+ [-StorageOptionStorageApplianceId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -39,7 +40,8 @@ Update-AzNetworkCloudServicesNetwork -Name <String> -ResourceGroupName <String> 
 ```
 Update-AzNetworkCloudServicesNetwork -InputObject <INetworkCloudIdentity> [-IfMatch <String>]
  [-IfNoneMatch <String>] [-AdditionalEgressEndpoint <IEgressEndpoint[]>]
- [-EnableDefaultEgressEndpoint <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-EnableDefaultEgressEndpoint <String>] [-StorageOptionMode <String>] [-StorageOptionSizeMiB <Int64>]
+ [-StorageOptionStorageApplianceId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -251,6 +253,51 @@ Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageOptionMode
+The indicator to enable shared storage on the cloud services network.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageOptionSizeMiB
+The requested storage allocation for the volume in Mebibytes.
+
+```yaml
+Type: System.Int64
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageOptionStorageApplianceId
+The resource ID of the storage appliance that hosts the storage.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
