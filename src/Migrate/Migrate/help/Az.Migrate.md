@@ -108,9 +108,6 @@ Deleting non-existent project is a no-operation.
 ### [Remove-AzMigrateServerReplication](Remove-AzMigrateServerReplication.md)
 Stops replication for the migrated server.
 
-### [Remove-AzMigrateVCenterVcenter](Remove-AzMigrateVCenterVcenter.md)
-Method to delete vCenter in site.
-
 ### [Restart-AzMigrateServerReplication](Restart-AzMigrateServerReplication.md)
 Restarts the replication for specified server.
 

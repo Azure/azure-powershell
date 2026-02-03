@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Migrate
-Module Guid: e13eb9a3-d3b4-4f49-8bac-a462b5f91df6
+Module Guid: 05c027a0-3e74-477c-9032-cf5a1aff0776
 Download Help Link: https://learn.microsoft.com/powershell/module/az.migrate
 Help Version: 1.0.0.0
 Locale: en-US
@@ -107,9 +107,6 @@ Deleting non-existent project is a no-operation.
 
 ### [Remove-AzMigrateServerReplication](Remove-AzMigrateServerReplication.md)
 Stops replication for the migrated server.
-
-### [Remove-AzMigrateVCenterVcenter](Remove-AzMigrateVCenterVcenter.md)
-Method to delete vCenter in site.
 
 ### [Restart-AzMigrateServerReplication](Restart-AzMigrateServerReplication.md)
 Restarts the replication for specified server.
