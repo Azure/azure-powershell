@@ -160,12 +160,12 @@ directive:
       subject: ^ReplicationMigrationItemReplication
       variant: ^ResumeViaIdentityExpanded$|^Resume$|^ResumeViaIdentity$
     remove: true
-  - from: Microsoft.RecoveryServices/SiteRecovery/stable/2025-08-01/service.json
-    where:
-      verb: Invoke$
-      subject: ^ResyncReplicationMigrationItem
-      variant: ^ResyncViaIdentityExpanded$|^ResyncViaIdentity$|^Resync$
-    remove: true
+  # - from: Microsoft.RecoveryServices/SiteRecovery/stable/2025-08-01/service.json
+  #   where:
+  #     verb: Invoke$
+  #     subject: ^ResyncReplicationMigrationItem
+  #     variant: ^ResyncViaIdentityExpanded$|^ResyncViaIdentity$|^Resync$
+  #   remove: true
   - from: Microsoft.RecoveryServices/SiteRecovery/stable/2025-08-01/service.json
     where:
       verb: Invoke$
