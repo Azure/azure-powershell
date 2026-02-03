@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for Data Protection Platform vault soft delete feature
 
 ## Version 2.8.0
 * Added support for AzureDataLakeStorage workload

@@ -7,43 +7,53 @@ A long-running resource action that retrieves the version code for an Edge Actio
 When the -OutputPath parameter is specified, the base64-encoded content is decoded and saved 
 as a zip file to the specified directory. Otherwise, returns the raw response with base64 content.
 .Example
+PS C:\> Get-AzEdgeActionVersionCode -ResourceGroupName "myRG" -EdgeActionName "myAction" -Version "v1"
+
+Get the version code as base64-encoded content.
+.Example
 PS C:\> Get-AzEdgeActionVersionCode -ResourceGroupName "myRG" -EdgeActionName "myAction" -Version "v1" -OutputPath "C:\Downloads"
 
 Get the version code and save it as a zip file to C:\Downloads\v1.zip
 
 .Outputs
+Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IVersionCode
 System.Management.Automation.PSCustomObject
 #>
 function Get-AzEdgeActionVersionCode {
-    [OutputType([System.Management.Automation.PSCustomObject])]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IVersionCode], ParameterSetName='GetCustom')]
+    [OutputType([System.Management.Automation.PSCustomObject], ParameterSetName='GetAndSaveCustom')]
+    [CmdletBinding(DefaultParameterSetName='GetCustom', PositionalBinding=$false)]
     param(
-        [Parameter(ParameterSetName='GetAndSave', Mandatory)]
+        [Parameter(ParameterSetName='GetCustom', Mandatory)]
+        [Parameter(ParameterSetName='GetAndSaveCustom', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Path')]
         [System.String]
         # The name of the Edge Action
         ${EdgeActionName},
 
-        [Parameter(ParameterSetName='GetAndSave', Mandatory)]
+        [Parameter(ParameterSetName='GetCustom', Mandatory)]
+        [Parameter(ParameterSetName='GetAndSaveCustom', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Path')]
         [System.String]
         # The name of the resource group. The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='GetAndSave')]
+        [Parameter(ParameterSetName='GetCustom')]
+        [Parameter(ParameterSetName='GetAndSaveCustom')]
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String[]]
         # The ID of the target subscription. The value must be an UUID.
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName='GetAndSave', Mandatory)]
+        [Parameter(ParameterSetName='GetCustom', Mandatory)]
+        [Parameter(ParameterSetName='GetAndSaveCustom', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Path')]
         [System.String]
         # The name of the Edge Action version
         ${Version},
 
-        [Parameter(ParameterSetName='GetAndSave', Mandatory)]
+        [Parameter(ParameterSetName='GetAndSaveCustom', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
         [System.String]
         # Output directory to save the decoded version code as a zip file.
@@ -121,60 +131,86 @@ function Get-AzEdgeActionVersionCode {
                 }
             }
 
+            # ARM POST operations require an empty JSON body
+            # Create a pipeline handler to add the empty body with correct content type
+            # SendAsyncStep signature: param($request, $callback, $next) where $next.SendAsync($request, $callback)
+            $emptyBodyHandler = [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SendAsyncStep]{
+                param($request, $callback, $next)
+                
+                # Add empty JSON body with correct content type for POST requests
+                if ($request.Method -eq [System.Net.Http.HttpMethod]::Post -and $null -eq $request.Content) {
+                    $request.Content = [System.Net.Http.StringContent]::new("{}", [System.Text.Encoding]::UTF8, "application/json")
+                }
+                
+                return $next.SendAsync($request, $callback)
+            }
+            
+            # Add the handler to prepend pipeline
+            if ($params.ContainsKey('HttpPipelinePrepend')) {
+                $params['HttpPipelinePrepend'] = @($emptyBodyHandler) + $params['HttpPipelinePrepend']
+            } else {
+                $params['HttpPipelinePrepend'] = @($emptyBodyHandler)
+            }
+
             Write-Verbose "Calling internal Get-AzEdgeActionVersionCode cmdlet"
             
             # Call the generated private cmdlet
             $result = Az.EdgeAction.private\Get-AzEdgeActionVersionCode_Get @params
 
-            # Decode and save the file to OutputPath
             if (-not $result) {
                 throw "No response returned from the API"
             }
 
-            # Get the base64 encoded content and name from the result
-            $content = $result.Content
-            $name = $result.Name
-            
-            if (-not $content) {
-                throw "No content returned from the API"
-            }
-            
-            if (-not $name) {
-                $name = $Version
-            }
-
-            Write-Verbose "Decoding base64 content (length: $($content.Length))"
-
-            # Decode base64 content
-            try {
-                $decodedContent = [System.Convert]::FromBase64String($content)
-            } catch {
-                throw "Failed to decode base64 content: $_"
-            }
-
-            # Create output directory if it doesn't exist
-            if (-not (Test-Path -Path $OutputPath)) {
-                Write-Verbose "Creating output directory: $OutputPath"
-                New-Item -Path $OutputPath -ItemType Directory -Force | Out-Null
-            }
-
-            # Build output file path
-            $outputFile = Join-Path -Path $OutputPath -ChildPath "$name.zip"
-
-            # Save the file
-            Write-Verbose "Saving version code to: $outputFile"
-            try {
-                [System.IO.File]::WriteAllBytes($outputFile, $decodedContent)
-                Write-Host "Version code saved to: $outputFile"
+            # If OutputPath is specified, decode and save the file
+            if ($PSBoundParameters.ContainsKey('OutputPath')) {
+                # Get the base64 encoded content and name from the result
+                $content = $result.Content
+                $name = $result.Name
                 
-                # Return a custom object with file info
-                return [PSCustomObject]@{
-                    Message = "Version code saved successfully"
-                    FilePath = $outputFile
-                    Name = $name
+                if (-not $content) {
+                    throw "No content returned from the API"
                 }
-            } catch {
-                throw "Failed to save file: $_"
+                
+                if (-not $name) {
+                    $name = $Version
+                }
+
+                Write-Verbose "Decoding base64 content (length: $($content.Length))"
+
+                # Decode base64 content
+                try {
+                    $decodedContent = [System.Convert]::FromBase64String($content)
+                } catch {
+                    throw "Failed to decode base64 content: $_"
+                }
+
+                # Create output directory if it doesn't exist
+                if (-not (Test-Path -Path $OutputPath)) {
+                    Write-Verbose "Creating output directory: $OutputPath"
+                    New-Item -Path $OutputPath -ItemType Directory -Force | Out-Null
+                }
+
+                # Build output file path
+                $outputFile = Join-Path -Path $OutputPath -ChildPath "$name.zip"
+
+                # Save the file
+                Write-Verbose "Saving version code to: $outputFile"
+                try {
+                    [System.IO.File]::WriteAllBytes($outputFile, $decodedContent)
+                    Write-Host "Version code saved to: $outputFile"
+                    
+                    # Return a custom object with file info
+                    return [PSCustomObject]@{
+                        Message = "Version code saved successfully"
+                        FilePath = $outputFile
+                        Name = $name
+                    }
+                } catch {
+                    throw "Failed to save file: $_"
+                }
+            } else {
+                # Return the raw result with base64 content
+                return $result
             }
         } catch {
             throw

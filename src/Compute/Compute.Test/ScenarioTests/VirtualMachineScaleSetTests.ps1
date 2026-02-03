@@ -6271,3 +6271,78 @@ function Test-VirtualMachineScaleSetAutomaticZonePlacement
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test creating a VMSS with HighSpeedInterconnectPlacement set
+#>
+function Test-VirtualMachineScaleSetHighSpeedInterconnectPlacement  
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "westus2";
+    
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssName = 'vmss' + $rgname;
+        $domainNameLabel1 = "d1" + $rgname;
+        $subnetName = 'subnet' + $rgname;
+        $vnetName = 'vnet' + $rgname;
+        
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+        $linuxImage = "Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest"
+
+        # Case 1: Create using simple parameter set
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Location $loc -Credential `
+        $cred -VMScaleSetName $vmssName -DomainNameLabel $domainNameLabel1 `
+        -Image $linuxImage `
+        -HighSpeedInterconnectPlacement "None";
+
+        # verify
+        Assert-AreEqual $vmss.HighSpeedInterconnectPlacement "None";
+
+
+        # Create VNet and Subnet
+        $vnetAddressPrefix = "10.0.0.0/16";
+        $subnetAddressPrefix = "10.0.0.0/24";
+        $subnetConfig = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix $subnetAddressPrefix;
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddressPrefix -Subnet $subnetConfig;
+
+        # Get subnet object
+        $subnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnetName
+
+        # VMSS Config
+        $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName "Standard_D4s_v3" -HighSpeedInterconnectPlacement "None";
+
+        # Configure IP and NIC
+        $ipCfg = New-AzVmssIpConfig -Name "ipconfig1" -SubnetId $subnet.Id
+        $vmssConfig = Add-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmssConfig `
+            -Name "nicConfig" -Primary $true -IPConfiguration $ipCfg;
+
+        # Configure OS profile
+        $vmssConfig = Set-AzVmssOSProfile -VirtualMachineScaleSet $vmssConfig `
+           -ComputerNamePrefix "test" `
+            -AdminUsername $adminUsername `
+            -AdminPassword $password
+
+        # Assert the HighSpeedInterconnectPlacement from the vmssConfig
+        Assert-AreEqual $vmssConfig.HighSpeedInterconnectPlacement "None";
+
+        # Create the vmss using the config
+        $vmssResult = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName "newtestVmss" -VirtualMachineScaleSet $vmssConfig;
+
+        # Assert the HighSpeedInterconnectPlacement from the vmssResult
+        Assert-AreEqual $vmssResult.HighSpeedInterconnectPlacement "None";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
