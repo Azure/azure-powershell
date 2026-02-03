@@ -1,0 +1,52 @@
+{
+  "resourceType": "VMwareSites/vCenters",
+  "apiVersion": "2020-01-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.migrate"
+  },
+  "commands": [
+    {
+      "name": "Remove-AzMigrateVCenterVcenter",
+      "description": "Method to delete vCenter in site.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/vCenters/{vcenterName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigratevcentervcenter"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "-SiteName <String>",
+              "[-SubscriptionId <String>]",
+              "-VcenterName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Method to delete vCenter in site.",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SiteName",
+              "value": "[Path.siteName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VcenterName",
+              "value": "[Path.vcenterName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
