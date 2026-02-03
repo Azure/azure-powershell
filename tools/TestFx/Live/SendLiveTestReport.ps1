@@ -92,4 +92,5 @@ else {
     $emailContent = "<html><head>$css</head><body>$summarySection<div>No live test errors reported. Please check the overall status from Azure pipeline.</div></body></html>"
 }
 
+
 Send-EmailServiceMail -To "${env:EMAILTO}" -Subject $emailSubject -Content $emailContent -IsHtml
