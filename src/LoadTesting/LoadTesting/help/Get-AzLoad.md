@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzLoad
 
 ## SYNOPSIS
-Get the details of an Azure Load Testing resource.
+Get a LoadTest resource.
 
 ## SYNTAX
 
@@ -20,18 +20,18 @@ Get-AzLoad [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
 
 ### Get
 ```
-Get-AzLoad [-SubscriptionId <String[]>] -Name <String> -ResourceGroupName <String> [-DefaultProfile <PSObject>]
+Get-AzLoad -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzLoad [-SubscriptionId <String[]>] -ResourceGroupName <String> [-DefaultProfile <PSObject>]
+Get-AzLoad -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the details of an Azure Load Testing resource.
+Get a LoadTest resource.
 
 ## EXAMPLES
 
@@ -79,7 +79,8 @@ This command gets the details of the Azure Load Testing resource named sampleres
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -94,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Azure Load Testing resource.
+Load Test name.
 
 ```yaml
 Type: System.String
@@ -109,7 +110,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -124,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the subscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
@@ -145,7 +147,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api20221201.ILoadTestResource
+### Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ILoadTestResource
 
 ## NOTES
 

@@ -12,14 +12,14 @@ Microsoft Azure PowerShell: LoadTesting cmdlets
 
 ## Az.LoadTesting Cmdlets
 ### [Get-AzLoad](Get-AzLoad.md)
-Get the details of an Azure Load Testing resource.
+Get a LoadTest resource.
 
 ### [New-AzLoad](New-AzLoad.md)
-Create a new Azure Load Testing resource.
+Create LoadTest resource.
 
 ### [Remove-AzLoad](Remove-AzLoad.md)
-Delete an Azure Load Testing resource.
+Delete a LoadTest resource.
 
 ### [Update-AzLoad](Update-AzLoad.md)
-Update an Azure Load Testing resource.
+Update a loadtest resource.
 

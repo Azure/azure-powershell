@@ -16,154 +16,193 @@
 
 <#
 .Synopsis
-Create a new Azure Load Testing resource.
+Create LoadTest resource.
 .Description
-Creates a new Azure Load Testing resource in the resource group.
+Create LoadTest resource.
 .Example
-{{ Add code here }}
+New-AzLoad -Name sampleres -ResourceGroupName sample-rg -Location eastus
 .Example
-{{ Add code here }}
+$userAssigned = @{"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1" = @{}; "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2" = @{}}
+
+New-AzLoad -Name sampleres -ResourceGroupName sample-rg -Location eastus -IdentityType "SystemAssigned,UserAssigned" -IdentityUserAssigned $userAssigned
+.Example
+$userAssigned = @{"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1" = @{}}
+
+New-AzLoad -Name sampleres -ResourceGroupName sample-rg -Location eastus -IdentityType "SystemAssigned,UserAssigned" -IdentityUserAssigned $userAssigned -EncryptionIdentity "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1" -EncryptionKey "https://sample-akv.vault.azure.net/keys/cmk/2d1ccd5c50234ea2a0858fe148b69cde"
+.Example
+$tag = @{"key1" = "value1"; "key2" = "value2"}
+New-AzLoad -Name sampleres -ResourceGroupName sample-rg -Location eastus -Tag $tag
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api20221201.ILoadTestResource
+Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ILoadTestResource
 .Link
 https://learn.microsoft.com/powershell/module/az.loadtesting/new-azload
 #>
 function New-AzLoad {
-    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.PreviewMessage("**********************************************************************************************`n
-    * This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *`n
-    * At least one change applies to this cmdlet.                                                     *`n
-    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
-    ***************************************************************************************************")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api20221201.ILoadTestResource])]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-    param(
-        [Parameter(Mandatory)]
-        [Alias('LoadTestName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Path')]
-        [System.String]
-        # Name of the new Azure Load Testing resource.
-        ${Name},
-    
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Path')]
-        [System.String]
-        # Name of the resource group.
-        ${ResourceGroupName},
-    
-        [Parameter(ParameterSetName='CreateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-        [System.String]
-        # The ID of the subscription.
-        ${SubscriptionId},
-    
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
-        [System.String]
-        # Location where the Azure Load Testing resource needs to be created.
-        ${Location},
-    
-        [Parameter(ParameterSetName='CreateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
-        [System.String]
-        # The managed identity for Customer-managed key settings defining which identity should be used to authenticate to Key Vault.
-        # Ex: '/subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId' uses the given user-assigned managed identity.
-        ${EncryptionIdentity},
-    
-        [Parameter(ParameterSetName='CreateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
-        [System.String]
-        # Encryption key URL, versioned.
-        # Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78.
-        ${EncryptionKey},
-    
-        [Parameter(ParameterSetName='CreateExpanded')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Support.ManagedServiceIdentityType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Support.ManagedServiceIdentityType]
-        # Type of managed identity.
-        ${IdentityType},
-    
-        [Parameter(ParameterSetName='CreateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api50.IUserAssignedIdentities]))]
-        [System.Collections.Hashtable]
-        # The list of user assigned identities associated with the resource. The user identity will be ARM resource ids.
-        # The User Assigned Identity is a hashtable with keys in the form of an ARM resource id '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        # The values of the keys are empty objects ({}) in requests.
-        ${IdentityUserAssigned},
-    
-        [Parameter(ParameterSetName='CreateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api30.ITrackedResourceTags]))]
-        [System.Collections.Hashtable]
-        # Key-value pairs in the form of a hash table set as tags on the server. For example: @{key0="value0";key1=$null;key2="value2"}. 
-        ${Tag},
-    
-        [Parameter(ParameterSetName='CreateExpanded')]
-        [Alias('AzureRMContext', 'AzureCredential')]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Azure')]
-        [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
-        ${DefaultProfile},
-    
-        [Parameter(ParameterSetName='CreateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command as a job
-        ${AsJob},
-    
-        [Parameter(ParameterSetName='CreateExpanded', DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Wait for .NET debugger to attach
-        ${Break},
-    
-        [Parameter(ParameterSetName='CreateExpanded', DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be appended to the front of the pipeline
-        ${HttpPipelineAppend},
-    
-        [Parameter(ParameterSetName='CreateExpanded', DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-        ${HttpPipelinePrepend},
-    
-        [Parameter(ParameterSetName='CreateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command asynchronously
-        ${NoWait},
-    
-        [Parameter(ParameterSetName='CreateExpanded', DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Runtime')]
-        [System.Uri]
-        # The URI for the proxy server to use
-        ${Proxy},
-    
-        [Parameter(ParameterSetName='CreateExpanded', DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Runtime')]
-        [System.Management.Automation.PSCredential]
-        # Credentials for a proxy server to use for the remote call
-        ${ProxyCredential},
-    
-        [Parameter(ParameterSetName='CreateExpanded', DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Use the default credentials for the proxy
-        ${ProxyUseDefaultCredentials}
-    )
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ILoadTestResource])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('LoadTestName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Path')]
+    [System.String]
+    # Load Test name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
+    [System.String]
+    # The managed identity for Customer-managed key settings defining which identity should be used to authenticate to Key Vault. 
+    # Ex: 'SystemAssigned' uses system-assigned managed identity, whereas '/subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId' uses the given user-assigned managed identity.
+    ${EncryptionIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
+    [System.String]
+    # key encryption key Url, versioned.
+    # Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
+    ${EncryptionKey},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
 
     process {
         try {
-            # if encryption identity has a value, populate the encryption identity type and encryption identity resource id
+            if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity') -or $PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
+                $supportsSystemAssignedIdentity = $PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')
+                $supportsUserAssignedIdentity = $PSBoundParameters.ContainsKey("UserAssignedIdentity") -and $UserAssignedIdentity.Length -gt 0
+
+                # calculate IdentityType
+                if (($supportsSystemAssignedIdentity -and $supportsUserAssignedIdentity)) {
+                    $PSBoundParameters.Add("IdentityType", "SystemAssigned,UserAssigned")
+                }
+                elseif ($supportsUserAssignedIdentity -and (-not $supportsSystemAssignedIdentity)) {
+                    $PSBoundParameters.Add("IdentityType", "UserAssigned")
+                }
+                elseif ((-not $supportsUserAssignedIdentity) -and $supportsSystemAssignedIdentity) {
+                    $PSBoundParameters.Add("IdentityType", "SystemAssigned")
+                }
+                else {
+                    $PSBoundParameters.Add("IdentityType", "None")
+                }
+
+                # If user input UserAssignedIdentity
+                if ($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
+                    $userIdentityObject = [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.UserAssignedIdentity]::New()
+                    $PSBoundParameters.IdentityUserAssignedIdentity = @{}
+                    foreach ($item in $PSBoundParameters.UserAssignedIdentity) {
+                        $PSBoundParameters.IdentityUserAssignedIdentity.Add($item, $userIdentityObject )
+                    }
+        
+                    $null = $PSBoundParameters.Remove('UserAssignedIdentity')
+                }
+        
+                # remove EnableSystemAssignedIdentity
+                if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')) {
+                    $null = $PSBoundParameters.Remove("EnableSystemAssignedIdentity")
+                }
+            }
+
+           # if encryption identity has a value, populate the encryption identity type and encryption identity resource id
             # add the managed identity to the list of user assigned identities
             if ($PSBoundParameters.ContainsKey('EncryptionIdentity')) {
                 $null = $PSBoundParameters.Add("EncryptionIdentityResourceId", $PSBoundParameters['EncryptionIdentity'])
@@ -184,14 +223,12 @@ function New-AzLoad {
                 }
 
                 # Update the User Assigned Identities
-                if ($PSBoundParameters.ContainsKey('IdentityUserAssigned')) {
-                    if ($null -eq $PSBoundParameters['IdentityUserAssigned']){
-                        $PSBoundParameters['IdentityUserAssigned'] = @{}
-                    }
-                    $PSBoundParameters['IdentityUserAssigned'][$PSBoundParameters['EncryptionIdentityResourceId']] = @{}
+                $userIdentityObject = [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.UserAssignedIdentity]::New()
+                if ($PSBoundParameters.ContainsKey('IdentityUserAssignedIdentity')) {
+                    $PSBoundParameters['IdentityUserAssignedIdentity'][$PSBoundParameters['EncryptionIdentityResourceId']] = $userIdentityObject
                 }
                 else {
-                    $null = $PSBoundParameters.Add("IdentityUserAssigned", @{ $PSBoundParameters['EncryptionIdentityResourceId'] = @{} })
+                    $null = $PSBoundParameters.Add("IdentityUserAssignedIdentity", @{ $PSBoundParameters['EncryptionIdentityResourceId'] = $userIdentityObject })
                 }
             }
             Az.LoadTesting.internal\New-AzLoad @PSBoundParameters
