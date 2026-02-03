@@ -16,28 +16,28 @@ Users can login using Microsoft Entra accounts, or local user accounts via stand
 ### Default (Default)
 ```
 Connect-AzSftp -StorageAccount <String> [-Port <Int32>] [-PrivateKeyFile <String>] [-PublicKeyFile <String>]
- [-SftpArg <String[]>] [-SshClientFolder <String>] [-BufferSizeBytes <Int32>] [-StorageAccountEndpoint <String>]
+ [-SftpArg <String[]>] [-SshClientFolder <String>] [-BufferSize <Int32>] [-StorageAccountEndpoint <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### CertificateAuth
 ```
 Connect-AzSftp -StorageAccount <String> [-Port <Int32>] -CertificateFile <String> -PrivateKeyFile <String>
- [-SftpArg <String[]>] [-SshClientFolder <String>] [-BufferSizeBytes <Int32>] [-StorageAccountEndpoint <String>]
+ [-SftpArg <String[]>] [-SshClientFolder <String>] [-BufferSize <Int32>] [-StorageAccountEndpoint <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### PublicKeyAuth
 ```
 Connect-AzSftp -StorageAccount <String> [-Port <Int32>] -PublicKeyFile <String> [-SftpArg <String[]>]
- [-SshClientFolder <String>] [-BufferSizeBytes <Int32>] [-StorageAccountEndpoint <String>]
+ [-SshClientFolder <String>] [-BufferSize <Int32>] [-StorageAccountEndpoint <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### LocalUserAuth
 ```
 Connect-AzSftp -StorageAccount <String> [-Port <Int32>] -LocalUser <String> [-PrivateKeyFile <String>]
- [-SftpArg <String[]>] [-SshClientFolder <String>] [-BufferSizeBytes <Int32>] [-StorageAccountEndpoint <String>]
+ [-SftpArg <String[]>] [-SshClientFolder <String>] [-BufferSize <Int32>] [-StorageAccountEndpoint <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -155,7 +155,7 @@ Connect-AzSftp -StorageAccount "mystorageaccount" -CertificateFile "C:\certs\azu
 
 ## PARAMETERS
 
-### -BufferSizeBytes
+### -BufferSize
 Buffer size in bytes for SFTP file transfers. Default: 262144 (256 KB).
 
 ```yaml

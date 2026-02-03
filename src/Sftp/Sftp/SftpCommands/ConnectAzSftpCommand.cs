@@ -89,7 +89,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
         [Parameter(Mandatory = false, ParameterSetName = PublicKeyAuthParameterSet, HelpMessage = "Buffer size in bytes for SFTP file transfers. Default: 262144 (256 KB).")]
         [Parameter(Mandatory = false, ParameterSetName = LocalUserAuthParameterSet, HelpMessage = "Buffer size in bytes for SFTP file transfers. Default: 262144 (256 KB).")]
         [ValidateRange(1, int.MaxValue)]
-        public int BufferSizeBytes { get; set; } = 256 * 1024;
+        public int BufferSize { get; set; } = 256 * 1024;
 
         [Parameter(Mandatory = false, ParameterSetName = DefaultParameterSet, HelpMessage = "Custom storage account endpoint suffix. Default: Uses endpoint based on Azure environment (e.g., blob.core.windows.net).")]
         [Parameter(Mandatory = false, ParameterSetName = CertificateAuthParameterSet, HelpMessage = "Custom storage account endpoint suffix. Default: Uses endpoint based on Azure environment (e.g., blob.core.windows.net).")]
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
             WriteDebug($"[Connect-AzSftp] Starting SFTP connection");
             WriteDebug($"[Connect-AzSftp] Target storage account: '{StorageAccount}'");
             WriteDebug($"[Connect-AzSftp] Parameter set: '{ParameterSetName}'");
-            WriteDebug($"[Connect-AzSftp] Buffer size: {BufferSizeBytes} bytes ({BufferSizeBytes / 1024} KB)");
+            WriteDebug($"[Connect-AzSftp] Buffer size: {BufferSize} bytes ({BufferSize / 1024} KB)");
             if (!string.IsNullOrEmpty(StorageAccountEndpoint))
             {
                 WriteDebug($"[Connect-AzSftp] Custom endpoint: '{StorageAccountEndpoint}'");
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                     sshProxyFolder: null,
                     credentialsFolder: credentialsFolder,
                     yesWithoutPrompt: false,
-                    bufferSizeBytes: BufferSizeBytes
+                    bufferSizeBytes: BufferSize
                 );
 
                 sftpSession.LocalUser = user;
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 WriteDebug($"[Session]   Local User: '{sftpSession.LocalUser}'");
                 WriteDebug($"[Session]   Host: '{sftpSession.Host}'");
                 WriteDebug($"[Session]   Port: {sftpSession.Port}");
-                WriteDebug($"[Session]   Buffer Size: {BufferSizeBytes} bytes");
+                WriteDebug($"[Session]   Buffer Size: {BufferSize} bytes");
                 if (!string.IsNullOrEmpty(sftpSession.CertFile))
                 {
                     WriteDebug($"[Session]   Certificate: '{sftpSession.CertFile}'");

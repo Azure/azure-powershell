@@ -149,9 +149,9 @@ function Test-ConnectAzSftpParameterValidation
 
 <#
 .SYNOPSIS
-Test Connect-AzSftp with BufferSizeBytes parameter
+Test Connect-AzSftp with BufferSize parameter
 #>
-function Test-ConnectAzSftpWithBufferSizeBytes
+function Test-ConnectAzSftpWithBufferSize
 {
     $storageAccountName = Get-StorageAccountName
     $resourceGroupName = Get-ResourceGroupName
@@ -167,7 +167,7 @@ function Test-ConnectAzSftpWithBufferSizeBytes
 
         # Test connection with custom buffer size (will fail in test environment but validates parameter parsing)
         try {
-            $result = Connect-AzSftp -StorageAccount $storageAccountName -BufferSizeBytes 524288 -SftpArg "-o", "ConnectTimeout=1"
+            $result = Connect-AzSftp -StorageAccount $storageAccountName -BufferSize 524288 -SftpArg "-o", "ConnectTimeout=1"
         }
         catch {
             # Expected to fail in test environment - this is acceptable
