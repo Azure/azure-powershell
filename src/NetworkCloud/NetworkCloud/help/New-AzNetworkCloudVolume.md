@@ -16,8 +16,9 @@ Create a new volume or create the properties of the existing one.
 ```
 New-AzNetworkCloudVolume -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IfMatch <String>] [-IfNoneMatch <String>] -ExtendedLocationName <String> -ExtendedLocationType <String>
- -Location <String> -SizeMiB <Int64> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Location <String> -SizeMiB <Int64> [-StorageApplianceId <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -240,7 +241,7 @@ Accept wildcard characters: False
 ```
 
 ### -SizeMiB
-The size of the allocation for this volume in Mebibytes.
+The requested storage allocation for the volume in Mebibytes.
 
 ```yaml
 Type: System.Int64
@@ -248,6 +249,21 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageApplianceId
+The resource ID of the storage appliance that hosts the volume.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
