@@ -294,6 +294,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Internal Acessors for VcenterCertificateThumbprint</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.VcenterCertificateThumbprint { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcenterCertificateThumbprint; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcenterCertificateThumbprint = value ?? null; }
 
+        /// <summary>Internal Acessors for VcfLicense</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.VcfLicense { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcfLicense; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcfLicense = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for VcfLicenseKind</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.VcfLicenseKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcfLicenseKind; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcfLicenseKind = value ?? null; }
+
+        /// <summary>Internal Acessors for VcfLicenseProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.VcfLicenseProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcfLicenseProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcfLicenseProvisioningState = value ?? null; }
+
         /// <summary>Internal Acessors for VmotionNetwork</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.VmotionNetwork { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VmotionNetwork; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VmotionNetwork = value ?? null; }
 
@@ -473,6 +482,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Optionally, set the vCenter admin password when the private cloud is created</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public System.Security.SecureString VcenterPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcenterPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcenterPassword = value ?? null; }
+
+        /// <summary>The private cloud license</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense VcfLicense { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcfLicense; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcfLicense = value ?? null /* model class */; }
+
+        /// <summary>License kind</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public string VcfLicenseKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcfLicenseKind; }
+
+        /// <summary>The state of the license provisioning</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public string VcfLicenseProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcfLicenseProvisioningState; }
 
         /// <summary>Azure resource ID of the virtual network</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
@@ -1116,6 +1137,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"vcenterPassword",
         PossibleTypes = new [] { typeof(System.Security.SecureString) })]
         System.Security.SecureString VcenterPassword { get; set; }
+        /// <summary>License kind</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"License kind",
+        SerializedName = @"kind",
+        PossibleTypes = new [] { typeof(string) })]
+        string VcfLicenseKind { get;  }
+        /// <summary>The state of the license provisioning</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The state of the license provisioning",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
+        string VcfLicenseProvisioningState { get;  }
         /// <summary>Azure resource ID of the virtual network</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -1317,6 +1361,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string VcenterCertificateThumbprint { get; set; }
         /// <summary>Optionally, set the vCenter admin password when the private cloud is created</summary>
         System.Security.SecureString VcenterPassword { get; set; }
+        /// <summary>The private cloud license</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense VcfLicense { get; set; }
+        /// <summary>License kind</summary>
+        string VcfLicenseKind { get; set; }
+        /// <summary>The state of the license provisioning</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
+        string VcfLicenseProvisioningState { get; set; }
         /// <summary>Azure resource ID of the virtual network</summary>
         string VirtualNetworkId { get; set; }
         /// <summary>Used for live migration of virtual machines</summary>

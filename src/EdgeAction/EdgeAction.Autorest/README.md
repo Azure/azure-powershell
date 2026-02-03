@@ -29,16 +29,16 @@ For information on how to develop for `Az.EdgeAction`, see [how-to.md](how-to.md
 
 ``` yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 0eb1d5347c69e4138cde6d74e58a98eedcd889b0
+commit: 77a92c31e7758e299d1cfc05bccb136d7f9a201a
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/EdgeActions/preview/2025-09-01-preview/openapi.json 
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/EdgeActions/preview/2025-12-01-preview/openapi.json 
 
 # For new RP, the version is 0.1.0
-module-version: 0.1.0
+module-version: 0.1.1
 # Normally, title is the service name
 title: EdgeAction
 subject-prefix: $(service-name)
@@ -51,6 +51,17 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 directive:
+  # ARM POST operations require an empty body for ASP.NET pipeline compatibility
+  # The getVersionCode and swapDefault operations need {} body even though swagger doesn't define request body
+  - from: source-file-csharp
+    where: $
+    transform: |
+      $ = $.replace(
+        /var request = new global::System\.Net\.Http\.HttpRequestMessage\(Microsoft\.Azure\.PowerShell\.Cmdlets\.EdgeAction\.Runtime\.Method\.Post, _url\);\s*await eventListener\.Signal\(Microsoft\.Azure\.PowerShell\.Cmdlets\.EdgeAction\.Runtime\.Events\.RequestCreated, request\.RequestUri\.PathAndQuery\)/gm,
+        'var request = new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Method.Post, _url);\n                request.Content = new global::System.Net.Http.StringContent("{}", global::System.Text.Encoding.UTF8, "application/json");\n                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery)'
+      );
+      return $;
+
   # Remove the unexpanded parameter set
   # For New-* cmdlets, ViaIdentity is not required
   - where:
@@ -86,6 +97,18 @@ directive:
   - where:
       verb: Deploy
       subject: EdgeActionVersionCode
+    hide: true
+  
+  # Hide GetVersionCode to customize with empty body for ARM POST requirement
+  - where:
+      verb: Get
+      subject: EdgeActionVersionCode
+    hide: true
+  
+  # Hide Switch-AzEdgeActionVersionDefault to customize with empty body for ARM POST requirement
+  - where:
+      verb: Switch
+      subject: EdgeActionVersionDefault
     hide: true
   
   # Remove array variant of SubscriptionId to fix parameter type conflict

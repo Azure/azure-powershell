@@ -195,7 +195,9 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             updateData[0].PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId ?? model.FirstOrDefault().PrimaryUserAssignedIdentityId;
             updateData[0].KeyId = this.KeyId ?? updateData[0].KeyId;
             updateData[0].FederatedClientId = this.FederatedClientId ?? updateData[0].FederatedClientId;
-            updateData[0].SoftDeleteRetentionDays = ComputeSoftDeleteRetentionDays(this.SoftDeleteRetentionDays, this.EnableSoftDelete, updateData[0].SoftDeleteRetentionDays);
+            // Compute SoftDeleteRetentionDays from user input or null to preserve existing value.
+            // Don't pass existing value back since API returns 0 for both null and explicitly disabled.
+            updateData[0].SoftDeleteRetentionDays = ComputeSoftDeleteRetentionDays(this.SoftDeleteRetentionDays, this.EnableSoftDelete);
 
             return updateData;
         }

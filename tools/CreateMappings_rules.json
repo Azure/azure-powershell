@@ -937,10 +937,6 @@
     "alias": "IoTOperationsService"
   },
   {
-    "module": "TrustedSigning",
-    "alias": "TrustedSigning"
-  },
-  {
     "module": "ScVmm",
     "alias": "ScVmm"
   },
@@ -1011,5 +1007,9 @@
   {
     "alias": "EdgeMarketplace",
     "module": "EdgeMarketplace"
+  },
+  {
+    "alias": "ArtifactSigning",
+    "module": "ArtifactSigning"
   }
 ]
