@@ -60,3 +60,18 @@ New-AzPolicyDefinition -Name 'TagsPolicyDefinition' -Policy '{"if":{"value":"[le
 ```
 
 This command creates a policy definition named TagsPolicyDefinition with mode "Indexed" indicating the policy should be evaluated only for resource types that support tags and location.
+
+### Example 6: Create a policy definition inline with version
+```powershell
+New-AzPolicyDefinition -Name 'VMPolicyDefinition' -Policy '{"if":{"field":"type","equals":"Microsoft.Compute/virtualMachines"},"then":{"effect":"deny"}}' -Version '2.0.0'
+```
+
+This command creates a policy definition named VMPolicyDefinition with incremented version 2.0.0.
+The command specifies the policy as a string in valid JSON format.
+
+### Example 7: Create a policy definition with external evaluation enforcement settings
+```powershell
+New-AzPolicyDefinition -Name 'InvokePolicy' -Policy '{"if":{"value":"[claims().isValid]","equals":false},"then":{"effect":"deny"}}' -EndpointSettingKind 'CoinFlip' -ExternalEvaluationEnforcementSettingRoleDefinitionId @( "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c" )
+```
+
+This command creates a policy definition named InvokePolicy with external evaluation enforcement settings to call the CoinFlip endpoint, which requires the specified role definition.

@@ -76,6 +76,13 @@ param(
     # The keys are the parameter names.
     ${Parameter},
 
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Alias('PolicySetDefinitionVersion')]
+    [System.String]
+    # The policy set definition version in #.#.# format.
+    ${Version},
+
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
@@ -98,12 +105,6 @@ param(
     # The metadata describing groups of policy definition references within the policy set definition.
     # To construct, see NOTES section for POLICYDEFINITIONGROUP properties and create a hash table.
     ${PolicyDefinitionGroup},
-
-    [Parameter()]
-    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible} = $false,
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -166,7 +167,6 @@ begin {
     $mapping = @{
         CreateExpanded = 'Az.Policy.private\New-AzPolicySetDefinition_CreateExpanded';
         CreateExpanded1 = 'Az.Policy.private\New-AzPolicySetDefinition_CreateExpanded1';
-        CreateViaIdentityExpanded1 = 'Az.Policy.private\New-AzPolicySetDefinition_CreateViaIdentityExpanded1';
     }
 }
 
@@ -233,11 +233,6 @@ process {
         }
     }
 
-    # remove switch unknown to generated cmdlets
-    if ($calledParameters.BackwardCompatible) {
-        $null = $calledParameters.Remove('BackwardCompatible')
-    }
-
     if ($writeln) {
         Write-Host -ForegroundColor Blue -> $mapping[$calledParameterSet]'(' $calledParameters ')'
     }
@@ -248,24 +243,6 @@ process {
     $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$calledParameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
     $scriptCmd = {& $wrappedCmd @calledParameters}
     $item = Invoke-Command -ScriptBlock $scriptCmd
-
-    # add property bag for backward compatibility with previous SDK cmdlets
-    if ($BackwardCompatible) {
-        $propertyBag = @{
-            Description = $item.Description;
-            DisplayName = $item.DisplayName;
-            Metadata = (ConvertObjectToPSObject $item.Metadata);
-            Parameters = (ConvertObjectToPSObject $item.Parameter);
-            PolicyDefinitions = (ConvertObjectToPSObject $item.PolicyDefinition);
-            PolicyDefinitionGroups = (ConvertObjectToPSObject $item.PolicyDefinitionGroup)
-        }
-
-        $item | Add-Member -MemberType NoteProperty -Name 'Properties' -Value ([PSCustomObject]($propertyBag))
-        $item | Add-Member -MemberType NoteProperty -Name 'ResourceId' -Value $item.Id
-        $item | Add-Member -MemberType NoteProperty -Name 'ResourceName' -Value $item.Name
-        $item | Add-Member -MemberType NoteProperty -Name 'ResourceType' -Value $item.Type
-        $item | Add-Member -MemberType NoteProperty -Name 'PolicySetDefinitionId' -Value $item.Id
-    }
 
     $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
     $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (ConvertObjectToPSObject $item.Parameter) -Force

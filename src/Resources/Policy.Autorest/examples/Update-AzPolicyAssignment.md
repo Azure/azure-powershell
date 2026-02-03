@@ -109,16 +109,3 @@ Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -Override $Over
 The first command creates a location selector specifying locations other than East US or East US 2 and stores in in the $Selector variable.
 The second command creates an override object that will be used to specify that the assigned definition should have a Disabled effect in the locations identified by $Selector.
 The final command updates the policy assignment named VirtualMachinePolicyAssignment with the override specified by $Override.
-
-### Example 10: [Backcompat] Update an enforcementMode
-```powershell
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId -BackwardCompatible
-Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Default
-```
-
-The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet.
-The command stores that object in the $ResourceGroup variable.
-The second command gets the policy assignment named PolicyAssignment by using the Get-AzPolicyAssignment cmdlet.
-The command stores that object in the $PolicyAssignment variable.
-The final command updates the enforcementMode property on the policy assignment on the resource group identified by the **ResourceId** property of $ResourceGroup.

@@ -47,7 +47,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The scope of the policy assignment.
-    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
     ${Scope},
 
     [Parameter(ValueFromPipelineByPropertyName)]
@@ -112,12 +112,12 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
-    [ValidateSet('Default', 'DoNotEnforce')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute('Default', 'DoNotEnforce')]
+    [ValidateSet('Default', 'DoNotEnforce', 'Enroll')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute('Default', 'DoNotEnforce', 'Enroll')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The policy assignment enforcement mode.
-    # Possible values are Default and DoNotEnforce.
+    # Possible values are Default, DoNotEnforce, and Enroll.
     ${EnforcementMode},
 
     [Parameter()]
@@ -166,12 +166,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
     # The resource selector list to filter policies by resource properties.
     ${ResourceSelector},
-
-    [Parameter()]
-    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible} = $false,
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -302,7 +296,6 @@ begin {
     # make mapping table
     $mapping = @{
         CreateExpanded = 'Az.Policy.private\New-AzPolicyAssignment_CreateExpanded';
-        CreateExpanded1 = 'Az.Policy.private\New-AzPolicyAssignment_CreateExpanded1';
     }
 }
 
@@ -417,11 +410,6 @@ process {
         $null = $calledParameters.Remove('IdentityId')
     }
 
-    # remove switch unknown to generated cmdlets
-    if ($calledParameters.BackwardCompatible) {
-        $null = $calledParameters.Remove('BackwardCompatible')
-    }
-
     # choose parameter set to call
     $calledParameterSet = 'CreateExpanded'
 
@@ -434,37 +422,6 @@ process {
     $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$calledParameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
     $scriptCmd = {& $wrappedCmd @calledParameters}
     $item = Invoke-Command -ScriptBlock $scriptCmd
-
-    # add property bag for backward compatibility with previous SDK cmdlets
-    if ($BackwardCompatible) {
-        $propertyBag = @{
-            Description = $item.Description;
-            DisplayName = $item.DisplayName;
-            EnforcementMode = $item.EnforcementMode;
-            Metadata = (ConvertObjectToPSObject $item.Metadata);
-            NonComplianceMessages = (ConvertObjectToPSObject $item.NonComplianceMessage);
-            NotScopes = (ConvertObjectToPSObject $item.NotScope);
-            Parameters = (ConvertObjectToPSObject $item.Parameter);
-            PolicyDefinitionId = $item.PolicyDefinitionId;
-            Scope = $item.Scope
-        }
-
-        if ($item.IdentityType) {
-            $identity = @{
-                IdentityType = $item.IdentityType;
-                PrincipalId = $item.IdentityPrincipalId;
-                TenantId = $item.IdentityTenantId;
-                UserAssignedIdentities = [PSCustomObject]$item.IdentityUserAssignedIdentity
-            }
-            $item | Add-Member -MemberType NoteProperty -Name 'Identity' -Value ([PSCustomObject]($identity))
-        }
-
-        $item | Add-Member -MemberType NoteProperty -Name 'Properties' -Value ([PSCustomObject]($propertyBag))
-        $item | Add-Member -MemberType NoteProperty -Name 'ResourceId' -Value $item.Id
-        $item | Add-Member -MemberType NoteProperty -Name 'ResourceName' -Value $item.Name
-        $item | Add-Member -MemberType NoteProperty -Name 'ResourceType' -Value $item.Type
-        $item | Add-Member -MemberType NoteProperty -Name 'PolicyAssignmentId' -Value $item.Id
-    }
 
     $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
     $item | Add-Member -MemberType NoteProperty -Name 'NonComplianceMessage' -Value (ConvertObjectToPSObject $item.NonComplianceMessage) -Force

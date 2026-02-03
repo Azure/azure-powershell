@@ -15,20 +15,20 @@ The scope of a policy assignment is the part of its ID preceding '/providers/Mic
 
 ### Name (Default)
 ```
-Remove-AzPolicyAssignment -Name <String> [-Scope <String>] [-BackwardCompatible] [-Force]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzPolicyAssignment -Name <String> [-Scope <String>] [-Force] [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Remove-AzPolicyAssignment -Id <String> [-BackwardCompatible] [-Force] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzPolicyAssignment -Id <String> [-Force] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Remove-AzPolicyAssignment -InputObject <IPolicyIdentity> [-BackwardCompatible] [-Force]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzPolicyAssignment -InputObject <IPolicyIdentity> [-Force] [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,35 +60,7 @@ The second command gets the policy assignment at a resource group level, and the
 The **ResourceId** property of $ResourceGroup identifies the resource group.
 The final command removes the policy assignment that the **ResourceId** property of $PolicyAssignment identifies.
 
-### Example 3: [Backcompat] Remove policy assignment by ID
-```powershell
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
-$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId -BackwardCompatible
-Remove-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -Confirm:$false -BackwardCompatible
-True
-```
-
-The first command gets a resource group named ResourceGroup11, and then stores that object in the $ResourceGroup variable.
-The second command gets the policy assignment at a resource group level, and then stores it in the $PolicyAssignment variable.
-The **ResourceId** property of $ResourceGroup identifies the resource group.
-The final command removes the policy assignment that the **ResourceId** property of $PolicyAssignment identifies.
-
 ## PARAMETERS
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -185,7 +157,7 @@ Accept wildcard characters: False
 
 ### -Scope
 The scope of the policy assignment.
-Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
 
 ```yaml
 Type: System.String

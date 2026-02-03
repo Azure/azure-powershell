@@ -27,10 +27,13 @@ Describe 'PolicySetDefinitionCRUD' {
         $actual = Get-AzPolicySetDefinition -Name $policySetDefName
         $expected.Name | Should -Be $actual.Name
         $expected.Id | Should -Be $actual.Id
+        $expected.Version | Should -Be $defaultVersion
+        $expected.Version | Should -Be $actual.Version
+        $expected.Versions | Should -HaveCount 1
+        $expected.Versions | Should -Be $actual.Versions
         $expected.PolicyDefinition | Should -Not -BeNullOrEmpty
         $expected.PolicyDefinition.policyDefinitionId | Should -Be $policyDefinition.Id
         $expected.PolicyDefinition.policyDefinitionReferenceId | Should -Be $policyDefinitionReferenceId
-        $actual.PolicyDefinition | Should -Not -BeNullOrEmpty
         $actual.Metadata | Should -Not -BeNullOrEmpty
         $actual.PolicyDefinitionGroup | Should -BeNull
         $actual.Metadata.$metadataName | Should -Be $metadataValue
@@ -45,6 +48,10 @@ Describe 'PolicySetDefinitionCRUD' {
         $actual = Get-AzPolicySetDefinition -Name $policySetDefName
         $update.DisplayName | Should -Be $actual.DisplayName
         $update.Description | Should -Be $actual.Description
+        $update.Version | Should -Be $defaultVersion
+        $update.Version | Should -Be $actual.Version
+        $update.Versions | Should -HaveCount 1
+        $update.Versions | Should -Be $actual.Versions
         $actual.Metadata | Should -Not -BeNullOrEmpty
         $actual.PolicyDefinitionGroup | Should -BeNull
         $actual.Metadata.$metadataName | Should -Be $metadataValue
@@ -56,6 +63,10 @@ Describe 'PolicySetDefinitionCRUD' {
         $actual.PolicyDefinition | Should -Not -BeNullOrEmpty
         $update.DisplayName | Should -Be $actual.DisplayName
         $update.Description | Should -Be $actual.Description
+        $update.Version | Should -Be $defaultVersion
+        $update.Version | Should -Be $actual.Version
+        $update.Versions | Should -HaveCount 1
+        $update.Versions | Should -Be $actual.Versions
         $actual.Metadata | Should -Not -BeNullOrEmpty
         $actual.PolicyDefinitionGroup | Should -BeNull
         $actual.Metadata.$metadataName | Should -Be $metadataValue
@@ -78,6 +89,30 @@ Describe 'PolicySetDefinitionCRUD' {
         $actual.PolicyRule | Should -BeLike $expected.PolicyRule
         $actual.Parameter | Should -BeLike $expected.Parameter
         $actual.PolicyDefinitionGroup | Should -BeLike $expected.PolicyDefinitionGroup
+        $actual.Version | Should -Be $defaultVersion
+        $actual.Version | Should -Be $expected.Version
+        $actual.Versions | Should -HaveCount 1
+    }
+
+    It 'Make a policy set definition with version from rule file' {
+        # make a policy set definition with version, get it back and validate
+        $expected = New-AzPolicySetDefinition -Name $policySetDefName -PolicyDefinition $policySet -Description $description -Metadata $metadata -Version $someNewVersion
+        $actual = Get-AzPolicySetDefinition -Name $policySetDefName
+        $expected.Name | Should -Be $actual.Name
+        $expected.Id | Should -Be $actual.Id
+        $expected.Version | Should -Be $someNewVersion
+        $expected.Version | Should -Be $actual.Version
+        $actual.Versions | Should -HaveCount 2
+        $expected.PolicyDefinition | Should -Not -BeNullOrEmpty
+        $expected.PolicyDefinition.policyDefinitionId | Should -Be $policyDefinition.Id
+        $expected.PolicyDefinition.policyDefinitionReferenceId | Should -Be $policyDefinitionReferenceId
+        $actual.PolicyDefinition | Should -Not -BeNullOrEmpty
+        $actual.Metadata | Should -Not -BeNullOrEmpty
+        $actual.PolicyDefinitionGroup | Should -BeNull
+        $actual.Metadata.$metadataName | Should -Be $metadataValue
+        $actual.PolicyDefinition | Should -Not -BeNullOrEmpty
+        $actual.PolicyDefinition.policyDefinitionId | Should -Be $expected.PolicyDefinition.policyDefinitionId
+        $actual.PolicyDefinition.policyDefinitionReferenceId | Should -Be $expected.PolicyDefinition.policyDefinitionReferenceId
     }
 
     It 'List builtin and custom' {

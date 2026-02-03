@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Policy
-Module Guid: 1f342329-f9ac-4f53-835f-31c93af7ed11
+Module Guid: 508c3af2-d1e5-47ba-bd7d-0e376e6e6b8e
 Download Help Link: https://learn.microsoft.com/powershell/module/az.policy
 Help Version: 1.0.0.0
 Locale: en-US
@@ -47,7 +47,7 @@ This operation deletes a policy exemption, given its name and the scope it was c
 The scope of a policy exemption is the part of its ID preceding '/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}'.
 
 ### [Remove-AzPolicySetDefinition](Remove-AzPolicySetDefinition.md)
-This operation deletes the policy definition in the given subscription with the given name.
+This operation deletes the policy set definition in the given subscription with the given name.
 
 ### [Update-AzPolicyAssignment](Update-AzPolicyAssignment.md)
 This operation updates a policy assignment with the given scope and name.

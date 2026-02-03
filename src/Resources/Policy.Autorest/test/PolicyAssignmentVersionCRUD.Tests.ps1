@@ -15,30 +15,28 @@ Describe 'PolicyAssignmentVersionCRUD' {
         $testPA5 = Get-ResourceName
         $testPA6 = Get-ResourceName
         $testPA7 = Get-ResourceName
-        $policyDefName = '36fd7371-8eb7-4321-9c30-a7100022d048'
-        $policySetName = '1bb84455-9e6e-434c-8db6-fa6d03a67e87'
         $oldestDefVersion = '1.0.0'
         $oldestDefMinor = '1.0.*'
         $otherDefVersion = '1.1.1'
         $otherDefMinor = '1.1.*'
-        $newestDefVersion = '2.0.0'
+        $newestDefVersion = '2.0.1'
         $newestDefMinor = '2.0.*'
         $oldestSetVersion = '1.0.0'
         $oldestSetMinor = '1.0.*'
         $otherSetVersion = '1.1.1'
         $otherSetMinor = '1.1.*'
-        $newestSetVersion = '2.0.0'
+        $newestSetVersion = '2.0.1'
         $newestSetMinor = '2.0.*'
 
-        $oldestDefinition = Get-AzPolicyDefinition -Name $policyDefName -Version $oldestDefVersion
-        $otherDefinition = Get-AzPolicyDefinition -Name $policyDefName -Version $otherDefVersion
-        $newestDefinition = Get-AzPolicyDefinition -Name $policyDefName -Version $newestDefVersion
-        $baseDefinition = Get-AzPolicyDefinition -Name $policyDefName
+        $oldestDefinition = Get-AzPolicyDefinition -Name $builtInDefName -Version $oldestDefVersion
+        $otherDefinition = Get-AzPolicyDefinition -Name $builtInDefName -Version $otherDefVersion
+        $newestDefinition = Get-AzPolicyDefinition -Name $builtInDefName -Version $newestDefVersion
+        $baseDefinition = Get-AzPolicyDefinition -Name $builtInDefName
 
-        $oldestSetDefinition = Get-AzPolicySetDefinition -Name $policySetName -Version $oldestSetVersion
-        $otherSetDefinition = Get-AzPolicySetDefinition -Name $policySetName -Version $otherSetVersion
-        $newestSetDefinition = Get-AzPolicySetDefinition -Name $policySetName -Version $newestSetVersion
-        $baseSetDefinition = Get-AzPolicySetDefinition -Name $policySetName
+        $oldestSetDefinition = Get-AzPolicySetDefinition -Name $builtInSetName -Version $oldestSetVersion
+        $otherSetDefinition = Get-AzPolicySetDefinition -Name $builtInSetName -Version $otherSetVersion
+        $newestSetDefinition = Get-AzPolicySetDefinition -Name $builtInSetName -Version $newestSetVersion
+        $baseSetDefinition = Get-AzPolicySetDefinition -Name $builtInSetName
     }
 
     It 'Validate initial definitions and set definitions' {
@@ -51,7 +49,7 @@ Describe 'PolicyAssignmentVersionCRUD' {
         $newestDefinition.Name | Should -Be $newestDefVersion
         $newestDefinition.PolicyType | Should -Be 'Builtin'
         $newestDefinition.Version | Should -Be $newestDefVersion
-        $baseDefinition.Name | Should -Be $policyDefName
+        $baseDefinition.Name | Should -Be $builtInDefName
         $baseDefinition.PolicyType | Should -Be 'Builtin'
         $baseDefinition.Version | Should -Be $newestDefVersion
 
@@ -64,7 +62,7 @@ Describe 'PolicyAssignmentVersionCRUD' {
         $newestSetDefinition.Name | Should -Be $newestSetVersion
         $newestSetDefinition.PolicyType | Should -Be 'Builtin'
         $newestSetDefinition.Version | Should -Be $newestSetVersion
-        $baseSetDefinition.Name | Should -Be $policySetName
+        $baseSetDefinition.Name | Should -Be $builtInSetName
         $baseSetDefinition.PolicyType | Should -Be 'Builtin'
         $baseSetDefinition.Version | Should -Be $newestSetVersion
     }
