@@ -1,0 +1,85 @@
+{
+  "resourceType": "codeSigningAccounts",
+  "apiVersion": "2025-10-13",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.artifactsigning"
+  },
+  "commands": [
+    {
+      "name": "Get-AzArtifactSigningAccount",
+      "description": "Get a trusted Signing Account.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.artifactsigning/get-azartifactsigningaccount"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AccountName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a trusted Signing Account.",
+          "parameters": [
+            {
+              "name": "-AccountName",
+              "value": "[Path.accountName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzArtifactSigningAccount",
+      "description": "Delete a trusted signing account.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.artifactsigning/remove-azartifactsigningaccount"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AccountName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a trusted signing account.",
+          "parameters": [
+            {
+              "name": "-AccountName",
+              "value": "[Path.accountName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
