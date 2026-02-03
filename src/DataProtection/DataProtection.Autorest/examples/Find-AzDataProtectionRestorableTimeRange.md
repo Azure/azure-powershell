@@ -13,5 +13,5 @@ ObjectType : RestorableTimeRange
 StartTime  : 2021-03-25T14:27:31.0000000Z
 ```
 
-Set $startTime and $endTime. Fetch the backup instance. Fetch valid time ranges for Backup Instance $instance[0]. Dispaly RestorableTimeRange, note that this can be multiple dicrete ranges.
+Set $startTime and $endTime. Fetch the backup instance. Fetch valid time ranges for Backup Instance $instance[0]. Display RestorableTimeRange, note that this can be multiple discrete ranges.
 
