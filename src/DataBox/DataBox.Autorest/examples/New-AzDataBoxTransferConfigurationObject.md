@@ -3,5 +3,17 @@
 New-AzDataBoxTransferConfigurationObject -Type "TransferAll" -TransferAllDetail @{"IncludeDataAccountType"="StorageAccount";"IncludeTransferAllBlob"= "True"; "IncludeTransferAllFile"="True"}
 ```
 
-Create a in-memory object for export jobs TransferConfiguration 
+```output
+TransferAllDetail    : {
+                         "include": {
+                           "dataAccountType": "StorageAccount",
+                           "transferAllBlobs": true,
+                           "transferAllFiles": true
+                         }
+                       }
+TransferFilterDetail : {
+                       }
+Type                 : TransferAll
+```
 
+Create a in-memory object for export jobs TransferConfiguration 

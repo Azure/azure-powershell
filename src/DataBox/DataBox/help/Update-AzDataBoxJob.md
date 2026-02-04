@@ -8,28 +8,57 @@ schema: 2.0.0
 # Update-AzDataBoxJob
 
 ## SYNOPSIS
-Updates the properties of an existing job.
+Update the properties of an existing job.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
 Update-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
  [-ContactDetail <IContactDetails>] [-ContactDetailContactName <String>] [-ContactDetailMobile <String>]
  [-ContactDetailPhone <String>] [-ContactDetailPhoneExtension <String>]
- [-EncryptionPreferenceDoubleEncryption <DoubleEncryption>]
- [-EncryptionPreferenceHardwareEncryption <HardwareEncryption>] [-IdentityType <String>]
- [-KeyEncryptionKey <IKeyEncryptionKey>] [-PreferencePreferredDataCenterRegion <String[]>]
+ [-EncryptionPreferenceDoubleEncryption <String>] [-EncryptionPreferenceHardwareEncryption <String>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-KeyEncryptionKey <IKeyEncryptionKey>]
+ [-PreferencePreferredDataCenterRegion <String[]>]
  [-ReturnToCustomerPackageDetailCarrierAccountNumber <String>]
  [-ReturnToCustomerPackageDetailCarrierName <String>] [-ReturnToCustomerPackageDetailTrackingId <String>]
- [-ReverseShippingDetail <IShippingAddress>] [-ReverseTransportPreferredShipmentType <TransportShipmentTypes>]
- [-ShippingAddress <IShippingAddress>] [-StorageAccountAccessTierPreference <StorageAccountAccessTier[]>]
- [-Tag <Hashtable>] [-TransportPreferredShipmentType <TransportShipmentTypes>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ReverseShippingDetail <IShippingAddress>] [-ReverseTransportPreferredShipmentType <String>]
+ [-ShippingAddress <IShippingAddress>] [-StorageAccountAccessTierPreference <String[]>] [-Tag <Hashtable>]
+ [-TransportPreferredShipmentType <String>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaJsonString
+```
+Update-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzDataBoxJob -InputObject <IDataBoxIdentity> [-IfMatch <String>] [-ContactDetail <IContactDetails>]
+ [-ContactDetailContactName <String>] [-ContactDetailMobile <String>] [-ContactDetailPhone <String>]
+ [-ContactDetailPhoneExtension <String>] [-EncryptionPreferenceDoubleEncryption <String>]
+ [-EncryptionPreferenceHardwareEncryption <String>] [-EnableSystemAssignedIdentity <Boolean>]
+ [-KeyEncryptionKey <IKeyEncryptionKey>] [-PreferencePreferredDataCenterRegion <String[]>]
+ [-ReturnToCustomerPackageDetailCarrierAccountNumber <String>]
+ [-ReturnToCustomerPackageDetailCarrierName <String>] [-ReturnToCustomerPackageDetailTrackingId <String>]
+ [-ReverseShippingDetail <IShippingAddress>] [-ReverseTransportPreferredShipmentType <String>]
+ [-ShippingAddress <IShippingAddress>] [-StorageAccountAccessTierPreference <String[]>] [-Tag <Hashtable>]
+ [-TransportPreferredShipmentType <String>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Updates the properties of an existing job.
+Update the properties of an existing job.
 
 ## EXAMPLES
 
@@ -37,21 +66,7 @@ Updates the properties of an existing job.
 ```powershell
 $keyEncryptionDetails = New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "UserAssigned"; UserAssignedResourceId = "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"} -KekUrl "keyIdentifier" -KekVaultResourceId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName"
 
-$DebugPreference = "Continue"
-
-# You can use `$DebugPreference = "Continue"`, with any example/usecase to get exact details of error in below format when update command fails.
-# {
-#   "Error": {
-#     "Code": "StaticValidationGenericCountryCodeHasInvalidLength",
-#     "Message": "The attribute country code does not meet length constraints.\r\nEnter a value with 2 characters for country code.",
-#     "Details": [
-#       null
-#     ],
-#     "Target": null
-#   }
-# } 
-
-Update-AzDataBoxJob -Name "powershell10" -ResourceGroupName "resourceGroupName" -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -IdentityType "UserAssigned" -UserAssignedIdentity @{"/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName" = @{}}
+Update-AzDataBoxJob -Name "powershell10" -ResourceGroupName "resourceGroupName" -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -EnableSystemAssignedIdentity $true -UserAssignedIdentity "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"
 
 $keyEncryptionDetails
 ```
@@ -70,13 +85,13 @@ Update databox job encryption from microsoft managed to customer managed with us
 
 ### Example 2: Update databox job encryption from microsoft managed to customer managed with system identities in 2 updates
 ```powershell
-$databoxUpdate = Update-AzDataBoxJob -Name "pwshTestSAssigned" -ResourceGroupName "resourceGroupName" -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -IdentityType "SystemAssigned"
+$databoxUpdate = Update-AzDataBoxJob -Name "pwshTestSAssigned" -ResourceGroupName "resourceGroupName" -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -EnableSystemAssignedIdentity $true
 
 $databoxUpdate.Identity
 
 $keyEncryptionDetails = New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "SystemAssigned"} -KekUrl "keyIdentifier" -KekVaultResourceId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName"
 
-$databoxUpdateWithCMK = Update-AzDataBoxJob -Name "pwshTestSAssigned" -ResourceGroupName "resourceGroupName" -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -KeyEncryptionKey $keyEncryptionDetails
+$databoxUpdateWithCMK = Update-AzDataBoxJob -Name "pwshTestSAssigned" -ResourceGroupName "resourceGroupName" -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -KeyEncryptionKey $keyEncryptionDetails
 
 $databoxUpdateWithCMK.Identity
 
@@ -105,7 +120,7 @@ For any failure re-run with $DebugPreference = "Continue" as mentioned in exampl
 $contactDetail = New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") -Phone "1234567891"
 $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
 
-Update-AzDataBoxJob -Name "pwshTestSAssigned" -ResourceGroupName "resourceGroupName" -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -IdentityType "SystemAssigned,UserAssigned" -UserAssignedIdentity @{"/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName" = @{}}
+Update-AzDataBoxJob -Name "pwshTestSAssigned" -ResourceGroupName "resourceGroupName" -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -EnableSystemAssignedIdentity $true -UserAssignedIdentity "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"
 ```
 
 Update databox job from system assigned to user assigned with customer managed key encryption.
@@ -130,11 +145,10 @@ Accept wildcard characters: False
 
 ### -ContactDetail
 Contact details for notification and shipping.
-To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IContactDetails
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IContactDetails
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -149,7 +163,7 @@ Contact name of the person.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -164,7 +178,7 @@ Mobile number of the contact person.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -179,7 +193,7 @@ Phone number of the contact person.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -194,7 +208,7 @@ Phone extension number of the contact person.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -220,12 +234,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EncryptionPreferenceDoubleEncryption
 Defines secondary layer of software-based encryption enablement.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -239,23 +268,8 @@ Accept wildcard characters: False
 Defines Hardware level encryption (Only for disk)
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.HardwareEncryption
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Identity type
-
-```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -281,13 +295,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyEncryptionKey
-Key encryption key for the job.
-To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IKeyEncryptionKey
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataBoxIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyEncryptionKey
+Key encryption key for the job.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IKeyEncryptionKey
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -303,7 +361,7 @@ job names must be between 3 and 24 characters in length and use any alphanumeric
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: JobName
 
 Required: True
@@ -333,7 +391,7 @@ Preferred data center region.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -348,7 +406,7 @@ The Resource Group Name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -363,7 +421,7 @@ Carrier Account Number of customer for customer disk.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -378,7 +436,7 @@ Name of the carrier.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -393,7 +451,7 @@ Tracking Id of shipment.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -405,11 +463,10 @@ Accept wildcard characters: False
 
 ### -ReverseShippingDetail
 Shipping address where customer wishes to receive the device.
-To construct, see NOTES section for REVERSESHIPPINGDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IShippingAddress
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -423,8 +480,8 @@ Accept wildcard characters: False
 Indicates Shipment Logistics type that the customer preferred.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -436,11 +493,10 @@ Accept wildcard characters: False
 
 ### -ShippingAddress
 Shipping address of the customer.
-To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IShippingAddress
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -454,8 +510,8 @@ Accept wildcard characters: False
 Preferences related to the Access Tier of storage accounts.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StorageAccountAccessTier[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -470,7 +526,7 @@ The Subscription Id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -486,7 +542,7 @@ These tags can be used in viewing and grouping this resource (across resource gr
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -500,8 +556,8 @@ Accept wildcard characters: False
 Indicates Shipment Logistics type that the customer preferred.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -512,11 +568,12 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-User Assigned Identities
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -562,9 +619,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataBoxIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IJobResource
 
 ## NOTES
 

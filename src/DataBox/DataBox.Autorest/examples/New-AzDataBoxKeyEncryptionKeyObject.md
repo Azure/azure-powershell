@@ -4,11 +4,15 @@ New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty
 ```
 
 ```output
-KekType         KekUrl                                           KekVaultResourceId
--------         ------                                           ------------------
-CustomerManaged keyIdentifier /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName
+IdentityProperty   : {
+                       "userAssigned": {
+                         "resourceId": "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"
+                       },
+                       "type": "UserAssigned"
+                     }
+KekType            : CustomerManaged
+KekUrl             : keyIdentifier
+KekVaultResourceId : /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName
 ```
 
 Create a in-memory object for KeyEncryptionKey 
-
-

@@ -1,6 +1,6 @@
 ### Example 1: Storage account in-memory object 
 ```powershell
-New-AzDataBoxStorageAccountDetailsObject -DataAccountType "StorageAccount" -StorageAccountId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/storageAccountName"
+New-AzDataBoxStorageAccountDetailsObject -StorageAccountId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/storageAccountName"
 ```
 
 ```output
@@ -10,4 +10,3 @@ StorageAccount                /subscriptions/SubscriptionId/resourceGroups/resou
 ```
 
 Storage account in-memory object 
-

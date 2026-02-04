@@ -21,12 +21,13 @@ Create an in-memory object for DataBoxHeavyJobDetails.
 Create an in-memory object for DataBoxHeavyJobDetails.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxHeavyJobDetails
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.DataBoxHeavyJobDetails
 .Link
-https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxHeavyJobDetailsObject
+https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxheavyjobdetailsobject
 #>
 function New-AzDataBoxHeavyJobDetailsObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxHeavyJobDetails')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.DataBoxHeavyJobDetails')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,37 +35,33 @@ function New-AzDataBoxHeavyJobDetailsObject {
         [string]
         $DevicePassword,
         [Parameter(Mandatory, HelpMessage="Contact details for notification and shipping.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IContactDetails]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IContactDetails]
         $ContactDetail,
         [Parameter(HelpMessage="Details of the data to be exported from azure.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataExportDetails[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataExportDetails[]]
         $DataExportDetail,
         [Parameter(HelpMessage="Details of the data to be imported into azure.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataImportDetails[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataImportDetails[]]
         $DataImportDetail,
         [Parameter(HelpMessage="The expected size of the data, which needs to be transferred in this job, in terabytes.")]
         [int]
         $ExpectedDataSizeInTeraByte,
         [Parameter(HelpMessage="Details about which key encryption type is being used.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IKeyEncryptionKey]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IKeyEncryptionKey]
         $KeyEncryptionKey,
         [Parameter(HelpMessage="Preferences for the order.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IPreferences]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IPreferences]
         $Preference,
         [Parameter(HelpMessage="Optional Reverse Shipping details for order.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IReverseShippingDetails]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IReverseShippingDetails]
         $ReverseShippingDetail,
         [Parameter(HelpMessage="Shipping address of the customer.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress]
-        $ShippingAddress,
-        [Parameter(Mandatory, HelpMessage="Indicates the type of job details.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator])]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator]
-        $Type
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IShippingAddress]
+        $ShippingAddress
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxHeavyJobDetails]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.DataBoxHeavyJobDetails]::New()
 
         if ($PSBoundParameters.ContainsKey('DevicePassword')) {
             $Object.DevicePassword = $DevicePassword
@@ -92,9 +89,6 @@ function New-AzDataBoxHeavyJobDetailsObject {
         }
         if ($PSBoundParameters.ContainsKey('ShippingAddress')) {
             $Object.ShippingAddress = $ShippingAddress
-        }
-        if ($PSBoundParameters.ContainsKey('Type')) {
-            $Object.Type = $Type
         }
         return $Object
     }

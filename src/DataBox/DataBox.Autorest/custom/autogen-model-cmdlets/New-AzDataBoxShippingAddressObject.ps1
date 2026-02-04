@@ -21,18 +21,19 @@ Create an in-memory object for ShippingAddress.
 Create an in-memory object for ShippingAddress.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShippingAddress
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ShippingAddress
 .Link
-https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxShippingAddressObject
+https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxshippingaddressobject
 #>
 function New-AzDataBoxShippingAddressObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShippingAddress')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ShippingAddress')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Type of address.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressType]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.PSArgumentCompleterAttribute("None", "Residential", "Commercial")]
+        [string]
         $AddressType,
         [Parameter(HelpMessage="Name of the City.")]
         [string]
@@ -70,7 +71,7 @@ function New-AzDataBoxShippingAddressObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShippingAddress]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ShippingAddress]::New()
 
         if ($PSBoundParameters.ContainsKey('AddressType')) {
             $Object.AddressType = $AddressType

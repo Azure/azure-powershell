@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxManagedDiskDetailsObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxmanageddiskdetailsobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for ManagedDiskDetails.
 ## SYNTAX
 
 ```
-New-AzDataBoxManagedDiskDetailsObject -DataAccountType <DataAccountType> -ResourceGroupId <String>
- -StagingStorageAccountId <String> [-SharePassword <String>] [<CommonParameters>]
+New-AzDataBoxManagedDiskDetailsObject -ResourceGroupId <String> -StagingStorageAccountId <String>
+ [-SharePassword <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,33 +24,18 @@ Create an in-memory object for ManagedDiskDetails.
 
 ### Example 1: ManagedDisk object 
 ```powershell
-New-AzDataBoxManagedDiskDetailsObject -ResourceGroupId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName" -StagingStorageAccountId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/stagingAccountName" -DataAccountType "ManagedDisk"
+New-AzDataBoxManagedDiskDetailsObject -ResourceGroupId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName" -StagingStorageAccountId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/stagingAccountName"
 ```
 
 ```output
-DataAccountType SharePassword ResourceGroupId                                                StagingStorageAccountId                                                                                                      
---------------- ------------- ---------------                                                -----------------------                                                                                                      
-ManagedDisk                   /subscriptions/SubscriptionId/resourceGroups/resourceGroupName /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/stagingAccountName
+DataAccountType ResourceGroupId                                                SharePassword StagingStorageAccountId
+--------------- ---------------                                                ------------- -----------------------
+ManagedDisk     /subscriptions/SubscriptionId/resourceGroups/resourceGroupName               /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/st
 ```
 
 Creates a in-memory managed disk object
 
 ## PARAMETERS
-
-### -DataAccountType
-Account Type of the data to be transferred.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ResourceGroupId
 Resource Group Id of the compute disks.
@@ -110,7 +95,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ManagedDiskDetails
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ManagedDiskDetails
 
 ## NOTES
 

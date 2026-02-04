@@ -4,10 +4,12 @@ New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") 
 ```
 
 ```output
-ContactName EmailList            Mobile Phone      PhoneExtension
------------ ---------            ------ -----      --------------
-random      {emailId}        1234567891
+ContactName            : random
+EmailList              : {emailId}
+Mobile                 :
+NotificationPreference :
+Phone                  : 1234567891
+PhoneExtension         :
 ```
 
-Create a in-memory object for ContactDetails 
-
+Create a in-memory object for ContactDetails
