@@ -41,15 +41,17 @@ Get-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountNa
 ```
 
 ```output
-StorageAccountName                            : mystorageaccount
-ResourceGroupName                             : myresourcegroup
-ShareDeleteRetentionPolicy.Enabled            : True
-ShareDeleteRetentionPolicy.Days               : 3
-ProtocolSettings.Smb.Multichannel.Enabled     : False
-ProtocolSettings.Smb.Versions                 : {SMB2.1, SMB3.0, SMB3.1.1}
-ProtocolSettings.Smb.AuthenticationMethods    : {Kerberos, NTLMv2}
-ProtocolSettings.Smb.KerberosTicketEncryption : {RC4-HMAC, AES-256}
-ProtocolSettings.Smb.ChannelEncryption        : {AES-128-CCM, AES-128-GCM, AES-256-GCM}
+StorageAccountName                                : mystorageaccount
+ResourceGroupName                                 : myresourcegroup
+ShareDeleteRetentionPolicy.Enabled                : True
+ShareDeleteRetentionPolicy.Days                   : 3
+ProtocolSettings.Smb.Multichannel.Enabled         : False
+ProtocolSettings.Smb.Versions                     : {SMB2.1, SMB3.0, SMB3.1.1}
+ProtocolSettings.Smb.AuthenticationMethods        : {Kerberos, NTLMv2}
+ProtocolSettings.Smb.KerberosTicketEncryption     : {RC4-HMAC, AES-256}
+ProtocolSettings.Smb.ChannelEncryption            : {AES-128-CCM, AES-128-GCM, AES-256-GCM}
+ProtocolSettings.Smb.EncryptionInTransit.Required : True 
+ProtocolSettings.Nfs.EncryptionInTransit.Required :
 ```
 
 This command gets the File services property of a specified Storage Account.
