@@ -427,9 +427,13 @@ function Convert-AstLiteral {
                 throw "Unsupported variable path for safe conversion: $($_.VariablePath.ToString()). Unable to parse PSCustomObject."
             }
         }
+        # Handles the case where a literal gets tokenized as a MemberExpressionAst - returns the string representation of the token
+        { $_.GetType() -eq [MemberExpressionAst] } {
+            return $_.Extent.Text
+        }
         default {
             # Anything else is not allowed
-            throw "Unsupported AST node for safe conversion: $($_.GetType().Name). Unable to parse PSCustomObject."
+            throw "Unsupported AST node for safe conversion: $($_.GetType().Name). Value: $($_.ToString()). Unable to parse PSCustomObject."
         }
     }
 }
@@ -449,11 +453,6 @@ function ConvertTo-HashtableSafely {
     $ast = [Parser]::ParseInput($fixedInput, [ref]$tokens, [ref]$errors)
 
     if ($errors -and $errors.Count -gt 0) {
-        # if the error is due to colon usage, try ConvertFrom-JsonSafe
-        if ($errors[0].Message -like "*Missing statement after `'=`' in hash literal*") {
-            return $InputObject.Substring(1) | ConvertTo-Json -Depth 10 | ConvertFrom-JsonSafe -AsHashtable
-        }
-
         throw "Invalid PSCustomObject or hashtable literal: $($errors[0].Message)"
     }
 
@@ -596,20 +595,21 @@ function ResolvePolicyMetadataParameter {
         [bool]$Debug = $false
     )
 
-    if ($metadataValue -is [hashtable]) {
-        return $metadataValue
+
+    if ($MetadataValue -is [hashtable]) {
+        return $MetadataValue
     }
 
-    if ([System.String]::IsNullOrEmpty($metadataValue)) {
-        return $metadataValue
+    if ([System.String]::IsNullOrEmpty($MetadataValue)) {
+        return $MetadataValue
     }
 
     # This function will usually be passed a string, but can have an issue if passed a PSCustomObject that isn't converted to string
     if ($MetadataValue -isnot [string]) {
-        $metadataValue = $metadataValue | ConvertTo-Json -Depth 30
+        $MetadataValue = $MetadataValue | ConvertTo-Json -Depth 30
     }
 
-    $metadata = (GetFileUriOrStringParameterValue $metadataValue).Trim()
+    $metadata = (GetFileUriOrStringParameterValue $MetadataValue).Trim()
     if ($debug) {
         Write-Host -ForegroundColor Cyan Metadata: $metadata
     }
