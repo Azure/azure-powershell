@@ -1,5 +1,6 @@
 ﻿function Initialize-AzDataProtectionRestoreRequest
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]
 	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest')]
     [CmdletBinding(PositionalBinding=$false, DefaultParameterSetName='AlternateLocationFullRecovery')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Initializes Restore Request object for triggering restore on a protected backup instance.')]

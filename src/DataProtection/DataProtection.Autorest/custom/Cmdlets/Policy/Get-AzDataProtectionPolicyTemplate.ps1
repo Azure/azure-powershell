@@ -1,6 +1,7 @@
 ﻿
 
 function Get-AzDataProtectionPolicyTemplate {
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]
 	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Gets default policy template for a selected datasource type.')]
