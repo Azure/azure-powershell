@@ -25,11 +25,11 @@ Validates whether Cross Region Restore can be triggered for DataSource.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IValidateCrossRegionRestoreRequestObject
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IValidateCrossRegionRestoreRequestObject
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IOperationJobExtendedInfo
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IOperationJobExtendedInfo
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,12 +42,13 @@ CROSSREGIONRESTOREDETAIL <ICrossRegionRestoreDetails>: Cross region restore deta
 INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [BackupInstanceName <String>]: The name of the backup instance.
   [BackupPolicyName <String>]: 
+  [DeletedVaultName <String>]: The name of the DeletedBackupVaultResource
   [Id <String>]: Resource identity path
   [JobId <String>]: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  [Location <String>]: The location in which uniqueness will be verified.
+  [Location <String>]: The name of the Azure region.
   [OperationId <String>]: 
   [RecoveryPointId <String>]: 
-  [RequestName <String>]: 
+  [RequestName <String>]: The name of the DppBaseResource
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceGuardProxyName <String>]: name of the resource guard proxy
   [ResourceGuardsName <String>]: The name of ResourceGuard
@@ -84,7 +85,7 @@ RESTOREREQUESTOBJECT <IAzureBackupRestoreRequest>: Gets or sets the restore requ
 https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancecrossregionrestore
 #>
 function Test-AzDataProtectionBackupInstanceCrossRegionRestore {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IOperationJobExtendedInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IOperationJobExtendedInfo])]
 [CmdletBinding(DefaultParameterSetName='ValidateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Validate', Mandatory)]
@@ -122,7 +123,7 @@ param(
     [Parameter(ParameterSetName='Validate', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ValidateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IValidateCrossRegionRestoreRequestObject]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IValidateCrossRegionRestoreRequestObject]
     # Cross Region Restore Request Object
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -130,7 +131,7 @@ param(
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
     [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.ICrossRegionRestoreDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ICrossRegionRestoreDetails]
     # Cross region restore details.
     # To construct, see NOTES section for CROSSREGIONRESTOREDETAIL properties and create a hash table.
     ${CrossRegionRestoreDetail},
@@ -138,7 +139,7 @@ param(
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
     [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IAzureBackupRestoreRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IAzureBackupRestoreRequest]
     # Gets or sets the restore request object.
     # To construct, see NOTES section for RESTOREREQUESTOBJECT properties and create a hash table.
     ${RestoreRequestObject},
