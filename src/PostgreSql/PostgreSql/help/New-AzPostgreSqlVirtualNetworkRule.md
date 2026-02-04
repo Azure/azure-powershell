@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPostgreSqlVirtualNetworkRule
 
 ## SYNOPSIS
-Creates or updates an existing virtual network rule.
+Create an existing virtual network rule.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzPostgreSqlVirtualNetworkRule -Name <String> -ResourceGroupName <String> -S
 ```
 
 ## DESCRIPTION
-Creates or updates an existing virtual network rule.
+Create an existing virtual network rule.
 
 ## EXAMPLES
 
@@ -229,7 +229,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IVirtualNetworkRule
+### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IVirtualNetworkRule
 
 ## NOTES
 

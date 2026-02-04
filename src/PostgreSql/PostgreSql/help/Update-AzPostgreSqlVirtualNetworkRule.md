@@ -8,15 +8,43 @@ schema: 2.0.0
 # Update-AzPostgreSqlVirtualNetworkRule
 
 ## SYNOPSIS
-Creates or updates an existing virtual network rule.
+Update an existing virtual network rule.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### UpdateExpanded1 (Default)
 ```
 Update-AzPostgreSqlVirtualNetworkRule -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] -SubnetId <String> [-IgnoreMissingVnetServiceEndpoint] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityServerExpanded1
+```
+Update-AzPostgreSqlVirtualNetworkRule -Name <String> -ServerInputObject <IPostgreSqlIdentity>
+ -SubnetId <String> [-IgnoreMissingVnetServiceEndpoint] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityServerExpanded
+```
+Update-AzPostgreSqlVirtualNetworkRule -Name <String> -ServerInputObject <IPostgreSqlIdentity>
+ -SubnetId <String> [-IgnoreMissingVnetServiceEndpoint] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateExpanded
+```
+Update-AzPostgreSqlVirtualNetworkRule -Name <String> -ResourceGroupName <String> -ServerName <String>
+ [-SubscriptionId <String>] -SubnetId <String> [-IgnoreMissingVnetServiceEndpoint] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded1
+```
+Update-AzPostgreSqlVirtualNetworkRule -InputObject <IPostgreSqlIdentity> -SubnetId <String>
+ [-IgnoreMissingVnetServiceEndpoint] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -27,7 +55,7 @@ Update-AzPostgreSqlVirtualNetworkRule -InputObject <IPostgreSqlIdentity> -Subnet
 ```
 
 ## DESCRIPTION
-Creates or updates an existing virtual network rule.
+Update an existing virtual network rule.
 
 ## EXAMPLES
 
@@ -110,11 +138,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -129,7 +156,7 @@ The name of the virtual network rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded1, UpdateViaIdentityServerExpanded1, UpdateViaIdentityServerExpanded, UpdateExpanded
 Aliases: VirtualNetworkRuleName
 
 Required: True
@@ -175,7 +202,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded1, UpdateExpanded
 Aliases:
 
 Required: True
@@ -185,12 +212,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ServerInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
+Parameter Sets: UpdateViaIdentityServerExpanded1, UpdateViaIdentityServerExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ServerName
 The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded1, UpdateExpanded
 Aliases:
 
 Required: True
@@ -220,7 +262,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded1, UpdateExpanded
 Aliases:
 
 Required: False
@@ -270,7 +312,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IVirtualNetworkRule
+### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IVirtualNetworkRule
 
 ## NOTES
 

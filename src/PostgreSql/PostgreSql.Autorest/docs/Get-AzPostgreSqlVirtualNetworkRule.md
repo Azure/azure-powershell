@@ -30,6 +30,12 @@ Get-AzPostgreSqlVirtualNetworkRule -InputObject <IPostgreSqlIdentity> [-DefaultP
  [<CommonParameters>]
 ```
 
+### GetViaIdentityServer
+```
+Get-AzPostgreSqlVirtualNetworkRule -Name <String> -ServerInputObject <IPostgreSqlIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets a virtual network rule.
 
@@ -95,7 +101,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -114,7 +119,7 @@ The name of the virtual network rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityServer
 Aliases: VirtualNetworkRuleName
 
 Required: True
@@ -152,6 +157,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServerInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
+Parameter Sets: GetViaIdentityServer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -194,7 +214,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IVirtualNetworkRule
+### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IVirtualNetworkRule
 
 ## NOTES
 

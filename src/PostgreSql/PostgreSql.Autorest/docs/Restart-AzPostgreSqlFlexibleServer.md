@@ -39,6 +39,20 @@ Restart-AzPostgreSqlFlexibleServer -InputObject <IPostgreSqlIdentity> [-Failover
  [<CommonParameters>]
 ```
 
+### RestartViaJsonFilePath
+```
+Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### RestartViaJsonString
+```
+Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Restarts a server.
 
@@ -123,7 +137,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -137,12 +150,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Restart operation
+
+```yaml
+Type: System.String
+Parameter Sets: RestartViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Restart operation
+
+```yaml
+Type: System.String
+Parameter Sets: RestartViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart, RestartExpanded
+Parameter Sets: Restart, RestartExpanded, RestartViaJsonFilePath, RestartViaJsonString
 Aliases: ServerName
 
 Required: True
@@ -169,10 +212,9 @@ Accept wildcard characters: False
 
 ### -Parameter
 Represents server restart parameters.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameter
+Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IRestartParameter
 Parameter Sets: Restart, RestartViaIdentity
 Aliases:
 
@@ -204,7 +246,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart, RestartExpanded
+Parameter Sets: Restart, RestartExpanded, RestartViaJsonFilePath, RestartViaJsonString
 Aliases:
 
 Required: True
@@ -234,7 +276,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart, RestartExpanded
+Parameter Sets: Restart, RestartExpanded, RestartViaJsonFilePath, RestartViaJsonString
 Aliases:
 
 Required: False
@@ -280,9 +322,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameter
-
 ### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IRestartParameter
 
 ## OUTPUTS
 

@@ -106,7 +106,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer
+### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IServer
 
 ## NOTES
 

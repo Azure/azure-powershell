@@ -99,10 +99,9 @@ Accept wildcard characters: False
 
 ### -Master
 The source server object to create replica from.
-To construct, see NOTES section for MASTER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer
+Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IServer
 Parameter Sets: (All)
 Aliases: InputObject
 
@@ -225,11 +224,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer
+### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IServer
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer
+### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IServer
 
 ## NOTES
 
