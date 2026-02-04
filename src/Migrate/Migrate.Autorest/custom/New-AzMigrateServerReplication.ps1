@@ -22,6 +22,11 @@ The New-AzMigrateServerReplication cmdlet starts the replication for a particula
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigrateserverreplication
 #>
 function New-AzMigrateServerReplication {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessage("**********************************************************************************************`n
+  * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
+  * At least one change applies to this cmdlet.                                                     *`n
+  * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
+  ***************************************************************************************************")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IJob])]
     [CmdletBinding(DefaultParameterSetName = 'ByIdDefaultUser', PositionalBinding = $false)]
     param(
