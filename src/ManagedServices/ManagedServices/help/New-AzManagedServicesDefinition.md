@@ -8,10 +8,11 @@ schema: 2.0.0
 # New-AzManagedServicesDefinition
 
 ## SYNOPSIS
-Creates or updates a registration definition.
+Create a registration definition.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzManagedServicesDefinition -Name <String> [-Scope <String>] [-Authorization <IAuthorization[]>]
  [-Description <String>] [-EligibleAuthorization <IEligibleAuthorization[]>] [-ManagedByTenantId <String>]
@@ -20,8 +21,22 @@ New-AzManagedServicesDefinition -Name <String> [-Scope <String>] [-Authorization
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzManagedServicesDefinition -Name <String> [-Scope <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzManagedServicesDefinition -Name <String> [-Scope <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates a registration definition.
+Create a registration definition.
 
 ## EXAMPLES
 
@@ -76,11 +91,10 @@ Accept wildcard characters: False
 
 ### -Authorization
 The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
-To construct, see NOTES section for AUTHORIZATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IAuthorization[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -111,7 +125,7 @@ The description of the registration definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -123,14 +137,43 @@ Accept wildcard characters: False
 
 ### -EligibleAuthorization
 The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
-To construct, see NOTES section for ELIGIBLEAUTHORIZATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IEligibleAuthorization[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -142,7 +185,7 @@ The identifier of the managedBy tenant.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -187,7 +230,7 @@ Azure Marketplace plan name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -202,7 +245,7 @@ Azure Marketplace product code.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -217,7 +260,7 @@ Azure Marketplace publisher ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -232,7 +275,7 @@ Azure Marketplace plan's version.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -247,7 +290,7 @@ The name of the registration definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -310,7 +353,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IRegistrationDefinition
 
 ## NOTES
 
