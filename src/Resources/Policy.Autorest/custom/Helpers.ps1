@@ -515,48 +515,20 @@ function Get-UriContent {
     }
 }
 
-# Checks if a given path is within the system's max path length (Windows, Linux, MacOS)
-function Test-PathLength {
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
-    param(
-        [Parameter(Mandatory)]
-        [string]$Path
-    )
-
-    $windowsMax = 260
-    $windowsMaxLong = 32767
-    $linuxMax = 4096
-    $macMax = 1024
-    $maxPath = 0
-
-    if ($IsWindows) {
-        $maxPath = $windowsMax
-        try {
-            $reg = Get-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -ErrorAction Stop
-            if ($reg.LongPathsEnabled -eq 1) { $maxPath = $windowsMaxLong }
-        } catch {}
-    } elseif ($IsLinux) {
-        $maxPath = $linuxMax
-    } elseif ($IsMacOS) {
-        $maxPath = $macMax
-    } else {
-        $maxPath = 260
-    }
-
-    return $Path.Length -le $maxPath
-}
-
 # if the given string is a file path or URI, returns the contents of the file or web page
 # otherwise returns the original string
 function GetFileUriOrStringParameterValue {
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     param([string]$parameterValue)
 
-    # check path length first to prevent exceptions on long input
-    if (Test-PathLength -Path (Join-Path $PSScriptRoot $parameterValue)) {
+    # Test-Path can throw on bad input, but we just want to move to the next check if it does 
+    try {
         if (Test-Path $parameterValue) {
             return Get-Content $parameterValue | Out-String
         }
+    }
+    catch {
+        # if error, want to handle exactly same as path not being valid by continuing
     }
 
     if (Test-Uri $parameterValue) {
