@@ -22,14 +22,14 @@ function Undo-AzDataProtectionVaultDeletion
         [System.String]
         ${Location},
 
-        [Parameter(Mandatory=$false, HelpMessage='The identityType can take values - "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned", "None".')]
-        [System.String]
-        ${IdentityType},
+        [Parameter(Mandatory=$false, HelpMessage='Determines whether to enable a system-assigned identity for the resource.')]
+        [System.Management.Automation.SwitchParameter]
+        ${EnableSystemAssignedIdentity},
 
-        [Parameter(Mandatory=$false, HelpMessage='Gets or sets the user assigned identities.')]
-        [Alias('AssignUserIdentity')]
-        [System.Collections.Hashtable]
-        ${IdentityUserAssignedIdentity},
+        [Parameter(Mandatory=$false, HelpMessage='The array of user assigned identities associated with the resource.
+            The elements in array will be ARM resource ids in the form: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}."')]
+        [System.String[]]
+        ${UserAssignedIdentity},
         
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -184,19 +184,19 @@ function Undo-AzDataProtectionVaultDeletion
                 $createVaultParams.Add("SubscriptionId", $SubscriptionId)
             }
 
-            # Set identity type (default to SystemAssigned if not specified)
-            if($PSBoundParameters.ContainsKey("IdentityType"))
+            # Set identity - default to SystemAssigned if not specified
+            if($PSBoundParameters.ContainsKey("EnableSystemAssignedIdentity"))
             {
-                $createVaultParams.Add("IdentityType", $IdentityType)
+                $createVaultParams.Add("EnableSystemAssignedIdentity", $EnableSystemAssignedIdentity)
             }
             else
             {
-                $createVaultParams.Add("IdentityType", "SystemAssigned")
+                $createVaultParams.Add("EnableSystemAssignedIdentity", $true)
             }
 
-            if($PSBoundParameters.ContainsKey("IdentityUserAssignedIdentity"))
+            if($PSBoundParameters.ContainsKey("UserAssignedIdentity"))
             {
-                $createVaultParams.Add("IdentityUserAssignedIdentity", $IdentityUserAssignedIdentity)
+                $createVaultParams.Add("UserAssignedIdentity", $UserAssignedIdentity)
             }
 
             if($PSBoundParameters.ContainsKey("DefaultProfile"))

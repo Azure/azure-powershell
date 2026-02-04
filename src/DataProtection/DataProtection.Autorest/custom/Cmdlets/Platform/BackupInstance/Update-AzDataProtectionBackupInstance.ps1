@@ -20,6 +20,7 @@ function Update-AzDataProtectionBackupInstance
         ${VaultName},
 
         [Parameter(Mandatory, HelpMessage='Unique Name of protected backup instance')]
+        [Alias('BackupInstanceName')]
         [System.String]
         ${Name},
 
