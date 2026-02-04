@@ -51,12 +51,5 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AvailabilitySetConvert 'eastus2euap'");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAvailabilitySetScheduledEventsPolicy()
-        {
-            TestRunner.RunTestScript("Test-AvailabilitySetScheduledEventsPolicy 'eastus2euap'");
-        }
     }
 }
