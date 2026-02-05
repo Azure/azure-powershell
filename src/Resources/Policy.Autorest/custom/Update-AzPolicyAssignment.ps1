@@ -360,6 +360,10 @@ process {
         $calledParameters.Metadata = $existing.Metadata
     }
 
+    if ($calledParameters.Metadata -is [PSCustomObject]) {
+        $calledParameters.Metadata = $calledParameters.Metadata | ConvertTo-Json -Depth 30
+    }
+
     if (!$calledParameters.EnforcementMode -and $calledParameters.EnforcementMode) {
         $calledParameters.EnforcementMode = $existing.EnforcementMode
     }
