@@ -10,6 +10,9 @@
 - Quick start templates
 - Versioning and publishing AzDev module
 
+## 2026/1/29
+- Feature: `Merge-DevPullRequest` cmdlet to help merge PRs in azure-powershell repo.
+
 ## 2025/12/22
 - Feature: Added cmdlet `New-DevTSPModule` for TypeSpec development.
 
