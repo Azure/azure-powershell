@@ -1,6 +1,6 @@
 ---
 Module Name: Az.SecurityInsights
-Module Guid: 30887292-63d0-435d-8713-830b8f4d72fc
+Module Guid: 298386b9-d78e-4fbf-b690-2c7302ee3980
 Download Help Link: https://learn.microsoft.com/powershell/module/az.securityinsights
 Help Version: 1.0.0.0
 Locale: en-US
@@ -96,16 +96,16 @@ Query threat intelligence indicators as per filtering criteria.
 Creates the alert rule.
 
 ### [New-AzSentinelAlertRuleAction](New-AzSentinelAlertRuleAction.md)
-Creates or updates the action of alert rule.
+Create the action of alert rule.
 
 ### [New-AzSentinelAutomationRule](New-AzSentinelAutomationRule.md)
-Creates or updates the automation rule.
+Create the automation rule.
 
 ### [New-AzSentinelBookmark](New-AzSentinelBookmark.md)
-Creates or updates the bookmark.
+Create the bookmark.
 
 ### [New-AzSentinelBookmarkRelation](New-AzSentinelBookmarkRelation.md)
-Creates the bookmark relation.
+Create the bookmark relation.
 
 ### [New-AzSentinelDataConnector](New-AzSentinelDataConnector.md)
 Creates or updates the data connector.
@@ -114,16 +114,16 @@ Creates or updates the data connector.
 Creates or updates the entity query.
 
 ### [New-AzSentinelIncident](New-AzSentinelIncident.md)
-Creates or updates the incident.
+Create the incident.
 
 ### [New-AzSentinelIncidentComment](New-AzSentinelIncidentComment.md)
-Creates or updates the incident comment.
+Create the incident comment.
 
 ### [New-AzSentinelIncidentRelation](New-AzSentinelIncidentRelation.md)
-Creates or updates the incident relation.
+Create the incident relation.
 
 ### [New-AzSentinelIncidentTeam](New-AzSentinelIncidentTeam.md)
-Creates a Microsoft team to investigate the incident by sharing information and insights between participants.
+Create a Microsoft team to investigate the incident by sharing information and insights between participants.
 
 ### [New-AzSentinelOnboardingState](New-AzSentinelOnboardingState.md)
 Create Sentinel onboarding state
@@ -168,16 +168,16 @@ Get requirements state for a data connector type.
 Updates the alert rule.
 
 ### [Update-AzSentinelAlertRuleAction](Update-AzSentinelAlertRuleAction.md)
-Creates or updates the action of alert rule.
+Update the action of alert rule.
 
 ### [Update-AzSentinelAutomationRule](Update-AzSentinelAutomationRule.md)
-Creates or updates the automation rule.
+Update the automation rule.
 
 ### [Update-AzSentinelBookmark](Update-AzSentinelBookmark.md)
-Creates or updates the bookmark.
+Update the bookmark.
 
 ### [Update-AzSentinelBookmarkRelation](Update-AzSentinelBookmarkRelation.md)
-Creates the bookmark relation.
+Update the bookmark relation.
 
 ### [Update-AzSentinelDataConnector](Update-AzSentinelDataConnector.md)
 Updates the data connector.
@@ -186,13 +186,16 @@ Updates the data connector.
 Updates the entity query.
 
 ### [Update-AzSentinelIncident](Update-AzSentinelIncident.md)
-Creates or updates the incident.
+Update the incident.
 
 ### [Update-AzSentinelIncidentComment](Update-AzSentinelIncidentComment.md)
-Creates or updates the incident comment.
+Update the incident comment.
 
 ### [Update-AzSentinelIncidentRelation](Update-AzSentinelIncidentRelation.md)
-Creates or updates the incident relation.
+Update the incident relation.
+
+### [Update-AzSentinelOnboardingState](Update-AzSentinelOnboardingState.md)
+Update Sentinel onboarding state
 
 ### [Update-AzSentinelSetting](Update-AzSentinelSetting.md)
 Updates setting.

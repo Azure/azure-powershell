@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSentinelAutomationRule
 
 ## SYNOPSIS
-Creates or updates the automation rule.
+Create the automation rule.
 
 ## SYNTAX
 
@@ -21,22 +21,29 @@ New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String>
  [-Confirm] [<CommonParameters>]
 ```
 
-### Create
+### CreateViaJsonFilePath
 ```
 New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
- [-SubscriptionId <String>] -AutomationRule <IAutomationRule> [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates the automation rule.
+Create the automation rule.
 
 ## EXAMPLES
 
 ### Example 1: Create an Automation Rule using Run Playbook
 ```powershell
 $LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "myResourceGroup" -Name "Reset-AADPassword"
- $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleRunPlaybookAction]::new()
+ $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AutomationRuleRunPlaybookAction]::new()
  $automationRuleAction.Order = 1
  $automationRuleAction.ActionType = "RunPlaybook"
  $automationRuleAction.ActionConfigurationLogicAppResourceId = ($LogicAppResourceId.Id)
@@ -48,7 +55,7 @@ This command creates an Automation Rule that has an Action of Run Playbook.
 
 ### Example 2: Creates an Automation Rule that has an Action of changing the severity
 ```powershell
-$automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleModifyPropertiesAction]::new()
+$automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AutomationRuleModifyPropertiesAction]::new()
  $automationRuleAction.Order = 1
  $automationRuleAction.ActionType = "ModifyProperties"
  $automationRuleAction.ActionConfigurationSeverity = "Low"
@@ -61,10 +68,9 @@ This command creates an Automation Rule that has an Action of changing the sever
 
 ### -Action
 The actions to execute when the automation rule is triggered
-To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRuleAction[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAutomationRuleAction[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -72,22 +78,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AutomationRule
-Represents an automation rule.
-To construct, see NOTES section for AUTOMATIONRULE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRule
-Parameter Sets: Create
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -133,6 +123,36 @@ Aliases: AutomationRuleId
 Required: False
 Position: Named
 Default value: (New-Guid).Guid
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -187,7 +207,7 @@ Accept wildcard characters: False
 The conditions to evaluate to determine if the automation rule should be triggered on a given object
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRuleCondition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAutomationRuleCondition[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -279,11 +299,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRule
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRule
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAutomationRule
 
 ## NOTES
 
