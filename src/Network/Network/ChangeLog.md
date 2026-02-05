@@ -47,6 +47,7 @@
 ## Version 7.23.0
 * Added 'GeoLocationXFFHeader' and 'ClientAddrXFFHeader' as valid VariableNames in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable`.
 * Bug fix for `AzureFirewallPolicy` to ensure `BasePolicy` is properly set via `Set-AzFirewallPolicy` cmdlet either via pipe or direct value.
+* Removal of `SupportsShouldProcess` attribute from `Set-AzFirewallPolicyRuleCollectionGroup`, `Set-AzFirewallPolicy`, and `Set-AzFirewall` cmdlets as it has not been implemented yet.
 
 ## Version 7.22.0
 * Added new RouteTableUsageMode property for Network Manager Routing Configuration
