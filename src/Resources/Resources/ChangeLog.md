@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated the implementation of -Metadata parameter processing for cmdlets that use it for security. No behavior change.
 * Updated Policy.Autorest api-version to 2025-03-01
     - Introduced support for `-Expand` query parameter in `Get-AzPolicyAssignment` and `Get-AzPolicySetDefinition`
     - Removed the -BackwardCompatible parameter from all Policy cmdlets, including Get/Update/New/Remove‑PolicyAssignment, PolicyDefinition, PolicySetDefinition, and PolicyExemption.
