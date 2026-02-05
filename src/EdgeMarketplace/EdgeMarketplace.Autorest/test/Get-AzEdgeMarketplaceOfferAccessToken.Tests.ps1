@@ -17,14 +17,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEdgeMarketplaceOfferAcc
 Describe 'Get-AzEdgeMarketplaceOfferAccessToken' {
     It 'GetExpanded' {
         $result = Get-AzEdgeMarketplaceOfferAccessToken -OfferId $env.OfferId -ResourceUri $env.ResourceUri -RequestId $env.RequestId
+        $result | Should -Not -BeNullOrEmpty
+        $result.AccessToken | Should -Not -BeNullOrEmpty
     }
 
     It 'GetViaJsonString' {
-        $result = Get-AzEdgeMarketplaceOfferAccessToken -OfferId $env.OfferId -ResourceUri $env.ResourceUri -JsonString '{"requestId": "7057ead36dab4f93b6c7021d56efbb03"}'
+        $result = Get-AzEdgeMarketplaceOfferAccessToken -OfferId $env.OfferId -ResourceUri $env.ResourceUri -JsonString '{"requestId": "24373:dummy"}'
+        $result | Should -Not -BeNullOrEmpty
+        $result.AccessToken | Should -Not -BeNullOrEmpty
     }
 
     It 'GetViaJsonFilePath' {
         $result = Get-AzEdgeMarketplaceOfferAccessToken -OfferId $env.OfferId -ResourceUri $env.ResourceUri -JsonFilePath (Join-Path $PSScriptRoot './jsonFiles/GetOfferAccessToken.json')
+        $result | Should -Not -BeNullOrEmpty
+        $result.AccessToken | Should -Not -BeNullOrEmpty
     }
 
     It 'Get' {
@@ -32,6 +38,8 @@ Describe 'Get-AzEdgeMarketplaceOfferAccessToken' {
             "requestId" = $env.RequestId
         }
         $result = Get-AzEdgeMarketplaceOfferAccessToken -OfferId $env.OfferId -ResourceUri $env.ResourceUri -Body $requestBody
+        $result | Should -Not -BeNullOrEmpty
+        $result.AccessToken | Should -Not -BeNullOrEmpty
     }
 
     It 'GetViaIdentityExpanded' {
@@ -41,6 +49,8 @@ Describe 'Get-AzEdgeMarketplaceOfferAccessToken' {
         }
 
         $result = Get-AzEdgeMarketplaceOfferAccessToken -InputObject $offerIdentity -RequestId $env.RequestId
+        $result | Should -Not -BeNullOrEmpty
+        $result.AccessToken | Should -Not -BeNullOrEmpty
     }
 
     It 'GetViaIdentity' {
@@ -54,5 +64,7 @@ Describe 'Get-AzEdgeMarketplaceOfferAccessToken' {
         }
 
         $result = Get-AzEdgeMarketplaceOfferAccessToken -InputObject $offerIdentity -Body $requestBody
+        $result | Should -Not -BeNullOrEmpty
+        $result.AccessToken | Should -Not -BeNullOrEmpty
     }
 }

@@ -115,6 +115,7 @@ AccessToken DiskId Status
 ----------- ------ ------
                    Succeeded
 ```
+
 This command used for generating access token with input object and body parameter
 
 ### Example 4: (GenerateViaIdentityExpanded) Generate access token with Identity and expanded parameters
@@ -132,6 +133,7 @@ AccessToken DiskId Status
 ----------- ------ ------
                    Succeeded
 ```
+
 This command used for generating access token with input object and expanded parameters
 
 ### Example 5: (GenerateViaJsonFilePath) Generate access token using Json file path
@@ -144,6 +146,7 @@ AccessToken DiskId Status
 ----------- ------ ------
                    Succeeded
 ```
+
 This command used for generating access token using json file path
 
 ### Example 6: (GenerateViaJsonString) Generate Access Token using Json string
@@ -156,7 +159,8 @@ AccessToken DiskId Status
 ----------- ------ ------
                    Succeeded
 ```
-This command used for generating access token using json string 
+
+This command used for generating access token using json string
 
 ## PARAMETERS
 

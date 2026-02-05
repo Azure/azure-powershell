@@ -17,12 +17,11 @@ Get a Offer
 ### [Get-AzEdgeMarketplaceOfferAccessToken](Get-AzEdgeMarketplaceOfferAccessToken.md)
 Get access token.
 
-### [Invoke-AzEdgeMarketplaceOfferAccessTokenGeneration](Invoke-AzEdgeMarketplaceOfferAccessTokenGeneration.md)
-Invoke Edge Marketplace Offer Access Token Generation.
-
 ### [New-AzEdgeMarketplaceOfferAccessToken](New-AzEdgeMarketplaceOfferAccessToken.md)
 A long-running resource action.
 
+### [Request-AzEdgeMarketplaceOfferAccessToken](Request-AzEdgeMarketplaceOfferAccessToken.md)
+Request Edge Marketplace Offer Access Token.
 
 ## Download Instructions
 After getting the Access token using [Get-AzEdgeMarketplaceOfferAccessToken](Get-AzEdgeMarketplaceOfferAccessToken.md) you can follow the below steps
@@ -44,3 +43,4 @@ Monitor the Bitstransfer job. When all jobs are in the JobState `Transferred` - 
 ```powershell
 Get-BitsTransfer | Where-Object JobState -eq 'Transferred' | Complete-BitsTransfer
 ```
+

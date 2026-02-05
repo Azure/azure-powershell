@@ -103,6 +103,7 @@ AccessToken
 -----------
 https://accesstokenlink
 ```
+
 This command used to get access token with input object and body parameter
 
 ### Example 4: (GetViaIdentityExpanded) Get access token with Identity and expanded parameters
@@ -120,6 +121,7 @@ AccessToken
 -----------
 https://accesstokenlink
 ```
+
 This command used to get access token with input object and expanded parameters
 
 ### Example 5: (GetViaJsonFilePath) Get access token using Json file path
@@ -132,6 +134,7 @@ AccessToken
 -----------
 https://accesstokenlink
 ```
+
 This command used to get access token using json file path
 
 ### Example 6: (GetViaJsonString) Get Access Token using Json string
@@ -144,7 +147,8 @@ AccessToken
 -----------
 https://accesstokenlink
 ```
-This command used to get access token using json string 
+
+This command used to get access token using json string
 
 ## PARAMETERS
 

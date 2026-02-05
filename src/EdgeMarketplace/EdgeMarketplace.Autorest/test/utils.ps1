@@ -50,7 +50,8 @@ function setupEnv() {
     $env.Add("HypervGeneration", "1")
     $env.Add("MarketplaceSku", "2019-datacenter")
     $env.Add("MarketplaceSkuVersion", "17763.7314.250509")
-    $env.Add("RequestId", "7057ead36dab4f93b6c7021d56efbb03")
+    $env.Add("RequestId", "24373:dummy")
+    $env.Add("Timeout", "30")
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

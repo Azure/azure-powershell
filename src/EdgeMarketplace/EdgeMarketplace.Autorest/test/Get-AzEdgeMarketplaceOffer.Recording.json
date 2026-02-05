@@ -7,11 +7,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "2c991521-ffd3-45dc-8b62-57d870c93c16" ],
+        "x-ms-client-request-id": [ "6b783eba-f3c4-4cf1-a653-81c661bce58c" ],
         "CommandName": [ "Get-AzEdgeMarketplaceOffer" ],
         "FullCommandName": [ "Get-AzEdgeMarketplaceOffer_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v15.2.0", "PSVersion/v7.4.11", "Az.EdgeMarketplace/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.EdgeMarketplace/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,20 +22,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Set-Cookie": [ "ApplicationGatewayAffinityCORS=6d9bb3403f286d8468b6ce289289a7c4; Path=/; SameSite=None; Secure", "ApplicationGatewayAffinity=6d9bb3403f286d8468b6ce289289a7c4; Path=/" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/d2e2a6fc-dc14-4a82-95f3-feb195d72469" ],
+        "Set-Cookie": [ "ApplicationGatewayAffinityCORS=d462a2d79034ea51b208047f7bbaf4dc; Path=/; SameSite=None; Secure", "ApplicationGatewayAffinity=d462a2d79034ea51b208047f7bbaf4dc; Path=/" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/southeastasia/b8f62fb1-1da4-45ef-9aef-4a9074de8745" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "Mise-Correlation-Id": [ "9583ab6e-c68a-421b-a295-2bebdd5e000e" ],
-        "x-ms-request-id": [ "8d75d290-ba11-466a-b594-582776a95731" ],
-        "x-ms-correlation-request-id": [ "18f271bc-068a-4761-8dfa-afb8240d08aa" ],
+        "Mise-Correlation-Id": [ "5bd1ab16-6169-4a7c-b161-741356b48644" ],
+        "x-ms-request-id": [ "f491c686-e55a-45a3-ba33-bce9cbc2f3b2" ],
+        "x-ms-correlation-request-id": [ "f4d6be28-8b8f-44c4-bf4c-981ca7bea6db" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-routing-request-id": [ "WESTUS3:20260203T132638Z:18f271bc-068a-4761-8dfa-afb8240d08aa" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260205T135811Z:f4d6be28-8b8f-44c4-bf4c-981ca7bea6db" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6ABD28CE163F4B0797A9CE10F0DB2734 Ref B: MAA201060516019 Ref C: 2026-02-03T13:26:37Z" ],
-        "Date": [ "Tue, 03 Feb 2026 13:26:38 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F0D39F0172844191B35E65E2EEFB2739 Ref B: SG2AA1070306023 Ref C: 2026-02-05T13:58:09Z" ],
+        "Date": [ "Thu, 05 Feb 2026 13:58:11 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "11560" ],
@@ -54,11 +54,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "36da3bde-85d9-4933-86f9-e033f8151cb7" ],
+        "x-ms-client-request-id": [ "9a8350ec-0a8a-4f4d-b3ec-fc84239ceb33" ],
         "CommandName": [ "Get-AzEdgeMarketplaceOffer" ],
         "FullCommandName": [ "Get-AzEdgeMarketplaceOffer_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v15.2.0", "PSVersion/v7.4.11", "Az.EdgeMarketplace/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.EdgeMarketplace/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -69,19 +69,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/41879175-d0db-432f-985f-a1549cbf4ac7" ],
+        "Set-Cookie": [ "ApplicationGatewayAffinityCORS=6d9bb3403f286d8468b6ce289289a7c4; Path=/; SameSite=None; Secure", "ApplicationGatewayAffinity=6d9bb3403f286d8468b6ce289289a7c4; Path=/" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/f3245c26-261b-42f3-aa7a-da7aaf77dc80" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "Mise-Correlation-Id": [ "33e6752c-6463-40ed-8dcf-4d00aa452c8c" ],
-        "x-ms-request-id": [ "abdf7f07-9078-41ac-9e70-a63c7c381608" ],
-        "x-ms-correlation-request-id": [ "c4e3796b-05f0-4183-8819-d2819d2b9cdf" ],
+        "Mise-Correlation-Id": [ "9910a16d-9479-4671-90bb-ba291f6eae54" ],
+        "x-ms-request-id": [ "e01bb7b9-3ac8-4a3b-ae4a-0e1e989e273d" ],
+        "x-ms-correlation-request-id": [ "883877a7-6e9b-4973-a6ea-2f0348f9f4c1" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-routing-request-id": [ "WESTUS3:20260203T132639Z:c4e3796b-05f0-4183-8819-d2819d2b9cdf" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20260205T135812Z:883877a7-6e9b-4973-a6ea-2f0348f9f4c1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C3CAB62DAFB14D10B7021254B25F0EF1 Ref B: MAA201060516019 Ref C: 2026-02-03T13:26:38Z" ],
-        "Date": [ "Tue, 03 Feb 2026 13:26:39 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 890086E1670D4AD59B635BF1BAB62585 Ref B: SG2AA1070306023 Ref C: 2026-02-05T13:58:11Z" ],
+        "Date": [ "Thu, 05 Feb 2026 13:58:12 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "9984" ],
@@ -100,11 +101,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "c0008eb1-2f82-4aa3-90e5-d655affb80ec" ],
+        "x-ms-client-request-id": [ "ff9964d3-40cc-4c77-915c-9c77db899c01" ],
         "CommandName": [ "Get-AzEdgeMarketplaceOffer" ],
         "FullCommandName": [ "Get-AzEdgeMarketplaceOffer_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v15.2.0", "PSVersion/v7.4.11", "Az.EdgeMarketplace/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.EdgeMarketplace/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -115,19 +116,19 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/f3eead24-72fa-4c36-b8a9-951bc0597273" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/adb9e8ab-54c4-4cd5-bf23-a992c253eca9" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "Mise-Correlation-Id": [ "70e49d31-1d8b-410c-ab01-5f342e28b7b9" ],
-        "x-ms-request-id": [ "da7315d9-ac7b-4a65-bbc0-0bade9c86997" ],
-        "x-ms-correlation-request-id": [ "036f0d10-300e-4370-88d0-1a995ce274d2" ],
+        "Mise-Correlation-Id": [ "c80c2f28-f9cf-44f2-b348-6a2af56e2a69" ],
+        "x-ms-request-id": [ "de95b6f9-d228-4a3b-aa86-daa1b1e83680" ],
+        "x-ms-correlation-request-id": [ "fd3c6ad5-2e6f-4bbb-8d2d-a25e49dca1ee" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-routing-request-id": [ "WESTUS3:20260203T132640Z:036f0d10-300e-4370-88d0-1a995ce274d2" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20260205T135814Z:fd3c6ad5-2e6f-4bbb-8d2d-a25e49dca1ee" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6FD3F8F27E514C9CA157F8EA4DD681B2 Ref B: MAA201060516019 Ref C: 2026-02-03T13:26:39Z" ],
-        "Date": [ "Tue, 03 Feb 2026 13:26:40 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 064006DC3CD84F28AFF5D123FD9371B9 Ref B: SG2AA1070306023 Ref C: 2026-02-05T13:58:12Z" ],
+        "Date": [ "Thu, 05 Feb 2026 13:58:13 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "9984" ],

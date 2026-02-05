@@ -1,6 +1,6 @@
 ---
 Module Name: Az.EdgeMarketplace
-Module Guid: 5fdfaaa1-2358-418e-b6cd-ef7666cee8b3
+Module Guid: 6633674a-30d3-4a3b-b8c1-2109004138d2
 Download Help Link: https://learn.microsoft.com/powershell/module/az.edgemarketplace
 Help Version: 1.0.0.0
 Locale: en-US
@@ -17,12 +17,11 @@ Get a Offer
 ### [Get-AzEdgeMarketplaceOfferAccessToken](Get-AzEdgeMarketplaceOfferAccessToken.md)
 Get access token.
 
-### [Invoke-AzEdgeMarketplaceOfferAccessTokenGeneration](Invoke-AzEdgeMarketplaceOfferAccessTokenGeneration.md)
-Invoke Edge Marketplace Offer Access Token Generation.
-
 ### [New-AzEdgeMarketplaceOfferAccessToken](New-AzEdgeMarketplaceOfferAccessToken.md)
 A long-running resource action.
 
+### [Request-AzEdgeMarketplaceOfferAccessToken](Request-AzEdgeMarketplaceOfferAccessToken.md)
+Request Edge Marketplace Offer Access Token.
 
 ## Download Instructions
 After getting the Access token using [Get-AzEdgeMarketplaceOfferAccessToken](Get-AzEdgeMarketplaceOfferAccessToken.md) you can follow the below steps
@@ -44,3 +43,4 @@ Monitor the Bitstransfer job. When all jobs are in the JobState `Transferred` - 
 ```powershell
 Get-BitsTransfer | Where-Object JobState -eq 'Transferred' | Complete-BitsTransfer
 ```
+

@@ -17,10 +17,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEdgeMarketplaceOffer'))
 Describe 'Get-AzEdgeMarketplaceOffer' {
     It 'List' {
         $result = Get-AzEdgeMarketplaceOffer -ResourceUri $env.ResourceUri
+        foreach($offer in $result) {
+            $offer | Should -Not -BeNullOrEmpty
+            $offer.Type | Should -Be 'Microsoft.EdgeMarketPlace/offers'
+            $offer.Id | Should -Not -BeNullOrEmpty
+        }
     }
 
     It 'Get' {
         $result = Get-AzEdgeMarketplaceOffer -OfferId $env.OfferId -ResourceUri $env.ResourceUri
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $env.OfferId
+        $result.Type | Should -Be 'Microsoft.EdgeMarketPlace/offers'
+        $result.Id | Should -Not -BeNullOrEmpty
     }
 
     It 'GetViaIdentity' {
@@ -30,5 +39,9 @@ Describe 'Get-AzEdgeMarketplaceOffer' {
         }
 
         $result = Get-AzEdgeMarketplaceOffer -InputObject $offerInputObject
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $env.OfferId
+        $result.Type | Should -Be 'Microsoft.EdgeMarketPlace/offers'
+        $result.Id | Should -Not -BeNullOrEmpty
     }
 }
