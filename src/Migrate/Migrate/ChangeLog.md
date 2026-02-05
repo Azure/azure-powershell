@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 
 ## Version 2.11.0
 * Updated DefaultCrashConsistentFrequencyInMinutes and DefaultAppConsistentFrequencyInMinutes to align with Azure Portal UX for Replication Policy
