@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzKustoManagedPrivateEndpoint
 
 ## SYNOPSIS
-Creates a managed private endpoint.
+Create a managed private endpoint.
 
 ## SYNTAX
 
@@ -27,8 +27,36 @@ New-AzKustoManagedPrivateEndpoint -ClusterName <String> -Name <String> -Resource
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityCluster
+```
+New-AzKustoManagedPrivateEndpoint -ClusterInputObject <IKustoIdentity> -Name <String>
+ -Parameter <IManagedPrivateEndpoint> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityClusterExpanded
+```
+New-AzKustoManagedPrivateEndpoint -ClusterInputObject <IKustoIdentity> -Name <String> [-GroupId <String>]
+ [-PrivateLinkResourceId <String>] [-PrivateLinkResourceRegion <String>] [-RequestMessage <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzKustoManagedPrivateEndpoint -ClusterName <String> -Name <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzKustoManagedPrivateEndpoint -ClusterName <String> -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates a managed private endpoint.
+Create a managed private endpoint.
 
 ## EXAMPLES
 
@@ -62,12 +90,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+Parameter Sets: CreateViaIdentityCluster, CreateViaIdentityClusterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -98,10 +141,40 @@ The groupId in which the managed private endpoint is created.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -140,11 +213,10 @@ Accept wildcard characters: False
 
 ### -Parameter
 Class representing a managed private endpoint.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IManagedPrivateEndpoint
-Parameter Sets: Create
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IManagedPrivateEndpoint
+Parameter Sets: Create, CreateViaIdentityCluster
 Aliases:
 
 Required: True
@@ -159,7 +231,7 @@ The ARM resource ID of the resource for which the managed private endpoint is cr
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -174,7 +246,7 @@ The region of the resource to which the managed private endpoint is created.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -189,7 +261,7 @@ The user request message.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: False
@@ -205,7 +277,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -220,7 +292,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -266,11 +338,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IManagedPrivateEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IManagedPrivateEndpoint
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IManagedPrivateEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IManagedPrivateEndpoint
 
 ## NOTES
 

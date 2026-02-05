@@ -8,37 +8,52 @@ schema: 2.0.0
 # New-AzKustoDataConnection
 
 ## SYNOPSIS
-Creates or updates a data connection.
+Create a data connection.
 
 ## SYNTAX
 
 ### CreateExpandedEventHub (Default)
 ```
 New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <Kind> -Location <String> [-TableName <String>]
- -EventHubResourceId <String> -ConsumerGroup <String> [-DataFormat <String>] [-EventSystemProperty <String[]>]
- [-MappingRuleName <String>] [-Compression <Compression>] [-ManagedIdentityResourceId <String>]
- [-DatabaseRouting <DatabaseRouting>] [-RetrievalStartDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <String> -EventHubResourceId <String>
+ -ConsumerGroup <String> -Location <String> [-DataFormat <String>] [-EventSystemProperty <String[]>]
+ [-MappingRuleName <String>] [-TableName <String>] [-Compression <String>]
+ [-ManagedIdentityResourceId <String>] [-DatabaseRouting <String>] [-RetrievalStartDate <DateTime>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpandedEventGrid
 ```
 New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <Kind> -Location <String> [-TableName <String>]
- -EventHubResourceId <String> -ConsumerGroup <String> [-DataFormat <String>] [-MappingRuleName <String>]
- [-ManagedIdentityResourceId <String>] [-DatabaseRouting <DatabaseRouting>] -StorageAccountResourceId <String>
- [-BlobStorageEventType <BlobStorageEventType>] [-IgnoreFirstRecord] [-EventGridResourceId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <String> -EventHubResourceId <String>
+ -ConsumerGroup <String> -Location <String> [-DataFormat <String>] [-MappingRuleName <String>]
+ [-TableName <String>] [-ManagedIdentityResourceId <String>] [-DatabaseRouting <String>]
+ -StorageAccountResourceId <String> [-BlobStorageEventType <String>] [-IgnoreFirstRecord]
+ [-EventGridResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpandedIotHub
 ```
 New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <Kind> -Location <String> [-TableName <String>]
- -ConsumerGroup <String> [-DataFormat <String>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
- [-DatabaseRouting <DatabaseRouting>] [-RetrievalStartDate <DateTime>] -IotHubResourceId <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <String> -ConsumerGroup <String>
+ -Location <String> [-DataFormat <String>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
+ [-TableName <String>] [-DatabaseRouting <String>] [-RetrievalStartDate <DateTime>] -IotHubResourceId <String>
  -SharedAccessPolicyName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -46,15 +61,15 @@ New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <St
 ### CreateExpandedCosmosDb
 ```
 New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <Kind> -Location <String> [-TableName <String>]
- [-MappingRuleName <String>] -ManagedIdentityResourceId <String> [-RetrievalStartDate <DateTime>]
- -CosmosDbAccountResourceId <String> -CosmosDbDatabase <String> -CosmosDbContainer <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <String> -Location <String>
+ [-MappingRuleName <String>] -TableName <String> -ManagedIdentityResourceId <String>
+ [-RetrievalStartDate <DateTime>] -CosmosDbAccountResourceId <String> -CosmosDbDatabase <String>
+ -CosmosDbContainer <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a data connection.
+Create a data connection.
 
 ## EXAMPLES
 
@@ -118,7 +133,7 @@ Accept wildcard characters: False
 The name of blob storage event type to process.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.BlobStorageEventType
+Type: System.String
 Parameter Sets: CreateExpandedEventGrid
 Aliases:
 
@@ -148,7 +163,7 @@ Accept wildcard characters: False
 The event hub messages compression type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Compression
+Type: System.String
 Parameter Sets: CreateExpandedEventHub
 Aliases:
 
@@ -238,7 +253,7 @@ Accept wildcard characters: False
 Indication for database routing information from the data connection, by default only database routing information is allowed.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DatabaseRouting
+Type: System.String
 Parameter Sets: CreateExpandedEventHub, CreateExpandedEventGrid, CreateExpandedIotHub
 Aliases:
 
@@ -266,7 +281,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -355,12 +371,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Kind
 Kind of the endpoint for the data connection
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpandedEventHub, CreateExpandedEventGrid, CreateExpandedIotHub, CreateExpandedCosmosDb
 Aliases:
 
 Required: True
@@ -375,7 +421,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpandedEventHub, CreateExpandedEventGrid, CreateExpandedIotHub, CreateExpandedCosmosDb
 Aliases:
 
 Required: True
@@ -418,7 +464,7 @@ Optionally the mapping information can be added to each message.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpandedEventHub, CreateExpandedEventGrid, CreateExpandedIotHub, CreateExpandedCosmosDb
 Aliases:
 
 Required: False
@@ -459,7 +505,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group containing the Kusto cluster.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -520,8 +567,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -541,10 +587,22 @@ Optionally the table information can be added to each message.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpandedEventHub, CreateExpandedEventGrid, CreateExpandedIotHub
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpandedCosmosDb
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -589,7 +647,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDataConnection
 
 ## NOTES
 
