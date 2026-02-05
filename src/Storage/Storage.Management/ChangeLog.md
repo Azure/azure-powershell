@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed TLS1_0 and TLS1_1 from MinimumTlsVersion parameter when creating or updating a Storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
 
 ## Version 9.6.0
 * Supported encryption in transit in file service properties 
