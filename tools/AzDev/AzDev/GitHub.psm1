@@ -189,7 +189,7 @@ function Merge-DevPullRequest {
             'No.' = $_.number
             'Title' = $_.title
             'CreatedBy' = $_.author.login
-            'CreatedAt' = ([DateTime]::Parse($_.createdAt).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ'))
+            'CreatedAt' = ([DateTime]::Parse($_.createdAt).ToUniversalTime().ToString('M/d/yyyy h:mm:ss tt'))
             'Url' = $_.url
         }
     }
