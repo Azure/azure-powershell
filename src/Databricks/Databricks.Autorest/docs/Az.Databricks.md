@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Databricks
-Module Guid: 4efb11ab-44ab-44b5-ab99-2ed56084fe57
+Module Guid: d37269e5-c791-4d4a-a65d-0036c281e308
 Download Help Link: https://learn.microsoft.com/powershell/module/az.databricks
 Help Version: 1.0.0.0
 Locale: en-US
@@ -26,10 +26,10 @@ Gets the workspace vNet Peering.
 Gets the workspace.
 
 ### [New-AzDatabricksAccessConnector](New-AzDatabricksAccessConnector.md)
-Creates or updates Azure Databricks Access Connector.
+Create Azure Databricks Access Connector.
 
 ### [New-AzDatabricksVNetPeering](New-AzDatabricksVNetPeering.md)
-Creates vNet Peering for workspace.
+Create vNet Peering for workspace.
 
 ### [New-AzDatabricksWorkspace](New-AzDatabricksWorkspace.md)
 Creates a new workspace.
@@ -47,7 +47,7 @@ Deletes the workspace vNetPeering.
 Deletes the workspace.
 
 ### [Update-AzDatabricksAccessConnector](Update-AzDatabricksAccessConnector.md)
-Updates an Azure Databricks Access Connector.
+Update Azure Databricks Access Connector.
 
 ### [Update-AzDatabricksVNetPeering](Update-AzDatabricksVNetPeering.md)
 Update vNet Peering for workspace.

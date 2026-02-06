@@ -30,6 +30,12 @@ Get-AzDatabricksVNetPeering -InputObject <IDatabricksIdentity> [-DefaultProfile 
  [<CommonParameters>]
 ```
 
+### GetViaIdentityWorkspace
+```
+Get-AzDatabricksVNetPeering -Name <String> -WorkspaceInputObject <IDatabricksIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets the workspace vNet Peering.
 
@@ -81,7 +87,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
@@ -100,7 +105,7 @@ The name of the workspace vNet peering.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityWorkspace
 Aliases:
 
 Required: True
@@ -115,7 +120,7 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Get, GetViaIdentity
+Parameter Sets: Get, GetViaIdentity, GetViaIdentityWorkspace
 Aliases:
 
 Required: False
@@ -157,6 +162,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
+Parameter Sets: GetViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 The name of the workspace.
 
@@ -181,7 +201,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IVirtualNetworkPeering
 
 ## NOTES
 

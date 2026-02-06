@@ -29,100 +29,123 @@ Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetwork
 https://learn.microsoft.com/powershell/module/az.databricks/update-azdatabricksvnetpeering
 #>
 function Update-AzDatabricksVNetPeering {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering", "15.0.0", "2.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IVirtualNetworkPeering", DeprecatedOutputProperties = ("DatabrickAddressSpaceAddressPrefix, RemoteAddressSpaceAddressPrefix 'System.String[]'"), NewOutputProperties = ("DatabrickAddressSpaceAddressPrefix, RemoteAddressSpaceAddressPrefix 'System.Collections.Generic.List`1[System.String]'"))]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IVirtualNetworkPeering])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
-        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the VNetPeering.")]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
         [Alias('PeeringName')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
         [System.String]
         # The name of the workspace vNet peering.
         ${Name},
-    
-        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
+
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
-    
-        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the workspace.")]
+
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
         [System.String]
         # The name of the workspace.
         ${WorkspaceName},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded', HelpMessage = "The ID of the target subscription.")]
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+        [Parameter(ParameterSetName='UpdateViaJsonString')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
+        # The value must be an UUID.
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline, HelpMessage = "Identity parameter. To construct, see NOTES section for INPUTOBJECT properties and create a hash table.")]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity]
         # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
-    
-        [Parameter()]
+
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        # [System.Management.Automation.SwitchParameter]
-        [System.Boolean]
+        [System.Management.Automation.SwitchParameter]
         # Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
         ${AllowForwardedTraffic},
-    
-        [Parameter()]
+
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [System.Boolean]
-        # [System.Management.Automation.SwitchParameter]
+        [System.Management.Automation.SwitchParameter]
         # If gateway links can be used in remote virtual networking to link to this virtual network.
         ${AllowGatewayTransit},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [System.Boolean]
-        # [System.Management.Automation.SwitchParameter]
+        [System.Management.Automation.SwitchParameter]
         # Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
         ${AllowVirtualNetworkAccess},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String[]]
         # A list of address blocks reserved for this virtual network in CIDR notation.
         ${DatabricksAddressSpacePrefix},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The Id of the databricks virtual network.
         ${DatabricksVirtualNetworkId},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String[]]
         # A list of address blocks reserved for this virtual network in CIDR notation.
         ${RemoteAddressSpacePrefix},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The Id of the remote virtual network.
         ${RemoteVirtualNetworkId},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [System.Boolean]
-        # [System.Management.Automation.SwitchParameter]
+        [System.Management.Automation.SwitchParameter]
         # If remote gateways can be used on this virtual network.
         # If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit.
         # Only one peering can have this flag set to true.
         # This flag cannot be set if virtual network already has a gateway.
         ${UseRemoteGateway},
+
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # Path of Json file supplied to the Update operation
+        ${JsonFilePath},
+
+        [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # Json string supplied to the Update operation
+        ${JsonString},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]

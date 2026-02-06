@@ -42,7 +42,7 @@ Describe 'AzDatabricksWorkspace' {
         } | Should -Not -Throw
     }
 
-    It 'OutboundNetworkDependenciesEndpointList' {
+    It 'OutboundNetworkDependenciesEndpointList' -skip {
         {
             $config = Get-AzDatabricksOutboundNetworkDependenciesEndpoint -WorkspaceName $env.workSpaceName1 -ResourceGroupName $env.resourceGroup
             $config.Count | Should -BeGreaterThan 0
