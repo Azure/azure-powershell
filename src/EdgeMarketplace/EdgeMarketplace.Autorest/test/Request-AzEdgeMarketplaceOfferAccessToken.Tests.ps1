@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Request-AzEdgeMarketplaceOffe
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Request-AzEdgeMarketplaceOfferAccessToken' {
+Describe 'Request-AzEdgeMarketplaceOfferAccessToken' -Tag 'LiveOnly' {
     It 'Request' {
         $result = Request-AzEdgeMarketplaceOfferAccessToken -OfferId $env.OfferId -ResourceUri $env.ResourceUri -EdgeMarketplaceRegion $env.EdgeMarketplaceRegion -HypervGeneration $env.HypervGeneration -MarketplaceSku $env.MarketplaceSku -MarketplaceSkuVersion $env.MarketPlaceSkuVersion
         $result | Should -Not -BeNullOrEmpty
