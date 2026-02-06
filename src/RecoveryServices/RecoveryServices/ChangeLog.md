@@ -20,6 +20,10 @@
 
 ## Upcoming Release
 
+## Version 7.11.1
+* Added Cross region restore support for upcoming regions IndiaSouthCentral
+
+
 ## Version 7.11.0
 * Added Cross region restore support for Bleu cloud regions
 * Added Availability Zone support in Update Protection

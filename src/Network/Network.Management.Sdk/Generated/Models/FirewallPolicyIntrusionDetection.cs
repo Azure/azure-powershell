@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="profile">IDPS profile name. When attached to a parent policy, the firewall&#39;s
         /// effective profile is the profile name of the parent policy.
-        /// Possible values include: &#39;Basic&#39;, &#39;Standard&#39;, &#39;Advanced&#39;, &#39;Extended&#39;</param>
+        /// Possible values include: &#39;Off&#39;, &#39;Emerging&#39;, &#39;Core&#39;, &#39;Extended&#39;</param>
 
         /// <param name="configuration">Intrusion detection configuration properties.
         /// </param>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets iDPS profile name. When attached to a parent policy, the
-        /// firewall&#39;s effective profile is the profile name of the parent policy. Possible values include: &#39;Basic&#39;, &#39;Standard&#39;, &#39;Advanced&#39;, &#39;Extended&#39;
+        /// firewall&#39;s effective profile is the profile name of the parent policy. Possible values include: &#39;Off&#39;, &#39;Emerging&#39;, &#39;Core&#39;, &#39;Extended&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "profile")]
         public string Profile {get; set; }
