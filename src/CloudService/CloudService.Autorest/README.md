@@ -339,8 +339,8 @@ directive:
           - Zone
         change-description: The types of the properties 'Extension', 'LoadBalancerConfiguration', 'Secret', 'Role', and 'Zone' will be changed from object to 'List'.
         deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
 
   - where:
       verb: Get
@@ -357,8 +357,8 @@ directive:
           - PrivateId
         change-description: The types of the properties 'Statuses', 'RoleInstanceStatusesSummary', and 'PrivateId' will be changed from object to 'List'.
         deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
 
   - where:
       verb: Get
@@ -451,8 +451,8 @@ directive:
           - Fqdn
         change-description: The types of the properties 'ApplicationSecurityGroup', 'CustomDnsConfig', 'FlowLog', 'LoadBalancerFrontendIPConfiguration', 'NetworkSecurityGroupPropertiesNetworkInterface', 'PrivateEndpointPropertiesNetworkInterface', 'PrivateLinkServicePropertiesNetworkInterface', 'IPConfiguration', 'TapConfiguration', 'PrivateEndpointConnection', 'PrivateEndpointPropertiesIPConfiguration', 'PrivateLinkServiceConnection', 'ManualPrivateLinkServiceConnection', 'PrivateLinkServicePropertiesIPConfiguration', 'SecurityRule', 'DefaultSecurityRule', 'ApplicationGatewayIPConfiguration', 'Delegation', 'FlowLog', 'IPConfiguration', 'IPConfigurationProfile', 'NetworkInterface', 'PrivateEndpoint', 'ResourceNavigationLink', 'Route', 'DefaultSecurityRule', 'SecurityRule', 'ServiceAssociationLink', 'ServiceEndpointPolicy', 'ServiceEndpoint', 'NetworkSecurityGroupPropertiesSubnet', 'RouteTablePropertiesSubnet', 'IPAllocation', 'PropertiesAddressPrefixes', 'PropertiesNetworkSecurityGroupPropertiesSubnets', 'HostedWorkload', 'VisibilitySubscription', 'DnsSettingDnsServer', 'DnsSettingAppliedDnsServer', 'AutoApprovalSubscription', 'Fqdn' will be changed from object to 'List'.
         deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
 
   - where:
       verb: Get
@@ -465,8 +465,8 @@ directive:
           - Version
         change-description: The types of the properties 'Version' will be changed from object to 'List'.
         deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
 
   - where:
       verb: Get
@@ -487,8 +487,8 @@ directive:
           - Subnet
         change-description: The types of the properties 'Zone', 'IPTag', 'PublicIPAddress', 'PublicIPPrefix', and 'Subnet' will be changed from object to 'List'.
         deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
 
   - where:
       verb: Get
@@ -503,8 +503,8 @@ directive:
           - InstanceViewStatuses
         change-description: The types of the properties 'NetworkProfileNetworkInterface' and 'InstanceViewStatuses' will be changed from object to 'List'.
         deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
 
   - where:
       verb: Get
@@ -517,6 +517,6 @@ directive:
           - Statuses
         change-description: The types of the properties 'Statuses' will be changed from object to 'List'.
         deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
 ```
