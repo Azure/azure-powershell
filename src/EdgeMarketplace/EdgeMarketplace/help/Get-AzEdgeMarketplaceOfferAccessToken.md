@@ -59,9 +59,9 @@ Get-AzEdgeMarketplaceOfferAccessToken -OfferId microsoftwindowsserver:windowsser
 ```
 
 ```output
-AccessToken
------------
-https://accesstokenlink
+AccessToken               DiskId            Status
+-----------               ------            ------
+https://accesstokenlink   publisher:offer   Succeeded
 ```
 
 This command used to get access token using expanded parameters.
@@ -76,9 +76,9 @@ Get-AzEdgeMarketplaceOfferAccessToken -OfferId microsoftwindowsserver:windowsser
 ```
 
 ```output
-AccessToken
------------
-https://accesstokenlink
+AccessToken               DiskId            Status
+-----------               ------            ------
+https://accesstokenlink   publisher:offer   Succeeded
 ```
 
 This command used to get access token with request body parameter.
@@ -98,9 +98,9 @@ Get-AzEdgeMarketplaceOfferAccessToken -InputObject $offerIdentity -Body $request
 ```
 
 ```output
-AccessToken
------------
-https://accesstokenlink
+AccessToken               DiskId            Status
+-----------               ------            ------
+https://accesstokenlink   publisher:offer   Succeeded
 ```
 
 This command used to get access token with input object and body parameter
@@ -116,9 +116,9 @@ Get-AzEdgeMarketplaceOfferAccessToken -InputObject $offerIdentity -RequestId 721
 ```
 
 ```output
-AccessToken
------------
-https://accesstokenlink
+AccessToken               DiskId            Status
+-----------               ------            ------
+https://accesstokenlink   publisher:offer   Succeeded
 ```
 
 This command used to get access token with input object and expanded parameters
@@ -129,9 +129,9 @@ Get-AzEdgeMarketplaceOfferAccessToken -OfferId microsoftwindowsserver:windowsser
 ```
 
 ```output
-AccessToken
------------
-https://accesstokenlink
+AccessToken               DiskId            Status
+-----------               ------            ------
+https://accesstokenlink   publisher:offer   Succeeded
 ```
 
 This command used to get access token using json file path
@@ -142,9 +142,9 @@ Get-AzEdgeMarketplaceOfferAccessToken -OfferId microsoftwindowsserver:windowsser
 ```
 
 ```output
-AccessToken
------------
-https://accesstokenlink
+AccessToken               DiskId            Status
+-----------               ------            ------
+https://accesstokenlink   publisher:offer   Succeeded
 ```
 
 This command used to get access token using json string

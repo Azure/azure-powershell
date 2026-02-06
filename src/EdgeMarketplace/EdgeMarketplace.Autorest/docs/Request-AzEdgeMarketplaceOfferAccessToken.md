@@ -35,9 +35,9 @@ Request-AzEdgeMarketplaceOfferAccessToken -OfferId offerId -ResourceUri resource
 ```
 
 ```output
-AccessToken
------------
-https://accesstokenlink
+AccessToken               DiskId            Status
+-----------               ------            ------
+https://accesstokenlink   publisher:offer   Succeeded
 ```
 
 This command used to request access token using expanded parameters.
@@ -48,9 +48,9 @@ Request-AzEdgeMarketplaceOfferAccessToken -OfferId offerId -ResourceUri resource
 ```
 
 ```output
-AccessToken
------------
-https://accesstokenlink
+AccessToken               DiskId            Status
+-----------               ------            ------
+https://accesstokenlink   publisher:offer   Succeeded
 ```
 
 This command used to request access token using expanded parameters and customised timeout parameter.
