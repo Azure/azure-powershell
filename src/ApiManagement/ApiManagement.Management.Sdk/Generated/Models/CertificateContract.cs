@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     /// Certificate details.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class CertificateContract : Resource
+    public partial class CertificateContract : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the CertificateContract class.

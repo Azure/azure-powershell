@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     /// ApiRelease details.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApiReleaseContract : Resource
+    public partial class ApiReleaseContract : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the ApiReleaseContract class.

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// type.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// item specified by its identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Returns the developer portal&#39;s content item specified by its identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// content type.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -131,6 +131,9 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// ETag of the Entity. Not required when creating an entity, but required when
         /// updating an entity.
         /// </param>
+        /// <param name='parameters'>
+        /// Create or update parameters.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -143,7 +146,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ContentItemContract,ContentItemCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string contentItemId, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ContentItemContract,ContentItemCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceName, string contentTypeId, string contentItemId, ContentItemContract parameters, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Removes the specified developer portal&#39;s content item.
@@ -152,7 +155,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Removes the specified developer portal&#39;s content item.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.

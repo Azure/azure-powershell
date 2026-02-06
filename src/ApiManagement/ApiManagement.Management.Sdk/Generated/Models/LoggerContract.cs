@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     /// Logger details.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class LoggerContract : Resource
+    public partial class LoggerContract : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the LoggerContract class.

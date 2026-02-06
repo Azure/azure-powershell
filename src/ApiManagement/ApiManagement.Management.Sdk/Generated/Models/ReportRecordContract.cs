@@ -73,8 +73,8 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// HttpStatusCode.TooManyRequests
         /// </param>
 
-        /// <param name="callCountFailed">Number of calls failed due to proxy or backend errors. This includes calls
-        /// returning HttpStatusCode.BadRequest(400) and any Code between
+        /// <param name="callCountFailed">Number of calls failed due to gateway or backend errors. This includes
+        /// calls returning HttpStatusCode.BadRequest(400) and any Code between
         /// HttpStatusCode.InternalServerError (500) and 600
         /// </param>
 
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         public int? CallCountBlocked {get; set; }
 
         /// <summary>
-        /// Gets or sets number of calls failed due to proxy or backend errors. This
+        /// Gets or sets number of calls failed due to gateway or backend errors. This
         /// includes calls returning HttpStatusCode.BadRequest(400) and any Code
         /// between HttpStatusCode.InternalServerError (500) and 600
         /// </summary>

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the details of the backend specified by its identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Creates or Updates a backend.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Updates an existing backend.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Deletes the specified backend.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -209,17 +209,17 @@ namespace Microsoft.Azure.Management.ApiManagement
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serviceName, string backendId, string ifMatch, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Notifies the APIM proxy to create a new connection to the backend after the
-        /// specified timeout. If no timeout was specified, timeout of 2 minutes is
-        /// used.
+        /// Notifies the API Management gateway to create a new connection to the
+        /// backend after the specified timeout. If no timeout was specified, timeout
+        /// of 2 minutes is used.
         /// </summary>
         /// <remarks>
-        /// Notifies the APIM proxy to create a new connection to the backend after the
-        /// specified timeout. If no timeout was specified, timeout of 2 minutes is
-        /// used.
+        /// Notifies the API Management gateway to create a new connection to the
+        /// backend after the specified timeout. If no timeout was specified, timeout
+        /// of 2 minutes is used.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.

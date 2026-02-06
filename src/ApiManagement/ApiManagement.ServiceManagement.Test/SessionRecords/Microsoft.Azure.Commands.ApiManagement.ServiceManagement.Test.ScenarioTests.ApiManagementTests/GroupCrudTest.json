@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHM/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHM/YXBpLXZlcnNpb249MjAyMi0wOC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -64,8 +64,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/administrators?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvYWRtaW5pc3RyYXRvcnM/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/administrators?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvYWRtaW5pc3RyYXRvcnM/YXBpLXZlcnNpb249MjAyMi0wOC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -130,8 +130,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/developers?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvZGV2ZWxvcGVycz9hcGktdmVyc2lvbj0yMDIxLTA4LTAx",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/developers?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvZGV2ZWxvcGVycz9hcGktdmVyc2lvbj0yMDIyLTA4LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -196,8 +196,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/guests?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvZ3Vlc3RzP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/guests?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvZ3Vlc3RzP2FwaS12ZXJzaW9uPTIwMjItMDgtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -262,8 +262,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1481?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxNDgxP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1481?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxNDgxP2FwaS12ZXJzaW9uPTIwMjItMDgtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"ps8746\",\r\n    \"description\": \"ps6259\",\r\n    \"type\": \"custom\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -334,8 +334,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1481?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxNDgxP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1481?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxNDgxP2FwaS12ZXJzaW9uPTIwMjItMDgtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -400,8 +400,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1481?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxNDgxP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1481?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxNDgxP2FwaS12ZXJzaW9uPTIwMjItMDgtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -466,8 +466,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1481?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxNDgxP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1481?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxNDgxP2FwaS12ZXJzaW9uPTIwMjItMDgtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -529,8 +529,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1481?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxNDgxP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1481?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxNDgxP2FwaS12ZXJzaW9uPTIwMjItMDgtMDE=",
       "RequestMethod": "PATCH",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"ps7389\",\r\n    \"description\": \"ps9627\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -604,8 +604,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/products?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9wcm9kdWN0cz9hcGktdmVyc2lvbj0yMDIxLTA4LTAx",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/products?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9wcm9kdWN0cz9hcGktdmVyc2lvbj0yMDIyLTA4LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -667,8 +667,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/products/starter/groups/ps1481?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9wcm9kdWN0cy9zdGFydGVyL2dyb3Vwcy9wczE0ODE/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/products/starter/groups/ps1481?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9wcm9kdWN0cy9zdGFydGVyL2dyb3Vwcy9wczE0ODE/YXBpLXZlcnNpb249MjAyMi0wOC0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "",
       "RequestHeaders": {
@@ -733,8 +733,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/products/starter/groups?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9wcm9kdWN0cy9zdGFydGVyL2dyb3Vwcz9hcGktdmVyc2lvbj0yMDIxLTA4LTAx",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/products/starter/groups?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9wcm9kdWN0cy9zdGFydGVyL2dyb3Vwcz9hcGktdmVyc2lvbj0yMDIyLTA4LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -796,8 +796,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/products/starter/groups?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9wcm9kdWN0cy9zdGFydGVyL2dyb3Vwcz9hcGktdmVyc2lvbj0yMDIxLTA4LTAx",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/products/starter/groups?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9wcm9kdWN0cy9zdGFydGVyL2dyb3Vwcz9hcGktdmVyc2lvbj0yMDIyLTA4LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -859,8 +859,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/products/starter/groups/ps1481?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9wcm9kdWN0cy9zdGFydGVyL2dyb3Vwcy9wczE0ODE/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/products/starter/groups/ps1481?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9wcm9kdWN0cy9zdGFydGVyL2dyb3Vwcy9wczE0ODE/YXBpLXZlcnNpb249MjAyMi0wOC0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -919,8 +919,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/users?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC91c2Vycz9hcGktdmVyc2lvbj0yMDIxLTA4LTAx",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/users?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC91c2Vycz9hcGktdmVyc2lvbj0yMDIyLTA4LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -982,8 +982,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1481/users/1?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxNDgxL3VzZXJzLzE/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1481/users/1?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxNDgxL3VzZXJzLzE/YXBpLXZlcnNpb249MjAyMi0wOC0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1048,8 +1048,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/users/1/groups?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC91c2Vycy8xL2dyb3Vwcz9hcGktdmVyc2lvbj0yMDIxLTA4LTAx",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/users/1/groups?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC91c2Vycy8xL2dyb3Vwcz9hcGktdmVyc2lvbj0yMDIyLTA4LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1111,8 +1111,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/users/1/groups?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC91c2Vycy8xL2dyb3Vwcz9hcGktdmVyc2lvbj0yMDIxLTA4LTAx",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/users/1/groups?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC91c2Vycy8xL2dyb3Vwcz9hcGktdmVyc2lvbj0yMDIyLTA4LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1174,8 +1174,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1481/users/1?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxNDgxL3VzZXJzLzE/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1481/users/1?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxNDgxL3VzZXJzLzE/YXBpLXZlcnNpb249MjAyMi0wOC0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1234,8 +1234,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1366?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxMzY2P2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1366?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxMzY2P2FwaS12ZXJzaW9uPTIwMjItMDgtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"ps7498\",\r\n    \"description\": \"ps1129\",\r\n    \"type\": \"external\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -1306,8 +1306,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1366?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxMzY2P2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1366?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxMzY2P2FwaS12ZXJzaW9uPTIwMjItMDgtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1372,8 +1372,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1366?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxMzY2P2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1366?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxMzY2P2FwaS12ZXJzaW9uPTIwMjItMDgtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1435,8 +1435,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1481?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxNDgxP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1481?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxNDgxP2FwaS12ZXJzaW9uPTIwMjItMDgtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1498,8 +1498,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1366?api-version=2021-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxMzY2P2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestUri": "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/Apim-NetSdk-20210801/providers/Microsoft.ApiManagement/service/powershellsdkservicetest/groups/ps1366?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGJkYmViYzMtMWYxNS00ZTc0LTllZjItN2RiMjU0ODNjYjE1L3Jlc291cmNlR3JvdXBzL0FwaW0tTmV0U2RrLTIwMjEwODAxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNldGVzdC9ncm91cHMvcHMxMzY2P2FwaS12ZXJzaW9uPTIwMjItMDgtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {

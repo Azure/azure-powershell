@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the details of the API Operation specified by its identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Creates a new operation in the API or updates an existing one.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Deletes the specified operation in the API.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.

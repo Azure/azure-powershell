@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Returns the etag of an API release.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Returns the details of an API release.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Creates a new Release for the API.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Updates the details of the release of the API specified by its identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Deletes the specified release in the API.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.

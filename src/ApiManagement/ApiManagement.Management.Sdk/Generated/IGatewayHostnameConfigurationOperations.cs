@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// for specified Gateway entity.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Get details of a hostname configuration
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Creates of updates hostname configuration for a Gateway.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Deletes the specified hostname configuration from the specified Gateway.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.

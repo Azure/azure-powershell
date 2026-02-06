@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     /// Gateway certificate authority details.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class GatewayCertificateAuthorityContract : Resource
+    public partial class GatewayCertificateAuthorityContract : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the GatewayCertificateAuthorityContract class.

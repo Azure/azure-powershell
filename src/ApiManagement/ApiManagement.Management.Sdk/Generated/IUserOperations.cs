@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the details of the user specified by its identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Creates or Updates a user.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Updates the details of the user specified by its identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Deletes specific user.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// a given user into the developer portal.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the Shared Access Authorization Token for the User.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
