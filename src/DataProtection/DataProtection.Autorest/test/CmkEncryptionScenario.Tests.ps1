@@ -28,7 +28,7 @@ Describe 'CmkEncryptionScenario' {
 
         $userAssignedIdentity = @{$env.TestCmkEncryption.CmkUserAssignedIdentityId = @{}}
 
-        $vault = New-AzDataProtectionBackupVault -SubscriptionId $env.TestCmkEncryption.SubscriptionId -ResourceGroupName $env.TestCmkEncryption.ResourceGroupName -VaultName $env.TestCmkEncryption.VaultName -Location $env.TestCmkEncryption.Location -StorageSetting $storagesetting -IdentityType UserAssigned -UserAssignedIdentity $userAssignedIdentity -CmkEncryptionState Enabled -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId $env.TestCmkEncryption.CmkUserAssignedIdentityId -CmkEncryptionKeyUri $env.TestCmkEncryption.CmkEncryptionKeyUri  -CmkInfrastructureEncryption Enabled
+        $vault = New-AzDataProtectionBackupVault -SubscriptionId $env.TestCmkEncryption.SubscriptionId -ResourceGroupName $env.TestCmkEncryption.ResourceGroupName -VaultName $env.TestCmkEncryption.VaultName -Location $env.TestCmkEncryption.Location -StorageSetting $storagesetting -UserAssignedIdentity $userAssignedIdentity -CmkEncryptionState Enabled -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId $env.TestCmkEncryption.CmkUserAssignedIdentityId -CmkEncryptionKeyUri $env.TestCmkEncryption.CmkEncryptionKeyUri  -CmkInfrastructureEncryption Enabled
 
         $vault.EncryptionSetting.State | Should be "Enabled"
         $vault.EncryptionSetting.CmkInfrastructureEncryption | Should be "Enabled"

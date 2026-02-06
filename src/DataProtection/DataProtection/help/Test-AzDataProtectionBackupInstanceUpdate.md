@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-AzDataProtectionBackupInstanceUpdate
 
 ## SYNOPSIS
-Validate whether update for backup instance will be successful or not
+Validate whether validate for backup instance will be successful or not
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Test-AzDataProtectionBackupInstanceUpdate -Name <String> -ResourceGroupName <Str
 ```
 
 ## DESCRIPTION
-Validate whether update for backup instance will be successful or not
+Validate whether validate for backup instance will be successful or not
 
 ## EXAMPLES
 
@@ -60,10 +60,9 @@ Accept wildcard characters: False
 
 ### -BackupInstance
 Backup Instance
-To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupInstance
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstance
 Parameter Sets: (All)
 Aliases:
 
@@ -205,7 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo
 
 ## NOTES
 
