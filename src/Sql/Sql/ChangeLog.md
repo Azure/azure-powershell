@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Handled SDK exceptions by throwing error response in `AZPSCloudException`.
 
 ## Version 6.4.0
 * Added 'Get-AzSqlDeletedServer' cmdlet to retrieve soft deleted Azure SQL servers
