@@ -20,6 +20,13 @@ Remove-AzContainerInstanceSubnetServiceAssociationLink -ResourceGroupName <Strin
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityVirtualNetwork
+```
+Remove-AzContainerInstanceSubnetServiceAssociationLink -SubnetName <String>
+ -VirtualNetworkInputObject <IContainerInstanceIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzContainerInstanceSubnetServiceAssociationLink -InputObject <IContainerInstanceIdentity>
@@ -75,7 +82,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
@@ -140,7 +146,7 @@ The name of the subnet.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityVirtualNetwork
 Aliases:
 
 Required: True
@@ -163,6 +169,21 @@ Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
+Parameter Sets: DeleteViaIdentityVirtualNetwork
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
