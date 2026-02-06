@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.0
 * Renamed from Az.TrustedSigning
 
 ## Version 0.1.4
