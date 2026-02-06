@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed extra build files from the ArtifactSigning AutoRest module to keep package contents clean
 * Renamed from Az.TrustedSigning
 
 ## Version 0.1.4
