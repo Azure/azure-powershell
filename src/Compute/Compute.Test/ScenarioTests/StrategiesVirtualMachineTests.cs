@@ -190,5 +190,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SimpleGalleryCrossTenant");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmScheduledEventsPolicy()
+        {
+            TestRunner.RunTestScript("Test-SimpleNewVmScheduledEventsPolicy");
+        }
     }
 }

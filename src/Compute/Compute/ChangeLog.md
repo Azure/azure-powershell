@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `-ScheduledEventsApiVersion` and `-EnableAllInstancesDown` parameters to `Update-AzAvailabilitySet`, `Update-AzVM`, `Update-AzVmss`, `New-AzVM` (SimpleParameterSet), and `New-AzVmss` cmdlets for configuring ScheduledEventsPolicy.
 
 ## Version 11.3.0
 * Compute SDK generation updates:
