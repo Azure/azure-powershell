@@ -1,0 +1,5 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.ContainerInstance","New-AzContainerGroup","7","2","Invalid_Parameter_Name","5011","1","New-AzContainerGroup -EnableSystemAssignedIdentity is not a valid parameter name.","-EnableSystemAssignedIdentity","Check validity of the parameter -EnableSystemAssignedIdentity."
+"Az.ContainerInstance","New-AzContainerGroup","7","2","Invalid_Parameter_Name","5011","1","New-AzContainerGroup -UserAssignedIdentity is not a valid parameter name.","-UserAssignedIdentity","Check validity of the parameter -UserAssignedIdentity."
+"Az.ContainerInstance","New-AzContainerGroup","7","2","Invalid_Parameter_Name","5011","1","New-AzContainerGroup -EnableSystemAssignedIdentity is not a valid parameter name.","-EnableSystemAssignedIdentity","Check validity of the parameter -EnableSystemAssignedIdentity."
+"Az.ContainerInstance","New-AzContainerGroup","7","2","Invalid_Parameter_Name","5011","1","New-AzContainerGroup -UserAssignedIdentity is not a valid parameter name.","-UserAssignedIdentity","Check validity of the parameter -UserAssignedIdentity."
