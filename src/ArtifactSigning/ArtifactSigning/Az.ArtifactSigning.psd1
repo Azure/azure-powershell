@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.4'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -59,10 +59,10 @@ RequiredAssemblies = 'ArtifactSigning.Autorest/bin/Az.ArtifactSigning.private.dl
                'Azure.Developer.TrustedSigning.CryptoProvider.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @()
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'ArtifactSigning.Autorest/Az.ArtifactSigning.format.ps1xml', 
@@ -109,8 +109,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'CodeSigning', 'ArtifactSigning', 'ResourceManager', 'ARM', 
-               'PSModule'
+        Tags = 'Azure','CodeSigning','ArtifactSigning','ResourceManager','ARM','PSModule'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -122,7 +121,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated Azure.Core from 1.47.3 to 1.50.0'
+        ReleaseNotes = '* Renamed from Az.TrustedSigning'
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -135,7 +134,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
-} # End of PrivateData hashtable
+ } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''
