@@ -80,10 +80,9 @@ Accept wildcard characters: False
 ```
 
 ### -CloudService
-To construct, see NOTES section for CLOUDSERVICE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudService
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.CloudService
 Parameter Sets: CloudService
 Aliases:
 

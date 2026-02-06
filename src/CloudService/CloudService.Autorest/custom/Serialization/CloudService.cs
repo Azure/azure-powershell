@@ -3,24 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904
+namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
 {
-    public partial class CloudService
-    {
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Owned)]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.FormatTable(Index = 0)]
-        public string ResourceGroupName
-        { 
-            get {
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/cloudServices/(?<cloudServiceName>[^/]+)$").Match(this.Id);
-                if (!_match.Success) {
-                    return null;
-                }
-                return _match.Groups["resourceGroupName"].Value;
-            }
-        }
-    }
-
+    /// <summary>
+    /// Adds the [-ResourceGroupName] property to the ICloudService interface.
+    /// This property is required by the Get/New/Update-AzCloudService cmdlets for output,
+    /// but was missing in the generated ICloudService.cs file.
+    /// </summary>
     public partial interface ICloudService
     {
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
