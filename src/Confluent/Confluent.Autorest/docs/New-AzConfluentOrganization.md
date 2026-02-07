@@ -8,17 +8,20 @@ schema: 2.0.0
 # New-AzConfluentOrganization
 
 ## SYNOPSIS
-create Organization resource
+Create Organization resource
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzConfluentOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Location <String>] [-OfferDetailId <String>] [-OfferDetailPlanId <String>] [-OfferDetailPlanName <String>]
- [-OfferDetailPublisherId <String>] [-OfferDetailTermUnit <String>] [-Tag <Hashtable>]
- [-UserDetailEmailAddress <String>] [-UserDetailFirstName <String>] [-UserDetailLastName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-LinkOrganizationToken <SecureString>] [-Location <String>] [-OfferDetailId <String>]
+ [-OfferDetailPlanId <String>] [-OfferDetailPlanName <String>] [-OfferDetailPrivateOfferId <String>]
+ [-OfferDetailPublisherId <String>] [-OfferDetailStatus <String>] [-OfferDetailTermId <String>]
+ [-OfferDetailTermUnit <String>] [-PropertiesOfferDetailPrivateOfferIds <String[]>] [-Tag <Hashtable>]
+ [-UserDetailAadEmail <String>] [-UserDetailEmailAddress <String>] [-UserDetailFirstName <String>]
+ [-UserDetailLastName <String>] [-UserDetailUserPrincipalName <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -36,7 +39,7 @@ New-AzConfluentOrganization -Name <String> -ResourceGroupName <String> -JsonStri
 ```
 
 ## DESCRIPTION
-create Organization resource
+Create Organization resource
 
 ## EXAMPLES
 
@@ -116,8 +119,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LinkOrganizationToken
+User auth token
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
-Location of Organization resource
+The geo-location where the resource lives
 
 ```yaml
 Type: System.String
@@ -206,8 +224,53 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OfferDetailPrivateOfferId
+Private Offer Id
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OfferDetailPublisherId
 Publisher Id
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OfferDetailStatus
+SaaS Offer Status
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OfferDetailTermId
+Offer Plan Term Id
 
 ```yaml
 Type: System.String
@@ -236,8 +299,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PropertiesOfferDetailPrivateOfferIds
+Array of Private Offer Ids
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-Resource group name
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -252,7 +331,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Microsoft Azure subscription id
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -267,10 +347,25 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Organization resource tags
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserDetailAadEmail
+AAD email address
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -313,6 +408,21 @@ Accept wildcard characters: False
 
 ### -UserDetailLastName
 Last name
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserDetailUserPrincipalName
+User principal name
 
 ```yaml
 Type: System.String

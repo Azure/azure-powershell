@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for Confluent Connector management
+  - New cmdlet `New-AzConfluentConnector` to create connectors
+  - New cmdlet `Get-AzConfluentConnector` to retrieve connector details
+  - New cmdlet `Remove-AzConfluentConnector` to delete connectors
+  - New cmdlet `Update-AzConfluentConnector` to update connector configuration
+  - New cmdlet `Set-AzConfluentConnector` to manage connector state
+* Updated to API version 2025-08-18-preview
+* Updated swagger specification commit to da3e3a42110d96609505c4bcb5b4d768341203a8
 
 ## Version 0.3.0
 * Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
