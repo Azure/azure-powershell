@@ -107,7 +107,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20231230.IAdvancedThreatProtection
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IAdvancedThreatProtection
 
 ## NOTES
 
