@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceUriFileJobOutputObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspaceurifilejoboutputobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for UriFileJobOutput.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceUriFileJobOutputObject -Type <JobOutputType> [-Description <String>]
- [-Mode <OutputDeliveryMode>] [-Uri <String>] [<CommonParameters>]
+New-AzMLWorkspaceUriFileJobOutputObject -Type <String> [-Description <String>] [-Mode <String>]
+ [-Uri <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 Output Asset Delivery Mode.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OutputDeliveryMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 [Required] Specifies the type of job.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobOutputType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +98,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.UriFileJobOutput
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.UriFileJobOutput
 
 ## NOTES
 

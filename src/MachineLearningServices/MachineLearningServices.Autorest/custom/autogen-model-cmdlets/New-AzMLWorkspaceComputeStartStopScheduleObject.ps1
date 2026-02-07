@@ -21,18 +21,19 @@ Create an in-memory object for ComputeStartStopSchedule.
 Create an in-memory object for ComputeStartStopSchedule.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ComputeStartStopSchedule
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ComputeStartStopSchedule
 .Link
-https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceComputeStartStopScheduleObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacecomputestartstopscheduleobject
 #>
 function New-AzMLWorkspaceComputeStartStopScheduleObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ComputeStartStopSchedule')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ComputeStartStopSchedule')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="[Required] The compute power action.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputePowerAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputePowerAction]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Start", "Stop")]
+        [string]
         $Action,
         [Parameter(HelpMessage="[Required] Specifies cron expression of schedule.
         The expression should follow NCronTab format.")]
@@ -46,8 +47,8 @@ function New-AzMLWorkspaceComputeStartStopScheduleObject {
         [string]
         $CronTimeZone,
         [Parameter(HelpMessage="[Required] The frequency to trigger schedule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeRecurrenceFrequency])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeRecurrenceFrequency]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Minute", "Hour", "Day", "Week", "Month")]
+        [string]
         $RecurrenceFrequency,
         [Parameter(HelpMessage="[Required] Specifies schedule interval in conjunction with frequency.")]
         [int]
@@ -72,29 +73,29 @@ function New-AzMLWorkspaceComputeStartStopScheduleObject {
         [int[]]
         $ScheduleMonthDay,
         [Parameter(HelpMessage="The current deployment state of schedule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleProvisioningState])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleProvisioningState]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Completed", "Provisioning", "Failed")]
+        [string]
         $ScheduleProvisioningStatus,
         [Parameter(HelpMessage="Is the schedule enabled or disabled?.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleStatus])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleStatus]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [string]
         $ScheduleStatus,
         [Parameter(HelpMessage="List of days for the schedule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeWeekDay])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeWeekDay[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
+        [string[]]
         $ScheduleWeekDay,
         [Parameter(HelpMessage="Is the schedule enabled or disabled?.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleStatus])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleStatus]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [string]
         $Status,
         [Parameter(HelpMessage="[Required] The schedule trigger type.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeTriggerType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeTriggerType]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Recurrence", "Cron")]
+        [string]
         $TriggerType
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ComputeStartStopSchedule]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ComputeStartStopSchedule]::New()
 
         if ($PSBoundParameters.ContainsKey('Action')) {
             $Object.Action = $Action

@@ -41,7 +41,7 @@ PROPERTY <IWorkspaceConnectionPropertiesV2>: .
 https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceconnection
 #>
 function New-AzMLWorkspaceConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspaceConnectionPropertiesV2BasicResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IWorkspaceConnectionPropertiesV2BasicResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PreviewMessage("**********************************************************************************************`n
 * This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *`n
@@ -80,16 +80,16 @@ function New-AzMLWorkspaceConnection {
         ${SubscriptionId},
     
         [Parameter(ParameterSetName= 'CreateExpanded', Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionAuthType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionAuthType]
+        [System.String]
         # Authentication type of the connection target
         ${AuthType},
     
         [Parameter(ParameterSetName= 'CreateExpanded')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory]
+        [System.String]
         # Category of the connection
         ${Category},
 
@@ -105,7 +105,7 @@ function New-AzMLWorkspaceConnection {
     
         [Parameter(ParameterSetName= 'CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspaceConnectionPropertiesV2Metadata]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IWorkspaceConnectionPropertiesV2Metadata]))]
         [System.Collections.Hashtable]
         # Store user metadata for this connection
         ${Metadata},
@@ -128,15 +128,15 @@ function New-AzMLWorkspaceConnection {
         ${Value},
     
         [Parameter(ParameterSetName= 'CreateExpanded')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ValueFormat])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ValueFormat]
+        [System.String]
         # format for the workspace connection value
         ${ValueFormat},
     
         [Parameter(ParameterSetName= 'CreateWithProperty', Mandatory, HelpMessage = 'Using one of WorkspaceConnectionPropertiesObject cmdlets to construct')]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspaceConnectionPropertiesV2]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IWorkspaceConnectionPropertiesV2]
         # To construct, see NOTES section for PROPERTY properties and create a hash table.
         ${Property},
 
@@ -209,7 +209,7 @@ function New-AzMLWorkspaceConnection {
         # Create with property
         $hasProperty = $PSBoundParameters.Remove('Property')
 
-        $object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.WorkspaceConnectionPropertiesV2]::New()
+        $object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.WorkspaceConnectionPropertiesV2]::New()
         if ($hasAuthType)
         {
             $object.AuthType = $AuthType

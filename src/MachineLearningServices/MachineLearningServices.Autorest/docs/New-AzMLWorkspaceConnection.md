@@ -15,10 +15,9 @@ Creating or updating a new workspace connection
 ### CreateExpanded (Default)
 ```
 New-AzMLWorkspaceConnection -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- -AuthType <ConnectionAuthType> [-SubscriptionId <String>] [-Category <ConnectionCategory>]
- [-ExpiryTime <DateTime>] [-IsSharedToAll] [-Metadata <Hashtable>] [-SharedUserList <String[]>]
- [-Target <String>] [-Value <String>] [-ValueFormat <ValueFormat>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -AuthType <String> [-SubscriptionId <String>] [-Category <String>] [-ExpiryTime <DateTime>] [-IsSharedToAll]
+ [-Metadata <Hashtable>] [-SharedUserList <String[]>] [-Target <String>] [-Value <String>]
+ [-ValueFormat <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateWithProperty
@@ -35,13 +34,30 @@ Creating or updating a new workspace connection
 
 ### Example 1: Creates a workspace connection
 ```powershell
-New-AzMLWorkspaceConnection -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-test01 -Name test01 -AuthType 'None' -Category 'ContainerRegistry' -Target "www.facebook.com"
+New-AzMLWorkspaceConnection -ResourceGroupName ml-test -WorkspaceName mlworkspace-test2 -Name test01 -AuthType 'None' -Category 'ContainerRegistry' -Target "www.facebook.com"
 ```
 
 ```output
-Name   SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
-----   ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-test01                                                                                                                                                ml-rg-test
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/connections/test01
+Name                         : test01
+Property                     : {
+                                 "authType": "None",
+                                 "category": "ContainerRegistry",
+                                 "createdByWorkspaceArmId":
+                               "/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2",
+                                 "group": "Azure",
+                                 "isSharedToAll": false,
+                                 "target": "www.facebook.com",
+                                 "sharedUserList": [ ]
+                               }
+ResourceGroupName            : ml-test
+SystemDataCreatedAt          : 11/5/2025 8:00:58 AM
+SystemDataCreatedBy          : User Name (Example)
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 11/5/2025 8:00:58 AM
+SystemDataLastModifiedBy     : User Name (Example)
+SystemDataLastModifiedByType : User
+Type                         : Microsoft.MachineLearningServices/workspaces/connections
 ```
 
 Creates a workspace connection
@@ -68,9 +84,26 @@ New-AzMLWorkspaceConnection -Name aiservicesconnection -ResourceGroupName ml-tes
 ```
 
 ```output
-Name                 SystemDataCreatedAt  SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName 
-----                 -------------------  -------------------   ----------------------- ------------------------ ------------------------ ---------------------------- ----------------- 
-aiservicesconnection 7/19/2024 9:20:27 AM t-user@AAexample.com  User                    7/19/2024 9:20:27 AM     t-user@AAexample.com     User                         ml-test
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/connections/test01
+Name                         : aiservicesconnection
+Property                     : {
+                                 "authType": "None",
+                                 "category": "ContainerRegistry",
+                                 "createdByWorkspaceArmId":
+                               "/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2",
+                                 "group": "Azure",
+                                 "isSharedToAll": true,
+                                 "target": "www.facebook.com",
+                                 "sharedUserList": [ ]
+                               }
+ResourceGroupName            : ml-test
+SystemDataCreatedAt          : 11/5/2025 8:00:58 AM
+SystemDataCreatedBy          : User Name (Example)
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 11/5/2025 8:00:58 AM
+SystemDataLastModifiedBy     : User Name (Example)
+SystemDataLastModifiedByType : User
+Type                         : Microsoft.MachineLearningServices/workspaces/connections
 ```
 
 
@@ -81,7 +114,7 @@ aiservicesconnection 7/19/2024 9:20:27 AM t-user@AAexample.com  User            
 Authentication type of the connection target
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionAuthType
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -96,7 +129,7 @@ Accept wildcard characters: False
 Category of the connection
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -184,10 +217,9 @@ Accept wildcard characters: False
 
 ### -Property
 Using one of WorkspaceConnectionPropertiesObject cmdlets to construct
-To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspaceConnectionPropertiesV2
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IWorkspaceConnectionPropertiesV2
 Parameter Sets: CreateWithProperty
 Aliases:
 
@@ -278,7 +310,7 @@ Accept wildcard characters: False
 format for the workspace connection value
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ValueFormat
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -342,7 +374,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspaceConnectionPropertiesV2BasicResource
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IWorkspaceConnectionPropertiesV2BasicResource
 
 ## NOTES
 
