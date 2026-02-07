@@ -36,7 +36,7 @@ default Microsoft.Cache/redisEnterprise/databases
 PS C:\> New-AzRedisEnterpriseCacheDatabase -Name "MyCache2" -ResourceGroupName "MyGroup" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -GroupNickname "GroupNickname" -LinkedDatabase '{id:"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default"}','{id:"/subscriptions/sub1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache2/databases/default"}'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -53,7 +53,7 @@ MODULE <IModule[]>: Optional set of redis modules to enable in this database - m
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachedatabase
 #>
 function New-AzRedisEnterpriseCacheDatabase {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabase])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -72,15 +72,15 @@ function New-AzRedisEnterpriseCacheDatabase {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IModule[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IModule[]]
         # Optional set of redis modules to enable in this database - modules can only be added at create time.
         # To construct, see NOTES section for MODULE properties and create a hash table.
         ${Module},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("Encrypted", "Plaintext")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol]
+        [System.String]
         # Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols - default is Encrypted
         # Allowed values: Encrypted, Plaintext
         ${ClientProtocol},
@@ -93,9 +93,9 @@ function New-AzRedisEnterpriseCacheDatabase {
         ${Port},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("AllKeysLFU", "AllKeysLRU", "AllKeysRandom", "VolatileLRU", "VolatileLFU", "VolatileTTL", "VolatileRandom", "NoEviction")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy]
+        [System.String]
         # Redis eviction policy - default is VolatileLRU
         # Allowed values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU, VolatileTTL, VolatileRandom, NoEviction
         ${EvictionPolicy},
@@ -109,15 +109,15 @@ function New-AzRedisEnterpriseCacheDatabase {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ILinkedDatabase[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ILinkedDatabase[]]
         # List of database resources to link with this database
         # To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and create a hash table.
         ${LinkedDatabase},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("EnterpriseCluster", "OSSCluster", "NoCluster")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy]
+        [System.String]
         # Clustering policy - default is OSSCluster
         # Specified at create time.
         # Allowed values: EnterpriseCluster, OSSCluster
@@ -132,9 +132,9 @@ function New-AzRedisEnterpriseCacheDatabase {
         ${AofPersistenceEnabled},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("1s", "always")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency]
+        [System.String]
         # [Preview] Sets the frequency at which data is written to disk if AOF persistence is enabled.
         # Allowed values: 1s, always
         ${AofPersistenceFrequency},
@@ -148,9 +148,9 @@ function New-AzRedisEnterpriseCacheDatabase {
         ${RdbPersistenceEnabled},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("1h", "6h", "12h")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency]
+        [System.String]
         # [Preview] Sets the frequency at which a snapshot of the database is created if RDB persistence is enabled.
         # Allowed values: 1h, 6h, 12h
         ${RdbPersistenceFrequency},
@@ -163,9 +163,9 @@ function New-AzRedisEnterpriseCacheDatabase {
         ${SubscriptionId},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeysAuthentication])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("Disabled", "Enabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeysAuthentication]
+        [System.String]
         # This property can be Enabled/Disabled to allow or deny access with the current access keys.
         # Can be updated even after database is created.
         ${AccessKeysAuthentication},
