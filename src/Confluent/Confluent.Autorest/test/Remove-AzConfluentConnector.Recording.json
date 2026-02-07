@@ -1,0 +1,50 @@
+{
+  "Remove-AzConfluentConnector+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/209ad589-cefc-4b2b-8eca-a12d726494a4/resourceGroups/LiftrConfluent_IT/providers/Microsoft.Confluent/organizations/australiaeast-resource-name/environments/env-n5zmkv/clusters/lkc-1126wj/connectors/testConnSrc-y07jl4?api-version=2025-08-18-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/209ad589-cefc-4b2b-8eca-a12d726494a4/resourceGroups/LiftrConfluent_IT/providers/Microsoft.Confluent/organizations/australiaeast-resource-name/environments/env-n5zmkv/clusters/lkc-1126wj/connectors/testConnSrc-y07jl4?api-version=2025-08-18-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "366c7d71-40c3-4289-99c9-4235b1b679de" ],
+        "CommandName": [ "Remove-AzConfluentConnector" ],
+        "FullCommandName": [ "Remove-AzConfluentConnector_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.3.0", "PSVersion/v7.5.4", "Az.Confluent/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=9a3b483e-2424-4f93-8613-4faf2f4093b4,objectId=460cd5fa-ce9f-4a75-9f4e-83a3f4243065/eastus/8cb6bf0a-098b-44c5-ae1f-a9858af88dfb" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:44fd1f8b-df35-48c9-8fa6-f5e19b8bb5be" ],
+        "mise-correlation-id": [ "3306f17b-adb8-4002-9fdc-51e7bbe659c9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-request-id": [ "fe6466d6-5fbc-4c72-bbe6-3e3eb660bc04" ],
+        "x-ms-correlation-request-id": [ "9b18ad7d-d3a9-44d2-8371-bd58d7bbc3f3" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260207T070053Z:9b18ad7d-d3a9-44d2-8371-bd58d7bbc3f3" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EF81BBB56DA84C739AF136FD67AB5962 Ref B: PNQ231110909060 Ref C: 2026-02-07T07:00:50Z" ],
+        "Date": [ "Sat, 07 Feb 2026 07:00:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  }
+}

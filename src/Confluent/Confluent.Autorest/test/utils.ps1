@@ -48,6 +48,17 @@ function setupEnv() {
     $env.confluentOrgName01 = 'confluentorg-' + (RandomString -allChars $false -len 6)
     $env.confluentOrgName02 = 'confluentorg-' + (RandomString -allChars $false -len 6)
     $env.confluentOrgName03 = 'confluentorg-' + (RandomString -allChars $false -len 6)
+    
+    # Connector-specific environment variables
+    $env.connectorName = 'testConnSrc-' + (RandomString -allChars $false -len 6)
+    $env.connectorResourceGroup = 'LiftrConfluent_IT'
+    $env.connectorOrganization = 'australiaeast-resource-name'
+    $env.connectorEnvironmentId = 'env-n5zmkv'
+    $env.connectorClusterId = 'lkc-1126wj'
+    $env.connectorClass = 'AZUREBLOBSINK'
+    $env.connectorType = 'SOURCE'
+    $env.connectorServiceType = 'AzureBlobStorageSourceConnector'
+    $env.connectorPartnerType = 'KafkaAzureBlobStorageSource'
 
     # For any resources you created for test, you should add it to $env here.
     Write-Host -ForegroundColor Green "Start to creating test group"

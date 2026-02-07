@@ -44,12 +44,13 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: a71245db9eb5b27e3d95f266422c65be4df8789e
+commit: da3e3a42110d96609505c4bcb5b4d768341203a8
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-# lock the commit
-input-file:
-  - $(repo)/specification/confluent/resource-manager/Microsoft.Confluent/stable/2020-03-01/confluent.json
+  - $(repo)/specification/confluent/resource-manager/readme.md
+
+try-require:
+  - $(repo)/specification/confluent/resource-manager/readme.powershell.md
 
 module-version: 0.2.0
 title: Confluent

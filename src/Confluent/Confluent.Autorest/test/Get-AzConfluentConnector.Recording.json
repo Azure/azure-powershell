@@ -1,0 +1,50 @@
+{
+  "Get-AzConfluentConnector+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/209ad589-cefc-4b2b-8eca-a12d726494a4/resourceGroups/LiftrConfluent_IT/providers/Microsoft.Confluent/organizations/australiaeast-resource-name/environments/env-n5zmkv/clusters/lkc-1126wj/connectors/testConnSrc-y07jl4?api-version=2025-08-18-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/209ad589-cefc-4b2b-8eca-a12d726494a4/resourceGroups/LiftrConfluent_IT/providers/Microsoft.Confluent/organizations/australiaeast-resource-name/environments/env-n5zmkv/clusters/lkc-1126wj/connectors/testConnSrc-y07jl4?api-version=2025-08-18-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "33377369-5ba7-4c89-82fb-6ad20a4dafec" ],
+        "CommandName": [ "Get-AzConfluentConnector" ],
+        "FullCommandName": [ "Get-AzConfluentConnector_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.3.0", "PSVersion/v7.5.4", "Az.Confluent/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 500,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=9a3b483e-2424-4f93-8613-4faf2f4093b4,objectId=460cd5fa-ce9f-4a75-9f4e-83a3f4243065/eastus/7b95ba22-eee8-42c0-b221-a858edd4257d" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:44fd1f8b-df35-48c9-8fa6-f5e19b8bb5be" ],
+        "mise-correlation-id": [ "49db6fe2-bf0b-4bca-80d5-8e6864cd68b1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-request-id": [ "d683878a-5a47-4233-8314-a344cd262954" ],
+        "x-ms-correlation-request-id": [ "04d346e2-16ca-4e50-8f8f-fbccf4e1a5dc" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260207T070021Z:04d346e2-16ca-4e50-8f8f-fbccf4e1a5dc" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B7B3639BC6464C4397A65DFF8CF18B1D Ref B: PNQ231110909060 Ref C: 2026-02-07T07:00:17Z" ],
+        "Date": [ "Sat, 07 Feb 2026 07:00:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "192" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"RP Internal Server Error\",\"message\":\"Error occured while getting connector Resource with name testConnSrc-y07jl4. Please Verify the entered resource details or try again!!\"}}",
+      "isContentBase64": false
+    }
+  }
+}
