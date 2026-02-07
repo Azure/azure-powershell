@@ -16,10 +16,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaRequestStatus'))
 
 Describe 'Get-AzQuotaRequestStatus' {
     It 'List' {
-        { Get-AzQuotaRequestStatus -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus" } | Should -Not -Throw
+        $scope = "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Compute/locations/eastus"
+        $result = Get-AzQuotaRequestStatus -Scope $scope
+        $result | Should -Not -BeNullOrEmpty
     }
 
     It 'Get' {
-        { Get-AzQuotaRequestStatus -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus" -Id "6cf5716a-3df8-421a-8457-719e10381dbc" } | Should -Not -Throw
+        # Get existing requests without creating new ones (which require manual approval)
+        $scope = "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Compute/locations/eastus"
+        $requests = Get-AzQuotaRequestStatus -Scope $scope
+        
+        if ($requests -and $requests.Count -gt 0) {
+            # Get the most recent request
+            $requestId = $requests[0].Name
+            $result = Get-AzQuotaRequestStatus -Scope $scope -Id $requestId
+            $result | Should -Not -BeNullOrEmpty
+            $result.Name | Should -Be $requestId
+        } else {
+            # No existing requests, just verify the cmdlet works
+            Set-ItResult -Skipped -Because "No quota requests available in subscription"
+        }
     }
 }
