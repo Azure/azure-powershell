@@ -66,12 +66,6 @@ subject-prefix: $(service-name)
 
 inlining-threshold: 50
 
-resourcegroup-append: true 
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   # Rename function
   - where:
@@ -80,14 +74,24 @@ directive:
     set:
       subject: ConsentAndInstallDefaultExtension
   # Remove the unexpanded parameter set
+  # Generate Create variant for "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/createArcIdentity"
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      subject: ArcSetting$|Cluster|DeploymentSetting|EdgeDevice|Extension|SecuritySetting|Update$|UpdateRun|UpdateSummary
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
+    remove: true
+  - where:
+      subject: ExtendClusterSoftwareAssuranceBenefit
+      variant: ^(Extend)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      subject: EdgeDevice
+      variant: ^(Validate)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       verb: Set
       subject: Workspace
     remove: true
-  # Remove Update-AzStackHciExtension 
+  # Remove Update-AzStackHciExtension
   - where:
       verb: Update
       subject: Extension
@@ -112,11 +116,11 @@ directive:
       verb: New
       subject: ArcSettingPassword
     remove: true
-  # Remove Update-AzStackHciArcSetting
+  # Remove Update (Get-Put) commands and use set cmdlets.
   - where:
       verb: Update
-      subject: ArcSetting
-    remove: true 
+      subject: ArcSetting|DeploymentSetting|EdgeDevice|SecuritySetting|Update$|UpdateRun|UpdateSummary
+    remove: true
   # Hide aadClientId from Update-AzStackHCICluster
   - where:
       verb: Update
@@ -208,236 +212,22 @@ directive:
           - ResourceGroupName
         labels:
           ResourceGroupName: Resource Group
-  - where:
-      verb: Get|New
-      subject: ArcSetting
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - DefaultExtension
-          - PerNodeDetail
-        new-output-properties:
-          - DefaultExtension
-          - PerNodeDetail
-        change-description: The types of the properties DefaultExtension and PerNodeDetail will be changed from single object or fixed array to 'List'.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
-  - where:
-      verb: Get|New
-      subject: Extension
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - PerNodeExtensionDetail
-        new-output-properties:
-          - PerNodeExtensionDetail
-        change-description: The type of the property PerNodeExtensionDetail will be changed from single object or fixed array to 'List'.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
-  - where:
-      verb: Get|New|Update
-      subject: Cluster
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - ReportedPropertyNode
-          - LogCollectionPropertyLogCollectionSessionDetail
-          - RemoteSupportPropertyRemoteSupportSessionDetail
-          - RemoteSupportPropertyRemoteSupportNodeSetting
-          - ReportedPropertySupportedCapability
-        new-output-properties:
-          - ReportedPropertyNode
-          - LogCollectionPropertyLogCollectionSessionDetail
-          - RemoteSupportPropertyRemoteSupportSessionDetail
-          - RemoteSupportPropertyRemoteSupportNodeSetting
-          - ReportedPropertySupportedCapability
-        change-description: The types of the properties ReportedPropertyNode, LogCollectionPropertyLogCollectionSessionDetail, RemoteSupportPropertyRemoteSupportSessionDetail, RemoteSupportPropertyRemoteSupportNodeSetting and ReportedPropertySupportedCapability will be changed from single object or fixed array to 'List'.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
-  - where:
-      verb: Get
-      subject: DeploymentSetting
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - DeploymentStatusStep
-          - ValidationStatusStep
-          - DeploymentConfigurationScaleUnit
-          - ArcNodeResourceId
-        new-output-properties:
-          - DeploymentStatusStep
-          - ValidationStatusStep
-          - DeploymentConfigurationScaleUnit
-          - ArcNodeResourceId
-        change-description: The types of the properties DeploymentStatusStep, ValidationStatusStep, DeploymentConfigurationScaleUnit and ArcNodeResourceId will be changed from single object or fixed array to 'List'.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
-  - where:
-      verb: New
-      subject: DeploymentSetting
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - DeploymentStatusStep
-          - ValidationStatusStep
-          - DeploymentConfigurationScaleUnit
-          - ArcNodeResourceId
-          - DeploymentDataSecret
-          - DeploymentDataInfrastructureNetwork
-          - HostNetworkIntent
-          - DeploymentDataPhysicalNode
-          - SbePartnerInfoCredentialList
-          - SbePartnerInfoPartnerProperty
-          - HostNetworkStorageNetwork
-        new-output-properties:
-          - DeploymentStatusStep
-          - ValidationStatusStep
-          - DeploymentConfigurationScaleUnit
-          - ArcNodeResourceId
-          - DeploymentDataSecret
-          - DeploymentDataInfrastructureNetwork
-          - HostNetworkIntent
-          - DeploymentDataPhysicalNode
-          - SbePartnerInfoCredentialList
-          - SbePartnerInfoPartnerProperty
-          - HostNetworkStorageNetwork
-        change-description: The types of the properties DeploymentStatusStep, ValidationStatusStep, DeploymentConfigurationScaleUnit and ArcNodeResourceId will be changed from single object or fixed array to 'List'. The type of property DeploymentDataSecret, DeploymentDataInfrastructureNetwork, HostNetworkIntent, DeploymentDataPhysicalNode, SbePartnerInfoCredentialList, SbePartnerInfoPartnerProperty and HostNetworkStorageNetwork of type ScaleUnits will be changed from single object or fixed array to 'List'.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
-  - where:
-      verb: Get|Set
-      subject: ^Update$
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - ComponentVersion
-          - HealthCheckResult
-          - Prerequisite
-        new-output-properties:
-          - ComponentVersion
-          - HealthCheckResult
-          - Prerequisite
-        change-description: The types of the properties ComponentVersion, HealthCheckResult and Prerequisite will be changed from single object or fixed array to 'List'.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
-  - where:
-      verb: Get|Set
-      subject: UpdateRun
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - ProgressStep
-        new-output-properties:
-          - ProgressStep
-        change-description: The type of the property ProgressStep will be changed from single object or fixed array to 'List'.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
-  - where:
-      verb: Get|Set
-      subject: UpdateSummary
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - PackageVersion
-          - HealthCheckResult
-        new-output-properties:
-          - PackageVersion
-          - HealthCheckResult
-        change-description: The types of the properties PackageVersion and HealthCheckResult will be changed from single object or fixed array to 'List'.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
-  - where:
-      verb: Test
-      subject: EdgeDevice
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - EdgeDeviceId
-        new-output-properties:
-          - EdgeDeviceId
-        change-description: The type of the property EdgeDeviceId will be changed from single object or fixed array to 'List'.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
-  - where:
-      verb: Invoke
-      subject: ConsentAndInstallDefaultExtension
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - DefaultExtension
-          - PerNodeDetail
-        new-output-properties:
-          - DefaultExtension
-          - PerNodeDetail
-        change-description: The types of the properties DefaultExtension and PerNodeDetail will be changed from single object or fixed array to 'List'.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
-  - where:
-      verb: Invoke
-      subject: ExtendClusterSoftwareAssuranceBenefit
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - ReportedPropertyNode
-          - LogCollectionPropertyLogCollectionSessionDetail
-          - RemoteSupportPropertyRemoteSupportSessionDetail
-          - RemoteSupportPropertyRemoteSupportNodeSetting
-          - ReportedPropertySupportedCapability
-        new-output-properties:
-          - ReportedPropertyNode
-          - LogCollectionPropertyLogCollectionSessionDetail
-          - RemoteSupportPropertyRemoteSupportSessionDetail
-          - RemoteSupportPropertyRemoteSupportNodeSetting
-          - ReportedPropertySupportedCapability
-        change-description: The types of the properties ReportedPropertyNode, LogCollectionPropertyLogCollectionSessionDetail, RemoteSupportPropertyRemoteSupportSessionDetail, RemoteSupportPropertyRemoteSupportNodeSetting and ReportedPropertySupportedCapability will be changed from single object or fixed array to 'List'.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
-  - where:
-      verb: Invoke
-      subject: ExtendClusterSoftwareAssuranceBenefit
-      variant: Extend|ExtendViaIdentity
-    set:
-      breaking-change:
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
-  - where:
-      subject: EdgeDevice
-      variant: Validate|ValidateViaIdentity
-    set:
-      breaking-change:
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
-  - where:
-      parameter-name: IdentityType
-    set:
-      breaking-change:
-        old-parameter-type: string
-        new-parameter-type: boolean
-        change-description: IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system-assigned identities.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
-  - where:
-      parameter-name: UserAssignedIdentity
-    set:
-      breaking-change:
-        old-parameter-type: hashtable
-        new-parameter-type: list
-        change-description: The type of UserAssignedIdentity will be simplified to an array of strings that is used to specify the user's assigned identity.
-        deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/"Get the get run for a specified update"/g, '"Get the Update run for a specified update"');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/"Get all get summaries under the HCI cluster"/g, '"Get all Update summaries under the HCI cluster"');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/"Delete specified delete Run"/g, '"Delete specified Update Run"');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/"Delete delete Summaries"/g, '"Delete Update Summaries"');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/"Put put runs for a specified update"/g, '"Put Update runs for a specified update"');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/"Put put summaries under the HCI cluster"/g, '"Put Update summaries under the HCI cluster"');
 ```

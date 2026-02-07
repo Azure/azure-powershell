@@ -15,12 +15,12 @@ Put specified Update
 ### PutExpanded (Default)
 ```
 Set-AzStackHciUpdate -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AdditionalProperty <String>] [-AvailabilityType <AvailabilityType>]
+ [-SubscriptionId <String>] [-AdditionalProperty <String>] [-AvailabilityType <String>]
  [-ComponentVersion <IPackageVersionInfo[]>] [-Description <String>] [-DisplayName <String>]
- [-HealthCheckDate <DateTime>] [-HealthCheckResult <IPrecheckResult[]>] [-HealthState <HealthState>]
+ [-HealthCheckDate <DateTime>] [-HealthCheckResult <IPrecheckResult[]>] [-HealthState <String>]
  [-InstalledDate <DateTime>] [-Location <String>] [-MinSbeVersionRequired <String>] [-PackagePath <String>]
  [-PackageSizeInMb <Single>] [-PackageType <String>] [-Prerequisite <IUpdatePrerequisite[]>]
- [-Publisher <String>] [-RebootRequired <RebootRequirement>] [-ReleaseLink <String>] [-State <State>]
+ [-Publisher <String>] [-RebootRequired <String>] [-ReleaseLink <String>] [-State <String>]
  [-UpdateStatePropertyNotifyMessage <String>] [-UpdateStatePropertyProgressPercentage <Single>]
  [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -30,6 +30,18 @@ Set-AzStackHciUpdate -ClusterName <String> -Name <String> -ResourceGroupName <St
 Set-AzStackHciUpdate -ClusterName <String> -Name <String> -ResourceGroupName <String>
  -UpdateProperty <IUpdate> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### PutViaJsonFilePath
+```
+Set-AzStackHciUpdate -ClusterName <String> -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PutViaJsonString
+```
+Set-AzStackHciUpdate -ClusterName <String> -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +78,7 @@ Accept wildcard characters: False
 Indicates the way the update content can be downloaded.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.AvailabilityType
+Type: System.String
 Parameter Sets: PutExpanded
 Aliases:
 
@@ -95,10 +107,8 @@ Accept wildcard characters: False
 ### -ComponentVersion
 An array of component versions for a Solution Bundle update, and an empty array otherwise.
 
-To construct, see NOTES section for COMPONENTVERSION properties and create a hash table.
-
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IPackageVersionInfo[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IPackageVersionInfo[]
 Parameter Sets: PutExpanded
 Aliases:
 
@@ -172,10 +182,9 @@ Accept wildcard characters: False
 
 ### -HealthCheckResult
 An array of PrecheckResult objects.
-To construct, see NOTES section for HEALTHCHECKRESULT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IPrecheckResult[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IPrecheckResult[]
 Parameter Sets: PutExpanded
 Aliases:
 
@@ -190,7 +199,7 @@ Accept wildcard characters: False
 Overall health state for update-specific health checks.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.HealthState
+Type: System.String
 Parameter Sets: PutExpanded
 Aliases:
 
@@ -210,6 +219,36 @@ Parameter Sets: PutExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Put operation
+
+```yaml
+Type: System.String
+Parameter Sets: PutViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Put operation
+
+```yaml
+Type: System.String
+Parameter Sets: PutViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -310,10 +349,9 @@ Accept wildcard characters: False
 ### -Prerequisite
 If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update.
 Otherwise, it is empty.
-To construct, see NOTES section for PREREQUISITE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdatePrerequisite[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdatePrerequisite[]
 Parameter Sets: PutExpanded
 Aliases:
 
@@ -343,7 +381,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.RebootRequirement
+Type: System.String
 Parameter Sets: PutExpanded
 Aliases:
 
@@ -389,7 +427,7 @@ Accept wildcard characters: False
 State of the update as it relates to this stamp.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.State
+Type: System.String
 Parameter Sets: PutExpanded
 Aliases:
 
@@ -418,10 +456,9 @@ Accept wildcard characters: False
 
 ### -UpdateProperty
 Update details
-To construct, see NOTES section for UPDATEPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdate
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdate
 Parameter Sets: Put
 Aliases:
 
@@ -514,11 +551,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdate
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdate
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdate
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdate
 
 ## NOTES
 
