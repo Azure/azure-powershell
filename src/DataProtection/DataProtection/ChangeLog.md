@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.9.0
 * Added support for Data Protection Platform vault soft delete feature
 
 ## Version 2.8.0
