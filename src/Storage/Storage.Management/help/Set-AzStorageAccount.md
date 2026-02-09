@@ -230,10 +230,10 @@ The command updates a Storage account by enable Azure Files Active Directory Dom
 
 
 ```
-$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -MinimumTlsVersion TLS1_1 -AllowBlobPublicAccess $false -AllowSharedKeyAccess $true
+$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -MinimumTlsVersion TLS1_2 -AllowBlobPublicAccess $false -AllowSharedKeyAccess $true
 
 $account.MinimumTlsVersion
-TLS1_1
+TLS1_2
 
 $account.AllowBlobPublicAccess
 False
