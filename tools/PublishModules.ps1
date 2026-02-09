@@ -62,6 +62,9 @@ param(
     [string]$TargetBuild
 )
 
+# Start timing
+$ScriptStartTime = Get-Date
+
 Import-Module "$PSScriptRoot\PublishModules.psm1"
 
 <###################################
@@ -91,27 +94,29 @@ Get-PackageProvider -Name NuGet -Force
 Write-Host " "
 
 # NOTE: Can only be Azure or Azure Stack, not both.
-$packageFolder = "$PSScriptRoot\..\artifacts"
+$packageFolder = (Join-Path $repositoryLocation ".." "artifacts")
 if ($Scope -eq 'Stack') {
-    $packageFolder = "$PSScriptRoot\..\src\Stack"
+    $packageFolder = (Join-Path $repositoryLocation ".." "src" "Stack") 
 }
 # Set temporary repo location
 $PublishLocal = test-path $repositoryLocation
 [string]$tempRepoPath = "$packageFolder"
 if ($PublishLocal) {
     if ($Scope -eq 'Stack') {
-        $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "Stack")
+        $tempRepoPath = (Join-Path $repositoryLocation "Stack")
     } else {
-        $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "..\artifacts")
+        $tempRepoPath = (Join-Path $repositoryLocation ".." "artifacts")
     }
 }
 
 $null = New-Item -ItemType Directory -Force -Path $tempRepoPath
+$tempRepoPath = (Resolve-Path $tempRepoPath).Path
 $tempRepoName = ([System.Guid]::NewGuid()).ToString()
 $repo = Get-PSRepository | Where-Object { $_.SourceLocation -eq $tempRepoPath }
 if ($null -ne $repo) {
     $tempRepoName = $repo.Name
 } else {
+    Write-Host "Registering temporary PSRepository: $tempRepoName at $tempRepoPath" -ForegroundColor Cyan
     Register-PSRepository -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet
 }
 
@@ -130,7 +135,15 @@ try {
     Unregister-PSRepository -Name $tempRepoName
 }
 
-if ($Errors -ne $null) {
+# Calculate and display elapsed time
+$ScriptEndTime = Get-Date
+$ElapsedTime = $ScriptEndTime - $ScriptStartTime
+Write-Host "`n==========================================" -ForegroundColor Cyan
+Write-Host "Script execution completed" -ForegroundColor Green
+Write-Host "Total time elapsed: $($ElapsedTime.ToString('hh\:mm\:ss'))" -ForegroundColor Cyan
+Write-Host "==========================================" -ForegroundColor Cyan
+
+if ($null -ne $Errors) {
     exit 1
 }
 exit 0

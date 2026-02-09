@@ -200,7 +200,7 @@ Function Get-BreakingChangeInfoOfModule
     If (-Not (Test-Path -Path ([System.IO.Path]::Combine($ModuleRoot, "generated"))))
     {
         $psd1Path = [System.IO.Path]::Combine($ModuleRoot, "$ModuleName.psd1")
-        Import-Module $psd1Path
+        Import-Module $psd1Path -Global
         $ModuleInfo = Get-Module $ModuleName
         ForEach ($cmdletInfo In $ModuleInfo.ExportedCmdlets.Values)
         {

@@ -37,12 +37,18 @@ namespace VersionController.Netcore.Models
                 Console.WriteLine("Analyzing module: {0}", moduleName);
                 var executingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).AbsolutePath);
                 Directory.SetCurrentDirectory(executingPath);
-                var newModuleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
-                var filePath = Path.Combine(toolsCommonDirs, "SerializedCmdlets", $"{moduleName}.json");
-                if (!File.Exists(filePath))  continue;
-                var oldModuleMetadata = ModuleMetadata.DeserializeCmdlets(filePath);
-                CmdletLoader.ModuleMetadata = oldModuleMetadata;
-                CompareModuleMetedata(oldModuleMetadata, newModuleMetadata, moduleName);
+
+                try {
+                    var newModuleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
+                    var filePath = Path.Combine(toolsCommonDirs, "SerializedCmdlets", $"{moduleName}.json");
+                    if (!File.Exists(filePath)) continue;
+                    var oldModuleMetadata = ModuleMetadata.DeserializeCmdlets(filePath);
+                    CmdletLoader.ModuleMetadata = oldModuleMetadata;
+                    CompareModuleMetedata(oldModuleMetadata, newModuleMetadata, moduleName);
+                }
+                catch (Exception ex) {
+                    Console.Error.WriteLine($"Failed to analyze {moduleName}: {ex.Message}");
+                }
             }
             var markDownPath = Path.Combine(rootDirectory, @"documentation/SyntaxChangeLog/SyntaxChangeLog.md");
             GenerateMarkdown(markDownPath);

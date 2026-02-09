@@ -31,6 +31,9 @@ Param(
     [string]$ReleaseType = "STS"
 )
 
+# Start timing
+$ScriptStartTime = Get-Date
+
 Import-Module -Name "$PSScriptRoot/ReleaseTools/VersionBumpUtils.psm1" -Force
 
 enum PSVersion
@@ -113,22 +116,23 @@ function Get-ModuleMetadata
 {
     Param(
         [Parameter(Mandatory = $true)]
-        [string]$Module,
+        [string]$Module, # e.g., Az.Compute
         [Parameter(Mandatory = $true)]
         [string]$RootPath
     )
-
-    $ProjectPaths = @( "$RootPath\src" )
+    $ProjectPath = Join-Path -Path $RootPath -ChildPath "src"
 
     .($PSScriptRoot + "\PreloadToolDll.ps1")
-    $ModuleManifestFile = $ProjectPaths | % { Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | where { $_.Name.Replace(".psd1", "") -eq $Module -and `
+    
     # Skip psd1 of generated modules in HYBRID modules because they are not really used
     # This is based on an assumption that the path of the REAL psd1 of a HYBRID module should always not contain "Autorest"
-                                                                                                          $_.FullName -inotlike "*autorest*" -and `
-                                                                                                          $_.FullName -notlike "*Debug*" -and `
-                                                                                                          $_.FullName -notlike "*Netcore*" -and `
-                                                                                                          $_.FullName -notlike "*dll-Help.psd1*" -and `
-                                                                                                          (-not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName)) } }
+    $ModuleManifestFile = Get-ChildItem -Path $ProjectPath -Filter "*.psd1" -Recurse -Depth 2 `
+        | Where-Object { $_.Name -eq "$($Module).psd1" } `
+        | Where-Object { $_.FullName -inotlike "*autorest*" } `
+        | Where-Object { $_.FullName -inotlike "*Debug*" } `
+        | Where-Object { $_.FullName -inotlike "*Netcore*" } `
+        | Where-Object { $_.FullName -inotlike "*dll-Help.psd1*" } `
+        | Where-Object { -not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName) }
 
     if($ModuleManifestFile.Count -gt 1)
     {
@@ -176,29 +180,23 @@ function Bump-AzVersion
     $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\Az\Az.psd1"
     Write-Host "Getting Az $ReleaseType information from gallery..." -ForegroundColor Yellow
 
+    
     if("LTS" -eq $ReleaseType){
         if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
+            if ((Get-PSResourceRepository -Name $Env:DEFAULT_PS_REPOSITORY_NAME).Count -eq 0) {
+                Register-PSResourceRepository -Name $Env:DEFAULT_PS_REPOSITORY_NAME -Uri $Env:DEFAULT_PS_REPOSITORY_URL
+            }
             Write-Host "Using DEFAULT_PS_REPOSITORY_NAME: $Env:DEFAULT_PS_REPOSITORY_NAME"
             $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
             $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
-            $galleryAz = Find-PSResource -Name AzPreview -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -TrustRepository
+            $galleryAz = Find-PSResource -Name AzPreview -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject
         }
         else {
             $galleryAz = Find-PSResource -Name AzPreview -Repository $GalleryName -Version *
         }
         $galleryAz = $galleryAz | Where-Object { ([System.Version]($_.Version)).Major%2 -eq 0 } | Sort-Object {[System.Version]$_.Version} -Descending
-    }
-    else
-    {
-        if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
-            Write-Host "Using DEFAULT_PS_REPOSITORY_NAME: $Env:DEFAULT_PS_REPOSITORY_NAME"
-            $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
-            $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
-            $galleryAz = Find-PSResource -Name AzPreview -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -TrustRepository
-        }
-        else {
-            $galleryAz = Find-PSResource -Name AzPreview -Repository $GalleryName
-        }
+    }else{
+        $galleryAz = & $PSScriptRoot/BuildScripts/CollectLastReleaseModules.ps1
     }
 
     $versionBump = [PSVersion]::NONE
@@ -293,14 +291,18 @@ function Bump-AzVersion
         throw "Please check artifacts output path: $resolvedArtifactsOutputPath whether exists."
     }
 
-    # Update-ModuleManifest requires all required modules in Az.psd1 installed in local
-    # Add artifacts as PSModulePath to skip installation
-    if(!($env:PSModulePath.Split(";").Contains($resolvedArtifactsOutputPath)))
-    {
-        $env:PSModulePath = "$resolvedArtifactsOutputPath;" + $env:PSModulePath
-    }
-
-    Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
+    # Update Az.psd1 using string replacement
+    $azPsd1Path = "$PSScriptRoot\Az\Az.psd1"
+    $azPsd1Content = Get-Content -Path $azPsd1Path -Raw
+    
+    # Update ModuleVersion
+    $azPsd1Content = $azPsd1Content -replace "(?m)(^\s*)ModuleVersion\s*=\s*'[\d\.]+(')","$`1ModuleVersion = '$newVersion`$2"
+    
+    # Update ReleaseNotes
+    $releaseNotesString = ($releaseNotes -join "`r`n").Replace("'", "''")
+    $azPsd1Content = $azPsd1Content -replace "(?s)ReleaseNotes\s*=\s*@'\r?\n.*?\r?\n'@", "ReleaseNotes = @'`r`n$releaseNotesString`r`n'@"
+    
+    Set-Content -Path $azPsd1Path -Value $azPsd1Content -Encoding UTF8 -NoNewline
     Update-ChangeLog -Content $changeLog -FilePath "$rootPath\ChangeLog.md"
 
     New-CommandMappingFile
@@ -346,42 +348,8 @@ function Update-AzPreview
 function Update-AzPreviewChangelog
 {
     $AzPreviewVersion = (Import-PowerShellDataFile "$PSScriptRoot\Az\Az.psd1").ModuleVersion
-    $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\AzPreview\AzPreview.psd1"
-    Write-Host "Getting gallery AzPreview information..." -ForegroundColor Yellow
-    if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
-        Write-Host "Using DEFAULT_PS_REPOSITORY_NAME: $Env:DEFAULT_PS_REPOSITORY_NAME"
-        $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
-        $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
-        $galleryAz = Find-PSResource -Name AzPreview -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -TrustRepository
-    }
-    else {
-        $galleryAz = Find-PSResource -Name AzPreview -Repository $GalleryName
-    }
-    $updatedModules = @()
-    foreach ($localDependency in $localAz.RequiredModules)
-    {
-        $galleryDependency = $galleryAz.Dependencies | where { $_.Name -eq $localDependency.ModuleName }
-        if ($null -eq $galleryDependency)
-        {
-            $updatedModules += $localDependency.ModuleName
-            Write-Host "Found new added module $($localDependency.ModuleName)"
-            continue
-        }
-
-        $galleryVersion = $galleryDependency.VersionRange.MinVersion.OriginalVersion
-
-        $localVersion = $localDependency.RequiredVersion
-        # Az.Accounts uses ModuleVersion to annote Version
-        if ([string]::IsNullOrEmpty($localVersion))
-        {
-            $localVersion = $localDependency.ModuleVersion
-        }
-
-        if ($galleryVersion.ToString() -ne $localVersion)
-        {
-            $updatedModules += $localDependency.ModuleName
-        }
-    }
+    $updatedModules = & $PSScriptRoot/BuildScripts/CollectModifiedModules.ps1
+    $updatedModules = $updatedModules | ForEach-Object { "Az.$_" }
 
     $releaseNotes = @()
     $releaseNotes += "$AzPreviewVersion - $Release"
@@ -467,7 +435,7 @@ function New-CommandMappingFile
 
 function Get-Psd1Path {
     $paths = @()
-    $SrcPath = Join-Path -Path $PSScriptRoot -ChildPath "..\src"
+    $SrcPath = Join-Path $PSScriptRoot ".." "src"
     foreach ($DirName in $(Get-ChildItem $SrcPath -Directory).Name)
     {
         $ModulePath = $(Join-Path -Path $SrcPath -ChildPath $DirName)
@@ -505,34 +473,11 @@ switch ($PSCmdlet.ParameterSetName)
 
     {$PSItem.StartsWith("ReleaseAz")}
     {
-        # clean the unnecessary SerializedCmdlets json file
-        $ExistSerializedCmdletJsonFile = Get-ExistSerializedCmdletJsonFile
-        $GAModules = @() # with "Az."
-        $ExpectJsonHashSet = @{}
-        $SrcPath = Join-Path -Path $PSScriptRoot -ChildPath "..\src"
-        foreach ($ModuleName in $(Get-ChildItem $SrcPath -Directory).Name)
-        {
-            $ModulePath = $(Join-Path -Path $SrcPath -ChildPath $ModuleName)
-            $Psd1FileName = "Az.{0}.psd1" -f $ModuleName
-            $Psd1FilePath = $(Get-ChildItem $ModulePath -Depth 2 -Recurse -Filter $Psd1FileName)
-            if ($null -ne $Psd1FilePath)
-            {
-                $Psd1Object = Import-PowerShellDataFile $Psd1FilePath
-                if ([Version]$Psd1Object.ModuleVersion -ge [Version]"1.0.0")
-                {
-                    $ExpectJsonHashSet.Add("Az.${ModuleName}.json", $true)
-                    $GAModules += "Az.${ModuleName}"
-                }
-            }
-        }
-        foreach ($JsonFile in $ExistSerializedCmdletJsonFile)
-        {
-            $ModuleName = $JsonFile.Replace('.json', '')
-            if (!$ExpectJsonHashSet.Contains($JsonFile))
-            {
-                Write-Host "Module ${ModuleName} is pre-GA. The serialized cmdlets file: ${JsonFile} is for reference only"
-            }
-        }
+        # $ExistSerializedCmdletJsonFile = Get-ExistSerializedCmdletJsonFile
+        # $ExistSerializedCmdletJsonFile | ForEach-Object { Write-Host $_ }
+        
+        $ModifiedGAModules = & $PSScriptRoot/BuildScripts/CollectModifiedModules.ps1 -GAOnly
+        $ModifiedGAModules = $ModifiedGAModules | ForEach-Object { "Az.$_" }
 
         Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $ReleaseType
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $ReleaseType
@@ -545,10 +490,19 @@ switch ($PSCmdlet.ParameterSetName)
         Update-AzSyntaxChangelog
 
         # Update the doc of upcoming breaking change
+        Import-Module $PSScriptRoot/../artifacts/Release/Az.Accounts/Az.Accounts.psd1 -Global
         Import-Module $PSScriptRoot/BreakingChanges/GetUpcomingBreakingChange.psm1
-        Export-AllBreakingChangeMessageUnderArtifacts -ArtifactsPath $PSScriptRoot/../artifacts/Release/ -MarkdownPath $PSScriptRoot/../documentation/breaking-changes/upcoming-breaking-changes.md -Module $GAModules
+        Export-AllBreakingChangeMessageUnderArtifacts -ArtifactsPath $PSScriptRoot/../artifacts/Release/ -MarkdownPath $PSScriptRoot/../documentation/breaking-changes/upcoming-breaking-changes.md -Module $ModifiedGAModules
     }
 }
 
 # Generate dotnet csv
-&$PSScriptRoot/Docs/GenerateDotNetCsv.ps1 -FeedPsd1FullPath "$PSScriptRoot\AzPreview\AzPreview.psd1"
+& $PSScriptRoot/Docs/GenerateDotNetCsv.ps1 -FeedPsd1FullPath "$PSScriptRoot\AzPreview\AzPreview.psd1"
+
+# Calculate and display elapsed time
+$ScriptEndTime = Get-Date
+$ElapsedTime = $ScriptEndTime - $ScriptStartTime
+Write-Host "`n==========================================" -ForegroundColor Cyan
+Write-Host "Script execution completed" -ForegroundColor Green
+Write-Host "Total time elapsed: $($ElapsedTime.ToString('hh\:mm\:ss'))" -ForegroundColor Cyan
+Write-Host "=========================================="  -ForegroundColor Cyan

@@ -18,7 +18,6 @@
 # Import-Module ./tools/BreakingChanges/GetUpcomingBreakingChange.psm1
 # Export-AllBreakingChangeMessageUnderArtifacts -ArtifactsPath ./artifacts/Debug/ -MarkdownPath ./documentation/breaking-changes/upcoming-breaking-changes.md
 # ```
-
 Import-Module (Join-Path $PSScriptRoot "Get-BreakingChangeMetadata.ps1") -Force
 
 Function Export-BreakingChangeMessageOfModule
@@ -62,6 +61,9 @@ Function Export-AllBreakingChangeMessageUnderArtifacts
         [String[]]
         $Module
     )
+
+    $ArtifactsPath = ($ArtifactsPath | Resolve-Path).Path
+
     Write-Host "Gathering breaking change info from $ArtifactsPath"
     @"
 # Upcoming breaking changes in Azure PowerShell
