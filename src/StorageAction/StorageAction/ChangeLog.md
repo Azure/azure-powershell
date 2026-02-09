@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Migrated to typespec
 
 ## Version 1.0.0
 * General availability for module Az.StorageAction

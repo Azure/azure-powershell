@@ -1,0 +1,66 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/StorageAction/StorageAction.Autorest"
+    clear-output-folder: true
+    debug: true
+    azure: true
+    module-version: 0.1.0
+    prefix: "Az"
+    subject-prefix: "StorageAction"
+    service-name: StorageAction
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    
+    directive:
+      # Following are common directives which are normally required in all the RPs
+      # 1. Remove the unexpanded parameter set
+      # 2. For New-* cmdlets, ViaIdentity is not required
+      # Following two directives are v4 specific
+      - where:
+          variant: ^(Create|Update|Preview)(?!.*?(Expanded|JsonFilePath|JsonString))
+        remove: true
+      - where:
+          variant: ^CreateViaIdentity.*$
+        remove: true
+      # Remove commands
+      - where:
+          verb: Get
+          subject: Operation
+        remove: true
+      # Rename commands
+      - where:
+          subject: StorageTask
+        set:
+          subject: Task
+      - where:
+          verb: Invoke
+          subject: PreviewStorageTaskAction
+        set:
+          subject: TaskPreviewAction
+      - where:
+          subject: StorageTaskAssignment
+        set:
+          subject: TaskAssignment
+      - where:
+          subject: StorageTasksReport
+        set:
+          subject: TasksReport
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            name: SubscriptionId Default
+            description: Gets the SubscriptionId from the current context.
+            script: '(Get-AzContext).Subscription.Id'
+      # Add model cmdlets for creating parameter objects
+      - model-cmdlet:
+        - model-name: StorageTaskOperation
+          cmdlet-name: New-AzStorageActionTaskOperationObject
+        - model-name: StorageTaskPreviewBlobProperties
+          cmdlet-name: New-AzStorageActionTaskPreviewBlobPropertiesObject
+        - model-name: StorageTaskPreviewKeyValueProperties
+          cmdlet-name: New-AzStorageActionTaskPreviewKeyValuePropertiesObject
