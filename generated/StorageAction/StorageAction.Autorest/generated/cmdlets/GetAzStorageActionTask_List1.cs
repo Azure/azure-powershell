@@ -15,6 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Cmdlets
     /// [OpenAPI] ListByResourceGroup=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzStorageActionTask_List1")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask", "16.0.0", "2.0.0", "2026/05", DeprecatedOutputProperties = new string[] {"IdentityUserAssignedIdentity"}, NewOutputProperties = new string[] {"IdentityUserAssignedIdentity" } , ChangeDescription = "The types of the property 'IdentityUserAssignedIdentity' will be changed from 'Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IManagedServiceIdentityUserAssignedIdentities'")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Description(@"Lists all the storage tasks available under the given resource group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Generated]
