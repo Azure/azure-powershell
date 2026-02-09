@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEdgeMarketplaceOfferAccessToken
 
 ## SYNOPSIS
-Get access token.
+Retrieves the access token (SAS URL) for a disk that was previously requested via New-AzEdgeMarketplaceOfferAccessToken.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ Get-AzEdgeMarketplaceOfferAccessToken -OfferId <String> -ResourceUri <String> -J
 ```
 
 ## DESCRIPTION
-Get access token.
+Retrieves the access token (SAS URL) for a disk that was previously requested via New-AzEdgeMarketplaceOfferAccessToken.
 
 ## EXAMPLES
 

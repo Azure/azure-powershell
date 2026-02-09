@@ -8,7 +8,8 @@ schema: 2.0.0
 # New-AzEdgeMarketplaceOfferAccessToken
 
 ## SYNOPSIS
-A long-running resource action.
+Initiates an asynchronous disk creation process for a specified marketplace image and returns immediately with a 202 Accepted status.
+it can poll for completion using the returned operation status URL and its result can be used to get access token using Get-AzEdgeMarketplaceOfferAccessToken.
 
 ## SYNTAX
 
@@ -59,7 +60,8 @@ New-AzEdgeMarketplaceOfferAccessToken -InputObject <IEdgeMarketplaceIdentity> -B
 ```
 
 ## DESCRIPTION
-A long-running resource action.
+Initiates an asynchronous disk creation process for a specified marketplace image and returns immediately with a 202 Accepted status.
+it can poll for completion using the returned operation status URL and its result can be used to get access token using Get-AzEdgeMarketplaceOfferAccessToken.
 
 ## EXAMPLES
 

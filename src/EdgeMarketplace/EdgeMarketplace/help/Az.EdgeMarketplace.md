@@ -15,14 +15,14 @@ Microsoft Azure PowerShell: EdgeMarketplace cmdlets
 Get a Offer
 
 ### [Get-AzEdgeMarketplaceOfferAccessToken](Get-AzEdgeMarketplaceOfferAccessToken.md)
-Get access token.
+Retrieves the access token (SAS URL) for a disk that was previously requested via New-AzEdgeMarketplaceOfferAccessToken.
 
 ### [New-AzEdgeMarketplaceOfferAccessToken](New-AzEdgeMarketplaceOfferAccessToken.md)
-A long-running resource action.
+Initiates an asynchronous disk creation process for a specified marketplace image and returns immediately with a 202 Accepted status.
+it can poll for completion using the returned operation status URL and its result can be used to get access token using Get-AzEdgeMarketplaceOfferAccessToken.
 
 ### [Request-AzEdgeMarketplaceOfferAccessToken](Request-AzEdgeMarketplaceOfferAccessToken.md)
-Request Edge Marketplace Offer Access Token.
-
+This cmdlet combines New-AzEdgeMarketplaceOfferAccessToken and Get-AzEdgeMarketplaceOfferAccessToken to generate access token and retrieve the final SAS token when the disk is ready-enabling clients to download marketplace images to their edge devices.
 ## Download Instructions
 After getting the Access token using [Get-AzEdgeMarketplaceOfferAccessToken](Get-AzEdgeMarketplaceOfferAccessToken.md) you can follow the below steps
 
@@ -43,4 +43,3 @@ Monitor the Bitstransfer job. When all jobs are in the JobState `Transferred` - 
 ```powershell
 Get-BitsTransfer | Where-Object JobState -eq 'Transferred' | Complete-BitsTransfer
 ```
-

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Request-AzEdgeMarketplaceOfferAccessToken
 
 ## SYNOPSIS
-Request Edge Marketplace Offer Access Token.
+This cmdlet combines New-AzEdgeMarketplaceOfferAccessToken and Get-AzEdgeMarketplaceOfferAccessToken to generate access token and retrieve the final SAS token when the disk is ready—enabling clients to download marketplace images to their edge devices.
 
 ## SYNTAX
 
@@ -21,11 +21,7 @@ Request-AzEdgeMarketplaceOfferAccessToken -EdgeMarketplaceRegion <String> -Offer
 ```
 
 ## DESCRIPTION
-The Request-AzEdgeMarketplaceOfferAccessToken cmdlet generates an access token for an Edge Marketplace offer
-by first creating a token request (using New-AzEdgeMarketplaceOfferAccessToken with -NoWait), polling the operation 
-status to extract the requestId, and then retrieving the completed token (using Get-AzEdgeMarketplaceOfferAccessToken).
-
-This is a convenience cmdlet that combines both operations into a single synchronous command.
+This cmdlet combines New-AzEdgeMarketplaceOfferAccessToken and Get-AzEdgeMarketplaceOfferAccessToken to generate access token and retrieve the final SAS token when the disk is ready—enabling clients to download marketplace images to their edge devices.
 
 ## EXAMPLES
 
