@@ -72,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -ActionOnDiskDelay
-Determines on how to handle disks with slow I/O. Possible values include: 'None', 'AutomaticReattach'. None is the default behavior where the VM restarts upon slow disk I/O. AutomaticReattach will attempt to detach and reattach the disk upon I/O failure or slow response.
+Determines how to handle disks with slow I/O. Possible values include: 'None', 'AutomaticReattach'. None is the default behavior where the VM restarts upon slow disk I/O. AutomaticReattach will attempt to detach and reattach the disk upon I/O failure or slow response.
 
 ```yaml
 Type: System.String
@@ -366,21 +366,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PublicNetworkAccess
 Policy for controlling export on the disk.
 
@@ -424,21 +409,6 @@ Aliases: AccountType
 
 Required: False
 Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SupportedSecurityOption
-Refers to the security capability of the disk supported to create a Trusted launch or Confidential VM.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

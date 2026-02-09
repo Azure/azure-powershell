@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the AvailabilityPolicy class.
         /// </summary>
 
-        /// <param name="actionOnDiskDelay">Determines on how to handle disks with slow I/O.
+        /// <param name="actionOnDiskDelay">Determines how to handle disks with slow I/O.
         /// Possible values include: &#39;None&#39;, &#39;AutomaticReattach&#39;</param>
         public AvailabilityPolicy(string actionOnDiskDelay = default(string))
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
 
         /// <summary>
-        /// Gets or sets determines on how to handle disks with slow I/O. Possible values include: &#39;None&#39;, &#39;AutomaticReattach&#39;
+        /// Gets or sets determines how to handle disks with slow I/O. Possible values include: &#39;None&#39;, &#39;AutomaticReattach&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "actionOnDiskDelay")]
         public string ActionOnDiskDelay {get; set; }
