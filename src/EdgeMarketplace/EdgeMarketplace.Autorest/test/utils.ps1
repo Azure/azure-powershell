@@ -43,6 +43,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+
     # For any resources you created for test, you should add it to $env here.
     $env.Add("OfferId", "microsoftwindowsserver:windowsserver")
     $env.Add("ResourceUri", "/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation")
