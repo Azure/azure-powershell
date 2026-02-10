@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -56,6 +58,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string PublicKey { get; set; }
 
+        [Parameter(
+            Mandatory = false)]
+        public Hashtable Tag { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -83,6 +89,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 SshPublicKeyUpdateResource sshkeyUpdateResource = new SshPublicKeyUpdateResource();
                 sshkeyUpdateResource.PublicKey = publicKey;
+                
+                if (this.MyInvocation.BoundParameters.ContainsKey("Tag"))
+                {
+                    sshkeyUpdateResource.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
+                }
+                
                 var result = SshPublicKeyClient.Update(resourceGroupName, sshKeyName, sshkeyUpdateResource);
                 var psObject = new PSSshPublicKeyResource();
                 ComputeAutomationAutoMapperProfile.Mapper.Map<SshPublicKeyResource, PSSshPublicKeyResource>(result, psObject);
