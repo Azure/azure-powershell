@@ -14,7 +14,7 @@ Create a SSH Public Key resource.
 
 ```
 New-AzSshKey -ResourceGroupName <String> -Name <String> [-PublicKey <String>] [-SshKeyType <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -36,6 +36,20 @@ New-AzSshKey -ResourceGroupName "testRG" -Name "sshkey1"
 ```
 
 Creating a SSH Key resource without providing a public key. A key pair will be generated and saved in ~\.ssh. The public key will also be saved in the SSH Key resource.
+
+### Example 3
+```powershell
+New-AzSshKey -ResourceGroupName "testRG" -Name "sshkey1" -Tag @{ Environment = "Production"; Owner = "TeamA" }
+```
+
+Creating a SSH Key resource with tags. A key pair will be generated and saved in ~\.ssh. The tags will be applied to the SSH Key resource.
+
+### Example 4
+```powershell
+New-AzSshKey -ResourceGroupName "testRG" -Name "sshkey1" -Location "eastus"
+```
+
+Creating a SSH Key resource with a specific location. This allows the SSH Key to be created in a different region than the resource group.
 
 ## PARAMETERS
 
@@ -107,6 +121,36 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Ed25519, RSA
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Specifies the location for the SSH Public Key resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
