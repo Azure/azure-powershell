@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ManagedServices
-Module Guid: 54366ec5-1955-4a40-b1df-da4057a89b87
+Module Guid: df85bc10-3067-4698-954b-7c4948d51456
 Download Help Link: https://learn.microsoft.com/powershell/module/az.managedservices
 Help Version: 1.0.0.0
 Locale: en-US
