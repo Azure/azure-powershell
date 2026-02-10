@@ -245,5 +245,168 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
             var publicKeyParam = publicKeyProp?.GetCustomAttributes(typeof(ParameterAttribute), false)[0] as ParameterAttribute;
             Assert.False(publicKeyParam?.Mandatory ?? true);
         }
+
+        #region BufferSize Parameter Tests
+
+        [Fact]
+        public void TestBufferSizeParameterExists()
+        {
+            // Test that BufferSize parameter exists on Connect-AzSftp
+            var connectCommand = new ConnectAzSftpCommand();
+            
+            var bufferSizeProp = connectCommand.GetType().GetProperty("BufferSize");
+            Assert.NotNull(bufferSizeProp);
+            Assert.Equal(typeof(int), bufferSizeProp.PropertyType);
+        }
+
+        [Fact]
+        public void TestBufferSizeDefaultValue()
+        {
+            // Test that BufferSize has correct default value (256 * 1024 = 262144)
+            var connectCommand = new ConnectAzSftpCommand();
+            
+            Assert.Equal(256 * 1024, connectCommand.BufferSize);
+            Assert.Equal(262144, connectCommand.BufferSize);
+        }
+
+        [Fact]
+        public void TestBufferSizeHasValidateRangeAttribute()
+        {
+            // Test that BufferSize has proper validation
+            var connectCommand = new ConnectAzSftpCommand();
+            
+            var bufferSizeProp = connectCommand.GetType().GetProperty("BufferSize");
+            var validateAttrs = bufferSizeProp?.GetCustomAttributes(typeof(ValidateRangeAttribute), false);
+            
+            Assert.NotNull(validateAttrs);
+            Assert.True(validateAttrs.Length > 0);
+            
+            var validateRange = validateAttrs[0] as ValidateRangeAttribute;
+            Assert.NotNull(validateRange);
+            Assert.Equal(1, validateRange.MinRange);  // Minimum should be 1
+        }
+
+        [Fact]
+        public void TestBufferSizeHasHelpMessage()
+        {
+            // Test that BufferSize has helpful documentation
+            var connectCommand = new ConnectAzSftpCommand();
+            
+            var bufferSizeProp = connectCommand.GetType().GetProperty("BufferSize");
+            var paramAttrs = bufferSizeProp?.GetCustomAttributes(typeof(ParameterAttribute), false);
+            
+            Assert.NotNull(paramAttrs);
+            Assert.True(paramAttrs.Length > 0);
+            
+            var paramAttr = paramAttrs[0] as ParameterAttribute;
+            Assert.NotNull(paramAttr);
+            Assert.False(string.IsNullOrEmpty(paramAttr.HelpMessage));
+            Assert.Contains("buffer", paramAttr.HelpMessage.ToLower());
+        }
+
+        [Fact]
+        public void TestBufferSizeIsOptional()
+        {
+            // Test that BufferSize is not mandatory (has default value)
+            var connectCommand = new ConnectAzSftpCommand();
+            
+            var bufferSizeProp = connectCommand.GetType().GetProperty("BufferSize");
+            var paramAttrs = bufferSizeProp?.GetCustomAttributes(typeof(ParameterAttribute), false);
+            
+            Assert.NotNull(paramAttrs);
+            Assert.True(paramAttrs.Length > 0);
+            
+            var paramAttr = paramAttrs[0] as ParameterAttribute;
+            Assert.NotNull(paramAttr);
+            Assert.False(paramAttr.Mandatory);
+        }
+
+        #endregion
+
+        #region StorageAccountEndpoint Parameter Tests
+
+        [Fact]
+        public void TestStorageAccountEndpointParameterExists()
+        {
+            // Test that StorageAccountEndpoint parameter exists on Connect-AzSftp
+            var connectCommand = new ConnectAzSftpCommand();
+            
+            var endpointProp = connectCommand.GetType().GetProperty("StorageAccountEndpoint");
+            Assert.NotNull(endpointProp);
+            Assert.Equal(typeof(string), endpointProp.PropertyType);
+        }
+
+        [Fact]
+        public void TestStorageAccountEndpointDefaultValue()
+        {
+            // Test that StorageAccountEndpoint defaults to null (auto-detect from Azure environment)
+            var connectCommand = new ConnectAzSftpCommand();
+            
+            Assert.Null(connectCommand.StorageAccountEndpoint);
+        }
+
+        [Fact]
+        public void TestStorageAccountEndpointHasValidateNotNullOrEmptyAttribute()
+        {
+            // Test that StorageAccountEndpoint has proper validation when provided
+            var connectCommand = new ConnectAzSftpCommand();
+            
+            var endpointProp = connectCommand.GetType().GetProperty("StorageAccountEndpoint");
+            var validateAttrs = endpointProp?.GetCustomAttributes(typeof(ValidateNotNullOrEmptyAttribute), false);
+            
+            Assert.NotNull(validateAttrs);
+            Assert.True(validateAttrs.Length > 0);
+        }
+
+        [Fact]
+        public void TestStorageAccountEndpointHasHelpMessage()
+        {
+            // Test that StorageAccountEndpoint has helpful documentation
+            var connectCommand = new ConnectAzSftpCommand();
+            
+            var endpointProp = connectCommand.GetType().GetProperty("StorageAccountEndpoint");
+            var paramAttrs = endpointProp?.GetCustomAttributes(typeof(ParameterAttribute), false);
+            
+            Assert.NotNull(paramAttrs);
+            Assert.True(paramAttrs.Length > 0);
+            
+            var paramAttr = paramAttrs[0] as ParameterAttribute;
+            Assert.NotNull(paramAttr);
+            Assert.False(string.IsNullOrEmpty(paramAttr.HelpMessage));
+            Assert.Contains("endpoint", paramAttr.HelpMessage.ToLower());
+        }
+
+        [Fact]
+        public void TestStorageAccountEndpointIsOptional()
+        {
+            // Test that StorageAccountEndpoint is not mandatory (uses auto-detection by default)
+            var connectCommand = new ConnectAzSftpCommand();
+            
+            var endpointProp = connectCommand.GetType().GetProperty("StorageAccountEndpoint");
+            var paramAttrs = endpointProp?.GetCustomAttributes(typeof(ParameterAttribute), false);
+            
+            Assert.NotNull(paramAttrs);
+            Assert.True(paramAttrs.Length > 0);
+            
+            var paramAttr = paramAttrs[0] as ParameterAttribute;
+            Assert.NotNull(paramAttr);
+            Assert.False(paramAttr.Mandatory);
+        }
+
+        [Fact]
+        public void TestStorageAccountEndpointAvailableInAllParameterSets()
+        {
+            // Test that StorageAccountEndpoint is available in all parameter sets
+            var connectCommand = new ConnectAzSftpCommand();
+            
+            var endpointProp = connectCommand.GetType().GetProperty("StorageAccountEndpoint");
+            var paramAttrs = endpointProp?.GetCustomAttributes(typeof(ParameterAttribute), false);
+            
+            Assert.NotNull(paramAttrs);
+            // Should have multiple Parameter attributes (one for each parameter set)
+            Assert.True(paramAttrs.Length >= 4, "StorageAccountEndpoint should be available in all parameter sets");
+        }
+
+        #endregion
     }
 }
