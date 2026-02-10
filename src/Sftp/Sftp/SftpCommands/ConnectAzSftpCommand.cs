@@ -514,10 +514,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
 
         private string GetStorageEndpointSuffix()
         {
-            // Use custom endpoint if provided
-            if (!string.IsNullOrEmpty(StorageAccountEndpoint))
+            // Use custom endpoint suffix if provided
+            if (!string.IsNullOrWhiteSpace(StorageAccountEndpoint))
             {
-                return StorageAccountEndpoint;
+                var normalizedSuffix = StorageAccountEndpoint.Trim();
+
+                // Remove any leading dots so that values like ".blob.core.windows.net" are accepted
+                normalizedSuffix = normalizedSuffix.TrimStart('.');
+
+                // Reject values that look like full URLs or contain paths, since we only expect a DNS suffix
+                if (normalizedSuffix.Contains("://", StringComparison.Ordinal) ||
+                    normalizedSuffix.Contains("/", StringComparison.Ordinal))
+                {
+                    throw new PSArgumentException(
+                        "StorageAccountEndpoint must be a DNS suffix such as 'blob.core.windows.net' and must not contain a scheme or path.");
+                }
+
+                if (string.IsNullOrEmpty(normalizedSuffix))
+                {
+                    throw new PSArgumentException("StorageAccountEndpoint cannot be empty.");
+                }
+
+                return normalizedSuffix;
             }
 
             string cloudName = DefaultContext?.Environment?.Name?.ToLower() ?? "azurecloud";
