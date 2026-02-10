@@ -17,9 +17,10 @@ New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> -Location <
  [-SubscriptionId <String>] [-AccessConnectorId <String>] [-AccessConnectorIdentityType <IdentityType>]
  [-AccessConnectorUserAssignedIdentityId <String>] [-AmlWorkspaceId <String>]
  [-Authorization <IWorkspaceProviderAuthorization[]>] [-AutomaticClusterUpdate <AutomaticClusterUpdateValue>]
- [-ComplianceStandard <ComplianceStandard[]>] [-DefaultCatalogInitialType <InitialType>]
- [-DefaultStorageFirewall <DefaultStorageFirewall>] [-EnableNoPublicIP] [-EncryptionKeyName <String>]
- [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>]
+ [-ComplianceStandard <ComplianceStandard[]>] [-ComputeMode <String>]
+ [-DefaultCatalogInitialType <InitialType>] [-DefaultStorageFirewall <DefaultStorageFirewall>]
+ [-EnableNoPublicIP] [-EncryptionKeyName <String>] [-EncryptionKeySource <KeySource>]
+ [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>]
  [-EnhancedSecurityCompliance <ComplianceSecurityProfileValue>]
  [-EnhancedSecurityMonitoring <EnhancedSecurityMonitoringValue>] [-LoadBalancerBackendPoolName <String>]
  [-LoadBalancerId <String>] [-ManagedDiskKeySource <EncryptionKeySource>]
@@ -173,7 +174,7 @@ The workspace provider authorizations.
 To construct, see NOTES section for AUTHORIZATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20251001Preview.IWorkspaceProviderAuthorization[]
 Parameter Sets: (All)
 Aliases:
 
@@ -206,6 +207,22 @@ Compliance standards associated with the workspace.
 Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]
 Parameter Sets: (All)
 Aliases: ComplianceSecurityProfileComplianceStandard
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComputeMode
+The compute mode of the workspace.
+Possible values (case-insensitive): Hybrid, Serverless
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -907,7 +924,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20251001Preview.IWorkspace
 
 ## NOTES
 
