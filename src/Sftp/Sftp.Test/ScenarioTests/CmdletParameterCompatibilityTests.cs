@@ -246,36 +246,36 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
             Assert.False(publicKeyParam?.Mandatory ?? true);
         }
 
-        #region BufferSize Parameter Tests
+        #region BufferSizeInBytes Parameter Tests
 
         [Fact]
-        public void TestBufferSizeParameterExists()
+        public void TestBufferSizeInBytesParameterExists()
         {
-            // Test that BufferSize parameter exists on Connect-AzSftp
+            // Test that BufferSizeInBytes parameter exists on Connect-AzSftp
             var connectCommand = new ConnectAzSftpCommand();
             
-            var bufferSizeProp = connectCommand.GetType().GetProperty("BufferSize");
+            var bufferSizeProp = connectCommand.GetType().GetProperty("BufferSizeInBytes");
             Assert.NotNull(bufferSizeProp);
             Assert.Equal(typeof(int), bufferSizeProp.PropertyType);
         }
 
         [Fact]
-        public void TestBufferSizeDefaultValue()
+        public void TestBufferSizeInBytesDefaultValue()
         {
-            // Test that BufferSize has correct default value (256 * 1024 = 262144)
+            // Test that BufferSizeInBytes has correct default value (256 * 1024 = 262144)
             var connectCommand = new ConnectAzSftpCommand();
             
-            Assert.Equal(256 * 1024, connectCommand.BufferSize);
-            Assert.Equal(262144, connectCommand.BufferSize);
+            Assert.Equal(256 * 1024, connectCommand.BufferSizeInBytes);
+            Assert.Equal(262144, connectCommand.BufferSizeInBytes);
         }
 
         [Fact]
-        public void TestBufferSizeHasValidateRangeAttribute()
+        public void TestBufferSizeInBytesHasValidateRangeAttribute()
         {
-            // Test that BufferSize has proper validation
+            // Test that BufferSizeInBytes has proper validation
             var connectCommand = new ConnectAzSftpCommand();
             
-            var bufferSizeProp = connectCommand.GetType().GetProperty("BufferSize");
+            var bufferSizeProp = connectCommand.GetType().GetProperty("BufferSizeInBytes");
             var validateAttrs = bufferSizeProp?.GetCustomAttributes(typeof(ValidateRangeAttribute), false);
             
             Assert.NotNull(validateAttrs);
@@ -287,12 +287,12 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
         }
 
         [Fact]
-        public void TestBufferSizeHasHelpMessage()
+        public void TestBufferSizeInBytesHasHelpMessage()
         {
-            // Test that BufferSize has helpful documentation
+            // Test that BufferSizeInBytes has helpful documentation
             var connectCommand = new ConnectAzSftpCommand();
             
-            var bufferSizeProp = connectCommand.GetType().GetProperty("BufferSize");
+            var bufferSizeProp = connectCommand.GetType().GetProperty("BufferSizeInBytes");
             var paramAttrs = bufferSizeProp?.GetCustomAttributes(typeof(ParameterAttribute), false);
             
             Assert.NotNull(paramAttrs);
@@ -305,12 +305,12 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
         }
 
         [Fact]
-        public void TestBufferSizeIsOptional()
+        public void TestBufferSizeInBytesIsOptional()
         {
-            // Test that BufferSize is not mandatory (has default value)
+            // Test that BufferSizeInBytes is not mandatory (has default value)
             var connectCommand = new ConnectAzSftpCommand();
             
-            var bufferSizeProp = connectCommand.GetType().GetProperty("BufferSize");
+            var bufferSizeProp = connectCommand.GetType().GetProperty("BufferSizeInBytes");
             var paramAttrs = bufferSizeProp?.GetCustomAttributes(typeof(ParameterAttribute), false);
             
             Assert.NotNull(paramAttrs);

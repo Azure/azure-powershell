@@ -89,7 +89,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
         [Parameter(Mandatory = false, ParameterSetName = PublicKeyAuthParameterSet, HelpMessage = "Buffer size in bytes for SFTP file transfers. Default: 262144 (256 KB).")]
         [Parameter(Mandatory = false, ParameterSetName = LocalUserAuthParameterSet, HelpMessage = "Buffer size in bytes for SFTP file transfers. Default: 262144 (256 KB).")]
         [ValidateRange(1, int.MaxValue)]
-        public int BufferSize { get; set; } = 256 * 1024;
+        public int BufferSizeInBytes { get; set; } = SftpConstants.DefaultBufferSizeBytes;
 
         [Parameter(Mandatory = false, ParameterSetName = DefaultParameterSet, HelpMessage = "Custom storage account endpoint suffix. Default: Uses endpoint based on Azure environment (e.g., blob.core.windows.net).")]
         [Parameter(Mandatory = false, ParameterSetName = CertificateAuthParameterSet, HelpMessage = "Custom storage account endpoint suffix. Default: Uses endpoint based on Azure environment (e.g., blob.core.windows.net).")]
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
             WriteDebug($"[Connect-AzSftp] Starting SFTP connection");
             WriteDebug($"[Connect-AzSftp] Target storage account: '{StorageAccount}'");
             WriteDebug($"[Connect-AzSftp] Parameter set: '{ParameterSetName}'");
-            WriteDebug($"[Connect-AzSftp] Buffer size: {BufferSize} bytes ({BufferSize / 1024} KB)");
+            WriteDebug($"[Connect-AzSftp] Buffer size: {BufferSizeInBytes} bytes ({BufferSizeInBytes / 1024} KB)");
             if (!string.IsNullOrEmpty(StorageAccountEndpoint))
             {
                 WriteDebug($"[Connect-AzSftp] Custom endpoint: '{StorageAccountEndpoint}'");
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                     sshProxyFolder: null,
                     credentialsFolder: credentialsFolder,
                     yesWithoutPrompt: false,
-                    bufferSizeBytes: BufferSize
+                    bufferSizeBytes: BufferSizeInBytes
                 );
 
                 sftpSession.LocalUser = user;
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 WriteDebug($"[Session]   Local User: '{sftpSession.LocalUser}'");
                 WriteDebug($"[Session]   Host: '{sftpSession.Host}'");
                 WriteDebug($"[Session]   Port: {sftpSession.Port}");
-                WriteDebug($"[Session]   Buffer Size: {BufferSize} bytes");
+                WriteDebug($"[Session]   Buffer Size: {BufferSizeInBytes} bytes");
                 if (!string.IsNullOrEmpty(sftpSession.CertFile))
                 {
                     WriteDebug($"[Session]   Certificate: '{sftpSession.CertFile}'");
@@ -523,8 +523,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 normalizedSuffix = normalizedSuffix.TrimStart('.');
 
                 // Reject values that look like full URLs or contain paths, since we only expect a DNS suffix
-                if (normalizedSuffix.Contains("://", StringComparison.Ordinal) ||
-                    normalizedSuffix.Contains("/", StringComparison.Ordinal))
+                if (normalizedSuffix.IndexOf("://", StringComparison.Ordinal) >= 0 ||
+                    normalizedSuffix.IndexOf("/", StringComparison.Ordinal) >= 0)
                 {
                     throw new PSArgumentException(
                         "StorageAccountEndpoint must be a DNS suffix such as 'blob.core.windows.net' and must not contain a scheme or path.");
