@@ -15,13 +15,13 @@ Validates a SQL virtual machine Entra Authentication.
 ### AssertExpanded (Default)
 ```
 Assert-AzSqlVMEntraAuth -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -IdentityType <String> [-ManagedIdentityClientId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableSystemAssignedIdentity] [-ManagedIdentityClientId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AssertViaIdentity
 ```
-Assert-AzSqlVMEntraAuth -InputObject <ISqlVirtualMachineIdentity> -IdentityType <String>
+Assert-AzSqlVMEntraAuth -InputObject <ISqlVirtualMachineIdentity> [-EnableSystemAssignedIdentity]
  [-ManagedIdentityClientId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -33,7 +33,7 @@ Validates a SQL virtual machine Entra Authentication.
 
 ### Example 1:
 ```powershell
-Assert-AzSqlVMEntraAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'SystemAssigned'
+Assert-AzSqlVMEntraAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -EnableSystemAssignedIdentity
 ```
 
 ```output
@@ -44,7 +44,7 @@ Validates system assigned managed identity for enabling Entra authentication on 
 
 ### Example 2:
 ```powershell
-Assert-AzSqlVMEntraAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'UserAssigned' -ManagedIdentityClientId '00001111-aaaa-2222-bbbb-3333cccc4444'
+Assert-AzSqlVMEntraAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -UserAssignedIdentity 'useridentity1,useridentity2' -ManagedIdentityClientId '11111111-2222-3333-4444-555555555555'
 ```
 
 ```output
@@ -56,7 +56,7 @@ validates user assigned managed identity for enabling Entra authentication on Sq
 ### Example 3:
 ```powershell
 $sqlVM = Get-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'
-$sqlVM | Assert-AzSqlVMEntraAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'SystemAssigned'
+$sqlVM | Assert-AzSqlVMEntraAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -EnableSystemAssignedIdentity
 ```
 
 ```output
@@ -68,7 +68,7 @@ Validates system assigned managed identity for enabling Entra authentication on 
 ### Example 4:
 ```powershell
 $sqlVM = Get-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'
-$sqlVM | Assert-AzSqlVMEntraAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'UserAssigned' -ManagedIdentityClientId '00001111-aaaa-2222-bbbb-3333cccc4444'
+$sqlVM | Assert-AzSqlVMEntraAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -UserAssignedIdentity 'useridentity1,useridentity2' -ManagedIdentityClientId '11111111-2222-3333-4444-555555555555'
 ```
 
 ```output
@@ -109,11 +109,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
+### -EnableSystemAssignedIdentity
 Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

@@ -8,31 +8,43 @@ schema: 2.0.0
 # Update-AzSqlVMGroup
 
 ## SYNOPSIS
-Updates SQL virtual machine group.
+Update SQL virtual machine group tags.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzSqlVMGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ClusterBootstrapAccount <String>] [-ClusterOperatorAccount <String>]
- [-ClusterSubnetType <ClusterSubnetType>] [-DomainFqdn <String>] [-FileShareWitnessPath <String>]
- [-OuPath <String>] [-SqlServiceAccount <String>] [-StorageAccountPrimaryKey <SecureString>]
- [-StorageAccountUrl <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ClusterBootstrapAccount <String>] [-ClusterOperatorAccount <String>] [-ClusterSubnetType <String>]
+ [-DomainFqdn <String>] [-FileShareWitnessPath <String>] [-OuPath <String>] [-SqlServiceAccount <String>]
+ [-StorageAccountPrimaryKey <SecureString>] [-StorageAccountUrl <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
 Update-AzSqlVMGroup -InputObject <ISqlVirtualMachineIdentity> [-ClusterBootstrapAccount <String>]
- [-ClusterOperatorAccount <String>] [-ClusterSubnetType <ClusterSubnetType>] [-DomainFqdn <String>]
+ [-ClusterOperatorAccount <String>] [-ClusterSubnetType <String>] [-DomainFqdn <String>]
  [-FileShareWitnessPath <String>] [-OuPath <String>] [-SqlServiceAccount <String>]
  [-StorageAccountPrimaryKey <SecureString>] [-StorageAccountUrl <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath
+```
+Update-AzSqlVMGroup -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzSqlVMGroup -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Updates SQL virtual machine group.
+Update SQL virtual machine group tags.
 
 ## EXAMPLES
 
@@ -85,7 +97,7 @@ Account name used for creating cluster (at minimum needs permissions to 'Create 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -101,7 +113,7 @@ will be part of administrators group on all the participating virtual machines i
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -112,11 +124,13 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterSubnetType
+[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ClusterSubnetType])]
+[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ClusterSubnetType]
 Cluster subnet type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ClusterSubnetType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -127,7 +141,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -146,7 +161,7 @@ Fully qualified name of the domain.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -161,7 +176,7 @@ Optional path for fileshare witness.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -187,12 +202,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the SQL virtual machine group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: SqlVirtualMachineGroupName, SqlVMGroupName
 
 Required: True
@@ -222,7 +267,7 @@ Organizational Unit path in which the nodes and cluster will be present.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -238,7 +283,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -253,7 +298,7 @@ Account name under which SQL service will run on all participating SQL virtual m
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -268,7 +313,7 @@ Primary key of the witness storage account.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -283,7 +328,7 @@ Fully qualified ARM resource id of the witness storage account.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -298,7 +343,7 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -313,7 +358,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -363,7 +408,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineGroup
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineGroup
 
 ## NOTES
 

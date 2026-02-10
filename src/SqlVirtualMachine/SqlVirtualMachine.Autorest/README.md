@@ -37,13 +37,6 @@ try-require:
   - $(repo)/specification/sqlvirtualmachine/resource-manager/readme.powershell.md
 
 inlining-threshold: 100
-resourcegroup-append: true
-nested-object-to-string: true
-identity-correction-for-post: true
-	
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   #1. [swagger] define password parameters as password type
@@ -220,4 +213,10 @@ directive:
   - from: SqlVirtualMachineManagementClient.cs
     where: $
     transform: return $.replace(/@\"\^\(\(\?!_\)\[\^\\\\\/\"\'\\\[\\\]\:\|\<\>\+\=;,\?\*\@\&\]\{1\,64\}\(\?\<\!\[\.\-\]\)\)\$\"/g, '@"^((?!_)[^\\\\/\"\"\'\\[\\]:|<>+=;,?*@&]{1,64}(?<![.-]))$"')
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
+  - where:
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
 ```

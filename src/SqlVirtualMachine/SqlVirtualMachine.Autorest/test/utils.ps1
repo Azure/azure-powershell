@@ -43,7 +43,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-	$env.Location = "eastus"
+	  $env.Location = "eastus"
     $env.ResourceGroupName = "azpstest-sqlvm-gp"
     $env.SqlVMName = "azpstest-sqlvm"
     $env.SqlVMName_HA1 = "azpstestsql1"

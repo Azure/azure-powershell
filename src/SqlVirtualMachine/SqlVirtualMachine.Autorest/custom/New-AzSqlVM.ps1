@@ -27,12 +27,12 @@ If you are updating an existing SQL virtual machine and a parameter such as -Tag
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine
 .Link
 https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azsqlvm
 #>
 function New-AzSqlVM {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
@@ -81,9 +81,10 @@ function New-AzSqlVM {
         ${AssessmentSettingRunImmediately},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType])]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType])]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType]
+        # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType]
+        [System.String]
         # Backup schedule type.
         ${AutoBackupSettingBackupScheduleType},
 
@@ -95,9 +96,10 @@ function New-AzSqlVM {
 
         [Parameter()]
         [AllowEmptyCollection()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek])]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek])]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek[]]
+        # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek[]]
+        [System.String[]]
         # Days of the week for the backups when FullBackupFrequency is set to Weekly.
         ${AutoBackupSettingDaysOfWeek},
 
@@ -114,9 +116,10 @@ function New-AzSqlVM {
         ${AutoBackupSettingEnableEncryption},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType])]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType])]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType]
+        # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType]
+        [System.String]
         # Frequency of full backups.
         # In both cases, full backups begin during the next scheduled time window.
         ${AutoBackupSettingFullBackupFrequency},
@@ -173,9 +176,10 @@ function New-AzSqlVM {
         ${AutoBackupSettingStorageContainerName},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek])]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek])]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek]
+        # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek]
+        [System.String]
         # Day of week to apply the patch on.
         ${AutoPatchingSettingDayOfWeek},
 
@@ -212,12 +216,13 @@ function New-AzSqlVM {
         ${EnableAutomaticUpgrade},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.IdentityType])]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.IdentityType])]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.IdentityType]
+        # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.IdentityType]
+        [System.Management.Automation.SwitchParameter]
         # The identity type.
         # Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
-        ${IdentityType},
+        ${EnableSystemAssignedIdentity},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
@@ -250,16 +255,18 @@ function New-AzSqlVM {
         ${KeyVaultCredentialSettingServicePrincipalSecret},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.LeastPrivilegeMode])]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.LeastPrivilegeMode])]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.LeastPrivilegeMode]
+        # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.LeastPrivilegeMode]
+        [System.String]
         # SQL IaaS Agent least privilege mode.
         ${LeastPrivilegeMode},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType])]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType])]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType]
+        # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType]
+        [System.String]
         # SQL Server license type.
         ${LicenseType},
 
@@ -271,9 +278,10 @@ function New-AzSqlVM {
         ${Offer},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek])]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek])]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek]
+        # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek]
+        [System.String]
         # Day of the week to run assessment.
         ${ScheduleDayOfWeek},
 
@@ -307,16 +315,18 @@ function New-AzSqlVM {
         ${ScheduleWeeklyInterval},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku])]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku])]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku]
+        # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku]
+        [System.String]
         # SQL Server edition type.
         ${Sku},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ConnectivityType])]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ConnectivityType])]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ConnectivityType]
+        # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ConnectivityType]
+        [System.String]
         # SQL Server connectivity option.
         ${SqlConnectivityUpdateSettingConnectivityType},
 
@@ -407,16 +417,18 @@ function New-AzSqlVM {
         ${SqlLogSettingLun},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode])]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode])]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode]
+        # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode]
+        [System.String]
         # SQL Server Management type.
         ${SqlManagementType},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType])]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType])]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType]
+        # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType]
+        [System.String]
         # Disk configuration to apply to SQL Server.
         ${SqlStorageUpdateSettingDiskConfigurationType},
 
@@ -494,16 +506,18 @@ function New-AzSqlVM {
         ${SqlVirtualMachineGroupResourceId},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlWorkloadType])]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlWorkloadType])]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlWorkloadType]
+        # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlWorkloadType]
+        [System.String]
         # SQL Server workload type.
         ${SqlWorkloadTypeUpdateSettingSqlWorkloadType},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType])]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType])]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType]
+        # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType]
+        [System.String]
         # Disk configuration to apply to SQL Server.
         ${StorageConfigurationSettingDiskConfigurationType},
 
@@ -514,15 +528,16 @@ function New-AzSqlVM {
         ${StorageConfigurationSettingSqlSystemDbOnDataDisk},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.StorageWorkloadType])]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.StorageWorkloadType])]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.StorageWorkloadType]
+        # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.StorageWorkloadType]
+        [System.String]
         # Storage workload type.
         ${StorageConfigurationSettingStorageWorkloadType},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ITrackedResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
