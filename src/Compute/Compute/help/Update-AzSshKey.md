@@ -14,20 +14,20 @@ Update a SSH Public Key resource.
 
 ### DefaultParameterSet (Default)
 ```
-Update-AzSshKey -ResourceGroupName <String> -Name <String> -PublicKey <String> [-Tag <Hashtable>]
+Update-AzSshKey -ResourceGroupName <String> -Name <String> -PublicKey <String> [-Tags <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceIDParameterSet
 ```
-Update-AzSshKey -ResourceId <String> -PublicKey <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+Update-AzSshKey -ResourceId <String> -PublicKey <String> [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Update-AzSshKey -InputObject <PSSshPublicKeyResource> -PublicKey <String> [-Tag <Hashtable>]
+Update-AzSshKey -InputObject <PSSshPublicKeyResource> -PublicKey <String> [-Tags <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -48,7 +48,7 @@ Updates the public key value of 'sshKey2' with public key value from 'sshKey1'
 ### Example 2
 ```powershell
 $SshKey1 = Get-AzSshKey -ResourceGroupName "testRG" -Name "sshKey1"
-Update-AzSshKey -ResourceGroupName "testRG" -Name "sshKey2" -PublicKey $SshKey1.publickey -Tag @{ Environment = "Test"; Owner = "TeamA" }
+Update-AzSshKey -ResourceGroupName "testRG" -Name "sshKey2" -PublicKey $SshKey1.publickey -Tags @{ Environment = "Test"; Owner = "TeamA" }
 ```
 
 Updates the public key value and tags of 'sshKey2'
@@ -145,13 +145,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tag
+### -Tags
 Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: Tag
 
 Required: False
 Position: Named

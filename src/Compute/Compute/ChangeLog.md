@@ -20,10 +20,10 @@
 
 -->
 ## Upcoming Release
-* Added `-Tag` and `-Location` parameters to `New-AzSshKey` cmdlet
+* Added `-Tags` and `-Location` parameters to `New-AzSshKey` cmdlet
     - Users can now specify tags during SSH key creation
     - Users can now specify a custom location for SSH key resources
-* Added `-Tag` parameter to `Update-AzSshKey` cmdlet
+* Added `-Tags` parameter to `Update-AzSshKey` cmdlet
     - Users can now update tags on existing SSH key resources
 * Compute SDK generation updates:
     - Generation now uses autorest.powershell, replacing deprecated track 1 SDK.

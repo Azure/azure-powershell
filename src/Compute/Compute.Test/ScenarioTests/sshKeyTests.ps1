@@ -71,7 +71,7 @@ function Test-SshKeyWithTags
 
 		# Create SSH key with tags
 		$tags = @{ Name = "testtag"; Value = "testval" }
-		$sshkey1 = New-AzSshKey -ResourceGroupName $rgname -Name "sshkey1" -Tag $tags
+		$sshkey1 = New-AzSshKey -ResourceGroupName $rgname -Name "sshkey1" -Tags $tags
 
 		# Verify tags were set
 		Assert-NotNull $sshkey1.Tags
@@ -83,7 +83,7 @@ function Test-SshKeyWithTags
 
 		# Update sshkey2 with tags
 		$updateTags = @{ Environment = "Test"; Owner = "TeamA" }
-		$updated = Update-AzSshKey -ResourceGroupName $rgname -Name "sshkey2" -PublicKey $sshkey2.publicKey -Tag $updateTags
+		$updated = Update-AzSshKey -ResourceGroupName $rgname -Name "sshkey2" -PublicKey $sshkey2.publicKey -Tags $updateTags
 
 		# Verify tags were updated
 		Assert-NotNull $updated.Tags
