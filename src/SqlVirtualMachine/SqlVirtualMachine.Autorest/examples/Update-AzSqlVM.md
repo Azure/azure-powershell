@@ -143,7 +143,7 @@ Update a SQL virtual machine's tag as a background job.
 
 ### Example 11
 ```powershell
-Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -EnableSystemAssignedIdentity $true
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'SystemAssigned'
 ```
 
 ```output
@@ -156,7 +156,7 @@ Update a SQL virtual machine to enable Microsoft Entra authentication using "Sys
 
 ### Example 12
 ```powershell
-Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -UserAssignedIdentity 'useridentity1,useridentity2' -ManagedIdentityClientId '11111111-2222-3333-4444-555555555555'
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'UserAssigned' -ManagedIdentityClientId '11111111-2222-3333-4444-555555555555'
 ```
 
 ```output

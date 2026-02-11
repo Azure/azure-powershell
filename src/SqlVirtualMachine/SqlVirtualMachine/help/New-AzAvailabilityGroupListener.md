@@ -14,12 +14,12 @@ Creates or updates an availability group listener.
 
 ```
 New-AzAvailabilityGroupListener -Name <String> -ResourceGroupName <String> -SqlVMGroupName <String>
- [-SubscriptionId <String>] [-AvailabilityGroupConfigurationReplica <String[]>]
+ [-SubscriptionId <String>] [-AvailabilityGroupConfigurationReplica <IAgReplica[]>]
  [-AvailabilityGroupName <String>] [-CreateDefaultAvailabilityGroupIfNotExist] [-IpAddress <String>]
  [-LoadBalancerResourceId <String>] [-ProbePort <Int32>] [-PublicIpAddressResourceId <String>]
- [-SqlVirtualMachineId <String[]>] [-SubnetId <String>] [-MultiSubnetIPConfiguration <String[]>]
- [-Port <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SqlVirtualMachineId <String[]>] [-SubnetId <String>]
+ [-MultiSubnetIPConfiguration <IMultiSubnetIPConfiguration[]>] [-Port <Int32>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,12 +74,11 @@ Accept wildcard characters: False
 ```
 
 ### -AvailabilityGroupConfigurationReplica
-[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAgReplica[]]
 Replica configurations.
 To construct, see NOTES section for AVAILABILITYGROUPCONFIGURATIONREPLICA properties and create a hash table.
 
 ```yaml
-Type: System.String[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAgReplica[]
 Parameter Sets: (All)
 Aliases:
 
@@ -166,12 +165,11 @@ Accept wildcard characters: False
 ```
 
 ### -MultiSubnetIPConfiguration
-[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IMultiSubnetIPConfiguration[]]
 List of multi subnet IP configurations for an AG listener.
 To construct, see NOTES section for MULTISUBNETIPCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: System.String[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IMultiSubnetIPConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -371,7 +369,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener
 
 ## NOTES
 

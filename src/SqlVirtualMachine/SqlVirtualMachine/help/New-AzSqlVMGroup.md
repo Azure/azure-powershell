@@ -8,43 +8,28 @@ schema: 2.0.0
 # New-AzSqlVMGroup
 
 ## SYNOPSIS
-Create a SQL virtual machine group.
+Creates or updates a SQL virtual machine group.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
 New-AzSqlVMGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- [-ClusterBootstrapAccount <String>] [-ClusterSubnetType <String>] [-DomainFqdn <String>]
- [-FileShareWitnessPath <String>] [-Offer <String>] [-OuPath <String>] [-Sku <String>]
+ [-ClusterBootstrapAccount <String>] [-ClusterOperatorAccount <String>]
+ [-ClusterSubnetType <ClusterSubnetType>] [-DomainFqdn <String>] [-FileShareWitnessPath <String>]
+ [-Offer <String>] [-OuPath <String>] [-Sku <SqlVMGroupImageSku>] [-SqlServiceAccount <String>]
  [-StorageAccountPrimaryKey <SecureString>] [-StorageAccountUrl <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
-```
-New-AzSqlVMGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzSqlVMGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Create a SQL virtual machine group.
+Creates or updates a SQL virtual machine group.
 
 ## EXAMPLES
 
 ### Example
 ```powershell
-# $accessKey is a valid access key for the storage account
-$storageAccountPrimaryKey = ConvertTo-SecureString -String $accessKey -AsPlainText -Force
+$storageAccountPrimaryKey = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzSqlVMGroup -ResourceGroupName 'ResourceGroup01' -Name 'sqlvmgroup01' -Location 'eastus' -Offer 'SQL2022-WS2022' -Sku 'Developer' -DomainFqdn 'yourdomain.com' -ClusterOperatorAccount 'operatoruser@yourdomain.com' -ClusterBootstrapAccount 'bootstrapuser@yourdomain.com' -StorageAccountUrl 'https://yourstorageaccount.blob.core.windows.net/' -StorageAccountPrimaryKey $storageAccountPrimaryKey -SqlServiceAccount 'sqladmin@yourdomain.com' -ClusterSubnetType 'SingleSubnet'
 ```
 
@@ -78,7 +63,23 @@ Account name used for creating cluster (at minimum needs permissions to 'Create 
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterOperatorAccount
+Account name used for operating cluster i.e.
+will be part of administrators group on all the participating virtual machines in the cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -92,8 +93,8 @@ Accept wildcard characters: False
 Cluster subnet type.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ClusterSubnetType
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -124,7 +125,7 @@ Fully qualified name of the domain.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -139,40 +140,10 @@ Optional path for fileshare witness.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -184,7 +155,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -230,7 +201,7 @@ Examples may include SQL2016-WS2016, SQL2017-WS2016.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -245,7 +216,7 @@ Organizational Unit path in which the nodes and cluster will be present.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -275,8 +246,23 @@ Accept wildcard characters: False
 SQL image sku.
 
 ```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlVMGroupImageSku
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SqlServiceAccount
+Account name under which SQL service will run on all participating SQL virtual machines in the cluster.
+
+```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -291,7 +277,7 @@ Primary key of the witness storage account.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -306,7 +292,7 @@ Fully qualified ARM resource id of the witness storage account.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -336,7 +322,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -384,7 +370,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineGroup
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineGroup
 
 ## NOTES
 

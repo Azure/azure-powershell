@@ -15,41 +15,43 @@ Creates or updates a SQL virtual machine.
 ```
 New-AzSqlVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-AdditionalFeatureServerConfigurationIsRServicesEnabled] [-AssessmentSettingEnable]
- [-AssessmentSettingRunImmediately] [-AutoBackupSettingBackupScheduleType <String>]
- [-AutoBackupSettingBackupSystemDb] [-AutoBackupSettingDaysOfWeek <String[]>] [-AutoBackupSettingEnable]
- [-AutoBackupSettingEnableEncryption] [-AutoBackupSettingFullBackupFrequency <String>]
+ [-AssessmentSettingRunImmediately] [-AutoBackupSettingBackupScheduleType <BackupScheduleType>]
+ [-AutoBackupSettingBackupSystemDb] [-AutoBackupSettingDaysOfWeek <AutoBackupDaysOfWeek[]>]
+ [-AutoBackupSettingEnable] [-AutoBackupSettingEnableEncryption]
+ [-AutoBackupSettingFullBackupFrequency <FullBackupFrequencyType>]
  [-AutoBackupSettingFullBackupStartTime <Int32>] [-AutoBackupSettingFullBackupWindowHour <Int32>]
  [-AutoBackupSettingLogBackupFrequency <Int32>] [-AutoBackupSettingPassword <SecureString>]
  [-AutoBackupSettingRetentionPeriod <Int32>] [-AutoBackupSettingStorageAccessKey <String>]
  [-AutoBackupSettingStorageAccountUrl <String>] [-AutoBackupSettingStorageContainerName <String>]
- [-AutoPatchingSettingDayOfWeek <String>] [-AutoPatchingSettingEnable]
+ [-AutoPatchingSettingDayOfWeek <DayOfWeek>] [-AutoPatchingSettingEnable]
  [-AutoPatchingSettingMaintenanceWindowDuration <Int32>]
  [-AutoPatchingSettingMaintenanceWindowStartingHour <Int32>] [-AzureAdAuthenticationSettingClientId <String>]
- [-EnableAutomaticUpgrade] [-EnableSystemAssignedIdentity]
- [-KeyVaultCredentialSettingAzureKeyVaultUrl <String>] [-KeyVaultCredentialSettingCredentialName <String>]
- [-KeyVaultCredentialSettingEnable] [-KeyVaultCredentialSettingServicePrincipalName <String>]
- [-KeyVaultCredentialSettingServicePrincipalSecret <String>] [-LeastPrivilegeMode <String>]
- [-LicenseType <String>] [-Offer <String>] [-ScheduleDayOfWeek <String>] [-ScheduleEnable]
- [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>] [-ScheduleWeeklyInterval <Int32>]
- [-Sku <String>] [-SqlConnectivityUpdateSettingConnectivityType <String>]
- [-SqlConnectivityUpdateSettingPort <Int32>]
+ [-EnableAutomaticUpgrade] [-IdentityType <IdentityType>] [-KeyVaultCredentialSettingAzureKeyVaultUrl <String>]
+ [-KeyVaultCredentialSettingCredentialName <String>] [-KeyVaultCredentialSettingEnable]
+ [-KeyVaultCredentialSettingServicePrincipalName <String>]
+ [-KeyVaultCredentialSettingServicePrincipalSecret <String>] [-LeastPrivilegeMode <LeastPrivilegeMode>]
+ [-LicenseType <SqlServerLicenseType>] [-Offer <String>] [-ScheduleDayOfWeek <AssessmentDayOfWeek>]
+ [-ScheduleEnable] [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>]
+ [-ScheduleWeeklyInterval <Int32>] [-Sku <SqlImageSku>]
+ [-SqlConnectivityUpdateSettingConnectivityType <ConnectivityType>] [-SqlConnectivityUpdateSettingPort <Int32>]
  [-SqlConnectivityUpdateSettingSqlAuthUpdatePassword <SecureString>]
  [-SqlConnectivityUpdateSettingSqlAuthUpdateUserName <String>] [-SqlDataSettingDefaultFilePath <String>]
  [-SqlDataSettingLun <Int32[]>] [-SqlInstanceSettingCollation <String>] [-SqlInstanceSettingIsIfiEnabled]
  [-SqlInstanceSettingIsLpimEnabled] [-SqlInstanceSettingIsOptimizeForAdHocWorkloadsEnabled]
  [-SqlInstanceSettingMaxDop <Int32>] [-SqlInstanceSettingMaxServerMemoryMb <Int32>]
  [-SqlInstanceSettingMinServerMemoryMb <Int32>] [-SqlLogSettingDefaultFilePath <String>]
- [-SqlLogSettingLun <Int32[]>] [-SqlManagementType <String>]
- [-SqlStorageUpdateSettingDiskConfigurationType <String>] [-SqlStorageUpdateSettingDiskCount <Int32>]
- [-SqlStorageUpdateSettingStartingDeviceId <Int32>] [-SqlTempDbSettingDataFileCount <Int32>]
- [-SqlTempDbSettingDataFileSize <Int32>] [-SqlTempDbSettingDataGrowth <Int32>]
- [-SqlTempDbSettingDefaultFilePath <String>] [-SqlTempDbSettingLogFileSize <Int32>]
- [-SqlTempDbSettingLogGrowth <Int32>] [-SqlTempDbSettingLun <Int32[]>] [-SqlTempDbSettingPersistFolder]
- [-SqlTempDbSettingPersistFolderPath <String>] [-SqlVirtualMachineGroupResourceId <String>]
- [-SqlWorkloadTypeUpdateSettingSqlWorkloadType <String>]
- [-StorageConfigurationSettingDiskConfigurationType <String>]
- [-StorageConfigurationSettingSqlSystemDbOnDataDisk] [-StorageConfigurationSettingStorageWorkloadType <String>]
- [-Tag <Hashtable>] [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
+ [-SqlLogSettingLun <Int32[]>] [-SqlManagementType <SqlManagementMode>]
+ [-SqlStorageUpdateSettingDiskConfigurationType <DiskConfigurationType>]
+ [-SqlStorageUpdateSettingDiskCount <Int32>] [-SqlStorageUpdateSettingStartingDeviceId <Int32>]
+ [-SqlTempDbSettingDataFileCount <Int32>] [-SqlTempDbSettingDataFileSize <Int32>]
+ [-SqlTempDbSettingDataGrowth <Int32>] [-SqlTempDbSettingDefaultFilePath <String>]
+ [-SqlTempDbSettingLogFileSize <Int32>] [-SqlTempDbSettingLogGrowth <Int32>] [-SqlTempDbSettingLun <Int32[]>]
+ [-SqlTempDbSettingPersistFolder] [-SqlTempDbSettingPersistFolderPath <String>]
+ [-SqlVirtualMachineGroupResourceId <String>] [-SqlWorkloadTypeUpdateSettingSqlWorkloadType <SqlWorkloadType>]
+ [-StorageConfigurationSettingDiskConfigurationType <DiskConfigurationType>]
+ [-StorageConfigurationSettingSqlSystemDbOnDataDisk]
+ [-StorageConfigurationSettingStorageWorkloadType <StorageWorkloadType>] [-Tag <Hashtable>]
+ [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
  [-WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]
  [-WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>] [-WsfcStaticIP <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
@@ -236,12 +238,10 @@ Accept wildcard characters: False
 ```
 
 ### -AutoBackupSettingBackupScheduleType
-[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType])]
-[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType]
 Backup schedule type.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType
 Parameter Sets: (All)
 Aliases:
 
@@ -268,12 +268,10 @@ Accept wildcard characters: False
 ```
 
 ### -AutoBackupSettingDaysOfWeek
-[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek])]
-[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek[]]
 Days of the week for the backups when FullBackupFrequency is set to Weekly.
 
 ```yaml
-Type: System.String[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek[]
 Parameter Sets: (All)
 Aliases:
 
@@ -315,13 +313,11 @@ Accept wildcard characters: False
 ```
 
 ### -AutoBackupSettingFullBackupFrequency
-[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType])]
-[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType]
 Frequency of full backups.
 In both cases, full backups begin during the next scheduled time window.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType
 Parameter Sets: (All)
 Aliases:
 
@@ -456,12 +452,10 @@ Accept wildcard characters: False
 ```
 
 ### -AutoPatchingSettingDayOfWeek
-[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek])]
-[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek]
 Day of week to apply the patch on.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek
 Parameter Sets: (All)
 Aliases:
 
@@ -564,14 +558,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSystemAssignedIdentity
-[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.IdentityType])]
-[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.IdentityType]
+### -IdentityType
 The identity type.
 Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.IdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -658,12 +650,10 @@ Accept wildcard characters: False
 ```
 
 ### -LeastPrivilegeMode
-[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.LeastPrivilegeMode])]
-[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.LeastPrivilegeMode]
 SQL IaaS Agent least privilege mode.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.LeastPrivilegeMode
 Parameter Sets: (All)
 Aliases:
 
@@ -675,12 +665,10 @@ Accept wildcard characters: False
 ```
 
 ### -LicenseType
-[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType])]
-[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType]
 SQL Server license type.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType
 Parameter Sets: (All)
 Aliases:
 
@@ -769,12 +757,10 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduleDayOfWeek
-[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek])]
-[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek]
 Day of the week to run assessment.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek
 Parameter Sets: (All)
 Aliases:
 
@@ -851,12 +837,10 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku])]
-[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku]
 SQL Server edition type.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku
 Parameter Sets: (All)
 Aliases:
 
@@ -868,12 +852,10 @@ Accept wildcard characters: False
 ```
 
 ### -SqlConnectivityUpdateSettingConnectivityType
-[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ConnectivityType])]
-[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ConnectivityType]
 SQL Server connectivity option.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ConnectivityType
 Parameter Sets: (All)
 Aliases:
 
@@ -1095,12 +1077,10 @@ Accept wildcard characters: False
 ```
 
 ### -SqlManagementType
-[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode])]
-[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode]
 SQL Server Management type.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode
 Parameter Sets: (All)
 Aliases:
 
@@ -1112,12 +1092,10 @@ Accept wildcard characters: False
 ```
 
 ### -SqlStorageUpdateSettingDiskConfigurationType
-[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType])]
-[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType]
 Disk configuration to apply to SQL Server.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType
 Parameter Sets: (All)
 Aliases:
 
@@ -1309,12 +1287,10 @@ Accept wildcard characters: False
 ```
 
 ### -SqlWorkloadTypeUpdateSettingSqlWorkloadType
-[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlWorkloadType])]
-[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlWorkloadType]
 SQL Server workload type.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlWorkloadType
 Parameter Sets: (All)
 Aliases:
 
@@ -1326,12 +1302,10 @@ Accept wildcard characters: False
 ```
 
 ### -StorageConfigurationSettingDiskConfigurationType
-[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType])]
-[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType]
 Disk configuration to apply to SQL Server.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType
 Parameter Sets: (All)
 Aliases:
 
@@ -1358,12 +1332,10 @@ Accept wildcard characters: False
 ```
 
 ### -StorageConfigurationSettingStorageWorkloadType
-[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.StorageWorkloadType])]
-[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.StorageWorkloadType]
 Storage workload type.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.StorageWorkloadType
 Parameter Sets: (All)
 Aliases:
 
@@ -1502,7 +1474,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine
 
 ## NOTES
 

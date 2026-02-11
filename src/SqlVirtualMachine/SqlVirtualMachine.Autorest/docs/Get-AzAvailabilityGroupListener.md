@@ -30,12 +30,6 @@ Get-AzAvailabilityGroupListener -InputObject <ISqlVirtualMachineIdentity> [-Expa
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentitySqlVirtualMachineGroup
-```
-Get-AzAvailabilityGroupListener -Name <String> -SqlVirtualMachineGroupInputObject <ISqlVirtualMachineIdentity>
- [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Gets an availability group listener.
 
@@ -91,7 +85,7 @@ The child resources to include in the response.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentity, GetViaIdentitySqlVirtualMachineGroup
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False
@@ -103,6 +97,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
@@ -121,7 +116,7 @@ Name of the availability group listener.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentitySqlVirtualMachineGroup
+Parameter Sets: Get
 Aliases: AvailabilityGroupListenerName
 
 Required: True
@@ -144,21 +139,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SqlVirtualMachineGroupInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
-Parameter Sets: GetViaIdentitySqlVirtualMachineGroup
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -201,7 +181,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener
 
 ## NOTES
 

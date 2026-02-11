@@ -84,9 +84,9 @@ function Assert-AzSqlVMEntraAuth {
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
+        [System.String]
         # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-        ${EnableSystemAssignedIdentity},	    
+        ${IdentityType},	    
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -154,7 +154,7 @@ function Assert-AzSqlVMEntraAuth {
             $hasInputObject = $PSBoundParameters.Remove('InputObject')
 
             $null = $PSBoundParameters.Remove('ManagedIdentityClientId')
-            $null = $PSBoundParameters.Remove('EnableSystemAssignedIdentity')
+            $null = $PSBoundParameters.Remove('IdentityType')
         
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
@@ -178,9 +178,15 @@ function Assert-AzSqlVMEntraAuth {
             $resourceId = $sqlvm.Id
             $subId = ($resourceId -split '/')[2] #subscription id from vm object
             if ($PSCmdlet.ShouldProcess("SQL virtual machine $($sqlvm.Name)", "Assert")) {
-                Assert-All -VmName $sqlvm.Name -ResourceGroup $sqlvm.ResourceGroupName -MsiClientId $ManagedIdentityClientId -EnableSystemAssignedIdentity $EnableSystemAssignedIdentity -SubscriptionId $subId
-                Write-Output $true
-                return
+                if ($IdentityType -ne 'SystemAssigned' -and $IdentityType -ne 'UserAssigned') {
+                    # If the value is neither 'SystemAssigned' nor 'UserAssigned', throw an error
+                    throw "IdentityType is invalid. The supported types are SystemAssigned or UserAssigned."
+                }
+                else { 
+                    Assert-All -VmName $sqlvm.Name -ResourceGroup $sqlvm.ResourceGroupName -MsiClientId $ManagedIdentityClientId -IdentityType $IdentityType -SubscriptionId $subId
+                    Write-Output $true
+                    return
+                }
             }
         }
         catch {
@@ -208,8 +214,8 @@ function Assert-AzSqlVMEntraAuth {
     .PARAMETER MsiClientId
     The client Id of the Managed Identity to query Microsoft Graph API.
     
-    .PARAMETER EnableSystemAssignedIdentity
-    Whether to use system-assigned managed identity   
+    .PARAMETER IdentityType
+    Type of managed service identity   
 
     .OUTPUTS
     bool if the validation passed or not
@@ -226,14 +232,14 @@ function Assert-All {
         [Parameter(Mandatory = $false)]
         [string] $MsiClientId,
         [Parameter(Mandatory = $false)]
-        [bool] $EnableSystemAssignedIdentity)
+        [string] $IdentityType)
 
     # All validations go here
-    if ($EnableSystemAssignedIdentity -eq $true -and -not($null -eq $MsiClientId -or $MsiClientId -eq '')) {
+    if ($IdentityType -eq 'SystemAssigned' -and -not($null -eq $MsiClientId -or $MsiClientId -eq '')) {
         Write-Error "Enable Azure Entra authentication with system-assigned managed identity, but the ManagedIdentityClientId is also provided." -ErrorAction Stop
     }
-    if ($EnableSystemAssignedIdentity -ne $true -and ($null -eq $MsiClientId -or $MsiClientId -eq '')) {
-        Write-Error "ManagedIdentityClientId should not be empty or null when using user-assigned identity." -ErrorAction Stop
+    if ($IdentityType -eq 'UserAssigned' -and ($null -eq $MsiClientId -or $MsiClientId -eq '')) {
+        Write-Error "ManagedIdentityClientId should not be empty or null when using UserAssigned type." -ErrorAction Stop
     }
 
     # validate the SQL VM supports Azure Entra authentication, i.e. it is on Windows platform and is SQL 2022 or later    
@@ -351,7 +357,7 @@ function Assert-MsiValidity {
     }
 
     # The system-assigned MSI case.
-    if ($EnableSystemAssignedIdentity -eq $true) {
+    if ($IdentityType -eq 'SystemAssigned') {
         if ($null -eq $vm.Identity -or $null -eq $vm.Identity.PrincipalId) {
             $azError = "Enable Azure Entra authentication with system-assigned managed identity, but the system-assigned managed identity is not enabled on this Azure virtual machine."
             $azError += "`n Recommendation: Enable the system-assigned managed identity on the Azure virtual machine: $SqlVirtualMachineName."
@@ -362,7 +368,7 @@ function Assert-MsiValidity {
     }
 
     # The user-assigned MSI case.
-    if ($EnableSystemAssignedIdentity -ne $true) {
+    if ($IdentityType -eq 'UserAssigned') {
     if ($null -eq $vm.Identity -or $null -eq $vm.Identity.UserAssignedIdentities) {
         $azError = "Enable Azure Entra authentication with user-assigned managed identity '$MsiClientId', but the managed identity is not attached to this Azure virtual machine."
         $azError += "`n Recommendation: Attach the user-assigned managed identity '$MsiClientId' to the Azure virtual machine $SqlVirtualMachineName."

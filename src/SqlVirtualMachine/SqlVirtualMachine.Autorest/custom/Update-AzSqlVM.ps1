@@ -27,7 +27,7 @@ Updates a SQL virtual machine.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -45,7 +45,7 @@ INPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/update-azsqlvm
 #>
 function Update-AzSqlVM {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -77,10 +77,9 @@ param(
     ${InputObject},
 
     [Parameter()]
-    # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType])]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType])]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType]
     # SQL Server license type.
     ${LicenseType},
 	
@@ -92,33 +91,30 @@ param(
     ${Offer},
 	
     [Parameter()]
-    # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku])]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku])]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku]
     # SQL Server edition type.
     ${Sku},
 	
     [Parameter()]
-    # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode])]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode])]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode]
     # SQL Server Management type.
     ${SqlManagementType},
 	
 	[Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 	
     [Parameter()]
-    # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType])]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType])]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType]
     # Backup schedule type.
     ${AutoBackupSettingBackupScheduleType},
 
@@ -130,10 +126,9 @@ param(
 
     [Parameter()]
     [AllowEmptyCollection()]
-    # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek])]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek])]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek[]]
-    [System.String[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek[]]
     # Days of the week for the backups when FullBackupFrequency is set to Weekly.
     ${AutoBackupSettingDaysOfWeek},
 
@@ -150,10 +145,9 @@ param(
     ${AutoBackupSettingEnableEncryption},
 
     [Parameter()]
-    # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType])]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType])]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType]
     # Frequency of full backups.
     # In both cases, full backups begin during the next scheduled time window.
     ${AutoBackupSettingFullBackupFrequency},
@@ -210,10 +204,9 @@ param(
     ${AutoBackupSettingStorageContainerName},
     
     [Parameter()]
-    # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek])]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek])]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek]
     # Day of week to apply the patch on.
     ${AutoPatchingSettingDayOfWeek},
 
@@ -249,10 +242,9 @@ param(
     ${AssessmentSettingRunImmediately},
 
     [Parameter()]
-    # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek])]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek])]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek]
     # Day of the week to run assessment.
     ${ScheduleDayOfWeek},
 
@@ -336,9 +328,9 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [System.Boolean]
+    [System.String]
     # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${EnableSystemAssignedIdentity},	
+    ${IdentityType},	
 	
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -442,7 +434,7 @@ process {
         $hasWsfcStaticIP = $PSBoundParameters.Remove('WsfcStaticIP')
         $hasEnableAutomaticUpgrade = $PSBoundParameters.Remove('EnableAutomaticUpgrade')
         $hasManagedIdentityClientId = $PSBoundParameters.Remove('ManagedIdentityClientId')
-		    $hasEnableSystemAssignedIdentity = $PSBoundParameters.Remove('EnableSystemAssignedIdentity')
+		$hasIdentityType = $PSBoundParameters.Remove('IdentityType')
         
         $hasAsJob = $PSBoundParameters.Remove('AsJob')
         $null = $PSBoundParameters.Remove('WhatIf')
@@ -572,16 +564,16 @@ process {
         if ($hasManagedIdentityClientId) {
             $sqlvm.AzureAdAuthenticationSettingClientId=$ManagedIdentityClientId
         }
-		if ($hasEnableSystemAssignedIdentity -and !$hasManagedIdentityClientId) {
+		if ($hasIdentityType -and !$hasManagedIdentityClientId) {
             $sqlvm.AzureAdAuthenticationSettingClientId='' #system assigned MI scenario
         }
         if ($hasAsJob) {
             $PSBoundParameters.Add('AsJob', $true)
         }
 
-        if ($hasManagedIdentityClientId -or $hasEnableSystemAssignedIdentity)
+        if ($hasManagedIdentityClientId -or $hasIdentityType)
         {
-            Assert-AzSqlVMEntraAuth -ResourceGroupName $sqlVM.ResourceGroupName -Name $sqlVM.Name -ManagedIdentityClientId $ManagedIdentityClientId -EnableSystemAssignedIdentity $EnableSystemAssignedIdentity
+            Assert-AzSqlVMEntraAuth -ResourceGroupName $sqlVM.ResourceGroupName -Name $sqlVM.Name -ManagedIdentityClientId $ManagedIdentityClientId -IdentityType $IdentityType
         }
         if ($PSCmdlet.ShouldProcess("SQL virtual machine $($sqlvm.Name)", "Update")) {
             Az.SqlVirtualMachine.internal\New-AzSqlVM -InputObject $sqlvm -Parameter $sqlvm @PSBoundParameters
