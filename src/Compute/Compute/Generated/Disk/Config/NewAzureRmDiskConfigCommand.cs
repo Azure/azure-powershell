@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Determines how to handle disks with slow I/O. Possible values include: 'None', 'AutomaticReattach'. None is the default behavior where the VM restarts upon slow disk I/O. AutomaticReattach will attempt to detach and reattach the disk upon I/O failure or slow response.")]
+            HelpMessage = "Determines how to handle disks with slow I/O. Possible values include: 'None', 'AutomaticReattach'.")]
         [PSArgumentCompleter("None", "AutomaticReattach")]
         public string ActionOnDiskDelay { get; set; }
 

@@ -1997,7 +1997,7 @@ function Test-DiskAvailabilityPolicy
 
     try
     {
-        $loc = "southcentralusstg";
+        $loc = Get-ComputeVMLocation;
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # In-memory config validation

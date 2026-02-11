@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -ActionOnDiskDelay
-Determines how to handle disks with slow I/O. Possible values include: 'None', 'AutomaticReattach'. None is the default behavior where the VM restarts upon slow disk I/O. AutomaticReattach will attempt to detach and reattach the disk upon I/O failure or slow response.
+Determines how to handle disks with slow I/O. Allowed values include 'None' and 'AutomaticReattach'.
 
 ```yaml
 Type: System.String

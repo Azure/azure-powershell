@@ -20,6 +20,9 @@
 
 -->
 ## Upcoming Release
+* Added support for Disk Availability Policy
+    - Added `-ActionOnDiskDelay` parameter to `New-AzDiskConfig` cmdlet to configure disk availability behavior
+    - Added `-ActionOnDiskDelay` parameter to `New-AzDiskUpdateConfig` cmdlet to update disk availability behavior
 
 ## Version 11.3.0
 * Compute SDK generation updates:
@@ -50,10 +53,6 @@
 * Updated Azure.Core from 1.45.0 to 1.47.3
 * Added `-EnableAutomaticUpgrade` and `-TreatFailureAsDeploymentFailure` parameters (Bool) to `New-AzVmGalleryApplication` and `New-AzVmssGalleryApplication` cmdlets.
 * Added `-EnableAutomaticUpgrade` and `-TreatFailureAsDeploymentFailure` parameters (Switch) to `Add-AzVmGalleryApplication` and `Add-AzVmssGalleryApplication` cmdlets.
-* Added support for Disk Availability Policy
-    - Added `ActionOnDiskDelay` parameter to `New-AzDiskConfig` cmdlet to configure disk availability behavior
-    - Added `ActionOnDiskDelay` parameter to `New-AzDiskUpdateConfig` cmdlet to update disk availability behavior
-    - Users can now specify how VMs handle disks with slow I/O using values 'None' or 'AutomaticReattach'
 
 ## Version 10.5.0
 * Added `-Redeploy` switch parameter for `Update-AzHost` cmdlet to enable dedicated host redeployment.
