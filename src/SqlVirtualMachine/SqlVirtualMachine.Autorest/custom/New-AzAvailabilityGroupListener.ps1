@@ -25,7 +25,7 @@ Creates or updates an availability group listener.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -54,7 +54,7 @@ MULTISUBNETIPCONFIGURATION <IMultiSubnetIPConfiguration[]>: List of multi subnet
 https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azavailabilitygrouplistener
 #>
 function New-AzAvailabilityGroupListener {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
@@ -88,7 +88,7 @@ function New-AzAvailabilityGroupListener {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAgReplica[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAgReplica[]]
         # Replica configurations.
         # To construct, see NOTES section for AVAILABILITYGROUPCONFIGURATIONREPLICA properties and create a hash table.
         ${AvailabilityGroupConfigurationReplica},
@@ -144,7 +144,7 @@ function New-AzAvailabilityGroupListener {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IMultiSubnetIPConfiguration[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IMultiSubnetIPConfiguration[]]
         # List of multi subnet IP configurations for an AG listener.
         # To construct, see NOTES section for MULTISUBNETIPCONFIGURATION properties and create a hash table.
         ${MultiSubnetIPConfiguration},
@@ -226,7 +226,7 @@ function New-AzAvailabilityGroupListener {
             $hasSqlVirtualMachineId = $PSBoundParameters.Remove('SqlVirtualMachineId')
 		
             if ($hasIpAddress -or $hasLoadBalancerResourceId -or $hasSubnetId -or $hasProbePort -or $hasPublicIpAddressResourceId -or $hasSqlVirtualMachineId) {
-                $LoadBalancerConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.LoadBalancerConfiguration]@{}
+                $LoadBalancerConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.LoadBalancerConfiguration]@{}
                 if ($hasIpAddress) {
                     $LoadBalancerConfiguration.PrivateIPAddressIpaddress = $IpAddress
                 }

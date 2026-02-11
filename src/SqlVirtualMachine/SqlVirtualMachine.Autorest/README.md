@@ -37,15 +37,25 @@ try-require:
   - $(repo)/specification/sqlvirtualmachine/resource-manager/readme.powershell.md
 
 inlining-threshold: 100
-resourcegroup-append: true
-nested-object-to-string: true
-identity-correction-for-post: true
-	
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+disable-transform-identity-type: true
 
 directive:
+  - remove-operation: 
+    - SqlVirtualMachineGroups_Update
+  - from: swagger-document
+    where: $.definitions.SqlVirtualMachineGroupProperties.properties.wsfcDomainProfile
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.WsfcDomainProfile.properties..x-ms-mutability
+    transform: >-
+      return [
+        "read",
+        "update",
+        "create"
+      ]
+  - from: swagger-document
+    where: $.definitions.SqlVirtualMachineProperties.properties.sqlVirtualMachineGroupResourceId
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
   #1. [swagger] define password parameters as password type
   - from: swagger-document
     where: $.definitions..storageAccountPrimaryKey
@@ -134,8 +144,8 @@ directive:
     hide: true
   #8. [cmdlet] add model cmdlet
   - model-cmdlet:
-    - AgReplica
-    - MultiSubnetIPConfiguration
+    - model-name: AgReplica
+    - model-name: MultiSubnetIPConfiguration
   #9. [parameter] rename parameters
   - where:  
       parameter-name: SqlVirtualMachineGroupName
