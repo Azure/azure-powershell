@@ -59,8 +59,8 @@ directive:
           - List[Authorization]
           - List[EligibleAuthorization]
         deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
   - where:
       verb: New
       subject: RegistrationDefinition
@@ -77,8 +77,8 @@ directive:
           - List[DelegatedRoleDefinitionId]
           - List[JustInTimeAccessPolicyManagedByTenantApprover]
         deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
   - where:
       verb: Get
       subject: RegistrationDefinition
@@ -91,8 +91,8 @@ directive:
           - List[Authorization]
           - List[EligibleAuthorization]
         deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
   - where:
       verb: New|Get
       subject: MarketplaceRegistrationDefinition
@@ -105,8 +105,8 @@ directive:
           - List[Authorization]
           - List[EligibleAuthorization]
         deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
   - where:
       parameter-name: Authorization
     set:
@@ -114,8 +114,8 @@ directive:
         old-parameter-type: Array
         new-parameter-type: List
         deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
   - where:
       parameter-name: EligibleAuthorization
     set:
@@ -123,8 +123,8 @@ directive:
         old-parameter-type: Array
         new-parameter-type: List
         deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
 
   # Remove unnecessary cmdlet.
   - where:
