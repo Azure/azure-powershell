@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 7.11.1
 * Added Cross region restore support for upcoming regions IndiaSouthCentral
 
 

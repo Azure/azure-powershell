@@ -28,11 +28,11 @@ For information on how to develop for `Az.ElasticSan`, see [how-to.md](how-to.md
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: 72c69a0cf561d41ae99fe6810c426a874d3a8372
+commit: bcacfd106d182630f9a9d1ee4837d1b32da5bc1b
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/elasticsan/resource-manager/Microsoft.ElasticSan/stable/2024-05-01/elasticsan.json
+  - $(repo)/specification/elasticsan/resource-manager/Microsoft.ElasticSan/ElasticSan/stable/2025-09-01/elasticsan.json
 
 # Normally, title is the service name
 title: ElasticSan
@@ -110,6 +110,18 @@ directive:
       verb: Update
     remove: true
   - where:
+      verb: Backup
+      subject: VolumePre
+    set:
+      verb: Test
+      subject: VolumeBackup
+  - where:
+      verb: Restore
+      subject: VolumePre
+    set:
+      verb: Test
+      subject: VolumeRestore
+  - where:
       parameter-name: EncryptionIdentityEncryptionUserAssignedIdentity
     set:
       parameter-name: EncryptionUserAssignedIdentity
@@ -125,6 +137,38 @@ directive:
       parameter-name: KeyVaultPropertyKeyVersion
     set:
       parameter-name: KeyVersion
+  - where: 
+      parameter-name: ScaleUpPropertyAutoScalePolicyEnforcement
+    set:
+      parameter-name: AutoScalePolicyEnforcement
+  - where: 
+      parameter-name: ScaleUpPropertyCapacityUnitScaleUpLimitTiB
+    set:
+      parameter-name: CapacityUnitScaleUpLimitTiB
+  - where: 
+      parameter-name: ScaleUpPropertyIncreaseCapacityUnitByTiB
+    set:
+      parameter-name: IncreaseCapacityUnitByTiB
+  - where: 
+      parameter-name: ScaleUpPropertyUnusedSizeTiB
+    set:
+      parameter-name: UnusedSizeTiB
+  - where: 
+      property-name: ScaleUpPropertyAutoScalePolicyEnforcement
+    set: 
+      property-name: AutoScalePolicyEnforcement
+  - where:
+      property-name: ScaleUpPropertyCapacityUnitScaleUpLimitTiB
+    set:
+      property-name: CapacityUnitScaleUpLimitTiB
+  - where:
+      property-name: ScaleUpPropertyIncreaseCapacityUnitByTiB
+    set:
+      property-name: IncreaseCapacityUnitByTiB
+  - where:
+      property-name: ScaleUpPropertyUnusedSizeTiB
+    set:
+      property-name: UnusedSizeTiB
   # Change the description of cmdlets that correspond to multiple APIs
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}"].get

@@ -6,7 +6,7 @@ Invoke-LiveTestScenario -Name "Create automation account" -Description "Test cre
     $autoAccParams = @(
         @{
             Name = New-LiveTestResourceName;
-            Location = "westus";
+            Location = "eastus";
             Plan = "Free"
         },
         @{
