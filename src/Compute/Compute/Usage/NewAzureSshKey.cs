@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 string resourceGroupName = this.ResourceGroupName;
                 string sshKeyName = this.Name;
-                string sshKeyType = this.SshKeyType;
+                string sshKeyType = this.IsParameterBound(c => c.SshKeyType) ? this.SshKeyType : "RSA";
                 SshPublicKeyResource result;
                 SshPublicKeyResource sshkey = new SshPublicKeyResource();
                 
