@@ -1352,8 +1352,9 @@ function Get-PublicMaintenanceConfigurationId($location, $scheduleName)
 	.SYNOPSIS
 	Creates the test key vault for TDE tests
 #>
-function Create-AzureKeyVaultForTest ($keyVaultName, $resourceGroupName, $location = "eastus2euap")
+function Create-AzureKeyVaultForTest ($resourceGroupName, $location = "eastus2euap")
 {
-	$keyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $resourceGroupName -Location $location -EnablePurgeProtection
+	$keyVaultName = "kv$(Get-Random -Minimum 1 -Maximum 999)"
+	$keyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $resourceGroupName -Location $location -EnablePurgeProtection -DisableRbacAuthorization
 	return $keyVault
 }
