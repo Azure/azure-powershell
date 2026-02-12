@@ -381,5 +381,141 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
             Assert.NotNull(result.Item3); // Error message
             Assert.Contains("Failed to start", result.Item3);
         }
+
+        #region BufferSize Tests
+
+        [Fact]
+        public void BuildSftpCommand_WithDefaultBufferSize_DoesNotIncludeBufferFlag()
+        {
+            // Arrange - default buffer size is 256 * 1024 = 262144
+            var session = new SFTPSession(
+                storageAccount: "testaccount",
+                username: "testuser",
+                host: "testaccount.blob.core.windows.net",
+                port: 22,
+                publicKeyFile: null,
+                privateKeyFile: null,
+                certFile: null,
+                sftpArgs: null,
+                sshClientFolder: null,
+                sshProxyFolder: null,
+                credentialsFolder: null,
+                yesWithoutPrompt: false,
+                bufferSizeBytes: 256 * 1024  // Default value
+            );
+
+            // Act
+            var command = SftpUtils.BuildSftpCommand(session);
+
+            // Assert - should NOT contain -B flag when using default buffer size
+            Assert.DoesNotContain("-B", command);
+        }
+
+        [Fact]
+        public void BuildSftpCommand_WithCustomBufferSize_IncludesBufferFlag()
+        {
+            // Arrange - custom buffer size
+            var session = new SFTPSession(
+                storageAccount: "testaccount",
+                username: "testuser",
+                host: "testaccount.blob.core.windows.net",
+                port: 22,
+                publicKeyFile: null,
+                privateKeyFile: null,
+                certFile: null,
+                sftpArgs: null,
+                sshClientFolder: null,
+                sshProxyFolder: null,
+                credentialsFolder: null,
+                yesWithoutPrompt: false,
+                bufferSizeBytes: 524288  // 512 KB - non-default value
+            );
+
+            // Act
+            var command = SftpUtils.BuildSftpCommand(session);
+
+            // Assert - should contain -B flag with custom buffer size
+            Assert.Contains("-B", command);
+            Assert.Contains("524288", command);
+        }
+
+        [Fact]
+        public void BuildSftpCommand_WithSmallBufferSize_IncludesBufferFlag()
+        {
+            // Arrange - smaller buffer size
+            var session = new SFTPSession(
+                storageAccount: "testaccount",
+                username: "testuser",
+                host: "testaccount.blob.core.windows.net",
+                port: 22,
+                publicKeyFile: null,
+                privateKeyFile: null,
+                certFile: null,
+                sftpArgs: null,
+                sshClientFolder: null,
+                sshProxyFolder: null,
+                credentialsFolder: null,
+                yesWithoutPrompt: false,
+                bufferSizeBytes: 32768  // 32 KB
+            );
+
+            // Act
+            var command = SftpUtils.BuildSftpCommand(session);
+
+            // Assert
+            Assert.Contains("-B", command);
+            Assert.Contains("32768", command);
+        }
+
+        [Fact]
+        public void SFTPSession_BufferSizeBytes_DefaultValue_Is256KB()
+        {
+            // Arrange & Act
+            var session = new SFTPSession(
+                storageAccount: "testaccount",
+                username: "testuser",
+                host: "testaccount.blob.core.windows.net",
+                port: 22
+            );
+
+            // Assert - default buffer size should be 256 * 1024 = 262144
+            Assert.Equal(256 * 1024, session.BufferSizeBytes);
+        }
+
+        [Fact]
+        public void SFTPSession_BufferSizeBytes_CanBeSetViaConstructor()
+        {
+            // Arrange & Act
+            var session = new SFTPSession(
+                storageAccount: "testaccount",
+                username: "testuser",
+                host: "testaccount.blob.core.windows.net",
+                port: 22,
+                bufferSizeBytes: 1048576  // 1 MB
+            );
+
+            // Assert
+            Assert.Equal(1048576, session.BufferSizeBytes);
+        }
+
+        [Fact]
+        public void SFTPSession_BufferSizeBytes_CanBeSetViaProperty()
+        {
+            // Arrange
+            var session = new SFTPSession(
+                storageAccount: "testaccount",
+                username: "testuser",
+                host: "testaccount.blob.core.windows.net",
+                port: 22
+            );
+
+            // Act
+            session.BufferSizeBytes = 2097152;  // 2 MB
+
+            // Assert
+            Assert.Equal(2097152, session.BufferSizeBytes);
+        }
+
+        #endregion
     }
 }
