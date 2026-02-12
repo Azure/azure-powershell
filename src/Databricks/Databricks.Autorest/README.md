@@ -28,8 +28,8 @@ For information on how to develop for `Az.Databricks`, see [how-to.md](how-to.md
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: c251aebb19d517303d1f0f1182aa2e36af99100a
-tag: package-2025-10-01-preview
+commit: efa49a123da7ce3ffe093a13832258305f529711
+tag: package-2026-01-01
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/databricks/resource-manager/Microsoft.Databricks/Databricks/readme.md
