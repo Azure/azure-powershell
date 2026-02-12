@@ -175,3 +175,56 @@ function Test-RevalidateTransparentDataEncryptionProtector ($location = "eastus2
 		# Remove-ResourceGroupForTest $rg
 	}
 }
+
+function Test-TransparentDataEncryptionProtectorWithVersionlessKeys
+{
+	# Setup
+	$location = 'eastus2euap'
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+	$keyVaultName = 'pstestkv'
+	$keyNameInAKV = 'testkey1'
+	$keyVault = Create-AzureKeyVaultForTest $keyVaultName $rg.ResourceGroupName $location
+
+	$akvKey = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyNameInAKV -Destination Software
+
+	try
+	{
+		# Encryption Protector should be set to Service Managed initially
+		$encProtector1 = Get-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+		Assert-AreEqual ServiceManaged $encProtector1.Type 
+		Assert-AreEqual ServiceManaged $encProtector1.ServerKeyVaultKeyName
+
+		# Set server identity if not already set
+		$server = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+		if (-not $server.Identity) {
+			$server = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -AssignIdentity
+			Assert-NotNull $server.Identity
+		}
+
+		Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId server.Identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey -BypassObjectIdValidation
+
+		# Add server key without version (versionless key)
+		$versionlessKeyId = $akvKey.Id.Substring(0, $akvKey.Id.LastIndexOf('/'))
+		$keyResult = Add-AzSqlServerKeyVaultKey -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -KeyId $versionlessKeyId
+		Assert-NotNull $keyResult.Uri
+
+		# Rotate to AKV with versionless key
+		$encProtector2 = Set-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-Type AzureKeyVault -KeyId $versionlessKeyId
+
+		# Verify the protector is using the versionless key
+		$encProtector3 = Get-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+		Assert-AreEqual AzureKeyVault $encProtector3.Type
+		Assert-AreEqual $encProtector2.ServerKeyVaultKeyName $encProtector3.ServerKeyVaultKeyName
+
+		# Rotate back to Service Managed
+		$encProtector4 = Set-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -Type ServiceManaged
+		Assert-AreEqual ServiceManaged $encProtector4.Type 
+		Assert-AreEqual ServiceManaged $encProtector4.ServerKeyVaultKeyName 
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}

@@ -59,5 +59,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-RevalidateTransparentDataEncryptionProtector");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTransparentDataEncryptionProtectorWithVersionlessKeys()
+        {
+            TestRunner.RunTestScript("Test-TransparentDataEncryptionProtectorWithVersionlessKeys");
+        }
     }
 }

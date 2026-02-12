@@ -1347,3 +1347,13 @@ function Get-PublicMaintenanceConfigurationId($location, $scheduleName)
 
 	return "/subscriptions/${subscriptionId}/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/${configName}";
 }
+
+<#
+	.SYNOPSIS
+	Creates the test key vault for TDE tests
+#>
+function Create-AzureKeyVaultForTest ($keyVaultName, $resourceGroupName, $location = "eastus2euap")
+{
+	$keyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $resourceGroupName -Location $location -EnablePurgeProtection
+	return $keyVault
+}
