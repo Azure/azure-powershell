@@ -389,6 +389,62 @@ function Get-SqlServerKeyVaultKeyTestEnvironmentParameters ()
 
 <#
 .SYNOPSIS
+Creates a test Environment for the TDE with AKV tests for server level TDE and returns the parameters of the created environment
+It creates a new server, with the current user as entra admin on the server, then creates a new key vault and a key in it, and grants the server access to the key vault. 
+Finally, it returns all the necessary parameters to perform the tests.
+#>
+function SetupDynamicTestEnvironmentForServerTDEScenariosAndReturnParameters ($location = "eastus2euap")
+{
+	$rg = Create-ResourceGroupForTest
+	$entraAdmin=$env:USERNAME+"@microsoft.com"
+	$serverName = Get-ServerName
+	$server = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -Location $location -ServerName $serverName -ServerVersion "12.0" -ExternalAdminName $entraAdmin -EnableActiveDirectoryOnlyAuthentication -AssignIdentity
+	$keyNameInAKV = 'testkey1'
+	$keyVault = Create-AzureKeyVaultForTest $rg.ResourceGroupName $location
+
+	Set-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $server.Identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey -BypassObjectIdValidation
+
+	$akvKey = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name $keyNameInAKV -Destination Software
+
+	return @{ rg = $rg;
+			  server = $server;
+			  keyVault = $keyVault;
+			  keyNameInAKV = $keyNameInAKV;
+			  akvKey = $akvKey;
+			  }
+}
+
+<#
+.SYNOPSIS
+Creates a test Environment for the TDE with AKV tests for server level TDE and returns the parameters of the created environment
+It creates a new server, with the current user as entra admin on the server, then creates a new key vault and a key in it, and grants the server access to the key vault. 
+Finally, it returns all the necessary parameters to perform the tests.
+#>
+function SetupDynamicTestEnvironmentForDatabaseLevelTDECMKScenariosAndReturnParameters ($location = "eastus2euap")
+{
+	$rg = Create-ResourceGroupForTest
+	$entraAdmin=$env:USERNAME+"@microsoft.com"
+	$serverName = Get-ServerName
+	$server = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -Location $location -ServerName $serverName -ServerVersion "12.0" -ExternalAdminName $entraAdmin -EnableActiveDirectoryOnlyAuthentication -AssignIdentity
+		
+	$umiObjectId = "89cdfc0e-3f82-4e08-86d4-d0092eb4cd6e"
+	$keyNameInAKV = 'testkey1'
+	$keyVault = Create-AzureKeyVaultForTest $rg.ResourceGroupName $location
+	$akvKey = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name $keyNameInAKV -Destination Software
+	Assert-NotNull $akvKey
+
+	Set-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $umiObjectId -PermissionsToKeys all -BypassObjectIdValidation
+
+	return @{ rg = $rg;
+			  server = $server;
+			  keyVault = $keyVault;
+			  keyNameInAKV = $keyNameInAKV;
+			  akvKey = $akvKey;
+			  }
+}
+
+<#
+.SYNOPSIS
 Creates the test environment needed to perform the Server Key Vault Key tests
 #>
 function Create-ServerKeyVaultKeyTestEnvironment ($params)

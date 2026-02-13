@@ -1365,23 +1365,46 @@ function Test-CancelDatabaseOperationInternal
 #>
 function Test-DatabaseCreateWithPerDBCMK ($location = "eastus2euap")
 {
-	# Setup
-	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg $location
-	$encryptionProtector = "https://pstestkv.vault.azure.net/keys/testkey/f62d937858464f329ab4a8c2dc7e0fa4"
-	$umi = "/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/pstest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstestumi"
+	try
+	{
+		# Setup
+		$params = SetupDynamicTestEnvironmentForDatabaseLevelTDECMKScenariosAndReturnParameters
+		$rg = $params.rg
+		$server = $params.server
+		$akvKey = $params.akvKey
+		$keyVault = $params.keyVault
+		$umi = "/subscriptions/e64f3e8e-ab91-4a65-8cdd-5cd2f47d00b4/resourceGroups/viparek/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstestumi"
 
-	# Create with per db cmk enabled
-	$databaseName = Get-DatabaseName
-	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi -EncryptionProtectorAutoRotation
+		# Create with per db cmk enabled
+		$databaseName = Get-DatabaseName
+		$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $akvKey.Id -UserAssignedIdentityId $umi -EncryptionProtectorAutoRotation
 
-	# Validate Get-AzSqlDatabase returns cmk properties
-	$databaseFromGet = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
-	Assert-NotNull $databaseFromGet
-	Assert-AreEqual $databaseFromGet.EncryptionProtector $encryptionProtector
-	Assert-AreEqual $databaseFromGet.EncryptionProtectorAutoRotation $true
+		# Validate Get-AzSqlDatabase returns cmk properties
+		$databaseFromGet = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		Assert-NotNull $databaseFromGet
+		Assert-AreEqual $databaseFromGet.EncryptionProtector $akvKey.Id.Replace(":443", "")
+		Assert-AreEqual $databaseFromGet.EncryptionProtectorAutoRotation $true
 
-	Remove-ResourceGroupForTest $rg
+		# Create a second database with versionless key as encryption protector and add another key as a versioned key.
+		$keyNameInAKV2 = "pstestkey2"
+		$akvKey2 = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name $keyNameInAKV2 -Destination Software
+		Assert-NotNull $akvKey2
+
+		$encryptionProtector2 = $akvKey2.Id.Replace(":443", "")
+		$versionlessKeyId = $encryptionProtector2.Substring(0, $encryptionProtector2.LastIndexOf('/'))
+
+		$databaseName2 = Get-DatabaseName
+		$db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2 -AssignIdentity -EncryptionProtector $versionlessKeyId -UserAssignedIdentityId $umi -EncryptionProtectorAutoRotation -KeyList $akvKey.Id
+
+		$db2FromGet = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName2 -ExpandKeyList
+		Assert-NotNull $db2FromGet
+		Assert-AreEqual $db2FromGet.EncryptionProtector $encryptionProtector2
+		Assert-AreEqual $db2FromGet.Keys.Count 2
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
 }
 
 <#
@@ -1390,29 +1413,42 @@ function Test-DatabaseCreateWithPerDBCMK ($location = "eastus2euap")
 #>
 function Test-DatabaseUpdateWithPerDBCMK ($location = "eastus2euap")
 {
-	# Setup
-	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg $location
-	$encryptionProtector = "https://kvpstest.vault.azure.net/keys/pstestkey/1493a5e6d9e34b429276c02457e42c0c"
-	$umi = "/subscriptions/10a238d6-a139-46d0-818d-d091394072b6/resourceGroups/pstest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstestumi"
+	try
+	{
+		# Setup
+		$params = SetupDynamicTestEnvironmentForDatabaseLevelTDECMKScenariosAndReturnParameters
+		$rg = $params.rg
+		$server = $params.server
+		$akvKey = $params.akvKey
+		$keyVault = $params.keyVault
+		$umi = "/subscriptions/e64f3e8e-ab91-4a65-8cdd-5cd2f47d00b4/resourceGroups/viparek/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstestumi"
+		
+		# Create with per db cmk enabled
+		$databaseName = Get-DatabaseName
+		$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $akvKey.Id -UserAssignedIdentityId $umi -EncryptionProtectorAutoRotation
 
-	# Create with per db cmk enabled
-	$databaseName = Get-DatabaseName
-	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi -EncryptionProtectorAutoRotation
+		# Validate Get-AzSqlDatabase returns cmk properties
+		$databaseFromGet = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		Assert-AreEqual $databaseFromGet.EncryptionProtector $akvKey.Id.Replace(":443", "")
 
-	# Validate Get-AzSqlDatabase returns cmk properties
-	$databaseFromGet = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
-	Assert-AreEqual $databaseFromGet.EncryptionProtector $encryptionProtector
+		# Update the db with new versionless EncryptionProtector
+		$keyNameInAKV2 = "pstestkey2"
+		$akvKey2 = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name $keyNameInAKV2 -Destination Software
+		Assert-NotNull $akvKey2
 
-	# Update the db with new EncryptionProtector
-	$encryptionProtector2 = "https://kvpstest.vault.azure.net/keys/pstestkey1/f6143120ccd3400c94e244799d6d00d1"
-	$dbAfterUpdate = Set-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -EncryptionProtector $encryptionProtector2 -EncryptionProtectorAutoRotation:$false
+		$encryptionProtector2 = $akvKey2.Id.Replace(":443", "")
+		$versionlessKeyId = $encryptionProtector2.Substring(0, $encryptionProtector2.LastIndexOf('/'))
+
+		$dbAfterUpdate = Set-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -EncryptionProtector $versionlessKeyId -EncryptionProtectorAutoRotation:$false
 	
-	$databaseGetAfterUpdate = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
-	Assert-AreEqual $databaseGetAfterUpdate.EncryptionProtector $encryptionProtector2
-	Assert-AreEqual $databaseGetAfterUpdate.EncryptionProtectorAutoRotation $false
-
-	Remove-ResourceGroupForTest $rg
+		$databaseGetAfterUpdate = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		Assert-AreEqual $databaseGetAfterUpdate.EncryptionProtector $encryptionProtector2
+		Assert-AreEqual $databaseGetAfterUpdate.EncryptionProtectorAutoRotation $false
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
 }
 
 <#

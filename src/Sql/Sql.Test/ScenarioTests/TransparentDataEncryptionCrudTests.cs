@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetTransparentDataEncryptionProtector");
         }
 
-        [Fact(Skip = "TODO: only works for live mode. Mihymel will fix the test issue for Create-ServerKeyVaultKeyTestEnvironment")]
+        [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestServerTransparentDataEncryptionProtectorSet()
         {
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTransparentDataEncryptionProtectorWithVersionlessKeys()
         {
             TestRunner.RunTestScript("Test-TransparentDataEncryptionProtectorWithVersionlessKeys");
