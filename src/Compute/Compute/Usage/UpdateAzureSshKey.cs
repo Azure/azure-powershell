@@ -59,7 +59,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string PublicKey { get; set; }
 
         [Parameter(
-            Mandatory = false)]
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         [Alias("Tag")]
         public Hashtable Tags { get; set; }
 
