@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEdgeMarketplaceOfferAcc
 
 Describe 'New-AzEdgeMarketplaceOfferAccessToken' {
     It 'GenerateExpanded' {
-        $result = New-AzEdgeMarketplaceOfferAccessToken -OfferId $env.OfferId -ResourceUri $env.ResourceUri -EdgeMarketplaceRegion $env.EdgeMarketplaceRegion -HypervGeneration $env.HypervGeneration -MarketplaceSku $env.MarketplaceSku -MarketplaceSkuVersion $env.MarketPlaceSkuVersion
+        $result = New-AzEdgeMarketplaceOfferAccessToken -OfferId $env.OfferId -ResourceUri $env.ResourceUri -EdgeMarketplaceRegion $env.EdgeMarketplaceRegion -HypervGeneration $env.HypervGeneration -MarketplaceSku $env.MarketplaceSku -MarketplaceSkuVersion $env.MarketplaceSkuVersion
         $result | Should -Not -BeNullOrEmpty
         $result.Status | Should -Be 'Succeeded'
     }

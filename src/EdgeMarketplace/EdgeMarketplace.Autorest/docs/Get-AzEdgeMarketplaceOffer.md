@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEdgeMarketplaceOffer
 
 ## SYNOPSIS
-Get a Offer
+Retrieves a list of all available marketplace offers for a given device.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzEdgeMarketplaceOffer -InputObject <IEdgeMarketplaceIdentity> [-DefaultProf
 ```
 
 ## DESCRIPTION
-Get a Offer
+Retrieves a list of all available marketplace offers for a given device.
 
 ## EXAMPLES
 

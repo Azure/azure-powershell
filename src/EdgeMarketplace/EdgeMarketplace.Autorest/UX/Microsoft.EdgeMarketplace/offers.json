@@ -7,7 +7,7 @@
   "commands": [
     {
       "name": "Get-AzEdgeMarketplaceOffer",
-      "description": "Get a Offer",
+      "description": "Retrieves a list of all available marketplace offers for a given device.",
       "path": "/{resourceUri}/providers/Microsoft.EdgeMarketplace/offers/{offerId}",
       "help": {
         "learnMore": {
@@ -24,7 +24,7 @@
       },
       "examples": [
         {
-          "description": "Get a Offer",
+          "description": "Retrieves a list of all available marketplace offers for a given device.",
           "parameters": [
             {
               "name": "-Id",

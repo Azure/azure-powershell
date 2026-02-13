@@ -261,7 +261,7 @@ Accept wildcard characters: False
 ```
 
 ### -EdgeMarketplaceResourceId
-The region where the disk will be created.
+The ARM resource ID of the Edge Marketplace resource associated with the access token request.
 
 ```yaml
 Type: System.String

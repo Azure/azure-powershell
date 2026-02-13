@@ -47,6 +47,11 @@ options:
         set:
           command-description: "Retrieves the access token (SAS URL) for a disk that was previously requested via New-AzEdgeMarketplaceOfferAccessToken."
       - where:
+          verb: Get
+          subject: Offer
+        set:
+          command-description: "Retrieves a list of all available marketplace offers for a given device."
+      - where:
           subject: Publisher
         remove: true
       - where:
@@ -58,6 +63,7 @@ options:
           parameter-name: EgeMarketPlaceResourceId
         set:
           parameter-name: EdgeMarketplaceResourceId
+          parameter-description: "The ARM resource ID of the Edge Marketplace resource associated with the access token request."
       - where:
           subject: OfferAccessToken
           parameter-name: EdgeMarketPlaceRegion
@@ -73,3 +79,8 @@ options:
           parameter-name: MarketPlaceSkuVersion
         set:
           parameter-name: MarketplaceSkuVersion
+      - where:
+          subject: OfferAccessToken
+          parameter-name: RequestId
+        set:
+          parameter-description: "A unique identifier for a previously initiated access token operation, used to look up and retrieve the corresponding disk access token status."

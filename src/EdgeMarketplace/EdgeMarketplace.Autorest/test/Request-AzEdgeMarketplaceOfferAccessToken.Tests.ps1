@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Request-AzEdgeMarketplaceOffe
 
 Describe 'Request-AzEdgeMarketplaceOfferAccessToken' -Tag 'LiveOnly' {
     It 'Request' {
-        $result = Request-AzEdgeMarketplaceOfferAccessToken -OfferId $env.OfferId -ResourceUri $env.ResourceUri -EdgeMarketplaceRegion $env.EdgeMarketplaceRegion -HypervGeneration $env.HypervGeneration -MarketplaceSku $env.MarketplaceSku -MarketplaceSkuVersion $env.MarketPlaceSkuVersion
+        $result = Request-AzEdgeMarketplaceOfferAccessToken -OfferId $env.OfferId -ResourceUri $env.ResourceUri -EdgeMarketplaceRegion $env.EdgeMarketplaceRegion -HypervGeneration $env.HypervGeneration -MarketplaceSku $env.MarketplaceSku -MarketplaceSkuVersion $env.MarketplaceSkuVersion
         $result | Should -Not -BeNullOrEmpty
         $result.AccessToken | Should -Not -BeNullOrEmpty
     }

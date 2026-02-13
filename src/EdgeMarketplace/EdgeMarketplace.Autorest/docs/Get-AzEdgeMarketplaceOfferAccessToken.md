@@ -244,7 +244,7 @@ Accept wildcard characters: False
 ```
 
 ### -RequestId
-The name of the publisher.
+A unique identifier for a previously initiated access token operation, used to look up and retrieve the corresponding disk access token status.
 
 ```yaml
 Type: System.String
