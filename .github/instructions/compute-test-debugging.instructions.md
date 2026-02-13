@@ -1,6 +1,11 @@
-﻿---
-applyTo: "src/Compute/Compute.Test/**,src/Compute/Compute/**/*.cs,src/Compute/Compute.Management.Sdk/Customizations/**"
-excludeAgent: "code-review,coding-agent"
+---
+applyTo:
+  - src/Compute/Compute.Test/**
+  - src/Compute/Compute/**/*.cs
+  - src/Compute/Compute.Management.Sdk/Customizations/**
+excludeAgent:
+  - code-review
+  - coding-agent
 ---
 
 # Compute Test Debugging Guidelines
