@@ -78,7 +78,7 @@
             }
           ],
           "isDefault": true,
-          "name": "Default",
+          "name": "Default_OperationalStore",
           "objectType": "AzureRetentionRule"
         }
       ],
