@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 
                 if (this.MyInvocation.BoundParameters.ContainsKey("Tags"))
                 {
-                    sshkeyUpdateResource.Tags = this.Tags.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
+                    sshkeyUpdateResource.Tags = this.Tags != null ? this.Tags.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null;
                 }
                 
                 var result = SshPublicKeyClient.Update(resourceGroupName, sshKeyName, sshkeyUpdateResource);
