@@ -79,10 +79,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 if (this.MyInvocation.BoundParameters.ContainsKey("Tags"))
                 {
-                    sshkey.Tags = this.Tags.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
+                    sshkey.Tags = this.Tags == null
+                        ? null
+                        : this.Tags.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                 }
-
-
                 if (this.IsParameterBound(c => c.PublicKey))
                 {
 
