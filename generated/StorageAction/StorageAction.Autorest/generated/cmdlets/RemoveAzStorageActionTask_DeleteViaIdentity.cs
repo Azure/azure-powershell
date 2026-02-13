@@ -15,6 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Cmdlets
     /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzStorageActionTask_DeleteViaIdentity", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.OutputBreakingChange("bool", "16.0.0", "2.0.0", "2026/05", DeprecatedOutputProperties = new string[] {"IdentityUserAssignedIdentity"}, NewOutputProperties = new string[] {"IdentityUserAssignedIdentity" } , ChangeDescription = "The types of the property 'IdentityUserAssignedIdentity' will be changed from 'Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IManagedServiceIdentityUserAssignedIdentities'")]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Description(@"Delete the storage task resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Generated]
@@ -39,15 +40,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Cmdlets
 
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
-
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -218,11 +210,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -554,7 +541,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Cmdlets
                     return ;
                 }
                 // onNoContent - response for 204 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);
                 }
@@ -578,7 +565,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);
                 }

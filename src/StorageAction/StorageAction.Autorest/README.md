@@ -88,4 +88,18 @@ directive:
       cmdlet-name: New-AzStorageActionTaskPreviewBlobPropertiesObject
     - model-name: StorageTaskPreviewKeyValueProperties
       cmdlet-name: New-AzStorageActionTaskPreviewKeyValuePropertiesObject
+
+  # Breaking change announcement
+  - where:
+      subject: Task
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - IdentityUserAssignedIdentity
+        new-output-properties:
+          - IdentityUserAssignedIdentity
+        change-description: The types of the property 'IdentityUserAssignedIdentity' will be changed from 'Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IManagedServiceIdentityUserAssignedIdentities'
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05
 ```
