@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 9.7.0
 * Removed TLS1_0 and TLS1_1 from MinimumTlsVersion parameter when creating or updating a Storage account
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`

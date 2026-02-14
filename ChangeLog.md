@@ -1,3 +1,29 @@
+## 15.4.0 - March 2026
+#### Az.Databricks 1.10.2
+* Update the deprecated-by-azversion and change-effective-date of breaking change announcements.
+
+#### Az.ElasticSan 1.7.0
+* Supported auto scale when creating and updating an Elastic SAN.
+    - 'New-AzElasticSan'
+    - 'Update-AzElasticSan'
+* Supported checking whether disk snapshot backup can be taken for volumes.
+    - 'Test-AzElasticSanVolumeBackup'
+    - 'Test-AzElasticSanVolumeRestore'
+
+#### Az.Network 7.25.1
+* Onboarded 'Microsoft.DataReplication/replicationVaults' to Private Link Common Cmdlets
+
+#### Az.Resources 9.0.2
+* Updated the implementation of -Metadata parameter processing for cmdlets that use it for security. No behavior change.
+
+#### Az.Storage 9.7.0
+* Removed TLS1_0 and TLS1_1 from MinimumTlsVersion parameter when creating or updating a Storage account
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+
+#### Az.StorageAction 1.0.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
 ## 15.3.0 - February 2026
 #### Az.Aks 7.1.1
 * Fixed the default SSH key generation logic in 'New-AzAksCluster' to enforce RSA key type (instead of ed25519 that became the default in OpenSSH 9.4 and above)
