@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "96" ],
-        "x-ms-client-request-id": [ "4dbef6e1-7442-45ec-806e-8398c1fc6f25" ],
+        "x-ms-unique-id": [ "103" ],
+        "x-ms-client-request-id": [ "76351541-5121-40c5-9488-0db6830e1e60" ],
         "CommandName": [ "Start-AzSqlVMAssessment" ],
         "FullCommandName": [ "Start-AzSqlVMAssessment_Start" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,14 +23,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "507f8fd7-e72a-4f06-abed-815759958913" ],
-        "x-ms-correlation-request-id": [ "507f8fd7-e72a-4f06-abed-815759958913" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260216T020604Z:507f8fd7-e72a-4f06-abed-815759958913" ],
+        "x-ms-request-id": [ "04f37956-a005-4628-b90d-6581d3539e5f" ],
+        "x-ms-correlation-request-id": [ "04f37956-a005-4628-b90d-6581d3539e5f" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260216T031327Z:04f37956-a005-4628-b90d-6581d3539e5f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: EB66EBF50AF745D0B38B63CAB8DC25F4 Ref B: SG2AA1040518011 Ref C: 2026-02-16T02:06:03Z" ],
-        "Date": [ "Mon, 16 Feb 2026 02:06:04 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: EE4C9977A62C4CA8BF51AD2BBC6B3D21 Ref B: SG2AA1070301054 Ref C: 2026-02-16T03:13:27Z" ],
+        "Date": [ "Mon, 16 Feb 2026 03:13:27 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "250" ],
@@ -48,8 +48,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "97" ],
-        "x-ms-client-request-id": [ "485c1a42-c3e4-4a59-b3bc-98bcb9fdcb6a" ],
+        "x-ms-unique-id": [ "104" ],
+        "x-ms-client-request-id": [ "52269aad-f84a-48b7-b252-c6e579ccca51" ],
         "CommandName": [ "Get-AzSqlVM" ],
         "FullCommandName": [ "Get-AzSqlVM_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -65,14 +65,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "14e6252f-ff0b-433b-93aa-92fc18c3b7bc" ],
-        "x-ms-correlation-request-id": [ "14e6252f-ff0b-433b-93aa-92fc18c3b7bc" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260216T020604Z:14e6252f-ff0b-433b-93aa-92fc18c3b7bc" ],
+        "x-ms-request-id": [ "1e8552cc-aaf7-4db5-9f1e-06a18c498ff3" ],
+        "x-ms-correlation-request-id": [ "1e8552cc-aaf7-4db5-9f1e-06a18c498ff3" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260216T031328Z:1e8552cc-aaf7-4db5-9f1e-06a18c498ff3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C2933D4CD3A141489A2E340C46B0B20D Ref B: SG2AA1040518011 Ref C: 2026-02-16T02:06:04Z" ],
-        "Date": [ "Mon, 16 Feb 2026 02:06:04 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3FC5E3B35A034568A48568BC6CB4247E Ref B: SG2AA1070301054 Ref C: 2026-02-16T03:13:27Z" ],
+        "Date": [ "Mon, 16 Feb 2026 03:13:28 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "250" ],

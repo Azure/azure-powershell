@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "57" ],
-        "x-ms-client-request-id": [ "1e48aee6-491c-40c2-a367-fa8f82bcb37c" ],
+        "x-ms-unique-id": [ "64" ],
+        "x-ms-client-request-id": [ "e495245b-b43e-418c-9818-c7a94567dc8b" ],
         "CommandName": [ "Remove-AzAvailabilityGroupListener" ],
         "FullCommandName": [ "Remove-AzAvailabilityGroupListener_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,14 +23,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "572b424b-2bbb-450c-9726-164e89907a73" ],
-        "x-ms-correlation-request-id": [ "572b424b-2bbb-450c-9726-164e89907a73" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260216T020022Z:572b424b-2bbb-450c-9726-164e89907a73" ],
+        "x-ms-request-id": [ "0454d6f7-7984-47a3-9158-e8608a3eda09" ],
+        "x-ms-correlation-request-id": [ "0454d6f7-7984-47a3-9158-e8608a3eda09" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260216T030730Z:0454d6f7-7984-47a3-9158-e8608a3eda09" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 45B8FB1A697947B1AC685C47A6BC2AD9 Ref B: SG2AA1040518011 Ref C: 2026-02-16T02:00:22Z" ],
-        "Date": [ "Mon, 16 Feb 2026 02:00:21 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: B37844A5528F421192FA738CC6DE77CC Ref B: SG2AA1070301054 Ref C: 2026-02-16T03:07:30Z" ],
+        "Date": [ "Mon, 16 Feb 2026 03:07:30 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "371" ],
@@ -48,8 +48,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "58" ],
-        "x-ms-client-request-id": [ "3f19ebe4-ddd4-488f-847f-57ca8ea61b14" ],
+        "x-ms-unique-id": [ "65" ],
+        "x-ms-client-request-id": [ "8bf882b9-a44b-4c62-99cb-34cd3cadc9a5" ],
         "CommandName": [ "Remove-AzAvailabilityGroupListener" ],
         "FullCommandName": [ "Remove-AzAvailabilityGroupListener_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -65,14 +65,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "c84e5eb0-6611-4a0e-a287-06c2d0e0ca54" ],
-        "x-ms-correlation-request-id": [ "c84e5eb0-6611-4a0e-a287-06c2d0e0ca54" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260216T020023Z:c84e5eb0-6611-4a0e-a287-06c2d0e0ca54" ],
+        "x-ms-request-id": [ "afcb28e4-3947-4071-9719-960f8d4bda11" ],
+        "x-ms-correlation-request-id": [ "afcb28e4-3947-4071-9719-960f8d4bda11" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260216T030731Z:afcb28e4-3947-4071-9719-960f8d4bda11" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 72D84F82324340B99F52F6BB06BF2ED0 Ref B: SG2AA1040518011 Ref C: 2026-02-16T02:00:23Z" ],
-        "Date": [ "Mon, 16 Feb 2026 02:00:22 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: B5868EE4F6D34DB6B974450A90501932 Ref B: SG2AA1070301054 Ref C: 2026-02-16T03:07:30Z" ],
+        "Date": [ "Mon, 16 Feb 2026 03:07:31 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "371" ],

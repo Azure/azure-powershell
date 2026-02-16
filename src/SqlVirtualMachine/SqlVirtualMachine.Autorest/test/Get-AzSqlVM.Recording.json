@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "546eac19-7186-46d3-a14b-be79e7aa35c8" ],
+        "x-ms-client-request-id": [ "80a307a5-b418-442e-9817-8fe5bf7a5ea3" ],
         "CommandName": [ "Get-AzSqlVM" ],
         "FullCommandName": [ "Get-AzSqlVM_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,24 +22,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "debbc6ad-2e84-4087-9b99-441391b2c6e7" ],
+        "x-ms-original-request-ids": [ "58f86d09-e49a-40bd-8472-7272af210ec4" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-request-id": [ "ae9703ad-1fc2-4cec-aeac-ff1297be4ca2" ],
-        "x-ms-correlation-request-id": [ "ae9703ad-1fc2-4cec-aeac-ff1297be4ca2" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260216T015408Z:ae9703ad-1fc2-4cec-aeac-ff1297be4ca2" ],
+        "x-ms-request-id": [ "8b7c7933-3222-4238-bc4e-dcc52459b800" ],
+        "x-ms-correlation-request-id": [ "8b7c7933-3222-4238-bc4e-dcc52459b800" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260216T025916Z:8b7c7933-3222-4238-bc4e-dcc52459b800" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 470FBCAE54534BEA820A03E2B10BB5A9 Ref B: SG2AA1040518011 Ref C: 2026-02-16T01:54:06Z" ],
-        "Date": [ "Mon, 16 Feb 2026 01:54:07 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 47E54DD87AEE4ED0919312FE647B076B Ref B: SG2AA1070301054 Ref C: 2026-02-16T02:59:15Z" ],
+        "Date": [ "Mon, 16 Feb 2026 02:59:15 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "669" ],
+        "Content-Length": [ "666" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"virtualMachineResourceId\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.Compute/virtualMachines/azpstest-sqlvm\",\"provisioningState\":\"Succeeded\",\"sqlImageOffer\":\"SQL2019-WS2019\",\"sqlServerLicenseType\":\"PAYG\",\"sqlManagement\":\"Full\",\"leastPrivilegeMode\":\"Enabled\",\"sqlImageSku\":\"Standard\",\"enableAutomaticUpgrade\":true},\"location\":\"eastus\",\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/azpstest-sqlvm\",\"name\":\"azpstest-sqlvm\",\"type\":\"Microsoft.SqlVirtualMachine/sqlVirtualMachines\"}]}",
+      "Content": "{\"value\":[{\"properties\":{\"virtualMachineResourceId\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.Compute/virtualMachines/azpstest-sqlvm\",\"provisioningState\":\"Failed\",\"sqlImageOffer\":\"SQL2019-WS2019\",\"sqlServerLicenseType\":\"PAYG\",\"sqlManagement\":\"Full\",\"leastPrivilegeMode\":\"Enabled\",\"sqlImageSku\":\"Standard\",\"enableAutomaticUpgrade\":true},\"location\":\"eastus\",\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/azpstest-sqlvm\",\"name\":\"azpstest-sqlvm\",\"type\":\"Microsoft.SqlVirtualMachine/sqlVirtualMachines\"}]}",
       "isContentBase64": false
     }
   },
@@ -51,7 +51,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "83a0f874-ec54-4e77-9067-746a92d4d1fc" ],
+        "x-ms-client-request-id": [ "27f5f3d9-d7ba-4e7f-90a3-307636f92436" ],
         "CommandName": [ "Get-AzSqlVM" ],
         "FullCommandName": [ "Get-AzSqlVM_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -67,14 +67,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "5541aa4c-756f-412c-84e8-996d6599e73f" ],
-        "x-ms-correlation-request-id": [ "5541aa4c-756f-412c-84e8-996d6599e73f" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260216T015409Z:5541aa4c-756f-412c-84e8-996d6599e73f" ],
+        "x-ms-request-id": [ "fdf3737c-e506-46d4-b411-44f96bec7ac1" ],
+        "x-ms-correlation-request-id": [ "fdf3737c-e506-46d4-b411-44f96bec7ac1" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260216T025917Z:fdf3737c-e506-46d4-b411-44f96bec7ac1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9935C255EA3243BD947EE5EC4F6A4435 Ref B: SG2AA1040518011 Ref C: 2026-02-16T01:54:08Z" ],
-        "Date": [ "Mon, 16 Feb 2026 01:54:08 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 1F15F0E5C46F45A8A60586EF8B3BDEED Ref B: SG2AA1070301054 Ref C: 2026-02-16T02:59:16Z" ],
+        "Date": [ "Mon, 16 Feb 2026 02:59:16 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "248" ],
@@ -93,7 +93,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "b1d25fe2-673b-46a2-915c-6138ed47a396" ],
+        "x-ms-client-request-id": [ "17f5cc45-9b43-4c09-b25a-42384cf274c1" ],
         "CommandName": [ "Get-AzSqlVM" ],
         "FullCommandName": [ "Get-AzSqlVM_List2" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -108,24 +108,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "cbdbce98-5334-473f-9b06-dca0770c4dce" ],
+        "x-ms-original-request-ids": [ "bafc90c8-75bc-4547-8d78-0c8252ba2fa2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-request-id": [ "8e4b1c9d-c599-4dbc-a009-cc01da452146" ],
-        "x-ms-correlation-request-id": [ "8e4b1c9d-c599-4dbc-a009-cc01da452146" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260216T015409Z:8e4b1c9d-c599-4dbc-a009-cc01da452146" ],
+        "x-ms-request-id": [ "5e27c0f5-7414-46e2-ba2f-ddb1fd354829" ],
+        "x-ms-correlation-request-id": [ "5e27c0f5-7414-46e2-ba2f-ddb1fd354829" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260216T025918Z:5e27c0f5-7414-46e2-ba2f-ddb1fd354829" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8987856AF6F2477A9417DCF4B6E25816 Ref B: SG2AA1040518011 Ref C: 2026-02-16T01:54:09Z" ],
-        "Date": [ "Mon, 16 Feb 2026 01:54:09 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C9F9FF442DC8477AA3E3D26272D2F553 Ref B: SG2AA1070301054 Ref C: 2026-02-16T02:59:17Z" ],
+        "Date": [ "Mon, 16 Feb 2026 02:59:17 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "669" ],
+        "Content-Length": [ "666" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"virtualMachineResourceId\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.Compute/virtualMachines/azpstest-sqlvm\",\"provisioningState\":\"Succeeded\",\"sqlImageOffer\":\"SQL2019-WS2019\",\"sqlServerLicenseType\":\"PAYG\",\"sqlManagement\":\"Full\",\"leastPrivilegeMode\":\"Enabled\",\"sqlImageSku\":\"Standard\",\"enableAutomaticUpgrade\":true},\"location\":\"eastus\",\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/azpstest-sqlvm\",\"name\":\"azpstest-sqlvm\",\"type\":\"Microsoft.SqlVirtualMachine/sqlVirtualMachines\"}]}",
+      "Content": "{\"value\":[{\"properties\":{\"virtualMachineResourceId\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.Compute/virtualMachines/azpstest-sqlvm\",\"provisioningState\":\"Failed\",\"sqlImageOffer\":\"SQL2019-WS2019\",\"sqlServerLicenseType\":\"PAYG\",\"sqlManagement\":\"Full\",\"leastPrivilegeMode\":\"Enabled\",\"sqlImageSku\":\"Standard\",\"enableAutomaticUpgrade\":true},\"location\":\"eastus\",\"id\":\"/subscriptions/e77b08cc-d20a-411b-aa8e-6b453f1f7971/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/azpstest-sqlvm\",\"name\":\"azpstest-sqlvm\",\"type\":\"Microsoft.SqlVirtualMachine/sqlVirtualMachines\"}]}",
       "isContentBase64": false
     }
   },
@@ -137,7 +137,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "1b567e41-9d4f-4c07-9b0a-4e1cd581c368" ],
+        "x-ms-client-request-id": [ "c9c2fbd5-8808-4f3c-be03-8c914b52524c" ],
         "CommandName": [ "Get-AzSqlVM" ],
         "FullCommandName": [ "Get-AzSqlVM_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -153,14 +153,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "c24987bf-65d8-4923-b99f-3eb08ce119b3" ],
-        "x-ms-correlation-request-id": [ "c24987bf-65d8-4923-b99f-3eb08ce119b3" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260216T015410Z:c24987bf-65d8-4923-b99f-3eb08ce119b3" ],
+        "x-ms-request-id": [ "19c58b13-78f2-44f0-9028-71b3a9a9e168" ],
+        "x-ms-correlation-request-id": [ "19c58b13-78f2-44f0-9028-71b3a9a9e168" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260216T025918Z:19c58b13-78f2-44f0-9028-71b3a9a9e168" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8C6671C731BD44F59C5FFB54C5B3E388 Ref B: SG2AA1040518011 Ref C: 2026-02-16T01:54:10Z" ],
-        "Date": [ "Mon, 16 Feb 2026 01:54:09 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 70AB8DC75BD444E08EE036941A56D0D1 Ref B: SG2AA1070301054 Ref C: 2026-02-16T02:59:18Z" ],
+        "Date": [ "Mon, 16 Feb 2026 02:59:17 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "255" ],
@@ -179,7 +179,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "ca5b2791-7167-430b-bbcd-127380e1999b" ],
+        "x-ms-client-request-id": [ "0314b49e-9062-4aca-9947-6b54e3a489a9" ],
         "CommandName": [ "Get-AzSqlVM" ],
         "FullCommandName": [ "Get-AzSqlVM_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -195,14 +195,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "4b5ae810-c377-438b-a233-74943e79e751" ],
-        "x-ms-correlation-request-id": [ "4b5ae810-c377-438b-a233-74943e79e751" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260216T015410Z:4b5ae810-c377-438b-a233-74943e79e751" ],
+        "x-ms-request-id": [ "0a1e34d6-dab8-4cc2-aa4f-375c41b4e9d5" ],
+        "x-ms-correlation-request-id": [ "0a1e34d6-dab8-4cc2-aa4f-375c41b4e9d5" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260216T025919Z:0a1e34d6-dab8-4cc2-aa4f-375c41b4e9d5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6C001ED654AA4B169708CA4840025687 Ref B: SG2AA1040518011 Ref C: 2026-02-16T01:54:10Z" ],
-        "Date": [ "Mon, 16 Feb 2026 01:54:10 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 15574F97442C4A6CBC898AB3BF220F70 Ref B: SG2AA1070301054 Ref C: 2026-02-16T02:59:19Z" ],
+        "Date": [ "Mon, 16 Feb 2026 02:59:18 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "248" ],
