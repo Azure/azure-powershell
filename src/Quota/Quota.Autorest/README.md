@@ -63,7 +63,7 @@ directive:
   # But preserve all variants for subscription/allocation management operations
   - where:
       variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
-      subject: ^(?!GroupQuotaSubscription|GroupQuotaLimitsRequest|GroupQuotaSubscriptionAllocation).*$
+      subject: ^(?!GroupQuotaSubscription$).*$
     remove: true
   
   # Remove any remaining Set verbs (for operations that have New equivalents from POST)
