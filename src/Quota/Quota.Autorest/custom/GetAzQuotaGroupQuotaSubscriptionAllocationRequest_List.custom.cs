@@ -12,7 +12,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
         partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow)
         {
             // Read the response content
-            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            var content = responseMessage.Content.ReadAsStringAsync().GetAwaiter().GetResult();
             
             // Check if response is plain text (not JSON)
             if (!string.IsNullOrEmpty(content) && !content.TrimStart().StartsWith("{") && !content.TrimStart().StartsWith("["))
