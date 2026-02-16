@@ -79,7 +79,7 @@ directive:
 
   # Rename parameter
   - where:
-      verb: New
+      verb: New|Update
       parameter-name: NameValue
     set:
       parameter-name: Name
