@@ -1,3 +1,43 @@
+function New-SlnFile {
+    param (
+        [string]$SolutionName,
+        [string]$SolutionPath,
+        [switch]$Force
+    )
+    if (-not $SolutionName) {
+        throw "SolutionName is required."
+    }
+    if (-not $SolutionPath) {
+        throw "SolutionPath is required."
+    }
+
+    $dotnetVersionRaw = (& dotnet --version 2>$null)
+    if (-not $dotnetVersionRaw) {
+        throw "dotnet CLI was not found or returned an empty version."
+    }
+
+    $dotnetVersionRaw = $dotnetVersionRaw.Trim()
+    $dotnetVersion = $dotnetVersionRaw -as [version]
+    $dotnetMajor = 0
+    if ($dotnetVersion) {
+        $dotnetMajor = $dotnetVersion.Major
+    }
+    elseif ($dotnetVersionRaw -match '^\d+') {
+        $dotnetMajor = [int]$Matches[0]
+    }
+
+    $args = @('new', 'sln', '-n', $SolutionName, '-o', $SolutionPath)
+    if ($dotnetMajor -ge 10) {
+        $args += '--format'
+        $args += 'sln'
+    }
+    if ($Force) {
+        $args += '--force'
+    }
+
+    & dotnet @args
+}
+
 function Get-CsprojFromModule {
     param (
         [string[]]$BuildModuleList,
