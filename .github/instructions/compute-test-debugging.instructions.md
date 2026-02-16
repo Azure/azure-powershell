@@ -1,6 +1,6 @@
 ---
-applyTo: "src/Compute/Compute.Test/**,src/Compute/Compute/**/*.cs,src/Compute/Compute.Management.Sdk/Customizations/**"
-excludeAgent: "code-review,coding-agent"
+applyTo: "src/Compute/Compute.Test/**,src/Compute/Compute/**/*.cs,Compute.Test/**,Compute/**/*.cs"
+excludeAgent: "code-review"
 ---
 
 # Compute Test Debugging Guidelines
@@ -22,13 +22,11 @@ Follow this end-to-end workflow when developing or debugging Compute scenario te
 
 ## Test Infrastructure Overview
 
-- Tests use the Azure Test Framework with HTTP Record/Playback via session recording JSON files.
-- C# test classes inherit from `ComputeTestRunner` and call `TestRunner.RunTestScript("FunctionName")`.
-- PowerShell test functions are in `.ps1` files loaded by the test runner.
-- Session recordings are stored as JSON files that capture HTTP request/response pairs.
-- **Record mode**: Calls live Azure APIs and saves responses to session files.
-- **Playback mode**: Replays saved session files without hitting Azure.
-- **Switching modes**: Edit the `HttpRecorderMode` field in `~/.azure/testcredentials.json` to `Record` or `Playback`. This file takes precedence over the `AZURE_TEST_MODE` environment variable — always use the JSON file to avoid mode mismatches.
+Tests use the Azure Test Framework with HTTP Record/Playback. For full setup and configuration details, see `documentation/testing-docs/using-azure-test-framework.md`.
+
+Key points for this workflow:
+- **Switching modes**: Edit the `HttpRecorderMode` field in `~/.azure/testcredentials.json` to `Record` or `Playback`. The JSON file takes precedence over the `AZURE_TEST_MODE` environment variable — always use the JSON file to avoid mode mismatches.
+- Session recordings are stored at `src/Compute/Compute.Test/SessionRecords/<Class>/<Method>.json`.
 
 ## Workflow
 
