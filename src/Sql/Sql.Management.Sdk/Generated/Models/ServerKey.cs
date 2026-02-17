@@ -48,7 +48,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Possible values include: &#39;ServiceManaged&#39;, &#39;AzureKeyVault&#39;</param>
 
         /// <param name="uri">The URI of the server key. If the ServerKeyType is AzureKeyVault, then the
-        /// URI is required.
+        /// URI is required. The AKV URI is required to be in this format:
+        /// &#39;https://YourVaultName.vault.azure.net/keys/YourKeyName/YourKeyVersion&#39; or
+        /// can be &#39;https://YourVaultName.vault.azure.net/keys/YourKeyName&#39;
         /// </param>
 
         /// <param name="thumbprint">Thumbprint of the server key.
@@ -59,7 +61,10 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="autoRotationEnabled">Key auto rotation opt-in flag. Either true or false.
         /// </param>
-        public ServerKey(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string location = default(string), string subregion = default(string), string serverKeyType = default(string), string uri = default(string), string thumbprint = default(string), System.DateTime? creationDate = default(System.DateTime?), bool? autoRotationEnabled = default(bool?))
+
+        /// <param name="keyVersion">The version of the server key.
+        /// </param>
+        public ServerKey(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string location = default(string), string subregion = default(string), string serverKeyType = default(string), string uri = default(string), string thumbprint = default(string), System.DateTime? creationDate = default(System.DateTime?), bool? autoRotationEnabled = default(bool?), string keyVersion = default(string))
 
         : base(id, name, type)
         {
@@ -71,6 +76,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.Thumbprint = thumbprint;
             this.CreationDate = creationDate;
             this.AutoRotationEnabled = autoRotationEnabled;
+            this.KeyVersion = keyVersion;
             CustomInit();
         }
 
@@ -107,7 +113,10 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <summary>
         /// Gets or sets the URI of the server key. If the ServerKeyType is
-        /// AzureKeyVault, then the URI is required.
+        /// AzureKeyVault, then the URI is required. The AKV URI is required to be in
+        /// this format:
+        /// &#39;https://YourVaultName.vault.azure.net/keys/YourKeyName/YourKeyVersion&#39; or
+        /// can be &#39;https://YourVaultName.vault.azure.net/keys/YourKeyName&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.uri")]
         public string Uri {get; set; }
@@ -129,5 +138,11 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.autoRotationEnabled")]
         public bool? AutoRotationEnabled {get; private set; }
+
+        /// <summary>
+        /// Gets the version of the server key.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.keyVersion")]
+        public string KeyVersion {get; private set; }
     }
 }

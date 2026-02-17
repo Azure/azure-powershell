@@ -396,9 +396,11 @@ Finally, it returns all the necessary parameters to perform the tests.
 function SetupDynamicTestEnvironmentForServerTDEScenariosAndReturnParameters ($location = "eastus2euap")
 {
 	$rg = Create-ResourceGroupForTest
-	$entraAdmin=$env:USERNAME+"@microsoft.com"
+	$entraAdmin="pstestumi" # DEVNOTE: This is a new managed identity(UMI) created for testing purpose. Please create a new UMI in case you need to re record the test, and update the client id and object id below.
+	$umiClientId = "a3cea2f0-4c2d-4bad-917f-9f6534b5ee0a"
+	$umiObjectId = "89cdfc0e-3f82-4e08-86d4-d0092eb4cd6e"
 	$serverName = Get-ServerName
-	$server = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -Location $location -ServerName $serverName -ServerVersion "12.0" -ExternalAdminName $entraAdmin -EnableActiveDirectoryOnlyAuthentication -AssignIdentity
+	$server = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -Location $location -ServerName $serverName -ServerVersion "12.0" -ExternalAdminName $entraAdmin -ExternalAdminSID $umiClientId -EnableActiveDirectoryOnlyAuthentication -AssignIdentity
 	$keyNameInAKV = 'testkey1'
 	$keyVault = Create-AzureKeyVaultForTest $rg.ResourceGroupName $location
 
@@ -416,17 +418,18 @@ function SetupDynamicTestEnvironmentForServerTDEScenariosAndReturnParameters ($l
 
 <#
 .SYNOPSIS
-Creates a test Environment for the TDE with AKV tests for server level TDE and returns the parameters of the created environment
-It creates a new server, with the current user as entra admin on the server, then creates a new key vault and a key in it, and grants the server access to the key vault. 
+Creates a test Environment for the TDE with AKV tests for database level TDE and returns the parameters of the created environment
+It creates a new server, with the current user as entra admin on the server, then creates a new key vault and a key in it. 
 Finally, it returns all the necessary parameters to perform the tests.
 #>
 function SetupDynamicTestEnvironmentForDatabaseLevelTDECMKScenariosAndReturnParameters ($location = "eastus2euap")
 {
 	$rg = Create-ResourceGroupForTest
-	$entraAdmin="pstestumi" # DEVNOTE: This is a new managed identity(UMI) created for testing purpose. Please create a new UMI in case you need to re record the test, and update the object id of the new UMI in the ''$umiObjectId' variable below.
+	$entraAdmin="pstestumi" # DEVNOTE: This is a new managed identity(UMI) created for testing purpose. Please create a new UMI in case you need to re record the test, and update the client id and object id below.
+	$umiClientId = "a3cea2f0-4c2d-4bad-917f-9f6534b5ee0a"
 	$umiObjectId = "89cdfc0e-3f82-4e08-86d4-d0092eb4cd6e"
 	$serverName = Get-ServerName
-	$server = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -Location $location -ServerName $serverName -ServerVersion "12.0" -ExternalAdminName $entraAdmin -EnableActiveDirectoryOnlyAuthentication -AssignIdentity
+	$server = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -Location $location -ServerName $serverName -ServerVersion "12.0" -ExternalAdminSID $umiClientId -ExternalAdminName $entraAdmin -EnableActiveDirectoryOnlyAuthentication -AssignIdentity
 		
 	$keyNameInAKV = 'testkey1'
 	$keyVault = Create-AzureKeyVaultForTest $rg.ResourceGroupName $location

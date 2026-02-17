@@ -122,9 +122,9 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         /// </summary>
         /// <param name="resourceGroupName">Resource group of the server</param>
         /// <param name="serverName">Name of the server</param>
-        public Rest.Azure.AzureOperationResponse RevalidateEncryptionProtector(string resourceGroupName, string serverName)
+        public void RevalidateEncryptionProtector(string resourceGroupName, string serverName)
         {
-            return Communicator.RevalidateEncryptionProtector(resourceGroupName, serverName).GetAwaiter().GetResult();
+            Communicator.RevalidateEncryptionProtector(resourceGroupName, serverName);
         }
 
         /// <summary>

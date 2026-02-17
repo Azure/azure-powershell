@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<EncryptionProtector>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, EncryptionProtector parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<EncryptionProtector,EncryptionProtectorsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, EncryptionProtector parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Revalidates an existing encryption protector.
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RevalidateWithHttpMessagesAsync(string resourceGroupName, string serverName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<EncryptionProtectorsRevalidateHeaders>> RevalidateWithHttpMessagesAsync(string resourceGroupName, string serverName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Updates an existing encryption protector.
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<EncryptionProtector>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, EncryptionProtector parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<EncryptionProtector,EncryptionProtectorsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, EncryptionProtector parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Revalidates an existing encryption protector.
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginRevalidateWithHttpMessagesAsync(string resourceGroupName, string serverName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<EncryptionProtectorsRevalidateHeaders>> BeginRevalidateWithHttpMessagesAsync(string resourceGroupName, string serverName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets a list of server encryption protectors

@@ -35,13 +35,17 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="subregion">Subregion of the server key.
         /// </param>
-        public DatabaseKey(string type = default(string), string thumbprint = default(string), System.DateTime? creationDate = default(System.DateTime?), string subregion = default(string))
+
+        /// <param name="keyVersion">The database key&#39;s version.
+        /// </param>
+        public DatabaseKey(string type = default(string), string thumbprint = default(string), System.DateTime? creationDate = default(System.DateTime?), string subregion = default(string), string keyVersion = default(string))
 
         {
             this.Type = type;
             this.Thumbprint = thumbprint;
             this.CreationDate = creationDate;
             this.Subregion = subregion;
+            this.KeyVersion = keyVersion;
             CustomInit();
         }
 
@@ -55,24 +59,30 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Gets the database key type. Only supported value is &#39;AzureKeyVault&#39;. Possible values include: &#39;AzureKeyVault&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
+        public string Type { get; private set; }
 
         /// <summary>
         /// Gets thumbprint of the database key.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "thumbprint")]
-        public string Thumbprint {get; private set; }
+        public string Thumbprint { get; private set; }
 
         /// <summary>
         /// Gets the database key creation date.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "creationDate")]
-        public System.DateTime? CreationDate {get; private set; }
+        public System.DateTime? CreationDate { get; private set; }
 
         /// <summary>
         /// Gets subregion of the server key.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "subregion")]
-        public string Subregion {get; private set; }
+        public string Subregion { get; private set; }
+
+        /// <summary>
+        /// Gets the database key&#39;s version.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "keyVersion")]
+        public string KeyVersion { get; private set; }
     }
 }
