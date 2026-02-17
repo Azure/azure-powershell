@@ -423,11 +423,11 @@ Finally, it returns all the necessary parameters to perform the tests.
 function SetupDynamicTestEnvironmentForDatabaseLevelTDECMKScenariosAndReturnParameters ($location = "eastus2euap")
 {
 	$rg = Create-ResourceGroupForTest
-	$entraAdmin=$env:USERNAME+"@microsoft.com"
+	$entraAdmin="pstestumi" # DEVNOTE: This is a new managed identity(UMI) created for testing purpose. Please create a new UMI in case you need to re record the test, and update the object id of the new UMI in the ''$umiObjectId' variable below.
+	$umiObjectId = "89cdfc0e-3f82-4e08-86d4-d0092eb4cd6e"
 	$serverName = Get-ServerName
 	$server = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -Location $location -ServerName $serverName -ServerVersion "12.0" -ExternalAdminName $entraAdmin -EnableActiveDirectoryOnlyAuthentication -AssignIdentity
 		
-	$umiObjectId = "89cdfc0e-3f82-4e08-86d4-d0092eb4cd6e"
 	$keyNameInAKV = 'testkey1'
 	$keyVault = Create-AzureKeyVaultForTest $rg.ResourceGroupName $location
 	$akvKey = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name $keyNameInAKV -Destination Software
