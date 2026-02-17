@@ -20,8 +20,8 @@
 
 -->
 ## Upcoming Release
-* Added `-Tags` and `-Location` parameters to `New-AzSshKey` cmdlet
-* Added `-Tags` parameter to `Update-AzSshKey` cmdlet
+* Added `-Tag` and `-Location` parameters to `New-AzSshKey` cmdlet
+* Added `-Tag` parameter to `Update-AzSshKey` cmdlet
 * Added support for Disk Availability Policy
     - Added `-ActionOnDiskDelay` parameter to `New-AzDiskConfig` cmdlet to configure disk availability behavior
     - Added `-ActionOnDiskDelay` parameter to `New-AzDiskUpdateConfig` cmdlet to update disk availability behavior
