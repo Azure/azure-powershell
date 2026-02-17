@@ -60,7 +60,7 @@ Invite user to the organization
 
 ### Example 1: Invite a user to a Confluent organization
 ```powershell
-Invoke-AzConfluentInviteAccessUser -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -InvitedEmail "newuser@example.com" -AuthType SSO
+Invoke-AzConfluentInviteAccessUser -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -InvitedUserDetailInvitedEmail "newuser@example.com" -InvitedUserDetailAuthType "SSO"
 ```
 
 ```output
@@ -74,7 +74,7 @@ This command invites a new user to the Confluent organization with SSO authentic
 ### Example 2: Invite multiple users
 ```powershell
 @("user1@example.com", "user2@example.com") | ForEach-Object {
-    Invoke-AzConfluentInviteAccessUser -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -InvitedEmail $_ -AuthType SSO
+    Invoke-AzConfluentInviteAccessUser -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -InvitedUserDetailInvitedEmail $_ -InvitedUserDetailAuthType "SSO"
 }
 ```
 

@@ -38,14 +38,14 @@ Delete confluent environment by id
 
 ### Example 1: Remove a Confluent environment
 ```powershell
-Remove-AzConfluentEnvironment -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -Id env-123456
+Remove-AzConfluentEnvironment -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456
 ```
 
 This command removes the specified environment from the Confluent organization.
 
 ### Example 2: Remove an environment using pipeline
 ```powershell
-Get-AzConfluentOrganizationEnvironment -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -Id env-old789 | Remove-AzConfluentEnvironment
+Get-AzConfluentOrganizationEnvironment -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-old789 | Remove-AzConfluentEnvironment
 ```
 
 This command removes an environment by retrieving it through the pipeline.

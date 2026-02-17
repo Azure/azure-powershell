@@ -60,7 +60,7 @@ This command lists all Confluent environments within the specified organization.
 
 ### Example 2: Get a specific environment by ID
 ```powershell
-Get-AzConfluentOrganizationEnvironment -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -Id env-123456
+Get-AzConfluentOrganizationEnvironment -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456
 ```
 
 ```output

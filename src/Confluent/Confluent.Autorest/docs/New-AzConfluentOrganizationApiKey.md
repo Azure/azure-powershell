@@ -54,26 +54,26 @@ Create API key for a schema registry Cluster ID or Kafka Cluster ID under a envi
 
 ### Example 1: Create a new API key for a Kafka cluster
 ```powershell
-New-AzConfluentOrganizationApiKey -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -Name "prod-api-key" -Description "API key for production cluster" -OwnerId "sa-123456" -ResourceId "lkc-abc123"
+New-AzConfluentOrganizationApiKey -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -ClusterId lkc-abc123 -Name "prod-api-key" -Description "API key for production cluster"
 ```
 
 ```output
-Id              Name            Owner      ResourceId  Secret
---              ----            -----      ----------  ------
-api-key-123456  prod-api-key    sa-123456  lkc-abc123  ****************
+Id              Name            ClusterId   EnvironmentId
+--              ----            ---------   -------------
+api-key-123456  prod-api-key    lkc-abc123  env-123456
 ```
 
 This command creates a new API key for accessing a Kafka cluster.
 
 ### Example 2: Create an API key for schema registry
 ```powershell
-New-AzConfluentOrganizationApiKey -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -Name "schema-api-key" -Description "Schema registry access" -OwnerId "sa-234567" -ResourceId "lsrc-def456"
+New-AzConfluentOrganizationApiKey -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -ClusterId lsrc-def456 -Name "schema-api-key" -Description "Schema registry access"
 ```
 
 ```output
-Id              Name              Owner      ResourceId   Secret
---              ----              -----      ----------   ------
-api-key-234567  schema-api-key    sa-234567  lsrc-def456  ****************
+Id              Name              ClusterId    EnvironmentId
+--              ----              ---------    -------------
+api-key-234567  schema-api-key    lsrc-def456  env-123456
 ```
 
 This command creates a new API key for accessing a schema registry cluster.
