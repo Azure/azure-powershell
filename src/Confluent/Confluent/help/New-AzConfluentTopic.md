@@ -69,27 +69,35 @@ Create confluent topics by Name
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new Kafka topic
 ```powershell
-{{ Add code here }}
+New-AzConfluentTopic -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -ClusterId lkc-abc123 -Name "new-orders-topic" -PartitionsCount "6" -ReplicationFactor "3"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               PartitionsCount ReplicationFactor TopicId
+----               --------------- ----------------- -------
+new-orders-topic   6               3                 lkc-abc123:new-orders-topic
 ```
 
-{{ Add description here }}
+This command creates a new Kafka topic with 6 partitions and replication factor of 3.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a topic with custom configuration
 ```powershell
-{{ Add code here }}
+$config = @(
+    @{name="retention.ms"; value="604800000"},
+    @{name="compression.type"; value="gzip"}
+)
+New-AzConfluentTopic -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -ClusterId lkc-abc123 -Name "events-topic" -PartitionsCount "3" -ReplicationFactor "3" -InputConfig $config
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name           PartitionsCount ReplicationFactor TopicId
+----           --------------- ----------------- -------
+events-topic   3               3                 lkc-abc123:events-topic
 ```
 
-{{ Add description here }}
+This command creates a new Kafka topic with custom retention and compression settings.
 
 ## PARAMETERS
 

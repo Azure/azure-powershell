@@ -59,27 +59,37 @@ Create confluent clusters
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new Kafka cluster
 ```powershell
-{{ Add code here }}
+$spec = New-Object Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ScClusterSpecEntity
+$spec.DisplayName = "prod-kafka-cluster"
+$spec.Availability = "MULTI_ZONE"
+$spec.Cloud = "AZURE"
+$spec.Region = "eastus"
+$spec.Config = @{kind = "Basic"}
+New-AzConfluentCluster -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -Id lkc-new123 -Spec $spec
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name                 Type   Status
+--          ----                 ----   ------
+lkc-new123  prod-kafka-cluster   KAFKA  PROVISIONING
 ```
 
-{{ Add description here }}
+This command creates a new Kafka cluster in the specified environment.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a cluster using JSON configuration file
 ```powershell
-{{ Add code here }}
+New-AzConfluentCluster -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -Id lkc-new456 -JsonFilePath "C:\config\cluster-config.json"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name                 Type   Status
+--          ----                 ----   ------
+lkc-new456  dev-kafka-cluster    KAFKA  PROVISIONING
 ```
 
-{{ Add description here }}
+This command creates a new Kafka cluster using configuration from a JSON file.
 
 ## PARAMETERS
 

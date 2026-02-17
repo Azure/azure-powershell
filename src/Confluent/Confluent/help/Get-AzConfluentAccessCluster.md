@@ -45,27 +45,34 @@ Cluster details
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all clusters in a Confluent organization
 ```powershell
-{{ Add code here }}
+Get-AzConfluentAccessCluster -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name              Type           Status
+--          ----              ----           ------
+lkc-abc123  prod-kafka-01     kafka          RUNNING
+lkc-def456  dev-kafka-01      kafka          RUNNING
+lkc-ghi789  staging-kafka-01  kafka          RUNNING
 ```
 
-{{ Add description here }}
+This command lists all Confluent clusters within the specified organization.
 
-### Example 2: {{ Add title here }}
+### Example 2: List clusters with search filter
 ```powershell
-{{ Add code here }}
+$filter = @{name = "prod"}
+Get-AzConfluentAccessCluster -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -SearchFilter $filter
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name              Type           Status
+--          ----              ----           ------
+lkc-abc123  prod-kafka-01     kafka          RUNNING
 ```
 
-{{ Add description here }}
+This command lists Confluent clusters matching the specified search filter criteria.
 
 ## PARAMETERS
 

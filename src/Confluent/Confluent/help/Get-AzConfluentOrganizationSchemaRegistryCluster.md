@@ -51,27 +51,32 @@ Get schema registry cluster by Id
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all schema registry clusters in an environment
 ```powershell
-{{ Add code here }}
+Get-AzConfluentOrganizationSchemaRegistryCluster -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name                Type             Status
+--          ----                ----             ------
+lsrc-abc123 prod-schema-reg     SCHEMA_REGISTRY  RUNNING
+lsrc-def456 dev-schema-reg      SCHEMA_REGISTRY  RUNNING
 ```
 
-{{ Add description here }}
+This command lists all schema registry clusters within the specified environment.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific schema registry cluster by ID
 ```powershell
-{{ Add code here }}
+Get-AzConfluentOrganizationSchemaRegistryCluster -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -ClusterId lsrc-abc123
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name                Type             Status  Region
+--          ----                ----             ------  ------
+lsrc-abc123 prod-schema-reg     SCHEMA_REGISTRY  RUNNING eastus
 ```
 
-{{ Add description here }}
+This command retrieves details of a specific schema registry cluster by its ID.
 
 ## PARAMETERS
 

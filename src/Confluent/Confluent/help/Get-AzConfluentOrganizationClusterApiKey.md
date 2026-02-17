@@ -36,27 +36,32 @@ Get API key details of a kafka or schema registry cluster
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get API key details by ID
 ```powershell
-{{ Add code here }}
+Get-AzConfluentOrganizationClusterApiKey -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -ApiKeyId api-key-123456
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id              Owner              ResourceId
+--              -----              ----------
+api-key-123456  sa-abc123          lkc-xyz789
 ```
 
-{{ Add description here }}
+This command retrieves the details of a specific API key for a Confluent cluster.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get API key using pipeline
 ```powershell
-{{ Add code here }}
+$org = Get-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-01
+$org | Get-AzConfluentOrganizationClusterApiKey -ApiKeyId api-key-123456
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id              Owner              ResourceId
+--              -----              ----------
+api-key-123456  sa-abc123          lkc-xyz789
 ```
 
-{{ Add description here }}
+This command retrieves API key details using pipeline input.
 
 ## PARAMETERS
 

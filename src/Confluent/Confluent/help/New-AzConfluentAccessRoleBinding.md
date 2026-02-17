@@ -38,27 +38,31 @@ Organization role bindings
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a role binding for a user
 ```powershell
-{{ Add code here }}
+New-AzConfluentAccessRoleBinding -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -Principal "User:u-123456" -RoleName "EnvironmentAdmin" -CrnPattern "crn://confluent.cloud/organization=*/environment=env-123456"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Principal          RoleName           CrnPattern
+--          ---------          --------           ----------
+rb-abc123   User:u-123456      EnvironmentAdmin   crn://confluent.cloud/organization=*/environment=env-123456
 ```
 
-{{ Add description here }}
+This command creates a role binding granting EnvironmentAdmin role to a user for a specific environment.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a role binding for a service account
 ```powershell
-{{ Add code here }}
+New-AzConfluentAccessRoleBinding -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -Principal "ServiceAccount:sa-789012" -RoleName "CloudClusterAdmin" -CrnPattern "crn://confluent.cloud/organization=*/environment=*/cloud-cluster=lkc-abc123"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Principal                  RoleName           CrnPattern
+--          ---------                  --------           ----------
+rb-def456   ServiceAccount:sa-789012   CloudClusterAdmin  crn://confluent.cloud/organization=*/environment=*/cloud-cluster=lkc-abc123
 ```
 
-{{ Add description here }}
+This command creates a role binding granting CloudClusterAdmin role to a service account for a specific cluster.
 
 ## PARAMETERS
 

@@ -48,27 +48,33 @@ Get cluster by Id
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all clusters in an environment
 ```powershell
-{{ Add code here }}
+Get-AzConfluentOrganizationCluster -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name              Type           Status
+--          ----              ----           ------
+lkc-abc123  prod-kafka-01     KAFKA          RUNNING
+lkc-def456  prod-kafka-02     KAFKA          RUNNING
+lsr-ghi789  schema-registry   SCHEMA_REGISTRY RUNNING
 ```
 
-{{ Add description here }}
+This command lists all Confluent clusters within the specified environment.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific cluster by ID
 ```powershell
-{{ Add code here }}
+Get-AzConfluentOrganizationCluster -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -ClusterId lkc-abc123
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name              Type    Status  Region    Cloud
+--          ----              ----    ------  ------    -----
+lkc-abc123  prod-kafka-01     KAFKA   RUNNING eastus    AZURE
 ```
 
-{{ Add description here }}
+This command retrieves details of a specific Confluent cluster by its ID.
 
 ## PARAMETERS
 

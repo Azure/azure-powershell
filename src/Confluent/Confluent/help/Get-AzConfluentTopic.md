@@ -56,27 +56,33 @@ Get confluent topic by Name
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all topics in a cluster
 ```powershell
-{{ Add code here }}
+Get-AzConfluentTopic -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -ClusterId lkc-abc123
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              PartitionsCount ReplicationFactor  IsInternal
+----              --------------- -----------------  ----------
+orders-topic      6               3                  False
+customers-topic   3               3                  False
+_schemas          1               3                  True
 ```
 
-{{ Add description here }}
+This command lists all topics within the specified Confluent Kafka cluster.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific topic by name
 ```powershell
-{{ Add code here }}
+Get-AzConfluentTopic -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -ClusterId lkc-abc123 -Name orders-topic
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              PartitionsCount ReplicationFactor  IsInternal
+----              --------------- -----------------  ----------
+orders-topic      6               3                  False
 ```
 
-{{ Add description here }}
+This command retrieves details of a specific Kafka topic by its name.
 
 ## PARAMETERS
 

@@ -45,27 +45,34 @@ Organization service accounts details
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all service accounts in a Confluent organization
 ```powershell
-{{ Add code here }}
+Get-AzConfluentAccessServiceAccount -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id           Name                    Description              CreatedAt
+--           ----                    -----------              ---------
+sa-123456    prod-app-service-acct   Production app service   2024-01-10T08:00:00Z
+sa-234567    dev-app-service-acct    Development app service  2024-01-15T10:30:00Z
+sa-345678    ci-cd-service-acct      CI/CD pipeline account   2024-02-01T14:00:00Z
 ```
 
-{{ Add description here }}
+This command lists all service accounts within the specified Confluent organization.
 
-### Example 2: {{ Add title here }}
+### Example 2: List service accounts with search filter
 ```powershell
-{{ Add code here }}
+$filter = @{name = "prod"}
+Get-AzConfluentAccessServiceAccount -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -SearchFilter $filter
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id           Name                    Description              CreatedAt
+--           ----                    -----------              ---------
+sa-123456    prod-app-service-acct   Production app service   2024-01-10T08:00:00Z
 ```
 
-{{ Add description here }}
+This command lists service accounts matching the specified search filter criteria.
 
 ## PARAMETERS
 

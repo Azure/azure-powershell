@@ -49,27 +49,19 @@ Delete confluent topic by name
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Kafka topic
 ```powershell
-{{ Add code here }}
+Remove-AzConfluentTopic -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -ClusterId lkc-abc123 -Name old-topic
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command removes the specified Kafka topic from the cluster.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a topic using pipeline
 ```powershell
-{{ Add code here }}
+Get-AzConfluentTopic -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -ClusterId lkc-abc123 -Name temp-topic | Remove-AzConfluentTopic
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command removes a topic by retrieving it through the pipeline.
 
 ## PARAMETERS
 

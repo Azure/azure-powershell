@@ -44,27 +44,36 @@ Cloud provider regions available for creating Schema Registry clusters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all available regions for an organization
 ```powershell
-{{ Add code here }}
+Get-AzConfluentOrganizationRegion -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                          Cloud    RegionName
+--                          -----    ----------
+crn://aws/us-east-1         AWS      us-east-1
+crn://azure/eastus          AZURE    eastus
+crn://azure/westus2         AZURE    westus2
+crn://gcp/us-central1       GCP      us-central1
 ```
 
-{{ Add description here }}
+This command lists all available cloud regions for the Confluent organization.
 
-### Example 2: {{ Add title here }}
+### Example 2: List regions with search filter
 ```powershell
-{{ Add code here }}
+$filter = @{cloud = "AZURE"}
+Get-AzConfluentOrganizationRegion -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -SearchFilter $filter
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                          Cloud    RegionName
+--                          -----    ----------
+crn://azure/eastus          AZURE    eastus
+crn://azure/westus2         AZURE    westus2
 ```
 
-{{ Add description here }}
+This command lists only Azure regions available for the Confluent organization.
 
 ## PARAMETERS
 

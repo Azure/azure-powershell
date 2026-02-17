@@ -37,27 +37,19 @@ Deletes API key of a kafka or schema registry cluster
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a cluster API key
 ```powershell
-{{ Add code here }}
+Remove-AzConfluentOrganizationClusterApiKey -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -Id api-key-123456
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command removes the specified API key from the Confluent organization.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove an API key with confirmation bypass
 ```powershell
-{{ Add code here }}
+Remove-AzConfluentOrganizationClusterApiKey -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -Id api-key-234567 -Confirm:$false
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command removes the API key without prompting for confirmation.
 
 ## PARAMETERS
 

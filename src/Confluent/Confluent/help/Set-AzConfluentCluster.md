@@ -41,27 +41,33 @@ Update confluent clusters
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a Kafka cluster configuration
 ```powershell
-{{ Add code here }}
+$spec = New-Object Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ScClusterSpecEntity
+$spec.Config = @{kind = "Dedicated"; cku = 2}
+Set-AzConfluentCluster -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -Id lkc-abc123 -Spec $spec
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name              Type   Status     CKU
+--          ----              ----   ------     ---
+lkc-abc123  prod-kafka-01     KAFKA  RUNNING    2
 ```
 
-{{ Add description here }}
+This command updates the Kafka cluster to use a dedicated configuration with 2 CKUs.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a cluster using JSON file
 ```powershell
-{{ Add code here }}
+Set-AzConfluentCluster -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -Id lkc-def456 -JsonFilePath "C:\config\cluster-update.json"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name              Type   Status     CKU
+--          ----              ----   ------     ---
+lkc-def456  staging-kafka-01  KAFKA  RUNNING    4
 ```
 
-{{ Add description here }}
+This command updates a cluster using configuration from a JSON file.
 
 ## PARAMETERS
 

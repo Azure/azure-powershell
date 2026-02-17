@@ -68,27 +68,31 @@ Organization Validate proxy resource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Validate a Confluent organization configuration (V2 API)
 ```powershell
-{{ Add code here }}
+Test-AzConfluentValidationOrganizationV2 -ResourceGroupName azure-rg-test -OrganizationName confluentorg-validation-v2 -Location westus2 -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud - Pay as you Go" -OfferDetailPublisherId "confluentinc" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress "user@example.com"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name                            Type
+-------- ----                            ----
+westus2  confluentorg-validation-v2 Microsoft.Confluent/organizations
 ```
 
-{{ Add description here }}
+This command validates a Confluent organization configuration using the V2 API before creation to ensure all required parameters are valid.
 
-### Example 2: {{ Add title here }}
+### Example 2: Validate an organization using JSON file (V2 API)
 ```powershell
-{{ Add code here }}
+Test-AzConfluentValidationOrganizationV2 -ResourceGroupName azure-rg-test -OrganizationName confluentorg-validation-v2 -JsonFilePath "C:\config\org-validation-v2.json"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name                            Type
+-------- ----                            ----
+westus2  confluentorg-validation-v2 Microsoft.Confluent/organizations
 ```
 
-{{ Add description here }}
+This command validates a Confluent organization configuration using the V2 API with parameters from a JSON file.
 
 ## PARAMETERS
 

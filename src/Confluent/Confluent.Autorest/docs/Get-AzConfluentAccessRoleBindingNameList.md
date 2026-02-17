@@ -45,27 +45,38 @@ Organization role bindings
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all available role binding names
 ```powershell
-{{ Add code here }}
+Get-AzConfluentAccessRoleBindingNameList -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+OrganizationAdmin
+EnvironmentAdmin
+CloudClusterAdmin
+ClusterAdmin
+Operator
+DeveloperRead
+DeveloperWrite
+DeveloperManage
 ```
 
-{{ Add description here }}
+This command lists all available role binding names that can be assigned within the Confluent organization.
 
-### Example 2: {{ Add title here }}
+### Example 2: List role binding names with search filter
 ```powershell
-{{ Add code here }}
+$filter = @{name = "Admin"}
+Get-AzConfluentAccessRoleBindingNameList -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -SearchFilter $filter
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+OrganizationAdmin
+EnvironmentAdmin
+CloudClusterAdmin
+ClusterAdmin
 ```
 
-{{ Add description here }}
+This command lists role binding names containing "Admin" in their name.
 
 ## PARAMETERS
 

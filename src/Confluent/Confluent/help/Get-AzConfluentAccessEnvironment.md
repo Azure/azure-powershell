@@ -45,27 +45,34 @@ Environment list of an organization
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all environments in a Confluent organization
 ```powershell
-{{ Add code here }}
+Get-AzConfluentAccessEnvironment -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name              DisplayName       Status
+--          ----              -----------       ------
+env-123456  production        Production Env    READY
+env-234567  development       Development Env   READY
+env-345678  staging           Staging Env       READY
 ```
 
-{{ Add description here }}
+This command lists all Confluent environments within the specified organization.
 
-### Example 2: {{ Add title here }}
+### Example 2: List environments with search filter
 ```powershell
-{{ Add code here }}
+$filter = @{name = "prod"}
+Get-AzConfluentAccessEnvironment -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -SearchFilter $filter
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name              DisplayName       Status
+--          ----              -----------       ------
+env-123456  production        Production Env    READY
 ```
 
-{{ Add description here }}
+This command lists Confluent environments matching the specified search filter criteria.
 
 ## PARAMETERS
 

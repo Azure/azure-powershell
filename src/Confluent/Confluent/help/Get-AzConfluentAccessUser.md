@@ -45,27 +45,34 @@ Organization users details
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all users in a Confluent organization
 ```powershell
-{{ Add code here }}
+Get-AzConfluentAccessUser -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Email                    FullName         AuthType
+--          -----                    --------         --------
+u-123456    admin@example.com        Admin User       SSO
+u-234567    developer@example.com    Developer One    SSO
+u-345678    ops@example.com          Ops Team         SSO
 ```
 
-{{ Add description here }}
+This command lists all users within the specified Confluent organization.
 
-### Example 2: {{ Add title here }}
+### Example 2: List users with search filter
 ```powershell
-{{ Add code here }}
+$filter = @{email = "admin"}
+Get-AzConfluentAccessUser -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -SearchFilter $filter
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Email                    FullName         AuthType
+--          -----                    --------         --------
+u-123456    admin@example.com        Admin User       SSO
 ```
 
-{{ Add description here }}
+This command lists users matching the specified email search filter.
 
 ## PARAMETERS
 

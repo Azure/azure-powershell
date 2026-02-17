@@ -42,27 +42,33 @@ Get Environment details by environment Id
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all environments in an organization
 ```powershell
-{{ Add code here }}
+Get-AzConfluentOrganizationEnvironment -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name              DisplayName       StreamGovernancePackage
+--          ----              -----------       -----------------------
+env-123456  production        Production Env    ESSENTIALS
+env-234567  development       Development Env   ADVANCED
+env-345678  staging           Staging Env       ESSENTIALS
 ```
 
-{{ Add description here }}
+This command lists all Confluent environments within the specified organization.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific environment by ID
 ```powershell
-{{ Add code here }}
+Get-AzConfluentOrganizationEnvironment -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -Id env-123456
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name              DisplayName       StreamGovernancePackage
+--          ----              -----------       -----------------------
+env-123456  production        Production Env    ESSENTIALS
 ```
 
-{{ Add description here }}
+This command retrieves details of a specific Confluent environment by its ID.
 
 ## PARAMETERS
 
