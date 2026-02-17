@@ -6,6 +6,7 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -92,7 +93,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 SshPublicKeyUpdateResource sshkeyUpdateResource = new SshPublicKeyUpdateResource();
                 sshkeyUpdateResource.PublicKey = publicKey;
                 
-                if (this.MyInvocation.BoundParameters.ContainsKey("Tags"))
+                if (this.IsParameterBound(c => c.Tags))
                 {
                     sshkeyUpdateResource.Tags = this.Tags != null ? this.Tags.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null;
                 }

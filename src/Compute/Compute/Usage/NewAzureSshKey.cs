@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     sshkey.Location = rg.Location;
                 }
 
-                if (this.MyInvocation.BoundParameters.ContainsKey("Tags"))
+                if (this.IsParameterBound(c => c.Tags))
                 {
                     sshkey.Tags = this.Tags == null
                         ? null
