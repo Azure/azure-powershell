@@ -14,7 +14,7 @@ Create a SSH Public Key resource.
 
 ```
 New-AzSshKey -ResourceGroupName <String> -Name <String> [-PublicKey <String>] [-SshKeyType <String>]
- [-Location <String>] [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ Creating a SSH Key resource without providing a public key. A key pair will be g
 
 ### Example 3
 ```powershell
-New-AzSshKey -ResourceGroupName "testRG" -Name "sshkey1" -Tags @{ Environment = "Production"; Owner = "TeamA" }
+New-AzSshKey -ResourceGroupName "testRG" -Name "sshkey1" -Tag @{ Environment = "Production"; Owner = "TeamA" }
 ```
 
 Creating a SSH Key resource with tags. A key pair will be generated and saved in ~\.ssh. The tags will be applied to the SSH Key resource.
@@ -144,13 +144,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: Tag
+Aliases:
 
 Required: False
 Position: Named

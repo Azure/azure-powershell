@@ -62,8 +62,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        [Alias("Tag")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -93,9 +92,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 SshPublicKeyUpdateResource sshkeyUpdateResource = new SshPublicKeyUpdateResource();
                 sshkeyUpdateResource.PublicKey = publicKey;
                 
-                if (this.IsParameterBound(c => c.Tags))
+                if (this.IsParameterBound(c => c.Tag))
                 {
-                    sshkeyUpdateResource.Tags = this.Tags != null ? this.Tags.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null;
+                    sshkeyUpdateResource.Tags = this.Tag != null ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null;
                 }
                 
                 var result = SshPublicKeyClient.Update(resourceGroupName, sshKeyName, sshkeyUpdateResource);

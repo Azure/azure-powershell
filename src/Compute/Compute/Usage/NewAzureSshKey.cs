@@ -54,8 +54,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        [Alias("Tag")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -78,11 +77,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     sshkey.Location = rg.Location;
                 }
 
-                if (this.IsParameterBound(c => c.Tags))
+                if (this.IsParameterBound(c => c.Tag))
                 {
-                    sshkey.Tags = this.Tags == null
+                    sshkey.Tags = this.Tag == null
                         ? null
-                        : this.Tags.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
+                        : this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                 }
                 if (this.IsParameterBound(c => c.PublicKey))
                 {

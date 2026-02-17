@@ -72,7 +72,7 @@ function Test-SshKeyWithTagsAndLocation
 
 		# Create SSH key with tags and explicit location (eastus) different from resource group (westus)
 		$tags = @{ Name = "testtag"; Value = "testval" }
-		$sshkey1 = New-AzSshKey -ResourceGroupName $rgname -Name "sshkey1" -Tags $tags -Location $loc
+		$sshkey1 = New-AzSshKey -ResourceGroupName $rgname -Name "sshkey1" -Tag $tags -Location $loc
 
 		# Verify location was set correctly
 		Assert-AreEqual $sshkey1.Location $loc
@@ -87,7 +87,7 @@ function Test-SshKeyWithTagsAndLocation
 
 		# Update sshkey2 with tags
 		$updateTags = @{ Environment = "Test"; Owner = "TeamA" }
-		$updated = Update-AzSshKey -ResourceGroupName $rgname -Name "sshkey2" -PublicKey $sshkey2.publicKey -Tags $updateTags
+		$updated = Update-AzSshKey -ResourceGroupName $rgname -Name "sshkey2" -PublicKey $sshkey2.publicKey -Tag $updateTags
 
 		# Verify tags were updated
 		Assert-NotNull $updated.Tags
