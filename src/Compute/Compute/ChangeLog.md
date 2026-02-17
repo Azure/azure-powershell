@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 11.4.0
 * Added support for Disk Availability Policy
     - Added `-ActionOnDiskDelay` parameter to `New-AzDiskConfig` cmdlet to configure disk availability behavior
     - Added `-ActionOnDiskDelay` parameter to `New-AzDiskUpdateConfig` cmdlet to update disk availability behavior
