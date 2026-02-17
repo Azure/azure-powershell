@@ -64,27 +64,31 @@ Update confluent topics by Name
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a Confluent topic configuration
 ```powershell
-{{ Add code here }}
+Update-AzConfluentTopic -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -ClusterId lkc-abcdef -Name orders-topic -PartitionsCount "6" -ReplicationFactor "3"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name          PartitionsCount ReplicationFactor TopicId
+----          --------------- ----------------- -------
+orders-topic  6               3                 lkc-abcdef:orders-topic
 ```
 
-{{ Add description here }}
+This command updates a Confluent topic's partition count and replication factor.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a Confluent topic using pipeline
 ```powershell
-{{ Add code here }}
+Get-AzConfluentTopic -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -ClusterId lkc-abcdef -Name orders-topic | Update-AzConfluentTopic -PartitionsCount "8"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name          PartitionsCount ReplicationFactor TopicId
+----          --------------- ----------------- -------
+orders-topic  8               3                 lkc-abcdef:orders-topic
 ```
 
-{{ Add description here }}
+This command updates a Confluent topic's partition count by retrieving the topic through the pipeline.
 
 ## PARAMETERS
 
