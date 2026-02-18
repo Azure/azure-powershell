@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ElasticSan.private.dll'
   FormatsToProcess = './Az.ElasticSan.format.ps1xml'
-  FunctionsToExport = 'Add-AzElasticSanVolumeGroupNetworkRule', 'Get-AzElasticSan', 'Get-AzElasticSanSkuList', 'Get-AzElasticSanVolume', 'Get-AzElasticSanVolumeGroup', 'Get-AzElasticSanVolumeSnapshot', 'New-AzElasticSan', 'New-AzElasticSanVirtualNetworkRuleObject', 'New-AzElasticSanVolume', 'New-AzElasticSanVolumeGroup', 'New-AzElasticSanVolumeSnapshot', 'Remove-AzElasticSan', 'Remove-AzElasticSanVolume', 'Remove-AzElasticSanVolumeGroup', 'Remove-AzElasticSanVolumeGroupNetworkRule', 'Remove-AzElasticSanVolumeSnapshot', 'Update-AzElasticSan', 'Update-AzElasticSanVolume', 'Update-AzElasticSanVolumeGroup'
+  FunctionsToExport = 'Add-AzElasticSanVolumeGroupNetworkRule', 'Get-AzElasticSan', 'Get-AzElasticSanSkuList', 'Get-AzElasticSanVolume', 'Get-AzElasticSanVolumeGroup', 'Get-AzElasticSanVolumeSnapshot', 'New-AzElasticSan', 'New-AzElasticSanVirtualNetworkRuleObject', 'New-AzElasticSanVolume', 'New-AzElasticSanVolumeGroup', 'New-AzElasticSanVolumeSnapshot', 'Remove-AzElasticSan', 'Remove-AzElasticSanVolume', 'Remove-AzElasticSanVolumeGroup', 'Remove-AzElasticSanVolumeGroupNetworkRule', 'Remove-AzElasticSanVolumeSnapshot', 'Test-AzElasticSanVolumeBackup', 'Test-AzElasticSanVolumeRestore', 'Update-AzElasticSan', 'Update-AzElasticSanVolume', 'Update-AzElasticSanVolumeGroup'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'ElasticSan'

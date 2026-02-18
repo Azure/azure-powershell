@@ -53,8 +53,8 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.databricks/update-azdatabricksworkspace
 #>
 function Update-AzDatabricksWorkspace {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspace])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspace", "15.0.0", "2.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace", DeprecatedOutputProperties = ("PrivateEndpointConnection, ComplianceSecurityProfileComplianceStandard, Authorization"), NewOutputProperties = ("PrivateEndpointConnection, ComplianceSecurityProfileComplianceStandard, Authorization The types of the properties will be changed from object to 'List'"))]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace", "16.0.0", "2.0.0", "May 2026", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace", DeprecatedOutputProperties = ("PrivateEndpointConnection, ComplianceSecurityProfileComplianceStandard, Authorization"), NewOutputProperties = ("PrivateEndpointConnection, ComplianceSecurityProfileComplianceStandard, Authorization The types of the properties will be changed from object to 'List'"))]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the workspace.")]

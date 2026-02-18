@@ -153,7 +153,7 @@ $buildSln = Join-Path $RepoArtifacts "Azure.PowerShell.sln"
 if (Test-Path $buildSln) {
     Remove-Item $buildSln -Force
 }
-& dotnet new sln -n Azure.PowerShell -o $RepoArtifacts --force
+New-SlnFile -SolutionName Azure.PowerShell -SolutionPath $RepoArtifacts -Force
 
 foreach ($file in $buildCsprojFiles) {
     & dotnet sln $buildSln add "$file"
@@ -172,7 +172,7 @@ else {
     if (Test-Path $testSln) {
         Remove-Item $testSln -Force
     }
-    & dotnet new sln -n Azure.PowerShell.Test -o $RepoArtifacts --force
+    New-SlnFile -SolutionName Azure.PowerShell.Test -SolutionPath $RepoArtifacts -Force
     foreach ($file in $testCsprojFiles) {
         & dotnet sln $testSln add "$file"
     }

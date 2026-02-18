@@ -18,9 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added ComputeMode parameter to New-AzDatabricksWorkspace cmdlet
-    - Supports 'Hybrid' and 'Serverless' compute modes for workspace creation
-    
+* Update the deprecated-by-azversion and change-effective-date of breaking change announcements.
+
 ## Version 1.10.1
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 

@@ -62,6 +62,7 @@ namespace Microsoft.Azure.Commands.TestFx.Recorder
             JsonPathSanitizers.Add("$.properties.WEBSITE_AUTH_ENCRYPTION_KEY");
             JsonPathSanitizers.Add("$.properties.DOCKER_REGISTRY_SERVER_PASSWORD");
             JsonPathSanitizers.Add("$.properties.protectedSettings.storageAccountKey");
+            JsonPathSanitizers.Add("$..privateKey");
         }
 
         public static bool IsHttpContentBinary(HttpContent content)

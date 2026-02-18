@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated the implementation of -Metadata parameter processing for cmdlets that use it for security. No behavior change.
 
 ## Version 9.0.1
 * Fixed issue where the PowerShell console would close when using Resources module cmdlets without being logged in. Github Issue [link](https://github.com/Azure/azure-powershell/issues/28774).
