@@ -14,50 +14,38 @@ Gets policy set definitions.
 
 ### Name (Default)
 ```
-Get-AzPolicySetDefinition [-Name <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzPolicySetDefinition [-Name <String>] [-ListVersion] [-Expand <String>] [-Version <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
-Get-AzPolicySetDefinition [-Name <String>] -ManagementGroupName <String> [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicySetDefinition [-Name <String>] -ManagementGroupName <String> [-ListVersion] [-Expand <String>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
-Get-AzPolicySetDefinition [-Name <String>] -SubscriptionId <String> [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Version
-```
-Get-AzPolicySetDefinition [-Name <String>] [-Id <String>] [-BackwardCompatible] -Version <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListVersion
-```
-Get-AzPolicySetDefinition [-Name <String>] [-Id <String>] [-ListVersion] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Id
-```
-Get-AzPolicySetDefinition -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzPolicySetDefinition [-Name <String>] -SubscriptionId <String> [-ListVersion] [-Expand <String>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Builtin
 ```
 Get-AzPolicySetDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Builtin]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Custom
 ```
 Get-AzPolicySetDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Custom]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Id
+```
+Get-AzPolicySetDefinition -Id <String> [-ListVersion] [-Expand <String>] [-Version <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,32 +88,24 @@ Get-AzPolicySetDefinition | Where-Object {$_.metadata.category -eq "Virtual Mach
 
 This command gets all policy set definitions in category "Virtual Machine".
 
-### Example 6: [Backcompat] Get policy set definitions from a given category
+### Example 6: Get policy set definition version by id
 ```powershell
-Get-AzPolicySetDefinition -BackwardCompatible | Where-Object {$_.Properties.metadata.category -eq "Virtual Machine"}
+Get-AzPolicySetDefinition -Id '/providers/Microsoft.Authorization/policySetDefinitions/1bb84455-9e6e-434c-8db6-fa6d03a67e87' -Version "1.1.1"
 ```
 
-This command gets all policy set definitions in category "Virtual Machine".
+This command gets version 1.1.1 of policy definition with ID /providers/Microsoft.Authorization/policySetDefinitions/1bb84455-9e6e-434c-8db6-fa6d03a67e87.
+
+### Example 7: Get all policy set definition versions of a policy set definition by name
+```powershell
+Get-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -ListVersion
+```
+
+This command gets all policy set definition versions of the policy set definition named VMPolicySetDefinition from the current default subscription.
 
 ## PARAMETERS
 
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Builtin
-Causes cmdlet to return only built-in policy definitions.
+Causes cmdlet to return only built-in policy set definitions.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -140,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -Custom
-Causes cmdlet to return only custom policy definitions.
+Causes cmdlet to return only custom policy set definitions.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -170,13 +150,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-The full Id of the policy definition to get.
+### -Expand
+Comma-separated list of additional properties to be included in the response.
+Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
 
 ```yaml
 Type: System.String
-Parameter Sets: Version, ListVersion
-Aliases: ResourceId
+Parameter Sets: Name, ManagementGroupName, SubscriptionId, Id
+Aliases:
 
 Required: False
 Position: Named
@@ -184,6 +165,9 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### -Id
+The full Id of the policy set definition to get.
 
 ```yaml
 Type: System.String
@@ -198,14 +182,14 @@ Accept wildcard characters: False
 ```
 
 ### -ListVersion
-Causes cmdlet to return only custom policy definitions.
+Causes cmdlet to return only custom policy set definition versions.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ListVersion
+Parameter Sets: Name, ManagementGroupName, SubscriptionId, Id
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -240,11 +224,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the policy definition to get.
+The name of the policy set definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name, ManagementGroupName, SubscriptionId, Version, ListVersion
+Parameter Sets: Name, ManagementGroupName, SubscriptionId
 Aliases: PolicySetDefinitionName
 
 Required: False
@@ -282,14 +266,14 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-The policy definition version in #.#.# format.
+The policy set definition version in #.#.# format.
 
 ```yaml
 Type: System.String
-Parameter Sets: Version
+Parameter Sets: Name, ManagementGroupName, SubscriptionId, Id
 Aliases: PolicySetDefinitionVersion
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

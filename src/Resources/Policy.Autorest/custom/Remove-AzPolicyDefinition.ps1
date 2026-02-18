@@ -78,11 +78,15 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
-    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible} = $false,
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
+    [Alias('PolicyDefinitionVersion')]
+    [System.String]
+    # The policy definition version in #.#.# format.
+    ${Version},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -148,11 +152,23 @@ begin {
     }
 
     # mapping table of generated cmdlet parameter sets
-    $mapping = @{
-        Delete = 'Az.Policy.private\Remove-AzPolicyDefinition_Delete';
-        Delete1 = 'Az.Policy.private\Remove-AzPolicyDefinition_Delete1';
-        DeleteViaIdentity = 'Az.Policy.private\Remove-AzPolicyDefinition_DeleteViaIdentity';
-        DeleteViaIdentity1 = 'Az.Policy.private\Remove-AzPolicyDefinition_DeleteViaIdentity1';
+    $versionMapping = @{
+        Delete = 'Az.Policy.private\Remove-AzPolicyDefinitionVersion_Delete';                                           # SubscriptionId
+        Delete1 = 'Az.Policy.private\Remove-AzPolicyDefinitionVersion_Delete1';                                         # ManagementGroupName
+        DeleteViaIdentity = 'Az.Policy.private\Remove-AzPolicyDefinitionVersion_DeleteViaIdentityPolicyDefinition';     # SubscriptionId
+        DeleteViaIdentity1 = 'Az.Policy.private\Remove-AzPolicyDefinitionVersion_DeleteViaIdentityPolicyDefinition1';   # ManagementGroupName
+    }
+
+    if ($Version) {
+        $mapping = $versionMapping
+    }
+    else {
+        $mapping = @{
+            Delete = 'Az.Policy.private\Remove-AzPolicyDefinition_Delete';                                      # SubscriptionId
+            Delete1 = 'Az.Policy.private\Remove-AzPolicyDefinition_Delete1';                                    # ManagementGroupName
+            DeleteViaIdentity = 'Az.Policy.private\Remove-AzPolicyDefinition_DeleteViaIdentity';                # SubscriptionId
+            DeleteViaIdentity1 = 'Az.Policy.private\Remove-AzPolicyDefinition_DeleteViaIdentity1';              # ManagementGroupName
+        }
     }
 }
 
@@ -176,6 +192,11 @@ process {
     # make a friendly prompt
     if ($thisId) {
         $target = $resolved.ResourceId
+        if ($resolved.Version) {
+            $mapping = $versionMapping
+            $target = $resolved.Artifact
+            $PSBoundParameters['Version'] = $resolved.Version
+        }
     }
     else {
         $target = "$($Name) from $($resolved.ScopeName)"
@@ -187,33 +208,30 @@ process {
         $null = $PSBoundParameters.Remove('Force')
     }
 
-    # use passthru for backward compatibility with previous SDK cmdlets: remove cmdlet always returned a value
-    if ($PSBoundParameters.ContainsKey('PassThru')) {
-        $BackwardCompatible = $PassThru
-        $PSBoundParameters['PassThru'] = $PassThru
-    }
-    elseif ($BackwardCompatible) {
-        $PSBoundParameters['PassThru'] = $BackwardCompatible
-    }
-
-    # remove back compat switch
-    $null = $PSBoundParameters.Remove('BackwardCompatible')
-
     # remove the definition if inputs resolve and user confirms
     if ($resolved.Scope -and $PSCmdlet.ShouldProcess($target)) {
 
         # fix parameters and call generated cmdlet
         if ($thisId) {
+            $inputObjectKey = 'InputObject'
             switch ($resolved.ScopeType) {
                 'mgName' {
                     $calledParameterSet = 'DeleteViaIdentity1'
+                    if ($PSBoundParameters['Version']) {
+                        $null = $PSBoundParameters.Remove($inputObjectKey)
+                        $inputObjectKey = 'PolicyDefinition1InputObject'
+                    }
                 }
                 default {
                     $calledParameterSet = 'DeleteViaIdentity'
+                    if ($PSBoundParameters['Version']) {
+                        $null = $PSBoundParameters.Remove($inputObjectKey)
+                        $inputObjectKey = 'PolicyDefinitionInputObject'
+                    }
                 }
             }
 
-            $PSBoundParameters['InputObject'] = @{ Id = $resolved.ResourceId }
+            $PSBoundParameters[$inputObjectKey] = @{ Id = $target }
             $null = $PSBoundParameters.Remove('Id')
             $null = $PSBoundParameters.Remove('Name');
             $null = $PSBoundParameters.Remove('SubscriptionId');
@@ -223,14 +241,26 @@ process {
             switch ($resolved.ScopeType) {
                 'mgName' {
                     $calledParameterSet = 'Delete1'
-                    $PSBoundParameters['ManagementGroupId'] = $resolved.ManagementGroupName
-                    $null = $PSBoundParameters.Remove('ManagementGroupName')
+                    if (!$PSBoundParameters['Version']) {
+                        $PSBoundParameters['ManagementGroupId'] = $resolved.ManagementGroupName
+                        $null = $PSBoundParameters.Remove('ManagementGroupName')
+                    }
                 }
                 default {
                     $calledParameterSet = 'Delete'
                     $PSBoundParameters['SubscriptionId'] = $resolved.SubscriptionId
                 }
             }
+        }
+
+        if ($PSBoundParameters['Version'] -and $PSBoundParameters['Name']) {
+            $PSBoundParameters['PolicyDefinitionName'] = $PSBoundParameters['Name']
+            $null = $PSBoundParameters.Remove('Name')
+        }
+        
+        if ($PSBoundParameters['Version']) {
+            $PSBoundParameters['PolicyDefinitionVersion'] = $PSBoundParameters['Version']
+            $null = $PSBoundParameters.Remove('Version')
         }
 
         if ($writeln) {
@@ -244,8 +274,7 @@ process {
         $result = Invoke-Command -ScriptBlock $scriptCmd
     }
 
-    # return result of remove
-    if ($BackwardCompatible) {
+    if ($PassThru) {
         $PSCmdlet.WriteObject($result)
     }
 }
