@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://learn.microsoft.com/powershell/module/az.netappfiles/clear-aznetappfilesransomwarereportsuspects
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/clear-aznetappfilesransomwarereportsuspect
 schema: 2.0.0
 ---
 
-# Clear-AzNetAppFilesRansomwareReportSuspects
+# Clear-AzNetAppFilesRansomwareReportSuspect
 
 ## SYNOPSIS
 Clears suspects for an Azure NetApp Files (ANF) Advanced Ransomware Protection (ARP) report.
@@ -35,13 +35,13 @@ Clear-AzNetAppFilesRansomwareReportSuspects -Resolution <String> -Extension <Str
 ```
 
 ## DESCRIPTION
-The **Clear-AzNetAppFilesRansomwareReportSuspects** cmdlet clears suspects for an ARP report on an ANF volume. You should evaluate the report to determine whether the activity is acceptable (false positive) or whether an attack seems malicious (potential threat). Each call resolves the specified file extensions with the given resolution.
+The **Clear-AzNetAppFilesRansomwareReportSuspect** cmdlet clears suspects for an ARP report on an ANF volume. You should evaluate the report to determine whether the activity is acceptable (false positive) or whether an attack seems malicious (potential threat). Each call resolves the specified file extensions with the given resolution.
 
 ## EXAMPLES
 
 ### Example 1: Mark suspect file extensions as false positive
 ```powershell
-Clear-AzNetAppFilesRansomwareReportSuspects -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "current" -Resolution "FalsePositive" -Extension @(".enc", ".locked")
+Clear-AzNetAppFilesRansomwareReportSuspect -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "current" -Resolution "FalsePositive" -Extension @(".enc", ".locked")
 ```
 
 This command marks the file extensions ".enc" and ".locked" as false positives in the ARP report named "current" for the volume "MyAnfVolume".

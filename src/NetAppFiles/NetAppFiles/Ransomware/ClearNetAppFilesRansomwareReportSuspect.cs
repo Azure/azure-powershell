@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Ransomware
 {
     [Cmdlet(
         "Clear",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesRansomwareReportSuspects",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesRansomwareReportSuspect",
         SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
-    [Alias("Clear-AnfRansomwareReportSuspects")]
-    public class ClearAzureRmNetAppFilesRansomwareReportSuspects : AzureNetAppFilesCmdletBase
+    [Alias("Clear-AnfRansomwareReportSuspect")]
+    public class ClearAzureRmNetAppFilesRansomwareReportSuspect : AzureNetAppFilesCmdletBase
     {
         [Parameter(
             Mandatory = true,

@@ -104,7 +104,7 @@ function Test-RansomwareReports
         Assert-Throws { Get-AzNetAppFilesRansomwareReport -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name "current" }
 
         # clear ransomware suspects should fail since there are no active ransomware incidents
-        Assert-Throws { Clear-AzNetAppFilesRansomwareReportSuspects -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name "current" -Resolution "FalsePositive" -Extension @(".enc") }
+        Assert-Throws { Clear-AzNetAppFilesRansomwareReportSuspect -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name "current" -Resolution "FalsePositive" -Extension @(".enc") }
 
     }
     finally
