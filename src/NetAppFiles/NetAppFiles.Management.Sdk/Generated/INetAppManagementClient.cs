@@ -134,6 +134,11 @@ namespace Microsoft.Azure.Management.NetApp
         IBackupsUnderVolumeOperations BackupsUnderVolume { get; }
 
         /// <summary>
+        /// Gets the IRansomwareReportsOperations
+        /// </summary>
+        IRansomwareReportsOperations RansomwareReports { get; }
+
+        /// <summary>
         /// Gets the ISnapshotsOperations
         /// </summary>
         ISnapshotsOperations Snapshots { get; }

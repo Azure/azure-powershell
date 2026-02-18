@@ -94,5 +94,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         {
             TestRunner.RunTestScript("Test-ExtenalReplicationFails");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVolumeQuotaReport()
+        {
+            TestRunner.RunTestScript("Test-VolumeQuotaReport");
+        }
     }
 }

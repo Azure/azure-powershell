@@ -113,6 +113,10 @@ namespace Microsoft.Azure.Management.NetApp
         /// </summary>
         public virtual IBackupsUnderVolumeOperations BackupsUnderVolume { get; private set; }
         /// <summary>
+        /// Gets the IRansomwareReportsOperations
+        /// </summary>
+        public virtual IRansomwareReportsOperations RansomwareReports { get; private set; }
+        /// <summary>
         /// Gets the ISnapshotsOperations
         /// </summary>
         public virtual ISnapshotsOperations Snapshots { get; private set; }
@@ -391,6 +395,7 @@ namespace Microsoft.Azure.Management.NetApp
             this.Pools = new PoolsOperations(this);
             this.Volumes = new VolumesOperations(this);
             this.BackupsUnderVolume = new BackupsUnderVolumeOperations(this);
+            this.RansomwareReports = new RansomwareReportsOperations(this);
             this.Snapshots = new SnapshotsOperations(this);
             this.Subvolumes = new SubvolumesOperations(this);
             this.VolumeQuotaRules = new VolumeQuotaRulesOperations(this);
@@ -399,7 +404,7 @@ namespace Microsoft.Azure.Management.NetApp
             this.SnapshotPolicies = new SnapshotPoliciesOperations(this);
             this.VolumeGroups = new VolumeGroupsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2025-09-01";
+            this.ApiVersion = "2025-12-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

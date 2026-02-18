@@ -25,9 +25,9 @@ New-AzNetAppFilesVolumeGroup -ResourceGroupName <String> -Location <String> -Acc
  [-LogBackupPerformance <Int32>] [-HannaSystemReplication] [-DisasterRecoveryDestination]
  [-BackupProtocolType <String[]>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
  [-GlobalPlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Management.NetApp.Models.PlacementKeyValuePairs]>]
- [-EncryptionKeySource <String>] [-KeyVaultPrivateEndpointResourceId <String>] [-NetworkFeature <String>]
+ [-EncryptionKeySource <String>] [-NetworkFeature <String>] [-KeyVaultPrivateEndpointResourceId <String>]
  [-Zone <String[]>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ORACLE
@@ -46,24 +46,24 @@ New-AzNetAppFilesVolumeGroup -PoolName <String> [-Name <String>] [-GroupDescript
  [-DisasterRecoveryDestination] [-BackupProtocolType <String[]>]
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
  [-GlobalPlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Management.NetApp.Models.PlacementKeyValuePairs]>]
- [-EncryptionKeySource <String>] [-KeyVaultPrivateEndpointResourceId <String>] [-NetworkFeature <String>]
+ [-EncryptionKeySource <String>] [-NetworkFeature <String>] [-KeyVaultPrivateEndpointResourceId <String>]
  [-Zone <String[]>] [-OracleDatabaseSize <Int32>] [-NumberOfDataVolume <Int32>]
- [-AdditionalCapacityForSnapshots <Int32>] [-OracleDatabaseThroughput <Int32>] [-DataSize2 <Int64>]
- [-Data2Performance <Int32>] [-Data2ReplicationSourceId <String>] [-Data2ReplicationSchedule <String>]
- [-DataSize3 <Int64>] [-Data3Performance <Int32>] [-Data3ReplicationSourceId <String>]
- [-Data3ReplicationSchedule <String>] [-Data4Size <Int64>] [-Data4Performance <Int32>]
- [-Data4ReplicationSourceId <String>] [-Data4ReplicationSchedule <String>] [-Data5Size <Int64>]
- [-Data5Performance <Int32>] [-Data5ReplicationSourceId <String>] [-Data5ReplicationSchedule <String>]
- [-Data6Size <Int64>] [-Data6Performance <Int32>] [-Data6ReplicationSourceId <String>]
- [-Data6ReplicationSchedule <String>] [-Data7Size <Int64>] [-Data7Performance <Int32>]
- [-Data7ReplicationSourceId <String>] [-Data7ReplicationSchedule <String>] [-DataSize8 <Int64>]
- [-DataPerformance8 <Int32>] [-Data8ReplicationSourceId <String>] [-Data8ReplicationSchedule <String>]
- [-BinarySize <Int64>] [-BinaryPerformance <Int32>] [-BinaryReplicationSourceId <String>]
- [-BinaryReplicationSchedule <String>] [-BackupSize <Int64>] [-BackupPerformance <Int32>]
- [-BackupReplicationSourceId <String>] [-BackupReplicationSchedule <String>] [-LogMirrorSize <Int64>]
- [-LogMirrorPerformance <Int32>] [-LogMirrorReplicationSourceId <String>]
- [-LogMirrorReplicationSchedule <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-OracleDatabaseThroughput <Int32>] [-DataSize2 <Int64>] [-Data2Performance <Int32>]
+ [-Data2ReplicationSourceId <String>] [-Data2ReplicationSchedule <String>] [-DataSize3 <Int64>]
+ [-Data3Performance <Int32>] [-Data3ReplicationSourceId <String>] [-Data3ReplicationSchedule <String>]
+ [-Data4Size <Int64>] [-Data4Performance <Int32>] [-Data4ReplicationSourceId <String>]
+ [-Data4ReplicationSchedule <String>] [-Data5Size <Int64>] [-Data5Performance <Int32>]
+ [-Data5ReplicationSourceId <String>] [-Data5ReplicationSchedule <String>] [-Data6Size <Int64>]
+ [-Data6Performance <Int32>] [-Data6ReplicationSourceId <String>] [-Data6ReplicationSchedule <String>]
+ [-Data7Size <Int64>] [-Data7Performance <Int32>] [-Data7ReplicationSourceId <String>]
+ [-Data7ReplicationSchedule <String>] [-DataSize8 <Int64>] [-DataPerformance8 <Int32>]
+ [-Data8ReplicationSourceId <String>] [-Data8ReplicationSchedule <String>] [-BinarySize <Int64>]
+ [-BinaryPerformance <Int32>] [-BinaryReplicationSourceId <String>] [-BinaryReplicationSchedule <String>]
+ [-BackupSize <Int64>] [-BackupPerformance <Int32>] [-BackupReplicationSourceId <String>]
+ [-BackupReplicationSchedule <String>] [-LogMirrorSize <Int64>] [-LogMirrorPerformance <Int32>]
+ [-LogMirrorReplicationSourceId <String>] [-LogMirrorReplicationSchedule <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -78,9 +78,9 @@ New-AzNetAppFilesVolumeGroup -PoolName <String> [-Name <String>] [-GroupDescript
  [-DisasterRecoveryDestination] [-BackupProtocolType <String[]>]
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
  [-GlobalPlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Management.NetApp.Models.PlacementKeyValuePairs]>]
- [-EncryptionKeySource <String>] [-KeyVaultPrivateEndpointResourceId <String>] [-NetworkFeature <String>]
+ [-EncryptionKeySource <String>] [-NetworkFeature <String>] [-KeyVaultPrivateEndpointResourceId <String>]
  [-Zone <String[]>] [-Tag <Hashtable>] -AccountObject <PSNetAppFilesAccount>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -132,21 +132,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -AdditionalCapacityForSnapshots
-Additional capacity for snapshots (%). If you use snapshots for data protection, you need to plan for extra capacity. This field adds an additional size (%) for the data volume. For Oracle Application Volume Groups only
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: ORACLE
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -1243,21 +1228,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkFeature
-Basic network, or Standard features available to the volume (Basic, Standard).
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NodeMemory
 SAP node memory (GiB), Memory on SAP compute host
 
@@ -1342,6 +1312,21 @@ For PRIMARY it will be empty and HA it will be "HA - "
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

@@ -222,6 +222,9 @@ Updates an Azure NetApp Files (ANF) Snapshot Policy with the new data set.
 ### [Set-AzNetAppFilesVolumePool](Set-AzNetAppFilesVolumePool.md)
 Change pool for an Azure NetApp Files (ANF) volume.
 
+### [Split-AzNetAppFilesCloneFromParent](Split-AzNetAppFilesCloneFromParent.md)
+Split clone from parent volume
+
 ### [Start-AzNetAppFilesAuthorizeExternalReplication](Start-AzNetAppFilesAuthorizeExternalReplication.md)
 Start migration process
 

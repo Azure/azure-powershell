@@ -36,13 +36,17 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="volumeRelocation">VolumeRelocation properties
         /// </param>
-        public VolumePropertiesDataProtection(VolumeBackupProperties backup = default(VolumeBackupProperties), ReplicationObject replication = default(ReplicationObject), VolumeSnapshotProperties snapshot = default(VolumeSnapshotProperties), VolumeRelocationProperties volumeRelocation = default(VolumeRelocationProperties))
+
+        /// <param name="ransomwareProtection">Advanced Ransomware Protection settings
+        /// </param>
+        public VolumePropertiesDataProtection(VolumeBackupProperties backup = default(VolumeBackupProperties), ReplicationObject replication = default(ReplicationObject), VolumeSnapshotProperties snapshot = default(VolumeSnapshotProperties), VolumeRelocationProperties volumeRelocation = default(VolumeRelocationProperties), RansomwareProtectionSettings ransomwareProtection = default(RansomwareProtectionSettings))
 
         {
             this.Backup = backup;
             this.Replication = replication;
             this.Snapshot = snapshot;
             this.VolumeRelocation = volumeRelocation;
+            this.RansomwareProtection = ransomwareProtection;
             CustomInit();
         }
 
@@ -75,6 +79,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "volumeRelocation")]
         public VolumeRelocationProperties VolumeRelocation {get; set; }
+
+        /// <summary>
+        /// Gets or sets advanced Ransomware Protection settings
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ransomwareProtection")]
+        public RansomwareProtectionSettings RansomwareProtection {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -88,6 +98,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             {
                 this.Replication.Validate();
             }
+
 
 
         }

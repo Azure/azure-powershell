@@ -342,6 +342,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The desired state of the Advanced Ransomware Protection (ARP) feature. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string DesiredRansomwareProtectionState { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
@@ -385,13 +391,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             //else
             //{
                 PSNetAppFilesVolumeDataProtection dataProtection = null;
-                if (ReplicationObject != null || !string.IsNullOrWhiteSpace(SnapshotPolicyId) || Backup != null)
+                if (ReplicationObject != null || !string.IsNullOrWhiteSpace(SnapshotPolicyId) || Backup != null || !string.IsNullOrWhiteSpace(DesiredRansomwareProtectionState))
                 {
                     dataProtection = new PSNetAppFilesVolumeDataProtection
                     {
                         Replication = ReplicationObject,
                         Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId },
-                        Backup = Backup
+                        Backup = Backup,
+                        RansomwareProtection = !string.IsNullOrWhiteSpace(DesiredRansomwareProtectionState) ? new PSNetAppFilesVolumeRansomwareProperties { DesiredRansomwareProtectionState = DesiredRansomwareProtectionState } : null
                     };
                 }
 
