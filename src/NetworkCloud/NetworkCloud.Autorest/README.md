@@ -56,8 +56,8 @@ directive:
           the JsonString and JsonFilePath parameters. The parameter sets
           UpdateViaJsonString and UpdateViaJsonFilePath have been removed.
           Users must now use the expanded parameter set instead.
-        deprecated-by-version: 2.0.3
-        deprecated-by-azversion: 15.0.0
+        deprecated-by-version: 3.0.0
+        deprecated-by-azversion: 16.0.0
         change-effective-date: 2026/05/01
 
   # Fix model definition line break replacement issue
