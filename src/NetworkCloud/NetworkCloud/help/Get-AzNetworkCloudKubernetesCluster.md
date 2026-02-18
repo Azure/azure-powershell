@@ -27,8 +27,7 @@ Get-AzNetworkCloudKubernetesCluster -Name <String> -ResourceGroupName <String> [
 ### List1
 ```
 Get-AzNetworkCloudKubernetesCluster -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity

@@ -22,8 +22,7 @@ Get-AzNetworkCloudAgentPool -KubernetesClusterName <String> -ResourceGroupName <
 ### Get
 ```
 Get-AzNetworkCloudAgentPool -KubernetesClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityKubernetesCluster

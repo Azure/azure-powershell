@@ -25,32 +25,29 @@ Update-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> [-Subscr
 ```
 Update-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -VirtualMachineName <String> [-IfMatch <String>] [-IfNoneMatch <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -VirtualMachineName <String> [-IfMatch <String>] [-IfNoneMatch <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityVirtualMachineExpanded
 ```
 Update-AzNetworkCloudConsole -Name <String> -VirtualMachineInputObject <INetworkCloudIdentity>
  [-IfMatch <String>] [-IfNoneMatch <String>] [-Enabled <String>] [-Expiration <DateTime>]
- [-SshPublicKeyData <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SshPublicKeyData <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkCloudConsole -InputObject <INetworkCloudIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
  [-Enabled <String>] [-Expiration <DateTime>] [-SshPublicKeyData <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

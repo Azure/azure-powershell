@@ -22,15 +22,13 @@ Get-AzNetworkCloudKubernetesClusterFeature -KubernetesClusterName <String> -Reso
 ### GetViaIdentityKubernetesCluster
 ```
 Get-AzNetworkCloudKubernetesClusterFeature -FeatureName <String>
- -KubernetesClusterInputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ -KubernetesClusterInputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClusterName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity

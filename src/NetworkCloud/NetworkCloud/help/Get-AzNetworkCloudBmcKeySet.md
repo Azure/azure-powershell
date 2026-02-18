@@ -15,15 +15,13 @@ Get baseboard management controller key set of the provided cluster.
 ### List (Default)
 ```
 Get-AzNetworkCloudBmcKeySet -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkCloudBmcKeySet -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityCluster

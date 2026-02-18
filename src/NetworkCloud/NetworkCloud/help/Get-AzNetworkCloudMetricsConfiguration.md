@@ -22,8 +22,7 @@ Get-AzNetworkCloudMetricsConfiguration -ClusterName <String> -ResourceGroupName 
 ### Get
 ```
 Get-AzNetworkCloudMetricsConfiguration -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityCluster

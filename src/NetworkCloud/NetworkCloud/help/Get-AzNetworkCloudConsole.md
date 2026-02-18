@@ -15,8 +15,7 @@ Get properties of the provided virtual machine console.
 ### List (Default)
 ```
 Get-AzNetworkCloudConsole -ResourceGroupName <String> [-SubscriptionId <String[]>] -VirtualMachineName <String>
- [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityVirtualMachine
@@ -28,8 +27,7 @@ Get-AzNetworkCloudConsole -Name <String> -VirtualMachineInputObject <INetworkClo
 ### Get
 ```
 Get-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -VirtualMachineName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ -VirtualMachineName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity

@@ -32,8 +32,7 @@ Get-AzNetworkCloudRack -ResourceGroupName <String> [-SubscriptionId <String[]>] 
 
 ### GetViaIdentity
 ```
-Get-AzNetworkCloudRack -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzNetworkCloudRack -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

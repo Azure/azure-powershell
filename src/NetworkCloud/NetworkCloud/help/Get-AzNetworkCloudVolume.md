@@ -32,8 +32,7 @@ Get-AzNetworkCloudVolume -ResourceGroupName <String> [-SubscriptionId <String[]>
 
 ### GetViaIdentity
 ```
-Get-AzNetworkCloudVolume -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzNetworkCloudVolume -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

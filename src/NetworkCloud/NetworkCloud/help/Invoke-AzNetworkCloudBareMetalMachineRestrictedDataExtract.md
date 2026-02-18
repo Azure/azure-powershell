@@ -1,11 +1,11 @@
 ---
 external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/az.networkcloud/invoke-aznetworkcloudbaremetalmachinedataextractrestricted
+online version: https://learn.microsoft.com/powershell/module/az.networkcloud/invoke-aznetworkcloudbaremetalmachinerestricteddataextract
 schema: 2.0.0
 ---
 
-# Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted
+# Invoke-AzNetworkCloudBareMetalMachineRestrictedDataExtract
 
 ## SYNOPSIS
 Run one or more restricted data extractions on the provided bare metal machine.
@@ -15,31 +15,31 @@ The URL to storage account with the command execution results and the command ex
 
 ### RunViaIdentityExpanded (Default)
 ```
-Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -InputObject <INetworkCloudIdentity>
+Invoke-AzNetworkCloudBareMetalMachineRestrictedDataExtract -InputObject <INetworkCloudIdentity>
  -Command <IBareMetalMachineCommandSpecification[]> -LimitTimeSecond <Int64> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RunViaJsonString
 ```
-Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -BareMetalMachineName <String>
+Invoke-AzNetworkCloudBareMetalMachineRestrictedDataExtract -BareMetalMachineName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RunViaJsonFilePath
 ```
-Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -BareMetalMachineName <String>
+Invoke-AzNetworkCloudBareMetalMachineRestrictedDataExtract -BareMetalMachineName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RunExpanded
 ```
-Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -BareMetalMachineName <String>
+Invoke-AzNetworkCloudBareMetalMachineRestrictedDataExtract -BareMetalMachineName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -Command <IBareMetalMachineCommandSpecification[]>
- -LimitTimeSecond <Int64> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -LimitTimeSecond <Int64> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,7 +54,7 @@ $command = @{
     command = "command"
     arguments = "commandArguments"
 }
-Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted -BareMetalMachineName bmmName -ResourceGroupName resourceGroupName -SubscriptionId subscriptionId -Command $command -LimitTimeSecond 60
+Invoke-AzNetworkCloudBareMetalMachineRestrictedDataExtract -BareMetalMachineName bmmName -ResourceGroupName resourceGroupName -SubscriptionId subscriptionId -Command $command -LimitTimeSecond 60
 ```
 
 This example runs a restricted data extraction command on the specified bare metal machine with a 60-second timeout.

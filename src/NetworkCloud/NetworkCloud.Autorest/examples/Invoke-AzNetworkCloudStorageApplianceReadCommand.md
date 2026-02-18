@@ -4,11 +4,13 @@ $command = @{
     command = "health"
     arguments = @()
 }
-Start-AzNetworkCloudStorageApplianceReadCommand -StorageApplianceName "storageApplianceName" -ResourceGroupName "resourceGroupName" -Command @($command) -LimitTimeSecond 60
+Invoke-AzNetworkCloudStorageApplianceReadCommand -StorageApplianceName "storageApplianceName" -ResourceGroupName "resourceGroupName" -Command @($command) -LimitTimeSecond 60
 ```
 
 ```output
-True
+Target
+------
+https://asyncOperationStatusResponseUrl
 ```
 
 This example runs a read-only health check command on the specified storage appliance with a 60-second timeout.
@@ -23,12 +25,13 @@ $command2 = @{
     command = "logs"
     arguments = @("--level", "info")
 }
-Start-AzNetworkCloudStorageApplianceReadCommand -StorageApplianceName "storageApplianceName" -ResourceGroupName "resourceGroupName" -Command @($command1, $command2) -LimitTimeSecond 120
+Invoke-AzNetworkCloudStorageApplianceReadCommand -StorageApplianceName "storageApplianceName" -ResourceGroupName "resourceGroupName" -Command @($command1, $command2) -LimitTimeSecond 120
 ```
 
 ```output
-True
+Target
+------
+https://asyncOperationStatusResponseUrl
 ```
 
 This example runs multiple read-only diagnostic commands on the storage appliance with a 120-second timeout.
-

@@ -230,6 +230,15 @@ directive:
     set:
       subject: ClusterContinueVersionUpdate
       verb: Invoke
+  - where:
+      subject: ^StorageApplianceReadCommand$
+    set:
+      verb: Invoke
+  - where:
+      verb: Invoke
+      subject: ^BareMetalMachineDataExtractRestricted$
+    set:
+      subject: BareMetalMachineRestrictedDataExtract
   # rename parameter with duplicate or long names to shorted names
   # For. e.g, in cmdlet "New-AzNetworkCloudKubernetesCluster", the parameter "ControlPlaneNodeConfigurationAdministratorConfigurationAdminUsername" is long and
   # and contains duplicate word "Configuration".

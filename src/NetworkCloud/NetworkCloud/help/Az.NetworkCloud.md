@@ -84,15 +84,15 @@ Cordon the provided bare metal machine's Kubernetes node.
 Run one or more data extractions on the provided bare metal machine.
 The URL to storage account with the command execution results and the command exit code can be retrieved from the operation status API once available.
 
-### [Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted](Invoke-AzNetworkCloudBareMetalMachineDataExtractRestricted.md)
-Run one or more restricted data extractions on the provided bare metal machine.
-The URL to storage account with the command execution results and the command exit code can be retrieved from the operation status API once available.
-
 ### [Invoke-AzNetworkCloudBareMetalMachineReimage](Invoke-AzNetworkCloudBareMetalMachineReimage.md)
 Reimage the provided bare metal machine.
 
 ### [Invoke-AzNetworkCloudBareMetalMachineReplace](Invoke-AzNetworkCloudBareMetalMachineReplace.md)
 Replace the provided bare metal machine.
+
+### [Invoke-AzNetworkCloudBareMetalMachineRestrictedDataExtract](Invoke-AzNetworkCloudBareMetalMachineRestrictedDataExtract.md)
+Run one or more restricted data extractions on the provided bare metal machine.
+The URL to storage account with the command execution results and the command exit code can be retrieved from the operation status API once available.
 
 ### [Invoke-AzNetworkCloudBareMetalMachineRunCommand](Invoke-AzNetworkCloudBareMetalMachineRunCommand.md)
 Run the command or the script on the provided bare metal machine.
@@ -113,6 +113,9 @@ Update the version of the provided cluster to one of the available supported ver
 
 ### [Invoke-AzNetworkCloudScanClusterRuntime](Invoke-AzNetworkCloudScanClusterRuntime.md)
 Triggers the execution of a runtime protection scan to detect and remediate detected issues, in accordance with the cluster configuration.
+
+### [Invoke-AzNetworkCloudStorageApplianceReadCommand](Invoke-AzNetworkCloudStorageApplianceReadCommand.md)
+Run one or more read-only commands on the provided storage appliance.
 
 ### [Invoke-AzNetworkCloudVirtualMachineReimage](Invoke-AzNetworkCloudVirtualMachineReimage.md)
 Reimage the provided virtual machine.
@@ -263,9 +266,6 @@ Restart the provided virtual machine.
 
 ### [Start-AzNetworkCloudBareMetalMachine](Start-AzNetworkCloudBareMetalMachine.md)
 Start the provided bare metal machine.
-
-### [Start-AzNetworkCloudStorageApplianceReadCommand](Start-AzNetworkCloudStorageApplianceReadCommand.md)
-Run one or more read-only commands on the provided storage appliance.
 
 ### [Start-AzNetworkCloudVirtualMachine](Start-AzNetworkCloudVirtualMachine.md)
 Start the provided virtual machine.

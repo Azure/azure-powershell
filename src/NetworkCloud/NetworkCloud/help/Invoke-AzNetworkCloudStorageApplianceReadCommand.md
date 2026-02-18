@@ -1,11 +1,11 @@
 ---
-external help file:
+external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/az.networkcloud/start-aznetworkcloudstorageappliancereadcommand
+online version: https://learn.microsoft.com/powershell/module/az.networkcloud/invoke-aznetworkcloudstorageappliancereadcommand
 schema: 2.0.0
 ---
 
-# Start-AzNetworkCloudStorageApplianceReadCommand
+# Invoke-AzNetworkCloudStorageApplianceReadCommand
 
 ## SYNOPSIS
 Run one or more read-only commands on the provided storage appliance.
@@ -14,30 +14,30 @@ Run one or more read-only commands on the provided storage appliance.
 
 ### RunViaIdentityExpanded (Default)
 ```
-Start-AzNetworkCloudStorageApplianceReadCommand -InputObject <INetworkCloudIdentity>
+Invoke-AzNetworkCloudStorageApplianceReadCommand -InputObject <INetworkCloudIdentity>
  -Command <IStorageApplianceCommandSpecification[]> -LimitTimeSecond <Int64> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RunExpanded
-```
-Start-AzNetworkCloudStorageApplianceReadCommand -ResourceGroupName <String> -StorageApplianceName <String>
- -Command <IStorageApplianceCommandSpecification[]> -LimitTimeSecond <Int64> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RunViaJsonFilePath
-```
-Start-AzNetworkCloudStorageApplianceReadCommand -ResourceGroupName <String> -StorageApplianceName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RunViaJsonString
 ```
-Start-AzNetworkCloudStorageApplianceReadCommand -ResourceGroupName <String> -StorageApplianceName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzNetworkCloudStorageApplianceReadCommand -ResourceGroupName <String> -StorageApplianceName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RunViaJsonFilePath
+```
+Invoke-AzNetworkCloudStorageApplianceReadCommand -ResourceGroupName <String> -StorageApplianceName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RunExpanded
+```
+Invoke-AzNetworkCloudStorageApplianceReadCommand -ResourceGroupName <String> -StorageApplianceName <String>
+ [-SubscriptionId <String>] -Command <IStorageApplianceCommandSpecification[]> -LimitTimeSecond <Int64>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,11 +51,13 @@ $command = @{
     command = "health"
     arguments = @()
 }
-Start-AzNetworkCloudStorageApplianceReadCommand -StorageApplianceName "storageApplianceName" -ResourceGroupName "resourceGroupName" -Command @($command) -LimitTimeSecond 60
+Invoke-AzNetworkCloudStorageApplianceReadCommand -StorageApplianceName "storageApplianceName" -ResourceGroupName "resourceGroupName" -Command @($command) -LimitTimeSecond 60
 ```
 
 ```output
-True
+Target
+------
+https://asyncOperationStatusResponseUrl
 ```
 
 This example runs a read-only health check command on the specified storage appliance with a 60-second timeout.
@@ -70,11 +72,13 @@ $command2 = @{
     command = "logs"
     arguments = @("--level", "info")
 }
-Start-AzNetworkCloudStorageApplianceReadCommand -StorageApplianceName "storageApplianceName" -ResourceGroupName "resourceGroupName" -Command @($command1, $command2) -LimitTimeSecond 120
+Invoke-AzNetworkCloudStorageApplianceReadCommand -StorageApplianceName "storageApplianceName" -ResourceGroupName "resourceGroupName" -Command @($command1, $command2) -LimitTimeSecond 120
 ```
 
 ```output
-True
+Target
+------
+https://asyncOperationStatusResponseUrl
 ```
 
 This example runs multiple read-only diagnostic commands on the storage appliance with a 120-second timeout.
@@ -101,7 +105,7 @@ The list of read-only commands to be executed directly against the target storag
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceCommandSpecification[]
-Parameter Sets: RunExpanded, RunViaIdentityExpanded
+Parameter Sets: RunViaIdentityExpanded, RunExpanded
 Aliases:
 
 Required: True
@@ -177,7 +181,7 @@ The maximum time the commands are allowed to run.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: RunExpanded, RunViaIdentityExpanded
+Parameter Sets: RunViaIdentityExpanded, RunExpanded
 Aliases:
 
 Required: True
@@ -223,7 +227,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded, RunViaJsonFilePath, RunViaJsonString
+Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
 Aliases:
 
 Required: True
@@ -238,7 +242,7 @@ The name of the storage appliance.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded, RunViaJsonFilePath, RunViaJsonString
+Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
 Aliases:
 
 Required: True
@@ -254,7 +258,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded, RunViaJsonFilePath, RunViaJsonString
+Parameter Sets: RunViaJsonString, RunViaJsonFilePath, RunExpanded
 Aliases:
 
 Required: False
@@ -309,4 +313,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

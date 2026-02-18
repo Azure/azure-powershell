@@ -22,8 +22,7 @@ Get-AzNetworkCloudBareMetalMachineKeySet -ClusterName <String> -ResourceGroupNam
 ### Get
 ```
 Get-AzNetworkCloudBareMetalMachineKeySet -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityCluster

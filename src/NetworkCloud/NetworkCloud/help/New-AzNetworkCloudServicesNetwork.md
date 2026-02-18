@@ -18,8 +18,7 @@ New-AzNetworkCloudServicesNetwork -Name <String> -ResourceGroupName <String> [-S
  [-IfMatch <String>] [-IfNoneMatch <String>] -ExtendedLocationName <String> -ExtendedLocationType <String>
  -Location <String> [-AdditionalEgressEndpoint <IEgressEndpoint[]>] [-EnableDefaultEgressEndpoint <String>]
  [-StorageOptionMode <String>] [-StorageOptionSizeMiB <Int64>] [-StorageOptionStorageApplianceId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath

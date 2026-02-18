@@ -27,8 +27,7 @@ Get-AzNetworkCloudServicesNetwork -Name <String> -ResourceGroupName <String> [-S
 ### List1
 ```
 Get-AzNetworkCloudServicesNetwork -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity

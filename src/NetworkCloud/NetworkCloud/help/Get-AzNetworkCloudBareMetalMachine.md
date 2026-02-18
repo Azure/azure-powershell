@@ -27,8 +27,7 @@ Get-AzNetworkCloudBareMetalMachine -Name <String> -ResourceGroupName <String> [-
 ### List1
 ```
 Get-AzNetworkCloudBareMetalMachine -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity

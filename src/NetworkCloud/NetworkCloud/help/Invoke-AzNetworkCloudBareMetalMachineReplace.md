@@ -40,8 +40,8 @@ Invoke-AzNetworkCloudBareMetalMachineReplace -Name <String> -ResourceGroupName <
 Invoke-AzNetworkCloudBareMetalMachineReplace -InputObject <INetworkCloudIdentity>
  [-BmcCredentialsPassword <SecureString>] [-BmcCredentialsUsername <String>] [-BmcMacAddress <String>]
  [-BootMacAddress <String>] [-MachineName <String>] [-SafeguardMode <String>] [-SerialNumber <String>]
- [-StoragePolicy <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-StoragePolicy <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

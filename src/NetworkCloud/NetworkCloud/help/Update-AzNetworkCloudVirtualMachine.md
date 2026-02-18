@@ -18,8 +18,7 @@ Update-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> [
  [-IfMatch <String>] [-IfNoneMatch <String>] [-EnableSystemAssignedIdentity <Boolean>] [-Tag <Hashtable>]
  [-UserAssignedIdentity <String[]>] [-VMImageRepositoryCredentialsPassword <SecureString>]
  [-VMImageRepositoryCredentialsRegistryUrl <String>] [-VMImageRepositoryCredentialsUsername <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -28,8 +27,7 @@ Update-AzNetworkCloudVirtualMachine -InputObject <INetworkCloudIdentity> [-IfMat
  [-IfNoneMatch <String>] [-EnableSystemAssignedIdentity <Boolean>] [-Tag <Hashtable>]
  [-UserAssignedIdentity <String[]>] [-VMImageRepositoryCredentialsPassword <SecureString>]
  [-VMImageRepositoryCredentialsRegistryUrl <String>] [-VMImageRepositoryCredentialsUsername <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
