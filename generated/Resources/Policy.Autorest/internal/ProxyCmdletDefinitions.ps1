@@ -29,8 +29,6 @@ $mgId = 'myManagementGroup'
 Get-AzPolicyAssignment -Scope '/providers/Microsoft.Management/managementgroups/$mgId'
 .Example
 Get-AzPolicyAssignment | Select-Object -Property Scope, PolicyDefinitionID, DisplayName | Format-List
-.Example
-Get-AzPolicyAssignment -BackwardCompatible | Select-Object -ExpandProperty properties | Select-Object -Property Scope, PolicyDefinitionID, DisplayName | Format-List
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
@@ -136,6 +134,18 @@ param(
     # The resource type name.
     # For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
     ${ResourceType},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='GetViaIdentity')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
+    [Parameter(ParameterSetName='List2')]
+    [Parameter(ParameterSetName='List3')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
+    [System.String]
+    # Comma-separated list of additional properties to be included in the response.
+    # Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+    ${Expand},
 
     [Parameter(ParameterSetName='List')]
     [Parameter(ParameterSetName='List1')]
@@ -1001,9 +1011,11 @@ Get-AzPolicyDefinition -SubscriptionId '3bf44b72-c631-427a-b8c8-53e2595398ca' -B
 .Example
 Get-AzPolicyDefinition | Where-Object {$_.Properties.metadata.category -eq 'Tags'}
 .Example
-Get-AzPolicyDefinition | Select-Object -Property DisplayName, Description, PolicyType, Metadata | Format-List
+Get-AzPolicyDefinition -Id '/providers/Microsoft.Authorization/policyDefinitions/36fd7371-8eb7-4321-9c30-a7100022d048' -Version "1.1.1"
 .Example
-Get-AzPolicyDefinition -BackwardCompatible | Select-Object -ExpandProperty properties | Select-Object -Property DisplayName, Description, PolicyType, Metadata | Format-List
+Get-AzPolicyDefinition -Name 'VMPolicyDefinition' -ListVersion
+.Example
+Get-AzPolicyDefinition | Select-Object -Property DisplayName, Description, PolicyType, Metadata | Format-List
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
@@ -1483,6 +1495,13 @@ param(
     # Identity Parameter
     ${InputObject},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
+    [System.String]
+    # Comma-separated list of additional properties to be included in the response.
+    # Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+    ${Expand},
+
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.String]
@@ -1799,6 +1818,13 @@ param(
     ${PolicySetDefinitionInputObject},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
+    [System.String]
+    # Comma-separated list of additional properties to be included in the response.
+    # Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+    ${Expand},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Azure')]
@@ -2036,6 +2062,20 @@ param(
     # Identity Parameter
     ${PolicySetDefinition1InputObject},
 
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='Get1')]
+    [Parameter(ParameterSetName='GetViaIdentity')]
+    [Parameter(ParameterSetName='GetViaIdentity1')]
+    [Parameter(ParameterSetName='GetViaIdentityPolicySetDefinition')]
+    [Parameter(ParameterSetName='GetViaIdentityPolicySetDefinition1')]
+    [Parameter(ParameterSetName='List2')]
+    [Parameter(ParameterSetName='List3')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
+    [System.String]
+    # Comma-separated list of additional properties to be included in the response.
+    # Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+    ${Expand},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -2165,7 +2205,9 @@ Get-AzPolicySetDefinition -ManagementGroupName 'Dept42' -Custom
 .Example
 Get-AzPolicySetDefinition | Where-Object {$_.metadata.category -eq "Virtual Machine"}
 .Example
-Get-AzPolicySetDefinition -BackwardCompatible | Where-Object {$_.Properties.metadata.category -eq "Virtual Machine"}
+Get-AzPolicySetDefinition -Id '/providers/Microsoft.Authorization/policySetDefinitions/1bb84455-9e6e-434c-8db6-fa6d03a67e87' -Version "1.1.1"
+.Example
+Get-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -ListVersion
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
@@ -2223,6 +2265,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
     # Identity Parameter
     ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
+    [System.String]
+    # Comma-separated list of additional properties to be included in the response.
+    # Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+    ${Expand},
 
     [Parameter(ParameterSetName='List')]
     [Parameter(ParameterSetName='List1')]
@@ -2412,26 +2461,6 @@ $Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
 $Selector = @{Kind = "resourceLocation"; In = @("eastus", "eastus2")}
 $Override = @(@{Kind = "policyEffect"; Value = 'Disabled'; Selector = @($Selector)})
 New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -Override $Override
-.Example
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-$Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
-$Locations = Get-AzLocation | Where-Object displayname -like '*east*'
-$AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
-New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameterObject $AllowedLocations
-.Example
-'{
-    "listOfAllowedLocations":  {
-      "value": [
-        "westus",
-        "westeurope",
-        "japanwest"
-      ]
-    }
-}' > .\AllowedLocations.json
-
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-$Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
-New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameter .\AllowedLocations.json
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment
@@ -2488,6 +2517,15 @@ param(
     ${Id},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("NotSpecified", "System", "SystemHidden", "Custom")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The type of policy assignment.
+    # Possible values are NotSpecified, System, SystemHidden, and Custom.
+    # Immutable.
+    ${AssignmentType},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The version of the policy definition to use.
@@ -2512,11 +2550,11 @@ param(
     ${EnableSystemAssignedIdentity},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce", "Enroll")]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The policy assignment enforcement mode.
-    # Possible values are Default and DoNotEnforce.
+    # Possible values are Default, DoNotEnforce, and Enroll
     ${EnforcementMode},
 
     [Parameter()]
@@ -2707,6 +2745,40 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails]))]
+    [System.Collections.Hashtable]
+    # The details of the endpoint.
+    ${EndpointSettingDetail},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The kind of the endpoint.
+    ${EndpointSettingKind},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing.
+    # Possible values are Audit and Deny and language expressions are supported.
+    ${ExternalEvaluationEnforcementSettingMissingTokenAction},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The lifespan of the endpoint invocation result after which it's no longer valid.
+    # Value is expected to follow the ISO 8601 duration format and language expressions are supported.
+    ${ExternalEvaluationEnforcementSettingResultLifespan},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String[]]
+    # An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+    ${ExternalEvaluationEnforcementSettingRoleDefinitionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The policy definition mode.
     # Some examples are All, Indexed, Microsoft.KeyVault.Data.
@@ -2866,6 +2938,10 @@ New-AzPolicyDefinition -Name 'VMPolicyDefinition' -ManagementGroupName Dept42 -D
 New-AzPolicyDefinition -Name 'VMPolicyDefinition' -Metadata '{"category":"Virtual Machine"}' -Policy '{"if":{"field":"type","equals":"Microsoft.Compute/virtualMachines"},"then":{"effect":"deny"}}' | Format-List
 .Example
 New-AzPolicyDefinition -Name 'TagsPolicyDefinition' -Policy '{"if":{"value":"[less(length(field(''tags'')), 3)]","equals":true},"then":{"effect":"deny"}}' -Mode Indexed
+.Example
+New-AzPolicyDefinition -Name 'VMPolicyDefinition' -Policy '{"if":{"field":"type","equals":"Microsoft.Compute/virtualMachines"},"then":{"effect":"deny"}}' -Version '2.0.0'
+.Example
+New-AzPolicyDefinition -Name 'InvokePolicy' -Policy '{"if":{"value":"[claims().isValid]","equals":false},"then":{"effect":"deny"}}' -EndpointSettingKind 'CoinFlip' -ExternalEvaluationEnforcementSettingRoleDefinitionId @( "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c" )
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition
@@ -2902,6 +2978,40 @@ param(
     [System.String]
     # The display name of the policy definition.
     ${DisplayName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails]))]
+    [System.Collections.Hashtable]
+    # The details of the endpoint.
+    ${EndpointSettingDetail},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The kind of the endpoint.
+    ${EndpointSettingKind},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing.
+    # Possible values are Audit and Deny and language expressions are supported.
+    ${ExternalEvaluationEnforcementSettingMissingTokenAction},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The lifespan of the endpoint invocation result after which it's no longer valid.
+    # Value is expected to follow the ISO 8601 duration format and language expressions are supported.
+    ${ExternalEvaluationEnforcementSettingResultLifespan},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String[]]
+    # An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+    ${ExternalEvaluationEnforcementSettingRoleDefinitionId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
@@ -3063,9 +3173,9 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-RESOURCESELECTOR <IResourceSelector[]>: The resource selector list to filter policies by resource properties.
+RESOURCESELECTOR <IResourceSelectorAutoGenerated[]>: The resource selector list to filter policies by resource properties.
   [Name <String>]: The name of the resource selector.
-  [Selector <List<ISelector>>]: The list of the selector expressions.
+  [Selector <List<ISelectorAutoGenerated>>]: The list of the selector expressions.
     [In <List<String>>]: The list of values to filter in.
     [Kind <String>]: The selector kind.
     [NotIn <List<String>>]: The list of values to filter out.
@@ -3127,7 +3237,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelectorAutoGenerated[]]
     # The resource selector list to filter policies by resource properties.
     ${ResourceSelector},
 
@@ -3460,7 +3570,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
    }
 ]
 
-New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicySet.json -Parameter '{ "buTagValue": { "type": "string" } }'
+New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicyWithParametersSet.json -Parameter '{ "buTagValue": { "type": "string" } }'
 .Example
 [
    {
@@ -3475,6 +3585,8 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMP
 
 $groupsJson = ConvertTo-Json @{ name = "group1" }, @{ name = "group2" }
 New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $groupsJson -PolicyDefinition C:\VMPolicySet.json
+.Example
+New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicySet.json -Version '2.0.0'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition
@@ -3661,11 +3773,6 @@ Remove-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.Resou
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId
 Remove-AzPolicyAssignment -Id $PolicyAssignment.Id -Confirm:$false
-.Example
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
-$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId -BackwardCompatible
-Remove-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -Confirm:$false -BackwardCompatible
-True
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
@@ -4089,9 +4196,7 @@ Remove-AzPolicyDefinition -Name 'VMPolicyDefinition'
 $PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition' 
 Remove-AzPolicyDefinition -Id $PolicyDefinition.Id -Force
 .Example
-$PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition' -BackwardCompatible
-Remove-AzPolicyDefinition -Id $PolicyDefinition.ResourceId -Force -BackwardCompatible
-True
+Remove-AzPolicyDefinition -Name 'VMPolicyDefinition' -Version '1.0.1' -PassThru
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
@@ -4279,11 +4384,6 @@ Remove-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.Resourc
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
 $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
 Remove-AzPolicyExemption -Id $PolicyExemption.Id -Confirm
-.Example
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
-$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId -BackwardCompatible
-Remove-AzPolicyExemption -Id $PolicyExemption.ResourceId -Force -BackwardCompatible
-True
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
@@ -4693,12 +4793,12 @@ This operation deletes the policy set definition in the given subscription with 
 .Description
 This operation deletes the policy set definition in the given subscription with the given name.
 .Example
+Remove-AzPolicySetDefinition -Name 'myPSSetDefinition'
+.Example
 $PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
 Remove-AzPolicySetDefinition -Id $PolicySetDefinition.Id -Force
 .Example
-$PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition' -BackwardCompatible
-Remove-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Force -BackwardCompatible
-True
+Remove-AzPolicySetDefinition -Name 'myPSSetDefinition' -Version '1.0.1' -PassThru
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
@@ -4928,10 +5028,6 @@ Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -ResourceSelect
 $Selector = @{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")}
 $Override = @(@{Kind = "policyEffect"; Value = 'Disabled'; Selector = @($Selector)})
 Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -Override $Override
-.Example
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId -BackwardCompatible
-Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Default
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment
@@ -4975,6 +5071,15 @@ param(
     ${Id},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("NotSpecified", "System", "SystemHidden", "Custom")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The type of policy assignment.
+    # Possible values are NotSpecified, System, SystemHidden, and Custom.
+    # Immutable.
+    ${AssignmentType},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The version of the policy definition to use.
@@ -4999,11 +5104,11 @@ param(
     ${EnableSystemAssignedIdentity},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce", "Enroll")]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The policy assignment enforcement mode.
-    # Possible values are Default and DoNotEnforce.
+    # Possible values are Default, DoNotEnforce, and Enroll
     ${EnforcementMode},
 
     [Parameter()]
@@ -5239,6 +5344,40 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails]))]
+    [System.Collections.Hashtable]
+    # The details of the endpoint.
+    ${EndpointSettingDetail},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The kind of the endpoint.
+    ${EndpointSettingKind},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing.
+    # Possible values are Audit and Deny and language expressions are supported.
+    ${ExternalEvaluationEnforcementSettingMissingTokenAction},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The lifespan of the endpoint invocation result after which it's no longer valid.
+    # Value is expected to follow the ISO 8601 duration format and language expressions are supported.
+    ${ExternalEvaluationEnforcementSettingResultLifespan},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String[]]
+    # An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+    ${ExternalEvaluationEnforcementSettingRoleDefinitionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The policy definition mode.
     # Some examples are All, Indexed, Microsoft.KeyVault.Data.
@@ -5371,7 +5510,16 @@ Update-AzPolicyDefinition -Name 'VMPolicyDefinition' -Mode 'All'
 .Example
 Update-AzPolicyDefinition -Name 'VMPolicyDefinition' -Metadata '{"category":"Virtual Machine"}'
 .Example
-Set-AzPolicyDefinition -Name 'VMPolicyDefinition' -Mode 'All'
+{
+   "if": {
+      "field": "location",
+      "notIn": ["eastus", "westus", "centralus"]
+   },
+   "then": {
+      "effect": "audit"
+   }
+}
+Update-AzPolicyDefinition -Name 'LocationDefinition' -Policy C:\LocationPolicy.json -Version '1.1.0'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
@@ -5430,6 +5578,40 @@ param(
     [System.String]
     # The display name of the policy definition.
     ${DisplayName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails]))]
+    [System.Collections.Hashtable]
+    # The details of the endpoint.
+    ${EndpointSettingDetail},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The kind of the endpoint.
+    ${EndpointSettingKind},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing.
+    # Possible values are Audit and Deny and language expressions are supported.
+    ${ExternalEvaluationEnforcementSettingMissingTokenAction},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The lifespan of the endpoint invocation result after which it's no longer valid.
+    # Value is expected to follow the ISO 8601 duration format and language expressions are supported.
+    ${ExternalEvaluationEnforcementSettingResultLifespan},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String[]]
+    # An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+    ${ExternalEvaluationEnforcementSettingRoleDefinitionId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
@@ -5576,9 +5758,6 @@ Update-AzPolicyExemption -Id $PolicyExemption.Id -ExemptionCategory Mitigated
 .Example
 $ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")})}
 Update-AzPolicyExemption -Name 'VirtualMachineExemption' -ResourceSelector $ResourceSelector
-.Example
-$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -BackwardCompatible
-Set-AzPolicyExemption -Id $PolicyExemption.ResourceId -ClearExpiration -BackwardCompatible
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
@@ -5607,9 +5786,9 @@ INPUTOBJECT <IPolicyIdentity>: Identity Parameter
   [Scope <String>]: The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
-RESOURCESELECTOR <IResourceSelector[]>: The resource selector list to filter policies by resource properties.
+RESOURCESELECTOR <IResourceSelectorAutoGenerated[]>: The resource selector list to filter policies by resource properties.
   [Name <String>]: The name of the resource selector.
-  [Selector <List<ISelector>>]: The list of the selector expressions.
+  [Selector <List<ISelectorAutoGenerated>>]: The list of the selector expressions.
     [In <List<String>>]: The list of values to filter in.
     [Kind <String>]: The selector kind.
     [NotIn <List<String>>]: The list of values to filter out.
@@ -5651,7 +5830,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelectorAutoGenerated[]]
     # The resource selector list to filter policies by resource properties.
     ${ResourceSelector},
 
@@ -5718,426 +5897,6 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.Policy.private\Update-AzPolicyExemption_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Policy.private\Update-AzPolicyExemption_UpdateViaIdentityExpanded';
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        if ($wrappedCmd -eq $null) {
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
-        }
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-This operation update a policy set definition version in the given management group with the given name and version.
-.Description
-This operation update a policy set definition version in the given management group with the given name and version.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IPolicyIdentity>: Identity Parameter
-  [Id <String>]: Resource identity path
-  [ManagementGroupId <String>]: The ID of the management group.
-  [ManagementGroupName <String>]: The name of the management group. The name is case insensitive.
-  [ParentResourcePath <String>]: The parent resource path. Use empty string if there is none.
-  [PolicyAssignmentId <String>]: The ID of the policy assignment to delete. Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
-  [PolicyAssignmentName <String>]: The name of the policy assignment to delete.
-  [PolicyDefinitionName <String>]: The name of the policy definition to create.
-  [PolicyDefinitionVersion <String>]: The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
-  [PolicyExemptionName <String>]: The name of the policy exemption to delete.
-  [PolicySetDefinitionName <String>]: The name of the policy set definition to create.
-  [ResourceGroupName <String>]: The name of the resource group that contains policy assignments.
-  [ResourceName <String>]: The name of the resource.
-  [ResourceProviderNamespace <String>]: The namespace of the resource provider. For example, the namespace of a virtual machine is Microsoft.Compute (from Microsoft.Compute/virtualMachines)
-  [ResourceType <String>]: The resource type name. For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
-  [Scope <String>]: The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-
-POLICYDEFINITIONGROUPTABLE <IPolicyDefinitionGroup[]>: The metadata describing groups of policy definition references within the policy set definition.
-  Name <String>: The name of the group.
-  [AdditionalMetadataId <String>]: A resource ID of a resource that contains additional metadata about the group.
-  [Category <String>]: The group's category.
-  [Description <String>]: The group's description.
-  [DisplayName <String>]: The group's display name.
-
-POLICYDEFINITIONTABLE <IPolicyDefinitionReference[]>: An array of policy definition references.
-  PolicyDefinitionId <String>: The ID of the policy definition or policy set definition.
-  [DefinitionVersion <String>]: The version of the policy definition to use.
-  [GroupName <List<String>>]: The name of the groups that this policy definition reference belongs to.
-  [Id <String>]: A unique id (within the policy set definition) for this policy definition reference.
-  [Parameter <IParameterValues>]: The parameter values for the referenced policy rule. The keys are the parameter names.
-    [(Any) <Object>]: This indicates any property can be added to this object.
-
-POLICYSETDEFINITIONINPUTOBJECT <IPolicyIdentity>: Identity Parameter
-  [Id <String>]: Resource identity path
-  [ManagementGroupId <String>]: The ID of the management group.
-  [ManagementGroupName <String>]: The name of the management group. The name is case insensitive.
-  [ParentResourcePath <String>]: The parent resource path. Use empty string if there is none.
-  [PolicyAssignmentId <String>]: The ID of the policy assignment to delete. Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
-  [PolicyAssignmentName <String>]: The name of the policy assignment to delete.
-  [PolicyDefinitionName <String>]: The name of the policy definition to create.
-  [PolicyDefinitionVersion <String>]: The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
-  [PolicyExemptionName <String>]: The name of the policy exemption to delete.
-  [PolicySetDefinitionName <String>]: The name of the policy set definition to create.
-  [ResourceGroupName <String>]: The name of the resource group that contains policy assignments.
-  [ResourceName <String>]: The name of the resource.
-  [ResourceProviderNamespace <String>]: The namespace of the resource provider. For example, the namespace of a virtual machine is Microsoft.Compute (from Microsoft.Compute/virtualMachines)
-  [ResourceType <String>]: The resource type name. For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
-  [Scope <String>]: The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-.Link
-https://learn.microsoft.com/powershell/module/az.resources/update-azpolicysetdefinitionversion
-#>
-function Update-AzPolicySetDefinitionVersion {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String]
-    # The name of the management group.
-    # The name is case insensitive.
-    ${ManagementGroupName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String]
-    # The name of the policy set definition.
-    ${PolicySetDefinitionName},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityPolicySetDefinitionExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
-    # Identity Parameter
-    ${PolicySetDefinitionInputObject},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.String]
-    # The policy set definition description.
-    ${Description},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.String]
-    # The display name of the policy set definition.
-    ${DisplayName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("NotSpecified", "BuiltIn", "Custom", "Static")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.String]
-    # The type of policy definition.
-    # Possible values are NotSpecified, BuiltIn, Custom, and Static.
-    ${PolicyType},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-
-        $mapping = @{
-            UpdateExpanded = 'Az.Policy.private\Update-AzPolicySetDefinitionVersion_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.Policy.private\Update-AzPolicySetDefinitionVersion_UpdateViaIdentityExpanded';
-            UpdateViaIdentityPolicySetDefinitionExpanded = 'Az.Policy.private\Update-AzPolicySetDefinitionVersion_UpdateViaIdentityPolicySetDefinitionExpanded';
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        if ($wrappedCmd -eq $null) {
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
-        }
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-This operation update a policy set definition in the given management group with the given name.
-.Description
-This operation update a policy set definition in the given management group with the given name.
-.Example
-$PolicySetDefinition = Get-AzPolicySetDefinition -Id '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
-Update-AzPolicySetDefinition -Id $PolicySetDefinition.Id -Description 'Updated policy to not allow virtual machine creation'
-.Example
-Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}'
-.Example
-Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition '[{ "name": "group1", "displayName": "Virtual Machine Security" }, { "name": "group2" }]'
-.Example
-$groupsJson = ConvertTo-Json @{ name = "group1"; displayName = "Virtual Machine Security" }, @{ name = "group2" }
-Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $groupsJson
-.Example
-Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}'
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IPolicyIdentity>: Identity Parameter
-  [Id <String>]: Resource identity path
-  [ManagementGroupId <String>]: The ID of the management group.
-  [ManagementGroupName <String>]: The name of the management group. The name is case insensitive.
-  [ParentResourcePath <String>]: The parent resource path. Use empty string if there is none.
-  [PolicyAssignmentId <String>]: The ID of the policy assignment to delete. Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
-  [PolicyAssignmentName <String>]: The name of the policy assignment to delete.
-  [PolicyDefinitionName <String>]: The name of the policy definition to create.
-  [PolicyDefinitionVersion <String>]: The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
-  [PolicyExemptionName <String>]: The name of the policy exemption to delete.
-  [PolicySetDefinitionName <String>]: The name of the policy set definition to create.
-  [ResourceGroupName <String>]: The name of the resource group that contains policy assignments.
-  [ResourceName <String>]: The name of the resource.
-  [ResourceProviderNamespace <String>]: The namespace of the resource provider. For example, the namespace of a virtual machine is Microsoft.Compute (from Microsoft.Compute/virtualMachines)
-  [ResourceType <String>]: The resource type name. For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
-  [Scope <String>]: The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-
-POLICYDEFINITIONGROUPTABLE <IPolicyDefinitionGroup[]>: The metadata describing groups of policy definition references within the policy set definition.
-  Name <String>: The name of the group.
-  [AdditionalMetadataId <String>]: A resource ID of a resource that contains additional metadata about the group.
-  [Category <String>]: The group's category.
-  [Description <String>]: The group's description.
-  [DisplayName <String>]: The group's display name.
-
-POLICYDEFINITIONTABLE <IPolicyDefinitionReference[]>: An array of policy definition references.
-  PolicyDefinitionId <String>: The ID of the policy definition or policy set definition.
-  [DefinitionVersion <String>]: The version of the policy definition to use.
-  [GroupName <List<String>>]: The name of the groups that this policy definition reference belongs to.
-  [Id <String>]: A unique id (within the policy set definition) for this policy definition reference.
-  [Parameter <IParameterValues>]: The parameter values for the referenced policy rule. The keys are the parameter names.
-    [(Any) <Object>]: This indicates any property can be added to this object.
-.Link
-https://learn.microsoft.com/powershell/module/az.resources/update-azpolicysetdefinition
-#>
-function Update-AzPolicySetDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Alias('PolicySetDefinitionName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String]
-    # The name of the policy set definition to create.
-    ${Name},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.String]
-    # The policy set definition description.
-    ${Description},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.String]
-    # The display name of the policy set definition.
-    ${DisplayName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("NotSpecified", "BuiltIn", "Custom", "Static")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.String]
-    # The type of policy set definition.
-    # Possible values are NotSpecified, BuiltIn, Custom, and Static.
-    ${PolicyType},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-
-        $mapping = @{
-            UpdateExpanded = 'Az.Policy.private\Update-AzPolicySetDefinition_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.Policy.private\Update-AzPolicySetDefinition_UpdateViaIdentityExpanded';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ManagementGroupId') ) {
-            $PSBoundParameters['ManagementGroupId'] = { "" }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

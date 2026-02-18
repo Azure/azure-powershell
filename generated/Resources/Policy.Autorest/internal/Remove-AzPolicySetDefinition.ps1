@@ -20,12 +20,12 @@ This operation deletes the policy set definition in the given subscription with 
 .Description
 This operation deletes the policy set definition in the given subscription with the given name.
 .Example
+Remove-AzPolicySetDefinition -Name 'myPSSetDefinition'
+.Example
 $PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
 Remove-AzPolicySetDefinition -Id $PolicySetDefinition.Id -Force
 .Example
-$PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition' -BackwardCompatible
-Remove-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Force -BackwardCompatible
-True
+Remove-AzPolicySetDefinition -Name 'myPSSetDefinition' -Version '1.0.1' -PassThru
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity

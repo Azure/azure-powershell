@@ -27,12 +27,23 @@ Update-AzPolicyDefinition -Name 'VMPolicyDefinition' -Mode 'All'
 .Example
 Update-AzPolicyDefinition -Name 'VMPolicyDefinition' -Metadata '{"category":"Virtual Machine"}'
 .Example
-Set-AzPolicyDefinition -Name 'VMPolicyDefinition' -Mode 'All'
+{
+   "if": {
+      "field": "location",
+      "notIn": ["eastus", "westus", "centralus"]
+   },
+   "then": {
+      "effect": "audit"
+   }
+}
+Update-AzPolicyDefinition -Name 'LocationDefinition' -Policy C:\LocationPolicy.json -Version '1.1.0'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition
 .Inputs
 System.String
+.Inputs
+System.String[]
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition
 .Notes
@@ -43,6 +54,12 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IPolicyDefinition>: 
   [Description <String>]: The policy definition description.
   [DisplayName <String>]: The display name of the policy definition.
+  [EndpointSettingDetail <IExternalEvaluationEndpointSettingsDetails>]: The details of the endpoint.
+    [(Any) <Object>]: This indicates any property can be added to this object.
+  [EndpointSettingKind <String>]: The kind of the endpoint.
+  [ExternalEvaluationEnforcementSettingMissingTokenAction <String>]: What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing. Possible values are Audit and Deny and language expressions are supported.
+  [ExternalEvaluationEnforcementSettingResultLifespan <String>]: The lifespan of the endpoint invocation result after which it's no longer valid. Value is expected to follow the ISO 8601 duration format and language expressions are supported.
+  [ExternalEvaluationEnforcementSettingRoleDefinitionId <List<String>>]: An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
   [Metadata <IPolicyDefinitionPropertiesMetadata>]: The policy definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
     [(Any) <Object>]: This indicates any property can be added to this object.
   [Mode <String>]: The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
@@ -101,7 +118,10 @@ param(
     # The policy definition description.
     ${Description},
 
-    [Parameter(ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='InputObject', ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The policy rule.
@@ -130,11 +150,47 @@ param(
     # Some examples are All, Indexed, Microsoft.KeyVault.Data.
     ${Mode},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Alias('PolicyDefinitionVersion')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible},
+    [System.String]
+    # The policy definition version in #.#.# format.
+    ${Version},
+
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing.
+    # Possible values are Audit and Deny and language expressions are supported.
+    ${ExternalEvaluationEnforcementSettingMissingTokenAction},
+
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The lifespan of the endpoint invocation result after which it's no longer valid.
+    # 
+    # Value is expected to follow the ISO 8601 duration format and language expressions are supported.
+    ${ExternalEvaluationEnforcementSettingResultLifespan},
+
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String[]]
+    # An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+    ${ExternalEvaluationEnforcementSettingRoleDefinitionId},
+
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The kind of the endpoint.
+    ${EndpointSettingKind},
+
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The details of the endpoint.
+    ${EndpointSettingDetail},
 
     [Parameter(ParameterSetName='InputObject', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]

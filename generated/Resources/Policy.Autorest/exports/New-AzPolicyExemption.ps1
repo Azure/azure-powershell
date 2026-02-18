@@ -56,10 +56,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 POLICYASSIGNMENT <PSObject>: The policy assignment id filter.
+  [AssignmentType <String>]: The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
   [DefinitionVersion <String>]: The version of the policy definition to use.
   [Description <String>]: This message will be part of response in case of policy violation.
   [DisplayName <String>]: The display name of the policy assignment.
-  [EnforcementMode <String>]: The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
+  [EnforcementMode <String>]: The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
   [IdentityType <String>]: The identity type. This is the only required field when adding a system or user assigned identity to a resource.
   [IdentityUserAssignedIdentity <IIdentityUserAssignedIdentities>]: The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
     [(Any) <IUserAssignedIdentitiesValue>]: This indicates any property can be added to this object.
@@ -122,7 +123,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The scope of the policy exemption.
-    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
     ${Scope},
 
     [Parameter(ValueFromPipelineByPropertyName)]
@@ -170,12 +171,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
     # The resource selector list to filter policies by resource properties.
     ${ResourceSelector},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

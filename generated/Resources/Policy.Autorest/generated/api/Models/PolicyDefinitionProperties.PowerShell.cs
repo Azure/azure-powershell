@@ -101,6 +101,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ExternalEvaluationEnforcementSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSetting = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettings) content.GetValueForProperty("ExternalEvaluationEnforcementSetting",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSetting, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ExternalEvaluationEnforcementSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("PolicyType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).PolicyType = (string) content.GetValueForProperty("PolicyType",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).PolicyType, global::System.Convert.ToString);
@@ -136,6 +140,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             if (content.Contains("Versions"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).Versions = (System.Collections.Generic.List<string>) content.GetValueForProperty("Versions",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).Versions, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ExternalEvaluationEnforcementSettingResultLifespan"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSettingResultLifespan = (string) content.GetValueForProperty("ExternalEvaluationEnforcementSettingResultLifespan",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSettingResultLifespan, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExternalEvaluationEnforcementSettingEndpointSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSettingEndpointSetting = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettings) content.GetValueForProperty("ExternalEvaluationEnforcementSettingEndpointSetting",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSettingEndpointSetting, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ExternalEvaluationEndpointSettingsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ExternalEvaluationEnforcementSettingMissingTokenAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSettingMissingTokenAction = (string) content.GetValueForProperty("ExternalEvaluationEnforcementSettingMissingTokenAction",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSettingMissingTokenAction, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExternalEvaluationEnforcementSettingRoleDefinitionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSettingRoleDefinitionId = (System.Collections.Generic.List<string>) content.GetValueForProperty("ExternalEvaluationEnforcementSettingRoleDefinitionId",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSettingRoleDefinitionId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("EndpointSettingKind"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).EndpointSettingKind = (string) content.GetValueForProperty("EndpointSettingKind",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).EndpointSettingKind, global::System.Convert.ToString);
+            }
+            if (content.Contains("EndpointSettingDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).EndpointSettingDetail = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails) content.GetValueForProperty("EndpointSettingDetail",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).EndpointSettingDetail, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ExternalEvaluationEndpointSettingsDetailsTypeConverter.ConvertFrom);
             }
             AfterDeserializeDictionary(content);
         }
@@ -154,6 +182,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ExternalEvaluationEnforcementSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSetting = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettings) content.GetValueForProperty("ExternalEvaluationEnforcementSetting",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSetting, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ExternalEvaluationEnforcementSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("PolicyType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).PolicyType = (string) content.GetValueForProperty("PolicyType",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).PolicyType, global::System.Convert.ToString);
@@ -189,6 +221,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             if (content.Contains("Versions"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).Versions = (System.Collections.Generic.List<string>) content.GetValueForProperty("Versions",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).Versions, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ExternalEvaluationEnforcementSettingResultLifespan"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSettingResultLifespan = (string) content.GetValueForProperty("ExternalEvaluationEnforcementSettingResultLifespan",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSettingResultLifespan, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExternalEvaluationEnforcementSettingEndpointSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSettingEndpointSetting = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettings) content.GetValueForProperty("ExternalEvaluationEnforcementSettingEndpointSetting",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSettingEndpointSetting, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ExternalEvaluationEndpointSettingsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ExternalEvaluationEnforcementSettingMissingTokenAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSettingMissingTokenAction = (string) content.GetValueForProperty("ExternalEvaluationEnforcementSettingMissingTokenAction",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSettingMissingTokenAction, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExternalEvaluationEnforcementSettingRoleDefinitionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSettingRoleDefinitionId = (System.Collections.Generic.List<string>) content.GetValueForProperty("ExternalEvaluationEnforcementSettingRoleDefinitionId",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).ExternalEvaluationEnforcementSettingRoleDefinitionId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("EndpointSettingKind"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).EndpointSettingKind = (string) content.GetValueForProperty("EndpointSettingKind",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).EndpointSettingKind, global::System.Convert.ToString);
+            }
+            if (content.Contains("EndpointSettingDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).EndpointSettingDetail = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettingsDetails) content.GetValueForProperty("EndpointSettingDetail",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)this).EndpointSettingDetail, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ExternalEvaluationEndpointSettingsDetailsTypeConverter.ConvertFrom);
             }
             AfterDeserializePSObject(content);
         }
