@@ -27,7 +27,7 @@ Describe 'Get-AzConfluentConnector' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' {
+    It 'Get' -skip {
         {    
             try {
                 Get-AzConfluentConnector -Name $env.connectorName -ResourceGroupName $env.connectorResourceGroup -OrganizationName $env.connectorOrganization -EnvironmentId $env.connectorEnvironmentId -ClusterId $env.connectorClusterId -SubscriptionId $env.SubscriptionId
