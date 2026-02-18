@@ -29,8 +29,6 @@ $mgId = 'myManagementGroup'
 Get-AzPolicyAssignment -Scope '/providers/Microsoft.Management/managementgroups/$mgId'
 .Example
 Get-AzPolicyAssignment | Select-Object -Property Scope, PolicyDefinitionID, DisplayName | Format-List
-.Example
-Get-AzPolicyAssignment -BackwardCompatible | Select-Object -ExpandProperty properties | Select-Object -Property Scope, PolicyDefinitionID, DisplayName | Format-List
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
@@ -136,6 +134,18 @@ param(
     # The resource type name.
     # For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
     ${ResourceType},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='GetViaIdentity')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
+    [Parameter(ParameterSetName='List2')]
+    [Parameter(ParameterSetName='List3')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
+    [System.String]
+    # Comma-separated list of additional properties to be included in the response.
+    # Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+    ${Expand},
 
     [Parameter(ParameterSetName='List')]
     [Parameter(ParameterSetName='List1')]

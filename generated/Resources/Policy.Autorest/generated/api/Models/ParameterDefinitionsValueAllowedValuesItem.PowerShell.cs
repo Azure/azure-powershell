@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.PowerShell;
 
-    /// <summary>Dictionary of <any></summary>
+    /// <summary>The collection of allowed values for the parameter.</summary>
     [System.ComponentModel.TypeConverter(typeof(ParameterDefinitionsValueAllowedValuesItemTypeConverter))]
     public partial class ParameterDefinitionsValueAllowedValuesItem
     {
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
-    /// Dictionary of <any>
+    /// The collection of allowed values for the parameter.
     [System.ComponentModel.TypeConverter(typeof(ParameterDefinitionsValueAllowedValuesItemTypeConverter))]
     public partial interface IParameterDefinitionsValueAllowedValuesItem
 

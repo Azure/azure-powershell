@@ -33,9 +33,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsCreate(string scope, string policyAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsCreate(string scope, string policyAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -85,9 +85,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsCreateById(string policyAssignmentId, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsCreateById(string policyAssignmentId, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -135,9 +135,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsCreateByIdViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsCreateByIdViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsCreateByIdViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -252,9 +252,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsCreateByIdViaJsonString(string policyAssignmentId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsCreateByIdViaJsonString(string policyAssignmentId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsCreateByIdViaJsonStringWithResult(string policyAssignmentId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsCreateByIdWithResult(string policyAssignmentId, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -413,14 +413,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyAssignmentsCreateById_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyAssignmentsCreateById_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -526,9 +526,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -586,7 +586,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -646,9 +646,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsCreateViaJsonString(string scope, string policyAssignmentName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsCreateViaJsonString(string scope, string policyAssignmentName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -697,7 +697,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsCreateViaJsonStringWithResult(string scope, string policyAssignmentName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -747,7 +747,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsCreateWithResult(string scope, string policyAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -811,14 +811,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -848,7 +848,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyAssignmentsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyAssignmentsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -873,7 +873,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -930,9 +930,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsDelete(string scope, string policyAssignmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsDelete(string scope, string policyAssignmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -976,9 +976,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsDeleteById(string policyAssignmentId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsDeleteById(string policyAssignmentId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1020,9 +1020,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsDeleteByIdViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsDeleteByIdViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1073,7 +1073,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsDeleteByIdViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1124,7 +1124,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsDeleteByIdWithResult(string policyAssignmentId, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1189,14 +1189,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -1227,7 +1227,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyAssignmentsDeleteById_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyAssignmentsDeleteById_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1258,7 +1258,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1304,9 +1304,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1357,7 +1357,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsDeleteViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1411,7 +1411,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsDeleteWithResult(string scope, string policyAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1476,14 +1476,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -1514,7 +1514,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyAssignmentsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyAssignmentsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1545,7 +1545,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1589,6 +1589,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
         /// or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'</param>
         /// <param name="policyAssignmentName">The name of the policy assignment to get.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -1597,9 +1599,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsGet(string scope, string policyAssignmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsGet(string scope, string policyAssignmentName, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1610,6 +1612,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policyAssignments/"
                         + global::System.Uri.EscapeDataString(policyAssignmentName)
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -1641,9 +1645,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsGetById(string policyAssignmentId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsGetById(string policyAssignmentId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1683,9 +1687,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsGetByIdViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsGetByIdViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1735,7 +1739,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsGetByIdViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1785,7 +1789,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsGetByIdWithResult(string policyAssignmentId, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1843,14 +1847,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -1880,7 +1884,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyAssignmentsGetById_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyAssignmentsGetById_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1905,7 +1909,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1941,6 +1945,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves a single policy assignment, given its name and the scope it was created at.
         /// </summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -1949,9 +1955,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsGetViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1973,6 +1979,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policyAssignments/"
                         + policyAssignmentName
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -1993,15 +2001,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves a single policy assignment, given its name and the scope it was created at.
         /// </summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsGetViaIdentityWithResult(global::System.String viaIdentity, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2023,6 +2033,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policyAssignments/"
                         + policyAssignmentName
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -2046,15 +2058,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
         /// or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'</param>
         /// <param name="policyAssignmentName">The name of the policy assignment to get.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsGetWithResult(string scope, string policyAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsGetWithResult(string scope, string policyAssignmentName, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2065,6 +2079,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policyAssignments/"
                         + global::System.Uri.EscapeDataString(policyAssignmentName)
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -2114,14 +2130,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -2151,7 +2167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyAssignmentsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyAssignmentsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2176,7 +2192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2199,17 +2215,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
         /// or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'</param>
         /// <param name="policyAssignmentName">The name of the policy assignment to get.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyAssignmentsGet_Validate(string scope, string policyAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PolicyAssignmentsGet_Validate(string scope, string policyAssignmentName, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(scope),scope);
                 await eventListener.AssertNotNull(nameof(policyAssignmentName),policyAssignmentName);
                 await eventListener.AssertRegEx(nameof(policyAssignmentName), policyAssignmentName, @"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$");
+                await eventListener.AssertNotNull(nameof(Expand),Expand);
             }
         }
 
@@ -2231,6 +2250,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2240,9 +2261,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsList(string subscriptionId, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsList(string subscriptionId, string Filter, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2253,6 +2274,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policyAssignments"
                         + "?"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
@@ -2287,6 +2310,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2296,9 +2321,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsListForManagementGroup(string managementGroupId, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsListForManagementGroup(string managementGroupId, string Filter, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2310,6 +2335,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "?"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
                         + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -2343,6 +2370,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2352,9 +2381,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsListForManagementGroupViaIdentity(global::System.String viaIdentity, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsListForManagementGroupViaIdentity(global::System.String viaIdentity, string Filter, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2375,6 +2404,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policyAssignments"
                         + "?"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
@@ -2409,6 +2440,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -2416,9 +2449,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult> PolicyAssignmentsListForManagementGroupViaIdentityWithResult(global::System.String viaIdentity, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult> PolicyAssignmentsListForManagementGroupViaIdentityWithResult(global::System.String viaIdentity, string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2439,6 +2472,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policyAssignments"
                         + "?"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
@@ -2473,6 +2508,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -2480,9 +2517,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult> PolicyAssignmentsListForManagementGroupWithResult(string managementGroupId, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult> PolicyAssignmentsListForManagementGroupWithResult(string managementGroupId, string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2493,6 +2530,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policyAssignments"
                         + "?"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
@@ -2547,14 +2586,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -2586,7 +2625,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyAssignmentsListForManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyAssignmentsListForManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2611,7 +2650,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2637,17 +2676,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyAssignmentsListForManagementGroup_Validate(string managementGroupId, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PolicyAssignmentsListForManagementGroup_Validate(string managementGroupId, string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(managementGroupId),managementGroupId);
                 await eventListener.AssertNotNull(nameof(Filter),Filter);
+                await eventListener.AssertNotNull(nameof(Expand),Expand);
                 await eventListener.AssertIsGreaterThanOrEqual(nameof(Top),Top,1);
                 await eventListener.AssertIsLessThanOrEqual(nameof(Top),Top,1000);
             }
@@ -2685,6 +2727,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2694,9 +2738,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsListForResource(string subscriptionId, string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsListForResource(string subscriptionId, string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string Filter, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2717,6 +2761,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policyAssignments"
                         + "?"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
@@ -2755,6 +2801,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2764,9 +2812,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsListForResourceGroup(string subscriptionId, string resourceGroupName, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsListForResourceGroup(string subscriptionId, string resourceGroupName, string Filter, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2780,6 +2828,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "?"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
                         + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -2816,6 +2866,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2825,9 +2877,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsListForResourceGroupViaIdentity(global::System.String viaIdentity, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsListForResourceGroupViaIdentity(global::System.String viaIdentity, string Filter, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2851,6 +2903,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policyAssignments"
                         + "?"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
@@ -2888,6 +2942,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -2895,9 +2951,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult> PolicyAssignmentsListForResourceGroupViaIdentityWithResult(global::System.String viaIdentity, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult> PolicyAssignmentsListForResourceGroupViaIdentityWithResult(global::System.String viaIdentity, string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2921,6 +2977,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policyAssignments"
                         + "?"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
@@ -2959,6 +3017,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -2966,9 +3026,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult> PolicyAssignmentsListForResourceGroupWithResult(string subscriptionId, string resourceGroupName, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult> PolicyAssignmentsListForResourceGroupWithResult(string subscriptionId, string resourceGroupName, string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2981,6 +3041,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policyAssignments"
                         + "?"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
@@ -3035,14 +3097,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -3074,7 +3136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyAssignmentsListForResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyAssignmentsListForResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3099,7 +3161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3126,12 +3188,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyAssignmentsListForResourceGroup_Validate(string subscriptionId, string resourceGroupName, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PolicyAssignmentsListForResourceGroup_Validate(string subscriptionId, string resourceGroupName, string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3142,6 +3206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertRegEx(nameof(resourceGroupName), resourceGroupName, @"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(Filter),Filter);
+                await eventListener.AssertNotNull(nameof(Expand),Expand);
                 await eventListener.AssertIsGreaterThanOrEqual(nameof(Top),Top,1);
                 await eventListener.AssertIsLessThanOrEqual(nameof(Top),Top,1000);
             }
@@ -3173,6 +3238,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3182,9 +3249,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsListForResourceViaIdentity(global::System.String viaIdentity, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsListForResourceViaIdentity(global::System.String viaIdentity, string Filter, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3220,6 +3287,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policyAssignments"
                         + "?"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
@@ -3265,6 +3334,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -3272,9 +3343,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult> PolicyAssignmentsListForResourceViaIdentityWithResult(global::System.String viaIdentity, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult> PolicyAssignmentsListForResourceViaIdentityWithResult(global::System.String viaIdentity, string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3310,6 +3381,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policyAssignments"
                         + "?"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
@@ -3361,6 +3434,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -3368,9 +3443,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult> PolicyAssignmentsListForResourceWithResult(string subscriptionId, string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult> PolicyAssignmentsListForResourceWithResult(string subscriptionId, string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3391,6 +3466,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policyAssignments"
                         + "?"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
@@ -3445,14 +3522,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -3482,7 +3559,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyAssignmentsListForResource_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyAssignmentsListForResource_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3507,7 +3584,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3539,12 +3616,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyAssignmentsListForResource_Validate(string subscriptionId, string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PolicyAssignmentsListForResource_Validate(string subscriptionId, string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3560,6 +3639,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                 await eventListener.AssertNotNull(nameof(resourceName),resourceName);
                 await eventListener.AssertRegEx(nameof(resourceName), resourceName, @"^.+$");
                 await eventListener.AssertNotNull(nameof(Filter),Filter);
+                await eventListener.AssertNotNull(nameof(Expand),Expand);
                 await eventListener.AssertIsGreaterThanOrEqual(nameof(Top),Top,1);
                 await eventListener.AssertIsLessThanOrEqual(nameof(Top),Top,1000);
             }
@@ -3583,6 +3663,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3592,9 +3674,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsListViaIdentity(global::System.String viaIdentity, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsListViaIdentity(global::System.String viaIdentity, string Filter, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3615,6 +3697,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policyAssignments"
                         + "?"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
@@ -3652,6 +3736,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -3659,9 +3745,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult> PolicyAssignmentsListViaIdentityWithResult(global::System.String viaIdentity, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult> PolicyAssignmentsListViaIdentityWithResult(global::System.String viaIdentity, string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3682,6 +3768,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policyAssignments"
                         + "?"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
@@ -3719,6 +3807,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -3726,9 +3816,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult> PolicyAssignmentsListWithResult(string subscriptionId, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult> PolicyAssignmentsListWithResult(string subscriptionId, string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3739,6 +3829,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policyAssignments"
                         + "?"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         + "&"
@@ -3791,14 +3883,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -3828,7 +3920,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyAssignmentsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyAssignmentsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3853,7 +3945,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3879,18 +3971,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned
         /// list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided,
         /// the returned list includes all policy assignments of the policy definition whose id is {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyAssignmentsList_Validate(string subscriptionId, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PolicyAssignmentsList_Validate(string subscriptionId, string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
                 await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(Filter),Filter);
+                await eventListener.AssertNotNull(nameof(Expand),Expand);
                 await eventListener.AssertIsGreaterThanOrEqual(nameof(Top),Top,1);
                 await eventListener.AssertIsLessThanOrEqual(nameof(Top),Top,1000);
             }
@@ -3915,9 +4010,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsUpdate(string scope, string policyAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsUpdate(string scope, string policyAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3967,9 +4062,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsUpdateById(string policyAssignmentId, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsUpdateById(string policyAssignmentId, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4017,9 +4112,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsUpdateByIdViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsUpdateByIdViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4077,7 +4172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsUpdateByIdViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4134,9 +4229,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsUpdateByIdViaJsonString(string policyAssignmentId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsUpdateByIdViaJsonString(string policyAssignmentId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4183,7 +4278,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsUpdateByIdViaJsonStringWithResult(string policyAssignmentId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4231,7 +4326,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsUpdateByIdWithResult(string policyAssignmentId, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4295,14 +4390,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -4332,7 +4427,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyAssignmentsUpdateById_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyAssignmentsUpdateById_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4357,7 +4452,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4408,9 +4503,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4468,7 +4563,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4528,9 +4623,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyAssignmentsUpdateViaJsonString(string scope, string policyAssignmentName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyAssignmentsUpdateViaJsonString(string scope, string policyAssignmentName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4579,7 +4674,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsUpdateViaJsonStringWithResult(string scope, string policyAssignmentName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4629,7 +4724,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment> PolicyAssignmentsUpdateWithResult(string scope, string policyAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4693,14 +4788,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -4730,7 +4825,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyAssignmentsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyAssignmentsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4755,7 +4850,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4813,9 +4908,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsCreateOrUpdate(string subscriptionId, string policyDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsCreateOrUpdate(string subscriptionId, string policyDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4866,9 +4961,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsCreateOrUpdateAtManagementGroup(string managementGroupName, string policyDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsCreateOrUpdateAtManagementGroup(string managementGroupName, string policyDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4916,9 +5011,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4977,7 +5072,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion> PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5039,9 +5134,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupViaJsonString(string managementGroupName, string policyDefinitionName, string policyDefinitionVersion, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupViaJsonString(string managementGroupName, string policyDefinitionName, string policyDefinitionVersion, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5090,7 +5185,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion> PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupViaJsonStringWithResult(string managementGroupName, string policyDefinitionName, string policyDefinitionVersion, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5140,7 +5235,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion> PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupWithResult(string managementGroupName, string policyDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5214,14 +5309,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -5254,7 +5349,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsCreateOrUpdateAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsCreateOrUpdateAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5285,7 +5380,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5344,9 +5439,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5405,7 +5500,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion> PolicyDefinitionVersionsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5467,9 +5562,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsCreateOrUpdateViaJsonString(string subscriptionId, string policyDefinitionName, string policyDefinitionVersion, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsCreateOrUpdateViaJsonString(string subscriptionId, string policyDefinitionName, string policyDefinitionVersion, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5518,7 +5613,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion> PolicyDefinitionVersionsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string policyDefinitionName, string policyDefinitionVersion, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5568,7 +5663,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion> PolicyDefinitionVersionsCreateOrUpdateWithResult(string subscriptionId, string policyDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5642,14 +5737,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -5682,7 +5777,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5713,7 +5808,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5772,9 +5867,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsDelete(string subscriptionId, string policyDefinitionName, string policyDefinitionVersion, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsDelete(string subscriptionId, string policyDefinitionName, string policyDefinitionVersion, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5819,9 +5914,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsDeleteAtManagementGroup(string managementGroupName, string policyDefinitionName, string policyDefinitionVersion, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsDeleteAtManagementGroup(string managementGroupName, string policyDefinitionName, string policyDefinitionVersion, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5863,9 +5958,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsDeleteAtManagementGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsDeleteAtManagementGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5919,7 +6014,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsDeleteAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsDeleteAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5950,7 +6045,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6004,9 +6099,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6058,7 +6153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6089,7 +6184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6144,9 +6239,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsGet(string subscriptionId, string policyDefinitionName, string policyDefinitionVersion, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsGet(string subscriptionId, string policyDefinitionName, string policyDefinitionVersion, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6190,9 +6285,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsGetAtManagementGroup(string managementGroupName, string policyDefinitionName, string policyDefinitionVersion, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsGetAtManagementGroup(string managementGroupName, string policyDefinitionName, string policyDefinitionVersion, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6233,9 +6328,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsGetAtManagementGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsGetAtManagementGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6288,7 +6383,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion> PolicyDefinitionVersionsGetAtManagementGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6344,7 +6439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion> PolicyDefinitionVersionsGetAtManagementGroupWithResult(string managementGroupName, string policyDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6408,14 +6503,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -6447,7 +6542,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsGetAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsGetAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6472,7 +6567,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6527,9 +6622,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsGetBuiltIn(string policyDefinitionName, string policyDefinitionVersion, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsGetBuiltIn(string policyDefinitionName, string policyDefinitionVersion, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6568,9 +6663,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsGetBuiltInViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsGetBuiltInViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6620,7 +6715,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion> PolicyDefinitionVersionsGetBuiltInViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6672,7 +6767,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion> PolicyDefinitionVersionsGetBuiltInWithResult(string policyDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6734,14 +6829,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -6771,7 +6866,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsGetBuiltIn_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsGetBuiltIn_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6796,7 +6891,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6845,9 +6940,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6900,7 +6995,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion> PolicyDefinitionVersionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6956,7 +7051,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion> PolicyDefinitionVersionsGetWithResult(string subscriptionId, string policyDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7020,14 +7115,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -7057,7 +7152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7082,7 +7177,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7136,9 +7231,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsList(string subscriptionId, string policyDefinitionName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsList(string subscriptionId, string policyDefinitionName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7180,9 +7275,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListAll(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListAll(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7220,9 +7315,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListAllAtManagementGroup(string managementGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListAllAtManagementGroup(string managementGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7260,9 +7355,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListAllAtManagementGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListAllAtManagementGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7310,7 +7405,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult> PolicyDefinitionVersionsListAllAtManagementGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7358,7 +7453,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult> PolicyDefinitionVersionsListAllAtManagementGroupWithResult(string managementGroupName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7419,14 +7514,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -7458,7 +7553,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListAllAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListAllAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7483,7 +7578,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7528,9 +7623,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListAllBuiltins(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListAllBuiltins(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7566,9 +7661,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListAllBuiltinsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListAllBuiltinsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7613,7 +7708,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult> PolicyDefinitionVersionsListAllBuiltinsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7657,7 +7752,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult> PolicyDefinitionVersionsListAllBuiltinsWithResult(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7716,14 +7811,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -7755,7 +7850,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListAllBuiltins_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListAllBuiltins_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7780,7 +7875,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7823,9 +7918,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListAllViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListAllViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7873,7 +7968,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult> PolicyDefinitionVersionsListAllViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7921,7 +8016,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult> PolicyDefinitionVersionsListAllWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7982,14 +8077,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -8019,7 +8114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListAll_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListAll_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8044,7 +8139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -8090,9 +8185,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListBuiltIn(string policyDefinitionName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListBuiltIn(string policyDefinitionName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8133,9 +8228,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListBuiltInViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListBuiltInViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8186,7 +8281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult> PolicyDefinitionVersionsListBuiltInViaIdentityWithResult(global::System.String viaIdentity, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8237,7 +8332,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult> PolicyDefinitionVersionsListBuiltInWithResult(string policyDefinitionName, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8300,14 +8395,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -8339,7 +8434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListBuiltIn_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListBuiltIn_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8364,7 +8459,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -8415,9 +8510,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListByManagementGroup(string managementGroupName, string policyDefinitionName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListByManagementGroup(string managementGroupName, string policyDefinitionName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8461,9 +8556,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListByManagementGroupViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListByManagementGroupViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8518,7 +8613,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult> PolicyDefinitionVersionsListByManagementGroupViaIdentityWithResult(global::System.String viaIdentity, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8574,7 +8669,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult> PolicyDefinitionVersionsListByManagementGroupWithResult(string managementGroupName, string policyDefinitionName, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8639,14 +8734,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -8678,7 +8773,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListByManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListByManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8703,7 +8798,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -8756,9 +8851,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionVersionsListViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8812,7 +8907,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult> PolicyDefinitionVersionsListViaIdentityWithResult(global::System.String viaIdentity, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8867,7 +8962,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult> PolicyDefinitionVersionsListWithResult(string subscriptionId, string policyDefinitionName, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8932,14 +9027,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -8969,7 +9064,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionVersionsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8994,7 +9089,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -9048,9 +9143,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsCreateOrUpdate(string subscriptionId, string policyDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsCreateOrUpdate(string subscriptionId, string policyDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9096,9 +9191,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsCreateOrUpdateAtManagementGroup(string managementGroupId, string policyDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsCreateOrUpdateAtManagementGroup(string managementGroupId, string policyDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9143,9 +9238,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsCreateOrUpdateAtManagementGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsCreateOrUpdateAtManagementGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9201,7 +9296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition> PolicyDefinitionsCreateOrUpdateAtManagementGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9257,9 +9352,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsCreateOrUpdateAtManagementGroupViaJsonString(string managementGroupId, string policyDefinitionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsCreateOrUpdateAtManagementGroupViaJsonString(string managementGroupId, string policyDefinitionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9304,7 +9399,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition> PolicyDefinitionsCreateOrUpdateAtManagementGroupViaJsonStringWithResult(string managementGroupId, string policyDefinitionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9350,7 +9445,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition> PolicyDefinitionsCreateOrUpdateAtManagementGroupWithResult(string managementGroupId, string policyDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9416,14 +9511,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -9455,7 +9550,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionsCreateOrUpdateAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionsCreateOrUpdateAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -9480,7 +9575,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -9532,9 +9627,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9590,7 +9685,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition> PolicyDefinitionsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9646,9 +9741,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsCreateOrUpdateViaJsonString(string subscriptionId, string policyDefinitionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsCreateOrUpdateViaJsonString(string subscriptionId, string policyDefinitionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9693,7 +9788,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition> PolicyDefinitionsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string policyDefinitionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9739,7 +9834,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition> PolicyDefinitionsCreateOrUpdateWithResult(string subscriptionId, string policyDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9805,14 +9900,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -9842,7 +9937,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -9867,7 +9962,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -9920,9 +10015,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsDelete(string subscriptionId, string policyDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsDelete(string subscriptionId, string policyDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9963,9 +10058,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsDeleteAtManagementGroup(string managementGroupId, string policyDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsDeleteAtManagementGroup(string managementGroupId, string policyDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10005,9 +10100,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsDeleteAtManagementGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsDeleteAtManagementGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10058,7 +10153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionsDeleteAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionsDeleteAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10089,7 +10184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -10137,9 +10232,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10188,7 +10283,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10219,7 +10314,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -10268,9 +10363,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsGet(string subscriptionId, string policyDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsGet(string subscriptionId, string policyDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10310,9 +10405,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsGetAtManagementGroup(string managementGroupId, string policyDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsGetAtManagementGroup(string managementGroupId, string policyDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10351,9 +10446,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsGetAtManagementGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsGetAtManagementGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10403,7 +10498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition> PolicyDefinitionsGetAtManagementGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10454,7 +10549,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition> PolicyDefinitionsGetAtManagementGroupWithResult(string managementGroupId, string policyDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10516,14 +10611,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -10555,7 +10650,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionsGetAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionsGetAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10580,7 +10675,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -10625,9 +10720,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsGetBuiltIn(string policyDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsGetBuiltIn(string policyDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10662,9 +10757,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsGetBuiltInViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsGetBuiltInViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10709,7 +10804,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition> PolicyDefinitionsGetBuiltInViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10754,7 +10849,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition> PolicyDefinitionsGetBuiltInWithResult(string policyDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10814,14 +10909,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -10851,7 +10946,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionsGetBuiltIn_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionsGetBuiltIn_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10876,7 +10971,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -10921,9 +11016,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10973,7 +11068,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition> PolicyDefinitionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11024,7 +11119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition> PolicyDefinitionsGetWithResult(string subscriptionId, string policyDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11084,14 +11179,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -11121,7 +11216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -11146,7 +11241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -11208,9 +11303,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsList(string subscriptionId, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsList(string subscriptionId, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11261,9 +11356,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsListBuiltIn(string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsListBuiltIn(string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11313,9 +11408,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsListBuiltInViaIdentity(global::System.String viaIdentity, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsListBuiltInViaIdentity(global::System.String viaIdentity, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11374,7 +11469,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult> PolicyDefinitionsListBuiltInViaIdentityWithResult(global::System.String viaIdentity, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11432,7 +11527,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult> PolicyDefinitionsListBuiltInWithResult(string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11495,14 +11590,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -11532,7 +11627,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionsListBuiltIn_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionsListBuiltIn_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -11557,7 +11652,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -11623,9 +11718,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsListByManagementGroup(string managementGroupId, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsListByManagementGroup(string managementGroupId, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11681,9 +11776,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsListByManagementGroupViaIdentity(global::System.String viaIdentity, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsListByManagementGroupViaIdentity(global::System.String viaIdentity, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11749,7 +11844,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult> PolicyDefinitionsListByManagementGroupViaIdentityWithResult(global::System.String viaIdentity, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11815,7 +11910,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult> PolicyDefinitionsListByManagementGroupWithResult(string managementGroupId, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11880,14 +11975,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -11919,7 +12014,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionsListByManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionsListByManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -11944,7 +12039,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -12012,9 +12107,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicyDefinitionsListViaIdentity(global::System.String viaIdentity, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicyDefinitionsListViaIdentity(global::System.String viaIdentity, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12080,7 +12175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult> PolicyDefinitionsListViaIdentityWithResult(global::System.String viaIdentity, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12146,7 +12241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult> PolicyDefinitionsListWithResult(string subscriptionId, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12209,14 +12304,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -12246,7 +12341,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicyDefinitionsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicyDefinitionsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -12271,7 +12366,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -12336,7 +12431,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task PolicyExemptionsCreateOrUpdate(string scope, string policyExemptionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12386,7 +12481,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task PolicyExemptionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12444,7 +12539,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption> PolicyExemptionsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12507,7 +12602,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task PolicyExemptionsCreateOrUpdateViaJsonString(string scope, string policyExemptionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12556,7 +12651,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption> PolicyExemptionsCreateOrUpdateViaJsonStringWithResult(string scope, string policyExemptionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12606,7 +12701,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption> PolicyExemptionsCreateOrUpdateWithResult(string scope, string policyExemptionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12805,7 +12900,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task PolicyExemptionsDelete(string scope, string policyExemptionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12848,7 +12943,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task PolicyExemptionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12981,7 +13076,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task PolicyExemptionsGet(string scope, string policyExemptionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13022,7 +13117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task PolicyExemptionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13072,7 +13167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption> PolicyExemptionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13125,7 +13220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption> PolicyExemptionsGetWithResult(string scope, string policyExemptionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13310,7 +13405,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task PolicyExemptionsList(string subscriptionId, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13364,7 +13459,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task PolicyExemptionsListForManagementGroup(string managementGroupId, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13418,7 +13513,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task PolicyExemptionsListForManagementGroupViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13480,7 +13575,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionListResult> PolicyExemptionsListForManagementGroupViaIdentityWithResult(global::System.String viaIdentity, string Filter, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13542,7 +13637,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionListResult> PolicyExemptionsListForManagementGroupWithResult(string managementGroupId, string Filter, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13752,7 +13847,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task PolicyExemptionsListForResource(string subscriptionId, string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13818,7 +13913,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task PolicyExemptionsListForResourceGroup(string subscriptionId, string resourceGroupName, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13875,7 +13970,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task PolicyExemptionsListForResourceGroupViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13941,7 +14036,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionListResult> PolicyExemptionsListForResourceGroupViaIdentityWithResult(global::System.String viaIdentity, string Filter, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14008,7 +14103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionListResult> PolicyExemptionsListForResourceGroupWithResult(string subscriptionId, string resourceGroupName, string Filter, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14220,7 +14315,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task PolicyExemptionsListForResourceViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14306,7 +14401,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionListResult> PolicyExemptionsListForResourceViaIdentityWithResult(global::System.String viaIdentity, string Filter, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14398,7 +14493,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionListResult> PolicyExemptionsListForResourceWithResult(string subscriptionId, string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string Filter, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14617,7 +14712,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task PolicyExemptionsListViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14680,7 +14775,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionListResult> PolicyExemptionsListViaIdentityWithResult(global::System.String viaIdentity, string Filter, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14743,7 +14838,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionListResult> PolicyExemptionsListWithResult(string subscriptionId, string Filter, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14926,7 +15021,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task PolicyExemptionsUpdate(string scope, string policyExemptionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14971,7 +15066,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task PolicyExemptionsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15025,7 +15120,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption> PolicyExemptionsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15083,7 +15178,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task PolicyExemptionsUpdateViaJsonString(string scope, string policyExemptionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15128,7 +15223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption> PolicyExemptionsUpdateViaJsonStringWithResult(string scope, string policyExemptionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15174,7 +15269,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption> PolicyExemptionsUpdateWithResult(string scope, string policyExemptionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-07-01-preview";
+            var apiVersion = @"2024-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15357,9 +15452,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsCreateOrUpdate(string subscriptionId, string policySetDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsCreateOrUpdate(string subscriptionId, string policySetDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15410,9 +15505,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroup(string managementGroupName, string policySetDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroup(string managementGroupName, string policySetDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15460,9 +15555,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15521,7 +15616,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion> PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15583,9 +15678,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupViaJsonString(string managementGroupName, string policySetDefinitionName, string policyDefinitionVersion, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupViaJsonString(string managementGroupName, string policySetDefinitionName, string policyDefinitionVersion, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15634,7 +15729,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion> PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupViaJsonStringWithResult(string managementGroupName, string policySetDefinitionName, string policyDefinitionVersion, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15684,7 +15779,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion> PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupWithResult(string managementGroupName, string policySetDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15758,14 +15853,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -15798,7 +15893,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -15829,7 +15924,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -15888,9 +15983,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15949,7 +16044,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion> PolicySetDefinitionVersionsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16011,9 +16106,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsCreateOrUpdateViaJsonString(string subscriptionId, string policySetDefinitionName, string policyDefinitionVersion, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsCreateOrUpdateViaJsonString(string subscriptionId, string policySetDefinitionName, string policyDefinitionVersion, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16062,7 +16157,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion> PolicySetDefinitionVersionsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string policySetDefinitionName, string policyDefinitionVersion, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16112,7 +16207,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion> PolicySetDefinitionVersionsCreateOrUpdateWithResult(string subscriptionId, string policySetDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16186,14 +16281,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -16226,7 +16321,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -16257,7 +16352,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -16316,9 +16411,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsDelete(string subscriptionId, string policySetDefinitionName, string policyDefinitionVersion, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsDelete(string subscriptionId, string policySetDefinitionName, string policyDefinitionVersion, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16363,9 +16458,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsDeleteAtManagementGroup(string managementGroupName, string policySetDefinitionName, string policyDefinitionVersion, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsDeleteAtManagementGroup(string managementGroupName, string policySetDefinitionName, string policyDefinitionVersion, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16407,9 +16502,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsDeleteAtManagementGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsDeleteAtManagementGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16463,7 +16558,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsDeleteAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsDeleteAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -16494,7 +16589,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -16548,9 +16643,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16602,7 +16697,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -16633,7 +16728,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -16680,6 +16775,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
         /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -16688,9 +16785,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGet(string subscriptionId, string policySetDefinitionName, string policyDefinitionVersion, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGet(string subscriptionId, string policySetDefinitionName, string policyDefinitionVersion, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16703,6 +16800,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/versions/"
                         + global::System.Uri.EscapeDataString(policyDefinitionVersion)
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -16726,6 +16825,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
         /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -16734,9 +16835,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGetAtManagementGroup(string managementGroupName, string policySetDefinitionName, string policyDefinitionVersion, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGetAtManagementGroup(string managementGroupName, string policySetDefinitionName, string policyDefinitionVersion, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16749,6 +16850,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/versions/"
                         + global::System.Uri.EscapeDataString(policyDefinitionVersion)
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -16769,6 +16872,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves the policy set definition version in the given management group with the given name and version.
         /// </summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -16777,9 +16882,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGetAtManagementGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGetAtManagementGroupViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16804,6 +16909,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/versions/"
                         + policyDefinitionVersion
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -16824,15 +16931,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves the policy set definition version in the given management group with the given name and version.
         /// </summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion> PolicySetDefinitionVersionsGetAtManagementGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion> PolicySetDefinitionVersionsGetAtManagementGroupViaIdentityWithResult(global::System.String viaIdentity, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16857,6 +16966,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/versions/"
                         + policyDefinitionVersion
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -16880,15 +16991,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
         /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion> PolicySetDefinitionVersionsGetAtManagementGroupWithResult(string managementGroupName, string policySetDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion> PolicySetDefinitionVersionsGetAtManagementGroupWithResult(string managementGroupName, string policySetDefinitionName, string policyDefinitionVersion, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16901,6 +17014,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/versions/"
                         + global::System.Uri.EscapeDataString(policyDefinitionVersion)
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -16952,14 +17067,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -16991,7 +17106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGetAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGetAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -17016,7 +17131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -17039,11 +17154,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
         /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGetAtManagementGroup_Validate(string managementGroupName, string policySetDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGetAtManagementGroup_Validate(string managementGroupName, string policySetDefinitionName, string policyDefinitionVersion, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -17054,6 +17171,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                 await eventListener.AssertRegEx(nameof(policySetDefinitionName), policySetDefinitionName, @"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$");
                 await eventListener.AssertNotNull(nameof(policyDefinitionVersion),policyDefinitionVersion);
                 await eventListener.AssertRegEx(nameof(policyDefinitionVersion), policyDefinitionVersion, @"^\d+\.\d+\.\d+$");
+                await eventListener.AssertNotNull(nameof(Expand),Expand);
             }
         }
 
@@ -17063,6 +17181,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
         /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -17071,9 +17191,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGetBuiltIn(string policySetDefinitionName, string policyDefinitionVersion, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGetBuiltIn(string policySetDefinitionName, string policyDefinitionVersion, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17084,6 +17204,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/versions/"
                         + global::System.Uri.EscapeDataString(policyDefinitionVersion)
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -17104,6 +17226,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves the built-in policy set definition version with the given name and version.
         /// </summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -17112,9 +17236,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGetBuiltInViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGetBuiltInViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17136,6 +17260,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/versions/"
                         + policyDefinitionVersion
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -17156,15 +17282,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves the built-in policy set definition version with the given name and version.
         /// </summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion> PolicySetDefinitionVersionsGetBuiltInViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion> PolicySetDefinitionVersionsGetBuiltInViaIdentityWithResult(global::System.String viaIdentity, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17186,6 +17314,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/versions/"
                         + policyDefinitionVersion
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -17208,15 +17338,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
         /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion> PolicySetDefinitionVersionsGetBuiltInWithResult(string policySetDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion> PolicySetDefinitionVersionsGetBuiltInWithResult(string policySetDefinitionName, string policyDefinitionVersion, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17227,6 +17359,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/versions/"
                         + global::System.Uri.EscapeDataString(policyDefinitionVersion)
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -17278,14 +17412,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -17317,7 +17451,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGetBuiltIn_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGetBuiltIn_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -17342,7 +17476,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -17364,11 +17498,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
         /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGetBuiltIn_Validate(string policySetDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGetBuiltIn_Validate(string policySetDefinitionName, string policyDefinitionVersion, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -17376,6 +17512,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                 await eventListener.AssertRegEx(nameof(policySetDefinitionName), policySetDefinitionName, @"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$");
                 await eventListener.AssertNotNull(nameof(policyDefinitionVersion),policyDefinitionVersion);
                 await eventListener.AssertRegEx(nameof(policyDefinitionVersion), policyDefinitionVersion, @"^\d+\.\d+\.\d+$");
+                await eventListener.AssertNotNull(nameof(Expand),Expand);
             }
         }
 
@@ -17383,6 +17520,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves the policy set definition version in the given subscription with the given name and version.
         /// </summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -17391,9 +17530,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGetViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17418,6 +17557,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/versions/"
                         + policyDefinitionVersion
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -17438,15 +17579,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves the policy set definition version in the given subscription with the given name and version.
         /// </summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion> PolicySetDefinitionVersionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion> PolicySetDefinitionVersionsGetViaIdentityWithResult(global::System.String viaIdentity, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17471,6 +17614,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/versions/"
                         + policyDefinitionVersion
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -17494,15 +17639,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
         /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion> PolicySetDefinitionVersionsGetWithResult(string subscriptionId, string policySetDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion> PolicySetDefinitionVersionsGetWithResult(string subscriptionId, string policySetDefinitionName, string policyDefinitionVersion, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17515,6 +17662,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/versions/"
                         + global::System.Uri.EscapeDataString(policyDefinitionVersion)
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -17566,14 +17715,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -17603,7 +17752,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -17628,7 +17777,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -17651,11 +17800,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
         /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGet_Validate(string subscriptionId, string policySetDefinitionName, string policyDefinitionVersion, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsGet_Validate(string subscriptionId, string policySetDefinitionName, string policyDefinitionVersion, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -17665,6 +17816,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                 await eventListener.AssertRegEx(nameof(policySetDefinitionName), policySetDefinitionName, @"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$");
                 await eventListener.AssertNotNull(nameof(policyDefinitionVersion),policyDefinitionVersion);
                 await eventListener.AssertRegEx(nameof(policyDefinitionVersion), policyDefinitionVersion, @"^\d+\.\d+\.\d+$");
+                await eventListener.AssertNotNull(nameof(Expand),Expand);
             }
         }
 
@@ -17673,6 +17825,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -17682,9 +17836,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsList(string subscriptionId, string policySetDefinitionName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsList(string subscriptionId, string policySetDefinitionName, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17697,6 +17851,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/versions"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -17726,9 +17882,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListAll(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListAll(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17766,9 +17922,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListAllAtManagementGroup(string managementGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListAllAtManagementGroup(string managementGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17806,9 +17962,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListAllAtManagementGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListAllAtManagementGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17856,7 +18012,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult> PolicySetDefinitionVersionsListAllAtManagementGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17904,7 +18060,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult> PolicySetDefinitionVersionsListAllAtManagementGroupWithResult(string managementGroupName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17965,14 +18121,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -18004,7 +18160,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListAllAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListAllAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -18029,7 +18185,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -18074,9 +18230,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListAllBuiltins(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListAllBuiltins(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18112,9 +18268,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListAllBuiltinsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListAllBuiltinsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18159,7 +18315,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult> PolicySetDefinitionVersionsListAllBuiltinsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18203,7 +18359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult> PolicySetDefinitionVersionsListAllBuiltinsWithResult(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18262,14 +18418,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -18301,7 +18457,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListAllBuiltins_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListAllBuiltins_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -18326,7 +18482,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -18369,9 +18525,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListAllViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListAllViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18419,7 +18575,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult> PolicySetDefinitionVersionsListAllViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18467,7 +18623,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult> PolicySetDefinitionVersionsListAllWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18528,14 +18684,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -18565,7 +18721,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListAll_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListAll_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -18590,7 +18746,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -18627,6 +18783,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves a list of all the built-in policy set definition versions for the given built-in policy set definition.
         /// </summary>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -18636,9 +18794,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListBuiltIn(string policySetDefinitionName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListBuiltIn(string policySetDefinitionName, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18650,58 +18808,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.PolicySetDefinitionVersionsListBuiltIn_Call (request, onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>
-        /// This operation retrieves a list of all the built-in policy set definition versions for the given built-in policy set definition.
-        /// </summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListBuiltInViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2023-04-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.Authorization/policySetDefinitions/(?<policySetDefinitionName>[^/]+)/versions$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions'");
-                }
-
-                // replace URI parameters with values from identity
-                var policySetDefinitionName = _match.Groups["policySetDefinitionName"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/providers/Microsoft.Authorization/policySetDefinitions/"
-                        + policySetDefinitionName
-                        + "/versions"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -18723,16 +18830,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves a list of all the built-in policy set definition versions for the given built-in policy set definition.
         /// </summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>"
-        /// /> that will be complete when handling of the response is completed.
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult> PolicySetDefinitionVersionsListBuiltInViaIdentityWithResult(global::System.String viaIdentity, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListBuiltInViaIdentity(global::System.String viaIdentity, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18753,6 +18864,63 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/versions"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
+                        + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PolicySetDefinitionVersionsListBuiltIn_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// This operation retrieves a list of all the built-in policy set definition versions for the given built-in policy set definition.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
+        /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult> PolicySetDefinitionVersionsListBuiltInViaIdentityWithResult(global::System.String viaIdentity, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-03-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.Authorization/policySetDefinitions/(?<policySetDefinitionName>[^/]+)/versions$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions'");
+                }
+
+                // replace URI parameters with values from identity
+                var policySetDefinitionName = _match.Groups["policySetDefinitionName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.Authorization/policySetDefinitions/"
+                        + policySetDefinitionName
+                        + "/versions"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -18774,6 +18942,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves a list of all the built-in policy set definition versions for the given built-in policy set definition.
         /// </summary>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -18781,9 +18951,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult> PolicySetDefinitionVersionsListBuiltInWithResult(string policySetDefinitionName, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult> PolicySetDefinitionVersionsListBuiltInWithResult(string policySetDefinitionName, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18794,6 +18964,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/versions"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -18846,14 +19018,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -18885,7 +19057,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListBuiltIn_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListBuiltIn_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -18910,7 +19082,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -18930,17 +19102,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// you will get validation events back.
         /// </summary>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListBuiltIn_Validate(string policySetDefinitionName, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListBuiltIn_Validate(string policySetDefinitionName, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(policySetDefinitionName),policySetDefinitionName);
                 await eventListener.AssertRegEx(nameof(policySetDefinitionName), policySetDefinitionName, @"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$");
+                await eventListener.AssertNotNull(nameof(Expand),Expand);
                 await eventListener.AssertIsGreaterThanOrEqual(nameof(Top),Top,1);
                 await eventListener.AssertIsLessThanOrEqual(nameof(Top),Top,1000);
             }
@@ -18952,6 +19127,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -18961,9 +19138,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListByManagementGroup(string managementGroupName, string policySetDefinitionName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListByManagementGroup(string managementGroupName, string policySetDefinitionName, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18977,6 +19154,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -18998,6 +19177,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// management group.
         /// </summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -19007,9 +19188,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListByManagementGroupViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListByManagementGroupViaIdentity(global::System.String viaIdentity, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19034,6 +19215,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -19055,6 +19238,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// management group.
         /// </summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -19062,9 +19247,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult> PolicySetDefinitionVersionsListByManagementGroupViaIdentityWithResult(global::System.String viaIdentity, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult> PolicySetDefinitionVersionsListByManagementGroupViaIdentityWithResult(global::System.String viaIdentity, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19088,6 +19273,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/versions"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -19111,6 +19298,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -19118,9 +19307,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult> PolicySetDefinitionVersionsListByManagementGroupWithResult(string managementGroupName, string policySetDefinitionName, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult> PolicySetDefinitionVersionsListByManagementGroupWithResult(string managementGroupName, string policySetDefinitionName, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19133,6 +19322,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/versions"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -19185,14 +19376,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -19224,7 +19415,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListByManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListByManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -19249,7 +19440,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -19270,12 +19461,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListByManagementGroup_Validate(string managementGroupName, string policySetDefinitionName, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListByManagementGroup_Validate(string managementGroupName, string policySetDefinitionName, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -19284,6 +19477,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                 await eventListener.AssertMaximumLength(nameof(managementGroupName),managementGroupName,90);
                 await eventListener.AssertNotNull(nameof(policySetDefinitionName),policySetDefinitionName);
                 await eventListener.AssertRegEx(nameof(policySetDefinitionName), policySetDefinitionName, @"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$");
+                await eventListener.AssertNotNull(nameof(Expand),Expand);
                 await eventListener.AssertIsGreaterThanOrEqual(nameof(Top),Top,1);
                 await eventListener.AssertIsLessThanOrEqual(nameof(Top),Top,1000);
             }
@@ -19293,6 +19487,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves a list of all the policy set definition versions for the given policy set definition.
         /// </summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -19302,9 +19498,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsListViaIdentity(global::System.String viaIdentity, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19329,6 +19525,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -19349,6 +19547,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves a list of all the policy set definition versions for the given policy set definition.
         /// </summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -19356,9 +19556,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult> PolicySetDefinitionVersionsListViaIdentityWithResult(global::System.String viaIdentity, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult> PolicySetDefinitionVersionsListViaIdentityWithResult(global::System.String viaIdentity, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19382,6 +19582,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/versions"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -19404,6 +19606,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -19411,9 +19615,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult> PolicySetDefinitionVersionsListWithResult(string subscriptionId, string policySetDefinitionName, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult> PolicySetDefinitionVersionsListWithResult(string subscriptionId, string policySetDefinitionName, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19426,6 +19630,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/versions"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -19478,14 +19684,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -19515,7 +19721,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -19540,7 +19746,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -19561,12 +19767,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsList_Validate(string subscriptionId, string policySetDefinitionName, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionVersionsList_Validate(string subscriptionId, string policySetDefinitionName, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -19574,6 +19782,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                 await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(policySetDefinitionName),policySetDefinitionName);
                 await eventListener.AssertRegEx(nameof(policySetDefinitionName), policySetDefinitionName, @"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$");
+                await eventListener.AssertNotNull(nameof(Expand),Expand);
                 await eventListener.AssertIsGreaterThanOrEqual(nameof(Top),Top,1);
                 await eventListener.AssertIsLessThanOrEqual(nameof(Top),Top,1000);
             }
@@ -19595,9 +19804,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsCreateOrUpdate(string subscriptionId, string policySetDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsCreateOrUpdate(string subscriptionId, string policySetDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19644,9 +19853,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsCreateOrUpdateAtManagementGroup(string managementGroupId, string policySetDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsCreateOrUpdateAtManagementGroup(string managementGroupId, string policySetDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19692,9 +19901,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsCreateOrUpdateAtManagementGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsCreateOrUpdateAtManagementGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19750,7 +19959,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition> PolicySetDefinitionsCreateOrUpdateAtManagementGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19807,9 +20016,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsCreateOrUpdateAtManagementGroupViaJsonString(string managementGroupId, string policySetDefinitionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsCreateOrUpdateAtManagementGroupViaJsonString(string managementGroupId, string policySetDefinitionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19854,7 +20063,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition> PolicySetDefinitionsCreateOrUpdateAtManagementGroupViaJsonStringWithResult(string managementGroupId, string policySetDefinitionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19900,7 +20109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition> PolicySetDefinitionsCreateOrUpdateAtManagementGroupWithResult(string managementGroupId, string policySetDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19972,14 +20181,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -20012,7 +20221,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsCreateOrUpdateAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsCreateOrUpdateAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -20043,7 +20252,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -20096,9 +20305,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20154,7 +20363,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition> PolicySetDefinitionsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20211,9 +20420,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsCreateOrUpdateViaJsonString(string subscriptionId, string policySetDefinitionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsCreateOrUpdateViaJsonString(string subscriptionId, string policySetDefinitionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20258,7 +20467,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition> PolicySetDefinitionsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string policySetDefinitionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20304,7 +20513,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition> PolicySetDefinitionsCreateOrUpdateWithResult(string subscriptionId, string policySetDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition body, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20376,14 +20585,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -20414,7 +20623,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -20445,7 +20654,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -20498,9 +20707,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsDelete(string subscriptionId, string policySetDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsDelete(string subscriptionId, string policySetDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20541,9 +20750,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsDeleteAtManagementGroup(string managementGroupId, string policySetDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsDeleteAtManagementGroup(string managementGroupId, string policySetDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20583,9 +20792,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsDeleteAtManagementGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsDeleteAtManagementGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20636,7 +20845,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsDeleteAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsDeleteAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -20667,7 +20876,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -20715,9 +20924,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20766,7 +20975,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -20797,7 +21006,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -20838,6 +21047,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition to get.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -20846,9 +21057,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsGet(string subscriptionId, string policySetDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsGet(string subscriptionId, string policySetDefinitionName, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20859,6 +21070,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policySetDefinitions/"
                         + global::System.Uri.EscapeDataString(policySetDefinitionName)
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -20880,6 +21093,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupId">The ID of the management group.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition to get.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -20888,9 +21103,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsGetAtManagementGroup(string managementGroupId, string policySetDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsGetAtManagementGroup(string managementGroupId, string policySetDefinitionName, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20901,6 +21116,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policySetDefinitions/"
                         + global::System.Uri.EscapeDataString(policySetDefinitionName)
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -20921,6 +21138,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves the policy set definition in the given management group with the given name.
         /// </summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -20929,9 +21148,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsGetAtManagementGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsGetAtManagementGroupViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20953,6 +21172,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policySetDefinitions/"
                         + policySetDefinitionName
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -20973,15 +21194,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves the policy set definition in the given management group with the given name.
         /// </summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition> PolicySetDefinitionsGetAtManagementGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition> PolicySetDefinitionsGetAtManagementGroupViaIdentityWithResult(global::System.String viaIdentity, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21003,6 +21226,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policySetDefinitions/"
                         + policySetDefinitionName
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -21024,15 +21249,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupId">The ID of the management group.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition to get.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition> PolicySetDefinitionsGetAtManagementGroupWithResult(string managementGroupId, string policySetDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition> PolicySetDefinitionsGetAtManagementGroupWithResult(string managementGroupId, string policySetDefinitionName, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21043,6 +21270,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policySetDefinitions/"
                         + global::System.Uri.EscapeDataString(policySetDefinitionName)
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -21094,14 +21323,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -21133,7 +21362,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsGetAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsGetAtManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -21158,7 +21387,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -21179,17 +21408,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupId">The ID of the management group.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition to get.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsGetAtManagementGroup_Validate(string managementGroupId, string policySetDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsGetAtManagementGroup_Validate(string managementGroupId, string policySetDefinitionName, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(managementGroupId),managementGroupId);
                 await eventListener.AssertNotNull(nameof(policySetDefinitionName),policySetDefinitionName);
                 await eventListener.AssertRegEx(nameof(policySetDefinitionName), policySetDefinitionName, @"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$");
+                await eventListener.AssertNotNull(nameof(Expand),Expand);
             }
         }
 
@@ -21197,6 +21429,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves the built-in policy set definition with the given name.
         /// </summary>
         /// <param name="policySetDefinitionName">The name of the policy set definition to get.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -21205,9 +21439,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsGetBuiltIn(string policySetDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsGetBuiltIn(string policySetDefinitionName, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21216,6 +21450,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         "/providers/Microsoft.Authorization/policySetDefinitions/"
                         + global::System.Uri.EscapeDataString(policySetDefinitionName)
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -21236,6 +21472,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves the built-in policy set definition with the given name.
         /// </summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -21244,9 +21482,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsGetBuiltInViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsGetBuiltInViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21265,6 +21503,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         "/providers/Microsoft.Authorization/policySetDefinitions/"
                         + policySetDefinitionName
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -21285,15 +21525,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves the built-in policy set definition with the given name.
         /// </summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition> PolicySetDefinitionsGetBuiltInViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition> PolicySetDefinitionsGetBuiltInViaIdentityWithResult(global::System.String viaIdentity, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21312,6 +21554,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         "/providers/Microsoft.Authorization/policySetDefinitions/"
                         + policySetDefinitionName
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -21332,15 +21576,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves the built-in policy set definition with the given name.
         /// </summary>
         /// <param name="policySetDefinitionName">The name of the policy set definition to get.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition> PolicySetDefinitionsGetBuiltInWithResult(string policySetDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition> PolicySetDefinitionsGetBuiltInWithResult(string policySetDefinitionName, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21349,6 +21595,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         "/providers/Microsoft.Authorization/policySetDefinitions/"
                         + global::System.Uri.EscapeDataString(policySetDefinitionName)
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -21400,14 +21648,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -21437,7 +21685,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsGetBuiltIn_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsGetBuiltIn_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -21462,7 +21710,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -21482,16 +21730,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// get validation events back.
         /// </summary>
         /// <param name="policySetDefinitionName">The name of the policy set definition to get.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsGetBuiltIn_Validate(string policySetDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsGetBuiltIn_Validate(string policySetDefinitionName, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(policySetDefinitionName),policySetDefinitionName);
                 await eventListener.AssertRegEx(nameof(policySetDefinitionName), policySetDefinitionName, @"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$");
+                await eventListener.AssertNotNull(nameof(Expand),Expand);
             }
         }
 
@@ -21499,6 +21750,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves the policy set definition in the given subscription with the given name.
         /// </summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -21507,9 +21760,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsGetViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21531,6 +21784,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policySetDefinitions/"
                         + policySetDefinitionName
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -21551,15 +21806,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves the policy set definition in the given subscription with the given name.
         /// </summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition> PolicySetDefinitionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition> PolicySetDefinitionsGetViaIdentityWithResult(global::System.String viaIdentity, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21581,6 +21838,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policySetDefinitions/"
                         + policySetDefinitionName
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -21602,15 +21861,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition to get.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition> PolicySetDefinitionsGetWithResult(string subscriptionId, string policySetDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition> PolicySetDefinitionsGetWithResult(string subscriptionId, string policySetDefinitionName, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21621,6 +21882,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "/providers/Microsoft.Authorization/policySetDefinitions/"
                         + global::System.Uri.EscapeDataString(policySetDefinitionName)
                         + "?"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -21670,14 +21933,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -21707,7 +21970,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -21732,7 +21995,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -21753,11 +22016,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition to get.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsGet_Validate(string subscriptionId, string policySetDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsGet_Validate(string subscriptionId, string policySetDefinitionName, string Expand, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -21765,6 +22030,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                 await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(policySetDefinitionName),policySetDefinitionName);
                 await eventListener.AssertRegEx(nameof(policySetDefinitionName), policySetDefinitionName, @"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$");
+                await eventListener.AssertNotNull(nameof(Expand),Expand);
             }
         }
 
@@ -21785,6 +22051,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}. Possible
         /// policyType values are NotSpecified, BuiltIn, Custom, and Static. If $filter='category -eq {value}' is provided, the returned
         /// list only includes all policy set definitions whose category match the {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -21794,9 +22062,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsList(string subscriptionId, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsList(string subscriptionId, string Filter, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21809,6 +22077,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -21837,6 +22107,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}. Possible
         /// policyType values are NotSpecified, BuiltIn, Custom, and Static. If $filter='category -eq {value}' is provided, the returned
         /// list only includes all policy set definitions whose category match the {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -21846,9 +22118,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsListBuiltIn(string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsListBuiltIn(string Filter, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21859,6 +22131,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -21888,6 +22162,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}. Possible
         /// policyType values are NotSpecified, BuiltIn, Custom, and Static. If $filter='category -eq {value}' is provided, the returned
         /// list only includes all policy set definitions whose category match the {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -21897,9 +22173,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsListBuiltInViaIdentity(global::System.String viaIdentity, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsListBuiltInViaIdentity(global::System.String viaIdentity, string Filter, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21920,6 +22196,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "&"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
                         + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -21948,6 +22226,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}. Possible
         /// policyType values are NotSpecified, BuiltIn, Custom, and Static. If $filter='category -eq {value}' is provided, the returned
         /// list only includes all policy set definitions whose category match the {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -21955,9 +22235,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult> PolicySetDefinitionsListBuiltInViaIdentityWithResult(global::System.String viaIdentity, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult> PolicySetDefinitionsListBuiltInViaIdentityWithResult(global::System.String viaIdentity, string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21977,6 +22257,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -22005,6 +22287,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}. Possible
         /// policyType values are NotSpecified, BuiltIn, Custom, and Static. If $filter='category -eq {value}' is provided, the returned
         /// list only includes all policy set definitions whose category match the {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -22012,9 +22296,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult> PolicySetDefinitionsListBuiltInWithResult(string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult> PolicySetDefinitionsListBuiltInWithResult(string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22025,6 +22309,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -22077,14 +22363,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -22114,7 +22400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsListBuiltIn_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsListBuiltIn_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -22139,7 +22425,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -22164,16 +22450,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}. Possible
         /// policyType values are NotSpecified, BuiltIn, Custom, and Static. If $filter='category -eq {value}' is provided, the returned
         /// list only includes all policy set definitions whose category match the {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsListBuiltIn_Validate(string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsListBuiltIn_Validate(string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(Filter),Filter);
+                await eventListener.AssertNotNull(nameof(Expand),Expand);
                 await eventListener.AssertIsGreaterThanOrEqual(nameof(Top),Top,1);
                 await eventListener.AssertIsLessThanOrEqual(nameof(Top),Top,1000);
             }
@@ -22196,6 +22485,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}. Possible
         /// policyType values are NotSpecified, BuiltIn, Custom, and Static. If $filter='category -eq {value}' is provided, the returned
         /// list only includes all policy set definitions whose category match the {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -22205,9 +22496,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsListByManagementGroup(string managementGroupId, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsListByManagementGroup(string managementGroupId, string Filter, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22221,6 +22512,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "&"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
                         + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
@@ -22254,6 +22547,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}. Possible
         /// policyType values are NotSpecified, BuiltIn, Custom, and Static. If $filter='category -eq {value}' is provided, the returned
         /// list only includes all policy set definitions whose category match the {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -22263,9 +22558,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsListByManagementGroupViaIdentity(global::System.String viaIdentity, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsListByManagementGroupViaIdentity(global::System.String viaIdentity, string Filter, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22288,6 +22583,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -22322,6 +22619,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}. Possible
         /// policyType values are NotSpecified, BuiltIn, Custom, and Static. If $filter='category -eq {value}' is provided, the returned
         /// list only includes all policy set definitions whose category match the {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -22329,9 +22628,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult> PolicySetDefinitionsListByManagementGroupViaIdentityWithResult(global::System.String viaIdentity, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult> PolicySetDefinitionsListByManagementGroupViaIdentityWithResult(global::System.String viaIdentity, string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22354,6 +22653,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -22388,6 +22689,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}. Possible
         /// policyType values are NotSpecified, BuiltIn, Custom, and Static. If $filter='category -eq {value}' is provided, the returned
         /// list only includes all policy set definitions whose category match the {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -22395,9 +22698,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult> PolicySetDefinitionsListByManagementGroupWithResult(string managementGroupId, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult> PolicySetDefinitionsListByManagementGroupWithResult(string managementGroupId, string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22410,6 +22713,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -22462,14 +22767,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -22501,7 +22806,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsListByManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsListByManagementGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -22526,7 +22831,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -22552,17 +22857,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}. Possible
         /// policyType values are NotSpecified, BuiltIn, Custom, and Static. If $filter='category -eq {value}' is provided, the returned
         /// list only includes all policy set definitions whose category match the {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsListByManagementGroup_Validate(string managementGroupId, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsListByManagementGroup_Validate(string managementGroupId, string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(managementGroupId),managementGroupId);
                 await eventListener.AssertNotNull(nameof(Filter),Filter);
+                await eventListener.AssertNotNull(nameof(Expand),Expand);
                 await eventListener.AssertIsGreaterThanOrEqual(nameof(Top),Top,1);
                 await eventListener.AssertIsLessThanOrEqual(nameof(Top),Top,1000);
             }
@@ -22585,6 +22893,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}. Possible
         /// policyType values are NotSpecified, BuiltIn, Custom, and Static. If $filter='category -eq {value}' is provided, the returned
         /// list only includes all policy set definitions whose category match the {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -22594,9 +22904,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PolicySetDefinitionsListViaIdentity(global::System.String viaIdentity, string Filter, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PolicySetDefinitionsListViaIdentity(global::System.String viaIdentity, string Filter, string Expand, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22619,6 +22929,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -22653,6 +22965,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}. Possible
         /// policyType values are NotSpecified, BuiltIn, Custom, and Static. If $filter='category -eq {value}' is provided, the returned
         /// list only includes all policy set definitions whose category match the {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -22660,9 +22974,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult> PolicySetDefinitionsListViaIdentityWithResult(global::System.String viaIdentity, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult> PolicySetDefinitionsListViaIdentityWithResult(global::System.String viaIdentity, string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22685,6 +22999,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -22719,6 +23035,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}. Possible
         /// policyType values are NotSpecified, BuiltIn, Custom, and Static. If $filter='category -eq {value}' is provided, the returned
         /// list only includes all policy set definitions whose category match the {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -22726,9 +23044,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult> PolicySetDefinitionsListWithResult(string subscriptionId, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult> PolicySetDefinitionsListWithResult(string subscriptionId, string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2025-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22741,6 +23059,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
                         + (string.IsNullOrEmpty(Filter) ? global::System.String.Empty : "$filter=" + (Filter))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
                         + "&"
                         + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -22791,14 +23111,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) );
                             // Error Response : default
                             var code = (await _result)?.Code;
                             var message = (await _result)?.Message;
                             if ((null == code || null == message))
                             {
                                 // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(_response, await _result);
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(_response, await _result);
                                 throw ex;
                             }
                             else
@@ -22828,7 +23148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -22853,7 +23173,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -22879,18 +23199,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}. Possible
         /// policyType values are NotSpecified, BuiltIn, Custom, and Static. If $filter='category -eq {value}' is provided, the returned
         /// list only includes all policy set definitions whose category match the {value}.</param>
+        /// <param name="Expand">Comma-separated list of additional properties to be included in the response. Supported values are
+        /// 'LatestDefinitionVersion, EffectiveDefinitionVersion'.</param>
         /// <param name="Top">Maximum number of records to return. When the $top filter is not provided, it will return 500 records.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsList_Validate(string subscriptionId, string Filter, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PolicySetDefinitionsList_Validate(string subscriptionId, string Filter, string Expand, int? Top, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
                 await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(Filter),Filter);
+                await eventListener.AssertNotNull(nameof(Expand),Expand);
                 await eventListener.AssertIsGreaterThanOrEqual(nameof(Top),Top,1);
                 await eventListener.AssertIsLessThanOrEqual(nameof(Top),Top,1000);
             }
