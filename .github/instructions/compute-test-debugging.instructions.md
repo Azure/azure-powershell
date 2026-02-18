@@ -36,19 +36,18 @@ Automatically discover which test(s) were added or modified on the current branc
 
 > **REQUIRED: GitHub MCP must be configured.** This step uses the GitHub MCP server exclusively — do NOT fall back to local `git` CLI commands, `code_search`, `file_search`, or manual file reading as a substitute for this step. You MUST attempt to call the GitHub MCP tools below. If the tools do not exist in your available tool set, or any call fails with a connectivity/tool-not-found error, **stop immediately** and walk the user through the **GitHub MCP Setup** section below. Do not proceed to Step 2 until GitHub MCP is working. Do NOT silently skip this step or work around it by reading files directly.
 
-You MUST use the GitHub MCP server to compare the current branch against the base branch and find changed test files. Start by attempting the first tool call:
+You MUST use the GitHub MCP server to compare the current branch against the base branch and find changed test files. Start by attempting the first tool call. If the tool does not exist or the call fails with a connectivity/tool-not-found/authentication error, jump to the **GitHub MCP Setup** section below and guide the user through configuration. Do not continue to the next sub-step.
 
-1. **MANDATORY**: Call the `get_me` tool to verify GitHub MCP connectivity. You must actually attempt this tool call — do not skip it. If the tool does not exist or the call fails, jump to the **GitHub MCP Setup** section below and guide the user through configuration. Do not continue to sub-step 2 or any later step.
-2. Call `compare_branches` (owner/repo from the active git remote, base: `main`, head: current branch name) to get the list of changed files.
-3. Filter the changed files for paths matching `src/Compute/Compute.Test/ScenarioTests/*.cs`.
-4. For each changed C# test file, retrieve the **diff** (not the full file) using `get_pull_request` with `get_diff`, or by comparing the file content on the branch against `main`. Extract only the **newly added** `[Fact]` methods that appear in the diff as added lines (prefixed with `+`). Do NOT include pre-existing test methods that were already on `main` — only tests that were added or modified on this branch. Each test method calls `TestRunner.RunTestScript("FunctionName")`, which maps to a PowerShell function.
-5. Record the fully qualified test class name and **only the new/changed** method name(s) for use in later steps.
+1. Call `compare_branches` (owner/repo from the active git remote, base: `main`, head: current branch name) to get the list of changed files.
+2. Filter the changed files for paths matching `src/Compute/Compute.Test/ScenarioTests/*.cs`.
+3. For each changed C# test file, retrieve the **diff** (not the full file) using `get_pull_request` with `get_diff`, or by comparing the file content on the branch against `main`. Extract only the **newly added** `[Fact]` methods that appear in the diff as added lines (prefixed with `+`). Do NOT include pre-existing test methods that were already on `main` — only tests that were added or modified on this branch. Each test method calls `TestRunner.RunTestScript("FunctionName")`, which maps to a PowerShell function.
+4. Record the fully qualified test class name and **only the new/changed** method name(s) for use in later steps.
 
 After this step you should have one or more concrete test identifiers in the form `<TestClassName>.<TestMethodName>`. These must be tests that are **new or modified on this branch** — never pre-existing unchanged tests.
 
 #### GitHub MCP Setup
 
-If any GitHub MCP tool call above failed (tool not found, connection error, authentication error), guide the user through the following setup and **do not proceed** to Step 2 until setup is complete and the `get_me` call succeeds:
+If any GitHub MCP tool call above failed (tool not found, connection error, authentication error), guide the user through the following setup and **do not proceed** to Step 2 until setup is complete and the `compare_branches` call succeeds:
 
 1. In the Visual Studio menu bar, click **View**, then click **GitHub Copilot Chat**.
 2. At the bottom of the chat panel, select **Agent** from the mode dropdown.
@@ -111,7 +110,7 @@ Locate the relevant files:
 - Find the cmdlet implementation referenced in the stack trace
 - Find the SDK method if the error originates from a generated client call
 
-Classify the failure using the patterns below:
+First, check the **Known Issues** section at the bottom of this document. If the error matches a previously documented issue, apply the known fix directly — do not re-diagnose from scratch. If no known issue matches, classify the failure using the patterns below:
 
 #### API Contract Errors (HTTP 400/404/409)
 - **Symptom**: `BadRequest`, `NotFound`, or `Conflict` in the HTTP response body
@@ -170,7 +169,27 @@ After both Record and Playback pass, stage and commit all changed files:
 - Modified or new cmdlet source files (`src/Compute/Compute/**`)
 - Modified or new test scripts and harnesses (`src/Compute/Compute.Test/ScenarioTests/`)
 - New or updated session recording JSON files (`src/Compute/Compute.Test/SessionRecords/`)
-- Updated `src/Compute/Compute/ChangeLog.md` — add an entry under the `## Upcoming Release` section describing the change
+
+### Step 8: Update These Instructions with Lessons Learned
+
+After a successful debugging session, evaluate whether the issue you resolved is worth documenting for future runs. Add a new entry to the **Known Issues** section at the bottom of this file if **all** of the following are true:
+- The failure required more than one iteration to fix (i.e., the first attempted fix did not resolve it).
+- The root cause was not immediately obvious from the error message alone.
+- The fix follows a pattern that would apply to similar tests or cmdlets in the future.
+
+Do NOT add an entry for straightforward issues (e.g., simple typos, missing imports, obvious parameter mismatches that were fixed on the first try).
+
+Each entry should follow this exact format under the **Known Issues** section:
+
+```markdown
+### <Short descriptive title>
+- **Symptom**: <The error message or behavior observed>
+- **Root cause**: <Why the error occurred>
+- **Fix**: <What was changed and where>
+- **Files involved**: <List of file paths that were modified>
+```
+
+Keep entries concise — 1–2 sentences per field. The goal is to give future debugging sessions enough information to apply the fix immediately without re-diagnosing.
 
 ## Key Files Reference
 
@@ -185,7 +204,6 @@ After both Record and Playback pass, stage and commit all changed files:
 | Session recordings | `src/Compute/Compute.Test/SessionRecords/<Namespace>.<Class>/<Method>.json` |
 | Test runner base | `src/Compute/Compute.Test/ScenarioTests/ComputeTestRunner.cs` |
 | Test credentials | `~/.azure/testcredentials.json` |
-| Changelog | `src/Compute/Compute/ChangeLog.md` |
 
 ## Rules
 
@@ -196,3 +214,7 @@ After both Record and Playback pass, stage and commit all changed files:
 - When an HTTP trace is available, use the request body and response body as primary evidence.
 - **Prefer fixing the test over fixing the cmdlet.** If the API requires a parameter, the test should pass it explicitly rather than the cmdlet silently defaulting it. Only fix the cmdlet if it has an actual bug in its logic.
 - After fixing code, always verify the build compiles before re-running the test.
+
+## Known Issues
+
+<!-- Entries are added automatically by Step 8 after successful debugging sessions. Do not remove existing entries. -->
