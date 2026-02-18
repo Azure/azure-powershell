@@ -14,23 +14,35 @@ Creates or updates a policy definition.
 
 ### Name (Default)
 ```
-New-AzPolicyDefinition -Name <String> -Policy <String> [-BackwardCompatible] [-Description <String>]
- [-DisplayName <String>] [-Metadata <String>] [-Mode <String>] [-Parameter <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPolicyDefinition -Name <String> -Policy <String> [-Description <String>] [-DisplayName <String>]
+ [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
+ [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
+ [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
+ [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
+ [-Parameter <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
-New-AzPolicyDefinition -ManagementGroupName <String> -Name <String> -Policy <String> [-BackwardCompatible]
- [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Mode <String>] [-Parameter <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPolicyDefinition -ManagementGroupName <String> -Name <String> -Policy <String> [-Description <String>]
+ [-DisplayName <String>] [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
+ [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
+ [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
+ [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
+ [-Parameter <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
-New-AzPolicyDefinition -Name <String> -SubscriptionId <String> -Policy <String> [-BackwardCompatible]
- [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Mode <String>] [-Parameter <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPolicyDefinition -Name <String> -SubscriptionId <String> -Policy <String> [-Description <String>]
+ [-DisplayName <String>] [-EndpointSettingDetail <String>] [-EndpointSettingKind <String>]
+ [-ExternalEvaluationEnforcementSettingMissingTokenAction <String>]
+ [-ExternalEvaluationEnforcementSettingResultLifespan <String>]
+ [-ExternalEvaluationEnforcementSettingRoleDefinitionId <String[]>] [-Metadata <String>] [-Mode <String>]
+ [-Parameter <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,22 +120,22 @@ New-AzPolicyDefinition -Name 'TagsPolicyDefinition' -Policy '{"if":{"value":"[le
 
 This command creates a policy definition named TagsPolicyDefinition with mode "Indexed" indicating the policy should be evaluated only for resource types that support tags and location.
 
-## PARAMETERS
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+### Example 6: Create a policy definition inline with version
+```powershell
+New-AzPolicyDefinition -Name 'VMPolicyDefinition' -Policy '{"if":{"field":"type","equals":"Microsoft.Compute/virtualMachines"},"then":{"effect":"deny"}}' -Version '2.0.0'
 ```
+
+This command creates a policy definition named VMPolicyDefinition with incremented version 2.0.0.
+The command specifies the policy as a string in valid JSON format.
+
+### Example 7: Create a policy definition with external evaluation enforcement settings
+```powershell
+New-AzPolicyDefinition -Name 'InvokePolicy' -Policy '{"if":{"value":"[claims().isValid]","equals":false},"then":{"effect":"deny"}}' -EndpointSettingKind 'CoinFlip' -ExternalEvaluationEnforcementSettingRoleDefinitionId @( "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c" )
+```
+
+This command creates a policy definition named InvokePolicy with external evaluation enforcement settings to call the CoinFlip endpoint, which requires the specified role definition.
+
+## PARAMETERS
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -161,6 +173,84 @@ The display name of the policy definition.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EndpointSettingDetail
+The details of the endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EndpointSettingKind
+The kind of the endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ExternalEvaluationEnforcementSettingMissingTokenAction
+What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing.
+Possible values are Audit and Deny and language expressions are supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ExternalEvaluationEnforcementSettingResultLifespan
+The lifespan of the endpoint invocation result after which it's no longer valid.
+
+Value is expected to follow the ISO 8601 duration format and language expressions are supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ExternalEvaluationEnforcementSettingRoleDefinitionId
+An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -279,6 +369,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Version
+The policy definition version in #.#.# format.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: PolicyDefinitionVersion
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -316,6 +421,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
+### System.String[]
 
 ## OUTPUTS
 

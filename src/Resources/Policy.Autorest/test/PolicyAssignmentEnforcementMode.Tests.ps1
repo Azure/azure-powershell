@@ -7,16 +7,18 @@ Describe 'PolicyAssignmentEnforcementMode' {
         # setup
         $rgName = $env.rgName
         $rgScope = $env.rgScope
+        $subScope = "/subscriptions/$subscriptionId"
         $policyName = Get-ResourceName
-        $testPA = Get-ResourceName
-        $test2 = Get-ResourceName
+        $testDoNotEnforce = Get-ResourceName
+        $testDefault = Get-ResourceName
+        $testEnroll = Get-ResourceName
         $location = $env.location
 
         # make a new resource group and policy definition
         $policy = New-AzPolicyDefinition -Name $policyName -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description
 
         # assign the policy definition to the resource group
-        $actual = New-AzPolicyAssignment -Name $testPA -PolicyDefinition $policy -Scope $rgScope -Description $description -Location $location -EnforcementMode DoNotEnforce
+        $actual = New-AzPolicyAssignment -Name $testDoNotEnforce -PolicyDefinition $policy -Scope $rgScope -Description $description -Location $location -EnforcementMode DoNotEnforce
     }
 
     It 'Make a policy assignment' {
@@ -25,7 +27,7 @@ Describe 'PolicyAssignmentEnforcementMode' {
         $actual.Location | Should -Be $location
 
         # get the assignment
-        $expected = Get-AzPolicyAssignment -Name $testPA -Scope $rgScope
+        $expected = Get-AzPolicyAssignment -Name $testDoNotEnforce -Scope $rgScope
 
         # validate results
         $expected.Name | Should -Be $actual.Name
@@ -60,7 +62,7 @@ Describe 'PolicyAssignmentEnforcementMode' {
 
     It 'Make another policy assignment without enforcement mode' {
         # make another policy assignment without an enforcementMode, validate default mode is set
-        $withoutEnforcementMode = New-AzPolicyAssignment -Name $test2 -Scope $rgScope -PolicyDefinition $policy -Description $description
+        $withoutEnforcementMode = New-AzPolicyAssignment -Name $testDefault -Scope $rgScope -PolicyDefinition $policy -Description $description
         $withoutEnforcementMode.EnforcementMode | Should -Be $enforcementModeDefault
 
         # set an enforcement mode to the new assignment using the Update- cmdlet
@@ -72,16 +74,38 @@ Describe 'PolicyAssignmentEnforcementMode' {
         $updateResult.EnforcementMode | Should -Be $enforcementModeDoNotEnforce
     }
 
+    It 'Make another policy assignment with enroll enforcement mode' {
+        # make another policy assignment with enroll enforcementMode (currently 01/2026 only supported at sub and MG scope), validate enroll mode is set
+        $withEnrollEnforcementMode = New-AzPolicyAssignment -Name $testEnroll -Scope $subScope -PolicyDefinition $policy -Description $description -EnforcementMode Enroll
+        $withEnrollEnforcementMode.EnforcementMode | Should -Be $enforcementModeEnroll
+
+        # set an enforcement mode to the new assignment using the Update- cmdlet
+        $updateResult = Update-AzPolicyAssignment -Id $withEnrollEnforcementMode.Id -Location $location -EnforcementMode $enforcementModeDoNotEnforce
+        $updateResult.EnforcementMode | Should -Be $enforcementModeDoNotEnforce
+
+        # set an enforcement mode to the new assignment using the Update cmdlet enum value and validate
+        $updateResult = Update-AzPolicyAssignment -Id $withEnrollEnforcementMode.Id -Location $location -EnforcementMode DoNotEnforce
+        $updateResult.EnforcementMode | Should -Be $enforcementModeDoNotEnforce
+
+        # set an enforcement mode back to the new assignment using the Update- cmdlet
+        $updateResult = Update-AzPolicyAssignment -Id $withEnrollEnforcementMode.Id -Location $location -EnforcementMode $enforcementModeEnroll
+        $updateResult.EnforcementMode | Should -Be $enforcementModeEnroll
+    }
+
     It 'Enforcement mode in policy assignment list' {
         # verify enforcement mode is returned in collection GET
-        $list = Get-AzPolicyAssignment -Scope $rgScope | ?{ $_.Name -in @($testPA, $test2) }
+        $list = Get-AzPolicyAssignment -Scope $rgScope | ?{ $_.Name -in @($testDoNotEnforce, $testDefault) }
         @($list.EnforcementMode).Count | Should -Be 2
+
+        $list = Get-AzPolicyAssignment -Scope $subScope | ?{ $_.Name -in @($testEnroll) }
+        @($list.EnforcementMode).Count | Should -Be 1
     }
 
     AfterAll {
         # clean up
-        $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $rgScope -PassThru
-        $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $rgScope -PassThru) -and $remove
+        $remove = Remove-AzPolicyAssignment -Name $testDoNotEnforce -Scope $rgScope -PassThru
+        $remove = (Remove-AzPolicyAssignment -Name $testDefault -Scope $rgScope -PassThru) -and $remove
+        $remove = (Remove-AzPolicyAssignment -Name $testEnroll -Scope $subScope -PassThru) -and $remove
         $remove = (Remove-AzPolicyDefinition -Name $policyName -Force -PassThru) -and $remove
         $remove | Should -Be $true
 
