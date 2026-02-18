@@ -553,10 +553,10 @@ function resolvePolicyArtifact {
     }
 
     return @{
-        Scope = $scope;
+        Scope = $scope
         ScopeType = $scopeType
-        ScopeName = $scopeName;
-        Name = $name;
+        ScopeName = $scopeName
+        Name = $name
         SubscriptionId = $subscriptionId
         ManagementGroupName = $managementGroupName
         ResourceId = $resourceId
@@ -564,6 +564,8 @@ function resolvePolicyArtifact {
         ResourceNamespace = $resolved.ResourceNamespace
         ResourceType = $resolved.ResourceType
         ResourceName = $resolved.ResourceName
+        Artifact = $resolved.Artifact
+        Version = $resolved.Version
     }
 }
 

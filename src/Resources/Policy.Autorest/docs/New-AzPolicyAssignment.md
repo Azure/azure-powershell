@@ -14,26 +14,26 @@ Creates or updates a policy assignment.
 
 ### Default (Default)
 ```
-New-AzPolicyAssignment -Name <String> [-Scope <String>] [-BackwardCompatible] [-Description <String>]
- [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>]
- [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
- [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzPolicyAssignment -Name <String> [-Scope <String>] [-Description <String>] [-DisplayName <String>]
+ [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>] [-Location <String>]
+ [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-Override <IOverride[]>]
+ [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ParameterObject
 ```
 New-AzPolicyAssignment -Name <String> -PolicyParameterObject <Hashtable> [-Scope <String>]
- [-BackwardCompatible] [-DefinitionVersion <String>] [-Description <String>] [-DisplayName <String>]
- [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>] [-Location <String>]
- [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-Override <IOverride[]>]
+ [-DefinitionVersion <String>] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
+ [-IdentityId <String>] [-IdentityType <String>] [-Location <String>] [-Metadata <String>]
+ [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-Override <IOverride[]>]
  [-PolicyDefinition <PSObject>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ParameterString
 ```
-New-AzPolicyAssignment -Name <String> -PolicyParameter <String> [-Scope <String>] [-BackwardCompatible]
+New-AzPolicyAssignment -Name <String> -PolicyParameter <String> [-Scope <String>]
  [-DefinitionVersion <String>] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
  [-IdentityId <String>] [-IdentityType <String>] [-Location <String>] [-Metadata <String>]
  [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-Override <IOverride[]>]
@@ -43,7 +43,7 @@ New-AzPolicyAssignment -Name <String> -PolicyParameter <String> [-Scope <String>
 
 ### PolicyDefinitionOrPolicySetDefinition
 ```
-New-AzPolicyAssignment -Name <String> -PolicyDefinition <PSObject> [-Scope <String>] [-BackwardCompatible]
+New-AzPolicyAssignment -Name <String> -PolicyDefinition <PSObject> [-Scope <String>]
  [-DefinitionVersion <String>] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
  [-IdentityId <String>] [-IdentityType <String>] [-Location <String>] [-Metadata <String>]
  [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-Override <IOverride[]>]
@@ -196,62 +196,7 @@ The second command creates a location selector specifying East US or East US 2 l
 The third command creates an override object that will be used to specify that the assigned definition should have a Disabled effect in the locations identified by the $Selector object and stores it in the $Override variable.
 The final command assigns the policy definition in $Policy to the subscription with the override specified by $Override.
 
-### Example 11: [Backcompat] Policy assignment at resource group level with policy parameter object
-```powershell
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-$Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
-$Locations = Get-AzLocation | Where-Object displayname -like '*east*'
-$AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
-New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameterObject $AllowedLocations
-```
-
-The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet.
-The command stores that object in the $ResourceGroup variable.
-The second command gets the built-in policy definition for allowed locations by using the Get-AzPolicyDefinition cmdlet.
-The command stores that object in the $Policy variable.
-The third and fourth commands create an object containing all Azure regions with "east" in the name.
-The commands store that object in the $AllowedLocations variable.
-The final command assigns the policy in $Policy at the level of a resource group using the policy parameter object in $AllowedLocations.
-The **ResourceId** property of $ResourceGroup identifies the resource group.
-
-### Example 12: [Backcompat] Policy assignment at resource group level with policy parameter file
-```powershell
-'{
-    "listOfAllowedLocations":  {
-      "value": [
-        "westus",
-        "westeurope",
-        "japanwest"
-      ]
-    }
-}' > .\AllowedLocations.json
-
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-$Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
-New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameter .\AllowedLocations.json
-```
-
-The first command creates a parameter file called _AllowedLocations.json_ in the local working directory.
-The second command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet and stores it in the $ResourceGroup variable.
-The third command gets the built-in policy definition for allowed locations by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
-The final command assigns the policy in $Policy at the resource group identified by the **ResourceId** property of $ResourceGroup using the policy parameter file AllowedLocations.json from the local working directory.
-
 ## PARAMETERS
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -316,7 +261,7 @@ Accept wildcard characters: False
 
 ### -EnforcementMode
 The policy assignment enforcement mode.
-Possible values are Default and DoNotEnforce.
+Possible values are Default, DoNotEnforce, and Enroll.
 
 ```yaml
 Type: System.String
@@ -519,7 +464,7 @@ Accept wildcard characters: False
 
 ### -Scope
 The scope of the policy assignment.
-Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
 
 ```yaml
 Type: System.String

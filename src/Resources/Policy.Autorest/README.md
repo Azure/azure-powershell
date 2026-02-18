@@ -28,21 +28,21 @@ For information on how to develop for `Az.Policy`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: 412364b282e52b50eadc3cd88d56d283b6c8712a
+commit: 2b3c430bff9474d80080498090d71caf3fafcb75
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/resources/resource-manager/Microsoft.Authorization/stable/2023-04-01/policyDefinitions.json
-  - $(repo)/specification/resources/resource-manager/Microsoft.Authorization/stable/2023-04-01/policySetDefinitions.json
-  - $(repo)/specification/resources/resource-manager/Microsoft.Authorization/stable/2023-04-01/policyDefinitionVersions.json
-  - $(repo)/specification/resources/resource-manager/Microsoft.Authorization/stable/2023-04-01/policySetDefinitionVersions.json
-  - $(repo)/specification/resources/resource-manager/Microsoft.Authorization/stable/2023-04-01/policyAssignments.json
-  - $(repo)/specification/resources/resource-manager/Microsoft.Authorization/preview/2022-07-01-preview/policyExemptions.json
+  - $(repo)/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2025-03-01/policyDefinitions.json
+  - $(repo)/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2025-03-01/policySetDefinitions.json
+  - $(repo)/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2025-03-01/policyDefinitionVersions.json
+  - $(repo)/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2025-03-01/policySetDefinitionVersions.json
+  - $(repo)/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2025-03-01/policyAssignments.json
+  - $(repo)/specification/resources/resource-manager/Microsoft.Authorization/policy/preview/2024-12-01-preview/policyExemptions.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
-#  - ..\..\..\..\azure-rest-api-specs\specification\resources\resource-manager\Microsoft.Authorization\stable\2023-04-01\policyDefinitionVersions.json
-#  - ..\..\..\..\azure-rest-api-specs\specification\resources\resource-manager\Microsoft.Authorization\stable\2023-04-01\policySetDefinitionVersions.json
+#  - ..\..\..\..\azure-rest-api-specs\specification\resources\resource-manager\Microsoft.Authorization\stable\2025-03-01\policyDefinitionVersions.json
+#  - ..\..\..\..\azure-rest-api-specs\specification\resources\resource-manager\Microsoft.Authorization\stable\2025-03-01\policySetDefinitionVersions.json
 
 # For new RP, the version is 0.1.1
 module-version: 0.1.1
@@ -50,6 +50,10 @@ module-version: 0.1.1
 root-module-name: $(prefix).Resources
 title: Policy
 subject-prefix: Policy
+# because autorest.powershell is unable to transform IdentityType as the best practice design if it uses managed identity
+# we hide the original cmdlet and custom it under /custom folder
+disable-transform-identity-type-for-operation:
+  - PolicyAssignments_Update
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -172,6 +176,9 @@ directive:
     transform: $['additionalProperties'] = true;
   - from: swagger-document
     where: $.definitions.PolicySetDefinitionProperties.properties.policyDefinition.groupNames
+    transform: $['additionalProperties'] = true;
+  - from: swagger-document
+    where: $.definitions.ExternalEvaluationEndpointSettings.properties.details
     transform: $['additionalProperties'] = true;
 
   # versioning serialization

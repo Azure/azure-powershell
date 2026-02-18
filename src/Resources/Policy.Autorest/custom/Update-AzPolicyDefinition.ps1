@@ -65,7 +65,10 @@ param(
     # The policy definition description.
     ${Description},
 
-    [Parameter(ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='InputObject', ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
@@ -111,15 +114,50 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Alias('PolicyDefinitionVersion')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The policy definition version in #.#.# format.
+    ${Version},
+
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing.
+    # Possible values are Audit and Deny and language expressions are supported.
+    ${ExternalEvaluationEnforcementSettingMissingTokenAction},
+
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The lifespan of the endpoint invocation result after which it's no longer valid. 
+    # Value is expected to follow the ISO 8601 duration format and language expressions are supported.
+    ${ExternalEvaluationEnforcementSettingResultLifespan},
+    
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String[]]
+    # An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+    ${ExternalEvaluationEnforcementSettingRoleDefinitionId},
+    
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The kind of the endpoint.
+    ${EndpointSettingKind},
+
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The details of the endpoint.
+    ${EndpointSettingDetail},
+
     [Parameter(ParameterSetName = 'InputObject', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition]
     ${InputObject},
-
-    [Parameter()]
-    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible} = $false,
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -187,12 +225,23 @@ process {
     # Id can be a parameter or from the input object
     if ($Id) {
         $thisId = $Id
-    } else {
+    } elseif ($InputObject.Id) {
         $thisId = $InputObject.Id
+    } else {
+        $thisId = $_.Id
     }
 
     # construct id for definition to update
     $resolved = ResolvePolicyDefinition $Name $SubscriptionId $ManagementGroupName $thisId
+
+    # handle disallowed cases not handled by PS parameter attributes
+    if ($resolved.Version) {
+        throw 'Old versions are immutable.'
+    }
+
+    if ($PSBoundParameters['Version'] -and !$PSBoundParameters['Policy']) {
+        throw 'Version is only allowed if Policy is provided.'
+    }
 
     $getParameters = Get-ExtraParameters @PSBoundParameters
     $getParameters['Id'] = $resolved.ResourceId
@@ -239,6 +288,109 @@ process {
     $null = $calledParameters.Remove('Id')
     $null = $calledParameters.Remove('InputObject')
 
+    # the versions API should be called when updating with version parameter
+    if ($PSBoundParameters['Version']) {
+        if ($writeln) {
+            Write-Host -ForegroundColor Cyan "begin:New-AzPolicyDefinitionVersion(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
+        }
+        
+        # mapping table of generated cmdlet parameter sets
+        $mapping = @{
+            CreateExpanded = 'Az.Policy.private\New-AzPolicyDefinitionVersion_CreateExpanded';
+            CreateExpanded1 = 'Az.Policy.private\New-AzPolicyDefinitionVersion_CreateExpanded1';
+        }
+
+        $calledParameters = $PSBoundParameters
+        
+        # populate the version property in the path
+        $calledParameters.PolicyDefinitionVersion = $calledParameters.Version
+        
+        # convert input/legacy policy parameter to correct set of parameters and remove
+        if ($Policy) {
+            $resolved = ResolvePolicyParameter -ParameterName 'Policy' -ParameterValue $Policy -Debug $writeln
+            if ($resolved.policyRule) {
+                foreach ($key in $resolved.Keys) {
+
+                    if ($key -eq 'name' -or $key -eq 'type' -or $key -eq 'id') {
+                        continue
+                    }
+
+                    $value = $resolved.($key)
+
+                    if ($key -eq 'parameters') {
+                        $key = 'Parameter'
+                    }
+
+                    if (!($calledParameters.($key))) {
+                        $calledParameters.($key) = $value
+                    }
+                }
+            } else {
+                $calledParameters.PolicyRule = $resolved
+            }
+
+            $null = $calledParameters.Remove('Policy')
+        }
+
+        # preserve default mode behavior of previous SDK-based cmdlets
+        if (!$calledParameters.Mode) {
+            $calledParameters.Mode = 'All'
+        }
+
+        # resolve [string] 'metadata' input parameter to [hashtable]
+        if ($Metadata) {
+            $calledParameters.MetadataTable = (ResolvePolicyMetadataParameter -MetadataValue $Metadata -Debug $writeln)
+        }
+        elseif ($calledParameters.Metadata) {
+            $calledParameters.MetadataTable = (ResolvePolicyMetadataParameter -MetadataValue $calledParameters.Metadata -Debug $writeln)
+        }
+
+        $null = $calledParameters.Remove('Metadata')
+
+        # resolve [string] 'parameter' input parameter (could be a path)
+        if ($Parameter) {
+            $calledParameters.Parameter = (ResolvePolicyParameter -ParameterName 'Parameter' -ParameterValue $Parameter -Debug $writeln)
+        }
+
+        # rename [string] 'parameter' parameter to 'parametertable' (needs to be string to construct properly)
+        if ($calledParameters.Parameter) {
+            $calledParameters.ParameterTable = $calledParameters.Parameter
+            $null = $calledParameters.Remove('Parameter')
+        }
+
+        # determine called parameterset
+        if ($calledParameters.ManagementGroupName) {
+            $calledParameterSet = 'CreateExpanded1'
+        } else {
+            $calledParameterSet = 'CreateExpanded'
+            if (!$SubscriptionId) {
+                $calledParameters.SubscriptionId = (Get-SubscriptionId)
+            }
+        }
+
+        if ($PSBoundParameters['Name']) {
+            $PSBoundParameters['PolicyDefinitionName'] = $PSBoundParameters['Name']
+            $null = $PSBoundParameters.Remove('Name')
+        }
+
+        if ($writeln) {
+            Write-Host -ForegroundColor Blue -> $mapping[$calledParameterSet]'(' $calledParameters ')'
+        }
+
+        # call internal generated cmdlet, convert generic JSON output properties to PSCustomObject
+        $cmdInfo = Get-Command -Name $mapping[$calledParameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $calledParameterSet, $PSCmdlet)
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$calledParameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @calledParameters}
+        $item = Invoke-Command -ScriptBlock $scriptCmd
+
+        $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
+        $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (ConvertObjectToPSObject $item.Parameter) -Force
+        $item | Add-Member -MemberType NoteProperty -Name 'PolicyRule' -Value (ConvertObjectToPSObject $item.PolicyRule) -Force
+        $item | Add-Member -MemberType NoteProperty -Name 'EndpointSettingDetail' -Value (ConvertObjectToPSObject $item.EndpointSettingDetail) -Force
+        $PSCmdlet.WriteObject($item)
+        return
+    }
 
     # convert input/legacy policy parameter to correct set of parameters and remove
     if ($Policy) {
@@ -298,8 +450,24 @@ process {
         $calledParameters.Metadata = $existing.Metadata
     }
 
-    if ($BackwardCompatible) {
-        $calledParameters.BackwardCompatible = $true
+    if (!$calledParameters.ExternalEvaluationEnforcementSettingMissingTokenAction -and $existing.ExternalEvaluationEnforcementSettingMissingTokenAction) {
+        $calledParameters.ExternalEvaluationEnforcementSettingMissingTokenAction = $existing.ExternalEvaluationEnforcementSettingMissingTokenAction
+    }
+
+    if (!$calledParameters.ExternalEvaluationEnforcementSettingRoleDefinitionId -and $existing.ExternalEvaluationEnforcementSettingRoleDefinitionId) {
+        $calledParameters.ExternalEvaluationEnforcementSettingRoleDefinitionId = $existing.ExternalEvaluationEnforcementSettingRoleDefinitionId
+    }
+
+    if (!$calledParameters.ExternalEvaluationEnforcementSettingResultLifespan -and $existing.ExternalEvaluationEnforcementSettingResultLifespan) {
+        $calledParameters.ExternalEvaluationEnforcementSettingResultLifespan = $existing.ExternalEvaluationEnforcementSettingResultLifespan
+    }
+
+    if (!$calledParameters.EndpointSettingKind -and $existing.EndpointSettingKind) {
+        $calledParameters.EndpointSettingKind = $existing.EndpointSettingKind
+    }
+
+    if (!$calledParameters.EndpointSettingDetail -and $existing.EndpointSettingDetail) {
+        $calledParameters.EndpointSettingDetail = ConvertTo-Json $existing.EndpointSettingDetail -Depth 100
     }
 
     if ($writeln) {

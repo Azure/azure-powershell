@@ -1,0 +1,41 @@
+# setup the Pester environment for policy tests
+. (Join-Path $PSScriptRoot 'Common.ps1') 'PolicyDefinitionVersionWithUri'
+
+Describe 'PolicyDefinitionVersionWithUri' {
+
+    BeforeAll {
+        # setup
+        $policyName = Get-ResourceName
+    }
+
+    It 'Make a policy definition using a URI to the policy rule' {
+        # make a policy definition using a Uri to the policy rule, get it back and validate
+        $actual = New-AzPolicyDefinition -Name $policyName -Policy "https://raw.githubusercontent.com/vivsriaus/armtemplates/master/policyDef.json" -Mode All -Description $description -Version $someNewVersion
+        $expected = Get-AzPolicyDefinition -Name $policyName
+        $expected.Name | Should -Be $actual.Name
+        $expected.Version | Should -Be $actual.Version
+        $expected.Id | Should -Be $actual.Id
+        $actual.PolicyRule | Should -Not -BeNullOrEmpty
+        $expected.PolicyRule | Should -BeLike $actual.PolicyRule
+        $expected.Mode | Should -Be $actual.Mode
+    }
+
+    It 'Make a policy definition version using a URI to the policy rule' {
+        # make a policy definition version using a Uri to the policy rule, get it back and validate
+        $actual = Update-AzPolicyDefinition -Name $policyName -Policy "https://raw.githubusercontent.com/vivsriaus/armtemplates/master/policyDef.json" -Mode All -Description $description -Version $someOldVersion
+        $expected = Get-AzPolicyDefinition -Name $policyName -Version $someOldVersion
+        $expected.Name | Should -Be $someOldVersion
+        $expected.Version | Should -Be $actual.Version
+        $expected.Id | Should -Be $actual.Id
+        $actual.PolicyRule | Should -Not -BeNullOrEmpty
+        $expected.PolicyRule | Should -BeLike $actual.PolicyRule
+        $expected.Mode | Should -Be $actual.Mode
+    }
+
+    AfterAll {
+        $remove = Remove-AzPolicyDefinition -Name $policyName -Force -PassThru
+        $remove | Should -Be $true
+
+        Write-Host -ForegroundColor Magenta "Cleanup complete."
+    }
+}

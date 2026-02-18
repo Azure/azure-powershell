@@ -1,0 +1,264 @@
+{
+  "RemovePolicyDefinitionVersion+[NoContext]+Remove-AzPolicyDefinition -Name -Version -Force+$DELETE+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/someName/versions/2.0.1?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/someName/versions/2.0.1?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1287" ],
+        "x-ms-client-request-id": [ "2199cbf2-1e89-417a-be3c-0bed71c205b5" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Remove-AzPolicyDefinitionVersion_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Policy/9.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/6ceae644-380d-4fbc-98d4-a071a065d3b8" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-request-id": [ "a8801302-4e9e-4908-bca2-fefe79ae4346" ],
+        "x-ms-correlation-request-id": [ "a8801302-4e9e-4908-bca2-fefe79ae4346" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260130T002950Z:a8801302-4e9e-4908-bca2-fefe79ae4346" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1A888D33CF364046A19BF3B87D8F4D3C Ref B: CO6AA3150219053 Ref C: 2026-01-30T00:29:50Z" ],
+        "Date": [ "Fri, 30 Jan 2026 00:29:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "110" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"PolicyDefinitionNotFound\",\"message\":\"The policy definition \u0027someName\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "RemovePolicyDefinitionVersion+[NoContext]+Remove-AzPolicyDefinition -Name -Version -Force -ManagementGroupName+$DELETE+https://management.azure.com/providers/Microsoft.Management/managementGroups/PowershellTesting/providers/Microsoft.Authorization/policyDefinitions/someName/versions/2.0.1?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/PowershellTesting/providers/Microsoft.Authorization/policyDefinitions/someName/versions/2.0.1?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1288" ],
+        "x-ms-client-request-id": [ "fdb2b9b1-4414-4b50-8516-44df30986361" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Remove-AzPolicyDefinitionVersion_Delete1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Policy/9.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-deletes": [ "799" ],
+        "x-ms-request-id": [ "1ce7d2f6-1b57-4645-ad96-170ace9176d2" ],
+        "x-ms-correlation-request-id": [ "1ce7d2f6-1b57-4645-ad96-170ace9176d2" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260130T002954Z:1ce7d2f6-1b57-4645-ad96-170ace9176d2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0D32F666C96F46A08A4605B3954DB426 Ref B: CO6AA3150219053 Ref C: 2026-01-30T00:29:54Z" ],
+        "Date": [ "Fri, 30 Jan 2026 00:29:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "110" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"PolicyDefinitionNotFound\",\"message\":\"The policy definition \u0027someName\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "RemovePolicyDefinitionVersion+[NoContext]+Remove-AzPolicyDefinition -Name -Version -Force -SubscriptionId+$DELETE+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/someName/versions/2.0.1?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/someName/versions/2.0.1?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1289" ],
+        "x-ms-client-request-id": [ "18da0698-a2ed-4595-b626-372148497aa5" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Remove-AzPolicyDefinitionVersion_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Policy/9.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus/41e357ed-a33b-4573-a645-097dc8644687" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-request-id": [ "8f91c59d-cf1e-45d2-89be-c499bbf631c1" ],
+        "x-ms-correlation-request-id": [ "8f91c59d-cf1e-45d2-89be-c499bbf631c1" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260130T002956Z:8f91c59d-cf1e-45d2-89be-c499bbf631c1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FF83F5C6BC6242409736835AB2E5B506 Ref B: CO6AA3150219053 Ref C: 2026-01-30T00:29:56Z" ],
+        "Date": [ "Fri, 30 Jan 2026 00:29:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "110" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"PolicyDefinitionNotFound\",\"message\":\"The policy definition \u0027someName\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "RemovePolicyDefinitionVersion+[NoContext]+Remove-AzPolicyDefinition -Name -Version -Force -PassThru+$DELETE+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/someName/versions/2.0.1?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/someName/versions/2.0.1?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1290" ],
+        "x-ms-client-request-id": [ "f02963b0-89c1-4b9a-994f-520a0ee57e4e" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Remove-AzPolicyDefinitionVersion_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Policy/9.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/49428f69-e916-45cb-a306-dcff67bdb2df" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-request-id": [ "d188d78f-98f3-4919-a78f-2f466945a36f" ],
+        "x-ms-correlation-request-id": [ "d188d78f-98f3-4919-a78f-2f466945a36f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260130T002958Z:d188d78f-98f3-4919-a78f-2f466945a36f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7B1522C3206149038C7D5BD76B4AF25F Ref B: CO6AA3150219053 Ref C: 2026-01-30T00:29:58Z" ],
+        "Date": [ "Fri, 30 Jan 2026 00:29:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "110" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"PolicyDefinitionNotFound\",\"message\":\"The policy definition \u0027someName\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "RemovePolicyDefinitionVersion+[NoContext]+Remove-AzPolicyDefinition -Id -Version -Force+$DELETE+https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/someName/versions/2.0.1?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyDefinitions/someName/versions/2.0.1?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1291" ],
+        "x-ms-client-request-id": [ "83706c43-5f49-456a-a52e-89475f805909" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Remove-AzPolicyDefinitionVersion_DeleteViaIdentityPolicyDefinition" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Policy/9.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=638d92d9-ae3b-4f1d-be91-382dcc631f82/westus2/9262c814-158a-4f6f-8220-3d89242e0b69" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-request-id": [ "42433cf5-6e70-457b-9353-b12dcfa9e48c" ],
+        "x-ms-correlation-request-id": [ "42433cf5-6e70-457b-9353-b12dcfa9e48c" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260130T003001Z:42433cf5-6e70-457b-9353-b12dcfa9e48c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CD1B748D98354E7C8C2A41E2CEF161FA Ref B: CO6AA3150219053 Ref C: 2026-01-30T00:30:01Z" ],
+        "Date": [ "Fri, 30 Jan 2026 00:30:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "110" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"PolicyDefinitionNotFound\",\"message\":\"The policy definition \u0027someName\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "RemovePolicyDefinitionVersion+[NoContext]+Remove-AzPolicyDefinition -MgId -Version -Force+$DELETE+https://management.azure.com/providers/Microsoft.Management/managementGroups/PowershellTesting/providers/Microsoft.Authorization/policyDefinitions/someName/versions/2.0.1?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/PowershellTesting/providers/Microsoft.Authorization/policyDefinitions/someName/versions/2.0.1?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1292" ],
+        "x-ms-client-request-id": [ "37016b00-b3ef-4de0-b892-08a083df268c" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Remove-AzPolicyDefinitionVersion_DeleteViaIdentityPolicyDefinition1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Policy/9.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-deletes": [ "799" ],
+        "x-ms-request-id": [ "e814b2c7-85b1-47a5-a40d-e8df6df08b64" ],
+        "x-ms-correlation-request-id": [ "e814b2c7-85b1-47a5-a40d-e8df6df08b64" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260130T003003Z:e814b2c7-85b1-47a5-a40d-e8df6df08b64" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 974F02AA922F447F9194080A00716641 Ref B: CO6AA3150219053 Ref C: 2026-01-30T00:30:03Z" ],
+        "Date": [ "Fri, 30 Jan 2026 00:30:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "110" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"PolicyDefinitionNotFound\",\"message\":\"The policy definition \u0027someName\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

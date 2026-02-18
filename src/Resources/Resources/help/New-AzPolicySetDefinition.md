@@ -15,25 +15,25 @@ Creates or updates a policy set definition.
 ### Name (Default)
 ```
 New-AzPolicySetDefinition -Name <String> -PolicyDefinition <String> [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-Version <String>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
 New-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> -PolicyDefinition <String>
- [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-Version <String>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
 New-AzPolicySetDefinition -Name <String> -SubscriptionId <String> -PolicyDefinition <String>
- [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-Version <String>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,11 +85,11 @@ Example content of the VMPolicy.json is provided above.
    }
 ]
 
-New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicySet.json -Parameter '{ "buTagValue": { "type": "string" } }'
+New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicyWithParametersSet.json -Parameter '{ "buTagValue": { "type": "string" } }'
 ```
 
-This command creates a parameterized policy set definition named VMPolicySetDefinition that contains the policy definitions specified in C:\VMPolicy.json.
-Example content of the VMPolicy.json is provided above.
+This command creates a parameterized policy set definition named VMPolicySetDefinition that contains the policy definitions specified in C:\VMPolicyWithParametersSet.json.
+Example content of the VMPolicyWithParametersSet.json is provided above.
 
 ### Example 3: Create a policy set definition with policy definition groups
 ```powershell
@@ -111,22 +111,15 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $groups
 This command creates a policy set definition named VMPolicySetDefinition with grouping of policy definitions specified in C:\VMPolicy.json.
 Example content of the VMPolicy.json is provided above.
 
-## PARAMETERS
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+### Example 4: Create a policy set definition with version
+```powershell
+New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicySet.json -Version '2.0.0'
 ```
+
+This command creates a policy set definition named VMPolicySetDefinition with incremented version 2.0.0 and contains the policy definitions specified in C:\VMPolicy.json.
+Example content of the VMPolicy.json is provided above.
+
+## PARAMETERS
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -276,6 +269,21 @@ Parameter Sets: SubscriptionId
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Version
+The policy set definition version in #.#.# format.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: PolicySetDefinitionVersion
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

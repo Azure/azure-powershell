@@ -82,6 +82,50 @@ param(
     # Some examples are All, Indexed, Microsoft.KeyVault.Data.
     ${Mode},
 
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Alias('PolicyDefinitionVersion')]
+    [System.String]
+    # The policy definition version in #.#.# format.
+    ${Version},
+
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [ValidateNotNullOrEmpty()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing.
+    # Possible values are Audit and Deny and language expressions are supported.
+    ${ExternalEvaluationEnforcementSettingMissingTokenAction},
+
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [ValidateNotNullOrEmpty()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The lifespan of the endpoint invocation result after which it's no longer valid. 
+    # Value is expected to follow the ISO 8601 duration format and language expressions are supported.
+    ${ExternalEvaluationEnforcementSettingResultLifespan},
+    
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [ValidateNotNullOrEmpty()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String[]]
+    # An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+    ${ExternalEvaluationEnforcementSettingRoleDefinitionId},
+    
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [ValidateNotNullOrEmpty()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The kind of the endpoint.
+    ${EndpointSettingKind},
+
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [ValidateNotNullOrEmpty()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The details of the endpoint.
+    ${EndpointSettingDetail},
+
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
@@ -95,12 +139,6 @@ param(
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
-
-    [Parameter()]
-    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible} = $false,
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -163,7 +201,6 @@ begin {
     $mapping = @{
         CreateExpanded = 'Az.Policy.private\New-AzPolicyDefinition_CreateExpanded';
         CreateExpanded1 = 'Az.Policy.private\New-AzPolicyDefinition_CreateExpanded1';
-        CreateViaIdentityExpanded1 = 'Az.Policy.private\New-AzPolicyDefinition_CreateViaIdentityExpanded1';
     }
 }
 
@@ -240,11 +277,6 @@ process {
         }
     }
 
-    # remove switch unknown to generated cmdlets
-    if ($calledParameters.BackwardCompatible) {
-        $null = $calledParameters.Remove('BackwardCompatible')
-    }
-
     if ($writeln) {
         Write-Host -ForegroundColor Blue -> $mapping[$calledParameterSet]'(' $calledParameters ')'
     }
@@ -256,29 +288,11 @@ process {
     $scriptCmd = {& $wrappedCmd @calledParameters}
     $item = Invoke-Command -ScriptBlock $scriptCmd
 
-    # add property bag for backward compatibility with previous SDK cmdlets
-    if ($BackwardCompatible) {
-        $propertyBag = @{
-            Description = $item.Description;
-            DisplayName = $item.DisplayName;
-            Metadata = (ConvertObjectToPSObject $item.Metadata);
-            Mode = $item.Mode;
-            Parameters = (ConvertObjectToPSObject $item.Parameter);
-            PolicyRule = (ConvertObjectToPSObject $item.PolicyRule);
-            PolicyType = $item.PolicyType
-        }
-
-        $item | Add-Member -MemberType NoteProperty -Name 'Properties' -Value ([PSCustomObject]($propertyBag))
-        $item | Add-Member -MemberType NoteProperty -Name 'ResourceId' -Value $item.Id
-        $item | Add-Member -MemberType NoteProperty -Name 'ResourceName' -Value $item.Name
-        $item | Add-Member -MemberType NoteProperty -Name 'ResourceType' -Value $item.Type
-        $item | Add-Member -MemberType NoteProperty -Name 'PolicyDefinitionId' -Value $item.Id
-    }
-
     $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
     $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (ConvertObjectToPSObject $item.Parameter) -Force
     $item | Add-Member -MemberType NoteProperty -Name 'PolicyRule' -Value (ConvertObjectToPSObject $item.PolicyRule) -Force
     $item | Add-Member -MemberType NoteProperty -Name 'Versions' -Value ([array]($item.Versions)) -Force
+    $item | Add-Member -MemberType NoteProperty -Name 'EndpointSettingDetail' -Value (ConvertObjectToPSObject $item.EndpointSettingDetail) -Force
     $PSCmdlet.WriteObject($item)
 }
 
