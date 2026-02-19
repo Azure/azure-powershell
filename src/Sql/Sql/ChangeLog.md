@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added public preview tag for `EnableSoftDelete` and `SoftDeleteRetentionDays` properties in `New-AzSqlServer` and `Set-AzSqlServer` cmdlets
+* Added public preview tag for `Get-AzSqlDeletedServer` and `Restore-AzSqlServer` cmdlets
+
 
 ## Version 6.4.0
 * Added 'Get-AzSqlDeletedServer' cmdlet to retrieve soft deleted Azure SQL servers
