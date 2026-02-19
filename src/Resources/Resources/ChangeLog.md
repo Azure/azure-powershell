@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 9.0.2
 * Updated the implementation of -Metadata parameter processing for cmdlets that use it for security. No behavior change.
 * Updated Policy.Autorest api-version to 2025-03-01
     - Introduced support for `-Expand` query parameter in `Get-AzPolicyAssignment` and `Get-AzPolicySetDefinition`
