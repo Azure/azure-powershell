@@ -1,8 +1,8 @@
 {
-  "AzDatabricksAccessConnector+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf?api-version=2026-01-01+1": {
+  "AzDatabricksAccessConnector+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj?api-version=2026-01-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj?api-version=2026-01-01",
       "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,36 +17,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=b2ad95e6-8830-4405-a60e-12944d7ac939,objectId=444fc911-d78c-459a-a60c-b91f4398edb8/eastus/b1cf405e-d06c-4604-98ec-38631a78bebc" ],
-        "x-ms-request-id": [ "eastus:b26e6903-7303-47e5-ac42-ef08a183d94f" ],
+        "x-ms-operation-identifier": [ "tenantId=b2ad95e6-8830-4405-a60e-12944d7ac939,objectId=444fc911-d78c-459a-a60c-b91f4398edb8/eastus/ba5103b9-20a3-45e5-b035-25fbe3caabd6" ],
+        "x-ms-request-id": [ "eastus:4906997d-15bb-4414-a816-047274e1d0d7" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
-        "x-ms-correlation-request-id": [ "555a6976-8f77-4f23-979a-135952d03790" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260212T181821Z:555a6976-8f77-4f23-979a-135952d03790" ],
+        "x-ms-correlation-request-id": [ "94cc0de5-5d91-4967-95dc-80dad6502906" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260219T180311Z:94cc0de5-5d91-4967-95dc-80dad6502906" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6A620A5CAF564948B49A5B14A17AC4C2 Ref B: CO6AA3150219021 Ref C: 2026-02-12T18:18:18Z" ],
-        "Date": [ "Thu, 12 Feb 2026 18:18:20 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: AB6280D829FD44D4AD2B6669CA16FE6D Ref B: MWH011020808054 Ref C: 2026-02-19T18:03:10Z" ],
+        "Date": [ "Thu, 19 Feb 2026 18:03:11 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "789" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"id\": \"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf\",\r\n  \"name\": \"idhklf\",\r\n  \"type\": \"Microsoft.Databricks/accessConnectors\",\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"principalId\": \"676f9d92-5bda-496e-bb51-3a69122ef529\",\r\n    \"tenantId\": \"b2ad95e6-8830-4405-a60e-12944d7ac939\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"laurenyeeann@gmail.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2026-02-12T18:18:19.0611046+00:00\",\r\n    \"lastModifiedBy\": \"laurenyeeann@gmail.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2026-02-12T18:18:19.0611046+00:00\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj\",\r\n  \"name\": \"ow1ixj\",\r\n  \"type\": \"Microsoft.Databricks/accessConnectors\",\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"principalId\": \"9c12f5a0-104b-4044-8317-422578ca37f5\",\r\n    \"tenantId\": \"b2ad95e6-8830-4405-a60e-12944d7ac939\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"laurenyeeann@gmail.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2026-02-19T18:03:10.5264315+00:00\",\r\n    \"lastModifiedBy\": \"laurenyeeann@gmail.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2026-02-19T18:03:10.5264315+00:00\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "AzDatabricksAccessConnector+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf?api-version=2026-01-01+2": {
+  "AzDatabricksAccessConnector+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj?api-version=2026-01-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "31" ],
-        "x-ms-client-request-id": [ "b41bb1fa-d242-40bf-8158-122b9d0340ea" ],
+        "x-ms-unique-id": [ "50" ],
+        "x-ms-client-request-id": [ "201b3957-85bc-45bb-8785-15cc41619b4d" ],
         "CommandName": [ "New-AzDatabricksAccessConnector" ],
         "FullCommandName": [ "New-AzDatabricksAccessConnector_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -61,34 +61,34 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
-        "x-ms-request-id": [ "eastus:5b6e09a6-f806-424a-bd27-cb27a1e1ffb0" ],
-        "x-ms-correlation-request-id": [ "f235198d-b698-4d9e-a104-557657df7aa9" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260212T181851Z:f235198d-b698-4d9e-a104-557657df7aa9" ],
+        "x-ms-request-id": [ "eastus:6ecb6515-da73-405b-b6c4-20f9c0a048f8" ],
+        "x-ms-correlation-request-id": [ "ac5772ee-4474-4bef-a469-1da2692bbe6e" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260219T180342Z:ac5772ee-4474-4bef-a469-1da2692bbe6e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6601F8D6A5104041B2BE385B8762FD8D Ref B: CO6AA3150219021 Ref C: 2026-02-12T18:18:51Z" ],
-        "Date": [ "Thu, 12 Feb 2026 18:18:51 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 71D246DF38DB4E2B814CC05395858A45 Ref B: MWH011020808054 Ref C: 2026-02-19T18:03:42Z" ],
+        "Date": [ "Thu, 19 Feb 2026 18:03:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "789" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"id\": \"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf\",\r\n  \"name\": \"idhklf\",\r\n  \"type\": \"Microsoft.Databricks/accessConnectors\",\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"principalId\": \"676f9d92-5bda-496e-bb51-3a69122ef529\",\r\n    \"tenantId\": \"b2ad95e6-8830-4405-a60e-12944d7ac939\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"laurenyeeann@gmail.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2026-02-12T18:18:19.0611046+00:00\",\r\n    \"lastModifiedBy\": \"laurenyeeann@gmail.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2026-02-12T18:18:19.0611046+00:00\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj\",\r\n  \"name\": \"ow1ixj\",\r\n  \"type\": \"Microsoft.Databricks/accessConnectors\",\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"principalId\": \"9c12f5a0-104b-4044-8317-422578ca37f5\",\r\n    \"tenantId\": \"b2ad95e6-8830-4405-a60e-12944d7ac939\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"laurenyeeann@gmail.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2026-02-19T18:03:10.5264315+00:00\",\r\n    \"lastModifiedBy\": \"laurenyeeann@gmail.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2026-02-19T18:03:10.5264315+00:00\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "AzDatabricksAccessConnector+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf?api-version=2026-01-01+3": {
+  "AzDatabricksAccessConnector+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj?api-version=2026-01-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "32" ],
-        "x-ms-client-request-id": [ "b41bb1fa-d242-40bf-8158-122b9d0340ea" ],
+        "x-ms-unique-id": [ "51" ],
+        "x-ms-client-request-id": [ "201b3957-85bc-45bb-8785-15cc41619b4d" ],
         "CommandName": [ "New-AzDatabricksAccessConnector" ],
         "FullCommandName": [ "New-AzDatabricksAccessConnector_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -103,33 +103,33 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
-        "x-ms-request-id": [ "eastus:2106e5d6-43f5-4f05-a796-f15237b44201" ],
-        "x-ms-correlation-request-id": [ "9b842251-8b30-4b1c-8e13-cd6ae059501b" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260212T181852Z:9b842251-8b30-4b1c-8e13-cd6ae059501b" ],
+        "x-ms-request-id": [ "eastus:4b07f6cb-4cda-431f-b2df-14e11309bca3" ],
+        "x-ms-correlation-request-id": [ "df3553cd-891f-457c-8684-90a9adf36b66" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260219T180343Z:df3553cd-891f-457c-8684-90a9adf36b66" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5BC6E9349D6449F486A657FF6EB8ACFF Ref B: CO6AA3150219021 Ref C: 2026-02-12T18:18:51Z" ],
-        "Date": [ "Thu, 12 Feb 2026 18:18:52 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C3E51B9CD64143C0ACEAF7C81DD4CFE2 Ref B: MWH011020808054 Ref C: 2026-02-19T18:03:42Z" ],
+        "Date": [ "Thu, 19 Feb 2026 18:03:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "789" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"id\": \"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf\",\r\n  \"name\": \"idhklf\",\r\n  \"type\": \"Microsoft.Databricks/accessConnectors\",\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"principalId\": \"676f9d92-5bda-496e-bb51-3a69122ef529\",\r\n    \"tenantId\": \"b2ad95e6-8830-4405-a60e-12944d7ac939\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"laurenyeeann@gmail.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2026-02-12T18:18:19.0611046+00:00\",\r\n    \"lastModifiedBy\": \"laurenyeeann@gmail.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2026-02-12T18:18:19.0611046+00:00\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj\",\r\n  \"name\": \"ow1ixj\",\r\n  \"type\": \"Microsoft.Databricks/accessConnectors\",\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"principalId\": \"9c12f5a0-104b-4044-8317-422578ca37f5\",\r\n    \"tenantId\": \"b2ad95e6-8830-4405-a60e-12944d7ac939\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"laurenyeeann@gmail.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2026-02-19T18:03:10.5264315+00:00\",\r\n    \"lastModifiedBy\": \"laurenyeeann@gmail.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2026-02-19T18:03:10.5264315+00:00\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "AzDatabricksAccessConnector+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors?api-version=2026-01-01+1": {
+  "AzDatabricksAccessConnector+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors?api-version=2026-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "33" ],
-        "x-ms-client-request-id": [ "4299f0fd-2359-4f9f-a2a3-0e87a11e1389" ],
+        "x-ms-unique-id": [ "52" ],
+        "x-ms-client-request-id": [ "2425bbca-5174-4c49-beed-aa0e7fcf14a5" ],
         "CommandName": [ "Get-AzDatabricksAccessConnector" ],
         "FullCommandName": [ "Get-AzDatabricksAccessConnector_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -144,35 +144,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "eastus:159088f4-50ff-41ae-89b7-1482cf7db7df" ],
+        "x-ms-original-request-ids": [ "eastus:0af41258-ebee-4dd6-93ee-fa4c547ce3e9" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
-        "x-ms-request-id": [ "4b99e042-973e-428a-8b49-0f57519c7de1" ],
-        "x-ms-correlation-request-id": [ "4b99e042-973e-428a-8b49-0f57519c7de1" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260212T181853Z:4b99e042-973e-428a-8b49-0f57519c7de1" ],
+        "x-ms-request-id": [ "e53690ea-db8a-4379-b74c-c38a6a87b7cd" ],
+        "x-ms-correlation-request-id": [ "e53690ea-db8a-4379-b74c-c38a6a87b7cd" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260219T180344Z:e53690ea-db8a-4379-b74c-c38a6a87b7cd" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 2D6E49F450274794A65E23A22EEC86C2 Ref B: CO6AA3150219021 Ref C: 2026-02-12T18:18:52Z" ],
-        "Date": [ "Thu, 12 Feb 2026 18:18:53 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 54A9DE9269D44FC5BC91E560AC70EF76 Ref B: MWH011020808054 Ref C: 2026-02-19T18:03:43Z" ],
+        "Date": [ "Thu, 19 Feb 2026 18:03:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "682" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf\",\"name\":\"idhklf\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"676f9d92-5bda-496e-bb51-3a69122ef529\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"laurenyeeann@gmail.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-02-12T18:18:19.0611046+00:00\",\"lastModifiedBy\":\"laurenyeeann@gmail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-02-12T18:18:19.0611046+00:00\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj\",\"name\":\"ow1ixj\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"9c12f5a0-104b-4044-8317-422578ca37f5\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"laurenyeeann@gmail.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-02-19T18:03:10.5264315+00:00\",\"lastModifiedBy\":\"laurenyeeann@gmail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-02-19T18:03:10.5264315+00:00\"}}]}",
       "isContentBase64": false
     }
   },
-  "AzDatabricksAccessConnector+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf?api-version=2026-01-01+1": {
+  "AzDatabricksAccessConnector+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj?api-version=2026-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "34" ],
-        "x-ms-client-request-id": [ "d2e0512c-ad5c-4f83-8317-a09adf675699" ],
+        "x-ms-unique-id": [ "53" ],
+        "x-ms-client-request-id": [ "1037df32-69ef-432c-9e6e-ed486dcc5e73" ],
         "CommandName": [ "Get-AzDatabricksAccessConnector" ],
         "FullCommandName": [ "Get-AzDatabricksAccessConnector_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -187,22 +187,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
-        "x-ms-request-id": [ "eastus:bf43d2b9-8c1b-43cb-a4be-76aaa221afca" ],
-        "x-ms-correlation-request-id": [ "71b96ffb-fac1-4456-9b2d-860e4f3aedc9" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260212T181853Z:71b96ffb-fac1-4456-9b2d-860e4f3aedc9" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "248" ],
+        "x-ms-request-id": [ "eastus:45b2a43e-3aed-4793-b420-36b1e2d8eed3" ],
+        "x-ms-correlation-request-id": [ "8b9b482e-b7cc-45f6-b755-833a7027017d" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260219T180344Z:8b9b482e-b7cc-45f6-b755-833a7027017d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 33C77283B80640AEB3E72AFA521F426A Ref B: CO6AA3150219021 Ref C: 2026-02-12T18:18:53Z" ],
-        "Date": [ "Thu, 12 Feb 2026 18:18:53 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 39FDA62DFA7749B9932B0CC2C43C65DF Ref B: MWH011020808054 Ref C: 2026-02-19T18:03:44Z" ],
+        "Date": [ "Thu, 19 Feb 2026 18:03:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "789" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"id\": \"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf\",\r\n  \"name\": \"idhklf\",\r\n  \"type\": \"Microsoft.Databricks/accessConnectors\",\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"principalId\": \"676f9d92-5bda-496e-bb51-3a69122ef529\",\r\n    \"tenantId\": \"b2ad95e6-8830-4405-a60e-12944d7ac939\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"laurenyeeann@gmail.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2026-02-12T18:18:19.0611046+00:00\",\r\n    \"lastModifiedBy\": \"laurenyeeann@gmail.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2026-02-12T18:18:19.0611046+00:00\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj\",\r\n  \"name\": \"ow1ixj\",\r\n  \"type\": \"Microsoft.Databricks/accessConnectors\",\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"principalId\": \"9c12f5a0-104b-4044-8317-422578ca37f5\",\r\n    \"tenantId\": \"b2ad95e6-8830-4405-a60e-12944d7ac939\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"laurenyeeann@gmail.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2026-02-19T18:03:10.5264315+00:00\",\r\n    \"lastModifiedBy\": \"laurenyeeann@gmail.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2026-02-19T18:03:10.5264315+00:00\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
@@ -213,8 +213,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "35" ],
-        "x-ms-client-request-id": [ "3a8cb522-4587-4ada-9d7b-4aaa9467d9e2" ],
+        "x-ms-unique-id": [ "54" ],
+        "x-ms-client-request-id": [ "eae33c95-f8e9-4a34-98e3-b39e13921648" ],
         "CommandName": [ "Get-AzDatabricksAccessConnector" ],
         "FullCommandName": [ "Get-AzDatabricksAccessConnector_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -229,30 +229,30 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "westus:a373ba0f-6b43-4d6e-ab67-d295b93656ff", "eastus:b4875bb3-9508-4238-97ed-baf85f13345e" ],
+        "x-ms-original-request-ids": [ "westus:687695e9-8366-4fff-bfb9-2e7178368f26", "eastus:c02ba7e5-c831-414c-9919-88179e684844" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
-        "x-ms-request-id": [ "650bae52-76da-4c24-866e-cabf34d81ead" ],
-        "x-ms-correlation-request-id": [ "650bae52-76da-4c24-866e-cabf34d81ead" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260212T181854Z:650bae52-76da-4c24-866e-cabf34d81ead" ],
+        "x-ms-request-id": [ "2cfa3a02-a149-4fd9-9138-269528a4281a" ],
+        "x-ms-correlation-request-id": [ "2cfa3a02-a149-4fd9-9138-269528a4281a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260219T180345Z:2cfa3a02-a149-4fd9-9138-269528a4281a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 27005FDA876E4AD8825CE3D4E019002E Ref B: CO6AA3150219021 Ref C: 2026-02-12T18:18:53Z" ],
-        "Date": [ "Thu, 12 Feb 2026 18:18:54 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 4C50E5FFC7AA4215B55FECC04B8B80C5 Ref B: MWH011020808054 Ref C: 2026-02-19T18:03:44Z" ],
+        "Date": [ "Thu, 19 Feb 2026 18:03:45 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "8323" ],
+        "Content-Length": [ "12532" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/cli_test_access_connector2bumusycxogzlgggfoprd2gvfbughthy3nm55inwsw5o64ldj4/providers/Microsoft.Databricks/accessConnectors/my-test-access-connector\",\"name\":\"my-test-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"westus\",\"identity\":{\"principalId\":\"10692878-f329-4c74-bbd4-81582d6d09d1\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Failed\"},\"systemData\":{\"createdBy\":\"laurenyeeann@gmail.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-12-23T16:36:00.6916701+00:00\",\"lastModifiedBy\":\"laurenyeeann@gmail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-12-23T16:36:00.6916701+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/cli_test_access_connectorrg3w6sbvzfpyglstibkkkdcsb6tiictddyjmgzxpt2kqo23232/providers/Microsoft.Databricks/accessConnectors/my-test-access-connector\",\"name\":\"my-test-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"westus\",\"identity\":{\"userAssignedIdentities\":{\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourcegroups/cli_test_access_connectorrg3w6sbvzfpyglstibkkkdcsb6tiictddyjmgzxpt2kqo23232/providers/Microsoft.ManagedIdentity/userAssignedIdentities/my-test-identity\":{\"principalId\":\"c44a0674-48a0-494f-8674-7faba75f1441\",\"clientId\":\"c1531de8-bc57-49a8-8127-6d6e045c2ee6\"}},\"type\":\"UserAssigned\"},\"properties\":{\"provisioningState\":\"Failed\"},\"systemData\":{\"createdBy\":\"laurenyeeann@gmail.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-12-23T16:34:51.2166843+00:00\",\"lastModifiedBy\":\"laurenyeeann@gmail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-12-23T16:34:51.2166843+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf\",\"name\":\"idhklf\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"676f9d92-5bda-496e-bb51-3a69122ef529\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"laurenyeeann@gmail.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-02-12T18:18:19.0611046+00:00\",\"lastModifiedBy\":\"laurenyeeann@gmail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-02-12T18:18:19.0611046+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/databricks-rg-79rmby-uldvq83zsab9m/providers/Microsoft.Databricks/accessConnectors/unity-catalog-access-connector\",\"name\":\"unity-catalog-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"c22b0aa8-ae42-4803-8bab-afd2ad948e0d\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"tags\":{\"application\":\"databricks\",\"databricks-environment\":\"true\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"createdByType\":\"Application\",\"createdAt\":\"2026-01-28T00:04:30.0679844+00:00\",\"lastModifiedBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-01-28T00:04:30.0679844+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/databricks-rg-dawklb-qd2heocsk84ru/providers/Microsoft.Databricks/accessConnectors/unity-catalog-access-connector\",\"name\":\"unity-catalog-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"fe4f2f92-20b0-45de-b990-aac82ce31930\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"tags\":{\"application\":\"databricks\",\"databricks-environment\":\"true\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"createdByType\":\"Application\",\"createdAt\":\"2026-01-28T00:01:30.3515711+00:00\",\"lastModifiedBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-01-28T00:01:30.3515711+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/databricks-rg-gjvh80-rlp2sai4d8bfu/providers/Microsoft.Databricks/accessConnectors/unity-catalog-access-connector\",\"name\":\"unity-catalog-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"8667cf60-4992-4242-89ec-acde458e26ac\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"tags\":{\"application\":\"databricks\",\"databricks-environment\":\"true\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"createdByType\":\"Application\",\"createdAt\":\"2026-01-28T00:56:28.4826322+00:00\",\"lastModifiedBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-01-28T00:56:28.4826322+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/databricks-rg-l9t2oy-93ifbqnxs4uoc/providers/Microsoft.Databricks/accessConnectors/unity-catalog-access-connector\",\"name\":\"unity-catalog-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"e29dcd3b-e700-4251-afb9-5c1a292bcac3\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"tags\":{\"application\":\"databricks\",\"databricks-environment\":\"true\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"createdByType\":\"Application\",\"createdAt\":\"2026-02-12T18:14:15.5395228+00:00\",\"lastModifiedBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-02-12T18:14:15.5395228+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/databricks-rg-no-sku5-opd4qzu3w51zq/providers/Microsoft.Databricks/accessConnectors/unity-catalog-access-connector\",\"name\":\"unity-catalog-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"56c6af5f-eb3f-4195-85a5-29f75a94c226\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"tags\":{\"application\":\"databricks\",\"databricks-environment\":\"true\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"createdByType\":\"Application\",\"createdAt\":\"2026-02-10T00:43:27.8248265+00:00\",\"lastModifiedBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-02-10T00:43:27.8248265+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/databricks-rg-pdaq5o-4hpx5imgsnduv/providers/Microsoft.Databricks/accessConnectors/unity-catalog-access-connector\",\"name\":\"unity-catalog-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"c543e120-306b-4b87-9130-3c8db9e76030\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"tags\":{\"application\":\"databricks\",\"databricks-environment\":\"true\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"createdByType\":\"Application\",\"createdAt\":\"2026-01-28T00:53:24.9593411+00:00\",\"lastModifiedBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-01-28T00:53:24.9593411+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/databricks-rg-q835d1-so7ghbcv4nlze/providers/Microsoft.Databricks/accessConnectors/unity-catalog-access-connector\",\"name\":\"unity-catalog-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"1983a15e-a8e0-49ce-87f5-f7ad1a04411b\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"tags\":{\"application\":\"databricks\",\"databricks-environment\":\"true\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"createdByType\":\"Application\",\"createdAt\":\"2026-02-12T18:16:50.7482311+00:00\",\"lastModifiedBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-02-12T18:16:50.7482311+00:00\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/cli_test_access_connector2bumusycxogzlgggfoprd2gvfbughthy3nm55inwsw5o64ldj4/providers/Microsoft.Databricks/accessConnectors/my-test-access-connector\",\"name\":\"my-test-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"westus\",\"identity\":{\"principalId\":\"10692878-f329-4c74-bbd4-81582d6d09d1\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Failed\"},\"systemData\":{\"createdBy\":\"laurenyeeann@gmail.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-12-23T16:36:00.6916701+00:00\",\"lastModifiedBy\":\"laurenyeeann@gmail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-12-23T16:36:00.6916701+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/cli_test_access_connectorrg3w6sbvzfpyglstibkkkdcsb6tiictddyjmgzxpt2kqo23232/providers/Microsoft.Databricks/accessConnectors/my-test-access-connector\",\"name\":\"my-test-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"westus\",\"identity\":{\"userAssignedIdentities\":{\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourcegroups/cli_test_access_connectorrg3w6sbvzfpyglstibkkkdcsb6tiictddyjmgzxpt2kqo23232/providers/Microsoft.ManagedIdentity/userAssignedIdentities/my-test-identity\":{\"principalId\":\"c44a0674-48a0-494f-8674-7faba75f1441\",\"clientId\":\"c1531de8-bc57-49a8-8127-6d6e045c2ee6\"}},\"type\":\"UserAssigned\"},\"properties\":{\"provisioningState\":\"Failed\"},\"systemData\":{\"createdBy\":\"laurenyeeann@gmail.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-12-23T16:34:51.2166843+00:00\",\"lastModifiedBy\":\"laurenyeeann@gmail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-12-23T16:34:51.2166843+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/databricks-rg-no-sku25-e16kexsqr85go/providers/Microsoft.Databricks/accessConnectors/unity-catalog-access-connector\",\"name\":\"unity-catalog-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"westus\",\"identity\":{\"principalId\":\"a9179e3c-5350-456b-b24b-315cd2325310\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"tags\":{\"application\":\"databricks\",\"databricks-environment\":\"true\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"createdByType\":\"Application\",\"createdAt\":\"2026-02-18T20:20:42.1941834+00:00\",\"lastModifiedBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-02-18T20:20:42.1941834+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/databricks-rg-no-sku25-xtzbyhvoan6jq/providers/Microsoft.Databricks/accessConnectors/unity-catalog-access-connector\",\"name\":\"unity-catalog-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"westus\",\"identity\":{\"principalId\":\"f0663c83-6dda-424a-8305-d12ed39c0c76\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"tags\":{\"application\":\"databricks\",\"databricks-environment\":\"true\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"createdByType\":\"Application\",\"createdAt\":\"2026-02-18T20:44:26.0888919+00:00\",\"lastModifiedBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-02-18T20:44:26.0888919+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/databricks-rg-no-sku29-l5j1pobz73pxc/providers/Microsoft.Databricks/accessConnectors/unity-catalog-access-connector\",\"name\":\"unity-catalog-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"westus\",\"identity\":{\"principalId\":\"e80b769f-0ca5-48c6-8194-6cc8ed8ec04e\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"tags\":{\"application\":\"databricks\",\"databricks-environment\":\"true\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"createdByType\":\"Application\",\"createdAt\":\"2026-02-18T22:50:41.3156112+00:00\",\"lastModifiedBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-02-18T22:50:41.3156112+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj\",\"name\":\"ow1ixj\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"9c12f5a0-104b-4044-8317-422578ca37f5\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"laurenyeeann@gmail.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-02-19T18:03:10.5264315+00:00\",\"lastModifiedBy\":\"laurenyeeann@gmail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-02-19T18:03:10.5264315+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/databricks-rg-79rmby-uldvq83zsab9m/providers/Microsoft.Databricks/accessConnectors/unity-catalog-access-connector\",\"name\":\"unity-catalog-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"c22b0aa8-ae42-4803-8bab-afd2ad948e0d\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"tags\":{\"application\":\"databricks\",\"databricks-environment\":\"true\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"createdByType\":\"Application\",\"createdAt\":\"2026-01-28T00:04:30.0679844+00:00\",\"lastModifiedBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-01-28T00:04:30.0679844+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/databricks-rg-ap6qfv-nkf4ar53lj01c/providers/Microsoft.Databricks/accessConnectors/unity-catalog-access-connector\",\"name\":\"unity-catalog-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"63af2341-5960-4604-ba0b-4afa95085bea\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"tags\":{\"application\":\"databricks\",\"databricks-environment\":\"true\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"createdByType\":\"Application\",\"createdAt\":\"2026-02-19T17:54:20.4629299+00:00\",\"lastModifiedBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-02-19T17:54:20.4629299+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/databricks-rg-dawklb-qd2heocsk84ru/providers/Microsoft.Databricks/accessConnectors/unity-catalog-access-connector\",\"name\":\"unity-catalog-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"fe4f2f92-20b0-45de-b990-aac82ce31930\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"tags\":{\"application\":\"databricks\",\"databricks-environment\":\"true\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"createdByType\":\"Application\",\"createdAt\":\"2026-01-28T00:01:30.3515711+00:00\",\"lastModifiedBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-01-28T00:01:30.3515711+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/databricks-rg-gdwl3r-an98t71zmkduf/providers/Microsoft.Databricks/accessConnectors/unity-catalog-access-connector\",\"name\":\"unity-catalog-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"e2677361-64fa-44d0-a544-79dc76373df0\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"tags\":{\"application\":\"databricks\",\"databricks-environment\":\"true\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"createdByType\":\"Application\",\"createdAt\":\"2026-02-19T18:00:52.2898387+00:00\",\"lastModifiedBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-02-19T18:00:52.2898387+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/databricks-rg-gjvh80-rlp2sai4d8bfu/providers/Microsoft.Databricks/accessConnectors/unity-catalog-access-connector\",\"name\":\"unity-catalog-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"8667cf60-4992-4242-89ec-acde458e26ac\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"tags\":{\"application\":\"databricks\",\"databricks-environment\":\"true\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"createdByType\":\"Application\",\"createdAt\":\"2026-01-28T00:56:28.4826322+00:00\",\"lastModifiedBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-01-28T00:56:28.4826322+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/databricks-rg-no-sku5-opd4qzu3w51zq/providers/Microsoft.Databricks/accessConnectors/unity-catalog-access-connector\",\"name\":\"unity-catalog-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"56c6af5f-eb3f-4195-85a5-29f75a94c226\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"tags\":{\"application\":\"databricks\",\"databricks-environment\":\"true\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"createdByType\":\"Application\",\"createdAt\":\"2026-02-10T00:43:27.8248265+00:00\",\"lastModifiedBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-02-10T00:43:27.8248265+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/databricks-rg-no-sku7-6un2pr7zgafuz/providers/Microsoft.Databricks/accessConnectors/unity-catalog-access-connector\",\"name\":\"unity-catalog-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"1f38fd25-c823-488f-87df-2638e9b4ae77\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"tags\":{\"application\":\"databricks\",\"databricks-environment\":\"true\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"createdByType\":\"Application\",\"createdAt\":\"2026-02-18T18:38:29.0136605+00:00\",\"lastModifiedBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-02-18T18:38:29.0136605+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/databricks-rg-pdaq5o-4hpx5imgsnduv/providers/Microsoft.Databricks/accessConnectors/unity-catalog-access-connector\",\"name\":\"unity-catalog-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"c543e120-306b-4b87-9130-3c8db9e76030\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"tags\":{\"application\":\"databricks\",\"databricks-environment\":\"true\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"createdByType\":\"Application\",\"createdAt\":\"2026-01-28T00:53:24.9593411+00:00\",\"lastModifiedBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-01-28T00:53:24.9593411+00:00\"}},{\"id\":\"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/databricks-rg-work-plz-ryjwyhwcgyylg/providers/Microsoft.Databricks/accessConnectors/unity-catalog-access-connector\",\"name\":\"unity-catalog-access-connector\",\"type\":\"Microsoft.Databricks/accessConnectors\",\"location\":\"eastus\",\"identity\":{\"principalId\":\"b0f6c3ac-001a-4bbe-8036-bdde4f7b5d21\",\"tenantId\":\"b2ad95e6-8830-4405-a60e-12944d7ac939\",\"type\":\"SystemAssigned\"},\"tags\":{\"application\":\"databricks\",\"databricks-environment\":\"true\"},\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"createdByType\":\"Application\",\"createdAt\":\"2026-02-18T22:44:55.6603701+00:00\",\"lastModifiedBy\":\"d9327919-6775-4843-9037-3fb0fb0473cb\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-02-18T22:44:55.6603701+00:00\"}}]}",
       "isContentBase64": false
     }
   },
-  "AzDatabricksAccessConnector+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf?api-version=2026-01-01+1": {
+  "AzDatabricksAccessConnector+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj?api-version=2026-01-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj?api-version=2026-01-01",
       "Content": "{\r\n  \"tags\": {\r\n    \"key\": \"value\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -267,35 +267,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=b2ad95e6-8830-4405-a60e-12944d7ac939,objectId=444fc911-d78c-459a-a60c-b91f4398edb8/eastus/8a241841-9577-4819-946f-d7d87a9ae30c" ],
-        "x-ms-request-id": [ "eastus:5b035359-1cc6-410b-82ab-c79d75864a6b" ],
+        "x-ms-operation-identifier": [ "tenantId=b2ad95e6-8830-4405-a60e-12944d7ac939,objectId=444fc911-d78c-459a-a60c-b91f4398edb8/eastus/d5ca7e2c-7222-4035-af25-7ad696539374" ],
+        "x-ms-request-id": [ "eastus:2d6c7c1f-a015-4aa0-84d7-f3eaa910b0bd" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
-        "x-ms-correlation-request-id": [ "c0b8191d-1e41-4b7a-a886-aba495749be0" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260212T181855Z:c0b8191d-1e41-4b7a-a886-aba495749be0" ],
+        "x-ms-correlation-request-id": [ "2a218805-335e-4428-977f-756948f0b318" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260219T180346Z:2a218805-335e-4428-977f-756948f0b318" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5FE82634CBEB4708A4E4E14C3A78B0F1 Ref B: CO6AA3150219021 Ref C: 2026-02-12T18:18:54Z" ],
-        "Date": [ "Thu, 12 Feb 2026 18:18:55 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F76E0DAFD8F048318095553C4A118C44 Ref B: MWH011020808054 Ref C: 2026-02-19T18:03:45Z" ],
+        "Date": [ "Thu, 19 Feb 2026 18:03:46 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "828" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"id\": \"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf\",\r\n  \"name\": \"idhklf\",\r\n  \"type\": \"Microsoft.Databricks/accessConnectors\",\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"principalId\": \"676f9d92-5bda-496e-bb51-3a69122ef529\",\r\n    \"tenantId\": \"b2ad95e6-8830-4405-a60e-12944d7ac939\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"tags\": {\r\n    \"key\": \"value\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"laurenyeeann@gmail.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2026-02-12T18:18:19.0611046+00:00\",\r\n    \"lastModifiedBy\": \"laurenyeeann@gmail.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2026-02-12T18:18:55.1185696+00:00\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj\",\r\n  \"name\": \"ow1ixj\",\r\n  \"type\": \"Microsoft.Databricks/accessConnectors\",\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"principalId\": \"9c12f5a0-104b-4044-8317-422578ca37f5\",\r\n    \"tenantId\": \"b2ad95e6-8830-4405-a60e-12944d7ac939\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"tags\": {\r\n    \"key\": \"value\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"laurenyeeann@gmail.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2026-02-19T18:03:10.5264315+00:00\",\r\n    \"lastModifiedBy\": \"laurenyeeann@gmail.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2026-02-19T18:03:46.1027622+00:00\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "AzDatabricksAccessConnector+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf?api-version=2026-01-01+1": {
+  "AzDatabricksAccessConnector+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj?api-version=2026-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "37" ],
-        "x-ms-client-request-id": [ "300ff66f-fda4-46d5-a836-d8a85571c43f" ],
+        "x-ms-unique-id": [ "56" ],
+        "x-ms-client-request-id": [ "a6bd214f-ed66-45f1-a252-52d4dcbb69b3" ],
         "CommandName": [ "Get-AzDatabricksAccessConnector" ],
         "FullCommandName": [ "Get-AzDatabricksAccessConnector_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -311,28 +311,28 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
-        "x-ms-request-id": [ "eastus:ddbd903a-323d-435e-9514-4fac4a5dae17" ],
-        "x-ms-correlation-request-id": [ "5d3aebad-2d83-4c60-b649-cf76d2e2c2f7" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260212T181856Z:5d3aebad-2d83-4c60-b649-cf76d2e2c2f7" ],
+        "x-ms-request-id": [ "eastus:3c106569-8518-41c9-b024-abb8e1d1619c" ],
+        "x-ms-correlation-request-id": [ "82a9b2b5-36a7-44e4-8230-3d06fddf938e" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260219T180347Z:82a9b2b5-36a7-44e4-8230-3d06fddf938e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A66D5038259344D8BBC19526E4BF5EDE Ref B: CO6AA3150219021 Ref C: 2026-02-12T18:18:55Z" ],
-        "Date": [ "Thu, 12 Feb 2026 18:18:55 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: B599EE7674164D04BB039FB9A8824751 Ref B: MWH011020808054 Ref C: 2026-02-19T18:03:46Z" ],
+        "Date": [ "Thu, 19 Feb 2026 18:03:46 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "828" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"id\": \"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf\",\r\n  \"name\": \"idhklf\",\r\n  \"type\": \"Microsoft.Databricks/accessConnectors\",\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"principalId\": \"676f9d92-5bda-496e-bb51-3a69122ef529\",\r\n    \"tenantId\": \"b2ad95e6-8830-4405-a60e-12944d7ac939\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"tags\": {\r\n    \"key\": \"value\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"laurenyeeann@gmail.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2026-02-12T18:18:19.0611046+00:00\",\r\n    \"lastModifiedBy\": \"laurenyeeann@gmail.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2026-02-12T18:18:55.1185696+00:00\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj\",\r\n  \"name\": \"ow1ixj\",\r\n  \"type\": \"Microsoft.Databricks/accessConnectors\",\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"principalId\": \"9c12f5a0-104b-4044-8317-422578ca37f5\",\r\n    \"tenantId\": \"b2ad95e6-8830-4405-a60e-12944d7ac939\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"tags\": {\r\n    \"key\": \"value\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"laurenyeeann@gmail.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2026-02-19T18:03:10.5264315+00:00\",\r\n    \"lastModifiedBy\": \"laurenyeeann@gmail.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2026-02-19T18:03:46.1027622+00:00\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "AzDatabricksAccessConnector+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf?api-version=2026-01-01+2": {
+  "AzDatabricksAccessConnector+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj?api-version=2026-01-01+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj?api-version=2026-01-01",
       "Content": "{\r\n  \"tags\": {\r\n    \"key\": \"value\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -347,35 +347,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=b2ad95e6-8830-4405-a60e-12944d7ac939,objectId=444fc911-d78c-459a-a60c-b91f4398edb8/eastus/68a8ce40-629f-4007-a810-d9747448a056" ],
-        "x-ms-request-id": [ "eastus:1cc99ade-986d-4b7a-95ce-5f7783b28be9" ],
+        "x-ms-operation-identifier": [ "tenantId=b2ad95e6-8830-4405-a60e-12944d7ac939,objectId=444fc911-d78c-459a-a60c-b91f4398edb8/eastus/b4cd0b33-68a0-400d-b6aa-c0da7dfb5af7" ],
+        "x-ms-request-id": [ "eastus:98ab6cc7-52bd-4584-92e8-dfb2eb57cc70" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
-        "x-ms-correlation-request-id": [ "dcd1ca37-3ef2-4aa5-8f0d-ba31690f5300" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260212T181856Z:dcd1ca37-3ef2-4aa5-8f0d-ba31690f5300" ],
+        "x-ms-correlation-request-id": [ "969ac437-989e-4845-8719-ee1f4629f0f8" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260219T180347Z:969ac437-989e-4845-8719-ee1f4629f0f8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B04958281DE247118B6CDE956180DC56 Ref B: CO6AA3150219021 Ref C: 2026-02-12T18:18:56Z" ],
-        "Date": [ "Thu, 12 Feb 2026 18:18:56 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F675016191E746F78E3BB50D7CE0B9B2 Ref B: MWH011020808054 Ref C: 2026-02-19T18:03:47Z" ],
+        "Date": [ "Thu, 19 Feb 2026 18:03:47 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "828" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"id\": \"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf\",\r\n  \"name\": \"idhklf\",\r\n  \"type\": \"Microsoft.Databricks/accessConnectors\",\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"principalId\": \"676f9d92-5bda-496e-bb51-3a69122ef529\",\r\n    \"tenantId\": \"b2ad95e6-8830-4405-a60e-12944d7ac939\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"tags\": {\r\n    \"key\": \"value\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"laurenyeeann@gmail.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2026-02-12T18:18:19.0611046+00:00\",\r\n    \"lastModifiedBy\": \"laurenyeeann@gmail.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2026-02-12T18:18:56.3696778+00:00\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj\",\r\n  \"name\": \"ow1ixj\",\r\n  \"type\": \"Microsoft.Databricks/accessConnectors\",\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"principalId\": \"9c12f5a0-104b-4044-8317-422578ca37f5\",\r\n    \"tenantId\": \"b2ad95e6-8830-4405-a60e-12944d7ac939\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"tags\": {\r\n    \"key\": \"value\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"laurenyeeann@gmail.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2026-02-19T18:03:10.5264315+00:00\",\r\n    \"lastModifiedBy\": \"laurenyeeann@gmail.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2026-02-19T18:03:47.3298561+00:00\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "AzDatabricksAccessConnector+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf?api-version=2026-01-01+1": {
+  "AzDatabricksAccessConnector+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj?api-version=2026-01-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-9t/providers/Microsoft.Databricks/accessConnectors/idhklf?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9c7373e9-7e63-413d-a177-6780aac2a6b1/resourceGroups/auto-test-databricks-yx/providers/Microsoft.Databricks/accessConnectors/ow1ixj?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "39" ],
-        "x-ms-client-request-id": [ "64273e0a-d94e-48d6-b87d-66677a845a97" ],
+        "x-ms-unique-id": [ "58" ],
+        "x-ms-client-request-id": [ "8a2a0c67-53e0-4f54-9e81-8bc42669cb67" ],
         "CommandName": [ "Remove-AzDatabricksAccessConnector" ],
         "FullCommandName": [ "Remove-AzDatabricksAccessConnector_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -390,17 +390,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "eastus:5674db59-e993-406c-9c53-35330e0a03f7" ],
-        "x-ms-operation-identifier": [ "tenantId=b2ad95e6-8830-4405-a60e-12944d7ac939,objectId=444fc911-d78c-459a-a60c-b91f4398edb8/eastus/98b517e7-c919-454c-a954-18a8a0bd1108" ],
+        "x-ms-request-id": [ "eastus:9df6a258-bb8f-4837-825b-c88abcdbb9d9" ],
+        "x-ms-operation-identifier": [ "tenantId=b2ad95e6-8830-4405-a60e-12944d7ac939,objectId=444fc911-d78c-459a-a60c-b91f4398edb8/eastus/dde8e135-3ba5-45c6-81ea-d5cb25bdd625" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "2b2fcc86-036e-4ea0-a175-9e9f10323a04" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260212T181858Z:2b2fcc86-036e-4ea0-a175-9e9f10323a04" ],
+        "x-ms-correlation-request-id": [ "6c812eda-d24f-498e-833a-4e30b6da7dca" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260219T180348Z:6c812eda-d24f-498e-833a-4e30b6da7dca" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5C8DEC60126A4A0B921D194C36DAD105 Ref B: CO6AA3150219021 Ref C: 2026-02-12T18:18:57Z" ],
-        "Date": [ "Thu, 12 Feb 2026 18:18:57 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: CD7AB2F6E94A42039AFCAF697F74CDBF Ref B: MWH011020808054 Ref C: 2026-02-19T18:03:47Z" ],
+        "Date": [ "Thu, 19 Feb 2026 18:03:48 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
