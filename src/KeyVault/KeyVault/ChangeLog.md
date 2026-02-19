@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.4.3
 * Added upcoming breaking change warning messages to `Get-AzKeyVaultKey` and `Get-AzKeyVaultSecret` for filtering certificate-backed keys and secrets.
 
 ## Version 6.4.2

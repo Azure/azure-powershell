@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.1.1
 * Added `BufferSizeInBytes` parameter to `Connect-AzSftp` cmdlet
     - Allows users to specify buffer size in bytes for SFTP file transfers using the sftp -B flag
     - Default value is 262144 (256 KB)
