@@ -8,7 +8,7 @@ schema: 2.0.0
 # Restore-AzSqlServer
 
 ## SYNOPSIS
-Restores a deleted Azure SQL Database server that is still within its soft-delete retention period
+Restores a deleted Azure SQL Database server that is still within its soft-delete retention period. (Server soft-delete feature is currently in Public Preview)
 
 ## SYNTAX
 

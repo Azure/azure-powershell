@@ -220,7 +220,7 @@ Accept wildcard characters: False
 ### -EnableSoftDelete
 **This parameter has been deprecated and will be removed in May 2026 (Az version 16.0.0 / Az.Sql version 7.0.0). Please use the SoftDeleteRetentionDays parameter instead.**
 
-Specifies whether or not soft-delete retention is enabled for the server. To enable soft-delete, use `-SoftDeleteRetentionDays` with a value of 1-7 days. To disable soft-delete, use `-SoftDeleteRetentionDays 0`.
+[Public Preview] Specifies whether or not soft-delete retention is enabled for the server. To enable soft-delete, use `-SoftDeleteRetentionDays` with a value of 1-7 days. To disable soft-delete, use `-SoftDeleteRetentionDays 0`.
 
 ```yaml
 Type: System.Boolean
@@ -433,7 +433,7 @@ Accept wildcard characters: False
 ```
 
 ### -SoftDeleteRetentionDays
-Specifies the soft-delete retention days for the server. The acceptable values for this parameter are 0-7. Specify 0 to disable the SoftDelete
+[Public Preview] Specifies the soft-delete retention days for the server. The acceptable values for this parameter are 0-7. Specify 0 to disable the SoftDelete
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
