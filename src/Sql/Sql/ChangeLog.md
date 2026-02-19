@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add support for the versionless AKV keys.
+    - The cmdlets supported are `Add-AzSqlServerKeyVaultKey`, `Get-AzSqlServerKeyVaultKey`, `Set-AzSqlServerTransparentDataEncryptionProtector`, `Get-AzSqlServerTransparentDataEncryptionProtector`, `New-AzSqlDatabase`, `Get-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary` and `Restore-AzSqlDatabase`
 
 ## Version 6.4.0
 * Added 'Get-AzSqlDeletedServer' cmdlet to retrieve soft deleted Azure SQL servers
