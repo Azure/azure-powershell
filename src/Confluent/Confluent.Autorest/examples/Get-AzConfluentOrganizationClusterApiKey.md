@@ -1,22 +1,21 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all cluster API keys
 ```powershell
-{{ Add code here }}
+Get-AzConfluentOrganizationClusterApiKey -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -ClusterId lkc-abc123
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name              ClusterId    Owner
+--          ----              ---------    -----
+key-123     prod-api-key      lkc-abc123   User:u-123
+key-456     staging-api-key   lkc-abc123   User:u-456
 ```
 
-{{ Add description here }}
+This command lists all API keys for the specified Kafka cluster.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get specific API key by cluster
 ```powershell
-{{ Add code here }}
+Get-AzConfluentOrganizationClusterApiKey -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -ClusterId lkc-abc123
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command retrieves API keys associated with a specific cluster.
 

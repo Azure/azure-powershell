@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update Kafka topic partition count
 ```powershell
-{{ Add code here }}
+Update-AzConfluentTopic -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123 -TopicName orders -Partitions 12
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name       Partitions  ReplicationFactor  IsInternal
+----       ----------  -----------------  ----------
+orders     12          3                  False
 ```
 
-{{ Add description here }}
+This command updates the partition count for a Kafka topic.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update topic configuration settings
 ```powershell
-{{ Add code here }}
+Update-AzConfluentTopic -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123 -TopicName logs -Config @{"retention.ms"="1209600000"; "compression.type"="gzip"}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command updates configuration settings for a Kafka topic (14-day retention with gzip compression).
 

@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a Kafka cluster configuration
 ```powershell
-{{ Add code here }}
+Set-AzConfluentCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123 -CkuCount 2
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name            Type      CkuCount  Status
+--          ----            ----      --------  ------
+lkc-abc123  prod-cluster    STANDARD  2         PROVISIONED
 ```
 
-{{ Add description here }}
+This command updates the CKU count for a Kafka cluster.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update cluster with tags
 ```powershell
-{{ Add code here }}
+Set-AzConfluentCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123 -Tag @{Environment="Production"; Team="DataPlatform"}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command updates cluster metadata with custom tags.
 

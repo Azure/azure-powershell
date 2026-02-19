@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Invite a user to the Confluent organization
 ```powershell
-{{ Add code here }}
+Invoke-AzConfluentInviteAccessUser -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -Email "newuser@contoso.com"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Email                Status    CreatedAt
+--          -----                ------    ---------
+inv-789     newuser@contoso.com  PENDING   2026-02-19 09:15:00
 ```
 
-{{ Add description here }}
+This command sends an invitation to a new user to join the Confluent organization.
 
-### Example 2: {{ Add title here }}
+### Example 2: Invite multiple users with authentication type
 ```powershell
-{{ Add code here }}
+Invoke-AzConfluentInviteAccessUser -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -Email "user@contoso.com" -AuthType "SSO"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command invites a user with specific authentication type configured.
 

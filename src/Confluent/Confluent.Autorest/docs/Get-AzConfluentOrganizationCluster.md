@@ -48,33 +48,26 @@ Get cluster by Id
 
 ## EXAMPLES
 
-### Example 1: List all clusters in an environment
+### Example 1: List all clusters in organization
 ```powershell
-Get-AzConfluentOrganizationCluster -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456
+Get-AzConfluentOrganizationCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123
 ```
 
 ```output
-Id          Name              Type           Status
---          ----              ----           ------
-lkc-abc123  prod-kafka-01     KAFKA          RUNNING
-lkc-def456  prod-kafka-02     KAFKA          RUNNING
-lsr-ghi789  schema-registry   SCHEMA_REGISTRY RUNNING
+Id          Name            Type      Availability  Status
+--          ----            ----      ------------  ------
+lkc-abc123  prod-cluster    BASIC     SINGLE_ZONE   PROVISIONED
+lkc-def456  staging-cluster STANDARD  MULTI_ZONE    PROVISIONED
 ```
 
-This command lists all Confluent clusters within the specified environment.
+This command lists all Kafka clusters in the specified environment.
 
-### Example 2: Get a specific cluster by ID
+### Example 2: Get specific cluster details
 ```powershell
-Get-AzConfluentOrganizationCluster -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -ClusterId lkc-abc123
+Get-AzConfluentOrganizationCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123
 ```
 
-```output
-Id          Name              Type    Status  Region    Cloud
---          ----              ----    ------  ------    -----
-lkc-abc123  prod-kafka-01     KAFKA   RUNNING eastus    AZURE
-```
-
-This command retrieves details of a specific Confluent cluster by its ID.
+This command retrieves details of a specific Kafka cluster.
 
 ## PARAMETERS
 

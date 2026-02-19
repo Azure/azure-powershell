@@ -18,7 +18,7 @@ Test-AzConfluentValidationOrganization -OrganizationName <String> -ResourceGroup
  [-SubscriptionId <String>] -Location <String> -OfferDetailId <String> -OfferDetailPlanId <String>
  -OfferDetailPlanName <String> -OfferDetailPublisherId <String> -OfferDetailTermUnit <String>
  -UserDetailEmailAddress <String> [-LinkOrganizationToken <SecureString>] [-OfferDetailPrivateOfferId <String>]
- [-OfferDetailStatus <String>] [-OfferDetailTermId <String>] [-PropertiesOfferDetailPrivateOfferIds <String[]>]
+ [-OfferDetailStatus <String>] [-OfferDetailTermId <String>] [-PropertiesOfferDetailPrivateOfferId <String[]>]
  [-Tag <Hashtable>] [-UserDetailAadEmail <String>] [-UserDetailFirstName <String>]
  [-UserDetailLastName <String>] [-UserDetailUserPrincipalName <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -51,7 +51,7 @@ Test-AzConfluentValidationOrganization -InputObject <IConfluentIdentity> -Locati
  -OfferDetailId <String> -OfferDetailPlanId <String> -OfferDetailPlanName <String>
  -OfferDetailPublisherId <String> -OfferDetailTermUnit <String> -UserDetailEmailAddress <String>
  [-LinkOrganizationToken <SecureString>] [-OfferDetailPrivateOfferId <String>] [-OfferDetailStatus <String>]
- [-OfferDetailTermId <String>] [-PropertiesOfferDetailPrivateOfferIds <String[]>] [-Tag <Hashtable>]
+ [-OfferDetailTermId <String>] [-PropertiesOfferDetailPrivateOfferId <String[]>] [-Tag <Hashtable>]
  [-UserDetailAadEmail <String>] [-UserDetailFirstName <String>] [-UserDetailLastName <String>]
  [-UserDetailUserPrincipalName <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -68,31 +68,25 @@ Organization Validate proxy resource
 
 ## EXAMPLES
 
-### Example 1: Validate a Confluent organization configuration
+### Example 1: Validate organization configuration
 ```powershell
-Test-AzConfluentValidationOrganization -ResourceGroupName azure-rg-test -OrganizationName confluentorg-validation -Location eastus -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud - Pay as you Go" -OfferDetailPublisherId "confluentinc" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress "user@example.com"
+Test-AzConfluentValidationOrganization -ResourceGroupName confluent-rg -Location eastus -OrganizationName confluentorg-01
 ```
 
 ```output
-Location Name                         Type
--------- ----                         ----
-eastus   confluentorg-validation Microsoft.Confluent/organizations
+IsValid  Message
+-------  -------
+True     Organization configuration is valid
 ```
 
-This command validates a Confluent organization configuration before creation to ensure all required parameters are valid.
+This command validates the organization configuration before creation.
 
-### Example 2: Validate a Confluent organization using JSON file
+### Example 2: Validate with offer details
 ```powershell
-Test-AzConfluentValidationOrganization -ResourceGroupName azure-rg-test -OrganizationName confluentorg-validation -JsonFilePath "C:\config\org-validation.json"
+Test-AzConfluentValidationOrganization -ResourceGroupName confluent-rg -Location eastus -OrganizationName confluentorg-01 -OfferDetail @{PublisherId="confluent"; Id="confluent-cloud-azure-prod"; PlanId="confluent-cloud-azure-payg-prod"}
 ```
 
-```output
-Location Name                         Type
--------- ----                         ----
-eastus   confluentorg-validation Microsoft.Confluent/organizations
-```
-
-This command validates a Confluent organization configuration using parameters from a JSON file.
+This command validates organization configuration with specific marketplace offer details.
 
 ## PARAMETERS
 
@@ -337,13 +331,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PropertiesOfferDetailPrivateOfferIds
+### -PropertiesOfferDetailPrivateOfferId
 Array of Private Offer Ids
 
 ```yaml
 Type: System.String[]
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
-Aliases:
+Aliases: PropertiesOfferDetailPrivateOfferIds
 
 Required: False
 Position: Named

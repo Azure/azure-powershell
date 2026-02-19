@@ -1,22 +1,23 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all environments in a Confluent organization
 ```powershell
-{{ Add code here }}
+Get-AzConfluentAccessEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name            DisplayName     StreamGovernanceConfig
+--          ----            -----------     ----------------------
+env-abc123  prod-env        Production      Essentials
+env-def456  staging-env     Staging         Advanced
+env-ghi789  dev-env         Development     Essentials
 ```
 
-{{ Add description here }}
+This command lists all available environments in the specified Confluent organization.
 
-### Example 2: {{ Add title here }}
+### Example 2: List environments with search criteria
 ```powershell
-{{ Add code here }}
+$searchFilters = @{SearchFilters = @{PageSize = 10}}
+Get-AzConfluentAccessEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -SearchFilter $searchFilters
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command lists environments in the organization with pagination support.
 

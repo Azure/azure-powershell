@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Validate organization configuration
 ```powershell
-{{ Add code here }}
+Test-AzConfluentValidationOrganization -ResourceGroupName confluent-rg -Location eastus -OrganizationName confluentorg-01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+IsValid  Message
+-------  -------
+True     Organization configuration is valid
 ```
 
-{{ Add description here }}
+This command validates the organization configuration before creation.
 
-### Example 2: {{ Add title here }}
+### Example 2: Validate with offer details
 ```powershell
-{{ Add code here }}
+Test-AzConfluentValidationOrganization -ResourceGroupName confluent-rg -Location eastus -OrganizationName confluentorg-01 -OfferDetail @{PublisherId="confluent"; Id="confluent-cloud-azure-prod"; PlanId="confluent-cloud-azure-payg-prod"}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command validates organization configuration with specific marketplace offer details.
 

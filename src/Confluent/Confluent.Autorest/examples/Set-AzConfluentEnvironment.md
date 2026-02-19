@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an environment display name
 ```powershell
-{{ Add code here }}
+Set-AzConfluentEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -DisplayName "Updated Production"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name        DisplayName           StreamGovernanceConfig
+--          ----        -----------           ----------------------
+env-abc123  prod-env    Updated Production    Essentials
 ```
 
-{{ Add description here }}
+This command updates the display name of an environment.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update environment governance package
 ```powershell
-{{ Add code here }}
+Set-AzConfluentEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -GovernancePackage "Advanced"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command upgrades the stream governance package for the environment.
 

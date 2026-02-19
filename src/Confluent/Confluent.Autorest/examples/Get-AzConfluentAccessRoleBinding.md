@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all role bindings in a Confluent organization
 ```powershell
-{{ Add code here }}
+Get-AzConfluentAccessRoleBinding -ResourceGroupName confluent-rg -OrganizationName confluentorg-01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Principal     RoleName         CrnPattern
+--          ---------     --------         ----------
+rb-abc123   User:u-123    OrganizationAdmin crn://confluent.cloud/organization=o-123
+rb-def456   User:u-456    EnvironmentAdmin  crn://confluent.cloud/organization=o-123/environment=env-789
 ```
 
-{{ Add description here }}
+This command lists all role bindings in the specified Confluent organization.
 
-### Example 2: {{ Add title here }}
+### Example 2: List role bindings with search filters
 ```powershell
-{{ Add code here }}
+$searchFilters = @{SearchFilters = @{Principal = "User:u-123"}}
+Get-AzConfluentAccessRoleBinding -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -SearchFilter $searchFilters
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command lists role bindings filtered by principal user.
 

@@ -48,31 +48,25 @@ Create confluent environment
 
 ## EXAMPLES
 
-### Example 1: Create a new Confluent environment
+### Example 1: Create a new environment
 ```powershell
-New-AzConfluentEnvironment -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -Id env-new123 -MetadataResourceName "qa-environment" -StreamGovernanceConfigPackage "ESSENTIALS"
+New-AzConfluentEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -Name production -DisplayName "Production Environment"
 ```
 
 ```output
-Id          Name            DisplayName      StreamGovernancePackage
---          ----            -----------      -----------------------
-env-new123  qa-environment  qa-environment   ESSENTIALS
+Id          Name        DisplayName                StreamGovernanceConfig
+--          ----        -----------                ----------------------
+env-new123  production  Production Environment     Essentials
 ```
 
-This command creates a new Confluent environment with stream governance essentials package.
+This command creates a new environment in the Confluent organization.
 
-### Example 2: Create an environment using JSON file
+### Example 2: Create environment with governance
 ```powershell
-New-AzConfluentEnvironment -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -Id env-new456 -JsonFilePath "C:\config\environment-config.json"
+New-AzConfluentEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -Name compliance-env -DisplayName "Compliance Environment" -GovernancePackage "Advanced"
 ```
 
-```output
-Id          Name               DisplayName         StreamGovernancePackage
---          ----               -----------         -----------------------
-env-new456  staging-env        Staging Environment ADVANCED
-```
-
-This command creates a new Confluent environment using configuration from a JSON file.
+This command creates an environment with advanced stream governance capabilities.
 
 ## PARAMETERS
 

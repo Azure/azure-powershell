@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove an environment
 ```powershell
-{{ Add code here }}
+Remove-AzConfluentEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command removes an environment from the Confluent organization.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove environment by name
 ```powershell
-{{ Add code here }}
+Remove-AzConfluentEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -Name dev-env -Force
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command removes an environment by name without confirmation prompt.
 

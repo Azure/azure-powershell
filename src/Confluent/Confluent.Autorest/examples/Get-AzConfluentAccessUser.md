@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all users in a Confluent organization
 ```powershell
-{{ Add code here }}
+Get-AzConfluentAccessUser -ResourceGroupName confluent-rg -OrganizationName confluentorg-01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Email                   FullName        Status
+--          -----                   --------        ------
+u-abc123    admin@contoso.com       Admin User      ACTIVE
+u-def456    developer@contoso.com   Dev User        ACTIVE
 ```
 
-{{ Add description here }}
+This command lists all users in the specified Confluent organization.
 
-### Example 2: {{ Add title here }}
+### Example 2: List users with search filters
 ```powershell
-{{ Add code here }}
+$searchFilters = @{SearchFilters = @{Email = "admin@contoso.com"}}
+Get-AzConfluentAccessUser -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -SearchFilter $searchFilters
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command lists users filtered by email address.
 

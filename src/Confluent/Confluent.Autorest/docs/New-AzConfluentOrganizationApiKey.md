@@ -52,31 +52,25 @@ Create API key for a schema registry Cluster ID or Kafka Cluster ID under a envi
 
 ## EXAMPLES
 
-### Example 1: Create a new API key for a Kafka cluster
+### Example 1: Create a new organization API key
 ```powershell
-New-AzConfluentOrganizationApiKey -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -ClusterId lkc-abc123 -Name "prod-api-key" -Description "API key for production cluster"
+New-AzConfluentOrganizationApiKey -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -Description "API key for automation"
 ```
 
 ```output
-Id              Name            ClusterId   EnvironmentId
---              ----            ---------   -------------
-api-key-123456  prod-api-key    lkc-abc123  env-123456
+Id          Description                   Created
+--          -----------                   -------
+key-new123  API key for automation        2026-02-19 10:00:00
 ```
 
-This command creates a new API key for accessing a Kafka cluster.
+This command creates a new API key for the organization.
 
-### Example 2: Create an API key for schema registry
+### Example 2: Create API key with owner
 ```powershell
-New-AzConfluentOrganizationApiKey -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -ClusterId lsrc-def456 -Name "schema-api-key" -Description "Schema registry access"
+New-AzConfluentOrganizationApiKey -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -Description "Service account key" -Owner "User:sa-123"
 ```
 
-```output
-Id              Name              ClusterId    EnvironmentId
---              ----              ---------    -------------
-api-key-234567  schema-api-key    lsrc-def456  env-123456
-```
-
-This command creates a new API key for accessing a schema registry cluster.
+This command creates an API key owned by a specific service account.
 
 ## PARAMETERS
 

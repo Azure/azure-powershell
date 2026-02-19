@@ -15,9 +15,9 @@ Create confluent connector by Name
 ### CreateExpanded (Default)
 ```
 New-AzConfluentConnector -Name <String> -ClusterId <String> -EnvironmentId <String> -OrganizationName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-ConnectorBasicInfoConnectorClass <String>]
- [-ConnectorBasicInfoConnectorId <String>] [-ConnectorBasicInfoConnectorName <String>]
- [-ConnectorBasicInfoConnectorState <String>] [-ConnectorBasicInfoConnectorType <String>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-ConnectorBasicInfoConnectorId <String>]
+ [-ConnectorBasicInfoConnectorName <String>] [-ConnectorBasicInfoConnectorState <String>]
+ [-ConnectorBasicInfoConnectorType <String>] [-ConnectorClass <String>]
  [-ConnectorServiceTypeInfoConnectorServiceType <String>] [-PartnerConnectorInfoPartnerConnectorType <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -39,9 +39,9 @@ New-AzConfluentConnector -Name <String> -ClusterId <String> -EnvironmentId <Stri
 ### CreateViaIdentityOrganizationExpanded
 ```
 New-AzConfluentConnector -Name <String> -ClusterId <String> -EnvironmentId <String>
- -OrganizationInputObject <IConfluentIdentity> [-ConnectorBasicInfoConnectorClass <String>]
- [-ConnectorBasicInfoConnectorId <String>] [-ConnectorBasicInfoConnectorName <String>]
- [-ConnectorBasicInfoConnectorState <String>] [-ConnectorBasicInfoConnectorType <String>]
+ -OrganizationInputObject <IConfluentIdentity> [-ConnectorBasicInfoConnectorId <String>]
+ [-ConnectorBasicInfoConnectorName <String>] [-ConnectorBasicInfoConnectorState <String>]
+ [-ConnectorBasicInfoConnectorType <String>] [-ConnectorClass <String>]
  [-ConnectorServiceTypeInfoConnectorServiceType <String>] [-PartnerConnectorInfoPartnerConnectorType <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -49,9 +49,9 @@ New-AzConfluentConnector -Name <String> -ClusterId <String> -EnvironmentId <Stri
 ### CreateViaIdentityEnvironmentExpanded
 ```
 New-AzConfluentConnector -Name <String> -ClusterId <String> -EnvironmentInputObject <IConfluentIdentity>
- [-ConnectorBasicInfoConnectorClass <String>] [-ConnectorBasicInfoConnectorId <String>]
- [-ConnectorBasicInfoConnectorName <String>] [-ConnectorBasicInfoConnectorState <String>]
- [-ConnectorBasicInfoConnectorType <String>] [-ConnectorServiceTypeInfoConnectorServiceType <String>]
+ [-ConnectorBasicInfoConnectorId <String>] [-ConnectorBasicInfoConnectorName <String>]
+ [-ConnectorBasicInfoConnectorState <String>] [-ConnectorBasicInfoConnectorType <String>]
+ [-ConnectorClass <String>] [-ConnectorServiceTypeInfoConnectorServiceType <String>]
  [-PartnerConnectorInfoPartnerConnectorType <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -59,9 +59,9 @@ New-AzConfluentConnector -Name <String> -ClusterId <String> -EnvironmentInputObj
 ### CreateViaIdentityClusterExpanded
 ```
 New-AzConfluentConnector -Name <String> -ClusterInputObject <IConfluentIdentity>
- [-ConnectorBasicInfoConnectorClass <String>] [-ConnectorBasicInfoConnectorId <String>]
- [-ConnectorBasicInfoConnectorName <String>] [-ConnectorBasicInfoConnectorState <String>]
- [-ConnectorBasicInfoConnectorType <String>] [-ConnectorServiceTypeInfoConnectorServiceType <String>]
+ [-ConnectorBasicInfoConnectorId <String>] [-ConnectorBasicInfoConnectorName <String>]
+ [-ConnectorBasicInfoConnectorState <String>] [-ConnectorBasicInfoConnectorType <String>]
+ [-ConnectorClass <String>] [-ConnectorServiceTypeInfoConnectorServiceType <String>]
  [-PartnerConnectorInfoPartnerConnectorType <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -146,21 +146,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ConnectorBasicInfoConnectorClass
-Connector Class
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityOrganizationExpanded, CreateViaIdentityEnvironmentExpanded, CreateViaIdentityClusterExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ConnectorBasicInfoConnectorId
 Connector Id
 
@@ -213,6 +198,21 @@ Connector Type
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityOrganizationExpanded, CreateViaIdentityEnvironmentExpanded, CreateViaIdentityClusterExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorClass
+Connector Class
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityOrganizationExpanded, CreateViaIdentityEnvironmentExpanded, CreateViaIdentityClusterExpanded
+Aliases: ConnectorBasicInfoConnectorClass
 
 Required: False
 Position: Named

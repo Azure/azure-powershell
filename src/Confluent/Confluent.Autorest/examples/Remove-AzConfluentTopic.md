@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Kafka topic
 ```powershell
-{{ Add code here }}
+Remove-AzConfluentTopic -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123 -TopicName old-topic
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command removes a Kafka topic from the cluster.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove topic without confirmation
 ```powershell
-{{ Add code here }}
+Remove-AzConfluentTopic -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123 -TopicName temp-topic -Force
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command removes a Kafka topic without prompting for confirmation.
 

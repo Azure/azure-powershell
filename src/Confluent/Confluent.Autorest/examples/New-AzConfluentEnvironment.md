@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a new environment
 ```powershell
-{{ Add code here }}
+New-AzConfluentEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -Name production -DisplayName "Production Environment"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name        DisplayName                StreamGovernanceConfig
+--          ----        -----------                ----------------------
+env-new123  production  Production Environment     Essentials
 ```
 
-{{ Add description here }}
+This command creates a new environment in the Confluent organization.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create environment with governance
 ```powershell
-{{ Add code here }}
+New-AzConfluentEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -Name compliance-env -DisplayName "Compliance Environment" -GovernancePackage "Advanced"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command creates an environment with advanced stream governance capabilities.
 

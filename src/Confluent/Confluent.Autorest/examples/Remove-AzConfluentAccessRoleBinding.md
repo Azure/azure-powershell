@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a role binding by ID
 ```powershell
-{{ Add code here }}
+Remove-AzConfluentAccessRoleBinding -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -RoleBindingId rb-abc123
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command removes a specific role binding from the organization.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove role binding with confirmation
 ```powershell
-{{ Add code here }}
+Remove-AzConfluentAccessRoleBinding -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -RoleBindingId rb-def456 -Confirm:$false
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command removes a role binding without prompting for confirmation.
 

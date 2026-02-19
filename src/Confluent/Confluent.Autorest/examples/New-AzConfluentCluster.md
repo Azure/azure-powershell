@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a new Kafka cluster
 ```powershell
-{{ Add code here }}
+New-AzConfluentCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -Name prod-cluster -Type BASIC -Region eastus -AvailabilityZone SINGLE_ZONE
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name            Type      Region      Status
+--          ----            ----      ------      ------
+lkc-new123  prod-cluster    BASIC     eastus      PROVISIONING
 ```
 
-{{ Add description here }}
+This command creates a new Kafka cluster in the specified environment.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a multi-zone cluster
 ```powershell
-{{ Add code here }}
+New-AzConfluentCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -Name ha-cluster -Type STANDARD -Region westus2 -AvailabilityZone MULTI_ZONE
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command creates a highly available Kafka cluster with multi-zone deployment.
 

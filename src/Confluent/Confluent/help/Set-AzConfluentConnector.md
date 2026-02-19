@@ -15,9 +15,9 @@ Update confluent connector by Name
 ### UpdateExpanded (Default)
 ```
 Set-AzConfluentConnector -ClusterId <String> -EnvironmentId <String> -Name <String> -OrganizationName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-ConnectorBasicInfoConnectorClass <String>]
- [-ConnectorBasicInfoConnectorId <String>] [-ConnectorBasicInfoConnectorName <String>]
- [-ConnectorBasicInfoConnectorState <String>] [-ConnectorBasicInfoConnectorType <String>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-ConnectorBasicInfoConnectorId <String>]
+ [-ConnectorBasicInfoConnectorName <String>] [-ConnectorBasicInfoConnectorState <String>]
+ [-ConnectorBasicInfoConnectorType <String>] [-ConnectorClass <String>]
  [-ConnectorServiceTypeInfoConnectorServiceType <String>] [-PartnerConnectorInfoPartnerConnectorType <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -59,21 +59,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectorBasicInfoConnectorClass
-Connector Class
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -132,6 +117,21 @@ Connector Type
 Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorClass
+Connector Class
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: ConnectorBasicInfoConnectorClass
 
 Required: False
 Position: Named

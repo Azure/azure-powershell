@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a cluster API key
 ```powershell
-{{ Add code here }}
+Remove-AzConfluentOrganizationClusterApiKey -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -ApiKeyId key-abc123
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command removes an API key from the cluster.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove API key without confirmation
 ```powershell
-{{ Add code here }}
+Remove-AzConfluentOrganizationClusterApiKey -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -ApiKeyId key-def456 -Confirm:$false
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command removes an API key without prompting for confirmation.
 

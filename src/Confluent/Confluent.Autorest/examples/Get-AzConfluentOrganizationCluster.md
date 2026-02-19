@@ -1,22 +1,21 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all clusters in organization
 ```powershell
-{{ Add code here }}
+Get-AzConfluentOrganizationCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name            Type      Availability  Status
+--          ----            ----      ------------  ------
+lkc-abc123  prod-cluster    BASIC     SINGLE_ZONE   PROVISIONED
+lkc-def456  staging-cluster STANDARD  MULTI_ZONE    PROVISIONED
 ```
 
-{{ Add description here }}
+This command lists all Kafka clusters in the specified environment.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get specific cluster details
 ```powershell
-{{ Add code here }}
+Get-AzConfluentOrganizationCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command retrieves details of a specific Kafka cluster.
 

@@ -43,35 +43,27 @@ Organization accounts invitation details
 
 ## EXAMPLES
 
-### Example 1: List all invitations in a Confluent organization
+### Example 1: List all pending invitations in a Confluent organization
 ```powershell
-Get-AzConfluentAccessInvitation -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01
+Get-AzConfluentAccessInvitation -ResourceGroupName confluent-rg -OrganizationName confluentorg-01
 ```
 
 ```output
 Id          Email                Status    CreatedAt
 --          -----                ------    ---------
-inv-abc123  user1@example.com    PENDING   2024-02-10T10:00:00Z
-inv-def456  user2@example.com    ACCEPTED  2024-02-12T14:30:00Z
-inv-ghi789  user3@example.com    PENDING   2024-02-15T09:15:00Z
+inv-123     user1@contoso.com    PENDING   2026-02-01 10:30:00
+inv-456     user2@contoso.com    ACCEPTED  2026-01-15 14:20:00
 ```
 
-This command lists all pending and accepted invitations within the specified Confluent organization.
+This command lists all user invitations for the specified Confluent organization.
 
-### Example 2: List invitations with search filter
+### Example 2: List invitations with search filters
 ```powershell
-$filter = @{status = "PENDING"}
-Get-AzConfluentAccessInvitation -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -SearchFilter $filter
+$searchFilters = @{SearchFilters = @{Status = "PENDING"}}
+Get-AzConfluentAccessInvitation -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -SearchFilter $searchFilters
 ```
 
-```output
-Id          Email                Status    CreatedAt
---          -----                ------    ---------
-inv-abc123  user1@example.com    PENDING   2024-02-10T10:00:00Z
-inv-ghi789  user3@example.com    PENDING   2024-02-15T09:15:00Z
-```
-
-This command lists only pending invitations matching the specified filter criteria.
+This command lists only pending invitations in the organization.
 
 ## PARAMETERS
 

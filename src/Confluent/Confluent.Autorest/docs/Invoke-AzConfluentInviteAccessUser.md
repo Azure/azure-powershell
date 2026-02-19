@@ -58,34 +58,25 @@ Invite user to the organization
 
 ## EXAMPLES
 
-### Example 1: Invite a user to a Confluent organization
+### Example 1: Invite a user to the Confluent organization
 ```powershell
-Invoke-AzConfluentInviteAccessUser -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -InvitedUserDetailInvitedEmail "newuser@example.com" -InvitedUserDetailAuthType "SSO"
+Invoke-AzConfluentInviteAccessUser -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -Email "newuser@contoso.com"
 ```
 
 ```output
-Id          Email                   Status    CreatedAt
---          -----                   ------    ---------
-inv-abc123  newuser@example.com     PENDING   2024-02-17T10:00:00Z
+Id          Email                Status    CreatedAt
+--          -----                ------    ---------
+inv-789     newuser@contoso.com  PENDING   2026-02-19 09:15:00
 ```
 
-This command invites a new user to the Confluent organization with SSO authentication.
+This command sends an invitation to a new user to join the Confluent organization.
 
-### Example 2: Invite multiple users
+### Example 2: Invite multiple users with authentication type
 ```powershell
-@("user1@example.com", "user2@example.com") | ForEach-Object {
-    Invoke-AzConfluentInviteAccessUser -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -InvitedUserDetailInvitedEmail $_ -InvitedUserDetailAuthType "SSO"
-}
+Invoke-AzConfluentInviteAccessUser -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -Email "user@contoso.com" -AuthType "SSO"
 ```
 
-```output
-Id          Email                   Status    CreatedAt
---          -----                   ------    ---------
-inv-abc123  user1@example.com       PENDING   2024-02-17T10:00:00Z
-inv-def456  user2@example.com       PENDING   2024-02-17T10:00:05Z
-```
-
-This command invites multiple users to the Confluent organization.
+This command invites a user with specific authentication type configured.
 
 ## PARAMETERS
 

@@ -47,32 +47,25 @@ Organization service accounts details
 
 ### Example 1: List all service accounts in a Confluent organization
 ```powershell
-Get-AzConfluentAccessServiceAccount -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01
+Get-AzConfluentAccessServiceAccount -ResourceGroupName confluent-rg -OrganizationName confluentorg-01
 ```
 
 ```output
-Id           Name                    Description              CreatedAt
---           ----                    -----------              ---------
-sa-123456    prod-app-service-acct   Production app service   2024-01-10T08:00:00Z
-sa-234567    dev-app-service-acct    Development app service  2024-01-15T10:30:00Z
-sa-345678    ci-cd-service-acct      CI/CD pipeline account   2024-02-01T14:00:00Z
+Id          Name                Description
+--          ----                -----------
+sa-abc123   app-service-account Service account for application
+sa-def456   ci-cd-account       Service account for CI/CD pipeline
 ```
 
-This command lists all service accounts within the specified Confluent organization.
+This command lists all service accounts in the specified Confluent organization.
 
-### Example 2: List service accounts with search filter
+### Example 2: List service accounts with search filters
 ```powershell
-$filter = @{name = "prod"}
-Get-AzConfluentAccessServiceAccount -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -SearchFilter $filter
+$searchFilters = @{SearchFilters = @{PageSize = 10}}
+Get-AzConfluentAccessServiceAccount -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -SearchFilter $searchFilters
 ```
 
-```output
-Id           Name                    Description              CreatedAt
---           ----                    -----------              ---------
-sa-123456    prod-app-service-acct   Production app service   2024-01-10T08:00:00Z
-```
-
-This command lists service accounts matching the specified search filter criteria.
+This command lists service accounts with pagination support.
 
 ## PARAMETERS
 

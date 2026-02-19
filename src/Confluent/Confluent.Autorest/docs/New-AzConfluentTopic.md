@@ -71,33 +71,23 @@ Create confluent topics by Name
 
 ### Example 1: Create a new Kafka topic
 ```powershell
-New-AzConfluentTopic -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -ClusterId lkc-abc123 -Name "new-orders-topic" -PartitionsCount "6" -ReplicationFactor "3"
+New-AzConfluentTopic -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123 -Name orders -Partitions 6 -ReplicationFactor 3
 ```
 
 ```output
-Name               PartitionsCount ReplicationFactor TopicId
-----               --------------- ----------------- -------
-new-orders-topic   6               3                 lkc-abc123:new-orders-topic
+Name       Partitions  ReplicationFactor  IsInternal
+----       ----------  -----------------  ----------
+orders     6           3                  False
 ```
 
-This command creates a new Kafka topic with 6 partitions and replication factor of 3.
+This command creates a new Kafka topic with specified partitions and replication factor.
 
-### Example 2: Create a topic with custom configuration
+### Example 2: Create topic with custom retention
 ```powershell
-$config = @(
-    @{name="retention.ms"; value="604800000"},
-    @{name="compression.type"; value="gzip"}
-)
-New-AzConfluentTopic -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -ClusterId lkc-abc123 -Name "events-topic" -PartitionsCount "3" -ReplicationFactor "3" -InputConfig $config
+New-AzConfluentTopic -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123 -Name logs -Partitions 12 -ReplicationFactor 3 -RetentionMs 604800000
 ```
 
-```output
-Name           PartitionsCount ReplicationFactor TopicId
-----           --------------- ----------------- -------
-events-topic   3               3                 lkc-abc123:events-topic
-```
-
-This command creates a new Kafka topic with custom retention and compression settings.
+This command creates a Kafka topic with 7-day retention period.
 
 ## PARAMETERS
 

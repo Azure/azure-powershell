@@ -18,10 +18,10 @@ Test-AzConfluentValidationOrganizationV2 -OrganizationName <String> -ResourceGro
  -Location <String> -OfferDetailId <String> -OfferDetailPlanId <String> -OfferDetailPlanName <String>
  -OfferDetailPublisherId <String> -OfferDetailTermUnit <String> -UserDetailEmailAddress <String>
  [-SubscriptionId <String>] [-LinkOrganizationToken <SecureString>] [-OfferDetailPrivateOfferId <String>]
- [-OfferDetailStatus <String>] [-OfferDetailTermId <String>]
- [-PropertiesOfferDetailPrivateOfferIds <String[]>] [-Tag <Hashtable>] [-UserDetailAadEmail <String>]
- [-UserDetailFirstName <String>] [-UserDetailLastName <String>] [-UserDetailUserPrincipalName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-OfferDetailStatus <String>] [-OfferDetailTermId <String>] [-PropertiesOfferDetailPrivateOfferId <String[]>]
+ [-Tag <Hashtable>] [-UserDetailAadEmail <String>] [-UserDetailFirstName <String>]
+ [-UserDetailLastName <String>] [-UserDetailUserPrincipalName <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Validate
@@ -43,7 +43,7 @@ Test-AzConfluentValidationOrganizationV2 -InputObject <IConfluentIdentity> -Loca
  -OfferDetailId <String> -OfferDetailPlanId <String> -OfferDetailPlanName <String>
  -OfferDetailPublisherId <String> -OfferDetailTermUnit <String> -UserDetailEmailAddress <String>
  [-LinkOrganizationToken <SecureString>] [-OfferDetailPrivateOfferId <String>] [-OfferDetailStatus <String>]
- [-OfferDetailTermId <String>] [-PropertiesOfferDetailPrivateOfferIds <String[]>] [-Tag <Hashtable>]
+ [-OfferDetailTermId <String>] [-PropertiesOfferDetailPrivateOfferId <String[]>] [-Tag <Hashtable>]
  [-UserDetailAadEmail <String>] [-UserDetailFirstName <String>] [-UserDetailLastName <String>]
  [-UserDetailUserPrincipalName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -68,31 +68,25 @@ Organization Validate proxy resource
 
 ## EXAMPLES
 
-### Example 1: Validate a Confluent organization configuration (V2 API)
+### Example 1: Validate organization configuration (v2)
 ```powershell
-Test-AzConfluentValidationOrganizationV2 -ResourceGroupName azure-rg-test -OrganizationName confluentorg-validation-v2 -Location westus2 -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud - Pay as you Go" -OfferDetailPublisherId "confluentinc" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress "user@example.com"
+Test-AzConfluentValidationOrganizationV2 -ResourceGroupName confluent-rg -Location eastus -OrganizationName confluentorg-01
 ```
 
 ```output
-Location Name                            Type
--------- ----                            ----
-westus2  confluentorg-validation-v2 Microsoft.Confluent/organizations
+IsValid  Message                              ValidationErrors
+-------  -------                              ----------------
+True     Organization configuration is valid  @()
 ```
 
-This command validates a Confluent organization configuration using the V2 API before creation to ensure all required parameters are valid.
+This command validates the organization configuration using the v2 validation endpoint.
 
-### Example 2: Validate an organization using JSON file (V2 API)
+### Example 2: Validate with user details
 ```powershell
-Test-AzConfluentValidationOrganizationV2 -ResourceGroupName azure-rg-test -OrganizationName confluentorg-validation-v2 -JsonFilePath "C:\config\org-validation-v2.json"
+Test-AzConfluentValidationOrganizationV2 -ResourceGroupName confluent-rg -Location eastus -OrganizationName confluentorg-01 -UserDetail @{Email="admin@contoso.com"; FirstName="Admin"; LastName="User"}
 ```
 
-```output
-Location Name                            Type
--------- ----                            ----
-westus2  confluentorg-validation-v2 Microsoft.Confluent/organizations
-```
-
-This command validates a Confluent organization configuration using the V2 API with parameters from a JSON file.
+This command validates organization with user information for the organization owner.
 
 ## PARAMETERS
 
@@ -337,13 +331,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PropertiesOfferDetailPrivateOfferIds
+### -PropertiesOfferDetailPrivateOfferId
 Array of Private Offer Ids
 
 ```yaml
 Type: System.String[]
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
-Aliases:
+Aliases: PropertiesOfferDetailPrivateOfferIds
 
 Required: False
 Position: Named

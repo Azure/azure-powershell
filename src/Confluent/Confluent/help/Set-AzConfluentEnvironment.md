@@ -40,37 +40,25 @@ Update confluent environment
 
 ## EXAMPLES
 
-### Example 1: Update a Confluent environment
+### Example 1: Update an environment display name
 ```powershell
-Set-AzConfluentEnvironment -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -Id env-123456 -StreamGovernanceConfigPackage "ESSENTIALS"
+Set-AzConfluentEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -DisplayName "Updated Production"
 ```
 
 ```output
-Id                : env-123456
-Kind              : Environment
-MetadataCreatedTimestamp  : 2024-01-15T10:30:00Z
-MetadataResourceName      : production-env
-MetadataUpdatedTimestamp  : 2024-02-17T08:45:00Z
-StreamGovernanceConfigPackage : ESSENTIALS
+Id          Name        DisplayName           StreamGovernanceConfig
+--          ----        -----------           ----------------------
+env-abc123  prod-env    Updated Production    Essentials
 ```
 
-This command updates a Confluent environment with the specified stream governance configuration package.
+This command updates the display name of an environment.
 
-### Example 2: Update a Confluent environment using JSON file
+### Example 2: Update environment governance package
 ```powershell
-Set-AzConfluentEnvironment -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -Id env-123456 -JsonFilePath "C:\config\environment-config.json"
+Set-AzConfluentEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -GovernancePackage "Advanced"
 ```
 
-```output
-Id                : env-123456
-Kind              : Environment
-MetadataCreatedTimestamp  : 2024-01-15T10:30:00Z
-MetadataResourceName      : production-env
-MetadataUpdatedTimestamp  : 2024-02-17T09:00:00Z
-StreamGovernanceConfigPackage : ADVANCED
-```
-
-This command updates a Confluent environment using configuration from a JSON file.
+This command upgrades the stream governance package for the environment.
 
 ## PARAMETERS
 

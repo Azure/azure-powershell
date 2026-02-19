@@ -16,9 +16,9 @@ Update confluent connector by Name
 ```
 Update-AzConfluentConnector -ClusterId <String> -EnvironmentId <String> -Name <String>
  -OrganizationName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ConnectorBasicInfoConnectorClass <String>] [-ConnectorBasicInfoConnectorId <String>]
- [-ConnectorBasicInfoConnectorName <String>] [-ConnectorBasicInfoConnectorState <String>]
- [-ConnectorBasicInfoConnectorType <String>] [-ConnectorServiceTypeInfoConnectorServiceType <String>]
+ [-ConnectorBasicInfoConnectorId <String>] [-ConnectorBasicInfoConnectorName <String>]
+ [-ConnectorBasicInfoConnectorState <String>] [-ConnectorBasicInfoConnectorType <String>]
+ [-ConnectorClass <String>] [-ConnectorServiceTypeInfoConnectorServiceType <String>]
  [-PartnerConnectorInfoPartnerConnectorType <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -26,9 +26,9 @@ Update-AzConfluentConnector -ClusterId <String> -EnvironmentId <String> -Name <S
 ### UpdateViaIdentityClusterExpanded
 ```
 Update-AzConfluentConnector -ClusterInputObject <IConfluentIdentity> -Name <String>
- [-ConnectorBasicInfoConnectorClass <String>] [-ConnectorBasicInfoConnectorId <String>]
- [-ConnectorBasicInfoConnectorName <String>] [-ConnectorBasicInfoConnectorState <String>]
- [-ConnectorBasicInfoConnectorType <String>] [-ConnectorServiceTypeInfoConnectorServiceType <String>]
+ [-ConnectorBasicInfoConnectorId <String>] [-ConnectorBasicInfoConnectorName <String>]
+ [-ConnectorBasicInfoConnectorState <String>] [-ConnectorBasicInfoConnectorType <String>]
+ [-ConnectorClass <String>] [-ConnectorServiceTypeInfoConnectorServiceType <String>]
  [-PartnerConnectorInfoPartnerConnectorType <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -36,18 +36,18 @@ Update-AzConfluentConnector -ClusterInputObject <IConfluentIdentity> -Name <Stri
 ### UpdateViaIdentityEnvironmentExpanded
 ```
 Update-AzConfluentConnector -ClusterId <String> -EnvironmentInputObject <IConfluentIdentity> -Name <String>
- [-ConnectorBasicInfoConnectorClass <String>] [-ConnectorBasicInfoConnectorId <String>]
- [-ConnectorBasicInfoConnectorName <String>] [-ConnectorBasicInfoConnectorState <String>]
- [-ConnectorBasicInfoConnectorType <String>] [-ConnectorServiceTypeInfoConnectorServiceType <String>]
+ [-ConnectorBasicInfoConnectorId <String>] [-ConnectorBasicInfoConnectorName <String>]
+ [-ConnectorBasicInfoConnectorState <String>] [-ConnectorBasicInfoConnectorType <String>]
+ [-ConnectorClass <String>] [-ConnectorServiceTypeInfoConnectorServiceType <String>]
  [-PartnerConnectorInfoPartnerConnectorType <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzConfluentConnector -InputObject <IConfluentIdentity> [-ConnectorBasicInfoConnectorClass <String>]
- [-ConnectorBasicInfoConnectorId <String>] [-ConnectorBasicInfoConnectorName <String>]
- [-ConnectorBasicInfoConnectorState <String>] [-ConnectorBasicInfoConnectorType <String>]
+Update-AzConfluentConnector -InputObject <IConfluentIdentity> [-ConnectorBasicInfoConnectorId <String>]
+ [-ConnectorBasicInfoConnectorName <String>] [-ConnectorBasicInfoConnectorState <String>]
+ [-ConnectorBasicInfoConnectorType <String>] [-ConnectorClass <String>]
  [-ConnectorServiceTypeInfoConnectorServiceType <String>] [-PartnerConnectorInfoPartnerConnectorType <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -55,9 +55,9 @@ Update-AzConfluentConnector -InputObject <IConfluentIdentity> [-ConnectorBasicIn
 ### UpdateViaIdentityOrganizationExpanded
 ```
 Update-AzConfluentConnector -ClusterId <String> -EnvironmentId <String> -Name <String>
- -OrganizationInputObject <IConfluentIdentity> [-ConnectorBasicInfoConnectorClass <String>]
- [-ConnectorBasicInfoConnectorId <String>] [-ConnectorBasicInfoConnectorName <String>]
- [-ConnectorBasicInfoConnectorState <String>] [-ConnectorBasicInfoConnectorType <String>]
+ -OrganizationInputObject <IConfluentIdentity> [-ConnectorBasicInfoConnectorId <String>]
+ [-ConnectorBasicInfoConnectorName <String>] [-ConnectorBasicInfoConnectorState <String>]
+ [-ConnectorBasicInfoConnectorType <String>] [-ConnectorClass <String>]
  [-ConnectorServiceTypeInfoConnectorServiceType <String>] [-PartnerConnectorInfoPartnerConnectorType <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -103,21 +103,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ConnectorBasicInfoConnectorClass
-Connector Class
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -173,6 +158,21 @@ Connector Type
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectorClass
+Connector Class
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ConnectorBasicInfoConnectorClass
 
 Required: False
 Position: Named

@@ -46,17 +46,17 @@ Delete confluent cluster by id
 
 ### Example 1: Remove a Kafka cluster
 ```powershell
-Remove-AzConfluentCluster -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -Id lkc-abc123
+Remove-AzConfluentCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123
 ```
 
-This command removes the specified Kafka cluster from the environment.
+This command removes a Kafka cluster from the specified environment.
 
-### Example 2: Remove a cluster with confirmation bypass
+### Example 2: Remove cluster without confirmation
 ```powershell
-Remove-AzConfluentCluster -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -EnvironmentId env-123456 -Id lkc-def456 -Confirm:$false
+Remove-AzConfluentCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-def456 -Force
 ```
 
-This command removes the Kafka cluster without prompting for confirmation.
+This command removes a Kafka cluster without prompting for confirmation.
 
 ## PARAMETERS
 

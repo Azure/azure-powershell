@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all topics in a Kafka cluster
 ```powershell
-{{ Add code here }}
+Get-AzConfluentTopic -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              Partitions  ReplicationFactor  IsInternal
+----              ----------  -----------------  ----------
+orders            6           3                  False
+payments          3           3                  False
+__consumer_offsets 50         3                  True
 ```
 
-{{ Add description here }}
+This command lists all Kafka topics in the specified cluster.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get specific topic details
 ```powershell
-{{ Add code here }}
+Get-AzConfluentTopic -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123 -TopicName orders
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command retrieves details of a specific Kafka topic.
 

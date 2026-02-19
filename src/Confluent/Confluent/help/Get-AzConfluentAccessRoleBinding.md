@@ -47,32 +47,25 @@ Organization role bindings
 
 ### Example 1: List all role bindings in a Confluent organization
 ```powershell
-Get-AzConfluentAccessRoleBinding -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01
+Get-AzConfluentAccessRoleBinding -ResourceGroupName confluent-rg -OrganizationName confluentorg-01
 ```
 
 ```output
-Id          Principal                    RoleName           CrnPattern
---          ---------                    --------           ----------
-rb-abc123   User:u-123456                OrganizationAdmin  crn://confluent.cloud/organization=*
-rb-def456   User:u-234567                EnvironmentAdmin   crn://confluent.cloud/organization=*/environment=env-123456
-rb-ghi789   ServiceAccount:sa-345678     CloudClusterAdmin  crn://confluent.cloud/organization=*/environment=*/cloud-cluster=lkc-abc123
+Id          Principal     RoleName         CrnPattern
+--          ---------     --------         ----------
+rb-abc123   User:u-123    OrganizationAdmin crn://confluent.cloud/organization=o-123
+rb-def456   User:u-456    EnvironmentAdmin  crn://confluent.cloud/organization=o-123/environment=env-789
 ```
 
-This command lists all role bindings within the specified Confluent organization.
+This command lists all role bindings in the specified Confluent organization.
 
-### Example 2: List role bindings with search filter
+### Example 2: List role bindings with search filters
 ```powershell
-$filter = @{principal = "u-123456"}
-Get-AzConfluentAccessRoleBinding -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -SearchFilter $filter
+$searchFilters = @{SearchFilters = @{Principal = "User:u-123"}}
+Get-AzConfluentAccessRoleBinding -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -SearchFilter $searchFilters
 ```
 
-```output
-Id          Principal                    RoleName           CrnPattern
---          ---------                    --------           ----------
-rb-abc123   User:u-123456                OrganizationAdmin  crn://confluent.cloud/organization=*
-```
-
-This command lists role bindings for a specific principal matching the specified filter.
+This command lists role bindings filtered by principal user.
 
 ## PARAMETERS
 

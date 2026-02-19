@@ -18,7 +18,7 @@ New-AzConfluentOrganization -Name <String> -ResourceGroupName <String> [-Subscri
  [-LinkOrganizationToken <SecureString>] [-Location <String>] [-OfferDetailId <String>]
  [-OfferDetailPlanId <String>] [-OfferDetailPlanName <String>] [-OfferDetailPrivateOfferId <String>]
  [-OfferDetailPublisherId <String>] [-OfferDetailStatus <String>] [-OfferDetailTermId <String>]
- [-OfferDetailTermUnit <String>] [-PropertiesOfferDetailPrivateOfferIds <String[]>] [-Tag <Hashtable>]
+ [-OfferDetailTermUnit <String>] [-PropertiesOfferDetailPrivateOfferId <String[]>] [-Tag <Hashtable>]
  [-UserDetailAadEmail <String>] [-UserDetailEmailAddress <String>] [-UserDetailFirstName <String>]
  [-UserDetailLastName <String>] [-UserDetailUserPrincipalName <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -299,13 +299,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PropertiesOfferDetailPrivateOfferIds
+### -PropertiesOfferDetailPrivateOfferId
 Array of Private Offer Ids
 
 ```yaml
 Type: System.String[]
 Parameter Sets: CreateExpanded
-Aliases:
+Aliases: PropertiesOfferDetailPrivateOfferIds
 
 Required: False
 Position: Named

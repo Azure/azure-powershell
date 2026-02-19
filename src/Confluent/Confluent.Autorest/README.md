@@ -57,6 +57,19 @@ title: Confluent
 subject-prefix: $(service-name)
 
 directive:
+  # Fix parameter naming convention violations
+  - where:
+      parameter-name: PropertiesOfferDetailPrivateOfferIds
+    set:
+      parameter-name: PropertiesOfferDetailPrivateOfferId
+      alias: PropertiesOfferDetailPrivateOfferIds
+  
+  - where:
+      parameter-name: ConnectorBasicInfoConnectorClass
+    set:
+      parameter-name: ConnectorClass
+      alias: ConnectorBasicInfoConnectorClass
+
   # New-AzConfluentMarketplaceAgreeemt has  be removed, because it cand be replace by Set-AzMarketplaceTerms (Az.MarketplaceOrdering).
   - where:
       verb: New

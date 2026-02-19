@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Kafka cluster
 ```powershell
-{{ Add code here }}
+Remove-AzConfluentCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command removes a Kafka cluster from the specified environment.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove cluster without confirmation
 ```powershell
-{{ Add code here }}
+Remove-AzConfluentCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-def456 -Force
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command removes a Kafka cluster without prompting for confirmation.
 

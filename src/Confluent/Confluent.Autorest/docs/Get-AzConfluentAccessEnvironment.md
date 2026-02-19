@@ -45,32 +45,26 @@ Environment list of an organization
 
 ### Example 1: List all environments in a Confluent organization
 ```powershell
-Get-AzConfluentAccessEnvironment -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01
+Get-AzConfluentAccessEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01
 ```
 
 ```output
-Id          Name              DisplayName       Status
---          ----              -----------       ------
-env-123456  production        Production Env    READY
-env-234567  development       Development Env   READY
-env-345678  staging           Staging Env       READY
+Id          Name            DisplayName     StreamGovernanceConfig
+--          ----            -----------     ----------------------
+env-abc123  prod-env        Production      Essentials
+env-def456  staging-env     Staging         Advanced
+env-ghi789  dev-env         Development     Essentials
 ```
 
-This command lists all Confluent environments within the specified organization.
+This command lists all available environments in the specified Confluent organization.
 
-### Example 2: List environments with search filter
+### Example 2: List environments with search criteria
 ```powershell
-$filter = @{name = "prod"}
-Get-AzConfluentAccessEnvironment -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -SearchFilter $filter
+$searchFilters = @{SearchFilters = @{PageSize = 10}}
+Get-AzConfluentAccessEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -SearchFilter $searchFilters
 ```
 
-```output
-Id          Name              DisplayName       Status
---          ----              -----------       ------
-env-123456  production        Production Env    READY
-```
-
-This command lists Confluent environments matching the specified search filter criteria.
+This command lists environments in the organization with pagination support.
 
 ## PARAMETERS
 

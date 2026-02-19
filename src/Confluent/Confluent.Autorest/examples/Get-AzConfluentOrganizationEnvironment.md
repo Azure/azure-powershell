@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all environments in organization
 ```powershell
-{{ Add code here }}
+Get-AzConfluentOrganizationEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name            DisplayName     StreamGovernanceConfig
+--          ----            -----------     ----------------------
+env-abc123  prod-env        Production      Essentials
+env-def456  staging-env     Staging         Advanced
+env-ghi789  dev-env         Development     Essentials
 ```
 
-{{ Add description here }}
+This command lists all environments in the specified Confluent organization.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get specific environment details
 ```powershell
-{{ Add code here }}
+Get-AzConfluentOrganizationEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command retrieves details of a specific environment.
 

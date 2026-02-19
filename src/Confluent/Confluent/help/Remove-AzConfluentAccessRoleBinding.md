@@ -39,17 +39,17 @@ Organization role bindings
 
 ### Example 1: Remove a role binding by ID
 ```powershell
-Remove-AzConfluentAccessRoleBinding -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 -RoleBindingId rb-abc123
+Remove-AzConfluentAccessRoleBinding -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -RoleBindingId rb-abc123
 ```
 
-This command removes the specified role binding from the Confluent organization.
+This command removes a specific role binding from the organization.
 
-### Example 2: Remove a role binding using pipeline
+### Example 2: Remove role binding with confirmation
 ```powershell
-Get-AzConfluentAccessRoleBinding -ResourceGroupName azure-rg-test -OrganizationName confluentorg-01 | Where-Object {$_.Principal -eq "User:u-123456"} | Remove-AzConfluentAccessRoleBinding
+Remove-AzConfluentAccessRoleBinding -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -RoleBindingId rb-def456 -Confirm:$false
 ```
 
-This command removes all role bindings for a specific user by retrieving them through the pipeline.
+This command removes a role binding without prompting for confirmation.
 
 ## PARAMETERS
 

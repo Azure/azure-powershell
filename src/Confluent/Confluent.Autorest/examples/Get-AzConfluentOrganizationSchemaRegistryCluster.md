@@ -1,22 +1,21 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all schema registry clusters
 ```powershell
-{{ Add code here }}
+Get-AzConfluentOrganizationSchemaRegistryCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name               Package     Region    Status
+--          ----               -------     ------    ------
+lsrc-123    prod-schema-reg    ESSENTIALS  eastus    PROVISIONED
+lsrc-456    staging-schema-reg ADVANCED    westus2   PROVISIONED
 ```
 
-{{ Add description here }}
+This command lists all schema registry clusters in the specified environment.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get specific schema registry cluster
 ```powershell
-{{ Add code here }}
+Get-AzConfluentOrganizationSchemaRegistryCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lsrc-123
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command retrieves details of a specific schema registry cluster.
 

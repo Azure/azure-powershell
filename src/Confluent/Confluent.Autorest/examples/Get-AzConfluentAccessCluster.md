@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all clusters in a Confluent organization
 ```powershell
-{{ Add code here }}
+Get-AzConfluentAccessCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id          Name            Type      CloudProvider  Region      Status
+--          ----            ----      -------------  ------      ------
+lkc-abc123  prod-cluster    BASIC     AZURE          eastus      PROVISIONED
+lkc-def456  staging-cluster STANDARD  AZURE          westus2     PROVISIONED
 ```
 
-{{ Add description here }}
+This command lists all Kafka clusters accessible in the specified Confluent organization.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get cluster details with search filters
 ```powershell
-{{ Add code here }}
+$searchFilters = @{SearchFilters = @{Environment = "env-abc123"}}
+Get-AzConfluentAccessCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -SearchFilter $searchFilters
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command lists clusters filtered by environment ID.
 
