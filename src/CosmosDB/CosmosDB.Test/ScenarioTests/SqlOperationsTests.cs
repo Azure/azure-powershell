@@ -72,6 +72,27 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
             TestRunner.RunTestScript("Test-SqlThroughputCmdlets");
         }
 
+        [Fact(Skip = "Feature requires subscription registration. Will be generic in next version.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlThroughputBucketsManualCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlThroughputBucketsCmdlets-ManualContainer");
+        }
+
+        [Fact(Skip = "Feature requires subscription registration. Will be generic in next version.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlThroughputBucketsAutoscaleCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlThroughputBucketsCmdlets-AutoscaleContainer");
+        }
+
+        [Fact(Skip = "Feature requires subscription registration. Will be generic in next version.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlThroughputBucketsMigrationCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlThroughputBucketsCmdlets-Migration");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlMigrateThroughputCmdlets()
@@ -79,7 +100,14 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
             TestRunner.RunTestScript("Test-SqlMigrateThroughputCmdlets");
         }
 
-        [Fact(Skip = "Tests requires specific identity, will be made generic in next version.")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlMaterializedViewCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlMaterializedViewCmdlets");
+        }
+
+        [Fact(Skip = "Need to make test generic for all subscriptions.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlRoleCmdlets()
         {
@@ -98,6 +126,34 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         public void TestClientEncryptionKeyCmdletsUsingInputObject()
         {
             TestRunner.RunTestScript("Test-ClientEncryptionKeyCmdletsUsingInputObject");
+        }
+
+        [Fact(Skip = "Cannot acquire token credential for a specific audience. No support from test framework. I have verified the tests manually.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlContainerMergeCmdlet()
+        {
+            TestRunner.RunTestScript("Test-SqlContainerMergeCmdlet");
+        }
+
+        [Fact(Skip = "Cannot acquire token credential for a specific audience. No support from test framework. I have verified the tests manually.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlDatabaseMergeCmdlet()
+        {
+            TestRunner.RunTestScript("Test-SqlDatabaseMergeCmdlet");
+        }
+
+        [Fact(Skip = "Cannot acquire token credential for a specific audience. No support from test framework. I have verified the tests manually.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlContainerAdaptiveRUCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlContainerAdaptiveRUCmdlets");
+        }
+
+        [Fact(Skip = "Cannot acquire token credential for a specific audience. No support from test framework. I have verified the tests manually.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlDatabaseAdaptiveRUCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlDatabaseAdaptiveRUCmdlets");
         }
     }
 }

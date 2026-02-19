@@ -45,7 +45,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="softAllowedMaximumThroughput">The maximum throughput value or the maximum maxThroughput value (for
         /// autoscale) that can be specified
         /// </param>
-        public ThroughputSettingsResource(int? throughput = default(int?), AutoscaleSettingsResource autoscaleSettings = default(AutoscaleSettingsResource), string minimumThroughput = default(string), string offerReplacePending = default(string), string instantMaximumThroughput = default(string), string softAllowedMaximumThroughput = default(string))
+
+        /// <param name="throughputBuckets">Array of throughput bucket limits to be applied to the Cosmos DB container
+        /// </param>
+        public ThroughputSettingsResource(int? throughput = default(int?), AutoscaleSettingsResource autoscaleSettings = default(AutoscaleSettingsResource), string minimumThroughput = default(string), string offerReplacePending = default(string), string instantMaximumThroughput = default(string), string softAllowedMaximumThroughput = default(string), System.Collections.Generic.IList<ThroughputBucketResource> throughputBuckets = default(System.Collections.Generic.IList<ThroughputBucketResource>))
 
         {
             this.Throughput = throughput;
@@ -54,6 +57,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.OfferReplacePending = offerReplacePending;
             this.InstantMaximumThroughput = instantMaximumThroughput;
             this.SoftAllowedMaximumThroughput = softAllowedMaximumThroughput;
+            this.ThroughputBuckets = throughputBuckets;
             CustomInit();
         }
 
@@ -102,6 +106,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "softAllowedMaximumThroughput")]
         public string SoftAllowedMaximumThroughput {get; private set; }
+
+        /// <summary>
+        /// Gets or sets array of throughput bucket limits to be applied to the Cosmos
+        /// DB container
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "throughputBuckets")]
+        public System.Collections.Generic.IList<ThroughputBucketResource> ThroughputBuckets {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -118,6 +129,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
 
 
+            if (this.ThroughputBuckets != null)
+            {
+                foreach (var element in this.ThroughputBuckets)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
         }
     }
 }

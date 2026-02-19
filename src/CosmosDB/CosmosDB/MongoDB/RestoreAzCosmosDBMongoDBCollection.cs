@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void ExecuteCmdlet()
         {
-            
+
             DateTime utcRestoreDateTime;
             RestorableDatabaseAccountGetResult databaseAccount = null;
             List<RestorableDatabaseAccountGetResult> restorableDatabaseAccounts = this.CosmosDBManagementClient.RestorableDatabaseAccounts.ListWithHttpMessagesAsync().GetAwaiter().GetResult().Body.ToList();
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
                     databaseAccount = lastestAccountToRestore;
                 }
-                
+
                 if (databaseAccount == null)
                 {
                     this.WriteWarning($"No database accounts found with matching account name {this.AccountName} that was alive");

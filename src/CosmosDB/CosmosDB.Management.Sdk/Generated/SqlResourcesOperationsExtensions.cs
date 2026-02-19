@@ -371,6 +371,159 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
+        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL
+        /// database.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        public static System.Collections.Generic.IEnumerable<ClientEncryptionKeyGetResults> ListClientEncryptionKeys(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+        {
+                return ((ISqlResourcesOperations)operations).ListClientEncryptionKeysAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL
+        /// database.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<ClientEncryptionKeyGetResults>> ListClientEncryptionKeysAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListClientEncryptionKeysWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the ClientEncryptionKey under an existing Azure Cosmos DB SQL
+        /// database.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='clientEncryptionKeyName'>
+        /// Cosmos DB ClientEncryptionKey name.
+        /// </param>
+        public static ClientEncryptionKeyGetResults GetClientEncryptionKey(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName)
+        {
+                return ((ISqlResourcesOperations)operations).GetClientEncryptionKeyAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the ClientEncryptionKey under an existing Azure Cosmos DB SQL
+        /// database.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='clientEncryptionKeyName'>
+        /// Cosmos DB ClientEncryptionKey name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ClientEncryptionKeyGetResults> GetClientEncryptionKeyAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetClientEncryptionKeyWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
+        /// tools such as the Azure Powershell (instead of directly).
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='clientEncryptionKeyName'>
+        /// Cosmos DB ClientEncryptionKey name.
+        /// </param>
+        public static ClientEncryptionKeyGetResults CreateUpdateClientEncryptionKey(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters)
+        {
+                return ((ISqlResourcesOperations)operations).CreateUpdateClientEncryptionKeyAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, createUpdateClientEncryptionKeyParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
+        /// tools such as the Azure Powershell (instead of directly).
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='clientEncryptionKeyName'>
+        /// Cosmos DB ClientEncryptionKey name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ClientEncryptionKeyGetResults> CreateUpdateClientEncryptionKeyAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateUpdateClientEncryptionKeyWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, createUpdateClientEncryptionKeyParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Lists the SQL container under an existing Azure Cosmos DB database account.
         /// </summary>
         /// <param name='operations'>
@@ -566,6 +719,102 @@ namespace Microsoft.Azure.Management.CosmosDB
             using (var _result = await operations.DeleteSqlContainerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Merges the partitions of a SQL database
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        public static PhysicalPartitionStorageInfoCollection SqlDatabasePartitionMerge(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, MergeParameters mergeParameters)
+        {
+                return ((ISqlResourcesOperations)operations).SqlDatabasePartitionMergeAsync(resourceGroupName, accountName, databaseName, mergeParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Merges the partitions of a SQL database
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<PhysicalPartitionStorageInfoCollection> SqlDatabasePartitionMergeAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, MergeParameters mergeParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.SqlDatabasePartitionMergeWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, mergeParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Merges the partitions of a SQL Container
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        public static PhysicalPartitionStorageInfoCollection ListSqlContainerPartitionMerge(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, MergeParameters mergeParameters)
+        {
+                return ((ISqlResourcesOperations)operations).ListSqlContainerPartitionMergeAsync(resourceGroupName, accountName, databaseName, containerName, mergeParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Merges the partitions of a SQL Container
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<PhysicalPartitionStorageInfoCollection> ListSqlContainerPartitionMergeAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, MergeParameters mergeParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListSqlContainerPartitionMergeWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, mergeParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
         /// <summary>
@@ -779,8 +1028,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL
-        /// database.
+        /// Retrieve throughput distribution for an Azure Cosmos DB SQL database
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -794,14 +1042,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<ClientEncryptionKeyGetResults> ListClientEncryptionKeys(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+        public static PhysicalPartitionThroughputInfoResult SqlDatabaseRetrieveThroughputDistribution(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, RetrieveThroughputParameters retrieveThroughputParameters)
         {
-                return ((ISqlResourcesOperations)operations).ListClientEncryptionKeysAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).SqlDatabaseRetrieveThroughputDistributionAsync(resourceGroupName, accountName, databaseName, retrieveThroughputParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL
-        /// database.
+        /// Retrieve throughput distribution for an Azure Cosmos DB SQL database
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -818,16 +1065,15 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<ClientEncryptionKeyGetResults>> ListClientEncryptionKeysAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PhysicalPartitionThroughputInfoResult> SqlDatabaseRetrieveThroughputDistributionAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, RetrieveThroughputParameters retrieveThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListClientEncryptionKeysWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.SqlDatabaseRetrieveThroughputDistributionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, retrieveThroughputParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Gets the ClientEncryptionKey under an existing Azure Cosmos DB SQL
-        /// database.
+        /// Redistribute throughput for an Azure Cosmos DB SQL database
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -841,17 +1087,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='clientEncryptionKeyName'>
-        /// Cosmos DB ClientEncryptionKey name.
-        /// </param>
-        public static ClientEncryptionKeyGetResults GetClientEncryptionKey(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName)
+        public static PhysicalPartitionThroughputInfoResult SqlDatabaseRedistributeThroughput(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, RedistributeThroughputParameters redistributeThroughputParameters)
         {
-                return ((ISqlResourcesOperations)operations).GetClientEncryptionKeyAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).SqlDatabaseRedistributeThroughputAsync(resourceGroupName, accountName, databaseName, redistributeThroughputParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Gets the ClientEncryptionKey under an existing Azure Cosmos DB SQL
-        /// database.
+        /// Redistribute throughput for an Azure Cosmos DB SQL database
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -864,23 +1106,19 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </param>
         /// <param name='databaseName'>
         /// Cosmos DB database name.
-        /// </param>
-        /// <param name='clientEncryptionKeyName'>
-        /// Cosmos DB ClientEncryptionKey name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ClientEncryptionKeyGetResults> GetClientEncryptionKeyAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PhysicalPartitionThroughputInfoResult> SqlDatabaseRedistributeThroughputAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, RedistributeThroughputParameters redistributeThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetClientEncryptionKeyWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.SqlDatabaseRedistributeThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, redistributeThroughputParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
-        /// tools such as the Azure Powershell (instead of directly).
+        /// Retrieve throughput distribution for an Azure Cosmos DB SQL container
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -894,17 +1132,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='clientEncryptionKeyName'>
-        /// Cosmos DB ClientEncryptionKey name.
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
         /// </param>
-        public static ClientEncryptionKeyGetResults CreateUpdateClientEncryptionKey(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters)
+        public static PhysicalPartitionThroughputInfoResult SqlContainerRetrieveThroughputDistribution(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, RetrieveThroughputParameters retrieveThroughputParameters)
         {
-                return ((ISqlResourcesOperations)operations).CreateUpdateClientEncryptionKeyAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, createUpdateClientEncryptionKeyParameters).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).SqlContainerRetrieveThroughputDistributionAsync(resourceGroupName, accountName, databaseName, containerName, retrieveThroughputParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
-        /// tools such as the Azure Powershell (instead of directly).
+        /// Retrieve throughput distribution for an Azure Cosmos DB SQL container
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -918,15 +1155,66 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='clientEncryptionKeyName'>
-        /// Cosmos DB ClientEncryptionKey name.
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ClientEncryptionKeyGetResults> CreateUpdateClientEncryptionKeyAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PhysicalPartitionThroughputInfoResult> SqlContainerRetrieveThroughputDistributionAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, RetrieveThroughputParameters retrieveThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateUpdateClientEncryptionKeyWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, createUpdateClientEncryptionKeyParameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.SqlContainerRetrieveThroughputDistributionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, retrieveThroughputParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Redistribute throughput for an Azure Cosmos DB SQL container
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        public static PhysicalPartitionThroughputInfoResult SqlContainerRedistributeThroughput(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, RedistributeThroughputParameters redistributeThroughputParameters)
+        {
+                return ((ISqlResourcesOperations)operations).SqlContainerRedistributeThroughputAsync(resourceGroupName, accountName, databaseName, containerName, redistributeThroughputParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Redistribute throughput for an Azure Cosmos DB SQL container
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<PhysicalPartitionThroughputInfoResult> SqlContainerRedistributeThroughputAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, RedistributeThroughputParameters redistributeThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.SqlContainerRedistributeThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, redistributeThroughputParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -2228,6 +2516,59 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
+        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
+        /// tools such as the Azure Powershell (instead of directly).
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='clientEncryptionKeyName'>
+        /// Cosmos DB ClientEncryptionKey name.
+        /// </param>
+        public static ClientEncryptionKeyGetResults BeginCreateUpdateClientEncryptionKey(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters)
+        {
+                return ((ISqlResourcesOperations)operations).BeginCreateUpdateClientEncryptionKeyAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, createUpdateClientEncryptionKeyParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
+        /// tools such as the Azure Powershell (instead of directly).
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='clientEncryptionKeyName'>
+        /// Cosmos DB ClientEncryptionKey name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ClientEncryptionKeyGetResults> BeginCreateUpdateClientEncryptionKeyAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginCreateUpdateClientEncryptionKeyWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, createUpdateClientEncryptionKeyParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Create or update an Azure Cosmos DB SQL container
         /// </summary>
         /// <param name='operations'>
@@ -2327,6 +2668,102 @@ namespace Microsoft.Azure.Management.CosmosDB
             using (var _result = await operations.BeginDeleteSqlContainerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Merges the partitions of a SQL database
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        public static PhysicalPartitionStorageInfoCollection BeginSqlDatabasePartitionMerge(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, MergeParameters mergeParameters)
+        {
+                return ((ISqlResourcesOperations)operations).BeginSqlDatabasePartitionMergeAsync(resourceGroupName, accountName, databaseName, mergeParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Merges the partitions of a SQL database
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<PhysicalPartitionStorageInfoCollection> BeginSqlDatabasePartitionMergeAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, MergeParameters mergeParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginSqlDatabasePartitionMergeWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, mergeParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Merges the partitions of a SQL Container
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        public static PhysicalPartitionStorageInfoCollection BeginListSqlContainerPartitionMerge(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, MergeParameters mergeParameters)
+        {
+                return ((ISqlResourcesOperations)operations).BeginListSqlContainerPartitionMergeAsync(resourceGroupName, accountName, databaseName, containerName, mergeParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Merges the partitions of a SQL Container
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<PhysicalPartitionStorageInfoCollection> BeginListSqlContainerPartitionMergeAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, MergeParameters mergeParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginListSqlContainerPartitionMergeWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, mergeParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
         /// <summary>
@@ -2487,8 +2924,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
-        /// tools such as the Azure Powershell (instead of directly).
+        /// Retrieve throughput distribution for an Azure Cosmos DB SQL database
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -2502,17 +2938,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='clientEncryptionKeyName'>
-        /// Cosmos DB ClientEncryptionKey name.
-        /// </param>
-        public static ClientEncryptionKeyGetResults BeginCreateUpdateClientEncryptionKey(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters)
+        public static PhysicalPartitionThroughputInfoResult BeginSqlDatabaseRetrieveThroughputDistribution(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, RetrieveThroughputParameters retrieveThroughputParameters)
         {
-                return ((ISqlResourcesOperations)operations).BeginCreateUpdateClientEncryptionKeyAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, createUpdateClientEncryptionKeyParameters).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).BeginSqlDatabaseRetrieveThroughputDistributionAsync(resourceGroupName, accountName, databaseName, retrieveThroughputParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
-        /// tools such as the Azure Powershell (instead of directly).
+        /// Retrieve throughput distribution for an Azure Cosmos DB SQL database
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -2525,16 +2957,160 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </param>
         /// <param name='databaseName'>
         /// Cosmos DB database name.
-        /// </param>
-        /// <param name='clientEncryptionKeyName'>
-        /// Cosmos DB ClientEncryptionKey name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ClientEncryptionKeyGetResults> BeginCreateUpdateClientEncryptionKeyAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PhysicalPartitionThroughputInfoResult> BeginSqlDatabaseRetrieveThroughputDistributionAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, RetrieveThroughputParameters retrieveThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateUpdateClientEncryptionKeyWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, createUpdateClientEncryptionKeyParameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginSqlDatabaseRetrieveThroughputDistributionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, retrieveThroughputParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Redistribute throughput for an Azure Cosmos DB SQL database
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        public static PhysicalPartitionThroughputInfoResult BeginSqlDatabaseRedistributeThroughput(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, RedistributeThroughputParameters redistributeThroughputParameters)
+        {
+                return ((ISqlResourcesOperations)operations).BeginSqlDatabaseRedistributeThroughputAsync(resourceGroupName, accountName, databaseName, redistributeThroughputParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Redistribute throughput for an Azure Cosmos DB SQL database
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<PhysicalPartitionThroughputInfoResult> BeginSqlDatabaseRedistributeThroughputAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, RedistributeThroughputParameters redistributeThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginSqlDatabaseRedistributeThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, redistributeThroughputParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieve throughput distribution for an Azure Cosmos DB SQL container
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        public static PhysicalPartitionThroughputInfoResult BeginSqlContainerRetrieveThroughputDistribution(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, RetrieveThroughputParameters retrieveThroughputParameters)
+        {
+                return ((ISqlResourcesOperations)operations).BeginSqlContainerRetrieveThroughputDistributionAsync(resourceGroupName, accountName, databaseName, containerName, retrieveThroughputParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieve throughput distribution for an Azure Cosmos DB SQL container
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<PhysicalPartitionThroughputInfoResult> BeginSqlContainerRetrieveThroughputDistributionAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, RetrieveThroughputParameters retrieveThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginSqlContainerRetrieveThroughputDistributionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, retrieveThroughputParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Redistribute throughput for an Azure Cosmos DB SQL container
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        public static PhysicalPartitionThroughputInfoResult BeginSqlContainerRedistributeThroughput(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, RedistributeThroughputParameters redistributeThroughputParameters)
+        {
+                return ((ISqlResourcesOperations)operations).BeginSqlContainerRedistributeThroughputAsync(resourceGroupName, accountName, databaseName, containerName, redistributeThroughputParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Redistribute throughput for an Azure Cosmos DB SQL container
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<PhysicalPartitionThroughputInfoResult> BeginSqlContainerRedistributeThroughputAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, RedistributeThroughputParameters redistributeThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginSqlContainerRedistributeThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, redistributeThroughputParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

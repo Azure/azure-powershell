@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 //Subtracting 1 second from delete timestamp to restore till end of logchain in no timestamp restore.
                 utcRestoreDateTime = latestDatabaseDeleteTime.AddSeconds(-1);
             }
-            
+
 
             TableGetResults readTableGetResults = null;
             try

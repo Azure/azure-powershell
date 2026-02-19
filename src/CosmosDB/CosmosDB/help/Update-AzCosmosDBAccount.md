@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCosmosDBAccount
 
 ## SYNOPSIS
-Update a Cosmos DB Account attributes.
+Update a CosmosDB account attributes.
 
 ## SYNTAX
 
@@ -20,12 +20,11 @@ Update-AzCosmosDBAccount [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWr
  [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>]
- [-EnablePartitionMerge <Boolean>] [-EnableBurstCapacity <Boolean>] [-EnablePriorityBasedExecution <Boolean>]
- [-DefaultPriorityLevel <String>] [-AsJob] [-NetworkAclBypass <String>]
- [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>] [-BackupIntervalInMinutes <Int32>]
- [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>]
- [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-MinimalTlsVersion <String>]
- [-EnablePerRegionPerPartitionAutoscale <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-EnableBurstCapacity <Boolean>] [-EnablePartitionMerge <Boolean>] [-EnablePriorityBasedExecution <Boolean>] [-DefaultPriorityLevel <String>]
+ [-AsJob] [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
+ [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>]
+ [-BackupPolicyType <String>] [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-EnablePartitionMerge <Boolean>]
+ [-EnableMaterializedViews <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-EnablePerRegionPerPartitionAutoscale <Boolean>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,12 +36,11 @@ Update-AzCosmosDBAccount -ResourceId <String> [-EnableAutomaticFailover <Boolean
  [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>]
- [-EnablePartitionMerge <Boolean>] [-EnableBurstCapacity <Boolean>] [-EnablePriorityBasedExecution <Boolean>]
- [-DefaultPriorityLevel <String>] [-AsJob] [-NetworkAclBypass <String>]
- [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>] [-BackupIntervalInMinutes <Int32>]
- [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>]
- [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-MinimalTlsVersion <String>]
- [-EnablePerRegionPerPartitionAutoscale <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-EnablePartitionMerge <Boolean>] [-EnableBurstCapacity <Boolean>] [-EnablePriorityBasedExecution <Boolean>] [-DefaultPriorityLevel <String>]
+ [-AsJob] [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
+ [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>]
+ [-BackupPolicyType <String>] [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-EnablePartitionMerge <Boolean>]
+ [-EnableMaterializedViews <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-EnablePerRegionPerPartitionAutoscale <Boolean>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -54,17 +52,16 @@ Update-AzCosmosDBAccount -InputObject <PSDatabaseAccountGetResults> [-EnableAuto
  [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>]
- [-EnablePartitionMerge <Boolean>] [-EnableBurstCapacity <Boolean>] [-EnablePriorityBasedExecution <Boolean>]
- [-DefaultPriorityLevel <String>] [-AsJob] [-NetworkAclBypass <String>]
- [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>] [-BackupIntervalInMinutes <Int32>]
- [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>]
- [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-MinimalTlsVersion <String>]
- [-EnablePerRegionPerPartitionAutoscale <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-EnablePartitionMerge <Boolean>] [-EnableBurstCapacity <Boolean>] [-EnablePriorityBasedExecution <Boolean>] [-DefaultPriorityLevel <String>]
+ [-AsJob] [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
+ [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>]
+ [-BackupPolicyType <String>] [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-EnablePartitionMerge <Boolean>]
+ [-EnableMaterializedViews <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-EnablePerRegionPerPartitionAutoscale <Boolean>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update the properties of a Cosmos DB account. Cannot update Account Regions simultaneously with other properties.
+Update the properties of a CosmosDB account. Cannot update Account Regions simulataneously with other properties.
 
 ## EXAMPLES
 
@@ -97,7 +94,7 @@ NetworkAclBypass              : None
 NetworkAclBypassResourceIds   : {}
 ```
 
-Updated DefaultConsistencyLevel to "Strong", Enabled AutomaticFailover, Enabled MultipleWriteLocations and Enabled VirtualNetwork for Cosmos DB Account with name accountName. 
+Updated DefaultConsistencyLevel to "Strong", Enabled AutomaticFailover, Enabled MultipleWriteLocations and Enabled VirtualNetwork for CosmosDB Account with name accountName. 
 
 ## PARAMETERS
 
@@ -299,37 +296,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnablePriorityBasedExecution
-Bool to indicate if Priority Based Execution is enabled on the account.
-
-```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultPriorityLevel
-Default priority level of requests for Cosmos DB database account.
-Accepted values: High, Low
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EnableMultipleWriteLocations
 Enable Multiple Write Locations.
 Accepted values: false, true
@@ -380,6 +346,21 @@ Accept wildcard characters: False
 ### -EnableVirtualNetwork
 Enables virtual network on the Cosmos DB database account.
 Accepted values: false, true
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePerRegionPerPartitionAutoscale
+Bool to indicate if per-region, per-partition autoscale is enabled on the account.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

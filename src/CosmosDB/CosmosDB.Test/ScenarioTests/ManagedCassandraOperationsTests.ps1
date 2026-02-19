@@ -85,7 +85,7 @@ function Test-ManagedCassandraCreateUpdateGetCmdlets
             {
                 break
             }
-            Start-TestSleep -Seconds 1
+            Start-Sleep -s 1
       }
       $response = Get-AzManagedCassandraCluster -ResourceId $clusterId
       Assert-AreEqual 3 $response.Properties.ExternalSeedNodes.Count

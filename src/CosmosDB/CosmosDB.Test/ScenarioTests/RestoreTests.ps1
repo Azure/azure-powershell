@@ -16,8 +16,8 @@ function Test-SqlRestoreFromNewAccountCmdlets {
   #use an existing account with the following information
   $rgName = "CosmosDBResourceGroup13"
   $location = "West US"
-  $cosmosDBAccountName = "restored-cosmosdb-1214"
-  $sourceCosmosDBAccountName = "cosmosdb-1214"
+  $cosmosDBAccountName = "restored-cosmosdb-1214v2"
+  $sourceCosmosDBAccountName = "cosmosdb-1214v2"
   $databaseName = "TestDB1";
   $collectionName = "TestCollectionInDB1";
   $PartitionKeyPathValue = "/foo/bar"
@@ -71,10 +71,10 @@ function Test-SqlRestoreFromNewAccountCmdlets {
 }
 
 function Test-SqlRestoreAccountCmdlets {
-  #use an existing account with the following information
-  $rgName = "CosmosDBResourceGroup64-st"
-  $cosmosDBAccountName = "restored2-cosmosdb-12103-3-st"
-  $sourceCosmosDBAccountName = "cosmosdb-12103-rest-st"
+  #use a new existing account with the following information
+  $rgName = "CosmosDBResourceGroup64v2"
+  $cosmosDBAccountName = "restored2-cosmosdb-12103-3v2"
+  $sourceCosmosDBAccountName = "cosmosdb-12103-restv2"
   $databaseName = "TestDB1";
   $collectionName1 = "TestCollectionInDB1";
   $collectionName2 = "TestCollectionInDB2";
@@ -84,7 +84,7 @@ function Test-SqlRestoreAccountCmdlets {
   $PartitionKeyPathValue = "/foo/bar"
   $PartitionKeyKindValue = "Hash"
   $locations = @()
-  $locations += New-AzCosmosDBLocationObject -Location "West Us" -FailoverPriority 0 -IsZoneRedundant 0
+  $locations += New-AzCosmosDBLocationObject -Location "West Central Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
   New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $sourceCosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
@@ -282,6 +282,7 @@ function Test-RestoreFailuresAccountCmdlets {
   Assert-AreEqual $sourceRestorableAccount.DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
   Assert-NotNull $sourceRestorableAccount.DatabaseAccountName
   Assert-NotNull $sourceRestorableAccount.CreationTime
+  Assert-NotNull $sourceRestorableAccount.OldestRestorableTime
 
   $restorableSqlDatabases = Get-AzCosmosDBSqlRestorableDatabase -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
   Assert-NotNull $restorableSqlDatabases
@@ -330,7 +331,7 @@ function Test-GremlinRestoreAccountCmdlets {
   $NewDatabase =  New-AzCosmosDBGremlinDatabase -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -Name $databaseName
   $NewGraph1 = New-AzCosmosDBGremlinGraph -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $graphName1  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
   $NewGraph2 = New-AzCosmosDBGremlinGraph -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $graphName2  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
-  Start-TestSleep -Seconds 100
+  Start-Sleep -s 100
 
   $datatabaseToRestore = New-AzCosmosDBGremlinDatabaseToRestore -DatabaseName $databaseName -GraphName $graphName1, $graphName2
   $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName
@@ -410,9 +411,9 @@ function Test-GremlinRestoreFromNewAccountCmdlets {
 
 function Test-TableRestoreAccountCmdlets {
   #use an existing account with the following information
-  $rgName = "CosmosDBResourceGroup45-st"
-  $cosmosDBAccountName = "restored2-cosmosdb-1817-st"
-  $sourceCosmosDBAccountName = "cosmosdb-1817-4-st"
+  $rgName = "CosmosDBResourceGroup45"
+  $cosmosDBAccountName = "restored2-cosmosdb-1817"
+  $sourceCosmosDBAccountName = "cosmosdb-1817-4"
   $tableName1 = "table1";
   $tableName2 = "table2";
   $location = "West US"
@@ -425,7 +426,7 @@ function Test-TableRestoreAccountCmdlets {
   New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $sourceCosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
   $NewTable1 = New-AzCosmosDBTable -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -Name $tableName1 -Throughput 600
   $NewTable2 = New-AzCosmosDBTable -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -Name $tableName2 -Throughput 600
-  Start-TestSleep -Seconds 100
+  Start-Sleep -s 100
 
   $tablesToRestore = New-AzCosmosDBTableToRestore -TableName $tableName1, $tableName2
   $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName
@@ -649,16 +650,16 @@ function Test-TableBackupInformationCmdLets {
   Assert-NotNull $backupInfo.LatestRestorableTimestamp
 }
 
-function Test-UpdateCosmosDBAccountBackupPolicyToContinuous30DaysCmdLets {
-  $rgName = "PSCosmosDBResourceGroup20"
-  $location = "East US"
+function Test-UpdateCosmosDBAccountBackupPolicyCmdLet {
+  $rgName = "CosmosDBResourceGroup20"
+  $location = "West US"
   $cosmosDBAccountName = "ps-cosmosdb-1220"
   $apiKind = "Sql"
   $consistencyLevel = "Session"
   $locations = @()
   $locations += New-AzCosmosDBLocationObject -Location $location -FailoverPriority 0 -IsZoneRedundant 0
 
-  New-AzResourceGroup -ResourceGroupName $rgName -Location $location
+  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
 
   Try {
     New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $cosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
@@ -668,14 +669,32 @@ function Test-UpdateCosmosDBAccountBackupPolicyToContinuous30DaysCmdLets {
   }
 
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -BackupPolicyType Continuous
-  Start-TestSleep -Seconds (60)
+  Start-Sleep -s 50
 
-  # Verify account after migration
+  $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+  #Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState
+  #Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.Status
+  #Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.TargetType
+  #Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.StartTime
+
+  Start-Sleep -s (60 * 5)
+
+  while (
+    $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.Status -ne "Completed" -and 
+    $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.Status -ne "Failed" -and
+    $updatedCosmosDBAccount.BackupPolicy.BackupType -ne "Continuous")
+  {
+    Start-Sleep -s 60
+
+    # keep polling the migration Status
+    $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+  }
+
   Assert-AreEqual "Continuous" $updatedCosmosDBAccount.BackupPolicy.BackupType
   Assert-AreEqual "Continuous30Days" $updatedCosmosDBAccount.BackupPolicy.Tier
 
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -BackupPolicyType Continuous -ContinuousTier Continuous7Days
-  Start-TestSleep -Seconds (60 * 2)
+  Start-Sleep -s (60 * 2)
 
   $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
   Assert-AreEqual "Continuous" $updatedCosmosDBAccount.BackupPolicy.BackupType
@@ -684,14 +703,14 @@ function Test-UpdateCosmosDBAccountBackupPolicyToContinuous30DaysCmdLets {
 
 function Test-UpdateCosmosDBAccountBackupPolicyToContinuous7DaysCmdLets {
   $rgName = "PSCosmosDBResourceGroup50"
-  $location = "East US"
+  $location = "West US"
   $cosmosDBAccountName = "ps-cosmosdb-1250"
   $apiKind = "Sql"
   $consistencyLevel = "Session"
   $locations = @()
   $locations += New-AzCosmosDBLocationObject -Location $location -FailoverPriority 0 -IsZoneRedundant 0
 
-  New-AzResourceGroup -ResourceGroupName $rgName -Location $location
+  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
 
   Try {
     New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $cosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
@@ -701,20 +720,40 @@ function Test-UpdateCosmosDBAccountBackupPolicyToContinuous7DaysCmdLets {
   }
 
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -BackupPolicyType Continuous -ContinuousTier Continuous7Days
+  Start-Sleep -s (60)
 
-  # Verify account after migration
+  $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+  #Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState
+  #Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.Status
+  #Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.TargetType
+  #Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.StartTime
+
+  Start-Sleep -s (60 * 5)
+
+  while (
+    $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.Status -ne "Completed" -and 
+    $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.Status -ne "Failed" -and
+    $updatedCosmosDBAccount.BackupPolicy.BackupType -ne "Continuous")
+  {
+    Start-Sleep -s 60
+
+    # keep polling the migration Status
+    $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+  }
+
   Assert-AreEqual "Continuous" $updatedCosmosDBAccount.BackupPolicy.BackupType
   Assert-AreEqual "Continuous7Days" $updatedCosmosDBAccount.BackupPolicy.Tier
 
   # If we don't provide the continuoustier, it should not trigger the update to continuous30days
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
-  Start-TestSleep -Seconds (60 * 2)
+  Start-Sleep -s (60 * 2)
 
   $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
   Assert-AreEqual "Continuous7Days" $updatedCosmosDBAccount.BackupPolicy.Tier
 
   # Provide continuoustier explicitly, it should triggered the update to continuous30days
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -BackupPolicyType Continuous -ContinuousTier Continuous30Days
+  Start-Sleep -s (60 * 2)
 
   $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
   Assert-AreEqual "Continuous" $updatedCosmosDBAccount.BackupPolicy.BackupType
@@ -731,13 +770,13 @@ function Test-ProvisionCosmosDBAccountBackupPolicyWithContinuous7DaysCmdLets {
   $locations = @()
   $locations += New-AzCosmosDBLocationObject -Location "West Us" -FailoverPriority 0 -IsZoneRedundant 0
 
-  New-AzResourceGroup -ResourceGroupName $rgName -Location $location
+  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
   New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $sourceCosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous -ContinuousTier Continuous7Days
 
   $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName
   Assert-AreEqual "Continuous" $sourceCosmosDBAccount.BackupPolicy.BackupType
   Assert-AreEqual "Continuous7Days" $sourceCosmosDBAccount.BackupPolicy.Tier
-  
+
   $sourceRestorableAccount = Get-AzCosmosDBRestorableDatabaseAccount -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
   Assert-NotNull $sourceRestorableAccount.Id
   Assert-NotNull $sourceRestorableAccount.Location
@@ -750,11 +789,113 @@ function Test-ProvisionCosmosDBAccountBackupPolicyWithContinuous7DaysCmdLets {
   Assert-NotNull $sourceRestorableAccount.OldestRestorableTime
 }
 
+
+function Test-CrossRegionRestoreAccountCmdlets {
+  #use an existing account with the following information
+  $rgName = "PSCosmosDBResourceGroup53"
+  $cosmosDBAccountName = "ps-xrr-cosmosdb-12105-restored"
+  $sourceCosmosDBAccountName = "ps-xrr-cosmosdb-12105"
+  $databaseName = "TestDB1";
+  $collectionName1 = "TestCollectionInDB1";
+  $collectionName2 = "TestCollectionInDB2";
+  $location = "West Central US"
+  $apiKind = "Sql"
+  $consistencyLevel = "Session"
+  $PartitionKeyPathValue = "/foo/bar"
+  $PartitionKeyKindValue = "Hash"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -Location "West Central US" -FailoverPriority 0 -IsZoneRedundant 0
+  $locations += New-AzCosmosDBLocationObject -Location "East US 2" -FailoverPriority 1 -IsZoneRedundant 0
+  $targetLocation = "East US 2"
+  $sourceBackupLocation = "West Central US"
+
+  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+  New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $sourceCosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
+  $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -Name $databaseName
+  $NewContainer = New-AzCosmosDBSqlContainer -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName1  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
+  $NewContainer = New-AzCosmosDBSqlContainer -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName2  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
+
+  $datatabaseToRestore = New-AzCosmosDBDatabaseToRestore -DatabaseName $databaseName -CollectionName $collectionName1, $collectionName2
+  $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName
+  Assert-NotNull $sourceCosmosDBAccount.Location
+  Assert-AreEqual $sourceCosmosDBAccount.Location $location
+
+  $sourceRestorableAccount = Get-AzCosmosDBRestorableDatabaseAccount -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
+
+  Start-TestSleep -s 3662
+  $restoreTimestampInUtc = $sourceRestorableAccount.CreationTime.AddSeconds(3610)
+
+  $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -RestoreTimestampInUtc $restoreTimestampInUtc -SourceDatabaseAccountName $sourceCosmosDBAccountName -SourceBackupLocation $sourceBackupLocation -Location $targetLocation -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -DatabasesToRestore $datatabaseToRestore
+
+  Assert-NotNull $sourceRestorableAccount
+  Assert-AreEqual $restoredCosmosDBAccount.Name $cosmosDBAccountName
+  Assert-AreEqual $restoredCosmosDBAccount.CreateMode "Restore"
+  Assert-NotNull $restoredCosmosDBAccount.RestoreParameters
+  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.RestoreSource $sourceRestorableAccount.Id
+
+  #Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.RestoreTimestampInUtc.ToUniversalTime() $inputRestoreTS.ToUniversalTime()
+  Assert-NotNull $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore
+  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore[0].DatabaseName $databaseName
+  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore[0].CollectionNames[0] $collectionName1
+  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.SourceBackupLocation $sourceBackupLocation
+  Assert-AreEqual $restoredCosmosDBAccount.WriteLocations[0].LocationName $targetLocation
+}
+
+function Test-CrossRegionRestoreSingleRegionAccountCmdlets {
+  #use an existing account with the following information
+  $rgName = "PSCosmosDBResourceGroup54"
+  $cosmosDBAccountName = "ps-xrr-cosmosdb-12106-restored"
+  $sourceCosmosDBAccountName = "ps-xrr-cosmosdb-12106"
+  $databaseName = "TestDB1";
+  $collectionName1 = "TestCollectionInDB1";
+  $collectionName2 = "TestCollectionInDB2";
+  $location = "West Central US"
+  $apiKind = "Sql"
+  $consistencyLevel = "Session"
+  $PartitionKeyPathValue = "/foo/bar"
+  $PartitionKeyKindValue = "Hash"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -Location "West Central US" -FailoverPriority 0 -IsZoneRedundant 0
+  $targetLocation = "East US 2"
+  $sourceBackupLocation = "West Central US"
+
+  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+  New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $sourceCosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
+  $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -Name $databaseName
+  $NewContainer = New-AzCosmosDBSqlContainer -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName1  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
+  $NewContainer = New-AzCosmosDBSqlContainer -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName2  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
+
+  $datatabaseToRestore = New-AzCosmosDBDatabaseToRestore -DatabaseName $databaseName -CollectionName $collectionName1, $collectionName2
+  $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName
+  Assert-NotNull $sourceCosmosDBAccount.Location
+  Assert-AreEqual $sourceCosmosDBAccount.Location $location
+
+  $sourceRestorableAccount = Get-AzCosmosDBRestorableDatabaseAccount -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
+
+  Start-TestSleep -s 3662
+  $restoreTimestampInUtc = $sourceRestorableAccount.CreationTime.AddSeconds(3610)
+
+  $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -RestoreTimestampInUtc $restoreTimestampInUtc -SourceDatabaseAccountName $sourceCosmosDBAccountName -SourceBackupLocation $sourceBackupLocation -Location $targetLocation -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -DatabasesToRestore $datatabaseToRestore
+
+  Assert-NotNull $sourceRestorableAccount
+  Assert-AreEqual $restoredCosmosDBAccount.Name $cosmosDBAccountName
+  Assert-AreEqual $restoredCosmosDBAccount.CreateMode "Restore"
+  Assert-NotNull $restoredCosmosDBAccount.RestoreParameters
+  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.RestoreSource $sourceRestorableAccount.Id
+
+  #Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.RestoreTimestampInUtc.ToUniversalTime() $inputRestoreTS.ToUniversalTime()
+  Assert-NotNull $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore
+  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore[0].DatabaseName $databaseName
+  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore[0].CollectionNames[0] $collectionName1
+  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.SourceBackupLocation $sourceBackupLocation
+  Assert-AreEqual $restoredCosmosDBAccount.WriteLocations[0].LocationName $targetLocation
+}
+
 function Test-SqlRestoreAccountPublicNetworkAccessCmdlets {
   #use an existing account with the following information
-  $rgName = "CosmosDBResourceGroup64-stpna"
-  $cosmosDBAccountName = "restored2-cosmosdb-12103pna-3-st"
-  $sourceCosmosDBAccountName = "cosmosdb-12103pna-rest-st"
+  $rgName = "CosmosDBResourceGroup64"
+  $cosmosDBAccountName = "restored2-cosmosdb-12103-3v2"
+  $sourceCosmosDBAccountName = "cosmosdb-12103-restv2"
   $databaseName = "TestDB1";
   $collectionName1 = "TestCollectionInDB1";
   $collectionName2 = "TestCollectionInDB2";
@@ -792,105 +933,4 @@ function Test-SqlRestoreAccountPublicNetworkAccessCmdlets {
 
   # Assert public network access is disabled
   Assert-AreEqual $restoredCosmosDBAccount.PublicNetworkAccess $publicNetworkAccess
-}
-
-function Test-CrossRegionRestoreAccountCmdlets {
-  #use an existing account with the following information
-  $rgName = "PSCosmosDBResourceGroup53"
-  $cosmosDBAccountName = "ps-xrr-cosmosdb-12105-restored"
-  $sourceCosmosDBAccountName = "ps-xrr-cosmosdb-12105"
-  $databaseName = "TestDB1";
-  $collectionName1 = "TestCollectionInDB1";
-  $collectionName2 = "TestCollectionInDB2";
-  $location = "West Central US"
-  $apiKind = "Sql"
-  $consistencyLevel = "Session"
-  $PartitionKeyPathValue = "/foo/bar"
-  $PartitionKeyKindValue = "Hash"
-  $locations = @()
-  $locations += New-AzCosmosDBLocationObject -Location "West Central US" -FailoverPriority 0 -IsZoneRedundant 0
-  $locations += New-AzCosmosDBLocationObject -Location "North Central US" -FailoverPriority 1 -IsZoneRedundant 0
-  $targetLocation = "North Central US"
-  $sourceBackupLocation = "West Central US"
-
-  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-  New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $sourceCosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
-  $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -Name $databaseName
-  $NewContainer = New-AzCosmosDBSqlContainer -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName1  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
-  $NewContainer = New-AzCosmosDBSqlContainer -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName2  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
-
-  $datatabaseToRestore = New-AzCosmosDBDatabaseToRestore -DatabaseName $databaseName -CollectionName $collectionName1, $collectionName2
-  $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName
-  Assert-NotNull $sourceCosmosDBAccount.Location
-  Assert-AreEqual $sourceCosmosDBAccount.Location $location
-
-  $sourceRestorableAccount = Get-AzCosmosDBRestorableDatabaseAccount -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
-
-  Start-Sleep -s 3662
-  $restoreTimestampInUtc = $sourceRestorableAccount.CreationTime.AddSeconds(3610)
-
-  $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -RestoreTimestampInUtc $restoreTimestampInUtc -SourceDatabaseAccountName $sourceCosmosDBAccountName -SourceBackupLocation $sourceBackupLocation -Location $targetLocation -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -DatabasesToRestore $datatabaseToRestore
-
-  Assert-NotNull $sourceRestorableAccount
-  Assert-AreEqual $restoredCosmosDBAccount.Name $cosmosDBAccountName
-  Assert-AreEqual $restoredCosmosDBAccount.CreateMode "Restore"
-  Assert-NotNull $restoredCosmosDBAccount.RestoreParameters
-  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.RestoreSource $sourceRestorableAccount.Id
-
-  #Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.RestoreTimestampInUtc.ToUniversalTime() $inputRestoreTS.ToUniversalTime()
-  Assert-NotNull $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore
-  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore[0].DatabaseName $databaseName
-  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore[0].CollectionNames[0] $collectionName1
-  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.SourceBackupLocation $sourceBackupLocation
-  Assert-AreEqual $restoredCosmosDBAccount.WriteLocations[0].LocationName $targetLocation
-}
-
-function Test-CrossRegionRestoreSingleRegionAccountCmdlets {
-  #use an existing account with the following information
-  $rgName = "PSCosmosDBResourceGroup54"
-  $cosmosDBAccountName = "ps-xrr-cosmosdb-12106-restored"
-  $sourceCosmosDBAccountName = "ps-xrr-cosmosdb-12106"
-  $databaseName = "TestDB1";
-  $collectionName1 = "TestCollectionInDB1";
-  $collectionName2 = "TestCollectionInDB2";
-  $location = "West Central US"
-  $apiKind = "Sql"
-  $consistencyLevel = "Session"
-  $PartitionKeyPathValue = "/foo/bar"
-  $PartitionKeyKindValue = "Hash"
-  $locations = @()
-  $locations += New-AzCosmosDBLocationObject -Location "West Central US" -FailoverPriority 0 -IsZoneRedundant 0
-  $targetLocation = "North Central US"
-  $sourceBackupLocation = "West Central US"
-
-  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-  New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $sourceCosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
-  $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -Name $databaseName
-  $NewContainer = New-AzCosmosDBSqlContainer -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName1  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
-  $NewContainer = New-AzCosmosDBSqlContainer -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName2  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
-
-  $datatabaseToRestore = New-AzCosmosDBDatabaseToRestore -DatabaseName $databaseName -CollectionName $collectionName1, $collectionName2
-  $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName
-  Assert-NotNull $sourceCosmosDBAccount.Location
-  Assert-AreEqual $sourceCosmosDBAccount.Location $location
-
-  $sourceRestorableAccount = Get-AzCosmosDBRestorableDatabaseAccount -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
-
-  Start-Sleep -s 3662
-  $restoreTimestampInUtc = $sourceRestorableAccount.CreationTime.AddSeconds(3610)
-
-  $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -RestoreTimestampInUtc $restoreTimestampInUtc -SourceDatabaseAccountName $sourceCosmosDBAccountName -SourceBackupLocation $sourceBackupLocation -Location $targetLocation -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -DatabasesToRestore $datatabaseToRestore
-
-  Assert-NotNull $sourceRestorableAccount
-  Assert-AreEqual $restoredCosmosDBAccount.Name $cosmosDBAccountName
-  Assert-AreEqual $restoredCosmosDBAccount.CreateMode "Restore"
-  Assert-NotNull $restoredCosmosDBAccount.RestoreParameters
-  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.RestoreSource $sourceRestorableAccount.Id
-
-  #Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.RestoreTimestampInUtc.ToUniversalTime() $inputRestoreTS.ToUniversalTime()
-  Assert-NotNull $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore
-  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore[0].DatabaseName $databaseName
-  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore[0].CollectionNames[0] $collectionName1
-  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.SourceBackupLocation $sourceBackupLocation
-  Assert-AreEqual $restoredCosmosDBAccount.WriteLocations[0].LocationName $targetLocation
 }

@@ -18,7 +18,7 @@ Test MongoDB CRUD cmdlets using Name parameter set
 #>
 function Test-MongoOperationsCmdlets
 {
-  $AccountName = "mongo-db00044"
+  $AccountName = "mongo-db00044v2"
   $rgName = "CosmosDBResourceGroup44"
   $DatabaseName = "dbName"
   $CollectionName = "collection1"
@@ -148,7 +148,7 @@ Try {
 
 function Test-MongoInAccountRestoreOperationsSharedRUResourcesCmdlets
 {
-  $AccountName = "mongo-db00045"
+  $AccountName = "mongo-db000045"
   $rgName = "CosmosDBResourceGroup46"
   $DatabaseName = "dbName"
   $CollectionName = "collection"
@@ -280,8 +280,8 @@ Try {
 
 function Test-MongoInAccountRestoreOperationsCmdlets
 {
-  $AccountName = "mongo-db00048"
-  $rgName = "CosmosDBResourceGroup48"
+  $AccountName = "mongo-db00048v2"
+  $rgName = "CosmosDBResourceGroup48v2"
   $DatabaseName = "dbName"
   $CollectionName = "collection1"
   $location = "West US"
@@ -442,7 +442,7 @@ Try {
 #>
 function Test-MongoDBInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
 {
-    $AccountName = "mongodb-iar25"
+    $AccountName = "mongodb-iar25v2"
     $rgName = "CosmosDBResourceGroup49"
     $DatabaseName = "mongodbName6"
     $ContainerName = "container1"
@@ -586,20 +586,20 @@ function Test-MongoDBInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
 
 function Test-MongoInAccountRestoreOperationsNoTimestampCmdlets
 {
-  $AccountName = "mongo-db00049"
-  $rgName = "CosmosDBResourceGroup49"
+  $AccountName = "mongo-db00049v2"
+  $rgName = "CosmosDBResourceGroup49v2"
   $DatabaseName = "dbName"
   $CollectionName = "collection1"
   $location = "West US"
   $apiKind = "MongoDB"
   $consistencyLevel = "Session"
   $locations = @()
-  $locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
+  $locations += New-AzCosmosDBLocationObject -LocationName "West Central US" -FailoverPriority 0 -IsZoneRedundant 0
 Try {
 
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
       New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
-
+      Start-TestSleep -Seconds 30
 
       # create a new database
       $NewDatabase =  New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
@@ -1132,4 +1132,416 @@ Try {
         Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
         Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
 	}
+}
+<#
+.SYNOPSIS
+Test mongodb collection Throughput redistribution cmdlets
+#>
+function Test-MongoDBCollectionAdaptiveRUCmdlets
+{
+  $AccountName = "mongomergeaccount"
+  $rgName = "canary-sdk-test"
+  $DatabaseName = "adaptiverudatabase"
+  $ContainerName = "adaptiveruContainer"
+
+  $ShardKey = "shardKeyPath"
+  $ContainerThroughputValue = 24000
+  $UpdatedContainerThroughputValue = 2000
+
+  Try{
+
+      New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $ContainerName -Shard $ShardKey
+      Update-AzCosmosDBMongoDBCollectionThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -Throughput $UpdatedContainerThroughputValue
+      $partitions = Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -AllPartitions
+      Assert-AreEqual $partitions.Count 4
+      $sources = @()
+      $targets = @()
+      Foreach($partition in $partitions)
+      {
+          Assert-AreEqual $partition.Throughput 500
+          if($partition.Id -lt 2)
+          {
+            $throughput = $partition.Throughput - 100
+            $sources += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partition.Id -Throughput $throughput
+          }
+          else
+          {
+              $throughput = $partition.Throughput + 100
+              $targets += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partition.Id -Throughput $throughput
+          }
+      }
+      
+      $newPartitions = Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -SourcePhysicalPartitionThroughputObject $sources -TargetPhysicalPartitionThroughputObject $targets
+      Assert-AreEqual $newPartitions.Count 4
+      Foreach($partition in $newPartitions)
+      {
+          if($partition.Id -lt 2)
+          {
+            Assert-AreEqual $partition.Throughput 400
+          }
+          else
+          {
+              Assert-AreEqual $partition.Throughput 600              
+          }
+      }      
+
+      $resetPartitions = Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -EqualDistributionPolicy
+      
+      Assert-AreEqual $resetPartitions.Count 4
+
+      Foreach($partition in $resetPartitions)
+      {
+          Assert-AreEqual $partition.Throughput 500          
+      }
+
+      $somePartitions = Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -PhysicalPartitionIds ('0', '1')
+      Assert-AreEqual $somePartitions.Count 2
+  }
+  Finally{
+      Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+      Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
+<#
+.SYNOPSIS
+Test mongodb database Throughput redistribution cmdlets
+#>
+function Test-MongoDBDatabaseAdaptiveRUCmdlets
+{
+  $AccountName = "sharedadrutest"
+  $rgName = "canary-sdk-test"
+  $DatabaseName = "adaptiverudatabase"
+
+  $DatabaseThroughputValue = 34000
+  $UpdatedDatabaseThroughputValue = 2000
+
+  Try{
+      New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $DatabaseThroughputValue
+      Update-AzCosmosDBMongoDBDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $UpdatedDatabaseThroughputValue
+      $partitions = Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -AllPartitions
+      Assert-AreEqual $partitions.Count 4
+      $sources = @()
+      $targets = @()
+      $oldPartitions = @()
+      for($i = 0; $i -lt $partitions.Count; $i++)
+      {
+          Assert-AreEqual $partitions[$i].Throughput 500
+          if($i -lt 2)
+          {
+            $throughput = $partitions[$i].Throughput - 100
+            $sources += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partitions[$i].Id -Throughput $throughput
+          }
+          else
+          {
+              $throughput = $partitions[$i].Throughput + 100
+              $targets += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partitions[$i].Id -Throughput $throughput
+          }
+          $oldPartitions += $partitions[$i]
+      }
+      
+      $newPartitions = Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -SourcePhysicalPartitionThroughputObject $sources -TargetPhysicalPartitionThroughputObject $targets
+      Assert-AreEqual $newPartitions.Count 4
+      for($i = 0; $i -lt $newPartitions.Count; $i++)
+      {
+          if($newPartitions[$i].Id -eq $oldPartitions[0].Id -or $newPartitions[$i].Id -eq $oldPartitions[1].Id)
+          {
+              Assert-AreEqual $newPartitions[$i].Throughput 400
+          }
+          else
+          {
+              Assert-AreEqual $newPartitions[$i].Throughput 600              
+          }
+      }      
+      
+      $resetPartitions = Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -EqualDistributionPolicy
+      
+      Assert-AreEqual $resetPartitions.Count 4
+
+      Foreach($partition in $resetPartitions)
+      {
+          Assert-AreEqual $partition.Throughput 500          
+      }
+
+      $somePartitions = Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -PhysicalPartitionIds ($oldPartitions[0].Id, $oldPartitions[1].Id)
+      Assert-AreEqual $somePartitions.Count 2
+  }
+  Finally{
+      Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
+<#
+.SYNOPSIS
+Test mongodb merge cmdlet
+#>
+function Test-MongoDBCollectionMergeCmdlet
+{
+  $AccountName = "mongomergeaccount"
+  $rgName = "canary-sdk-test"
+  $DatabaseName = "mergedatabase"
+  $ContainerName = "mergecontainer"
+
+  $ShardKey = "shardKeyPath"
+
+  $ContainerThroughputValue = 24000
+  $UpdatedContainerThroughputValue = 2000
+
+  Try{
+
+      New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $ContainerName -Shard $ShardKey
+      Update-AzCosmosDBMongoDBCollectionThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -Throughput $UpdatedContainerThroughputValue
+      $physicalPartitionStorageInfos = Invoke-AzCosmosDBMongoDBCollectionMerge -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -Force
+      Assert-AreEqual $physicalPartitionStorageInfos.Count 1
+      if($physicalPartitionStorageInfos[0].Id.contains("mergeTarget"))
+      {
+          throw "Name of partition: " + $physicalPartitionStorageInfos[0].Id + " Unexpected Id: mergeTarget"
+      }
+
+  }
+  Finally{
+      Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+      Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
+<#
+.SYNOPSIS
+Test mongodb merge cmdlet
+#>
+function Test-MongoDBDatabaseMergeCmdlet
+{
+  $AccountName = "mongomergeaccount"
+  $rgName = "canary-sdk-test"
+  $DatabaseName = "mergedatabase"
+  $ContainerName = "mergecontainer"
+
+  $ShardKey = "shardKeyPath"
+
+  $ContainerThroughputValue = 24000
+  $UpdatedContainerThroughputValue = 2000
+
+  Try{
+
+      New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $ContainerThroughputValue
+      New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -Shard $ShardKey
+      Update-AzCosmosDBMongoDBDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $UpdatedContainerThroughputValue
+      $physicalPartitionStorageInfos = Invoke-AzCosmosDBMongoDBDatabaseMerge -ResourceGroupName $rgName -AccountName $AccountName -Name $DatabaseName -Force
+      Assert-AreEqual $physicalPartitionStorageInfos.Count 1
+      if($physicalPartitionStorageInfos[0].Id.contains("mergeTarget"))
+      {
+          throw "Name of partition: " + $physicalPartitionStorageInfos[0].Id + " Unexpected Id: mergeTarget"
+      }
+
+  }
+  Finally{
+      Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+      Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
+<#
+.SYNOPSIS
+Test MongoMI Roles cmdlets using all parameter sets
+#>
+function Test-MongoMIRoleCmdlets
+{
+  $AccountName = "yayi-mongomi-test-1"
+  $rgName = "yayi-test"  
+  $location = "West US 2"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "UK South" -FailoverPriority 0 -IsZoneRedundant 0
+
+  $MongoMIName = "mongoMI1"
+  $MongoMIName2 = "mongoMI2"
+  $apiKind = "MongoDB"
+  $ThroughputValue = 500
+  $consistencyLevel = "Session"
+  $UpdatedThroughputValue = 600
+
+  $subscriptionId = "80be3961-0521-4a0a-8570-5cd5a4e2f98c" #$(getVariable "SubscriptionId")
+
+  $PrincipalId = "5059f4fb-8e7e-4f41-9ca0-37bbaea765ea"
+  $PrincipalId2 = "15859188-ae55-4f6d-8f07-ac19a1ae8e7f"
+
+  $RoleName = "roleDefinitionName12"
+  $RoleName2 = "roleDefinitionName2"
+  $RoleName3 = "roleDefinitionName3"
+  $RoleName4 = "roleDefinitionName4"
+  $RoleName5 = "roleDefinitionName5"
+  $RoleName6 = "roleDefinitionName6"
+
+  $DataActionRead =     "Microsoft.DocumentDB/databaseAccounts/mongoMI/containers/entities/read"
+  $DataActionCreate =   "Microsoft.DocumentDB/databaseAccounts/mongoMI/containers/entities/create"
+  $DataActionReplace =  "Microsoft.DocumentDB/databaseAccounts/mongoMI/containers/entities/replace"
+  $DataActionInvalid =  "Microsoft.DocumentDB/databaseAccounts/mongoMI/containers/entities/invalid-action"
+
+  $Scope = "/"
+  $FullyQualifiedScope = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName"
+  $Scope2 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/dbs/dbName"
+
+  $RoleDefinitionId = "df31c3a1-20f5-4ff1-bdd0-5e0782617e22"
+  $FullyQualifiedRoleDefinitionId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/mongoMIRoleDefinitions/df31c3a1-20f5-4ff1-bdd0-5e0782617e22"
+  $RoleDefinitionId2 = "a36e56a5-9afc-4819-aa78-3a8083a3ee74"
+  $FullyQualifiedRoleDefinitionId2 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/mongoMIRoleDefinitions/a36e56a5-9afc-4819-aa78-3a8083a3ee74"
+  $RoleDefinitionId3 = "9ee200b5-73fd-4779-b36a-e2a31f9244f3"
+  $FullyQualifiedRoleDefinitionId3 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/mongoMIRoleDefinitions/9ee200b5-73fd-4779-b36a-e2a31f9244f3"
+  $RoleDefinitionId6 = "7ff311a6-73fd-4779-b36a-e2a31f9244f3"  
+
+  $RoleAssignmentId = "a2ccaf94-3c39-4728-b892-95edeef0e754"
+  $FullyQualifiedRoleAssignmentId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/mongoMIRoleAssignments/a2ccaf94-3c39-4728-b892-95edeef0e754"
+  $RoleAssignmentId2 = "8f3f78c4-a8df-4088-9cbb-a3947e27076b"
+  $FullyQualifiedRoleAssignmentId2 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/mongoMIRoleAssignments/8f3f78c4-a8df-4088-9cbb-a3947e27076b"
+  $RoleAssignmentId3 = "e7a0b8a5-b381-495d-a020-5467c534e619"
+  $FullyQualifiedRoleAssignmentId3 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/mongoMIRoleAssignments/e7a0b8a5-b381-495d-a020-5467c534e619"
+
+
+  Try{
+
+      $DatabaseAccount = Get-AzCosmosDBAccount -Name $AccountName -ResourceGroupName $rgName
+
+      # update non-existing role definition, role assignment
+      Try {
+          $UpdatedRoleDefinition = Update-AzCosmosDBMongoMIRoleDefinition -Type "CustomRole" -RoleName "RoleName3" -DataAction $DataActionCreate -AssignableScope $Scope2 -Id "00000000-0000-0000-0000-000000000000" -AccountName $AccountName -ResourceGroupName $rgName
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Role Definition with Id [00000000-0000-0000-0000-000000000000] does not exist.")
+      }
+      Try {
+          $UpdatedRoleAssignment = Update-AzCosmosDBMongoMIRoleAssignment -RoleDefinitionName "RoleName4" -Id "11111111-1111-1111-1111-111111111111" -AccountName $AccountName -ResourceGroupName $rgName
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Role Assignment with Name [RoleName4] does not exist.")
+      }
+
+      #role def tests
+      # create a new role definition - using parent object and permission
+      $Permissions = New-AzCosmosDBPermission -DataAction $DataActionRead
+      $NewRoleDefinitionFromParentObject = New-AzCosmosDBMongoMIRoleDefinition -Type "CustomRole" -RoleName $RoleName -Permission $Permissions -AssignableScope $Scope -Id $RoleDefinitionId -ParentObject $DatabaseAccount
+      Assert-AreEqual $NewRoleDefinitionFromParentObject.RoleName $RoleName
+      Assert-AreEqual $NewRoleDefinitionFromParentObject.Type "CustomRole"
+      Assert-AreEqual $NewRoleDefinitionFromParentObject.Id $FullyQualifiedRoleDefinitionId
+      Assert-NotNull $NewRoleDefinitionFromParentObject.AssignableScopes
+      Assert-NotNull $NewRoleDefinitionFromParentObject.Permissions
+
+      # create a new role definition - using fields and data actions
+      $NewRoleDefinitionFromFields = New-AzCosmosDBMongoMIRoleDefinition -Type "CustomRole" -RoleName $RoleName2 -DataAction $DataActionCreate -AssignableScope $Scope2 -Id $RoleDefinitionId2 -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-AreEqual $NewRoleDefinitionFromFields.RoleName $RoleName2
+      Assert-AreEqual $NewRoleDefinitionFromFields.Type "CustomRole"
+      Assert-AreEqual $NewRoleDefinitionFromFields.Id $FullyQualifiedRoleDefinitionId2
+      Assert-NotNull $NewRoleDefinitionFromFields.AssignableScopes
+      Assert-NotNull $NewRoleDefinitionFromFields.Permissions
+
+      $NewRoleDefinitionFromFields2 = New-AzCosmosDBMongoMIRoleDefinition -Type "CustomRole" -RoleName $RoleName3 -DataAction $DataActionCreate -AssignableScope $Scope -Id $RoleDefinitionId3 -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-AreEqual $NewRoleDefinitionFromFields2.RoleName $RoleName3
+      Assert-AreEqual $NewRoleDefinitionFromFields2.Type "CustomRole"
+      Assert-AreEqual $NewRoleDefinitionFromFields2.Id $FullyQualifiedRoleDefinitionId3
+      Assert-NotNull $NewRoleDefinitionFromFields2.AssignableScopes
+      Assert-NotNull $NewRoleDefinitionFromFields2.Permissions
+
+      # get a role definition
+      $RoleDefinition = Get-AzCosmosDBMongoMIRoleDefinition -AccountName $AccountName -ResourceGroupName $rgName -Id $RoleDefinitionId
+      Assert-AreEqual $RoleDefinition.RoleName $RoleName
+      Assert-AreEqual $RoleDefinition.Type "CustomRole"
+      Assert-NotNull $RoleDefinition.AssignableScopes
+      Assert-NotNull $RoleDefinition.Permissions
+
+      # update role definition by parent object and data actions
+      $UpdatedRoleDefinition = Update-AzCosmosDBMongoMIRoleDefinition -Type "CustomRole" -RoleName $RoleName4 -DataAction $DataActionReplace -AssignableScope $Scope -Id $RoleDefinitionId -ParentObject $DatabaseAccount
+      Assert-AreEqual $UpdatedRoleDefinition.Id $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $UpdatedRoleDefinition.RoleName $RoleName4
+      Assert-NotNull $UpdatedRoleDefinition.AssignableScopes
+      Assert-NotNull $UpdatedRoleDefinition.Permissions
+
+      # update role definition by fields and permissions
+      $UpdatedRoleDefinition = Update-AzCosmosDBMongoMIRoleDefinition -Type "CustomRole" -RoleName $RoleName5 -Permission $Permissions -AssignableScope $Scope -AccountName $AccountName -ResourceGroupName $rgName -Id $RoleDefinitionId
+      Assert-AreEqual $UpdatedRoleDefinition.Id $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $UpdatedRoleDefinition.RoleName $RoleName5
+      Assert-NotNull $UpdatedRoleDefinition.AssignableScopes
+      Assert-NotNull $UpdatedRoleDefinition.Permissions
+
+      # list Role Definitions
+      $ListRoleDefinitions = Get-AzCosmosDBMongoMIRoleDefinition -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull $ListRoleDefinitions
+
+      #role assignment tests
+      # create a new role assignment from name
+      $NewRoleAssignmentFromName = New-AzCosmosDBMongoMIRoleAssignment -RoleDefinitionName $RoleName5 -Scope $Scope -PrincipalId $PrincipalId -Id $RoleAssignmentId2 -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-AreEqual $NewRoleAssignmentFromName.RoleDefinitionId $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $NewRoleAssignmentFromName.Scope $FullyQualifiedScope
+      Assert-AreEqual $NewRoleAssignmentFromName.PrincipalId $PrincipalId
+      Assert-AreEqual $NewRoleAssignmentFromName.Id $FullyQualifiedRoleAssignmentId2
+
+      # create a new role assignment from parent object
+      $NewRoleAssignmentFromParentObject = New-AzCosmosDBMongoMIRoleAssignment -ParentObject $NewRoleDefinitionFromFields2 -Scope $Scope -PrincipalId $PrincipalId2 -Id $RoleAssignmentId3
+      Assert-AreEqual $NewRoleAssignmentFromParentObject.RoleDefinitionId $FullyQualifiedRoleDefinitionId3
+      Assert-AreEqual $NewRoleAssignmentFromParentObject.Scope $FullyQualifiedScope
+      Assert-AreEqual $NewRoleAssignmentFromParentObject.PrincipalId $PrincipalId2
+      Assert-AreEqual $NewRoleAssignmentFromParentObject.Id $FullyQualifiedRoleAssignmentId3
+
+      # create a new role assignment from Id
+      $NewRoleAssignmentFromId3 = New-AzCosmosDBMongoMIRoleAssignment -RoleDefinitionId $RoleDefinitionId -Scope $Scope -PrincipalId $PrincipalId -AccountName $AccountName -ResourceGroupName $rgName -Id $RoleAssignmentId
+      Assert-AreEqual $NewRoleAssignmentFromId3.RoleDefinitionId $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $NewRoleAssignmentFromId3.Scope $FullyQualifiedScope
+      Assert-AreEqual $NewRoleAssignmentFromId3.PrincipalId $PrincipalId
+      Assert-NotNull $NewRoleAssignmentFromId3.Id
+
+      # get a role assignment
+      $RoleAssignment = Get-AzCosmosDBMongoMIRoleAssignment -AccountName $AccountName -ResourceGroupName $rgName -Id $RoleAssignmentId
+      Assert-AreEqual $RoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $RoleAssignment.Scope $FullyQualifiedScope
+      Assert-AreEqual $RoleAssignment.PrincipalId $PrincipalId
+      Assert-AreEqual $RoleAssignment.Id $FullyQualifiedRoleAssignmentId
+
+      # update role assignment by role definition name
+      $UpdatedRoleAssignment = Update-AzCosmosDBMongoMIRoleAssignment -RoleDefinitionName $RoleName3 -Id $RoleAssignmentId -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-AreEqual $UpdatedRoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId3
+      Assert-AreEqual $UpdatedRoleAssignment.Scope $FullyQualifiedScope
+      Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId
+      Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId
+
+      # update role assignmnent by role definition id
+      $UpdatedRoleAssignment = Update-AzCosmosDBMongoMIRoleAssignment -RoleDefinitionId $RoleDefinitionId -Id $RoleAssignmentId -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-AreEqual $UpdatedRoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $UpdatedRoleAssignment.Scope $FullyQualifiedScope
+      Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId
+      Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId
+
+      # update role assignmnent by input object
+      $UpdatedRoleAssignment.RoleDefinitionId = $FullyQualifiedRoleDefinitionId3
+      $UpdatedRoleAssignment = Update-AzCosmosDBMongoMIRoleAssignment -InputObject $UpdatedRoleAssignment
+      Assert-AreEqual $UpdatedRoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId3
+      Assert-AreEqual $UpdatedRoleAssignment.Scope $FullyQualifiedScope
+      Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId
+      Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId
+
+      # update role assignmnent by parent object
+      $UpdatedRoleAssignment = Update-AzCosmosDBMongoMIRoleAssignment -Id $RoleAssignmentId -ParentObject $UpdatedRoleDefinition
+      Assert-AreEqual $UpdatedRoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $UpdatedRoleAssignment.Scope $FullyQualifiedScope
+      Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId
+      Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId
+
+      # list Role Assignments
+      $ListRoleAssignments = Get-AzCosmosDBMongoMIRoleAssignment -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull $ListRoleAssignments
+
+      # check for correct error propagation
+      $PermissionsInvalid = New-AzCosmosDBPermission -DataAction $DataActionInvalid
+      $ScriptBlockRoleDef = { New-AzCosmosDBMongoMIRoleDefinition -Type "CustomRole" -RoleName $RoleName6 -Permission $PermissionsInvalid -AssignableScope $Scope -Id $RoleDefinitionId6 -ParentObject $DatabaseAccount }
+      Assert-ThrowsContains $ScriptBlockRoleDef "BadRequest"
+  }
+  Finally {
+      $DatabaseAccount = Get-AzCosmosDBAccount -Name $AccountName -ResourceGroupName $rgName
+
+      Remove-AzCosmosDBMongoMIRoleAssignment -AccountName $AccountName -ResourceGroupName $rgName -Id $RoleAssignmentId
+      Remove-AzCosmosDBMongoMIRoleAssignment -AccountName $AccountName -ResourceGroupName $rgName -Id $RoleAssignmentId2
+      Remove-AzCosmosDBMongoMIRoleAssignment -ParentObject $DatabaseAccount -Id $RoleAssignmentId3
+
+      Remove-AzCosmosDBMongoMIRoleDefinition -ParentObject $DatabaseAccount -Id $RoleDefinitionId
+      Remove-AzCosmosDBMongoMIRoleDefinition -ParentObject $DatabaseAccount -Id $RoleDefinitionId2
+      Remove-AzCosmosDBMongoMIRoleDefinition -ParentObject $DatabaseAccount -Id $RoleDefinitionId3
+  }
 }

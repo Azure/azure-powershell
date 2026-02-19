@@ -24,6 +24,7 @@ using Microsoft.Azure.Commands.CosmosDB.Exceptions;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Management.CosmosDB;
 using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
+using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -105,6 +106,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.SqlContainerObjectHelpMessage)]
         [ValidateNotNull]
         public PSSqlContainerGetResults InputObject { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.SqlContainerMaterializedViewHelpMessage)]
+        public PSMaterializedViewDefinition MaterializedViewDefinition { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -188,6 +192,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
 
                 sqlContainerResource.ConflictResolutionPolicy = conflictResolutionPolicy;
+            }
+
+            if (MaterializedViewDefinition != null)
+            {
+                sqlContainerResource.MaterializedViewDefinition = PSMaterializedViewDefinition.ToSDKModel(MaterializedViewDefinition);
             }
 
             if (IndexingPolicy != null)

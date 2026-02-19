@@ -36,6 +36,12 @@ namespace Microsoft.Azure.Management.CosmosDB
 
 
         /// <summary>
+        /// The API version to use for this operation.
+        /// </summary>
+        string ApiVersion { get;}
+
+
+        /// <summary>
         /// The ID of the target subscription.
         /// </summary>
         string SubscriptionId { get; set;}
@@ -128,6 +134,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         IPartitionKeyRangeIdRegionOperations PartitionKeyRangeIdRegion { get; }
 
         /// <summary>
+        /// Gets the IGraphResourcesOperations
+        /// </summary>
+        IGraphResourcesOperations GraphResources { get; }
+
+        /// <summary>
         /// Gets the ISqlResourcesOperations
         /// </summary>
         ISqlResourcesOperations SqlResources { get; }
@@ -156,6 +167,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Gets the ILocationsOperations
         /// </summary>
         ILocationsOperations Locations { get; }
+
+        /// <summary>
+        /// Gets the IDataTransferJobsOperations
+        /// </summary>
+        IDataTransferJobsOperations DataTransferJobs { get; }
 
         /// <summary>
         /// Gets the ICassandraClustersOperations
@@ -253,6 +269,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         IFleetOperations Fleet { get; }
 
         /// <summary>
+        /// Gets the IFleetAnalyticsOperations
+        /// </summary>
+        IFleetAnalyticsOperations FleetAnalytics { get; }
+
+        /// <summary>
         /// Gets the IFleetspaceOperations
         /// </summary>
         IFleetspaceOperations Fleetspace { get; }
@@ -261,6 +282,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Gets the IFleetspaceAccountOperations
         /// </summary>
         IFleetspaceAccountOperations FleetspaceAccount { get; }
+
+        /// <summary>
+        /// Gets the IMongoMiResourcesOperations
+        /// </summary>
+        IMongoMiResourcesOperations MongoMiResources { get; }
 
     }
 }

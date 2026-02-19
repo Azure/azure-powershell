@@ -16,10 +16,6 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
 {
     internal static class Constants
     {
-
-        public const string DeprecateByAzVersion12 = "12.0.0";
-        public const string DeprecateByVersion2 = "2.0.0";
-
         public const string ResourceGroupNameHelpMessage = "Name of resource group.";
         public const string ResourceIdHelpMessage = "ResourceId of the resource.";
 
@@ -58,6 +54,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string KeyVaultUriHelpMessage = "URI of the KeyVault";
         public const string EnableFreeTierHelpMessage = "Bool to indicate if FreeTier is enabled on the account.";
         public const string EnableAnalyticalStorageHelpMessage = "Bool to indicate if AnalyticalStorage is enabled on the account.";
+        public const string EnableMaterializedViewsHelpMessage = "Bool to indicate if Materializedviews is enabled on the account.";
         public const string EnableBurstCapacityHelpMessage = "Bool to indicate if Burst Capacity is enabled on the account.";
         public const string ServerVersionHelpMessage = "ServerVersion, valid only in case of MongoDB Accounts.";
         public const string NetworkAclBypassHelpMessage = "Whether or not Network Acl Bypass is enabled for this account for Synapse Link. Possible values include: 'None', 'AzureServices'.";
@@ -68,7 +65,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string DefaultPriorityLevelHelpMessage = "The Default Priority Level of requests for the CosmosDB database account. Accepted values: High, Low. Default is High.";
         public const string EnablePartitionMergeHelpMessage = "Enables partition merge feature on the Cosmos DB database account. Accepted values: false, true";
         public const string MinimalTlsVersionHelpMessage = "Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2. Possible values include: 'Tls', 'Tls11', 'Tls12'.";
-        public const string EnablePerRegionPerPartitionAutoscaleHelpMessage = "Bool to indicate if Dynamic Scaling (Per Region Per Partition Autoscale) is enabled on the account.";
+        public const string EnablePerRegionPerPartitionAutoscaleHelpMessage = "Bool to indicate if Per-Region, Per-Partition autoscale is enabled on the account.";
 
         //Restore specific help messages
         public const string IsRestoreRequestHelpMessage = "Indicates that the new Cosmos DB account request is a restore request.";
@@ -153,9 +150,19 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string CompositePathHelpMessage = "The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)";
         public const string CompositePathOrderTypeHelpMessage = " Gets or sets sort order for composite paths. Possible values include: 'Ascending', 'Descending'";
         public const string SqlContainerAnalyticalStorageTtlHelpMessage = "TTL for Analytical Storage (in Seconds).";
+        public const string SqlContainerMaterializedViewHelpMessage = "Materializedview Definition";
         public const string ClientEncryptionKeyObjectHelpMessage = "Client Encryption Key object.";
         public const string RestorableSqlContainersFeedStartTimeHelpMessage = "Restorable Sql containers event feed start time.";
         public const string RestorableSqlContainersFeedEndTimeHelpMessage = "Restorable Sql containers event feed end time.";
+        public const string IsPartitionMergeSimulationHelpMessage = "Boolean to indicate whether or not this is a simulated operation (true if not specified).";
+        public const string PhysicalPartitionIdHelpMessage = "Id of the physical partition.";
+        public const string PhysicalPartitionThroughputHelpMessage = "Throughput of the physical partition.";
+        public const string SourcePhysicalPartitionThroughputHelpMessage = "Source physical partitions";
+        public const string TargetPhysicalPartitionThroughputHelpMessage = "Target physical partitions";
+        public const string GetAllPhysicalPartitionsThroughputHelpMessage = "Set this switch to get the throughput for all physical partitions.";
+        public const string ResetPartitionThroughputLayoutHelpMessage = "Set this switch to reset the throughput layout for all partitions.";
+        public const string PhysicalPartitionThroughputInfosHelpMessage = "List of PhysicalPartitionInfo objects for which throughput needs to be retrieved..";
+        public const string PhysicalPartitionIdsHelpMessage = "List of PhysicalPartitionId for which throughput needs to be retrieved.";
         public const string VectorEmbeddingPolicyVectorEmbeddingHelpMessage = "Represents a vector embedding. A vector embedding is used to define a vector field in the documents.";
         public const string VectorEmbeddingPathHelpMessage = "The path to the vector field in the document.";
         public const string VectorEmbeddingDataTypeHelpMessage = "Indicates the data type of vector.";
@@ -233,6 +240,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ThroughputHelpMessage = "Throughput value in int.";
         public const string AutoscaleMaxThroughputHelpMessage = "Maximum Throughput value if autoscale is enabled.";
         public const string ThroughputTypeHelpMessage = "Throughput type to migrate to. Possible values are: Autoscale, Manual.";
+
+        // Throughput bucketing help messages
+        public const string ThroughputBucketsObjectHelpMessage = "Array of throughput buckets to be applied to the Cosmos DB resource.";
+        public const string ThroughputBucketIdHelpMessage = "The ID of the throughput bucket.";
+        public const string ThroughputBucketMaxThroughputHelpMessage = "The maximum throughput of the throughput bucket.";
+        public const string ThroughputBucketIsDefaultBucketHelpMessage = "Boolean to indicate whether this is the default throughput bucket. If not specified, the bucket is not marked as default.";
 
         // Role cmdlets help messages
         public const string PrincipalIdHelpMessage = "Object ID (Guid) of the AAD principal to which the Role Assignment is being granted. This could be user, group, service principal, or managed identity.";

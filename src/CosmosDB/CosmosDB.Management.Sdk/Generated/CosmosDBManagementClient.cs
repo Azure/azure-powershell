@@ -33,6 +33,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         public Microsoft.Rest.ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
+        /// The API version to use for this operation.
+        /// </summary>
+        public string ApiVersion { get; private set; }
+
+        /// <summary>
         /// The ID of the target subscription.
         /// </summary>
         public string SubscriptionId { get; set;}
@@ -108,6 +113,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </summary>
         public virtual IPartitionKeyRangeIdRegionOperations PartitionKeyRangeIdRegion { get; private set; }
         /// <summary>
+        /// Gets the IGraphResourcesOperations
+        /// </summary>
+        public virtual IGraphResourcesOperations GraphResources { get; private set; }
+        /// <summary>
         /// Gets the ISqlResourcesOperations
         /// </summary>
         public virtual ISqlResourcesOperations SqlResources { get; private set; }
@@ -131,6 +140,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Gets the ILocationsOperations
         /// </summary>
         public virtual ILocationsOperations Locations { get; private set; }
+        /// <summary>
+        /// Gets the IDataTransferJobsOperations
+        /// </summary>
+        public virtual IDataTransferJobsOperations DataTransferJobs { get; private set; }
         /// <summary>
         /// Gets the ICassandraClustersOperations
         /// </summary>
@@ -208,6 +221,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </summary>
         public virtual IFleetOperations Fleet { get; private set; }
         /// <summary>
+        /// Gets the IFleetAnalyticsOperations
+        /// </summary>
+        public virtual IFleetAnalyticsOperations FleetAnalytics { get; private set; }
+        /// <summary>
         /// Gets the IFleetspaceOperations
         /// </summary>
         public virtual IFleetspaceOperations Fleetspace { get; private set; }
@@ -215,6 +232,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Gets the IFleetspaceAccountOperations
         /// </summary>
         public virtual IFleetspaceAccountOperations FleetspaceAccount { get; private set; }
+        /// <summary>
+        /// Gets the IMongoMiResourcesOperations
+        /// </summary>
+        public virtual IMongoMiResourcesOperations MongoMiResources { get; private set; }
         /// <summary>
         /// Initializes a new instance of the CosmosDBManagementClient class.
         /// </summary>
@@ -466,12 +487,14 @@ namespace Microsoft.Azure.Management.CosmosDB
             this.CollectionPartition = new CollectionPartitionOperations(this);
             this.PartitionKeyRangeId = new PartitionKeyRangeIdOperations(this);
             this.PartitionKeyRangeIdRegion = new PartitionKeyRangeIdRegionOperations(this);
+            this.GraphResources = new GraphResourcesOperations(this);
             this.SqlResources = new SqlResourcesOperations(this);
             this.MongoDbResources = new MongoDbResourcesOperations(this);
             this.TableResources = new TableResourcesOperations(this);
             this.CassandraResources = new CassandraResourcesOperations(this);
             this.GremlinResources = new GremlinResourcesOperations(this);
             this.Locations = new LocationsOperations(this);
+            this.DataTransferJobs = new DataTransferJobsOperations(this);
             this.CassandraClusters = new CassandraClustersOperations(this);
             this.CassandraDataCenters = new CassandraDataCentersOperations(this);
             this.NotebookWorkspaces = new NotebookWorkspacesOperations(this);
@@ -491,9 +514,12 @@ namespace Microsoft.Azure.Management.CosmosDB
             this.RestorableTableResources = new RestorableTableResourcesOperations(this);
             this.Service = new ServiceOperations(this);
             this.Fleet = new FleetOperations(this);
+            this.FleetAnalytics = new FleetAnalyticsOperations(this);
             this.Fleetspace = new FleetspaceOperations(this);
             this.FleetspaceAccount = new FleetspaceAccountOperations(this);
+            this.MongoMiResources = new MongoMiResourcesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
+            this.ApiVersion = "2025-11-01-preview";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
@@ -525,10 +551,14 @@ namespace Microsoft.Azure.Management.CosmosDB
             };
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<BackupPolicy>("type"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<BackupPolicy>("type"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<DataTransferDataSourceSink>("component"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<DataTransferDataSourceSink>("component"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ServiceResourceProperties>("serviceType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ServiceResourceProperties>("serviceType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ServiceResourceCreateUpdateProperties>("serviceType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ServiceResourceCreateUpdateProperties>("serviceType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<BaseCosmosDataTransferDataSourceSink>("component"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<BaseCosmosDataTransferDataSourceSink>("component"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Azure.CloudErrorJsonConverter());

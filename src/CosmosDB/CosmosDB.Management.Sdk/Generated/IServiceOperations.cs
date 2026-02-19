@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServiceResource,ServiceCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string serviceName, ServiceResourceCreateUpdateParameters createUpdateParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServiceResource>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string serviceName, ServiceResourceCreateUpdateParameters createUpdateParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the status of service.
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServiceResource,ServiceCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string serviceName, ServiceResourceCreateUpdateParameters createUpdateParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServiceResource>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string serviceName, ServiceResourceCreateUpdateParameters createUpdateParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes service with the given serviceName.
