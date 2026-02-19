@@ -171,7 +171,10 @@ namespace Microsoft.Azure.Commands.Compute
                 cfg.CreateMap<TO.PSVirtualMachineListStatus, TO.PSVirtualMachineList>();
 
                 // VirtualMachineSize => PSVirtualMachineSize
-                cfg.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>();
+                cfg.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>()
+                    .ForMember(c => c.MemoryInMB, o => o.MapFrom(r => r.MemoryInMb))
+                    .ForMember(c => c.OSDiskSizeInMB, o => o.MapFrom(r => r.OSDiskSizeInMb))
+                    .ForMember(c => c.ResourceDiskSizeInMB, o => o.MapFrom(r => r.ResourceDiskSizeInMb));
 
                 cfg.CreateMap<AzureOperationResponse<FROM.VirtualMachineSize>, TO.PSVirtualMachineSize>()
                     .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));

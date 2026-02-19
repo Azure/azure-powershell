@@ -447,6 +447,14 @@
                 <Label>ProtocolSettings.Smb.ChannelEncryption</Label>
                 <ScriptBlock>$_.ProtocolSettings.Smb.ChannelEncryption</ScriptBlock>
               </ListItem>
+                <ListItem>
+                  <Label>ProtocolSettings.Smb.EncryptionInTransit.Required</Label>
+                  <ScriptBlock>$_.ProtocolSettings.Smb.EncryptionInTransit.Required</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                  <Label>ProtocolSettings.Nfs.EncryptionInTransit.Required</Label>
+                  <ScriptBlock>$_.ProtocolSettings.Nfs.EncryptionInTransit.Required</ScriptBlock>
+              </ListItem> 
             </ListItems>
           </ListEntry>
         </ListEntries>

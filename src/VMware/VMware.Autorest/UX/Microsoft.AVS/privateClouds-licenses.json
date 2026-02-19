@@ -1,0 +1,123 @@
+{
+  "resourceType": "privateClouds/licenses",
+  "apiVersion": "2025-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.vmware"
+  },
+  "commands": [
+    {
+      "name": "Get-AzVMwareLicenseProperty",
+      "description": "Just like ArmResourceActionSync, but with no request body.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/licenses/{licenseName}/getProperties",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwarelicenseproperty"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-PrivateCloudName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Just like ArmResourceActionSync, but with no request body.",
+          "parameters": [
+            {
+              "name": "-PrivateCloudName",
+              "value": "[Path.privateCloudName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzVMwareLicense",
+      "description": "Get a License",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/licenses/{licenseName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwarelicense"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-PrivateCloudName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a License",
+          "parameters": [
+            {
+              "name": "-PrivateCloudName",
+              "value": "[Path.privateCloudName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzVMwareLicense",
+      "description": "Delete a License",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/licenses/{licenseName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwarelicense"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-PrivateCloudName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a License",
+          "parameters": [
+            {
+              "name": "-PrivateCloudName",
+              "value": "[Path.privateCloudName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

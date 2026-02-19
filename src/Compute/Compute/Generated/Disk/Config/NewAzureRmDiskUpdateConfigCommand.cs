@@ -175,6 +175,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Determines how to handle disks with slow I/O. Possible values include: 'None', 'AutomaticReattach'.")]
+        [PSArgumentCompleter("None", "AutomaticReattach")]
+        public string ActionOnDiskDelay { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "CPU architecture supported by an OS disk. Possible values are \"X64\" and \"Arm64\".")]
         [PSArgumentCompleter("X64", "Arm64")]
         public string Architecture { get; set; }
@@ -337,7 +344,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null,
                 SupportedCapabilities = vSupportedCapabilities,
                 PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null,
-                DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? DataAccessAuthMode : null
+                DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? DataAccessAuthMode : null,
+                AvailabilityPolicy = this.IsParameterBound(c => c.ActionOnDiskDelay) ? new AvailabilityPolicy { ActionOnDiskDelay = ActionOnDiskDelay } : null
             };
 
             WriteObject(vDiskUpdate);

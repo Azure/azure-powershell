@@ -279,11 +279,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
-        public IVirtualMachineScaleSetVMsOperations VirtualMachineScaleSetVMsClient
+        public IVirtualMachineScaleSetVMSOperations VirtualMachineScaleSetVMsClient
         {
             get
             {
-                return ComputeClient.ComputeManagementClient.VirtualMachineScaleSetVMs;
+                return ComputeClient.ComputeManagementClient.VirtualMachineScaleSetVMS;
             }
         }
 

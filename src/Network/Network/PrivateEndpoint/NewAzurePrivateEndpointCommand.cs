@@ -101,6 +101,10 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "The custom network interface name")]
         public string CustomNetworkInterfaceName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Specifies the IP version type for the private IPs of the private endpoint. If not defined, this defaults to IPv4. Allowed values are IPv4, IPv6, or DualStack.")]
+        [ValidateSet("IPv4", "IPv6", "DualStack", IgnoreCase = true)]
+        public string IpVersionType { get; set; }
+
         private PSPrivateEndpoint CreatePSPrivateEndpoint()
         {
             var psPrivateEndpoint = new PSPrivateEndpoint
@@ -137,6 +141,10 @@ namespace Microsoft.Azure.Commands.Network
             if (this.CustomNetworkInterfaceName != null)
             {
                 psPrivateEndpoint.CustomNetworkInterfaceName = this.CustomNetworkInterfaceName;
+            }
+            if (!string.IsNullOrEmpty(this.IpVersionType))
+            {
+                psPrivateEndpoint.IpVersionType = this.IpVersionType;
             }
 
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzADServicePrincipalAppRoleAssignment
 
 ## SYNOPSIS
-update the navigation property appRoleAssignments in servicePrincipals
+Update the navigation property appRoleAssignments in servicePrincipals
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ Update-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId <String> -Serv
 ```
 
 ## DESCRIPTION
-update the navigation property appRoleAssignments in servicePrincipals
+Update the navigation property appRoleAssignments in servicePrincipals
 
 ## EXAMPLES
 

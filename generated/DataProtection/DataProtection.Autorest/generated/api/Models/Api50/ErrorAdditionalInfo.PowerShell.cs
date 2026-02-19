@@ -94,13 +94,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50
                 return;
             }
             // actually deserialize
-            if (content.Contains("Info"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfoInternal)this).Info = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAny) content.GetValueForProperty("Info",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfoInternal)this).Info, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.AnyTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfoInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfoInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Info"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfoInternal)this).Info = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAny) content.GetValueForProperty("Info",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfoInternal)this).Info, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.AnyTypeConverter.ConvertFrom);
             }
             AfterDeserializeDictionary(content);
         }
@@ -119,13 +119,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50
                 return;
             }
             // actually deserialize
-            if (content.Contains("Info"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfoInternal)this).Info = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAny) content.GetValueForProperty("Info",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfoInternal)this).Info, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.AnyTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfoInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfoInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Info"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfoInternal)this).Info = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAny) content.GetValueForProperty("Info",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IErrorAdditionalInfoInternal)this).Info, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.AnyTypeConverter.ConvertFrom);
             }
             AfterDeserializePSObject(content);
         }

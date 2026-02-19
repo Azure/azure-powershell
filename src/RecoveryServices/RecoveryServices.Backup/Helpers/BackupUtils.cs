@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {"germanynortheast", "germanycentral"},
             {"centralindia", "southindia"},
             {"southindia", "centralindia"},
+            {"indiasouthcentral", "centralindia"},
             {"westindia", "southindia"},
             {"japaneast", "japanwest"},
             {"japanwest", "japaneast"},

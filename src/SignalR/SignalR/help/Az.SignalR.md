@@ -11,6 +11,9 @@ Locale: en-US
 Cmdlets to interact with the Azure SignalR service or Web PubSub service.
 
 ## Az.SignalR Cmdlets
+### [Add-AzSignalRNetworkIpRule](Add-AzSignalRNetworkIpRule.md)
+Add one or more IP rules to the Network ACLs of an Azure SignalR Service instance.
+
 ### [Get-AzSignalR](Get-AzSignalR.md)
 Get a specific SignalR service or all the SignalR services in a resource group or a subscription.
 
@@ -62,6 +65,9 @@ Create or replace a custom domain for a SignalR service.
 ### [New-AzSignalRKey](New-AzSignalRKey.md)
 Regenerate an access key for a SignalR service.
 
+### [New-AzSignalRNetworkIpRuleObject](New-AzSignalRNetworkIpRuleObject.md)
+Create an in-memory IP rule object for use with SignalR Network ACL Ip rule cmdlets.
+
 ### [New-AzSignalRReplica](New-AzSignalRReplica.md)
 Create a new replica for an existing SignalR service.
 
@@ -95,6 +101,9 @@ Remove a custom certificate from a SignalR service.
 
 ### [Remove-AzSignalRCustomDomain](Remove-AzSignalRCustomDomain.md)
 Remove a custom domain from a SignalR service.
+
+### [Remove-AzSignalRNetworkIpRule](Remove-AzSignalRNetworkIpRule.md)
+Remove one or more IP rules from the Network ACLs of an Azure SignalR Service instance.
 
 ### [Remove-AzSignalRReplica](Remove-AzSignalRReplica.md)
 Delete a SignalR replica resource.

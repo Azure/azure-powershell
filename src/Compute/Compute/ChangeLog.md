@@ -20,6 +20,22 @@
 
 -->
 ## Upcoming Release
+* Added `-Tag` and `-Location` parameters to `New-AzSshKey` cmdlet
+* Added `-Tag` parameter to `Update-AzSshKey` cmdlet
+* Added support for Disk Availability Policy
+    - Added `-ActionOnDiskDelay` parameter to `New-AzDiskConfig` cmdlet to configure disk availability behavior
+    - Added `-ActionOnDiskDelay` parameter to `New-AzDiskUpdateConfig` cmdlet to update disk availability behavior
+
+## Version 11.3.0
+* Compute SDK generation updates:
+    - Generation now uses autorest.powershell, replacing deprecated track 1 SDK.
+    - Removed local swagger files and replaced references with remote swagger files.
+* Added new cmdlets for Availability Set to Virtual Machine Scale Set (VMSS) Flex migration (Public Preview)
+    - `Convert-AzAvailabilitySet`: Converts an Availability Set to a new Flexible Virtual Machine Scale Set without downtime
+    - `Test-AzAvailabilitySetMigration`: Validates that VMs in an Availability Set can be migrated to a VMSS
+    - `Start-AzAvailabilitySetMigration`: Starts migration of an Availability Set to an existing Flexible VMSS    
+    - `Stop-AzAvailabilitySetMigration`: Cancels a migration operation on an Availability Set
+    - `Move-AzVirtualMachineToVmss`: Migrates a VM from an Availability Set to a Flexible VMSS
 
 ## Version 11.2.0
 * Added `-HighSpeedInterconnectPlacement` parameter to `New-AzVmssConfig` and `New-AzVmss` cmdlets.

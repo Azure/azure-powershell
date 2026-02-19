@@ -26,6 +26,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
         public const int DefaultSshPort = 22;
         public const int DefaultSftpPort = 22;
 
+        // Buffer size for SFTP file transfers
+        public const int DefaultBufferSizeBytes = 256 * 1024;  // 256 KB
+
         // SSH/SFTP client configuration
 
         // Certificate and key file naming

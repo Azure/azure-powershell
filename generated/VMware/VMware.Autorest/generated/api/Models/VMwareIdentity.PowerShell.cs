@@ -133,6 +133,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).Location, global::System.Convert.ToString);
             }
+            if (content.Contains("ServiceComponentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ServiceComponentName = (string) content.GetValueForProperty("ServiceComponentName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ServiceComponentName, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -180,6 +184,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("HcxEnterpriseSiteName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).HcxEnterpriseSiteName = (string) content.GetValueForProperty("HcxEnterpriseSiteName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).HcxEnterpriseSiteName, global::System.Convert.ToString);
+            }
+            if (content.Contains("LicenseName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).LicenseName = (string) content.GetValueForProperty("LicenseName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).LicenseName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MaintenanceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).MaintenanceName = (string) content.GetValueForProperty("MaintenanceName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).MaintenanceName, global::System.Convert.ToString);
             }
             if (content.Contains("ProvisionedNetworkName"))
             {
@@ -262,6 +274,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).Location, global::System.Convert.ToString);
             }
+            if (content.Contains("ServiceComponentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ServiceComponentName = (string) content.GetValueForProperty("ServiceComponentName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ServiceComponentName, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -309,6 +325,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("HcxEnterpriseSiteName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).HcxEnterpriseSiteName = (string) content.GetValueForProperty("HcxEnterpriseSiteName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).HcxEnterpriseSiteName, global::System.Convert.ToString);
+            }
+            if (content.Contains("LicenseName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).LicenseName = (string) content.GetValueForProperty("LicenseName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).LicenseName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MaintenanceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).MaintenanceName = (string) content.GetValueForProperty("MaintenanceName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).MaintenanceName, global::System.Convert.ToString);
             }
             if (content.Contains("ProvisionedNetworkName"))
             {

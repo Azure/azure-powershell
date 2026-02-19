@@ -1,0 +1,42 @@
+{
+  "resourceType": "offers",
+  "apiVersion": "2025-10-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.edgemarketplace"
+  },
+  "commands": [
+    {
+      "name": "Get-AzEdgeMarketplaceOffer",
+      "description": "Retrieves a list of all available marketplace offers for a given device.",
+      "path": "/{resourceUri}/providers/Microsoft.EdgeMarketplace/offers/{offerId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.edgemarketplace/get-azedgemarketplaceoffer"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Id <String>",
+              "-ResourceUri <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Retrieves a list of all available marketplace offers for a given device.",
+          "parameters": [
+            {
+              "name": "-Id",
+              "value": "[Path.offerId]"
+            },
+            {
+              "name": "-ResourceUri",
+              "value": "[Path.resourceUri]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

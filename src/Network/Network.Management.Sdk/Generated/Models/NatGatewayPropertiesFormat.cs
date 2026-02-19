@@ -47,13 +47,16 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="sourceVirtualNetwork">A reference to the source virtual network using this nat gateway resource.
         /// </param>
 
+        /// <param name="serviceGateway">Reference to an existing service gateway.
+        /// </param>
+
         /// <param name="resourceGuid">The resource GUID property of the NAT gateway resource.
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the NAT gateway resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public NatGatewayPropertiesFormat(int? idleTimeoutInMinutes = default(int?), System.Collections.Generic.IList<SubResource> publicIPAddresses = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> publicIPAddressesV6 = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> publicIPPrefixes = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> publicIPPrefixesV6 = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> subnets = default(System.Collections.Generic.IList<SubResource>), SubResource sourceVirtualNetwork = default(SubResource), string resourceGuid = default(string), string provisioningState = default(string))
+        public NatGatewayPropertiesFormat(int? idleTimeoutInMinutes = default(int?), System.Collections.Generic.IList<SubResource> publicIPAddresses = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> publicIPAddressesV6 = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> publicIPPrefixes = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> publicIPPrefixesV6 = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> subnets = default(System.Collections.Generic.IList<SubResource>), SubResource sourceVirtualNetwork = default(SubResource), SubResource serviceGateway = default(SubResource), string resourceGuid = default(string), string provisioningState = default(string))
 
         {
             this.IdleTimeoutInMinutes = idleTimeoutInMinutes;
@@ -63,6 +66,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.PublicIPPrefixesV6 = publicIPPrefixesV6;
             this.Subnets = subnets;
             this.SourceVirtualNetwork = sourceVirtualNetwork;
+            this.ServiceGateway = serviceGateway;
             this.ResourceGuid = resourceGuid;
             this.ProvisioningState = provisioningState;
             CustomInit();
@@ -120,6 +124,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sourceVirtualNetwork")]
         public SubResource SourceVirtualNetwork {get; set; }
+
+        /// <summary>
+        /// Gets or sets reference to an existing service gateway.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "serviceGateway")]
+        public SubResource ServiceGateway {get; set; }
 
         /// <summary>
         /// Gets the resource GUID property of the NAT gateway resource.

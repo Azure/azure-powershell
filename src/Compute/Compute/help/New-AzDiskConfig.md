@@ -25,9 +25,10 @@ New-AzDiskConfig [[-SkuName] <String>] [-Tier <String>] [-LogicalSectorSize <Int
  [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [-DiskAccessId <String>]
  [-NetworkAccessPolicy <String>] [-BurstingEnabled <Boolean>] [-PublicNetworkAccess <String>]
  [-AcceleratedNetwork <Boolean>] [-DataAccessAuthMode <String>] [-Architecture <String>]
- [-PerformancePlus <Boolean>] [-OptimizedForFrequentAttach <Boolean>] [-SecurityMetadataUri <String>]
- [-SecurityDataUri <String>] [-SupportedSecurityOption <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PerformancePlus <Boolean>] [-OptimizedForFrequentAttach <Boolean>] [-ActionOnDiskDelay <String>]
+ [-SecurityMetadataUri <String>] [-SecurityDataUri <String>] [-SupportedSecurityOption <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,6 +112,21 @@ True if the image from which the OS disk is created supports accelerated network
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ActionOnDiskDelay
+Determines how to handle disks with slow I/O. Allowed values include 'None' and 'AutomaticReattach'.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -37,7 +37,7 @@ Remove-AzVMwareIscsiPath -PrivateCloudName azps_test_cloud -ResourceGroupName az
 
 Delete a IscsiPath in a private cloud
 
-### Example 2: Delete a datastore in a private cloud cluster.
+### Example 2: Delete a IscsiPath in a private cloud.
 ```powershell
 Get-AzVMwareIscsiPath -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group | Remove-AzVMwareIscsiPath
 ```

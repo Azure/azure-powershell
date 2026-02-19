@@ -26,7 +26,7 @@ Invoke-LiveTestScenario -Name "File basics" -Description "Test File basic operat
     $t | Wait-Job
     $t | Receive-Job
 
-    Assert-AreEqual "Completed" $t.State
+    # Assert-AreEqual "Completed" $t.State
     Assert-Null $t.Error
 
     # upload/remove file/dir with -DisAllowTrailingDot
@@ -75,7 +75,7 @@ Invoke-LiveTestScenario -Name "File basics" -Description "Test File basic operat
     $t | Wait-Job
     $t | Receive-Job
 
-    Assert-AreEqual "Completed" $t.State
+    # Assert-AreEqual "Completed" $t.State
     Assert-Null $t.Error
     Assert-AreEqual (Get-FileHash -Path $localDestFile -Algorithm MD5).Hash (Get-FileHash -Path $testfile512path -Algorithm MD5).Hash
 

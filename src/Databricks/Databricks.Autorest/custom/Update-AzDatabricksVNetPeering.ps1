@@ -30,7 +30,7 @@ https://learn.microsoft.com/powershell/module/az.databricks/update-azdatabricksv
 #>
 function Update-AzDatabricksVNetPeering {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering", "15.0.0", "2.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IVirtualNetworkPeering", DeprecatedOutputProperties = ("DatabrickAddressSpaceAddressPrefix, RemoteAddressSpaceAddressPrefix 'System.String[]'"), NewOutputProperties = ("DatabrickAddressSpaceAddressPrefix, RemoteAddressSpaceAddressPrefix 'System.Collections.Generic.List`1[System.String]'"))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering", "16.0.0", "2.0.0", "May 2026", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IVirtualNetworkPeering", DeprecatedOutputProperties = ("DatabrickAddressSpaceAddressPrefix, RemoteAddressSpaceAddressPrefix 'System.String[]'"), NewOutputProperties = ("DatabrickAddressSpaceAddressPrefix, RemoteAddressSpaceAddressPrefix 'System.Collections.Generic.List`1[System.String]'"))]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the VNetPeering.")]

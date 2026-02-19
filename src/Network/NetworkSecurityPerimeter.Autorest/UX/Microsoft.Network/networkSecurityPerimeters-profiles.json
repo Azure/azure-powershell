@@ -1,6 +1,6 @@
 {
   "resourceType": "networkSecurityPerimeters/profiles",
-  "apiVersion": "2025-03-01",
+  "apiVersion": "2025-05-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.network"
   },

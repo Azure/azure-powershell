@@ -16,19 +16,19 @@
 
 <#
 .Synopsis
-Returns the list of available operations.
+List the operations for the provider
 .Description
-Returns the list of available operations.
+List the operations for the provider
 .Example
 Get-AzDataProtectionOperation
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IClientDiscoveryValueForSingleApi
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IClientDiscoveryValueForSingleApi
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionoperation
 #>
 function Get-AzDataProtectionOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IClientDiscoveryValueForSingleApi])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IClientDiscoveryValueForSingleApi])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
