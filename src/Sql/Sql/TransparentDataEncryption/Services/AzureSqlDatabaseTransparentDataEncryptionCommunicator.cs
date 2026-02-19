@@ -92,9 +92,9 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
         /// <summary>
         /// Revalidates Azure Sql Server Transparent Data Encryption Protector
         /// </summary>
-        public void RevalidateEncryptionProtector(string resourceGroupName, string serverName)
+        public async Task<Rest.Azure.AzureOperationHeaderResponse<Management.Sql.Models.EncryptionProtectorsRevalidateHeaders>> RevalidateEncryptionProtector(string resourceGroupName, string serverName)
         {
-            GetCurrentSqlClient().EncryptionProtectors.BeginRevalidate(resourceGroupName, serverName);
+            return await GetCurrentSqlClient().EncryptionProtectors.BeginRevalidateWithHttpMessagesAsync(resourceGroupName, serverName).ConfigureAwait(false);
         }
 
         /// <summary>
