@@ -20,8 +20,9 @@ New-AzDiskUpdateConfig [[-SkuName] <String>] [-Tier <String>] [-DiskIOPSReadOnly
  [-EncryptionSettingsEnabled <Boolean>] [-DiskEncryptionKey <KeyVaultAndSecretReference>]
  [-KeyEncryptionKey <KeyVaultAndKeyReference>] [-DiskEncryptionSetId <String>] [-EncryptionType <String>]
  [-BurstingEnabled <Boolean>] [-PublicNetworkAccess <String>] [-AcceleratedNetwork <Boolean>]
- [-DataAccessAuthMode <String>] [-Architecture <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DataAccessAuthMode <String>] [-ActionOnDiskDelay <String>] [-Architecture <String>]
+ [-SupportedSecurityOption <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,6 +61,21 @@ True if the image from which the OS disk is created supports accelerated network
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ActionOnDiskDelay
+Specifies how to handle disks with slow I/O. Allowed values are 'None' and 'AutomaticReattach'.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

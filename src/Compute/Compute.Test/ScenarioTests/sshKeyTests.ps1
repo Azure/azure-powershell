@@ -55,3 +55,47 @@ function Test-SshKey
 	}
 
 }
+
+<#
+.SYNOPSIS
+Test SshKeyResource creation with Tags and custom Location
+#>
+function Test-SshKeyWithTagsAndLocation
+{
+	$loc = 'eastus'
+	$rgname = Get-ComputeTestResourceName
+
+	try 
+	{
+		# Create resource group in westus
+		New-AzResourceGroup -Name $rgname -Location 'westus' -Force;
+
+		# Create SSH key with tags and explicit location (eastus) different from resource group (westus)
+		$tags = @{ Name = "testtag"; Value = "testval" }
+		$sshkey1 = New-AzSshKey -ResourceGroupName $rgname -Name "sshkey1" -Tag $tags -Location $loc
+
+		# Verify location was set correctly
+		Assert-AreEqual $sshkey1.Location $loc
+
+		# Verify tags were set
+		Assert-NotNull $sshkey1.Tags
+		Assert-AreEqual $sshkey1.Tags["Name"] "testtag"
+		Assert-AreEqual $sshkey1.Tags["Value"] "testval"
+
+		# Create sshkey2 without tags
+		$sshkey2 = New-AzSshKey -ResourceGroupName $rgname -Name "sshkey2"
+
+		# Update sshkey2 with tags
+		$updateTags = @{ Environment = "Test"; Owner = "TeamA" }
+		$updated = Update-AzSshKey -ResourceGroupName $rgname -Name "sshkey2" -PublicKey $sshkey2.publicKey -Tag $updateTags
+
+		# Verify tags were updated
+		Assert-NotNull $updated.Tags
+		Assert-AreEqual $updated.Tags["Environment"] "Test"
+		Assert-AreEqual $updated.Tags["Owner"] "TeamA"
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}

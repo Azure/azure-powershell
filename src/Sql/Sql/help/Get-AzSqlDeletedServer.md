@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSqlDeletedServer
 
 ## SYNOPSIS
-Gets information about deleted Azure SQL servers.
+Gets information about deleted Azure SQL servers. (Server soft-delete feature is currently in Public Preview)
 
 ## SYNTAX
 

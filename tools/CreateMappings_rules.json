@@ -1005,6 +1005,10 @@
     "module": "EdgeAction"
   },
   {
+    "alias": "EdgeMarketplace",
+    "module": "EdgeMarketplace"
+  },
+  {
     "alias": "ArtifactSigning",
     "module": "ArtifactSigning"
   }

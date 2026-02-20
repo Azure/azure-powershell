@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Server.Model;
 using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -24,6 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// <summary>
     /// Defines the Get-AzSqlDeletedServer cmdlet
     /// </summary>
+    [CmdletPreview("Server soft-delete feature is currently in Public Preview")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDeletedServer", ConfirmImpact = ConfirmImpact.None)]
     [OutputType(typeof(AzureSqlDeletedServerModel))]
     public class GetAzSqlDeletedServer : AzureSqlDeletedServerCmdletBase

@@ -90,6 +90,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.FluidRelay/fluidRelayServers", "2025-03-10-preview", true, true, true);
             RegisterConfiguration("Microsoft.FileShares/fileShares", "2025-06-01-preview", true, true);
             RegisterConfiguration("Microsoft.Security/privateLinks", "2026-01-01", true, true);
+            RegisterConfiguration("Microsoft.DataReplication/replicationVaults", "2024-09-01", false, true);
         }
         /// <summary>
         /// Register private endpoint connection and private link resource configuration

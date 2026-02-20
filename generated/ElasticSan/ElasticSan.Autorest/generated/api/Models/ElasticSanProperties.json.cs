@@ -66,6 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
                 return;
             }
             {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Sku.FromJson(__jsonSku) : _sku;}
+            {_autoScaleProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("autoScaleProperties"), out var __jsonAutoScaleProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.AutoScaleProperties.FromJson(__jsonAutoScaleProperties) : _autoScaleProperty;}
             {_availabilityZone = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray>("availabilityZones"), out var __jsonAvailabilityZones) ? If( __jsonAvailabilityZones as Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _availabilityZone;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_baseSizeTiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("baseSizeTiB"), out var __jsonBaseSizeTiB) ? (long?)__jsonBaseSizeTiB : _baseSizeTiB;}
@@ -112,6 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
                 return container;
             }
             AddIf( null != this._sku ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) this._sku.ToJson(null,serializationMode) : null, "sku" ,container.Add );
+            AddIf( null != this._autoScaleProperty ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) this._autoScaleProperty.ToJson(null,serializationMode) : null, "autoScaleProperties" ,container.Add );
             if (null != this._availabilityZone)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.XNodeArray();
