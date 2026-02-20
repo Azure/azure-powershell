@@ -1,3 +1,20 @@
+## 15.4.0 - March 2026
+#### Az.Compute 11.4.0 
+* Modified cmdlet `New-AzDiskConfig`
+   - Added parameter `-ActionOnDiskDelay`
+* Modified cmdlet `New-AzDiskUpdateConfig`
+   - Added parameter `-ActionOnDiskDelay`
+* Modified cmdlet `New-AzSshKey`
+   - Added parameters `-Location`, `-Tag`
+* Modified cmdlet `Update-AzSshKey`
+   - Added parameter `-Tag`
+#### Az.ElasticSan 1.7.0 
+* Modified cmdlet `New-AzElasticSan`
+   - Added parameters `-AutoScalePolicyEnforcement`, `-CapacityUnitScaleUpLimitTiB`, `-IncreaseCapacityUnitByTiB`, `-UnusedSizeTiB`
+* Modified cmdlet `Update-AzElasticSan`
+   - Added parameters `-AutoScalePolicyEnforcement`, `-CapacityUnitScaleUpLimitTiB`, `-IncreaseCapacityUnitByTiB`, `-UnusedSizeTiB`
+* Added cmdlet `Test-AzElasticSanVolumeBackup`, `Test-AzElasticSanVolumeRestore`
+
 ## 15.3.0 - February 2026
 #### Az.Compute 11.3.0 
 * Added cmdlet `Convert-AzAvailabilitySet`, `Move-AzVirtualMachineToVmss`, `Start-AzAvailabilitySetMigration`, `Stop-AzAvailabilitySetMigration`, `Test-AzAvailabilitySetMigration`#### Az.DataProtection 2.9.0 
@@ -1215,6 +1232,7 @@
    - Changed the type of parameter `-ManagedResourcesNetworkAccessType` from `ManagedResourcesNetworkAccessType` to `String`
    - Changed the type of parameter `-UserAssignedIdentity` from `Hashtable` to `String[]`
 * Added cmdlet `Update-AzWorkloadsProviderInstance`
+
 
 
 
