@@ -100,7 +100,7 @@ The command specifies the name and location for the disk, and other properties o
 ### Example 5: Add an UltraSSD data disk with custom IOPS and throughput
 ```powershell
 $VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_D2s_v3"
-$VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name "UltraData1" -Lun 0 -CreateOption 'Empty' -DiskSizeInGB 10 -Caching 'None' -StorageAccountType 'UltraSSD_LRS' -DiskIOPSReadWrite 100 -DiskMBpsReadWrite 1
+$VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name "UltraData1" -Lun 0 -CreateOption 'Empty' -DiskSizeInGB 10 -Caching 'None' -StorageAccountType 'UltraSSD_LRS' -DiskIOPSReadWrite 5000 -DiskMBpsReadWrite 200
 ```
 
 The first command creates a virtual machine object and stores it in the $VirtualMachine variable.
