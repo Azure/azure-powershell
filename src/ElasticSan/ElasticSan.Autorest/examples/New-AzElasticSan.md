@@ -1,30 +1,40 @@
 ### Example 1: Create an Elastic SAN
 ```powershell
-New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 1 -ExtendedCapacitySizeTib 6 -Location eastus -SkuName 'Premium_LRS' -Tag @{tag1="value1";tag2="value2"}
+New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 1 -ExtendedCapacitySizeTib 6 -Location eastus -SkuName 'Premium_LRS' -AvailabilityZone 1 -Tag @{tag1="value1";tag2="value2"} -AutoScalePolicyEnforcement Enabled -CapacityUnitScaleUpLimitTiB 30 -IncreaseCapacityUnitByTiB 2 -UnusedSizeTiB 6
 ```
 
 ```output
-AvailabilityZone             : 
+AutoScalePolicyEnforcement   : Enabled
+AvailabilityZone             : {1}
 BaseSizeTiB                  : 1
+CapacityUnitScaleUpLimitTiB  : 30
 ExtendedCapacitySizeTiB      : 6
-Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan
-Location                     : eastus
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan
+IncreaseCapacityUnitByTiB    : 2 
+Location                     : eastus2euap
 Name                         : myelasticsan
+PrivateEndpointConnection    :
 ProvisioningState            : Succeeded
+PublicNetworkAccess          :
+ResourceGroupName            : myresourcegroup
 SkuName                      : Premium_LRS
-SkuTier                      : 
-SystemDataCreatedAt          : 9/19/2022 9:47:26 AM
-SystemDataCreatedBy          : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SystemDataCreatedByType      : Application
-SystemDataLastModifiedAt     : 9/19/2022 9:47:26 AM
-SystemDataLastModifiedBy     : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SystemDataLastModifiedByType : Application
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
+SkuTier                      :
+SystemDataCreatedAt          : 10/29/2025 3:07:36 AM
+SystemDataCreatedBy          : example@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 10/29/2025 3:07:36 AM
+SystemDataLastModifiedBy     : example@microsoft.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                                 "tag1": "value1",
+                                 "tag2": "value2"
+                               }
 TotalIops                    : 5000
-TotalMBps                    : 80
+TotalMBps                    : 200
 TotalSizeTiB                 : 7
 TotalVolumeSizeGiB           : 0
 Type                         : Microsoft.ElasticSan/ElasticSans
+UnusedSizeTiB                : 6 
 VolumeGroupCount             : 0
 ```
 
@@ -36,27 +46,35 @@ New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -Location
 ```
 
 ```output
-AvailabilityZone             : 
-BaseSizeTiB                  : 1
-ExtendedCapacitySizeTiB      : 6
-Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan
-Location                     : eastus
+AutoScalePolicyEnforcement   :
+AvailabilityZone             : {1}
+BaseSizeTiB                  : 20
+CapacityUnitScaleUpLimitTiB  :
+ExtendedCapacitySizeTiB      : 0
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan
+IncreaseCapacityUnitByTiB    :
+Location                     : eastus2euap
 Name                         : myelasticsan
+PrivateEndpointConnection    :
 ProvisioningState            : Succeeded
+PublicNetworkAccess          :
+ResourceGroupName            : myresourcegroup
 SkuName                      : Premium_LRS
-SkuTier                      : 
-SystemDataCreatedAt          : 9/19/2022 9:47:26 AM
-SystemDataCreatedBy          : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SystemDataCreatedByType      : Application
-SystemDataLastModifiedAt     : 9/19/2022 9:47:26 AM
-SystemDataLastModifiedBy     : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SystemDataLastModifiedByType : Application
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
-TotalIops                    : 5000
-TotalMBps                    : 80
+SkuTier                      :
+SystemDataCreatedAt          : 10/29/2025 6:00:04 AM
+SystemDataCreatedBy          : example@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 10/29/2025 6:00:04 AM
+SystemDataLastModifiedBy     : example@microsoft.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                               }
+TotalIops                    : 100000
+TotalMBps                    : 4000
 TotalSizeTiB                 : 20
 TotalVolumeSizeGiB           : 0
 Type                         : Microsoft.ElasticSan/ElasticSans
+UnusedSizeTiB                :
 VolumeGroupCount             : 0
 ```
 

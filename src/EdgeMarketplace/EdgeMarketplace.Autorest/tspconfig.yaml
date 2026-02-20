@@ -1,0 +1,86 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/EdgeMarketplace/EdgeMarketplace.Autorest"
+    clear-output-folder: true
+    debug: true
+    azure: true
+    module-version: 0.1.0
+    prefix: "Az"
+    subject-prefix: "EdgeMarketplace"
+    service-name: "EdgeMarketplace"
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      - where:
+          subject: Operation
+        hide: true
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      - where:
+          variant: ^(Create|Update|Export)(?!.*?(Expanded|ViaJsonString|ViaJsonFilePath))
+        remove: true
+      - where:
+          subject: MapConnection
+          variant: ^(Get)(?!.*?Expanded|ViaJsonString|ViaJsonFilePath)
+        remove: true
+      - where:
+          variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+        remove: true
+      - where:
+          verb: Set
+        remove: true
+      - where:
+          verb: New
+          subject: OfferAccessToken
+        set:
+          command-description: "Initiates an asynchronous disk creation process for a specified marketplace image and returns immediately with a 202 Accepted status. it can poll for completion using the returned operation status URL and its result can be used to get access token using Get-AzEdgeMarketplaceOfferAccessToken."
+      - where:
+          verb: Get
+          subject: OfferAccessToken
+        set:
+          command-description: "Retrieves the access token (SAS URL) for a disk that was previously requested via New-AzEdgeMarketplaceOfferAccessToken."
+      - where:
+          verb: Get
+          subject: Offer
+        set:
+          command-description: "Retrieves a list of all available marketplace offers for a given device."
+      - where:
+          subject: Publisher
+        remove: true
+      - where:
+          subject: Offer
+          variant: ^List1$
+        remove: true
+      - where:
+          subject: OfferAccessToken
+          parameter-name: EgeMarketPlaceResourceId
+        set:
+          parameter-name: EdgeMarketplaceResourceId
+          parameter-description: "The ARM resource ID of the Edge Marketplace resource associated with the access token request."
+      - where:
+          subject: OfferAccessToken
+          parameter-name: EdgeMarketPlaceRegion
+        set:
+          parameter-name: EdgeMarketplaceRegion
+      - where:
+          subject: OfferAccessToken
+          parameter-name: MarketPlaceSku
+        set:
+          parameter-name: MarketplaceSku
+      - where:
+          subject: OfferAccessToken
+          parameter-name: MarketPlaceSkuVersion
+        set:
+          parameter-name: MarketplaceSkuVersion
+      - where:
+          subject: OfferAccessToken
+          parameter-name: RequestId
+        set:
+          parameter-description: "A unique identifier for a previously initiated access token operation, used to look up and retrieve the corresponding disk access token status."

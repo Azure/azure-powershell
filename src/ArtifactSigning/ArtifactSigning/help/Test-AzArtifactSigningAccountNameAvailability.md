@@ -1,0 +1,225 @@
+---
+external help file: Az.ArtifactSigning-help.xml
+Module Name: Az.ArtifactSigning
+online version: https://learn.microsoft.com/powershell/module/az.artifactsigning/test-azartifactsigningaccountnameavailability
+schema: 2.0.0
+---
+
+# Test-AzArtifactSigningAccountNameAvailability
+
+## SYNOPSIS
+Checks that the trusted signing account name is valid and is not already in use.
+
+## SYNTAX
+
+### CheckExpanded (Default)
+```
+Test-AzArtifactSigningAccountNameAvailability [-SubscriptionId <String>] -Name <String> -Type <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Check
+```
+Test-AzArtifactSigningAccountNameAvailability [-SubscriptionId <String>] -Body <ICheckNameAvailability>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CheckViaJsonFilePath
+```
+Test-AzArtifactSigningAccountNameAvailability [-SubscriptionId <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CheckViaJsonString
+```
+Test-AzArtifactSigningAccountNameAvailability [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Checks that the trusted signing account name is valid and is not already in use.
+
+## EXAMPLES
+
+### Example 1: Test The Availability Of An Used Artifact signing Account Name
+```powershell
+Test-AzArtifactSigningAccountNameAvailability -Name unavaliable
+```
+
+```output
+Message                      NameAvailable Reason
+-------                      ------------- ------
+Resource name already exists         False AlreadyExists
+```
+
+This commands tests the availability of artifact signing account name `unavaliable`.
+The results shows `unavaliable` is occupied.
+
+### Example 2: Test The Availability Of An Unused Artifact signing Account Name
+```powershell
+Test-AzArtifactSigningAccountNameAvailability -Name available
+```
+
+```output
+NameAvailable
+-------------
+         True
+```
+
+This commands tests the availability of artifact signing account name `available`.
+The results shows `available` is not occupied.
+
+## PARAMETERS
+
+### -Body
+The parameters used to check the availability of the trusted signing account name.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICheckNameAvailability
+Parameter Sets: Check
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Trusted signing account name.
+
+```yaml
+Type: System.String
+Parameter Sets: CheckExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+The type of the resource, "Microsoft.CodeSigning/codeSigningAccounts".
+
+```yaml
+Type: System.String
+Parameter Sets: CheckExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICheckNameAvailability
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICheckNameAvailabilityResult
+
+## NOTES
+
+## RELATED LINKS
