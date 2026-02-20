@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMManagedDiskAccountType)]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS", "PremiumV2_LRS")]
+        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS")]
         public string StorageAccountType { get; set; }
 
         [Parameter(
@@ -155,14 +155,12 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VmManagedDiskParameterSet,
             HelpMessage = "Specifies the Read-Write IOPS for the managed disk when StorageAccountType is UltraSSD_LRS or PremiumV2_LRS.")]
         public long? DiskIOPSReadWrite { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VmManagedDiskParameterSet,
             HelpMessage = "Specifies the bandwidth in MB per second for the managed disk when StorageAccountType is UltraSSD_LRS or PremiumV2_LRS.")]
         public long? DiskMBpsReadWrite { get; set; }
 
@@ -201,7 +199,9 @@ namespace Microsoft.Azure.Commands.Compute
                     SourceResource = string.IsNullOrEmpty(this.SourceResourceId) ? null : new ApiEntityReference 
                     { 
                         Id = this.SourceResourceId 
-                    }
+                    },
+                    DiskIOPSReadWrite = this.DiskIOPSReadWrite,
+                    DiskMBpsReadWrite = this.DiskMBpsReadWrite
                 });
 
                 this.VM.StorageProfile = storageProfile;

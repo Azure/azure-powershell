@@ -18,7 +18,8 @@ Adds a data disk to a virtual machine.
 Add-AzVMDataDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>] [[-Caching] <CachingTypes>]
  [[-DiskSizeInGB] <Int32>] [-Lun] <Int32> [-CreateOption] <String> [[-SourceImageUri] <String>]
  [-DiskEncryptionSetId <String>] [-DeleteOption <String>] [-SourceResourceId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DiskIOPSReadWrite <Int64>] [-DiskMBpsReadWrite <Int64>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### VmManagedDiskParameterSetName
@@ -98,8 +99,8 @@ The command specifies the name and location for the disk, and other properties o
 
 ### Example 5: Add an UltraSSD data disk with custom IOPS and throughput
 ```powershell
-$VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_D4s_v3"
-$VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name 'UltraData1' -Lun 0 -CreateOption Empty -DiskSizeInGB 10 -Caching None -StorageAccountType UltraSSD_LRS -DiskIOPSReadWrite 5000 -DiskMBpsReadWrite 200
+$VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_D2s_v3"
+$VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name "UltraData1" -Lun 0 -CreateOption 'Empty' -DiskSizeInGB 10 -Caching 'None' -StorageAccountType 'UltraSSD_LRS' -DiskIOPSReadWrite 100 -DiskMBpsReadWrite 1
 ```
 
 The first command creates a virtual machine object and stores it in the $VirtualMachine variable.
@@ -362,12 +363,11 @@ Accept wildcard characters: False
 ```
 
 ### -DiskIOPSReadWrite
-Specifies the Read-Write IOPS (Input/Output Operations Per Second) for the managed disk when StorageAccountType is UltraSSD_LRS or PremiumV2_LRS.
-This parameter is used during implicit disk creation to set custom IOPS values for high-performance disks.
+Specifies the Read-Write IOPS (Input/Output Operations Per Second) for the disk when StorageAccountType is UltraSSD_LRS or PremiumV2_LRS.
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
-Parameter Sets: VmManagedDiskParameterSetName
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -378,12 +378,11 @@ Accept wildcard characters: False
 ```
 
 ### -DiskMBpsReadWrite
-Specifies the bandwidth in MB per second for the managed disk when StorageAccountType is UltraSSD_LRS or PremiumV2_LRS.
-This parameter is used during implicit disk creation to set custom throughput values for high-performance disks.
+Specifies the bandwidth in MB per second for the disk when StorageAccountType is UltraSSD_LRS or PremiumV2_LRS.
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
-Parameter Sets: VmManagedDiskParameterSetName
+Parameter Sets: (All)
 Aliases:
 
 Required: False
