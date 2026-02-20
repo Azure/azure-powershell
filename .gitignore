@@ -244,5 +244,3 @@ src/DataFactory/DataFactoryV2.Test/SessionRecords/Microsoft.Azure.Commands.DataF
 
 # Visual studio live unit testing config
 *.lutconfig
-/generated/ArtifactSigning/ArtifactSigning.Autorest
-/generated/ElasticSan/ElasticSan.Autorest
