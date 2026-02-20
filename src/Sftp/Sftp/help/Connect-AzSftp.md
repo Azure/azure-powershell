@@ -16,28 +16,29 @@ Users can login using Microsoft Entra accounts, or local user accounts via stand
 ### Default (Default)
 ```
 Connect-AzSftp -StorageAccount <String> [-Port <Int32>] [-PrivateKeyFile <String>] [-PublicKeyFile <String>]
- [-SftpArg <String[]>] [-SshClientFolder <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-SftpArg <String[]>] [-SshClientFolder <String>] [-BufferSizeInBytes <Int32>] [-StorageAccountEndpoint <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### CertificateAuth
 ```
 Connect-AzSftp -StorageAccount <String> [-Port <Int32>] -CertificateFile <String> -PrivateKeyFile <String>
- [-SftpArg <String[]>] [-SshClientFolder <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-SftpArg <String[]>] [-SshClientFolder <String>] [-BufferSizeInBytes <Int32>] [-StorageAccountEndpoint <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### PublicKeyAuth
 ```
 Connect-AzSftp -StorageAccount <String> [-Port <Int32>] -PublicKeyFile <String> [-SftpArg <String[]>]
- [-SshClientFolder <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SshClientFolder <String>] [-BufferSizeInBytes <Int32>] [-StorageAccountEndpoint <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### LocalUserAuth
 ```
 Connect-AzSftp -StorageAccount <String> [-Port <Int32>] -LocalUser <String> [-PrivateKeyFile <String>]
- [-SftpArg <String[]>] [-SshClientFolder <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-SftpArg <String[]>] [-SshClientFolder <String>] [-BufferSizeInBytes <Int32>] [-StorageAccountEndpoint <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -153,6 +154,21 @@ Connect-AzSftp -StorageAccount "mystorageaccount" -CertificateFile "C:\certs\azu
 ```
 
 ## PARAMETERS
+
+### -BufferSizeInBytes
+Buffer size in bytes for SFTP file transfers. Default: 262144 (256 KB).
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: 262144
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -CertificateFile
 SSH Certificate to be used to authenticate to local user account.
@@ -310,6 +326,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageAccountEndpoint
+Custom storage account endpoint suffix. Default: Uses endpoint based on Azure environment (e.g., blob.core.windows.net).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PsModuleName>ArtifactSigning</PsModuleName>
+    <PsRootModuleName>ArtifactSigning</PsRootModuleName>
+    <PsModuleFolder>ArtifactSigning.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning</RootNamespace>
+  </PropertyGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+</Project>

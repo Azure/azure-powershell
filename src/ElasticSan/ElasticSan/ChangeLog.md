@@ -18,7 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Supported auto scale when creating and updating an Elastic SAN.
+    - `New-AzElasticSan`
+    - `Update-AzElasticSan`
+* Supported checking whether disk snapshot backup can be taken for volumes.
+    - `Test-AzElasticSanVolumeBackup`
+    - `Test-AzElasticSanVolumeRestore`
+    
 ## Version 1.6.0
 * Reverted changes for auto scale, pre-backup, and pre-restore 
     - `New-AzElasticSan`

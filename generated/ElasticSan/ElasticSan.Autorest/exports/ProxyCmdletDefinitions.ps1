@@ -106,8 +106,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -340,8 +339,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -609,8 +607,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -872,8 +869,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1089,8 +1085,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1365,8 +1360,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1654,8 +1648,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1904,8 +1897,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -2176,8 +2168,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -2468,8 +2459,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -2695,8 +2685,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -2721,6 +2710,596 @@ begin {
             DeleteViaIdentity = 'Az.ElasticSan.private\Remove-AzElasticSan_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Validate whether a disk snapshot backup can be taken for list of volumes.
+.Description
+Validate whether a disk snapshot backup can be taken for list of volumes.
+.Example
+Test-AzElasticSanVolumeBackup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -VolumeName myvolume
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeNameList
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IPreValidationResponse
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+ELASTICSANINPUTOBJECT <IElasticSanIdentity>: Identity Parameter
+  [ElasticSanName <String>]: The name of the ElasticSan.
+  [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SnapshotName <String>]: The name of the volume snapshot within the given volume group.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VolumeGroupName <String>]: The name of the VolumeGroup.
+  [VolumeName <String>]: The name of the Volume.
+
+INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
+  [ElasticSanName <String>]: The name of the ElasticSan.
+  [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SnapshotName <String>]: The name of the volume snapshot within the given volume group.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VolumeGroupName <String>]: The name of the VolumeGroup.
+  [VolumeName <String>]: The name of the Volume.
+
+PARAMETER <IVolumeNameList>: object to hold array of volume names
+  VolumeName <List<String>>: array of volume names
+.Link
+https://learn.microsoft.com/powershell/module/az.elasticsan/test-azelasticsanvolumebackup
+#>
+function Test-AzElasticSanVolumeBackup {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IPreValidationResponse])]
+[CmdletBinding(DefaultParameterSetName='BackupExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Backup', Mandatory)]
+    [Parameter(ParameterSetName='BackupExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BackupViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='BackupViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
+    [System.String]
+    # The name of the ElasticSan.
+    ${ElasticSanName},
+
+    [Parameter(ParameterSetName='Backup', Mandatory)]
+    [Parameter(ParameterSetName='BackupExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BackupViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='BackupViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Backup')]
+    [Parameter(ParameterSetName='BackupExpanded')]
+    [Parameter(ParameterSetName='BackupViaJsonFilePath')]
+    [Parameter(ParameterSetName='BackupViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Backup', Mandatory)]
+    [Parameter(ParameterSetName='BackupExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BackupViaIdentityElasticSan', Mandatory)]
+    [Parameter(ParameterSetName='BackupViaIdentityElasticSanExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BackupViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='BackupViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
+    [System.String]
+    # The name of the VolumeGroup.
+    ${VolumeGroupName},
+
+    [Parameter(ParameterSetName='BackupViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='BackupViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='BackupViaIdentityElasticSan', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='BackupViaIdentityElasticSanExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
+    # Identity Parameter
+    ${ElasticSanInputObject},
+
+    [Parameter(ParameterSetName='Backup', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='BackupViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='BackupViaIdentityElasticSan', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeNameList]
+    # object to hold array of volume names
+    ${Parameter},
+
+    [Parameter(ParameterSetName='BackupExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BackupViaIdentityElasticSanExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BackupViaIdentityExpanded', Mandatory)]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String[]]
+    # array of volume names
+    ${VolumeName},
+
+    [Parameter(ParameterSetName='BackupViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Backup operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='BackupViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String]
+    # Json string supplied to the Backup operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Backup = 'Az.ElasticSan.private\Test-AzElasticSanVolumeBackup_Backup';
+            BackupExpanded = 'Az.ElasticSan.private\Test-AzElasticSanVolumeBackup_BackupExpanded';
+            BackupViaIdentity = 'Az.ElasticSan.private\Test-AzElasticSanVolumeBackup_BackupViaIdentity';
+            BackupViaIdentityElasticSan = 'Az.ElasticSan.private\Test-AzElasticSanVolumeBackup_BackupViaIdentityElasticSan';
+            BackupViaIdentityElasticSanExpanded = 'Az.ElasticSan.private\Test-AzElasticSanVolumeBackup_BackupViaIdentityElasticSanExpanded';
+            BackupViaIdentityExpanded = 'Az.ElasticSan.private\Test-AzElasticSanVolumeBackup_BackupViaIdentityExpanded';
+            BackupViaJsonFilePath = 'Az.ElasticSan.private\Test-AzElasticSanVolumeBackup_BackupViaJsonFilePath';
+            BackupViaJsonString = 'Az.ElasticSan.private\Test-AzElasticSanVolumeBackup_BackupViaJsonString';
+        }
+        if (('Backup', 'BackupExpanded', 'BackupViaJsonFilePath', 'BackupViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Validate whether a list of backed up disk snapshots can be restored into ElasticSan volumes.
+.Description
+Validate whether a list of backed up disk snapshots can be restored into ElasticSan volumes.
+.Example
+Test-AzElasticSanVolumeRestore -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -DiskSnapshotId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Compute/snapshots/mydisksnapshot"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IDiskSnapshotList
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IPreValidationResponse
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+ELASTICSANINPUTOBJECT <IElasticSanIdentity>: Identity Parameter
+  [ElasticSanName <String>]: The name of the ElasticSan.
+  [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SnapshotName <String>]: The name of the volume snapshot within the given volume group.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VolumeGroupName <String>]: The name of the VolumeGroup.
+  [VolumeName <String>]: The name of the Volume.
+
+INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
+  [ElasticSanName <String>]: The name of the ElasticSan.
+  [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SnapshotName <String>]: The name of the volume snapshot within the given volume group.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VolumeGroupName <String>]: The name of the VolumeGroup.
+  [VolumeName <String>]: The name of the Volume.
+
+PARAMETER <IDiskSnapshotList>: object to hold array of Disk Snapshot ARM IDs
+  DiskSnapshotId <List<String>>: array of DiskSnapshot ARM IDs
+.Link
+https://learn.microsoft.com/powershell/module/az.elasticsan/test-azelasticsanvolumerestore
+#>
+function Test-AzElasticSanVolumeRestore {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IPreValidationResponse])]
+[CmdletBinding(DefaultParameterSetName='RestoreExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Restore', Mandatory)]
+    [Parameter(ParameterSetName='RestoreExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
+    [System.String]
+    # The name of the ElasticSan.
+    ${ElasticSanName},
+
+    [Parameter(ParameterSetName='Restore', Mandatory)]
+    [Parameter(ParameterSetName='RestoreExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Restore')]
+    [Parameter(ParameterSetName='RestoreExpanded')]
+    [Parameter(ParameterSetName='RestoreViaJsonFilePath')]
+    [Parameter(ParameterSetName='RestoreViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Restore', Mandatory)]
+    [Parameter(ParameterSetName='RestoreExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaIdentityElasticSan', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaIdentityElasticSanExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
+    [System.String]
+    # The name of the VolumeGroup.
+    ${VolumeGroupName},
+
+    [Parameter(ParameterSetName='RestoreViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RestoreViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='RestoreViaIdentityElasticSan', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RestoreViaIdentityElasticSanExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
+    # Identity Parameter
+    ${ElasticSanInputObject},
+
+    [Parameter(ParameterSetName='Restore', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RestoreViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RestoreViaIdentityElasticSan', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IDiskSnapshotList]
+    # object to hold array of Disk Snapshot ARM IDs
+    ${Parameter},
+
+    [Parameter(ParameterSetName='RestoreExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaIdentityElasticSanExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaIdentityExpanded', Mandatory)]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String[]]
+    # array of DiskSnapshot ARM IDs
+    ${DiskSnapshotId},
+
+    [Parameter(ParameterSetName='RestoreViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Restore operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RestoreViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String]
+    # Json string supplied to the Restore operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Restore = 'Az.ElasticSan.private\Test-AzElasticSanVolumeRestore_Restore';
+            RestoreExpanded = 'Az.ElasticSan.private\Test-AzElasticSanVolumeRestore_RestoreExpanded';
+            RestoreViaIdentity = 'Az.ElasticSan.private\Test-AzElasticSanVolumeRestore_RestoreViaIdentity';
+            RestoreViaIdentityElasticSan = 'Az.ElasticSan.private\Test-AzElasticSanVolumeRestore_RestoreViaIdentityElasticSan';
+            RestoreViaIdentityElasticSanExpanded = 'Az.ElasticSan.private\Test-AzElasticSanVolumeRestore_RestoreViaIdentityElasticSanExpanded';
+            RestoreViaIdentityExpanded = 'Az.ElasticSan.private\Test-AzElasticSanVolumeRestore_RestoreViaIdentityExpanded';
+            RestoreViaJsonFilePath = 'Az.ElasticSan.private\Test-AzElasticSanVolumeRestore_RestoreViaJsonFilePath';
+            RestoreViaJsonString = 'Az.ElasticSan.private\Test-AzElasticSanVolumeRestore_RestoreViaJsonString';
+        }
+        if (('Restore', 'RestoreExpanded', 'RestoreViaJsonFilePath', 'RestoreViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2967,8 +3546,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -3060,7 +3638,7 @@ Update a Elastic San.
 .Description
 Update a Elastic San.
 .Example
-$elasticSan = Update-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 64 -ExtendedCapacitySizeTib 128 -Tag @{"tag3" = "value3"}
+$elasticSan = Update-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 5 -ExtendedCapacitySizeTib 20 -Tag @{"tag3" = "value3"} -CapacityUnitScaleUpLimitTiB 20 -IncreaseCapacityUnitByTiB 2 -UnusedSizeTiB 5 -AutoScalePolicyEnforcement Disabled
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -3115,6 +3693,13 @@ param(
     ${InputObject},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("None", "Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String]
+    # Enable or Disable scale up setting on Elastic San Appliance.
+    ${AutoScalePolicyEnforcement},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
     # Base size of the Elastic San appliance in TiB.
@@ -3123,8 +3708,20 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
+    # Maximum scale up size on Elastic San appliance in TiB.
+    ${CapacityUnitScaleUpLimitTiB},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
     # Extended size of the Elastic San appliance in TiB.
     ${ExtendedCapacitySizeTiB},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Unit to increase Capacity Unit on Elastic San appliance in TiB.
+    ${IncreaseCapacityUnitByTiB},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Enabled", "Disabled")]
@@ -3140,6 +3737,12 @@ param(
     [System.Collections.Hashtable]
     # Update tags
     ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Unused size on Elastic San appliance in TiB.
+    ${UnusedSizeTiB},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3215,8 +3818,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -3448,8 +4050,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -3539,7 +4140,7 @@ Create ElasticSan.
 .Description
 Create ElasticSan.
 .Example
-New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 1 -ExtendedCapacitySizeTib 6 -Location eastus -SkuName 'Premium_LRS' -Tag @{tag1="value1";tag2="value2"}
+New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 1 -ExtendedCapacitySizeTib 6 -Location eastus -SkuName 'Premium_LRS' -AvailabilityZone 1 -Tag @{tag1="value1";tag2="value2"} -AutoScalePolicyEnforcement Enabled -CapacityUnitScaleUpLimitTiB 30 -IncreaseCapacityUnitByTiB 2 -UnusedSizeTiB 6
 .Example
 New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -Location eastus -SkuName 'Premium_LRS' -Tag @{tag1="value1";tag2="value2"}
 
@@ -3607,6 +4208,31 @@ param(
     [System.String]
     # The sku name.
     ${SkuName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("None", "Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String]
+    # Enable or Disable scale up setting on Elastic San Appliance.
+    ${AutoScalePolicyEnforcement},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Maximum scale up size on Elastic San appliance in TiB.
+    ${CapacityUnitScaleUpLimitTiB},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Unit to increase Capacity Unit on Elastic San appliance in TiB.
+    ${IncreaseCapacityUnitByTiB},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Unused size on Elastic San appliance in TiB.
+    ${UnusedSizeTiB},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -3725,8 +4351,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -4172,8 +4797,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -4417,8 +5041,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -4749,8 +5372,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
