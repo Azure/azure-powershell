@@ -21,9 +21,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// available to the volume
         /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
         /// </summary>
-        /// <remarks>
-        /// Backup Policy Resource ID
-        /// </remarks>
         public string DesiredRansomwareProtectionState { get; set; }
 
         /// <summary>
@@ -31,9 +28,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// active on the volume
         /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;, &#39;Learning&#39;, &#39;Paused&#39;
         /// </summary>
-        /// <remarks>
-        /// Backup Policy Resource ID
-        /// </remarks>
         public string ActualRansomwareProtectionState { get; set; }
 
     }
