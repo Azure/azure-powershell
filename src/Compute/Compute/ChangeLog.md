@@ -20,15 +20,11 @@
 
 -->
 ## Upcoming Release
-<<<<<<< scheduledevents
-* Added `-ScheduledEventsApiVersion` and `-EnableAllInstancesDown` parameters to `Update-AzAvailabilitySet`, `Update-AzVM`, `Update-AzVmss`, `New-AzVM` (SimpleParameterSet), and `New-AzVmss` cmdlets for configuring ScheduledEventsPolicy.
-=======
-* Added `-Tag` and `-Location` parameters to `New-AzSshKey` cmdlet
-* Added `-Tag` parameter to `Update-AzSshKey` cmdlet
-* Added support for Disk Availability Policy
-    - Added `-ActionOnDiskDelay` parameter to `New-AzDiskConfig` cmdlet to configure disk availability behavior
-    - Added `-ActionOnDiskDelay` parameter to `New-AzDiskUpdateConfig` cmdlet to update disk availability behavior
->>>>>>> main
+* Added `-ScheduledEventsApiVersion` and `-EnableAllInstancesDown` parameters to `Update-AzAvailabilitySet`, `Update-AzVM`, `Update-AzVmss`, `New-AzVM` (SimpleParameterSet), and `New-AzVmss` cmdlets for configuring Scheduled Events policy for virtual machines and virtual machine scale sets.
+* Added `-Tag` and `-Location` parameters to `New-AzSshKey` cmdlet, and added `-Tag` parameter to `Update-AzSshKey` cmdlet to improve SSH key management and organization.
+* Added support for disk availability policy.
+    - Added `-ActionOnDiskDelay` parameter to `New-AzDiskConfig` cmdlet to configure how disks behave when there are availability delays.
+    - Added `-ActionOnDiskDelay` parameter to `New-AzDiskUpdateConfig` cmdlet to update disk availability behavior on existing disks.
 
 ## Version 11.3.0
 * Compute SDK generation updates:
