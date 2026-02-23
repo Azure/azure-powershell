@@ -337,5 +337,23 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string FleetspaceAccountObjectHelpMessage = "Fleetspace Account Object.";
         public const string GlobalDatabaseAccountResourceIdHelpMessage = "Resource ID of the global database account to associate with the fleetspace account.";
         public const string GlobalDatabaseAccountLocationHelpMessage = "Location of the global database account to associate with the fleetspace account.";
+
+        // CopyJob constants
+        public const string CopyJobNameHelpMessage = "Name of the Copy Job. A random job name will be generated if not passed.";
+        public const string CopyJobSourceAccountNameHelpMessage = "Name of the Azure Cosmos DB source database account.";
+        public const string CopyJobDestinationAccountNameHelpMessage = "Name of the Azure Cosmos DB destination database account. Defaults to source account if not specified.";
+        public const string CopyJobSourceDatabaseNameHelpMessage = "Name of the source database.";
+        public const string CopyJobSourceContainerNameHelpMessage = "Name of the source container.";
+        public const string CopyJobDestinationDatabaseNameHelpMessage = "Name of the destination database.";
+        public const string CopyJobDestinationContainerNameHelpMessage = "Name of the destination container.";
+        public const string CopyJobSourceKeyspaceNameHelpMessage = "Name of the source Cassandra keyspace.";
+        public const string CopyJobSourceTableNameHelpMessage = "Name of the source Cassandra table.";
+        public const string CopyJobDestinationKeyspaceNameHelpMessage = "Name of the destination Cassandra keyspace.";
+        public const string CopyJobDestinationTableNameHelpMessage = "Name of the destination Cassandra table.";
+        public const string CopyJobSourceMongoDatabaseNameHelpMessage = "Name of the source MongoDB database.";
+        public const string CopyJobSourceCollectionNameHelpMessage = "Name of the source MongoDB collection.";
+        public const string CopyJobDestinationMongoDatabaseNameHelpMessage = "Name of the destination MongoDB database.";
+        public const string CopyJobDestinationCollectionNameHelpMessage = "Name of the destination MongoDB collection.";
+        public const string CopyJobModeHelpMessage = "Mode of the copy job. Possible values: 'Online', 'Offline'. Default is 'Offline'.";
     }
 }
