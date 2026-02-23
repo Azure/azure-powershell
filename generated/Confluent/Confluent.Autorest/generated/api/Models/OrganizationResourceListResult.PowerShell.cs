@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.PowerShell;
 
-    /// <summary>The response of a list operation.</summary>
+    /// <summary>The response of a OrganizationResource list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(OrganizationResourceListResultTypeConverter))]
     public partial class OrganizationResourceListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             return ToJsonString();
         }
     }
-    /// The response of a list operation.
+    /// The response of a OrganizationResource list operation.
     [System.ComponentModel.TypeConverter(typeof(OrganizationResourceListResultTypeConverter))]
     public partial interface IOrganizationResourceListResult
 

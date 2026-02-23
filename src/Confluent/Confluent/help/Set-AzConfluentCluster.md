@@ -43,23 +43,23 @@ Update confluent clusters
 
 ### Example 1: Update a Kafka cluster configuration
 ```powershell
-Set-AzConfluentCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123 -CkuCount 2
+Set-AzConfluentCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -Id lkc-abc123 -StatusCku 2
 ```
 
 ```output
-Id          Name            Type      CkuCount  Status
---          ----            ----      --------  ------
-lkc-abc123  prod-cluster    STANDARD  2         PROVISIONED
+Id          Kind         StatusCku
+--          ----         ---------
+lkc-abc123  Cluster      2
 ```
 
 This command updates the CKU count for a Kafka cluster.
 
-### Example 2: Update cluster with tags
+### Example 2: Update cluster via JSON file
 ```powershell
-Set-AzConfluentCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123 -Tag @{Environment="Production"; Team="DataPlatform"}
+Set-AzConfluentCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -Id lkc-abc123 -JsonFilePath ./cluster-update.json
 ```
 
-This command updates cluster metadata with custom tags.
+This command updates cluster configuration using a JSON file.
 
 ## PARAMETERS
 

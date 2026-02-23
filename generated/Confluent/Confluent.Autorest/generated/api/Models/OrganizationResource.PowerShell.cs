@@ -113,25 +113,81 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.OrganizationResourcePropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.SystemDataTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Id"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Id, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).Id, global::System.Convert.ToString);
             }
             if (content.Contains("Name"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Name, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).Name, global::System.Convert.ToString);
             }
             if (content.Contains("Type"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Type, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
             if (content.Contains("Tag"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.OrganizationResourceTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
             }
             if (content.Contains("Location"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Location, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfferDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetail = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetail) content.GetValueForProperty("OfferDetail",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetail, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.OfferDetailTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("UserDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetail = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IUserDetail) content.GetValueForProperty("UserDetail",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetail, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.UserDetailTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("LinkOrganization"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).LinkOrganization = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ILinkOrganization) content.GetValueForProperty("LinkOrganization",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).LinkOrganization, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.LinkOrganizationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CreatedTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).CreatedTime = (global::System.DateTime?) content.GetValueForProperty("CreatedTime",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).CreatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("OrganizationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OrganizationId = (string) content.GetValueForProperty("OrganizationId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OrganizationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SsoUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).SsoUrl = (string) content.GetValueForProperty("SsoUrl",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).SsoUrl, global::System.Convert.ToString);
             }
             if (content.Contains("OfferDetailPublisherId"))
             {
@@ -153,6 +209,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailTermUnit = (string) content.GetValueForProperty("OfferDetailTermUnit",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailTermUnit, global::System.Convert.ToString);
             }
+            if (content.Contains("OfferDetailTermId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailTermId = (string) content.GetValueForProperty("OfferDetailTermId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailTermId, global::System.Convert.ToString);
+            }
             if (content.Contains("UserDetailFirstName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetailFirstName = (string) content.GetValueForProperty("UserDetailFirstName",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetailFirstName, global::System.Convert.ToString);
@@ -165,33 +225,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetailEmailAddress = (string) content.GetValueForProperty("UserDetailEmailAddress",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetailEmailAddress, global::System.Convert.ToString);
             }
-            if (content.Contains("OfferDetail"))
+            if (content.Contains("UserDetailAadEmail"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetail = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourcePropertiesOfferDetail) content.GetValueForProperty("OfferDetail",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetail, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.OrganizationResourcePropertiesOfferDetailTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetailAadEmail = (string) content.GetValueForProperty("UserDetailAadEmail",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetailAadEmail, global::System.Convert.ToString);
             }
-            if (content.Contains("UserDetail"))
+            if (content.Contains("LinkOrganizationToken"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetail = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourcePropertiesUserDetail) content.GetValueForProperty("UserDetail",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetail, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.OrganizationResourcePropertiesUserDetailTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).LinkOrganizationToken = (System.Security.SecureString) content.GetValueForProperty("LinkOrganizationToken",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).LinkOrganizationToken, (object ss) => (System.Security.SecureString)ss);
             }
-            if (content.Contains("CreatedTime"))
+            if (content.Contains("OfferDetailPrivateOfferId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).CreatedTime = (global::System.DateTime?) content.GetValueForProperty("CreatedTime",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).CreatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailPrivateOfferId = (string) content.GetValueForProperty("OfferDetailPrivateOfferId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailPrivateOfferId, global::System.Convert.ToString);
             }
-            if (content.Contains("ProvisioningState"))
+            if (content.Contains("OfferDetailPrivateOfferIds"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
-            }
-            if (content.Contains("OrganizationId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OrganizationId = (string) content.GetValueForProperty("OrganizationId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OrganizationId, global::System.Convert.ToString);
-            }
-            if (content.Contains("SsoUrl"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).SsoUrl = (string) content.GetValueForProperty("SsoUrl",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).SsoUrl, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailPrivateOfferIds = (System.Collections.Generic.List<string>) content.GetValueForProperty("OfferDetailPrivateOfferIds",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailPrivateOfferIds, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("OfferDetailStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailStatus = (string) content.GetValueForProperty("OfferDetailStatus",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserDetailUserPrincipalName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetailUserPrincipalName = (string) content.GetValueForProperty("UserDetailUserPrincipalName",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetailUserPrincipalName, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -214,25 +270,81 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.OrganizationResourcePropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.SystemDataTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Id"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Id, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).Id, global::System.Convert.ToString);
             }
             if (content.Contains("Name"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Name, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).Name, global::System.Convert.ToString);
             }
             if (content.Contains("Type"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Type, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
             if (content.Contains("Tag"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.OrganizationResourceTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
             }
             if (content.Contains("Location"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).Location, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfferDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetail = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetail) content.GetValueForProperty("OfferDetail",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetail, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.OfferDetailTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("UserDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetail = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IUserDetail) content.GetValueForProperty("UserDetail",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetail, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.UserDetailTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("LinkOrganization"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).LinkOrganization = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ILinkOrganization) content.GetValueForProperty("LinkOrganization",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).LinkOrganization, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.LinkOrganizationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CreatedTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).CreatedTime = (global::System.DateTime?) content.GetValueForProperty("CreatedTime",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).CreatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("OrganizationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OrganizationId = (string) content.GetValueForProperty("OrganizationId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OrganizationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SsoUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).SsoUrl = (string) content.GetValueForProperty("SsoUrl",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).SsoUrl, global::System.Convert.ToString);
             }
             if (content.Contains("OfferDetailPublisherId"))
             {
@@ -254,6 +366,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailTermUnit = (string) content.GetValueForProperty("OfferDetailTermUnit",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailTermUnit, global::System.Convert.ToString);
             }
+            if (content.Contains("OfferDetailTermId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailTermId = (string) content.GetValueForProperty("OfferDetailTermId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailTermId, global::System.Convert.ToString);
+            }
             if (content.Contains("UserDetailFirstName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetailFirstName = (string) content.GetValueForProperty("UserDetailFirstName",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetailFirstName, global::System.Convert.ToString);
@@ -266,33 +382,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetailEmailAddress = (string) content.GetValueForProperty("UserDetailEmailAddress",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetailEmailAddress, global::System.Convert.ToString);
             }
-            if (content.Contains("OfferDetail"))
+            if (content.Contains("UserDetailAadEmail"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetail = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourcePropertiesOfferDetail) content.GetValueForProperty("OfferDetail",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetail, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.OrganizationResourcePropertiesOfferDetailTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetailAadEmail = (string) content.GetValueForProperty("UserDetailAadEmail",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetailAadEmail, global::System.Convert.ToString);
             }
-            if (content.Contains("UserDetail"))
+            if (content.Contains("LinkOrganizationToken"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetail = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourcePropertiesUserDetail) content.GetValueForProperty("UserDetail",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetail, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.OrganizationResourcePropertiesUserDetailTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).LinkOrganizationToken = (System.Security.SecureString) content.GetValueForProperty("LinkOrganizationToken",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).LinkOrganizationToken, (object ss) => (System.Security.SecureString)ss);
             }
-            if (content.Contains("CreatedTime"))
+            if (content.Contains("OfferDetailPrivateOfferId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).CreatedTime = (global::System.DateTime?) content.GetValueForProperty("CreatedTime",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).CreatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailPrivateOfferId = (string) content.GetValueForProperty("OfferDetailPrivateOfferId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailPrivateOfferId, global::System.Convert.ToString);
             }
-            if (content.Contains("ProvisioningState"))
+            if (content.Contains("OfferDetailPrivateOfferIds"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
-            }
-            if (content.Contains("OrganizationId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OrganizationId = (string) content.GetValueForProperty("OrganizationId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OrganizationId, global::System.Convert.ToString);
-            }
-            if (content.Contains("SsoUrl"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).SsoUrl = (string) content.GetValueForProperty("SsoUrl",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).SsoUrl, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailPrivateOfferIds = (System.Collections.Generic.List<string>) content.GetValueForProperty("OfferDetailPrivateOfferIds",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailPrivateOfferIds, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("OfferDetailStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailStatus = (string) content.GetValueForProperty("OfferDetailStatus",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).OfferDetailStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserDetailUserPrincipalName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetailUserPrincipalName = (string) content.GetValueForProperty("UserDetailUserPrincipalName",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceInternal)this).UserDetailUserPrincipalName, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

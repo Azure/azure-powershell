@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Confluent
-Module Guid: 545fb1f5-dbfe-4475-9d33-17fc181682ad
+Module Guid: 2af99198-aba6-4c34-9e83-26c408bfbe4c
 Download Help Link: https://learn.microsoft.com/powershell/module/az.confluent
 Help Version: 1.0.0.0
 Locale: en-US

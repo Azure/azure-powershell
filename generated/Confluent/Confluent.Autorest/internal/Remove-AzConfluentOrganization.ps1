@@ -34,10 +34,16 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IConfluentIdentity>: Identity Parameter
+  [ApiKeyId <String>]: Confluent API Key id
+  [ClusterId <String>]: Confluent kafka or schema registry cluster id
+  [ConnectorName <String>]: Confluent connector name
+  [EnvironmentId <String>]: Confluent environment id
   [Id <String>]: Resource identity path
   [OrganizationName <String>]: Organization resource name
-  [ResourceGroupName <String>]: Resource group name
-  [SubscriptionId <String>]: Microsoft Azure subscription id
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleBindingId <String>]: Confluent Role binding id
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TopicName <String>]: Confluent kafka or schema registry topic name
 .Link
 https://learn.microsoft.com/powershell/module/az.confluent/remove-azconfluentorganization
 #>
@@ -55,14 +61,16 @@ param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
     [System.String]
-    # Resource group name
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Microsoft Azure subscription id
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]

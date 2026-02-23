@@ -16,14 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>Link to the next set of results, if any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResource> _value;
 
-        /// <summary>Results of a list operation.</summary>
+        /// <summary>The ConfluentAgreementResource items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResource> Value { get => this._value; set => this._value = value; }
 
@@ -37,25 +37,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
     public partial interface IConfluentAgreementResourceListResponse :
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.IJsonSerializable
     {
-        /// <summary>Link to the next set of results, if any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Link to the next set of results, if any.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>Results of a list operation.</summary>
+        /// <summary>The ConfluentAgreementResource items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Results of a list operation.",
+        Description = @"The ConfluentAgreementResource items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResource) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResource> Value { get; set; }
@@ -65,9 +65,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
     internal partial interface IConfluentAgreementResourceListResponseInternal
 
     {
-        /// <summary>Link to the next set of results, if any.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>Results of a list operation.</summary>
+        /// <summary>The ConfluentAgreementResource items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResource> Value { get; set; }
 
     }

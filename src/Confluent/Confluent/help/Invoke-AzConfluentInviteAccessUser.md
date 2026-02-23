@@ -66,16 +66,16 @@ Invoke-AzConfluentInviteAccessUser -ResourceGroupName confluent-rg -Organization
 ```
 
 ```output
-Id          Email                Status    CreatedAt
---          -----                ------    ---------
-inv-789     newuser@contoso.com  PENDING   2026-02-19 09:15:00
+Id          Email                Status    
+--          -----                ------    
+inv-789     newuser@contoso.com  PENDING   
 ```
 
 This command sends an invitation to a new user to join the Confluent organization.
 
-### Example 2: Invite multiple users with authentication type
+### Example 2: Invite user with authentication type
 ```powershell
-Invoke-AzConfluentInviteAccessUser -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -Email "user@contoso.com" -AuthType "SSO"
+Invoke-AzConfluentInviteAccessUser -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -Email "user@contoso.com" -InvitedUserDetailAuthType "SSO"
 ```
 
 This command invites a user with specific authentication type configured.

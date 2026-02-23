@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Description(@"create Organization resource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}", ApiVersion = "2020-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}", ApiVersion = "2025-08-18-preview")]
     public partial class NewAzConfluentOrganization_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.IContext
@@ -42,15 +42,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
 
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
-
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -96,13 +87,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>Location of Organization resource</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Location of Organization resource")]
+        /// <summary>User auth token</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "User auth token")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Location of Organization resource",
+        Description = @"User auth token",
+        SerializedName = @"token",
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString LinkOrganizationToken { get => _body.LinkOrganizationToken ?? null; set => _body.LinkOrganizationToken = value; }
+
+        /// <summary>The geo-location where the resource lives</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The geo-location where the resource lives")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The geo-location where the resource lives",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         public string Location { get => _body.Location ?? null; set => _body.Location = value; }
@@ -171,6 +173,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string OfferDetailPlanName { get => _body.OfferDetailPlanName ?? null; set => _body.OfferDetailPlanName = value; }
 
+        /// <summary>Private Offer Id</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Private Offer Id")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Private Offer Id",
+        SerializedName = @"privateOfferId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string OfferDetailPrivateOfferId { get => _body.OfferDetailPrivateOfferId ?? null; set => _body.OfferDetailPrivateOfferId = value; }
+
         /// <summary>Publisher Id</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Publisher Id")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.ParameterCategory.Body)]
@@ -181,6 +194,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
         SerializedName = @"publisherId",
         PossibleTypes = new [] { typeof(string) })]
         public string OfferDetailPublisherId { get => _body.OfferDetailPublisherId ?? null; set => _body.OfferDetailPublisherId = value; }
+
+        /// <summary>SaaS Offer Status</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "SaaS Offer Status")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"SaaS Offer Status",
+        SerializedName = @"status",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.PSArgumentCompleterAttribute("Started", "PendingFulfillmentStart", "InProgress", "Subscribed", "Suspended", "Reinstated", "Succeeded", "Failed", "Unsubscribed", "Updating")]
+        public string OfferDetailStatus { get => _body.OfferDetailStatus ?? null; set => _body.OfferDetailStatus = value; }
+
+        /// <summary>Offer Plan Term Id</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Offer Plan Term Id")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Offer Plan Term Id",
+        SerializedName = @"termId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string OfferDetailTermId { get => _body.OfferDetailTermId ?? null; set => _body.OfferDetailTermId = value; }
 
         /// <summary>Offer Plan Term unit</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Offer Plan Term unit")]
@@ -197,6 +233,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.HttpPipeline Pipeline { get; set; }
+
+        /// <summary>Array of Private Offer Ids</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Array of Private Offer Ids")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Array of Private Offer Ids",
+        SerializedName = @"privateOfferIds",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("PropertiesOfferDetailPrivateOfferIds")]
+        public string[] PropertiesOfferDetailPrivateOfferId { get => _body.OfferDetailPrivateOfferIds?.ToArray() ?? null /* fixedArrayOf */; set => _body.OfferDetailPrivateOfferIds = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -217,12 +266,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>Resource group name</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Resource group name")]
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Resource group name",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.ParameterCategory.Path)]
@@ -231,12 +280,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>Microsoft Azure subscription id</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Microsoft Azure subscription id")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Microsoft Azure subscription id",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.DefaultInfo(
@@ -247,17 +296,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
-        /// <summary>Organization resource tags</summary>
+        /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Organization resource tags")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Organization resource tags",
+        Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceTags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ITrackedResourceTags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
+
+        /// <summary>AAD email address</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "AAD email address")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"AAD email address",
+        SerializedName = @"aadEmail",
+        PossibleTypes = new [] { typeof(string) })]
+        public string UserDetailAadEmail { get => _body.UserDetailAadEmail ?? null; set => _body.UserDetailAadEmail = value; }
 
         /// <summary>Email address</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Email address")]
@@ -291,6 +351,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
         SerializedName = @"lastName",
         PossibleTypes = new [] { typeof(string) })]
         public string UserDetailLastName { get => _body.UserDetailLastName ?? null; set => _body.UserDetailLastName = value; }
+
+        /// <summary>User principal name</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "User principal name")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"User principal name",
+        SerializedName = @"userPrincipalName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string UserDetailUserPrincipalName { get => _body.UserDetailUserPrincipalName ?? null; set => _body.UserDetailUserPrincipalName = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -361,11 +432,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Confluent.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -681,24 +747,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResource
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

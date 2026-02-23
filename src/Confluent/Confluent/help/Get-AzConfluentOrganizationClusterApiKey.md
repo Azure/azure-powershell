@@ -36,26 +36,25 @@ Get API key details of a kafka or schema registry cluster
 
 ## EXAMPLES
 
-### Example 1: List all cluster API keys
+### Example 1: Get cluster API key by ID
 ```powershell
-Get-AzConfluentOrganizationClusterApiKey -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -ClusterId lkc-abc123
+Get-AzConfluentOrganizationClusterApiKey -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -ApiKeyId key-123
 ```
 
 ```output
-Id          Name              ClusterId    Owner
---          ----              ---------    -----
-key-123     prod-api-key      lkc-abc123   User:u-123
-key-456     staging-api-key   lkc-abc123   User:u-456
+Id       Name              Owner
+--       ----              -----
+key-123  prod-api-key      User:u-123
 ```
 
-This command lists all API keys for the specified Kafka cluster.
+This command retrieves the API key details for the specified key ID.
 
-### Example 2: Get specific API key by cluster
+### Example 2: Get API key using identity parameter
 ```powershell
-Get-AzConfluentOrganizationClusterApiKey -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -ClusterId lkc-abc123
+Get-AzConfluentOrganizationClusterApiKey -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -ApiKeyId key-456
 ```
 
-This command retrieves API keys associated with a specific cluster.
+This command retrieves API key information for a specific API key ID.
 
 ## PARAMETERS
 

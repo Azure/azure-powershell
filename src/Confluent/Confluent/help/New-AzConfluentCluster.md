@@ -61,23 +61,23 @@ Create confluent clusters
 
 ### Example 1: Create a new Kafka cluster
 ```powershell
-New-AzConfluentCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -Name prod-cluster -Type BASIC -Region eastus -AvailabilityZone SINGLE_ZONE
+New-AzConfluentCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -Id prod-cluster
 ```
 
 ```output
-Id          Name            Type      Region      Status
---          ----            ----      ------      ------
-lkc-new123  prod-cluster    BASIC     eastus      PROVISIONING
+Id          Kind          Status
+--          ----          ------
+lkc-new123  Cluster       PROVISIONING
 ```
 
 This command creates a new Kafka cluster in the specified environment.
 
-### Example 2: Create a multi-zone cluster
+### Example 2: Create a cluster via JSON file
 ```powershell
-New-AzConfluentCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -Name ha-cluster -Type STANDARD -Region westus2 -AvailabilityZone MULTI_ZONE
+New-AzConfluentCluster -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -Id ha-cluster -JsonFilePath ./cluster-spec.json
 ```
 
-This command creates a highly available Kafka cluster with multi-zone deployment.
+This command creates a Kafka cluster using configuration from a JSON file.
 
 ## PARAMETERS
 

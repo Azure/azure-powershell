@@ -13,15 +13,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOperationListResultInternal
     {
 
-        /// <summary>Internal Acessors for NextLink</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOperationListResultInternal.NextLink { get => this._nextLink; set { {_nextLink = value;} } }
-
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
         /// <summary>URL to get the next set of operation list results if there are any.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Owned)]
-        public string NextLink { get => this._nextLink; }
+        public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOperationResult> _value;
@@ -43,17 +40,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         /// <summary>URL to get the next set of operation list results if there are any.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"URL to get the next set of operation list results if there are any.",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
-        string NextLink { get;  }
+        string NextLink { get; set; }
         /// <summary>List of Confluent operations supported by the Microsoft.Confluent provider.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,

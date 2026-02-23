@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Description(@"update Organization resource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}", ApiVersion = "2020-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}", ApiVersion = "2025-08-18-preview")]
     public partial class UpdateAzConfluentOrganization_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.IContext

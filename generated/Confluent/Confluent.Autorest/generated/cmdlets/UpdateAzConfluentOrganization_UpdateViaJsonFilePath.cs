@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Description(@"update Organization resource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}", ApiVersion = "2020-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}", ApiVersion = "2025-08-18-preview")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.NotSuggestDefaultParameterSet]
     public partial class UpdateAzConfluentOrganization_UpdateViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.IEventListener,
@@ -151,12 +151,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>Resource group name</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Resource group name")]
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Resource group name",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.ParameterCategory.Path)]
@@ -165,12 +165,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>Microsoft Azure subscription id</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Microsoft Azure subscription id")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Microsoft Azure subscription id",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.DefaultInfo(

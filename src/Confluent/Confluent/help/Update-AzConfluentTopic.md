@@ -66,23 +66,23 @@ Update confluent topics by Name
 
 ### Example 1: Update Kafka topic partition count
 ```powershell
-Update-AzConfluentTopic -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123 -TopicName orders -Partitions 12
+Update-AzConfluentTopic -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123 -Name orders -PartitionsCount 12
 ```
 
 ```output
-Name       Partitions  ReplicationFactor  IsInternal
-----       ----------  -----------------  ----------
-orders     12          3                  False
+Name       PartitionsCount  ReplicationFactor
+----       ---------------  -----------------
+orders     12               3
 ```
 
 This command updates the partition count for a Kafka topic.
 
-### Example 2: Update topic configuration settings
+### Example 2: Update topic with input configuration
 ```powershell
-Update-AzConfluentTopic -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123 -TopicName logs -Config @{"retention.ms"="1209600000"; "compression.type"="gzip"}
+Update-AzConfluentTopic -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123 -Name logs -ReplicationFactor 3
 ```
 
-This command updates configuration settings for a Kafka topic (14-day retention with gzip compression).
+This command updates the replication factor for a Kafka topic.
 
 ## PARAMETERS
 

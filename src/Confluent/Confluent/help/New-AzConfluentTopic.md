@@ -71,23 +71,23 @@ Create confluent topics by Name
 
 ### Example 1: Create a new Kafka topic
 ```powershell
-New-AzConfluentTopic -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123 -Name orders -Partitions 6 -ReplicationFactor 3
+New-AzConfluentTopic -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123 -Name orders -PartitionsCount 6 -ReplicationFactor 3
 ```
 
 ```output
-Name       Partitions  ReplicationFactor  IsInternal
-----       ----------  -----------------  ----------
-orders     6           3                  False
+Name       PartitionsCount  ReplicationFactor  
+----       ---------------  -----------------  
+orders     6                3                  
 ```
 
 This command creates a new Kafka topic with specified partitions and replication factor.
 
-### Example 2: Create topic with custom retention
+### Example 2: Create topic via JSON file
 ```powershell
-New-AzConfluentTopic -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123 -Name logs -Partitions 12 -ReplicationFactor 3 -RetentionMs 604800000
+New-AzConfluentTopic -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -ClusterId lkc-abc123 -Name logs -JsonFilePath ./topic-config.json
 ```
 
-This command creates a Kafka topic with 7-day retention period.
+This command creates a Kafka topic using configuration from a JSON file.
 
 ## PARAMETERS
 

@@ -20,9 +20,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
-        /// <summary>Internal Acessors for Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal.Status { get => this._status; set { {_status = value;} } }
-
         /// <summary>Backing field for <see cref="PlanId" /> property.</summary>
         private string _planId;
 
@@ -37,6 +34,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Owned)]
         public string PlanName { get => this._planName; set => this._planName = value; }
 
+        /// <summary>Backing field for <see cref="PrivateOfferId" /> property.</summary>
+        private string _privateOfferId;
+
+        /// <summary>Private Offer Id</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Owned)]
+        public string PrivateOfferId { get => this._privateOfferId; set => this._privateOfferId = value; }
+
+        /// <summary>Backing field for <see cref="PrivateOfferIds" /> property.</summary>
+        private System.Collections.Generic.List<string> _privateOfferIds;
+
+        /// <summary>Array of Private Offer Ids</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> PrivateOfferIds { get => this._privateOfferIds; set => this._privateOfferIds = value; }
+
         /// <summary>Backing field for <see cref="PublisherId" /> property.</summary>
         private string _publisherId;
 
@@ -49,7 +60,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
 
         /// <summary>SaaS Offer Status</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Owned)]
-        public string Status { get => this._status; }
+        public string Status { get => this._status; set => this._status = value; }
+
+        /// <summary>Backing field for <see cref="TermId" /> property.</summary>
+        private string _termId;
+
+        /// <summary>Offer Plan Term Id</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Owned)]
+        public string TermId { get => this._termId; set => this._termId = value; }
 
         /// <summary>Backing field for <see cref="TermUnit" /> property.</summary>
         private string _termUnit;
@@ -70,7 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
     {
         /// <summary>Offer Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -81,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         string Id { get; set; }
         /// <summary>Offer Plan Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -92,7 +110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         string PlanId { get; set; }
         /// <summary>Offer Plan Name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -101,9 +119,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         SerializedName = @"planName",
         PossibleTypes = new [] { typeof(string) })]
         string PlanName { get; set; }
-        /// <summary>Publisher Id</summary>
+        /// <summary>Private Offer Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Private Offer Id",
+        SerializedName = @"privateOfferId",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrivateOfferId { get; set; }
+        /// <summary>Array of Private Offer Ids</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Array of Private Offer Ids",
+        SerializedName = @"privateOfferIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> PrivateOfferIds { get; set; }
+        /// <summary>Publisher Id</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -115,18 +155,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         /// <summary>SaaS Offer Status</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"SaaS Offer Status",
         SerializedName = @"status",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.PSArgumentCompleterAttribute("Started", "PendingFulfillmentStart", "InProgress", "Subscribed", "Suspended", "Reinstated", "Succeeded", "Failed", "Unsubscribed", "Updating")]
-        string Status { get;  }
-        /// <summary>Offer Plan Term unit</summary>
+        string Status { get; set; }
+        /// <summary>Offer Plan Term Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Offer Plan Term Id",
+        SerializedName = @"termId",
+        PossibleTypes = new [] { typeof(string) })]
+        string TermId { get; set; }
+        /// <summary>Offer Plan Term unit</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -147,11 +198,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         string PlanId { get; set; }
         /// <summary>Offer Plan Name</summary>
         string PlanName { get; set; }
+        /// <summary>Private Offer Id</summary>
+        string PrivateOfferId { get; set; }
+        /// <summary>Array of Private Offer Ids</summary>
+        System.Collections.Generic.List<string> PrivateOfferIds { get; set; }
         /// <summary>Publisher Id</summary>
         string PublisherId { get; set; }
         /// <summary>SaaS Offer Status</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.PSArgumentCompleterAttribute("Started", "PendingFulfillmentStart", "InProgress", "Subscribed", "Suspended", "Reinstated", "Succeeded", "Failed", "Unsubscribed", "Updating")]
         string Status { get; set; }
+        /// <summary>Offer Plan Term Id</summary>
+        string TermId { get; set; }
         /// <summary>Offer Plan Term unit</summary>
         string TermUnit { get; set; }
 

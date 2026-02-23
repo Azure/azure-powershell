@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-List all operations provided by Microsoft.Confluent.
+List the operations for the provider
 .Description
-List all operations provided by Microsoft.Confluent.
+List the operations for the provider
 .Example
 {{ Add code here }}
 .Example

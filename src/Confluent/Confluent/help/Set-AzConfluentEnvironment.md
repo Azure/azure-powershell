@@ -40,22 +40,22 @@ Update confluent environment
 
 ## EXAMPLES
 
-### Example 1: Update an environment display name
+### Example 1: Update an environment metadata
 ```powershell
-Set-AzConfluentEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -DisplayName "Updated Production"
+Set-AzConfluentEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -Id env-abc123 -MetadataResourceName "Updated-Production"
 ```
 
 ```output
-Id          Name        DisplayName           StreamGovernanceConfig
---          ----        -----------           ----------------------
-env-abc123  prod-env    Updated Production    Essentials
+Id          Kind          MetadataResourceName
+--          ----          --------------------
+env-abc123  Environment   Updated-Production
 ```
 
-This command updates the display name of an environment.
+This command updates the metadata resource name of an environment.
 
 ### Example 2: Update environment governance package
 ```powershell
-Set-AzConfluentEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -EnvironmentId env-abc123 -GovernancePackage "Advanced"
+Set-AzConfluentEnvironment -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -Id env-abc123 -StreamGovernanceConfigPackage "Advanced"
 ```
 
 This command upgrades the stream governance package for the environment.

@@ -70,7 +70,7 @@ Organization Validate proxy resource
 
 ### Example 1: Validate organization configuration
 ```powershell
-Test-AzConfluentValidationOrganization -ResourceGroupName confluent-rg -Location eastus -OrganizationName confluentorg-01
+Test-AzConfluentValidationOrganization -ResourceGroupName confluent-rg -Location eastus -OrganizationName confluentorg-01 -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud - Pay as you Go" -OfferDetailPublisherId "confluent" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress "admin@contoso.com"
 ```
 
 ```output
@@ -81,12 +81,12 @@ True     Organization configuration is valid
 
 This command validates the organization configuration before creation.
 
-### Example 2: Validate with offer details
+### Example 2: Validate via JSON file
 ```powershell
-Test-AzConfluentValidationOrganization -ResourceGroupName confluent-rg -Location eastus -OrganizationName confluentorg-01 -OfferDetail @{PublisherId="confluent"; Id="confluent-cloud-azure-prod"; PlanId="confluent-cloud-azure-payg-prod"}
+Test-AzConfluentValidationOrganization -ResourceGroupName confluent-rg -OrganizationName confluentorg-01 -JsonFilePath ./org-config.json
 ```
 
-This command validates organization configuration with specific marketplace offer details.
+This command validates organization configuration using a JSON file.
 
 ## PARAMETERS
 

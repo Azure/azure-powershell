@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Extensions;
 
-    /// <summary>The response of a list operation.</summary>
+    /// <summary>The response of a OrganizationResource list operation.</summary>
     public partial class OrganizationResourceListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceListResult,
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceListResultInternal
@@ -16,14 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>Link to the next set of results, if any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResource> _value;
 
-        /// <summary>Result of a list operation.</summary>
+        /// <summary>The OrganizationResource items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResource> Value { get => this._value; set => this._value = value; }
 
@@ -33,41 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
 
         }
     }
-    /// The response of a list operation.
+    /// The response of a OrganizationResource list operation.
     public partial interface IOrganizationResourceListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.IJsonSerializable
     {
-        /// <summary>Link to the next set of results, if any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Link to the next set of results, if any.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>Result of a list operation.</summary>
+        /// <summary>The OrganizationResource items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Result of a list operation.",
+        Description = @"The OrganizationResource items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResource) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResource> Value { get; set; }
 
     }
-    /// The response of a list operation.
+    /// The response of a OrganizationResource list operation.
     internal partial interface IOrganizationResourceListResultInternal
 
     {
-        /// <summary>Link to the next set of results, if any.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>Result of a list operation.</summary>
+        /// <summary>The OrganizationResource items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResource> Value { get; set; }
 
     }

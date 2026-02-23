@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create Organization resource
+Create Organization resource
 .Description
-create Organization resource
+Create Organization resource
 .Example
 New-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh -Location eastus -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud - Pay as you Go" -OfferDetailPublisherId "confluentinc" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress "xxxx@microsoft.com"
 
@@ -41,20 +41,28 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
     [System.String]
-    # Resource group name
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Microsoft Azure subscription id
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
+    [System.Security.SecureString]
+    # User auth token
+    ${LinkOrganizationToken},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
     [System.String]
-    # Location of Organization resource
+    # The geo-location where the resource lives
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -78,8 +86,27 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
     [System.String]
+    # Private Offer Id
+    ${OfferDetailPrivateOfferId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
+    [System.String]
     # Publisher Id
     ${OfferDetailPublisherId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.PSArgumentCompleterAttribute("Started", "PendingFulfillmentStart", "InProgress", "Subscribed", "Suspended", "Reinstated", "Succeeded", "Failed", "Unsubscribed", "Updating")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
+    [System.String]
+    # SaaS Offer Status
+    ${OfferDetailStatus},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
+    [System.String]
+    # Offer Plan Term Id
+    ${OfferDetailTermId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
@@ -88,11 +115,25 @@ param(
     ${OfferDetailTermUnit},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Alias('PropertiesOfferDetailPrivateOfferIds')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResourceTags]))]
+    [System.String[]]
+    # Array of Private Offer Ids
+    ${PropertiesOfferDetailPrivateOfferId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
-    # Organization resource tags
+    # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
+    [System.String]
+    # AAD email address
+    ${UserDetailAadEmail},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
@@ -111,6 +152,12 @@ param(
     [System.String]
     # Last name
     ${UserDetailLastName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
+    [System.String]
+    # User principal name
+    ${UserDetailUserPrincipalName},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
@@ -198,8 +245,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

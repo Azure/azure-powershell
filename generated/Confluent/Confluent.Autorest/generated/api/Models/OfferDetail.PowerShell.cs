@@ -129,6 +129,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)this).TermUnit = (string) content.GetValueForProperty("TermUnit",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)this).TermUnit, global::System.Convert.ToString);
             }
+            if (content.Contains("TermId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)this).TermId = (string) content.GetValueForProperty("TermId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)this).TermId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateOfferId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)this).PrivateOfferId = (string) content.GetValueForProperty("PrivateOfferId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)this).PrivateOfferId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateOfferIds"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)this).PrivateOfferIds = (System.Collections.Generic.List<string>) content.GetValueForProperty("PrivateOfferIds",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)this).PrivateOfferIds, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("Status"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)this).Status, global::System.Convert.ToString);
@@ -169,6 +181,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             if (content.Contains("TermUnit"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)this).TermUnit = (string) content.GetValueForProperty("TermUnit",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)this).TermUnit, global::System.Convert.ToString);
+            }
+            if (content.Contains("TermId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)this).TermId = (string) content.GetValueForProperty("TermId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)this).TermId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateOfferId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)this).PrivateOfferId = (string) content.GetValueForProperty("PrivateOfferId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)this).PrivateOfferId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateOfferIds"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)this).PrivateOfferIds = (System.Collections.Generic.List<string>) content.GetValueForProperty("PrivateOfferIds",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOfferDetailInternal)this).PrivateOfferIds, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("Status"))
             {

@@ -70,7 +70,7 @@ Organization Validate proxy resource
 
 ### Example 1: Validate organization configuration (v2)
 ```powershell
-Test-AzConfluentValidationOrganizationV2 -ResourceGroupName confluent-rg -Location eastus -OrganizationName confluentorg-01
+Test-AzConfluentValidationOrganizationV2 -ResourceGroupName confluent-rg -Location eastus -OrganizationName confluentorg-01 -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud" -OfferDetailPublisherId "confluent" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress "admin@contoso.com"
 ```
 
 ```output
@@ -81,12 +81,12 @@ True     Organization configuration is valid  @()
 
 This command validates the organization configuration using the v2 validation endpoint.
 
-### Example 2: Validate with user details
+### Example 2: Validate with additional user details
 ```powershell
-Test-AzConfluentValidationOrganizationV2 -ResourceGroupName confluent-rg -Location eastus -OrganizationName confluentorg-01 -UserDetail @{Email="admin@contoso.com"; FirstName="Admin"; LastName="User"}
+Test-AzConfluentValidationOrganizationV2 -ResourceGroupName confluent-rg -Location eastus -OrganizationName confluentorg-01 -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud" -OfferDetailPublisherId "confluent" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress "admin@contoso.com" -UserDetailFirstName "Admin" -UserDetailLastName "User"
 ```
 
-This command validates organization with user information for the organization owner.
+This command validates organization with additional user information for the organization owner.
 
 ## PARAMETERS
 
