@@ -272,11 +272,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             //    ExecuteCmdlet_2022_11_01(tagPairs);
             //}
             PSNetAppFilesVolumeDataProtection dataProtection = null;
-            if (SnapshotPolicyId != null || Backup != null || !string.IsNullOrWhiteSpace(DesiredRansomwareProtectionState))
+            if (!string.IsNullOrWhiteSpace(SnapshotPolicyId) || Backup != null || !string.IsNullOrWhiteSpace(DesiredRansomwareProtectionState))
             {
                 dataProtection = new PSNetAppFilesVolumeDataProtection
                 {
-                    Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId },
+                    Snapshot = !string.IsNullOrWhiteSpace(SnapshotPolicyId) ? new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId } : null,
                     Backup = Backup,
                     RansomwareProtection = !string.IsNullOrWhiteSpace(DesiredRansomwareProtectionState) ? new PSNetAppFilesVolumeRansomwareProperties { DesiredRansomwareProtectionState = DesiredRansomwareProtectionState } : null
                 };
