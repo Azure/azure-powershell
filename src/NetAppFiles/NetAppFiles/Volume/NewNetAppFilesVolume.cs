@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on exceptional basis. Specified in bytes.")]
+            HelpMessage = "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 50 GiB. Upper limit is 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on exceptional basis. Specified in bytes.")]
         [ValidateNotNullOrEmpty]
         public long UsageThreshold { get; set; }
 

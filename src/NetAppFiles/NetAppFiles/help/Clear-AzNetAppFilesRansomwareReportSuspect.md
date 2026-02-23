@@ -14,7 +14,7 @@ Clears suspects for an Azure NetApp Files (ANF) Advanced Ransomware Protection (
 
 ### ByFieldsParameterSet (Default)
 ```
-Clear-AzNetAppFilesRansomwareReportSuspects -ResourceGroupName <String> -AccountName <String>
+Clear-AzNetAppFilesRansomwareReportSuspect -ResourceGroupName <String> -AccountName <String>
  -PoolName <String> -VolumeName <String> -Name <String> -Resolution <String> -Extension <String[]> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -22,14 +22,14 @@ Clear-AzNetAppFilesRansomwareReportSuspects -ResourceGroupName <String> -Account
 
 ### ByParentObjectParameterSet
 ```
-Clear-AzNetAppFilesRansomwareReportSuspects -Name <String> -Resolution <String> -Extension <String[]>
+Clear-AzNetAppFilesRansomwareReportSuspect -Name <String> -Resolution <String> -Extension <String[]>
  -VolumeObject <PSNetAppFilesVolume> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Clear-AzNetAppFilesRansomwareReportSuspects -Resolution <String> -Extension <String[]> -ResourceId <String>
+Clear-AzNetAppFilesRansomwareReportSuspect -Resolution <String> -Extension <String[]> -ResourceId <String>
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -48,7 +48,7 @@ This command marks the file extensions ".enc" and ".locked" as false positives i
 
 ### Example 2: Mark suspect file extensions as potential threat
 ```powershell
-Clear-AzNetAppFilesRansomwareReportSuspects -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "current" -Resolution "PotentialThreat" -Extension @(".crypt") -PassThru
+Clear-AzNetAppFilesRansomwareReportSuspect -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "current" -Resolution "PotentialThreat" -Extension @(".crypt") -PassThru
 ```
 
 ```output
@@ -59,7 +59,7 @@ This command marks the file extension ".crypt" as a potential threat in the ARP 
 
 ### Example 3: Clear suspects using a volume object from the pipeline
 ```powershell
-Get-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" | Clear-AzNetAppFilesRansomwareReportSuspects -Name "current" -Resolution "FalsePositive" -Extension @(".enc")
+Get-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" | Clear-AzNetAppFilesRansomwareReportSuspect -Name "current" -Resolution "FalsePositive" -Extension @(".enc")
 ```
 
 This command clears suspects in the ARP report using a pipeline input from Get-AzNetAppFilesVolume.
