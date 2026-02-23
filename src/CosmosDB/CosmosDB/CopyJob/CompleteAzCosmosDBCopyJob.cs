@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet("Complete", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBCopyJob", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Complete, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBCopyJob", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class CompleteAzCosmosDBCopyJob : AzureCosmosDBCmdletBase
     {
         [ResourceGroupCompleter]
