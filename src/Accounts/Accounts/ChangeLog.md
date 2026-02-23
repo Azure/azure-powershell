@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated MSAL to 4.82.1 to fix an issue with ARM endpoint discovery.
 
 ## Version 5.3.2
 * Updated Azure.Core from 1.47.3 to 1.50.0
