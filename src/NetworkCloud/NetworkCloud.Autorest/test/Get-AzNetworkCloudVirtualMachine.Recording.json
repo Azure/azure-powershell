@@ -1,8 +1,8 @@
 {
-  "Get-AzNetworkCloudVirtualMachine+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/virtualMachines?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudVirtualMachine+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/virtualMachines?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/virtualMachines?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/virtualMachines?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -44,10 +44,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudVirtualMachine+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/nc-cli-testing_id-simdev-3323985/providers/Microsoft.NetworkCloud/virtualMachines/psvmtest?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudVirtualMachine+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/nc-cli-testing_id-simdev-3323985/providers/Microsoft.NetworkCloud/virtualMachines/psvmtest?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/nc-cli-testing_id-simdev-3323985/providers/Microsoft.NetworkCloud/virtualMachines/psvmtest?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/nc-cli-testing_id-simdev-3323985/providers/Microsoft.NetworkCloud/virtualMachines/psvmtest?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -89,10 +89,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudVirtualMachine+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/nc-cli-testing_id-simdev-3323985/providers/Microsoft.NetworkCloud/virtualMachines?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudVirtualMachine+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/nc-cli-testing_id-simdev-3323985/providers/Microsoft.NetworkCloud/virtualMachines?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/nc-cli-testing_id-simdev-3323985/providers/Microsoft.NetworkCloud/virtualMachines?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/nc-cli-testing_id-simdev-3323985/providers/Microsoft.NetworkCloud/virtualMachines?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

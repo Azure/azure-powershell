@@ -18,10 +18,11 @@ Describe 'New-AzNetworkCloudKubernetesCluster' {
         {
             $kubernetesClusterConfig = $global:config.AzNetworkCloudKubernetesCluster
             $common = $global:config.common
-            $password = ConvertTo-SecureString "********" -AsPlainText -Force
-            $sshPublicKey = @{
-                KeyData = $kubernetesClusterConfig.sshPublicKey
+            $password = New-Object System.Security.SecureString
+            "********".ToCharArray() | ForEach-Object {
+                $password.AppendChar($_)
             }
+            $password.MakeReadOnly()
 
             $agentPoolConfiguration = New-AzNetworkCloudInitialAgentPoolConfigurationObject `
                 -Count $kubernetesClusterConfig.nodeCount `
