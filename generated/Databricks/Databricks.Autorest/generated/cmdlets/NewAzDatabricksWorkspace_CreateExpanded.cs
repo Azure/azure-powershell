@@ -14,10 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDatabricksWorkspace_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspace))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Creates a new workspace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}", ApiVersion = "2024-05-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}", ApiVersion = "2026-01-01")]
     public partial class NewAzDatabricksWorkspace_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener
     {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Information about workspace.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.Workspace();
+        private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspace _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.Workspace();
 
         /// <summary>The resource ID of Azure Databricks Access Connector Resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource ID of Azure Databricks Access Connector Resource.")]
@@ -86,6 +86,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string AmlWorkspaceId { get => _parametersBody.AmlWorkspaceIdValue ?? null; set => _parametersBody.AmlWorkspaceIdValue = value; }
 
+        /// <summary>The type of variable that this is</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of variable that this is")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of variable that this is",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType AmlWorkspaceIdType { get => _parametersBody.AmlWorkspaceIdType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType)""); set => _parametersBody.AmlWorkspaceIdType = value; }
+
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Runtime)]
@@ -100,8 +112,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         ReadOnly = false,
         Description = @"The workspace provider authorizations.",
         SerializedName = @"authorizations",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[] Authorization { get => _parametersBody.Authorization ?? null /* arrayOf */; set => _parametersBody.Authorization = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspaceProviderAuthorization) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspaceProviderAuthorization[] Authorization { get => _parametersBody.Authorization ?? null /* arrayOf */; set => _parametersBody.Authorization = value; }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
@@ -132,9 +144,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         ReadOnly = false,
         Description = @"Compliance standards associated with the workspace.",
         SerializedName = @"complianceStandards",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[] ComplianceSecurityProfileComplianceStandard { get => _parametersBody.ComplianceSecurityProfileComplianceStandard ?? null /* arrayOf */; set => _parametersBody.ComplianceSecurityProfileComplianceStandard = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] ComplianceSecurityProfileComplianceStandard { get => _parametersBody.ComplianceSecurityProfileComplianceStandard ?? null /* arrayOf */; set => _parametersBody.ComplianceSecurityProfileComplianceStandard = value; }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
@@ -147,6 +158,56 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue))]
         public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue ComplianceSecurityProfileValue { get => _parametersBody.ComplianceSecurityProfileValue ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue)""); set => _parametersBody.ComplianceSecurityProfileValue = value; }
+
+        /// <summary>
+        /// The workspace compute mode. Required on create, cannot be changed. Possible values include: 'Serverless', 'Hybrid'
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The workspace compute mode. Required on create, cannot be changed. Possible values include: 'Serverless', 'Hybrid'")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The workspace compute mode. Required on create, cannot be changed. Possible values include: 'Serverless', 'Hybrid'",
+        SerializedName = @"computeMode",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComputeMode) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComputeMode))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComputeMode ComputeMode { get => _parametersBody.ComputeMode; set => _parametersBody.ComputeMode = value; }
+
+        /// <summary>The type of variable that this is</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of variable that this is")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of variable that this is",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType CustomPrivateSubnetNameType { get => _parametersBody.CustomPrivateSubnetNameType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType)""); set => _parametersBody.CustomPrivateSubnetNameType = value; }
+
+        /// <summary>The type of variable that this is</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of variable that this is")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of variable that this is",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType CustomPublicSubnetNameType { get => _parametersBody.CustomPublicSubnetNameType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType)""); set => _parametersBody.CustomPublicSubnetNameType = value; }
+
+        /// <summary>The type of variable that this is</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of variable that this is")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of variable that this is",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType CustomVirtualNetworkIdType { get => _parametersBody.CustomVirtualNetworkIdType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType)""); set => _parametersBody.CustomVirtualNetworkIdType = value; }
 
         /// <summary>
         /// Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used.
@@ -185,13 +246,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
-        /// <summary>Gets or Sets Default Storage Firewall configuration information</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets or Sets Default Storage Firewall configuration information")]
+        /// <summary>
+        /// Gets or Sets Default Storage Firewall configuration information. Not allowed in Serverless ComputeMode workspace.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets or Sets Default Storage Firewall configuration information. Not allowed in Serverless ComputeMode workspace.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Gets or Sets Default Storage Firewall configuration information",
+        Description = @"Gets or Sets Default Storage Firewall configuration information. Not allowed in Serverless ComputeMode workspace.",
         SerializedName = @"defaultStorageFirewall",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall))]
@@ -207,6 +270,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter EnableNoPublicIP { get => _parametersBody.EnableNoPublicIP ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.EnableNoPublicIP = value; }
+
+        /// <summary>The type of variable that this is</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of variable that this is")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of variable that this is",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType EnableNoPublicIPType { get => _parametersBody.EnableNoPublicIPType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType)""); set => _parametersBody.EnableNoPublicIPType = value; }
 
         /// <summary>The name of KeyVault key.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of KeyVault key.")]
@@ -255,6 +330,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string EncryptionKeyVersion { get => _parametersBody.EncryptionKeyVersion ?? null; set => _parametersBody.EncryptionKeyVersion = value; }
 
+        /// <summary>The type of variable that this is</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of variable that this is")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of variable that this is",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType EncryptionType { get => _parametersBody.EncryptionType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType)""); set => _parametersBody.EncryptionType = value; }
+
         /// <summary>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
@@ -293,6 +380,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string LoadBalancerBackendPoolName { get => _parametersBody.LoadBalancerBackendPoolNameValue ?? null; set => _parametersBody.LoadBalancerBackendPoolNameValue = value; }
 
+        /// <summary>The type of variable that this is</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of variable that this is")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of variable that this is",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType LoadBalancerBackendPoolNameType { get => _parametersBody.LoadBalancerBackendPoolNameType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType)""); set => _parametersBody.LoadBalancerBackendPoolNameType = value; }
+
         /// <summary>The value which should be used for this field.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value which should be used for this field.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
@@ -303,6 +402,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(string) })]
         public string LoadBalancerId { get => _parametersBody.LoadBalancerIdValue ?? null; set => _parametersBody.LoadBalancerIdValue = value; }
+
+        /// <summary>The type of variable that this is</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of variable that this is")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of variable that this is",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType LoadBalancerIdType { get => _parametersBody.LoadBalancerIdType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType)""); set => _parametersBody.LoadBalancerIdType = value; }
 
         /// <summary>The geo-location where the resource lives</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The geo-location where the resource lives")]
@@ -316,14 +427,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         public string Location { get => _parametersBody.Location ?? null; set => _parametersBody.Location = value; }
 
         /// <summary>
-        /// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault
+        /// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault. Not allowed in Serverless
+        /// ComputeMode workspace.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault. Not allowed in Serverless ComputeMode workspace.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault",
+        Description = @"The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault. Not allowed in Serverless ComputeMode workspace.",
         SerializedName = @"keySource",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource))]
@@ -375,13 +487,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter ManagedDiskRotationToLatestKeyVersionEnabled { get => _parametersBody.ManagedDiskRotationToLatestKeyVersionEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.ManagedDiskRotationToLatestKeyVersionEnabled = value; }
 
-        /// <summary>The managed resource group Id.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The managed resource group Id.")]
+        /// <summary>
+        /// The managed resource group Id. Required in Hybrid ComputeMode workspace. Not allowed in Serverless ComputeMode workspace.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The managed resource group Id. Required in Hybrid ComputeMode workspace. Not allowed in Serverless ComputeMode workspace.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
-        Description = @"The managed resource group Id.",
+        Description = @"The managed resource group Id. Required in Hybrid ComputeMode workspace. Not allowed in Serverless ComputeMode workspace.",
         SerializedName = @"managedResourceGroupId",
         PossibleTypes = new [] { typeof(string) })]
         public string ManagedResourceGroupId { get => _parametersBody.ManagedResourceGroupId ?? null; set => _parametersBody.ManagedResourceGroupId = value; }
@@ -467,6 +581,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string NatGatewayName { get => _parametersBody.NatGatewayNameValue ?? null; set => _parametersBody.NatGatewayNameValue = value; }
 
+        /// <summary>The type of variable that this is</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of variable that this is")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of variable that this is",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType NatGatewayNameType { get => _parametersBody.NatGatewayNameType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType)""); set => _parametersBody.NatGatewayNameType = value; }
+
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
         /// asynchronously.
@@ -490,6 +616,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter PrepareEncryption { get => _parametersBody.PrepareEncryption ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.PrepareEncryption = value; }
+
+        /// <summary>The type of variable that this is</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of variable that this is")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of variable that this is",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType PrepareEncryptionType { get => _parametersBody.PrepareEncryptionType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType)""); set => _parametersBody.PrepareEncryptionType = value; }
 
         /// <summary>The value which should be used for this field.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value which should be used for this field.")]
@@ -529,15 +667,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string PublicIPName { get => _parametersBody.PublicIPNameValue ?? null; set => _parametersBody.PublicIPNameValue = value; }
 
-        /// <summary>
-        /// The network access type for accessing workspace. Set value to disabled to access workspace only via private link.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The network access type for accessing workspace. Set value to disabled to access workspace only via private link.")]
+        /// <summary>The type of variable that this is</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of variable that this is")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The network access type for accessing workspace. Set value to disabled to access workspace only via private link.",
+        Description = @"The type of variable that this is",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType PublicIPNameType { get => _parametersBody.PublicIPNameType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType)""); set => _parametersBody.PublicIPNameType = value; }
+
+        /// <summary>
+        /// The network access type for accessing workspace. Set value to disabled to access workspace only via private link. Used
+        /// to configure front-end only private link for Serverless ComputeMode workspace.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The network access type for accessing workspace. Set value to disabled to access workspace only via private link. Used to configure front-end only private link for Serverless ComputeMode workspace.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The network access type for accessing workspace. Set value to disabled to access workspace only via private link. Used to configure front-end only private link for Serverless ComputeMode workspace.",
         SerializedName = @"publicNetworkAccess",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess))]
@@ -565,16 +716,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter RequireInfrastructureEncryption { get => _parametersBody.RequireInfrastructureEncryption ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.RequireInfrastructureEncryption = value; }
 
-        /// <summary>
-        /// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint.
-        /// Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.")]
+        /// <summary>The type of variable that this is</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of variable that this is")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.",
+        Description = @"The type of variable that this is",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType RequireInfrastructureEncryptionType { get => _parametersBody.RequireInfrastructureEncryptionType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType)""); set => _parametersBody.RequireInfrastructureEncryptionType = value; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint.
+        /// Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only. Not
+        /// allowed in Serverless ComputeMode workspace.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only. Not allowed in Serverless ComputeMode workspace.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only. Not allowed in Serverless ComputeMode workspace.",
         SerializedName = @"requiredNsgRules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules))]
@@ -627,6 +791,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string StorageAccountName { get => _parametersBody.StorageAccountNameValue ?? null; set => _parametersBody.StorageAccountNameValue = value; }
 
+        /// <summary>The type of variable that this is</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of variable that this is")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of variable that this is",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType StorageAccountNameType { get => _parametersBody.StorageAccountNameType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType)""); set => _parametersBody.StorageAccountNameType = value; }
+
         /// <summary>The value which should be used for this field.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value which should be used for this field.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
@@ -637,6 +813,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(string) })]
         public string StorageAccountSku { get => _parametersBody.StorageAccountSkuNameValue ?? null; set => _parametersBody.StorageAccountSkuNameValue = value; }
+
+        /// <summary>The type of variable that this is</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of variable that this is")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of variable that this is",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType StorageAccountSkuNameType { get => _parametersBody.StorageAccountSkuNameType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType)""); set => _parametersBody.StorageAccountSkuNameType = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -701,6 +889,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string VnetAddressPrefix { get => _parametersBody.VnetAddressPrefixValue ?? null; set => _parametersBody.VnetAddressPrefixValue = value; }
 
+        /// <summary>The type of variable that this is</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of variable that this is")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of variable that this is",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType VnetAddressPrefixType { get => _parametersBody.VnetAddressPrefixType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType)""); set => _parametersBody.VnetAddressPrefixType = value; }
+
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
@@ -718,12 +918,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspace">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspace</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspace> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -1025,12 +1225,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspace">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspace</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspace> response)
         {
             using( NoSynchronizationContext )
             {
@@ -1042,7 +1242,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspace
                 WriteObject((await response));
             }
         }

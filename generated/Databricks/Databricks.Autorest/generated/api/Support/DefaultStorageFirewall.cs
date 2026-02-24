@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
 {
 
-    /// <summary>Gets or Sets Default Storage Firewall configuration information</summary>
+    /// <summary>
+    /// Gets or Sets Default Storage Firewall configuration information. Not allowed in Serverless ComputeMode workspace.
+    /// </summary>
     public partial struct DefaultStorageFirewall :
         System.IEquatable<DefaultStorageFirewall>
     {

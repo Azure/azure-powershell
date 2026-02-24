@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
 {
 
-    /// <summary>Provisioning status of the workspace.</summary>
+    /// <summary>The workspace's custom parameters.</summary>
     public partial class CustomParameterTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {
