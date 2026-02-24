@@ -42,6 +42,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// <summary>Internal Acessors for SecretArchiveReferenceKeyVaultId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretRotationStatusInternal.SecretArchiveReferenceKeyVaultId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal)SecretArchiveReference).KeyVaultId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal)SecretArchiveReference).KeyVaultId = value ?? null; }
 
+        /// <summary>Internal Acessors for SecretArchiveReferenceKeyVaultUri</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretRotationStatusInternal.SecretArchiveReferenceKeyVaultUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal)SecretArchiveReference).KeyVaultUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal)SecretArchiveReference).KeyVaultUri = value ?? null; }
+
         /// <summary>Internal Acessors for SecretArchiveReferenceSecretName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretRotationStatusInternal.SecretArchiveReferenceSecretName { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal)SecretArchiveReference).SecretName; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal)SecretArchiveReference).SecretName = value ?? null; }
 
@@ -68,6 +71,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// <summary>The resource ID of the key vault containing the secret.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public string SecretArchiveReferenceKeyVaultId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal)SecretArchiveReference).KeyVaultId; }
+
+        /// <summary>The URI of the key containing the secret.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string SecretArchiveReferenceKeyVaultUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReferenceInternal)SecretArchiveReference).KeyVaultUri; }
 
         /// <summary>The name of the secret in the key vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
@@ -138,6 +145,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         SerializedName = @"keyVaultId",
         PossibleTypes = new [] { typeof(string) })]
         string SecretArchiveReferenceKeyVaultId { get;  }
+        /// <summary>The URI of the key containing the secret.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The URI of the key containing the secret.",
+        SerializedName = @"keyVaultUri",
+        PossibleTypes = new [] { typeof(string) })]
+        string SecretArchiveReferenceKeyVaultUri { get;  }
         /// <summary>The name of the secret in the key vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -187,6 +205,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISecretArchiveReference SecretArchiveReference { get; set; }
         /// <summary>The resource ID of the key vault containing the secret.</summary>
         string SecretArchiveReferenceKeyVaultId { get; set; }
+        /// <summary>The URI of the key containing the secret.</summary>
+        string SecretArchiveReferenceKeyVaultUri { get; set; }
         /// <summary>The name of the secret in the key vault.</summary>
         string SecretArchiveReferenceSecretName { get; set; }
         /// <summary>The version of the secret in the key vault.</summary>

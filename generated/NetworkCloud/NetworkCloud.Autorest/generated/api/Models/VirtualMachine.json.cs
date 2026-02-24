@@ -86,6 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             }
             __trackedResource?.ToJson(container, serializationMode);
             AddIf( null != this._extendedLocation ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) this._extendedLocation.ToJson(null,serializationMode) : null, "extendedLocation" ,container.Add );
+            AddIf( null != this._identity ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) this._identity.ToJson(null,serializationMode) : null, "identity" ,container.Add );
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeRead))
             {
@@ -109,6 +110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             }
             __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.TrackedResource(json);
             {_extendedLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject>("extendedLocation"), out var __jsonExtendedLocation) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ExtendedLocation.FromJson(__jsonExtendedLocation) : _extendedLocation;}
+            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ManagedServiceIdentity.FromJson(__jsonIdentity) : _identity;}
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachineProperties.FromJson(__jsonProperties) : _property;}
             {_etag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("etag"), out var __jsonEtag) ? (string)__jsonEtag : (string)_etag;}
             AfterFromJson(json);

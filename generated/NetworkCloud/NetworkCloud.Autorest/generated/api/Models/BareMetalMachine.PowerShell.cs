@@ -152,6 +152,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).BmcCredentials = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IAdministrativeCredentials) content.GetValueForProperty("BmcCredentials",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).BmcCredentials, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.AdministrativeCredentialsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("CaCertificate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).CaCertificate = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfo) content.GetValueForProperty("CaCertificate",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).CaCertificate, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CertificateInfoTypeConverter.ConvertFrom);
+            }
             if (content.Contains("HardwareValidationStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).HardwareValidationStatus = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IHardwareValidationStatus) content.GetValueForProperty("HardwareValidationStatus",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).HardwareValidationStatus, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.HardwareValidationStatusTypeConverter.ConvertFrom);
@@ -159,6 +163,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("RuntimeProtectionStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).RuntimeProtectionStatus = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IRuntimeProtectionStatus) content.GetValueForProperty("RuntimeProtectionStatus",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).RuntimeProtectionStatus, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.RuntimeProtectionStatusTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ActionState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).ActionState = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState>) content.GetValueForProperty("ActionState",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).ActionState, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ActionStateTypeConverter.ConvertFrom));
             }
             if (content.Contains("AssociatedResourceId"))
             {
@@ -291,6 +299,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("BmcCredentialsUsername"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).BmcCredentialsUsername = (string) content.GetValueForProperty("BmcCredentialsUsername",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).BmcCredentialsUsername, global::System.Convert.ToString);
+            }
+            if (content.Contains("CaCertificateHash"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).CaCertificateHash = (string) content.GetValueForProperty("CaCertificateHash",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).CaCertificateHash, global::System.Convert.ToString);
+            }
+            if (content.Contains("CaCertificateValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).CaCertificateValue = (string) content.GetValueForProperty("CaCertificateValue",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).CaCertificateValue, global::System.Convert.ToString);
             }
             if (content.Contains("HardwareInventoryAdditionalHostInformation"))
             {
@@ -413,6 +429,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).BmcCredentials = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IAdministrativeCredentials) content.GetValueForProperty("BmcCredentials",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).BmcCredentials, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.AdministrativeCredentialsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("CaCertificate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).CaCertificate = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfo) content.GetValueForProperty("CaCertificate",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).CaCertificate, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CertificateInfoTypeConverter.ConvertFrom);
+            }
             if (content.Contains("HardwareValidationStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).HardwareValidationStatus = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IHardwareValidationStatus) content.GetValueForProperty("HardwareValidationStatus",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).HardwareValidationStatus, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.HardwareValidationStatusTypeConverter.ConvertFrom);
@@ -420,6 +440,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("RuntimeProtectionStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).RuntimeProtectionStatus = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IRuntimeProtectionStatus) content.GetValueForProperty("RuntimeProtectionStatus",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).RuntimeProtectionStatus, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.RuntimeProtectionStatusTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ActionState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).ActionState = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState>) content.GetValueForProperty("ActionState",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).ActionState, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ActionStateTypeConverter.ConvertFrom));
             }
             if (content.Contains("AssociatedResourceId"))
             {
@@ -552,6 +576,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("BmcCredentialsUsername"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).BmcCredentialsUsername = (string) content.GetValueForProperty("BmcCredentialsUsername",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).BmcCredentialsUsername, global::System.Convert.ToString);
+            }
+            if (content.Contains("CaCertificateHash"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).CaCertificateHash = (string) content.GetValueForProperty("CaCertificateHash",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).CaCertificateHash, global::System.Convert.ToString);
+            }
+            if (content.Contains("CaCertificateValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).CaCertificateValue = (string) content.GetValueForProperty("CaCertificateValue",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineInternal)this).CaCertificateValue, global::System.Convert.ToString);
             }
             if (content.Contains("HardwareInventoryAdditionalHostInformation"))
             {

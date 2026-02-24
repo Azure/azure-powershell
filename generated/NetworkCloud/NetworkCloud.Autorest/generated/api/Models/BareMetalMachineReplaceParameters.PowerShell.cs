@@ -94,9 +94,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineReplaceParametersInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineReplaceParametersInternal)this).MachineName, global::System.Convert.ToString);
             }
+            if (content.Contains("SafeguardMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineReplaceParametersInternal)this).SafeguardMode = (string) content.GetValueForProperty("SafeguardMode",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineReplaceParametersInternal)this).SafeguardMode, global::System.Convert.ToString);
+            }
             if (content.Contains("SerialNumber"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineReplaceParametersInternal)this).SerialNumber = (string) content.GetValueForProperty("SerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineReplaceParametersInternal)this).SerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("StoragePolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineReplaceParametersInternal)this).StoragePolicy = (string) content.GetValueForProperty("StoragePolicy",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineReplaceParametersInternal)this).StoragePolicy, global::System.Convert.ToString);
             }
             if (content.Contains("BmcCredentialsPassword"))
             {
@@ -139,9 +147,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineReplaceParametersInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineReplaceParametersInternal)this).MachineName, global::System.Convert.ToString);
             }
+            if (content.Contains("SafeguardMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineReplaceParametersInternal)this).SafeguardMode = (string) content.GetValueForProperty("SafeguardMode",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineReplaceParametersInternal)this).SafeguardMode, global::System.Convert.ToString);
+            }
             if (content.Contains("SerialNumber"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineReplaceParametersInternal)this).SerialNumber = (string) content.GetValueForProperty("SerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineReplaceParametersInternal)this).SerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("StoragePolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineReplaceParametersInternal)this).StoragePolicy = (string) content.GetValueForProperty("StoragePolicy",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineReplaceParametersInternal)this).StoragePolicy, global::System.Convert.ToString);
             }
             if (content.Contains("BmcCredentialsPassword"))
             {

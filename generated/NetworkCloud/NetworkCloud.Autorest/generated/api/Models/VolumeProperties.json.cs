@@ -86,6 +86,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeRead))
             {
+                AddIf( null != this._allocatedSizeMiB ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNumber((long)this._allocatedSizeMiB) : null, "allocatedSizeMiB" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeRead))
+            {
                 if (null != this._attachedTo)
                 {
                     var __w = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.XNodeArray();
@@ -112,10 +116,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 AddIf( null != (((object)this._serialNumber)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString(this._serialNumber.ToString()) : null, "serialNumber" ,container.Add );
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeCreate))
-            {
-                AddIf( null != this._sizeMiB ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNumber((long)this._sizeMiB) : null, "sizeMiB" ,container.Add );
-            }
+            AddIf( (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNumber(this._sizeMiB), "sizeMiB" ,container.Add );
+            AddIf( null != (((object)this._storageApplianceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString(this._storageApplianceId.ToString()) : null, "storageApplianceId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -132,12 +134,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 return;
             }
+            {_allocatedSizeMiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNumber>("allocatedSizeMiB"), out var __jsonAllocatedSizeMiB) ? (long?)__jsonAllocatedSizeMiB : _allocatedSizeMiB;}
             {_attachedTo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray>("attachedTo"), out var __jsonAttachedTo) ? If( __jsonAttachedTo as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _attachedTo;}
             {_detailedStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("detailedStatus"), out var __jsonDetailedStatus) ? (string)__jsonDetailedStatus : (string)_detailedStatus;}
             {_detailedStatusMessage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("detailedStatusMessage"), out var __jsonDetailedStatusMessage) ? (string)__jsonDetailedStatusMessage : (string)_detailedStatusMessage;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_serialNumber = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("serialNumber"), out var __jsonSerialNumber) ? (string)__jsonSerialNumber : (string)_serialNumber;}
-            {_sizeMiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNumber>("sizeMiB"), out var __jsonSizeMiB) ? (long?)__jsonSizeMiB : _sizeMiB;}
+            {_sizeMiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNumber>("sizeMiB"), out var __jsonSizeMiB) ? (long)__jsonSizeMiB : _sizeMiB;}
+            {_storageApplianceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("storageApplianceId"), out var __jsonStorageApplianceId) ? (string)__jsonStorageApplianceId : (string)_storageApplianceId;}
             AfterFromJson(json);
         }
     }

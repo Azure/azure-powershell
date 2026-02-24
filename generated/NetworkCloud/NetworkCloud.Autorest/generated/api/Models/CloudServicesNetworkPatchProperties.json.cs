@@ -68,6 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 return;
             }
+            {_storageOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject>("storageOptions"), out var __jsonStorageOptions) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetworkStorageOptionsPatch.FromJson(__jsonStorageOptions) : _storageOption;}
             {_additionalEgressEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray>("additionalEgressEndpoints"), out var __jsonAdditionalEgressEndpoints) ? If( __jsonAdditionalEgressEndpoints as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IEgressEndpoint>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IEgressEndpoint) (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.EgressEndpoint.FromJson(__u) )) ))() : null : _additionalEgressEndpoint;}
             {_enableDefaultEgressEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("enableDefaultEgressEndpoints"), out var __jsonEnableDefaultEgressEndpoints) ? (string)__jsonEnableDefaultEgressEndpoints : (string)_enableDefaultEgressEndpoint;}
             AfterFromJson(json);
@@ -105,6 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 return container;
             }
+            AddIf( null != this._storageOption ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) this._storageOption.ToJson(null,serializationMode) : null, "storageOptions" ,container.Add );
             if (null != this._additionalEgressEndpoint)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.XNodeArray();

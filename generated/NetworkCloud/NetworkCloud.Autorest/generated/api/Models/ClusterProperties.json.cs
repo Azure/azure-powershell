@@ -79,22 +79,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {_secretArchiveSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject>("secretArchiveSettings"), out var __jsonSecretArchiveSettings) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.SecretArchiveSettings.FromJson(__jsonSecretArchiveSettings) : _secretArchiveSetting;}
             {_updateStrategy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject>("updateStrategy"), out var __jsonUpdateStrategy) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ClusterUpdateStrategy.FromJson(__jsonUpdateStrategy) : _updateStrategy;}
             {_vulnerabilityScanningSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject>("vulnerabilityScanningSettings"), out var __jsonVulnerabilityScanningSettings) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VulnerabilityScanningSettings.FromJson(__jsonVulnerabilityScanningSettings) : _vulnerabilityScanningSetting;}
+            {_actionState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray>("actionStates"), out var __jsonActionStates) ? If( __jsonActionStates as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState) (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ActionState.FromJson(__u) )) ))() : null : _actionState;}
             {_analyticsWorkspaceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("analyticsWorkspaceId"), out var __jsonAnalyticsWorkspaceId) ? (string)__jsonAnalyticsWorkspaceId : (string)_analyticsWorkspaceId;}
-            {_availableUpgradeVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray>("availableUpgradeVersions"), out var __jsonAvailableUpgradeVersions) ? If( __jsonAvailableUpgradeVersions as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterAvailableUpgradeVersion>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterAvailableUpgradeVersion) (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ClusterAvailableUpgradeVersion.FromJson(__u) )) ))() : null : _availableUpgradeVersion;}
+            {_availableUpgradeVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray>("availableUpgradeVersions"), out var __jsonAvailableUpgradeVersions) ? If( __jsonAvailableUpgradeVersions as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterAvailableUpgradeVersion>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterAvailableUpgradeVersion) (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ClusterAvailableUpgradeVersion.FromJson(__p) )) ))() : null : _availableUpgradeVersion;}
             {_clusterConnectionStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("clusterConnectionStatus"), out var __jsonClusterConnectionStatus) ? (string)__jsonClusterConnectionStatus : (string)_clusterConnectionStatus;}
             {_clusterLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("clusterLocation"), out var __jsonClusterLocation) ? (string)__jsonClusterLocation : (string)_clusterLocation;}
             {_clusterManagerConnectionStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("clusterManagerConnectionStatus"), out var __jsonClusterManagerConnectionStatus) ? (string)__jsonClusterManagerConnectionStatus : (string)_clusterManagerConnectionStatus;}
             {_clusterManagerId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("clusterManagerId"), out var __jsonClusterManagerId) ? (string)__jsonClusterManagerId : (string)_clusterManagerId;}
             {_clusterType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("clusterType"), out var __jsonClusterType) ? (string)__jsonClusterType : (string)_clusterType;}
             {_clusterVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("clusterVersion"), out var __jsonClusterVersion) ? (string)__jsonClusterVersion : (string)_clusterVersion;}
-            {_computeRackDefinition = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray>("computeRackDefinitions"), out var __jsonComputeRackDefinitions) ? If( __jsonComputeRackDefinitions as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IRackDefinition>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IRackDefinition) (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.RackDefinition.FromJson(__p) )) ))() : null : _computeRackDefinition;}
+            {_computeRackDefinition = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray>("computeRackDefinitions"), out var __jsonComputeRackDefinitions) ? If( __jsonComputeRackDefinitions as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IRackDefinition>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IRackDefinition) (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.RackDefinition.FromJson(__k) )) ))() : null : _computeRackDefinition;}
             {_detailedStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("detailedStatus"), out var __jsonDetailedStatus) ? (string)__jsonDetailedStatus : (string)_detailedStatus;}
             {_detailedStatusMessage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("detailedStatusMessage"), out var __jsonDetailedStatusMessage) ? (string)__jsonDetailedStatusMessage : (string)_detailedStatusMessage;}
             {_manualActionCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNumber>("manualActionCount"), out var __jsonManualActionCount) ? (long?)__jsonManualActionCount : _manualActionCount;}
             {_networkFabricId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("networkFabricId"), out var __jsonNetworkFabricId) ? (string)__jsonNetworkFabricId : (string)_networkFabricId;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_supportExpiryDate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("supportExpiryDate"), out var __jsonSupportExpiryDate) ? (string)__jsonSupportExpiryDate : (string)_supportExpiryDate;}
-            {_workloadResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray>("workloadResourceIds"), out var __jsonWorkloadResourceIds) ? If( __jsonWorkloadResourceIds as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : _workloadResourceId;}
+            {_workloadResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray>("workloadResourceIds"), out var __jsonWorkloadResourceIds) ? If( __jsonWorkloadResourceIds as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(string) (__f is Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString __e ? (string)(__e.ToString()) : null)) ))() : null : _workloadResourceId;}
             AfterFromJson(json);
         }
 
@@ -152,6 +153,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             AddIf( null != this._secretArchiveSetting ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) this._secretArchiveSetting.ToJson(null,serializationMode) : null, "secretArchiveSettings" ,container.Add );
             AddIf( null != this._updateStrategy ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) this._updateStrategy.ToJson(null,serializationMode) : null, "updateStrategy" ,container.Add );
             AddIf( null != this._vulnerabilityScanningSetting ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) this._vulnerabilityScanningSetting.ToJson(null,serializationMode) : null, "vulnerabilityScanningSettings" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeRead))
+            {
+                if (null != this._actionState)
+                {
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._actionState )
+                    {
+                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    }
+                    container.Add("actionStates",__w);
+                }
+            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeCreate))
             {
                 AddIf( null != (((object)this._analyticsWorkspaceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString(this._analyticsWorkspaceId.ToString()) : null, "analyticsWorkspaceId" ,container.Add );
@@ -160,12 +173,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 if (null != this._availableUpgradeVersion)
                 {
-                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.XNodeArray();
-                    foreach( var __x in this._availableUpgradeVersion )
+                    var __r = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.XNodeArray();
+                    foreach( var __s in this._availableUpgradeVersion )
                     {
-                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                        AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
                     }
-                    container.Add("availableUpgradeVersions",__w);
+                    container.Add("availableUpgradeVersions",__r);
                 }
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeRead))
@@ -191,12 +204,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             }
             if (null != this._computeRackDefinition)
             {
-                var __r = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.XNodeArray();
-                foreach( var __s in this._computeRackDefinition )
+                var __m = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.XNodeArray();
+                foreach( var __n in this._computeRackDefinition )
                 {
-                    AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
+                    AddIf(__n?.ToJson(null, serializationMode) ,__m.Add);
                 }
-                container.Add("computeRackDefinitions",__r);
+                container.Add("computeRackDefinitions",__m);
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeRead))
             {
@@ -226,12 +239,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 if (null != this._workloadResourceId)
                 {
-                    var __m = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.XNodeArray();
-                    foreach( var __n in this._workloadResourceId )
+                    var __h = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.XNodeArray();
+                    foreach( var __i in this._workloadResourceId )
                     {
-                        AddIf(null != (((object)__n)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString(__n.ToString()) : null ,__m.Add);
+                        AddIf(null != (((object)__i)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString(__i.ToString()) : null ,__h.Add);
                     }
-                    container.Add("workloadResourceIds",__m);
+                    container.Add("workloadResourceIds",__h);
                 }
             }
             AfterToJson(ref container);
