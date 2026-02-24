@@ -110,6 +110,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySetPropertiesInternal)this).PrivilegeLevel = (string) content.GetValueForProperty("PrivilegeLevel",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySetPropertiesInternal)this).PrivilegeLevel, global::System.Convert.ToString);
             }
+            if (content.Contains("PrivilegeLevelName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySetPropertiesInternal)this).PrivilegeLevelName = (string) content.GetValueForProperty("PrivilegeLevelName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySetPropertiesInternal)this).PrivilegeLevelName, global::System.Convert.ToString);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySetPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySetPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -170,6 +174,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("PrivilegeLevel"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySetPropertiesInternal)this).PrivilegeLevel = (string) content.GetValueForProperty("PrivilegeLevel",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySetPropertiesInternal)this).PrivilegeLevel, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivilegeLevelName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySetPropertiesInternal)this).PrivilegeLevelName = (string) content.GetValueForProperty("PrivilegeLevelName",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySetPropertiesInternal)this).PrivilegeLevelName, global::System.Convert.ToString);
             }
             if (content.Contains("ProvisioningState"))
             {

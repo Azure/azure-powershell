@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolume))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"create a new volume or create the properties of the existing one.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes/{volumeName}", ApiVersion = "2025-02-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes/{volumeName}", ApiVersion = "2025-09-01")]
     public partial class NewAzNetworkCloudVolume_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IContext
@@ -222,16 +222,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>The size of the allocation for this volume in Mebibytes.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The size of the allocation for this volume in Mebibytes.")]
+        /// <summary>The requested storage allocation for the volume in Mebibytes.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The requested storage allocation for the volume in Mebibytes.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The size of the allocation for this volume in Mebibytes.",
+        Description = @"The requested storage allocation for the volume in Mebibytes.",
         SerializedName = @"sizeMiB",
         PossibleTypes = new [] { typeof(long) })]
-        public long SizeMiB { get => _volumeParametersBody.SizeMiB ?? default(long); set => _volumeParametersBody.SizeMiB = value; }
+        public long SizeMiB { get => _volumeParametersBody.SizeMiB; set => _volumeParametersBody.SizeMiB = value; }
+
+        /// <summary>The resource ID of the storage appliance that hosts the volume.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource ID of the storage appliance that hosts the volume.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The resource ID of the storage appliance that hosts the volume.",
+        SerializedName = @"storageApplianceId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string StorageApplianceId { get => _volumeParametersBody.StorageApplianceId ?? null; set => _volumeParametersBody.StorageApplianceId = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;

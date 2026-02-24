@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).AdministratorCredentials = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IAdministrativeCredentials) content.GetValueForProperty("AdministratorCredentials",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).AdministratorCredentials, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.AdministrativeCredentialsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("CaCertificate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).CaCertificate = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfo) content.GetValueForProperty("CaCertificate",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).CaCertificate, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CertificateInfoTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Capacity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).Capacity = (long?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).Capacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
@@ -188,6 +192,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("AdministratorCredentialsUsername"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).AdministratorCredentialsUsername = (string) content.GetValueForProperty("AdministratorCredentialsUsername",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).AdministratorCredentialsUsername, global::System.Convert.ToString);
+            }
+            if (content.Contains("CaCertificateHash"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).CaCertificateHash = (string) content.GetValueForProperty("CaCertificateHash",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).CaCertificateHash, global::System.Convert.ToString);
+            }
+            if (content.Contains("CaCertificateValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).CaCertificateValue = (string) content.GetValueForProperty("CaCertificateValue",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).CaCertificateValue, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -210,6 +222,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).AdministratorCredentials = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IAdministrativeCredentials) content.GetValueForProperty("AdministratorCredentials",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).AdministratorCredentials, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.AdministrativeCredentialsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("CaCertificate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).CaCertificate = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICertificateInfo) content.GetValueForProperty("CaCertificate",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).CaCertificate, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CertificateInfoTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Capacity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).Capacity = (long?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).Capacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
@@ -285,6 +301,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("AdministratorCredentialsUsername"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).AdministratorCredentialsUsername = (string) content.GetValueForProperty("AdministratorCredentialsUsername",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).AdministratorCredentialsUsername, global::System.Convert.ToString);
+            }
+            if (content.Contains("CaCertificateHash"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).CaCertificateHash = (string) content.GetValueForProperty("CaCertificateHash",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).CaCertificateHash, global::System.Convert.ToString);
+            }
+            if (content.Contains("CaCertificateValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).CaCertificateValue = (string) content.GetValueForProperty("CaCertificateValue",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliancePropertiesInternal)this).CaCertificateValue, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
