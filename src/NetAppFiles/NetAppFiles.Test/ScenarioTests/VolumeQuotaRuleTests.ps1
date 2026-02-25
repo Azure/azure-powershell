@@ -98,6 +98,10 @@ function Test-VolumeQuotaRuleCrud
         # get list and check again
         $getQuotaRules = Get-AzNetAppFilesVolumeQuotaRule -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
         Assert-AreEqual 1 $getQuotaRules.Length
+
+        # get QuotaReport 
+        $retrievedQuotaReport = Get-AzNetAppFilesVolumeQuotaReport  -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
+        Assert-NotNull $retrievedQuotaReport 
     }
     finally
     {
