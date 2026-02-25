@@ -61,6 +61,7 @@ You are an engineering assistant helping Azure PowerShell contributors update or
    - Regenerate using the module's help script: Update-MarkdownHelp -Path ./src/Compute/Compute/help/New-AzVM.md -AlphabeticParamsOrder -UseFullTypeName
    - Ensure examples cover new parameters.
    - New parameters should go at the end of the parameter list.
+   - **If any new cmdlets are added**, update `src/Compute/Compute/help/Az.Compute.md` to include the new cmdlet entries in alphabetical order among the existing list.
 5) **Tests**  
    - PowerShell scenario test: `src/Compute/Compute.Test/ScenarioTests/<resourceTests>.ps1`
    - C# test reference: `src/Compute/Compute.Test/ScenarioTests/<resourceTests>.cs`
