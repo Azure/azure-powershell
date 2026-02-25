@@ -47,34 +47,10 @@ Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -GroupQuotaName <String> -
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityManagementGroup
-```
-Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -GroupQuotaName <String> -Location <String>
- -ResourceProviderName <String> -ManagementGroupInputObject <IQuotaIdentity>
- -AllocateQuotaRequest <ISubscriptionQuotaAllocationsList> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -GroupQuotaName <String> -Location <String>
- -ManagementGroupId <String> -ResourceProviderName <String> [-SubscriptionId <String>]
- -AllocateQuotaRequest <ISubscriptionQuotaAllocationsList> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityResourceProviderExpanded
 ```
 Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -Location <String>
  -ResourceProviderInputObject <IQuotaIdentity> [-Value <ISubscriptionQuotaAllocations[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityResourceProvider
-```
-Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -Location <String>
- -ResourceProviderInputObject <IQuotaIdentity> -AllocateQuotaRequest <ISubscriptionQuotaAllocationsList>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -87,25 +63,10 @@ Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -Location <String> -Resour
  [<CommonParameters>]
 ```
 
-### UpdateViaIdentityGroupQuota
-```
-Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -Location <String> -ResourceProviderName <String>
- -GroupQuotaInputObject <IQuotaIdentity> -AllocateQuotaRequest <ISubscriptionQuotaAllocationsList>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -InputObject <IQuotaIdentity>
  [-Value <ISubscriptionQuotaAllocations[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzQuotaGroupQuotaSubscriptionAllocationRequest -InputObject <IQuotaIdentity>
- -AllocateQuotaRequest <ISubscriptionQuotaAllocationsList> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -135,21 +96,6 @@ RequestId                            ProvisioningState RequestedLimit
 Updates a GroupQuotasSubscriptionAllocationRequest for a specified GroupQuota, resource provider, resource, subscription, and region with new quota allocation limits.
 
 ## PARAMETERS
-
-### -AllocateQuotaRequest
-Subscription quota list.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ISubscriptionQuotaAllocationsList
-Parameter Sets: UpdateViaIdentityManagementGroup, Update, UpdateViaIdentityResourceProvider, UpdateViaIdentityGroupQuota, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job
@@ -187,7 +133,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
-Parameter Sets: UpdateViaIdentityGroupQuotaExpanded, UpdateViaIdentityGroupQuota
+Parameter Sets: UpdateViaIdentityGroupQuotaExpanded
 Aliases:
 
 Required: True
@@ -203,7 +149,7 @@ The name should be unique for the provided context tenantId/MgId.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityManagementGroupExpanded, UpdateViaIdentityManagementGroup, Update
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityManagementGroupExpanded
 Aliases:
 
 Required: True
@@ -218,7 +164,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -263,7 +209,7 @@ The name of the Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityManagementGroupExpanded, UpdateViaIdentityManagementGroup, Update, UpdateViaIdentityResourceProviderExpanded, UpdateViaIdentityResourceProvider, UpdateViaIdentityGroupQuotaExpanded, UpdateViaIdentityGroupQuota
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityManagementGroupExpanded, UpdateViaIdentityResourceProviderExpanded, UpdateViaIdentityGroupQuotaExpanded
 Aliases:
 
 Required: True
@@ -278,7 +224,7 @@ The management group ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -293,7 +239,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
-Parameter Sets: UpdateViaIdentityManagementGroupExpanded, UpdateViaIdentityManagementGroup
+Parameter Sets: UpdateViaIdentityManagementGroupExpanded
 Aliases:
 
 Required: True
@@ -323,7 +269,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
-Parameter Sets: UpdateViaIdentityResourceProviderExpanded, UpdateViaIdentityResourceProvider
+Parameter Sets: UpdateViaIdentityResourceProviderExpanded
 Aliases:
 
 Required: True
@@ -339,7 +285,7 @@ Currently only Microsoft.Compute resource provider supports this API.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityManagementGroupExpanded, UpdateViaIdentityManagementGroup, Update, UpdateViaIdentityGroupQuotaExpanded, UpdateViaIdentityGroupQuota
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityManagementGroupExpanded, UpdateViaIdentityGroupQuotaExpanded
 Aliases:
 
 Required: True
@@ -355,7 +301,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -417,8 +363,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ISubscriptionQuotaAllocationsList
 
 ## OUTPUTS
 

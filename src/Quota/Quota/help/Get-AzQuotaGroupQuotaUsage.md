@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Gets the GroupQuotas usages and limits(quota).
-Location is required paramater.
+Location is required paramter.
 
 ## SYNTAX
 
@@ -21,7 +21,7 @@ Get-AzQuotaGroupQuotaUsage -GroupQuotaName <String> -Location <String> -Manageme
 
 ## DESCRIPTION
 Gets the GroupQuotas usages and limits(quota).
-Location is required parameter.
+Location is required paramter.
 
 ## EXAMPLES
 

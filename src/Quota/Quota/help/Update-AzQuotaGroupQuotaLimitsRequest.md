@@ -45,32 +45,10 @@ Update-AzQuotaGroupQuotaLimitsRequest -GroupQuotaName <String> -Location <String
  [<CommonParameters>]
 ```
 
-### UpdateViaIdentityManagementGroup
-```
-Update-AzQuotaGroupQuotaLimitsRequest -GroupQuotaName <String> -Location <String>
- -ResourceProviderName <String> -ManagementGroupInputObject <IQuotaIdentity>
- -GroupQuotaRequest <IGroupQuotaLimitList> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzQuotaGroupQuotaLimitsRequest -GroupQuotaName <String> -Location <String> -ManagementGroupId <String>
- -ResourceProviderName <String> -GroupQuotaRequest <IGroupQuotaLimitList> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityResourceProviderExpanded
 ```
 Update-AzQuotaGroupQuotaLimitsRequest -Location <String> -ResourceProviderInputObject <IQuotaIdentity>
  [-Value <IGroupQuotaLimit[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaIdentityResourceProvider
-```
-Update-AzQuotaGroupQuotaLimitsRequest -Location <String> -ResourceProviderInputObject <IQuotaIdentity>
- -GroupQuotaRequest <IGroupQuotaLimitList> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -81,23 +59,9 @@ Update-AzQuotaGroupQuotaLimitsRequest -Location <String> -ResourceProviderName <
  [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityGroupQuota
-```
-Update-AzQuotaGroupQuotaLimitsRequest -Location <String> -ResourceProviderName <String>
- -GroupQuotaInputObject <IQuotaIdentity> -GroupQuotaRequest <IGroupQuotaLimitList> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzQuotaGroupQuotaLimitsRequest -InputObject <IQuotaIdentity> [-Value <IGroupQuotaLimit[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzQuotaGroupQuotaLimitsRequest -InputObject <IQuotaIdentity> -GroupQuotaRequest <IGroupQuotaLimitList>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -166,7 +130,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
-Parameter Sets: UpdateViaIdentityGroupQuotaExpanded, UpdateViaIdentityGroupQuota
+Parameter Sets: UpdateViaIdentityGroupQuotaExpanded
 Aliases:
 
 Required: True
@@ -182,7 +146,7 @@ The name should be unique for the provided context tenantId/MgId.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityManagementGroupExpanded, UpdateViaIdentityManagementGroup, Update
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityManagementGroupExpanded
 Aliases:
 
 Required: True
@@ -192,27 +156,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GroupQuotaRequest
-List of Group Quota Limit details.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IGroupQuotaLimitList
-Parameter Sets: UpdateViaIdentityManagementGroup, Update, UpdateViaIdentityResourceProvider, UpdateViaIdentityGroupQuota, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -257,7 +206,7 @@ The name of the Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityManagementGroupExpanded, UpdateViaIdentityManagementGroup, Update, UpdateViaIdentityResourceProviderExpanded, UpdateViaIdentityResourceProvider, UpdateViaIdentityGroupQuotaExpanded, UpdateViaIdentityGroupQuota
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityManagementGroupExpanded, UpdateViaIdentityResourceProviderExpanded, UpdateViaIdentityGroupQuotaExpanded
 Aliases:
 
 Required: True
@@ -272,7 +221,7 @@ The management group ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -287,7 +236,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
-Parameter Sets: UpdateViaIdentityManagementGroupExpanded, UpdateViaIdentityManagementGroup
+Parameter Sets: UpdateViaIdentityManagementGroupExpanded
 Aliases:
 
 Required: True
@@ -317,7 +266,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
-Parameter Sets: UpdateViaIdentityResourceProviderExpanded, UpdateViaIdentityResourceProvider
+Parameter Sets: UpdateViaIdentityResourceProviderExpanded
 Aliases:
 
 Required: True
@@ -333,7 +282,7 @@ Currently only Microsoft.Compute resource provider supports this API.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityManagementGroupExpanded, UpdateViaIdentityManagementGroup, Update, UpdateViaIdentityGroupQuotaExpanded, UpdateViaIdentityGroupQuota
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityManagementGroupExpanded, UpdateViaIdentityGroupQuotaExpanded
 Aliases:
 
 Required: True
@@ -393,8 +342,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IGroupQuotaLimitList
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
 

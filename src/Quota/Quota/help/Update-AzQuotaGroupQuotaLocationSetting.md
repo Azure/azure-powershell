@@ -14,7 +14,7 @@ The subscriptions cannot request quota at subscription level since it is now par
 If the GroupQuotaLimits is used, then submit a groupQuotaLimit request for the specific resource - provider/location/resource.\nOnce the GroupQuota Enforcement is enabled then, it cannot be deleted or reverted back.
 To disable GroupQuota Enforcement -\n1.
 Remove all the subscriptions from the groupQuota using the delete API for Subscriptions (Check the example - GroupQuotaSubscriptions_Delete).\n2.
-Then delete the GroupQuota (Check the example - GroupQuotas_Delete).
+Ten delete the GroupQuota (Check the example - GroupQuotas_Delete).
 
 ## SYNTAX
 
@@ -75,7 +75,7 @@ The subscriptions cannot request quota at subscription level since it is now par
 If the GroupQuotaLimits is used, then submit a groupQuotaLimit request for the specific resource - provider/location/resource.\nOnce the GroupQuota Enforcement is enabled then, it cannot be deleted or reverted back.
 To disable GroupQuota Enforcement -\n1.
 Remove all the subscriptions from the groupQuota using the delete API for Subscriptions (Check the example - GroupQuotaSubscriptions_Delete).\n2.
-Then delete the GroupQuota (Check the example - GroupQuotas_Delete).
+Ten delete the GroupQuota (Check the example - GroupQuotas_Delete).
 
 ## EXAMPLES
 
