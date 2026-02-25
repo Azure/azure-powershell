@@ -41,7 +41,10 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="autoRotationEnabled">Key auto rotation opt-in flag. Either true or false.
         /// </param>
-        public EncryptionProtectorProperties(string serverKeyType, string subregion = default(string), string serverKeyName = default(string), string uri = default(string), string thumbprint = default(string), bool? autoRotationEnabled = default(bool?))
+
+        /// <param name="keyVersion">The version of the server key being used as encryption protector
+        /// </param>
+        public EncryptionProtectorProperties(string serverKeyType, string subregion = default(string), string serverKeyName = default(string), string uri = default(string), string thumbprint = default(string), bool? autoRotationEnabled = default(bool?), string keyVersion = default(string))
 
         {
             this.Subregion = subregion;
@@ -50,6 +53,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.Uri = uri;
             this.Thumbprint = thumbprint;
             this.AutoRotationEnabled = autoRotationEnabled;
+            this.KeyVersion = keyVersion;
             CustomInit();
         }
 
@@ -95,6 +99,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "autoRotationEnabled")]
         public bool? AutoRotationEnabled {get; set; }
+
+        /// <summary>
+        /// Gets the version of the server key being used as encryption protector
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "keyVersion")]
+        public string KeyVersion {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -107,6 +117,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ServerKeyType");
             }
+
 
 
 
