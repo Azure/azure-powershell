@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='volumeName'>
         /// The name of the volume
         /// </param>
-        public static ListQuotaReportResponse ListQuotaReport(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, QuotaReportFilterRequest body = default(QuotaReportFilterRequest))
+        public static ListQuotaReportResult ListQuotaReport(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, QuotaReportFilterRequest body = default(QuotaReportFilterRequest))
         {
                 return ((IVolumesOperations)operations).ListQuotaReportAsync(resourceGroupName, accountName, poolName, volumeName, body).GetAwaiter().GetResult();
         }
@@ -727,7 +727,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ListQuotaReportResponse> ListQuotaReportAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, QuotaReportFilterRequest body = default(QuotaReportFilterRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ListQuotaReportResult> ListQuotaReportAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, QuotaReportFilterRequest body = default(QuotaReportFilterRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListQuotaReportWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, body, null, cancellationToken).ConfigureAwait(false))
             {
@@ -2051,7 +2051,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='volumeName'>
         /// The name of the volume
         /// </param>
-        public static ListQuotaReportResponse BeginListQuotaReport(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, QuotaReportFilterRequest body = default(QuotaReportFilterRequest))
+        public static ListQuotaReportResult BeginListQuotaReport(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, QuotaReportFilterRequest body = default(QuotaReportFilterRequest))
         {
                 return ((IVolumesOperations)operations).BeginListQuotaReportAsync(resourceGroupName, accountName, poolName, volumeName, body).GetAwaiter().GetResult();
         }
@@ -2077,7 +2077,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ListQuotaReportResponse> BeginListQuotaReportAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, QuotaReportFilterRequest body = default(QuotaReportFilterRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ListQuotaReportResult> BeginListQuotaReportAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, QuotaReportFilterRequest body = default(QuotaReportFilterRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginListQuotaReportWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, body, null, cancellationToken).ConfigureAwait(false))
             {

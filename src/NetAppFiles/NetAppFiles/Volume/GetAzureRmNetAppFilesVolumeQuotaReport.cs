@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
             try
             {
-                ListQuotaReportResponse anfQuotaReport = AzureNetAppFilesManagementClient.Volumes.ListQuotaReport(ResourceGroupName, AccountName, PoolName, Name, body);
+                ListQuotaReportResult anfQuotaReport = AzureNetAppFilesManagementClient.Volumes.ListQuotaReport(ResourceGroupName, AccountName, PoolName, Name, body);
                 WriteObject(anfQuotaReport.ConvertToPs());
             }
             catch (ErrorResponseException erx)

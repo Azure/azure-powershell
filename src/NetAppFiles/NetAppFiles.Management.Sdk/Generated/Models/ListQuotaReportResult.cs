@@ -8,28 +8,28 @@ namespace Microsoft.Azure.Management.NetApp.Models
     using System.Linq;
 
     /// <summary>
-    /// Quota Report for volume
+    /// * Result of ListQuotaReportResponse
     /// </summary>
-    public partial class ListQuotaReportResponse
+    public partial class ListQuotaReportResult
     {
         /// <summary>
-        /// Initializes a new instance of the ListQuotaReportResponse class.
+        /// Initializes a new instance of the ListQuotaReportResult class.
         /// </summary>
-        public ListQuotaReportResponse()
+        public ListQuotaReportResult()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ListQuotaReportResponse class.
+        /// Initializes a new instance of the ListQuotaReportResult class.
         /// </summary>
 
-        /// <param name="quotaReportRecords">List of quota reports
+        /// <param name="properties">Represents the properties of the ListQuotaReport.
         /// </param>
-        public ListQuotaReportResponse(System.Collections.Generic.IList<QuotaReport> quotaReportRecords = default(System.Collections.Generic.IList<QuotaReport>))
+        public ListQuotaReportResult(ListQuotaReportResponse properties = default(ListQuotaReportResponse))
 
         {
-            this.QuotaReportRecords = quotaReportRecords;
+            this.Properties = properties;
             CustomInit();
         }
 
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
 
         /// <summary>
-        /// Gets or sets list of quota reports
+        /// Gets or sets represents the properties of the ListQuotaReport.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "quotaReportRecords")]
-        public System.Collections.Generic.IList<QuotaReport> QuotaReportRecords {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
+        public ListQuotaReportResponse Properties {get; set; }
     }
 }

@@ -33,11 +33,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             };
         }
 
-        public static PSNetAppFilesListQuotaReportResponse ConvertToPs(this Management.NetApp.Models.ListQuotaReportResponse listQuotaReportResponse)
+        public static PSNetAppFilesListQuotaReportResponse ConvertToPs(this Management.NetApp.Models.ListQuotaReportResult listQuotaReportResponse)
         {
             return new PSNetAppFilesListQuotaReportResponse()
             {
-                Value = listQuotaReportResponse.Value?.Select(e => e.ConvertToPs()).ToList()
+                Value = listQuotaReportResponse.Properties.QuotaReportRecords?.Select(e => e.ConvertToPs()).ToList()
             };
         }
     }

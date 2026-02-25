@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ListQuotaReportResponse,VolumesListQuotaReportHeaders>> ListQuotaReportWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, QuotaReportFilterRequest body = default(QuotaReportFilterRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ListQuotaReportResult,VolumesListQuotaReportHeaders>> ListQuotaReportWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, QuotaReportFilterRequest body = default(QuotaReportFilterRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List all replications for a specified volume
@@ -1311,7 +1311,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ListQuotaReportResponse,VolumesListQuotaReportHeaders>> BeginListQuotaReportWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, QuotaReportFilterRequest body = default(QuotaReportFilterRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ListQuotaReportResult,VolumesListQuotaReportHeaders>> BeginListQuotaReportWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, QuotaReportFilterRequest body = default(QuotaReportFilterRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Starts peering the external cluster for this migration volume
