@@ -229,6 +229,15 @@ namespace AzDev.Cmdlets.Typespec
                 emitterOutputDir = Path.GetFullPath(emitterOutputDir, RepoRoot);
             }
 
+            string[] additionalDirectories = null;
+            // Get additional directories from merged tsp config if exist
+            if (option.ContainsKey("additionalDirectories"))
+            {
+                additionalDirectories = ((List<object>)option["additionalDirectories"])
+                                            .Select(additionalDirectory => TryResolveDirFromTSPConfig(option, (string)additionalDirectory))
+                                            .ToArray();
+            }
+
             /*
                 1. Prepare TSP from TSP location, copy TSP to temp directory under emitter output directory
                     1.1 remote
@@ -238,12 +247,10 @@ namespace AzDev.Cmdlets.Typespec
                         copy service directory to current directory
                 2. replace tspconfig.yaml in the temp directory with mergedTspConfig
                 3. replace package.json with project emitter package.json
-
-                        
             */
             string tempTSPLocation = isRemote ?
-                PrepareTSPFromRemote(RemoteRepositoryName, RemoteCommit, RemoteDirectory, emitterOutputDir).GetAwaiter().GetResult() :
-                PrepareTSPFromLocal(TSPLocation, emitterOutputDir);
+                PrepareTSPFromRemote(RemoteRepositoryName, RemoteCommit, RemoteDirectory, emitterOutputDir, additionalDirectories).GetAwaiter().GetResult() :
+                PrepareTSPFromLocal(TSPLocation, emitterOutputDir, additionalDirectories);
             if (!File.Exists(tempTSPLocation))
             {
                 throw new InvalidOperationException($"The specified TSP config file [{tempTSPLocation}] does not exist.");
@@ -365,7 +372,7 @@ namespace AzDev.Cmdlets.Typespec
             return (uri, commit, repo, path);
         }
 
-        private async Task<string> PrepareTSPFromRemote(string repo, string commit, string path, string outDir)
+        private async Task<string> PrepareTSPFromRemote(string repo, string commit, string path, string outDir, string[] additionalDirs = null)
         {
             string tempDirPath = Path.Combine(outDir, tempDirName);
             try
@@ -383,29 +390,53 @@ namespace AzDev.Cmdlets.Typespec
             string cloneRepo = $"https://github.com/{repo}.git";
             await RunCommand("git", $"clone {cloneRepo} {tempDirPath} --no-checkout --filter=tree:0", outDir);
             await RunCommand("git", $"sparse-checkout set {path}", tempDirPath);
-            await RunCommand("git", $"sparse-checkout add {path}", tempDirPath);
+            if (additionalDirs != null && additionalDirs.Length > 0)
+            {
+                Console.WriteLine("Preparing additional directories ...");
+                foreach (string additionalDir in additionalDirs)
+                {
+                    await RunCommand("git", $"sparse-checkout add {additionalDir}", tempDirPath);
+                }
+            }
             await RunCommand("git", $"checkout {commit}", tempDirPath);
             return Path.Combine(tempDirPath, path, "tspconfig.yaml");
         }
 
-        private string PrepareTSPFromLocal(string tspLocation, string outDir)
+        private string PrepareTSPFromLocal(string tspLocation, string outDir, string[] additionalDirs = null)
         {
+            string localSpecRoot = GetSpecRepoRoot(tspLocation);
             tspLocation = Path.GetDirectoryName(tspLocation);
-            string tempDirPath = Path.Combine(outDir, tempDirName);
+            string relativeTSPLocation = Path.GetRelativePath(localSpecRoot, tspLocation);
+            CopyLocalRepository(tspLocation, Path.Combine(outDir, tempDirName, relativeTSPLocation));
+
+            if (additionalDirs != null && additionalDirs.Length > 0)
+            {
+                Console.WriteLine("Preparing additional directories ...");
+                foreach(string additionalDir in additionalDirs)
+                {
+                    CopyLocalRepository(Path.Combine(localSpecRoot, additionalDir), Path.Combine(outDir, tempDirName, additionalDir));
+                }
+            }
+
+            return Path.Combine(outDir, tempDirName, relativeTSPLocation, "tspconfig.yaml");
+        }
+
+        private void CopyLocalRepository(string sourceDir, string destinationDir)
+        {
             try
             {
-                if (Directory.Exists(tempDirPath))
+                if (Directory.Exists(destinationDir))
                 {
-                    ForceDeleteDir(tempDirPath);
+                    ForceDeleteDir(destinationDir);
                 }
-                Directory.CreateDirectory(tempDirPath);
+                Console.WriteLine($"Copying specs from Source: {sourceDir} to Destination: {destinationDir}");
+                Directory.CreateDirectory(destinationDir);
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException($"Failed to prepare temporary directory [{tempDirPath}]: {ex.Message}", ex);
+                throw new InvalidOperationException($"Failed to prepare temporary directory [{destinationDir}]: {ex.Message}", ex);
             }
-            CopyDirectory(tspLocation, tempDirPath, ["tsp-output", "node_modules"]);
-            return Path.Combine(tempDirPath, Path.GetFileName(tspLocation), "tspconfig.yaml");
+            CopyDirectory(sourceDir, destinationDir, ["tsp-output", "node_modules"]);
         }
 
         // Copies the contents of sourceDir into a subdirectory (named after sourceDir) within destinationDir,
@@ -417,8 +448,8 @@ namespace AzDev.Cmdlets.Typespec
             {
                 throw new DirectoryNotFoundException($"Source directory does not exist or could not be found: {sourceDir}");
             }
-            string currentDir = Path.Combine(destinationDir, dir.Name);
-            Directory.CreateDirectory(currentDir);
+            //string currentDir = Path.Combine(destinationDir, dir.Name);
+            Directory.CreateDirectory(destinationDir);
             DirectoryInfo[] dirs = dir.GetDirectories();
             FileInfo[] files = dir.GetFiles();
             foreach (FileInfo file in files)
@@ -427,7 +458,7 @@ namespace AzDev.Cmdlets.Typespec
                 {
                     continue;
                 }
-                string tempPath = Path.Combine(currentDir, file.Name);
+                string tempPath = Path.Combine(destinationDir, file.Name);
                 file.CopyTo(tempPath, false);
             }
             foreach (DirectoryInfo subdir in dirs)
@@ -436,7 +467,7 @@ namespace AzDev.Cmdlets.Typespec
                 {
                     continue;
                 }
-                CopyDirectory(subdir.FullName, currentDir, exclude);
+                CopyDirectory(subdir.FullName, Path.Combine(destinationDir, subdir.Name), exclude);
             }
         }
 
@@ -505,7 +536,6 @@ namespace AzDev.Cmdlets.Typespec
                 {
                     resolvedDir.Append(Path.DirectorySeparatorChar);
                 }
-
             }
             return resolvedDir.ToString();
         }
@@ -514,6 +544,24 @@ namespace AzDev.Cmdlets.Typespec
                                             Directory.Exists(Path.Combine(path, "src")) &&
                                             Directory.Exists(Path.Combine(path, "generated")) &&
                                             Directory.Exists(Path.Combine(path, ".github"));
+
+        private bool IsSpecRoot(string path) => Directory.Exists(Path.Combine(path, ".azure-pipelines")) &&
+                                            Directory.Exists(Path.Combine(path, "specification")) &&
+                                            Directory.Exists(Path.Combine(path, ".github"));
+
+        private string GetSpecRepoRoot(string specPath)
+        {
+            string potentialRoot = specPath;
+            while (!string.IsNullOrEmpty(potentialRoot) && !IsSpecRoot(potentialRoot))
+            {
+                potentialRoot = Path.GetDirectoryName(potentialRoot);
+            }
+            if (string.IsNullOrEmpty(potentialRoot))
+            {
+                throw new ArgumentException($"Unable to determine local azure-rest-api-specs repository root from {specPath}.");
+            }
+            return potentialRoot;
+        }
 
         private string GetRepoRoot((DevContext, string, string) repoInfo)
         {
