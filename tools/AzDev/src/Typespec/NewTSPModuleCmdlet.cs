@@ -448,7 +448,6 @@ namespace AzDev.Cmdlets.Typespec
             {
                 throw new DirectoryNotFoundException($"Source directory does not exist or could not be found: {sourceDir}");
             }
-            //string currentDir = Path.Combine(destinationDir, dir.Name);
             Directory.CreateDirectory(destinationDir);
             DirectoryInfo[] dirs = dir.GetDirectories();
             FileInfo[] files = dir.GetFiles();
