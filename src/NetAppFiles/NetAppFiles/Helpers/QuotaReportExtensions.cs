@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         {
             return new PSNetAppFilesListQuotaReportResponse()
             {
-                Value = listQuotaReportResponse.Properties.QuotaReportRecords?.Select(e => e.ConvertToPs()).ToList()
+                Value = listQuotaReportResponse?.Properties?.QuotaReportRecords?.Select(e => e.ConvertToPs()).ToList()
             };
         }
     }
