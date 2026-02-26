@@ -1,22 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a file share
 ```powershell
-{{ Add code here }}
+Remove-AzFileShare -ResourceName "testshare" -ResourceGroupName "myresourcegroup"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command removes a file share.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 

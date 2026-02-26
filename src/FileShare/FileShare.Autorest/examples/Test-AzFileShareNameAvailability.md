@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Check if a file share name is available
 ```powershell
-{{ Add code here }}
+Test-AzFileShareNameAvailability -Location uaecentral -Name $shareName -Type "Microsoft.FileShares/fileShares"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Message NameAvailable Reason
+------- ------------- ------
+                 True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This command checks if the file share name is available.

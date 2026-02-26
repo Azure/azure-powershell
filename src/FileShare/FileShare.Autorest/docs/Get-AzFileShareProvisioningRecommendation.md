@@ -55,27 +55,18 @@ Get file shares provisioning parameters recommendation.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get file shares provisioning parameters recommendation
 ```powershell
-{{ Add code here }}
+Get-AzFileShareProvisioningRecommendation -Location uaecentral -ProvisionedStorageGiB 100
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AvailableRedundancyOption ProvisionedIoPerSec ProvisionedThroughputMiBPerSec
+------------------------- ------------------- ------------------------------
+{Local}                                  3050                            130
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command gets file shares provisioning parameters recommendation.
 
 ## PARAMETERS
 

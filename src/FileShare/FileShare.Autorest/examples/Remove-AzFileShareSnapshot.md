@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a file share snapshot
 ```powershell
-{{ Add code here }}
+Remove-AzFileShareSnapshot -ResourceName "testshare" -ResourceGroupName "myresourcegroup" -Name s123
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command removes a file share snapshot.
 

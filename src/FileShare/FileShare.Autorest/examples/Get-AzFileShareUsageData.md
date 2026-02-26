@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get file shares usage data
 ```powershell
-{{ Add code here }}
+Get-AzFileShareUsageData -Location uaecentral
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+LiveShareFileShareCount
+-----------------------
+                      1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command gets file shares usage data of current subscription in a specific location.
 
