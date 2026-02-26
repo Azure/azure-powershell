@@ -27,6 +27,10 @@
     {
       "serviceDatasourceType": "Microsoft.DBforMySQL/flexibleServers",
       "clientDatasourceType": "AzureDatabaseForMySQL"
+    },
+    {
+      "serviceDatasourceType": "Microsoft.DocumentDB/databaseAccounts",
+      "clientDatasourceType": "AzureCosmosDB"
     }
   ]
 }
