@@ -1,5 +1,5 @@
 variables:
-  AgentPoolName: pool-windows-2019
+  AgentPoolName: pool-windows-2022
   WindowsName: windows
   WindowsImage: windows-2019
   TestFramework: net8.0
