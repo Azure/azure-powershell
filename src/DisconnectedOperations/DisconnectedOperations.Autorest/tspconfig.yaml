@@ -1,0 +1,62 @@
+options:
+   "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/DisconnectedOperations/DisconnectedOperations.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 1.0.0
+    prefix: "Az"
+    subject-prefix: "DisconnectedOperations"
+    service-name: "DisconnectedOperations"
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    additionalDirectories:
+      - "specification/edge/Microsoft.Edge.Shared"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      - where:
+          subject: Operation
+        hide: true
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      - where:
+          variant: ^(Create|Update)(?!.*?(Expanded|ViaJsonString|ViaJsonFilePath))
+        remove: true
+      - where:
+          variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+        remove: true
+      - where:
+          verb: Set
+        remove: true
+      - where:
+          subject: Artifact
+          variant: GetViaIdentityDisconnectedOperation|GetViaIdentityImage
+          parameter-name: Name
+        set:
+          parameter-name: ArtifactName
+      - where:
+          parameter-name: ArtifactName
+        clear-alias: true
+      - where:
+          subject: Image
+          variant: GetViaIdentityDisconnectedOperation
+          parameter-name: Name
+        set:
+          parameter-name: ImageName
+      - where:
+          parameter-name: ImageName
+        clear-alias: true
+      - where:
+          subject: HardwareSettings
+          variant: GetViaIdentityDisconnectedOperation
+          parameter-name: Name
+        set:
+          parameter-name: HardwareSettingsName
+      - where:
+          parameter-name: HardwareSettingsName
+        clear-alias: true
