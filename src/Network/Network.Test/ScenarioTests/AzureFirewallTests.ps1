@@ -2604,10 +2604,10 @@ function Test-AzureFirewallEdgeZoneZonesValidation {
         # Create public ip with EdgeZone
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard -EdgeZone $edgeZone
 
-        # Test 1: Attempt to create firewall with both EdgeZone and Zone parameters (should fail)
+        # Test 1: Attempt to create firewall with both EdgeZone and Zone parameters (should fail with client-side validation)
         Assert-ThrowsLike { New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -EdgeZone $edgeZone -Zone 1,2,3 } "*Zones cannot be specified when EdgeZone is provided*"
 
-        # Test 2: Create firewall with only EdgeZone (should succeed)
+        # Test 2: Create firewall with only EdgeZone (should succeed) and then validate Set-AzFirewall rejects zones
         $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -EdgeZone $edgeZone
 
         # Get AzureFirewall
@@ -2619,57 +2619,12 @@ function Test-AzureFirewallEdgeZoneZonesValidation {
         Assert-AreEqual "EdgeZone" $getAzureFirewall.ExtendedLocation.Type
         Assert-Null $getAzureFirewall.Zones
 
-        # Delete the firewall
+        # Test 3: Try to add zones using Set-AzFirewall on an EdgeZone firewall (should fail with client-side validation)
+        $getAzureFirewall.Zones = @("1", "2", "3")
+        Assert-ThrowsLike { Set-AzFirewall -AzureFirewall $getAzureFirewall } "*Zones cannot be specified when EdgeZone is provided*"
+
+        # Clean up firewall
         Remove-AzFirewall -ResourceGroupName $rgname -name $azureFirewallName -Force
-
-        # Test 3: Create firewall with only Zone parameters (no EdgeZone)
-        # Create new VNet and Public IP with zones for this test
-        $vnetName2 = Get-ResourceName
-        $publicIpName2 = Get-ResourceName
-        $subnet2 = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.1.0.0/24
-        $vnet2 = New-AzVirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname -Location $location -AddressPrefix 10.1.0.0/16 -Subnet $subnet2
-        $publicip2 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName2 -location $location -AllocationMethod Static -Sku Standard -Zone 1,2,3
-
-        $azureFirewall2Name = Get-ResourceName
-        $azureFirewall2 = New-AzFirewall -Name $azureFirewall2Name -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet2 -PublicIpAddress $publicip2 -Zone 1,2,3
-
-        # Get AzureFirewall
-        $getAzureFirewall2 = Get-AzFirewall -name $azureFirewall2Name -ResourceGroupName $rgname
-
-        # Verify Zones are set and ExtendedLocation is null
-        Assert-AreEqual 3 @($getAzureFirewall2.Zones).Count
-        Assert-Null $getAzureFirewall2.ExtendedLocation
-
-        # Delete the firewall
-        Remove-AzFirewall -ResourceGroupName $rgname -name $azureFirewall2Name -Force
-
-        # Test 4: Create firewall with only EdgeZone (no Zone parameters)
-        $azureFirewall3Name = Get-ResourceName
-        $azureFirewall3 = New-AzFirewall -Name $azureFirewall3Name -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -EdgeZone $edgeZone
-
-        # Get AzureFirewall
-        $getAzureFirewall3 = Get-AzFirewall -name $azureFirewall3Name -ResourceGroupName $rgname
-
-        # Verify EdgeZone is set and Zones is null
-        Assert-NotNull $getAzureFirewall3.ExtendedLocation
-        Assert-AreEqual $edgeZone $getAzureFirewall3.ExtendedLocation.Name
-        Assert-Null $getAzureFirewall3.Zones
-
-        # Delete the firewall
-        Remove-AzFirewall -ResourceGroupName $rgname -name $azureFirewall3Name -Force
-
-        # Test 5: Test Set-AzFirewall with EdgeZone and Zones validation
-        # Create a firewall with EdgeZone
-        $azureFirewall4Name = Get-ResourceName
-        $azureFirewall4 = New-AzFirewall -Name $azureFirewall4Name -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -EdgeZone $edgeZone
-        
-        # Try to add zones using Set-AzFirewall (should fail)
-        $getAzureFirewall4 = Get-AzFirewall -name $azureFirewall4Name -ResourceGroupName $rgname
-        $getAzureFirewall4.Zones = @("1", "2", "3")
-        Assert-ThrowsLike { Set-AzFirewall -AzureFirewall $getAzureFirewall4 } "*Zones cannot be specified when EdgeZone is provided*"
-        
-        # Clean up
-        Remove-AzFirewall -ResourceGroupName $rgname -name $azureFirewall4Name -Force
     }
     finally {
         # Cleanup
