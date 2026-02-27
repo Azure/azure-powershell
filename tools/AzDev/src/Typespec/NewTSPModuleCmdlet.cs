@@ -274,19 +274,28 @@ namespace AzDev.Cmdlets.Typespec
 
             string emitterPackageJsonPath = Path.Combine(RepoRoot, "eng", "emitter-package.json");
             tempTSPLocation = Path.GetDirectoryName(tempTSPLocation);
-            File.Copy(emitterPackageJsonPath, Path.Combine(tempTSPLocation, "package.json"), true);
+            File.Copy(emitterPackageJsonPath, Path.Combine(emitterOutputDir, tempDirName, "package.json"), true);
+            //delete package-lock.json when checking out from remote since it might cause conflict with local package.json
+            //for now we only maintain package.json under eng/emitter-package.json without package-lock.json
+            //consider to add lock file in the future if we want to make sure the emitter version is exactly the same as specified in package.json
+            //and remove below if block of deleting package-lock.json
+            if (File.Exists(Path.Combine(emitterOutputDir, tempDirName, "package-lock.json")))
+            {
+                File.Delete(Path.Combine(emitterOutputDir, tempDirName, "package-lock.json"));
+            }
 
             /*
                 emit from tempTSPLocation
             */
             try
             {
-                if (!File.Exists(Path.Combine(tempTSPLocation, "package.json")))
+                if (!File.Exists(Path.Combine(emitterOutputDir, tempDirName, "package.json")))
                 {
-                    throw new FileNotFoundException($"package.json not found in {tempTSPLocation}");
+                    throw new FileNotFoundException($"package.json not found in {Path.Combine(emitterOutputDir, tempDirName)}");
                 }
-                RunCommand(FindCommandFromPath("npm"), File.Exists(Path.Combine(tempTSPLocation, "package-lock.json")) ? "ci" : "install", tempTSPLocation).Wait();
-                RunCommand("node", $"{Path.Combine("node_modules", "@typespec", "compiler", "cmd", "tsp")} compile ./ --emit {EmitterPath ?? emitterName} --output-dir {emitterOutputDir}", tempTSPLocation).Wait();
+                //RunCommand(FindCommandFromPath("npm"), File.Exists(Path.Combine(emitterOutputDir, tempDirName, "package-lock.json")) ? "ci" : "install", tempTSPLocation).Wait();
+                RunCommand(FindCommandFromPath("npm"), "install", tempTSPLocation).Wait();
+                RunCommand("node", $"{Path.Combine(emitterOutputDir, tempDirName, "node_modules", "@typespec", "compiler", "cmd", "tsp")} compile ./ --emit {EmitterPath ?? emitterName} --output-dir {emitterOutputDir}", tempTSPLocation).Wait();
             }
             catch (Exception ex)
             {
