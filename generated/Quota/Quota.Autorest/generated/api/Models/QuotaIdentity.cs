@@ -12,6 +12,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentityInternal
     {
 
+        /// <summary>Backing field for <see cref="AllocationId" /> property.</summary>
+        private string _allocationId;
+
+        /// <summary>Request Id.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
+        public string AllocationId { get => this._allocationId; set => this._allocationId = value; }
+
+        /// <summary>Backing field for <see cref="GroupQuotaName" /> property.</summary>
+        private string _groupQuotaName;
+
+        /// <summary>
+        /// The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
+        public string GroupQuotaName { get => this._groupQuotaName; set => this._groupQuotaName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -26,6 +42,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
         public string Id1 { get => this._id1; set => this._id1 = value; }
 
+        /// <summary>Backing field for <see cref="Location" /> property.</summary>
+        private string _location;
+
+        /// <summary>The name of the Azure region.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
+        public string Location { get => this._location; set => this._location = value; }
+
+        /// <summary>Backing field for <see cref="ManagementGroupId" /> property.</summary>
+        private string _managementGroupId;
+
+        /// <summary>The management group ID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
+        public string ManagementGroupId { get => this._managementGroupId; set => this._managementGroupId = value; }
+
+        /// <summary>Backing field for <see cref="RequestId" /> property.</summary>
+        private string _requestId;
+
+        /// <summary>Request Id.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
+        public string RequestId { get => this._requestId; set => this._requestId = value; }
+
         /// <summary>Backing field for <see cref="ResourceName" /> property.</summary>
         private string _resourceName;
 
@@ -38,16 +75,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
         public string ResourceName { get => this._resourceName; set => this._resourceName = value; }
 
+        /// <summary>Backing field for <see cref="ResourceProviderName" /> property.</summary>
+        private string _resourceProviderName;
+
+        /// <summary>
+        /// The resource provider name, such as - Microsoft.Compute. Currently only Microsoft.Compute resource provider supports this
+        /// API.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
+        public string ResourceProviderName { get => this._resourceProviderName; set => this._resourceProviderName = value; }
+
         /// <summary>Backing field for <see cref="Scope" /> property.</summary>
         private string _scope;
 
-        /// <summary>
-        /// The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
-        /// This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then
-        /// it's the target Azure resource URI in the GET operation for the specific resource.
-        /// </summary>
+        /// <summary>The fully qualified Azure Resource manager identifier of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
         public string Scope { get => this._scope; set => this._scope = value; }
+
+        /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
+        private string _subscriptionId;
+
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
+        public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
         /// <summary>Creates an new <see cref="QuotaIdentity" /> instance.</summary>
         public QuotaIdentity()
@@ -58,6 +108,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
     public partial interface IQuotaIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IJsonSerializable
     {
+        /// <summary>Request Id.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Request Id.",
+        SerializedName = @"allocationId",
+        PossibleTypes = new [] { typeof(string) })]
+        string AllocationId { get; set; }
+        /// <summary>
+        /// The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The GroupQuota name. The name should be unique for the provided context tenantId/MgId.",
+        SerializedName = @"groupQuotaName",
+        PossibleTypes = new [] { typeof(string) })]
+        string GroupQuotaName { get; set; }
         /// <summary>Quota request ID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
         Required = false,
@@ -80,6 +154,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id1 { get; set; }
+        /// <summary>The name of the Azure region.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the Azure region.",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        string Location { get; set; }
+        /// <summary>The management group ID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The management group ID.",
+        SerializedName = @"managementGroupId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ManagementGroupId { get; set; }
+        /// <summary>Request Id.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Request Id.",
+        SerializedName = @"requestId",
+        PossibleTypes = new [] { typeof(string) })]
+        string RequestId { get; set; }
         /// <summary>
         /// Resource name for a given resource provider. For example:
         /// - SKU name for Microsoft.Compute
@@ -100,9 +207,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         PossibleTypes = new [] { typeof(string) })]
         string ResourceName { get; set; }
         /// <summary>
-        /// The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
-        /// This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then
-        /// it's the target Azure resource URI in the GET operation for the specific resource.
+        /// The resource provider name, such as - Microsoft.Compute. Currently only Microsoft.Compute resource provider supports this
+        /// API.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
         Required = false,
@@ -110,19 +216,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`. This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then it's the target Azure resource URI in the GET operation for the specific resource.",
+        Description = @"The resource provider name, such as - Microsoft.Compute. Currently only Microsoft.Compute resource provider supports this API.",
+        SerializedName = @"resourceProviderName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ResourceProviderName { get; set; }
+        /// <summary>The fully qualified Azure Resource manager identifier of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The fully qualified Azure Resource manager identifier of the resource.",
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
         string Scope { get; set; }
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The ID of the target subscription. The value must be an UUID.",
+        SerializedName = @"subscriptionId",
+        PossibleTypes = new [] { typeof(string) })]
+        string SubscriptionId { get; set; }
 
     }
     internal partial interface IQuotaIdentityInternal
 
     {
+        /// <summary>Request Id.</summary>
+        string AllocationId { get; set; }
+        /// <summary>
+        /// The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
+        /// </summary>
+        string GroupQuotaName { get; set; }
         /// <summary>Quota request ID.</summary>
         string Id { get; set; }
         /// <summary>Resource identity path</summary>
         string Id1 { get; set; }
+        /// <summary>The name of the Azure region.</summary>
+        string Location { get; set; }
+        /// <summary>The management group ID.</summary>
+        string ManagementGroupId { get; set; }
+        /// <summary>Request Id.</summary>
+        string RequestId { get; set; }
         /// <summary>
         /// Resource name for a given resource provider. For example:
         /// - SKU name for Microsoft.Compute
@@ -131,11 +271,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         /// </summary>
         string ResourceName { get; set; }
         /// <summary>
-        /// The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
-        /// This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then
-        /// it's the target Azure resource URI in the GET operation for the specific resource.
+        /// The resource provider name, such as - Microsoft.Compute. Currently only Microsoft.Compute resource provider supports this
+        /// API.
         /// </summary>
+        string ResourceProviderName { get; set; }
+        /// <summary>The fully qualified Azure Resource manager identifier of the resource.</summary>
         string Scope { get; set; }
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        string SubscriptionId { get; set; }
 
     }
 }
