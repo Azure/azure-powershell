@@ -1,8 +1,8 @@
 {
-  "Update-AzDurableTaskScheduler+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/814c847c-c7d5-4ee4-b491-8aaff9aac25f/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01+1": {
+  "Update-AzDurableTaskScheduler+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/814c847c-c7d5-4ee4-b491-8aaff9aac25f/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Disabled\"\r\n  },\r\n  \"tags\": {\r\n    \"Environment\": \"Test\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -41,14 +41,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/814c847c-c7d5-4ee4-b491-8aaff9aac25f/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd\",\"name\":\"ps-test-scheduler-2kcd\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Environment\":\"Test\"},\"systemData\":{\"createdBy\":\"beverst@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-02-28T04:15:49.4650641Z\",\"lastModifiedBy\":\"beverst@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-02-28T04:18:29.8536761Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fabmffgq.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Consumption\",\"redundancyState\":\"None\"},\"publicNetworkAccess\":\"Disabled\"}}",
+      "Content": "{\"id\":\"/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd\",\"name\":\"ps-test-scheduler-2kcd\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Environment\":\"Test\"},\"systemData\":{\"createdBy\":\"beverst@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-02-28T04:15:49.4650641Z\",\"lastModifiedBy\":\"beverst@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-02-28T04:18:29.8536761Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fabmffgq.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Consumption\",\"redundancyState\":\"None\"},\"publicNetworkAccess\":\"Disabled\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzDurableTaskScheduler+[NoContext]+UpdateViaJsonString+$PATCH+https://management.azure.com/subscriptions/814c847c-c7d5-4ee4-b491-8aaff9aac25f/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01+1": {
+  "Update-AzDurableTaskScheduler+[NoContext]+UpdateViaJsonString+$PATCH+https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/814c847c-c7d5-4ee4-b491-8aaff9aac25f/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01",
       "Content": "{\r\n  \"tags\": {\r\n    \"Department\": \"Engineering\"\r\n  },\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Disabled\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -87,14 +87,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/814c847c-c7d5-4ee4-b491-8aaff9aac25f/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd\",\"name\":\"ps-test-scheduler-2kcd\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Department\":\"Engineering\"},\"systemData\":{\"createdBy\":\"beverst@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-02-28T04:15:49.4650641Z\",\"lastModifiedBy\":\"beverst@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-02-28T04:18:32.9056393Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fabmffgq.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Consumption\",\"redundancyState\":\"None\"},\"publicNetworkAccess\":\"Disabled\"}}",
+      "Content": "{\"id\":\"/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd\",\"name\":\"ps-test-scheduler-2kcd\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Department\":\"Engineering\"},\"systemData\":{\"createdBy\":\"beverst@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-02-28T04:15:49.4650641Z\",\"lastModifiedBy\":\"beverst@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-02-28T04:18:32.9056393Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fabmffgq.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Consumption\",\"redundancyState\":\"None\"},\"publicNetworkAccess\":\"Disabled\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzDurableTaskScheduler+[NoContext]+UpdateViaJsonFilePath+$PATCH+https://management.azure.com/subscriptions/814c847c-c7d5-4ee4-b491-8aaff9aac25f/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01+1": {
+  "Update-AzDurableTaskScheduler+[NoContext]+UpdateViaJsonFilePath+$PATCH+https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/814c847c-c7d5-4ee4-b491-8aaff9aac25f/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01",
       "Content": "ew0KICAidGFncyI6IHsNCiAgICAiUHJvamVjdCI6ICJEdXJhYmxlVGFzayINCiAgfSwNCiAgInByb3BlcnRpZXMiOiB7DQogICAgInB1YmxpY05ldHdvcmtBY2Nlc3MiOiAiRGlzYWJsZWQiDQogIH0NCn0NCg==",
       "isContentBase64": false,
       "Headers": {
@@ -133,14 +133,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/814c847c-c7d5-4ee4-b491-8aaff9aac25f/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd\",\"name\":\"ps-test-scheduler-2kcd\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Project\":\"DurableTask\"},\"systemData\":{\"createdBy\":\"beverst@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-02-28T04:15:49.4650641Z\",\"lastModifiedBy\":\"beverst@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-02-28T04:18:33.9751168Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fabmffgq.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Consumption\",\"redundancyState\":\"None\"},\"publicNetworkAccess\":\"Disabled\"}}",
+      "Content": "{\"id\":\"/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd\",\"name\":\"ps-test-scheduler-2kcd\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Project\":\"DurableTask\"},\"systemData\":{\"createdBy\":\"beverst@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-02-28T04:15:49.4650641Z\",\"lastModifiedBy\":\"beverst@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-02-28T04:18:33.9751168Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fabmffgq.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Consumption\",\"redundancyState\":\"None\"},\"publicNetworkAccess\":\"Disabled\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzDurableTaskScheduler+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/814c847c-c7d5-4ee4-b491-8aaff9aac25f/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01+1": {
+  "Update-AzDurableTaskScheduler+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/814c847c-c7d5-4ee4-b491-8aaff9aac25f/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -178,14 +178,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/814c847c-c7d5-4ee4-b491-8aaff9aac25f/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd\",\"name\":\"ps-test-scheduler-2kcd\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Project\":\"DurableTask\"},\"systemData\":{\"createdBy\":\"beverst@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-02-28T04:15:49.4650641Z\",\"lastModifiedBy\":\"beverst@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-02-28T04:18:33.9751168Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fabmffgq.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Consumption\",\"redundancyState\":\"None\"},\"publicNetworkAccess\":\"Disabled\"}}",
+      "Content": "{\"id\":\"/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd\",\"name\":\"ps-test-scheduler-2kcd\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Project\":\"DurableTask\"},\"systemData\":{\"createdBy\":\"beverst@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-02-28T04:15:49.4650641Z\",\"lastModifiedBy\":\"beverst@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-02-28T04:18:33.9751168Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fabmffgq.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Consumption\",\"redundancyState\":\"None\"},\"publicNetworkAccess\":\"Disabled\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzDurableTaskScheduler+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/814c847c-c7d5-4ee4-b491-8aaff9aac25f/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01+2": {
+  "Update-AzDurableTaskScheduler+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/814c847c-c7d5-4ee4-b491-8aaff9aac25f/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Disabled\"\r\n  },\r\n  \"tags\": {\r\n    \"Status\": \"Active\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -224,7 +224,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/814c847c-c7d5-4ee4-b491-8aaff9aac25f/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd\",\"name\":\"ps-test-scheduler-2kcd\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Status\":\"Active\"},\"systemData\":{\"createdBy\":\"beverst@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-02-28T04:15:49.4650641Z\",\"lastModifiedBy\":\"beverst@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-02-28T04:18:35.3143727Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fabmffgq.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Consumption\",\"redundancyState\":\"None\"},\"publicNetworkAccess\":\"Disabled\"}}",
+      "Content": "{\"id\":\"/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd\",\"name\":\"ps-test-scheduler-2kcd\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Status\":\"Active\"},\"systemData\":{\"createdBy\":\"beverst@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-02-28T04:15:49.4650641Z\",\"lastModifiedBy\":\"beverst@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-02-28T04:18:35.3143727Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fabmffgq.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Consumption\",\"redundancyState\":\"None\"},\"publicNetworkAccess\":\"Disabled\"}}",
       "isContentBase64": false
     }
   }

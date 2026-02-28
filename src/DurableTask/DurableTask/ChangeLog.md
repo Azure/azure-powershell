@@ -19,7 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 0.2.0
 * All operations now use API version `2026-02-01`.
     - Schedulers now support configuring `publicNetworkAccess`
     - Scheduler details include `privateEndpointConnection` information.
