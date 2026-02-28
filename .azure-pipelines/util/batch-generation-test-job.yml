@@ -2,7 +2,7 @@ parameters:
   jobName: 'test_windows'
   OSName: 'Windows'
   timeoutInMinutes: 60
-  agentPoolName: 'pool-windows-2019'
+  agentPoolName: 'pool-windows-2022'
   agentPoolVMImage: ''
   maxParallel: 3
 

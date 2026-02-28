@@ -1,6 +1,6 @@
 pr: none
 trigger: none
-pool: pool-windows-2019
+pool: pool-windows-2022
 
 steps:
 - task: PowerShell@2
