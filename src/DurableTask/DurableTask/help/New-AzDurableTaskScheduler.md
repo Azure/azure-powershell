@@ -15,9 +15,9 @@ Create a Scheduler
 ### CreateExpanded (Default)
 ```
 New-AzDurableTaskScheduler -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-IPAllowlist <String[]>] [-SkuCapacity <Int32>] [-SkuName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Location <String> [-IPAllowlist <String[]>] [-PublicNetworkAccess <String>] [-SkuCapacity <Int32>]
+ [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -247,6 +247,21 @@ Run the command asynchronously
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Allow or disallow public network access to durable task scheduler
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
