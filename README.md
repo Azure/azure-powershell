@@ -156,8 +156,7 @@ have issues with Azure PowerShell or Azure services.
 
 ### Feedback
 
-If there is a feature you would like to see in Azure PowerShell, use the
-[`Send-Feedback`][SendFeedback] cmdlet, or file an issue in our [GitHub repo][GitHubRepo].
+If there is a feature you would like to see in Azure PowerShell, file an issue in our [GitHub repo][GitHubRepo].
 
 ## Contributing
 For details on contributing to this repository, see the [contributing guide][Contributing] and the [_Azure PowerShell Developer Guide_][DeveloperGuide].
@@ -234,5 +233,4 @@ information see the [Code of Conduct FAQ][CodeOfConductFaq] or contact
 [GetAzContext]: https://learn.microsoft.com/powershell/module/az.accounts/get-azcontext
 [GetAzSubscription]: https://learn.microsoft.com/powershell/module/az.accounts/get-azsubscription
 [SetAzContext]: https://learn.microsoft.com/powershell/module/az.accounts/set-azcontext
-[SendFeedback]: https://learn.microsoft.com/powershell/module/az.accounts/send-feedback
 [DisableAzDataCollection]: https://learn.microsoft.com/powershell/module/az.accounts/disable-azdatacollection
