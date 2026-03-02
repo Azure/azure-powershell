@@ -662,7 +662,7 @@ function New-AzStackHCIVMVirtualMachine {
     $PSBoundParameters.Add('AdminUsername', $AdminUsername)
   }
   if ($AdminPassword){
-    $PSBoundParameters.Add('AdminPassword', $SecureAdminPassword)
+    $PSBoundParameters.Add('AdminPassword', $AdminPassword)
   }
   if ($DynamicMemoryMaximumMemory){
     $PSBoundParameters.Add('DynamicMemoryMaximumMemory', $DynamicMemoryMaximumMemory)
