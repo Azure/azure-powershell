@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Onboarded `Microsoft.DataReplication/replicationVaults` to Private Link Common Cmdlets
+* Onboarded `Microsoft.DurableTask/schedulers` to Private Link Common Cmdlets
 
 ## Version 7.25.0
 * Added `-IpVersionType` parameter to `New-AzPrivateEndpoint` cmdlet to specify the IP version type for private IPs of the private endpoint. Allowed values are IPv4, IPv6, or DualStack.
