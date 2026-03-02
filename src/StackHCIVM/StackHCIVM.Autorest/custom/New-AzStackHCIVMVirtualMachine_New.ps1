@@ -227,8 +227,8 @@ function New-AzStackHCIVMVirtualMachine {
 
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-      [System.String]
-      # AdminPassword - admin password
+      [System.Security.SecureString]
+      # AdminPassword - admin password (as SecureString)
       ${AdminPassword},
 
       [Parameter()]
@@ -657,11 +657,12 @@ function New-AzStackHCIVMVirtualMachine {
   if ($ComputerName){
     $PSBoundParameters.Add('ComputerName', $ComputerName)
   }
+  # Handle credentials - either from Credential parameter or direct AdminUsername/AdminPassword
   if ($AdminUsername){
     $PSBoundParameters.Add('AdminUsername', $AdminUsername)
   }
   if ($AdminPassword){
-    $PSBoundParameters.Add('AdminPassword', $AdminPassword)
+    $PSBoundParameters.Add('AdminPassword', $SecureAdminPassword)
   }
   if ($DynamicMemoryMaximumMemory){
     $PSBoundParameters.Add('DynamicMemoryMaximumMemory', $DynamicMemoryMaximumMemory)
@@ -675,7 +676,7 @@ function New-AzStackHCIVMVirtualMachine {
   if ($EnableTpm.IsPresent){
     $PSBoundParameters.Add('EnableTpm', $EnableTpm)
   }
-  if($SecureBootEnabled.IsPresent){
+  if ($SecureBootEnabled.IsPresent){
     $PSBoundParameters.Add('SecureBootEnabled', $SecureBootEnabled)
   }
   $null = $PSBoundParameters.Remove("Name")
@@ -688,7 +689,6 @@ function New-AzStackHCIVMVirtualMachine {
   $null = $PSBoundParameters.Remove("Location") 
   $null = $PSBoundParameters.Remove("OSType")
   $null = $PSBoundParameters.Remove("IdentityType")
- 
   try{
     Az.StackHCIVM.internal\New-AzStackHCIVMVirtualMachine -ErrorAction Stop @PSBoundParameters 
   } catch {
