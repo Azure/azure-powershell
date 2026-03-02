@@ -476,7 +476,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 context = new WindowsOnlyParameters();
                 return context;
             }
-            else return null;
+            else return base.GetDynamicParameters();
         }
         private WindowsOnlyParameters context;
     }

@@ -330,13 +330,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public new object GetDynamicParameters()
         {
+            var parameters = base.GetDynamicParameters() as RuntimeDefinedParameterDictionary;
+
             if (FromPointInTimeBackup)
             {
                 restoreContext = new RestoreRequestDynamicParameters();
                 return restoreContext;
             }
 
-            return null;
+            return parameters;
         }
 
         private RestoreRequestDynamicParameters restoreContext;
