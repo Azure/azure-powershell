@@ -2571,6 +2571,10 @@ function Test-AzureFirewallCRUDWithEdgeZone {
         $list = Get-AzFirewall -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
+    catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
+    {
+        Assert-NotNull { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
+    }
     finally {
         # Cleanup
         Clean-ResourceGroup $rgname
@@ -2625,6 +2629,10 @@ function Test-AzureFirewallEdgeZoneZonesValidation {
 
         # Clean up firewall
         Remove-AzFirewall -ResourceGroupName $rgname -name $azureFirewallName -Force
+    }
+    catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
+    {
+        Assert-NotNull { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
     }
     finally {
         # Cleanup
