@@ -18,15 +18,16 @@ New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> -Location <
  [-SubscriptionId <String>] [-AccessConnectorId <String>] [-AccessConnectorIdentityType <String>]
  [-AccessConnectorUserAssignedIdentityId <String>] [-AmlWorkspaceId <String>]
  [-Authorization <IWorkspaceProviderAuthorization[]>] [-AutomaticClusterUpdate <String>]
- [-ComplianceStandard <String[]>] [-DefaultCatalogInitialName <String>] [-DefaultCatalogInitialType <String>]
- [-DefaultStorageFirewall <String>] [-EnableNoPublicIP] [-EncryptionKeyName <String>]
- [-EncryptionKeySource <String>] [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>]
- [-EnhancedSecurityCompliance <String>] [-EnhancedSecurityMonitoring <String>]
- [-LoadBalancerBackendPoolName <String>] [-LoadBalancerId <String>] [-ManagedDiskKeySource <String>]
- [-ManagedDiskKeyVaultPropertiesKeyName <String>] [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>]
- [-ManagedDiskKeyVaultPropertiesKeyVersion <String>] [-ManagedDiskRotationToLatestKeyVersionEnabled]
- [-ManagedResourceGroupName <String>] [-ManagedServiceKeySource <String>]
- [-ManagedServicesKeyVaultPropertiesKeyName <String>] [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
+ [-ComplianceStandard <String[]>] [-ComputeMode <String>] [-DefaultCatalogInitialName <String>]
+ [-DefaultCatalogInitialType <String>] [-DefaultStorageFirewall <String>] [-EnableNoPublicIP]
+ [-EncryptionKeyName <String>] [-EncryptionKeySource <String>] [-EncryptionKeyVaultUri <String>]
+ [-EncryptionKeyVersion <String>] [-EnhancedSecurityCompliance <String>]
+ [-EnhancedSecurityMonitoring <String>] [-LoadBalancerBackendPoolName <String>] [-LoadBalancerId <String>]
+ [-ManagedDiskKeySource <String>] [-ManagedDiskKeyVaultPropertiesKeyName <String>]
+ [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>] [-ManagedDiskKeyVaultPropertiesKeyVersion <String>]
+ [-ManagedDiskRotationToLatestKeyVersionEnabled] [-ManagedResourceGroupName <String>]
+ [-ManagedServiceKeySource <String>] [-ManagedServicesKeyVaultPropertiesKeyName <String>]
+ [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
  [-ManagedServicesKeyVaultPropertiesKeyVersion <String>] [-NatGatewayName <String>] [-PrepareEncryption]
  [-PrivateSubnetName <String>] [-PublicIPName <String>] [-PublicNetworkAccess <String>]
  [-PublicSubnetName <String>] [-RequiredNsgRule <String>] [-RequireInfrastructureEncryption] [-Sku <String>]
@@ -38,15 +39,15 @@ New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> -Location <
 ### CreateViaJsonFilePath
 ```
 New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-ComputeMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-ComputeMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -219,6 +220,22 @@ Compliance standards associated with the workspace.
 Type: System.String[]
 Parameter Sets: CreateExpanded
 Aliases: ComplianceSecurityProfileComplianceStandard
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComputeMode
+The compute mode of the workspace.
+Possible values (case-insensitive): Hybrid, Serverless
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

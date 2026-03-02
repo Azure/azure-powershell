@@ -15,7 +15,7 @@ Creates a new workspace.
 ### CreateExpanded (Default)
 ```
 New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-ManagedResourceGroupName <String>] [-AmlWorkspaceId <String>]
+ -Location <String> [-ComputeMode <String>] [-ManagedResourceGroupName <String>] [-AmlWorkspaceId <String>]
  [-Authorization <IWorkspaceProviderAuthorization[]>] [-DefaultCatalogInitialType <String>] [-EnableNoPublicIP]
  [-EncryptionKeyName <String>] [-EncryptionKeySource <String>] [-EncryptionKeyVaultUri <String>]
  [-EncryptionKeyVersion <String>] [-LoadBalancerBackendPoolName <String>] [-LoadBalancerId <String>]
@@ -38,14 +38,14 @@ New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-Subscript
 ### CreateViaJsonFilePath
 ```
 New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ComputeMode <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ComputeMode <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -219,6 +219,22 @@ Compliance standards associated with the workspace.
 Type: System.String[]
 Parameter Sets: CreateExpanded
 Aliases: ComplianceSecurityProfileComplianceStandard
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComputeMode
+The compute mode of the workspace.
+Possible values (case-insensitive): Hybrid, Serverless
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

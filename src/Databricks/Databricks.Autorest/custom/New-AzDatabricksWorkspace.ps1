@@ -38,7 +38,7 @@ New-AzDatabricksWorkspace -Name azps-databricks-workspace-t3 -ResourceGroupName 
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -52,6 +52,7 @@ https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabrickswork
 #>
 function New-AzDatabricksWorkspace {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace", "16.0.0", "2.0.0", "May 2026", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace", DeprecatedOutputProperties = ("PrivateEndpointConnection, ComplianceSecurityProfileComplianceStandard, Authorization"), NewOutputProperties = ("PrivateEndpointConnection, ComplianceSecurityProfileComplianceStandard, Authorization The types of the properties will be changed from object to 'List'"))]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -81,6 +82,14 @@ function New-AzDatabricksWorkspace {
         [System.String]
         # The geo-location where the resource lives
         ${Location},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.PSArgumentCompleterAttribute("Hybrid", "Serverless")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The compute mode of the workspace.
+        # Possible values (case-insensitive): Hybrid, Serverless
+        ${ComputeMode},
 
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -471,16 +480,27 @@ function New-AzDatabricksWorkspace {
             {
                 $PSBoundParameters.Add('ComplianceSecurityProfileValue', $EnhancedSecurityCompliance)
             }
-            if (-not $PSBoundParameters.ContainsKey('ManagedResourceGroupName')) {
-                $randomStr = -join ((48..57) + (97..122) | Get-Random -Count 13 | % { [char]$_ })
-                $manageResourceGroupName = "databricks-rg-{0}-{1}" -f $PSBoundParameters["Name"], $randomStr
+            # Set default ComputeMode to Hybrid if not specified
+            if (-not $PSBoundParameters.ContainsKey('ComputeMode')) {
+                $PSBoundParameters.Add('ComputeMode', 'Hybrid')
             }
-            else {
-                $manageResourceGroupName = $PSBoundParameters["ManagedResourceGroupName"]
-                $null = $PSBoundParameters.Remove("ManagedResourceGroupName")
+
+            if ($PSBoundParameters["ComputeMode"].ToString() -ine "Serverless") {
+                if (-not $PSBoundParameters.ContainsKey('ManagedResourceGroupName')) {
+                    $randomStr = -join ((48..57) + (97..122) | Get-Random -Count 13 | % { [char]$_ })
+                    $manageResourceGroupName = "databricks-rg-{0}-{1}" -f $PSBoundParameters["Name"], $randomStr
+                }
+                else {
+                    $manageResourceGroupName = $PSBoundParameters["ManagedResourceGroupName"]
+                    $null = $PSBoundParameters.Remove("ManagedResourceGroupName")
+                }
+                $ManagedResourceGroupId = "/subscriptions/{0}/resourceGroups/{1}" -f (Get-AzContext).Subscription.Id, $manageResourceGroupName
+                $null = $PSBoundParameters.Add("ManagedResourceGroupId", $ManagedResourceGroupId)
+            } else {
+                if ($PSBoundParameters.ContainsKey('ManagedResourceGroupName')) {
+                    $null = $PSBoundParameters.Remove("ManagedResourceGroupName")
+                }
             }
-            $ManagedResourceGroupId = "/subscriptions/{0}/resourceGroups/{1}" -f (Get-AzContext).Subscription.Id, $manageResourceGroupName
-            $null = $PSBoundParameters.Add("ManagedResourceGroupId", $ManagedResourceGroupId)
             Az.Databricks.internal\New-AzDatabricksWorkspace @PSBoundParameters
         }
         catch {
