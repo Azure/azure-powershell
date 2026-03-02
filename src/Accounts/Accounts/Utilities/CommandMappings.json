@@ -537,6 +537,20 @@
       "Remove-AzArizeAIOrganization": {},
       "Update-AzArizeAIOrganization": {}
     },
+    "Az.ArtifactSigning": {
+      "Get-AzArtifactSigningCertificateChain": {},
+      "Get-AzArtifactSigningCertificateRoot": {},
+      "Get-AzArtifactSigningCustomerEku": {},
+      "Invoke-AzArtifactSigningCIPolicySigning": {},
+      "Get-AzArtifactSigningAccount": {},
+      "Get-AzArtifactSigningCertificateProfile": {},
+      "New-AzArtifactSigningAccount": {},
+      "New-AzArtifactSigningCertificateProfile": {},
+      "Remove-AzArtifactSigningAccount": {},
+      "Remove-AzArtifactSigningCertificateProfile": {},
+      "Test-AzArtifactSigningAccountNameAvailability": {},
+      "Update-AzArtifactSigningAccount": {}
+    },
     "Az.Astro": {
       "Get-AzAstroOrganization": {},
       "New-AzAstroOrganization": {},
@@ -2966,6 +2980,12 @@
       "Update-AzEdgeActionExecutionFilter": {},
       "Update-AzEdgeActionVersion": {}
     },
+    "Az.EdgeMarketplace": {
+      "Get-AzEdgeMarketplaceOffer": {},
+      "Get-AzEdgeMarketplaceOfferAccessToken": {},
+      "New-AzEdgeMarketplaceOfferAccessToken": {},
+      "Request-AzEdgeMarketplaceOfferAccessToken": {}
+    },
     "Az.EdgeOrder": {
       "Get-AzEdgeOrder": {},
       "Get-AzEdgeOrderAddress": {},
@@ -3050,6 +3070,8 @@
       "Remove-AzElasticSanVolumeGroup": {},
       "Remove-AzElasticSanVolumeGroupNetworkRule": {},
       "Remove-AzElasticSanVolumeSnapshot": {},
+      "Test-AzElasticSanVolumeBackup": {},
+      "Test-AzElasticSanVolumeRestore": {},
       "Update-AzElasticSan": {},
       "Update-AzElasticSanVolume": {},
       "Update-AzElasticSanVolumeGroup": {}
@@ -6460,12 +6482,30 @@
     },
     "Az.Quota": {
       "Get-AzQuota": {},
+      "Get-AzQuotaGroupQuota": {},
+      "Get-AzQuotaGroupQuotaLimit": {},
+      "Get-AzQuotaGroupQuotaLimitsRequest": {},
+      "Get-AzQuotaGroupQuotaLocationSetting": {},
+      "Get-AzQuotaGroupQuotaSubscription": {},
+      "Get-AzQuotaGroupQuotaSubscriptionAllocation": {},
+      "Get-AzQuotaGroupQuotaSubscriptionAllocationRequest": {},
+      "Get-AzQuotaGroupQuotaUsage": {},
       "Get-AzQuotaOperation": {},
       "Get-AzQuotaRequestStatus": {},
       "Get-AzQuotaUsage": {},
       "New-AzQuota": {},
+      "New-AzQuotaGroupQuota": {},
+      "New-AzQuotaGroupQuotaLocationSetting": {},
+      "New-AzQuotaGroupQuotaSubscription": {},
       "New-AzQuotaLimitObject": {},
-      "Update-AzQuota": {}
+      "Remove-AzQuotaGroupQuota": {},
+      "Remove-AzQuotaGroupQuotaSubscription": {},
+      "Update-AzQuota": {},
+      "Update-AzQuotaGroupQuota": {},
+      "Update-AzQuotaGroupQuotaLimitsRequest": {},
+      "Update-AzQuotaGroupQuotaLocationSetting": {},
+      "Update-AzQuotaGroupQuotaSubscription": {},
+      "Update-AzQuotaGroupQuotaSubscriptionAllocationRequest": {}
     },
     "Az.RecoveryServices": {
       "Add-AzRecoveryServicesAsrReplicationProtectedItemDisk": {},
@@ -8785,24 +8825,6 @@
       "Remove-AzTrafficManagerProfile": {},
       "Set-AzTrafficManagerEndpoint": {},
       "Set-AzTrafficManagerProfile": {}
-    },
-    "Az.TrustedSigning": {
-      "Get-AzTrustedSigningCertificateChain": {},
-      "Get-AzTrustedSigningCertificateRoot": {},
-      "Get-AzTrustedSigningCustomerEku": {},
-      "Invoke-AzTrustedSigningCIPolicySigning": {},
-      "Get-AzTrustedSigningAccount": {},
-      "Get-AzTrustedSigningCertificateProfile": {},
-      "New-AzTrustedSigningAccount": {},
-      "New-AzTrustedSigningCertificateProfile": {},
-      "Remove-AzTrustedSigningAccount": {},
-      "Remove-AzTrustedSigningCertificateProfile": {},
-      "Test-AzTrustedSigningAccountNameAvailability": {},
-      "Update-AzTrustedSigningAccount": {},
-      "Get-AzCodeSigningCertChain": {},
-      "Get-AzCodeSigningCustomerEku": {},
-      "Get-AzCodeSigningRootCert": {},
-      "Invoke-AzCodeSigningCIPolicySigning": {}
     },
     "Az.VMware": {
       "Get-AzVMwareAddon": {},

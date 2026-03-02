@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 9.0.3
 * Updated the implementation of -Metadata parameter processing for cmdlets that use it for security. No behavior change.
 
 ## Version 9.0.1
