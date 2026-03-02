@@ -5,9 +5,13 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Save-AzStackHCIVMVirtualMachine.Recording.json'
 $currentPath = $PSScriptRoot
-while(-not $mockingPath) {
-    $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-    $currentPath = Split-Path -Path $currentPath -Parent
+while (-not $mockingPath -and $currentPath) {
+    $mockingPath = Get-ChildItem -Path $currentPath -Include 'HttpPipelineMocking.ps1' -File -ErrorAction SilentlyContinue
+    $parentPath = Split-Path -Path $currentPath -Parent
+    if (-not $parentPath -or $parentPath -eq $currentPath) {
+        break
+    }
+    $currentPath = $parentPath
 }
 . ($mockingPath | Select-Object -First 1).FullName
 

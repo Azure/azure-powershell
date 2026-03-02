@@ -133,18 +133,20 @@ function Suspend-AzStackHCIVMVirtualMachine {
         $null = $PSBoundParameters.Remove("ResourceId")
         $null = $PSBoundParameters.Remove("Name")
 
-        try{
-            Az.StackHCIVM.internal\Suspend-AzStackHCIVMVirtualMachine -ErrorAction Stop @PSBoundParameters 
-        } catch {
-            $e = $_
-            if ($e.FullyQualifiedErrorId -match "MissingAzureKubernetesMapping" ){
-                Write-Error "An older version of the Arc VM cluster extension is installed on your cluster. Please ensure you are using a compatible version of the Az.StackHCIVM module. See the Az.StackHCIVM PowerShell module documentation for version requirements." -ErrorAction Stop
-            } else {
-                Write-Error $e.Exception.Message -ErrorAction Stop
+        if ($PSCmdlet.ShouldProcess($resourceUri, "Suspend virtual machine")) {
+            try{
+                Az.StackHCIVM.internal\Suspend-AzStackHCIVMVirtualMachine -ErrorAction Stop @PSBoundParameters 
+            } catch {
+                $e = $_
+                if ($e.FullyQualifiedErrorId -match "MissingAzureKubernetesMapping" ){
+                    Write-Error "An older version of the Arc VM cluster extension is installed on your cluster. Please downgrade the Az.StackHCIVm version to 1.0.1 to proceed." -ErrorAction Stop
+                } else {
+                    Write-Error $e.Exception.Message -ErrorAction Stop
+                }
             }
         }
           
         } else {             
-            Write-Error "One or more input parameters are invalid. Resource ID is: $ResourceId, name is $name, resource group name is $resourceGroupName, subscription id is $subscriptionid"
+            Write-Error "One or more input parameters are invalid. Resource ID is: $ResourceId, name is $name, resource group name is $resourceGroupName, subscription id is $subscriptionid" -ErrorAction Stop
         }    
 }   
