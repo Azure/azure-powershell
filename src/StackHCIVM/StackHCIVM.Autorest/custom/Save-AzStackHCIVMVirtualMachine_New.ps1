@@ -147,6 +147,6 @@ function Save-AzStackHCIVMVirtualMachine {
         }
           
         } else {             
-            Write-Error "One or more input parameters are invalid. Resource ID is: $resourceId, name is $name, resource group name is $resourceGroupName, subscription id is $subscriptionId"
+            Write-Error "One or more input parameters are invalid. Resource ID is: $resourceId, name is $name, resource group name is $resourceGroupName, subscription id is $subscriptionId" -ErrorAction Stop
         }    
 }   
