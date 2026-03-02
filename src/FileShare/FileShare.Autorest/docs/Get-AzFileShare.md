@@ -42,7 +42,6 @@ Get a FileShare
 ### Example 1: Get a file share
 ```powershell
 Get-AzFileShare -ResourceName "testshare" -ResourceGroupName "myresourcegroup"
-
 ```
 
 ```output

@@ -1,6 +1,7 @@
 ### Example 1: Get a file share
 ```powershell
 Get-AzFileShare -ResourceName "testshare" -ResourceGroupName "myresourcegroup"
+```
 
 ```output
 HostName                                  : fs-xxxxxxxxxxxxxxxxx.z41.file.storage.azure.net
