@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
         deprecateByVersion: "2.0.0",
         DeprecatedOutputProperties = new string[] { "ResourceTags", "ManagementGroupIds" },
         NewOutputProperties = new string[] { "ResourceTag", "ManagementGroupId", "ComplianceState", "Component", "EffectiveParameter", "OdataContext", "OdataId",
-            "Keys", "Vales", "Count", "AdditionalProperties" }
+            "Keys", "Values", "Count", "AdditionalProperties" }
     )]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyEvent", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PolicyEvent))]
     public class GetAzureRmPolicyEvent : PolicyInsightsCmdletBase

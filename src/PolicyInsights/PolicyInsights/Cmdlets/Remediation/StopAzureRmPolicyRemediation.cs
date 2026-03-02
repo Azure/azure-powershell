@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
         deprecateByAzVersion: "16.0.0",
         deprecateByVersion: "2.0.0",
         ReplacementCmdletOutputTypeName = "Remediation",
-        ChangeDescription = "Stop-AzPolicyRemediation will now have a NoWait switch parameter."
+        ChangeDescription = "Stop-AzPolicyRemediation will now have a NoWait switch parameter as well as returning the Remediation object instead of just a boolean."
     )]
     [Cmdlet("Stop", AzureRMConstants.AzureRMPrefix + "PolicyRemediation", DefaultParameterSetName = ParameterSetNames.ByName, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class StopAzureRmPolicyRemediation : RemediationCmdletBase
