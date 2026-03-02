@@ -123,6 +123,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateSet(AccountAccessTier.Hot,
             AccountAccessTier.Cool,
             AccountAccessTier.Cold,
+            AccountAccessTier.Smart,
             IgnoreCase = true)]
         public string AccessTier { get; set; }
 
