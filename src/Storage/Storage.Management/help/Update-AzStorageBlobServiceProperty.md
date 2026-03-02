@@ -16,7 +16,9 @@ Modifies the service properties for the Azure Storage Blob service.
 ```
 Update-AzStorageBlobServiceProperty [-ResourceGroupName] <String> [-StorageAccountName] <String>
  [-DefaultServiceVersion <String>] [-EnableChangeFeed <Boolean>] [-ChangeFeedRetentionInDays <Int32>]
- [-IsVersioningEnabled <Boolean>] [-CorsRule <PSCorsRule[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-IsVersioningEnabled <Boolean>] [-CorsRule <PSCorsRule[]>] [-EnableStaticWebsite <Boolean>]
+ [-StaticWebsiteIndexDocument <String>] [-StaticWebsiteDefaultIndexDocumentPath <String>]
+ [-StaticWebsiteErrorDocument404Path <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +26,9 @@ Update-AzStorageBlobServiceProperty [-ResourceGroupName] <String> [-StorageAccou
 ```
 Update-AzStorageBlobServiceProperty -StorageAccount <PSStorageAccount> [-DefaultServiceVersion <String>]
  [-EnableChangeFeed <Boolean>] [-ChangeFeedRetentionInDays <Int32>] [-IsVersioningEnabled <Boolean>]
- [-CorsRule <PSCorsRule[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-CorsRule <PSCorsRule[]>] [-EnableStaticWebsite <Boolean>]
+ [-StaticWebsiteIndexDocument <String>] [-StaticWebsiteDefaultIndexDocumentPath <String>]
+ [-StaticWebsiteErrorDocument404Path <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +36,9 @@ Update-AzStorageBlobServiceProperty -StorageAccount <PSStorageAccount> [-Default
 ```
 Update-AzStorageBlobServiceProperty [-ResourceId] <String> [-DefaultServiceVersion <String>]
  [-EnableChangeFeed <Boolean>] [-ChangeFeedRetentionInDays <Int32>] [-IsVersioningEnabled <Boolean>]
- [-CorsRule <PSCorsRule[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-CorsRule <PSCorsRule[]>] [-EnableStaticWebsite <Boolean>]
+ [-StaticWebsiteIndexDocument <String>] [-StaticWebsiteDefaultIndexDocumentPath <String>]
+ [-StaticWebsiteErrorDocument404Path <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -147,6 +153,32 @@ Update-AzStorageBlobServiceProperty -ResourceGroupName myresourcegroup -StorageA
 
 This command cleans up the CORS rules of a Storage account by inputting @() to parameter CorsRule
 
+### Example 6: Enable static website
+```powershell
+Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -EnableStaticWebsite $true -StaticWebsiteIndexDocument "index.html" -StaticWebsiteErrorDocument404Path "error.html"
+```
+
+```output
+StorageAccountName            : mystorageaccount
+ResourceGroupName             : myresourcegroup
+DefaultServiceVersion         : 
+StaticWebsite.Enabled         : True
+StaticWebsite.IndexDocument   : index.html
+StaticWebsite.ErrorDocument404Path : error.html
+ChangeFeed.Enabled            : 
+ChangeFeed.RetentionInDays    :
+IsVersioningEnabled           :
+```
+
+This command enables static website on Blob service of a Storage account with index document as "index.html" and error document as "error.html".
+
+### Example 7: Disable static website
+```powershell
+Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -EnableStaticWebsite $false
+```
+
+This command disables static website on Blob service of a Storage account.
+
 ## PARAMETERS
 
 ### -ChangeFeedRetentionInDays
@@ -212,6 +244,21 @@ Accept wildcard characters: False
 
 ### -EnableChangeFeed
 Enable Change Feed logging for the storage account by set to $true, disable Change Feed logging by set to $false.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableStaticWebsite
+Indicates whether static website support is enabled for the specified account.
 
 ```yaml
 Type: System.Boolean
@@ -295,6 +342,51 @@ Aliases: AccountName, Name
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StaticWebsiteDefaultIndexDocumentPath
+The absolute path where the default index file is present. This absolute path is mutually exclusive to IndexDocument and it is case-sensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StaticWebsiteErrorDocument404Path
+The absolute path to a webpage that Azure Storage serves for requests that don't correspond to an existing file. Only a single custom 404 page is supported in each static website.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StaticWebsiteIndexDocument
+The webpage that Azure Storage serves for requests to the root of a website or any subfolder (for example, index.html). The value is case-sensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
