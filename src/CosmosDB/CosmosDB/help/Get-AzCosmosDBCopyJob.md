@@ -76,8 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -JobName
-Name of the Copy Job.
-A random job name will be generated if not passed.
+Name of the Copy Job. If not specified, all copy jobs for the account are listed.
 
 ```yaml
 Type: String

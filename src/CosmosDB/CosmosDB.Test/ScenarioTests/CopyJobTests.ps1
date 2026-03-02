@@ -68,7 +68,7 @@ function Create-CosmosDBAccountViaRest {
   } | ConvertTo-Json -Depth 10
 
   $response = Invoke-AzRestMethod -Path $path -Method PUT -Payload $body
-  if ($response.StatusCode -ne 200) {
+  if (($response.StatusCode -ne 200) -and ($response.StatusCode -ne 201) -and ($response.StatusCode -ne 202)) {
     throw "Failed to create CosmosDB account: $($response.Content)"
   }
 
@@ -87,7 +87,7 @@ function Create-CosmosDBAccountViaRest {
           }
         } | ConvertTo-Json -Depth 5
         $patchResponse = Invoke-AzRestMethod -Path $previewPath -Method PATCH -Payload $patchBody
-        if ($patchResponse.StatusCode -ne 200) {
+        if (($patchResponse.StatusCode -ne 200) -and ($patchResponse.StatusCode -ne 201) -and ($patchResponse.StatusCode -ne 202)) {
           throw "Failed to enable AllVersionsAndDeletesChangeFeed: $($patchResponse.Content)"
         }
         for ($j = 0; $j -lt 60; $j++) {

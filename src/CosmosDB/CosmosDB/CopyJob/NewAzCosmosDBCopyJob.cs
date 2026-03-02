@@ -43,8 +43,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string DestinationAccountName { get; set; }
 
         [ValidateNotNullOrEmpty]
-        [Parameter(Mandatory = false, HelpMessage = Constants.CopyJobNameHelpMessage)]
-        public string JobName { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = Constants.CopyJobNameOptionalHelpMessage)]        public string JobName { get; set; }
 
         // NoSQL parameters
         [ValidateNotNullOrEmpty]

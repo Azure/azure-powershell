@@ -70,7 +70,6 @@ Accept wildcard characters: False
 
 ### -JobName
 Name of the Copy Job.
-A random job name will be generated if not passed.
 
 ```yaml
 Type: String

@@ -339,7 +339,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string GlobalDatabaseAccountLocationHelpMessage = "Location of the global database account to associate with the fleetspace account.";
 
         // CopyJob constants
-        public const string CopyJobNameHelpMessage = "Name of the Copy Job. A random job name will be generated if not passed.";
+        public const string CopyJobNameHelpMessage = "Name of the Copy Job.";
+        public const string CopyJobNameOptionalHelpMessage = "Name of the Copy Job. A random job name will be generated if not passed.";
         public const string CopyJobSourceAccountNameHelpMessage = "Name of the Azure Cosmos DB source database account.";
         public const string CopyJobDestinationAccountNameHelpMessage = "Name of the Azure Cosmos DB destination database account. Defaults to source account if not specified.";
         public const string CopyJobSourceDatabaseNameHelpMessage = "Name of the source database.";
