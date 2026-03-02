@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.AzureFirewall.Zones != null && 
                 this.AzureFirewall.Zones.Count > 0)
             {
-                throw new ArgumentException("Zones cannot be specified when EdgeZone is provided. EdgeZone deployments do not support availability zones.");
+                throw new ArgumentException("Zones cannot be specified when EdgeZone is provided. EdgeZone deployments do not support availability zones.", nameof(this.AzureFirewall.Zones));
             }
 
             // Note: VNet/PIP co-location validation is intentionally omitted for Set-AzFirewall.

@@ -170,6 +170,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The edge zone where the firewall needs to be deployed.")]
         public string EdgeZone { get; set; }
 
