@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.3.3
 * Updated MSAL to 4.82.1 to fix an issue with ARM endpoint discovery.
 
 ## Version 5.3.2
