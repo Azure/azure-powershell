@@ -13,9 +13,11 @@ Remove-AzPolicyDefinition -Id $PolicyDefinition.Id -Force
 
 This command removes the given policy definition without prompting the user.
 
-### Example 3: Remove policy definition version by name
+### Example 3: [Backcompat] Remove policy definition by resource ID
 ```powershell
-Remove-AzPolicyDefinition -Name 'VMPolicyDefinition' -Version '1.0.1' -PassThru
+$PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition' -BackwardCompatible
+Remove-AzPolicyDefinition -Id $PolicyDefinition.ResourceId -Force -BackwardCompatible
+True
 ```
 
-This command removes the specified policy definition version and will return true when the command succeeds.
+This command removes the given policy definition without prompting the user.

@@ -14,44 +14,56 @@ Gets policy set definitions.
 
 ### Name (Default)
 ```
-Get-AzPolicyDefinition [-Name <String>] [-ListVersion] [-Version <String>] [-DefaultProfile <PSObject>]
+Get-AzPolicyDefinition [-Name <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
-Get-AzPolicyDefinition [-Name <String>] -ManagementGroupName <String> [-ListVersion] [-Version <String>]
+Get-AzPolicyDefinition [-Name <String>] -ManagementGroupName <String> [-BackwardCompatible]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
-Get-AzPolicyDefinition [-Name <String>] -SubscriptionId <String> [-ListVersion] [-Version <String>]
+Get-AzPolicyDefinition [-Name <String>] -SubscriptionId <String> [-BackwardCompatible]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Builtin
+### Version
 ```
-Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Builtin]
+Get-AzPolicyDefinition [-Name <String>] [-Id <String>] [-BackwardCompatible] -Version <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Custom
+### ListVersion
 ```
-Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Custom]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Static
-```
-Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Static]
+Get-AzPolicyDefinition [-Name <String>] [-Id <String>] [-ListVersion] [-BackwardCompatible]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Get-AzPolicyDefinition -Id <String> [-ListVersion] [-Version <String>] [-DefaultProfile <PSObject>]
+Get-AzPolicyDefinition -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### Builtin
+```
+Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Builtin]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Custom
+```
+Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Custom]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Static
+```
+Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Static]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,21 +106,7 @@ Get-AzPolicyDefinition | Where-Object {$_.Properties.metadata.category -eq 'Tags
 
 This command gets all policy definitions in the category **Tags**.
 
-### Example 6: Get a specific policy definition version by id
-```powershell
-Get-AzPolicyDefinition -Id '/providers/Microsoft.Authorization/policyDefinitions/36fd7371-8eb7-4321-9c30-a7100022d048' -Version "1.1.1"
-```
-
-This command gets version 1.1.1 of policy definition with id /providers/Microsoft.Authorization/policyDefinitions/36fd7371-8eb7-4321-9c30-a7100022d048.
-
-### Example 7: Get all policy definition versions of a policy definition by name
-```powershell
-Get-AzPolicyDefinition -Name 'VMPolicyDefinition' -ListVersion
-```
-
-This command gets all policy definition versions of the policy definition named VMPolicyDefinition from the current default subscription.
-
-### Example 8: Get the display name, description, policy type, and metadata of all policy definitions formatted as a list
+### Example 6: Get the display name, description, policy type, and metadata of all policy definitions formatted as a list
 ```powershell
 Get-AzPolicyDefinition | Select-Object -Property DisplayName, Description, PolicyType, Metadata | Format-List
 ```
@@ -117,7 +115,31 @@ This command is useful when you need to find the reader-friendly **DisplayName**
 Policy definition.
 You can parse the **Metadata** property to discover the policy definition's version number and category assignment.
 
+### Example 7: [Backcompat] Get the display name, description, policy type, and metadata of all policy definitions formatted as a list
+```powershell
+Get-AzPolicyDefinition -BackwardCompatible | Select-Object -ExpandProperty properties | Select-Object -Property DisplayName, Description, PolicyType, Metadata | Format-List
+```
+
+This command is useful when you need to find the reader-friendly **DisplayName** property of an Azure
+Policy definition.
+You can parse the **Metadata** property to discover the policy definition's version number and category assignment.
+
 ## PARAMETERS
+
+### -BackwardCompatible
+Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Builtin
 Causes cmdlet to return only built-in policy definitions.
@@ -169,6 +191,18 @@ The full Id of the policy definition to get.
 
 ```yaml
 Type: System.String
+Parameter Sets: Version, ListVersion
+Aliases: ResourceId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
 Parameter Sets: Id
 Aliases: ResourceId
 
@@ -180,14 +214,14 @@ Accept wildcard characters: False
 ```
 
 ### -ListVersion
-Causes cmdlet to return only custom policy definitions versions.
+Causes cmdlet to return only custom policy definitions.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Name, ManagementGroupName, SubscriptionId, Id
+Parameter Sets: ListVersion
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -226,7 +260,7 @@ The name of the policy definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name, ManagementGroupName, SubscriptionId
+Parameter Sets: Name, ManagementGroupName, SubscriptionId, Version, ListVersion
 Aliases: PolicyDefinitionName
 
 Required: False
@@ -283,10 +317,10 @@ The policy definition version in #.#.# format.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name, ManagementGroupName, SubscriptionId, Id
+Parameter Sets: Version
 Aliases: PolicyDefinitionVersion
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

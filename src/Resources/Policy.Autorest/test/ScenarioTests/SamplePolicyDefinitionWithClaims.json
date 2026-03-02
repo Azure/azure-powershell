@@ -1,9 +1,0 @@
-{
-  "if": {
-    "value": "[claims().isValid]",
-    "equals": false
-  },
-  "then": {
-    "effect": "deny"
-  }
-}

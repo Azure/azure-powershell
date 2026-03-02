@@ -14,36 +14,37 @@ Gets policy assignments.
 
 ### Default (Default)
 ```
-Get-AzPolicyAssignment [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyAssignment [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Name
 ```
-Get-AzPolicyAssignment -Name <String> [-Scope <String>] [-Expand <String>] [-DefaultProfile <PSObject>]
+Get-AzPolicyAssignment -Name <String> [-Scope <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### PolicyDefinitionId
 ```
-Get-AzPolicyAssignment [-Scope <String>] -PolicyDefinitionId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzPolicyAssignment [-Scope <String>] -PolicyDefinitionId <String> [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### IncludeDescendent
 ```
-Get-AzPolicyAssignment [-Scope <String>] [-IncludeDescendent] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzPolicyAssignment [-Scope <String>] [-IncludeDescendent] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Scope
 ```
-Get-AzPolicyAssignment -Scope <String> [-DefaultProfile <PSObject>]
+Get-AzPolicyAssignment -Scope <String> [-BackwardCompatible] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Id
 ```
-Get-AzPolicyAssignment -Id <String> [-Expand <String>] [-DefaultProfile <PSObject>]
+Get-AzPolicyAssignment -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -72,7 +73,7 @@ The second command gets the policy assignment named PolicyAssignment07 for the s
 ### Example 3: Get all policy assignments assigned to a management group
 ```powershell
 $mgId = 'myManagementGroup'
-Get-AzPolicyAssignment -Scope '/providers/Microsoft.Management/managementgroups/$mgId'
+Get-AzPolicyAssignment -Scope "/providers/Microsoft.Management/managementgroups/$mgId"
 ```
 
 The first command specifies the ID of the management group to query.
@@ -86,7 +87,30 @@ Get-AzPolicyAssignment | Select-Object -Property Scope, PolicyDefinitionID, Disp
 This command is useful when you need to find the reader-friendly **DisplayName** property of an Azure
 Policy assignment.
 
+### Example 5: [Backcompat] Get the scope, policy set definition identifier, and display name of all policy assignments formatted as a list
+```powershell
+Get-AzPolicyAssignment -BackwardCompatible | Select-Object -ExpandProperty properties | Select-Object -Property Scope, PolicyDefinitionID, DisplayName | Format-List
+```
+
+This command is useful when you need to find the reader-friendly **DisplayName** property of an Azure
+Policy assignment.
+
 ## PARAMETERS
+
+### -BackwardCompatible
+Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -101,22 +125,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Expand
-Comma-separated list of additional properties to be included in the response.
-Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
-
-```yaml
-Type: System.String
-Parameter Sets: Name, Id
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -184,7 +192,7 @@ Accept wildcard characters: False
 
 ### -Scope
 The scope of the policy assignment.
-Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
+Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
 
 ```yaml
 Type: System.String

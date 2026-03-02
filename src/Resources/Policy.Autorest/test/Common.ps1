@@ -56,7 +56,6 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         $metadata = $env.metadata | ConvertFrom-Json -Depth 100
         $enforcementModeDefault = $env.enforcementModeDefault
         $enforcementModeDoNotEnforce = $env.enforcementModeDoNotEnforce
-        $enforcementModeEnroll = $env.enforcementModeEnroll
 
         $updatedMetadataName = $env.updatedMetadataName
         $updatedMetadataValue = $env.updatedMetadataValue
@@ -80,15 +79,10 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         $somePolicyParameter = $env.somePolicyParameter
         $someParameterObject = $env.someParameterObject | ConvertFrom-Json -Depth 100 -AsHashtable
         $someDisplayName = $env.someDisplayName
-        $someNewVersion = $env.someNewVersion
-        $someOldVersion = $env.someOldVersion
-        $somePreviewVersion = $env.somePreviewVersion
-        $defaultVersion = $env.defaultVersion
-        $builtInDefName = $env.builtInDefName
-        $builtInSetName = $env.builtInSetName
 
         # exception strings
         $parameterSetError = $env.parameterSetError
+        $parameterNullError = $env.parameterNullError
         $missingParameters = $env.missingParameters
         $missingAnArgument = $env.missingAnArgument
         $onlyManagementGroupOrSubscription = $env.onlyManagementGroupOrSubscription
@@ -113,16 +107,8 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         $invalidPolicySetDefinitionRequest = $env.invalidPolicySetDefinitionRequest
         $multiplePolicyDefinitionParams = $env.multiplePolicyDefinitionParams
         $versionRequiresNameOrId = $env.versionRequiresNameOrId
-        $versionRequiresPolicy = $env.versionRequiresPolicy
-        $versionRequiresPolicyDefinition = $env.versionRequiresPolicyDefinition
-        $listVersionRequiresNameOrId = $env.listVersionRequiresNameOrId
-        $expandRequiresNameOrId = $env.expandRequiresNameOrId
-        $oldVersionsImmutable = $env.oldVersionsImmutable
+        $listVersionsRequiresNameOrId = $env.listVersionsRequiresNameOrId
         $disallowedByPolicy = $env.disallowedByPolicy
-        $invalidVersionIdentifier = $env.invalidVersionIdentifier
-        $invalidLatestDefVersionDeletion = $env.invalidLatestDefVersionDeletion
-        $invalidLatestSetDefVersionDeletion = $env.invalidLatestSetDefVersionDeletion
-        $unsupportedFilterValue = $env.unsupportedFilterValue
     }
     catch {
         Write-Host -ForegroundColor Red "Failed setting up environment for [$TargetTestName]: [$_]"
