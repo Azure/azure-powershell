@@ -12,11 +12,15 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Save-AzStackHCIVMVirtualMachine' {
-    It 'ByResourceId' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ByResourceId' {
+        $command = Get-Command -Name 'Save-AzStackHCIVMVirtualMachine' -ErrorAction Stop
+        $command | Should -Not -BeNullOrEmpty
+        $command.Parameters.Keys | Should -Contain 'ResourceId'
     }
 
-    It 'ByName' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ByName' {
+        $command = Get-Command -Name 'Save-AzStackHCIVMVirtualMachine' -ErrorAction Stop
+        $command | Should -Not -BeNullOrEmpty
+        $command.Parameters.Keys | Should -Contain 'Name'
     }
 }

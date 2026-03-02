@@ -138,7 +138,7 @@ function Suspend-AzStackHCIVMVirtualMachine {
         } catch {
             $e = $_
             if ($e.FullyQualifiedErrorId -match "MissingAzureKubernetesMapping" ){
-                Write-Error "An older version of the Arc VM cluster extension is installed on your cluster. Please downgrade the Az.StackHCIVm version to 1.0.1 to proceed." -ErrorAction Stop
+                Write-Error "An older version of the Arc VM cluster extension is installed on your cluster. Please ensure you are using a compatible version of the Az.StackHCIVM module. See the Az.StackHCIVM PowerShell module documentation for version requirements." -ErrorAction Stop
             } else {
                 Write-Error $e.Exception.Message -ErrorAction Stop
             }
