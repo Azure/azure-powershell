@@ -272,7 +272,16 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// <param name="zoneBalance">Setting this to true allows stateless node types to scale out without equal
         /// distribution across zones.
         /// </param>
-        public NodeType(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), NodeTypeSku sku = default(NodeTypeSku), string securityType = default(string), bool? isPrimary = default(bool?), int? vmInstanceCount = default(int?), int? dataDiskSizeGb = default(int?), string dataDiskType = default(string), string dataDiskLetter = default(string), System.Collections.Generic.IDictionary<string, string> placementProperties = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> capacities = default(System.Collections.Generic.IDictionary<string, string>), EndpointRangeDescription applicationPorts = default(EndpointRangeDescription), EndpointRangeDescription ephemeralPorts = default(EndpointRangeDescription), string vmSize = default(string), string vmImagePublisher = default(string), string vmImageOffer = default(string), string vmImageSku = default(string), string vmImageVersion = default(string), System.Collections.Generic.IList<VaultSecretGroup> vmSecrets = default(System.Collections.Generic.IList<VaultSecretGroup>), System.Collections.Generic.IList<VmssExtension> vmExtensions = default(System.Collections.Generic.IList<VmssExtension>), VmManagedIdentity vmManagedIdentity = default(VmManagedIdentity), bool? isStateless = default(bool?), bool? multiplePlacementGroups = default(bool?), System.Collections.Generic.IList<FrontendConfiguration> frontendConfigurations = default(System.Collections.Generic.IList<FrontendConfiguration>), System.Collections.Generic.IList<NetworkSecurityRule> networkSecurityRules = default(System.Collections.Generic.IList<NetworkSecurityRule>), System.Collections.Generic.IList<VmssDataDisk> additionalDataDisks = default(System.Collections.Generic.IList<VmssDataDisk>), bool? enableEncryptionAtHost = default(bool?), string provisioningState = default(string), bool? enableAcceleratedNetworking = default(bool?), bool? useDefaultPublicLoadBalancer = default(bool?), bool? useTempDataDisk = default(bool?), bool? enableOverProvisioning = default(bool?), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), bool? isSpotVM = default(bool?), string hostGroupId = default(string), bool? useEphemeralOSDisk = default(bool?), string spotRestoreTimeout = default(string), string evictionPolicy = default(string), string vmImageResourceId = default(string), string subnetId = default(string), System.Collections.Generic.IList<string> vmSetupActions = default(System.Collections.Generic.IList<string>), string securityEncryptionType = default(string), bool? secureBootEnabled = default(bool?), bool? enableNodePublicIP = default(bool?), bool? enableNodePublicIPv6 = default(bool?), string vmSharedGalleryImageId = default(string), string natGatewayId = default(string), System.Collections.Generic.IList<NodeTypeNatConfig> natConfigurations = default(System.Collections.Generic.IList<NodeTypeNatConfig>), VmImagePlan vmImagePlan = default(VmImagePlan), string serviceArtifactReferenceId = default(string), string dscpConfigurationId = default(string), System.Collections.Generic.IList<AdditionalNetworkInterfaceConfiguration> additionalNetworkInterfaceConfigurations = default(System.Collections.Generic.IList<AdditionalNetworkInterfaceConfiguration>), string computerNamePrefix = default(string), System.Collections.Generic.IList<VmApplication> vmApplications = default(System.Collections.Generic.IList<VmApplication>), bool? zoneBalance = default(bool?))
+
+        /// <param name="isOutboundOnly">Specifies the node type should be configured for only outbound traffic and
+        /// not inbound traffic.
+        /// </param>
+
+        /// <param name="enableResilientEphemeralOSDisk">Specifies whether the node type should use a resilient ephemeral OS disk
+        /// when using a supported SKU size. A resilient ephemeral OS disk provides
+        /// improved reliability for ephemeral OS disks by enabling full caching.
+        /// </param>
+        public NodeType(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), NodeTypeSku sku = default(NodeTypeSku), string securityType = default(string), bool? isPrimary = default(bool?), int? vmInstanceCount = default(int?), int? dataDiskSizeGb = default(int?), string dataDiskType = default(string), string dataDiskLetter = default(string), System.Collections.Generic.IDictionary<string, string> placementProperties = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> capacities = default(System.Collections.Generic.IDictionary<string, string>), EndpointRangeDescription applicationPorts = default(EndpointRangeDescription), EndpointRangeDescription ephemeralPorts = default(EndpointRangeDescription), string vmSize = default(string), string vmImagePublisher = default(string), string vmImageOffer = default(string), string vmImageSku = default(string), string vmImageVersion = default(string), System.Collections.Generic.IList<VaultSecretGroup> vmSecrets = default(System.Collections.Generic.IList<VaultSecretGroup>), System.Collections.Generic.IList<VmssExtension> vmExtensions = default(System.Collections.Generic.IList<VmssExtension>), VmManagedIdentity vmManagedIdentity = default(VmManagedIdentity), bool? isStateless = default(bool?), bool? multiplePlacementGroups = default(bool?), System.Collections.Generic.IList<FrontendConfiguration> frontendConfigurations = default(System.Collections.Generic.IList<FrontendConfiguration>), System.Collections.Generic.IList<NetworkSecurityRule> networkSecurityRules = default(System.Collections.Generic.IList<NetworkSecurityRule>), System.Collections.Generic.IList<VmssDataDisk> additionalDataDisks = default(System.Collections.Generic.IList<VmssDataDisk>), bool? enableEncryptionAtHost = default(bool?), string provisioningState = default(string), bool? enableAcceleratedNetworking = default(bool?), bool? useDefaultPublicLoadBalancer = default(bool?), bool? useTempDataDisk = default(bool?), bool? enableOverProvisioning = default(bool?), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), bool? isSpotVM = default(bool?), string hostGroupId = default(string), bool? useEphemeralOSDisk = default(bool?), string spotRestoreTimeout = default(string), string evictionPolicy = default(string), string vmImageResourceId = default(string), string subnetId = default(string), System.Collections.Generic.IList<string> vmSetupActions = default(System.Collections.Generic.IList<string>), string securityEncryptionType = default(string), bool? secureBootEnabled = default(bool?), bool? enableNodePublicIP = default(bool?), bool? enableNodePublicIPv6 = default(bool?), string vmSharedGalleryImageId = default(string), string natGatewayId = default(string), System.Collections.Generic.IList<NodeTypeNatConfig> natConfigurations = default(System.Collections.Generic.IList<NodeTypeNatConfig>), VmImagePlan vmImagePlan = default(VmImagePlan), string serviceArtifactReferenceId = default(string), string dscpConfigurationId = default(string), System.Collections.Generic.IList<AdditionalNetworkInterfaceConfiguration> additionalNetworkInterfaceConfigurations = default(System.Collections.Generic.IList<AdditionalNetworkInterfaceConfiguration>), string computerNamePrefix = default(string), System.Collections.Generic.IList<VmApplication> vmApplications = default(System.Collections.Generic.IList<VmApplication>), bool? zoneBalance = default(bool?), bool? isOutboundOnly = default(bool?), bool? enableResilientEphemeralOSDisk = default(bool?))
 
         : base(id, name, type, systemData)
         {
@@ -330,6 +339,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
             this.ComputerNamePrefix = computerNamePrefix;
             this.VMApplications = vmApplications;
             this.ZoneBalance = zoneBalance;
+            this.IsOutboundOnly = isOutboundOnly;
+            this.EnableResilientEphemeralOSDisk = enableResilientEphemeralOSDisk;
             CustomInit();
         }
 
@@ -740,6 +751,22 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.zoneBalance")]
         public bool? ZoneBalance {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the node type should be configured for only outbound
+        /// traffic and not inbound traffic.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.isOutboundOnly")]
+        public bool? IsOutboundOnly {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether the node type should use a resilient
+        /// ephemeral OS disk when using a supported SKU size. A resilient ephemeral OS
+        /// disk provides improved reliability for ephemeral OS disks by enabling full
+        /// caching.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableResilientEphemeralOsDisk")]
+        public bool? EnableResilientEphemeralOSDisk {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

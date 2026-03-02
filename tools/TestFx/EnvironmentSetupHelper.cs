@@ -536,6 +536,10 @@ namespace Microsoft.Azure.Commands.TestFx
             {
                 powershell.AddScript("Set-ExecutionPolicy Unrestricted -Scope Process -ErrorAction Ignore");
             }
+            if (!string.IsNullOrEmpty(RmDirectory))
+            {
+                powershell.AddScript($"$env:PSModulePath = \"{RmDirectory}\" + [System.IO.Path]::PathSeparator + ($env:PSModulePath -split [System.IO.Path]::PathSeparator | Where-Object {{ $_ -notmatch 'WindowsPowerShell.Modules' -and $_ -notmatch 'Documents.PowerShell.Modules' }} | Join-String -Separator ([System.IO.Path]::PathSeparator))");
+            }
             powershell.AddScript("$Error.clear()");
             powershell.AddScript($"Write-Debug \"current directory: {AppDomain.CurrentDomain.BaseDirectory}\"");
             powershell.AddScript($"Write-Debug \"current executing assembly: {Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\"");

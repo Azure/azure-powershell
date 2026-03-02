@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
         /// <summary>
         /// Update the configuration of a node type of a given managed cluster, only
-        /// updating tags.
+        /// updating tags or capacity.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
         /// <summary>
         /// Update the configuration of a node type of a given managed cluster, only
-        /// updating tags.
+        /// updating tags or capacity.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -325,96 +325,6 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             using (var _result = await operations.DeleteNodeWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
-            }
-        }
-        /// <summary>
-        /// Gets a fault simulation by the simulationId.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='nodeTypeName'>
-        /// The name of the node type.
-        /// </param>
-        public static FaultSimulation GetFaultSimulation(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, string simulationId)
-        {
-                return ((INodeTypesOperations)operations).GetFaultSimulationAsync(resourceGroupName, clusterName, nodeTypeName, simulationId).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets a fault simulation by the simulationId.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='nodeTypeName'>
-        /// The name of the node type.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<FaultSimulation> GetFaultSimulationAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, string simulationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetFaultSimulationWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, simulationId, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets the list of recent fault simulations for the node type.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='nodeTypeName'>
-        /// The name of the node type.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<FaultSimulation> ListFaultSimulation(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName)
-        {
-                return ((INodeTypesOperations)operations).ListFaultSimulationAsync(resourceGroupName, clusterName, nodeTypeName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the list of recent fault simulations for the node type.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='nodeTypeName'>
-        /// The name of the node type.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<FaultSimulation>> ListFaultSimulationAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListFaultSimulationWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
             }
         }
         /// <summary>
@@ -608,96 +518,6 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Starts a fault simulation on the node type.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='nodeTypeName'>
-        /// The name of the node type.
-        /// </param>
-        public static FaultSimulation StartFaultSimulation(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, FaultSimulationContent parameters)
-        {
-                return ((INodeTypesOperations)operations).StartFaultSimulationAsync(resourceGroupName, clusterName, nodeTypeName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Starts a fault simulation on the node type.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='nodeTypeName'>
-        /// The name of the node type.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<FaultSimulation> StartFaultSimulationAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, FaultSimulationContent parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.StartFaultSimulationWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Stops a fault simulation on the node type.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='nodeTypeName'>
-        /// The name of the node type.
-        /// </param>
-        public static FaultSimulation StopFaultSimulation(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, string simulationId)
-        {
-                return ((INodeTypesOperations)operations).StopFaultSimulationAsync(resourceGroupName, clusterName, nodeTypeName, simulationId).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Stops a fault simulation on the node type.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='nodeTypeName'>
-        /// The name of the node type.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<FaultSimulation> StopFaultSimulationAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, string simulationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.StopFaultSimulationWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, simulationId, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Create or update a Service Fabric node type of a given managed cluster.
         /// </summary>
         /// <param name='operations'>
@@ -744,7 +564,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
         /// <summary>
         /// Update the configuration of a node type of a given managed cluster, only
-        /// updating tags.
+        /// updating tags or capacity.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -765,7 +585,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
         /// <summary>
         /// Update the configuration of a node type of a given managed cluster, only
-        /// updating tags.
+        /// updating tags or capacity.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1119,96 +939,6 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Starts a fault simulation on the node type.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='nodeTypeName'>
-        /// The name of the node type.
-        /// </param>
-        public static FaultSimulation BeginStartFaultSimulation(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, FaultSimulationContent parameters)
-        {
-                return ((INodeTypesOperations)operations).BeginStartFaultSimulationAsync(resourceGroupName, clusterName, nodeTypeName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Starts a fault simulation on the node type.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='nodeTypeName'>
-        /// The name of the node type.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<FaultSimulation> BeginStartFaultSimulationAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, FaultSimulationContent parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginStartFaultSimulationWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Stops a fault simulation on the node type.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='nodeTypeName'>
-        /// The name of the node type.
-        /// </param>
-        public static FaultSimulation BeginStopFaultSimulation(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, string simulationId)
-        {
-                return ((INodeTypesOperations)operations).BeginStopFaultSimulationAsync(resourceGroupName, clusterName, nodeTypeName, simulationId).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Stops a fault simulation on the node type.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='nodeTypeName'>
-        /// The name of the node type.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<FaultSimulation> BeginStopFaultSimulationAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, string simulationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginStopFaultSimulationWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, simulationId, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Gets all Node types of the specified managed cluster.
         /// </summary>
         /// <param name='operations'>
@@ -1237,39 +967,6 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NodeType>> ListByManagedClustersNextAsync(this INodeTypesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByManagedClustersNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets the list of recent fault simulations for the node type.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<FaultSimulation> ListFaultSimulationNext(this INodeTypesOperations operations, string nextPageLink)
-        {
-                return ((INodeTypesOperations)operations).ListFaultSimulationNextAsync(nextPageLink).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the list of recent fault simulations for the node type.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<FaultSimulation>> ListFaultSimulationNextAsync(this INodeTypesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListFaultSimulationNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

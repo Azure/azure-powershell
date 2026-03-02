@@ -7,18 +7,18 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 {
     using System.Linq;
 
-    public partial class ManagedClustersStopFaultSimulationHeaders
+    public partial class ServicesRestartReplicaHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the ManagedClustersStopFaultSimulationHeaders class.
+        /// Initializes a new instance of the ServicesRestartReplicaHeaders class.
         /// </summary>
-        public ManagedClustersStopFaultSimulationHeaders()
+        public ServicesRestartReplicaHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ManagedClustersStopFaultSimulationHeaders class.
+        /// Initializes a new instance of the ServicesRestartReplicaHeaders class.
         /// </summary>
 
         /// <param name="azureAsyncOperation">
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="location">
         /// </param>
-        public ManagedClustersStopFaultSimulationHeaders(string azureAsyncOperation = default(string), string location = default(string))
+        public ServicesRestartReplicaHeaders(string azureAsyncOperation = default(string), string location = default(string))
 
         {
             this.AzureAsyncOperation = azureAsyncOperation;

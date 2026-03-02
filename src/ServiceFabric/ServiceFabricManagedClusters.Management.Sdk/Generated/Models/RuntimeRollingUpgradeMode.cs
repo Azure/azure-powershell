@@ -7,21 +7,26 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 {
 
     /// <summary>
-    /// Defines values for RollingUpgradeMode.
+    /// Defines values for RuntimeRollingUpgradeMode.
     /// </summary>
 
 
-    public static class RollingUpgradeMode
+    public static class RuntimeRollingUpgradeMode
     {
-        /// <summary>
-        /// The upgrade will stop after completing each upgrade domain and
-        /// automatically monitor health before proceeding.
-        /// </summary>
-        public const string Monitored = "Monitored";
         /// <summary>
         /// The upgrade will proceed automatically without performing any health
         /// monitoring.
         /// </summary>
         public const string UnmonitoredAuto = "UnmonitoredAuto";
+        /// <summary>
+        /// The upgrade will stop after completing each upgrade domain, giving the
+        /// opportunity to manually monitor health before proceeding.
+        /// </summary>
+        public const string UnmonitoredManual = "UnmonitoredManual";
+        /// <summary>
+        /// The upgrade will stop after completing each upgrade domain and
+        /// automatically monitor health before proceeding.
+        /// </summary>
+        public const string Monitored = "Monitored";
     }
 }

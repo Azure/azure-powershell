@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             this.NodeTypes = new NodeTypesOperations(this);
             this.NodeTypeSkus = new NodeTypeSkusOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2025-03-01-preview";
+            this.ApiVersion = "2026-02-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
@@ -414,8 +414,6 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ScalingMechanism>("kind"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ScalingTrigger>("kind"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ScalingTrigger>("kind"));
-            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<FaultSimulationContent>("faultKind"));
-            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<FaultSimulationContent>("faultKind"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Azure.CloudErrorJsonConverter());

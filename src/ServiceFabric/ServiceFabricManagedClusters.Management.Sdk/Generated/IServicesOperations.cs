@@ -184,6 +184,39 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ServicesDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, string serviceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// A long-running resource action.
+        /// </summary>
+        /// <remarks>
+        /// A long-running resource action.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='serviceName'>
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
+        /// </param>
+        /// <param name='parameters'>
+        /// The parameters for restarting replicas.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ServicesRestartReplicaHeaders>> RestartReplicaWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, string serviceName, RestartReplicaRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Create or update a Service Fabric managed service resource with the
         /// specified name.
         /// </summary>
@@ -250,6 +283,39 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ServicesDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, string serviceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// A long-running resource action.
+        /// </summary>
+        /// <remarks>
+        /// A long-running resource action.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='serviceName'>
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
+        /// </param>
+        /// <param name='parameters'>
+        /// The parameters for restarting replicas.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ServicesRestartReplicaHeaders>> BeginRestartReplicaWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, string serviceName, RestartReplicaRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets all service resources created or in the process of being created in
