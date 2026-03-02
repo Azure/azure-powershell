@@ -201,6 +201,18 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public bool? AlignRegionalDisksToVMZone { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD")]
+        public string ScheduledEventsApiVersion { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies if Scheduled Events should be auto-approved when all instances are down.")]
+        public bool? EnableAllInstancesDown { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.UserData))
@@ -442,6 +454,36 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.StorageProfile = new StorageProfile();
                         }
                         parameters.StorageProfile.AlignRegionalDisksToVMZone = this.AlignRegionalDisksToVMZone;
+                    }
+
+                    if (this.IsParameterBound(c => c.ScheduledEventsApiVersion) || this.IsParameterBound(c => c.EnableAllInstancesDown))
+                    {
+                        if (parameters.ScheduledEventsPolicy == null)
+                        {
+                            parameters.ScheduledEventsPolicy = new ScheduledEventsPolicy();
+                        }
+
+                        if (this.IsParameterBound(c => c.ScheduledEventsApiVersion))
+                        {
+                            if (parameters.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets == null)
+                            {
+                                parameters.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets = new ScheduledEventsAdditionalPublishingTargets();
+                            }
+                            if (parameters.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph == null)
+                            {
+                                parameters.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph = new EventGridAndResourceGraph();
+                            }
+                            parameters.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph.ScheduledEventsApiVersion = this.ScheduledEventsApiVersion;
+                        }
+
+                        if (this.IsParameterBound(c => c.EnableAllInstancesDown))
+                        {
+                            if (parameters.ScheduledEventsPolicy.AllInstancesDown == null)
+                            {
+                                parameters.ScheduledEventsPolicy.AllInstancesDown = new AllInstancesDown();
+                            }
+                            parameters.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove = this.EnableAllInstancesDown;
+                        }
                     }
 
                     if (NoWait.IsPresent)

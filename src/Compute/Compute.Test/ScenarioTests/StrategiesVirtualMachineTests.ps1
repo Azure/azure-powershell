@@ -695,3 +695,45 @@ function Test-SimpleGalleryCrossTenant
         Clean-ResourceGroup $vmname
     }
 }
+<#
+.SYNOPSIS
+Test Simple Parameter Set for New-AzVM with ScheduledEventsPolicy parameters
+Note: This test requires a region where ScheduledEventsPolicy is enabled
+#>
+function Test-SimpleNewVmScheduledEventsPolicy
+{
+    param ($loc)
+    # Setup
+    $vmname = Get-ResourceName
+
+    try
+    {
+        if ($loc -eq $null)
+        {
+            $loc = "eastus2euap";
+        }
+
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+        $stnd = "Standard";
+        $apiVersion = "2020-07-01";
+
+        # Create VM with ScheduledEventsPolicy parameters
+        # Note: The parameters are validated during creation, but the Azure API may not return
+        # the ScheduledEventsPolicy property in the GET response. The test verifies that
+        # the VM is created successfully with these parameters (no error thrown).
+        $vm = New-AzVM -Name $vmname -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel `
+            -SecurityType $stnd -ScheduledEventsApiVersion $apiVersion -EnableAllInstancesDown $true
+
+        # Verify VM creation succeeded
+        Assert-NotNull $vm;
+        Assert-AreEqual $vmname $vm.Name;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}

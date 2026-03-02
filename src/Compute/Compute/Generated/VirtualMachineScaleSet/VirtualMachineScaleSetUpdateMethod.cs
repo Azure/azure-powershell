@@ -481,6 +481,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Limit on the number of instances in each availability zone as a percentage of the total capacity of the virtual machine scale set. For example: if set to 50, this means that at any time, no more than 50% of the VMs in your scale set can be allocated to a single zone.")]
         public int MaxInstancePercentPerZoneValue { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD")]
+        public string ScheduledEventsApiVersion { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies if Scheduled Events should be auto-approved when all instances are down.")]
+        public bool? EnableAllInstancesDown { get; set; }
+
         private void BuildPatchObject()
         {
             if (this.IsParameterBound(c => c.AutomaticOSUpgrade))
@@ -1571,6 +1583,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value = this.MaxInstancePercentPerZoneValue;
             }
+
+            // Note: ScheduledEventsPolicy is not supported in VirtualMachineScaleSetUpdate model yet.
+            // To use ScheduledEventsApiVersion or EnableAllInstancesDown parameters,
+            // you must provide a VirtualMachineScaleSet object which will use the CreateOrUpdate path.
         }
 
         private void BuildPutObject()
@@ -2461,6 +2477,36 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy = new MaxInstancePercentPerZonePolicy();
                 }
                 this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value = this.MaxInstancePercentPerZoneValue;
+            }
+
+            if (this.IsParameterBound(c => c.ScheduledEventsApiVersion) || this.IsParameterBound(c => c.EnableAllInstancesDown))
+            {
+                if (this.VirtualMachineScaleSet.ScheduledEventsPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ScheduledEventsPolicy = new ScheduledEventsPolicy();
+                }
+
+                if (this.IsParameterBound(c => c.ScheduledEventsApiVersion))
+                {
+                    if (this.VirtualMachineScaleSet.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets == null)
+                    {
+                        this.VirtualMachineScaleSet.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets = new ScheduledEventsAdditionalPublishingTargets();
+                    }
+                    if (this.VirtualMachineScaleSet.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph == null)
+                    {
+                        this.VirtualMachineScaleSet.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph = new EventGridAndResourceGraph();
+                    }
+                    this.VirtualMachineScaleSet.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph.ScheduledEventsApiVersion = this.ScheduledEventsApiVersion;
+                }
+
+                if (this.IsParameterBound(c => c.EnableAllInstancesDown))
+                {
+                    if (this.VirtualMachineScaleSet.ScheduledEventsPolicy.AllInstancesDown == null)
+                    {
+                        this.VirtualMachineScaleSet.ScheduledEventsPolicy.AllInstancesDown = new AllInstancesDown();
+                    }
+                    this.VirtualMachineScaleSet.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove = this.EnableAllInstancesDown;
+                }
             }
         }
     }

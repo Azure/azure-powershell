@@ -14,6 +14,8 @@
 // limitations under the License.
 // 
 
+using Microsoft.Azure.Management.Compute.Models;
+
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
     public partial class PSVirtualMachineScaleSet
@@ -26,6 +28,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 
         // Gets or sets the ZonePlacementPolicy.
         public string ZonePlacementPolicy { get; set; }
+
+        // Gets or sets the ScheduledEventsPolicy.
+        public ScheduledEventsPolicy ScheduledEventsPolicy { get; set; }
 
     }
 }
