@@ -200,10 +200,8 @@ function New-AzMigrateServerReplication {
         # Specifies the security type for the Azure VM.
         ${TargetSecurityType},
 
-        [ValidateSet("true" , "false")]
-        [ArgumentCompleter( { "true" , "false" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
+        [System.Boolean]
         # Specifies if secure boot needs to be enabled on target VM.
         ${TargetVMSecureBootEnabled},
 
@@ -576,16 +574,18 @@ public static int hashForArtifact(String artifact)
         $ProviderSpecificDetails.LicenseType = $LicenseType
         $ProviderSpecificDetails.PerformAutoResync = $PerformAutoResync
         if ($HasTargetVMSecureBootEnabled) {
-            $ProviderSpecificDetails.TargetVMSecurityProfileIsTargetVmsecureBootEnabled = $TargetVMSecureBootEnabled
-        } elseif ($TargetSecurityType -eq "TrustedLaunch") {
+            $ProviderSpecificDetails.TargetVMSecurityProfileIsTargetVmsecureBootEnabled = $TargetVMSecureBootEnabled.ToString().ToLower()
+        } elseif ($HasTargetSecurityType -and $TargetSecurityType -eq "TrustedLaunch") {
             $ProviderSpecificDetails.TargetVMSecurityProfileIsTargetVmsecureBootEnabled = "true"
         }
 
         if ($HasTargetSecurityType -and $TargetSecurityType -ne "Standard") {
             $ProviderSpecificDetails.TargetVMSecurityProfileTargetVmsecurityType = $TargetSecurityType
             $ProviderSpecificDetails.TargetVMSecurityProfileIsTargetVmtpmEnabled = $true
-        } elseif ($HasTargetVMSecureBootEnabled) {
-            throw "SecureBoot is supported only when security type is trusted launch virtual machine."
+        } elseif ($HasTargetSecurityType -and $TargetSecurityType -eq "Standard" -and $HasTargetVMSecureBootEnabled) {
+            throw "SecureBoot is not supported when security type is 'Standard'. Please specify a supported security type such as 'TrustedLaunch' when enabling SecureBoot."
+        } elseif (-not $HasTargetSecurityType -and $HasTargetVMSecureBootEnabled) {
+            throw "TargetSecurityType must be specified (for example, 'TrustedLaunch') when enabling SecureBoot."
         }
 
         if ($HasTargetAVSet) {
