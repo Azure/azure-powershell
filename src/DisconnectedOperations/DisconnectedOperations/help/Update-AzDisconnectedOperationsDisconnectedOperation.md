@@ -15,9 +15,11 @@ Update a DisconnectedOperation
 ### UpdateExpanded (Default)
 ```
 Update-AzDisconnectedOperationsDisconnectedOperation -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-ConnectionIntent <String>] [-DeviceVersion <String>]
- [-RegistrationStatus <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-BenefitPlanAzureHybridWindowsServerBenefit <String>]
+ [-BenefitPlanWindowsServerVMCount <Int32>] [-BillingConfigurationAutoRenew <String>]
+ [-ConnectionIntent <String>] [-CurrentCore <Int32>] [-CurrentPricingModel <String>] [-DeviceVersion <String>]
+ [-RegistrationStatus <String>] [-Tag <Hashtable>] [-UpcomingCore <Int32>] [-UpcomingPricingModel <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
@@ -37,8 +39,11 @@ Update-AzDisconnectedOperationsDisconnectedOperation -Name <String> -ResourceGro
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDisconnectedOperationsDisconnectedOperation -InputObject <IDisconnectedOperationsIdentity>
- [-ConnectionIntent <String>] [-DeviceVersion <String>] [-RegistrationStatus <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-BenefitPlanAzureHybridWindowsServerBenefit <String>] [-BenefitPlanWindowsServerVMCount <Int32>]
+ [-BillingConfigurationAutoRenew <String>] [-ConnectionIntent <String>] [-CurrentCore <Int32>]
+ [-CurrentPricingModel <String>] [-DeviceVersion <String>] [-RegistrationStatus <String>] [-Tag <Hashtable>]
+ [-UpcomingCore <Int32>] [-UpcomingPricingModel <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,6 +108,7 @@ Tag                          : {
                                }
 Type                         : microsoft.edge/disconnectedoperations
 ```
+
 This command updates the DisconnectedOperation resource named `Resource-1` in the resource group `ResourceGroup-1` using the details provided in the specified JSON file.
 
 ### Example 3: Update a DisconnectedOperation by jsonString
@@ -132,6 +138,7 @@ Tag                          : {
                                }
 Type                         : microsoft.edge/disconnectedoperations
 ```
+
 This command updates the DisconnectedOperation resource named `Resource-1` in the resource group `ResourceGroup-1` using the details provided in the specified JSON string.
 
 ### Example 4: Update a DisconnectedOperation by identity
@@ -172,8 +179,83 @@ This command updates the DisconnectedOperation resource identified by the provid
 
 ## PARAMETERS
 
+### -BenefitPlanAzureHybridWindowsServerBenefit
+Azure Hybrid Windows Server Benefit plan
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BenefitPlanWindowsServerVMCount
+Number of Windows Server VMs to license under the Azure Hybrid Benefit plan
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BillingConfigurationAutoRenew
+The auto renew setting
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ConnectionIntent
 The connection intent
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CurrentCore
+The number of cores
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CurrentPricingModel
+The pricing model
 
 ```yaml
 Type: System.String
@@ -330,6 +412,36 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpcomingCore
+The number of cores
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpcomingPricingModel
+The pricing model
+
+```yaml
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 

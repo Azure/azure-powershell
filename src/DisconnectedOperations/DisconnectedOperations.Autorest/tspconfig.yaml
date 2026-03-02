@@ -52,11 +52,11 @@ options:
           parameter-name: ImageName
         clear-alias: true
       - where:
-          subject: HardwareSettings
-          variant: GetViaIdentityDisconnectedOperation
+          subject: HardwareSetting
+          variant: GetViaIdentityDisconnectedOperation|CreateViaIdentityDisconnectedOperation|UpdateViaIdentityDisconnectedOperation|DeleteViaIdentityDisconnectedOperation
           parameter-name: Name
         set:
-          parameter-name: HardwareSettingsName
+          parameter-name: HardwareSettingName
       - where:
-          parameter-name: HardwareSettingsName
+          parameter-name: HardwareSettingName
         clear-alias: true

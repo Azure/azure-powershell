@@ -15,7 +15,9 @@ Create a DisconnectedOperation
 ### CreateExpanded (Default)
 ```
 New-AzDisconnectedOperationsDisconnectedOperation -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Location <String> [-ConnectionIntent <String>] [-Tag <Hashtable>]
+ [-SubscriptionId <String>] -Location <String> [-BenefitPlanAzureHybridWindowsServerBenefit <String>]
+ [-BenefitPlanWindowsServerVMCount <Int32>] [-BillingConfigurationAutoRenew <String>]
+ [-ConnectionIntent <String>] [-CurrentCore <Int32>] [-CurrentPricingModel <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -146,8 +148,83 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BenefitPlanAzureHybridWindowsServerBenefit
+Azure Hybrid Windows Server Benefit plan
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BenefitPlanWindowsServerVMCount
+Number of Windows Server VMs to license under the Azure Hybrid Benefit plan
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BillingConfigurationAutoRenew
+The auto renew setting
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ConnectionIntent
 The connection intent
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CurrentCore
+The number of cores
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CurrentPricingModel
+The pricing model
 
 ```yaml
 Type: System.String

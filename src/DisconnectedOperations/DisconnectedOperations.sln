@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisconnectedOperations", "DisconnectedOperations\DisconnectedOperations.csproj", "{DBDD75BA-BF57-41D7-A8F8-31CC6E5AECDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DisconnectedOperations", "DisconnectedOperations.Autorest\Az.DisconnectedOperations.csproj", "{78C4B540-92CA-4456-B5CF-4D5B38E32EBE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DisconnectedOperations", "DisconnectedOperations.Autorest\Az.DisconnectedOperations.csproj", "{0DE59444-1D10-4E9C-BAA0-518B9DE45849}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{DBDD75BA-BF57-41D7-A8F8-31CC6E5AECDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBDD75BA-BF57-41D7-A8F8-31CC6E5AECDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBDD75BA-BF57-41D7-A8F8-31CC6E5AECDF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{78C4B540-92CA-4456-B5CF-4D5B38E32EBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{78C4B540-92CA-4456-B5CF-4D5B38E32EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{78C4B540-92CA-4456-B5CF-4D5B38E32EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{78C4B540-92CA-4456-B5CF-4D5B38E32EBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DE59444-1D10-4E9C-BAA0-518B9DE45849}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DE59444-1D10-4E9C-BAA0-518B9DE45849}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DE59444-1D10-4E9C-BAA0-518B9DE45849}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DE59444-1D10-4E9C-BAA0-518B9DE45849}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{89E02AA5-E9FA-4147-9996-C8267157911A} = {DB7B9AD4-50D0-432B-A42D-114B6EE8FC66}

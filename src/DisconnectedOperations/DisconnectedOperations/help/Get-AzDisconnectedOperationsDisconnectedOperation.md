@@ -87,7 +87,6 @@ Type                         : microsoft.edge/disconnectedoperations
 
 This command retrieves a specific DisconnectedOperation resource by its name and resource group.
 
-
 ### Example 3: GetViaIdentity for a specific DisconnectedOperation
 ```powershell
 $disconnectedOperation = @{
