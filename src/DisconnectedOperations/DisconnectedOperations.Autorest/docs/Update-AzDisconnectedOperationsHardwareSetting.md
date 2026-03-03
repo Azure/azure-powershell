@@ -71,7 +71,7 @@ Type                         : microsoft.edge/disconnectedoperations/hardwareset
 VersionAtRegistration        : xxxx.x
 ```
 
-This command updates the `default` hardware settings of the named `winfield-ps-test` in the resource group `winfield-demo-rg-2` to set the memory in gb to `32`. 
+This command updates the `default` hardware settings of the named `winfield-ps-test` in the resource group `winfield-demo-rg-2` to set the memory in gb to `32`.
 
 ### Example 2: Update the hardware settings using Disconnected Operations Identity.
 ```powershell
@@ -106,7 +106,7 @@ Type                         : microsoft.edge/disconnectedoperations/hardwareset
 VersionAtRegistration        : xxxx.x
 ```
 
-This command updates the `default` hardware settings of the named `winfield-ps-test` in the resource group `winfield-demo-rg-2` to set the memory in gb to `32`. 
+This command updates the `default` hardware settings of the named `winfield-ps-test` in the resource group `winfield-demo-rg-2` to set the memory in gb to `32`.
 
 ### Example 3: Update the hardware settings using input identity object.
 ```powershell
@@ -142,7 +142,7 @@ Type                         : microsoft.edge/disconnectedoperations/hardwareset
 VersionAtRegistration        : xxxx.x
 ```
 
-This command updates the `default` hardware settings of the named `winfield-ps-test` in the resource group `winfield-demo-rg-2` to set the memory in gb to `32`. 
+This command updates the `default` hardware settings of the named `winfield-ps-test` in the resource group `winfield-demo-rg-2` to set the memory in gb to `32`.
 
 ## PARAMETERS
 
