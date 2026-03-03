@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.3.3
 * Updated MSAL to 4.82.1 to fix an issue with ARM endpoint discovery.
 * Replaced hardcoded cloud-to-scope mappings in SSH credential factory with a static scope, enabling SSH authentication across all clouds.
 * Deprecated the `-SshAuthScope` parameter in `Set-AzEnvironment` and `Add-AzEnvironment`. The SSH authentication scope is now determined automatically.
