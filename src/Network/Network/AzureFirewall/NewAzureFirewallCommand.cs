@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Commands.Network
             sku.Tier = !string.IsNullOrEmpty(this.SkuTier) ? this.SkuTier : MNM.AzureFirewallSkuTier.Standard;
 
             // Validate that EdgeZone and Zones are not both specified
-            if (!string.IsNullOrEmpty(this.EdgeZone) && this.Zone != null && this.Zone.Length > 0)
+            if (!string.IsNullOrEmpty(this.EdgeZone) && this.Zone != null)
             {
                 throw new ArgumentException("Zones cannot be specified when EdgeZone is provided. EdgeZone deployments do not support availability zones.", nameof(this.Zone));
             }

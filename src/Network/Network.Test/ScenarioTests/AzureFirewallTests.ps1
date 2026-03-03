@@ -2573,7 +2573,7 @@ function Test-AzureFirewallCRUDWithEdgeZone {
     }
     catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
     {
-        Assert-NotNull { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
+        Assert-True { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
     }
     finally {
         # Cleanup
@@ -2632,7 +2632,7 @@ function Test-AzureFirewallEdgeZoneZonesValidation {
     }
     catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
     {
-        Assert-NotNull { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
+        Assert-True { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
     }
     finally {
         # Cleanup
