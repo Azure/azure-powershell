@@ -30,13 +30,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
     public class SshCredentialFactory : ISshCredentialFactory
     {
-        // kept for backward-compatibility
-        private readonly Dictionary<string, string> CloudToScope = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase)
-        {
-            { EnvironmentName.AzureCloud, AzureEnvironmentConstants.AzureSshAuthScope },
-            { EnvironmentName.AzureChinaCloud, AzureEnvironmentConstants.ChinaSshAuthScope },
-            { EnvironmentName.AzureUSGovernment, AzureEnvironmentConstants.USGovernmentSshAuthScope },
-        };
+        private const string AadSshLoginForLinuxServerAppId = "ce6ff14a-7fdc-4685-bbe0-f6afdfcfa8e0";
 
         private string CreateJwk(RSAParameters rsaKeyInfo, out string keyId)
         {
@@ -93,7 +87,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         private string GetAuthScope(IAzureEnvironment environment)
         {
             return environment.GetProperty(AzureEnvironment.ExtendedEndpoint.AzureSshAuthScope)
-                ?? CloudToScope.GetValueOrDefault(environment.Name.ToLower(), null);
+                ?? $"{AadSshLoginForLinuxServerAppId}/.default";
         }
     }
 }
