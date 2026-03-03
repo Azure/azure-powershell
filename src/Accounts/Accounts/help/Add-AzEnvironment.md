@@ -679,7 +679,7 @@ Accept wildcard characters: False
 ```
 
 ### -SshAuthScope
-This parameter is deprecated and has no effect. The SSH authentication scope is now determined automatically. Do not use this parameter.
+This parameter is deprecated and will be removed in a future release. The SSH authentication scope is now determined automatically and does not need to be configured.
 
 ```yaml
 Type: System.String

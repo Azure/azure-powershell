@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Commands.Profile
         public string MicrosoftGraphUrl { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "This parameter is deprecated and has no effect. The SSH authentication scope is now determined automatically. Do not use this parameter.")]
+            HelpMessage = "This parameter is deprecated and will be removed in a future release. The SSH authentication scope is now determined automatically and does not need to be configured.")]
         public string SshAuthScope { get; set; }
 
         protected override bool RequireDefaultContext()
