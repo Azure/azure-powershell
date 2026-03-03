@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Identity.Client.SSHCertificates;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using Newtonsoft.Json;
 
