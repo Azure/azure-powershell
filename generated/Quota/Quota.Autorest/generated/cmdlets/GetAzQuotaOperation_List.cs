@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Cmdlets;
     using System;
 
-    /// <summary>List all the operations supported by the Microsoft.Quota resource provider.</summary>
+    /// <summary>List the operations for the provider</summary>
     /// <remarks>
     /// [OpenAPI] List=>GET:"/providers/Microsoft.Quota/operations"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzQuotaOperation_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IOperationResponse))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Description(@"List all the operations supported by the Microsoft.Quota resource provider.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Description(@"List the operations for the provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.HttpPath(Path = "/providers/Microsoft.Quota/operations", ApiVersion = "2023-02-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.HttpPath(Path = "/providers/Microsoft.Quota/operations", ApiVersion = "2025-09-01")]
     public partial class GetAzQuotaOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IContext

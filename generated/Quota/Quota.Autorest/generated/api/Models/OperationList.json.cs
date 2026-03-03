@@ -7,6 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Extensions;
 
+    /// <summary>The paginated list of connected cluster API operations.</summary>
     public partial class OperationList
     {
 

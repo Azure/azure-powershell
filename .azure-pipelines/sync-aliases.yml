@@ -16,7 +16,7 @@ resources:
 jobs:
 - job: UpdateYaml
   displayName: Update resourceManagement.yml
-  pool: pool-windows-2019
+  pool: pool-windows-2022
   uses:
     repositories:
     - ServiceContactList
