@@ -15,19 +15,54 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDisconnectedOperationsH
 }
 
 Describe 'Get-AzDisconnectedOperationsHardwareSetting' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List'  {
+        $result = Get-AzDisconnectedOperationsHardwareSetting -Name $env.Name -ResourceGroupName $env.ResourceGroupName
+
+        $result | Should -Not -BeNull
+
+        foreach ($hardwareSetting in $result) {
+            $hardwareSetting | Should -Not -BeNullOrEmpty
+            $hardwareSetting.Id | Should -Not -BeNullOrEmpty
+            $hardwareSetting.Type | Should -Be "microsoft.edge/disconnectedOperations/hardwareSettings"
+            $hardwareSetting.ResourceGroupName | Should -Be $env.ResourceGroupName
+        }
     }
 
-    It 'GetViaIdentityDisconnectedOperation' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentityDisconnectedOperation' {
+        $disconnectedOperations = @{
+            "Name" = $env.Name;
+            "ResourceGroupName" = $env.ResourceGroupName;
+            "SubscriptionId" = $env.SubscriptionId;
+        }
+
+        $result = Get-AzDisconnectedOperationsHardwareSetting -HardwareSettingName $env.HardwareSettingName -DisconnectedOperationInputObject $disconnectedOperations
+
+        $result | Should -Not -BeNull
+        $result.Id | Should -Not -BeNullOrEmpty
+        $result.Type | Should -Be "microsoft.edge/disconnectedOperations/hardwareSettings"
+        $result.ResourceGroupName | Should -Be $env.ResourceGroupName
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $result = Get-AzDisconnectedOperationsHardwareSetting -HardwareSettingName $env.HardwareSettingName -Name $env.Name -ResourceGroupName $env.ResourceGroupName
+        $result | Should -Not -BeNull
+        $result.Id | Should -Not -BeNullOrEmpty
+        $result.Type | Should -Be "microsoft.edge/disconnectedOperations/hardwareSettings"
+        $result.ResourceGroupName | Should -Be $env.ResourceGroupName
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $inputObject = @{
+            "HardwareSettingName" = $env.HardwareSettingName;
+            "Name" = $env.Name;
+            "ResourceGroupName" = $env.ResourceGroupName;
+            "SubscriptionId" = $env.SubscriptionId;
+        }
+
+        $result = Get-AzDisconnectedOperationsHardwareSetting -InputObject $inputObject
+        $result | Should -Not -BeNull
+        $result.Id | Should -Not -BeNullOrEmpty
+        $result.Type | Should -Be "microsoft.edge/disconnectedOperations/hardwareSettings"
+        $result.ResourceGroupName | Should -Be $env.ResourceGroupName
     }
 }

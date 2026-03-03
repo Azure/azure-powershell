@@ -24,10 +24,10 @@ RegistrationStatus                         : Registered
 ResourceGroupName                          : winfield-demo-rg-2
 StampId                                    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 SystemDataCreatedAt                        : 03/02/2026 10:07:05
-SystemDataCreatedBy                        : aviranjan@microsoft.com
+SystemDataCreatedBy                        : user1@outlook.com
 SystemDataCreatedByType                    : User
 SystemDataLastModifiedAt                   : 03/03/2026 09:21:10
-SystemDataLastModifiedBy                   : aviranjan@microsoft.com
+SystemDataLastModifiedBy                   : user1@outlook.com
 SystemDataLastModifiedByType               : User
 Tag                                        : {
                                              }
@@ -66,10 +66,10 @@ RegistrationStatus                         : Registered
 ResourceGroupName                          : winfield-demo-rg-2
 StampId                                    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 SystemDataCreatedAt                        : 03/02/2026 10:07:05
-SystemDataCreatedBy                        : aviranjan@microsoft.com
+SystemDataCreatedBy                        : user1@outlook.com
 SystemDataCreatedByType                    : User
 SystemDataLastModifiedAt                   : 03/03/2026 09:21:10
-SystemDataLastModifiedBy                   : aviranjan@microsoft.com
+SystemDataLastModifiedBy                   : user1@outlook.com
 SystemDataLastModifiedByType               : User
 Tag                                        : {
                                              }
@@ -108,10 +108,10 @@ RegistrationStatus                         : Registered
 ResourceGroupName                          : winfield-demo-rg-2
 StampId                                    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 SystemDataCreatedAt                        : 03/02/2026 10:07:05
-SystemDataCreatedBy                        : aviranjan@microsoft.com
+SystemDataCreatedBy                        : user1@outlook.com
 SystemDataCreatedByType                    : User
 SystemDataLastModifiedAt                   : 03/03/2026 09:21:10
-SystemDataLastModifiedBy                   : aviranjan@microsoft.com
+SystemDataLastModifiedBy                   : user1@outlook.com
 SystemDataLastModifiedByType               : User
 Tag                                        : {
                                              }
@@ -156,10 +156,10 @@ RegistrationStatus                         : Registered
 ResourceGroupName                          : winfield-demo-rg-2
 StampId                                    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 SystemDataCreatedAt                        : 03/02/2026 10:07:05
-SystemDataCreatedBy                        : aviranjan@microsoft.com
+SystemDataCreatedBy                        : user1@outlook.com
 SystemDataCreatedByType                    : User
 SystemDataLastModifiedAt                   : 03/03/2026 09:21:10
-SystemDataLastModifiedBy                   : aviranjan@microsoft.com
+SystemDataLastModifiedBy                   : user1@outlook.com
 SystemDataLastModifiedByType               : User
 Tag                                        : {
                                              }

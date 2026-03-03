@@ -15,15 +15,52 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDisconnectedOperatio
 }
 
 Describe 'Update-AzDisconnectedOperationsHardwareSetting' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $result = Update-AzDisconnectedOperationsHardwareSetting -HardwareSettingName $env.HardwareSettingName -Name $env.Name -ResourceGroupName $env.ResourceGroupName -MemoryInGb 32
+
+        $result | Should -Not -BeNullOrEmpty
+        $result.MemoryInGb | Should -Be 32
+        $result.Name | Should -Be $env.HardwareSettingName
+        $result.ResourceGroupName | Should -Be $env.ResourceGroupName
+        $result.Type | Should -Be "microsoft.edge/disconnectedOperations/hardwareSettings"
+
+        Update-AzDisconnectedOperationsHardwareSetting -HardwareSettingName $env.HardwareSettingName -Name $env.Name -ResourceGroupName $env.ResourceGroupName -MemoryInGb 64
     }
 
-    It 'UpdateViaIdentityDisconnectedOperationExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityDisconnectedOperationExpanded' {
+        $disconnectedOperationInputObject = @{
+            "Name" = $env.Name;
+            "ResourceGroupName" = $env.ResourceGroupName;
+            "SubscriptionId" = $env.SubscriptionId;
+        }
+
+        $result = Update-AzDisconnectedOperationsHardwareSetting -HardwareSettingName $env.HardwareSettingName -DisconnectedOperationInputObject $disconnectedOperationInputObject -MemoryInGb 32
+
+        $result | Should -Not -BeNullOrEmpty
+        $result.MemoryInGb | Should -Be 32
+        $result.Name | Should -Be $env.HardwareSettingName
+        $result.ResourceGroupName | Should -Be $env.ResourceGroupName
+        $result.Type | Should -Be "microsoft.edge/disconnectedOperations/hardwareSettings"
+
+        Update-AzDisconnectedOperationsHardwareSetting -HardwareSettingName $env.HardwareSettingName -DisconnectedOperationInputObject $disconnectedOperationInputObject -MemoryInGb 64
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $inputObject = @{
+            "HardwareSettingName" = $env.HardwareSettingName;
+            "Name" = $env.Name;
+            "ResourceGroupName" = $env.ResourceGroupName;
+            "SubscriptionId" = $env.SubscriptionId;
+        }
+
+        $result = Update-AzDisconnectedOperationsHardwareSetting -InputObject $inputObject -MemoryInGb 32
+
+        $result | Should -Not -BeNullOrEmpty
+        $result.MemoryInGb | Should -Be 32
+        $result.Name | Should -Be $env.HardwareSettingName
+        $result.ResourceGroupName | Should -Be $env.ResourceGroupName
+        $result.Type | Should -Be "microsoft.edge/disconnectedOperations/hardwareSettings"
+
+        Update-AzDisconnectedOperationsHardwareSetting -InputObject $inputObject -MemoryInGb 64
     }
 }

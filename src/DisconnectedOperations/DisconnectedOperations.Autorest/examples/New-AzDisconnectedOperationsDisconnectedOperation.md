@@ -108,10 +108,10 @@ RegistrationStatus                         : Unregistered
 ResourceGroupName                          : winfield-demo-rg-2
 StampId                                    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 SystemDataCreatedAt                        : 03/02/2026 09:59:40
-SystemDataCreatedBy                        : aviranjan@microsoft.com
+SystemDataCreatedBy                        : user1@outlook.com
 SystemDataCreatedByType                    : User
 SystemDataLastModifiedAt                   : 03/02/2026 09:59:40
-SystemDataLastModifiedBy                   : aviranjan@microsoft.com
+SystemDataLastModifiedBy                   : user1@outlook.com
 SystemDataLastModifiedByType               : User
 Tag                                        : {
                                              }
