@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.25.1
 * Onboarded `Microsoft.DataReplication/replicationVaults` to Private Link Common Cmdlets
 * Onboarded `Microsoft.DurableTask/schedulers` to Private Link Common Cmdlets
 
