@@ -15,9 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Identity.Client.SSHCertificates;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using Newtonsoft.Json;
 
@@ -64,8 +62,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
 
             var publicClient = tokenCacheProvider.CreatePublicClient(context.Environment.ActiveDirectoryAuthority, context.Tenant.Id);
-            string scope = GetAuthScope(context.Environment)
-                ?? throw new AzPSKeyNotFoundException(string.Format(Resources.ErrorSshAuthScopeNotSet, context.Environment.Name));
+            string scope = GetAuthScope();
             List<string> scopes = new List<string>() { scope };
             var jwk = CreateJwk(rsaKeyInfo, out string keyId);
 
@@ -84,10 +81,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return resultToken;
         }
 
-        private string GetAuthScope(IAzureEnvironment environment)
+        private string GetAuthScope()
         {
-            return environment.GetProperty(AzureEnvironment.ExtendedEndpoint.AzureSshAuthScope)
-                ?? $"{AadSshLoginForLinuxServerAppId}/.default";
+            return $"{AadSshLoginForLinuxServerAppId}/.default";
         }
     }
 }

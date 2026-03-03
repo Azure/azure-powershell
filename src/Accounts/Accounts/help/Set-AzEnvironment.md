@@ -601,7 +601,7 @@ Accept wildcard characters: False
 ```
 
 ### -SshAuthScope
-The scope for authentication when SSH to an Azure VM.
+This parameter is deprecated and has no effect. The SSH authentication scope is now determined automatically. Do not use this parameter.
 
 ```yaml
 Type: System.String
