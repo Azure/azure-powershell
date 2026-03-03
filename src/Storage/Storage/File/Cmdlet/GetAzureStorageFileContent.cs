@@ -302,7 +302,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 context = new WindowsOnlyParameters();
                 return context;
             }
-            else return base.GetDynamicParameters();
+            else return null;
         }
         private WindowsOnlyParameters context;
     }
