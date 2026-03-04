@@ -103,8 +103,8 @@ function New-AzStackHCIVMImage{
     [Parameter(ParameterSetName='GalleryImage', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.Security.SecureString]
-    # Local path of image that the image should be created from (as SecureString). 
-    # This parameter is required for non marketplace images. 
+    # Local path of image that the image should be created from (as SecureString).
+    # This parameter is required for non marketplace images.
     # Use: ConvertTo-SecureString -String "path\to\image.vhdx" -AsPlainText -Force
     ${ImagePath},
 
@@ -419,7 +419,9 @@ function New-AzStackHCIVMImage{
         if ($PSCmdlet.ParameterSetName -eq "GalleryImage")
         {
             try{
-                # ImagePath is already a SecureString, no conversion needed
+                $plainImagePath = [System.Net.NetworkCredential]::new('', $ImagePath).Password
+                $null = $PSBoundParameters.Remove("ImagePath")
+                $PSBoundParameters.Add("ImagePath", $plainImagePath)
                 Az.StackHCIVM.internal\New-AzStackHCIVMGalleryImage -ErrorAction Stop @PSBoundParameters 
             } catch {
                 $e = $_
