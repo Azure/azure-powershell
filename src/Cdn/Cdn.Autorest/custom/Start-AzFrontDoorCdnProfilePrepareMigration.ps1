@@ -222,7 +222,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         $allPoliciesWithWAF = New-Object System.Collections.Generic.HashSet[string]
         $allPoliciesWithVault = New-Object System.Collections.Generic.HashSet[string]
         foreach ($info in $frontDoorInfos) {
-            $wafInfo = $info.WebApplicationFirewallPolicyLink
+            $wafInfo = $info.WebApplicationFirewallPolicyLinkId
             if ($wafInfo) {
                 $allPoliciesWithWAF.Add($wafInfo.ToLower())  | Out-Null
             }
