@@ -650,6 +650,54 @@ function Test-VirtualNetworkGatewayBgpRouteApi
 
 <#
 .SYNOPSIS
+Virtual network gateway effective route API test
+#>
+function Test-VirtualNetworkGatewayEffectiveRouteApi
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$gwname = Get-ResourceName
+	$domainNameLabel = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$vnetGatewayConfigName = Get-ResourceName
+	$rgLocation = Get-ProviderLocation ResourceManagement
+	$resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+	$location = Get-ProviderLocation $resourceTypeParent
+
+	try
+	{
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+		$subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+		$vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+		$gw = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $gwname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard
+		$gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $gwname
+
+		$job = Get-AzVirtualNetworkGatewayEffectiveRoute -ResourceGroupName $rgname -VirtualNetworkGatewayName $gwname -AsJob
+		$job | Wait-Job
+		$effectiveRoutes = $job | Receive-Job
+
+		if($effectiveRoutes -and $effectiveRoutes.Length -gt 0)
+		{
+			forEach($route in $effectiveRoutes)
+			{
+				Assert-NotNull $route.LocalAddress "LocalAddress should not be null"
+				Assert-NotNull $route.NextHopType "NextHopType should not be null"
+			}
+		}
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
 Virtual network gateway P2S API test
 #>
 function Test-VirtualNetworkGatewayIkeV2
