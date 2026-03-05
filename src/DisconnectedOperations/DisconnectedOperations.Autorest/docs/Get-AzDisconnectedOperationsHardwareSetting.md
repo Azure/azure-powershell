@@ -44,7 +44,7 @@ Get the hardware settings resource
 
 ### Example 1: Get hardware settings for a specific resource
 ```powershell
-Get-AzDisconnectedOperationsHardwareSetting -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2" -HardwareSettingName "default
+Get-AzDisconnectedOperationsHardwareSetting -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2" -HardwareSettingName "default"
 ```
 
 ```output

@@ -25,7 +25,7 @@ $disconnectedOperations = @{
   "ResourceGroupName" = "my-resource-group";
   "SubscriptionId" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx";
 }
-Remove-AzDisconnectedOperationsHardwareSetting -HardwareSettingName "default"
+Remove-AzDisconnectedOperationsHardwareSetting -HardwareSettingName "default" -DisconnectedOperationInputObject $disconnectedOperations
 ```
 
 This command deletes the hardware setting named "default" for the resource identified by the DisconnectedOperation identity, which includes the name of the disconnected operation, resource group, and subscription ID.
