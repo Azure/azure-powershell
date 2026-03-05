@@ -11,12 +11,9 @@ Locale: en-US
 The topics in this section document the Azure PowerShell cmdlets for Azure Cosmos DB and Azure Managed Instance for Apache Cassandra in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.CosmosDB namespace.
 
 ## Az.CosmosDB Cmdlets
-### [Add-AzCosmosDBFleetspaceAccount](Add-AzCosmosDBFleetspaceAccount.md)
-Adds an existing Cosmos DB database account to a Fleetspace.
 
 ### [Complete-AzCosmosDBCopyJob](Complete-AzCosmosDBCopyJob.md)
 Completes an online Azure Cosmos DB container copy job.
-
 ### [Get-AzCosmosDBAccount](Get-AzCosmosDBAccount.md)
 Get CosmosDB Account.
 
@@ -40,15 +37,6 @@ Gets the CosmosDB Client Encryption Key.
 
 ### [Get-AzCosmosDBCopyJob](Get-AzCosmosDBCopyJob.md)
 Gets or lists Azure Cosmos DB container copy jobs.
-
-### [Get-AzCosmosDBFleet](Get-AzCosmosDBFleet.md)
-Gets Azure Cosmos DB Fleet information.
-
-### [Get-AzCosmosDBFleetspace](Get-AzCosmosDBFleetspace.md)
-Gets Azure Cosmos DB Fleetspace information.
-
-### [Get-AzCosmosDBFleetspaceAccount](Get-AzCosmosDBFleetspaceAccount.md)
-Gets information about Cosmos DB database accounts within a Fleetspace.
 
 ### [Get-AzCosmosDBGremlinDatabase](Get-AzCosmosDBGremlinDatabase.md)
 Gets the CosmosDB Gremlin Database.
@@ -273,12 +261,6 @@ Creates a new Azure Cosmos DB container copy job.
 ### [New-AzCosmosDBDatabaseToRestore](New-AzCosmosDBDatabaseToRestore.md)
 Creates a new CosmosDB Database to Restore object(PSDatabaseToRestore)
 
-### [New-AzCosmosDBFleet](New-AzCosmosDBFleet.md)
-Creates a new Azure Cosmos DB Fleet.
-
-### [New-AzCosmosDBFleetspace](New-AzCosmosDBFleetspace.md)
-Creates a new Azure Cosmos DB Fleetspace within a Fleet.
-
 ### [New-AzCosmosDBGremlinCompositePath](New-AzCosmosDBGremlinCompositePath.md)
 Creates a new object of type PSCompositePath. It can be passed as a parameter value for Set-AzCosmosDBGremlinGraph.
 
@@ -453,15 +435,6 @@ Deletes a CosmosDB Cassandra Keyspace.
 ### [Remove-AzCosmosDBCassandraTable](Remove-AzCosmosDBCassandraTable.md)
 Deletes a CosmosDB Cassandra Table.
 
-### [Remove-AzCosmosDBFleet](Remove-AzCosmosDBFleet.md)
-Deletes an Azure Cosmos DB Fleet.
-
-### [Remove-AzCosmosDBFleetspace](Remove-AzCosmosDBFleetspace.md)
-Deletes an Azure Cosmos DB Fleetspace.
-
-### [Remove-AzCosmosDBFleetspaceAccount](Remove-AzCosmosDBFleetspaceAccount.md)
-Removes a Cosmos DB database account from a Fleetspace.
-
 ### [Remove-AzCosmosDBGremlinDatabase](Remove-AzCosmosDBGremlinDatabase.md)
 Deletes a CosmosDB Gremlin Database.
 
@@ -593,12 +566,6 @@ Updates the throughput value of a CosmosDB Cassandra Table.
 
 ### [Update-AzCosmosDbClientEncryptionKey](Update-AzCosmosDbClientEncryptionKey.md)
 Updates the CosmosDB Client Encryption Key. Performs a client side patch operation by reading the existing Client Encryption Key.
-
-### [Update-AzCosmosDBFleet](Update-AzCosmosDBFleet.md)
-Updates an Azure Cosmos DB Fleet.
-
-### [Update-AzCosmosDBFleetspace](Update-AzCosmosDBFleetspace.md)
-Updates an Azure Cosmos DB Fleetspace.
 
 ### [Update-AzCosmosDBGremlinDatabase](Update-AzCosmosDBGremlinDatabase.md)
 Updates the CosmosDB Gremlin Database. Performs a client side patch operation by reading the existing Database.
