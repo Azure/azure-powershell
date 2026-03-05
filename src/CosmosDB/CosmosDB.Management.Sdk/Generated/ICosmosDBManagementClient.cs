@@ -174,6 +174,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         IDataTransferJobsOperations DataTransferJobs { get; }
 
         /// <summary>
+        /// Gets the ICopyJobsOperations
+        /// </summary>
+        ICopyJobsOperations CopyJobs { get; }
+
+        /// <summary>
         /// Gets the ICassandraClustersOperations
         /// </summary>
         ICassandraClustersOperations CassandraClusters { get; }

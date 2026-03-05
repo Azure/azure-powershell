@@ -145,6 +145,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </summary>
         public virtual IDataTransferJobsOperations DataTransferJobs { get; private set; }
         /// <summary>
+        /// Gets the ICopyJobsOperations
+        /// </summary>
+        public virtual ICopyJobsOperations CopyJobs { get; private set; }
+        /// <summary>
         /// Gets the ICassandraClustersOperations
         /// </summary>
         public virtual ICassandraClustersOperations CassandraClusters { get; private set; }
@@ -495,6 +499,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             this.GremlinResources = new GremlinResourcesOperations(this);
             this.Locations = new LocationsOperations(this);
             this.DataTransferJobs = new DataTransferJobsOperations(this);
+            this.CopyJobs = new CopyJobsOperations(this);
             this.CassandraClusters = new CassandraClustersOperations(this);
             this.CassandraDataCenters = new CassandraDataCentersOperations(this);
             this.NotebookWorkspaces = new NotebookWorkspacesOperations(this);
