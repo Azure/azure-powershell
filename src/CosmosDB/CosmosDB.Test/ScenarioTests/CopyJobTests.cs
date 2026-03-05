@@ -50,5 +50,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestRunner.RunTestScript("Test-CopyJobLifecycleCmdlets");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestCopyJobOnlineCompleteCmdlets()
+        {
+            TestRunner.RunTestScript("Test-CopyJobOnlineCompleteCmdlets");
+        }
     }
 }

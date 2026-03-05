@@ -370,3 +370,93 @@ function Test-CopyJobLifecycleCmdlets{
     try { Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue } catch {}
   }
 }
+
+<#
+.SYNOPSIS
+Test Online Copy Job lifecycle including Complete-AzCosmosDBCopyJob.
+Creates an account with continuous backup and EnableOnlineContainerCopy capability,
+then tests create (Online mode), pause, resume, and complete operations.
+#>
+
+function Test-CopyJobOnlineCompleteCmdlets{
+  $resourceGroupName = "cdbrg-copyjob-oc1"
+  $accountName = "cdbacct-copyjob-oc1"
+  $location = "East US 2"
+  $sourceDatabaseName = "srcdb1"
+  $sourceContainerName = "srccol1"
+  $destDatabaseName = "destdb1"
+  $destContainerName = "destcol1"
+  $jobName = "copyjob-online-complete-test"
+
+  Try
+  {
+    # Setup - Create account with continuous backup and online copy capability
+    New-AzResourceGroup -ResourceGroupName $resourceGroupName -Location $location
+    Create-CosmosDBAccountViaRest -ResourceGroupName $resourceGroupName -AccountName $accountName -Location $location -ApiKind "Sql" -EnableContinuousBackup -EnableOnlineCopy
+
+    New-AzCosmosDBSqlDatabase -ResourceGroupName $resourceGroupName -AccountName $accountName -Name $sourceDatabaseName
+    New-AzCosmosDBSqlContainer -ResourceGroupName $resourceGroupName -AccountName $accountName -DatabaseName $sourceDatabaseName -Name $sourceContainerName -PartitionKeyPath "/pk" -PartitionKeyKind "Hash"
+
+    New-AzCosmosDBSqlDatabase -ResourceGroupName $resourceGroupName -AccountName $accountName -Name $destDatabaseName
+    New-AzCosmosDBSqlContainer -ResourceGroupName $resourceGroupName -AccountName $accountName -DatabaseName $destDatabaseName -Name $destContainerName -PartitionKeyPath "/pk" -PartitionKeyKind "Hash"
+
+    # Create Online copy job
+    $copyJob = New-AzCosmosDBCopyJob `
+      -ResourceGroupName $resourceGroupName `
+      -SourceAccountName $accountName `
+      -DestinationAccountName $accountName `
+      -JobName $jobName `
+      -SourceSqlDatabaseName $sourceDatabaseName `
+      -SourceSqlContainerName $sourceContainerName `
+      -DestinationSqlDatabaseName $destDatabaseName `
+      -DestinationSqlContainerName $destContainerName `
+      -Mode "Online"
+
+    Assert-NotNull $copyJob
+    Assert-AreEqual $copyJob.Name $jobName
+    Assert-AreEqual $copyJob.Mode "Online"
+
+    # Wait for the job to reach Running state
+    $maxRetries = 30
+    $jobRunning = $false
+    for ($i = 0; $i -lt $maxRetries; $i++) {
+      Start-Sleep -Seconds 20
+      $job = Get-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName
+      if ($job.Status -eq "Running") { $jobRunning = $true; break }
+    }
+    Assert-True { $jobRunning } "Job should reach Running state"
+
+    # Pause the online job
+    $pauseResult = Suspend-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName -PassThru
+    Assert-AreEqual $pauseResult $true
+
+    # Verify paused
+    $pausedJob = Get-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName
+    Assert-AreEqual $pausedJob.Status "Paused"
+
+    # Resume the online job
+    $resumeResult = Resume-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName -PassThru
+    Assert-AreEqual $resumeResult $true
+
+    # Wait for Running again
+    for ($i = 0; $i -lt $maxRetries; $i++) {
+      Start-Sleep -Seconds 20
+      $job = Get-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName
+      if ($job.Status -eq "Running") { break }
+    }
+
+    # Complete the online job
+    $completeResult = Complete-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName -PassThru
+    Assert-AreEqual $completeResult $true
+
+    # Verify completed
+    Start-Sleep -Seconds 10
+    $completedJob = Get-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName
+    Assert-AreEqual $completedJob.Status "Completed"
+  }
+  Finally
+  {
+    try { Remove-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName -ErrorAction SilentlyContinue } catch {}
+    try { Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue } catch {}
+  }
+}
