@@ -45,18 +45,26 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="addressPrefix">The destination CIDR to which the route applies.
         /// </param>
 
-        /// <param name="nextHopType">The type of Azure hop the packet should be sent to.
+        /// <param name="nextHopType">The type of Azure hop the packet should be sent to. When set to
+        /// &#39;VirtualAppliance&#39;, the &#39;nextHopIpAddress&#39; property is required and
+        /// &#39;nextHop&#39; must not be set. When set to &#39;VirtualApplianceEcmp&#39;, the
+        /// &#39;nextHop&#39; property is required and &#39;nextHopIpAddress&#39; must not be set.
         /// Possible values include: &#39;VirtualNetworkGateway&#39;, &#39;VnetLocal&#39;, &#39;Internet&#39;,
-        /// &#39;VirtualAppliance&#39;, &#39;None&#39;</param>
+        /// &#39;VirtualAppliance&#39;, &#39;None&#39;, &#39;VirtualApplianceEcmp&#39;</param>
 
-        /// <param name="nextHopIPAddress">The IP address packets should be forwarded to. Next hop values are only
-        /// allowed in routes where the next hop type is VirtualAppliance.
+        /// <param name="nextHopIPAddress">The IP address packets should be forwarded to. Required when nextHopType is
+        /// &#39;VirtualAppliance&#39;. Must not be set when nextHopType is
+        /// &#39;VirtualApplianceEcmp&#39;; use the &#39;nextHop&#39; property instead for ECMP routes.
+        /// </param>
+
+        /// <param name="nextHop">The next hop for an ECMP route. Required when nextHopType is
+        /// &#39;VirtualApplianceEcmp&#39;. Must not be set for other nextHopType values.
         /// </param>
 
         /// <param name="hasBgpOverride">A value indicating whether this route overrides overlapping BGP routes
         /// regardless of LPM.
         /// </param>
-        public Route(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string addressPrefix = default(string), string nextHopType = default(string), string nextHopIPAddress = default(string), bool? hasBgpOverride = default(bool?))
+        public Route(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string addressPrefix = default(string), string nextHopType = default(string), string nextHopIPAddress = default(string), RouteNextHopEcmp nextHop = default(RouteNextHopEcmp), bool? hasBgpOverride = default(bool?))
 
         : base(id)
         {
@@ -67,6 +75,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.AddressPrefix = addressPrefix;
             this.NextHopType = nextHopType;
             this.NextHopIPAddress = nextHopIPAddress;
+            this.NextHop = nextHop;
             this.HasBgpOverride = hasBgpOverride;
             CustomInit();
         }
@@ -110,17 +119,28 @@ namespace Microsoft.Azure.Management.Network.Models
         public string AddressPrefix {get; set; }
 
         /// <summary>
-        /// Gets or sets the type of Azure hop the packet should be sent to. Possible values include: &#39;VirtualNetworkGateway&#39;, &#39;VnetLocal&#39;, &#39;Internet&#39;, &#39;VirtualAppliance&#39;, &#39;None&#39;
+        /// Gets or sets the type of Azure hop the packet should be sent to. When set
+        /// to &#39;VirtualAppliance&#39;, the &#39;nextHopIpAddress&#39; property is required and
+        /// &#39;nextHop&#39; must not be set. When set to &#39;VirtualApplianceEcmp&#39;, the
+        /// &#39;nextHop&#39; property is required and &#39;nextHopIpAddress&#39; must not be set. Possible values include: &#39;VirtualNetworkGateway&#39;, &#39;VnetLocal&#39;, &#39;Internet&#39;, &#39;VirtualAppliance&#39;, &#39;None&#39;, &#39;VirtualApplianceEcmp&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nextHopType")]
         public string NextHopType {get; set; }
 
         /// <summary>
-        /// Gets or sets the IP address packets should be forwarded to. Next hop values
-        /// are only allowed in routes where the next hop type is VirtualAppliance.
+        /// Gets or sets the IP address packets should be forwarded to. Required when
+        /// nextHopType is &#39;VirtualAppliance&#39;. Must not be set when nextHopType is
+        /// &#39;VirtualApplianceEcmp&#39;; use the &#39;nextHop&#39; property instead for ECMP routes.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nextHopIpAddress")]
         public string NextHopIPAddress {get; set; }
+
+        /// <summary>
+        /// Gets or sets the next hop for an ECMP route. Required when nextHopType is
+        /// &#39;VirtualApplianceEcmp&#39;. Must not be set for other nextHopType values.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nextHop")]
+        public RouteNextHopEcmp NextHop {get; set; }
 
         /// <summary>
         /// Gets a value indicating whether this route overrides overlapping BGP routes
@@ -128,5 +148,25 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.hasBgpOverride")]
         public bool? HasBgpOverride {get; private set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+
+
+
+
+            if (this.NextHop != null)
+            {
+                this.NextHop.Validate();
+            }
+        }
     }
 }
