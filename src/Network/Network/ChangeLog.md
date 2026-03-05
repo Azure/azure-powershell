@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlet `Get-AzVirtualNetworkGatewayEffectiveRoute` to retrieve effective routes for a Virtual Network Gateway
 
 ## Version 7.25.1
 * Onboarded `Microsoft.DataReplication/replicationVaults` to Private Link Common Cmdlets
