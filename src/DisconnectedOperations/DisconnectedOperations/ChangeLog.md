@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* General availability release for module Az.DisconnectedOperations
+* Added cmdlets for managing hardware settings in disconnected operations.
+    - Get-AzDisconnectedOperationsHardwareSetting
+    - Remove-AzDisconnectedOperationsHardwareSetting
+    - New-AzDisconnectedOperationsHardwareSetting
+    - Update-AzDisconnectedOperationsHardwareSetting
+* Api version update to 2026-03-15.
+
 ## Version 0.1.0
 * First preview release for module Az.DisconnectedOperations
 
