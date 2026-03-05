@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     using System.Linq;
 
     /// <summary>
-    /// The result of a copy job get operation.
+    /// A Cosmos DB Copy Job
     /// </summary>
     public partial class CopyJobGetResults : ARMProxyResource
     {
@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="type">The type of Azure resource.
         /// </param>
 
-        /// <param name="properties">The properties of a copy job.
+        /// <param name="properties">The properties of a Copy Job
         /// </param>
-        public CopyJobGetResults(string id = default(string), string name = default(string), string type = default(string), CopyJobProperties properties = default(CopyJobProperties))
+        public CopyJobGetResults(CopyJobProperties properties, string id = default(string), string name = default(string), string type = default(string))
 
         : base(id, name, type)
         {
@@ -50,9 +50,26 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
 
         /// <summary>
-        /// Gets or sets the properties of a copy job.
+        /// Gets or sets the properties of a Copy Job
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
         public CopyJobProperties Properties {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.Properties == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Properties");
+            }
+            if (this.Properties != null)
+            {
+                this.Properties.Validate();
+            }
+        }
     }
 }

@@ -52,30 +52,52 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 TotalCount = copyJobGetResults.Properties.TotalCount;
                 Duration = copyJobGetResults.Properties.Duration;
 
-                if (copyJobGetResults.Properties.JobProperties?.Tasks != null &&
-                    copyJobGetResults.Properties.JobProperties.Tasks.Count > 0)
+                ExtractJobDetails(copyJobGetResults.Properties.JobProperties);
+            }
+        }
+
+        private void ExtractJobDetails(BaseCopyJobProperties jobProperties)
+        {
+            if (jobProperties == null)
+            {
+                return;
+            }
+
+            if (jobProperties is NoSqlRUToNoSqlRUCopyJobProperties noSqlProps)
+            {
+                JobType = "NoSqlRUToNoSqlRU";
+                if (noSqlProps.Tasks != null && noSqlProps.Tasks.Count > 0)
                 {
-                    var firstTask = copyJobGetResults.Properties.JobProperties.Tasks[0];
-                    if (firstTask.Source != null)
-                    {
-                        SourceDatabaseName = firstTask.Source.DatabaseName;
-                        SourceContainerName = firstTask.Source.ContainerName;
-                        SourceKeyspaceName = firstTask.Source.KeyspaceName;
-                        SourceTableName = firstTask.Source.TableName;
-                        SourceCollectionName = firstTask.Source.CollectionName;
-                    }
-
-                    if (firstTask.Destination != null)
-                    {
-                        DestinationDatabaseName = firstTask.Destination.DatabaseName;
-                        DestinationContainerName = firstTask.Destination.ContainerName;
-                        DestinationKeyspaceName = firstTask.Destination.KeyspaceName;
-                        DestinationTableName = firstTask.Destination.TableName;
-                        DestinationCollectionName = firstTask.Destination.CollectionName;
-                    }
+                    var task = noSqlProps.Tasks[0];
+                    SourceDatabaseName = task.Source?.DatabaseName;
+                    SourceContainerName = task.Source?.ContainerName;
+                    DestinationDatabaseName = task.Destination?.DatabaseName;
+                    DestinationContainerName = task.Destination?.ContainerName;
                 }
-
-                JobType = copyJobGetResults.Properties.JobProperties?.JobType;
+            }
+            else if (jobProperties is CassandraRUToCassandraRUCopyJobProperties cassandraProps)
+            {
+                JobType = "CassandraRUToCassandraRU";
+                if (cassandraProps.Tasks != null && cassandraProps.Tasks.Count > 0)
+                {
+                    var task = cassandraProps.Tasks[0];
+                    SourceKeyspaceName = task.Source?.KeyspaceName;
+                    SourceTableName = task.Source?.TableName;
+                    DestinationKeyspaceName = task.Destination?.KeyspaceName;
+                    DestinationTableName = task.Destination?.TableName;
+                }
+            }
+            else if (jobProperties is MongoRUToMongoRUCopyJobProperties mongoProps)
+            {
+                JobType = "MongoRUToMongoRU";
+                if (mongoProps.Tasks != null && mongoProps.Tasks.Count > 0)
+                {
+                    var task = mongoProps.Tasks[0];
+                    SourceDatabaseName = task.Source?.DatabaseName;
+                    SourceCollectionName = task.Source?.CollectionName;
+                    DestinationDatabaseName = task.Destination?.DatabaseName;
+                    DestinationCollectionName = task.Destination?.CollectionName;
+                }
             }
         }
 

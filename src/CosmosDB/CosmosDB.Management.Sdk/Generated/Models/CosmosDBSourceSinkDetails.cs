@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     using System.Linq;
 
     /// <summary>
-    /// CosmosDB data source/sink details for cross-account operations.
+    /// A CosmosDB data source/sink details
     /// </summary>
     public partial class CosmosDBSourceSinkDetails
     {
@@ -23,7 +23,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <summary>
         /// Initializes a new instance of the CosmosDBSourceSinkDetails class.
         /// </summary>
+
+        /// <param name="remoteAccountName">Name of remote account in case of cross-account data transfer.
+        /// </param>
         public CosmosDBSourceSinkDetails(string remoteAccountName = default(string))
+
         {
             this.RemoteAccountName = remoteAccountName;
             CustomInit();
@@ -34,10 +38,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         partial void CustomInit();
 
+
         /// <summary>
         /// Gets or sets name of remote account in case of cross-account data transfer.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "remoteAccountName")]
-        public string RemoteAccountName { get; set; }
+        public string RemoteAccountName {get; set; }
     }
 }

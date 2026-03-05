@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string DestinationAccountName { get; set; }
 
         [ValidateNotNullOrEmpty]
-        [Parameter(Mandatory = false, HelpMessage = Constants.CopyJobNameOptionalHelpMessage)]        public string JobName { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = Constants.CopyJobNameOptionalHelpMessage)]
+        public string JobName { get; set; }
 
         // NoSQL parameters
         [ValidateNotNullOrEmpty]
@@ -115,77 +117,89 @@ namespace Microsoft.Azure.Commands.CosmosDB
             bool isCrossAccount = !string.Equals(SourceAccountName, DestinationAccountName, StringComparison.OrdinalIgnoreCase);
             string hostAccountName = DestinationAccountName;
 
-            CopyJobDataSource source;
-            CopyJobDataSource destination;
-            string jobType;
+            CosmosDBSourceSinkDetails sourceDetails = isCrossAccount
+                ? new CosmosDBSourceSinkDetails { RemoteAccountName = SourceAccountName }
+                : null;
+
+            BaseCopyJobProperties jobProperties;
 
             switch (ParameterSetName)
             {
                 case CassandraParameterSet:
-                    jobType = "CassandraRUToCassandraRU";
-                    source = new CopyJobDataSource
+                    jobProperties = new CassandraRUToCassandraRUCopyJobProperties
                     {
-                        KeyspaceName = SourceKeyspaceName,
-                        TableName = SourceTableName
-                    };
-                    destination = new CopyJobDataSource
-                    {
-                        KeyspaceName = DestinationKeyspaceName,
-                        TableName = DestinationTableName
+                        SourceDetails = sourceDetails,
+                        Tasks = new List<CassandraRUToCassandraRUCopyJobTask>
+                        {
+                            new CassandraRUToCassandraRUCopyJobTask
+                            {
+                                Source = new CosmosDBCassandraTable
+                                {
+                                    KeyspaceName = SourceKeyspaceName,
+                                    TableName = SourceTableName
+                                },
+                                Destination = new CosmosDBCassandraTable
+                                {
+                                    KeyspaceName = DestinationKeyspaceName,
+                                    TableName = DestinationTableName
+                                }
+                            }
+                        }
                     };
                     break;
 
                 case MongoParameterSet:
-                    jobType = "MongoRUToMongoRU";
-                    source = new CopyJobDataSource
+                    jobProperties = new MongoRUToMongoRUCopyJobProperties
                     {
-                        DatabaseName = SourceMongoDatabaseName,
-                        CollectionName = SourceCollectionName
-                    };
-                    destination = new CopyJobDataSource
-                    {
-                        DatabaseName = DestinationMongoDatabaseName,
-                        CollectionName = DestinationCollectionName
+                        SourceDetails = sourceDetails,
+                        Tasks = new List<MongoRUToMongoRUCopyJobTask>
+                        {
+                            new MongoRUToMongoRUCopyJobTask
+                            {
+                                Source = new CosmosDBMongoCollection
+                                {
+                                    DatabaseName = SourceMongoDatabaseName,
+                                    CollectionName = SourceCollectionName
+                                },
+                                Destination = new CosmosDBMongoCollection
+                                {
+                                    DatabaseName = DestinationMongoDatabaseName,
+                                    CollectionName = DestinationCollectionName
+                                }
+                            }
+                        }
                     };
                     break;
 
                 default: // SqlParameterSet
-                    jobType = "NoSqlRUToNoSqlRU";
-                    source = new CopyJobDataSource
+                    jobProperties = new NoSqlRUToNoSqlRUCopyJobProperties
                     {
-                        DatabaseName = SourceSqlDatabaseName,
-                        ContainerName = SourceSqlContainerName
-                    };
-                    destination = new CopyJobDataSource
-                    {
-                        DatabaseName = DestinationSqlDatabaseName,
-                        ContainerName = DestinationSqlContainerName
+                        SourceDetails = sourceDetails,
+                        Tasks = new List<NoSqlRUToNoSqlRUCopyJobTask>
+                        {
+                            new NoSqlRUToNoSqlRUCopyJobTask
+                            {
+                                Source = new CosmosDBNoSqlContainer
+                                {
+                                    DatabaseName = SourceSqlDatabaseName,
+                                    ContainerName = SourceSqlContainerName
+                                },
+                                Destination = new CosmosDBNoSqlContainer
+                                {
+                                    DatabaseName = DestinationSqlDatabaseName,
+                                    ContainerName = DestinationSqlContainerName
+                                }
+                            }
+                        }
                     };
                     break;
             }
 
-            var jobProperties = new CopyJobJobProperties
-            {
-                JobType = jobType,
-                Tasks = new System.Collections.Generic.List<CopyJobTask>
-                {
-                    new CopyJobTask { Source = source, Destination = destination }
-                }
-            };
-
-            if (isCrossAccount)
-            {
-                jobProperties.SourceDetails = new CosmosDBSourceSinkDetails
-                {
-                    RemoteAccountName = SourceAccountName
-                };
-            }
-
             if (ShouldProcess(JobName, "Creating CosmosDB Copy Job"))
             {
-                CopyJobCreateUpdateParameters parameters = new CopyJobCreateUpdateParameters
+                CopyJobGetResults parameters = new CopyJobGetResults
                 {
-                    Properties = new CopyJobCreateUpdateProperties
+                    Properties = new CopyJobProperties
                     {
                         JobProperties = jobProperties,
                         Mode = Mode

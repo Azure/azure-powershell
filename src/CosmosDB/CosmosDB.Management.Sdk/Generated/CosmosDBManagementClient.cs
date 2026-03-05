@@ -141,13 +141,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </summary>
         public virtual ILocationsOperations Locations { get; private set; }
         /// <summary>
-        /// Gets the IDataTransferJobsOperations
-        /// </summary>
-        public virtual IDataTransferJobsOperations DataTransferJobs { get; private set; }
-        /// <summary>
         /// Gets the ICopyJobsOperations
         /// </summary>
         public virtual ICopyJobsOperations CopyJobs { get; private set; }
+        /// <summary>
+        /// Gets the IDataTransferJobsOperations
+        /// </summary>
+        public virtual IDataTransferJobsOperations DataTransferJobs { get; private set; }
         /// <summary>
         /// Gets the ICassandraClustersOperations
         /// </summary>
@@ -498,8 +498,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             this.CassandraResources = new CassandraResourcesOperations(this);
             this.GremlinResources = new GremlinResourcesOperations(this);
             this.Locations = new LocationsOperations(this);
-            this.DataTransferJobs = new DataTransferJobsOperations(this);
             this.CopyJobs = new CopyJobsOperations(this);
+            this.DataTransferJobs = new DataTransferJobsOperations(this);
             this.CassandraClusters = new CassandraClustersOperations(this);
             this.CassandraDataCenters = new CassandraDataCentersOperations(this);
             this.NotebookWorkspaces = new NotebookWorkspacesOperations(this);
@@ -556,6 +556,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             };
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<BackupPolicy>("type"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<BackupPolicy>("type"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<BaseCopyJobProperties>("jobType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<BaseCopyJobProperties>("jobType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<DataTransferDataSourceSink>("component"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<DataTransferDataSourceSink>("component"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ServiceResourceProperties>("serviceType"));
