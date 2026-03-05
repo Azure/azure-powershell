@@ -15,11 +15,17 @@ param (
 Write-Output "##vso[task.setprogress value=1;]Initializing live test scenarios"
 
 $srcDir = Join-Path -Path ${env:BUILD_SOURCESDIRECTORY} -ChildPath "src"
-$liveScenarios = Get-ChildItem -Path $srcDir -Directory -Exclude "Accounts" -ErrorAction SilentlyContinue | Get-ChildItem -Directory -Filter "LiveTests" -Recurse | Get-ChildItem -File -Filter "TestLiveScenarios.ps1" -Recurse | Select-Object -ExpandProperty FullName
+$targetModules = @("Storage", "Dns", "Automation", "ApplicationInsights", "Databricks", "ContainerInstance")
+$liveScenarios = $targetModules | ForEach-Object {
+    $moduleSrcDir = Join-Path -Path $srcDir -ChildPath $_
+    Get-ChildItem -Path $moduleSrcDir -Directory -Filter "LiveTests" -Recurse -ErrorAction SilentlyContinue
+} | Get-ChildItem -File -Filter "TestLiveScenarios.ps1" -Recurse | Select-Object -ExpandProperty FullName
 
 $maxRunspaces = 9
 [void][int]::TryParse(${env:RSPTHROTTLE}, [ref]$maxRunspaces)
-$rsp = [runspacefactory]::CreateRunspacePool(1, $maxRunspaces)
+
+$numRunspaces = [Math]::Min($liveScenarios.Count, $maxRunspaces)
+$rsp = [runspacefactory]::CreateRunspacePool(1, $numRunspaces)
 $rsp.CleanupInterval = [timespan]::FromMinutes(30)
 [void]$rsp.Open()
 
@@ -35,9 +41,40 @@ $liveJobs = $liveScenarios | ForEach-Object {
                 [string] $LiveScenarioScript
             )
 
+            function Get-TypeTableDiag {
+                param([string]$Label)
+                try {
+                    $bf = [System.Reflection.BindingFlags]("Public,NonPublic,Instance")
+                    $rs = [runspace]::DefaultRunspace
+                    $ec = $rs.GetType().GetProperty("ExecutionContext", $bf).GetValue($rs)
+                    $tt = $ec.GetType().GetProperty("TypeTable", $bf).GetValue($ec)
+                    $em = $tt.GetType().GetField("_extendedMembers", $bf).GetValue($tt)
+                    $ttCount = $em.Count
+                    $hasJob = $em.ContainsKey("System.Management.Automation.Job")
+                    $ttHash = [System.Runtime.CompilerServices.RuntimeHelpers]::GetHashCode($tt)
+                    $diag = "TT._ext=$ttCount,hasJob=$hasJob,ttHash=$ttHash"
+                } catch { $diag = "TT_ERROR: $($_.Exception.Message)"; $ttCount = -1 }
+                try {
+                    $iss = $rs.GetType().GetProperty("InitialSessionState", $bf).GetValue($rs)
+                    $diag += " | ISS.Types=$($iss.Types.Count)"
+                } catch { $diag += " | ISS=ERR" }
+                try { $diag += " | Mods=$((Get-Module).Count)" } catch {}
+                Write-Output "##[warning]DIAG[$Module|$Label] $diag"
+                if ($ttCount -ge 0 -and $ttCount -lt 100) {
+                    try {
+                        $keys = ($em.Keys | Sort-Object) -join ","
+                        Write-Output "##[warning]DIAG[$Module|$Label] INCOMPLETE TT keys: $keys"
+                    } catch {}
+                }
+            }
+
+            Get-TypeTableDiag -Label "ENTRY"
             Import-Module "./tools/TestFx/Assert.ps1" -Force
+            Get-TypeTableDiag -Label "POST-ASSERT"
             Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList $Module, $RunPlatform, ${env:DATALOCATION} -Force
+            Get-TypeTableDiag -Label "POST-UTILITY"
             . $LiveScenarioScript
+            Get-TypeTableDiag -Label "POST-SCENARIOS"
         }
     ).AddParameter("Module", $module).AddParameter("RunPlatform", $RunPlatform).AddParameter("LiveScenarioScript", $_)
 

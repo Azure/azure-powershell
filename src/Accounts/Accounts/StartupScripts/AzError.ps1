@@ -61,4 +61,6 @@ if (Get-Module AzureRM.profile -ErrorAction Ignore)
         "If you are running in Azure Automation, take care that none of your runbooks import both Az and AzureRM modules. More information can be found here: https://aka.ms/azps-migration-guide.")
 }
 
-Update-TypeData -AppendPath (Join-Path (Get-Item $PSScriptRoot).Parent.FullName Accounts.types.ps1xml) -ErrorAction Ignore
+# Type extensions are loaded via TypesToProcess in Az.Accounts.psd1.
+# This avoids Update-TypeData -AppendPath which triggers a non-atomic
+# Read-Clear-Rebuild race on the shared TypeTable in RunspacePool scenarios.

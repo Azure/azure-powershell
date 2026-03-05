@@ -85,7 +85,7 @@ RequiredAssemblies = 'Microsoft.Azure.PowerShell.AssemblyLoading.dll',
 # ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @('Accounts.types.ps1xml')
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Accounts.format.ps1xml', 'Accounts.generated.format.ps1xml'

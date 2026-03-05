@@ -231,6 +231,33 @@ filter Write-LiveTestMessage {
     $Message -split "`r?`n" | ForEach-Object { Write-Output "##[$Level]$_" }
 }
 
+function Get-LiveTestTypeTableState {
+    param([string]$Label)
+    try {
+        $bf = [System.Reflection.BindingFlags]("Public,NonPublic,Instance")
+        $rs = [runspace]::DefaultRunspace
+        $ec = $rs.GetType().GetProperty("ExecutionContext", $bf).GetValue($rs)
+        $tt = $ec.GetType().GetProperty("TypeTable", $bf).GetValue($ec)
+        $em = $tt.GetType().GetField("_extendedMembers", $bf).GetValue($tt)
+        $ttCount = $em.Count
+        $hasJob = $em.ContainsKey("System.Management.Automation.Job")
+        $ttHash = [System.Runtime.CompilerServices.RuntimeHelpers]::GetHashCode($tt)
+        $diag = "TT._ext=$ttCount,hasJob=$hasJob,ttHash=$ttHash"
+    } catch { $diag = "TT_ERROR: $($_.Exception.Message)"; $ttCount = -1 }
+    try {
+        $iss = $rs.GetType().GetProperty("InitialSessionState", $bf).GetValue($rs)
+        $diag += " | ISS.Types=$($iss.Types.Count)"
+    } catch { $diag += " | ISS=ERR" }
+    try { $diag += " | Mods=$((Get-Module).Count)" } catch {}
+    Write-Output "##[warning]DIAG[$ModuleName|$Label] $diag"
+    if ($ttCount -ge 0 -and $ttCount -lt 100) {
+        try {
+            $keys = ($em.Keys | Sort-Object) -join ","
+            Write-Output "##[warning]DIAG[$ModuleName|$Label] INCOMPLETE TT keys: $keys"
+        } catch {}
+    }
+}
+
 function Invoke-LiveTestCommand {
     [CmdletBinding()]
     param (
@@ -316,6 +343,8 @@ function Invoke-LiveTestScenario {
         [scriptblock] $ScenarioScript
     )
 
+    Get-LiveTestTypeTableState -Label "FUNC-ENTRY:$Name"
+
     if ($PSBoundParameters.ContainsKey("Platform") -and $RunPlatform -notin $Platform) {
         Write-Output "##[warning]Skip live scenario `"$Name`" for platform `"$RunPlatform`" due to platform not specified."
         return
@@ -368,6 +397,8 @@ function Invoke-LiveTestScenario {
             New-LiveTestResourceGroup -Name $snrResourceGroupName -Location $snrResourceGroupLocation -Result ([ref]$snrResourceGroup)
         }
 
+        Get-LiveTestTypeTableState -Label "POST-RG:$Name"
+
         $snrRetryCount = 0
         $snrRetryErrors = @()
 
@@ -380,13 +411,18 @@ function Invoke-LiveTestScenario {
                     $prefs = [psvariable]::new("ErrorActionPreference", "Stop")
                 }
 
+                Get-LiveTestTypeTableState -Label "PRE-SCENARIO:$Name"
+
                 $ScenarioScript.InvokeWithContext($null, $prefs, $snrResourceGroup)
 
-                Write-Output "##[section]Finish executing the live scenario `"$Name`"."
+                Get-LiveTestTypeTableState -Label "POST-SCENARIO:$Name"
+                Write-Output "##[section]Finish executing the live scenario `"$Name`""
 
                 break
             }
             catch {
+                Get-LiveTestTypeTableState -Label "CATCH-SCENARIO:$Name"
+
                 $snrErrorRecord = $_.Exception.InnerException.ErrorRecord
                 $snrErrorMessage = $snrErrorRecord.Exception.Message
                 $snrErrorDetails = $snrErrorMessage
