@@ -1,4 +1,4 @@
-### Example 1: Crete a new hardware setting for a specific resource with expanded parameters
+### Example 1: Create a new hardware setting for a specific resource with expanded parameters
 ```powershell
 New-AzDisconnectedOperationsHardwareSetting -HardwareSettingName "default" -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2" -DeviceId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -DiskSpaceInGb 1024 -HardwareSku "MC-760" -MemoryInGb 64 -Node 3 -Oem "contoso" -SolutionBuilderExtension "xyz" -TotalCore 200 -VersionAtRegistration "xxxx.x"
 ```
