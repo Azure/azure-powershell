@@ -47,27 +47,32 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
-        /// <param name="subnet">The reference to the subnet resource.
-        /// </param>
-
         /// <param name="bandwidthInGbps">Bandwidth of the VirtualNetworkAppliance resource in Gbps.
         /// </param>
 
         /// <param name="ipConfigurations">A list of IPConfigurations of the virtual network appliance.
         /// </param>
 
+        /// <param name="privateIPAddressVersion">Whether the specific virtual network appliance is IPv4 or Dual Stack.
+        /// Default is IPv4.
+        /// Possible values include: &#39;IPv4&#39;, &#39;DualStack&#39;</param>
+
         /// <param name="resourceGuid">The resource GUID property of the virtual network appliance resource.
         /// </param>
-        public VirtualNetworkAppliance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), Subnet subnet = default(Subnet), string bandwidthInGbps = default(string), System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration>), string resourceGuid = default(string))
+
+        /// <param name="subnet">The reference to the subnet resource.
+        /// </param>
+        public VirtualNetworkAppliance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), double? bandwidthInGbps = default(double?), System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration>), string privateIPAddressVersion = default(string), string resourceGuid = default(string), Subnet subnet = default(Subnet))
 
         : base(id, name, type, location, tags)
         {
             this.Etag = etag;
             this.ProvisioningState = provisioningState;
-            this.Subnet = subnet;
             this.BandwidthInGbps = bandwidthInGbps;
             this.IPConfigurations = ipConfigurations;
+            this.PrivateIPAddressVersion = privateIPAddressVersion;
             this.ResourceGuid = resourceGuid;
+            this.Subnet = subnet;
             CustomInit();
         }
 
@@ -91,16 +96,10 @@ namespace Microsoft.Azure.Management.Network.Models
         public string ProvisioningState {get; private set; }
 
         /// <summary>
-        /// Gets or sets the reference to the subnet resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.subnet")]
-        public Subnet Subnet {get; set; }
-
-        /// <summary>
         /// Gets or sets bandwidth of the VirtualNetworkAppliance resource in Gbps.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.bandwidthInGbps")]
-        public string BandwidthInGbps {get; set; }
+        public double? BandwidthInGbps {get; set; }
 
         /// <summary>
         /// Gets a list of IPConfigurations of the virtual network appliance.
@@ -109,9 +108,22 @@ namespace Microsoft.Azure.Management.Network.Models
         public System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration> IPConfigurations {get; private set; }
 
         /// <summary>
+        /// Gets or sets whether the specific virtual network appliance is IPv4 or Dual
+        /// Stack. Default is IPv4. Possible values include: &#39;IPv4&#39;, &#39;DualStack&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateIPAddressVersion")]
+        public string PrivateIPAddressVersion {get; set; }
+
+        /// <summary>
         /// Gets the resource GUID property of the virtual network appliance resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceGuid")]
         public string ResourceGuid {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the reference to the subnet resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.subnet")]
+        public Subnet Subnet {get; set; }
     }
 }

@@ -766,6 +766,9 @@ Gets a Virtual Network Connection in a virtual hub or lists all virtual network 
 ### [Get-AzVirtualNetwork](Get-AzVirtualNetwork.md)
 Gets a virtual network in a resource group.
 
+### [Get-AzVirtualNetworkAppliance](Get-AzVirtualNetworkAppliance.md)
+Gets a Virtual Network Appliance (VNA) resource.
+
 ### [Get-AzVirtualNetworkAvailableEndpointService](Get-AzVirtualNetworkAvailableEndpointService.md)
 Lists available endpoint services for location.
 
@@ -1616,6 +1619,9 @@ The New-AzVirtualHubVnetConnection cmdlet creates a HubVirtualNetworkConnection 
 ### [New-AzVirtualNetwork](New-AzVirtualNetwork.md)
 Creates a virtual network.
 
+### [New-AzVirtualNetworkAppliance](New-AzVirtualNetworkAppliance.md)
+Creates a new Virtual Network Appliance (VNA) resource.
+
 ### [New-AzVirtualNetworkGateway](New-AzVirtualNetworkGateway.md)
 Creates a Virtual Network Gateway
 
@@ -2090,6 +2096,9 @@ The Remove-AzVirtualHubVnetConnection cmdlet removes an Azure Virtual Network Co
 
 ### [Remove-AzVirtualNetwork](Remove-AzVirtualNetwork.md)
 Removes a virtual network.
+
+### [Remove-AzVirtualNetworkAppliance](Remove-AzVirtualNetworkAppliance.md)
+Removes a Virtual Network Appliance (VNA) resource.
 
 ### [Remove-AzVirtualNetworkGateway](Remove-AzVirtualNetworkGateway.md)
 Deletes a Virtual Network Gateway
@@ -2627,6 +2636,9 @@ The Update-AzVirtualHubBgpConnection cmdlet updates an existing HubBgpConnection
 
 ### [Update-AzVirtualHubVnetConnection](Update-AzVirtualHubVnetConnection.md)
 Updates an existing HubVirtualNetworkConnection.
+
+### [Update-AzVirtualNetworkAppliance](Update-AzVirtualNetworkAppliance.md)
+Updates a Virtual Network Appliance (VNA) resource.
 
 ### [Update-AzVirtualNetworkGatewayNatRule](Update-AzVirtualNetworkGatewayNatRule.md)
 Updates a Virtual Network Gateway NatRule.

@@ -139,6 +139,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The summarized gateway prefixes advertised for the virtual network.")]
+        public string[] SummarizedGatewayPrefix { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to override a resource")]
         public SwitchParameter Force { get; set; }
 
@@ -213,6 +219,11 @@ namespace Microsoft.Azure.Commands.Network
             if(!string.IsNullOrEmpty(this.PrivateEndpointVNetPoliciesValue))
             {
                 vnet.PrivateEndpointVNetPolicies = this.PrivateEndpointVNetPoliciesValue;
+            }
+
+            if (this.SummarizedGatewayPrefix != null)
+            {
+                vnet.SummarizedGatewayPrefixes = new PSAddressSpace { AddressPrefixes = this.SummarizedGatewayPrefix.ToList() };
             }
 
             // Map to the sdk object
