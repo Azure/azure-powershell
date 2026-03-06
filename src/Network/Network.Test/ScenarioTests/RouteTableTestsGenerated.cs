@@ -68,5 +68,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-RouteCRUDAllParameters");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsgdev)]
+        public void TestRouteEcmpCRUD()
+        {
+            TestRunner.RunTestScript("Test-RouteEcmpCRUD");
+        }
     }
 }

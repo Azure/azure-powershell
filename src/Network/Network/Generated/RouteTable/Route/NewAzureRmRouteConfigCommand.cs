@@ -58,7 +58,8 @@ namespace Microsoft.Azure.Commands.Network
             "VnetLocal",
             "Internet",
             "VirtualAppliance",
-            "None"
+            "None",
+            "VirtualApplianceEcmp"
         )]
         public string NextHopType { get; set; }
 
@@ -68,6 +69,12 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         public string NextHopIpAddress { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A list of IP addresses for equal-cost multi-path (ECMP) routing. At least two addresses are required. Only allowed when the next hop type is VirtualApplianceEcmp.",
+            ValueFromPipelineByPropertyName = true)]
+        public string[] NextHopIpAddresses { get; set; }
+
 
         public override void Execute()
         {
@@ -76,6 +83,13 @@ namespace Microsoft.Azure.Commands.Network
             vRoutes.AddressPrefix = this.AddressPrefix;
             vRoutes.NextHopType = this.NextHopType;
             vRoutes.NextHopIpAddress = this.NextHopIpAddress;
+            if (this.NextHopIpAddresses != null)
+            {
+                vRoutes.NextHop = new PSRouteNextHopEcmp
+                {
+                    NextHopIpAddresses = new System.Collections.Generic.List<string>(this.NextHopIpAddresses)
+                };
+            }
             vRoutes.Name = this.Name;
             WriteObject(vRoutes, true);
         }

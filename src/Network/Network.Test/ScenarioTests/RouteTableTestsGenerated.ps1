@@ -434,3 +434,115 @@ function Test-RouteCRUDAllParameters
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test creating new Route with ECMP (Equal-Cost Multi-Path) parameters
+#>
+function Test-RouteEcmpCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName;
+    $rglocation = Get-ProviderLocation ResourceManagement;
+    $rname = Get-ResourceName;
+    $rnameAdd = "${rname}Add";
+    $location = Get-ProviderLocation "Microsoft.Network/routeTables";
+    # ECMP Resource parameters
+    $AddressPrefix = "10.0.0.0/8";
+    $NextHopType = "VirtualApplianceEcmp";
+    $NextHopIpAddresses = @("10.0.0.1", "10.0.0.2");
+    # ECMP Resource parameters for Set test
+    $AddressPrefixSet = "11.0.0.0/8";
+    $NextHopIpAddressesSet = @("10.1.1.1", "10.1.1.2", "10.1.1.3");
+    # ECMP Resource parameters for Add test
+    $AddressPrefixAdd = "12.0.0.0/8";
+    $NextHopIpAddressesAdd = @("10.2.2.1", "10.2.2.2");
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
+
+        # Create ECMP Route
+        $vRoute = New-AzRouteConfig -Name $rname -AddressPrefix $AddressPrefix -NextHopType $NextHopType -NextHopIpAddresses $NextHopIpAddresses;
+        Assert-NotNull $vRoute;
+        Assert-True { Check-CmdletReturnType "New-AzRouteConfig" $vRoute };
+        Assert-AreEqual $rname $vRoute.Name;
+        Assert-AreEqual $AddressPrefix $vRoute.AddressPrefix;
+        Assert-AreEqual $NextHopType $vRoute.NextHopType;
+        Assert-Null $vRoute.NextHopIpAddress;
+        Assert-NotNull $vRoute.NextHop;
+        Assert-NotNull $vRoute.NextHop.NextHopIpAddresses;
+        Assert-AreEqual $NextHopIpAddresses.Count $vRoute.NextHop.NextHopIpAddresses.Count;
+        Assert-AreEqual $NextHopIpAddresses[0] $vRoute.NextHop.NextHopIpAddresses[0];
+        Assert-AreEqual $NextHopIpAddresses[1] $vRoute.NextHop.NextHopIpAddresses[1];
+
+        # Create RouteTable with ECMP route
+        $vRouteTable = New-AzRouteTable -ResourceGroupName $rgname -Name $rname -Route $vRoute -Location $location;
+        Assert-NotNull $vRouteTable;
+
+        # Get Route and verify ECMP properties persisted
+        $vRoute = Get-AzRouteConfig -RouteTable $vRouteTable -Name $rname;
+        Assert-NotNull $vRoute;
+        Assert-True { Check-CmdletReturnType "Get-AzRouteConfig" $vRoute };
+        Assert-AreEqual $rname $vRoute.Name;
+        Assert-AreEqual $AddressPrefix $vRoute.AddressPrefix;
+        Assert-AreEqual $NextHopType $vRoute.NextHopType;
+        Assert-NotNull $vRoute.NextHop;
+        Assert-AreEqual $NextHopIpAddresses.Count $vRoute.NextHop.NextHopIpAddresses.Count;
+
+        # Get all RouteTable's Routes
+        $listRoute = Get-AzRouteConfig -RouteTable $vRouteTable;
+        Assert-NotNull ($listRoute | Where-Object { $_.Name -eq $rname });
+
+        # Set ECMP Route - update addresses
+        $vRouteTable = Set-AzRouteConfig -Name $rname -RouteTable $vRouteTable -AddressPrefix $AddressPrefixSet -NextHopType $NextHopType -NextHopIpAddresses $NextHopIpAddressesSet;
+        Assert-NotNull $vRouteTable;
+        $vRouteTable = Set-AzRouteTable -RouteTable $vRouteTable;
+        Assert-NotNull $vRouteTable;
+
+        # Get Route and verify updated ECMP properties
+        $vRoute = Get-AzRouteConfig -RouteTable $vRouteTable -Name $rname;
+        Assert-NotNull $vRoute;
+        Assert-AreEqual $rname $vRoute.Name;
+        Assert-AreEqual $AddressPrefixSet $vRoute.AddressPrefix;
+        Assert-AreEqual $NextHopType $vRoute.NextHopType;
+        Assert-NotNull $vRoute.NextHop;
+        Assert-AreEqual $NextHopIpAddressesSet.Count $vRoute.NextHop.NextHopIpAddresses.Count;
+        Assert-AreEqual $NextHopIpAddressesSet[0] $vRoute.NextHop.NextHopIpAddresses[0];
+        Assert-AreEqual $NextHopIpAddressesSet[1] $vRoute.NextHop.NextHopIpAddresses[1];
+        Assert-AreEqual $NextHopIpAddressesSet[2] $vRoute.NextHop.NextHopIpAddresses[2];
+
+        # Add another ECMP Route
+        $vRouteTable = Add-AzRouteConfig -Name $rnameAdd -RouteTable $vRouteTable -AddressPrefix $AddressPrefixAdd -NextHopType $NextHopType -NextHopIpAddresses $NextHopIpAddressesAdd;
+        Assert-NotNull $vRouteTable;
+        $vRouteTable = Set-AzRouteTable -RouteTable $vRouteTable;
+        Assert-NotNull $vRouteTable;
+
+        # Get added Route and verify ECMP properties
+        $vRoute = Get-AzRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
+        Assert-NotNull $vRoute;
+        Assert-True { Check-CmdletReturnType "Get-AzRouteConfig" $vRoute };
+        Assert-AreEqual $rnameAdd $vRoute.Name;
+        Assert-AreEqual $AddressPrefixAdd $vRoute.AddressPrefix;
+        Assert-AreEqual $NextHopType $vRoute.NextHopType;
+        Assert-NotNull $vRoute.NextHop;
+        Assert-AreEqual $NextHopIpAddressesAdd.Count $vRoute.NextHop.NextHopIpAddresses.Count;
+
+        # Try Add again - should fail
+        Assert-ThrowsContains { Add-AzRouteConfig -Name $rnameAdd -RouteTable $vRouteTable -AddressPrefix $AddressPrefixAdd -NextHopType $NextHopType -NextHopIpAddresses $NextHopIpAddressesAdd } "already exists";
+
+        # Remove Routes
+        $vRouteTable = Remove-AzRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
+        $vRouteTable = Remove-AzRouteConfig -RouteTable $vRouteTable -Name $rname;
+        $vRouteTable = Set-AzRouteTable -RouteTable $vRouteTable;
+        Assert-NotNull $vRouteTable;
+
+        # Get Route should fail
+        Assert-ThrowsContains { Get-AzRouteConfig -RouteTable $vRouteTable -Name $rname } "Sequence contains no matching element";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}

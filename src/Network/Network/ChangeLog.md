@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added support for ECMP (Equal-Cost Multi-Path) routing in route table cmdlets
+    - Added `VirtualApplianceEcmp` as a new next hop type for `New-AzRouteConfig`, `Add-AzRouteConfig`, and `Set-AzRouteConfig`
+    - Added `-NextHopIpAddresses` parameter to specify multiple IP addresses for ECMP routing (requires at least two addresses)
+    - Added `NextHop` property to `PSRoute` model containing the ECMP next hop IP addresses
+    - Added `HasBgpOverride` read-only property to `PSRoute` model
 
 ## Version 7.25.1
 * Onboarded `Microsoft.DataReplication/replicationVaults` to Private Link Common Cmdlets
