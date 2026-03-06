@@ -1,3 +1,7 @@
+## 15.4.1 - April 2026
+#### Az.RecoveryServices 7.11.2
+* Added Cross region restore support for upcoming regions Southeast Asia 3
+
 ## 15.4.0 - March 2026
 #### Az.Accounts 5.3.3
 * Updated MSAL to 4.82.1 to fix an issue with ARM endpoint discovery.
