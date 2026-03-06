@@ -1,0 +1,28 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/PostgreSQLFlexibleServer/PostgreSQLFlexibleServer.Autorest"
+    clear-output-folder: true
+    debug: true
+    azure: true
+    module-version: 0.1.0
+    prefix: "Az"
+    subject-prefix: "PostgreSQLFlexibleServer"
+    service-name: PostgreSQLFlexibleServer
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      - where:
+          subject: Operation
+        hide: true
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      - where:
+          variant: ^(Create|Update|Export)(?!.*?Expanded|ViaJsonString|ViaJsonFilePath)
+        remove: true
