@@ -218,13 +218,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime.PowerShell
 
         private string GetLoginVerification()
         {
-            if (!VariantGroup.IsInternal && IsAzure && !VariantGroup.IsModelCmdlet)    
+            if (!VariantGroup.IsInternal && IsAzure && !VariantGroup.IsModelCmdlet)
             {
                 return $@"
 {Indent}{Indent}$context = Get-AzContext
 {Indent}{Indent}if (-not $context -and -not $testPlayback) {{
-{Indent}{Indent}{Indent}Write-Error ""No Azure login detected. Please run 'Connect-AzAccount' to log in.""
-{Indent}{Indent}{Indent}exit
+{Indent}{Indent}{Indent}throw ""No Azure login detected. Please run 'Connect-AzAccount' to log in.""
 {Indent}{Indent}}}
 ";
             }

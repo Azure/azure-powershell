@@ -7,6 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.PowerShell;
 
+    /// <summary>The paginated list of connected cluster API operations.</summary>
     [System.ComponentModel.TypeConverter(typeof(OperationListTypeConverter))]
     public partial class OperationList
     {
@@ -161,6 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
             return ToJsonString();
         }
     }
+    /// The paginated list of connected cluster API operations.
     [System.ComponentModel.TypeConverter(typeof(OperationListTypeConverter))]
     public partial interface IOperationList
 

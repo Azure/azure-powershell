@@ -16,16 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>
-        /// The URI for fetching the next page of quota limits. When there are no more pages, this string is null.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestDetails> _value;
 
-        /// <summary>Quota request details.</summary>
+        /// <summary>The QuotaRequestDetails items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestDetails> Value { get => this._value; set => this._value = value; }
 
@@ -39,27 +37,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
     public partial interface IQuotaRequestDetailsList :
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// The URI for fetching the next page of quota limits. When there are no more pages, this string is null.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The URI for fetching the next page of quota limits. When there are no more pages, this string is null.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>Quota request details.</summary>
+        /// <summary>The QuotaRequestDetails items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Quota request details.",
+        Description = @"The QuotaRequestDetails items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestDetails) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestDetails> Value { get; set; }
@@ -69,11 +65,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
     internal partial interface IQuotaRequestDetailsListInternal
 
     {
-        /// <summary>
-        /// The URI for fetching the next page of quota limits. When there are no more pages, this string is null.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>Quota request details.</summary>
+        /// <summary>The QuotaRequestDetails items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestDetails> Value { get; set; }
 
     }

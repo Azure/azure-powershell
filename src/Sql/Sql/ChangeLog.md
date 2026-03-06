@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 6.4.1
+* Add support for the versionless AKV keys.
+    - The cmdlets supported are `Add-AzSqlServerKeyVaultKey`, `Get-AzSqlServerKeyVaultKey`, `Set-AzSqlServerTransparentDataEncryptionProtector`, `Get-AzSqlServerTransparentDataEncryptionProtector`, `New-AzSqlDatabase`, `Get-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary` and `Restore-AzSqlDatabase`
+* Added public preview tag for `EnableSoftDelete` and `SoftDeleteRetentionDays` properties in `New-AzSqlServer` and `Set-AzSqlServer` cmdlets
+* Added public preview tag for `Get-AzSqlDeletedServer` and `Restore-AzSqlServer` cmdlets
+
+
 ## Version 6.4.0
 * Added 'Get-AzSqlDeletedServer' cmdlet to retrieve soft deleted Azure SQL servers
     - Supports retrieving deleted servers by location or specific deleted server by name

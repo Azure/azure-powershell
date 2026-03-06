@@ -28,15 +28,15 @@ For information on how to develop for `Az.Databricks`, see [how-to.md](how-to.md
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 8dc708fdac9cb97b346ddb38106ac16e668f64cd
-tag: package-2024-05-01
+commit: efa49a123da7ce3ffe093a13832258305f529711
+tag: package-2026-01-01
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-  - $(repo)/specification/databricks/resource-manager/readme.md
+  - $(repo)/specification/databricks/resource-manager/Microsoft.Databricks/Databricks/readme.md
 try-require:
   - $(repo)/specification/databricks/resource-manager/readme.powershell.md
 
-module-version: 1.2.0
+module-version: 1.11.0
 title: Databricks
 subject-prefix: $(service-name)
 
@@ -293,8 +293,8 @@ directive:
           - ReferedBy
         change-description: The types of the properties 'ReferedBy' will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'
         deprecated-by-version: 2.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
 
   - where:
       verb: New|Update
@@ -311,8 +311,8 @@ directive:
           - UserAssignedIdentity
         change-description: (1) The types of the properties 'ReferedBy' will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]' (2) IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
         deprecated-by-version: 2.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
 
   - where:
       verb: Get
@@ -325,8 +325,8 @@ directive:
           - Endpoint
         change-description: The types of the properties 'Endpoint' will be changed from 'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IEndpointDependency' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IEndpointDependency]'
         deprecated-by-version: 2.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
 
   - where:
       verb: Get|New
@@ -341,8 +341,8 @@ directive:
           - RemoteAddressSpaceAddressPrefix
         change-description: The types of the properties 'DatabrickAddressSpaceAddressPrefix' and 'RemoteAddressSpaceAddressPrefix' will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'
         deprecated-by-version: 2.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
 
   - where:
       verb: Get
@@ -359,6 +359,6 @@ directive:
           - ComplianceSecurityProfileComplianceStandard
         change-description: The types of the properties 'PrivateEndpointConnection', 'Authorization' and 'ComplianceSecurityProfileComplianceStandard' will be changed from object to 'List'.
         deprecated-by-version: 2.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
 ```

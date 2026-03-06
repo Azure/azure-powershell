@@ -35,13 +35,17 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="subregion">Subregion of the server key.
         /// </param>
-        public DatabaseKey(string type = default(string), string thumbprint = default(string), System.DateTime? creationDate = default(System.DateTime?), string subregion = default(string))
+
+        /// <param name="keyVersion">The database key&#39;s version.
+        /// </param>
+        public DatabaseKey(string type = default(string), string thumbprint = default(string), System.DateTime? creationDate = default(System.DateTime?), string subregion = default(string), string keyVersion = default(string))
 
         {
             this.Type = type;
             this.Thumbprint = thumbprint;
             this.CreationDate = creationDate;
             this.Subregion = subregion;
+            this.KeyVersion = keyVersion;
             CustomInit();
         }
 
@@ -74,5 +78,11 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "subregion")]
         public string Subregion {get; private set; }
+
+        /// <summary>
+        /// Gets the database key&#39;s version.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "keyVersion")]
+        public string KeyVersion {get; private set; }
     }
 }

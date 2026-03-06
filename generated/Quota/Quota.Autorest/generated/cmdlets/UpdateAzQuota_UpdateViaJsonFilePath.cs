@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
     using System;
 
     /// <summary>
-    /// Update the quota limit for a specific resource to the specified value:\n1. Use the Usages-GET and Quota-GET operations
+    /// update the quota limit for a specific resource to the specified value:\n1. Use the Usages-GET and Quota-GET operations
     /// to determine the remaining quota for the specific resource and to calculate the new quota limit. These steps are detailed
     /// in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2.
     /// Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of the
@@ -22,9 +22,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzQuota_UpdateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentQuotaLimitBase))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Description(@"Update the quota limit for a specific resource to the specified value:\n1. Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of the request.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Description(@"update the quota limit for a specific resource to the specified value:\n1. Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of the request.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.HttpPath(Path = "/{scope}/providers/Microsoft.Quota/quotas/{resourceName}", ApiVersion = "2023-02-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.HttpPath(Path = "/{scope}/providers/Microsoft.Quota/quotas/{resourceName}", ApiVersion = "2025-09-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.NotSuggestDefaultParameterSet]
     public partial class UpdateAzQuota_UpdateViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener,
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
         /// - SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices
         /// For Microsoft.Network PublicIPAddresses.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Resource name for a given resource provider. For example:\r\n- SKU name for Microsoft.Compute\r\n- SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices\r\n For Microsoft.Network PublicIPAddresses.")]
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Resource name for a given resource provider. For example:\n- SKU name for Microsoft.Compute\n- SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices\n For Microsoft.Network PublicIPAddresses.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
         Required = true,
         ReadOnly = false,
@@ -168,16 +168,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
         /// <summary>Backing field for <see cref="Scope" /> property.</summary>
         private string _scope;
 
-        /// <summary>
-        /// The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
-        /// This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then
-        /// it's the target Azure resource URI in the GET operation for the specific resource.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`. This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then it's the target Azure resource URI in the GET operation for the specific resource.")]
+        /// <summary>The fully qualified Azure Resource manager identifier of the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The fully qualified Azure Resource manager identifier of the resource.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`. This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then it's the target Azure resource URI in the GET operation for the specific resource.",
+        Description = @"The fully qualified Azure Resource manager identifier of the resource.",
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Quota.ParameterCategory.Path)]

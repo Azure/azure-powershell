@@ -92,18 +92,9 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
         /// <summary>
         /// Revalidates Azure Sql Server Transparent Data Encryption Protector
         /// </summary>
-        public async Task<Rest.Azure.AzureOperationResponse> RevalidateEncryptionProtector(string resourceGroupName, string serverName)
+        public async Task<Rest.Azure.AzureOperationHeaderResponse<Management.Sql.Models.EncryptionProtectorsRevalidateHeaders>> RevalidateEncryptionProtector(string resourceGroupName, string serverName)
         {
-            //GetCurrentSqlClient().EncryptionProtectors.BeginRevalidate(resourceGroupName, serverName);
-            //await GetCurrentSqlClient().EncryptionProtectors.BeginRevalidateWithHttpMessagesAsync(resourceGroupName, serverName).ConfigureAwait(false);
-            /*
-            using (var _result = await GetCurrentSqlClient().EncryptionProtectors.BeginRevalidateWithHttpMessagesAsync(resourceGroupName, serverName).ConfigureAwait(false))
-            {
-                return _result;
-            }
-            */
-            Rest.Azure.AzureOperationResponse _response = await GetCurrentSqlClient().EncryptionProtectors.BeginRevalidateWithHttpMessagesAsync(resourceGroupName, serverName).ConfigureAwait(false);
-            return await GetCurrentSqlClient().GetPostOrDeleteOperationResultAsync(_response, null, default(CancellationToken)).ConfigureAwait(false);
+            return await GetCurrentSqlClient().EncryptionProtectors.BeginRevalidateWithHttpMessagesAsync(resourceGroupName, serverName).ConfigureAwait(false);
         }
 
         /// <summary>
