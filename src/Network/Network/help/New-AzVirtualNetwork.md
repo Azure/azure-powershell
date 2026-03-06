@@ -19,8 +19,9 @@ New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <Strin
  [-Subnet <PSSubnet[]>] [-BgpCommunity <String>] [-EnableEncryption <String>]
  [-EncryptionEnforcementPolicy <String>] [-Tag <Hashtable>] [-EnableDdosProtection]
  [-DdosProtectionPlanId <String>] [-IpAllocation <PSIpAllocation[]>] [-EdgeZone <String>]
- [-PrivateEndpointVNetPoliciesValue <String>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PrivateEndpointVNetPoliciesValue <String>] [-SummarizedGatewayPrefix <String[]>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -351,6 +352,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of a resource group to contain the virtual network.
 
@@ -371,6 +387,21 @@ Specifies a list of subnets to associate with the virtual network.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSSubnet[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SummarizedGatewayPrefix
+The summarized gateway prefixes advertised for the virtual network.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

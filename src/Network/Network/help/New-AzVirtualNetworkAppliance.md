@@ -14,8 +14,9 @@ Creates a new Virtual Network Appliance (VNA) resource.
 
 ```
 New-AzVirtualNetworkAppliance -Name <String> -ResourceGroupName <String> -Location <String> -SubnetId <String>
- -Bandwidth <String> [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Bandwidth <Double> [-PrivateIPAddressVersion <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +29,7 @@ load balancing, or routing within a virtual network.
 ### Example 1: Create a Virtual Network Appliance
 ```powershell
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name "VirtualNetworkApplianceSubnet" -VirtualNetwork (Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup")
-New-AzVirtualNetworkAppliance -Name "myVNA" -ResourceGroupName "myResourceGroup" -Location "eastus" -SubnetId $subnet.Id -Bandwidth "50"
+New-AzVirtualNetworkAppliance -Name "myVNA" -ResourceGroupName "myResourceGroup" -Location "eastus" -SubnetId $subnet.Id -Bandwidth 50
 ```
 
 Creates a new Virtual Network Appliance named "myVNA" in the specified subnet with 50 Gbps bandwidth.
@@ -36,7 +37,7 @@ Creates a new Virtual Network Appliance named "myVNA" in the specified subnet wi
 ### Example 2: Create a Virtual Network Appliance with tags
 ```powershell
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name "VirtualNetworkApplianceSubnet" -VirtualNetwork (Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup")
-New-AzVirtualNetworkAppliance -Name "myVNA" -ResourceGroupName "myResourceGroup" -Location "eastus" -SubnetId $subnet.Id -Bandwidth "100" -Tag @{"Environment" = "Production"}
+New-AzVirtualNetworkAppliance -Name "myVNA" -ResourceGroupName "myResourceGroup" -Location "eastus" -SubnetId $subnet.Id -Bandwidth 100 -Tag @{"Environment" = "Production"}
 ```
 
 Creates a new Virtual Network Appliance with 100 Gbps bandwidth and a tag.
@@ -59,10 +60,10 @@ Accept wildcard characters: False
 ```
 
 ### -Bandwidth
-Bandwidth of the Virtual Network Appliance in Gbps. Valid values are: 50, 100, 200.
+Bandwidth of the Virtual Network Appliance in Gbps.
 
 ```yaml
-Type: System.String
+Type: System.Double
 Parameter Sets: (All)
 Aliases:
 
@@ -130,6 +131,37 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PrivateIPAddressVersion
+Whether the Virtual Network Appliance is IPv4 or Dual Stack. Default is IPv4. Possible values: IPv4, DualStack.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: IPv4, DualStack
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

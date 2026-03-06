@@ -21,7 +21,7 @@ function Test-VirtualNetworkApplianceCRUD
     # Setup
     $rgname = Get-ResourceGroupName
     $rname = Get-ResourceName
-    $location = Get-ProviderLocation "Microsoft.Network/virtualNetworkAppliances"
+    $location = "eastus2euap"
     $vnetName = Get-ResourceName
     $subnetName = "VirtualNetworkApplianceSubnet"
 
@@ -45,9 +45,12 @@ function Test-VirtualNetworkApplianceCRUD
         Assert-NotNull $vna.Location
         Assert-AreEqual "testValue" $vna.Tag["testKey"]
         Assert-AreEqual "Succeeded" $vna.ProvisioningState
-        Assert-AreEqual "50" $vna.BandwidthInGbps
+        Assert-AreEqual 50 $vna.BandwidthInGbps
         Assert-NotNull $vna.Subnet
         Assert-NotNull $vna.Subnet.Id
+
+        # Verify PrivateIPAddressVersion defaults to IPv4
+        Assert-AreEqual "IPv4" $vna.PrivateIPAddressVersion
         
         # Verify IPConfigurations - should have 5 IP configurations
         Assert-NotNull $vna.IPConfigurations
@@ -75,6 +78,7 @@ function Test-VirtualNetworkApplianceCRUD
         Assert-AreEqual $rgname $vnaGet.ResourceGroupName
         Assert-NotNull $vnaGet.Location
         Assert-AreEqual "testValue" $vnaGet.Tag["testKey"]
+        Assert-AreEqual "IPv4" $vnaGet.PrivateIPAddressVersion
 
         # List VirtualNetworkAppliances in resource group
         $vnaList = Get-AzVirtualNetworkAppliance -ResourceGroupName $rgname
@@ -92,6 +96,54 @@ function Test-VirtualNetworkApplianceCRUD
 
         # Verify removal - should throw
         Assert-ThrowsLike { Get-AzVirtualNetworkAppliance -Name $rname -ResourceGroupName $rgname } "*not found*"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests VirtualNetworkAppliance creation with DualStack PrivateIPAddressVersion
+#>
+function Test-VirtualNetworkApplianceDualStack
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $location = "eastus2euap"
+    $vnetName = Get-ResourceName
+    $subnetName = "VirtualNetworkApplianceSubnet"
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create a dual-stack virtual network (IPv4 + IPv6) required for DualStack VNA
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24","ace:cab:deca:deed::/64" -DefaultOutboundAccess $false
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix "10.0.0.0/16","ace:cab:deca::/48" -Subnet $subnet
+        $subnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+
+        # Create VirtualNetworkAppliance with DualStack
+        $vna = New-AzVirtualNetworkAppliance -Name $rname -ResourceGroupName $rgname -Location $location -SubnetId $subnet.Id -Bandwidth 50 -PrivateIPAddressVersion "DualStack"
+
+        # Verify creation with DualStack
+        Assert-NotNull $vna
+        Assert-AreEqual $rname $vna.Name
+        Assert-AreEqual "Succeeded" $vna.ProvisioningState
+        Assert-AreEqual 50 $vna.BandwidthInGbps
+        Assert-AreEqual "DualStack" $vna.PrivateIPAddressVersion
+
+        # Get and verify
+        $vnaGet = Get-AzVirtualNetworkAppliance -Name $rname -ResourceGroupName $rgname
+        Assert-AreEqual "DualStack" $vnaGet.PrivateIPAddressVersion
+
+        # Remove
+        $removeResult = Remove-AzVirtualNetworkAppliance -Name $rname -ResourceGroupName $rgname -Force -PassThru
+        Assert-AreEqual $true $removeResult
     }
     finally
     {

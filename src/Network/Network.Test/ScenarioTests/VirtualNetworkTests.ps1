@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -51,9 +51,13 @@ function Test-VirtualNetworkCRUD
         Assert-AreEqual 1 @($expected.Subnets).Count
         Assert-AreEqual $subnetName $expected.Subnets[0].Name
         Assert-AreEqual "10.0.1.0/24" $expected.Subnets[0].AddressPrefix
+
+        # Verify SummarizedGatewayPrefixes property is accessible (read-only, may be null for new VNets)
+        $sgp = $expected.SummarizedGatewayPrefixes
+        # Property should exist on the object even if value is null
+        Assert-True { $expected.PSObject.Properties.Name -contains "SummarizedGatewayPrefixes" }
         
         # List virtual Network
-        $list = Get-AzVirtualNetwork -ResourceGroupName $rgname
         Assert-AreEqual 1 @($list).Count
         Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName    
         Assert-AreEqual $list[0].Name $actual.Name    
@@ -2211,6 +2215,54 @@ function Test-VirtualNetworkPrivateEndpointVNetPolicies
         $vnet3 | Set-AzVirtualNetwork
         $vnet3 = Get-AzVirtualNetwork -Name $vnet3Name -ResourceGroupName $rgname
         Assert-AreEqual "Disabled" $vnet3.PrivateEndpointVNetPolicies
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests VirtualNetwork SummarizedGatewayPrefixes property
+#>
+function Test-VirtualNetworkSummarizedGatewayPrefixes
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        # Create VNet
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -DefaultOutboundAccess $false
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Get VNet and verify SummarizedGatewayPrefixes property exists
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+
+        Assert-NotNull $vnet
+        Assert-AreEqual "Succeeded" $vnet.ProvisioningState
+
+        # SummarizedGatewayPrefixes should exist as a property on the object
+        Assert-True { $vnet.PSObject.Properties.Name -contains "SummarizedGatewayPrefixes" }
+
+        # For a VNet without a gateway, SummarizedGatewayPrefixes may be null
+        # If populated, it should be an AddressSpace with AddressPrefixes
+        if ($null -ne $vnet.SummarizedGatewayPrefixes) {
+            Assert-NotNull $vnet.SummarizedGatewayPrefixes.AddressPrefixes
+        }
+
+        # Delete VNet
+        Remove-AzVirtualNetwork -ResourceGroupName $rgname -Name $vnetName -PassThru -Force
     }
     finally
     {
