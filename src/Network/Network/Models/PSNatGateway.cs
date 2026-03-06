@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSResourceId> PublicIpAddressesV6 { get; set; }
         public List<PSResourceId> PublicIpPrefixesV6 { get; set; }
         public PSResourceId SourceVirtualNetwork { get; set; }
+        public string Nat64 { get; set; }
 
         [JsonIgnore]
         public string SkuText

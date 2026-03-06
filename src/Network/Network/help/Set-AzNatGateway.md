@@ -16,8 +16,8 @@ Update Nat Gateway Resource with Public Ip Address, Public Ip Prefix and IdleTim
 ```
 Set-AzNatGateway -ResourceGroupName <String> -Name <String> [-PublicIpAddress <PSResourceId[]>]
  [-PublicIpAddressV6 <PSResourceId[]>] [-PublicIpPrefix <PSResourceId[]>] [-PublicIpPrefixV6 <PSResourceId[]>]
- [-SourceVirtualNetwork <PSResourceId>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SourceVirtualNetwork <PSResourceId>] [-Nat64 <String>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -25,8 +25,8 @@ Set-AzNatGateway -ResourceGroupName <String> -Name <String> [-PublicIpAddress <P
 ```
 Set-AzNatGateway -ResourceId <String> [-PublicIpAddress <PSResourceId[]>] [-PublicIpAddressV6 <PSResourceId[]>]
  [-PublicIpPrefix <PSResourceId[]>] [-PublicIpPrefixV6 <PSResourceId[]>] [-SourceVirtualNetwork <PSResourceId>]
- [-AsJob] [-IdleTimeoutInMinutes <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [-Nat64 <String>] [-AsJob] [-IdleTimeoutInMinutes <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -34,8 +34,8 @@ Set-AzNatGateway -ResourceId <String> [-PublicIpAddress <PSResourceId[]>] [-Publ
 ```
 Set-AzNatGateway -InputObject <PSNatGateway> [-PublicIpAddress <PSResourceId[]>]
  [-PublicIpAddressV6 <PSResourceId[]>] [-PublicIpPrefix <PSResourceId[]>] [-PublicIpPrefixV6 <PSResourceId[]>]
- [-SourceVirtualNetwork <PSResourceId>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SourceVirtualNetwork <PSResourceId>] [-Nat64 <String>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -154,6 +154,37 @@ Parameter Sets: SetByNameParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Nat64
+Whether Nat64 is enabled for the nat gateway resource. Allowed values are None, Enabled, and Disabled.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: None, Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
