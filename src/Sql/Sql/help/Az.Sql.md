@@ -212,6 +212,9 @@ Gets a deleted database that you can restore.
 ### [Get-AzSqlDeletedInstanceDatabaseBackup](Get-AzSqlDeletedInstanceDatabaseBackup.md)
 Gets a deleted database that you can restore.
 
+### [Get-AzSqlDeletedServer](Get-AzSqlDeletedServer.md)
+Gets information about deleted Azure SQL servers. (Public Preview)
+
 ### [Get-AzSqlElasticJob](Get-AzSqlElasticJob.md)
 Gets one or more jobs
 
@@ -729,7 +732,7 @@ Restores a SQL database.
 Restores an Azure SQL Managed Instance database.
 
 ### [Restore-AzSqlServer](Restore-AzSqlServer.md)
-Restores a deleted Azure SQL Database server that is still within its soft-delete retention period
+Restores a deleted Azure SQL Database server that is still within its soft-delete retention period. (Public Preview)
 
 ### [Resume-AzSqlDatabase](Resume-AzSqlDatabase.md)
 Resumes a SQL Data Warehouse database.

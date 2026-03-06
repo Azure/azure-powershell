@@ -26,6 +26,8 @@
     - Added support for ExternalEvaluationEnforcementSettings to `New-AzPolicyDefinition` and `Update-AzPolicyDefinition`, including: `-ExternalEvaluationEnforcementSettingMissingTokenAction`, `-ExternalEvaluationEnforcementSettingResultLifespan`, `-ExternalEvaluationEnforcementSettingRoleDefinitionId`, `-EndpointSettingKind`, and `-EndpointSettingDetail` parameters
     - `-Version` parameter in `Get-AzPolicyDefinition` and `Get-AzPolicySetDefinition` can now be used in `ManagementGroupName`, `SubscriptionId`, and `Id` parameter sets
     - Added support for `-Version` parameter in Update/New/Remove-PolicyDefinition, and PolicySetDefinition where the Update and Remove commands target old versions.
+
+## Version 9.0.3
 * Updated the implementation of -Metadata parameter processing for cmdlets that use it for security. No behavior change.
 
 ## Version 9.0.1

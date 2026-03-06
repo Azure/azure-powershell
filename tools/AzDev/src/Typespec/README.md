@@ -20,6 +20,7 @@
     - ***AzDev Cmdlet***: `Set-DevContext -RepoRoot $RootDirectory`
 - **Emitter**: The tool responsible for generating PowerShell code from the TypeSpec definition. This cmdlet specifically works with the `@azure-tools/typespec-powershell` emitter.
 - **emitter-output-dir**: Emitter option to indicate the output directory of code generation. Usually `"{output-dir}/{service-dir}/${ModuleName}/${ModuleName}.Autorest"` under `tsp-config.yaml`. When not provided while AzPSConfig exists, fallback to directory of AzPSConfig.
+- **additionalDirectories**: specify relative path of referenced typespec files, has to be in this format: `specification/edge/Microsoft.Edge.ConfigurationManager.Management`
 
 ## Prerequisite
 - **node version >= 20**

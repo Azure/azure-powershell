@@ -30,7 +30,7 @@ jobs:
 - job:
   displayName: Refresh Autorest Modules
   timeoutInMinutes: 360
-  pool: pool-windows-2019
+  pool: pool-windows-2022
   steps:
   - template: util/get-github-pat-steps.yml
 

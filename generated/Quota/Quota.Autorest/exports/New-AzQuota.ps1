@@ -17,22 +17,22 @@
 <#
 .Synopsis
 Create the quota limit for the specified resource with the requested value.
-To update the quota, follow these steps:\n1.
+To create the quota, follow these steps:\n1.
 Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate the new quota limit.
 These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2.
-Use this PUT operation to update the quota limit.
+Use this PUT operation to create the quota limit.
 Please check the URI in location header for the detailed status of the request.
 .Description
 Create the quota limit for the specified resource with the requested value.
-To update the quota, follow these steps:\n1.
+To create the quota, follow these steps:\n1.
 Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate the new quota limit.
 These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2.
-Use this PUT operation to update the quota limit.
+Use this PUT operation to create the quota limit.
 Please check the URI in location header for the detailed status of the request.
 .Example
-$quota = Get-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses"
+$quota = Get-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family"
 $limit = New-AzQuotaLimitObject -Value ($quota.Limit.Value + 1)
-New-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses" -Name "PublicIPAddresses" -Limit $limit
+New-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family" -Name "standardFSv2Family" -Limit $limit
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
@@ -44,10 +44,17 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IQuotaIdentity>: Identity Parameter
+  [AllocationId <String>]: Request Id.
+  [GroupQuotaName <String>]: The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
   [Id <String>]: Quota request ID.
   [Id1 <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [ManagementGroupId <String>]: The management group ID.
+  [RequestId <String>]: Request Id.
   [ResourceName <String>]: Resource name for a given resource provider. For example:         - SKU name for Microsoft.Compute         - SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices          For Microsoft.Network PublicIPAddresses.
-  [Scope <String>]: The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`. This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then it's the target Azure resource URI in the GET operation for the specific resource.
+  [ResourceProviderName <String>]: The resource provider name, such as - Microsoft.Compute. Currently only Microsoft.Compute resource provider supports this API.
+  [Scope <String>]: The fully qualified Azure Resource manager identifier of the resource.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.quota/new-azquota
 #>
@@ -72,10 +79,7 @@ param(
     [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Quota.Category('Path')]
     [System.String]
-    # The target Azure resource URI.
-    # For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
-    # This is the target Azure resource URI for the List GET operation.
-    # If a `{resourceName}` is added after `/quotas`, then it's the target Azure resource URI in the GET operation for the specific resource.
+    # The fully qualified Azure Resource manager identifier of the resource.
     ${Scope},
 
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -186,6 +190,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -217,6 +229,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

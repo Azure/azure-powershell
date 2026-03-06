@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             "System.Memory.Data",
             "System.Text.Json",
             "Microsoft.Bcl.AsyncInterfaces",
+            "Microsoft.IdentityModel.Abstractions", // Azure.Identity 1.13 depends on v6, MSAL 4.82 depends on v8 (what we ship)
             "System.Text.Encodings.Web"
         };
 
@@ -49,14 +50,12 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         {
             try
             {
-                AssemblyName name = new AssemblyName(args.Name);
-                if (NetFxPreloadAssemblies.TryGetValue(name.Name, out var assembly))
+                AssemblyName requested = new AssemblyName(args.Name);
+                if (NetFxPreloadAssemblies.TryGetValue(requested.Name, out var available))
                 {
-                    if (assembly.Version >= name.Version
-                        && (assembly.Version.Major == name.Version.Major
-                            || IsCrossMajorVersionRedirectionAllowed(name.Name)))
+                    if (CanProvideAssembly(requested, available.Version))
                     {
-                        return Assembly.LoadFrom(assembly.Path);
+                        return Assembly.LoadFrom(available.Path);
                     }
                 }
             }
@@ -64,6 +63,13 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             {
             }
             return null;
+        }
+
+        private static bool CanProvideAssembly(AssemblyName requested, Version availableVersion)
+        {
+            return availableVersion >= requested.Version
+                && (availableVersion.Major == requested.Version.Major
+                    || IsCrossMajorVersionRedirectionAllowed(requested.Name));
         }
 
         /// <summary>

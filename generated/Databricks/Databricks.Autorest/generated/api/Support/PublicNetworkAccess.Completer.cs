@@ -7,7 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
 {
 
     /// <summary>
-    /// The network access type for accessing workspace. Set value to disabled to access workspace only via private link.
+    /// The network access type for accessing workspace. Set value to disabled to access workspace only via private link. Used
+    /// to configure front-end only private link for Serverless ComputeMode workspace.
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccessTypeConverter))]
     public partial struct PublicNetworkAccess :
