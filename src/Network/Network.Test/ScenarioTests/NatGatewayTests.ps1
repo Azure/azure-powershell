@@ -432,3 +432,75 @@ function Test-VirtualNetworkSubnetConfigWithNatGateway
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Nat64 support in New-AzNatGateway and Set-AzNatGateway
+#>
+function Test-NatGatewayNat64Parameter
+{
+    # Setup
+    $rgname = Get-ResourceGroupName;
+    $rglocation = Get-ProviderLocation ResourceManagement;
+    $rname = Get-ResourceName;
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US 2 EUAP";
+
+    # Skip this scenario when Nat64 feature is unavailable in the current subscription.
+    if ((Get-NetworkTestMode) -ne 'Playback')
+    {
+        $nat64Feature = Get-AzProviderFeature -ProviderNamespace "Microsoft.Network" -FeatureName "EnableNat64OnNatGateway" -ErrorAction SilentlyContinue
+        if ($null -eq $nat64Feature -or $nat64Feature.RegistrationState -ne "Registered")
+        {
+            Write-Warning "Test skipped: feature Microsoft.Network/EnableNat64OnNatGateway is not registered for this subscription."
+            return
+        }
+    }
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
+
+        # Create NatGateway with Nat64 enabled
+        $vNatGateway = New-AzNatGateway -ResourceGroupName $rgname -Name $rname -Location $location -Sku StandardV2 -Nat64 Enabled;
+        Assert-NotNull $vNatGateway;
+        Assert-True { Check-CmdletReturnType "New-AzNatGateway" $vNatGateway };
+        Assert-AreEqual "Enabled" $vNatGateway.Nat64;
+
+        # Get NatGateway and validate Nat64
+        $vNatGateway = Get-AzNatGateway -ResourceGroupName $rgname -Name $rname;
+        Assert-NotNull $vNatGateway;
+        Assert-AreEqual "Enabled" $vNatGateway.Nat64;
+
+        # Update Nat64 via set by name
+        $vNatGateway = Set-AzNatGateway -ResourceGroupName $rgname -Name $rname -Nat64 Disabled;
+        Assert-NotNull $vNatGateway;
+        Assert-True { Check-CmdletReturnType "Set-AzNatGateway" $vNatGateway };
+        Assert-AreEqual "Disabled" $vNatGateway.Nat64;
+
+        # Update Nat64 via set by resource id
+        $vNatGateway = Set-AzNatGateway -ResourceId $vNatGateway.Id -Nat64 Enabled;
+        Assert-NotNull $vNatGateway;
+        Assert-AreEqual "Enabled" $vNatGateway.Nat64;
+
+        # Validate omitted Nat64 does not overwrite existing value
+        $vNatGateway = Set-AzNatGateway -InputObject $vNatGateway;
+        Assert-NotNull $vNatGateway;
+        Assert-AreEqual "Enabled" $vNatGateway.Nat64;
+
+        # Get NatGateway and validate final Nat64 value
+        $vNatGateway = Get-AzNatGateway -ResourceGroupName $rgname -Name $rname;
+        Assert-NotNull $vNatGateway;
+        Assert-AreEqual "Enabled" $vNatGateway.Nat64;
+
+        # Remove NatGateway
+        $job = Remove-AzNatGateway -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeNatGateway = $job | Receive-Job;
+        Assert-AreEqual $true $removeNatGateway;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}

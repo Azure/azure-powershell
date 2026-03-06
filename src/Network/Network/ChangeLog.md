@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Added property 'Nat64' to NatGateway and support for it in the following cmdlets:
+    - `New-AzNatGateway`
+    - `Set-AzNatGateway`
 
 ## Version 7.25.1
 * Onboarded `Microsoft.DataReplication/replicationVaults` to Private Link Common Cmdlets
