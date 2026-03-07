@@ -37,9 +37,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             // If Name is not set, extract from Id (e.g., .../copyJobs/jobName)
             if (string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(Id))
             {
-                var parts = Id.Split('/');
-                if (parts.Length >= 2)
+                var trimmedId = Id.TrimEnd('/');
+                if (!string.IsNullOrEmpty(trimmedId))
                 {
+                    var parts = trimmedId.Split('/');
                     Name = parts[parts.Length - 1];
                 }
             }

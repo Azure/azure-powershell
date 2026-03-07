@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }
 
-            if (ShouldProcess(JobName, "Cancelling CosmosDB Copy Job"))
+            if (ShouldProcess(JobName, "Canceling CosmosDB Copy Job"))
             {
                 CosmosDBManagementClient.CopyJobs.CancelWithHttpMessagesAsync(
                     ResourceGroupName, AccountName, JobName).GetAwaiter().GetResult();

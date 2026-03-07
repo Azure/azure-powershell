@@ -75,7 +75,7 @@ function Create-CosmosDBAccountViaRest {
   # Poll until provisioning is complete
   $maxRetries = 60
   for ($i = 0; $i -lt $maxRetries; $i++) {
-    Start-Sleep -Seconds 30
+    Start-TestSleep -s 30
     $getResponse = Invoke-AzRestMethod -Path $path -Method GET
     $account = $getResponse.Content | ConvertFrom-Json
     if ($account.properties.provisioningState -eq "Succeeded") {
@@ -91,14 +91,14 @@ function Create-CosmosDBAccountViaRest {
           throw "Failed to enable AllVersionsAndDeletesChangeFeed: $($patchResponse.Content)"
         }
         for ($j = 0; $j -lt 60; $j++) {
-          Start-Sleep -Seconds 30
+          Start-TestSleep -s 30
           $getResp = Invoke-AzRestMethod -Path $previewPath -Method GET
           $acct = $getResp.Content | ConvertFrom-Json
           if ($acct.properties.provisioningState -eq "Succeeded") { break }
         }
 
         # Step 3: Add EnableOnlineContainerCopy capability (retry with try/catch for lock conflicts)
-        Start-Sleep -Seconds 120  # Extra wait for internal lock release
+        Start-TestSleep -s 120  # Extra wait for internal lock release
         $existingCaps = @()
         if ($acct.properties.capabilities) {
           $existingCaps = @($acct.properties.capabilities | ForEach-Object { @{ name = $_.name } })
@@ -115,13 +115,13 @@ function Create-CosmosDBAccountViaRest {
             $capResponse = Invoke-AzRestMethod -Path $previewPath -Method PATCH -Payload $capBody
             if ($capResponse.StatusCode -eq 200) { $capSuccess = $true; break }
             if ($capResponse.Content -like "*exclusive lock*") {
-              Start-Sleep -Seconds 60
+              Start-TestSleep -s 60
             } else {
               throw "Failed to enable OnlineContainerCopy capability: $($capResponse.Content)"
             }
           } catch {
             if ($_.Exception.Message -like "*exclusive lock*") {
-              Start-Sleep -Seconds 60
+              Start-TestSleep -s 60
             } else {
               throw
             }
@@ -129,7 +129,7 @@ function Create-CosmosDBAccountViaRest {
         }
         if (-not $capSuccess) { throw "Failed to add EnableOnlineContainerCopy capability after retries" }
         for ($k = 0; $k -lt 60; $k++) {
-          Start-Sleep -Seconds 30
+          Start-TestSleep -s 30
           $getResp2 = Invoke-AzRestMethod -Path $previewPath -Method GET
           $acct2 = $getResp2.Content | ConvertFrom-Json
           if ($acct2.properties.provisioningState -eq "Succeeded") { return $acct2 }
@@ -420,7 +420,7 @@ function Test-CopyJobOnlineCompleteCmdlets{
     $maxRetries = 30
     $jobRunning = $false
     for ($i = 0; $i -lt $maxRetries; $i++) {
-      Start-Sleep -Seconds 20
+      Start-TestSleep -s 20
       $job = Get-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName
       if ($job.Status -eq "Running") { $jobRunning = $true; break }
     }
@@ -440,7 +440,7 @@ function Test-CopyJobOnlineCompleteCmdlets{
 
     # Wait for Running again
     for ($i = 0; $i -lt $maxRetries; $i++) {
-      Start-Sleep -Seconds 20
+      Start-TestSleep -s 20
       $job = Get-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName
       if ($job.Status -eq "Running") { break }
     }
@@ -450,7 +450,7 @@ function Test-CopyJobOnlineCompleteCmdlets{
     Assert-AreEqual $completeResult $true
 
     # Verify completed
-    Start-Sleep -Seconds 10
+    Start-TestSleep -s 10
     $completedJob = Get-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName
     Assert-AreEqual $completedJob.Status "Completed"
   }

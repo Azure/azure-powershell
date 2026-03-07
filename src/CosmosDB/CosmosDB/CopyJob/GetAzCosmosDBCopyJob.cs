@@ -63,10 +63,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 IEnumerable<CopyJobGetResults> results = CosmosDBManagementClient.CopyJobs.ListByDatabaseAccountWithHttpMessagesAsync(
                     ResourceGroupName, AccountName).GetAwaiter().GetResult().Body;
 
+                List<PSCopyJobGetResults> psResults = new List<PSCopyJobGetResults>();
                 foreach (CopyJobGetResults result in results)
                 {
-                    WriteObject(new PSCopyJobGetResults(result));
+                    psResults.Add(new PSCopyJobGetResults(result));
                 }
+                WriteObject(psResults, true);
             }
         }
     }
