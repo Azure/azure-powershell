@@ -6352,6 +6352,10 @@
             <Alignment>Left</Alignment>
             <Label>SourceVirtualNetwork</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Nat64</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -6384,6 +6388,10 @@
                 <Alignment>Left</Alignment>
 				  <PropertyName>SourceVirtualNetworkText</PropertyName>
               </TableColumnItem>
+                <TableColumnItem>
+                  <Alignment>Left</Alignment>
+                  <PropertyName>Nat64</PropertyName>
+                </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
