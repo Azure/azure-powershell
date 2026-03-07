@@ -1,4 +1,9 @@
 function New-AzFunctionApp {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PreviewMessage("**********************************************************************************************`n
+    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026.           *`n
+    * At least one change applies to this cmdlet.                                                     *`n
+    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
+    ***************************************************************************************************")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Creates a function app.')]
     [CmdletBinding(SupportsShouldProcess=$true, DefaultParametersetname="Consumption")]
