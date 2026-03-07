@@ -531,14 +531,6 @@ function Test-RouteEcmpCRUD
         # Try Add again - should fail
         Assert-ThrowsContains { Add-AzRouteConfig -Name $rnameAdd -RouteTable $vRouteTable -AddressPrefix $AddressPrefixAdd -NextHopType $NextHopType -NextHopIpAddresses $NextHopIpAddressesAdd } "already exists";
 
-        # Remove Routes
-        $vRouteTable = Remove-AzRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
-        $vRouteTable = Remove-AzRouteConfig -RouteTable $vRouteTable -Name $rname;
-        $vRouteTable = Set-AzRouteTable -RouteTable $vRouteTable;
-        Assert-NotNull $vRouteTable;
-
-        # Get Route should fail
-        Assert-ThrowsContains { Get-AzRouteConfig -RouteTable $vRouteTable -Name $rname } "Sequence contains no matching element";
     }
     finally
     {

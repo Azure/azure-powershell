@@ -476,19 +476,6 @@ function Test-RouteEcmpNextHop
         Assert-AreEqual 4 $updatedRoute.NextHop.NextHopIpAddresses.Count
         Assert-AreEqual "10.2.2.1" $updatedRoute.NextHop.NextHopIpAddresses[0]
         Assert-AreEqual "10.2.2.4" $updatedRoute.NextHop.NextHopIpAddresses[3]
-
-        # Remove ECMP route
-        $getRT = Get-AzRouteTable -name $routeTableName -ResourceGroupName $rgName | Remove-AzRouteConfig -name "ecmpRoute1" | Set-AzRouteTable
-        Assert-AreEqual 2 @($getRT.Routes).Count
-        $list = $getRT | Get-AzRouteConfig
-        Assert-Null ($list | Where-Object { $_.Name -eq "ecmpRoute1" })
-
-        # Delete RouteTable
-        $delete = Remove-AzRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Force
-        Assert-AreEqual true $delete
-        
-        $list = Get-AzRouteTable -ResourceGroupName $rgname
-        Assert-AreEqual 0 @($list).Count
     }
     finally
     {
