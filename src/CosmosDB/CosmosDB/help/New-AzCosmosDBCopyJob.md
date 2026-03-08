@@ -214,7 +214,7 @@ Accepted values: Online, Offline
 
 Required: False
 Position: Named
-Default value: None
+Default value: Offline
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
