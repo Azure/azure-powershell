@@ -1,3 +1,5 @@
+## 15.4.1 - April 2026
+
 ## 15.4.0 - March 2026
 #### Az.Compute 11.4.0 
 * Modified cmdlet `Add-AzVMDataDisk`
@@ -1240,6 +1242,7 @@
    - Changed the type of parameter `-ManagedResourcesNetworkAccessType` from `ManagedResourcesNetworkAccessType` to `String`
    - Changed the type of parameter `-UserAssignedIdentity` from `Hashtable` to `String[]`
 * Added cmdlet `Update-AzWorkloadsProviderInstance`
+
 
 
 
