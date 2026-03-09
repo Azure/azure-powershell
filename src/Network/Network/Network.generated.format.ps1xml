@@ -6348,14 +6348,6 @@
             <Alignment>Left</Alignment>
             <Label>Sku Name</Label>
           </TableColumnHeader>
-		  <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>SourceVirtualNetwork</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>Nat64</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -6384,14 +6376,6 @@
                 <Alignment>Left</Alignment>
 				  <ScriptBlock>$_.Sku.Name</ScriptBlock>
               </TableColumnItem>
-			  <TableColumnItem>
-                <Alignment>Left</Alignment>
-				  <PropertyName>SourceVirtualNetworkText</PropertyName>
-              </TableColumnItem>
-                <TableColumnItem>
-                  <Alignment>Left</Alignment>
-                  <PropertyName>Nat64</PropertyName>
-                </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
