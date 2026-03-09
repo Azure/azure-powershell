@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="nextHopType">The type of Azure hop the packet should be sent to.
         /// Possible values include: &#39;VirtualNetworkGateway&#39;, &#39;VnetLocal&#39;, &#39;Internet&#39;,
-        /// &#39;VirtualAppliance&#39;, &#39;None&#39;</param>
+        /// &#39;VirtualAppliance&#39;, &#39;None&#39;, &#39;VirtualApplianceEcmp&#39;</param>
         public EffectiveRoute(string name = default(string), bool? disableBgpRoutePropagation = default(bool?), string source = default(string), string state = default(string), System.Collections.Generic.IList<string> addressPrefix = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> nextHopIPAddress = default(System.Collections.Generic.IList<string>), string nextHopType = default(string))
 
         {
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public System.Collections.Generic.IList<string> NextHopIPAddress {get; set; }
 
         /// <summary>
-        /// Gets or sets the type of Azure hop the packet should be sent to. Possible values include: &#39;VirtualNetworkGateway&#39;, &#39;VnetLocal&#39;, &#39;Internet&#39;, &#39;VirtualAppliance&#39;, &#39;None&#39;
+        /// Gets or sets the type of Azure hop the packet should be sent to. Possible values include: &#39;VirtualNetworkGateway&#39;, &#39;VnetLocal&#39;, &#39;Internet&#39;, &#39;VirtualAppliance&#39;, &#39;None&#39;, &#39;VirtualApplianceEcmp&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nextHopType")]
         public string NextHopType {get; set; }

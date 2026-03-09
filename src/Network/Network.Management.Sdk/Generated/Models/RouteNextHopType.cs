@@ -18,5 +18,6 @@ namespace Microsoft.Azure.Management.Network.Models
         public const string Internet = "Internet";
         public const string VirtualAppliance = "VirtualAppliance";
         public const string None = "None";
+        public const string VirtualApplianceEcmp = "VirtualApplianceEcmp";
     }
 }

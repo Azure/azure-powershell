@@ -1049,12 +1049,22 @@ namespace Microsoft.Azure.Commands.Network
                         dest => dest.NextHopIPAddress,
                         opt => opt.MapFrom(src => src.NextHopIpAddress)
                     );
+                cfg.CreateMap<CNM.PSRouteNextHopEcmp, MNM.RouteNextHopEcmp>()
+                    .ForMember(
+                        dest => dest.NextHopIPAddresses,
+                        opt => opt.MapFrom(src => src.NextHopIpAddresses)
+                    );
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.Route, CNM.PSRoute>()
                     .ForMember(
                         dest => dest.NextHopIpAddress,
                         opt => opt.MapFrom(src => src.NextHopIPAddress)
+                    );
+                cfg.CreateMap<MNM.RouteNextHopEcmp, CNM.PSRouteNextHopEcmp>()
+                    .ForMember(
+                        dest => dest.NextHopIpAddresses,
+                        opt => opt.MapFrom(src => src.NextHopIPAddresses)
                     );
 
                 // EffectiveRouteTable
