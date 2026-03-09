@@ -51,7 +51,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// regardless of LPM.
         /// </param>
         public RoutePropertiesFormat(string nextHopType, string addressPrefix = default(string), string nextHopIPAddress = default(string), RouteNextHopEcmp nextHop = default(RouteNextHopEcmp), string provisioningState = default(string), bool? hasBgpOverride = default(bool?))
-
         {
             this.AddressPrefix = addressPrefix;
             this.NextHopType = nextHopType;
@@ -122,8 +121,6 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "NextHopType");
             }
-
-
 
             if (this.NextHop != null)
             {

@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// specified next hop addresses.
         /// </param>
         public RouteNextHopEcmp(System.Collections.Generic.IList<string> nextHopIPAddresses)
-
         {
             this.NextHopIPAddresses = nextHopIPAddresses;
             CustomInit();

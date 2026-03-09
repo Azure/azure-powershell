@@ -156,13 +156,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
-
-
-
-
-
-
-
             if (this.NextHop != null)
             {
                 this.NextHop.Validate();
