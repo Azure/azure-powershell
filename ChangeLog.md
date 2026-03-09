@@ -1,3 +1,12 @@
+## 15.5.0 - April 2026
+#### Az.Network 7.26.0
+* Added EdgeZone (Extended Location) parameter support for Azure Firewall
+    - Added '-EdgeZone' parameter to 'New-AzFirewall' cmdlet
+    - When '-EdgeZone' is specified, availability zones are not supported for Azure Firewall resources
+
+#### Az.RecoveryServices 7.11.2
+* Added Cross region restore support for upcoming regions Southeast Asia 3
+
 ## 15.4.0 - March 2026
 #### Az.Accounts 5.3.3
 * Updated MSAL to 4.82.1 to fix an issue with ARM endpoint discovery.

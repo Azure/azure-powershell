@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '15.4.0'
+ModuleVersion = '15.5.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -138,6 +138,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.3'; },
             @{ModuleName = 'Az.EventGrid'; RequiredVersion = '2.2.0'; }, 
             @{ModuleName = 'Az.EventHub'; RequiredVersion = '5.4.0'; }, 
             @{ModuleName = 'Az.Fabric'; RequiredVersion = '1.0.0'; }, 
+            @{ModuleName = 'Az.FileShare'; RequiredVersion = '0.1.0'; }, 
             @{ModuleName = 'Az.FirmwareAnalysis'; RequiredVersion = '1.0.0'; }, 
             @{ModuleName = 'Az.Fleet'; RequiredVersion = '0.2.2'; }, 
             @{ModuleName = 'Az.FluidRelay'; RequiredVersion = '0.2.0'; }, 
@@ -185,7 +186,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.3'; },
             @{ModuleName = 'Az.MySql'; RequiredVersion = '1.5.1'; }, 
             @{ModuleName = 'Az.NeonPostgres'; RequiredVersion = '0.2.0'; }, 
             @{ModuleName = 'Az.NetAppFiles'; RequiredVersion = '1.0.0'; }, 
-            @{ModuleName = 'Az.Network'; RequiredVersion = '7.25.1'; }, 
+            @{ModuleName = 'Az.Network'; RequiredVersion = '7.26.0'; }, 
             @{ModuleName = 'Az.NetworkAnalytics'; RequiredVersion = '0.1.2'; }, 
             @{ModuleName = 'Az.NetworkCloud'; RequiredVersion = '2.0.0'; }, 
             @{ModuleName = 'Az.NetworkFunction'; RequiredVersion = '0.2.0'; }, 
@@ -207,8 +208,8 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.3'; },
             @{ModuleName = 'Az.Purview'; RequiredVersion = '0.3.0'; }, 
             @{ModuleName = 'Az.Quantum'; RequiredVersion = '0.2.0'; }, 
             @{ModuleName = 'Az.Qumulo'; RequiredVersion = '0.1.3'; }, 
-            @{ModuleName = 'Az.Quota'; RequiredVersion = '0.1.3'; }, 
-            @{ModuleName = 'Az.RecoveryServices'; RequiredVersion = '7.11.1'; }, 
+            @{ModuleName = 'Az.Quota'; RequiredVersion = '0.2.0'; }, 
+            @{ModuleName = 'Az.RecoveryServices'; RequiredVersion = '7.11.2'; }, 
             @{ModuleName = 'Az.RedisCache'; RequiredVersion = '1.11.0'; }, 
             @{ModuleName = 'Az.RedisEnterpriseCache'; RequiredVersion = '1.6.0'; }, 
             @{ModuleName = 'Az.Relay'; RequiredVersion = '3.0.0'; }, 
