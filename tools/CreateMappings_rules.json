@@ -1013,6 +1013,10 @@
     "module": "ArtifactSigning"
   },
   {
+    "module": "FileShare",
+    "alias": "FileShare"
+  },
+  {
     "module": "PostgreSQLFlexibleServer",
     "alias": "PostgreSQLFlexibleServer"
   }
