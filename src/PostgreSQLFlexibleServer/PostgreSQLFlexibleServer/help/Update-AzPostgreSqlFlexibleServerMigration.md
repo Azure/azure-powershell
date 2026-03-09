@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PostgreSQLFlexibleServer-help.xml
 Module Name: Az.PostgreSQLFlexibleServer
 online version: https://learn.microsoft.com/powershell/module/az.postgresqlflexibleserver/update-azpostgresqlflexibleservermigration
 schema: 2.0.0
@@ -18,14 +18,43 @@ Certain property update initiate migration state transitions.
 ```
 Update-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] [-AdminCredentialsSourceServerPassword <SecureString>]
- [-AdminCredentialsTargetServerPassword <SecureString>] [-Cancel <String>]
- [-DbsToCancelMigrationOn <String[]>] [-DbsToMigrate <String[]>] [-DbsToTriggerCutoverOn <String[]>]
- [-MigrateRole <String>] [-MigrationMode <String>] [-MigrationWindowStartTimeInUtc <DateTime>]
- [-OverwriteDbsInTarget <String>] [-SecretParameterSourceServerUsername <String>]
- [-SecretParameterTargetServerUsername <String>] [-SetupLogicalReplicationOnSourceDbIfNeeded <String>]
- [-SourceDbServerFullyQualifiedDomainName <String>] [-SourceDbServerResourceId <String>]
- [-StartDataMigration <String>] [-Tag <Hashtable>] [-TargetDbServerFullyQualifiedDomainName <String>]
- [-TriggerCutover <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AdminCredentialsTargetServerPassword <SecureString>] [-Cancel <String>] [-DbsToCancelMigrationOn <String[]>]
+ [-DbsToMigrate <String[]>] [-DbsToTriggerCutoverOn <String[]>] [-MigrateRole <String>]
+ [-MigrationMode <String>] [-MigrationWindowStartTimeInUtc <DateTime>] [-OverwriteDbsInTarget <String>]
+ [-SecretParameterSourceServerUsername <String>] [-SecretParameterTargetServerUsername <String>]
+ [-SetupLogicalReplicationOnSourceDbIfNeeded <String>] [-SourceDbServerFullyQualifiedDomainName <String>]
+ [-SourceDbServerResourceId <String>] [-StartDataMigration <String>] [-Tag <Hashtable>]
+ [-TargetDbServerFullyQualifiedDomainName <String>] [-TriggerCutover <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroupName <String> -ServerName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroupName <String> -ServerName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityFlexibleServerExpanded
+```
+Update-AzPostgreSqlFlexibleServerMigration -Name <String>
+ -FlexibleServerInputObject <IPostgreSqlFlexibleServerIdentity>
+ [-AdminCredentialsSourceServerPassword <SecureString>] [-AdminCredentialsTargetServerPassword <SecureString>]
+ [-Cancel <String>] [-DbsToCancelMigrationOn <String[]>] [-DbsToMigrate <String[]>]
+ [-DbsToTriggerCutoverOn <String[]>] [-MigrateRole <String>] [-MigrationMode <String>]
+ [-MigrationWindowStartTimeInUtc <DateTime>] [-OverwriteDbsInTarget <String>]
+ [-SecretParameterSourceServerUsername <String>] [-SecretParameterTargetServerUsername <String>]
+ [-SetupLogicalReplicationOnSourceDbIfNeeded <String>] [-SourceDbServerFullyQualifiedDomainName <String>]
+ [-SourceDbServerResourceId <String>] [-StartDataMigration <String>] [-Tag <Hashtable>]
+ [-TargetDbServerFullyQualifiedDomainName <String>] [-TriggerCutover <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -39,35 +68,7 @@ Update-AzPostgreSqlFlexibleServerMigration -InputObject <IPostgreSqlFlexibleServ
  [-SetupLogicalReplicationOnSourceDbIfNeeded <String>] [-SourceDbServerFullyQualifiedDomainName <String>]
  [-SourceDbServerResourceId <String>] [-StartDataMigration <String>] [-Tag <Hashtable>]
  [-TargetDbServerFullyQualifiedDomainName <String>] [-TriggerCutover <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityFlexibleServerExpanded
-```
-Update-AzPostgreSqlFlexibleServerMigration -FlexibleServerInputObject <IPostgreSqlFlexibleServerIdentity>
- -Name <String> [-AdminCredentialsSourceServerPassword <SecureString>]
- [-AdminCredentialsTargetServerPassword <SecureString>] [-Cancel <String>]
- [-DbsToCancelMigrationOn <String[]>] [-DbsToMigrate <String[]>] [-DbsToTriggerCutoverOn <String[]>]
- [-MigrateRole <String>] [-MigrationMode <String>] [-MigrationWindowStartTimeInUtc <DateTime>]
- [-OverwriteDbsInTarget <String>] [-SecretParameterSourceServerUsername <String>]
- [-SecretParameterTargetServerUsername <String>] [-SetupLogicalReplicationOnSourceDbIfNeeded <String>]
- [-SourceDbServerFullyQualifiedDomainName <String>] [-SourceDbServerResourceId <String>]
- [-StartDataMigration <String>] [-Tag <Hashtable>] [-TargetDbServerFullyQualifiedDomainName <String>]
- [-TriggerCutover <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroupName <String> -ServerName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroupName <String> -ServerName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,7 +107,7 @@ Password for the user of the source server.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -121,7 +122,7 @@ Password for the user of the target server.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -136,7 +137,7 @@ Indicates if cancel must be triggered for the entire migration.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -151,7 +152,7 @@ When you want to trigger cancel for specific databases set 'triggerCutover' to '
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -166,7 +167,7 @@ Names of databases to migrate.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -181,7 +182,7 @@ When you want to trigger cutover for specific databases set 'triggerCutover' to 
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -272,7 +273,7 @@ Indicates if roles and permissions must be migrated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -287,7 +288,7 @@ Mode used to perform the migration: Online or Offline.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -302,7 +303,7 @@ Start time (UTC) for migration window.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -317,7 +318,7 @@ Name of migration.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityFlexibleServerExpanded
 Aliases: MigrationName
 
 Required: True
@@ -333,7 +334,7 @@ If set to 'False', when the migration workflow detects that the database already
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -349,7 +350,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -365,7 +366,7 @@ This user doesn't need to be an administrator.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -381,7 +382,7 @@ This user doesn't need to be an administrator.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -396,7 +397,7 @@ The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -411,7 +412,7 @@ Indicates whether to setup logical replication on source server, if needed.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -428,7 +429,7 @@ When provided, the migration service will always use it to connect to the source
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -444,7 +445,7 @@ For other source types this must be set to ipaddress:port@username or hostname:p
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -459,7 +460,7 @@ Indicates if data migration must start right away.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -475,7 +476,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -490,7 +491,7 @@ Application-specific metadata in the form of key-value pairs.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -507,7 +508,7 @@ When provided, the migration service will always use it to connect to the target
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -522,7 +523,7 @@ Indicates if cutover must be triggered for the entire migration.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -577,4 +578,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -15,27 +15,27 @@ Checks the validity and availability of the given name, to assign it to a new se
 ### CheckExpanded (Default)
 ```
 Test-AzPostgreSqlFlexibleServerNameAvailabilityGlobally [-SubscriptionId <String>] [-Name <String>]
- [-Type <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-Type <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### Check
 ```
 Test-AzPostgreSqlFlexibleServerNameAvailabilityGlobally [-SubscriptionId <String>]
- -Parameter <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -Parameter <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaJsonFilePath
 ```
 Test-AzPostgreSqlFlexibleServerNameAvailabilityGlobally [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaJsonString
 ```
 Test-AzPostgreSqlFlexibleServerNameAvailabilityGlobally [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,21 +140,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

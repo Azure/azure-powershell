@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostgreSQLFlexibleServer", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PostgreSQLFlexibleServer.Autorest", "PostgreSQLFlexibleServer.Autorest", "{4C14BC2F-C5CA-81E0-B3AD-B9EF19176EC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.PostgreSQLFlexibleServer", "PostgreSQLFlexibleServer.Autorest\Az.PostgreSQLFlexibleServer.csproj", "{18B43B7E-2730-45E2-8AFA-F96F449D9792}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.PostgreSQLFlexibleServer", "..\..\generated\PostgreSQLFlexibleServer\PostgreSQLFlexibleServer.Autorest\Az.PostgreSQLFlexibleServer.csproj", "{18B43B7E-2730-45E2-8AFA-F96F449D9792}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

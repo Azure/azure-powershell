@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PostgreSQLFlexibleServer-help.xml
 Module Name: Az.PostgreSQLFlexibleServer
 online version: https://learn.microsoft.com/powershell/module/az.postgresqlflexibleserver/update-azpostgresqlflexibleservervirtualendpoint
 schema: 2.0.0
@@ -16,36 +16,37 @@ Update a pair of virtual endpoints for a server.
 ```
 Update-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroupName <String>
  -ServerName <String> [-SubscriptionId <String>] [-EndpointType <String>] [-Member <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzPostgreSqlFlexibleServerVirtualEndpoint -InputObject <IPostgreSqlFlexibleServerIdentity>
- [-EndpointType <String>] [-Member <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityFlexibleServerExpanded
-```
-Update-AzPostgreSqlFlexibleServerVirtualEndpoint
- -FlexibleServerInputObject <IPostgreSqlFlexibleServerIdentity> -Name <String> [-EndpointType <String>]
- [-Member <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroupName <String>
- -ServerName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroupName <String>
- -ServerName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ServerName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroupName <String>
+ -ServerName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityFlexibleServerExpanded
+```
+Update-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String>
+ -FlexibleServerInputObject <IPostgreSqlFlexibleServerIdentity> [-EndpointType <String>] [-Member <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzPostgreSqlFlexibleServerVirtualEndpoint -InputObject <IPostgreSqlFlexibleServerIdentity>
+ [-EndpointType <String>] [-Member <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -113,7 +114,7 @@ Type of endpoint for the virtual endpoints.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -188,7 +189,7 @@ List of servers that one of the virtual endpoints can refer to.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -203,7 +204,7 @@ Base name of the virtual endpoints.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityFlexibleServerExpanded
 Aliases: VirtualEndpointName
 
 Required: True
@@ -234,7 +235,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -249,7 +250,7 @@ The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -265,7 +266,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -320,4 +321,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -25,21 +25,21 @@ New-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroupName <Strin
  [-SourceDbServerFullyQualifiedDomainName <String>] [-SourceDbServerResourceId <String>] [-SourceType <String>]
  [-SslMode <String>] [-StartDataMigration <String>] [-Tag <Hashtable>]
  [-TargetDbServerFullyQualifiedDomainName <String>] [-TriggerCutover <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityFlexibleServerExpanded
@@ -55,7 +55,7 @@ New-AzPostgreSqlFlexibleServerMigration -Name <String>
  [-SetupLogicalReplicationOnSourceDbIfNeeded <String>] [-SourceDbServerFullyQualifiedDomainName <String>]
  [-SourceDbServerResourceId <String>] [-SourceType <String>] [-SslMode <String>] [-StartDataMigration <String>]
  [-Tag <Hashtable>] [-TargetDbServerFullyQualifiedDomainName <String>] [-TriggerCutover <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -70,7 +70,7 @@ New-AzPostgreSqlFlexibleServerMigration -InputObject <IPostgreSqlFlexibleServerI
  [-SetupLogicalReplicationOnSourceDbIfNeeded <String>] [-SourceDbServerFullyQualifiedDomainName <String>]
  [-SourceDbServerResourceId <String>] [-SourceType <String>] [-SslMode <String>] [-StartDataMigration <String>]
  [-Tag <Hashtable>] [-TargetDbServerFullyQualifiedDomainName <String>] [-TriggerCutover <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -396,21 +396,6 @@ If set to 'False', when the migration workflow detects that the database already
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityFlexibleServerExpanded, CreateViaIdentityExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

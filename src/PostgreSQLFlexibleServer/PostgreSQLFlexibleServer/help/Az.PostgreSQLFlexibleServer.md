@@ -12,161 +12,163 @@ Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
 
 ## Az.PostgreSQLFlexibleServer Cmdlets
 ### [Get-AzPostgreSqlFlexibleServer](Get-AzPostgreSqlFlexibleServer.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Gets information about an existing server.
 
 ### [Get-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra](Get-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Gets information about a server administrator associated to a Microsoft Entra principal.
 
 ### [Get-AzPostgreSqlFlexibleServerAdvancedThreatProtectionSetting](Get-AzPostgreSqlFlexibleServerAdvancedThreatProtectionSetting.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Gets state of advanced threat protection settings for a server.
 
 ### [Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand](Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Gets information of an on demand backup, given its name.
 
 ### [Get-AzPostgreSqlFlexibleServerBackupsLongTermRetention](Get-AzPostgreSqlFlexibleServerBackupsLongTermRetention.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Gets the results of a long retention backup operation for a server.
 
 ### [Get-AzPostgreSqlFlexibleServerCapabilitiesByLocation](Get-AzPostgreSqlFlexibleServerCapabilitiesByLocation.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Lists the capabilities available in a given location for a specific subscription.
 
 ### [Get-AzPostgreSqlFlexibleServerCapabilitiesByServer](Get-AzPostgreSqlFlexibleServerCapabilitiesByServer.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Lists the capabilities available for a given server.
 
 ### [Get-AzPostgreSqlFlexibleServerCapturedLog](Get-AzPostgreSqlFlexibleServerCapturedLog.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Lists all captured logs for download in a server.
 
 ### [Get-AzPostgreSqlFlexibleServerConfiguration](Get-AzPostgreSqlFlexibleServerConfiguration.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Gets information about a specific configuration (also known as server parameter) of a server.
 
 ### [Get-AzPostgreSqlFlexibleServerDatabase](Get-AzPostgreSqlFlexibleServerDatabase.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Gets information about an existing database.
 
 ### [Get-AzPostgreSqlFlexibleServerFirewallRule](Get-AzPostgreSqlFlexibleServerFirewallRule.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Gets information about a firewall rule in a server.
 
 ### [Get-AzPostgreSqlFlexibleServerMigration](Get-AzPostgreSqlFlexibleServerMigration.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Gets information about a migration.
 
 ### [Get-AzPostgreSqlFlexibleServerPrivateDnsZoneSuffix](Get-AzPostgreSqlFlexibleServerPrivateDnsZoneSuffix.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Gets the private DNS zone suffix.
 
 ### [Get-AzPostgreSqlFlexibleServerQuotaUsage](Get-AzPostgreSqlFlexibleServerQuotaUsage.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Get quota usages at specified location in a given subscription.
 
 ### [Get-AzPostgreSqlFlexibleServerReplica](Get-AzPostgreSqlFlexibleServerReplica.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Lists all read replicas of a server.
 
 ### [Get-AzPostgreSqlFlexibleServerTuningOption](Get-AzPostgreSqlFlexibleServerTuningOption.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Gets the tuning options of a server.
 
 ### [Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation](Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Lists available object recommendations.
 
 ### [Get-AzPostgreSqlFlexibleServerVirtualEndpoint](Get-AzPostgreSqlFlexibleServerVirtualEndpoint.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Gets information about a pair of virtual endpoints.
 
 ### [Get-AzPostgreSqlFlexibleServerVirtualNetworkSubnetUsage](Get-AzPostgreSqlFlexibleServerVirtualNetworkSubnetUsage.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Lists the virtual network subnet usage for a given virtual network.
 
 ### [Move-AzPostgreSqlFlexibleServerNetworkMode](Move-AzPostgreSqlFlexibleServerNetworkMode.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Migrates the network configuration of a PostgreSQL flexible server from customer owned VNET to Microsoft owned VNET with support for private endpoints, or from Microsoft owned VNET with no support for private endpoints to Microsoft owned VNET with support for private endpoints.
 
 ### [New-AzPostgreSqlFlexibleServer](New-AzPostgreSqlFlexibleServer.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Create a new server.
 
 ### [New-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra](New-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Create a new server administrator associated to a Microsoft Entra principal.
 
 ### [New-AzPostgreSqlFlexibleServerDatabase](New-AzPostgreSqlFlexibleServerDatabase.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Create a new database.
 
 ### [New-AzPostgreSqlFlexibleServerFirewallRule](New-AzPostgreSqlFlexibleServerFirewallRule.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Create a new firewall rule or create an existing firewall rule.
 
 ### [New-AzPostgreSqlFlexibleServerMigration](New-AzPostgreSqlFlexibleServerMigration.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Create a new migration.
 
 ### [New-AzPostgreSqlFlexibleServerThreatProtectionSetting](New-AzPostgreSqlFlexibleServerThreatProtectionSetting.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Create a server's Advanced Threat Protection settings.
 
 ### [New-AzPostgreSqlFlexibleServerVirtualEndpoint](New-AzPostgreSqlFlexibleServerVirtualEndpoint.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Create a pair of virtual endpoints for a server.
 
 ### [Remove-AzPostgreSqlFlexibleServer](Remove-AzPostgreSqlFlexibleServer.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Deletes or drops an existing server.
 
 ### [Remove-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra](Remove-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Deletes an existing server administrator associated to a Microsoft Entra principal.
 
 ### [Remove-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand](Remove-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Deletes a specific backup, given its name.
 
 ### [Remove-AzPostgreSqlFlexibleServerDatabase](Remove-AzPostgreSqlFlexibleServerDatabase.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Deletes an existing database.
 
 ### [Remove-AzPostgreSqlFlexibleServerFirewallRule](Remove-AzPostgreSqlFlexibleServerFirewallRule.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Deletes an existing firewall rule.
 
 ### [Remove-AzPostgreSqlFlexibleServerVirtualEndpoint](Remove-AzPostgreSqlFlexibleServerVirtualEndpoint.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Deletes a pair of virtual endpoints.
 
 ### [Restart-AzPostgreSqlFlexibleServer](Restart-AzPostgreSqlFlexibleServer.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Restarts PostgreSQL database engine in a server.
 
 ### [Set-AzPostgreSqlFlexibleServer](Set-AzPostgreSqlFlexibleServer.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Update a new server.
 
 ### [Set-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra](Set-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Update a new server administrator associated to a Microsoft Entra principal.
 
 ### [Set-AzPostgreSqlFlexibleServerConfiguration](Set-AzPostgreSqlFlexibleServerConfiguration.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Put  using Put verb, the value assigned to a specific modifiable configuration (also known as server parameter) of a server.
 
 ### [Set-AzPostgreSqlFlexibleServerFirewallRule](Set-AzPostgreSqlFlexibleServerFirewallRule.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Update a new firewall rule or update an existing firewall rule.
 
 ### [Set-AzPostgreSqlFlexibleServerThreatProtectionSetting](Set-AzPostgreSqlFlexibleServerThreatProtectionSetting.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Update a server's Advanced Threat Protection settings.
 
 ### [Start-AzPostgreSqlFlexibleServer](Start-AzPostgreSqlFlexibleServer.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Starts a stopped server.
 
 ### [Start-AzPostgreSqlFlexibleServerBackupsLongTermRetention](Start-AzPostgreSqlFlexibleServerBackupsLongTermRetention.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Initiates a long term retention backup.
 
 ### [Stop-AzPostgreSqlFlexibleServer](Stop-AzPostgreSqlFlexibleServer.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Stops a server.
 
 ### [Stop-AzPostgreSqlFlexibleServerMigration](Stop-AzPostgreSqlFlexibleServerMigration.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Cancels an active migration.
 
 ### [Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite](Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Performs all checks required for a long term retention backup operation to succeed.
 
 ### [Test-AzPostgreSqlFlexibleServerMigrationNameAvailability](Test-AzPostgreSqlFlexibleServerMigrationNameAvailability.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Checks if a proposed migration name is valid and available.
 
 ### [Test-AzPostgreSqlFlexibleServerNameAvailability](Test-AzPostgreSqlFlexibleServerNameAvailability.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Check the availability of name for resource
 
 ### [Test-AzPostgreSqlFlexibleServerNameAvailabilityGlobally](Test-AzPostgreSqlFlexibleServerNameAvailabilityGlobally.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Checks the validity and availability of the given name, to assign it to a new server or to use it as the base name of a new pair of virtual endpoints.
 
 ### [Update-AzPostgreSqlFlexibleServer](Update-AzPostgreSqlFlexibleServer.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Update a new server.
 
 ### [Update-AzPostgreSqlFlexibleServerConfiguration](Update-AzPostgreSqlFlexibleServerConfiguration.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Update the value assigned to a specific modifiable configuration (also known as server parameter) of a server.
 
 ### [Update-AzPostgreSqlFlexibleServerDatabase](Update-AzPostgreSqlFlexibleServerDatabase.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Update a new database.
 
 ### [Update-AzPostgreSqlFlexibleServerFirewallRule](Update-AzPostgreSqlFlexibleServerFirewallRule.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Update a new firewall rule or update an existing firewall rule.
 
 ### [Update-AzPostgreSqlFlexibleServerMigration](Update-AzPostgreSqlFlexibleServerMigration.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Update an existing migration.
+The request body can contain one to many of the mutable properties present in the migration definition.
+Certain property update initiate migration state transitions.
 
 ### [Update-AzPostgreSqlFlexibleServerVirtualEndpoint](Update-AzPostgreSqlFlexibleServerVirtualEndpoint.md)
-Microsoft Azure PowerShell: PostgreSQLFlexibleServer cmdlets
+Update a pair of virtual endpoints for a server.
 

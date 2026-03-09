@@ -16,42 +16,42 @@ Performs all checks required for a long term retention backup operation to succe
 ```
 Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite -ResourceGroupName <String>
  -ServerName <String> [-SubscriptionId <String>] -BackupSettingBackupName <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaJsonString
 ```
 Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite -ResourceGroupName <String>
  -ServerName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaJsonFilePath
 ```
 Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite -ResourceGroupName <String>
  -ServerName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Check
 ```
 Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite -ResourceGroupName <String>
  -ServerName <String> [-SubscriptionId <String>] -Parameter <ILtrPreBackupRequest> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaIdentityExpanded
 ```
 Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite
  -InputObject <IPostgreSqlFlexibleServerIdentity> -BackupSettingBackupName <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaIdentity
 ```
 Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite
  -InputObject <IPostgreSqlFlexibleServerIdentity> -Parameter <ILtrPreBackupRequest>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -171,21 +171,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

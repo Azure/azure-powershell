@@ -16,41 +16,41 @@ Checks if a proposed migration name is valid and available.
 ```
 Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] -Name <String> -Type <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaJsonString
 ```
 Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaJsonFilePath
 ```
 Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Check
 ```
 Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] -Parameter <IMigrationNameAvailability> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaIdentityExpanded
 ```
 Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -InputObject <IPostgreSqlFlexibleServerIdentity>
- -Name <String> -Type <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ -Name <String> -Type <String> [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaIdentity
 ```
 Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -InputObject <IPostgreSqlFlexibleServerIdentity>
- -Parameter <IMigrationNameAvailability> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -Parameter <IMigrationNameAvailability> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -171,21 +171,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

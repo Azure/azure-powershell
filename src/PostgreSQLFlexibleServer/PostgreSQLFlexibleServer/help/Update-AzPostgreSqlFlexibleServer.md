@@ -29,7 +29,7 @@ Update-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> [-S
  [-ReplicaRole <String>] [-ReplicationRole <String>] [-SkuName <String>] [-SkuTier <String>]
  [-StorageAutoGrow <String>] [-StorageIop <Int32>] [-StorageSizeGb <Int32>] [-StorageThroughput <Int32>]
  [-StorageTier <String>] [-StorageType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -50,7 +50,7 @@ Update-AzPostgreSqlFlexibleServer -InputObject <IPostgreSqlFlexibleServerIdentit
  [-ReplicaRole <String>] [-ReplicationRole <String>] [-SkuName <String>] [-SkuTier <String>]
  [-StorageAutoGrow <String>] [-StorageIop <Int32>] [-StorageSizeGb <Int32>] [-StorageThroughput <Int32>]
  [-StorageTier <String>] [-StorageType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -517,21 +517,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
