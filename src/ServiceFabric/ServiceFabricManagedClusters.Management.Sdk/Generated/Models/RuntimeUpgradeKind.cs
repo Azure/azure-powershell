@@ -7,15 +7,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 {
 
     /// <summary>
-    /// Defines values for FaultKind.
+    /// Defines values for RuntimeUpgradeKind.
     /// </summary>
 
 
-    public static class FaultKind
+    public static class RuntimeUpgradeKind
     {
         /// <summary>
-        /// Simulates an availability zone down.
+        /// The upgrade progresses one upgrade domain at a time.
         /// </summary>
-        public const string Zone = "Zone";
+        public const string Rolling = "Rolling";
     }
 }

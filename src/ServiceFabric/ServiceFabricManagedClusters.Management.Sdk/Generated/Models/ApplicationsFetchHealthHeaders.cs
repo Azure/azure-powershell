@@ -7,18 +7,18 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 {
     using System.Linq;
 
-    public partial class NodeTypesStartFaultSimulationHeaders
+    public partial class ApplicationsFetchHealthHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the NodeTypesStartFaultSimulationHeaders class.
+        /// Initializes a new instance of the ApplicationsFetchHealthHeaders class.
         /// </summary>
-        public NodeTypesStartFaultSimulationHeaders()
+        public ApplicationsFetchHealthHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the NodeTypesStartFaultSimulationHeaders class.
+        /// Initializes a new instance of the ApplicationsFetchHealthHeaders class.
         /// </summary>
 
         /// <param name="azureAsyncOperation">
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="location">
         /// </param>
-        public NodeTypesStartFaultSimulationHeaders(string azureAsyncOperation = default(string), string location = default(string))
+        public ApplicationsFetchHealthHeaders(string azureAsyncOperation = default(string), string location = default(string))
 
         {
             this.AzureAsyncOperation = azureAsyncOperation;

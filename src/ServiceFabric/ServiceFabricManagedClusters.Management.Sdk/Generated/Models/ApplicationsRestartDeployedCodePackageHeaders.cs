@@ -7,18 +7,18 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 {
     using System.Linq;
 
-    public partial class NodeTypesStopFaultSimulationHeaders
+    public partial class ApplicationsRestartDeployedCodePackageHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the NodeTypesStopFaultSimulationHeaders class.
+        /// Initializes a new instance of the ApplicationsRestartDeployedCodePackageHeaders class.
         /// </summary>
-        public NodeTypesStopFaultSimulationHeaders()
+        public ApplicationsRestartDeployedCodePackageHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the NodeTypesStopFaultSimulationHeaders class.
+        /// Initializes a new instance of the ApplicationsRestartDeployedCodePackageHeaders class.
         /// </summary>
 
         /// <param name="azureAsyncOperation">
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="location">
         /// </param>
-        public NodeTypesStopFaultSimulationHeaders(string azureAsyncOperation = default(string), string location = default(string))
+        public ApplicationsRestartDeployedCodePackageHeaders(string azureAsyncOperation = default(string), string location = default(string))
 
         {
             this.AzureAsyncOperation = azureAsyncOperation;

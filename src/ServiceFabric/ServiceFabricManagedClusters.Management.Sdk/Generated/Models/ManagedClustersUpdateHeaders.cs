@@ -7,18 +7,18 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 {
     using System.Linq;
 
-    public partial class ManagedClustersStartFaultSimulationHeaders
+    public partial class ManagedClustersUpdateHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the ManagedClustersStartFaultSimulationHeaders class.
+        /// Initializes a new instance of the ManagedClustersUpdateHeaders class.
         /// </summary>
-        public ManagedClustersStartFaultSimulationHeaders()
+        public ManagedClustersUpdateHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ManagedClustersStartFaultSimulationHeaders class.
+        /// Initializes a new instance of the ManagedClustersUpdateHeaders class.
         /// </summary>
 
         /// <param name="azureAsyncOperation">
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="location">
         /// </param>
-        public ManagedClustersStartFaultSimulationHeaders(string azureAsyncOperation = default(string), string location = default(string))
+        public ManagedClustersUpdateHeaders(string azureAsyncOperation = default(string), string location = default(string))
 
         {
             this.AzureAsyncOperation = azureAsyncOperation;

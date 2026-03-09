@@ -29,11 +29,16 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="locations">A list of locations.
         /// </param>
-        public ServiceEndpoint(string service, System.Collections.Generic.IList<string> locations = default(System.Collections.Generic.IList<string>))
+
+        /// <param name="networkIdentifier">Specifies the resource id of the service endpoint to be used in the
+        /// cluster.
+        /// </param>
+        public ServiceEndpoint(string service, System.Collections.Generic.IList<string> locations = default(System.Collections.Generic.IList<string>), string networkIdentifier = default(string))
 
         {
             this.Service = service;
             this.Locations = locations;
+            this.NetworkIdentifier = networkIdentifier;
             CustomInit();
         }
 
@@ -54,6 +59,13 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "locations")]
         public System.Collections.Generic.IList<string> Locations {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the resource id of the service endpoint to be used
+        /// in the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "networkIdentifier")]
+        public string NetworkIdentifier {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -66,6 +78,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Service");
             }
+
 
 
         }
