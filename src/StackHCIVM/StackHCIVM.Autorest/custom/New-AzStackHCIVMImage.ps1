@@ -319,7 +319,6 @@ function New-AzStackHCIVMImage{
                 $null = $PSBoundParameters.Remove("Publisher")
                 $null = $PSBoundParameters.Remove("Offer")
                 $null = $PSBoundParameters.Remove("OSType")
-                $null = $PSBoundParameters.Remove("ImagePath")
                 $null = $PSBoundParameters.Remove("CustomLocationId")
                 $null = $PSBoundParameters.Remove("CloudInitDataSource")
                 $null = $PSBoundParameters.Remove("Location")
@@ -383,7 +382,6 @@ function New-AzStackHCIVMImage{
                 $null = $PSBoundParameters.Remove("Publisher")
                 $null = $PSBoundParameters.Remove("Offer")
                 $null = $PSBoundParameters.Remove("OSType")
-                $null = $PSBoundParameters.Remove("ImagePath")
                 $null = $PSBoundParameters.Remove("CustomLocationId")
                 $null = $PSBoundParameters.Remove("CloudInitDataSource")
                 $null = $PSBoundParameters.Remove("Location")
@@ -419,9 +417,6 @@ function New-AzStackHCIVMImage{
         if ($PSCmdlet.ParameterSetName -eq "GalleryImage")
         {
             try{
-                $plainImagePath = [System.Net.NetworkCredential]::new('', $ImagePath).Password
-                $null = $PSBoundParameters.Remove("ImagePath")
-                $PSBoundParameters.Add("ImagePath", $plainImagePath)
                 Az.StackHCIVM.internal\New-AzStackHCIVMGalleryImage -ErrorAction Stop @PSBoundParameters 
             } catch {
                 $e = $_
