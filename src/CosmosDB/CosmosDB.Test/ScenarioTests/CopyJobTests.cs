@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestCopyJobSqlCmdlets()
         {
             TestRunner.RunTestScript("Test-CopyJobSqlCmdlets");
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestCopyJobLifecycleCmdlets()
         {
             TestRunner.RunTestScript("Test-CopyJobLifecycleCmdlets");
