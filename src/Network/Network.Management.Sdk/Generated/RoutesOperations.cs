@@ -766,10 +766,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "routeParameters");
             }
-            if (routeParameters != null)
-            {
-                routeParameters.Validate();
-            }
+            routeParameters.Validate();
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");

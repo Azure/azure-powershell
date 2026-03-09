@@ -181,7 +181,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProgressAction
-{{ Fill ProgressAction Description }}
+Specifies how this cmdlet responds to progress updates. By default, progress is displayed when the host program supports it.
 
 ```yaml
 Type: System.Management.Automation.ActionPreference

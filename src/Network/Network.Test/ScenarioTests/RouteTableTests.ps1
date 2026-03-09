@@ -438,17 +438,19 @@ function Test-RouteEcmpNextHop
         Assert-AreEqual 2 @($getRT.Routes).Count
 
         # Verify ECMP route
-        Assert-AreEqual "ecmpRoute1" $getRT.Routes[0].Name
-        Assert-AreEqual "VirtualApplianceEcmp" $getRT.Routes[0].NextHopType
-        Assert-NotNull $getRT.Routes[0].NextHop
-        Assert-AreEqual 2 $getRT.Routes[0].NextHop.NextHopIpAddresses.Count
-        Assert-AreEqual "10.0.0.1" $getRT.Routes[0].NextHop.NextHopIpAddresses[0]
-        Assert-AreEqual "10.0.0.2" $getRT.Routes[0].NextHop.NextHopIpAddresses[1]
+        $ecmpRouteResult = $getRT | Get-AzRouteConfig -name "ecmpRoute1"
+        Assert-AreEqual "ecmpRoute1" $ecmpRouteResult.Name
+        Assert-AreEqual "VirtualApplianceEcmp" $ecmpRouteResult.NextHopType
+        Assert-NotNull $ecmpRouteResult.NextHop
+        Assert-AreEqual 2 $ecmpRouteResult.NextHop.NextHopIpAddresses.Count
+        Assert-AreEqual "10.0.0.1" $ecmpRouteResult.NextHop.NextHopIpAddresses[0]
+        Assert-AreEqual "10.0.0.2" $ecmpRouteResult.NextHop.NextHopIpAddresses[1]
 
         # Verify regular route
-        Assert-AreEqual "regularRoute" $getRT.Routes[1].Name
-        Assert-AreEqual "VirtualAppliance" $getRT.Routes[1].NextHopType
-        Assert-AreEqual "23.108.1.1" $getRT.Routes[1].NextHopIpAddress
+        $regularRouteResult = $getRT | Get-AzRouteConfig -name "regularRoute"
+        Assert-AreEqual "regularRoute" $regularRouteResult.Name
+        Assert-AreEqual "VirtualAppliance" $regularRouteResult.NextHopType
+        Assert-AreEqual "23.108.1.1" $regularRouteResult.NextHopIpAddress
 
         # Add another ECMP route using Add-AzRouteConfig
         $getRT = Get-AzRouteTable -name $routeTableName -ResourceGroupName $rgName | Add-AzRouteConfig -name "ecmpRoute2" -AddressPrefix "10.0.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.1.1.1","10.1.1.2","10.1.1.3" | Set-AzRouteTable

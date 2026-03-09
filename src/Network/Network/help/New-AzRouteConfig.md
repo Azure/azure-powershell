@@ -169,7 +169,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProgressAction
-{{ Fill ProgressAction Description }}
+Specifies how this cmdlet responds to progress updates, overriding the value of the $ProgressPreference variable for the duration of the command.
 
 ```yaml
 Type: System.Management.Automation.ActionPreference
