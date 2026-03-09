@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVMImageNew'))
 
 Describe 'AzStackHCIVMImageNew' {
     It 'Create Image '  {
-        $secureImagePath = ConvertTo-SecureString -String $env:imagePath -AsPlainText -Force
+        $secureImagePath = ConvertTo-SecureString -String $env.imagePath -AsPlainText -Force
         New-AzStackHCIVMImage -Name  $env.imageName -ImagePath  $secureImagePath  -SubscriptionId $env.newSubscriptionId -ResourceGroupName $env.newResourceGroupName -CustomLocationId $env.newCustomLocationId -Location $env.location -OSType $env.osTypeLinux | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
     }
     It 'Create MarketplaceImage' 
