@@ -357,6 +357,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
 
     internal static void SetFilePermissions(string filePath, int permissions)
     {
+        // Validate filePath before it is used in process arguments or scripts
+        SftpUtils.ValidateCommandLineArgument(filePath, nameof(filePath));
+
         if (!File.Exists(filePath))
         {
             throw new AzPSArgumentException($"File '{filePath}' does not exist", nameof(filePath));
@@ -372,23 +375,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
                 // Set Windows ACL permissions
                 try
                 {
+                    // Use -File parameter to pass the path safely instead of
+                    // concatenating it into a script string, which would allow
+                    // a crafted path to escape the quoted context.
+                    string escapedPath = filePath.Replace("'", "''");
                     string powerShellScript;
                     if (permissions == SftpConstants.PrivateKeyPermissions)
                     {
                         powerShellScript = @"
-                            $acl = Get-Acl '" + filePath + @"'
+                            $acl = Get-Acl -LiteralPath '" + escapedPath + @"'
                             $acl.SetAccessRuleProtection($true, $false)
                             $acl.Access | ForEach-Object { $acl.RemoveAccessRule($_) }
                             $currentUser = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
                             $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule($currentUser, 'FullControl', 'Allow')
                             $acl.SetAccessRule($accessRule)
-                            Set-Acl -Path '" + filePath + @"' -AclObject $acl
+                            Set-Acl -LiteralPath '" + escapedPath + @"' -AclObject $acl
                         ";
                     }
                     else // 644 octal - public key/certificate
                     {
                         powerShellScript = @"
-                            $acl = Get-Acl '" + filePath + @"'
+                            $acl = Get-Acl -LiteralPath '" + escapedPath + @"'
                             $acl.SetAccessRuleProtection($true, $false)
                             $acl.Access | ForEach-Object { $acl.RemoveAccessRule($_) }
                             $currentUser = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
@@ -396,7 +403,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
                             $acl.SetAccessRule($userRule)
                             $authUsersRule = New-Object System.Security.AccessControl.FileSystemAccessRule('Authenticated Users', 'Read', 'Allow')
                             $acl.SetAccessRule($authUsersRule)
-                            Set-Acl -Path '" + filePath + @"' -AclObject $acl
+                            Set-Acl -LiteralPath '" + escapedPath + @"' -AclObject $acl
                         ";
                     }
 
@@ -428,14 +435,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
                     // Fallback to icacls
                     try
                     {
+                        string quotedPath = SftpUtils.EscapeProcessArgument(filePath);
                         string icaclsArgs;
                         if (permissions == SftpConstants.PrivateKeyPermissions)
                         {
-                            icaclsArgs = $"\"{filePath}\" /inheritance:r /grant:r \"%USERNAME%\":F";
+                            icaclsArgs = $"{quotedPath} /inheritance:r /grant:r \"%USERNAME%\":F";
                         }
                         else // 644 octal
                         {
-                            icaclsArgs = $"\"{filePath}\" /inheritance:r /grant:r \"%USERNAME%\":F /grant \"Authenticated Users\":R";
+                            icaclsArgs = $"{quotedPath} /inheritance:r /grant:r \"%USERNAME%\":F /grant \"Authenticated Users\":R";
                         }
 
                         var icaclsProcessInfo = new ProcessStartInfo
@@ -475,7 +483,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
                 var processStartInfo = new ProcessStartInfo
                 {
                     FileName = "chmod",
-                    Arguments = $"{octalPermissions} \"{filePath}\"",
+                    Arguments = $"{octalPermissions} {SftpUtils.EscapeProcessArgument(filePath)}",
                     UseShellExecute = false,
                     CreateNoWindow = true,
                     RedirectStandardOutput = true,

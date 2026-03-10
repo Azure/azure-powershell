@@ -181,8 +181,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
         /// <summary>
         /// Build arguments for SFTP command.
         /// </summary>
-        public List<string> BuildArgs()
+        internal List<string> BuildArgs()
         {
+            // Validate values that will become process arguments (defense-in-depth)
+            SftpUtils.ValidateCommandLineArgument(CertFile, nameof(CertFile));
+            SftpUtils.ValidateCommandLineArgument(PrivateKeyFile, nameof(PrivateKeyFile));
+            SftpUtils.ValidateCommandLineArgument(PublicKeyFile, nameof(PublicKeyFile));
+
             var args = new List<string>();
 
             // Certificate authentication with explicit certificate file option
@@ -232,21 +237,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
             return args;
         }
 
-        public string GetHost()
+        internal string GetHost()
         {
             if (string.IsNullOrEmpty(Host))
             {
                 throw new AzPSArgumentException("Host not set. Call ResolveConnectionInfo() first.", nameof(Host));
             }
+            SftpUtils.ValidateCommandLineArgument(Host, nameof(Host));
             return Host;
         }
 
-        public string GetDestination()
+        internal string GetDestination()
         {
+            SftpUtils.ValidateCommandLineArgument(Username, nameof(Username));
             return $"{Username}@{GetHost()}";
         }
 
-        public void ValidateSession()
+        internal void ValidateSession()
         {
             if (string.IsNullOrEmpty(StorageAccount))
             {
