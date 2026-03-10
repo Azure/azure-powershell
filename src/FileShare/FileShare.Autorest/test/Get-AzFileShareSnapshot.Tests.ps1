@@ -15,19 +15,37 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFileShareSnapshot'))
 }
 
 Describe 'Get-AzFileShareSnapshot' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $config = Get-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName01
+            $config.Count | Should -BeGreaterOrEqual 0
+        } | Should -Not -Throw
     }
 
-    It 'GetViaIdentityFileShare' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentityFileShare' {
+        {
+            $fileShare = Get-AzFileShare -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName01
+            $config = Get-AzFileShareSnapshot -FileShareInputObject $fileShare
+            $config.Count | Should -BeGreaterOrEqual 0
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $config = Get-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
+                                               -ResourceName $env.fileShareName01 `
+                                               -Name $env.snapshotName01
+            $config.Name | Should -Be $env.snapshotName01
+        } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        {
+            $snapshot = Get-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
+                                                 -ResourceName $env.fileShareName01 `
+                                                 -Name $env.snapshotName01
+            $config = Get-AzFileShareSnapshot -InputObject $snapshot
+            $config.Name | Should -Be $env.snapshotName01
+        } | Should -Not -Throw
     }
 }

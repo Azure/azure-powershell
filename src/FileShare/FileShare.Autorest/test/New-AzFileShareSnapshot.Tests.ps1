@@ -15,19 +15,66 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFileShareSnapshot'))
 }
 
 Describe 'New-AzFileShareSnapshot' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        {
+            $config = New-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
+                                               -ResourceName $env.fileShareName01 `
+                                               -Name $env.snapshotName01 `
+                                               -Metadata @{"environment" = "test"; "purpose" = "testing"}
+            $config.Name | Should -Be $env.snapshotName01
+        } | Should -Not -Throw
     }
 
-    It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaJsonString' {
+        {
+            $jsonString = @{
+                properties = @{}
+                tags = @{
+                    environment = "test"
+                    method = "jsonstring"
+                }
+            } | ConvertTo-Json -Depth 10
+            
+            $snapshotName = "snapshot-jsonstring"
+            $config = New-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
+                                               -ResourceName $env.fileShareName01 `
+                                               -Name $snapshotName `
+                                               -JsonString $jsonString
+            $config.Name | Should -Be $snapshotName
+        } | Should -Not -Throw
     }
 
-    It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaJsonFilePath' {
+        {
+            $jsonFilePath = Join-Path $PSScriptRoot 'test-snapshot.json'
+            $jsonContent = @{
+                properties = @{}
+                tags = @{
+                    environment = "test"
+                    method = "jsonfile"
+                }
+            } | ConvertTo-Json -Depth 10
+            Set-Content -Path $jsonFilePath -Value $jsonContent
+            
+            $snapshotName = "snapshot-jsonfile"
+            $config = New-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
+                                               -ResourceName $env.fileShareName01 `
+                                               -Name $snapshotName `
+                                               -JsonFilePath $jsonFilePath
+            $config.Name | Should -Be $snapshotName
+            
+            Remove-Item -Path $jsonFilePath -Force -ErrorAction SilentlyContinue
+        } | Should -Not -Throw
     }
 
-    It 'CreateViaIdentityFileShareExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaIdentityFileShareExpanded' {
+        {
+            $fileShare = Get-AzFileShare -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName01
+            $snapshotName = "snapshot-identity"
+            $config = New-AzFileShareSnapshot -FileShareInputObject $fileShare `
+                                               -Name $snapshotName `
+                                               -Metadata @{"environment" = "test"; "identity" = "true"}
+            $config.Name | Should -Be $snapshotName
+        } | Should -Not -Throw
     }
 }

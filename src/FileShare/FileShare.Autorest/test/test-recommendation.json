@@ -1,0 +1,5 @@
+{
+  "targetStorageGiB": 1000,
+  "targetThroughputMiBPerSec": 125,
+  "targetIoPerSec": 3000
+}

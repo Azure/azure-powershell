@@ -43,14 +43,46 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    # For any resources you created for test, you should add it to $env here.
-    $envFile = 'env.json'
-    if ($TestMode -eq 'live') {
-        $envFile = 'localEnv.json'
+    
+    # Load test environment variables from JSON file
+    $envFile = 'localEnv.json'
+    if ($TestMode -ne 'live') {
+        $envFile = 'env.json'
     }
+    
+    $envFilePath = Join-Path $PSScriptRoot $envFile
+    if (Test-Path -Path $envFilePath) {
+        $envData = Get-Content $envFilePath | ConvertFrom-Json
+        $envData.psobject.properties | ForEach-Object { 
+            if (-not $env.Contains($_.Name)) {
+                $env[$_.Name] = $_.Value 
+            }
+        }
+    }
+    
+    # Create test resource group if it doesn't exist
+    if ($env.resourceGroup -and $env.location) {
+        Write-Host "Checking for resource group: $($env.resourceGroup)"
+        $rg = Get-AzResourceGroup -Name $env.resourceGroup -ErrorAction SilentlyContinue
+        if (-not $rg) {
+            Write-Host "Creating resource group: $($env.resourceGroup) in location: $($env.location)"
+            New-AzResourceGroup -Name $env.resourceGroup -Location $env.location | Out-Null
+            Write-Host "Resource group created successfully"
+        } else {
+            Write-Host "Resource group already exists"
+        }
+    }
+    
+    # For any resources you created for test, you should add it to $env here.
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    # Optionally remove the resource group after tests
+    # Uncomment the following lines if you want to auto-cleanup:
+    # if ($env.resourceGroup) {
+    #     Write-Host "Cleaning up resource group: $($env.resourceGroup)"
+    #     Remove-AzResourceGroup -Name $env.resourceGroup -Force -AsJob | Out-Null
+    # }
 }
 
