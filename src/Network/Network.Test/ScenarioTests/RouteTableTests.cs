@@ -73,5 +73,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-RouteTableWithDisableBgpRoutePropagation");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsgdev)]
+        public void TestRouteWithDisablePeeringRoute()
+        {
+            TestRunner.RunTestScript("Test-RouteTableWithDisablePeeringRoute");
+        }
     }
 }

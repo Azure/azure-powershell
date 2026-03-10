@@ -57,9 +57,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// means disable.
         /// </param>
 
+        /// <param name="disablePeeringRoute">Whether to disable the routes learned by peering on the route table.
+        /// 'None' means peering routes are enabled, 'All' means all peering routes are disabled.
+        /// Possible values include: 'None', 'All'
+        /// </param>
+
         /// <param name="resourceGuid">The resource GUID property of the route table.
         /// </param>
-        public RouteTable(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), System.Collections.Generic.IList<Route> routes = default(System.Collections.Generic.IList<Route>), System.Collections.Generic.IList<Subnet> subnets = default(System.Collections.Generic.IList<Subnet>), bool? disableBgpRoutePropagation = default(bool?), string resourceGuid = default(string))
+        public RouteTable(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), System.Collections.Generic.IList<Route> routes = default(System.Collections.Generic.IList<Route>), System.Collections.Generic.IList<Subnet> subnets = default(System.Collections.Generic.IList<Subnet>), bool? disableBgpRoutePropagation = default(bool?), string disablePeeringRoute = default(string), string resourceGuid = default(string))
 
         : base(id, name, type, location, tags)
         {
@@ -68,6 +73,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.Routes = routes;
             this.Subnets = subnets;
             this.DisableBgpRoutePropagation = disableBgpRoutePropagation;
+            this.DisablePeeringRoute = disablePeeringRoute;
             this.ResourceGuid = resourceGuid;
             CustomInit();
         }
@@ -109,6 +115,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.disableBgpRoutePropagation")]
         public bool? DisableBgpRoutePropagation {get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to disable the routes learned by peering on the route
+        /// table. 'None' means peering routes are enabled, 'All' means all peering
+        /// routes are disabled. Possible values include: 'None', 'All'
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.disablePeeringRoute")]
+        public string DisablePeeringRoute {get; set; }
 
         /// <summary>
         /// Gets the resource GUID property of the route table.
