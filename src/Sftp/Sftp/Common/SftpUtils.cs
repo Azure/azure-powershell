@@ -85,46 +85,76 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
 
         /// <summary>
         /// Validates that a user-provided value is safe to use as a command-line argument.
-        /// Rejects values containing characters that could enable command injection.
+        /// Rejects control characters that break argument boundaries regardless of quoting,
+        /// and double-quote characters that would break argument escaping.
+        /// Shell metacharacters (|, &amp;, ;, etc.) are NOT rejected because all process
+        /// launches use UseShellExecute=false, so no shell interprets them.
         /// </summary>
         /// <param name="value">The value to validate.</param>
         /// <param name="parameterName">The parameter name for error messages.</param>
         /// <exception cref="AzPSApplicationException">Thrown if the value contains dangerous characters.</exception>
-        internal static void ValidateCommandLineArgument(string value, string parameterName)
+        public static void ValidateCommandLineArgument(string value, string parameterName)
         {
             if (string.IsNullOrEmpty(value))
             {
                 return;
             }
 
-            // Reject characters that could enable command injection or shell interpretation
-            char[] dangerousChars = { ';', '|', '&', '$', '`', '>', '<', '\n', '\r', '\0', '(', ')' };
+            // Only reject characters that break argument boundaries regardless of quoting:
+            // - Control characters (\n, \r, \0) bypass any form of argument escaping
+            // - Double-quote characters break the quoting used by EscapeProcessArgument
+            // Shell metacharacters (;, |, &, $, etc.) are safe because UseShellExecute=false
+            // is used for all process launches, so no shell interprets them.
+            // Common path characters like (, ), & are intentionally allowed to support
+            // paths such as "C:\Program Files (x86)\...".
+            char[] dangerousChars = { '\n', '\r', '\0', '"' };
             int index = value.IndexOfAny(dangerousChars);
             if (index >= 0)
             {
                 throw new AzPSApplicationException(
                     $"The value for '{parameterName}' contains an invalid character at position {index}. " +
-                    "Values used in command-line arguments must not contain shell metacharacters."
+                    "Values must not contain control characters or double-quote characters."
                 );
             }
         }
 
+        /// <summary>
+        /// Escapes a single argument for use in ProcessStartInfo.Arguments.
+        /// Wraps the argument in double quotes if it contains spaces or tabs
+        /// to preserve argument boundaries. This is safe because
+        /// ValidateCommandLineArgument has already rejected values containing
+        /// double-quote and control characters.
+        /// </summary>
+        /// <param name="arg">The argument to escape.</param>
+        /// <returns>The escaped argument string.</returns>
+        public static string EscapeProcessArgument(string arg)
+        {
+            if (string.IsNullOrEmpty(arg))
+            {
+                return "\"\"";
+            }
+
+            // Validated inputs cannot contain " or control chars, so simple
+            // quoting is sufficient to preserve argument boundaries.
+            if (arg.Contains(" ") || arg.Contains("\t"))
+            {
+                return $"\"{arg}\"";
+            }
+
+            return arg;
+        }
+
         public static string[] BuildSftpCommand(SFTPSession opInfo)
         {
-            // Validate all user-provided values before using them in command-line arguments
+            // Validate user-provided values that become process arguments.
+            // SftpArgs is intentionally not validated here — it is a documented
+            // pass-through parameter for advanced OpenSSH options.
             ValidateCommandLineArgument(opInfo.CertFile, nameof(opInfo.CertFile));
             ValidateCommandLineArgument(opInfo.PrivateKeyFile, nameof(opInfo.PrivateKeyFile));
             ValidateCommandLineArgument(opInfo.PublicKeyFile, nameof(opInfo.PublicKeyFile));
             ValidateCommandLineArgument(opInfo.Username, nameof(opInfo.Username));
             ValidateCommandLineArgument(opInfo.Host, nameof(opInfo.Host));
             ValidateCommandLineArgument(opInfo.SshClientFolder, nameof(opInfo.SshClientFolder));
-            if (opInfo.SftpArgs != null)
-            {
-                foreach (var arg in opInfo.SftpArgs)
-                {
-                    ValidateCommandLineArgument(arg, nameof(opInfo.SftpArgs));
-                }
-            }
 
             string destination = opInfo.GetDestination();
             var command = new List<string>
@@ -219,23 +249,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
                 StandardErrorEncoding = Encoding.UTF8
             };
 
-            // Build arguments string with proper escaping for .NET Standard 2.0 compatibility
+            // Build arguments string with proper escaping to preserve argument boundaries
             if (command.Length > 1)
             {
-                var arguments = new List<string>();
-                foreach (var arg in command.Skip(1))
-                {
-                    // Escape arguments that contain spaces or special characters
-                    if (arg.Contains(" ") || arg.Contains("\"") || arg.Contains("\\"))
-                    {
-                        arguments.Add($"\"{arg.Replace("\"", "\\\"")}\"");
-                    }
-                    else
-                    {
-                        arguments.Add(arg);
-                    }
-                }
-                processInfo.Arguments = string.Join(" ", arguments);
+                processInfo.Arguments = string.Join(" ", command.Skip(1).Select(EscapeProcessArgument));
             }
 
             // Set environment variables if provided
@@ -344,10 +361,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
                             CreateNoWindow = false  // Allow console for interactive session
                         };
 
-                        // Build arguments string - keep it simple like SSH PowerShell does
+                        // Build arguments string with proper escaping to preserve argument boundaries
                         if (command.Length > 1)
                         {
-                            processInfo.Arguments = string.Join(" ", command.Skip(1));
+                            processInfo.Arguments = string.Join(" ", command.Skip(1).Select(EscapeProcessArgument));
                         }
 
                         // Set environment variables if provided
@@ -439,7 +456,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
                 var processInfo = new ProcessStartInfo
                 {
                     FileName = command[0],
-                    Arguments = string.Join(" ", command.Skip(1).Select(arg => $"\"{arg}\"")),
+                    Arguments = string.Join(" ", command.Skip(1).Select(EscapeProcessArgument)),
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
@@ -509,11 +526,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
                 };
 
                 // Build arguments properly for no passphrase
-                // Use separate argument approach which is more reliable
                 var argsList = new List<string>
                 {
                     "-t", "rsa",
-                    "-f", $"\"{privateKeyFile}\"",
+                    "-f", EscapeProcessArgument(privateKeyFile),
                     "-N", "\"\"",  // Empty passphrase
                     "-q"
                 };
@@ -630,7 +646,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
                 var processInfo = new ProcessStartInfo
                 {
                     FileName = command[0],
-                    Arguments = string.Join(" ", command.Skip(1).Select(arg => $"\"{arg}\"")),
+                    Arguments = string.Join(" ", command.Skip(1).Select(EscapeProcessArgument)),
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
