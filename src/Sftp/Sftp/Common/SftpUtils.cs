@@ -83,8 +83,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             }
         }
 
+        /// <summary>
+        /// Validates that a user-provided value is safe to use as a command-line argument.
+        /// Rejects values containing characters that could enable command injection.
+        /// </summary>
+        /// <param name="value">The value to validate.</param>
+        /// <param name="parameterName">The parameter name for error messages.</param>
+        /// <exception cref="AzPSApplicationException">Thrown if the value contains dangerous characters.</exception>
+        internal static void ValidateCommandLineArgument(string value, string parameterName)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return;
+            }
+
+            // Reject characters that could enable command injection or shell interpretation
+            char[] dangerousChars = { ';', '|', '&', '$', '`', '>', '<', '\n', '\r', '\0', '(', ')' };
+            int index = value.IndexOfAny(dangerousChars);
+            if (index >= 0)
+            {
+                throw new AzPSApplicationException(
+                    $"The value for '{parameterName}' contains an invalid character at position {index}. " +
+                    "Values used in command-line arguments must not contain shell metacharacters."
+                );
+            }
+        }
+
         public static string[] BuildSftpCommand(SFTPSession opInfo)
         {
+            // Validate all user-provided values before using them in command-line arguments
+            ValidateCommandLineArgument(opInfo.CertFile, nameof(opInfo.CertFile));
+            ValidateCommandLineArgument(opInfo.PrivateKeyFile, nameof(opInfo.PrivateKeyFile));
+            ValidateCommandLineArgument(opInfo.PublicKeyFile, nameof(opInfo.PublicKeyFile));
+            ValidateCommandLineArgument(opInfo.Username, nameof(opInfo.Username));
+            ValidateCommandLineArgument(opInfo.Host, nameof(opInfo.Host));
+            ValidateCommandLineArgument(opInfo.SshClientFolder, nameof(opInfo.SshClientFolder));
+            if (opInfo.SftpArgs != null)
+            {
+                foreach (var arg in opInfo.SftpArgs)
+                {
+                    ValidateCommandLineArgument(arg, nameof(opInfo.SftpArgs));
+                }
+            }
+
             string destination = opInfo.GetDestination();
             var command = new List<string>
         {
@@ -387,6 +428,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
 
         public static void GeneratePublicKeyFromPrivate(string privateKeyFile, string publicKeyFile, string sshClientFolder = null)
         {
+            ValidateCommandLineArgument(privateKeyFile, nameof(privateKeyFile));
+            ValidateCommandLineArgument(publicKeyFile, nameof(publicKeyFile));
             var sshKeygenPath = GetSshClientPath("ssh-keygen", sshClientFolder);
             var command = new string[] { sshKeygenPath, "-y", "-f", privateKeyFile };
             LogDebug($"Running ssh-keygen command to generate public key: {string.Join(" ", command)}");
@@ -436,6 +479,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
 
         public static void CreateSshKeyfile(string privateKeyFile, string sshClientFolder = null)
         {
+            ValidateCommandLineArgument(privateKeyFile, nameof(privateKeyFile));
             var sshKeygenPath = GetSshClientPath("ssh-keygen", sshClientFolder);
 
             // Delete existing key files if they exist
@@ -576,6 +620,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
 
         public static List<string> GetSshCertInfo(string certFile, string sshClientFolder = null)
         {
+            ValidateCommandLineArgument(certFile, nameof(certFile));
             var sshKeygenPath = GetSshClientPath("ssh-keygen", sshClientFolder);
             var command = new string[] { sshKeygenPath, "-L", "-f", certFile };
             LogDebug($"Running ssh-keygen command {string.Join(" ", command)}");
@@ -619,6 +664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
 
         public static string GetSshClientPath(string sshCommand = "ssh", string sshClientFolder = null)
         {
+            ValidateCommandLineArgument(sshClientFolder, nameof(sshClientFolder));
             if (!string.IsNullOrEmpty(sshClientFolder))
             {
                 var clientSshPath = Path.Combine(sshClientFolder, sshCommand);

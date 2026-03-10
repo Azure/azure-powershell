@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Fixed command injection vulnerability in SFTP utility methods [Security]
+    - Added input validation to reject shell metacharacters in user-provided file paths and arguments before passing them to external processes
+    - Applies to all code paths that invoke ssh-keygen or sftp via System.Diagnostics.Process
 
 ## Version 0.1.1
 * Added `BufferSizeInBytes` parameter to `Connect-AzSftp` cmdlet
