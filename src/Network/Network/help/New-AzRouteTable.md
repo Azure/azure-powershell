@@ -14,7 +14,7 @@ Creates a route table.
 ## SYNTAX
 
 ```
-New-AzRouteTable -ResourceGroupName <String> -Name <String> [-DisableBgpRoutePropagation] -Location <String>
+New-AzRouteTable -ResourceGroupName <String> -Name <String> [-DisableBgpRoutePropagation] [-DisablePeeringRoute <String>] -Location <String>
  [-Tag <Hashtable>] [-Route <PSRoute[]>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -104,6 +104,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisablePeeringRoute
+Specifies whether to disable peering routes. Valid values are None and All.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: None, All
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
