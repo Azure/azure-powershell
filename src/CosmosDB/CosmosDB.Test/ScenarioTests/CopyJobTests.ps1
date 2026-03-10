@@ -23,7 +23,7 @@ function Create-CosmosDBAccountViaRest {
   )
 
   $subscriptionId = (Get-AzContext).Subscription.Id
-  $path = "/subscriptions/$subscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/${AccountName}?api-version=2025-10-15"
+  $path = "/subscriptions/$subscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/${AccountName}?api-version=2025-11-01-preview"
 
   $capabilities = @()
   $kind = "GlobalDocumentDB"
