@@ -1,3 +1,18 @@
+## 15.5.0 - April 2026
+#### Az.Functions 4.3.2
+* Fixed an issue where New-AzFunctionApp fails due to duplicate -Name parameter binding. [#29166]
+
+#### Az.Network 7.26.0
+* Added EdgeZone (Extended Location) parameter support for Azure Firewall
+    - Added '-EdgeZone' parameter to 'New-AzFirewall' cmdlet
+    - When '-EdgeZone' is specified, availability zones are not supported for Azure Firewall resources
+
+#### Az.RecoveryServices 7.11.2
+* Added Cross region restore support for upcoming regions Southeast Asia 3
+
+#### Az.ServiceFabric 5.1.0
+* Updated SFMC to latest api general version '2026-02-01'
+
 ## 15.4.0 - March 2026
 #### Az.Accounts 5.3.3
 * Updated MSAL to 4.82.1 to fix an issue with ARM endpoint discovery.
