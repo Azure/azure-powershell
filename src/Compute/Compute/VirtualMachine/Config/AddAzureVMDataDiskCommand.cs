@@ -164,6 +164,21 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Specifies the bandwidth in MB per second for the managed disk when StorageAccountType is UltraSSD_LRS or PremiumV2_LRS.")]
         public long? DiskMBpsReadWrite { get; set; }
 
+        [Parameter(
+            ParameterSetName = VmManagedDiskParameterSet,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Sets the SecurityEncryptionType value on the managed disk of the data disk. Possible values include: DiskWithVMGuestState, VMGuestStateOnly, NonPersistedTPM. This parameter can only be used with managed disks.")]
+        [PSArgumentCompleter("DiskWithVMGuestState", "VMGuestStateOnly", "NonPersistedTPM")]
+        public string SecurityEncryptionType { get; set; }
+
+        [Parameter(
+            ParameterSetName = VmManagedDiskParameterSet,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "ARM Resource ID for the Disk Encryption Set to use for enabling encryption at rest with confidential disk encryption for the managed data disk. This parameter can only be used with managed disks. It is recommended to set SecurityEncryptionType to DiskWithVMGuestState when using this parameter.")]
+        public string SecureVMDiskEncryptionSet { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.ParameterSetName.Equals(VmNormalDiskParameterSet))
@@ -230,7 +245,7 @@ namespace Microsoft.Azure.Commands.Compute
                     storageProfile.DataDisks = new List<DataDisk>();
                 }
 
-                storageProfile.DataDisks.Add(new DataDisk
+                var managedDataDisk = new DataDisk
                 {
                     Name = this.Name,
                     Caching = this.Caching,
@@ -246,7 +261,33 @@ namespace Microsoft.Azure.Commands.Compute
                     },
                     DiskIOPSReadWrite = this.DiskIOPSReadWrite,
                     DiskMBpsReadWrite = this.DiskMBpsReadWrite
-                });
+                };
+
+                if (this.IsParameterBound(c => c.SecurityEncryptionType) || this.IsParameterBound(c => c.SecureVMDiskEncryptionSet))
+                {
+                    if (managedDataDisk.ManagedDisk == null)
+                    {
+                        managedDataDisk.ManagedDisk = new ManagedDiskParameters();
+                    }
+                    if (managedDataDisk.ManagedDisk.SecurityProfile == null)
+                    {
+                        managedDataDisk.ManagedDisk.SecurityProfile = new VMDiskSecurityProfile();
+                    }
+                    if (this.IsParameterBound(c => c.SecurityEncryptionType))
+                    {
+                        managedDataDisk.ManagedDisk.SecurityProfile.SecurityEncryptionType = this.SecurityEncryptionType;
+                    }
+                    if (this.IsParameterBound(c => c.SecureVMDiskEncryptionSet))
+                    {
+                        if (managedDataDisk.ManagedDisk.SecurityProfile.DiskEncryptionSet == null)
+                        {
+                            managedDataDisk.ManagedDisk.SecurityProfile.DiskEncryptionSet = new DiskEncryptionSetParameters();
+                        }
+                        managedDataDisk.ManagedDisk.SecurityProfile.DiskEncryptionSet.Id = this.SecureVMDiskEncryptionSet;
+                    }
+                }
+
+                storageProfile.DataDisks.Add(managedDataDisk);
 
                 this.VM.StorageProfile = storageProfile;
 

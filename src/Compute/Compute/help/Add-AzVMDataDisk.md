@@ -28,6 +28,7 @@ Add-AzVMDataDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-Caching] <Cachin
  [[-DiskSizeInGB] <Int32>] [-Lun] <Int32> [-CreateOption] <String> [[-ManagedDiskId] <String>]
  [[-StorageAccountType] <String>] [-DiskEncryptionSetId <String>] [-WriteAccelerator] [-DeleteOption <String>]
  [-SourceResourceId <String>] [-DiskIOPSReadWrite <Int64>] [-DiskMBpsReadWrite <Int64>]
+ [-SecurityEncryptionType <String>] [-SecureVMDiskEncryptionSet <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -107,6 +108,19 @@ The first command creates a virtual machine object and stores it in the $Virtual
 The command assigns a name and size to the virtual machine.
 The second command adds an UltraSSD data disk with custom IOPS (Input/Output Operations Per Second) set to 5000 and throughput set to 200 MB per second.
 These parameters allow fine-tuning of disk performance for UltraSSD_LRS and PremiumV2_LRS storage account types during implicit disk creation.
+
+### Example 6: Add a confidential data disk with SecurityEncryptionType
+```powershell
+$VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_DC2as_v5"
+$managedDiskId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Compute/disks/myDataDisk"
+$VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name "ConfidentialDataDisk1" -Lun 0 -CreateOption 'Attach' -ManagedDiskId $managedDiskId -StorageAccountType 'Premium_LRS' -SecurityEncryptionType 'DiskWithVMGuestState' -SecureVMDiskEncryptionSet "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Compute/diskEncryptionSets/myDES"
+```
+
+The first command creates a virtual machine object and stores it in the $VirtualMachine variable.
+The command assigns a name and size to the virtual machine.
+The second command adds a confidential data disk encrypted with the VMGuest state using a customer-managed key (CMK) via a Disk Encryption Set (DES).
+The SecurityEncryptionType parameter set to 'DiskWithVMGuestState' enables confidential disk encryption that binds the disk encryption keys to the VM's TPM (Trusted Platform Module).
+The SecureVMDiskEncryptionSet parameter specifies the ARM resource ID of the Disk Encryption Set created with the ConfidentialVmEncryptedWithCustomerKey encryption type. It is recommended to use this together with SecurityEncryptionType set to 'DiskWithVMGuestState'.
 
 ## PARAMETERS
 
@@ -383,6 +397,37 @@ Specifies the bandwidth in MB per second for the disk when StorageAccountType is
 ```yaml
 Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecurityEncryptionType
+Sets the SecurityEncryptionType value on the managed disk of the data disk. Possible values include: DiskWithVMGuestState, VMGuestStateOnly, NonPersistedTPM. This parameter can only be used with managed disks.
+
+```yaml
+Type: System.String
+Parameter Sets: VmManagedDiskParameterSetName
+Aliases:
+Accepted values: DiskWithVMGuestState, VMGuestStateOnly, NonPersistedTPM
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecureVMDiskEncryptionSet
+ARM Resource ID for the Disk Encryption Set (DES) to use for enabling confidential disk encryption for the managed data disk. This parameter can only be used with managed disks. It is recommended to set SecurityEncryptionType to DiskWithVMGuestState when using this parameter.
+
+```yaml
+Type: System.String
+Parameter Sets: VmManagedDiskParameterSetName
 Aliases:
 
 Required: False
