@@ -93,7 +93,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
         /// <param name="value">The value to validate.</param>
         /// <param name="parameterName">The parameter name for error messages.</param>
         /// <exception cref="AzPSApplicationException">Thrown if the value contains dangerous characters.</exception>
-        public static void ValidateCommandLineArgument(string value, string parameterName)
+        internal static void ValidateCommandLineArgument(string value, string parameterName)
         {
             if (string.IsNullOrEmpty(value))
             {
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
         /// </summary>
         /// <param name="arg">The argument to escape.</param>
         /// <returns>The escaped argument string.</returns>
-        public static string EscapeProcessArgument(string arg)
+        internal static string EscapeProcessArgument(string arg)
         {
             if (string.IsNullOrEmpty(arg))
             {

@@ -7,6 +7,10 @@
 	<Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
 	<ItemGroup>
+		<InternalsVisibleTo Include="Microsoft.Azure.PowerShell.Cmdlets.Sftp.Test" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Folder Include="help\" />
 	</ItemGroup>
 
