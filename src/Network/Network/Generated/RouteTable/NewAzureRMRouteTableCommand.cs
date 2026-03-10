@@ -65,6 +65,12 @@ namespace Microsoft.Azure.Commands.Network
         public SwitchParameter DisableBgpRoutePropagation { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Whether to disable the routes learned by peering on the route table. 'None' means that peering routes will be present. 'All' means that all peering routes will be dropped.")]
+        [ValidateSet("None", "All", IgnoreCase = true)]
+        public string DisablePeeringRoute { get; set; }
+
+        [Parameter(
             Mandatory = true,
             HelpMessage = "The location.",
             ValueFromPipelineByPropertyName = true)]
@@ -100,6 +106,7 @@ namespace Microsoft.Azure.Commands.Network
             var vRouteTable = new PSRouteTable
             {
                 DisableBgpRoutePropagation = this.DisableBgpRoutePropagation,
+                DisablePeeringRoute = this.DisablePeeringRoute,
                 Location = this.Location,
                 Routes = this.Route?.ToList(),
             };

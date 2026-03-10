@@ -22,6 +22,9 @@
 * Added EdgeZone (Extended Location) parameter support for Azure Firewall
     - Added `-EdgeZone` parameter to `New-AzFirewall` cmdlet
     - When `-EdgeZone` is specified, availability zones are not supported for Azure Firewall resources
+* Added DisablePeeringRoute support for Route Table
+    - Added `-DisablePeeringRoute` parameter to `New-AzRouteTable` cmdlet
+    - Supported values are `None` and `All`
 
 ## Version 7.25.1
 * Onboarded `Microsoft.DataReplication/replicationVaults` to Private Link Common Cmdlets
