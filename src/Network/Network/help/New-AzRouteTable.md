@@ -145,7 +145,6 @@ Specifies whether to disable peering routes. Valid values are None and All.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, All
 
 Required: False
 Position: Named

@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Whether to disable the routes learned by peering on the route table. 'None' means that peering routes will be present. 'All' means that all peering routes will be dropped.")]
-        [ValidateSet("None", "All", IgnoreCase = true)]
+        [PSArgumentCompleter("None", "All")]
         public string DisablePeeringRoute { get; set; }
 
         [Parameter(
