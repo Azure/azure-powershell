@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `-SecurityEncryptionType` and `-SecureVMDiskEncryptionSet` parameters to `Add-AzVMDataDisk` cmdlet to support Confidential VM (CVM) data disk encryption. This enables binding data disk encryption keys to the VM's TPM (Trusted Platform Module) for end-to-end confidential computing protection.
 
 ## Version 11.4.0
 * Added `-DiskIOPSReadWrite` and `-DiskMBpsReadWrite` parameters to `Add-AzVMDataDisk` cmdlet
