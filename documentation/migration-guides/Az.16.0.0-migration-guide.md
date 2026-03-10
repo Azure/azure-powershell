@@ -107,13 +107,13 @@ The `BackwardCompatible` parameter was previously introduced to preserve the leg
 #### Before
 ```powershell
 $policyExemption = Get-AzPolicyAssignment -Name MyAssignment | New-AzPolicyExemption -Name MyExemption -ExemptionCategory Mitigated -BackwardCompatible
-$policyDefinitionId = $policyExemption.Properties.PolicyAssignmentId
+$policyAssignmentId = $policyExemption.Properties.PolicyAssignmentId
 ```
 
 #### After
 ```powershell
 $policyExemption = Get-AzPolicyAssignment -Name MyAssignment | New-AzPolicyExemption -Name MyExemption -ExemptionCategory Mitigated
-$policyDefinitionId = $policyExemption.PolicyAssignmentId
+$policyAssignmentId = $policyExemption.PolicyAssignmentId
 ```
 
 ### `New-AzPolicySetDefinition`
