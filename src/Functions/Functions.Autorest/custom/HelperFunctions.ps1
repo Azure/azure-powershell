@@ -762,7 +762,7 @@ function ValidateFunctionAppNameAvailability
                               -Exception $exception
     }
 
-    $result = Az.Functions.internal\Test-AzNameAvailability -Name $Name -Type Site @PSBoundParameters
+    $result = Az.Functions.internal\Test-AzNameAvailability -Type Site @PSBoundParameters
 
     if (-not $result.NameAvailable)
     {
