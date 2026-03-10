@@ -26,7 +26,7 @@ using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
 {
-    public static class SftpUtils
+    internal static class SftpUtils
     {
         private static class NativeMethods
         {
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
         /// <param name="dwCtrlEvent"></param>
         /// <param name="dwProcessGroupId"></param>
         /// <returns>True if the event was generated, false otherwise.</returns>
-        public static bool TryGenerateConsoleCtrlEvent(uint dwCtrlEvent, uint dwProcessGroupId)
+        internal static bool TryGenerateConsoleCtrlEvent(uint dwCtrlEvent, uint dwProcessGroupId)
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             return arg;
         }
 
-        public static string[] BuildSftpCommand(SFTPSession opInfo)
+        internal static string[] BuildSftpCommand(SFTPSession opInfo)
         {
             // Validate user-provided values that become process arguments.
             // SftpArgs is intentionally not validated here — it is a documented
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             return command.ToArray();
         }
 
-        public static void HandleProcessInterruption(Process sftpProcess)
+        internal static void HandleProcessInterruption(Process sftpProcess)
         {
             LogInfo("Connection interrupted by user (KeyboardInterrupt)");
             if (sftpProcess == null || sftpProcess.HasExited)
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             catch { }
         }
 
-        public static Tuple<Process, int?> ExecuteSftpProcess(string[] command, Dictionary<string, string> env = null, ProcessCreationFlags creationFlags = ProcessCreationFlags.None)
+        internal static Tuple<Process, int?> ExecuteSftpProcess(string[] command, Dictionary<string, string> env = null, ProcessCreationFlags creationFlags = ProcessCreationFlags.None)
         {
             var processInfo = new ProcessStartInfo
             {
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             }
         }
 
-        public static Tuple<bool, double?, string> AttemptConnection(string[] command, Dictionary<string, string> env, ProcessCreationFlags creationFlags, SFTPSession opInfo, int attemptNum)
+        internal static Tuple<bool, double?, string> AttemptConnection(string[] command, Dictionary<string, string> env, ProcessCreationFlags creationFlags, SFTPSession opInfo, int attemptNum)
         {
             var connectionStartTime = DateTime.UtcNow;
 
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             }
         }
 
-        public static System.Diagnostics.Process StartSftpConnection(SFTPSession opInfo)
+        internal static System.Diagnostics.Process StartSftpConnection(SFTPSession opInfo)
         {
             try
             {
@@ -443,7 +443,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             }
         }
 
-        public static void GeneratePublicKeyFromPrivate(string privateKeyFile, string publicKeyFile, string sshClientFolder = null)
+        internal static void GeneratePublicKeyFromPrivate(string privateKeyFile, string publicKeyFile, string sshClientFolder = null)
         {
             ValidateCommandLineArgument(privateKeyFile, nameof(privateKeyFile));
             ValidateCommandLineArgument(publicKeyFile, nameof(publicKeyFile));
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             }
         }
 
-        public static void CreateSshKeyfile(string privateKeyFile, string sshClientFolder = null)
+        internal static void CreateSshKeyfile(string privateKeyFile, string sshClientFolder = null)
         {
             ValidateCommandLineArgument(privateKeyFile, nameof(privateKeyFile));
             var sshKeygenPath = GetSshClientPath("ssh-keygen", sshClientFolder);
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             }
         }
 
-        public static List<string> GetSshCertPrincipals(string certFile, string sshClientFolder = null)
+        internal static List<string> GetSshCertPrincipals(string certFile, string sshClientFolder = null)
         {
             var info = GetSshCertInfo(certFile, sshClientFolder);
             var principals = new List<string>();
@@ -634,7 +634,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
         }
 
 
-        public static List<string> GetSshCertInfo(string certFile, string sshClientFolder = null)
+        internal static List<string> GetSshCertInfo(string certFile, string sshClientFolder = null)
         {
             ValidateCommandLineArgument(certFile, nameof(certFile));
             var sshKeygenPath = GetSshClientPath("ssh-keygen", sshClientFolder);
@@ -678,7 +678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             }
         }
 
-        public static string GetSshClientPath(string sshCommand = "ssh", string sshClientFolder = null)
+        internal static string GetSshClientPath(string sshCommand = "ssh", string sshClientFolder = null)
         {
             ValidateCommandLineArgument(sshClientFolder, nameof(sshClientFolder));
             if (!string.IsNullOrEmpty(sshClientFolder))
@@ -739,7 +739,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
         }
 
         [Flags]
-        public enum ProcessCreationFlags : uint
+        internal enum ProcessCreationFlags : uint
         {
             None = 0,
             CREATE_NO_WINDOW = 0x08000000,
@@ -748,7 +748,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             DETACHED_PROCESS = 0x00000008
         }
 
-        public static Tuple<DateTime, DateTime> GetCertificateStartAndEndTimes(string certFile, string sshClientFolder = null)
+        internal static Tuple<DateTime, DateTime> GetCertificateStartAndEndTimes(string certFile, string sshClientFolder = null)
         {
             var validityStr = GetSshCertValidity(certFile, sshClientFolder);
 
@@ -781,7 +781,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             return null;
         }
 
-        public static string GetSshCertValidity(string certFile, string sshClientFolder = null)
+        internal static string GetSshCertValidity(string certFile, string sshClientFolder = null)
         {
             if (!string.IsNullOrEmpty(certFile))
             {

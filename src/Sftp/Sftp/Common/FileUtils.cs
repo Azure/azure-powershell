@@ -14,7 +14,7 @@ using System.Security.Cryptography;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
 {
-    public static class FileUtils
+    internal static class FileUtils
 {
     public static void MakeDirsForFile(string filePath)
     {

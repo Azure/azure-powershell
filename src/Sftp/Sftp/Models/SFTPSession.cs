@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
     /// <summary>
     /// Holds SFTP session information and connection details.
     /// </summary>
-    public class SFTPSession
+    internal class SFTPSession
     {
         private ConnectionInfo _connection;
         private AuthenticationFiles _authFiles;

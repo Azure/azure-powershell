@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
     /// <summary>
     /// Parser for SSH RSA public keys
     /// </summary>
-    public class RSAParser
+    internal class RSAParser
     {
         private const string RSAAlgorithm = "ssh-rsa";
         
