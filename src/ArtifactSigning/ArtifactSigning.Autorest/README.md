@@ -28,7 +28,7 @@ For information on how to develop for `Az.ArtifactSigning`, see [how-to.md](how-
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: e22dcfdafa3316a9ae96c7fd02318ee87041b409
+commit: a3f5f6d9e6d3786e6ff5fa2469bf182a2421b42b
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md

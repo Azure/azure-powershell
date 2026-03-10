@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-AzArtifactSigningAccountNameAvailability
 
 ## SYNOPSIS
-Checks that the trusted signing account name is valid and is not already in use.
+Checks that the artifact signing account name is valid and is not already in use.
 
 ## SYNTAX
 
@@ -37,11 +37,11 @@ Test-AzArtifactSigningAccountNameAvailability [-SubscriptionId <String>] -JsonSt
 ```
 
 ## DESCRIPTION
-Checks that the trusted signing account name is valid and is not already in use.
+Checks that the artifact signing account name is valid and is not already in use.
 
 ## EXAMPLES
 
-### Example 1: Test The Availability Of An Used Artifact signing Account Name
+### Example 1: Test The Availability Of An Used Artifact Signing Account Name
 ```powershell
 Test-AzArtifactSigningAccountNameAvailability -Name unavaliable
 ```
@@ -72,7 +72,7 @@ The results shows `available` is not occupied.
 ## PARAMETERS
 
 ### -Body
-The parameters used to check the availability of the trusted signing account name.
+The parameters used to check the availability of the artifact signing account name.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICheckNameAvailability
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Trusted signing account name.
+Artifact signing account name.
 
 ```yaml
 Type: System.String
