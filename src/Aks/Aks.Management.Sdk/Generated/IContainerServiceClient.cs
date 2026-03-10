@@ -42,9 +42,9 @@ namespace Microsoft.Azure.Management.ContainerService
 
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        string SubscriptionId { get; set;}
+        System.Guid SubscriptionId { get; set;}
 
 
         /// <summary>
@@ -107,6 +107,21 @@ namespace Microsoft.Azure.Management.ContainerService
         /// Gets the ISnapshotsOperations
         /// </summary>
         ISnapshotsOperations Snapshots { get; }
+
+        /// <summary>
+        /// Gets the ITrustedAccessRoleBindingsOperations
+        /// </summary>
+        ITrustedAccessRoleBindingsOperations TrustedAccessRoleBindings { get; }
+
+        /// <summary>
+        /// Gets the ITrustedAccessRolesOperations
+        /// </summary>
+        ITrustedAccessRolesOperations TrustedAccessRoles { get; }
+
+        /// <summary>
+        /// Gets the IMachinesOperations
+        /// </summary>
+        IMachinesOperations Machines { get; }
 
     }
 }

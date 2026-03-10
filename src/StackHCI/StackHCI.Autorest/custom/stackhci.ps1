@@ -210,6 +210,8 @@ $AuthorityAzureLocal = "https://login.$DOMAINFQDNMACRO"
 $BillingServiceApiScopeAzureLocal = "https://dp.aszrp.$DOMAINFQDNMACRO/.default"
 $GraphServiceApiScopeAzureLocal = "https://graph.$DOMAINFQDNMACRO"
 
+$DefaultBillingServiceApiScope = "$UsageServiceFirstPartyAppId/.default"
+
 $RPAPIVersion = "2025-09-15-preview";
 $HCIArcAPIVersion = "2025-09-15-preview"
 $HCIArcExtensionAPIVersion = "2025-09-15-preview"
@@ -535,13 +537,22 @@ function Confirm-UserAcknowledgmentToUpgradeOS {
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding(SupportsShouldProcess = $true, ConfirmImpact = 'High')]
     param(
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory=$false)]
         [System.Management.Automation.Runspaces.PSSession]
         $ClusterNodeSession
     )
 
     $osVersionDetectoid = { $displayVersion = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").DisplayVersion; $buildNumber = (Get-CimInstance -ClassName CIM_OperatingSystem).BuildNumber; New-Object -TypeName PSObject -Property @{'DisplayVersion'=$displayVersion; 'BuildNumber'=$buildNumber} }
-    $osVersionInfo = Invoke-Command -Session $clusterNodeSession -ScriptBlock $osVersionDetectoid
+    
+    if ($ClusterNodeSession)
+    {
+        $osVersionInfo = Invoke-Command -Session $ClusterNodeSession -ScriptBlock $osVersionDetectoid
+    } 
+    else 
+    {
+        $osVersionInfo = & $osVersionDetectoid
+    }
+
     $isOSVersion22H2 =  ([Int]::Parse($osVersionInfo.BuildNumber) -le $22H2BuildNumber)
 
     $doNotAbort = $true
@@ -712,7 +723,16 @@ $registerArcScript = {
             }
             else
             {
-                throw 'Invalid Azure Environment name'
+                $azEnv = Get-AzEnvironment -Name $EnvironmentName
+
+                if ($null -ne $azEnv)
+                {
+                    $managementUrl = $azEnv.ResourceManagerUrl
+                }
+                else
+                {
+                    throw 'Invalid Azure Environment name'
+                }
             }
 
             return $managementUrl
@@ -1011,7 +1031,16 @@ function Get-ManagementUrl {
     }
     else
     {
-        throw "Invalid Azure Environment name"
+        $azEnv = Get-AzEnvironment -Name $EnvironmentName
+
+        if ($null -ne $azEnv)
+        {
+            $managementUrl = $azEnv.ResourceManagerUrl
+        }
+        else
+        {
+            throw "Invalid Azure Environment name"
+        }
     }
 
     return $managementUrl
@@ -1199,6 +1228,19 @@ param(
     {
         return $AzureLocalPortalDomain;
     }
+    else
+    {
+        $azEnv = Get-AzEnvironment -Name $EnvironmentName
+        
+        if ($null -ne $azEnv)
+        {
+            return $azEnv.ManagementPortalUrl
+        }
+        else
+        {
+            throw 'Invalid Azure Environment name'
+        }
+    }
 }
 
 function Get-DefaultRegion{
@@ -1310,6 +1352,25 @@ param(
         $Authority.Value = $AuthorityAzureLocal
         $BillingServiceApiScope.Value = $BillingServiceApiScopeAzureLocal
         $GraphServiceApiScope.Value = $GraphServiceApiScopeAzureLocal
+    }
+    else
+    {
+        $azEnv = Get-AzEnvironment -Name $EnvironmentName
+        
+        if ($null -ne $azEnv)
+        {
+            # Use a dummy URL for custom Az environments. The Stack HCI service endpoint is not
+            # resolved from this value in this code path; only the authority and scopes taken
+            # from Get-AzEnvironment are used for authentication, so the exact URL does not matter.
+            $ServiceEndpoint.Value = "https://doesnotmatter/"
+            $Authority.Value = $azEnv.ActiveDirectoryAuthority
+            $BillingServiceApiScope.Value = $DefaultBillingServiceApiScope
+            $GraphServiceApiScope.Value = $azEnv.GraphEndpointResourceId + "/.default"
+        }
+        else
+        {
+            throw 'Invalid Azure Environment name'
+        }
     }
 }
 
@@ -2141,10 +2202,26 @@ function Verify-NodesArcRegistrationState{
 }
 
 function ValidateCloudDeployment {
-    if ($env:DEPLOYMENTTYPE -eq "cloud_deployment")
-    {
-        Write-VerboseLog "Cloud Deployment is enabled"
+    $regPath = "HKLM:\Software\Microsoft\AzureStackStampInformation"
+    $regName = "DeploymentLaunchType"
+    $cloudValue = "CloudDeployment"
+    # check environment variable
+    if ($env:DEPLOYMENTTYPE -eq "cloud_deployment") {
+        Write-VerboseLog "Cloud Deployment detected via environment variable"
         return $true
+    }
+    # Check registry key set in Set-IdentifierForCloudDeployment by LCM Team
+    try {
+        if (Test-Path $regPath) {
+            $regValue = Get-ItemPropertyValue -Path $regPath -Name $regName -ErrorAction SilentlyContinue
+            if ($regValue -eq $cloudValue) {
+                Write-VerboseLog "Cloud Deployment detected via registry key"
+                return $true
+            }
+        }
+    }
+    catch {
+        Write-VerboseLog "Failed to read cloud deployment flag from registry: $($_.Exception.Message)"
     }
     Write-VerboseLog "Cloud Deployment is disabled, normal deployment"
     return $false
@@ -2875,6 +2952,144 @@ function Test-ClusterMsiSupport {
     return $result -eq $true
 }
 
+function Enable-ArcOnNodes {
+    param(
+        [Parameter(Mandatory=$true)]
+        [array]$ClusterNodes,
+        [Parameter(Mandatory=$false)]
+        [System.Management.Automation.PSCredential]$Credential,
+        [Parameter(Mandatory=$true)]
+        [string]$ClusterDNSSuffix,
+        [Parameter(Mandatory=$true)]
+        [string]$SubscriptionId,
+        [Parameter(Mandatory=$true)]
+        [string]$ResourceGroupName,
+        [Parameter(Mandatory=$true)]
+        [string]$TenantId,
+        [Parameter(Mandatory=$true)]
+        [string]$Location,
+        [Parameter(Mandatory=$true)]
+        [string]$EnvironmentName,
+        [Parameter(Mandatory=$true)]
+        [string]$AccessToken,
+        [Parameter(Mandatory=$false)]
+        [bool]$UseStableAgent = $false,
+        [Parameter(Mandatory=$false)]
+        [bool]$IsManagementNode = $false,
+        [Parameter(Mandatory=$false)]
+        [string]$ComputerName = [Environment]::MachineName
+    )
+
+    Write-VerboseLog "[Arc Enablement] Starting manual Arc enablement on nodes for environment: $EnvironmentName"
+    
+    $cloudArgument = $EnvironmentName
+    if (($EnvironmentName -eq $AzureCanary) -or ($EnvironmentName -eq $AzurePPE)) {
+        $cloudArgument = $AzureCloud
+    }
+
+    foreach ($node in $ClusterNodes) {
+        $nodeName = $node.Name
+        $nodeFQDN = "$nodeName.$ClusterDNSSuffix"
+        
+        Write-VerboseLog "[Arc Enablement] Processing node: $nodeName"
+
+        $session = $null
+        try {
+            if ($Credential) {
+                $session = New-PSSession -ComputerName $nodeFQDN -Credential $Credential
+            } else {
+                $session = New-PSSession -ComputerName $nodeFQDN
+            }
+            
+            Invoke-Command -Session $session -ScriptBlock {
+                param($subId, $rg, $loc, $tenant, $token, $cloud, $UseStableAgent)
+                
+                $agentPath = "${env:ProgramFiles}\AzureConnectedMachineAgent\azcmagent.exe"
+                
+                # 1. Install Agent if missing
+                if (-not (Test-Path $agentPath)) {
+                    Write-Verbose "Arc agent not found. Downloading and Installing..."
+                    $installerPath = "$env:TEMP\AzureConnectedMachineAgent.msi"
+
+                    $url = 'https://aka.ms/AzureConnectedMachineAgent'
+                    if ($UseStableAgent) {
+                        $url = 'https://aka.ms/hciarcagent'
+                    }
+                    
+                    try {
+                        Invoke-WebRequest -Uri $url -OutFile $installerPath -ErrorAction Stop
+                    }
+                    catch {
+                        throw "Failed to download Azure Connected Machine Agent from $url. Error: $($_.Exception.Message)"
+                    }
+
+                    $installArgs = "/i `"$installerPath`" /qn /l*v `"$env:TEMP\install.log`""
+                    $process = Start-Process msiexec.exe -ArgumentList $installArgs -Wait -PassThru
+                    
+                    if ($process.ExitCode -ne 0) {
+                         throw "Agent installation failed with exit code $($process.ExitCode). Check $env:TEMP\install.log"
+                    }
+                }
+                
+                # 2. Check status
+                if (Test-Path $agentPath) {
+                     $statusJson = & $agentPath show -j | ConvertFrom-Json
+                     $isConnected = $statusJson.status -eq "Connected"
+                
+                     if ($isConnected -and 
+                         ($statusJson.subscriptionId -eq $subId) -and 
+                         ($statusJson.resourceGroup -eq $rg) -and 
+                         ($statusJson.tenantId -eq $tenant)) {
+                         Write-Verbose "Node is already connected to correct Subscription/RG."
+                         return
+                     }
+                }
+                
+                # 3. Connect using the passed token
+                $connectArgs = @("connect", 
+                          "--subscription-id", $subId,
+                          "--resource-group", $rg,
+                          "--tenant-id", $tenant,
+                          "--location", $loc,
+                          "--access-token", $token,
+                          "--cloud", $cloud,
+                          "--correlation-id", $(New-Guid).ToString())
+                
+                Write-Verbose "Executing azcmagent connect..."
+                
+                # Use call operator & to run command and capture stdout/stderr combined
+                $output = & $agentPath $connectArgs 2>&1 | Out-String
+                
+                if ($LASTEXITCODE -ne 0) {
+                    if ($output -match "Forbidden" -or $output -match "AuthorizationFailed" -or $output -match "access is denied") {
+                        $errorMsg = "PERMISSIONS ERROR: Failed to onboard node '$env:COMPUTERNAME' to Azure Arc.`n" +
+                                    "REASON: Your account lacks the required permissions on Resource Group '$rg'.`n" +
+                                    "ACTION: Ensure your account has ONE of the following roles:`n" +
+                                    "  - 'Owner'`n" +
+                                    "  - 'Contributor'`n" +
+                                    "  - 'Azure Connected Machine Resource Administrator' "
+                        throw $errorMsg
+                    }
+                    throw "azcmagent connect failed with exit code $LASTEXITCODE. Details: $output"
+                }
+                
+            } -ArgumentList $SubscriptionId, $ResourceGroupName, $Location, $TenantId, $AccessToken, $cloudArgument, $UseStableAgent
+        }
+        catch {
+            $errorMsg = "Failed to enable Arc on node ${nodeName}: $($_.Exception.Message)"
+            Write-ErrorLog $errorMsg
+            Write-NodeEventLog -Message $errorMsg -EventID 9150 -IsManagementNode $IsManagementNode  -Credentials $Credential -ComputerName $ComputerName  -Level Error
+            throw
+        }
+        finally {
+            if ($session) { Remove-PSSession $session }
+        }
+    }
+    $successMsg = "[Arc Enablement] Completed successfully on all nodes."
+    Write-VerboseLog $successMsg
+    Write-NodeEventLog -Message $successMsg  -EventID 9151 -IsManagementNode $IsManagementNode -Credentials $Credential -ComputerName $ComputerName -Level Information
+}
+
 <#
 Checks whether all nodes in the given cluster are Arc-enabled.
 [bool] Returns $true if all nodes are Arc-enabled, $false otherwise.
@@ -3052,7 +3267,9 @@ function Invoke-MSIFlow {
         [Parameter(Mandatory=$false)]
         [string]$ArcServerResourceGroupName,
         [Parameter(Mandatory=$false)]
-        [string]$EnvironmentName = $AzureCloud
+        [string]$EnvironmentName = $AzureCloud,
+        [Parameter(Mandatory=$false)]
+        [bool]$UseStableAgent = $false
     )
 
     try {
@@ -3060,10 +3277,56 @@ function Invoke-MSIFlow {
         Write-NodeEventLog -Message "[MSI Flow] Starting MSI-based cluster registration." -EventID 9133 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
         $resource = Get-AzResource -ResourceId $ResourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
 
-        #Confirm Arc is enabled on all nodes
+        # Check if nodes are already Arc enabled
         $allArcEnabled = Test-ClusterArcEnabled -ClusterNodes $ClusterNodes -Credential $Credential -ClusterDNSSuffix $ClusterDNSSuffix -SubscriptionId $SubscriptionId -ArcResourceGroupName $ArcServerResourceGroupName
+        
         if (-not $allArcEnabled) {
-            throw [System.InvalidOperationException]::new("Not all cluster nodes are Arc-enabled. Aborting MSI registration.")
+            # Check if this is a cloud deployment
+            if (ValidateCloudDeployment) {
+                # For cloud deployments, skip manual Arc enablement - let registration continue
+                Write-VerboseLog "[MSI Flow] Cloud deployment detected - skipping manual Arc enablement on nodes"
+                Write-NodeEventLog -Message "[MSI Flow] Cloud deployment detected - skipping manual Arc enablement for cloud deployment" -EventID 9136 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+            }
+            else {
+                # Non-cloud deployment - attempt manual Arc enablement
+                Write-VerboseLog "[MSI Flow] Non-cloud deployment detected - Not all nodes are Arc-enabled. Attempting to enable Arc on nodes manually..."
+
+                # Retrieve Token Locally
+                try {
+                    Write-VerboseLog "[MSI Flow] Requesting Access Token for Tenant '$TenantId'"
+
+                    $azToken = Get-AzAccessToken -TenantId $TenantId -ErrorAction Stop
+                    $tokenString = $azToken.Token
+
+                    if ($tokenString -is [System.Security.SecureString]) {
+                        $tokenString = [System.Net.NetworkCredential]::new("", $tokenString).Password
+                    }
+                }
+                catch {
+                    throw "Failed to retrieve Azure Access Token for Arc enablement. Error: $($_.Exception.Message)"
+                }
+
+                # Call the manual enablement function with the PlainText token
+                Enable-ArcOnNodes -ClusterNodes $ClusterNodes `
+                                        -Credential $Credential `
+                                        -ClusterDNSSuffix $ClusterDNSSuffix `
+                                        -SubscriptionId $SubscriptionId `
+                                        -ResourceGroupName $ArcServerResourceGroupName `
+                                        -TenantId $TenantId `
+                                        -Location $Region `
+                                        -EnvironmentName $EnvironmentName `
+                                        -AccessToken $tokenString `
+                                        -UseStableAgent $UseStableAgent `
+                                        -IsManagementNode $IsManagementNode `
+                                        -ComputerName $ComputerName
+
+                # Re-verify enablement
+                $allArcEnabled = Test-ClusterArcEnabled -ClusterNodes $ClusterNodes -Credential $Credential -ClusterDNSSuffix $ClusterDNSSuffix -SubscriptionId $SubscriptionId -ArcResourceGroupName $ArcServerResourceGroupName
+
+                if (-not $allArcEnabled) {
+                    throw [System.InvalidOperationException]::new("Failed to enable Arc on all cluster nodes. Aborting registration.")
+                }
+            }
         }
 
         if($Null -eq $resource.Properties.ResourceProviderObjectId)
@@ -4118,7 +4381,7 @@ Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -
             if ($isRegistrationWithArcMsiCapable -eq $true)
             {
                 Write-VerboseLog "[Registration] Entered MSI registration path"
-                Invoke-MSIFlow -ClusterNodes $clusterNodes -Credential $Credential -ClusterDNSSuffix $clusterDNSSuffix -ResourceId $resourceId -RPAPIVersion $RPAPIVersion -TenantId $TenantId -Region $Region -ResourceGroupName $ResourceGroupName -Tag $Tag -ResourceName $ResourceName -SubscriptionId $SubscriptionId -registrationOutput $registrationOutput -ClusterNodeSession $clusterNodeSession -IsManagementNode $IsManagementNode -ComputerName $ComputerName -IsWAC:$IsWAC -ArcServerResourceGroupName $ArcServerResourceGroupName -EnvironmentName $EnvironmentName
+                Invoke-MSIFlow -ClusterNodes $clusterNodes -Credential $Credential -ClusterDNSSuffix $clusterDNSSuffix -ResourceId $resourceId -RPAPIVersion $RPAPIVersion -TenantId $TenantId -Region $Region -ResourceGroupName $ResourceGroupName -Tag $Tag -ResourceName $ResourceName -SubscriptionId $SubscriptionId -registrationOutput $registrationOutput -ClusterNodeSession $clusterNodeSession -IsManagementNode $IsManagementNode -ComputerName $ComputerName -IsWAC:$IsWAC -ArcServerResourceGroupName $ArcServerResourceGroupName -EnvironmentName $EnvironmentName -UseStableAgent $useStableAgentVersion
                 $operationStatus = [OperationStatus]::Success
             }
             else
@@ -6934,7 +7197,7 @@ param(
         try
         {
 
-            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
             Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
             $LogFilePrefix = "AddAzStackHCIVMAttestation"
@@ -7130,7 +7393,7 @@ param(
 
         try
         {
-            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
             Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
             $LogFilePrefix = "RemoveAzStackHCIVMAttestation"
@@ -7258,7 +7521,7 @@ param(
     {
         try
         {
-            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
             Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
             $getImdsOutputList = [System.Collections.ArrayList]::new()
@@ -7425,7 +7688,7 @@ function Invoke-DeploymentModuleDownload{
     $retryCount = 3
     try
     {
-        $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+        $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
         Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupport" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -ClusterNodeSession $clusterNodeSession -IsClusterRegistered $IsClusterRegistered | Out-Null
 
         if ($Null -ne $clusterNodeSession)
@@ -7464,7 +7727,7 @@ function Install-DeployModule {
         $ModuleName
     )
 
-    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
     Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportInstallModule" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -ClusterNodeSession $clusterNodeSession -IsClusterRegistered $IsClusterRegistered | Out-Null
     
     if ($Null -ne $clusterNodeSession)
@@ -7504,7 +7767,7 @@ function Install-AzStackHCIRemoteSupport{
     [OutputType([Boolean])]
     param()
 
-    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
 
     Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
@@ -7544,7 +7807,7 @@ function Remove-AzStackHCIRemoteSupport{
     [OutputType([Boolean])]
     param()
 
-    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
     Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
     Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportRemove" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -ClusterNodeSession $clusterNodeSession -IsClusterRegistered $IsClusterRegistered | Out-Null
     if ($Null -ne $clusterNodeSession)
@@ -7612,7 +7875,7 @@ function Enable-AzStackHCIRemoteSupport{
         $AgreeToRemoteSupportConsent
     )
 
-    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
     Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
     if ($AgreeToRemoteSupportConsent -ne $true)
@@ -7659,7 +7922,7 @@ function Disable-AzStackHCIRemoteSupport{
     [OutputType([Boolean])]
     param()
 
-    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
     Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
     $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
@@ -7707,7 +7970,7 @@ function Get-AzStackHCIRemoteSupportAccess{
         $IncludeExpired
     )
 
-    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
     Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
     $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
@@ -7809,7 +8072,7 @@ function Get-AzStackHCIRemoteSupportSessionHistory{
         $FromDate = (Get-Date).AddDays(-7)
     )
 
-    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
     Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
     $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType

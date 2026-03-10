@@ -27,7 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="Azure.Core" Version="1.48.0" />
     <PackageReference Update="Microsoft.ApplicationInsights" Version="2.23.0" />
     <PackageReference Update="PowerShellStandard.Library" Version="5.1.1" />
   </ItemGroup>

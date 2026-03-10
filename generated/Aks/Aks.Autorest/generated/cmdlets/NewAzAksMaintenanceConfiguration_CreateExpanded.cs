@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Description(@"create a maintenance configuration in the specified managed cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations/{configName}", ApiVersion = "2023-02-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations/{configName}", ApiVersion = "2025-08-01")]
     public partial class NewAzAksMaintenanceConfiguration_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IContext
@@ -44,8 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
         private object _firstResponse = null;
 
         /// <summary>
-        /// See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned
-        /// maintenance.
+        /// Planned maintenance configuration, used to configure when updates can be deployed to a Managed Cluster. See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance)
+        /// for more information about planned maintenance.
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.MaintenanceConfiguration();
 
@@ -54,6 +54,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
         /// Two means multiple returned objects in response.
         /// </summary>
         private int _responseSize = 0;
+
+        /// <summary>The date of the month.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The date of the month.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The date of the month.",
+        SerializedName = @"dayOfMonth",
+        PossibleTypes = new [] { typeof(int) })]
+        public int AbsoluteMonthlyDayOfMonth { get => _parametersBody.AbsoluteMonthlyDayOfMonth ?? default(int); set => _parametersBody.AbsoluteMonthlyDayOfMonth = value; }
+
+        /// <summary>Specifies the number of months between each set of occurrences.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the number of months between each set of occurrences.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Specifies the number of months between each set of occurrences.",
+        SerializedName = @"intervalMonths",
+        PossibleTypes = new [] { typeof(int) })]
+        public int AbsoluteMonthlyIntervalMonth { get => _parametersBody.AbsoluteMonthlyIntervalMonth ?? default(int); set => _parametersBody.AbsoluteMonthlyIntervalMonth = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -79,6 +101,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Path)]
         public string ConfigName { get => this._configName; set => this._configName = value; }
+
+        /// <summary>Specifies the number of days between each set of occurrences.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the number of days between each set of occurrences.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Specifies the number of days between each set of occurrences.",
+        SerializedName = @"intervalDays",
+        PossibleTypes = new [] { typeof(int) })]
+        public int DailyIntervalDay { get => _parametersBody.DailyIntervalDay ?? default(int); set => _parametersBody.DailyIntervalDay = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -107,6 +140,75 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
+
+        /// <summary>Length of maintenance window range from 4 to 24 hours.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Length of maintenance window range from 4 to 24 hours.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Length of maintenance window range from 4 to 24 hours.",
+        SerializedName = @"durationHours",
+        PossibleTypes = new [] { typeof(int) })]
+        public int MaintenanceWindowDurationHour { get => _parametersBody.MaintenanceWindowDurationHour ?? default(int); set => _parametersBody.MaintenanceWindowDurationHour = value; }
+
+        /// <summary>
+        /// Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00'
+        /// and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03
+        /// 22:00' in UTC time.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time.",
+        SerializedName = @"notAllowedDates",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDateSpan) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDateSpan[] MaintenanceWindowNotAllowedDate { get => _parametersBody.MaintenanceWindowNotAllowedDate?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.MaintenanceWindowNotAllowedDate = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDateSpan>(value) : null); }
+
+        /// <summary>
+        /// The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive
+        /// and will not be used for upgrades. If not specified, the maintenance window will be active right away.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive and will not be used for upgrades. If not specified, the maintenance window will be active right away.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive and will not be used for upgrades. If not specified, the maintenance window will be active right away.",
+        SerializedName = @"startDate",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        public global::System.DateTime MaintenanceWindowStartDate { get => _parametersBody.MaintenanceWindowStartDate ?? default(global::System.DateTime); set => _parametersBody.MaintenanceWindowStartDate = value; }
+
+        /// <summary>
+        /// The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field.
+        /// For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field. For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field. For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.",
+        SerializedName = @"startTime",
+        PossibleTypes = new [] { typeof(string) })]
+        public string MaintenanceWindowStartTime { get => _parametersBody.MaintenanceWindowStartTime ?? null; set => _parametersBody.MaintenanceWindowStartTime = value; }
+
+        /// <summary>
+        /// The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is
+        /// '+00:00'.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is '+00:00'.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is '+00:00'.",
+        SerializedName = @"utcOffset",
+        PossibleTypes = new [] { typeof(string) })]
+        public string MaintenanceWindowUtcOffset { get => _parametersBody.MaintenanceWindowUtcOffset ?? null; set => _parametersBody.MaintenanceWindowUtcOffset = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -149,6 +251,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>Specifies on which day of the week the maintenance occurs.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies on which day of the week the maintenance occurs.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Specifies on which day of the week the maintenance occurs.",
+        SerializedName = @"dayOfWeek",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
+        public string RelativeMonthlyDayOfWeek { get => _parametersBody.RelativeMonthlyDayOfWeek ?? null; set => _parametersBody.RelativeMonthlyDayOfWeek = value; }
+
+        /// <summary>Specifies the number of months between each set of occurrences.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the number of months between each set of occurrences.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Specifies the number of months between each set of occurrences.",
+        SerializedName = @"intervalMonths",
+        PossibleTypes = new [] { typeof(int) })]
+        public int RelativeMonthlyIntervalMonth { get => _parametersBody.RelativeMonthlyIntervalMonth ?? default(int); set => _parametersBody.RelativeMonthlyIntervalMonth = value; }
+
+        /// <summary>The week index. Specifies on which week of the month the dayOfWeek applies.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The week index. Specifies on which week of the month the dayOfWeek applies.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The week index. Specifies on which week of the month the dayOfWeek applies.",
+        SerializedName = @"weekIndex",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("First", "Second", "Third", "Fourth", "Last")]
+        public string RelativeMonthlyWeekIndex { get => _parametersBody.RelativeMonthlyWeekIndex ?? null; set => _parametersBody.RelativeMonthlyWeekIndex = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
@@ -180,12 +317,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The ID of the target subscription.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.DefaultInfo(
@@ -197,30 +334,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
         /// <summary>
-        /// If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
+        /// Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of
+        /// the week, the applied configuration is the union of times in both entries.
         /// </summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.",
+        Description = @"Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.",
         SerializedName = @"timeInWeek",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek) })]
         public Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek[] TimeInWeek { get => _parametersBody.TimeInWeek?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.TimeInWeek = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek>(value) : null); }
+
+        /// <summary>Specifies on which day of the week the maintenance occurs.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies on which day of the week the maintenance occurs.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Specifies on which day of the week the maintenance occurs.",
+        SerializedName = @"dayOfWeek",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
+        public string WeeklyDayOfWeek { get => _parametersBody.WeeklyDayOfWeek ?? null; set => _parametersBody.WeeklyDayOfWeek = value; }
+
+        /// <summary>Specifies the number of weeks between each set of occurrences.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the number of weeks between each set of occurrences.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Specifies the number of weeks between each set of occurrences.",
+        SerializedName = @"intervalWeeks",
+        PossibleTypes = new [] { typeof(int) })]
+        public int WeeklyIntervalWeek { get => _parametersBody.WeeklyIntervalWeek ?? default(int); set => _parametersBody.WeeklyIntervalWeek = value; }
+
+        /// <summary>
+        /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
+        /// happens on that response. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration">Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration</see>
+        /// from the remote call</param>
+        /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
+        /// return immediately (set to true to skip further processing )</param>
+
+        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
@@ -427,7 +600,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.MaintenanceConfigurationsCreateOrUpdate(SubscriptionId, ResourceGroupName, ResourceName, ConfigName, _parametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SerializationMode.IncludeCreate);
+                    await this.Client.MaintenanceConfigurationsCreateOrUpdate(SubscriptionId, ResourceGroupName, ResourceName, ConfigName, _parametersBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.UndeclaredResponseException urexception)
@@ -466,16 +639,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
             base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
-        /// <summary>
-        /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
-        /// </summary>
+        /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration">Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration> response)
+        {
+            using( NoSynchronizationContext )
+            {
+                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
+                overrideOnCreated(responseMessage, response, ref _returnNow);
+                // if overrideOnCreated has returned true, then return right away.
+                if ((null != _returnNow && await _returnNow))
+                {
+                    return ;
+                }
+                // onCreated - response for 201 / application/json
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
+        /// </summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorResponse</see>
+        /// from the remote call</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
+        /// </returns>
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -492,7 +707,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICloudError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }

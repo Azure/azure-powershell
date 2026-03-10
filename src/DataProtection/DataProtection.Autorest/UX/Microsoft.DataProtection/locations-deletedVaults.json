@@ -1,0 +1,47 @@
+{
+  "resourceType": "locations/deletedVaults",
+  "apiVersion": "2025-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.dataprotection"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDataProtectionSoftDeletedBackupVault",
+      "description": "Gets a deleted backup vault",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/deletedVaults/{deletedVaultName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionsoftdeletedbackupvault"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DeletedVaultName <String>",
+              "-Location <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a deleted backup vault",
+          "parameters": [
+            {
+              "name": "-DeletedVaultName",
+              "value": "[Path.deletedVaultName]"
+            },
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

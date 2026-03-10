@@ -28,7 +28,7 @@ $feedName = (Get-Item $FeedPsd1FullPath).Name
 Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $feedDir -FileName $feedName
 $modules = $ModuleMetadata.RequiredModules
 # the hardline is calculated by the number of cmdlet, may adjust if one of two repos is out-of-memory
-$hardlineForSplittingRepo = "Az.MobileNetwork"
+$hardlineForSplittingRepo = "Az.Monitor"
 $dotnetCsv1 = New-Item -Path "$PSScriptRoot\" -Name "az-ps-latest-1.csv" -ItemType "file" -Force
 $dotnetCsv2 = New-Item -Path "$PSScriptRoot\" -Name "az-ps-latest-2.csv" -ItemType "file" -Force
 $dotnetCsvContent1 = ""

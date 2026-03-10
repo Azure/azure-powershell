@@ -14,31 +14,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMigrateLocalServerRepli
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzMigrateLocalServerReplication' -Tag 'LiveOnly' {
-    It 'ByIdDefaultUser' {
-        $output = New-AzMigrateLocalServerReplication `
-            -MachineId $env.hciSDSMachineId1 `
-            -TargetResourceGroupId $env.hciTargetRGId `
-            -TargetVMName $env.hciTgtVMName1 `
-            -TargetStoragePathId $env.hciTgtStoragePathId `
-            -TargetVirtualSwitchId $env.hciTgtVirtualSwitchId `
-            -OSDiskID $env.hciDiskId1 `
-            -SubscriptionId $env.hciSubscriptionId `
-            -IsDynamicMemoryEnabled "true"
-        $output.Count | Should -BeGreaterOrEqual 1 
+Describe 'New-AzMigrateLocalServerReplication' {
+    # See Test-AzMigrateLocalEndToEnd.Tests.ps1 for end to end tests.
+    It 'ByIdDefaultUser' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'ByIdPowerUser' {
-        $diskToInclude = New-AzMigrateLocalDiskMappingObject -DiskID $env.hciDiskId2 -IsOSDisk "true" -IsDynamic "true" -Size 1 -Format "VHDX"
-        $nicToInclude = New-AzMigrateLocalNicMappingObject -NicID $env.hciNicId2 -TargetVirtualSwitchId $env.hciTgtVirtualSwitchId
-        $output = New-AzMigrateLocalServerReplication `
-            -MachineId $env.hciSDSMachineId2 `
-            -TargetResourceGroupId $env.hciTargetRGId `
-            -TargetVMName $env.hciTgtVMName2 `
-            -TargetStoragePathId $env.hciTgtStoragePathId `
-            -DiskToInclude $diskToInclude `
-            -NicToInclude $nicToInclude `
-            -SubscriptionId $env.hciSubscriptionId
-        $output.Count | Should -BeGreaterOrEqual 1 
+    It 'ByIdPowerUser' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

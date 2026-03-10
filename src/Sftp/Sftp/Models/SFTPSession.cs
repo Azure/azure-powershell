@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
 {
@@ -42,12 +43,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
             string sshClientFolder = null,
             string sshProxyFolder = null,
             string credentialsFolder = null,
-            bool yesWithoutPrompt = false)
+            bool yesWithoutPrompt = false,
+            int bufferSizeBytes = SftpConstants.DefaultBufferSizeBytes)
         {
             _connection = new ConnectionInfo(storageAccount, username, host, port);
             _authFiles = new AuthenticationFiles(publicKeyFile, privateKeyFile, certFile);
             _config = new SessionConfiguration(sftpArgs, sshClientFolder, sshProxyFolder, credentialsFolder, yesWithoutPrompt);
             _runtime = new RuntimeState();
+            BufferSizeBytes = bufferSizeBytes;
         }
 
         // Connection properties
@@ -139,6 +142,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
         }
 
         /// <summary>
+        /// Buffer size in bytes for SFTP file transfers.
+        /// </summary>
+        public int BufferSizeBytes { get; set; } = SftpConstants.DefaultBufferSizeBytes;
+
+        /// <summary>
         /// Resolve connection information like hostname and username.
         /// Username format: {storage-account}.{principal-name}
         /// </summary>
@@ -213,6 +221,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
             if (Port != 22)
             {
                 args.AddRange(new[] { "-P", Port.ToString() });
+            }
+
+            // Buffer size option (sftp -B flag)
+            if (BufferSizeBytes != SftpConstants.DefaultBufferSizeBytes)
+            {
+                args.AddRange(new[] { "-B", BufferSizeBytes.ToString() });
             }
 
             return args;
