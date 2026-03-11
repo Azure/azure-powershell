@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -21,6 +22,7 @@ using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -86,6 +88,30 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = SkipAppTypeVersion, HelpMessage = "Specify the tags as key/value pairs.")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = CreateAppTypeVersion, HelpMessage = "Specify the tags as key/value pairs.")]
         public Hashtable Tag { get; set; }
+
+        #region Identity params
+
+        [Parameter(Mandatory = false, ParameterSetName = SkipAppTypeVersion,
+            HelpMessage = "Specify the type of managed identity for the application. Options are None, SystemAssigned, UserAssigned, and SystemAssigned,UserAssigned.")]
+        [Parameter(Mandatory = false, ParameterSetName = CreateAppTypeVersion,
+            HelpMessage = "Specify the type of managed identity for the application. Options are None, SystemAssigned, UserAssigned, and SystemAssigned,UserAssigned.")]
+        public ManagedIdentityType IdentityType { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = SkipAppTypeVersion,
+            HelpMessage = "Specify the list of user assigned identity ARM resource IDs for the application.")]
+        [Parameter(Mandatory = false, ParameterSetName = CreateAppTypeVersion,
+            HelpMessage = "Specify the list of user assigned identity ARM resource IDs for the application.")]
+        [ValidateNotNullOrEmpty]
+        public string[] UserAssignedIdentityId { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = SkipAppTypeVersion,
+            HelpMessage = "Specify the application managed identities as key/value pairs. The key is the friendly identity name, and the value is the principal id.")]
+        [Parameter(Mandatory = false, ParameterSetName = CreateAppTypeVersion,
+            HelpMessage = "Specify the application managed identities as key/value pairs. The key is the friendly identity name, and the value is the principal id.")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable ApplicationManagedIdentity { get; set; }
+
+        #endregion
 
         [Parameter(Mandatory = false, HelpMessage = "Continue without prompts")]
         public SwitchParameter Force { get; set; }
@@ -168,7 +194,41 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     version: this.GetAppTypeArmResourceId(this.DefaultContext.Subscription.Id, this.ResourceGroupName, this.ClusterName, this.ApplicationTypeName, this.ApplicationTypeVersion),
                     parameters: this.ApplicationParameter?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string),
                     location: location,
+                    identity: this.GetManagedIdentity(),
+                    managedIdentities: this.GetApplicationManagedIdentities(),
                     tags: this.Tag?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string));
+        }
+
+        private ManagedIdentity GetManagedIdentity()
+        {
+            if (!this.IsParameterBound(c => c.IdentityType))
+            {
+                return null;
+            }
+
+            var identity = new ManagedIdentity(type: this.IdentityType);
+
+            if (this.UserAssignedIdentityId != null && this.UserAssignedIdentityId.Length > 0)
+            {
+                identity.UserAssignedIdentities = this.UserAssignedIdentityId
+                    .ToDictionary(id => id, id => new UserAssignedIdentity());
+            }
+
+            return identity;
+        }
+
+        private IList<ApplicationUserAssignedIdentity> GetApplicationManagedIdentities()
+        {
+            if (this.ApplicationManagedIdentity == null)
+            {
+                return null;
+            }
+
+            return this.ApplicationManagedIdentity.Cast<DictionaryEntry>()
+                .Select(entry => new ApplicationUserAssignedIdentity(
+                    name: entry.Key as string,
+                    principalId: entry.Value as string))
+                .ToList();
         }
 
         private string GetAppTypeArmResourceId(string subscriptionId, string resourceGroup, string clusterName, string appTypeName, string appTypeVersion)
