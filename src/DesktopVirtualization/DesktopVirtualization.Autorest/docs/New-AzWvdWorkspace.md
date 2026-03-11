@@ -16,11 +16,11 @@ Create a workspace.
 ```
 New-AzWvdWorkspace -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-ApplicationGroupReference <String[]>] [-Description <String>] [-FriendlyName <String>]
- [-IdentityType <String>] [-Kind <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
- [-PublicNetworkAccess <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
- [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-ManagedBy <String>]
+ [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
+ [-PlanVersion <String>] [-PublicNetworkAccess <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -140,10 +140,27 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-The identity type.
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded
 Aliases:
 

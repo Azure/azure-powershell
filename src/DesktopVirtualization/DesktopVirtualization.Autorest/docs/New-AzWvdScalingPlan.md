@@ -17,8 +17,8 @@ Create a scaling plan.
 New-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> -Location <String> -TimeZone <String>
  [-SubscriptionId <String>] [-Description <String>] [-ExclusionTag <String>] [-FriendlyName <String>]
  [-HostPoolReference <IScalingHostPoolReference[]>] [-HostPoolType <String>] [-IdentityType <String>]
- [-Kind <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-ManagedBy <String>] [-PlanName <String>]
+ [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
  [-Schedule <IScalingSchedule[]>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
  [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -227,10 +227,27 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-The identity type.
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded
 Aliases:
 
