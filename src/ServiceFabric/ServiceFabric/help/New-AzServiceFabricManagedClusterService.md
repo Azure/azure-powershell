@@ -18,9 +18,9 @@ New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-Cluster
  [-ApplicationName] <String> [-Name] <String> -Type <String> [-Stateless] -InstanceCount <Int32>
  [-MinInstanceCount <Int32>] [-MinInstancePercentage <Int32>] [-DefaultMoveCost <MoveCostEnum>]
  [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>] [-Correlation <PSServiceCorrelation[]>]
- [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-PartitionSchemeSingleton] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-ServiceDnsName <String>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-PartitionSchemeSingleton] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Stateless-UniformInt64Range
@@ -29,9 +29,10 @@ New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-Cluster
  [-ApplicationName] <String> [-Name] <String> -Type <String> [-Stateless] -InstanceCount <Int32>
  [-MinInstanceCount <Int32>] [-MinInstancePercentage <Int32>] [-DefaultMoveCost <MoveCostEnum>]
  [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>] [-Correlation <PSServiceCorrelation[]>]
- [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-PartitionSchemeUniformInt64] -PartitionCount <Int32> -LowKey <Int64> -HighKey <Int64>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-ServiceDnsName <String>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-PartitionSchemeUniformInt64] -PartitionCount <Int32> -LowKey <Int64>
+ -HighKey <Int64> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Stateless-Named
@@ -40,9 +41,10 @@ New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-Cluster
  [-ApplicationName] <String> [-Name] <String> -Type <String> [-Stateless] -InstanceCount <Int32>
  [-MinInstanceCount <Int32>] [-MinInstancePercentage <Int32>] [-DefaultMoveCost <MoveCostEnum>]
  [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>] [-Correlation <PSServiceCorrelation[]>]
- [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-PartitionSchemeNamed] -PartitionName <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-ServiceDnsName <String>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-PartitionSchemeNamed] -PartitionName <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Stateful-Singleton
@@ -53,9 +55,9 @@ New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-Cluster
  [-QuorumLossWaitDuration <TimeSpan>] [-StandByReplicaKeepDuration <TimeSpan>]
  [-ServicePlacementTimeLimit <TimeSpan>] [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>]
  [-Metric <PSServiceMetric[]>] [-Correlation <PSServiceCorrelation[]>]
- [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-PartitionSchemeSingleton] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-ServiceDnsName <String>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-PartitionSchemeSingleton] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Stateful-UniformInt64Range
@@ -66,9 +68,10 @@ New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-Cluster
  [-QuorumLossWaitDuration <TimeSpan>] [-StandByReplicaKeepDuration <TimeSpan>]
  [-ServicePlacementTimeLimit <TimeSpan>] [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>]
  [-Metric <PSServiceMetric[]>] [-Correlation <PSServiceCorrelation[]>]
- [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-PartitionSchemeUniformInt64] -PartitionCount <Int32> -LowKey <Int64> -HighKey <Int64>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-ServiceDnsName <String>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-PartitionSchemeUniformInt64] -PartitionCount <Int32> -LowKey <Int64>
+ -HighKey <Int64> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Stateful-Named
@@ -79,9 +82,10 @@ New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-Cluster
  [-QuorumLossWaitDuration <TimeSpan>] [-StandByReplicaKeepDuration <TimeSpan>]
  [-ServicePlacementTimeLimit <TimeSpan>] [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>]
  [-Metric <PSServiceMetric[]>] [-Correlation <PSServiceCorrelation[]>]
- [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-PartitionSchemeNamed] -PartitionName <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-ServiceDnsName <String>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-PartitionSchemeNamed] -PartitionName <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,7 +143,7 @@ This example will create a new stateless managed service "testService3".
 Specify the name of the managed application.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -154,7 +158,7 @@ Accept wildcard characters: False
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -169,7 +173,7 @@ Accept wildcard characters: False
 Specify the name of the cluster.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -184,7 +188,7 @@ Accept wildcard characters: False
 Specify the placement constraints of the managed service, as a string.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSServiceCorrelation[]
+Type: PSServiceCorrelation[]
 Parameter Sets: (All)
 Aliases:
 
@@ -200,7 +204,7 @@ Specify the default cost for a move.
 Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum
+Type: MoveCostEnum
 Parameter Sets: (All)
 Aliases:
 Accepted values: Zero, Low, Medium, High
@@ -216,7 +220,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -231,7 +235,7 @@ Accept wildcard characters: False
 Continue without prompts
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -246,7 +250,7 @@ Accept wildcard characters: False
 Specify the target replica set size for the managed service
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
@@ -261,7 +265,7 @@ Accept wildcard characters: False
 Specify the upper bound of the partition key range.
 
 ```yaml
-Type: System.Int64
+Type: Int64
 Parameter Sets: Stateless-UniformInt64Range, Stateful-UniformInt64Range
 Aliases:
 
@@ -276,7 +280,7 @@ Accept wildcard characters: False
 Specify the instance count for the managed service
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: Stateless-Singleton, Stateless-UniformInt64Range, Stateless-Named
 Aliases:
 
@@ -291,7 +295,7 @@ Accept wildcard characters: False
 Specify the lower bound of the partition key range.
 
 ```yaml
-Type: System.Int64
+Type: Int64
 Parameter Sets: Stateless-UniformInt64Range, Stateful-UniformInt64Range
 Aliases:
 
@@ -306,7 +310,7 @@ Accept wildcard characters: False
 Specify the placement constraints of the managed service, as a string.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSServiceMetric[]
+Type: PSServiceMetric[]
 Parameter Sets: (All)
 Aliases:
 
@@ -321,7 +325,7 @@ Accept wildcard characters: False
 Specify the minimum instance count for the managed service
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: Stateless-Singleton, Stateless-UniformInt64Range, Stateless-Named
 Aliases:
 
@@ -336,7 +340,7 @@ Accept wildcard characters: False
 Specify the minimum instance percentage for the managed service
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: Stateless-Singleton, Stateless-UniformInt64Range, Stateless-Named
 Aliases:
 
@@ -351,7 +355,7 @@ Accept wildcard characters: False
 Specify the min replica set size for the managed service
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
@@ -366,7 +370,7 @@ Accept wildcard characters: False
 Specify the name of the managed service.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ServiceName
 
@@ -381,7 +385,7 @@ Accept wildcard characters: False
 Specify the number of partitions.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: Stateless-UniformInt64Range, Stateful-UniformInt64Range
 Aliases:
 
@@ -396,7 +400,7 @@ Accept wildcard characters: False
 Indicates that the service uses the named partition scheme. Services using this model usually have data that can be bucketed, within a bounded set. Some common examples of data fields used as named partition keys would be regions, postal codes, customer groups, or other business boundaries.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: Stateless-Named, Stateful-Named
 Aliases:
 
@@ -413,7 +417,7 @@ Services using this model usually have data that can be bucketed, within a bound
 Some common examples of data fields used as named partition keys would be regions, postal codes, customer groups, or other business boundaries.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: Stateless-Named, Stateful-Named
 Aliases:
 
@@ -429,7 +433,7 @@ Indicates that the service uses the singleton partition scheme.
 Singleton partitions are typically used when the service does not require any additional routing.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: Stateless-Singleton, Stateful-Singleton
 Aliases:
 
@@ -445,7 +449,7 @@ Indicates that the service uses the UniformInt64 partition scheme.
 This means that each partition owns a range of int64 keys.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: Stateless-UniformInt64Range, Stateful-UniformInt64Range
 Aliases:
 
@@ -460,9 +464,24 @@ Accept wildcard characters: False
 Specify the placement constraints of the managed service, as a string.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -476,7 +495,7 @@ Specify the quorum loss wait duration for the managed service.
 Duration represented in ISO 8601 format 'hh:mm:ss'
 
 ```yaml
-Type: System.TimeSpan
+Type: TimeSpan
 Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
@@ -492,7 +511,7 @@ Specify the replica restart wait duration for the managed service.
 Duration represented in ISO 8601 format 'hh:mm:ss'
 
 ```yaml
-Type: System.TimeSpan
+Type: TimeSpan
 Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
@@ -507,7 +526,7 @@ Accept wildcard characters: False
 Specify the name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -518,12 +537,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ServiceDnsName
+Specify the DNS name for the service. This enables service discovery via DNS.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ServicePackageActivationMode
 Specify the default cost for a move.
 Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.ServicePackageActivationModeEnum
+Type: ServicePackageActivationModeEnum
 Parameter Sets: (All)
 Aliases:
 Accepted values: SharedProcess, ExclusiveProcess
@@ -540,7 +574,7 @@ Specify the service placement time limit for the managed service.
 Duration represented in ISO 8601 format 'hh:mm:ss'
 
 ```yaml
-Type: System.TimeSpan
+Type: TimeSpan
 Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
@@ -556,7 +590,7 @@ Specify the stand by replica duration for the managed service.
 Duration represented in ISO 8601 format 'hh:mm:ss'
 
 ```yaml
-Type: System.TimeSpan
+Type: TimeSpan
 Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
@@ -571,7 +605,7 @@ Accept wildcard characters: False
 Use for stateful service
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
@@ -586,7 +620,7 @@ Accept wildcard characters: False
 Use for stateless service
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: Stateless-Singleton, Stateless-UniformInt64Range, Stateless-Named
 Aliases:
 
@@ -601,7 +635,7 @@ Accept wildcard characters: False
 Specify the tags as key/value pairs.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -616,7 +650,7 @@ Accept wildcard characters: False
 Specify the target replica set size for the managed service
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
@@ -631,7 +665,7 @@ Accept wildcard characters: False
 Specify the service type name of the managed application, should exist in the application manifest.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ServiceType
 
@@ -646,7 +680,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -662,7 +696,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

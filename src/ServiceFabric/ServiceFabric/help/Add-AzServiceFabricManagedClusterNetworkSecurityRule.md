@@ -18,7 +18,8 @@ Add-AzServiceFabricManagedClusterNetworkSecurityRule [-InputObject] <PSManagedCl
  -Access <NetworkSecurityAccess> [-Description <String>] -DestinationAddressPrefix <String[]>
  -DestinationPortRange <String[]> -Direction <NetworkSecurityDirection> -Name <String> -Priority <Int32>
  -Protocol <NetworkSecurityProtocol> -SourceAddressPrefix <String[]> -SourcePortRange <String[]> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByName
@@ -27,7 +28,8 @@ Add-AzServiceFabricManagedClusterNetworkSecurityRule [-ResourceGroupName] <Strin
  -Access <NetworkSecurityAccess> [-Description <String>] -DestinationAddressPrefix <String[]>
  -DestinationPortRange <String[]> -Direction <NetworkSecurityDirection> -Name <String> -Priority <Int32>
  -Protocol <NetworkSecurityProtocol> -SourceAddressPrefix <String[]> -SourcePortRange <String[]> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +92,7 @@ This command will add a network security rule using cluster object with piping.
 Gets or sets the network traffic is allowed or denied. Possible values include: Allow, Deny
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.NetworkSecurityAccess
+Type: NetworkSecurityAccess
 Parameter Sets: (All)
 Aliases:
 Accepted values: Allow, Deny
@@ -106,7 +108,7 @@ Accept wildcard characters: False
 Run cmdlet in the background and return a Job to track progress
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -121,7 +123,7 @@ Accept wildcard characters: False
 Specify the name of the cluster.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByName
 Aliases:
 
@@ -136,7 +138,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -151,7 +153,7 @@ Accept wildcard characters: False
 Gets or sets network security rule description
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -166,7 +168,7 @@ Accept wildcard characters: False
 Gets or sets the destination address prefixes. CIDR or destination IP ranges
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -181,7 +183,7 @@ Accept wildcard characters: False
 Gets or sets the destination port ranges
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +198,7 @@ Accept wildcard characters: False
 Gets or sets network security rule direction. Possible values include: Inbound, Outbound
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.NetworkSecurityDirection
+Type: NetworkSecurityDirection
 Parameter Sets: (All)
 Aliases:
 Accepted values: Inbound, Outbound
@@ -212,7 +214,7 @@ Accept wildcard characters: False
 Managed cluster resource
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedCluster
+Type: PSManagedCluster
 Parameter Sets: ByObj
 Aliases:
 
@@ -227,7 +229,7 @@ Accept wildcard characters: False
 Network Security Rule name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: NetworkSecurityRuleName
 
@@ -242,7 +244,7 @@ Accept wildcard characters: False
 Gets or sets the priority of the rule. The value can be in the range 1000 to 3000. Values outside this range are reserved for Service Fabric ManagerCluster Resource Provider. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -253,11 +255,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Protocol
 Gets or sets network protocol this rule applies to. Possible values include: http, https, tcp, udp, icmp, ah, esp, any
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.NetworkSecurityProtocol
+Type: NetworkSecurityProtocol
 Parameter Sets: (All)
 Aliases:
 Accepted values: https, http, udp, tcp, esp, icmp, ah, any
@@ -273,7 +290,7 @@ Accept wildcard characters: False
 Specify the name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByName
 Aliases:
 
@@ -288,7 +305,7 @@ Accept wildcard characters: False
 Gets or sets the CIDR or source IP ranges
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -303,7 +320,7 @@ Accept wildcard characters: False
 Run cmdlet in the background and return a Job to track progress
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -318,7 +335,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -334,7 +351,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
