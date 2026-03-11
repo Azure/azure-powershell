@@ -20,15 +20,15 @@ Update a DisconnectedOperation
 .Description
 Update a DisconnectedOperation
 .Example
-Update-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1" -RegistrationStatus "Registered"
+Update-AzDisconnectedOperationsDisconnectedOperation -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2" -RegistrationStatus "Registered"
 .Example
-Update-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1" -JsonFilePath "path/to/jsonFiles/UpdateDisconnectedOperations.json"
+Update-AzDisconnectedOperationsDisconnectedOperation -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2" -JsonFilePath "path/to/jsonFiles/UpdateDisconnectedOperations.json"
 .Example
-Update-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1" -JsonString '{"properties": {"registrationStatus": "Registered"}}'
+Update-AzDisconnectedOperationsDisconnectedOperation -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2" -JsonString '{"properties": {"registrationStatus": "Registered"}}'
 .Example
 $disconnectedOperation = @{
-  "ResourceGroupName" = "ResourceGroup-1";
-  "DisconnectedOperationName" = "Resource-1";
+  "ResourceGroupName" = "winfield-demo-rg-2";
+  "DisconnectedOperationName" = "winfield-ps-test";
   "SubscriptionId" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx";
 }
 
@@ -45,6 +45,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Parameter
   [ArtifactName <String>]: The name of the Artifact
+  [HardwareSettingName <String>]: The name of the HardwareSetting
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the Image
   [Name <String>]: Name of the resource
@@ -92,11 +93,49 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # Azure Hybrid Windows Server Benefit plan
+    ${BenefitPlanAzureHybridWindowsServerBenefit},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.Int32]
+    # Number of Windows Server VMs to license under the Azure Hybrid Benefit plan
+    ${BenefitPlanWindowsServerVMCount},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The auto renew setting
+    ${BillingConfigurationAutoRenew},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Connected", "Disconnected")]
     [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
     [System.String]
     # The connection intent
     ${ConnectionIntent},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.Int32]
+    # The number of cores
+    ${CurrentCore},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Trial", "Annual")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The pricing model
+    ${CurrentPricingModel},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -120,6 +159,21 @@ param(
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.Int32]
+    # The number of cores
+    ${UpcomingCore},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Trial", "Annual")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
+    [System.String]
+    # The pricing model
+    ${UpcomingPricingModel},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category('Body')]
@@ -195,8 +249,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

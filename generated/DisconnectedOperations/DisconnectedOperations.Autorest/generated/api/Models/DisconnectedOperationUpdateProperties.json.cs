@@ -63,6 +63,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
             {
                 return;
             }
+            {_billingConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonObject>("billingConfiguration"), out var __jsonBillingConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.BillingConfiguration.FromJson(__jsonBillingConfiguration) : _billingConfiguration;}
+            {_benefitPlan = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonObject>("benefitPlans"), out var __jsonBenefitPlans) ? Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.BenefitPlans.FromJson(__jsonBenefitPlans) : _benefitPlan;}
             {_connectionIntent = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonString>("connectionIntent"), out var __jsonConnectionIntent) ? (string)__jsonConnectionIntent : (string)_connectionIntent;}
             {_registrationStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonString>("registrationStatus"), out var __jsonRegistrationStatus) ? (string)__jsonRegistrationStatus : (string)_registrationStatus;}
             {_deviceVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonString>("deviceVersion"), out var __jsonDeviceVersion) ? (string)__jsonDeviceVersion : (string)_deviceVersion;}
@@ -101,6 +103,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
             {
                 return container;
             }
+            AddIf( null != this._billingConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonNode) this._billingConfiguration.ToJson(null,serializationMode) : null, "billingConfiguration" ,container.Add );
+            AddIf( null != this._benefitPlan ? (Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonNode) this._benefitPlan.ToJson(null,serializationMode) : null, "benefitPlans" ,container.Add );
             AddIf( null != (((object)this._connectionIntent)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonString(this._connectionIntent.ToString()) : null, "connectionIntent" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.SerializationMode.IncludeUpdate))
             {

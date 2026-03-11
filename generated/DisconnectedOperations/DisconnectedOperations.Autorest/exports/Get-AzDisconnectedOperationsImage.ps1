@@ -50,6 +50,7 @@ To create the parameters described below, construct a hash table containing the 
 
 DISCONNECTEDOPERATIONINPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Parameter
   [ArtifactName <String>]: The name of the Artifact
+  [HardwareSettingName <String>]: The name of the HardwareSetting
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the Image
   [Name <String>]: Name of the resource
@@ -58,6 +59,7 @@ DISCONNECTEDOPERATIONINPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Par
 
 INPUTOBJECT <IDisconnectedOperationsIdentity>: Identity Parameter
   [ArtifactName <String>]: The name of the Artifact
+  [HardwareSettingName <String>]: The name of the HardwareSetting
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the Image
   [Name <String>]: Name of the resource
@@ -193,8 +195,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

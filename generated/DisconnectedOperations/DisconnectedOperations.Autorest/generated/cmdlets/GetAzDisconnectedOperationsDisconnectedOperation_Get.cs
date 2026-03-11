@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Description(@"Get a DisconnectedOperation")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}", ApiVersion = "2025-06-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}", ApiVersion = "2026-03-15")]
     public partial class GetAzDisconnectedOperationsDisconnectedOperation_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.IContext

@@ -20,7 +20,7 @@ Get deployment manifest.
 .Description
 Get deployment manifest.
 .Example
-Get-AzDisconnectedOperationsDisconnectedOperationDeploymentManifest -Name "Resource-1" -ResourceGroupName "ResourceGroup-1"
+Get-AzDisconnectedOperationsDisconnectedOperationDeploymentManifest -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationDeploymentManifest
@@ -114,8 +114,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

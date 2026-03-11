@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Description(@"update a DisconnectedOperation")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}", ApiVersion = "2025-06-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}", ApiVersion = "2026-03-15")]
     public partial class UpdateAzDisconnectedOperationsDisconnectedOperation_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.IContext
@@ -50,6 +50,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Cmdlets
         /// </summary>
         private int _responseSize = 0;
 
+        /// <summary>Azure Hybrid Windows Server Benefit plan</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure Hybrid Windows Server Benefit plan")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Azure Hybrid Windows Server Benefit plan",
+        SerializedName = @"azureHybridWindowsServerBenefit",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string BenefitPlanAzureHybridWindowsServerBenefit { get => _propertiesBody.BenefitPlanAzureHybridWindowsServerBenefit ?? null; set => _propertiesBody.BenefitPlanAzureHybridWindowsServerBenefit = value; }
+
+        /// <summary>Number of Windows Server VMs to license under the Azure Hybrid Benefit plan</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Number of Windows Server VMs to license under the Azure Hybrid Benefit plan")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Number of Windows Server VMs to license under the Azure Hybrid Benefit plan",
+        SerializedName = @"windowsServerVmCount",
+        PossibleTypes = new [] { typeof(int) })]
+        public int BenefitPlanWindowsServerVMCount { get => _propertiesBody.BenefitPlanWindowsServerVMCount ?? default(int); set => _propertiesBody.BenefitPlanWindowsServerVMCount = value; }
+
+        /// <summary>The auto renew setting</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The auto renew setting")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The auto renew setting",
+        SerializedName = @"autoRenew",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string BillingConfigurationAutoRenew { get => _propertiesBody.BillingConfigurationAutoRenew ?? null; set => _propertiesBody.BillingConfigurationAutoRenew = value; }
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.ParameterCategory.Runtime)]
@@ -72,6 +107,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Connected", "Disconnected")]
         public string ConnectionIntent { get => _propertiesBody.ConnectionIntent ?? null; set => _propertiesBody.ConnectionIntent = value; }
+
+        /// <summary>The number of cores</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The number of cores")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The number of cores",
+        SerializedName = @"cores",
+        PossibleTypes = new [] { typeof(int) })]
+        public int CurrentCore { get => _propertiesBody.CurrentCore ?? default(int); set => _propertiesBody.CurrentCore = value; }
+
+        /// <summary>The pricing model</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The pricing model")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The pricing model",
+        SerializedName = @"pricingModel",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Trial", "Annual")]
+        public string CurrentPricingModel { get => _propertiesBody.CurrentPricingModel ?? null; set => _propertiesBody.CurrentPricingModel = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -211,6 +269,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Cmdlets
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdateTags) })]
         public Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdateTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
+
+        /// <summary>The number of cores</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The number of cores")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The number of cores",
+        SerializedName = @"cores",
+        PossibleTypes = new [] { typeof(int) })]
+        public int UpcomingCore { get => _propertiesBody.UpcomingCore ?? default(int); set => _propertiesBody.UpcomingCore = value; }
+
+        /// <summary>The pricing model</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The pricing model")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The pricing model",
+        SerializedName = @"pricingModel",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PSArgumentCompleterAttribute("Trial", "Annual")]
+        public string UpcomingPricingModel { get => _propertiesBody.UpcomingPricingModel ?? null; set => _propertiesBody.UpcomingPricingModel = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
