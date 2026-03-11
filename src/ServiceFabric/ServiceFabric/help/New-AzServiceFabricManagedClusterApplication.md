@@ -16,16 +16,20 @@ Create new service fabric managed application under the specified resource group
 ```
 New-AzServiceFabricManagedClusterApplication [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ApplicationTypeName] <String> [-ApplicationTypeVersion] <String> -Name <String>
- [-ApplicationParameter <Hashtable>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ApplicationParameter <Hashtable>] [-Tag <Hashtable>] [-IdentityType <ManagedIdentityType>]
+ [-UserAssignedIdentityId <String[]>] [-ApplicationManagedIdentity <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateAppTypeVersion
 ```
 New-AzServiceFabricManagedClusterApplication [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ApplicationTypeName] <String> [-ApplicationTypeVersion] <String> -Name <String>
- [-ApplicationParameter <Hashtable>] -PackageUrl <String> [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ApplicationParameter <Hashtable>] -PackageUrl <String> [-Tag <Hashtable>]
+ [-IdentityType <ManagedIdentityType>] [-UserAssignedIdentityId <String[]>]
+ [-ApplicationManagedIdentity <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,12 +66,27 @@ This example creates the managed application type "testAppType"  version "v1" us
 
 ## PARAMETERS
 
+### -ApplicationManagedIdentity
+Specify the application managed identities as key/value pairs. The key is the friendly identity name, and the value is the principal id.
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ApplicationParameter
 Specify the application parameters as key/value pairs.
 These parameters must exist in the application manifest.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +101,7 @@ Accept wildcard characters: False
 Specify the name of the managed application type
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +116,7 @@ Accept wildcard characters: False
 Specify the managed application type version
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +131,7 @@ Accept wildcard characters: False
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +146,7 @@ Accept wildcard characters: False
 Specify the name of the cluster.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +161,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -157,7 +176,22 @@ Accept wildcard characters: False
 Continue without prompts
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Specify the type of managed identity for the application. Options are None, SystemAssigned, UserAssigned, and SystemAssigned,UserAssigned.
+
+```yaml
+Type: ManagedIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -172,7 +206,7 @@ Accept wildcard characters: False
 Specify the name of the managed application
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ApplicationName
 
@@ -187,7 +221,7 @@ Accept wildcard characters: False
 Specify the url of the application package sfpkg file
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: CreateAppTypeVersion
 Aliases:
 
@@ -198,11 +232,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specify the name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -217,7 +266,7 @@ Accept wildcard characters: False
 Specify the tags as key/value pairs.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -228,11 +277,26 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -UserAssignedIdentityId
+Specify the list of user assigned identity ARM resource IDs for the application.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -248,7 +312,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

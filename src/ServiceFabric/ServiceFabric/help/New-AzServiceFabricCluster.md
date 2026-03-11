@@ -19,15 +19,16 @@ New-AzServiceFabricCluster [-ResourceGroupName] <String> [-CertificateOutputFold
  [-CertificatePassword <SecureString>] [-KeyVaultResourceGroupName <String>] [-KeyVaultName <String>]
  -Location <String> [-Name <String>] [-VmUserName <String>] [-ClusterSize <Int32>]
  [-CertificateSubjectName <String>] -VmPassword <SecureString> [-OS <OperatingSystem>] [-VmSku <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByExistingKeyVault
 ```
 New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
  [-CertificateCommonName <String>] [-CertificateIssuerThumbprint <String>] [-VmPassword <SecureString>]
- -SecretIdentifier <String> [-Thumbprint <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -SecretIdentifier <String> [-Thumbprint <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByNewPfxAndVaultName
@@ -35,8 +36,8 @@ New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> 
 New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
  [-CertificateOutputFolder <String>] [-CertificatePassword <SecureString>]
  [-KeyVaultResourceGroupName <String>] [-KeyVaultName <String>] [-CertificateSubjectName <String>]
- [-VmPassword <SecureString>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-VmPassword <SecureString>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByExistingPfxAndVaultName
@@ -45,7 +46,8 @@ New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> 
  -CertificateFile <String> [-CertificatePassword <SecureString>] [-SecondaryCertificateFile <String>]
  [-SecondaryCertificatePassword <SecureString>] [-KeyVaultResourceGroupName <String>] [-KeyVaultName <String>]
  [-CertificateCommonName <String>] [-CertificateIssuerThumbprint <String>] [-VmPassword <SecureString>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -126,7 +128,7 @@ This command will let you bring your own Certificate and custom template and cre
 Certificate common name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByExistingKeyVault, ByExistingPfxAndVaultName
 Aliases: CertCommonName
 
@@ -142,7 +144,7 @@ Accept wildcard characters: False
 The existing certificate file path for the primary cluster certificate
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByExistingPfxAndVaultName
 Aliases: Source
 
@@ -158,7 +160,7 @@ Accept wildcard characters: False
 Certificate issuer thumbprint, separated by commas if more than one
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByExistingKeyVault, ByExistingPfxAndVaultName
 Aliases: CertIssuerThumbprint
 
@@ -174,7 +176,7 @@ Accept wildcard characters: False
 The folder of the new certificate file to be created
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByDefaultArmTemplate, ByNewPfxAndVaultName
 Aliases: Destination
 
@@ -190,7 +192,7 @@ Accept wildcard characters: False
 The password of the certificate file
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: ByDefaultArmTemplate, ByNewPfxAndVaultName, ByExistingPfxAndVaultName
 Aliases: CertPassword
 
@@ -206,7 +208,7 @@ Accept wildcard characters: False
 The subject name of the certificate to be created
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByDefaultArmTemplate, ByNewPfxAndVaultName
 Aliases: Subject
 
@@ -223,7 +225,7 @@ The number of nodes in the cluster.
 Default are 5 nodes
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: ByDefaultArmTemplate
 Aliases:
 
@@ -239,7 +241,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -255,7 +257,7 @@ Accept wildcard characters: False
 Azure key vault name, if not given it will be defaulted to the resource group name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByDefaultArmTemplate, ByNewPfxAndVaultName, ByExistingPfxAndVaultName
 Aliases:
 
@@ -271,9 +273,9 @@ Accept wildcard characters: False
 Azure key vault resource group name, if not given it will be defaulted to resource group name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByDefaultArmTemplate, ByNewPfxAndVaultName, ByExistingPfxAndVaultName
-Aliases: KeyVaultResourceGroupName
+Aliases: KeyVaultResouceGroupName
 
 Required: False
 Position: Named
@@ -287,7 +289,7 @@ Accept wildcard characters: False
 The resource group location
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByDefaultArmTemplate
 Aliases:
 
@@ -303,7 +305,7 @@ Accept wildcard characters: False
 Specify the name of the cluster, if not given it will be same as resource group name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByDefaultArmTemplate
 Aliases: ClusterName
 
@@ -319,7 +321,7 @@ Accept wildcard characters: False
 The Operating System of the VMs that make up the cluster.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem
+Type: OperatingSystem
 Parameter Sets: ByDefaultArmTemplate
 Aliases: VmImage
 Accepted values: WindowsServer2012R2Datacenter, WindowsServer2016Datacenter, WindowsServer2016DatacenterwithContainers, UbuntuServer1604, UbuntuServer1804, UbuntuServer2004, WindowsServer2022
@@ -336,7 +338,7 @@ Accept wildcard characters: False
 The path to the template parameter file.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByExistingKeyVault, ByNewPfxAndVaultName, ByExistingPfxAndVaultName
 Aliases:
 
@@ -347,12 +349,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 
 Specify the name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -368,7 +385,7 @@ Accept wildcard characters: False
 The existing certificate file path for the secondary cluster certificate
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByExistingPfxAndVaultName
 Aliases: SecSource
 
@@ -384,7 +401,7 @@ Accept wildcard characters: False
 The password of the certificate file
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: ByExistingPfxAndVaultName
 Aliases: SecCertPassword
 
@@ -400,7 +417,7 @@ Accept wildcard characters: False
 The existing Azure key vault secret URL, for example 'https://mykv.vault.azure.net:443/secrets/mysecrets/55ec7c4dc61a462bbc645ffc9b4b225f'
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByExistingKeyVault
 Aliases:
 
@@ -416,7 +433,7 @@ Accept wildcard characters: False
 The path to the template file.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByExistingKeyVault, ByNewPfxAndVaultName, ByExistingPfxAndVaultName
 Aliases:
 
@@ -431,7 +448,7 @@ Accept wildcard characters: False
 The thumbprint for the certificate corresponding to the SecretIdentifier. Use this if the certificate is not managed as the key vault would only have the certificate stored as a secret and the cmdlet is unable to retrieve the thumbprint.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByExistingKeyVault
 Aliases:
 
@@ -447,7 +464,7 @@ Accept wildcard characters: False
 The password of the Vm.
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: ByDefaultArmTemplate
 Aliases:
 
@@ -459,7 +476,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: ByExistingKeyVault, ByNewPfxAndVaultName, ByExistingPfxAndVaultName
 Aliases:
 
@@ -475,7 +492,7 @@ Accept wildcard characters: False
 The Vm Sku
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByDefaultArmTemplate
 Aliases: Sku
 
@@ -491,7 +508,7 @@ Accept wildcard characters: False
 The user name for logging to Vm
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByDefaultArmTemplate
 Aliases:
 
@@ -507,7 +524,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -524,7 +541,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

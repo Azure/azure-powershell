@@ -18,9 +18,11 @@ New-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] 
  [-ApplicationEndPort <Int32>] [-EphemeralStartPort <Int32>] [-EphemeralEndPort <Int32>] [-VmSize <String>]
  [-VmImagePublisher <String>] [-VmImageOffer <String>] [-VmImageSku <String>] [-VmImageVersion <String>]
  [-Capacity <Hashtable>] [-PlacementProperty <Hashtable>] [-VmUserAssignedIdentity <String[]>] [-IsStateless]
- [-MultiplePlacementGroup] [-ZoneBalance] [-EnableOverProvisioning]
+ [-MultiplePlacementGroup] [-ZoneBalance] [-EnableOverProvisioning] [-IsOutboundOnly]
+ [-EnableResilientEphemeralOSDisk] [-EnableAcceleratedNetworking] [-EnableEncryptionAtHost]
+ [-EnableNodePublicIP] [-EnableNodePublicIPv6] [-SecureBootEnabled] [-UseEphemeralOSDisk]
  [-Zone <System.Collections.Generic.List`1[System.String]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,7 +77,7 @@ Create node type with user assigned identity and marked to host stateless worklo
 Application End port of a range of ports.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -90,7 +92,7 @@ Accept wildcard characters: False
 Application start port of a range of ports.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +107,7 @@ Accept wildcard characters: False
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -121,7 +123,7 @@ Capacity tags applied to the nodes in the node type as key/value pairs, the clus
 Updating this will override the current values.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -136,7 +138,7 @@ Accept wildcard characters: False
 Specify the name of the cluster.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -151,7 +153,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -167,7 +169,7 @@ Disk size for each vm in the node type in GBs.
 Default 100.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases: DataDiskSize
 
@@ -182,10 +184,70 @@ Accept wildcard characters: False
 Managed data disk type. IOPS and throughput are given by the disk size, to see more information go to https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types. Default StandardSSD_LRS
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSDiskType
+Type: PSDiskType
 Parameter Sets: (All)
 Aliases: DataDiskType
 Accepted values: Standard_LRS, StandardSSD_LRS, Premium_LRS
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAcceleratedNetworking
+Enable accelerated networking on the node type VMs. This provides better network performance.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableEncryptionAtHost
+Enable encryption at host for the node type VMs. This encrypts data at the VM host level.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableNodePublicIP
+Enable public IP for each node in the node type. Each VM will get its own public IP.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableNodePublicIPv6
+Enable public IPv6 for each node in the node type.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -198,7 +260,22 @@ Accept wildcard characters: False
 Specifies whether the node type should be overprovisioned. It is only allowed for stateless node types.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableResilientEphemeralOSDisk
+Enable resilient ephemeral OS disk for the node type. This provides better performance and resilience for ephemeral OS disks.
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -213,7 +290,7 @@ Accept wildcard characters: False
 Ephemeral end port of a range of ports.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -228,7 +305,7 @@ Accept wildcard characters: False
 Ephemeral start port of a range of ports.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -243,7 +320,7 @@ Accept wildcard characters: False
 The number of nodes in the node type.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -254,11 +331,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IsOutboundOnly
+Indicates if this node type can only be used for outbound connections. Outbound-only node types will not have load balancing rules associated with them.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IsStateless
 Indicates if the node type can only host Stateless workloads.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -273,7 +365,7 @@ Accept wildcard characters: False
 Indicates if scale set associated with the node type can be composed of multiple placement groups.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -288,7 +380,7 @@ Accept wildcard characters: False
 Specify the name of the node type.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: NodeTypeName
 
@@ -304,7 +396,7 @@ Placement tags applied to nodes in the node type as key/value pairs, which can b
 Updating this will override the current values.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -322,9 +414,24 @@ Only one node type should be marked as primary.
 Primary node type cannot be deleted or changed for existing clusters.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -337,7 +444,7 @@ Accept wildcard characters: False
 Specify the name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -348,12 +455,42 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -SecureBootEnabled
+Enable secure boot for the node type VMs. This provides additional security during boot.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseEphemeralOSDisk
+Use ephemeral OS disk instead of managed disk for the node type VMs.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VmImageOffer
 The offer type of the Azure Virtual Machines Marketplace image.
 Default: WindowsServer.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -369,7 +506,7 @@ The publisher of the Azure Virtual Machines Marketplace image.
 Default: MicrosoftWindowsServer.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -385,7 +522,7 @@ The SKU of the Azure Virtual Machines Marketplace image.
 Default: 2019-Datacenter.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -401,7 +538,7 @@ The version of the Azure Virtual Machines Marketplace image.
 Default: latest.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -418,7 +555,7 @@ All virtual machines in a pool are the same size.
 Default: Standard_D2.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -433,7 +570,7 @@ Accept wildcard characters: False
 The list of user assigned identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. Follow steps to create the identity and add the role assignment with Service Fabric Resource Provider beforehand here: https://learn.microsoft.com/en-us/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -463,13 +600,13 @@ Accept wildcard characters: False
 Setting this to true allows stateless node types to scale out without equal distribution across zones.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -478,7 +615,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -494,7 +631,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
