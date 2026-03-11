@@ -17,6 +17,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Origin(Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PropertyOrigin.Owned)]
         public string ArtifactName { get => this._artifactName; set => this._artifactName = value; }
 
+        /// <summary>Backing field for <see cref="HardwareSettingName" /> property.</summary>
+        private string _hardwareSettingName;
+
+        /// <summary>The name of the HardwareSetting</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Origin(Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.PropertyOrigin.Owned)]
+        public string HardwareSettingName { get => this._hardwareSettingName; set => this._hardwareSettingName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -72,6 +79,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
         SerializedName = @"artifactName",
         PossibleTypes = new [] { typeof(string) })]
         string ArtifactName { get; set; }
+        /// <summary>The name of the HardwareSetting</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the HardwareSetting",
+        SerializedName = @"hardwareSettingName",
+        PossibleTypes = new [] { typeof(string) })]
+        string HardwareSettingName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Info(
         Required = false,
@@ -134,6 +152,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
     {
         /// <summary>The name of the Artifact</summary>
         string ArtifactName { get; set; }
+        /// <summary>The name of the HardwareSetting</summary>
+        string HardwareSettingName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>The name of the Image</summary>
