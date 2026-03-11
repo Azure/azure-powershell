@@ -59,66 +59,89 @@ This command lists all the DisconnectedOperations resources in the current subsc
 
 ### Example 2: Get a specific DisconnectedOperation by name and resource group
 ```powershell
-Get-AzDisconnectedOperationsDisconnectedOperation -Name "Resource-1" -ResourceGroupName "ResourceGroup-1"
+Get-AzDisconnectedOperationsDisconnectedOperation -Name "winfield-ps-test" -ResourceGroupName "winfield-demo-rg-2"
 ```
 
 ```output
-BillingModel                 : Capacity
-ConnectionIntent             : Disconnected
-ConnectionStatus             : Disconnected
-DeviceVersion                :
-Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/ResourceGroup-1/providers/Microsoft.Edge/disconnectedoperations/Resource-1
-Location                     : EastUS2EUAP
-Name                         : Resource-1
-ProvisioningState            : Succeeded
-RegistrationStatus           : Unregistered
-ResourceGroupName            : ResourceGroup-1
-StampId                      : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
-SystemDataCreatedAt          : 05/19/2025 21:23:25
-SystemDataCreatedBy          : user1@outlook.com
-SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 05/20/2025 06:09:56
-SystemDataLastModifiedBy     : user1@outlook.com
-SystemDataLastModifiedByType : User
-Tag                          : {
-                               }
-Type                         : microsoft.edge/disconnectedoperations
+BenefitPlanAzureHybridWindowsServerBenefit : Enabled
+BenefitPlanWindowsServerVMCount            : 10
+BillingConfigurationAutoRenew              : Disabled
+BillingConfigurationBillingStatus          : Enabled
+BillingModel                               : Capacity
+ConnectionIntent                           : Disconnected
+ConnectionStatus                           : Disconnected
+CurrentCore                                : 8
+CurrentEndDate                             : 03/01/2027 00:00:00
+CurrentPricingModel                        : Annual
+CurrentStartDate                           : 03/02/2026 00:00:00
+DeviceVersion                              :
+Id                                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test
+Location                                   : eastus2euap
+Name                                       : winfield-ps-test
+ProvisioningState                          : Succeeded
+RegistrationStatus                         : Unregistered
+ResourceGroupName                          : winfield-demo-rg-2
+StampId                                    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
+SystemDataCreatedAt                        : 03/02/2026 10:07:05
+SystemDataCreatedBy                        : user1@outlook.com
+SystemDataCreatedByType                    : User
+SystemDataLastModifiedAt                   : 03/02/2026 10:07:05
+SystemDataLastModifiedBy                   : user1@outlook.com
+SystemDataLastModifiedByType               : User
+Tag                                        : {
+                                             }
+Type                                       : microsoft.edge/disconnectedoperations
+UpcomingCore                               : 0
+UpcomingEndDate                            :
+UpcomingPricingModel                       :
+UpcomingStartDate                          :
 ```
 
 This command retrieves a specific DisconnectedOperation resource by its name and resource group.
 
-
 ### Example 3: GetViaIdentity for a specific DisconnectedOperation
 ```powershell
 $disconnectedOperation = @{
-  "ResourceGroupName" = "ResourceGroup-1";
-  "DisconnectedOperationName" = "Resource-1";
+  "ResourceGroupName" = "winfield-demo-rg-2";
+  "Name" = "winfield-ps-test";
   "SubscriptionId" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx";
 }
 Get-AzDisconnectedOperationsDisconnectedOperation -InputObject $disconnectedOperation
 ```
 
 ```output
-BillingModel                 : Capacity
-ConnectionIntent             : Disconnected
-ConnectionStatus             : Disconnected
-DeviceVersion                :
-Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/ResourceGroup-1/providers/Microsoft.Edge/disconnectedoperations/Resource-1
-Location                     : EastUS2EUAP
-Name                         : Resource-1
-ProvisioningState            : Succeeded
-RegistrationStatus           : Unregistered
-ResourceGroupName            : ResourceGroup-1
-StampId                      : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
-SystemDataCreatedAt          : 05/19/2025 21:23:25
-SystemDataCreatedBy          : user1@outlook.com
-SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 05/20/2025 06:09:56
-SystemDataLastModifiedBy     : user1@outlook.com
-SystemDataLastModifiedByType : User
-Tag                          : {
-                               }
-Type                         : microsoft.edge/disconnectedoperations
+BenefitPlanAzureHybridWindowsServerBenefit : Enabled
+BenefitPlanWindowsServerVMCount            : 10
+BillingConfigurationAutoRenew              : Disabled
+BillingConfigurationBillingStatus          : Enabled
+BillingModel                               : Capacity
+ConnectionIntent                           : Disconnected
+ConnectionStatus                           : Disconnected
+CurrentCore                                : 8
+CurrentEndDate                             : 03/01/2027 00:00:00
+CurrentPricingModel                        : Annual
+CurrentStartDate                           : 03/02/2026 00:00:00
+DeviceVersion                              :
+Id                                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test
+Location                                   : eastus2euap
+Name                                       : winfield-ps-test
+ProvisioningState                          : Succeeded
+RegistrationStatus                         : Unregistered
+ResourceGroupName                          : winfield-demo-rg-2
+StampId                                    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
+SystemDataCreatedAt                        : 03/02/2026 10:07:05
+SystemDataCreatedBy                        : user1@outlook.com
+SystemDataCreatedByType                    : User
+SystemDataLastModifiedAt                   : 03/02/2026 10:07:05
+SystemDataLastModifiedBy                   : user1@outlook.com
+SystemDataLastModifiedByType               : User
+Tag                                        : {
+                                             }
+Type                                       : microsoft.edge/disconnectedoperations
+UpcomingCore                               : 0
+UpcomingEndDate                            :
+UpcomingPricingModel                       :
+UpcomingStartDate                          :
 ```
 
 ### Example 4: List all DisconnectedOperations from a specific resource group

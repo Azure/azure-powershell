@@ -32,6 +32,8 @@ Describe 'Get-AzDisconnectedOperationsDisconnectedOperation' {
         $result | Should -Not -BeNullOrEmpty
         $result.BillingModel | Should -Be "Capacity"
         $result.ConnectionIntent | Should -Be "Disconnected"
+        $result.CurrentCore | Should -Be $env.CurrentCore
+        $result.CurrentPricingModel | Should -Be $env.AnnualPricingModel
         $result.Name | Should -Be $env.Name
         $result.ResourceGroupName | Should -Be $env.ResourceGroupName
         $result.Type | Should -Be "Microsoft.Edge/disconnectedOperations"
@@ -44,6 +46,8 @@ Describe 'Get-AzDisconnectedOperationsDisconnectedOperation' {
         foreach ($resource in $result){
             $resource.BillingModel | Should -Be "Capacity"
             $resource.ConnectionIntent | Should -Be "Disconnected"
+            $result.CurrentCore | Should -Not -BeNullOrEmpty
+            $result.CurrentPricingModel | Should -Not -BeNullOrEmpty
             $resource.ResourceGroupName | Should -Be $env.ResourceGroupName
             $resource.Type | Should -Be "Microsoft.Edge/disconnectedOperations"
         }
@@ -59,6 +63,8 @@ Describe 'Get-AzDisconnectedOperationsDisconnectedOperation' {
         $result | Should -Not -BeNullOrEmpty
         $result.BillingModel | Should -Be "Capacity"
         $result.ConnectionIntent | Should -Be "Disconnected"
+        $result.CurrentCore | Should -Be $env.CurrentCore
+        $result.CurrentPricingModel | Should -Be $env.AnnualPricingModel
         $result.Name | Should -Be $env.Name
         $result.ResourceGroupName | Should -Be $env.ResourceGroupName
         $result.Type | Should -Be "Microsoft.Edge/disconnectedOperations"

@@ -20,5 +20,7 @@ Describe 'Get-AzDisconnectedOperationsDisconnectedOperationDeploymentManifest' {
 
         $manifest | Should -Not -BeNullOrEmpty
         $manifest.ResourceName | Should -Be $env.Name
+        $manifest.CurrentCore | Should -Be $env.CurrentCore
+        $manifest.CurrentPricingModel | Should -Be $env.AnnualPricingModel
     }
 }

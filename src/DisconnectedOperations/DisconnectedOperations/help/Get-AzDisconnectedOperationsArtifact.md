@@ -59,7 +59,7 @@ Get-AzDisconnectedOperationsArtifact -ImageName "default" -Name "disconnected-op
 Name                   SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 ----                   ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
 My-artifact-1                                                                                                                                                         my-resource-group
-My-artifact-2                                                                                                                                                         my-resource-group                                                                    
+My-artifact-2                                                                                                                                                         my-resource-group
 ```
 
 This command lists all the artifacts from image `default` in resource group `my-resource-group`
@@ -87,7 +87,7 @@ Title                        : my-artifact
 Type                         : Microsoft.Edge/disconnectedOperations/images/artifacts
 ```
 
-This command gets the artifact `my-artifact` from image `default` in resource group `my-resource-group`	
+This command gets the artifact `my-artifact` from image `default` in resource group `my-resource-group`
 
 ### Example 3: GetViaIdentity for artifact.
 ```powershell
