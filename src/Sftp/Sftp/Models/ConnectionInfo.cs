@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
     /// <summary>
     /// Encapsulates connection-specific information.
     /// </summary>
-    public class ConnectionInfo
+    internal class ConnectionInfo
     {
         public ConnectionInfo(string storageAccount = null, string username = null, string host = null, int port = 22)
         {
