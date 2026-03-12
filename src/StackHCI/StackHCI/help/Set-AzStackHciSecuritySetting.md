@@ -8,21 +8,35 @@ schema: 2.0.0
 # Set-AzStackHciSecuritySetting
 
 ## SYNOPSIS
-Create a security setting
+Update a security setting
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
 Set-AzStackHciSecuritySetting -ClusterName <String> -ResourceGroupName <String> -SName <String>
- [-SubscriptionId <String>] [-ProvisioningState <ProvisioningState>]
- [-SecuredCoreComplianceAssignment <ComplianceAssignmentType>]
- [-SmbEncryptionForIntraClusterTrafficComplianceAssignment <ComplianceAssignmentType>]
- [-WdacComplianceAssignment <ComplianceAssignmentType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SubscriptionId <String>] [-ProvisioningState <String>] [-SecuredCoreComplianceAssignment <String>]
+ [-SmbEncryptionForIntraClusterTrafficComplianceAssignment <String>] [-WdacComplianceAssignment <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Set-AzStackHciSecuritySetting -ClusterName <String> -ResourceGroupName <String> -SName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Set-AzStackHciSecuritySetting -ClusterName <String> -ResourceGroupName <String> -SName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a security setting
+Update a security setting
 
 ## EXAMPLES
 
@@ -87,6 +101,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -106,8 +150,8 @@ Accept wildcard characters: False
 The status of the last operation.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -137,8 +181,8 @@ Accept wildcard characters: False
 Secured Core Compliance Assignment
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ComplianceAssignmentType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -152,8 +196,8 @@ Accept wildcard characters: False
 SMB encryption for intra-cluster traffic Compliance Assignment
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ComplianceAssignmentType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -198,8 +242,8 @@ Accept wildcard characters: False
 WDAC Compliance Assignment
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ComplianceAssignmentType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -247,7 +291,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ISecuritySetting
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ISecuritySetting
 
 ## NOTES
 

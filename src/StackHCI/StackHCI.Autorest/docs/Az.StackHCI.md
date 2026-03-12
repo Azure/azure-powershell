@@ -1,6 +1,6 @@
 ---
 Module Name: Az.StackHCI
-Module Guid: ecca9195-88b3-4c8f-a865-4fa09629fc69
+Module Guid: df374140-2ff0-4760-a5bc-17dee483216b
 Download Help Link: https://learn.microsoft.com/powershell/module/az.stackhci
 Help Version: 1.0.0.0
 Locale: en-US
@@ -77,8 +77,17 @@ Extends Software Assurance Benefit to a cluster
 ### [Invoke-AzStackHciUpdate](Invoke-AzStackHciUpdate.md)
 Apply Update
 
+### [Invoke-MSIFlow](Invoke-MSIFlow.md)
+Handles MSI-based registration logic for an Arc-enabled HCI cluster.
+
+### [Invoke-MSIUnregistrationFlow](Invoke-MSIUnregistrationFlow.md)
+
+
 ### [New-AzStackHciArcSetting](New-AzStackHciArcSetting.md)
 Create ArcSetting for HCI cluster.
+
+### [New-AzStackHciArcSettingIdentity](New-AzStackHciArcSettingIdentity.md)
+Create Aad identity for arc settings.
 
 ### [New-AzStackHciCluster](New-AzStackHciCluster.md)
 Create an HCI cluster.
@@ -135,13 +144,13 @@ Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestati
 Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster to enable or disable features.
 
 ### [Set-AzStackHciDeploymentSetting](Set-AzStackHciDeploymentSetting.md)
-Create a DeploymentSetting
+Update a DeploymentSetting
 
 ### [Set-AzStackHciEdgeDevice](Set-AzStackHciEdgeDevice.md)
-Create a EdgeDevice
+Update a EdgeDevice
 
 ### [Set-AzStackHciSecuritySetting](Set-AzStackHciSecuritySetting.md)
-Create a security setting
+Update a security setting
 
 ### [Set-AzStackHciUpdate](Set-AzStackHciUpdate.md)
 Put specified Update
@@ -152,8 +161,20 @@ Put Update runs for a specified update
 ### [Set-AzStackHciUpdateSummary](Set-AzStackHciUpdateSummary.md)
 Put Update summaries under the HCI cluster
 
+### [Test-ArcNodeClusterLink](Test-ArcNodeClusterLink.md)
+
+
 ### [Test-AzStackHciEdgeDevice](Test-AzStackHciEdgeDevice.md)
 A long-running resource action.
+
+### [Test-ClusterArcEnabled](Test-ClusterArcEnabled.md)
+
+
+### [Test-ClusterMsiSupport](Test-ClusterMsiSupport.md)
+
+
+### [Test-ComputerNameHasDnsSuffix](Test-ComputerNameHasDnsSuffix.md)
+
 
 ### [Unregister-AzStackHCI](Unregister-AzStackHCI.md)
 Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and unregisters the on-premises cluster with Azure.
