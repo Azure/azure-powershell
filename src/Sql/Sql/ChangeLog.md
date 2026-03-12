@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Handled SDK exceptions by throwing error response in `AZPSCloudException`.
 
 ## Version 6.4.1
 * Add support for the versionless AKV keys.
