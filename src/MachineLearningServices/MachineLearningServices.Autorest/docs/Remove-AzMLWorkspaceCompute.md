@@ -15,15 +15,21 @@ Deletes specified Machine Learning compute.
 ### Delete (Default)
 ```
 Remove-AzMLWorkspaceCompute -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- -UnderlyingResourceAction <UnderlyingResourceAction> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -UnderlyingResourceAction <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzMLWorkspaceCompute -InputObject <IMachineLearningServicesIdentity>
- -UnderlyingResourceAction <UnderlyingResourceAction> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzMLWorkspaceCompute -InputObject <IMachineLearningServicesIdentity> -UnderlyingResourceAction <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityWorkspace
+```
+Remove-AzMLWorkspaceCompute -Name <String> -WorkspaceInputObject <IMachineLearningServicesIdentity>
+ -UnderlyingResourceAction <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,7 +86,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
@@ -99,7 +104,7 @@ Name of the Azure Machine Learning compute.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityWorkspace
 Aliases: ComputeName
 
 Required: True
@@ -174,7 +179,7 @@ Accept wildcard characters: False
 Delete the underlying compute if 'Delete', or detach the underlying compute from workspace if 'Detach'.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.UnderlyingResourceAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -182,6 +187,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: DeleteViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

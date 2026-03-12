@@ -15,15 +15,30 @@ Update a batch inference endpoint (asynchronous).
 ### UpdateExpanded (Default)
 ```
 Update-AzMLWorkspaceBatchEndpoint -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssigned <Hashtable>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-AuthMode <String>] [-DefaultDeploymentName <String>] [-Description <String>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-EndpointProperties <Hashtable>]
+ [-IdentityUserAssigned <Hashtable>] [-Kind <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMLWorkspaceBatchEndpoint -InputObject <IMachineLearningServicesIdentity>
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssigned <Hashtable>] [-Tag <Hashtable>]
+Update-AzMLWorkspaceBatchEndpoint -InputObject <IMachineLearningServicesIdentity> [-AuthMode <String>]
+ [-DefaultDeploymentName <String>] [-Description <String>] [-EnableSystemAssignedIdentity <Boolean?>]
+ [-EndpointProperties <Hashtable>] [-IdentityUserAssigned <Hashtable>] [-Kind <String>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityWorkspaceExpanded
+```
+Update-AzMLWorkspaceBatchEndpoint -Name <String> -WorkspaceInputObject <IMachineLearningServicesIdentity>
+ [-AuthMode <String>] [-DefaultDeploymentName <String>] [-Description <String>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-EndpointProperties <Hashtable>]
+ [-IdentityUserAssigned <Hashtable>] [-Kind <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,6 +89,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AuthMode
+[Required] Use 'Key' for key based authentication and 'AMLToken' for Azure Machine Learning token-based authentication.
+'Key' doesn't expire but 'AMLToken' does.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultDeploymentName
+Name of the deployment that will be default for the endpoint.This deployment will end up getting 100% traffic when the endpoint scoring URL is invoked.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -90,11 +136,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Managed service identity (system assigned and/or user assigned identities)
+### -Description
+Description of the inference endpoint.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EndpointProperties
+Property dictionary.
+Properties can be added, but not removed or altered.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +201,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
@@ -138,12 +214,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Kind
+Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name for the Batch inference endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: True
@@ -184,6 +275,85 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkuCapacity
+If the SKU supports scale out/in then the capacity integer should be included.
+If scale out/in is not possible for the resource this may be omitted.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuFamily
+If the service has different generations of hardware, for the same SKU, then that can be captured here.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuName
+The name of the SKU.
+Ex - P3.
+It is typically a letter+number code
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuSize
+The SKU size.
+When the name field is the combination of tier and some other value, this would be the standalone code.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuTier
+This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -211,6 +381,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: UpdateViaIdentityWorkspaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -269,7 +454,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IBatchEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IBatchEndpoint
 
 ## NOTES
 

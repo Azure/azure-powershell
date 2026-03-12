@@ -21,12 +21,13 @@ Create an in-memory object for SharedPrivateLinkResource.
 Create an in-memory object for SharedPrivateLinkResource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.SharedPrivateLinkResource
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.SharedPrivateLinkResource
 .Link
-https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceSharedPrivateLinkResourceObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacesharedprivatelinkresourceobject
 #>
 function New-AzMLWorkspaceSharedPrivateLinkResourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.SharedPrivateLinkResource')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.SharedPrivateLinkResource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,13 +44,13 @@ function New-AzMLWorkspaceSharedPrivateLinkResourceObject {
         [string]
         $RequestMessage,
         [Parameter(HelpMessage="Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PrivateEndpointServiceConnectionStatus])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PrivateEndpointServiceConnectionStatus]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Pending", "Approved", "Rejected", "Disconnected", "Timeout")]
+        [string]
         $Status
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.SharedPrivateLinkResource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.SharedPrivateLinkResource]::New()
 
         if ($PSBoundParameters.ContainsKey('GroupId')) {
             $Object.GroupId = $GroupId

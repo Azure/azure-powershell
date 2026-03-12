@@ -8,23 +8,47 @@ schema: 2.0.0
 # New-AzMLWorkspaceCompute
 
 ## SYNOPSIS
-Creates or updates compute.
+Create compute.
 This call will overwrite a compute if it exists.
 This is a nonrecoverable operation.
 If your intent is to create a new compute, do a GET first to verify that it does not exist yet.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzMLWorkspaceCompute -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-Compute <ICompute>] [-IdentityType <ManagedServiceIdentityType>]
+New-AzMLWorkspaceCompute -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -WorkspaceName <String> [-Compute <ICompute>] [-EnableSystemAssignedIdentity]
  [-IdentityUserAssigned <Hashtable>] [-Location <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
- [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzMLWorkspaceCompute -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -WorkspaceName <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzMLWorkspaceCompute -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -WorkspaceName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityWorkspaceExpanded
+```
+New-AzMLWorkspaceCompute -Name <String> -WorkspaceInputObject <IMachineLearningServicesIdentity>
+ [-Compute <ICompute>] [-EnableSystemAssignedIdentity] [-IdentityUserAssigned <Hashtable>] [-Location <String>]
+ [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates compute.
+Create compute.
 This call will overwrite a compute if it exists.
 This is a nonrecoverable operation.
 If your intent is to create a new compute, do a GET first to verify that it does not exist yet.
@@ -47,17 +71,71 @@ If your intent is to create a new compute, do a GET first to verify that it does
 # New-AzMLWorkspaceSynapseSparkObject
 
 $aml = New-AzMLWorkspaceAmlComputeObject -OSType 'Linux' -VMSize "STANDARD_DS3_V2" -ScaleMaxNodeCount 8 -ScaleMinNodeCount 0 -RemoteLoginPortPublicAccess 'NotSpecified' -EnableNodePublicIP $true
-New-AzMLWorkspaceCompute -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-test01 -Name aml02 -Location eastus -Compute $aml
+New-AzMLWorkspaceCompute -ResourceGroupName ml-test -WorkspaceName mlworkspace-test2 -Name aml02 -Location eastus -Compute $aml
 ```
 
 ```output
-Name        SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Location ResourceGroupName
-----        ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -------- -----------------
-aml02
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/computes/aml02
+IdentityPrincipalId          : 
+IdentityTenantId             : 
+IdentityType                 : 
+IdentityUserAssignedIdentity : {
+                               }
+Location                     : eastus
+Name                         : aml02
+Property                     : {
+                                 "computeType": "AmlCompute",
+                                 "computeLocation": "eastus",
+                                 "provisioningState": "Succeeded",
+                                 "createdOn": "2025-11-05T09:49:10.7733198Z",
+                                 "modifiedOn": "2025-11-05T09:49:21.5072399Z",
+                                 "isAttachedCompute": false,
+                                 "disableLocalAuth": false,
+                                 "properties": {
+                                   "scaleSettings": {
+                                     "maxNodeCount": 8,
+                                     "minNodeCount": 0,
+                                     "nodeIdleTimeBeforeScaleDown": "PT2M"
+                                   },
+                                   "nodeStateCounts": {
+                                     "idleNodeCount": 0,
+                                     "runningNodeCount": 0,
+                                     "preparingNodeCount": 0,
+                                     "unusableNodeCount": 0,
+                                     "leavingNodeCount": 0,
+                                     "preemptedNodeCount": 0
+                                   },
+                                   "osType": "Linux",
+                                   "vmSize": "STANDARD_DS3_V2",
+                                   "vmPriority": "Dedicated",
+                                   "isolatedNetwork": false,
+                                   "remoteLoginPortPublicAccess": "Enabled",
+                                   "allocationState": "Steady",
+                                   "allocationStateTransitionTime": "2025-11-05T09:49:20.0360000Z",
+                                   "currentNodeCount": 0,
+                                   "targetNodeCount": 0,
+                                   "enableNodePublicIp": true
+                                 }
+                               }
+ResourceGroupName            : ml-test
+SkuCapacity                  : 
+SkuFamily                    : 
+SkuName                      : 
+SkuSize                      : 
+SkuTier                      : 
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Tag                          : {
+                               }
+Type                         : Microsoft.MachineLearningServices/workspaces/computes
 ```
 
-Creates or updates compute.
-This call will overwrite a compute if it exists
+These commands create or update compute.
+This call will overwrite a compute if it exists.
 
 ## PARAMETERS
 
@@ -78,11 +156,10 @@ Accept wildcard characters: False
 
 ### -Compute
 Compute properties
-To construct, see NOTES section for COMPUTE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICompute
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ICompute
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -108,12 +185,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -130,10 +207,40 @@ The dictionary values can be empty objects ({}) in requests.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -145,7 +252,7 @@ Specifies the location of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -191,7 +298,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -207,7 +314,7 @@ If scale out/in is not possible for the resource this may be omitted.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -222,7 +329,7 @@ If the service has different generations of hardware, for the same SKU, then tha
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -239,7 +346,7 @@ It is typically a letter+number code
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -255,7 +362,7 @@ When the name field is the combination of tier and some other value, this would 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -269,8 +376,8 @@ Accept wildcard characters: False
 This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -285,7 +392,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -300,7 +407,7 @@ Contains resource tags defined as key/value pairs.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -310,12 +417,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: CreateViaIdentityWorkspaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 Name of Azure Machine Learning workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -361,9 +483,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IComputeResource
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IComputeResource
 
 ## NOTES
 

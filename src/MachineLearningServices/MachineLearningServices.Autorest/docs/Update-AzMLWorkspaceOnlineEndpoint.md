@@ -15,14 +15,31 @@ Update Online Endpoint (asynchronous).
 ### UpdateExpanded (Default)
 ```
 Update-AzMLWorkspaceOnlineEndpoint -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssigned <Hashtable>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-AuthMode <String>] [-Compute <String>] [-Description <String>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-EndpointPropertiesBaseProperty <Hashtable>]
+ [-IdentityUserAssigned <Hashtable>] [-Kind <String>] [-MirrorTraffic <Hashtable>]
+ [-PublicNetworkAccess <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
+ [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-Traffic <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMLWorkspaceOnlineEndpoint -InputObject <IMachineLearningServicesIdentity>
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssigned <Hashtable>] [-Tag <Hashtable>]
+Update-AzMLWorkspaceOnlineEndpoint -InputObject <IMachineLearningServicesIdentity> [-AuthMode <String>]
+ [-Compute <String>] [-Description <String>] [-EnableSystemAssignedIdentity <Boolean?>]
+ [-EndpointPropertiesBaseProperty <Hashtable>] [-IdentityUserAssigned <Hashtable>] [-Kind <String>]
+ [-MirrorTraffic <Hashtable>] [-PublicNetworkAccess <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-Traffic <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityWorkspaceExpanded
+```
+Update-AzMLWorkspaceOnlineEndpoint -Name <String> -WorkspaceInputObject <IMachineLearningServicesIdentity>
+ [-AuthMode <String>] [-Compute <String>] [-Description <String>] [-EnableSystemAssignedIdentity <Boolean?>]
+ [-EndpointPropertiesBaseProperty <Hashtable>] [-IdentityUserAssigned <Hashtable>] [-Kind <String>]
+ [-MirrorTraffic <Hashtable>] [-PublicNetworkAccess <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-Traffic <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -74,6 +91,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AuthMode
+[Required] Use 'Key' for key based authentication and 'AMLToken' for Azure Machine Learning token-based authentication.
+'Key' doesn't expire but 'AMLToken' does.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Compute
+ARM resource ID of the compute if it exists.optional
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -90,11 +138,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Managed service identity (system assigned and/or user assigned identities)
+### -Description
+Description of the inference endpoint.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EndpointPropertiesBaseProperty
+Property dictionary.
+Properties can be added, but not removed or altered.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +203,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
@@ -138,12 +216,43 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Kind
+Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MirrorTraffic
+Percentage of traffic to be mirrored to each deployment without using returned scoring.
+Traffic values need to sum to utmost 50.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Online Endpoint name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: True
@@ -168,6 +277,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicNetworkAccess
+Set to "Enabled" for endpoints that should allow public access when Private Link is enabled.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -178,6 +302,85 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuCapacity
+If the SKU supports scale out/in then the capacity integer should be included.
+If scale out/in is not possible for the resource this may be omitted.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuFamily
+If the service has different generations of hardware, for the same SKU, then that can be captured here.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuName
+The name of the SKU.
+Ex - P3.
+It is typically a letter+number code
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuSize
+The SKU size.
+When the name field is the combination of tier and some other value, this would be the standalone code.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuTier
+This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -211,6 +414,37 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Traffic
+Percentage of traffic from endpoint to divert to each deployment.
+Traffic values need to sum to 100.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: UpdateViaIdentityWorkspaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -269,7 +503,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOnlineEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IOnlineEndpoint
 
 ## NOTES
 

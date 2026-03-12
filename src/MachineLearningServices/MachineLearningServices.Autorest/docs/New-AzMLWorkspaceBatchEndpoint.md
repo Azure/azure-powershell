@@ -8,21 +8,46 @@ schema: 2.0.0
 # New-AzMLWorkspaceBatchEndpoint
 
 ## SYNOPSIS
-Creates a batch inference endpoint (asynchronous).
+Create a batch inference endpoint (asynchronous).
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzMLWorkspaceBatchEndpoint -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- -AuthMode <EndpointAuthMode> -Location <String> [-SubscriptionId <String>] [-DefaultDeploymentName <String>]
- [-Description <String>] [-EndpointProperties <Hashtable>] [-IdentityType <ManagedServiceIdentityType>]
+ -AuthMode <String> -Location <String> [-SubscriptionId <String>] [-DefaultDeploymentName <String>]
+ [-Description <String>] [-EnableSystemAssignedIdentity] [-EndpointProperties <Hashtable>]
  [-IdentityUserAssigned <Hashtable>] [-Kind <String>] [-PrimaryKey <String>] [-SecondaryKey <String>]
- [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
+ [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityWorkspaceExpanded
+```
+New-AzMLWorkspaceBatchEndpoint -Name <String> -WorkspaceInputObject <IMachineLearningServicesIdentity>
+ -AuthMode <String> -Location <String> [-DefaultDeploymentName <String>] [-Description <String>]
+ [-EnableSystemAssignedIdentity] [-EndpointProperties <Hashtable>] [-IdentityUserAssigned <Hashtable>]
+ [-Kind <String>] [-PrimaryKey <String>] [-SecondaryKey <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzMLWorkspaceBatchEndpoint -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzMLWorkspaceBatchEndpoint -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates a batch inference endpoint (asynchronous).
+Create a batch inference endpoint (asynchronous).
 
 ## EXAMPLES
 
@@ -61,8 +86,8 @@ Accept wildcard characters: False
 'Key' doesn't expire but 'AMLToken' does.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EndpointAuthMode
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: True
@@ -77,7 +102,7 @@ Name of the deployment that will be default for the endpoint.This deployment wil
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -108,7 +133,22 @@ Description of the inference endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -124,22 +164,7 @@ Properties can be added, but not removed or altered.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -156,10 +181,40 @@ The dictionary values can be empty objects ({}) in requests.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -171,7 +226,7 @@ Metadata used by portal/tooling/etc to render different UX experiences for resou
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -186,7 +241,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: True
@@ -231,7 +286,7 @@ The primary key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -247,7 +302,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -262,7 +317,7 @@ The secondary key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -278,7 +333,7 @@ If scale out/in is not possible for the resource this may be omitted.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -293,7 +348,7 @@ If the service has different generations of hardware, for the same SKU, then tha
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -310,7 +365,7 @@ It is typically a letter+number code
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -326,7 +381,7 @@ When the name field is the combination of tier and some other value, this would 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -340,8 +395,8 @@ Accept wildcard characters: False
 This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -356,7 +411,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -371,7 +426,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: False
@@ -381,12 +436,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: CreateViaIdentityWorkspaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 Name of Azure Machine Learning workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -432,9 +502,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IBatchEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IBatchEndpoint
 
 ## NOTES
 

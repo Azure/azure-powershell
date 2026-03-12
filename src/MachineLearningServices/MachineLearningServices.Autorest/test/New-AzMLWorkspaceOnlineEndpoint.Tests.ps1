@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceOnlineEndpoi
 Describe 'New-AzMLWorkspaceOnlineEndpoint' { #Moved
     It 'CreateExpanded' -Skip {
         { 
-            New-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name online-pwsh03 -Location eastus -AuthMode 'Key' -IdentityType 'SystemAssigned'
+            New-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name online-pwsh03 -Location eastus -AuthMode 'Key' -EnableSystemAssignedIdentity
             Update-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name online-pwsh03 -Tag @{'key'='value'}
             Remove-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name online-pwsh03
         } | Should -Not -Throw

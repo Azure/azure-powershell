@@ -12,10 +12,32 @@ Polls an Endpoint operation.
 
 ## SYNTAX
 
+### GetExpanded (Default)
 ```
 Get-AzMLWorkspaceOnlineDeploymentLog -EndpointName <String> -Name <String> -ResourceGroupName <String>
- -WorkspaceName <String> [-SubscriptionId <String[]>] [-ContainerType <ContainerType>] [-Tail <Int32>]
+ [-SubscriptionId <String[]>] -WorkspaceName <String> [-ContainerType <String>] [-Tail <Int32>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentityWorkspaceExpanded
+```
+Get-AzMLWorkspaceOnlineDeploymentLog -EndpointName <String> -Name <String>
+ -WorkspaceInputObject <IMachineLearningServicesIdentity> [-ContainerType <String>] [-Tail <Int32>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentityOnlineEndpointExpanded
+```
+Get-AzMLWorkspaceOnlineDeploymentLog -Name <String>
+ -OnlineEndpointInputObject <IMachineLearningServicesIdentity> [-ContainerType <String>] [-Tail <Int32>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentityExpanded
+```
+Get-AzMLWorkspaceOnlineDeploymentLog -InputObject <IMachineLearningServicesIdentity> [-ContainerType <String>]
+ [-Tail <Int32>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,7 +74,7 @@ Gets online deployment log
 The type of container to retrieve logs from.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ContainerType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +106,7 @@ Inference endpoint name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetExpanded, GetViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: True
@@ -94,18 +116,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: GetViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name and identifier for the endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetExpanded, GetViaIdentityWorkspaceExpanded, GetViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OnlineEndpointInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: GetViaIdentityOnlineEndpointExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -115,7 +167,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetExpanded
 Aliases:
 
 Required: True
@@ -130,7 +182,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: GetExpanded
 Aliases:
 
 Required: False
@@ -155,12 +207,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: GetViaIdentityWorkspaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 Name of Azure Machine Learning workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetExpanded
 Aliases:
 
 Required: True
@@ -206,9 +273,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IDeploymentLogs
 
 ## NOTES
 

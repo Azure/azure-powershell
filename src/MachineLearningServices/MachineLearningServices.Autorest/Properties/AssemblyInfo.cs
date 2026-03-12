@@ -20,9 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © Microsoft")]
 [assembly: System.Reflection.AssemblyProductAttribute("Microsoft Azure PowerShell")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Microsoft Azure PowerShell - MachineLearningServices")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.2.0")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.2.0")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.3.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.3.0")]
 [assembly: System.Runtime.InteropServices.ComVisibleAttribute(false)]
 [assembly: System.CLSCompliantAttribute(false)]
-
-

@@ -21,12 +21,13 @@ Create an in-memory object for LiteralJobInput.
 Create an in-memory object for LiteralJobInput.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.LiteralJobInput
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.LiteralJobInput
 .Link
-https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceLiteralJobInputObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspaceliteraljobinputobject
 #>
 function New-AzMLWorkspaceLiteralJobInputObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.LiteralJobInput')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.LiteralJobInput')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -38,22 +39,20 @@ function New-AzMLWorkspaceLiteralJobInputObject {
         $Description,
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.ParameterBreakingChangeAttribute("Type", "16.0.0", "1.3.0", "2026/05")]
         [Parameter(Mandatory, HelpMessage="[Required] Specifies the type of job.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType])]
+        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType]
+        [string]
         $Type
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.LiteralJobInput]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.LiteralJobInput]::New()
 
         if ($PSBoundParameters.ContainsKey('Value')) {
             $Object.Value = $Value
         }
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description
-        }
-        if ($PSBoundParameters.ContainsKey('Type')) {
-            $Object.Type = $Type
         }
         return $Object
     }
