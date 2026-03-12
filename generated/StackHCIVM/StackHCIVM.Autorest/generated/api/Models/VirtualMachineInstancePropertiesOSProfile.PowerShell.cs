@@ -143,7 +143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
             }
             if (content.Contains("AdminPassword"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)this).AdminPassword = (string) content.GetValueForProperty("AdminPassword",((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)this).AdminPassword, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)this).AdminPassword = (System.Security.SecureString) content.GetValueForProperty("AdminPassword",((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)this).AdminPassword, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("AdminUsername"))
             {
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
             }
             if (content.Contains("AdminPassword"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)this).AdminPassword = (string) content.GetValueForProperty("AdminPassword",((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)this).AdminPassword, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)this).AdminPassword = (System.Security.SecureString) content.GetValueForProperty("AdminPassword",((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesOSProfileInternal)this).AdminPassword, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("AdminUsername"))
             {

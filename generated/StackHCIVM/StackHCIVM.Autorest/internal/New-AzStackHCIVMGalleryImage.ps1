@@ -84,7 +84,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
+    [System.Security.SecureString]
     # location of the image the gallery image should be created from
     ${ImagePath},
 
