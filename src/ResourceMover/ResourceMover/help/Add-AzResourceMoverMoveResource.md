@@ -8,22 +8,45 @@ schema: 2.0.0
 # Add-AzResourceMoverMoveResource
 
 ## SYNOPSIS
-Creates or updates a Move Resource in the move collection.
+Create a Move Resource in the move collection.
 
 **The 'Add-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-Add-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
+Add-AzResourceMoverMoveResource -Name <String> -MoveCollectionName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DependsOnOverride <IMoveResourceDependencyOverride[]>]
  [-ExistingTargetId <String>] [-ResourceSetting <IResourceSettings>] [-SourceId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+Add-AzResourceMoverMoveResource -Name <String> -MoveCollectionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+Add-AzResourceMoverMoveResource -Name <String> -MoveCollectionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityMoveCollectionExpanded
+```
+Add-AzResourceMoverMoveResource -Name <String> -MoveCollectionInputObject <IResourceMoverIdentity>
+ [-DependsOnOverride <IMoveResourceDependencyOverride[]>] [-ExistingTargetId <String>]
+ [-ResourceSetting <IResourceSettings>] [-SourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates a Move Resource in the move collection.
+Create a Move Resource in the move collection.
 
 **The 'Add-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
@@ -31,7 +54,7 @@ Creates or updates a Move Resource in the move collection.
 
 ### Example 1: Add a resource to the Move Collection. (RegionToRegion)
 ```powershell
-$targetResourceSettingsObj = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+$targetResourceSettingsObj = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 $targetResourceSettingsObj.ResourceType = "Microsoft.Compute/virtualMachines"
 $targetResourceSettingsObj.TargetResourceName = "PSDemoVM"
 
@@ -57,9 +80,9 @@ MoveStatusErrorsPropertiesTarget  :
 MoveStatusMoveState               : PreparePending
 Name                              : PSDemoVM
 ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SystemDataCreatedAt               :
 SystemDataCreatedBy               :
 SystemDataCreatedByType           :
@@ -74,7 +97,7 @@ Add a resource to 'RegionToRegion' type Move Collection.
 
 ### Example 2: Add a resource to the Move Collection. (RegionToZone)
 ```powershell
-$targetResourceSettingsObj = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+$targetResourceSettingsObj = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 $targetResourceSettingsObj.ResourceType = "Microsoft.Compute/virtualMachines"
 $targetResourceSettingsObj.TargetResourceName = "demo-RegionToZone-VM-Target"
 $targetResourceSettingsObj.TargetAvailabilityZone = "1"
@@ -96,8 +119,8 @@ IsResolveRequired                 : False
 JobStatusJobName                  :
 JobStatusJobProgress              :
 MoveStatusErrorsPropertiesCode    : DependencyComputationPending
-MoveStatusErrorsPropertiesDetail  : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveResourceErrorBody,
-                                    Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveResourceErrorBody}
+MoveStatusErrorsPropertiesDetail  : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.MoveResourceErrorBody,
+                                    Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.MoveResourceErrorBody}
 MoveStatusErrorsPropertiesMessage : The dependency computation is not completed for resource - /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PS-demo-R
                                     egionToZone-RG/providers/Microsoft.Compute/virtualMachines/demo-RegionToZone-VM'.
                                         Possible Causes: Dependency computation is pending for resource.
@@ -107,10 +130,10 @@ MoveStatusErrorsPropertiesTarget  :
 MoveStatusMoveState               : MovePending
 Name                              : PSDemoVM-RegionToZone
 ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PS-demo-RegionToZone-RG/providers/Microsoft.Compute/virtualMachines/
                                     demo-RegionToZone-VM
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SystemDataCreatedAt               : 9/5/2023 11:13:46 AM
 SystemDataCreatedBy               : xxxxxxx
 SystemDataCreatedByType           : User
@@ -147,9 +170,9 @@ MoveStatusErrorsPropertiesTarget  :
 MoveStatusMoveState               : CommitPending
 Name                              : psdemorm
 ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ResourceSettings
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.ResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ResourceSettings
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.ResourceSettings
 SystemDataCreatedAt               :
 SystemDataCreatedBy               :
 SystemDataCreatedByType           :
@@ -186,9 +209,9 @@ MoveStatusErrorsPropertiesTarget  :
 MoveStatusMoveState               : CommitPending
 Name                              : PSDemoNIC-RegionToZone
 ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ResourceSettings
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.ResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/PS-demo-RegionToZone-RG/providers/Microsoft.Network/networkinterfaces/nic_demo-RegionToZone-VM
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ResourceSettings
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.ResourceSettings
 SystemDataCreatedAt               :
 SystemDataCreatedBy               :
 SystemDataCreatedByType           :
@@ -230,9 +253,9 @@ MoveStatusErrorsPropertiesTarget  :
 MoveStatusMoveState               : PreparePending
 Name                              : PSDemoVM
 ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SystemDataCreatedAt               :
 SystemDataCreatedBy               :
 SystemDataCreatedByType           :
@@ -267,8 +290,8 @@ IsResolveRequired                 : False
 JobStatusJobName                  :
 JobStatusJobProgress              :
 MoveStatusErrorsPropertiesCode    : DependencyComputationPending
-MoveStatusErrorsPropertiesDetail  : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveResourceErrorBody,
-                                    Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveResourceErrorBody}
+MoveStatusErrorsPropertiesDetail  : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.MoveResourceErrorBody,
+                                    Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.MoveResourceErrorBody}
 MoveStatusErrorsPropertiesMessage : The dependency computation is not completed for resource - /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PS-demo-RegionToZone-RG/providers/Microsoft.Compute/virtualMachines/demo-RegionToZone-VM'.
 Possible Causes: Dependency computation is pending for resource.
 Recommended Action: Validate dependencies to compute the dependencies.
@@ -277,10 +300,10 @@ MoveStatusErrorsPropertiesTarget  :
 MoveStatusMoveState               : MovePending
 Name                              : PSDemoVM-RegionToZone
 ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PS-demo-RegionToZone-RG/providers/Microsoft.Compute/virtualMachines/
                                     demo-RegionToZone-VM
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SystemDataCreatedAt               : 9/5/2023 11:13:46 AM
 SystemDataCreatedBy               : xxxxxxx
 SystemDataCreatedByType           : User
@@ -328,11 +351,10 @@ Accept wildcard characters: False
 
 ### -DependsOnOverride
 Gets or sets the move resource dependencies overrides.
-To construct, see NOTES section for DEPENDSONOVERRIDE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResourceDependencyOverride[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IMoveResourceDependencyOverride[]
+Parameter Sets: CreateExpanded, CreateViaIdentityMoveCollectionExpanded
 Aliases:
 
 Required: False
@@ -347,7 +369,7 @@ Gets or sets the existing target ARM Id of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityMoveCollectionExpanded
 Aliases:
 
 Required: False
@@ -357,12 +379,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MoveCollectionInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentity
+Parameter Sets: CreateViaIdentityMoveCollectionExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -MoveCollectionName
 The Move Collection Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -407,7 +474,7 @@ The Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -419,11 +486,10 @@ Accept wildcard characters: False
 
 ### -ResourceSetting
 Gets or sets the resource settings.
-To construct, see NOTES section for RESOURCESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IResourceSettings
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceSettings
+Parameter Sets: CreateExpanded, CreateViaIdentityMoveCollectionExpanded
 Aliases:
 
 Required: False
@@ -438,7 +504,7 @@ Gets or sets the Source ARM Id of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityMoveCollectionExpanded
 Aliases:
 
 Required: False
@@ -453,7 +519,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -499,9 +565,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResource
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IMoveResource
 
 ## NOTES
 
