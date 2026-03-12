@@ -92,6 +92,35 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         gallery.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
 
+                    bool hasSystemAssigned = this.IsParameterBound(c => c.EnableSystemAssignedIdentity) && this.EnableSystemAssignedIdentity.IsPresent;
+                    bool hasUserAssigned = this.IsParameterBound(c => c.UserAssignedIdentity) && this.UserAssignedIdentity.Length > 0;
+
+                    if (hasSystemAssigned || hasUserAssigned)
+                    {
+                        gallery.Identity = new GalleryIdentity();
+
+                        if (hasSystemAssigned && hasUserAssigned)
+                        {
+                            gallery.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
+                        }
+                        else if (hasSystemAssigned)
+                        {
+                            gallery.Identity.Type = ResourceIdentityType.SystemAssigned;
+                        }
+                        else
+                        {
+                            gallery.Identity.Type = ResourceIdentityType.UserAssigned;
+                        }
+
+                        if (hasUserAssigned)
+                        {
+                            gallery.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
+                            foreach (var id in this.UserAssignedIdentity)
+                            {
+                                gallery.Identity.UserAssignedIdentities[id] = new UserAssignedIdentitiesValue();
+                            }
+                        }
+                    }
 
                     var result = GalleriesClient.CreateOrUpdate(resourceGroupName, galleryName, gallery);
                     var psObject = new PSGallery();
@@ -169,6 +198,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Gets or sets the prefix of the gallery name that will be displayed publicly. Visible to all users.")]
         public string PublicNamePrefix { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enables system-assigned managed identity on the gallery.")]
+        public SwitchParameter EnableSystemAssignedIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of user-assigned managed identity resource IDs to associate with the gallery. The resource IDs are in the form '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.")]
+        public string[] UserAssignedIdentity { get; set; }
+
     }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Gallery", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
@@ -240,6 +280,39 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (this.IsParameterBound(c => c.Tag))
                     {
                         gallery.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
+                    }
+
+                    bool hasSystemAssigned = this.IsParameterBound(c => c.EnableSystemAssignedIdentity) && this.EnableSystemAssignedIdentity.IsPresent;
+                    bool hasUserAssigned = this.IsParameterBound(c => c.UserAssignedIdentity) && this.UserAssignedIdentity.Length > 0;
+
+                    if (hasSystemAssigned || hasUserAssigned)
+                    {
+                        if (gallery.Identity == null)
+                        {
+                            gallery.Identity = new GalleryIdentity();
+                        }
+
+                        if (hasSystemAssigned && hasUserAssigned)
+                        {
+                            gallery.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
+                        }
+                        else if (hasSystemAssigned)
+                        {
+                            gallery.Identity.Type = ResourceIdentityType.SystemAssigned;
+                        }
+                        else
+                        {
+                            gallery.Identity.Type = ResourceIdentityType.UserAssigned;
+                        }
+
+                        if (hasUserAssigned)
+                        {
+                            gallery.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
+                            foreach (var id in this.UserAssignedIdentity)
+                            {
+                                gallery.Identity.UserAssignedIdentities[id] = new UserAssignedIdentitiesValue();
+                            }
+                        }
                     }
 
                     if (this.IsParameterBound(c => c.Permission))
@@ -371,7 +444,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     else
                     {
-                        GalleriesClient.CreateOrUpdate(resourceGroupName, galleryName, gallery);
+                        result = GalleriesClient.CreateOrUpdate(resourceGroupName, galleryName, gallery);
                     }
                     var psObject = new PSGallery();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<Gallery, PSGallery>(result, psObject);
@@ -496,5 +569,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Gets or sets the prefix of the gallery name that will be displayed publicly. Visible to all users.")]
         public string PublicNamePrefix { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enables system-assigned managed identity on the gallery.")]
+        public SwitchParameter EnableSystemAssignedIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of user-assigned managed identity resource IDs to associate with the gallery. The resource IDs are in the form '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.")]
+        public string[] UserAssignedIdentity { get; set; }
     }
 }
