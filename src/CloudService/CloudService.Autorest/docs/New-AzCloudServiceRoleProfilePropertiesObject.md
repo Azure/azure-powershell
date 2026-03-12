@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://learn.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceroleprofilepropertiesobject
+online version: https://learn.microsoft.com/powershell/module/Az.CloudService/new-azcloudserviceroleprofilepropertiesobject
 schema: 2.0.0
 ---
 
 # New-AzCloudServiceRoleProfilePropertiesObject
 
 ## SYNOPSIS
-Create a in-memory object for CloudServiceRoleProfileProperties
+Create an in-memory object for CloudServiceRoleProfileProperties.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzCloudServiceRoleProfilePropertiesObject [-Name <String>] [-SkuCapacity <In
 ```
 
 ## DESCRIPTION
-Create a in-memory object for CloudServiceRoleProfileProperties
+Create an in-memory object for CloudServiceRoleProfileProperties.
 
 ## EXAMPLES
 
@@ -33,7 +33,7 @@ For more details see New-AzCloudService.
 ## PARAMETERS
 
 ### -Name
-Name of role profile.
+Resource name.
 
 ```yaml
 Type: System.String
@@ -64,6 +64,7 @@ Accept wildcard characters: False
 
 ### -SkuName
 The sku name.
+NOTE: If the new SKU is not supported on the hardware the cloud service is currently on, you need to delete and recreate the cloud service or move back to the old sku.
 
 ```yaml
 Type: System.String
@@ -78,7 +79,8 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
-SkuTier.
+Specifies the tier of the cloud service.
+Possible Values are \<br /\>\<br /\> **Standard** \<br /\>\<br /\> **Basic**.
 
 ```yaml
 Type: System.String
@@ -99,7 +101,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceRoleProfileProperties
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.CloudServiceRoleProfileProperties
 
 ## NOTES
 

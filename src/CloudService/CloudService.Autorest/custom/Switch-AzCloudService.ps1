@@ -39,7 +39,7 @@ function Switch-AzCloudService {
     
         [Parameter(Mandatory=$true, ParameterSetName="CloudService")]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudService]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.CloudService]
         ${CloudService},
     
         [Parameter(Mandatory=$true, ParameterSetName="CloudServiceName")]
@@ -237,24 +237,24 @@ function GetVIPSwapRequestBody() {
 
     return @"
 {
-	"frontendIPConfigurations": [
-		{
-			"id": "#LBFE1#",
-			"properties": {
-				"publicIPAddress": {
-					"id": "#PIP2#"
-				}
-			}
-		},
-		{
-			"id": "#LBFE2#",
-			"properties": {
-				"publicIPAddress": {
-					"id": "#PIP1#"
-				}
-			}
-		}
-	]
+    "frontendIPConfigurations": [
+        {
+            "id": "#LBFE1#",
+            "properties": {
+                "publicIPAddress": {
+                    "id": "#PIP2#"
+                }
+            }
+        },
+        {
+            "id": "#LBFE2#",
+            "properties": {
+                "publicIPAddress": {
+                    "id": "#PIP1#"
+                }
+            }
+        }
+    ]
 }
 "@
 }
