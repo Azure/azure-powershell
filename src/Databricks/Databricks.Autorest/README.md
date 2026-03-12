@@ -42,14 +42,6 @@ subject-prefix: $(service-name)
 
 inlining-threshold: 100
 
-resourcegroup-append: true
-identity-correction-for-post: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - from: swagger-document
     where: $.definitions.EncryptionV2
@@ -70,11 +62,11 @@ directive:
 
 # Remove cmdlet, Private link related resource should be ignored. 
   - where:
-     subject: PrivateEndpointConnection|PrivateLinkResource
+      subject: PrivateEndpointConnection|PrivateLinkResource
     remove: true
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentityExpanded$|^CreateViaIdentityWorkspace$|^Update$|^UpdateViaIdentity$
     remove: true
   # Hide CreateViaIdentity for customization
   - where:
@@ -281,6 +273,10 @@ directive:
           - ManagedResourceGroupId
         labels:
           ManagedResourceGroupId: Managed Resource Group ID
+  
+  - model-cmdlet:
+      - model-name: WorkspaceProviderAuthorization
+        cmdlet-name: New-AzDatabricksWorkspaceProviderAuthorizationObject
 
   - where:
       verb: Get

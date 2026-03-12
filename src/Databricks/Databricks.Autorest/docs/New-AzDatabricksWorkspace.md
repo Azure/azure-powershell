@@ -12,27 +12,42 @@ Creates a new workspace.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-AccessConnectorId <String>] [-AccessConnectorIdentityType <IdentityType>]
+ [-SubscriptionId <String>] [-AccessConnectorId <String>] [-AccessConnectorIdentityType <String>]
  [-AccessConnectorUserAssignedIdentityId <String>] [-AmlWorkspaceId <String>]
- [-Authorization <IWorkspaceProviderAuthorization[]>] [-AutomaticClusterUpdate <AutomaticClusterUpdateValue>]
- [-ComplianceStandard <String[]>] [-ComputeMode <String>] [-DefaultCatalogInitialType <InitialType>]
- [-DefaultStorageFirewall <DefaultStorageFirewall>] [-EnableNoPublicIP] [-EncryptionKeyName <String>]
- [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>]
- [-EnhancedSecurityCompliance <ComplianceSecurityProfileValue>]
- [-EnhancedSecurityMonitoring <EnhancedSecurityMonitoringValue>] [-LoadBalancerBackendPoolName <String>]
- [-LoadBalancerId <String>] [-ManagedDiskKeySource <EncryptionKeySource>]
- [-ManagedDiskKeyVaultPropertiesKeyName <String>] [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>]
- [-ManagedDiskKeyVaultPropertiesKeyVersion <String>] [-ManagedDiskRotationToLatestKeyVersionEnabled]
- [-ManagedResourceGroupName <String>] [-ManagedServiceKeySource <EncryptionKeySource>]
- [-ManagedServicesKeyVaultPropertiesKeyName <String>] [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
+ [-Authorization <IWorkspaceProviderAuthorization[]>] [-AutomaticClusterUpdate <String>]
+ [-ComplianceStandard <String[]>] [-ComputeMode <String>] [-DefaultCatalogInitialName <String>]
+ [-DefaultCatalogInitialType <String>] [-DefaultStorageFirewall <String>] [-EnableNoPublicIP]
+ [-EncryptionKeyName <String>] [-EncryptionKeySource <String>] [-EncryptionKeyVaultUri <String>]
+ [-EncryptionKeyVersion <String>] [-EnhancedSecurityCompliance <String>]
+ [-EnhancedSecurityMonitoring <String>] [-LoadBalancerBackendPoolName <String>] [-LoadBalancerId <String>]
+ [-ManagedDiskKeySource <String>] [-ManagedDiskKeyVaultPropertiesKeyName <String>]
+ [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>] [-ManagedDiskKeyVaultPropertiesKeyVersion <String>]
+ [-ManagedDiskRotationToLatestKeyVersionEnabled] [-ManagedResourceGroupName <String>]
+ [-ManagedServiceKeySource <String>] [-ManagedServicesKeyVaultPropertiesKeyName <String>]
+ [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
  [-ManagedServicesKeyVaultPropertiesKeyVersion <String>] [-NatGatewayName <String>] [-PrepareEncryption]
- [-PrivateSubnetName <String>] [-PublicIPName <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-PublicSubnetName <String>] [-RequiredNsgRule <RequiredNsgRules>] [-RequireInfrastructureEncryption]
- [-Sku <String>] [-SkuTier <String>] [-StorageAccountName <String>] [-StorageAccountSku <String>]
- [-Tag <Hashtable>] [-UiDefinitionUri <String>] [-VirtualNetworkId <String>] [-VnetAddressPrefix <String>]
+ [-PrivateSubnetName <String>] [-PublicIPName <String>] [-PublicNetworkAccess <String>]
+ [-PublicSubnetName <String>] [-RequiredNsgRule <String>] [-RequireInfrastructureEncryption] [-Sku <String>]
+ [-SkuTier <String>] [-StorageAccountName <String>] [-StorageAccountSku <String>] [-Tag <Hashtable>]
+ [-UiDefinitionUri <String>] [-VirtualNetworkId <String>] [-VnetAddressPrefix <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-ComputeMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-ComputeMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,7 +112,7 @@ The resource ID of Azure Databricks Access Connector Resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -111,8 +126,8 @@ Accept wildcard characters: False
 The identity type of the Access Connector Resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -128,7 +143,7 @@ This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -143,7 +158,7 @@ The value which should be used for this field.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -170,11 +185,10 @@ Accept wildcard characters: False
 
 ### -Authorization
 The workspace provider authorizations.
-To construct, see NOTES section for AUTHORIZATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspaceProviderAuthorization[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspaceProviderAuthorization[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -185,11 +199,11 @@ Accept wildcard characters: False
 ```
 
 ### -AutomaticClusterUpdate
-Status of automated cluster updates feature.
+.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases: AutomaticClusterUpdateValue
 
 Required: False
@@ -204,7 +218,7 @@ Compliance standards associated with the workspace.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases: ComplianceSecurityProfileComplianceStandard
 
 Required: False
@@ -225,7 +239,23 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: Hybrid
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultCatalogInitialName
+Specifies the initial Name of default catalog.
+If not specified, the name of the workspace will be used.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -235,8 +265,8 @@ Defines the initial type of the default catalog.
 Possible values (case-insensitive): HiveMetastore, UnityCatalog
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -266,8 +296,8 @@ Accept wildcard characters: False
 Gets or Sets Default Storage Firewall configuration information
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -282,7 +312,7 @@ The value which should be used for this field.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -297,7 +327,7 @@ The name of KeyVault key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -312,8 +342,8 @@ The encryption keySource (provider).
 Possible values (case-insensitive): Default, Microsoft.Keyvault
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -328,7 +358,7 @@ The Uri of KeyVault.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -343,7 +373,7 @@ The version of KeyVault key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -354,11 +384,11 @@ Accept wildcard characters: False
 ```
 
 ### -EnhancedSecurityCompliance
-Status of Compliance Security Profile feature.
+.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases: ComplianceSecurityProfileValue
 
 Required: False
@@ -369,14 +399,44 @@ Accept wildcard characters: False
 ```
 
 ### -EnhancedSecurityMonitoring
-Status of Enhanced Security Monitoring feature.
+.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases: EnhancedSecurityMonitoringValue
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -388,7 +448,7 @@ The value which should be used for this field.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -403,7 +463,7 @@ The value which should be used for this field.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -418,7 +478,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -433,8 +493,8 @@ The encryption keySource (provider).
 Possible values (case-insensitive): Microsoft.Keyvault
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -449,7 +509,7 @@ The name of KeyVault key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -464,7 +524,7 @@ The URI of KeyVault.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -479,7 +539,7 @@ The version of KeyVault key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -494,7 +554,7 @@ Indicate whether the latest key version should be automatically used for Managed
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -509,7 +569,7 @@ The managed resource group Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -524,8 +584,8 @@ The encryption keySource (provider).
 Possible values (case-insensitive): Microsoft.Keyvault
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -540,7 +600,7 @@ The name of KeyVault key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -555,7 +615,7 @@ The Uri of KeyVault.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -570,7 +630,7 @@ The version of KeyVault key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -600,7 +660,7 @@ The value which should be used for this field.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -630,7 +690,7 @@ The value which should be used for this field.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -645,7 +705,7 @@ The value which should be used for this field.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -660,7 +720,7 @@ The value which should be used for this field.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -675,8 +735,8 @@ The network access type for accessing workspace.
 Set value to disabled to access workspace only via private link.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -691,7 +751,7 @@ The value which should be used for this field.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -707,8 +767,8 @@ Supported values are 'AllRules' and 'NoAzureDatabricksRules'.
 'NoAzureServiceRules' value is for internal use only.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -723,7 +783,7 @@ The value which should be used for this field.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -754,7 +814,7 @@ The SKU name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -769,7 +829,7 @@ The SKU tier.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -784,7 +844,7 @@ The value which should be used for this field.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -799,7 +859,7 @@ The value which should be used for this field.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -830,7 +890,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -845,7 +905,7 @@ The blob URI where the UI definition file is located.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -860,7 +920,7 @@ The value which should be used for this field.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -875,7 +935,7 @@ The value which should be used for this field.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -923,7 +983,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace
 
 ## NOTES
 
