@@ -30,6 +30,12 @@ Get-AzDnsResolverPolicyVirtualNetworkLink -InputObject <IDnsResolverIdentity> [-
  [<CommonParameters>]
 ```
 
+### GetViaIdentityDnsResolverPolicy
+```
+Get-AzDnsResolverPolicyVirtualNetworkLink -DnsResolverPolicyInputObject <IDnsResolverIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets properties of a DNS resolver policy virtual network link.
 
@@ -89,6 +95,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DnsResolverPolicyInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
+Parameter Sets: GetViaIdentityDnsResolverPolicy
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DnsResolverPolicyName
 The name of the DNS resolver policy.
 
@@ -106,7 +127,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
@@ -125,7 +145,7 @@ The name of the DNS resolver policy virtual network link for the DNS resolver po
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityDnsResolverPolicy
 Aliases: DnsResolverPolicyVirtualNetworkLinkName
 
 Required: True
@@ -192,7 +212,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolverPolicyVirtualNetworkLink
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverPolicyVirtualNetworkLink
 
 ## NOTES
 
