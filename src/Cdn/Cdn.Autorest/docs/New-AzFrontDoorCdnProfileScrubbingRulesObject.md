@@ -13,8 +13,8 @@ Create an in-memory object for ProfileScrubbingRules.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable <String> [-Selector <String>] [-State <String>]
- [<CommonParameters>]
+New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable <String> -SelectorMatchOperator <String>
+ [-Selector <String>] [-State <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,6 +74,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SelectorMatchOperator
+When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

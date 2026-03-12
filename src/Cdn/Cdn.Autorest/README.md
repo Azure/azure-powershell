@@ -32,9 +32,7 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2025-06-01/afdx.json
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2025-06-01/cdn.json
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/preview/2024-07-22-preview/edgeaction.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2025-09-01-preview/openapi.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
@@ -44,7 +42,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Cdn
 subject-prefix: $(service-name)
-commit: 9b87e611b5016ed5c8d0eea2ee4578be782e7feb
+commit: c738a642bb7e41ed458ff2b1bb7271a865dcadef
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -197,6 +195,9 @@ directive:
     #   cmdlet-name: New-AzFrontDoorCdnRuleUrlRedirectActionObject
     # - model-name:  UrlRewriteAction
     #   cmdlet-name: New-AzFrontDoorCdnRuleUrlRewriteActionObject
+    # Generate the new Front Door CDN rule edge action helper object from the 2025-09-01-preview model.
+    - model-name: EdgeAction
+      cmdlet-name: New-AzFrontDoorCdnRuleEdgeActionObject
     # - model-name:  UrlAction
     #   cmdlet-name: New-AzFrontDoorCdnRuleUrlActionObject
     # - model-name: UrlSigningAction
@@ -469,7 +470,7 @@ directive:
           "default": {
             "description": "CDN error response describing why the operation failed.",
             "schema": {
-              "$ref": "../../../../../common-types/resource-management/v6/types.json#/definitions/ErrorResponse"
+              "$ref": "../../../../../../common-types/resource-management/v6/types.json#/definitions/ErrorResponse"
             }
           }
       }
