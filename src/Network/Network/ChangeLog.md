@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.26.0
 * Added EdgeZone (Extended Location) parameter support for Azure Firewall
     - Added `-EdgeZone` parameter to `New-AzFirewall` cmdlet
     - When `-EdgeZone` is specified, availability zones are not supported for Azure Firewall resources

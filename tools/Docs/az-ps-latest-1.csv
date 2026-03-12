@@ -69,7 +69,7 @@ pac67,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac68,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DeviceUpdate.0.2.0.zip;sourceType=sa]Az.DeviceUpdate,0.2.0
 pac69,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DevTestLabs.1.1.0.zip;sourceType=sa]Az.DevTestLabs,1.1.0
 pac70,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DigitalTwins.0.3.0.zip;sourceType=sa]Az.DigitalTwins,0.3.0
-pac71,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DisconnectedOperations.0.1.0.zip;sourceType=sa]Az.DisconnectedOperations,0.1.0
+pac71,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DisconnectedOperations.0.1.1.zip;sourceType=sa]Az.DisconnectedOperations,0.1.1
 pac72,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DiskPool.0.4.0.zip;sourceType=sa]Az.DiskPool,0.4.0
 pac73,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Dns.2.0.0.zip;sourceType=sa]Az.Dns,2.0.0
 pac74,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DnsResolver.1.2.1.zip;sourceType=sa]Az.DnsResolver,1.2.1
@@ -89,7 +89,7 @@ pac87,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac88,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Fleet.0.2.2.zip;sourceType=sa]Az.Fleet,0.2.2
 pac89,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.FluidRelay.0.2.0.zip;sourceType=sa]Az.FluidRelay,0.2.0
 pac90,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.FrontDoor.2.1.0.zip;sourceType=sa]Az.FrontDoor,2.1.0
-pac91,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Functions.4.3.1.zip;sourceType=sa]Az.Functions,4.3.1
+pac91,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Functions.4.3.2.zip;sourceType=sa]Az.Functions,4.3.2
 pac92,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.GraphServices.0.2.0.zip;sourceType=sa]Az.GraphServices,0.2.0
 pac93,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.GuestConfiguration.0.12.0.zip;sourceType=sa]Az.GuestConfiguration,0.12.0
 pac94,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.HanaOnAzure.0.4.0.zip;sourceType=sa]Az.HanaOnAzure,0.4.0
