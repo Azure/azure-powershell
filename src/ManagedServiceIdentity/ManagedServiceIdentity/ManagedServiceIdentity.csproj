@@ -22,6 +22,9 @@
     <None Update="Az.$(PsModuleName).psd1" CopyToOutputDirectory="PreserveNewest" />
     <None Update="help\*.md" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="Azure.Core" Version="1.50.0" />
+  </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 

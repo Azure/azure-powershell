@@ -15,4 +15,8 @@
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
+  <ItemGroup>
+    <PackageReference Update="Azure.Core" Version="1.50.0" />
+  </ItemGroup>
+
 </Project>

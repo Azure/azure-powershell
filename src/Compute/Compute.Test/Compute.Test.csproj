@@ -34,5 +34,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Update="Azure.Core" Version="1.50.0" />
+  </ItemGroup>
 
 </Project>
