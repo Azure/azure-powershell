@@ -24,4 +24,3 @@ wait_timeout 150   1-31536000   user-override  28800
 ```
 
 These cmdlets update MySql configuration by identity.
-
