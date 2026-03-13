@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Removed "Microsoft.Azure.Management.OperationalInsights" Version "0.25.0-preview" PackageReference.
 
 ## Version 3.3.0
 * Upgraded nuget package to signed package.
