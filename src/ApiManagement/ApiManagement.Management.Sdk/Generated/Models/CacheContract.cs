@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     /// Cache details.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class CacheContract : Resource
+    public partial class CacheContract : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the CacheContract class.

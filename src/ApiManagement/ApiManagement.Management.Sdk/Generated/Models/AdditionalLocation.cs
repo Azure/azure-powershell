@@ -55,6 +55,13 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// <param name="gatewayRegionalUrl">Gateway URL of the API Management service in the Region.
         /// </param>
 
+        /// <param name="natGatewayState">Property can be used to enable NAT Gateway for this API Management service.
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+
+        /// <param name="outboundPublicIPAddresses">Outbound public IPV4 address prefixes associated with NAT Gateway deployed
+        /// service. Available only for Premium SKU on stv2 platform.
+        /// </param>
+
         /// <param name="disableGateway">Property only valid for an Api Management service deployed in multiple
         /// locations. This can be used to disable the gateway in this additional
         /// location.
@@ -62,7 +69,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
 
         /// <param name="platformVersion">Compute Platform Version running the service.
         /// Possible values include: &#39;undetermined&#39;, &#39;stv1&#39;, &#39;stv2&#39;, &#39;mtv1&#39;</param>
-        public AdditionalLocation(string location, ApiManagementServiceSkuProperties sku, System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> publicIPAddresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> privateIPAddresses = default(System.Collections.Generic.IList<string>), string publicIPAddressId = default(string), VirtualNetworkConfiguration virtualNetworkConfiguration = default(VirtualNetworkConfiguration), string gatewayRegionalUrl = default(string), bool? disableGateway = default(bool?), string platformVersion = default(string))
+        public AdditionalLocation(string location, ApiManagementServiceSkuProperties sku, System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> publicIPAddresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> privateIPAddresses = default(System.Collections.Generic.IList<string>), string publicIPAddressId = default(string), VirtualNetworkConfiguration virtualNetworkConfiguration = default(VirtualNetworkConfiguration), string gatewayRegionalUrl = default(string), string natGatewayState = default(string), System.Collections.Generic.IList<string> outboundPublicIPAddresses = default(System.Collections.Generic.IList<string>), bool? disableGateway = default(bool?), string platformVersion = default(string))
 
         {
             this.Location = location;
@@ -73,6 +80,8 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
             this.PublicIpAddressId = publicIPAddressId;
             this.VirtualNetworkConfiguration = virtualNetworkConfiguration;
             this.GatewayRegionalUrl = gatewayRegionalUrl;
+            this.NatGatewayState = natGatewayState;
+            this.OutboundPublicIPAddresses = outboundPublicIPAddresses;
             this.DisableGateway = disableGateway;
             this.PlatformVersion = platformVersion;
             CustomInit();
@@ -142,6 +151,20 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         public string GatewayRegionalUrl {get; private set; }
 
         /// <summary>
+        /// Gets or sets property can be used to enable NAT Gateway for this API
+        /// Management service. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "natGatewayState")]
+        public string NatGatewayState {get; set; }
+
+        /// <summary>
+        /// Gets outbound public IPV4 address prefixes associated with NAT Gateway
+        /// deployed service. Available only for Premium SKU on stv2 platform.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "outboundPublicIPAddresses")]
+        public System.Collections.Generic.IList<string> OutboundPublicIPAddresses {get; private set; }
+
+        /// <summary>
         /// Gets or sets property only valid for an Api Management service deployed in
         /// multiple locations. This can be used to disable the gateway in this
         /// additional location.
@@ -183,6 +206,8 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
             {
                 this.VirtualNetworkConfiguration.Validate();
             }
+
+
 
 
         }

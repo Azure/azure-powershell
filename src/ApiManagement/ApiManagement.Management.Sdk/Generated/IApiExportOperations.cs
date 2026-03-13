@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// specified to the Storage Blob with SAS Key valid for 5 minutes.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.

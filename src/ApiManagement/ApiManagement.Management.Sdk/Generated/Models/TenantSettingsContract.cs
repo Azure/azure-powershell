@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     /// Tenant Settings.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class TenantSettingsContract : Resource
+    public partial class TenantSettingsContract : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the TenantSettingsContract class.

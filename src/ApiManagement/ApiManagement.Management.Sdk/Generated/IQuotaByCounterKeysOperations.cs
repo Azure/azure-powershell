@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// api does not support paging yet.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// used for reset of the quota counter values.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.

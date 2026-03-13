@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     /// Long Running Git Operation Results.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class OperationResultContract : Resource
+    public partial class OperationResultContract : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the OperationResultContract class.

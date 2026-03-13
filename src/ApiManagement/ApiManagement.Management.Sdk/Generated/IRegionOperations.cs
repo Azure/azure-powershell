@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Lists all azure regions in which the service exists.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.

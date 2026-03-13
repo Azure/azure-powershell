@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     /// Portal Revision&#39;s contract details.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PortalRevisionContract : Resource
+    public partial class PortalRevisionContract : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the PortalRevisionContract class.

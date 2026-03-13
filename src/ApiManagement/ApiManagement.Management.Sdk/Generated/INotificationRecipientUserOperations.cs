@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// notification.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// notification.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Notification.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Removes the API Management user from the list of Notification.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.

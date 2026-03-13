@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     /// API Operation details.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class OperationContract : Resource
+    public partial class OperationContract : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the OperationContract class.

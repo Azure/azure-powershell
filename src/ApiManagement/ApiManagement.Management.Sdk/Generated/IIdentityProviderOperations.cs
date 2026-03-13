@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// its identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// specified service instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Creates or Updates the IdentityProvider configuration.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Updates an existing IdentityProvider configuration.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Deletes the specified identity provider configuration.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the client secret details of the Identity Provider.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.

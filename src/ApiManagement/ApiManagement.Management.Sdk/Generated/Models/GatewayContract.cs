@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
     /// Gateway details.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class GatewayContract : Resource
+    public partial class GatewayContract : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the GatewayContract class.

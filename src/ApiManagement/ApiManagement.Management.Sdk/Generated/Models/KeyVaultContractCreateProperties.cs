@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// be configured with aka.ms/apimmsi
         /// </param>
 
-        /// <param name="identityClientId">SystemAssignedIdentity or UserAssignedIdentity Client Id which will be used
-        /// to access key vault secret.
+        /// <param name="identityClientId">Null for SystemAssignedIdentity or Client Id for UserAssignedIdentity ,
+        /// which will be used to access key vault secret.
         /// </param>
         public KeyVaultContractCreateProperties(string secretIdentifier = default(string), string identityClientId = default(string))
 
@@ -55,8 +55,8 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         public string SecretIdentifier {get; set; }
 
         /// <summary>
-        /// Gets or sets systemAssignedIdentity or UserAssignedIdentity Client Id which
-        /// will be used to access key vault secret.
+        /// Gets or sets null for SystemAssignedIdentity or Client Id for
+        /// UserAssignedIdentity , which will be used to access key vault secret.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "identityClientId")]
         public string IdentityClientId {get; set; }

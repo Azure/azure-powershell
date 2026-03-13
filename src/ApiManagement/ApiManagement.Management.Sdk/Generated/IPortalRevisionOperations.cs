@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Lists developer portal&#39;s revisions.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the developer portal revision specified by its identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Gets the developer portal&#39;s revision specified by its identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// accessible.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Updates the description of specified portal revision or makes it current.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// accessible.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Updates the description of specified portal revision or makes it current.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.

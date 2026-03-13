@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// notification.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Determine if Notification Recipient Email subscribed to the notification.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Adds the Email address to the list of Recipients for the Notification.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Removes the email from the list of Notification.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceName'>
         /// The name of the API Management service.
