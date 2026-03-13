@@ -222,7 +222,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     // 2. file encryption context is set by user 
                     if ((Channel.StorageContext.StorageAccount != null && Channel.StorageContext.StorageAccount.Credentials != null &&
                         Channel.StorageContext.StorageAccount.Credentials.IsSAS && (!string.IsNullOrEmpty(this.Permission) || !string.IsNullOrEmpty(this.Umask))) || 
-                        this.EncryptionContext != null)
+                        this.EncryptionContext != null || Channel.StorageContext.Track2OauthToken != null)
                     {
                         Func<long, Task> taskGenerator = (taskId) => UploadDataLakeFile(taskId, fileClient, ResolvedFileName);
                         RunTask(taskGenerator);

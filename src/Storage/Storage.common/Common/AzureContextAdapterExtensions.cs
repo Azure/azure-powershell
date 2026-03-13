@@ -84,7 +84,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         {
             return new AzureStorageContext(new CloudStorageAccount(new StorageCredentials(service.Name, service.AuthenticationKeys.First()),
                 new StorageUri(service.BlobEndpoint), new StorageUri(service.QueueEndpoint),
-                new StorageUri(service.TableEndpoint), new StorageUri(service.FileEndpoint)));
+                new StorageUri(service.TableEndpoint), new StorageUri(service.FileEndpoint)),
+                null,
+                false);
         }
 
 
