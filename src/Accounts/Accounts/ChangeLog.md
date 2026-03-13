@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated the success message of browser-based interactive login to warn users against using this authentication method and recommend switching to Web Account Manager (WAM) for a more robust authentication mechanism.
 
 ## Version 5.3.3
 * Updated MSAL to 4.82.1 to fix an issue with ARM endpoint discovery.
