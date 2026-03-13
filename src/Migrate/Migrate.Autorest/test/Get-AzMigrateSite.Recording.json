@@ -1,16 +1,17 @@
 {
-  "Get-AzMigrateSite+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.OffAzure/VMwareSites/signoffccyapp3352site?api-version=2020-01-01+1": {
+  "Get-AzMigrateSite+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.OffAzure/VMwareSites/ecygqlapp4055site?api-version=2020-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.OffAzure/VMwareSites/signoffccyapp3352site?api-version=2020-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.OffAzure/VMwareSites/ecygqlapp4055site?api-version=2020-01-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "47" ],
-        "x-ms-client-request-id": [ "75d8f2d5-054c-4bdd-b2ae-07d85ad123f9" ],
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "65d47b7f-2fe8-413f-81ca-72017c025748" ],
         "CommandName": [ "Get-AzMigrateSite" ],
         "FullCommandName": [ "Get-AzMigrateSite_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Migrate/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -21,21 +22,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0000be01-0000-3300-0000-62ff613c0000\"" ],
+        "ETag": [ "\"00008d07-0000-3400-0000-677f91720000\"" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "5f9b0d34-9f03-4929-9787-b8407f22b6d3" ],
+        "x-ms-request-id": [ "c65125ac-1205-4a1f-b47f-f63190235b84" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11951" ],
-        "x-ms-correlation-request-id": [ "23549ccf-7691-4b8a-bce8-2e2e6de9de75" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20220926T112543Z:23549ccf-7691-4b8a-bce8-2e2e6de9de75" ],
-        "Date": [ "Mon, 26 Sep 2022 11:25:42 GMT" ]
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-correlation-request-id": [ "e7495fef-9b56-4b24-be5d-acaf83988f45" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251118T073844Z:e7495fef-9b56-4b24-be5d-acaf83988f45" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5A2972357F07453486698DB6A2911400 Ref B: MAA201060514033 Ref C: 2025-11-18T07:38:43Z" ],
+        "Date": [ "Tue, 18 Nov 2025 07:38:44 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2655" ],
+        "Content-Length": [ "4078" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.OffAzure/VMwareSites/signoffccyapp3352site\",\"name\":\"signoffccyapp3352site\",\"type\":\"Microsoft.OffAzure/VMwareSites\",\"etag\":\"\\\"0000be01-0000-3300-0000-62ff613c0000\\\"\",\"location\":\"centraluseuap\",\"kind\":\"Migrate\",\"properties\":{\"masterSiteId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.OffAzure/MasterSites/signoffccyproj4626mastersite\",\"servicePrincipalIdentityDetails\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"applicationId\":\"d759dafa-25b0-412b-b5bc-78e0307b5596\",\"objectId\":\"0cdd5aed-eadc-45ed-8b0b-3819d175955e\",\"audience\":\"d759dafa-25b0-412b-b5bc-78e0307b5596\",\"aadAuthority\":\"https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47\",\"rawCertData\":\"MIIDNDCCAhygAwIBAgIQNEjZ4ZlETpKS4+O4t6qy1zANBgkqhkiG9w0BAQsFADAXMRUwEwYDVQQDEwxBZ2VudFNwbkNlcnQwHhcNMjIwNzI0MTgwNTMzWhcNMjUwNzI0MTgxNTMzWjAXMRUwEwYDVQQDEwxBZ2VudFNwbkNlcnQwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCozHJzZ9tPT9rHpWmQuHMNYmISHXdQaYN9dGd+1FtnDiEAnKji2VW+sPu3g05RkNiXwPsvnESokET6r5FgapAqOM20VeTJ5mrZ9zEu0DsXDTBQdNhVqxrEuuCXVvMgF6anolHhpq9a4y9l7CzsFLEDD03yzGWsPCGDgZL6TYVBB9lUATYuIcpr2oVVa/DBYuBx0AIakFz/+SttCXYT6wYs4iGTZAo3girgy6tBHI8OcUQb6TWjk740NdIeg7DAeM/LMwnbGbWLLf5m2ig7c5unFpGWTAAN70HiIRb2XzM362Nhn4Ze3I8ao1k5Xv0qh2vCLOoIgAMMmJUcrNUpudDlAgMBAAGjfDB6MA4GA1UdDwEB/wQEAwIFoDAJBgNVHRMEAjAAMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAfBgNVHSMEGDAWgBR3kbT+hhZaJrybiC2cZAQgVyeTYzAdBgNVHQ4EFgQUd5G0/oYWWia8m4gtnGQEIFcnk2MwDQYJKoZIhvcNAQELBQADggEBAJbCtJJJla6+zH2lgyXmAy7xwP/a54T5GP4JYhggydruIhwQ44kvl2AJU8D53/xS30olkkHpvpfyg3frI95ccQs7PBeoGK/USTjbTtydb0QYZXDrykTcmhJTFVmfXzCgIX4mWNfHhmr3bTBSGdTCqaa2ubMa3dYgZzPILIVsKhVlfeJWOj9fDzPB0XWXAnW75NYaaa4IK/9YWbSlLrx2+mL3DQ7KW00CnClqACOwu3JzXjkCwv0d4dNeV5CNqyAf6qPitj7v0PRQnXJDz0okJt+C1NnwTDQHX8nm0UKNteVXVpPDrE6RGQRCIN41IVaYNlSeZ3aLUJ1bXs04Euazs5s=\"},\"agentDetails\":{\"id\":\"1e6c69d7-7fb6-4063-ac20-e54addc4d2f0-agent\",\"version\":\"2.0.2027.38\",\"lastHeartBeatUtc\":\"2022-09-26T11:17:20.2356634Z\",\"keyVaultUri\":\"https://signoffccyproj4626kv.vault.azure.net\",\"keyVaultId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.KeyVault/vaults/signoffccyproj4626kv\"},\"applianceName\":\"signoffccyapp\",\"discoverySolutionId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.Migrate/MigrateProjects/signoffccyproj/Solutions/Servers-Discovery-ServerDiscovery\",\"serviceEndpoint\":\"https://discoverysrv.ccy.prod.migration.windowsazure.com/\",\"provisioningState\":\"Succeeded\"}}"
+      "Content": "{\"id\":\"/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.OffAzure/vmwareSites/ecygqlapp4055site\",\"name\":\"ecygqlapp4055site\",\"type\":\"Microsoft.OffAzure/vmwareSites\",\"etag\":\"\\\"00008d07-0000-3400-0000-677f91720000\\\"\",\"location\":\"eastus2euap\",\"kind\":\"Migrate\",\"properties\":{\"masterSiteId\":\"/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.OffAzure/MasterSites/cbtecygqlproj0541mastersite\",\"servicePrincipalIdentityDetails\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"applicationId\":\"82546859-22b0-49c8-ba6e-417ce67bc88c\",\"objectId\":\"3e1dee66-bb3a-4523-b431-0626476bb3b4\",\"audience\":\"82546859-22b0-49c8-ba6e-417ce67bc88c\",\"aadAuthority\":\"https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47\",\"rawCertData\":\"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\"},\"agentDetails\":{\"id\":\"77072155-e20b-4514-9c36-f51f084eb157-agent\",\"version\":\"2.0.3186.578\",\"lastHeartBeatUtc\":\"2025-09-26T12:24:10.8944785Z\",\"keyVaultUri\":\"https://cbtecygqlproj0541kv.vault.azure.net\",\"keyVaultId\":\"/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.KeyVault/vaults/cbtecygqlproj0541kv\"},\"applianceName\":\"ecygqlapp\",\"discoverySolutionId\":\"/subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.Migrate/MigrateProjects/cbtecygqlproj/Solutions/Servers-Discovery-ServerDiscovery\",\"serviceEndpoint\":\"https://discoverysrv.ecy.prod.migration.windowsazure.com/\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
     }
   }
 }

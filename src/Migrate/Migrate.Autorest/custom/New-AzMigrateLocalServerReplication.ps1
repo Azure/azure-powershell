@@ -23,7 +23,7 @@ https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratelocalserve
 #>
 function New-AzMigrateLocalServerReplication {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is based on a preview API version and may experience breaking changes in future releases.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel])]
     [CmdletBinding(DefaultParameterSetName = 'ByIdDefaultUser', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'ByIdDefaultUser', Mandatory)]
@@ -73,13 +73,13 @@ function New-AzMigrateLocalServerReplication {
 
         [Parameter(ParameterSetName = 'ByIdPowerUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalDiskInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalDiskInput[]]
         # Specifies the disks on the source server to be included for replication.
         ${DiskToInclude},
 
         [Parameter(ParameterSetName = 'ByIdPowerUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalNicInput[]]
         # Specifies the NICs on the source server to be included for replication.
         ${NicToInclude},
 
@@ -633,16 +633,16 @@ function New-AzMigrateLocalServerReplication {
         }
 
         # Construct create protected item request object
-        $protectedItemProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemModelProperties]::new()
+        $protectedItemProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedItemModelProperties]::new()
         $protectedItemProperties.PolicyName = $policyName
         $protectedItemProperties.ReplicationExtensionName = $replicationExtensionName
 
         if ($SiteType -eq $SiteTypes.HyperVSites) {     
-            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHCIProtectedItemModelCustomProperties]::new()
+            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.HyperVToAzStackHCIProtectedItemModelCustomProperties]::new()
             $isSourceDynamicMemoryEnabled = $machine.IsDynamicMemoryEnabled
         }
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
-            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHCIProtectedItemModelCustomProperties]::new()
+            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHCIProtectedItemModelCustomProperties]::new()
             $isSourceDynamicMemoryEnabled = $false
         }
 
@@ -710,7 +710,7 @@ function New-AzMigrateLocalServerReplication {
         }
 
         # Construct default dynamic memory config
-        $memoryConfig = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemDynamicMemoryConfig]::new()
+        $memoryConfig = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedItemDynamicMemoryConfig]::new()
         $memoryConfig.MinimumMemoryInMegaByte = [System.Math]::Min($customProperties.TargetMemoryInMegaByte, $RAMConfig.DefaultMinDynamicMemoryInMB)
         $memoryConfig.MaximumMemoryInMegaByte = [System.Math]::Max($customProperties.TargetMemoryInMegaByte, $RAMConfig.DefaultMaxDynamicMemoryInMB)
         $memoryConfig.TargetMemoryBufferPercentage = $RAMConfig.DefaultTargetMemoryBufferPercentage
@@ -835,12 +835,12 @@ function New-AzMigrateLocalServerReplication {
         }
 
         if ($SiteType -eq $SiteTypes.HyperVSites) {     
-            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHCIDiskInput[]]$disks
-            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHCINicInput[]]$nics
+            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.HyperVToAzStackHCIDiskInput[]]$disks
+            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.HyperVToAzStackHCINicInput[]]$nics
         }
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {     
-            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHCIDiskInput[]]$disks
-            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHCINicInput[]]$nics
+            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHCIDiskInput[]]$disks
+            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHCINicInput[]]$nics
         }
         
         $protectedItemProperties.CustomProperty = $customProperties

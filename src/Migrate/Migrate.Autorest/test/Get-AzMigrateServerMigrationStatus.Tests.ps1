@@ -14,24 +14,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMigrateServerMigrationS
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzMigrateServerMigrationStatus' {
-    It 'ListByName' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+$appName = "ecygqlapp"
+$machineName = "GQLVM-DoNotDelete"
+
+Describe 'Get-AzMigrateServerMigrationStatus' -Tag 'LiveOnly' {
+    It 'ListByName' {
+        $output = Get-AzMigrateServerMigrationStatus -ProjectName $env.migProjectName -ResourceGroupName $env.migResourceGroup
+        $output.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'GetByApplianceName' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetByApplianceName' {
+        $output = Get-AzMigrateServerMigrationStatus -ProjectName $env.migProjectName -ResourceGroupName $env.migResourceGroup -ApplianceName $appName
+        $output.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'GetByMachineName' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetByMachineName' {
+        $output = Get-AzMigrateServerMigrationStatus -ProjectName $env.migProjectName -ResourceGroupName $env.migResourceGroup -MachineName $machineName
+        $output.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'GetHealthByMachineName' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetHealthByMachineName' {
+        $output = Get-AzMigrateServerMigrationStatus -ProjectName $env.migProjectName -ResourceGroupName $env.migResourceGroup -MachineName $machineName -Health
+        $output.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'GetByPrioritiseServer' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetByPrioritiseServer' {
+        $output = Get-AzMigrateServerMigrationStatus -ProjectName $env.migProjectName -ResourceGroupName $env.migResourceGroup -MachineName $machineName -Expedite
+        $output.Count | Should -BeGreaterOrEqual 1 
     }
 }

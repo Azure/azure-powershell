@@ -23,7 +23,7 @@ https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocalserve
 #>
 function Get-AzMigrateLocalServerReplication {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is based on a preview API version and may experience breaking changes in future releases.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModel])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectedItemModel])]
     [CmdletBinding(DefaultParameterSetName = 'ListByName', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'GetByItemID', Mandatory)]
@@ -303,7 +303,6 @@ function Get-AzMigrateLocalServerReplication {
             # Remove common ErrorVariable and ErrorAction for get behaviors
             $null = $PSBoundParameters.Remove('ErrorVariable')
             $null = $PSBoundParameters.Remove('ErrorAction')
-    
             # Get protected item with ResourceGroupName, VaultName then filter
             $null = $PSBoundParameters.Add("VaultName", $VaultName)
             $replicatingItems = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters

@@ -85,10 +85,9 @@ Accept wildcard characters: False
 
 ### -Property
 Specifies the project properties.
-To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProjectProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateProjectProperties
 Parameter Sets: (All)
 Aliases:
 
