@@ -140,7 +140,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ISkuDetails
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ISkuDetailsList
 
 ## NOTES
 

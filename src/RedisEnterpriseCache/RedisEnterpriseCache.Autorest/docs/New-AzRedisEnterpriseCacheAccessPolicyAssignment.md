@@ -8,31 +8,22 @@ schema: 2.0.0
 # New-AzRedisEnterpriseCacheAccessPolicyAssignment
 
 ## SYNOPSIS
-Creates/Updates a particular access policy assignment for a database
+Create a particular access policy assignment for a database
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName <String> -ClusterName <String>
- -DatabaseName <String> -ResourceGroupName <String> -AccessPolicyName <String> -UserObjectId <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName <String> -DatabaseName <String> -Name <String>
+ -ResourceGroupName <String> -AccessPolicyName <String> -UserObjectId <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
+### CreateViaIdentityDatabaseExpanded
 ```
-New-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName <String> -ClusterName <String>
- -DatabaseName <String> -ResourceGroupName <String> -Parameter <IAccessPolicyAssignment>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzRedisEnterpriseCacheAccessPolicyAssignment -InputObject <IRedisEnterpriseCacheIdentity>
- -Parameter <IAccessPolicyAssignment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzRedisEnterpriseCacheAccessPolicyAssignment -DatabaseInputObject <IRedisEnterpriseCacheIdentity>
+ -Name <String> -AccessPolicyName <String> -UserObjectId <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -42,8 +33,29 @@ New-AzRedisEnterpriseCacheAccessPolicyAssignment -InputObject <IRedisEnterpriseC
  [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityRedisEnterpriseExpanded
+```
+New-AzRedisEnterpriseCacheAccessPolicyAssignment -DatabaseName <String> -Name <String>
+ -RedisEnterpriseInputObject <IRedisEnterpriseCacheIdentity> -AccessPolicyName <String> -UserObjectId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName <String> -DatabaseName <String> -Name <String>
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName <String> -DatabaseName <String> -Name <String>
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates/Updates a particular access policy assignment for a database
+Create a particular access policy assignment for a database
 
 ## EXAMPLES
 
@@ -62,28 +74,13 @@ This command creates access policy assignment (redis user) named testAccessPolic
 
 ## PARAMETERS
 
-### -AccessPolicyAssignmentName
-The name of the Redis Enterprise database access policy assignment.
-
-```yaml
-Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AccessPolicyName
 Name of access policy under specific access policy assignment.
 Only "default" policy is supported for now.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityDatabaseExpanded, CreateViaIdentityExpanded, CreateViaIdentityRedisEnterpriseExpanded
 Aliases:
 
 Required: True
@@ -116,7 +113,7 @@ There can be no leading nor trailing nor consecutive hyphens
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -126,12 +123,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DatabaseInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
+Parameter Sets: CreateViaIdentityDatabaseExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DatabaseName
 The name of the Redis Enterprise database.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityRedisEnterpriseExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -159,17 +171,61 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the Redis Enterprise database access policy assignment.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityDatabaseExpanded, CreateViaIdentityRedisEnterpriseExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Aliases: AccessPolicyAssignmentName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -188,13 +244,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Describes the access policy assignment of Redis Enterprise database
-To construct, see NOTES section for PARAMETER properties and create a hash table.
+### -RedisEnterpriseInputObject
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessPolicyAssignment
-Parameter Sets: Create, CreateViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
+Parameter Sets: CreateViaIdentityRedisEnterpriseExpanded
 Aliases:
 
 Required: True
@@ -210,7 +265,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -225,7 +280,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -240,7 +295,7 @@ The object ID of the user.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityDatabaseExpanded, CreateViaIdentityExpanded, CreateViaIdentityRedisEnterpriseExpanded
 Aliases:
 
 Required: True
@@ -286,13 +341,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessPolicyAssignment
-
 ### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessPolicyAssignment
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignment
 
 ## NOTES
 

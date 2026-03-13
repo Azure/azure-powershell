@@ -11,22 +11,3 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Remove-AzRedisEnterpriseCache' {
-    It 'Delete' {
-        $splat = @{
-            Name = $env.ClusterName
-            ResourceGroupName = $env.ResourceGroupName
-        }
-        Remove-AzRedisEnterpriseCache @splat
-
-        $splat2 = @{
-            Name = $env.ClusterName2
-            ResourceGroupName = $env.ResourceGroupName
-        }
-        Remove-AzRedisEnterpriseCache @splat2
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-}

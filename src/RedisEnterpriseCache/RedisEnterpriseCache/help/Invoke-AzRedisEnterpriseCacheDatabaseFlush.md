@@ -19,11 +19,18 @@ Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName <String> -ResourceGroupN
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Flush
+### FlushViaJsonString
 ```
 Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Parameter <IFlushParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### FlushViaJsonFilePath
+```
+Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FlushViaIdentityExpanded
@@ -33,10 +40,10 @@ Invoke-AzRedisEnterpriseCacheDatabaseFlush -InputObject <IRedisEnterpriseCacheId
  [-Confirm] [<CommonParameters>]
 ```
 
-### FlushViaIdentity
+### FlushViaIdentityRedisEnterpriseExpanded
 ```
-Invoke-AzRedisEnterpriseCacheDatabaseFlush -InputObject <IRedisEnterpriseCacheIdentity>
- -Parameter <IFlushParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+Invoke-AzRedisEnterpriseCacheDatabaseFlush -RedisEnterpriseInputObject <IRedisEnterpriseCacheIdentity>
+ [-Id <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -77,7 +84,7 @@ There can be no leading nor trailing nor consecutive hyphens
 
 ```yaml
 Type: System.String
-Parameter Sets: FlushExpanded, Flush
+Parameter Sets: FlushExpanded, FlushViaJsonString, FlushViaJsonFilePath
 Aliases:
 
 Required: True
@@ -108,7 +115,7 @@ The identifiers of all the other database resources in the georeplication group 
 
 ```yaml
 Type: System.String[]
-Parameter Sets: FlushExpanded, FlushViaIdentityExpanded
+Parameter Sets: FlushExpanded, FlushViaIdentityExpanded, FlushViaIdentityRedisEnterpriseExpanded
 Aliases:
 
 Required: False
@@ -120,17 +127,46 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: FlushViaIdentityExpanded, FlushViaIdentity
+Parameter Sets: FlushViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Flush operation
+
+```yaml
+Type: System.String
+Parameter Sets: FlushViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Flush operation
+
+```yaml
+Type: System.String
+Parameter Sets: FlushViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -149,22 +185,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Parameters for a Redis Enterprise active geo-replication flush operation
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IFlushParameters
-Parameter Sets: Flush, FlushViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PassThru
 Returns true when the command succeeds
 
@@ -180,13 +200,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RedisEnterpriseInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
+Parameter Sets: FlushViaIdentityRedisEnterpriseExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: FlushExpanded, Flush
+Parameter Sets: FlushExpanded, FlushViaJsonString, FlushViaJsonFilePath
 Aliases:
 
 Required: True
@@ -201,7 +236,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: FlushExpanded, Flush
+Parameter Sets: FlushExpanded, FlushViaJsonString, FlushViaJsonFilePath
 Aliases:
 
 Required: False
@@ -246,8 +281,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IFlushParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 
