@@ -21,12 +21,13 @@ Create an in-memory object for MultiSubnetIPConfiguration.
 Create an in-memory object for MultiSubnetIPConfiguration.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.MultiSubnetIPConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.MultiSubnetIPConfiguration
 .Link
-https://learn.microsoft.com/powershell/module/Az.SqlVirtualMachine/new-AzSqlVirtualMachineMultiSubnetIPConfigurationObject
+https://learn.microsoft.com/powershell/module/Az.SqlVirtualMachine/new-azsqlvirtualmachinemultisubnetipconfigurationobject
 #>
 function New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.MultiSubnetIPConfiguration')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.MultiSubnetIPConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -42,7 +43,7 @@ function New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.MultiSubnetIPConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.MultiSubnetIPConfiguration]::New()
 
         if ($PSBoundParameters.ContainsKey('PrivateIPAddressIpaddress')) {
             $Object.PrivateIPAddressIpaddress = $PrivateIPAddressIpaddress

@@ -82,7 +82,7 @@ Describe 'Get-AzSqlVM' {
     }
 
     It 'GetViaIdentity' {
-        $sqlVM1 = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachine]@{Id = $env.SqlVMName_HA1Id }
+        $sqlVM1 = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachine]@{Id = $env.SqlVMName_HA1Id }
         $sqlVMs = Get-AzSqlVM -InputObject $sqlVM1 
 
         $sqlVMs.Count | Should -Be 1
