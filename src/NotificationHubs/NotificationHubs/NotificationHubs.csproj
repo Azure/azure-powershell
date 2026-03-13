@@ -10,10 +10,10 @@
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.NotificationHubs" Version="2.3.2-preview" />
-  </ItemGroup>
-
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\NotificationHubs.Management.Sdk\NotificationHubs.Management.Sdk.csproj" />
+  </ItemGroup>
 
 </Project>
