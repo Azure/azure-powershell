@@ -1225,3 +1225,77 @@ function Test-InVMAccessControlProfileVersion
         Clean-ResourceGroup $rgname;
     }
 }
+<#
+.SYNOPSIS
+Tests New-AzGallery with system-assigned managed identity
+#>
+function Test-GalleryWithSystemAssignedIdentity
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $galleryName = 'gallery' + $rgname;
+
+    try
+    {
+        # Common
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create gallery with system-assigned identity
+        $gallery = New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $loc -EnableSystemAssignedIdentity;
+
+        Assert-NotNull $gallery;
+        Assert-NotNull $gallery.Identity;
+        Assert-AreEqual "SystemAssigned" $gallery.Identity.Type.ToString();
+
+        # Retrieve gallery and verify identity is preserved
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
+        Assert-NotNull $gallery.Identity;
+        Assert-AreEqual "SystemAssigned" $gallery.Identity.Type.ToString();
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue;
+    }
+}
+
+<#
+.SYNOPSIS
+Tests Update-AzGallery with system-assigned managed identity
+#>
+function Test-UpdateGalleryWithSystemAssignedIdentity
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $galleryName = 'gallery' + $rgname;
+
+    try
+    {
+        # Common
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create gallery without identity
+        New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $loc;
+
+        # Update gallery to add system-assigned identity
+        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -EnableSystemAssignedIdentity;
+
+        Assert-NotNull $gallery;
+        Assert-NotNull $gallery.Identity;
+        Assert-AreEqual "SystemAssigned" $gallery.Identity.Type.ToString();
+
+        # Verify identity via Get
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
+        Assert-NotNull $gallery.Identity;
+        Assert-AreEqual "SystemAssigned" $gallery.Identity.Type.ToString();
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue;
+    }
+}

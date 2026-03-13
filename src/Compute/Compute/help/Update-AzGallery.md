@@ -18,6 +18,7 @@ Update-AzGallery [-ResourceGroupName] <String> [-Name] <String> [-AsJob] [-Descr
  [-Tag <Hashtable>] [-Permission <String>] [-Subscription <String[]>] [-Tenant <String[]>]
  [-RemoveSubscription <String[]>] [-RemoveTenant <String[]>] [-Share] [-Community] [-Reset]
  [-PublisherUri <String>] [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
+ [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -28,6 +29,7 @@ Update-AzGallery [-ResourceId] <String> [-AsJob] [-Description <String>] [-Tag <
  [-Permission <String>] [-Subscription <String[]>] [-Tenant <String[]>] [-RemoveSubscription <String[]>]
  [-RemoveTenant <String[]>] [-Share] [-Community] [-Reset] [-PublisherUri <String>]
  [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
+ [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -38,6 +40,7 @@ Update-AzGallery [-InputObject] <PSGallery> [-AsJob] [-Description <String>] [-T
  [-Permission <String>] [-Subscription <String[]>] [-Tenant <String[]>] [-RemoveSubscription <String[]>]
  [-RemoveTenant <String[]>] [-Share] [-Community] [-Reset] [-PublisherUri <String>]
  [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
+ [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -60,6 +63,21 @@ Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Permission Group
 ```
 
 Update a gallery to be shared and add two subscriptions it is to be shared with.
+
+### Example 3
+```powershell
+Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -EnableSystemAssignedIdentity
+```
+
+Update a gallery to enable a system-assigned managed identity.
+
+### Example 4
+```powershell
+$uid = Get-AzUserAssignedIdentity -ResourceGroupName $rgname -Name $identityName
+Get-AzGallery -ResourceGroupName $rgname -Name $galleryName | Update-AzGallery -UserAssignedIdentity $uid.Id
+```
+
+Update a gallery to add a user-assigned managed identity using pipeline input.
 
 ## PARAMETERS
 
@@ -120,6 +138,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Enables system-assigned managed identity on the gallery.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -363,6 +396,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -UserAssignedIdentity
+The list of user-assigned managed identity resource IDs to associate with the gallery. The resource IDs are in the form '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -404,6 +452,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Compute.Automation.Models.PSGallery
 
 ### System.Collections.Hashtable
+
+### System.String[]
 
 ## OUTPUTS
 
