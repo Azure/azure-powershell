@@ -1,7 +1,7 @@
 ---
 external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxKeyEncryptionKeyObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxkeyencryptionkeyobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for KeyEncryptionKey.
 ## SYNTAX
 
 ```
-New-AzDataBoxKeyEncryptionKeyObject -KekType <KekType> [-IdentityProperty <IIdentityProperties>]
+New-AzDataBoxKeyEncryptionKeyObject -KekType <String> [-IdentityProperty <IIdentityProperties>]
  [-KekUrl <String>] [-KekVaultResourceId <String>] [<CommonParameters>]
 ```
 
@@ -28,9 +28,15 @@ New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty
 ```
 
 ```output
-KekType         KekUrl                                           KekVaultResourceId
--------         ------                                           ------------------
-CustomerManaged keyIdentifier /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName
+IdentityProperty   : {
+                       "userAssigned": {
+                         "resourceId": "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"
+                       },
+                       "type": "UserAssigned"
+                     }
+KekType            : CustomerManaged
+KekUrl             : keyIdentifier
+KekVaultResourceId : /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName
 ```
 
 Create a in-memory object for KeyEncryptionKey
@@ -39,10 +45,9 @@ Create a in-memory object for KeyEncryptionKey
 
 ### -IdentityProperty
 Managed identity properties used for key encryption.
-To construct, see NOTES section for IDENTITYPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IIdentityProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IIdentityProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -57,7 +62,7 @@ Accept wildcard characters: False
 Type of encryption key used for key encryption.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.KekType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +112,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.KeyEncryptionKey
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.KeyEncryptionKey
 
 ## NOTES
 

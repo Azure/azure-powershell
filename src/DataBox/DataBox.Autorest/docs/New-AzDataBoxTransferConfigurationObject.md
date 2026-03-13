@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxTransferConfigurationObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxtransferconfigurationobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for TransferConfiguration.
 ## SYNTAX
 
 ```
-New-AzDataBoxTransferConfigurationObject -Type <TransferConfigurationType>
+New-AzDataBoxTransferConfigurationObject -Type <String>
  [-TransferAllDetail <ITransferConfigurationTransferAllDetails>]
  [-TransferFilterDetail <ITransferConfigurationTransferFilterDetails>] [<CommonParameters>]
 ```
@@ -28,6 +28,19 @@ Create an in-memory object for TransferConfiguration.
 New-AzDataBoxTransferConfigurationObject -Type "TransferAll" -TransferAllDetail @{"IncludeDataAccountType"="StorageAccount";"IncludeTransferAllBlob"= "True"; "IncludeTransferAllFile"="True"}
 ```
 
+```output
+TransferAllDetail    : {
+                         "include": {
+                           "dataAccountType": "StorageAccount",
+                           "transferAllBlobs": true,
+                           "transferAllFiles": true
+                         }
+                       }
+TransferFilterDetail : {
+                       }
+Type                 : TransferAll
+```
+
 Create a in-memory object for export jobs TransferConfiguration
 
 ## PARAMETERS
@@ -35,10 +48,9 @@ Create a in-memory object for export jobs TransferConfiguration
 ### -TransferAllDetail
 Map of filter type and the details to transfer all data.
 This field is required only if the TransferConfigurationType is given as TransferAll.
-To construct, see NOTES section for TRANSFERALLDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ITransferConfigurationTransferAllDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ITransferConfigurationTransferAllDetails
 Parameter Sets: (All)
 Aliases:
 
@@ -52,10 +64,9 @@ Accept wildcard characters: False
 ### -TransferFilterDetail
 Map of filter type and the details to filter.
 This field is required only if the TransferConfigurationType is given as TransferUsingFilter.
-To construct, see NOTES section for TRANSFERFILTERDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ITransferConfigurationTransferFilterDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ITransferConfigurationTransferFilterDetails
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +81,7 @@ Accept wildcard characters: False
 Type of the configuration for transfer.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferConfigurationType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +99,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.TransferConfiguration
 
 ## NOTES
 
