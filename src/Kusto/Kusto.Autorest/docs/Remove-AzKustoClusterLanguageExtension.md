@@ -25,6 +25,20 @@ Remove-AzKustoClusterLanguageExtension -InputObject <IKustoIdentity> [-Value <IL
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### RemoveViaJsonFilePath
+```
+Remove-AzKustoClusterLanguageExtension -ClusterName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RemoveViaJsonString
+```
+Remove-AzKustoClusterLanguageExtension -ClusterName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Remove a list of language extensions that can run within KQL queries.
 
@@ -59,7 +73,7 @@ The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveExpanded
+Parameter Sets: RemoveExpanded, RemoveViaJsonFilePath, RemoveViaJsonString
 Aliases:
 
 Required: True
@@ -87,7 +101,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
@@ -98,6 +111,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Remove operation
+
+```yaml
+Type: System.String
+Parameter Sets: RemoveViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Remove operation
+
+```yaml
+Type: System.String
+Parameter Sets: RemoveViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -137,7 +180,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveExpanded
+Parameter Sets: RemoveExpanded, RemoveViaJsonFilePath, RemoveViaJsonString
 Aliases:
 
 Required: True
@@ -152,7 +195,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveExpanded
+Parameter Sets: RemoveExpanded, RemoveViaJsonFilePath, RemoveViaJsonString
 Aliases:
 
 Required: False
@@ -164,11 +207,10 @@ Accept wildcard characters: False
 
 ### -Value
 The list of language extensions.
-To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ILanguageExtension[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ILanguageExtension[]
+Parameter Sets: RemoveExpanded, RemoveViaIdentityExpanded
 Aliases:
 
 Required: False

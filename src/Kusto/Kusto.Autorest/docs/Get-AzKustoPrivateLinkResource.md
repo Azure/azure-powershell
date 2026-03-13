@@ -29,38 +29,55 @@ Get-AzKustoPrivateLinkResource -ClusterName <String> -Name <String> -ResourceGro
 Get-AzKustoPrivateLinkResource -InputObject <IKustoIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityCluster
+```
+Get-AzKustoPrivateLinkResource -ClusterInputObject <IKustoIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets a private link resource.
 
 ## EXAMPLES
 
-### Example 1: List all PrivateLinkResource in a cluster
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzKustoPrivateLinkResource -ClusterName "mycluster" -ResourceGroupName "testrg"
+{{ Add code here }}
 ```
 
 ```output
-Name                                                       Type
-----                                                       ----
-mycluster/cluster                                		   Microsoft.Kusto/Clusters/PrivateLinkResources
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-The above command returns all PrivateLinkResource in the cluster "mycluster" found in the resource group "testrg".
+{{ Add description here }}
 
-### Example 2: Get a specific PrivateLinkResource by name
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzKustoPrivateLinkResource -ClusterName "mycluster" -ResourceGroupName "testrg" -Name "ManagedPrivateEndpointName"
+{{ Add code here }}
 ```
 
 ```output
-Name                                                       Type
-----                                                       ----
-mycluster/cluster                                		   Microsoft.Kusto/Clusters/PrivateLinkResources
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-The above command returns the PrivateLinkResource named "mycluster/cluster" in the cluster "mycluster" found in the resource group "testrg".
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+Parameter Sets: GetViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -ClusterName
 The name of the Kusto cluster.
@@ -95,7 +112,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
@@ -114,7 +130,7 @@ The name of the private link resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityCluster
 Aliases: PrivateLinkResourceName
 
 Required: True
@@ -164,7 +180,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IPrivateLinkResource
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IPrivateLinkResource
 
 ## NOTES
 

@@ -20,12 +20,12 @@ Describe 'Add-AzKustoClusterCalloutPolicy' {
         $clusterName = $env.kustoClusterName
         $subscriptionId = $env.subscriptionId
         $apiVersion = $env.kustoApiVersion
-        $kustoCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy]@{
+        $kustoCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ICalloutPolicy]@{
             calloutType = "kusto"
             outboundAccess = "Allow"
             calloutUriRegex = "*"
         }
-        $sqlCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy]@{
+        $sqlCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ICalloutPolicy]@{
             calloutType = "sql"
             outboundAccess = "Deny"
             calloutUriRegex = "*"

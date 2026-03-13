@@ -19,6 +19,27 @@ Remove-AzKustoDatabasePrincipal -ClusterName <String> -DatabaseName <String> -Re
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### RemoveViaJsonString
+```
+Remove-AzKustoDatabasePrincipal -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RemoveViaJsonFilePath
+```
+Remove-AzKustoDatabasePrincipal -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RemoveViaIdentityClusterExpanded
+```
+Remove-AzKustoDatabasePrincipal -DatabaseName <String> -ClusterInputObject <IKustoIdentity>
+ [-Value <IDatabasePrincipal[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### RemoveViaIdentityExpanded
 ```
 Remove-AzKustoDatabasePrincipal -InputObject <IKustoIdentity> [-Value <IDatabasePrincipal[]>]
@@ -45,12 +66,27 @@ The above command removes Database principals permissions
 
 ## PARAMETERS
 
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+Parameter Sets: RemoveViaIdentityClusterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveExpanded
+Parameter Sets: RemoveExpanded, RemoveViaJsonString, RemoveViaJsonFilePath
 Aliases:
 
 Required: True
@@ -65,7 +101,7 @@ The name of the database in the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveExpanded
+Parameter Sets: RemoveExpanded, RemoveViaJsonString, RemoveViaJsonFilePath, RemoveViaIdentityClusterExpanded
 Aliases:
 
 Required: True
@@ -93,7 +129,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
@@ -107,13 +142,43 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Remove operation
+
+```yaml
+Type: System.String
+Parameter Sets: RemoveViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Remove operation
+
+```yaml
+Type: System.String
+Parameter Sets: RemoveViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveExpanded
+Parameter Sets: RemoveExpanded, RemoveViaJsonString, RemoveViaJsonFilePath
 Aliases:
 
 Required: True
@@ -128,7 +193,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveExpanded
+Parameter Sets: RemoveExpanded, RemoveViaJsonString, RemoveViaJsonFilePath
 Aliases:
 
 Required: False
@@ -140,11 +205,10 @@ Accept wildcard characters: False
 
 ### -Value
 The list of Kusto database principals.
-To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabasePrincipal[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabasePrincipal[]
+Parameter Sets: RemoveExpanded, RemoveViaIdentityClusterExpanded, RemoveViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -194,7 +258,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabasePrincipal
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabasePrincipalListResult
 
 ## NOTES
 
