@@ -14,19 +14,28 @@
 
 namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.PolicyInsights.Common;
     using Microsoft.Azure.Commands.PolicyInsights.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.PolicyInsights;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Management.Automation;
     using RestApiModels = Microsoft.Azure.Management.PolicyInsights.Models;
 
     /// <summary>
     /// Gets policy states
     /// </summary>
+    [CmdletOutputBreakingChangeWithVersion(
+        typeof(PolicyStateSummary),
+        deprecateByAzVersion: "16.0.0",
+        deprecateByVersion: "2.0.0",
+        DeprecatedOutputProperties = new string[] { "PolicyAssignments", "Results" },
+        NewOutputProperties = new string[] { "PolicyAssignment", "ResultCompliantResource", "ResultNonCompliantPolicy", "ResultNonCompliantResource", "ResultPolicyDetail",
+            "ResultPolicyGroupDetail", "ResultQueryResultsUri", "ResultResourceDetail", "OdataId", "OdataContext" }
+    )]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyStateSummary", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PolicyStateSummary))]
     public class GetAzureRmPolicyStateSummary : PolicyInsightsCmdletBase
     {

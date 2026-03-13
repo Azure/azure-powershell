@@ -14,19 +14,27 @@
 
 namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
 {
-    using System.Globalization;
-    using System.Linq;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.PolicyInsights.Common;
     using Microsoft.Azure.Commands.PolicyInsights.Models.Remediation;
     using Microsoft.Azure.Commands.PolicyInsights.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.PolicyInsights;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using System.Globalization;
+    using System.Linq;
+    using System.Management.Automation;
 
     /// <summary>
     /// Cancels a policy remediation.
     /// </summary>
+    [CmdletOutputBreakingChangeWithVersion(
+        typeof(bool),
+        deprecateByAzVersion: "16.0.0",
+        deprecateByVersion: "2.0.0",
+        ReplacementCmdletOutputTypeName = "Remediation",
+        ChangeDescription = "Stop-AzPolicyRemediation will now have a NoWait switch parameter as well as returning the Remediation object instead of just a boolean."
+    )]
     [Cmdlet("Stop", AzureRMConstants.AzureRMPrefix + "PolicyRemediation", DefaultParameterSetName = ParameterSetNames.ByName, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class StopAzureRmPolicyRemediation : RemediationCmdletBase
     {
