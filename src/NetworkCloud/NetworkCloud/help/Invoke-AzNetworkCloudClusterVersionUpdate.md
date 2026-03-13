@@ -36,8 +36,7 @@ Invoke-AzNetworkCloudClusterVersionUpdate -ClusterName <String> -ResourceGroupNa
 ### UpdateViaIdentityExpanded
 ```
 Invoke-AzNetworkCloudClusterVersionUpdate -InputObject <INetworkCloudIdentity> -TargetClusterVersion <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

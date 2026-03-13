@@ -1,8 +1,8 @@
 {
-  "Update-AzNetworkCloudL2Network+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgx46tur/providers/Microsoft.NetworkCloud/l2Networks/l2network?api-version=2025-02-01+1": {
+  "Update-AzNetworkCloudL2Network+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgx46tur/providers/Microsoft.NetworkCloud/l2Networks/l2network?api-version=2025-09-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgx46tur/providers/Microsoft.NetworkCloud/l2Networks/l2network?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgx46tur/providers/Microsoft.NetworkCloud/l2Networks/l2network?api-version=2025-09-01",
       "Content": "{\n  \"tags\": {\n    \"tag2\": \"tagUpdate\",\n    \"tag1\": \"tag1\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
