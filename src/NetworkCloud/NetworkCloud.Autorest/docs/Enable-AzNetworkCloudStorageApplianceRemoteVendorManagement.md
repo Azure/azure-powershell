@@ -19,7 +19,21 @@ Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName <
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### EnableExpanded1
+```
+Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName <String>
+ -StorageApplianceName <String> [-SubscriptionId <String>] [-SupportEndpoint <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### EnableViaIdentityExpanded
+```
+Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -InputObject <INetworkCloudIdentity>
+ [-SupportEndpoint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### EnableViaIdentityExpanded1
 ```
 Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -InputObject <INetworkCloudIdentity>
  [-SupportEndpoint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
@@ -33,7 +47,21 @@ Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName <
  [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### EnableViaJsonFilePath1
+```
+Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName <String>
+ -StorageApplianceName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### EnableViaJsonString
+```
+Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName <String>
+ -StorageApplianceName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### EnableViaJsonString1
 ```
 Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement -ResourceGroupName <String>
  -StorageApplianceName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
@@ -90,7 +118,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: EnableViaIdentityExpanded
+Parameter Sets: EnableViaIdentityExpanded, EnableViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -105,7 +133,7 @@ Path of Json file supplied to the Enable operation
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableViaJsonFilePath
+Parameter Sets: EnableViaJsonFilePath, EnableViaJsonFilePath1
 Aliases:
 
 Required: True
@@ -120,7 +148,7 @@ Json string supplied to the Enable operation
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableViaJsonString
+Parameter Sets: EnableViaJsonString, EnableViaJsonString1
 Aliases:
 
 Required: True
@@ -166,7 +194,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaJsonFilePath, EnableViaJsonString
+Parameter Sets: EnableExpanded, EnableExpanded1, EnableViaJsonFilePath, EnableViaJsonFilePath1, EnableViaJsonString, EnableViaJsonString1
 Aliases:
 
 Required: True
@@ -181,7 +209,7 @@ The name of the storage appliance.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaJsonFilePath, EnableViaJsonString
+Parameter Sets: EnableExpanded, EnableExpanded1, EnableViaJsonFilePath, EnableViaJsonFilePath1, EnableViaJsonString, EnableViaJsonString1
 Aliases:
 
 Required: True
@@ -197,7 +225,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaJsonFilePath, EnableViaJsonString
+Parameter Sets: EnableExpanded, EnableExpanded1, EnableViaJsonFilePath, EnableViaJsonFilePath1, EnableViaJsonString, EnableViaJsonString1
 Aliases:
 
 Required: False
@@ -214,7 +242,7 @@ The list of IPv4 subnets (in CIDR format), IPv6 subnets (in CIDR format), or hos
 
 ```yaml
 Type: System.String[]
-Parameter Sets: EnableExpanded, EnableViaIdentityExpanded
+Parameter Sets: EnableExpanded, EnableExpanded1, EnableViaIdentityExpanded, EnableViaIdentityExpanded1
 Aliases:
 
 Required: False

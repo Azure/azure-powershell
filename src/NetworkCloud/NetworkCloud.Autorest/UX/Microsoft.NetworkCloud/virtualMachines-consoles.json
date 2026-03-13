@@ -1,6 +1,6 @@
 {
   "resourceType": "virtualMachines/consoles",
-  "apiVersion": "2025-02-01",
+  "apiVersion": "2025-09-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.networkcloud"
   },
@@ -21,10 +21,39 @@
               "[-SubscriptionId <String[]>]",
               "-VirtualMachineName <String>"
             ]
+          },
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-VirtualMachineName <String>"
+            ]
           }
         ]
       },
       "examples": [
+        {
+          "description": "Get properties of the provided virtual machine console.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.consoleName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VirtualMachineName",
+              "value": "[Path.virtualMachineName]"
+            }
+          ]
+        },
         {
           "description": "Get properties of the provided virtual machine console.",
           "parameters": [
@@ -64,10 +93,39 @@
               "[-SubscriptionId <String>]",
               "-VirtualMachineName <String>"
             ]
+          },
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-VirtualMachineName <String>"
+            ]
           }
         ]
       },
       "examples": [
+        {
+          "description": "Delete the provided virtual machine console.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.consoleName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VirtualMachineName",
+              "value": "[Path.virtualMachineName]"
+            }
+          ]
+        },
         {
           "description": "Delete the provided virtual machine console.",
           "parameters": [

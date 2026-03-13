@@ -15,10 +15,17 @@ Get bare metal machine key set of the provided cluster.
 ### List (Default)
 ```
 Get-AzNetworkCloudBareMetalMachineKeySet -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
+```
+Get-AzNetworkCloudBareMetalMachineKeySet -ClusterName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get1
 ```
 Get-AzNetworkCloudBareMetalMachineKeySet -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -30,10 +37,29 @@ Get-AzNetworkCloudBareMetalMachineKeySet -InputObject <INetworkCloudIdentity> [-
  [<CommonParameters>]
 ```
 
+### GetViaIdentity1
+```
+Get-AzNetworkCloudBareMetalMachineKeySet -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### GetViaIdentityCluster
 ```
 Get-AzNetworkCloudBareMetalMachineKeySet -ClusterInputObject <INetworkCloudIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityCluster1
+```
+Get-AzNetworkCloudBareMetalMachineKeySet -Cluster1InputObject <INetworkCloudIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzNetworkCloudBareMetalMachineKeySet -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,6 +96,21 @@ This command lists all bare metal machine key sets of the provided cluster.
 
 ## PARAMETERS
 
+### -Cluster1InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: GetViaIdentityCluster1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterInputObject
 Identity Parameter
 
@@ -90,7 +131,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, Get1, List, List1
 Aliases:
 
 Required: True
@@ -121,7 +162,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: True
@@ -136,7 +177,7 @@ The name of the bare metal machine key set.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityCluster
+Parameter Sets: Get, Get1, GetViaIdentityCluster, GetViaIdentityCluster1
 Aliases: BareMetalMachineKeySetName
 
 Required: True
@@ -152,10 +193,26 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, Get1, List, List1
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipToken
+The opaque token that the server returns to indicate where to continue listing resources from.
+This is used for paging through large result sets.
+
+```yaml
+Type: System.String
+Parameter Sets: List, List1
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -168,12 +225,28 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get, Get1, List, List1
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Top
+The maximum number of resources to return from the operation.
+Example: '$top=10'.
+
+```yaml
+Type: System.Int32
+Parameter Sets: List, List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

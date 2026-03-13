@@ -19,6 +19,19 @@ Invoke-AzNetworkCloudBareMetalMachineReimage -Name <String> -ResourceGroupName <
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### Reimage1
+```
+Invoke-AzNetworkCloudBareMetalMachineReimage -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ReimageViaIdentity1
+```
+Invoke-AzNetworkCloudBareMetalMachineReimage -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ReimageViaIdentity
 ```
 Invoke-AzNetworkCloudBareMetalMachineReimage -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
@@ -75,7 +88,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: ReimageViaIdentity
+Parameter Sets: ReimageViaIdentity1, ReimageViaIdentity
 Aliases:
 
 Required: True
@@ -90,7 +103,7 @@ The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reimage
+Parameter Sets: Reimage, Reimage1
 Aliases: BareMetalMachineName
 
 Required: True
@@ -136,7 +149,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reimage
+Parameter Sets: Reimage, Reimage1
 Aliases:
 
 Required: True
@@ -152,7 +165,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reimage
+Parameter Sets: Reimage, Reimage1
 Aliases:
 
 Required: False

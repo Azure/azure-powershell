@@ -21,7 +21,32 @@ New-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMac
  [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateExpanded1
+```
+New-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
+ -Enabled <String> -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
+ -SshPublicKeyData <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-Expiration <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded1
+```
+New-AzNetworkCloudConsole -InputObject <INetworkCloudIdentity> -Enabled <String>
+ -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String> -SshPublicKeyData <String>
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-Expiration <DateTime>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaIdentityVirtualMachineExpanded
+```
+New-AzNetworkCloudConsole -Name <String> -VirtualMachineInputObject <INetworkCloudIdentity> -Enabled <String>
+ -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String> -SshPublicKeyData <String>
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-Expiration <DateTime>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityVirtualMachineExpanded1
 ```
 New-AzNetworkCloudConsole -Name <String> -VirtualMachineInputObject <INetworkCloudIdentity> -Enabled <String>
  -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String> -SshPublicKeyData <String>
@@ -36,7 +61,21 @@ New-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMac
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath1
+```
+New-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaJsonString
+```
+New-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString1
 ```
 New-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
  -JsonString <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
@@ -101,7 +140,7 @@ The indicator of whether the console access is enabled.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityVirtualMachineExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityVirtualMachineExpanded, CreateViaIdentityVirtualMachineExpanded1
 Aliases:
 
 Required: True
@@ -116,7 +155,7 @@ The date and time after which the key will be disallowed access.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded, CreateViaIdentityVirtualMachineExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityVirtualMachineExpanded, CreateViaIdentityVirtualMachineExpanded1
 Aliases:
 
 Required: False
@@ -131,7 +170,7 @@ The resource ID of the extended location on which the resource will be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityVirtualMachineExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityVirtualMachineExpanded, CreateViaIdentityVirtualMachineExpanded1
 Aliases:
 
 Required: True
@@ -146,7 +185,7 @@ The extended location type, for example, CustomLocation.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityVirtualMachineExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityVirtualMachineExpanded, CreateViaIdentityVirtualMachineExpanded1
 Aliases:
 
 Required: True
@@ -189,12 +228,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: CreateViaIdentityExpanded1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -JsonFilePath
 Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Parameter Sets: CreateViaJsonFilePath, CreateViaJsonFilePath1
 Aliases:
 
 Required: True
@@ -209,7 +263,7 @@ Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString
+Parameter Sets: CreateViaJsonString, CreateViaJsonString1
 Aliases:
 
 Required: True
@@ -224,7 +278,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityVirtualMachineExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityVirtualMachineExpanded, CreateViaIdentityVirtualMachineExpanded1
 Aliases:
 
 Required: True
@@ -239,7 +293,7 @@ The name of the virtual machine console.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityVirtualMachineExpanded, CreateViaIdentityVirtualMachineExpanded1, CreateViaJsonFilePath, CreateViaJsonFilePath1, CreateViaJsonString, CreateViaJsonString1
 Aliases: ConsoleName
 
 Required: True
@@ -270,7 +324,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaJsonFilePath, CreateViaJsonFilePath1, CreateViaJsonString, CreateViaJsonString1
 Aliases:
 
 Required: True
@@ -285,7 +339,7 @@ The SSH public key data.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityVirtualMachineExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityVirtualMachineExpanded, CreateViaIdentityVirtualMachineExpanded1
 Aliases:
 
 Required: True
@@ -301,7 +355,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaJsonFilePath, CreateViaJsonFilePath1, CreateViaJsonString, CreateViaJsonString1
 Aliases:
 
 Required: False
@@ -316,7 +370,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityVirtualMachineExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityVirtualMachineExpanded, CreateViaIdentityVirtualMachineExpanded1
 Aliases:
 
 Required: False
@@ -331,7 +385,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: CreateViaIdentityVirtualMachineExpanded
+Parameter Sets: CreateViaIdentityVirtualMachineExpanded, CreateViaIdentityVirtualMachineExpanded1
 Aliases:
 
 Required: True
@@ -346,7 +400,7 @@ The name of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaJsonFilePath, CreateViaJsonFilePath1, CreateViaJsonString, CreateViaJsonString1
 Aliases:
 
 Required: True

@@ -19,10 +19,24 @@ Invoke-AzNetworkCloudClusterContinueVersionUpdate -ClusterName <String> -Resourc
  [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ContinueViaJsonString1
+```
+Invoke-AzNetworkCloudClusterContinueVersionUpdate -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ContinueViaJsonString
 ```
 Invoke-AzNetworkCloudClusterContinueVersionUpdate -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ContinueViaJsonFilePath1
+```
+Invoke-AzNetworkCloudClusterContinueVersionUpdate -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,6 +47,21 @@ Invoke-AzNetworkCloudClusterContinueVersionUpdate -ClusterName <String> -Resourc
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ContinueExpanded1
+```
+Invoke-AzNetworkCloudClusterContinueVersionUpdate -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-MachineGroupTargetingMode <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Continue1
+```
+Invoke-AzNetworkCloudClusterContinueVersionUpdate -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -ClusterContinueUpdateVersionParameter <IClusterContinueUpdateVersionParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### Continue
 ```
 Invoke-AzNetworkCloudClusterContinueVersionUpdate -ClusterName <String> -ResourceGroupName <String>
@@ -41,11 +70,25 @@ Invoke-AzNetworkCloudClusterContinueVersionUpdate -ClusterName <String> -Resourc
  [-Confirm] [<CommonParameters>]
 ```
 
+### ContinueViaIdentityExpanded1
+```
+Invoke-AzNetworkCloudClusterContinueVersionUpdate -InputObject <INetworkCloudIdentity>
+ [-MachineGroupTargetingMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ContinueViaIdentityExpanded
 ```
 Invoke-AzNetworkCloudClusterContinueVersionUpdate -InputObject <INetworkCloudIdentity>
  [-MachineGroupTargetingMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ContinueViaIdentity1
+```
+Invoke-AzNetworkCloudClusterContinueVersionUpdate -InputObject <INetworkCloudIdentity>
+ -ClusterContinueUpdateVersionParameter <IClusterContinueUpdateVersionParameters> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ContinueViaIdentity
@@ -89,7 +132,7 @@ ClusterContinueUpdateVersionParameters represents the body of the request to con
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterContinueUpdateVersionParameters
-Parameter Sets: Continue, ContinueViaIdentity
+Parameter Sets: Continue1, Continue, ContinueViaIdentity1, ContinueViaIdentity
 Aliases:
 
 Required: True
@@ -104,7 +147,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: ContinueExpanded, ContinueViaJsonString, ContinueViaJsonFilePath, Continue
+Parameter Sets: ContinueExpanded, ContinueViaJsonString1, ContinueViaJsonString, ContinueViaJsonFilePath1, ContinueViaJsonFilePath, ContinueExpanded1, Continue1, Continue
 Aliases:
 
 Required: True
@@ -135,7 +178,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: ContinueViaIdentityExpanded, ContinueViaIdentity
+Parameter Sets: ContinueViaIdentityExpanded1, ContinueViaIdentityExpanded, ContinueViaIdentity1, ContinueViaIdentity
 Aliases:
 
 Required: True
@@ -150,7 +193,7 @@ Path of Json file supplied to the Continue operation
 
 ```yaml
 Type: System.String
-Parameter Sets: ContinueViaJsonFilePath
+Parameter Sets: ContinueViaJsonFilePath1, ContinueViaJsonFilePath
 Aliases:
 
 Required: True
@@ -165,7 +208,7 @@ Json string supplied to the Continue operation
 
 ```yaml
 Type: System.String
-Parameter Sets: ContinueViaJsonString
+Parameter Sets: ContinueViaJsonString1, ContinueViaJsonString
 Aliases:
 
 Required: True
@@ -180,7 +223,7 @@ The mode by which the cluster will target the next grouping of servers to contin
 
 ```yaml
 Type: System.String
-Parameter Sets: ContinueExpanded, ContinueViaIdentityExpanded
+Parameter Sets: ContinueExpanded, ContinueExpanded1, ContinueViaIdentityExpanded1, ContinueViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -226,7 +269,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ContinueExpanded, ContinueViaJsonString, ContinueViaJsonFilePath, Continue
+Parameter Sets: ContinueExpanded, ContinueViaJsonString1, ContinueViaJsonString, ContinueViaJsonFilePath1, ContinueViaJsonFilePath, ContinueExpanded1, Continue1, Continue
 Aliases:
 
 Required: True
@@ -242,7 +285,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ContinueExpanded, ContinueViaJsonString, ContinueViaJsonFilePath, Continue
+Parameter Sets: ContinueExpanded, ContinueViaJsonString1, ContinueViaJsonString, ContinueViaJsonFilePath1, ContinueViaJsonFilePath, ContinueExpanded1, Continue1, Continue
 Aliases:
 
 Required: False

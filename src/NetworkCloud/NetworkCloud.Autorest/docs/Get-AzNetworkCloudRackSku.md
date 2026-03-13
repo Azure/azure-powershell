@@ -23,10 +23,27 @@ Get-AzNetworkCloudRackSku -Name <String> [-SubscriptionId <String[]>] [-DefaultP
  [<CommonParameters>]
 ```
 
+### Get1
+```
+Get-AzNetworkCloudRackSku -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzNetworkCloudRackSku -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentity1
+```
+Get-AzNetworkCloudRackSku -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzNetworkCloudRackSku [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,7 +100,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: True
@@ -98,7 +115,7 @@ The name of the rack SKU.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, Get1
 Aliases: RackSkuName
 
 Required: True
@@ -114,7 +131,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get, Get1, List, List1
 Aliases:
 
 Required: False

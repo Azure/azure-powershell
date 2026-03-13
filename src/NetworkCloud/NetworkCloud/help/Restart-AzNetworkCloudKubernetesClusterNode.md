@@ -19,10 +19,24 @@ Restart-AzNetworkCloudKubernetesClusterNode -KubernetesClusterName <String> -Res
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### RestartViaJsonString1
+```
+Restart-AzNetworkCloudKubernetesClusterNode -KubernetesClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### RestartViaJsonString
 ```
 Restart-AzNetworkCloudKubernetesClusterNode -KubernetesClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RestartViaJsonFilePath1
+```
+Restart-AzNetworkCloudKubernetesClusterNode -KubernetesClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,10 +47,32 @@ Restart-AzNetworkCloudKubernetesClusterNode -KubernetesClusterName <String> -Res
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### RestartExpanded1
+```
+Restart-AzNetworkCloudKubernetesClusterNode -KubernetesClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -NodeName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Restart1
+```
+Restart-AzNetworkCloudKubernetesClusterNode -KubernetesClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -KubernetesClusterRestartNodeParameter <IKubernetesClusterRestartNodeParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### Restart
 ```
 Restart-AzNetworkCloudKubernetesClusterNode -KubernetesClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -KubernetesClusterRestartNodeParameter <IKubernetesClusterRestartNodeParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### RestartViaIdentityExpanded1
+```
+Restart-AzNetworkCloudKubernetesClusterNode -InputObject <INetworkCloudIdentity> -NodeName <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -46,6 +82,13 @@ Restart-AzNetworkCloudKubernetesClusterNode -KubernetesClusterName <String> -Res
 Restart-AzNetworkCloudKubernetesClusterNode -InputObject <INetworkCloudIdentity> -NodeName <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### RestartViaIdentity1
+```
+Restart-AzNetworkCloudKubernetesClusterNode -InputObject <INetworkCloudIdentity>
+ -KubernetesClusterRestartNodeParameter <IKubernetesClusterRestartNodeParameters> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestartViaIdentity
@@ -105,7 +148,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: RestartViaIdentityExpanded, RestartViaIdentity
+Parameter Sets: RestartViaIdentityExpanded1, RestartViaIdentityExpanded, RestartViaIdentity1, RestartViaIdentity
 Aliases:
 
 Required: True
@@ -120,7 +163,7 @@ Path of Json file supplied to the Restart operation
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartViaJsonFilePath
+Parameter Sets: RestartViaJsonFilePath1, RestartViaJsonFilePath
 Aliases:
 
 Required: True
@@ -135,7 +178,7 @@ Json string supplied to the Restart operation
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartViaJsonString
+Parameter Sets: RestartViaJsonString1, RestartViaJsonString
 Aliases:
 
 Required: True
@@ -150,7 +193,7 @@ The name of the Kubernetes cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, RestartViaJsonString, RestartViaJsonFilePath, Restart
+Parameter Sets: RestartExpanded, RestartViaJsonString1, RestartViaJsonString, RestartViaJsonFilePath1, RestartViaJsonFilePath, RestartExpanded1, Restart1, Restart
 Aliases:
 
 Required: True
@@ -165,7 +208,7 @@ KubernetesClusterRestartNodeParameters represents the body of the request to res
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesClusterRestartNodeParameters
-Parameter Sets: Restart, RestartViaIdentity
+Parameter Sets: Restart1, Restart, RestartViaIdentity1, RestartViaIdentity
 Aliases:
 
 Required: True
@@ -180,7 +223,7 @@ The name of the node to restart.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, RestartViaIdentityExpanded
+Parameter Sets: RestartExpanded, RestartExpanded1, RestartViaIdentityExpanded1, RestartViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -226,7 +269,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, RestartViaJsonString, RestartViaJsonFilePath, Restart
+Parameter Sets: RestartExpanded, RestartViaJsonString1, RestartViaJsonString, RestartViaJsonFilePath1, RestartViaJsonFilePath, RestartExpanded1, Restart1, Restart
 Aliases:
 
 Required: True
@@ -242,7 +285,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, RestartViaJsonString, RestartViaJsonFilePath, Restart
+Parameter Sets: RestartExpanded, RestartViaJsonString1, RestartViaJsonString, RestartViaJsonFilePath1, RestartViaJsonFilePath, RestartExpanded1, Restart1, Restart
 Aliases:
 
 Required: False

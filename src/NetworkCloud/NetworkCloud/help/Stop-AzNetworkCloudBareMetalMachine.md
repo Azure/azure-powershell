@@ -19,10 +19,24 @@ Stop-AzNetworkCloudBareMetalMachine -Name <String> -ResourceGroupName <String> [
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### PowerOffViaJsonString1
+```
+Stop-AzNetworkCloudBareMetalMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### PowerOffViaJsonString
 ```
 Stop-AzNetworkCloudBareMetalMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PowerOffViaJsonFilePath1
+```
+Stop-AzNetworkCloudBareMetalMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,6 +45,20 @@ Stop-AzNetworkCloudBareMetalMachine -Name <String> -ResourceGroupName <String> [
 Stop-AzNetworkCloudBareMetalMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PowerOffExpanded1
+```
+Stop-AzNetworkCloudBareMetalMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-SkipShutdown <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PowerOffViaIdentityExpanded1
+```
+Stop-AzNetworkCloudBareMetalMachine -InputObject <INetworkCloudIdentity> [-SkipShutdown <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### PowerOffViaIdentityExpanded
@@ -90,7 +118,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: PowerOffViaIdentityExpanded
+Parameter Sets: PowerOffViaIdentityExpanded1, PowerOffViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -105,7 +133,7 @@ Path of Json file supplied to the PowerOff operation
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOffViaJsonFilePath
+Parameter Sets: PowerOffViaJsonFilePath1, PowerOffViaJsonFilePath
 Aliases:
 
 Required: True
@@ -120,7 +148,7 @@ Json string supplied to the PowerOff operation
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOffViaJsonString
+Parameter Sets: PowerOffViaJsonString1, PowerOffViaJsonString
 Aliases:
 
 Required: True
@@ -135,7 +163,7 @@ The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOffExpanded, PowerOffViaJsonString, PowerOffViaJsonFilePath
+Parameter Sets: PowerOffExpanded, PowerOffViaJsonString1, PowerOffViaJsonString, PowerOffViaJsonFilePath1, PowerOffViaJsonFilePath, PowerOffExpanded1
 Aliases: BareMetalMachineName
 
 Required: True
@@ -181,7 +209,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOffExpanded, PowerOffViaJsonString, PowerOffViaJsonFilePath
+Parameter Sets: PowerOffExpanded, PowerOffViaJsonString1, PowerOffViaJsonString, PowerOffViaJsonFilePath1, PowerOffViaJsonFilePath, PowerOffExpanded1
 Aliases:
 
 Required: True
@@ -196,7 +224,7 @@ The indicator of whether to skip the graceful OS shutdown and power off the bare
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOffExpanded, PowerOffViaIdentityExpanded
+Parameter Sets: PowerOffExpanded, PowerOffExpanded1, PowerOffViaIdentityExpanded1, PowerOffViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -212,7 +240,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOffExpanded, PowerOffViaJsonString, PowerOffViaJsonFilePath
+Parameter Sets: PowerOffExpanded, PowerOffViaJsonString1, PowerOffViaJsonString, PowerOffViaJsonFilePath1, PowerOffViaJsonFilePath, PowerOffExpanded1
 Aliases:
 
 Required: False

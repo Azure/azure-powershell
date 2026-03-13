@@ -19,6 +19,19 @@ Start-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> [-
  [-Confirm] [<CommonParameters>]
 ```
 
+### Start1
+```
+Start-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### StartViaIdentity1
+```
+Start-AzNetworkCloudVirtualMachine -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### StartViaIdentity
 ```
 Start-AzNetworkCloudVirtualMachine -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>] [-AsJob]
@@ -75,7 +88,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: StartViaIdentity
+Parameter Sets: StartViaIdentity1, StartViaIdentity
 Aliases:
 
 Required: True
@@ -90,7 +103,7 @@ The name of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Start, Start1
 Aliases: VirtualMachineName
 
 Required: True
@@ -136,7 +149,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Start, Start1
 Aliases:
 
 Required: True
@@ -152,7 +165,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Start, Start1
 Aliases:
 
 Required: False

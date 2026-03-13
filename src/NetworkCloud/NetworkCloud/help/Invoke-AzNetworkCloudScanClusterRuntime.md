@@ -19,10 +19,24 @@ Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ScanViaJsonString1
+```
+Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ScanViaJsonString
 ```
 Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ScanViaJsonFilePath1
+```
+Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,10 +47,32 @@ Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ScanExpanded1
+```
+Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-ScanActivity <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Scan1
+```
+Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -ClusterScanRuntimeParameter <IClusterScanRuntimeParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### Scan
 ```
 Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -ClusterScanRuntimeParameter <IClusterScanRuntimeParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ScanViaIdentityExpanded1
+```
+Invoke-AzNetworkCloudScanClusterRuntime -InputObject <INetworkCloudIdentity> [-ScanActivity <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -46,6 +82,13 @@ Invoke-AzNetworkCloudScanClusterRuntime -ClusterName <String> -ResourceGroupName
 Invoke-AzNetworkCloudScanClusterRuntime -InputObject <INetworkCloudIdentity> [-ScanActivity <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### ScanViaIdentity1
+```
+Invoke-AzNetworkCloudScanClusterRuntime -InputObject <INetworkCloudIdentity>
+ -ClusterScanRuntimeParameter <IClusterScanRuntimeParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ScanViaIdentity
@@ -89,7 +132,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: ScanExpanded, ScanViaJsonString, ScanViaJsonFilePath, Scan
+Parameter Sets: ScanExpanded, ScanViaJsonString1, ScanViaJsonString, ScanViaJsonFilePath1, ScanViaJsonFilePath, ScanExpanded1, Scan1, Scan
 Aliases:
 
 Required: True
@@ -104,7 +147,7 @@ ClusterScanRuntimeParameters defines the parameters for the cluster scan runtime
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterScanRuntimeParameters
-Parameter Sets: Scan, ScanViaIdentity
+Parameter Sets: Scan1, Scan, ScanViaIdentity1, ScanViaIdentity
 Aliases:
 
 Required: True
@@ -135,7 +178,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: ScanViaIdentityExpanded, ScanViaIdentity
+Parameter Sets: ScanViaIdentityExpanded1, ScanViaIdentityExpanded, ScanViaIdentity1, ScanViaIdentity
 Aliases:
 
 Required: True
@@ -150,7 +193,7 @@ Path of Json file supplied to the Scan operation
 
 ```yaml
 Type: System.String
-Parameter Sets: ScanViaJsonFilePath
+Parameter Sets: ScanViaJsonFilePath1, ScanViaJsonFilePath
 Aliases:
 
 Required: True
@@ -165,7 +208,7 @@ Json string supplied to the Scan operation
 
 ```yaml
 Type: System.String
-Parameter Sets: ScanViaJsonString
+Parameter Sets: ScanViaJsonString1, ScanViaJsonString
 Aliases:
 
 Required: True
@@ -211,7 +254,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ScanExpanded, ScanViaJsonString, ScanViaJsonFilePath, Scan
+Parameter Sets: ScanExpanded, ScanViaJsonString1, ScanViaJsonString, ScanViaJsonFilePath1, ScanViaJsonFilePath, ScanExpanded1, Scan1, Scan
 Aliases:
 
 Required: True
@@ -226,7 +269,7 @@ The choice of if the scan operation should run the scan.
 
 ```yaml
 Type: System.String
-Parameter Sets: ScanExpanded, ScanViaIdentityExpanded
+Parameter Sets: ScanExpanded, ScanExpanded1, ScanViaIdentityExpanded1, ScanViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -242,7 +285,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ScanExpanded, ScanViaJsonString, ScanViaJsonFilePath, Scan
+Parameter Sets: ScanExpanded, ScanViaJsonString1, ScanViaJsonString, ScanViaJsonFilePath1, ScanViaJsonFilePath, ScanExpanded1, Scan1, Scan
 Aliases:
 
 Required: False

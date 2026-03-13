@@ -16,16 +16,36 @@ Replace the provided bare metal machine.
 ```
 Invoke-AzNetworkCloudBareMetalMachineReplace -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-BmcCredentialsPassword <SecureString>] [-BmcCredentialsUsername <String>]
- [-BmcMacAddress <String>] [-BootMacAddress <String>] [-MachineName <String>] [-SerialNumber <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-BmcMacAddress <String>] [-BootMacAddress <String>] [-MachineName <String>] [-SafeguardMode <String>]
+ [-SerialNumber <String>] [-StoragePolicy <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ReplaceExpanded1
+```
+Invoke-AzNetworkCloudBareMetalMachineReplace -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-BmcCredentialsPassword <SecureString>] [-BmcCredentialsUsername <String>]
+ [-BmcMacAddress <String>] [-BootMacAddress <String>] [-MachineName <String>] [-SafeguardMode <String>]
+ [-SerialNumber <String>] [-StoragePolicy <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ReplaceViaIdentityExpanded
 ```
 Invoke-AzNetworkCloudBareMetalMachineReplace -InputObject <INetworkCloudIdentity>
  [-BmcCredentialsPassword <SecureString>] [-BmcCredentialsUsername <String>] [-BmcMacAddress <String>]
- [-BootMacAddress <String>] [-MachineName <String>] [-SerialNumber <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-BootMacAddress <String>] [-MachineName <String>] [-SafeguardMode <String>] [-SerialNumber <String>]
+ [-StoragePolicy <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ReplaceViaIdentityExpanded1
+```
+Invoke-AzNetworkCloudBareMetalMachineReplace -InputObject <INetworkCloudIdentity>
+ [-BmcCredentialsPassword <SecureString>] [-BmcCredentialsUsername <String>] [-BmcMacAddress <String>]
+ [-BootMacAddress <String>] [-MachineName <String>] [-SafeguardMode <String>] [-SerialNumber <String>]
+ [-StoragePolicy <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ReplaceViaJsonFilePath
@@ -35,7 +55,21 @@ Invoke-AzNetworkCloudBareMetalMachineReplace -Name <String> -ResourceGroupName <
  [<CommonParameters>]
 ```
 
+### ReplaceViaJsonFilePath1
+```
+Invoke-AzNetworkCloudBareMetalMachineReplace -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### ReplaceViaJsonString
+```
+Invoke-AzNetworkCloudBareMetalMachineReplace -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ReplaceViaJsonString1
 ```
 Invoke-AzNetworkCloudBareMetalMachineReplace -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
@@ -78,7 +112,7 @@ The password of the administrator of the device used during initialization.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
+Parameter Sets: ReplaceExpanded, ReplaceExpanded1, ReplaceViaIdentityExpanded, ReplaceViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -93,7 +127,7 @@ The username of the administrator of the device used during initialization.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
+Parameter Sets: ReplaceExpanded, ReplaceExpanded1, ReplaceViaIdentityExpanded, ReplaceViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -108,7 +142,7 @@ The MAC address of the BMC device.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
+Parameter Sets: ReplaceExpanded, ReplaceExpanded1, ReplaceViaIdentityExpanded, ReplaceViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -123,7 +157,7 @@ The MAC address of a NIC connected to the PXE network.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
+Parameter Sets: ReplaceExpanded, ReplaceExpanded1, ReplaceViaIdentityExpanded, ReplaceViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -154,7 +188,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: ReplaceViaIdentityExpanded
+Parameter Sets: ReplaceViaIdentityExpanded, ReplaceViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -169,7 +203,7 @@ Path of Json file supplied to the Replace operation
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceViaJsonFilePath
+Parameter Sets: ReplaceViaJsonFilePath, ReplaceViaJsonFilePath1
 Aliases:
 
 Required: True
@@ -184,7 +218,7 @@ Json string supplied to the Replace operation
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceViaJsonString
+Parameter Sets: ReplaceViaJsonString, ReplaceViaJsonString1
 Aliases:
 
 Required: True
@@ -199,7 +233,7 @@ The OS-level hostname assigned to this machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
+Parameter Sets: ReplaceExpanded, ReplaceExpanded1, ReplaceViaIdentityExpanded, ReplaceViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -214,7 +248,7 @@ The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded, ReplaceViaJsonFilePath, ReplaceViaJsonString
+Parameter Sets: ReplaceExpanded, ReplaceExpanded1, ReplaceViaJsonFilePath, ReplaceViaJsonFilePath1, ReplaceViaJsonString, ReplaceViaJsonString1
 Aliases: BareMetalMachineName
 
 Required: True
@@ -260,10 +294,25 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded, ReplaceViaJsonFilePath, ReplaceViaJsonString
+Parameter Sets: ReplaceExpanded, ReplaceExpanded1, ReplaceViaJsonFilePath, ReplaceViaJsonFilePath1, ReplaceViaJsonString, ReplaceViaJsonString1
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SafeguardMode
+The safeguard mode to use for the replace action, where None indicates to bypass safeguards and All indicates to utilize all safeguards.
+
+```yaml
+Type: System.String
+Parameter Sets: ReplaceExpanded, ReplaceExpanded1, ReplaceViaIdentityExpanded, ReplaceViaIdentityExpanded1
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -275,7 +324,22 @@ The serial number of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
+Parameter Sets: ReplaceExpanded, ReplaceExpanded1, ReplaceViaIdentityExpanded, ReplaceViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StoragePolicy
+The indicator of whether to bypass clearing storage while replacing a bare metal machine.
+
+```yaml
+Type: System.String
+Parameter Sets: ReplaceExpanded, ReplaceExpanded1, ReplaceViaIdentityExpanded, ReplaceViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -291,7 +355,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded, ReplaceViaJsonFilePath, ReplaceViaJsonString
+Parameter Sets: ReplaceExpanded, ReplaceExpanded1, ReplaceViaJsonFilePath, ReplaceViaJsonFilePath1, ReplaceViaJsonString, ReplaceViaJsonString1
 Aliases:
 
 Required: False

@@ -18,7 +18,19 @@ Restart-AzNetworkCloudBareMetalMachine -Name <String> -ResourceGroupName <String
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### Restart1
+```
+Restart-AzNetworkCloudBareMetalMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### RestartViaIdentity
+```
+Restart-AzNetworkCloudBareMetalMachine -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RestartViaIdentity1
 ```
 Restart-AzNetworkCloudBareMetalMachine -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -74,7 +86,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
-Parameter Sets: RestartViaIdentity
+Parameter Sets: RestartViaIdentity, RestartViaIdentity1
 Aliases:
 
 Required: True
@@ -89,7 +101,7 @@ The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
+Parameter Sets: Restart, Restart1
 Aliases: BareMetalMachineName
 
 Required: True
@@ -135,7 +147,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
+Parameter Sets: Restart, Restart1
 Aliases:
 
 Required: True
@@ -151,7 +163,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
+Parameter Sets: Restart, Restart1
 Aliases:
 
 Required: False
