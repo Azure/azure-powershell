@@ -203,6 +203,29 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            // If DryRun requested, build flattened PS script including VM object assignment
+            if (DryRun.IsPresent)
+            {
+                try
+                {
+                    var vmJson = Newtonsoft.Json.JsonConvert.SerializeObject(this.VM, Newtonsoft.Json.Formatting.Indented);
+                    string escapedJson = vmJson.Replace("`", "``");
+                    string vmAssign = "$vm = ConvertFrom-Json @'\n" + escapedJson + "\n'@";
+                    if (TryHandleDryRun(vmAssign))
+                    {
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    WriteVerbose($"DryRun VM flatten failed: {ex.Message}. Falling back to default invocation capture.");
+                    if (TryHandleDryRun())
+                    {
+                        return;
+                    }
+                }
+            }
+
             if (this.IsParameterBound(c => c.UserData))
             {
                 if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
@@ -223,7 +246,6 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 ExecuteClientAction(() =>
                 {
-                            
                     var parameters = new VirtualMachine
                     {
                         DiagnosticsProfile = this.VM.DiagnosticsProfile,
@@ -346,7 +368,7 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost;
                     }
                     
-                    if (this.IsParameterBound( c => c.SecurityType))
+                    if (this.IsParameterBound(c => c.SecurityType))
                     {
                         if (parameters.SecurityProfile == null)
                         {

@@ -24,6 +24,11 @@
     <Compile Include="$(StorageToolsPath)Adapters\ARM.Storage.6\ARMStorageService.cs" Link="Common\ARMStorageService.cs" />
   </ItemGroup>
 
+  <!-- Include shared WhatIf library source files for DryRun formatting support -->
+  <ItemGroup>
+    <Compile Include="..\..\shared\WhatIf\**\*.cs" LinkBase="Shared\WhatIf" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Storage.common\Storage.common.csproj" />
     <ProjectReference Include="..\Storage.Management.Sdk\Storage.Management.Sdk.csproj" />
