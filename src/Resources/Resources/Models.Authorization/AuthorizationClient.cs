@@ -649,21 +649,24 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             IList<Permission> permissions = new List<Permission>();
 
-            if (role != null)
+            if (role?.Permissions != null)
             {
-                permissions.Add(new Permission(
-                    role.Actions != null ? new List<string>(role.Actions) : new List<string>(),
-                    role.NotActions != null ? new List<string>(role.NotActions) : new List<string>(),
-                    role.DataActions != null ? new List<string>(role.DataActions) : new List<string>(),
-                    role.NotDataActions != null ? new List<string>(role.NotDataActions) : new List<string>(),
-                    role.Condition,
-                    role.ConditionVersion));
+                foreach (var perm in role.Permissions)
+                {
+                    permissions.Add(new Permission(
+                        perm.Actions ?? new List<string>(),
+                        perm.NotActions ?? new List<string>(),
+                        perm.DataActions ?? new List<string>(),
+                        perm.NotDataActions ?? new List<string>(),
+                        perm.Condition,
+                        perm.ConditionVersion));
+                }
             }
 
             return permissions;
         }
 
-        private static void ValidateRoleDefinition(PSRoleDefinition roleDefinition)
+        internal static void ValidateRoleDefinition(PSRoleDefinition roleDefinition)
         {
             if (string.IsNullOrWhiteSpace(roleDefinition.Name))
             {
@@ -680,11 +683,16 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 throw new ArgumentException(ProjectResources.InvalidAssignableScopes);
             }
 
-            if ((roleDefinition.Actions == null || !roleDefinition.Actions.Any()) && (roleDefinition.DataActions == null || !roleDefinition.DataActions.Any()))
+            if (roleDefinition.Permissions == null || !roleDefinition.Permissions.Any())
+            {
+                throw new ArgumentException(ProjectResources.InvalidPermissions);
+            }
+
+            if (roleDefinition.Permissions.Any(p =>
+                (p.Actions == null || !p.Actions.Any()) && (p.DataActions == null || !p.DataActions.Any())))
             {
                 throw new ArgumentException(ProjectResources.InvalidActions);
             }
-
         }
 
         public static void ValidateScope(string scope, bool allowEmpty)

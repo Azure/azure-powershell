@@ -38,22 +38,45 @@ Remove-AzRoleDefinition -InputObject <PSRoleDefinition> [-SkipClientSideScopeVal
 
 ## DESCRIPTION
 The Remove-AzRoleDefinition cmdlet deletes a custom role in Azure Role-Based Access Control.
-        Provide the Id parameter of an existing custom role to delete that custom role.
+Provide the Id parameter of an existing custom role to delete that custom role.
 By default, Remove-AzRoleDefinition prompts you for confirmation.
 To suppress the prompt, use the Force parameter.
 If there are existing role assignments made to the custom role to be deleted, the delete will fail.
 
+When using the -PassThru parameter, the cmdlet returns the deleted PSRoleDefinition object.
+The returned object contains a Permissions collection with Actions, NotActions, DataActions, NotDataActions, and any Attribute-Based Access Control (ABAC) conditions (Condition and ConditionVersion) for each permission entry.
+
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove a custom role by piping from Get-AzRoleDefinition
 ```powershell
 Get-AzRoleDefinition -Name "Virtual Machine Operator" | Remove-AzRoleDefinition
 ```
 
-### Example 2
+Retrieves the "Virtual Machine Operator" custom role and pipes it to Remove-AzRoleDefinition for deletion.
+You will be prompted for confirmation before the role is deleted.
+
+### Example 2: Remove a custom role by Id
 ```powershell
 Remove-AzRoleDefinition -Id "00001111-aaaa-2222-bbbb-3333cccc4444"
 ```
+
+Deletes the custom role with the specified Id. You will be prompted for confirmation.
+
+### Example 3: Remove a custom role without confirmation
+```powershell
+Remove-AzRoleDefinition -Name "Custom Reader Role" -Force
+```
+
+Deletes the custom role named "Custom Reader Role" without prompting for confirmation.
+
+### Example 4: Remove and return the deleted role definition
+```powershell
+$deletedRole = Remove-AzRoleDefinition -Name "Custom Writer Role" -Force -PassThru
+$deletedRole.Permissions[0].Actions
+```
+
+Deletes the role and returns the PSRoleDefinition object, then displays the actions from the first permission entry.
 
 ## PARAMETERS
 

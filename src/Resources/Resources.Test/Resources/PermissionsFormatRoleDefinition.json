@@ -1,0 +1,16 @@
+{
+    "Name": "CustomRole Permissions Format Test",
+    "Description": "Test role for new Permissions array format",
+    "Permissions": [
+        {
+            "Actions": [
+                "Microsoft.Resources/subscriptions/resourceGroups/read",
+                "Microsoft.Resources/deployments/*"
+            ],
+            "NotActions": [],
+            "DataActions": [],
+            "NotDataActions": []
+        }
+    ],
+    "AssignableScopes": ["/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"]
+}
