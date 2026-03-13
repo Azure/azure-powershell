@@ -60,14 +60,3 @@ Update-AzPolicyExemption -Name 'VirtualMachineExemption' -ResourceSelector $Reso
 
 The first command creates a resource selector object that will be used to specify the exemption should only apply to resources in locations other than East US or East US 2 and stores it in the $ResourceSelector variable.
 The final command updates the policy exemption named VirtualMachineExemption with the resource selector specified by $ResourceSelector.
-
-### Example 6: [Backcompat] Clear the expiration date time
-```powershell
-$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -BackwardCompatible
-Set-AzPolicyExemption -Id $PolicyExemption.ResourceId -ClearExpiration -BackwardCompatible
-```
-
-The first command gets the policy exemption named PolicyExemption07 by using the Get-AzPolicyExemption cmdlet.
-The command stores that object in the $PolicyExemption variable.
-The second command clears the expiration date time for the policy exemption on the default subscription.
-The updated exemption will never expire.
