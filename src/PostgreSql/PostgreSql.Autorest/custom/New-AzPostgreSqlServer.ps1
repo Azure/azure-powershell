@@ -14,7 +14,7 @@
 # ----------------------------------------------------------------------------------
 
 function New-AzPostgreSqlServer {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IServer])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Description('Creates a new server.')]
     param(
@@ -57,15 +57,15 @@ function New-AzPostgreSqlServer {
         ${Sku},
 
         [Parameter(HelpMessage = 'Enable ssl enforcement or not when connect to server.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SslEnforcementEnum])]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SslEnforcementEnum]
+        [System.String]
         ${SslEnforcement},
 
         [Parameter(HelpMessage = 'Set the minimal TLS version for connections to server when SSL is enabled. Default is TLSEnforcementDisabled.accepted values: TLS1_0, TLS1_1, TLS1_2, TLSEnforcementDisabled.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.MinimalTlsVersionEnum])]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.PSArgumentCompleterAttribute("TLS1_0", "TLS1_1", "TLS1_2", "TLSEnforcementDisabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.MinimalTlsVersionEnum]
+        [System.String]
         # Enforce a minimal Tls version for the server.
         ${MinimalTlsVersion},
 
@@ -75,16 +75,16 @@ function New-AzPostgreSqlServer {
         ${BackupRetentionDay},
 
         [Parameter(HelpMessage = 'Enable Geo-redundant or not for server backup.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.GeoRedundantBackup])]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.GeoRedundantBackup]
+        [System.String]
         ${GeoRedundantBackup},
 
         [Parameter(HelpMessage = 'Enable Storage Auto Grow.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.StorageAutogrow])]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Validateset('Enabled', 'Disabled')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.StorageAutogrow]
+        [System.String]
         ${StorageAutogrow},
 
         [Parameter(HelpMessage = 'Max storage allowed for a server.')]
@@ -94,14 +94,14 @@ function New-AzPostgreSqlServer {
 
         [Parameter(HelpMessage = 'Application-specific metadata in the form of key-value pairs.')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerForCreateTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IServerForCreateTags]))]
         [System.Collections.Hashtable]
         ${Tag},
 
         [Parameter(HelpMessage = 'Server version.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerVersion])]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.PSArgumentCompleterAttribute("9.5", "9.6", "10", "10.0", "10.2", "11", "13", "12")]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerVersion]
+        [System.String]
         ${Version},
 
         [Parameter(HelpMessage = 'The credentials, account, tenant, and subscription used for communication with Azure.')]
@@ -162,8 +162,8 @@ function New-AzPostgreSqlServer {
 
     process {
         try {
-          $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerForCreate]::new()
-          $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerPropertiesForDefaultCreate]::new()
+          $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.ServerForCreate]::new()
+          $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.ServerPropertiesForDefaultCreate]::new()
 
           if ($PSBoundParameters.ContainsKey('Location')) {
               $Parameter.Location = $PSBoundParameters['Location']
@@ -181,7 +181,7 @@ function New-AzPostgreSqlServer {
           }
           else
           {
-              $Parameter.SslEnforcement = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SslEnforcementEnum]::Enable
+              $Parameter.SslEnforcement = 'Enabled'
           }
 
           if ($PSBoundParameters.ContainsKey('MinimalTlsVersion')) {
@@ -219,7 +219,7 @@ function New-AzPostgreSqlServer {
               $null = $PSBoundParameters.Remove('Version')
           }
 
-          $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode]::Default
+          $Parameter.CreateMode = 'Default'
 
           $Parameter.Property.AdministratorLogin = $PSBoundParameters['AdministratorUserName']
           $null = $PSBoundParameters.Remove('AdministratorUserName')

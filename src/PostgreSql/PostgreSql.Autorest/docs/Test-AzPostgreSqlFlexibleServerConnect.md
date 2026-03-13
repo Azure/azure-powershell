@@ -167,7 +167,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 The server to connect.
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity

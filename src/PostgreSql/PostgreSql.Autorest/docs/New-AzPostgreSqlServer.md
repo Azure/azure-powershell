@@ -15,10 +15,9 @@ Creates a new server.
 ```
 New-AzPostgreSqlServer -Name <String> -ResourceGroupName <String> -AdministratorLoginPassword <SecureString>
  -AdministratorUserName <String> -Location <String> -Sku <String> [-SubscriptionId <String>]
- [-BackupRetentionDay <Int32>] [-GeoRedundantBackup <GeoRedundantBackup>]
- [-MinimalTlsVersion <MinimalTlsVersionEnum>] [-SslEnforcement <SslEnforcementEnum>]
- [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>] [-Tag <Hashtable>] [-Version <ServerVersion>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-BackupRetentionDay <Int32>] [-GeoRedundantBackup <String>] [-MinimalTlsVersion <String>]
+ [-SslEnforcement <String>] [-StorageAutogrow <String>] [-StorageInMb <Int32>] [-Tag <Hashtable>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -124,7 +123,7 @@ Accept wildcard characters: False
 Enable Geo-redundant or not for server backup.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.GeoRedundantBackup
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -155,7 +154,7 @@ Set the minimal TLS version for connections to server when SSL is enabled.
 Default is TLSEnforcementDisabled.accepted values: TLS1_0, TLS1_1, TLS1_2, TLSEnforcementDisabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.MinimalTlsVersionEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -231,7 +230,7 @@ Accept wildcard characters: False
 Enable ssl enforcement or not when connect to server.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SslEnforcementEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -246,7 +245,7 @@ Accept wildcard characters: False
 Enable Storage Auto Grow.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.StorageAutogrow
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -306,7 +305,7 @@ Accept wildcard characters: False
 Server version.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerVersion
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -355,7 +354,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer
+### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IServer
 
 ## NOTES
 

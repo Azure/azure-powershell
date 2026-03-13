@@ -25,6 +25,12 @@ Remove-AzPostgreSqlFirewallRule -InputObject <IPostgreSqlIdentity> [-DefaultProf
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityServer
+```
+Remove-AzPostgreSqlFirewallRule -Name <String> -ServerInputObject <IPostgreSqlIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Deletes a server firewall rule.
 
@@ -80,7 +86,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -99,7 +104,7 @@ The name of the server firewall rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityServer
 Aliases: FirewallRuleName
 
 Required: True
@@ -152,6 +157,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServerInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
+Parameter Sets: DeleteViaIdentityServer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

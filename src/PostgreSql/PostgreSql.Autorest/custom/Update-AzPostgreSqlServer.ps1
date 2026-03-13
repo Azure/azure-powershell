@@ -20,7 +20,7 @@ Updates an existing server. The request body can contain one to many of the prop
 Updates an existing server. The request body can contain one to many of the properties present in the normal server definition. Use Update-AzPostSqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 #>
 function Update-AzPostgreSqlServer {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IServer])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='The name of the server.')]
@@ -71,21 +71,21 @@ function Update-AzPostgreSqlServer {
         ${Sku},
 
         [Parameter(HelpMessage='The tier of the particular SKU, e.g. Basic.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SkuTier])]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.PSArgumentCompleterAttribute("Basic", "GeneralPurpose", "MemoryOptimized", "Burstable")]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SkuTier]
+        [System.String]
         ${SkuTier},
 
         [Parameter(HelpMessage='Enable ssl enforcement or not when connect to server.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SslEnforcementEnum])]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SslEnforcementEnum]
+        [System.String]
         ${SslEnforcement},
 
         [Parameter(HelpMessage = 'Set the minimal TLS version for connections to server when SSL is enabled. Default is TLSEnforcementDisabled.accepted values: TLS1_0, TLS1_1, TLS1_2, TLSEnforcementDisabled.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.MinimalTlsVersionEnum])]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.PSArgumentCompleterAttribute("TLS1_0", "TLS1_1", "TLS1_2", "TLSEnforcementDisabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.MinimalTlsVersionEnum]
+        [System.String]
         # Enforce a minimal Tls version for the server.
         ${MinimalTlsVersion},
         
@@ -95,10 +95,10 @@ function Update-AzPostgreSqlServer {
         ${BackupRetentionDay},
 
         [Parameter(HelpMessage='Enable Storage Auto Grow.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.StorageAutogrow])]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Validateset('Enabled', 'Disabled')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.StorageAutogrow]
+        [System.String]
         ${StorageAutogrow},
 
         [Parameter(HelpMessage='Max storage allowed for a server.')]
@@ -108,14 +108,14 @@ function Update-AzPostgreSqlServer {
 
         [Parameter(HelpMessage='Application-specific metadata in the form of key-value pairs.')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerUpdateParametersTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IServerUpdateParametersTags]))]
         [System.Collections.Hashtable]
         ${Tag},
 
         [Parameter(HelpMessage='Enable or disable public network access')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.PublicNetworkAccessEnum])]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.PublicNetworkAccessEnum]
+        [System.String]
         ${PublicNetworkAccess},
 
         [Parameter(HelpMessage = 'The credentials, account, tenant, and subscription used for communication with Azure.')]
