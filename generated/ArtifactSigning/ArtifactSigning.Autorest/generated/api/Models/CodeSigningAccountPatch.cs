@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Extensions;
 
-    /// <summary>Parameters for creating or updating a trusted signing account.</summary>
+    /// <summary>Parameters for creating or updating an artifact signing account.</summary>
     public partial class CodeSigningAccountPatch :
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICodeSigningAccountPatch,
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICodeSigningAccountPatchInternal
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICodeSigningAccountPatchProperties _property;
 
-        /// <summary>Properties of the trusted signing account.</summary>
+        /// <summary>Properties of the artifact signing account.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICodeSigningAccountPatchProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.CodeSigningAccountPatchProperties()); set => this._property = value; }
 
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
 
         }
     }
-    /// Parameters for creating or updating a trusted signing account.
+    /// Parameters for creating or updating an artifact signing account.
     public partial interface ICodeSigningAccountPatch :
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IJsonSerializable
     {
@@ -72,13 +72,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICodeSigningAccountPatchTags Tag { get; set; }
 
     }
-    /// Parameters for creating or updating a trusted signing account.
+    /// Parameters for creating or updating an artifact signing account.
     internal partial interface ICodeSigningAccountPatchInternal
 
     {
-        /// <summary>Properties of the trusted signing account.</summary>
+        /// <summary>Properties of the artifact signing account.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICodeSigningAccountPatchProperties Property { get; set; }
-        /// <summary>SKU of the trusted signing account.</summary>
+        /// <summary>SKU of the artifact signing account.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.IAccountSkuPatch Sku { get; set; }
         /// <summary>Name of the SKU.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PSArgumentCompleterAttribute("Basic", "Premium")]
