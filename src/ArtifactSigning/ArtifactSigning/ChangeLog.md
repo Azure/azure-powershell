@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Update docs and code comments to reference artifact signing accounts instead of trusted signing accounts.
+* Updated docs and code comments to reference artifact signing accounts instead of trusted signing accounts.
 
 ## Version 0.1.5
 * Renamed from Az.TrustedSigning
