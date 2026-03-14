@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a trusted Signing Account.
+Create an artifact Signing Account.
 .Description
-Create a trusted Signing Account.
+Create an artifact Signing Account.
 .Example
 New-AzArtifactSigningAccount -AccountName test -ResourceGroupName rg-test -Location eastus -SkuName Basic
 .Example
@@ -36,7 +36,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Category('Path')]
     [System.String]
-    # Trusted Signing account name.
+    # Artifact Signing account name.
     ${AccountName},
 
     [Parameter(Mandatory)]

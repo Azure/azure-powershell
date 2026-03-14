@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Extensions;
 
-    /// <summary>Properties of the trusted signing account.</summary>
+    /// <summary>Properties of the artifact signing account.</summary>
     public partial class CodeSigningAccountProperties :
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICodeSigningAccountProperties,
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICodeSigningAccountPropertiesInternal
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
         /// <summary>Backing field for <see cref="AccountUri" /> property.</summary>
         private string _accountUri;
 
-        /// <summary>The URI of the trusted signing account which is used during signing files.</summary>
+        /// <summary>The URI of the artifact signing account which is used during signing files.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PropertyOrigin.Owned)]
         public string AccountUri { get => this._accountUri; }
 
@@ -32,14 +32,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
 
-        /// <summary>Status of the current operation on trusted signing account.</summary>
+        /// <summary>Status of the current operation on artifact signing account.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PropertyOrigin.Owned)]
         public string ProvisioningState { get => this._provisioningState; }
 
         /// <summary>Backing field for <see cref="Sku" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.IAccountSku _sku;
 
-        /// <summary>SKU of the trusted signing account.</summary>
+        /// <summary>SKU of the artifact signing account.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.IAccountSku Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.AccountSku()); set => this._sku = value; }
 
@@ -53,29 +53,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
 
         }
     }
-    /// Properties of the trusted signing account.
+    /// Properties of the artifact signing account.
     public partial interface ICodeSigningAccountProperties :
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IJsonSerializable
     {
-        /// <summary>The URI of the trusted signing account which is used during signing files.</summary>
+        /// <summary>The URI of the artifact signing account which is used during signing files.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The URI of the trusted signing account which is used during signing files.",
+        Description = @"The URI of the artifact signing account which is used during signing files.",
         SerializedName = @"accountUri",
         PossibleTypes = new [] { typeof(string) })]
         string AccountUri { get;  }
-        /// <summary>Status of the current operation on trusted signing account.</summary>
+        /// <summary>Status of the current operation on artifact signing account.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Status of the current operation on trusted signing account.",
+        Description = @"Status of the current operation on artifact signing account.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Updating", "Deleting", "Accepted")]
@@ -94,16 +94,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
         string SkuName { get; set; }
 
     }
-    /// Properties of the trusted signing account.
+    /// Properties of the artifact signing account.
     internal partial interface ICodeSigningAccountPropertiesInternal
 
     {
-        /// <summary>The URI of the trusted signing account which is used during signing files.</summary>
+        /// <summary>The URI of the artifact signing account which is used during signing files.</summary>
         string AccountUri { get; set; }
-        /// <summary>Status of the current operation on trusted signing account.</summary>
+        /// <summary>Status of the current operation on artifact signing account.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get; set; }
-        /// <summary>SKU of the trusted signing account.</summary>
+        /// <summary>SKU of the artifact signing account.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.IAccountSku Sku { get; set; }
         /// <summary>Name of the SKU.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PSArgumentCompleterAttribute("Basic", "Premium")]

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Get a trusted Signing Account.
+Get an artifact Signing Account.
 .Description
-Get a trusted Signing Account.
+Get an artifact Signing Account.
 .Example
 Get-AzArtifactSigningAccount -AccountName test -ResourceGroupName rg-test
 .Example
@@ -34,7 +34,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IArtifactSigningIdentity>: Identity Parameter
-  [AccountName <String>]: Trusted Signing account name.
+  [AccountName <String>]: Artifact Signing account name.
   [Id <String>]: Resource identity path
   [ProfileName <String>]: Certificate profile name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -49,7 +49,7 @@ param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Category('Path')]
     [System.String]
-    # Trusted Signing account name.
+    # Artifact Signing account name.
     ${AccountName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]

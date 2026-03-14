@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Delete a trusted signing account.</summary>
+    /// <summary>Delete an artifact signing account.</summary>
     /// <remarks>
     /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzArtifactSigningAccount_DeleteViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Description(@"Delete a trusted signing account.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Description(@"Delete an artifact signing account.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}", ApiVersion = "2025-10-13")]
     public partial class RemoveAzArtifactSigningAccount_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,

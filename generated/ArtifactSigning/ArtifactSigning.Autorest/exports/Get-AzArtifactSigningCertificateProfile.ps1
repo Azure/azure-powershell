@@ -35,14 +35,14 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 CODESIGNINGACCOUNTINPUTOBJECT <IArtifactSigningIdentity>: Identity Parameter
-  [AccountName <String>]: Trusted Signing account name.
+  [AccountName <String>]: Artifact Signing account name.
   [Id <String>]: Resource identity path
   [ProfileName <String>]: Certificate profile name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 INPUTOBJECT <IArtifactSigningIdentity>: Identity Parameter
-  [AccountName <String>]: Trusted Signing account name.
+  [AccountName <String>]: Artifact Signing account name.
   [Id <String>]: Resource identity path
   [ProfileName <String>]: Certificate profile name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -58,7 +58,7 @@ param(
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Category('Path')]
     [System.String]
-    # Trusted Signing account name.
+    # Artifact Signing account name.
     ${AccountName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
