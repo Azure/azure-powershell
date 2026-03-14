@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzArtifactSigningAccount
 
 ## SYNOPSIS
-Create a trusted Signing Account.
+Create an Artifact Signing Account.
 
 ## SYNTAX
 
@@ -34,11 +34,11 @@ New-AzArtifactSigningAccount -AccountName <String> -ResourceGroupName <String> [
 ```
 
 ## DESCRIPTION
-Create a trusted Signing Account.
+Create an Artifact Signing Account.
 
 ## EXAMPLES
 
-### Example 1: Create A New Artifact signing Account With A Basic Sku
+### Example 1: Create A New Artifact Signing Account With A Basic Sku
 ```powershell
 New-AzArtifactSigningAccount -AccountName test -ResourceGroupName rg-test -Location eastus -SkuName Basic
 ```
@@ -67,7 +67,7 @@ This command creates a new artifact signing account with a Premium SKU
 ## PARAMETERS
 
 ### -AccountName
-Trusted Signing account name.
+Artifact Signing account name.
 
 ```yaml
 Type: System.String

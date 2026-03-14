@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzArtifactSigningAccount
 
 ## SYNOPSIS
-Create a trusted Signing Account.
+Create an Artifact Signing Account.
 
 ## SYNTAX
 
@@ -34,11 +34,11 @@ New-AzArtifactSigningAccount -AccountName <String> -ResourceGroupName <String> -
 ```
 
 ## DESCRIPTION
-Create a trusted Signing Account.
+Create an Artifact Signing Account.
 
 ## EXAMPLES
 
-### Example 1: Create A New Artifact signing Account With A Basic Sku
+### Example 1: Create A New Artifact Signing Account With A Basic Sku
 ```powershell
 New-AzArtifactSigningAccount -AccountName test -ResourceGroupName rg-test -Location eastus -SkuName Basic
 ```
@@ -49,9 +49,9 @@ AccountUri                         Id                                           
 https://eus.codesigning.azure.net/ /subscriptions/66dc869d-771b-4f60-84c1-4964b5f4f5f2/resourceGroups/rg-test/providers/Microsoft.CodeSigning/codeSigningAccounts/test   eastus   test   Succeeded         rg-test                      Basic   2/3/2025 10:35:58 PM test@example.com
 ```
 
-This command creates a new artifact signing account with a Basic SKU
+This command creates a new Artifact Signing Account with a Basic SKU
 
-### Example 2: Create A New Artifact signing Account With A Premium Sku
+### Example 2: Create A New Artifact Signing Account With A Premium Sku
 ```powershell
 New-AzArtifactSigningAccount -AccountName test -ResourceGroupName rg-test -Location eastus -SkuName Premium
 ```
@@ -62,12 +62,12 @@ AccountUri                         Id                                           
 https://eus.codesigning.azure.net/ /subscriptions/66dc869d-771b-4f60-84c1-4964b5f4f5f2/resourceGroups/rg-test/providers/Microsoft.CodeSigning/codeSigningAccounts/test   eastus   test   Succeeded         rg-test                      Premium 2/3/2025 10:35:58 PM test@example.com
 ```
 
-This command creates a new artifact signing account with a Premium SKU
+This command creates a new Artifact Signing Account with a Premium SKU
 
 ## PARAMETERS
 
 ### -AccountName
-Trusted Signing account name.
+Artifact Signing account name.
 
 ```yaml
 Type: System.String

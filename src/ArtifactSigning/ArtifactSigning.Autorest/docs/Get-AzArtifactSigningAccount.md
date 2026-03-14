@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzArtifactSigningAccount
 
 ## SYNOPSIS
-Get a trusted Signing Account.
+Get an Artifact Signing Account.
 
 ## SYNTAX
 
@@ -36,11 +36,11 @@ Get-AzArtifactSigningAccount -ResourceGroupName <String> [-SubscriptionId <Strin
 ```
 
 ## DESCRIPTION
-Get a trusted Signing Account.
+Get an Artifact Signing Account.
 
 ## EXAMPLES
 
-### Example 1: Get A Artifact signing Account By Name
+### Example 1: Get An Artifact Signing Account By Name
 ```powershell
 Get-AzArtifactSigningAccount -AccountName test -ResourceGroupName rg-test
 ```
@@ -51,9 +51,9 @@ AccountUri                         Id                                           
 https://eus.codesigning.azure.net/ /subscriptions/66dc869d-771b-4f60-84c1-4964b5f4f5f2/resourceGroups/rg-test/providers/Microsoft.CodeSigning/codeSigningAccounts/test    eastus   test    Succeeded         rg-test                      Basic   1/24/2025 9:58:19 PM test@example.com
 ```
 
-This command get a artifact signing account by name.
+This command gets an Artifact Signing Account by name.
 
-### Example 2: List Artifact signing Accounts In A Resource Group
+### Example 2: List Artifact Signing Accounts In A Resource Group
 ```powershell
 Get-AzArtifactSigningAccount -ResourceGroupName rg-test
 ```
@@ -65,12 +65,12 @@ https://eus.codesigning.azure.net/ /subscriptions/66dc869d-771b-4f60-84c1-4964b5
 https://eus.codesigning.azure.net/ /subscriptions/66dc869d-771b-4f60-84c1-4964b5f4f5f2/resourceGroups/rg-test/providers/Microsoft.CodeSigning/codeSigningAccounts/test2   eastus   test2   Succeeded         rg-test                      Basic   1/24/2025 9:58:19 PM test2@example.com
 ```
 
-This command lists artifact signing accounts in a resource group
+This command lists Artifact Signing Accounts in a resource group.
 
 ## PARAMETERS
 
 ### -AccountName
-Trusted Signing account name.
+Artifact Signing account name.
 
 ```yaml
 Type: System.String
