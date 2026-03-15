@@ -17,11 +17,12 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Models;
+using Microsoft.Azure.Management.CosmosDB.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsLifecycle.Stop, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBCopyJob", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Stop, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBCopyJob", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSCopyJobGetResults))]
     public class StopAzCosmosDBCopyJob : AzureCosmosDBCmdletBase
     {
         [ResourceGroupCompleter]
@@ -41,9 +42,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         public PSDatabaseAccountGetResults ParentObject { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.PassThruHelpMessage)]
-        public SwitchParameter PassThru { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
@@ -55,13 +53,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(JobName, "Canceling CosmosDB Copy Job"))
             {
-                CosmosDBManagementClient.CopyJobs.CancelWithHttpMessagesAsync(
-                    ResourceGroupName, AccountName, JobName).GetAwaiter().GetResult();
+                CopyJobGetResults result = CosmosDBManagementClient.CopyJobs.CancelWithHttpMessagesAsync(
+                    ResourceGroupName, AccountName, JobName).GetAwaiter().GetResult().Body;
 
-                if (PassThru.IsPresent)
-                {
-                    WriteObject(true);
-                }
+                WriteObject(new PSCopyJobGetResults(result));
             }
         }
     }

@@ -19,9 +19,11 @@ using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
+using Microsoft.Azure.Management.CosmosDB.Models;
+
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsLifecycle.Resume, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBCopyJob", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Resume, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBCopyJob", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSCopyJobGetResults))]
     public class ResumeAzCosmosDBCopyJob : AzureCosmosDBCmdletBase
     {
         [ResourceGroupCompleter]
@@ -41,9 +43,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         public PSDatabaseAccountGetResults ParentObject { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.PassThruHelpMessage)]
-        public SwitchParameter PassThru { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
@@ -55,13 +54,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(JobName, "Resuming CosmosDB Copy Job"))
             {
-                CosmosDBManagementClient.CopyJobs.ResumeWithHttpMessagesAsync(
-                    ResourceGroupName, AccountName, JobName).GetAwaiter().GetResult();
+                CopyJobGetResults result = CosmosDBManagementClient.CopyJobs.ResumeWithHttpMessagesAsync(
+                    ResourceGroupName, AccountName, JobName).GetAwaiter().GetResult().Body;
 
-                if (PassThru.IsPresent)
-                {
-                    WriteObject(true);
-                }
+                WriteObject(new PSCopyJobGetResults(result));
             }
         }
     }

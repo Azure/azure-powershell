@@ -59,9 +59,8 @@ function Create-CosmosDBAccountViaRest {
 
   # Don't add EnableOnlineContainerCopy during creation - requires AllVersionsAndDeletesChangeFeed first
   $needOnlineCopySetup = $EnableOnlineCopy.IsPresent
-  $previewPath = "/subscriptions/$subscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/${AccountName}?api-version=2025-11-01-preview"
 
-  $body = @{
+  $body= @{
     location = $Location
     kind = $kind
     properties = $properties
@@ -86,13 +85,13 @@ function Create-CosmosDBAccountViaRest {
             enableAllVersionsAndDeletesChangeFeed = $true
           }
         } | ConvertTo-Json -Depth 5
-        $patchResponse = Invoke-AzRestMethod -Path $previewPath -Method PATCH -Payload $patchBody
+        $patchResponse = Invoke-AzRestMethod -Path $path -Method PATCH -Payload $patchBody
         if (($patchResponse.StatusCode -ne 200) -and ($patchResponse.StatusCode -ne 201) -and ($patchResponse.StatusCode -ne 202)) {
           throw "Failed to enable AllVersionsAndDeletesChangeFeed: $($patchResponse.Content)"
         }
         for ($j = 0; $j -lt 60; $j++) {
           Start-TestSleep -s 30
-          $getResp = Invoke-AzRestMethod -Path $previewPath -Method GET
+          $getResp = Invoke-AzRestMethod -Path $path -Method GET
           $acct = $getResp.Content | ConvertFrom-Json
           if ($acct.properties.provisioningState -eq "Succeeded") { break }
         }
@@ -112,7 +111,7 @@ function Create-CosmosDBAccountViaRest {
         $capSuccess = $false
         for ($retry = 0; $retry -lt 15; $retry++) {
           try {
-            $capResponse = Invoke-AzRestMethod -Path $previewPath -Method PATCH -Payload $capBody
+            $capResponse = Invoke-AzRestMethod -Path $path -Method PATCH -Payload $capBody
             if ($capResponse.StatusCode -eq 200) { $capSuccess = $true; break }
             if ($capResponse.Content -like "*exclusive lock*") {
               Start-TestSleep -s 60
@@ -130,7 +129,7 @@ function Create-CosmosDBAccountViaRest {
         if (-not $capSuccess) { throw "Failed to add EnableOnlineContainerCopy capability after retries" }
         for ($k = 0; $k -lt 60; $k++) {
           Start-TestSleep -s 30
-          $getResp2 = Invoke-AzRestMethod -Path $previewPath -Method GET
+          $getResp2 = Invoke-AzRestMethod -Path $path -Method GET
           $acct2 = $getResp2.Content | ConvertFrom-Json
           if ($acct2.properties.provisioningState -eq "Succeeded") { return $acct2 }
         }
@@ -194,8 +193,9 @@ function Test-CopyJobSqlCmdlets{
     Assert-NotNull $jobs
 
     # Test: Cancel copy job
-    $cancelResult = Stop-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName -PassThru
-    Assert-AreEqual $cancelResult $true
+    $cancelResult = Stop-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName
+    Assert-NotNull $cancelResult
+    Assert-AreEqual $cancelResult.Name $jobName
   }
   Finally
   {
@@ -226,7 +226,8 @@ function Test-CopyJobCassandraCmdlets{
 
     # Create source and destination keyspaces and tables
     New-AzCosmosDBCassandraKeyspace -ResourceGroupName $resourceGroupName -AccountName $accountName -Name $sourceKeyspace
-    $schema = New-AzCosmosDBCassandraColumn -Name "pk" -Type "text"
+    $column = New-AzCosmosDBCassandraColumn -Name "pk" -Type "text"
+    $schema = New-AzCosmosDBCassandraSchema -Column $column -PartitionKey "pk"
     New-AzCosmosDBCassandraTable -ResourceGroupName $resourceGroupName -AccountName $accountName -KeyspaceName $sourceKeyspace -Name $sourceTable -Schema $schema
 
     New-AzCosmosDBCassandraKeyspace -ResourceGroupName $resourceGroupName -AccountName $accountName -Name $destKeyspace
@@ -349,20 +350,23 @@ function Test-CopyJobLifecycleCmdlets{
     Assert-AreEqual $copyJob.Name $jobName
 
     # Pause the job
-    $pauseResult = Suspend-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName -PassThru
-    Assert-AreEqual $pauseResult $true
+    $pauseResult = Suspend-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName
+    Assert-NotNull $pauseResult
+    Assert-AreEqual $pauseResult.Name $jobName
 
     # Get job and verify paused status
     $pausedJob = Get-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName
     Assert-NotNull $pausedJob
 
     # Resume the job
-    $resumeResult = Resume-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName -PassThru
-    Assert-AreEqual $resumeResult $true
+    $resumeResult = Resume-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName
+    Assert-NotNull $resumeResult
+    Assert-AreEqual $resumeResult.Name $jobName
 
     # Cancel the job
-    $cancelResult = Stop-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName -PassThru
-    Assert-AreEqual $cancelResult $true
+    $cancelResult = Stop-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName
+    Assert-NotNull $cancelResult
+    Assert-AreEqual $cancelResult.Name $jobName
   }
   Finally
   {
@@ -427,16 +431,18 @@ function Test-CopyJobOnlineCompleteCmdlets{
     Assert-True { $jobRunning } "Job should reach Running state"
 
     # Pause the online job
-    $pauseResult = Suspend-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName -PassThru
-    Assert-AreEqual $pauseResult $true
+    $pauseResult = Suspend-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName
+    Assert-NotNull $pauseResult
+    Assert-AreEqual $pauseResult.Name $jobName
 
     # Verify paused
     $pausedJob = Get-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName
     Assert-AreEqual $pausedJob.Status "Paused"
 
     # Resume the online job
-    $resumeResult = Resume-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName -PassThru
-    Assert-AreEqual $resumeResult $true
+    $resumeResult = Resume-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName
+    Assert-NotNull $resumeResult
+    Assert-AreEqual $resumeResult.Name $jobName
 
     # Wait for Running again
     for ($i = 0; $i -lt $maxRetries; $i++) {
@@ -446,8 +452,9 @@ function Test-CopyJobOnlineCompleteCmdlets{
     }
 
     # Complete the online job
-    $completeResult = Complete-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName -PassThru
-    Assert-AreEqual $completeResult $true
+    $completeResult = Complete-AzCosmosDBCopyJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobName $jobName
+    Assert-NotNull $completeResult
+    Assert-AreEqual $completeResult.Name $jobName
 
     # Verify completed
     Start-TestSleep -s 10

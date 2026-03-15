@@ -14,13 +14,13 @@ Pauses an Azure Cosmos DB container copy job.
 
 ### ByNameParameterSet (Default)
 ```
-Suspend-AzCosmosDBCopyJob -ResourceGroupName <String> -AccountName <String> -JobName <String> [-PassThru]
+Suspend-AzCosmosDBCopyJob -ResourceGroupName <String> -AccountName <String> -JobName <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Suspend-AzCosmosDBCopyJob -JobName <String> -ParentObject <PSDatabaseAccountGetResults> [-PassThru]
+Suspend-AzCosmosDBCopyJob -JobName <String> -ParentObject <PSDatabaseAccountGetResults>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -98,24 +98,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-To be set to true if the user wants to receive an output.
-The output is true if the operation was successful and an error is thrown if not.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
-Name of resource group.
+Name of the resource group containing the Cosmos DB account.
 
 ```yaml
 Type: String
@@ -174,3 +158,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzCosmosDBCopyJob](New-AzCosmosDBCopyJob.md)
+
+[Get-AzCosmosDBCopyJob](Get-AzCosmosDBCopyJob.md)
+
+[Complete-AzCosmosDBCopyJob](Complete-AzCosmosDBCopyJob.md)
+
+[Stop-AzCosmosDBCopyJob](Stop-AzCosmosDBCopyJob.md)
+
+[Resume-AzCosmosDBCopyJob](Resume-AzCosmosDBCopyJob.md)

@@ -384,3 +384,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzCosmosDBCopyJob](Get-AzCosmosDBCopyJob.md)
+
+[Complete-AzCosmosDBCopyJob](Complete-AzCosmosDBCopyJob.md)
+
+[Stop-AzCosmosDBCopyJob](Stop-AzCosmosDBCopyJob.md)
+
+[Suspend-AzCosmosDBCopyJob](Suspend-AzCosmosDBCopyJob.md)
+
+[Resume-AzCosmosDBCopyJob](Resume-AzCosmosDBCopyJob.md)

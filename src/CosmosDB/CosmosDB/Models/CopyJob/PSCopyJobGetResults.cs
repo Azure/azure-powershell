@@ -133,25 +133,25 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         public string Mode { get; set; }
 
         /// <summary>
-        /// Gets or sets Source Database Name
+        /// Gets or sets Source Database Name (used for both NoSQL and MongoDB copy jobs, disambiguated by JobType)
         /// </summary>
         [Ps1Xml(Label = "SourceDatabaseName", Target = ViewControl.List)]
         public string SourceDatabaseName { get; set; }
 
         /// <summary>
-        /// Gets or sets Source Container Name
+        /// Gets or sets Source Container Name (NoSQL copy jobs)
         /// </summary>
         [Ps1Xml(Label = "SourceContainerName", Target = ViewControl.List)]
         public string SourceContainerName { get; set; }
 
         /// <summary>
-        /// Gets or sets Destination Database Name
+        /// Gets or sets Destination Database Name (used for both NoSQL and MongoDB copy jobs, disambiguated by JobType)
         /// </summary>
         [Ps1Xml(Label = "DestinationDatabaseName", Target = ViewControl.List)]
         public string DestinationDatabaseName { get; set; }
 
         /// <summary>
-        /// Gets or sets Destination Container Name
+        /// Gets or sets Destination Container Name (NoSQL copy jobs)
         /// </summary>
         [Ps1Xml(Label = "DestinationContainerName", Target = ViewControl.List)]
         public string DestinationContainerName { get; set; }
