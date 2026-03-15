@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Sftp",
-  "ModuleVersion": "0.1.1",
+  "ModuleVersion": "0.1.2",
   "Cmdlets": [
     {
       "VerbName": "Connect",
@@ -919,7 +919,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models.PSCertificateInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models.PSCertificateInfo, Microsoft.Azure.PowerShell.Cmdlets.Sftp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models.PSCertificateInfo, Microsoft.Azure.PowerShell.Cmdlets.Sftp, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IsLocalUserCertificate": "System.Boolean",
               "IsValid": "System.Boolean",

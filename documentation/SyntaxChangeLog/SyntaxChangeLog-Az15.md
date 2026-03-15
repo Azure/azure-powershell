@@ -1,3 +1,11 @@
+## 15.5.0 - April 2026
+#### Az.Migrate 2.12.0 
+* Modified cmdlet `New-AzMigrateServerReplication`
+   - Added parameters `-TargetSecurityType`, `-TargetVMSecureBootEnabled`
+#### Az.Network 7.26.0 
+* Modified cmdlet `New-AzFirewall`
+   - Added parameter `-EdgeZone`
+
 ## 15.4.0 - March 2026
 #### Az.Compute 11.4.0 
 * Modified cmdlet `Add-AzVMDataDisk`
@@ -1240,6 +1248,7 @@
    - Changed the type of parameter `-ManagedResourcesNetworkAccessType` from `ManagedResourcesNetworkAccessType` to `String`
    - Changed the type of parameter `-UserAssignedIdentity` from `Hashtable` to `String[]`
 * Added cmdlet `Update-AzWorkloadsProviderInstance`
+
 
 
 

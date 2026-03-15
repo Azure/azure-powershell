@@ -31,8 +31,8 @@ using System.Runtime.InteropServices;
 
 [assembly: Guid("fce7bc67-3c8c-4c3d-b5e2-58cfbd0216c6")]
 
-[assembly: AssemblyVersion("0.1.1")]
-[assembly: AssemblyFileVersion("0.1.1")]
+[assembly: AssemblyVersion("0.1.2")]
+[assembly: AssemblyFileVersion("0.1.2")]
 #if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.Sftp.Test")]
 #endif

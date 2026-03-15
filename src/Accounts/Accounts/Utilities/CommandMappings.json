@@ -2843,11 +2843,15 @@
       "Get-AzDisconnectedOperationsArtifactDownloadUri": {},
       "Get-AzDisconnectedOperationsDisconnectedOperation": {},
       "Get-AzDisconnectedOperationsDisconnectedOperationDeploymentManifest": {},
+      "Get-AzDisconnectedOperationsHardwareSetting": {},
       "Get-AzDisconnectedOperationsImage": {},
       "Get-AzDisconnectedOperationsImageDownloadUri": {},
       "New-AzDisconnectedOperationsDisconnectedOperation": {},
+      "New-AzDisconnectedOperationsHardwareSetting": {},
       "Remove-AzDisconnectedOperationsDisconnectedOperation": {},
-      "Update-AzDisconnectedOperationsDisconnectedOperation": {}
+      "Remove-AzDisconnectedOperationsHardwareSetting": {},
+      "Update-AzDisconnectedOperationsDisconnectedOperation": {},
+      "Update-AzDisconnectedOperationsHardwareSetting": {}
     },
     "Az.DiskPool": {
       "Get-AzDiskPool": {},
@@ -3329,6 +3333,20 @@
       "Suspend-AzFabricCapacity": {},
       "Test-AzFabricCapacityNameAvailability": {},
       "Update-AzFabricCapacity": {}
+    },
+    "Az.FileShare": {
+      "Get-AzFileShare": {},
+      "Get-AzFileShareLimit": {},
+      "Get-AzFileShareProvisioningRecommendation": {},
+      "Get-AzFileShareSnapshot": {},
+      "Get-AzFileShareUsageData": {},
+      "New-AzFileShare": {},
+      "New-AzFileShareSnapshot": {},
+      "Remove-AzFileShare": {},
+      "Remove-AzFileShareSnapshot": {},
+      "Test-AzFileShareNameAvailability": {},
+      "Update-AzFileShare": {},
+      "Update-AzFileShareSnapshot": {}
     },
     "Az.FirmwareAnalysis": {
       "Get-AzFirmwareAnalysisBinaryHardening": {},
@@ -6482,12 +6500,30 @@
     },
     "Az.Quota": {
       "Get-AzQuota": {},
+      "Get-AzQuotaGroupQuota": {},
+      "Get-AzQuotaGroupQuotaLimit": {},
+      "Get-AzQuotaGroupQuotaLimitsRequest": {},
+      "Get-AzQuotaGroupQuotaLocationSetting": {},
+      "Get-AzQuotaGroupQuotaSubscription": {},
+      "Get-AzQuotaGroupQuotaSubscriptionAllocation": {},
+      "Get-AzQuotaGroupQuotaSubscriptionAllocationRequest": {},
+      "Get-AzQuotaGroupQuotaUsage": {},
       "Get-AzQuotaOperation": {},
       "Get-AzQuotaRequestStatus": {},
       "Get-AzQuotaUsage": {},
       "New-AzQuota": {},
+      "New-AzQuotaGroupQuota": {},
+      "New-AzQuotaGroupQuotaLocationSetting": {},
+      "New-AzQuotaGroupQuotaSubscription": {},
       "New-AzQuotaLimitObject": {},
-      "Update-AzQuota": {}
+      "Remove-AzQuotaGroupQuota": {},
+      "Remove-AzQuotaGroupQuotaSubscription": {},
+      "Update-AzQuota": {},
+      "Update-AzQuotaGroupQuota": {},
+      "Update-AzQuotaGroupQuotaLimitsRequest": {},
+      "Update-AzQuotaGroupQuotaLocationSetting": {},
+      "Update-AzQuotaGroupQuotaSubscription": {},
+      "Update-AzQuotaGroupQuotaSubscriptionAllocationRequest": {}
     },
     "Az.RecoveryServices": {
       "Add-AzRecoveryServicesAsrReplicationProtectedItemDisk": {},
