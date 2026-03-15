@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime
 {
 
     using System;
@@ -14,13 +14,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime
     using System.Threading;
     using System.Threading.Tasks;
     using GetEventData = System.Func<EventData>;
-    using static Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Extensions;
+    using static Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.Extensions;
 
     /// <summary>
     /// The IContext Interface defines the communication mechanism for input customization.
     /// </summary>
     /// <remarks>
-    /// In the context, we will have client, pipeline, PSBoundParamters, default EventListener, Cancellation.
+    /// In the context, we will have client, pipeline, PSBoundParameters, default EventListener, Cancellation.
     /// </remarks>
     public interface IContext
     {
@@ -28,6 +28,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime
         System.Threading.CancellationTokenSource CancellationTokenSource { get; set; }
         System.Collections.Generic.IDictionary<String, Object> ExtensibleParameters { get; }
         HttpPipeline Pipeline { get; set; }
-        Microsoft.Azure.PowerShell.Cmdlets.Confluent.Confluent Client { get; }
+        Microsoft.Azure.PowerShell.Cmdlets.confluent.Confluent Client { get; }
     }
 }

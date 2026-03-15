@@ -25,7 +25,7 @@ Remove-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluento
 Get-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh | Remove-AzConfluentOrganization
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentity
+Microsoft.Azure.PowerShell.Cmdlets.confluent.Models.IConfluentIdentity
 .Outputs
 System.Boolean
 .Notes
@@ -34,10 +34,16 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IConfluentIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+  [ApiKeyId <String>]: Confluent API Key id
+  [ClusterId <String>]: Confluent kafka or schema registry cluster id
+  [ConnectorName <String>]: Confluent connector name
+  [EnvironmentId <String>]: Confluent environment id
   [Id <String>]: Resource identity path
   [OrganizationName <String>]: Organization resource name
-  [ResourceGroupName <String>]: Resource group name
-  [SubscriptionId <String>]: Microsoft Azure subscription id
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleBindingId <String>]: Confluent Role binding id
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TopicName <String>]: Confluent kafka or schema registry topic name
 .Link
 https://learn.microsoft.com/powershell/module/az.confluent/remove-azconfluentorganization
 #>
@@ -47,27 +53,27 @@ function Remove-AzConfluentOrganization {
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Alias('OrganizationName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Path')]
     [System.String]
     # Organization resource name
     ${Name},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Path')]
     [System.String]
     # Resource group name
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Microsoft Azure subscription id
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentity]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Models.IConfluentIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
@@ -75,64 +81,64 @@ param(
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Azure')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Azure')]
     [System.Management.Automation.PSObject]
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command as a job
     ${AsJob},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Returns true when the command succeeds
     ${PassThru},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
@@ -147,12 +153,11 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         
         $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -161,7 +166,7 @@ begin {
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Confluent.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.Azure.PowerShell.Cmdlets.confluent.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
         } else {
             $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
             if ($internalCalledCmdlets -eq '') {
@@ -173,8 +178,8 @@ begin {
         }
 
         $mapping = @{
-            Delete = 'Az.Confluent.custom\Remove-AzConfluentOrganization';
-            DeleteViaIdentity = 'Az.Confluent.custom\Remove-AzConfluentOrganization';
+            Delete = 'Az.confluent.custom\Remove-AzConfluentOrganization';
+            DeleteViaIdentity = 'Az.confluent.custom\Remove-AzConfluentOrganization';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
@@ -184,9 +189,9 @@ begin {
             }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        [Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -224,7 +229,7 @@ end {
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
         if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Confluent.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.Azure.PowerShell.Cmdlets.confluent.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         }
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId

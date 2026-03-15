@@ -1,17 +1,17 @@
 {
-  "Get-AzConfluentMarketplaceAgreement+[NoContext]+List+$GET+https://management.azure.com/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/providers/Microsoft.Confluent/agreements?api-version=2020-03-01+1": {
+  "Get-AzConfluentMarketplaceAgreement+[NoContext]+List+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000001/providers/Microsoft.Confluent/agreements?api-version=2025-08-18-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/providers/Microsoft.Confluent/agreements?api-version=2020-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000001/providers/Microsoft.Confluent/agreements?api-version=2025-08-18-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "c5ca19b5-80f5-48d2-865f-509928b312e2" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "a4e14242-c1bc-4a65-8584-408fd5eebfaa" ],
         "CommandName": [ "Get-AzConfluentMarketplaceAgreement" ],
         "FullCommandName": [ "Get-AzConfluentMarketplaceAgreement_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v15.3.0", "PSVersion/v7.5.4", "Az.confluent/0.3.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,21 +22,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-request-id": [ "6b50e8ef-2836-4cc0-9c99-18b6365ccff9" ],
-        "x-ms-correlation-request-id": [ "c97bfb7f-59e3-4d38-903b-ce4d77824a8c" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210223T065342Z:c97bfb7f-59e3-4d38-903b-ce4d77824a8c" ],
+        "x-ms-operation-identifier": [ "tenantId=ffffffff-ffff-ffff-ffff-ffffffffffff,objectId=460cd5fa-ce9f-4a75-9f4e-83a3f4243065/westindia/68c01e8c-689b-4ce5-acbc-f37c434063fd" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:44fd1f8b-df35-48c9-8fa6-f5e19b8bb5be" ],
+        "mise-correlation-id": [ "3f4da914-05e6-4100-a7f8-ef9f15d3bf34" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 23 Feb 2021 06:53:42 GMT" ]
+        "x-ms-request-id": [ "4fabef84-5bb4-4944-a525-4e043d9870d3" ],
+        "x-ms-correlation-request-id": [ "02fb9eac-de90-4da4-8318-15aac1ebb1a8" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20260307T185437Z:02fb9eac-de90-4da4-8318-15aac1ebb1a8" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 83C0565C19DD482BB841290D273E72E1 Ref B: PNQ231110909040 Ref C: 2026-03-07T18:54:36Z" ],
+        "Date": [ "Sat, 07 Mar 2026 18:54:36 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "969" ],
+        "Content-Length": [ "921" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/providers/Microsoft.Confluent/agreements/marketplace\",\"name\":\"marketplace\",\"type\":\"Microsoft.Confluent/agreements\",\"properties\":{\"publisher\":\"Microsoft\",\"product\":\"Marketplace\",\"plan\":\"Marketplace\",\"licenseTextLink\":\"https://azure.microsoft.com/en-us/support/legal/marketplace-terms/\",\"privacyPolicyLink\":\"http://www.microsoft.com/privacy\",\"retrieveDatetime\":null,\"signature\":\"\",\"accepted\":false}},{\"id\":\"/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/providers/Microsoft.Confluent/agreements/default\",\"name\":\"confluent\",\"type\":\"Microsoft.Confluent/offertypes\",\"properties\":{\"publisher\":\"Confluent\",\"product\":\"Marketplace\",\"plan\":\"Confluent\",\"licenseTextLink\":\"https://www.confluent.io/marketplace-terms-of-service/\",\"privacyPolicyLink\":\"https://assets.confluent.io/m/1353b6c3146e5feb/original/20200911-Confluent_Privacy_Statement.pdf\",\"retrieveDatetime\":null,\"signature\":\"\",\"accepted\":false}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000001/providers/Microsoft.Confluent/agreements/marketplace\",\"name\":\"marketplace\",\"type\":\"Microsoft.Confluent/agreements\",\"properties\":{\"publisher\":\"Microsoft\",\"product\":\"Marketplace\",\"plan\":\"Marketplace\",\"licenseTextLink\":\"https://azure.microsoft.com/en-us/support/legal/marketplace-terms/\",\"privacyPolicyLink\":\"http://www.microsoft.com/privacy\",\"signature\":\"\",\"accepted\":false}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000001/providers/Microsoft.Confluent/agreements/default\",\"name\":\"confluent\",\"type\":\"Microsoft.Confluent/offertypes\",\"properties\":{\"publisher\":\"Confluent\",\"product\":\"Marketplace\",\"plan\":\"Confluent\",\"licenseTextLink\":\"https://www.confluent.io/marketplace-terms-of-service/\",\"privacyPolicyLink\":\"https://assets.confluent.io/m/1353b6c3146e5feb/original/20200911-Confluent_Privacy_Statement.pdf\",\"signature\":\"\",\"accepted\":false}}]}",
       "isContentBase64": false
     }
   }

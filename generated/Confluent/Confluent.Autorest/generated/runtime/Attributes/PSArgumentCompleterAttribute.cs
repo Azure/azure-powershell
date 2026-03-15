@@ -16,7 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent
+namespace Microsoft.Azure.PowerShell.Cmdlets.confluent
 {
     public class PSArgumentCompleterAttribute : ArgumentCompleterAttribute
     {

@@ -1,0 +1,105 @@
+{
+  "resourceType": "organizations/environments/clusters",
+  "apiVersion": "2025-08-18-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.confluent"
+  },
+  "commands": [
+    {
+      "name": "Get-AzConfluentOrganizationCluster",
+      "description": "Get cluster by Id",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.confluent/get-azconfluentorganizationcluster"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterId <String>",
+              "-EnvironmentId <String>",
+              "-OrganizationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get cluster by Id",
+          "parameters": [
+            {
+              "name": "-ClusterId",
+              "value": "[Path.clusterId]"
+            },
+            {
+              "name": "-EnvironmentId",
+              "value": "[Path.environmentId]"
+            },
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzConfluentCluster",
+      "description": "Delete confluent cluster by id",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.confluent/remove-azconfluentcluster"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EnvironmentId <String>",
+              "-Id <String>",
+              "-OrganizationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete confluent cluster by id",
+          "parameters": [
+            {
+              "name": "-EnvironmentId",
+              "value": "[Path.environmentId]"
+            },
+            {
+              "name": "-Id",
+              "value": "[Path.clusterId]"
+            },
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

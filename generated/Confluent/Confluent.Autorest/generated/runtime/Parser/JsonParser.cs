@@ -6,7 +6,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.Json
 {
     public class JsonParser : IDisposable
     {
