@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Checks that the trusted signing account name is valid and is not already in use.
+Checks if the artifact signing account name is valid and is not already in use.
 .Description
-Checks that the trusted signing account name is valid and is not already in use.
+Checks if the artifact signing account name is valid and is not already in use.
 .Example
 Test-AzArtifactSigningAccountNameAvailability -Name unavaliable
 .Example
@@ -33,8 +33,8 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <ICheckNameAvailability>: The parameters used to check the availability of the trusted signing account name.
-  Name <String>: Trusted signing account name.
+BODY <ICheckNameAvailability>: The parameters used to check the availability of the artifact signing account name.
+  Name <String>: Artifact signing account name.
   Type <String>: The type of the resource, "Microsoft.CodeSigning/codeSigningAccounts".
 .Link
 https://learn.microsoft.com/powershell/module/az.artifactsigning/test-azartifactsigningaccountnameavailability
@@ -54,13 +54,13 @@ param(
     [Parameter(ParameterSetName='Check', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICheckNameAvailability]
-    # The parameters used to check the availability of the trusted signing account name.
+    # The parameters used to check the availability of the artifact signing account name.
     ${Body},
 
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Category('Body')]
     [System.String]
-    # Trusted signing account name.
+    # Artifact signing account name.
     ${Name},
 
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
