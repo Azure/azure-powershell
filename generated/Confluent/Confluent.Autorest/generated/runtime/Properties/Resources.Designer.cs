@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.generated.runtime.Properties
+namespace Microsoft.Azure.PowerShell.Cmdlets.confluent.generated.runtime.Properties
 {
     using System;
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.generated.runtime.Propert
             {
                 if (object.ReferenceEquals(resourceMan, null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.PowerShell.Cmdlets.Confluent.generated.runtime.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.PowerShell.Cmdlets.confluent.generated.runtime.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -1,0 +1,115 @@
+{
+  "resourceType": "organizations/environments/clusters/connectors",
+  "apiVersion": "2025-08-18-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.confluent"
+  },
+  "commands": [
+    {
+      "name": "Get-AzConfluentConnector",
+      "description": "Get confluent connector by Name",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/connectors/{connectorName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.confluent/get-azconfluentconnector"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterId <String>",
+              "-EnvironmentId <String>",
+              "-Name <String>",
+              "-OrganizationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get confluent connector by Name",
+          "parameters": [
+            {
+              "name": "-ClusterId",
+              "value": "[Path.clusterId]"
+            },
+            {
+              "name": "-EnvironmentId",
+              "value": "[Path.environmentId]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.connectorName]"
+            },
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzConfluentConnector",
+      "description": "Delete confluent connector by name",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/connectors/{connectorName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.confluent/remove-azconfluentconnector"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterId <String>",
+              "-EnvironmentId <String>",
+              "-Name <String>",
+              "-OrganizationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete confluent connector by name",
+          "parameters": [
+            {
+              "name": "-ClusterId",
+              "value": "[Path.clusterId]"
+            },
+            {
+              "name": "-EnvironmentId",
+              "value": "[Path.environmentId]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.connectorName]"
+            },
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

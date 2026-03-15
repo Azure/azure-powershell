@@ -1,9 +1,9 @@
 # region Generated 
   # Load the private module dll
-  $null = Import-Module -PassThru -Name (Join-Path $PSScriptRoot '..\bin\Az.Confluent.private.dll')
+  $null = Import-Module -PassThru -Name (Join-Path $PSScriptRoot '..\bin\Az.confluent.private.dll')
 
   # Get the private module's instance
-  $instance = [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Module]::Instance
+  $instance = [Microsoft.Azure.PowerShell.Cmdlets.confluent.Module]::Instance
 
   # Export nothing to clear implicit exports
   Export-ModuleMember
