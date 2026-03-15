@@ -87,6 +87,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).OrganizationName = (string) content.GetValueForProperty("OrganizationName",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).OrganizationName, global::System.Convert.ToString);
             }
+            if (content.Contains("ApiKeyId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).ApiKeyId = (string) content.GetValueForProperty("ApiKeyId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).ApiKeyId, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnvironmentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).EnvironmentId = (string) content.GetValueForProperty("EnvironmentId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).EnvironmentId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClusterId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).ClusterId = (string) content.GetValueForProperty("ClusterId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).ClusterId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RoleBindingId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).RoleBindingId = (string) content.GetValueForProperty("RoleBindingId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).RoleBindingId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConnectorName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).ConnectorName = (string) content.GetValueForProperty("ConnectorName",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).ConnectorName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TopicName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).TopicName = (string) content.GetValueForProperty("TopicName",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).TopicName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -119,6 +143,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             if (content.Contains("OrganizationName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).OrganizationName = (string) content.GetValueForProperty("OrganizationName",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).OrganizationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ApiKeyId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).ApiKeyId = (string) content.GetValueForProperty("ApiKeyId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).ApiKeyId, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnvironmentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).EnvironmentId = (string) content.GetValueForProperty("EnvironmentId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).EnvironmentId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClusterId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).ClusterId = (string) content.GetValueForProperty("ClusterId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).ClusterId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RoleBindingId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).RoleBindingId = (string) content.GetValueForProperty("RoleBindingId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).RoleBindingId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConnectorName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).ConnectorName = (string) content.GetValueForProperty("ConnectorName",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).ConnectorName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TopicName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).TopicName = (string) content.GetValueForProperty("TopicName",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentityInternal)this).TopicName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

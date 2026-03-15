@@ -1,0 +1,57 @@
+{
+  "resourceType": "organizations/environments/schemaRegistryClusters",
+  "apiVersion": "2025-08-18-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.confluent"
+  },
+  "commands": [
+    {
+      "name": "Get-AzConfluentOrganizationSchemaRegistryCluster",
+      "description": "Get schema registry cluster by Id",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/schemaRegistryClusters/{clusterId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.confluent/get-azconfluentorganizationschemaregistrycluster"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterId <String>",
+              "-EnvironmentId <String>",
+              "-OrganizationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get schema registry cluster by Id",
+          "parameters": [
+            {
+              "name": "-ClusterId",
+              "value": "[Path.clusterId]"
+            },
+            {
+              "name": "-EnvironmentId",
+              "value": "[Path.environmentId]"
+            },
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

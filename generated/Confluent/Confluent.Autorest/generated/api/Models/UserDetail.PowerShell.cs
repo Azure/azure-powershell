@@ -138,6 +138,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IUserDetailInternal)this).EmailAddress = (string) content.GetValueForProperty("EmailAddress",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IUserDetailInternal)this).EmailAddress, global::System.Convert.ToString);
             }
+            if (content.Contains("UserPrincipalName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IUserDetailInternal)this).UserPrincipalName = (string) content.GetValueForProperty("UserPrincipalName",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IUserDetailInternal)this).UserPrincipalName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AadEmail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IUserDetailInternal)this).AadEmail = (string) content.GetValueForProperty("AadEmail",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IUserDetailInternal)this).AadEmail, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -166,6 +174,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             if (content.Contains("EmailAddress"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IUserDetailInternal)this).EmailAddress = (string) content.GetValueForProperty("EmailAddress",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IUserDetailInternal)this).EmailAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserPrincipalName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IUserDetailInternal)this).UserPrincipalName = (string) content.GetValueForProperty("UserPrincipalName",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IUserDetailInternal)this).UserPrincipalName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AadEmail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IUserDetailInternal)this).AadEmail = (string) content.GetValueForProperty("AadEmail",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IUserDetailInternal)this).AadEmail, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

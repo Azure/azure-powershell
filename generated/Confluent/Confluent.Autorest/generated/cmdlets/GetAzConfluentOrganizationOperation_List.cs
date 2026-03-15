@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Cmdlets;
     using System;
 
-    /// <summary>List all operations provided by Microsoft.Confluent.</summary>
+    /// <summary>List the operations for the provider</summary>
     /// <remarks>
     /// [OpenAPI] List=>GET:"/providers/Microsoft.Confluent/operations"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzConfluentOrganizationOperation_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOperationResult))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Description(@"List all operations provided by Microsoft.Confluent.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Description(@"List the operations for the provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.HttpPath(Path = "/providers/Microsoft.Confluent/operations", ApiVersion = "2020-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.HttpPath(Path = "/providers/Microsoft.Confluent/operations", ApiVersion = "2025-08-18-preview")]
     public partial class GetAzConfluentOrganizationOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.IContext

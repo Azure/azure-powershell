@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Extensions;
 
-    /// <summary>Confluent Agreements Resource.</summary>
+    /// <summary>Agreement Terms definition</summary>
     public partial class ConfluentAgreementResource
     {
 
@@ -65,6 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             {
                 return;
             }
+            {_systemData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonObject>("systemData"), out var __jsonSystemData) ? Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.SystemData.FromJson(__jsonSystemData) : _systemData;}
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ConfluentAgreementProperties.FromJson(__jsonProperties) : _property;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
@@ -102,6 +103,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             if (returnNow)
             {
                 return container;
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._systemData ? (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonNode) this._systemData.ToJson(null,serializationMode) : null, "systemData" ,container.Add );
             }
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.SerializationMode.IncludeRead))

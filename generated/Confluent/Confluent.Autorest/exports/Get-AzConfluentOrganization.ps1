@@ -38,10 +38,16 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IConfluentIdentity>: Identity Parameter
+  [ApiKeyId <String>]: Confluent API Key id
+  [ClusterId <String>]: Confluent kafka or schema registry cluster id
+  [ConnectorName <String>]: Confluent connector name
+  [EnvironmentId <String>]: Confluent environment id
   [Id <String>]: Resource identity path
   [OrganizationName <String>]: Organization resource name
-  [ResourceGroupName <String>]: Resource group name
-  [SubscriptionId <String>]: Microsoft Azure subscription id
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleBindingId <String>]: Confluent Role binding id
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TopicName <String>]: Confluent kafka or schema registry topic name
 .Link
 https://learn.microsoft.com/powershell/module/az.confluent/get-azconfluentorganization
 #>
@@ -60,7 +66,8 @@ param(
     [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
     [System.String]
-    # Resource group name
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -69,7 +76,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Microsoft Azure subscription id
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -140,8 +148,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

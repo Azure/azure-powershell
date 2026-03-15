@@ -1,0 +1,95 @@
+{
+  "resourceType": "organizations/apiKeys",
+  "apiVersion": "2025-08-18-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.confluent"
+  },
+  "commands": [
+    {
+      "name": "Get-AzConfluentOrganizationClusterApiKey",
+      "description": "Get API key details of a kafka or schema registry cluster",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/apiKeys/{apiKeyId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.confluent/get-azconfluentorganizationclusterapikey"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ApiKeyId <String>",
+              "-OrganizationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get API key details of a kafka or schema registry cluster",
+          "parameters": [
+            {
+              "name": "-ApiKeyId",
+              "value": "[Path.apiKeyId]"
+            },
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzConfluentOrganizationClusterApiKey",
+      "description": "Deletes API key of a kafka or schema registry cluster",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/apiKeys/{apiKeyId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.confluent/remove-azconfluentorganizationclusterapikey"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ApiKeyId <String>",
+              "-OrganizationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes API key of a kafka or schema registry cluster",
+          "parameters": [
+            {
+              "name": "-ApiKeyId",
+              "value": "[Path.apiKeyId]"
+            },
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.PowerShell;
 
-    /// <summary>Confluent Agreements Resource.</summary>
+    /// <summary>Agreement Terms definition</summary>
     [System.ComponentModel.TypeConverter(typeof(ConfluentAgreementResourceTypeConverter))]
     public partial class ConfluentAgreementResource
     {
@@ -76,6 +76,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.SystemDataTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Property"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ConfluentAgreementPropertiesTypeConverter.ConvertFrom);
@@ -91,6 +95,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("Publisher"))
             {
@@ -141,6 +169,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.SystemDataTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Property"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ConfluentAgreementPropertiesTypeConverter.ConvertFrom);
@@ -156,6 +188,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("Publisher"))
             {
@@ -242,7 +298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             return ToJsonString();
         }
     }
-    /// Confluent Agreements Resource.
+    /// Agreement Terms definition
     [System.ComponentModel.TypeConverter(typeof(ConfluentAgreementResourceTypeConverter))]
     public partial interface IConfluentAgreementResource
 

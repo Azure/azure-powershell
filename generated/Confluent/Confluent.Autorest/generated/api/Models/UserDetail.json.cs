@@ -85,6 +85,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             AddIf( null != (((object)this._firstName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString(this._firstName.ToString()) : null, "firstName" ,container.Add );
             AddIf( null != (((object)this._lastName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString(this._lastName.ToString()) : null, "lastName" ,container.Add );
             AddIf( null != (((object)this._emailAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString(this._emailAddress.ToString()) : null, "emailAddress" ,container.Add );
+            AddIf( null != (((object)this._userPrincipalName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString(this._userPrincipalName.ToString()) : null, "userPrincipalName" ,container.Add );
+            AddIf( null != (((object)this._aadEmail)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString(this._aadEmail.ToString()) : null, "aadEmail" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -104,6 +106,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             {_firstName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString>("firstName"), out var __jsonFirstName) ? (string)__jsonFirstName : (string)_firstName;}
             {_lastName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString>("lastName"), out var __jsonLastName) ? (string)__jsonLastName : (string)_lastName;}
             {_emailAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString>("emailAddress"), out var __jsonEmailAddress) ? (string)__jsonEmailAddress : (string)_emailAddress;}
+            {_userPrincipalName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString>("userPrincipalName"), out var __jsonUserPrincipalName) ? (string)__jsonUserPrincipalName : (string)_userPrincipalName;}
+            {_aadEmail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString>("aadEmail"), out var __jsonAadEmail) ? (string)__jsonAadEmail : (string)_aadEmail;}
             AfterFromJson(json);
         }
     }

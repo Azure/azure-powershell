@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Extensions;
 
-    /// <summary>The response of a list operation.</summary>
+    /// <summary>The response of a OrganizationResource list operation.</summary>
     public partial class OrganizationResourceListResult
     {
 

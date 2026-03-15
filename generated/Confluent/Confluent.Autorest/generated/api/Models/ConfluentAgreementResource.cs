@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Extensions;
 
-    /// <summary>Confluent Agreements Resource.</summary>
+    /// <summary>Agreement Terms definition</summary>
     public partial class ConfluentAgreementResource :
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResource,
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
-        /// <summary>ARM id of the resource.</summary>
+        /// <summary>The ARM id of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Owned)]
         public string Id { get => this._id; }
 
@@ -37,13 +37,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementProperties Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ConfluentAgreementProperties()); set { {_property = value;} } }
 
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.SystemData()); set { {_systemData = value;} } }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementResourceInternal.Type { get => this._type; set { {_type = value;} } }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>Name of the agreement.</summary>
+        /// <summary>The name of the agreement.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Owned)]
         public string Name { get => this._name; }
 
@@ -84,10 +105,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Inlined)]
         public string Signature { get => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementPropertiesInternal)Property).Signature; set => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentAgreementPropertiesInternal)Property).Signature = value ?? null; }
 
+        /// <summary>Backing field for <see cref="SystemData" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemData _systemData;
+
+        /// <summary>Metadata pertaining to creation and last modification of the resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemData SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.SystemData()); }
+
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Inlined)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemDataInternal)SystemData).CreatedAt; }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Inlined)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemDataInternal)SystemData).CreatedBy; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Inlined)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemDataInternal)SystemData).CreatedByType; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Inlined)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemDataInternal)SystemData).LastModifiedAt; }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Inlined)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemDataInternal)SystemData).LastModifiedBy; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Inlined)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemDataInternal)SystemData).LastModifiedByType; }
+
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private string _type;
 
-        /// <summary>The type of the resource.</summary>
+        /// <summary>The type of the agreement.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Owned)]
         public string Type { get => this._type; }
 
@@ -97,7 +149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
 
         }
     }
-    /// Confluent Agreements Resource.
+    /// Agreement Terms definition
     public partial interface IConfluentAgreementResource :
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.IJsonSerializable
     {
@@ -112,14 +164,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         SerializedName = @"accepted",
         PossibleTypes = new [] { typeof(bool) })]
         bool? Accepted { get; set; }
-        /// <summary>ARM id of the resource.</summary>
+        /// <summary>The ARM id of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"ARM id of the resource.",
+        Description = @"The ARM id of the resource.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get;  }
@@ -134,14 +186,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         SerializedName = @"licenseTextLink",
         PossibleTypes = new [] { typeof(string) })]
         string LicenseTextLink { get; set; }
-        /// <summary>Name of the agreement.</summary>
+        /// <summary>The name of the agreement.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Name of the agreement.",
+        Description = @"The name of the agreement.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get;  }
@@ -213,30 +265,98 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         SerializedName = @"signature",
         PossibleTypes = new [] { typeof(string) })]
         string Signature { get; set; }
-        /// <summary>The type of the resource.</summary>
+        /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The type of the resource.",
+        Description = @"The timestamp of resource creation (UTC).",
+        SerializedName = @"createdAt",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? SystemDataCreatedAt { get;  }
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The identity that created the resource.",
+        SerializedName = @"createdBy",
+        PossibleTypes = new [] { typeof(string) })]
+        string SystemDataCreatedBy { get;  }
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The type of identity that created the resource.",
+        SerializedName = @"createdByType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
+        string SystemDataCreatedByType { get;  }
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The timestamp of resource last modification (UTC)",
+        SerializedName = @"lastModifiedAt",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? SystemDataLastModifiedAt { get;  }
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The identity that last modified the resource.",
+        SerializedName = @"lastModifiedBy",
+        PossibleTypes = new [] { typeof(string) })]
+        string SystemDataLastModifiedBy { get;  }
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The type of identity that last modified the resource.",
+        SerializedName = @"lastModifiedByType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
+        string SystemDataLastModifiedByType { get;  }
+        /// <summary>The type of the agreement.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The type of the agreement.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         string Type { get;  }
 
     }
-    /// Confluent Agreements Resource.
+    /// Agreement Terms definition
     internal partial interface IConfluentAgreementResourceInternal
 
     {
         /// <summary>If any version of the terms have been accepted, otherwise false.</summary>
         bool? Accepted { get; set; }
-        /// <summary>ARM id of the resource.</summary>
+        /// <summary>The ARM id of the resource.</summary>
         string Id { get; set; }
         /// <summary>Link to HTML with Microsoft and Publisher terms.</summary>
         string LicenseTextLink { get; set; }
-        /// <summary>Name of the agreement.</summary>
+        /// <summary>The name of the agreement.</summary>
         string Name { get; set; }
         /// <summary>Plan identifier string.</summary>
         string Plan { get; set; }
@@ -254,7 +374,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         global::System.DateTime? RetrieveDatetime { get; set; }
         /// <summary>Terms signature.</summary>
         string Signature { get; set; }
-        /// <summary>The type of the resource.</summary>
+        /// <summary>Metadata pertaining to creation and last modification of the resource</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.ISystemData SystemData { get; set; }
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        global::System.DateTime? SystemDataCreatedAt { get; set; }
+        /// <summary>The identity that created the resource.</summary>
+        string SystemDataCreatedBy { get; set; }
+        /// <summary>The type of identity that created the resource.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
+        string SystemDataCreatedByType { get; set; }
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        global::System.DateTime? SystemDataLastModifiedAt { get; set; }
+        /// <summary>The identity that last modified the resource.</summary>
+        string SystemDataLastModifiedBy { get; set; }
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
+        string SystemDataLastModifiedByType { get; set; }
+        /// <summary>The type of the agreement.</summary>
         string Type { get; set; }
 
     }

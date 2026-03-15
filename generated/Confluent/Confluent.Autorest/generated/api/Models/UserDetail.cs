@@ -13,6 +13,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IUserDetailInternal
     {
 
+        /// <summary>Backing field for <see cref="AadEmail" /> property.</summary>
+        private string _aadEmail;
+
+        /// <summary>AAD email address</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Owned)]
+        public string AadEmail { get => this._aadEmail; set => this._aadEmail = value; }
+
         /// <summary>Backing field for <see cref="EmailAddress" /> property.</summary>
         private string _emailAddress;
 
@@ -34,6 +41,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Owned)]
         public string LastName { get => this._lastName; set => this._lastName = value; }
 
+        /// <summary>Backing field for <see cref="UserPrincipalName" /> property.</summary>
+        private string _userPrincipalName;
+
+        /// <summary>User principal name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Origin(Microsoft.Azure.PowerShell.Cmdlets.Confluent.PropertyOrigin.Owned)]
+        public string UserPrincipalName { get => this._userPrincipalName; set => this._userPrincipalName = value; }
+
         /// <summary>Creates an new <see cref="UserDetail" /> instance.</summary>
         public UserDetail()
         {
@@ -44,9 +58,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
     public partial interface IUserDetail :
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.IJsonSerializable
     {
-        /// <summary>Email address</summary>
+        /// <summary>AAD email address</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"AAD email address",
+        SerializedName = @"aadEmail",
+        PossibleTypes = new [] { typeof(string) })]
+        string AadEmail { get; set; }
+        /// <summary>Email address</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -77,18 +102,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
         SerializedName = @"lastName",
         PossibleTypes = new [] { typeof(string) })]
         string LastName { get; set; }
+        /// <summary>User principal name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"User principal name",
+        SerializedName = @"userPrincipalName",
+        PossibleTypes = new [] { typeof(string) })]
+        string UserPrincipalName { get; set; }
 
     }
     /// Subscriber detail
     internal partial interface IUserDetailInternal
 
     {
+        /// <summary>AAD email address</summary>
+        string AadEmail { get; set; }
         /// <summary>Email address</summary>
         string EmailAddress { get; set; }
         /// <summary>First name</summary>
         string FirstName { get; set; }
         /// <summary>Last name</summary>
         string LastName { get; set; }
+        /// <summary>User principal name</summary>
+        string UserPrincipalName { get; set; }
 
     }
 }

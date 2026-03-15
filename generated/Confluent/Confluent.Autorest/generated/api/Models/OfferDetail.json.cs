@@ -82,6 +82,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             {_planId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString>("planId"), out var __jsonPlanId) ? (string)__jsonPlanId : (string)_planId;}
             {_planName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString>("planName"), out var __jsonPlanName) ? (string)__jsonPlanName : (string)_planName;}
             {_termUnit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString>("termUnit"), out var __jsonTermUnit) ? (string)__jsonTermUnit : (string)_termUnit;}
+            {_termId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString>("termId"), out var __jsonTermId) ? (string)__jsonTermId : (string)_termId;}
+            {_privateOfferId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString>("privateOfferId"), out var __jsonPrivateOfferId) ? (string)__jsonPrivateOfferId : (string)_privateOfferId;}
+            {_privateOfferIds = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonArray>("privateOfferIds"), out var __jsonPrivateOfferIds) ? If( __jsonPrivateOfferIds as Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _privateOfferIds;}
             {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)_status;}
             AfterFromJson(json);
         }
@@ -110,10 +113,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models
             AddIf( null != (((object)this._planId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString(this._planId.ToString()) : null, "planId" ,container.Add );
             AddIf( null != (((object)this._planName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString(this._planName.ToString()) : null, "planName" ,container.Add );
             AddIf( null != (((object)this._termUnit)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString(this._termUnit.ToString()) : null, "termUnit" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.SerializationMode.IncludeRead))
+            AddIf( null != (((object)this._termId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString(this._termId.ToString()) : null, "termId" ,container.Add );
+            AddIf( null != (((object)this._privateOfferId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString(this._privateOfferId.ToString()) : null, "privateOfferId" ,container.Add );
+            if (null != this._privateOfferIds)
             {
-                AddIf( null != (((object)this._status)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString(this._status.ToString()) : null, "status" ,container.Add );
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.XNodeArray();
+                foreach( var __x in this._privateOfferIds )
+                {
+                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                }
+                container.Add("privateOfferIds",__w);
             }
+            AddIf( null != (((object)this._status)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonString(this._status.ToString()) : null, "status" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

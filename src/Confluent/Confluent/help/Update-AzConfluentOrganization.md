@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConfluentOrganization
 
 ## SYNOPSIS
-update Organization resource
+Update Organization resource
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Update-AzConfluentOrganization -InputObject <IConfluentIdentity> [-Tag <Hashtabl
 ```
 
 ## DESCRIPTION
-update Organization resource
+Update Organization resource
 
 ## EXAMPLES
 
@@ -149,7 +149,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource group name
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -164,7 +165,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Microsoft Azure subscription id
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

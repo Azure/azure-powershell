@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Description(@"List all organizations under the specified subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Confluent/organizations", ApiVersion = "2020-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Confluent/organizations", ApiVersion = "2025-08-18-preview")]
     public partial class GetAzConfluentOrganization_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.IContext
@@ -126,12 +126,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
 
-        /// <summary>Microsoft Azure subscription id</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Microsoft Azure subscription id")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Microsoft Azure subscription id",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.DefaultInfo(
