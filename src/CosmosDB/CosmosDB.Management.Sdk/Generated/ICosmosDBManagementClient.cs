@@ -169,6 +169,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         ILocationsOperations Locations { get; }
 
         /// <summary>
+        /// Gets the ICopyJobsOperations
+        /// </summary>
+        ICopyJobsOperations CopyJobs { get; }
+
+        /// <summary>
         /// Gets the IDataTransferJobsOperations
         /// </summary>
         IDataTransferJobsOperations DataTransferJobs { get; }

@@ -20,6 +20,13 @@
 
 ## Upcoming Release
 * Added support for specifying default throughput bucket.
+* Added container copy job cmdlets for Azure Cosmos DB:
+    - `New-AzCosmosDBCopyJob` - Creates a container copy job (supports NoSQL, Cassandra, MongoDB)
+    - `Get-AzCosmosDBCopyJob` - Gets or lists container copy jobs
+    - `Complete-AzCosmosDBCopyJob` - Completes an online container copy job
+    - `Stop-AzCosmosDBCopyJob` - Cancels a container copy job
+    - `Suspend-AzCosmosDBCopyJob` - Pauses a container copy job
+    - `Resume-AzCosmosDBCopyJob` - Resumes a paused container copy job
 * Updated Azure.Core from 1.45.0 to 1.47.3
 * Source list parameter for redistribute throughput optional as it is no longer required
 

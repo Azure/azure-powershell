@@ -337,5 +337,24 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string FleetspaceAccountObjectHelpMessage = "Fleetspace Account Object.";
         public const string GlobalDatabaseAccountResourceIdHelpMessage = "Resource ID of the global database account to associate with the fleetspace account.";
         public const string GlobalDatabaseAccountLocationHelpMessage = "Location of the global database account to associate with the fleetspace account.";
+
+        // CopyJob constants
+        public const string CopyJobNameHelpMessage = "The unique name identifying the container copy job to operate on.";
+        public const string CopyJobNameOptionalHelpMessage = "Name of the Copy Job. A random job name will be generated if not passed.";
+        public const string CopyJobSourceAccountNameHelpMessage = "Name of the Azure Cosmos DB source database account from which data is copied.";
+        public const string CopyJobDestinationAccountNameHelpMessage = "Name of the Azure Cosmos DB destination database account. Defaults to source account if not specified (intra-account copy).";
+        public const string CopyJobSourceDatabaseNameHelpMessage = "Name of the source NoSQL database containing the container to copy from.";
+        public const string CopyJobSourceContainerNameHelpMessage = "Name of the source NoSQL container to copy data from.";
+        public const string CopyJobDestinationDatabaseNameHelpMessage = "Name of the destination NoSQL database containing the target container.";
+        public const string CopyJobDestinationContainerNameHelpMessage = "Name of the destination NoSQL container to copy data into.";
+        public const string CopyJobSourceKeyspaceNameHelpMessage = "Name of the source Cassandra keyspace containing the table to copy from.";
+        public const string CopyJobSourceTableNameHelpMessage = "Name of the source Cassandra table to copy data from.";
+        public const string CopyJobDestinationKeyspaceNameHelpMessage = "Name of the destination Cassandra keyspace containing the target table.";
+        public const string CopyJobDestinationTableNameHelpMessage = "Name of the destination Cassandra table to copy data into.";
+        public const string CopyJobSourceMongoDatabaseNameHelpMessage = "Name of the source MongoDB database containing the collection to copy from.";
+        public const string CopyJobSourceCollectionNameHelpMessage = "Name of the source MongoDB collection to copy data from.";
+        public const string CopyJobDestinationMongoDatabaseNameHelpMessage = "Name of the destination MongoDB database containing the target collection.";
+        public const string CopyJobDestinationCollectionNameHelpMessage = "Name of the destination MongoDB collection to copy data into.";
+        public const string CopyJobModeHelpMessage = "Mode of the copy job. Possible values: 'Online', 'Offline'. Default is 'Offline'.";
     }
 }

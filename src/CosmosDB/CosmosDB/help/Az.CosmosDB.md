@@ -11,6 +11,9 @@ Locale: en-US
 The topics in this section document the Azure PowerShell cmdlets for Azure Cosmos DB and Azure Managed Instance for Apache Cassandra in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.CosmosDB namespace.
 
 ## Az.CosmosDB Cmdlets
+
+### [Complete-AzCosmosDBCopyJob](Complete-AzCosmosDBCopyJob.md)
+Completes an online Azure Cosmos DB container copy job.
 ### [Get-AzCosmosDBAccount](Get-AzCosmosDBAccount.md)
 Get CosmosDB Account.
 
@@ -31,6 +34,9 @@ Gets the throughput value of the Cassandra Table.
 
 ### [Get-AzCosmosDbClientEncryptionKey](Get-AzCosmosDbClientEncryptionKey.md)
 Gets the CosmosDB Client Encryption Key.
+
+### [Get-AzCosmosDBCopyJob](Get-AzCosmosDBCopyJob.md)
+Gets or lists Azure Cosmos DB container copy jobs.
 
 ### [Get-AzCosmosDBGremlinDatabase](Get-AzCosmosDBGremlinDatabase.md)
 Gets the CosmosDB Gremlin Database.
@@ -248,6 +254,9 @@ Creates a new CosmosDB Cassandra Table.
 
 ### [New-AzCosmosDbClientEncryptionKey](New-AzCosmosDbClientEncryptionKey.md)
 Creates a new CosmosDB Client Encryption Key.
+
+### [New-AzCosmosDBCopyJob](New-AzCosmosDBCopyJob.md)
+Creates a new Azure Cosmos DB container copy job.
 
 ### [New-AzCosmosDBDatabaseToRestore](New-AzCosmosDBDatabaseToRestore.md)
 Creates a new CosmosDB Database to Restore object(PSDatabaseToRestore)
@@ -524,6 +533,15 @@ Restore a deleted sql database to a given timestamp in the same account
 
 ### [Restore-AzCosmosDBTable](Restore-AzCosmosDBTable.md)
 Restore a deleted table to a given timestamp in the same account
+
+### [Resume-AzCosmosDBCopyJob](Resume-AzCosmosDBCopyJob.md)
+Resumes a paused Azure Cosmos DB container copy job.
+
+### [Stop-AzCosmosDBCopyJob](Stop-AzCosmosDBCopyJob.md)
+Cancels an Azure Cosmos DB container copy job.
+
+### [Suspend-AzCosmosDBCopyJob](Suspend-AzCosmosDBCopyJob.md)
+Pauses an Azure Cosmos DB container copy job.
 
 ### [Update-AzCosmosDBAccount](Update-AzCosmosDBAccount.md)
 Update a Cosmos DB Account attributes.

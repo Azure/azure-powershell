@@ -264,7 +264,10 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Get-AzCosmosDBFleetspace', 'Update-AzCosmosDBFleetspace', 
                'Remove-AzCosmosDBFleetspace', 'Add-AzCosmosDBFleetspaceAccount', 
                'Get-AzCosmosDBFleetspaceAccount', 
-               'Remove-AzCosmosDBFleetspaceAccount'
+               'Remove-AzCosmosDBFleetspaceAccount',
+               'New-AzCosmosDBCopyJob', 'Get-AzCosmosDBCopyJob',
+               'Complete-AzCosmosDBCopyJob', 'Stop-AzCosmosDBCopyJob',
+               'Suspend-AzCosmosDBCopyJob', 'Resume-AzCosmosDBCopyJob'
 
 # Variables to export from this module
 # VariablesToExport = @()
