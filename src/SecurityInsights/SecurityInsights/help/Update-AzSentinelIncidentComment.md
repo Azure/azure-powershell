@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSentinelIncidentComment
 
 ## SYNOPSIS
-Creates or updates the incident comment.
+Update the incident comment.
 
 ## SYNTAX
 
@@ -19,6 +19,13 @@ Update-AzSentinelIncidentComment -Id <String> -IncidentId <String> -ResourceGrou
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityIncidentExpanded
+```
+Update-AzSentinelIncidentComment -Id <String> -IncidentInputObject <ISecurityInsightsIdentity>
+ [-Message <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzSentinelIncidentComment -InputObject <ISecurityInsightsIdentity> [-Message <String>]
@@ -26,7 +33,7 @@ Update-AzSentinelIncidentComment -InputObject <ISecurityInsightsIdentity> [-Mess
 ```
 
 ## DESCRIPTION
-Creates or updates the incident comment.
+Update the incident comment.
 
 ## EXAMPLES
 
@@ -60,7 +67,7 @@ Incident comment ID
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityIncidentExpanded
 Aliases: IncidentCommentId
 
 Required: True
@@ -85,9 +92,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IncidentInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+Parameter Sets: UpdateViaIdentityIncidentExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
@@ -202,7 +223,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncidentComment
 
 ## NOTES
 

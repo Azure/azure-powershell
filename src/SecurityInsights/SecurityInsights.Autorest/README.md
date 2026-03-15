@@ -66,7 +66,7 @@ input-file:
   - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/ThreatIntelligence.json
   #- $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Watchlists.json
   - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/dataConnectors.json
-  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/operations.json
+  # - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/operations.json
 
 module-version: 1.2.0
 title: SecurityInsights
@@ -74,29 +74,12 @@ subject-prefix: Sentinel
   
 inlining-threshold: 50
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
-  # Fixes/overrides to swaggers
-  # Fix to x-ms-enum when integer (https://github.com/Azure/autorest.powershell/issues/856)
-  - from: dataConnectors.json
-    where: $.definitions.Availability.properties.status
-    transform: >-
-      return {
-          "description": "The connector Availability Status",
-          "format": "int32",
-          "type": "integer",
-          "enum": [
-            1
-          ]
-        }
   # Customize
   # Hide Operation API
-  - where:
-      subject: Operation
-    hide: true
+  # - where:
+  #     subject: Operation
+  #   hide: true
    # Hide OfficeConsent API
   - where:
       subject: OfficeConsent
@@ -109,8 +92,12 @@ directive:
   # Change Sets to Updates to match current module
   - where:
       verb: Set
+      subject: AlertRuleAction
     set:
       verb: Update
+  - where:
+      verb: Set
+    remove: true
   # fix subject name to encrichment
   - where:
       subject: DomainWhois
@@ -145,44 +132,15 @@ directive:
     set:
       verb: Get
       subject: EntityActivity
-  # Fix Update ThreatIntelligenceIndicator
-  - select: command
-    where:
-      verb: New
-      subject: ThreatIntelligenceIndicator
-      variant: CreateExpanded1
-    set:
-      verb: Update
-      variant: UpdateExpanded
-  - select: command
-    where:
-      verb: New
-      subject: ThreatIntelligenceIndicator
-      variant: CreateViaIdentity1
-    set:
-      verb: Update
-      variant: UpdateViaIdentity
-  - select: command
-    where:
-      verb: New
-      subject: ThreatIntelligenceIndicator
-      variant: CreateViaIdentityExpanded1
-    set:
-      verb: Update
-      variant: UpdateViaIdentityExpanded
-  - where:
-      subject: ThreatIntelligenceIndicatorQuery
-      variant: QueryViaIdentityExpanded
-    remove: true
   # Fix Entity Insights
   - where:
       subject: EntityInsight
-      variant: ^Get$|^GetViaIdentity$
+      variant: ^(Get|GetViaIdentity)(?!.*?Expanded)
     remove: true
   # Fix Entity TimeLime
   - where:
       subject: EntityTimeline
-      variant: List
+      variant: ^(List)(?!.*?Expanded)
     remove: true
   # Rename Id for user expierence
   - where:
@@ -225,11 +183,6 @@ directive:
       parameter-name: Id
     set:
       alias: IncidentCommentId
-  #Remove Enrichment
-  - where:
-      subject: ^Enrichment$
-      variant: ^GetViaIdenity$|^GetViaIdenity1$
-    remove: true
   # Remove source control (requires OAUTH tokens)
   - where:
       subject: SourceControl
@@ -240,14 +193,24 @@ directive:
       subject: DataConnectorsCheckRequirement
     hide: true
   - where:
+      verb: New
       subject: ^AlertRule$|^DataConnector$|^EntityQuery$
-      variant: ^Create$|^CreateExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$
+      variant: Create
     hide: true
+  - where:
+      verb: Update
+      subject: ^AlertRule$|^DataConnector$|^EntityQuery$
+      variant: Update
+    hide: true
+  - where:
+      subject: ^AlertRule$|^DataConnector$|^EntityQuery$
+      variant: ^(Create|Update)(?=.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentity$|^CreateViaIdentityWorkspace$|^UpdateViaIdentity$
+    remove: true
   - where:
       verb: ^Update$|^Remove$
       subject: Setting
     hide: true
-  # Hide Etag as it isnt used
+  # Hide Etag as it isn't used
   - where:
       parameter-name: Etag
     hide: true
@@ -255,16 +218,16 @@ directive:
   - where:
       verb: ^Add$|^New$|^Update$|^Remove$
       subject: ThreatIntelligenceIndicator
-    hide: true
+    remove: true
   - where:
       verb: ^Add$|^New$|^Update$|^Remove$
       subject: ThreatIntelligenceIndicatorTag
-    hide: true
+    remove: true
   # CCP
   - where:
       verb: ^Connect$|^Disconnect$
       subject: DataConnector
-    hide: true
+    remove: true
   # cmdlet review feedback
   - where:
       subject: Bookmark
@@ -298,11 +261,6 @@ directive:
       parameter-name: DataConnectorCheckRequirement
   - where:
       verb: New
-      subject: AlertRuleAction
-      variant: Create
-    hide: true
-  - where:
-      verb: New
       subject: ^AlertRuleAction$|^AutomationRule$|^Bookmark$|^Incident$|^IncidentComment$|
       parameter-name: Id
     set:
@@ -319,58 +277,26 @@ directive:
   - where:
       verb: Expand
       subject: ^Bookmark$|^Entity$
-    hide: true
+    remove: true
   - where:
       verb: ^New$|^Update$|^Remove$
       subject: Metadata
-    hide: true
+    remove: true
   # Hide Source Control
   - where:
       verb: Get
       subject: SourceControlRepository
     hide: true
-  # Hide UpdateViaId and Update
-  - where:
-      variant: ^Update$|^UpdateViaIdentity$
-    hide: true
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Append$|^AppendViaIdentity$|^Connect$|^ConnectViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Expand$|^ExpandViaIdentity$|^ExpandViaIdentityExpanded$|^GetViaIdentityExpanded$|^PostViaIdentity$|^Query$|^QueryViaIdentity$|^QueriesViaIdentity$|^Replace$|^ReplaceViaIdentity$
+      subject: AlertRuleAction|AutomationRule|Bookmark|Incident|SentinelOnboardingState
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
     remove: true
-  # fix Equals that conflicts with inhertied property
   - where:
-      enum-name: AutomationRulePropertyConditionSupportedOperator
-      enum-value-name: Equals
-    set:
-      enum-value-name: Equal
+      variant: ^(Append|Connect|Expand|Query|Replace)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  # Remove module-cross object (unknown)
   - where:
-      verb: Get
-      subject: AutomationRule|Bookmark|DataConnector|Enrichment|EntityActivity|EntityInsight|EntityTimeline|Incident$|IncidentAlert|IncidentBookmark|IncidentEntity|Metadata|ThreatIntelligenceIndicatorMetric
-    set:
-      preview-announcement:
-        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
-  - where:
-      verb: New|Update
-      subject: AlertRule|AutomationRule|Bookmark|DataConnector|EntityQuery|Incident$
-    set:
-      preview-announcement:
-        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
-  - where:
-      verb: Get
-      subject: Enrichment
-      variant: GetViaIdentity|GetViaIdentity1
-    set:
-      breaking-change:
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/19
-  - where:
-      verb: New
-      subject: AutomationRule|Bookmark|BookmarkRelation|Incident$|IncidentComment|IncidentRelation|IncidentTeam|OnboardingState
-      variant: Create
-    set:
-      breaking-change:
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/19
+      variant: ^(Create|Update|Query|Queries|Replace|Get|Delete)(?=.*?Workspace)
+    remove: true
 ```

@@ -15,15 +15,15 @@ Get requirements state for a data connector type.
 ### AADTenant (Default)
 ```
 Test-AzSentinelDataConnectorCheckRequirement -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] -Kind <DataConnectorKind> [-TenantId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -Kind <String> [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureSecurityCenter
 ```
 Test-AzSentinelDataConnectorCheckRequirement -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] -Kind <DataConnectorKind> -ASCSubscriptionId <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -Kind <String> -ASCSubscriptionId <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 Kind of the the data connection
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataConnectorKind
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -218,7 +218,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnectorsCheckRequirements
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.DataConnectorsCheckRequirements
 
 ## NOTES
 

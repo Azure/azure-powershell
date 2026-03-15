@@ -24,18 +24,6 @@ Get-AzSentinelEnrichment -ResourceGroupName <String> [-SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity1
-```
-Get-AzSentinelEnrichment -InputObject <ISecurityInsightsIdentity> -Domain <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzSentinelEnrichment -InputObject <ISecurityInsightsIdentity> -IPAddress <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Get geodata for a single IP address
 
@@ -106,7 +94,7 @@ Domain name to be enriched
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, GetViaIdentity1
+Parameter Sets: Get1
 Aliases:
 
 Required: True
@@ -116,28 +104,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
-Parameter Sets: GetViaIdentity1, GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -IPAddress
 IP address (v4 or v6) to be enriched
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentity
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -153,7 +125,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -168,7 +140,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, Get1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -183,13 +155,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEnrichmentDomainWhois
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IEnrichmentDomainWhois
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEnrichmentIPGeodata
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IEnrichmentIPGeodata
 
 ## NOTES
 

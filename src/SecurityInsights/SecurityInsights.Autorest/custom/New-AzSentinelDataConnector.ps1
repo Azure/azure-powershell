@@ -23,7 +23,7 @@ Creates or updates the data connector.
 https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentineldataconnector
 #>
 function New-AzSentinelDataConnector {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.DataConnector])]
     [CmdletBinding(DefaultParameterSetName = 'AADAATP', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter()]
@@ -53,9 +53,9 @@ function New-AzSentinelDataConnector {
         ${Id},
         
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataConnectorKind])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("AzureActiveDirectory", "AzureSecurityCenter", "MicrosoftCloudAppSecurity", "ThreatIntelligence", "ThreatIntelligenceTaxii", "Office365", "OfficeATP", "OfficeIRM", "AmazonWebServicesCloudTrail", "AmazonWebServicesS3", "AzureAdvancedThreatProtection", "MicrosoftDefenderAdvancedThreatProtection", "Dynamics365", "MicrosoftThreatProtection", "MicrosoftThreatIntelligence", "GenericUI", "APIPolling")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataConnectorKind]
+        [System.String]
         # Kind of the the data connection
         ${Kind},
 
@@ -88,25 +88,25 @@ function New-AzSentinelDataConnector {
         [Parameter(ParameterSetName = 'MicrosoftDefenderAdvancedThreatProtection')]
         [Parameter(ParameterSetName = 'OfficeATP')]
         [Parameter(ParameterSetName = 'OfficeIRM')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${Alerts},
 
         [Parameter(ParameterSetName = 'Dynamics365')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${CommonDataServiceActivity},
 
         [Parameter(ParameterSetName = 'MicrosoftCloudAppSecurity')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${DiscoveryLog},
 
         [Parameter(ParameterSetName = 'MicrosoftThreatIntelligence')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${BingSafetyPhishingURL},
@@ -118,7 +118,7 @@ function New-AzSentinelDataConnector {
         ${BingSafetyPhishingUrlLookbackPeriod},
 
         [Parameter(ParameterSetName = 'MicrosoftThreatIntelligence')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${MicrosoftEmergingThreatFeed},
@@ -130,31 +130,31 @@ function New-AzSentinelDataConnector {
         ${MicrosoftEmergingThreatFeedLookbackPeriod},
 
         [Parameter(ParameterSetName = 'MicrosoftThreatProtection')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${Incident},
 
         [Parameter(ParameterSetName = 'Office365')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${Exchange},
 
         [Parameter(ParameterSetName = 'Office365')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${SharePoint},
 
         [Parameter(ParameterSetName = 'Office365')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${Teams},
 
         [Parameter(ParameterSetName = 'ThreatIntelligence')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${Indicator},
@@ -196,9 +196,9 @@ function New-AzSentinelDataConnector {
         ${TaxiiLookbackPeriod},
 
         [Parameter(ParameterSetName = 'ThreatIntelligenceTaxii', Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.PollingFrequency])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("OnceAMinute", "OnceAnHour", "OnceADay")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.PollingFrequency]
+        [System.String]
         ${PollingFrequency},
 
         [Parameter(ParameterSetName = 'AmazonWebServicesCloudTrail', Mandatory)]
@@ -209,14 +209,14 @@ function New-AzSentinelDataConnector {
 
         [Parameter(ParameterSetName = 'AmazonWebServicesCloudTrail')]
         [Parameter(ParameterSetName = 'AmazonWebServicesS3', Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${Log},
 
         [Parameter(ParameterSetName = 'AmazonWebServicesS3', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [String[]]
+        [System.String[]]
         ${SQSURL},
 
         [Parameter(ParameterSetName = 'AmazonWebServicesS3', Mandatory)]
@@ -257,25 +257,25 @@ function New-AzSentinelDataConnector {
         [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
         #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.GraphQueries[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.GraphQueries[]]
         ${UiConfigGraphQuery},
 
         [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
         #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.SampleQueries[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.SampleQueries[]]
         ${UiConfigSampleQuery},
 
         [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
         #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.LastDataReceivedDataType[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.LastDataReceivedDataType[]]
         ${UiConfigDataType},
 
         [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
         #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ConnectivityCriteria[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ConnectivityCriteria[]]
         ${UiConfigConnectivityCriterion},
 
         [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
@@ -294,19 +294,19 @@ function New-AzSentinelDataConnector {
         [Parameter(ParameterSetName = 'GenericUI')]
         #[Parameter(ParameterSetName = 'APIPolling')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsResourceProviderItem[]] 
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.PermissionsResourceProviderItem[]] 
         ${PermissionResourceProvider},
 
         [Parameter(ParameterSetName = 'GenericUI')]
         #[Parameter(ParameterSetName = 'APIPolling')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsCustomsItem[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.PermissionsCustomsItem[]]
         ${PermissionCustom},
 
         [Parameter(ParameterSetName = 'GenericUI', Mandatory)]
         #[Parameter(ParameterSetName = 'APIPolling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.InstructionSteps[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.InstructionSteps[]]
         ${UiConfigInstructionStep},
 
         [Parameter()]
@@ -372,7 +372,7 @@ function New-AzSentinelDataConnector {
     process {
         try {
             if ($PSBoundParameters['Kind'] -eq 'AzureActiveDirectory'){
-                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AadDataConnector]::new()
+                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AadDataConnector]::new()
                 
                 $DataConnector.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
@@ -383,7 +383,7 @@ function New-AzSentinelDataConnector {
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'AzureAdvancedThreatProtection'){
-                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AatpDataConnector]::new()
+                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AatpDataConnector]::new()
                 
                 $DataConnector.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
@@ -394,7 +394,7 @@ function New-AzSentinelDataConnector {
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'Dynamics365'){
-                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.Dynamics365DataConnector]::new()
+                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Dynamics365DataConnector]::new()
                 
                 $DataConnector.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
@@ -405,7 +405,7 @@ function New-AzSentinelDataConnector {
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'MicrosoftCloudAppSecurity'){
-                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.McasDataConnector]::new()
+                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.McasDataConnector]::new()
                 
                 $DataConnector.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
@@ -421,7 +421,7 @@ function New-AzSentinelDataConnector {
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'MicrosoftDefenderAdvancedThreatProtection'){
-                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.MdatpDataConnector]::new()
+                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.MdatpDataConnector]::new()
 
                 $DataConnector.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
@@ -432,7 +432,7 @@ function New-AzSentinelDataConnector {
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'MicrosoftThreatIntelligence'){
-                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.MstiDataConnector]::new()
+                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.MstiDataConnector]::new()
                 
                 $DataConnector.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
@@ -487,7 +487,7 @@ function New-AzSentinelDataConnector {
             }
 
             if($PSBoundParameters['Kind'] -eq 'MicrosoftThreatProtection'){
-                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.MtpDataConnector]::new()
+                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.MtpDataConnector]::new()
                 
                 $DataConnector.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
@@ -498,7 +498,7 @@ function New-AzSentinelDataConnector {
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'Office365'){
-                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.OfficeDataConnector]::new()
+                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.OfficeDataConnector]::new()
                 
                 $DataConnector.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
@@ -519,7 +519,7 @@ function New-AzSentinelDataConnector {
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'OfficeATP'){
-                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.OfficeAtpDataConnector]::new()
+                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.OfficeAtpDataConnector]::new()
                 
                 $DataConnector.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
@@ -530,7 +530,7 @@ function New-AzSentinelDataConnector {
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'OfficeIRM'){
-                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.OfficeIrmDataConnector]::new()
+                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.OfficeIrmDataConnector]::new()
                 
                 $DataConnector.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
@@ -541,7 +541,7 @@ function New-AzSentinelDataConnector {
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'ThreatIntelligence'){
-                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.TiDataConnector]::new()
+                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.TiDataConnector]::new()
                 
                 $DataConnector.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
@@ -554,7 +554,7 @@ function New-AzSentinelDataConnector {
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'ThreatIntelligenceTaxii'){
-                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.TiTaxiiDataConnector]::new()
+                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.TiTaxiiDataConnector]::new()
                 
                 $DataConnector.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
@@ -596,7 +596,7 @@ function New-AzSentinelDataConnector {
             }
 
             if($PSBoundParameters['Kind'] -eq 'AzureSecurityCenter'){
-                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AscDataConnector]::new()
+                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AscDataConnector]::new()
                 
                 $DataConnector.SubscriptionId = $PSBoundParameters['ASCSubscriptionId']
                 $null = $PSBoundParameters.Remove('ASCSubscriptionId')
@@ -607,7 +607,7 @@ function New-AzSentinelDataConnector {
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'AmazonWebServicesCloudTrail'){
-                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AwsCloudTrailDataConnector]::new()
+                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AwsCloudTrailDataConnector]::new()
                 
                 $DataConnector.AWSRoleArn = $PSBoundParameters['AWSRoleArn']
                 $null = $PSBoundParameters.Remove('AWSRoleArn')
@@ -618,7 +618,7 @@ function New-AzSentinelDataConnector {
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'AmazonWebServicesS3'){
-                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AwsCloudTrailDataConnector]::new()
+                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AwsCloudTrailDataConnector]::new()
                 
                 $DataConnector.RoleArn = $PSBoundParameters['AWSRoleArn']
                 $null = $PSBoundParameters.Remove('AWSRoleArn')
@@ -635,7 +635,7 @@ function New-AzSentinelDataConnector {
                 $null = $PSBoundParameters.Remove('DetinationTable')
             }
             if($PSBoundParameters['Kind'] -eq 'GenericUI'){
-                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.CodelessUiDataConnector]::new()
+                $DataConnector = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.CodelessUiDataConnector]::new()
                 
                 $DataConnector.ConnectorUiConfigTitle = $PSBoundParameters['UiConfigTitle']
                 $null = $PSBoundParameters.Remove('UiConfigTitle')
@@ -691,8 +691,9 @@ function New-AzSentinelDataConnector {
                 $null = $PSBoundParameters.Remove('UiConfigInstructionStep')
 
             }
-    
-            $DataConnector.Kind = $PSBoundParameters['Kind']
+            
+            #Autorest powershell V4 does not need the Kind property. The object has the Kind value for each.
+            # $DataConnector.Kind = $PSBoundParameters['Kind']
             $null = $PSBoundParameters.Remove('Kind')
 
             $null = $PSBoundParameters.Remove('DataConnector')

@@ -1,49 +1,58 @@
 ---
 external help file:
 Module Name: Az.SecurityInsights
-online version: https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelincident
+online version: https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelonboardingstate
 schema: 2.0.0
 ---
 
-# Remove-AzSentinelIncident
+# Update-AzSentinelOnboardingState
 
 ## SYNOPSIS
-Delete the incident.
+Update Sentinel onboarding state
 
 ## SYNTAX
 
-### Delete (Default)
+### UpdateExpanded (Default)
 ```
-Remove-AzSentinelIncident -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSentinelOnboardingState -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String>] [-CustomerManagedKey] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### UpdateViaIdentityExpanded
 ```
-Remove-AzSentinelIncident -InputObject <ISecurityInsightsIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSentinelOnboardingState -InputObject <ISecurityInsightsIdentity> [-CustomerManagedKey]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete the incident.
+Update Sentinel onboarding state
 
 ## EXAMPLES
 
-### Example 1: Removes an incident based on the incident Id
+### Example 1: Update Sentinel onboarding state
 ```powershell
-Remove-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id <IncidentId>
+Update-AzSentinelOnboardingState -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Name "default"
 ```
 
-This command removes an incident based on the incident id.
-
-### Example 2: Removes an incident based on the incident number
-```powershell
-$myIncident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id <IncidentId> | Where-Object {$_.Number -eq "780"}
-```
-
-The command removes an incident based on an incident number.
+This command updates the onboarding state of Sentinel.
 
 ## PARAMETERS
+
+### -CustomerManagedKey
+Flag that indicates the status of the CMK setting
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -61,27 +70,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-Incident ID
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: IncidentId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -91,15 +85,16 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -Name
+The Sentinel onboarding state name.
+Supports - default
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: SentinelOnboardingStateName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -112,7 +107,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -127,7 +122,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -142,7 +137,7 @@ The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -192,7 +187,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISentinelOnboardingState
 
 ## NOTES
 

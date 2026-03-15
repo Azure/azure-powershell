@@ -14,22 +14,22 @@ Creates or updates the data connector.
 
 ### AADAATP (Default)
 ```
-New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-Id <String>] [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <String> [-Id <String>]
+ [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AmazonWebServicesCloudTrail
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -AWSRoleArn <String>
- -Kind <DataConnectorKind> [-Id <String>] [-SubscriptionId <String>] [-Log <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Kind <String> [-Id <String>] [-SubscriptionId <String>] [-Log <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AmazonWebServicesS3
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -AWSRoleArn <String>
- -DetinationTable <String> -Kind <DataConnectorKind> -Log <String> -SQSURL <String[]> [-Id <String>]
+ -DetinationTable <String> -Kind <String> -Log <String> -SQSURL <String[]> [-Id <String>]
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -37,96 +37,95 @@ New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> 
 ### AzureSecurityCenter
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -ASCSubscriptionId <String>
- -Kind <DataConnectorKind> [-Id <String>] [-SubscriptionId <String>] [-Alerts <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Kind <String> [-Id <String>] [-SubscriptionId <String>] [-Alerts <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Dynamics365
 ```
-New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-Id <String>] [-SubscriptionId <String>] [-CommonDataServiceActivity <String>] [-TenantId <String>]
+New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <String> [-Id <String>]
+ [-SubscriptionId <String>] [-CommonDataServiceActivity <String>] [-TenantId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GenericUI
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String>
- -AvailabilityIsPreview <Boolean> -Kind <DataConnectorKind>
- -UiConfigConnectivityCriterion <ConnectivityCriteria[]> -UiConfigDataType <LastDataReceivedDataType[]>
- -UiConfigDescriptionMarkdown <String> -UiConfigGraphQueriesTableName <String>
- -UiConfigGraphQuery <GraphQueries[]> -UiConfigInstructionStep <InstructionSteps[]>
- -UiConfigPublisher <String> -UiConfigSampleQuery <SampleQueries[]> -UiConfigTitle <String> [-Id <String>]
- [-SubscriptionId <String>] [-AvailabilityStatus <Int32>] [-PermissionCustom <PermissionsCustomsItem[]>]
+ -AvailabilityIsPreview <Boolean> -Kind <String> -UiConfigConnectivityCriterion <ConnectivityCriteria[]>
+ -UiConfigDataType <LastDataReceivedDataType[]> -UiConfigDescriptionMarkdown <String>
+ -UiConfigGraphQueriesTableName <String> -UiConfigGraphQuery <GraphQueries[]>
+ -UiConfigInstructionStep <InstructionSteps[]> -UiConfigPublisher <String>
+ -UiConfigSampleQuery <SampleQueries[]> -UiConfigTitle <String> [-Id <String>] [-SubscriptionId <String>]
+ [-AvailabilityStatus <Int32>] [-PermissionCustom <PermissionsCustomsItem[]>]
  [-PermissionResourceProvider <PermissionsResourceProviderItem[]>] [-UiConfigCustomImage <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MicrosoftCloudAppSecurity
 ```
-New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-Id <String>] [-SubscriptionId <String>] [-Alerts <String>] [-DiscoveryLog <String>] [-TenantId <String>]
+New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <String> [-Id <String>]
+ [-SubscriptionId <String>] [-Alerts <String>] [-DiscoveryLog <String>] [-TenantId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MicrosoftDefenderAdvancedThreatProtection
 ```
-New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-Id <String>] [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <String> [-Id <String>]
+ [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MicrosoftThreatIntelligence
 ```
-New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-Id <String>] [-SubscriptionId <String>] [-BingSafetyPhishingURL <String>]
- [-BingSafetyPhishingUrlLookbackPeriod <String>] [-MicrosoftEmergingThreatFeed <String>]
- [-MicrosoftEmergingThreatFeedLookbackPeriod <String>] [-TenantId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### MicrosoftThreatProtection
-```
-New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-Id <String>] [-SubscriptionId <String>] [-Incident <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Office365
-```
-New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-Id <String>] [-SubscriptionId <String>] [-Exchange <String>] [-SharePoint <String>] [-Teams <String>]
+New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <String> [-Id <String>]
+ [-SubscriptionId <String>] [-BingSafetyPhishingURL <String>] [-BingSafetyPhishingUrlLookbackPeriod <String>]
+ [-MicrosoftEmergingThreatFeed <String>] [-MicrosoftEmergingThreatFeedLookbackPeriod <String>]
  [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### MicrosoftThreatProtection
+```
+New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <String> [-Id <String>]
+ [-SubscriptionId <String>] [-Incident <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Office365
+```
+New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <String> [-Id <String>]
+ [-SubscriptionId <String>] [-Exchange <String>] [-SharePoint <String>] [-Teams <String>] [-TenantId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### OfficeATP
 ```
-New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-Id <String>] [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <String> [-Id <String>]
+ [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### OfficeIRM
 ```
-New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-Id <String>] [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <String> [-Id <String>]
+ [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ThreatIntelligence
 ```
-New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-Id <String>] [-SubscriptionId <String>] [-Indicator <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <String> [-Id <String>]
+ [-SubscriptionId <String>] [-Indicator <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ThreatIntelligenceTaxii
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -APIRootURL <String>
- -CollectionId <String> -FriendlyName <String> -Kind <DataConnectorKind> -PollingFrequency <PollingFrequency>
- -WorkspaceId <String> [-Id <String>] [-SubscriptionId <String>] [-Password <String>]
- [-TaxiiLookbackPeriod <String>] [-TenantId <String>] [-UserName <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -CollectionId <String> -FriendlyName <String> -Kind <String> -PollingFrequency <String> -WorkspaceId <String>
+ [-Id <String>] [-SubscriptionId <String>] [-Password <String>] [-TaxiiLookbackPeriod <String>]
+ [-TenantId <String>] [-UserName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -432,7 +431,7 @@ Accept wildcard characters: False
 Kind of the the data connection
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataConnectorKind
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -520,10 +519,9 @@ Accept wildcard characters: False
 
 ### -PermissionCustom
 [Parameter(ParameterSetName = 'APIPolling')]
-To construct, see NOTES section for PERMISSIONCUSTOM properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsCustomsItem[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.PermissionsCustomsItem[]
 Parameter Sets: GenericUI
 Aliases:
 
@@ -536,10 +534,9 @@ Accept wildcard characters: False
 
 ### -PermissionResourceProvider
 [Parameter(ParameterSetName = 'APIPolling')]
-To construct, see NOTES section for PERMISSIONRESOURCEPROVIDER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsResourceProviderItem[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.PermissionsResourceProviderItem[]
 Parameter Sets: GenericUI
 Aliases:
 
@@ -554,7 +551,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.PollingFrequency
+Type: System.String
 Parameter Sets: ThreatIntelligenceTaxii
 Aliases:
 
@@ -673,10 +670,9 @@ Accept wildcard characters: False
 
 ### -UiConfigConnectivityCriterion
 [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-To construct, see NOTES section for UICONFIGCONNECTIVITYCRITERION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ConnectivityCriteria[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ConnectivityCriteria[]
 Parameter Sets: GenericUI
 Aliases:
 
@@ -704,10 +700,9 @@ Accept wildcard characters: False
 
 ### -UiConfigDataType
 [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-To construct, see NOTES section for UICONFIGDATATYPE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.LastDataReceivedDataType[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.LastDataReceivedDataType[]
 Parameter Sets: GenericUI
 Aliases:
 
@@ -750,10 +745,9 @@ Accept wildcard characters: False
 
 ### -UiConfigGraphQuery
 [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-To construct, see NOTES section for UICONFIGGRAPHQUERY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.GraphQueries[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.GraphQueries[]
 Parameter Sets: GenericUI
 Aliases:
 
@@ -766,10 +760,9 @@ Accept wildcard characters: False
 
 ### -UiConfigInstructionStep
 [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-To construct, see NOTES section for UICONFIGINSTRUCTIONSTEP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.InstructionSteps[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.InstructionSteps[]
 Parameter Sets: GenericUI
 Aliases:
 
@@ -797,10 +790,9 @@ Accept wildcard characters: False
 
 ### -UiConfigSampleQuery
 [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
-To construct, see NOTES section for UICONFIGSAMPLEQUERY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.SampleQueries[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.SampleQueries[]
 Parameter Sets: GenericUI
 Aliases:
 
@@ -909,7 +901,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.DataConnector
 
 ## NOTES
 
