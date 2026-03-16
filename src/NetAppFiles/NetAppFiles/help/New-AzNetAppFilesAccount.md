@@ -18,7 +18,7 @@ New-AzNetAppFilesAccount -ResourceGroupName <String> -Location <String> -Name <S
  [-EncryptionKeySource <String>] [-KeyVaultKeyName <String>] [-KeyVaultResourceId <String>]
  [-KeyVaultUri <String>] [-IdentityType <String>] [-UserAssignedIdentity <String>]
  [-FederatedClientId <String>] [-NfsV4IdDomain <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -49,7 +49,7 @@ This command creates the new ANF account "MyAnfAccount".
 A hashtable array which represents the active directories
 
 ```yaml
-Type: PSNetAppFilesActiveDirectory[]
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[]
 Parameter Sets: (All)
 Aliases:
 
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 A hashtable which represents the Encryption settings
 
 ```yaml
-Type: PSNetAppFilesAccountEncryption
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccountEncryption
 Parameter Sets: (All)
 Aliases:
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 The encryption keySource (provider). Possible values: Microsoft.NetApp, Microsoft.KeyVault
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 ClientId of the multi-tenant AAD Application. Used to access cross-tenant KeyVaults.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 The name of KeyVault key
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 The resource ID of KeyVault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 The Uri of KeyVault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -184,7 +184,7 @@ Accept wildcard characters: False
 The location of the resource
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -199,7 +199,7 @@ Accept wildcard characters: False
 The name of the ANF account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -214,9 +214,24 @@ Accept wildcard characters: False
 Domain for NFSv4 user ID mapping. This property will be set for all NetApp accounts in the subscription and region and only affect non ldap NFSv4 volumes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -229,7 +244,7 @@ Accept wildcard characters: False
 The resource group of the ANF account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -244,7 +259,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -259,7 +274,7 @@ Accept wildcard characters: False
 The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -274,7 +289,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -290,7 +305,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

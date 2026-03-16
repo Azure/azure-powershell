@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="replicationDeletionTime">Replication deletion time
         /// </param>
-        public Replication(string remoteVolumeResourceId, string replicationId = default(string), string endpointType = default(string), string replicationSchedule = default(string), string remoteVolumeRegion = default(string), string mirrorState = default(string), System.DateTime? replicationCreationTime = default(System.DateTime?), System.DateTime? replicationDeletionTime = default(System.DateTime?))
+        public Replication(string replicationId = default(string), string endpointType = default(string), string replicationSchedule = default(string), string remoteVolumeResourceId = default(string), string remoteVolumeRegion = default(string), string mirrorState = default(string), System.DateTime? replicationCreationTime = default(System.DateTime?), System.DateTime? replicationDeletionTime = default(System.DateTime?))
 
         {
             this.ReplicationId = replicationId;
@@ -124,10 +124,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (this.RemoteVolumeResourceId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "RemoteVolumeResourceId");
-            }
             if (this.ReplicationId != null)
             {
                 if (this.ReplicationId.Length > 36)

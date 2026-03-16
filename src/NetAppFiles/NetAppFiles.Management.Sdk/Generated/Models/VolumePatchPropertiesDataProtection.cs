@@ -30,11 +30,15 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="snapshot">Snapshot properties.
         /// </param>
-        public VolumePatchPropertiesDataProtection(VolumeBackupProperties backup = default(VolumeBackupProperties), VolumeSnapshotProperties snapshot = default(VolumeSnapshotProperties))
+
+        /// <param name="ransomwareProtection">Advanced Ransomware Protection updatable settings
+        /// </param>
+        public VolumePatchPropertiesDataProtection(VolumeBackupProperties backup = default(VolumeBackupProperties), VolumeSnapshotProperties snapshot = default(VolumeSnapshotProperties), RansomwareProtectionPatchSettings ransomwareProtection = default(RansomwareProtectionPatchSettings))
 
         {
             this.Backup = backup;
             this.Snapshot = snapshot;
+            this.RansomwareProtection = ransomwareProtection;
             CustomInit();
         }
 
@@ -55,5 +59,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "snapshot")]
         public VolumeSnapshotProperties Snapshot {get; set; }
+
+        /// <summary>
+        /// Gets or sets advanced Ransomware Protection updatable settings
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ransomwareProtection")]
+        public RansomwareProtectionPatchSettings RansomwareProtection {get; set; }
     }
 }

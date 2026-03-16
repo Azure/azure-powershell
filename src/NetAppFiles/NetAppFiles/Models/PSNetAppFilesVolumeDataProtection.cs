@@ -50,12 +50,20 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </summary>
         /// <remark>
         /// Volume Backup properties
-        /// </remark>                
+        /// </remark>
         public PSNetAppFilesVolumeRelocationProperties VolumeRelocation { get; set; }
 
         /// <summary>
         /// Gets a list of destination replications
         /// </summary>
         public IList<PSNetAppFilesDestinationReplication> DestinationReplications { get; set; }
+
+        /// <summary>
+        /// Gets or sets RansomwareProtection 
+        /// </summary>
+        /// <remark>
+        /// Ransomware Protection properties
+        /// </remark>
+        public PSNetAppFilesVolumeRansomwareProperties RansomwareProtection { get; set; }
     }
 }

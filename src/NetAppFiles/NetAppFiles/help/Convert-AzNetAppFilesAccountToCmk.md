@@ -16,7 +16,7 @@ Transition volumes encryption from PMK to CMK.
 ```
 Convert-AzNetAppFilesAccountToCmk -ResourceGroupName <String> [-Location <String>] -Name <String>
  [-VirtualNetworkId <String>] [-PrivateEndpointId <String>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,14 +24,14 @@ Convert-AzNetAppFilesAccountToCmk -ResourceGroupName <String> [-Location <String
 ```
 Convert-AzNetAppFilesAccountToCmk -ResourceGroupName <String> [-Location <String>] -Name <String>
  -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Convert-AzNetAppFilesAccountToCmk -ResourceGroupName <String> [-Location <String>] -Name <String>
  -InputObject <PSNetAppFilesAccount> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,6 +132,21 @@ Identifier for the PrivateEndpoint
 Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

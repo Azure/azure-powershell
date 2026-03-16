@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated to api-version 2025-12-01
+* Added new cmdlet `Get-AzNetAppFilesVolumeQuotaReport` to get quota report for a volume with optional filtering by `QuotaType`, `QuotaTarget`, and `UsageThresholdPercentage`
+* Added `DesiredRansomwareProtectionState` parameter to `New-AzNetAppFilesVolume` and `Update-AzNetAppFilesVolume` to enable or disable Advanced Ransomware Protection (ARP) on volumes
+* Added new cmdlet `Get-AzNetAppFilesRansomwareReport` to list or get Advanced Ransomware Protection (ARP) reports for a volume
+* Added new cmdlet `Clear-AzNetAppFilesRansomwareReportSuspect` to clear suspects on an ARP report by marking file extensions as `PotentialThreat` or `FalsePositive`
 
 ## Version 1.0.0
 * Updated Azure.Core from 1.47.3 to 1.50.0

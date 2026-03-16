@@ -15,14 +15,14 @@ Get information about how volumes under NetApp account are encrypted
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzNetAppFilesAccountKeyVaultStatus -ResourceGroupName <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Get-AzNetAppFilesAccountKeyVaultStatus -ResourceGroupName <String> -Name <String> -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ Get-AzNetAppFilesAccountKeyVaultStatus -ResourceGroupName <String> -Name <String
 ```
 Get-AzNetAppFilesAccountKeyVaultStatus -ResourceGroupName <String> -Name <String>
  -InputObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,6 +86,21 @@ Parameter Sets: (All)
 Aliases: AccountName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

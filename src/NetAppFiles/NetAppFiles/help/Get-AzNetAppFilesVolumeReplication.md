@@ -15,20 +15,20 @@ Get volume's replication
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzNetAppFilesVolumeReplication -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ -Name <String> [-ExcludeFilter <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Get-AzNetAppFilesVolumeReplication -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Get-AzNetAppFilesVolumeReplication -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,6 +67,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExcludeFilter
+Exclude Replications filter. 'None' returns all replications, 'Deleted' excludes deleted replications. Default is None
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
 
 Required: False
 Position: Named
@@ -117,6 +132,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
