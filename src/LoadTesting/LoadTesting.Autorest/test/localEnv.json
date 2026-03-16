@@ -1,4 +1,17 @@
 {
-  "Tenant": null,
-  "SubscriptionId": null
+  "resourceGroup": "pwsh-test-rginc9",
+  "identityid2": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/pwsh-test-rginc9/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pwshtestid2",
+  "SubscriptionId": "0e745469-49f8-48c9-873b-24ca87143db1",
+  "location": "westus2",
+  "loadTestResource1": "pwsh-loadtestinginc9",
+  "cmkkeyid2": "https://pwsh-loadtesting-kvinc9.vault.azure.net:443/keys/testkey2/9c4cf1bb2f8840d397c3d727693cc2d4",
+  "loadTestResource2": "pwsh-loadtestingel4w",
+  "pwshKeyVault": "pwsh-loadtesting-kvinc9",
+  "identityName1": "pwshtestid1",
+  "cmkkey1name": "testkey1",
+  "Tenant": "213e87ed-8e08-4eb4-a63c-c073058f7b00",
+  "cmkkeyid1": "https://pwsh-loadtesting-kvinc9.vault.azure.net:443/keys/testkey1/3b4750e337bd42a2b073e5a61a1fbfd1",
+  "cmkkey2name": "testkey2",
+  "identityid1": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/pwsh-test-rginc9/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pwshtestid1",
+  "identityName2": "pwshtestid2"
 }
