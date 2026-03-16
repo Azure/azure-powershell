@@ -1,6 +1,6 @@
 ---
 Module Name: Az.StackHCI
-Module Guid: ecca9195-88b3-4c8f-a865-4fa09629fc69
+Module Guid: 7bc0703e-a177-4c8c-83f6-f7652cd6508f
 Download Help Link: https://learn.microsoft.com/powershell/module/az.stackhci
 Help Version: 1.0.0.0
 Locale: en-US
@@ -19,6 +19,9 @@ Disable-AzStackHCIAttestation disables IMDS Attestation on the host
 
 ### [Disable-AzStackHCIRemoteSupport](Disable-AzStackHCIRemoteSupport.md)
 Disables Remote Support.
+
+### [Enable-ArcOnNodes](Enable-ArcOnNodes.md)
+
 
 ### [Enable-AzStackHCIAttestation](Enable-AzStackHCIAttestation.md)
 Enable-AzStackHCIAttestation configures the host and enables specified guests for IMDS attestation.
@@ -76,6 +79,12 @@ Extends Software Assurance Benefit to a cluster
 
 ### [Invoke-AzStackHciUpdate](Invoke-AzStackHciUpdate.md)
 Apply Update
+
+### [Invoke-MSIFlow](Invoke-MSIFlow.md)
+Handles MSI-based registration logic for an Arc-enabled HCI cluster.
+
+### [Invoke-MSIUnregistrationFlow](Invoke-MSIUnregistrationFlow.md)
+
 
 ### [New-AzStackHciArcSetting](New-AzStackHciArcSetting.md)
 Create ArcSetting for HCI cluster.
@@ -152,8 +161,20 @@ Put Update runs for a specified update
 ### [Set-AzStackHciUpdateSummary](Set-AzStackHciUpdateSummary.md)
 Put Update summaries under the HCI cluster
 
+### [Test-ArcNodeClusterLink](Test-ArcNodeClusterLink.md)
+
+
 ### [Test-AzStackHciEdgeDevice](Test-AzStackHciEdgeDevice.md)
 A long-running resource action.
+
+### [Test-ClusterArcEnabled](Test-ClusterArcEnabled.md)
+
+
+### [Test-ClusterMsiSupport](Test-ClusterMsiSupport.md)
+
+
+### [Test-ComputerNameHasDnsSuffix](Test-ComputerNameHasDnsSuffix.md)
+
 
 ### [Unregister-AzStackHCI](Unregister-AzStackHCI.md)
 Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and unregisters the on-premises cluster with Azure.
