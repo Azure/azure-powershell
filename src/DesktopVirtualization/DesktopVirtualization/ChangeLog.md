@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgrade API version to 2026-01-01-preview
+    - Added `New-AzWvdSessionHost` cmdlet to create session hosts in a host pool.
+    - Added `Get-AzWvdSessionHostSingleRegistrationToken` cmdlet to list scoped registration tokens associated with a session host.
+
+## Version 5.4.5
 * Upgrade API version to 2025-11-01-preview
     - Added deployment scope property to HostPool, ApplicationGroup, Workspace, AppAttachPackage.
 
