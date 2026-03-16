@@ -121,7 +121,7 @@
     },
     {
       "name": "Restart-AzContainerGroup",
-      "description": "Restarts all containers in a container group in place.\nIf container image has updates, new image will be downloaded.",
+      "description": "Restarts all containers in a container group in place.\nIf container image has restart  new image will be downloaded.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/restart",
       "help": {
         "learnMore": {
@@ -139,7 +139,7 @@
       },
       "examples": [
         {
-          "description": "Restarts all containers in a container group in place. If container image has updates, new image will be downloaded.",
+          "description": "Restarts all containers in a container group in place. If container image has restart  new image will be downloaded.",
           "parameters": [
             {
               "name": "-Name",
