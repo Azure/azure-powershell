@@ -38,27 +38,35 @@ Create a sessionHost.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an Azure Virtual Desktop SessionHost
 ```powershell
-{{ Add code here }}
+New-AzWvdSessionHost -ResourceGroupName resourceGroup1 -HostPoolName hostPool1 -Name sessionHost1.microsoft.com
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                          Type
+----                                          ----
+hostPool1/sessionHost1.microsoft.com          Microsoft.DesktopVirtualization/hostpools/sessionhosts
 ```
 
-{{ Add description here }}
+This command creates a new Azure Virtual Desktop SessionHost in a Host Pool.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create an Azure Virtual Desktop SessionHost with friendly name
 ```powershell
-{{ Add code here }}
+New-AzWvdSessionHost -ResourceGroupName resourceGroup1 `
+                     -HostPoolName hostPool1 `
+                     -Name sessionHost1.microsoft.com `
+                     -FriendlyName 'Friendly Name' `
+                     -AllowNewSession
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                          Type
+----                                          ----
+hostPool1/sessionHost1.microsoft.com          Microsoft.DesktopVirtualization/hostpools/sessionhosts
 ```
 
-{{ Add description here }}
+This command creates a new Azure Virtual Desktop SessionHost in a Host Pool with a friendly name and allows new sessions.
 
 ## PARAMETERS
 

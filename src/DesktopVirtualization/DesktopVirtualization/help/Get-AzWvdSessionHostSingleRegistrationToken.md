@@ -45,27 +45,21 @@ Operation to list the scoped RegistrationTokens associated with the SessionHost.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a scoped registration token for a SessionHost
 ```powershell
-{{ Add code here }}
+Get-AzWvdSessionHostSingleRegistrationToken -ResourceGroupName resourceGroup1 `
+                                             -HostPoolName hostPool1 `
+                                             -SessionHostName sessionHost1.microsoft.com `
+                                             -ExpirationTimeInUtc (Get-Date).ToUniversalTime().AddHours(2)
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ExpirationTime              Token
+--------------              -----
+9/22/2008 2:01:54 PM        <registration token>
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command lists the scoped registration tokens associated with an Azure Virtual Desktop SessionHost, with a specified expiration time.
 
 ## PARAMETERS
 
