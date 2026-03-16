@@ -124,7 +124,7 @@ param(
 
     [Parameter(ParameterSetName='GalleryImage', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
+    [System.Security.SecureString]
     # Local path of image that the image should be created from.
     # 
     # This parameter is required for non marketplace images.

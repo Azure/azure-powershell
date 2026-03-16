@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed missing export of `Save-AzStackHCIVMVirtualMachine` and `Suspend-AzStackHCIVMVirtualMachine` cmdlets by adding them to `FunctionsToExport` in the module manifest
 
 ## Version 1.1.0
 * Upgraded nuget package to signed package.

@@ -76,6 +76,14 @@ flatten-userassignedidentity: false
 inlining-threshold: 50
 resourcegroup-append: true
 directive:  
+ # Mark imagePath as a password format so AutoRest generates SecureString for the parameter
+ -  from: swagger-document
+    where: $.definitions.GalleryImageProperties.properties.imagePath
+    transform: $.format = "password"
+ # Mark adminPassword as a password format so AutoRest generates SecureString for the parameter
+ -  from: swagger-document
+    where: $.definitions.VirtualMachineInstanceProperties.properties.osProfile.properties.adminPassword
+    transform: $.format = "password"
  -  from: swagger-document 
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/virtualHardDisks/{virtualHardDiskName}"].delete.responses
     transform: >-
