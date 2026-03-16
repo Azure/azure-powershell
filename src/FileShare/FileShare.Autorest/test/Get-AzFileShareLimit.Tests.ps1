@@ -15,11 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFileShareLimit'))
 }
 
 Describe 'Get-AzFileShareLimit' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $config = Get-AzFileShareLimit -Location $env.location
+            $config | Should -Not -BeNullOrEmpty
+        } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        {
+            $inputObj = @{ Location = $env.location }
+            $config = Get-AzFileShareLimit -InputObject $inputObj
+            $config | Should -Not -BeNullOrEmpty
+        } | Should -Not -Throw
     }
 }
