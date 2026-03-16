@@ -81,6 +81,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_endpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.Json.JsonString>("endpoint"), out var __jsonEndpoint) ? (string)__jsonEndpoint : (string)_endpoint;}
             {_iPAllowlist = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.Json.JsonArray>("ipAllowlist"), out var __jsonIPAllowlist) ? If( __jsonIPAllowlist as Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _iPAllowlist;}
+            {_publicNetworkAccess = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.Json.JsonString>("publicNetworkAccess"), out var __jsonPublicNetworkAccess) ? (string)__jsonPublicNetworkAccess : (string)_publicNetworkAccess;}
+            {_privateEndpointConnection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.Json.JsonArray>("privateEndpointConnections"), out var __jsonPrivateEndpointConnections) ? If( __jsonPrivateEndpointConnections as Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IPrivateEndpointConnection>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IPrivateEndpointConnection) (Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.PrivateEndpointConnection.FromJson(__p) )) ))() : null : _privateEndpointConnection;}
             AfterFromJson(json);
         }
 
@@ -120,6 +122,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models
                     AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
                 }
                 container.Add("ipAllowlist",__w);
+            }
+            AddIf( null != (((object)this._publicNetworkAccess)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.Json.JsonString(this._publicNetworkAccess.ToString()) : null, "publicNetworkAccess" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.SerializationMode.IncludeRead))
+            {
+                if (null != this._privateEndpointConnection)
+                {
+                    var __r = new Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.Json.XNodeArray();
+                    foreach( var __s in this._privateEndpointConnection )
+                    {
+                        AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
+                    }
+                    container.Add("privateEndpointConnections",__r);
+                }
             }
             AfterToJson(ref container);
             return container;

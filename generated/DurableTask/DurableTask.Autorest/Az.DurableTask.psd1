@@ -1,7 +1,7 @@
 @{
   GUID = 'e2c8d93c-00cc-4b3f-bdb0-909b90b73be1'
   RootModule = './Az.DurableTask.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.2.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'

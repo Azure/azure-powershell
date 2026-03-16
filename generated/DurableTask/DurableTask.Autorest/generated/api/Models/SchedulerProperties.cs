@@ -30,6 +30,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models
         /// <summary>Internal Acessors for Endpoint</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesInternal.Endpoint { get => this._endpoint; set { {_endpoint = value;} } }
 
+        /// <summary>Internal Acessors for PrivateEndpointConnection</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IPrivateEndpointConnection> Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesInternal.PrivateEndpointConnection { get => this._privateEndpointConnection; set { {_privateEndpointConnection = value;} } }
+
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
@@ -39,12 +42,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models
         /// <summary>Internal Acessors for SkuRedundancyState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesInternal.SkuRedundancyState { get => ((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerSkuInternal)Sku).RedundancyState; set => ((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerSkuInternal)Sku).RedundancyState = value ?? null; }
 
+        /// <summary>Backing field for <see cref="PrivateEndpointConnection" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IPrivateEndpointConnection> _privateEndpointConnection;
+
+        /// <summary>The private endpoints exposed by this resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Origin(Microsoft.Azure.PowerShell.Cmdlets.DurableTask.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get => this._privateEndpointConnection; }
+
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
 
         /// <summary>The status of the last operation</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Origin(Microsoft.Azure.PowerShell.Cmdlets.DurableTask.PropertyOrigin.Owned)]
         public string ProvisioningState { get => this._provisioningState; }
+
+        /// <summary>Backing field for <see cref="PublicNetworkAccess" /> property.</summary>
+        private string _publicNetworkAccess;
+
+        /// <summary>Allow or disallow public network access to durable task scheduler</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Origin(Microsoft.Azure.PowerShell.Cmdlets.DurableTask.PropertyOrigin.Owned)]
+        public string PublicNetworkAccess { get => this._publicNetworkAccess; set => this._publicNetworkAccess = value; }
 
         /// <summary>Backing field for <see cref="Sku" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerSku _sku;
@@ -99,6 +116,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models
         SerializedName = @"ipAllowlist",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> IPAllowlist { get; set; }
+        /// <summary>The private endpoints exposed by this resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The private endpoints exposed by this resource",
+        SerializedName = @"privateEndpointConnections",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IPrivateEndpointConnection) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get;  }
         /// <summary>The status of the last operation</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.Info(
         Required = false,
@@ -111,6 +139,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get;  }
+        /// <summary>Allow or disallow public network access to durable task scheduler</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Allow or disallow public network access to durable task scheduler",
+        SerializedName = @"publicNetworkAccess",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string PublicNetworkAccess { get; set; }
         /// <summary>
         /// The SKU capacity. This allows scale out/in for the resource and impacts zone redundancy
         /// </summary>
@@ -158,9 +198,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models
         string Endpoint { get; set; }
         /// <summary>IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR</summary>
         System.Collections.Generic.List<string> IPAllowlist { get; set; }
+        /// <summary>The private endpoints exposed by this resource</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get; set; }
         /// <summary>The status of the last operation</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get; set; }
+        /// <summary>Allow or disallow public network access to durable task scheduler</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string PublicNetworkAccess { get; set; }
         /// <summary>SKU of the durable task scheduler</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerSku Sku { get; set; }
         /// <summary>

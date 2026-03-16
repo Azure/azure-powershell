@@ -125,6 +125,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesInternal)this).IPAllowlist = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPAllowlist",((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesInternal)this).IPAllowlist, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("PublicNetworkAccess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesInternal)this).PrivateEndpointConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IPrivateEndpointConnection>) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IPrivateEndpointConnection>(__y, Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.PrivateEndpointConnectionTypeConverter.ConvertFrom));
+            }
             if (content.Contains("SkuRedundancyState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesInternal)this).SkuRedundancyState = (string) content.GetValueForProperty("SkuRedundancyState",((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesInternal)this).SkuRedundancyState, global::System.Convert.ToString);
@@ -169,6 +177,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models
             if (content.Contains("IPAllowlist"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesInternal)this).IPAllowlist = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPAllowlist",((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesInternal)this).IPAllowlist, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("PublicNetworkAccess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesInternal)this).PrivateEndpointConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IPrivateEndpointConnection>) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ISchedulerPropertiesInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IPrivateEndpointConnection>(__y, Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.PrivateEndpointConnectionTypeConverter.ConvertFrom));
             }
             if (content.Contains("SkuRedundancyState"))
             {
