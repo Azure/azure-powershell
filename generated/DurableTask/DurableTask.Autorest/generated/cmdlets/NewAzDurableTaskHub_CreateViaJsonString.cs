@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.ITaskHub))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Description(@"create a Task Hub")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs/{taskHubName}", ApiVersion = "2025-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs/{taskHubName}", ApiVersion = "2026-02-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.NotSuggestDefaultParameterSet]
     public partial class NewAzDurableTaskHub_CreateViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.IEventListener,

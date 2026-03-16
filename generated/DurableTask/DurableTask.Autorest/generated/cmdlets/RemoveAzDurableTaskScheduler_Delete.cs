@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Description(@"Delete a Scheduler")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}", ApiVersion = "2025-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}", ApiVersion = "2026-02-01")]
     public partial class RemoveAzDurableTaskScheduler_Delete : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.IContext

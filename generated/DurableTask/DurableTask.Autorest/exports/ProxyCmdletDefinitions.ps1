@@ -41,6 +41,8 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDurableTaskIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateLinkResourceName <String>]: The name of the private link associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchedulerName <String>]: The name of the Scheduler
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -48,6 +50,8 @@ INPUTOBJECT <IDurableTaskIdentity>: Identity Parameter
 
 SCHEDULERINPUTOBJECT <IDurableTaskIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateLinkResourceName <String>]: The name of the private link associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchedulerName <String>]: The name of the Scheduler
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -165,8 +169,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -278,6 +281,8 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDurableTaskIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateLinkResourceName <String>]: The name of the private link associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchedulerName <String>]: The name of the Scheduler
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -382,8 +387,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -493,6 +497,8 @@ To create the parameters described below, construct a hash table containing the 
 
 SCHEDULERINPUTOBJECT <IDurableTaskIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateLinkResourceName <String>]: The name of the private link associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchedulerName <String>]: The name of the Scheduler
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -630,8 +636,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -775,6 +780,13 @@ param(
     ${IPAllowlist},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DurableTask.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Category('Body')]
+    [System.String]
+    # Allow or disallow public network access to durable task scheduler
+    ${PublicNetworkAccess},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Category('Body')]
     [System.Int32]
     # The SKU capacity.
@@ -881,8 +893,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -994,6 +1005,8 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDurableTaskIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateLinkResourceName <String>]: The name of the private link associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchedulerName <String>]: The name of the Scheduler
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -1001,6 +1014,8 @@ INPUTOBJECT <IDurableTaskIdentity>: Identity Parameter
 
 SCHEDULERINPUTOBJECT <IDurableTaskIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateLinkResourceName <String>]: The name of the private link associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchedulerName <String>]: The name of the Scheduler
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -1133,8 +1148,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1243,6 +1257,8 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDurableTaskIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateLinkResourceName <String>]: The name of the private link associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchedulerName <String>]: The name of the Scheduler
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -1362,8 +1378,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1471,6 +1486,8 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDurableTaskIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateLinkResourceName <String>]: The name of the private link associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchedulerName <String>]: The name of the Scheduler
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -1524,6 +1541,14 @@ param(
     # IP allow list for durable task scheduler.
     # Values can be IPv4, IPv6 or CIDR
     ${IPAllowlist},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DurableTask.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Category('Body')]
+    [System.String]
+    # Allow or disallow public network access to durable task scheduler
+    ${PublicNetworkAccess},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -1635,8 +1660,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
