@@ -13,36 +13,35 @@
       }
     },
     "Response": {
-      "StatusCode": 404,
+      "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Set-Cookie": [ "ARRAffinity=fca55a869ff17da08ab50c4d6192444d330b01fa3b3d53e394fd71eb7362934e;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=fca55a869ff17da08ab50c4d6192444d330b01fa3b3d53e394fd71eb7362934e;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
+        "Set-Cookie": [ "ARRAffinity=fa5ce4b13622b0d3617b4398e823c470b20f49c8905d33671c1e72b454b4c01b;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=fa5ce4b13622b0d3617b4398e823c470b20f49c8905d33671c1e72b454b4c01b;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvNjczODUwOWQtODRlZC00YWQ2LTk3NGEtN2RjNGUzYzM0MTQ2L3Jlc291cmNlR3JvdXBzL3pob25namllLXJnLXd1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvemhvbmdqaWUtYXV0b21hdGVkL3Nlc3Npb25Ib3N0cy9hdXRvLTAvdXNlclNlc3Npb25zLzI=" ],
-        "x-ms-lamport-ts": [ "11382931530" ],
-        "x-ms-correlation-id": [ "b026221a-cad7-4df9-8ed6-92604df6a9f9" ],
-        "x-ms-request-id": [ "264628f1-457c-458f-b66f-85173c0045df" ],
+        "x-ms-lamport-ts": [ "-9223372036854775807" ],
+        "x-ms-correlation-id": [ "2a68dd0a-e9e9-4a98-8b20-662cb4e12344" ],
+        "x-ms-request-id": [ "a340a71c-5801-4d45-8b25-96c2def62fc3" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/b9f17d66-633e-4bf9-b39c-2b67486eb0e0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "198" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2998" ],
-        "x-ms-correlation-request-id": [ "22f59a77-891a-4de7-8a1c-ddf3e6290e88" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260311T055645Z:22f59a77-891a-4de7-8a1c-ddf3e6290e88" ],
+        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/65fa1511-7f9e-483f-8cc0-116a637cda69" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "194" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2994" ],
+        "x-ms-correlation-request-id": [ "087a3987-0016-4062-ba07-6e2dd12a74c7" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260316T071152Z:087a3987-0016-4062-ba07-6e2dd12a74c7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D3575EBDD4B240708C5C30EAD697EA55 Ref B: SG2AA1040515034 Ref C: 2026-03-11T05:56:45Z" ],
-        "Date": [ "Wed, 11 Mar 2026 05:56:45 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 10CFAAAABB8E4609BF18559CBCE8007F Ref B: SIN221080719053 Ref C: 2026-03-16T07:11:52Z" ],
+        "Date": [ "Mon, 16 Mar 2026 07:11:52 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "118" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
       },
-      "Content": "{\"error\":{\"code\":\"404\",\"message\":\"ActivityId: b026221a-cad7-4df9-8ed6-92604df6a9f9 Error: User session ID not found\"}}",
+      "Content": null,
       "isContentBase64": false
     }
   }
