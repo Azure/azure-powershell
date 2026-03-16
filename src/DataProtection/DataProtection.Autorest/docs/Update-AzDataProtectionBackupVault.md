@@ -8,38 +8,36 @@ schema: 2.0.0
 # Update-AzDataProtectionBackupVault
 
 ## SYNOPSIS
-Updates a BackupVault resource belonging to a resource group.
-For example, updating tags for a resource.
+Update a BackupVault resource belonging to a resource group.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> [-Token <String>] [-AsJob]
- [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-CmkEncryptionKeyUri <String>]
- [-CmkEncryptionState <EncryptionState>] [-CmkIdentityType <IdentityType>]
- [-CmkUserAssignedIdentityId <String>] [-CrossRegionRestoreState <CrossRegionRestoreState>]
- [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-DefaultProfile <PSObject>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-ImmutabilityState <ImmutabilityState>]
- [-NoWait] [-ResourceGuardOperationRequest <String[]>] [-SecureToken <SecureString>]
- [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <SoftDeleteState>] [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AzureMonitorAlertsForAllJobFailure <String>] [-CmkEncryptionKeyUri <String>] [-CmkEncryptionState <String>]
+ [-CmkIdentityType <String>] [-CmkUserAssignedIdentityId <String>] [-CrossRegionRestoreState <String>]
+ [-CrossSubscriptionRestoreState <String>] [-DefaultProfile <PSObject>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-ImmutabilityState <String>] [-NoWait]
+ [-ResourceGuardOperationRequest <String[]>] [-SecureToken <SecureString>]
+ [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <String>] [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity> [-Token <String>] [-AsJob]
- [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-CrossRegionRestoreState <CrossRegionRestoreState>]
- [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-DefaultProfile <PSObject>]
- [-EncryptionSetting <IEncryptionSettings>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-ImmutabilityState <ImmutabilityState>] [-NoWait]
+Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity> [-Token <String>]
+ [-XmsDeletedVaultId <String>] [-AsJob] [-AzureMonitorAlertsForAllJobFailure <String>]
+ [-CrossRegionRestoreState <String>] [-CrossSubscriptionRestoreState <String>] [-DefaultProfile <PSObject>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-EncryptionSetting <IEncryptionSettings>] [-ETag <String>]
+ [-ImmutabilityState <String>] [-NoWait] [-ReplicatedRegion <String[]>]
  [-ResourceGuardOperationRequest <String[]>] [-SoftDeleteRetentionDurationInDay <Double>]
- [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SoftDeleteState <String>] [-StorageSetting <IStorageSetting[]>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a BackupVault resource belonging to a resource group.
-For example, updating tags for a resource.
+Update a BackupVault resource belonging to a resource group.
 
 ## EXAMPLES
 
@@ -121,9 +119,9 @@ CmkIdenityId is a required parameter.
 
 ### Example 6: Update vault to assign a User Assigned Managed Identity (UAMI)
 ```powershell
-$UAMI = @{"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userAssignedIdentityName"=[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.UserAssignedIdentity]::new()}
+$UAMI = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userAssignedIdentityName"
 
-$vault = Update-AzDataProtectionBackupVault -AssignUserIdentity $UAMI -SubscriptionId "00000000-0000-0000-0000-000000000000" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" -IdentityType 'SystemAssigned,UserAssigned'
+$vault = Update-AzDataProtectionBackupVault -EnableSystemAssignedIdentity -UserAssignedIdentity $UAMI -SubscriptionId "00000000-0000-0000-0000-000000000000" -VaultName "vaultName" -ResourceGroupName "resourceGroupName"
 ```
 
 ```output
@@ -132,10 +130,9 @@ Name          Location      Type                                  IdentityType
 vaultName southeastasia Microsoft.DataProtection/backupVaults SystemAssigned, UserAssigned
 ```
 
-First, create a hashtable for the User Assigned Managed Identity (UAMI) object.
-This object maps the UAMI resource ID to a new instance of UserAssignedIdentity.
+First, define the User Assigned Managed Identity (UAMI) ARM resource ID.
 Next, use the Update-AzDataProtectionBackupVault cmdlet to assign the UAMI to the backup vault while keeping the System Assigned Managed Identity.
-The -IdentityType parameter specifies that both SystemAssigned and UserAssigned identities are used.
+The -EnableSystemAssignedIdentity switch enables the system-assigned identity, and the -UserAssignedIdentity parameter specifies the user-assigned identity to associate with the vault.
 
 ## PARAMETERS
 
@@ -159,7 +156,7 @@ Parameter to Enable or Disable built-in azure monitor alerts for job failures.
 Security alerts cannot be disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AlertsState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -190,7 +187,7 @@ Accept wildcard characters: False
 Enable CMK encryption state for a Backup Vault.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.EncryptionState
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -205,7 +202,7 @@ Accept wildcard characters: False
 The identity type to be used for CMK encryption - SystemAssigned or UserAssigned Identity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.IdentityType
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -237,7 +234,7 @@ Cross region restore state of the vault.
 Allowed values are Disabled, Enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossRegionRestoreState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -253,7 +250,7 @@ Cross subscription restore state of the vault.
 Allowed values are Disabled, Enabled, PermanentlyDisabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossSubscriptionRestoreState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -280,12 +277,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EncryptionSetting
-Customer Managed Key details of the resource.
-To construct, see NOTES section for ENCRYPTIONSETTING properties and create a hash table.
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IEncryptionSettings
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionSetting
+Customer Managed Key details of the resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IEncryptionSettings
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -296,28 +307,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
+### -ETag
+Optional ETag.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-Gets or sets the user assigned identities.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases: UserAssignedIdentity, AssignUserIdentity
 
 Required: False
 Position: Named
@@ -331,7 +327,7 @@ Immutability state of the vault.
 Allowed values are Disabled, Unlocked, Locked.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ImmutabilityState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -344,7 +340,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
@@ -364,6 +359,21 @@ Run the command asynchronously
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReplicatedRegion
+List of replicated regions for Backup Vault
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -440,8 +450,23 @@ Soft delete state of the vault.
 Allowed values are Off, On, AlwaysOn.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SoftDeleteState
+Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageSetting
+Storage Settings
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IStorageSetting[]
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -498,6 +523,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VaultName
 The name of the backup vault.
 
@@ -507,6 +548,21 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -XmsDeletedVaultId
+The ID of the deleted backup vault to restore from during undelete flow.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -553,7 +609,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource
 
 ## NOTES
 

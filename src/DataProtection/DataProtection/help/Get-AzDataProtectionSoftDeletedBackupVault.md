@@ -18,9 +18,16 @@ Get-AzDataProtectionSoftDeletedBackupVault -Location <String> [-SubscriptionId <
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityLocation
+```
+Get-AzDataProtectionSoftDeletedBackupVault -DeletedVaultName <String>
+ -LocationInputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### Get
 ```
-Get-AzDataProtectionSoftDeletedBackupVault -Location <String> -DeletedVaultName <String>
+Get-AzDataProtectionSoftDeletedBackupVault -DeletedVaultName <String> -Location <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -93,7 +100,7 @@ The name of the DeletedBackupVaultResource
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityLocation, Get
 Aliases:
 
 Required: True
@@ -108,7 +115,7 @@ The name of the Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -118,13 +125,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LocationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+Parameter Sets: GetViaIdentityLocation
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -139,9 +161,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IDeletedBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResource
 
 ## NOTES
 

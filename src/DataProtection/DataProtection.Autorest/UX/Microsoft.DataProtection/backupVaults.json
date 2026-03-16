@@ -80,44 +80,6 @@
           ]
         }
       ]
-    },
-    {
-      "name": "Test-AzDataProtectionBackupInstanceReadiness",
-      "description": "Validate whether adhoc backup will be successful or not",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/validateForBackup",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancereadiness"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]",
-              "-VaultName <String>"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Validate whether adhoc backup will be successful or not",
-          "parameters": [
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            },
-            {
-              "name": "-VaultName",
-              "value": "[Path.vaultName]"
-            }
-          ]
-        }
-      ]
     }
   ]
 }

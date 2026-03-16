@@ -24,6 +24,12 @@ Remove-AzDataProtectionBackupPolicy -InputObject <IDataProtectionIdentity> [-Def
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityBackupVault
+```
+Remove-AzDataProtectionBackupPolicy -BackupVaultInputObject <IDataProtectionIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Deletes a backup policy belonging to a backup vault
 
@@ -38,6 +44,21 @@ Remove-AzDataProtectionBackupPolicy -Name $policy[0].name -SubscriptionId "xxxx-
 this command deletes an existing policy.
 
 ## PARAMETERS
+
+### -BackupVaultInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+Parameter Sets: DeleteViaIdentityBackupVault
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -57,7 +78,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
@@ -76,7 +96,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityBackupVault
 Aliases: BackupPolicyName
 
 Required: True

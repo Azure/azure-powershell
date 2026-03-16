@@ -117,7 +117,7 @@ IdentityType : UserAssigned
 KeyUri : https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1
 ```
 
-First command gets a specific vault by given vault name, subsequent three commands fetch the specity properites of encryption settings.
+First command gets a specific vault by given vault name, subsequent three commands fetch the specified properties of encryption settings.
 
 ## PARAMETERS
 
@@ -139,7 +139,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
@@ -209,7 +208,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource
 
 ## NOTES
 
