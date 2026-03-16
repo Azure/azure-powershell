@@ -74,6 +74,9 @@ Get a SessionHostManagementUpdateStatus.
 ### [Get-AzWvdSessionHostProvisioningStatus](Get-AzWvdSessionHostProvisioningStatus.md)
 Get the session host provisioning status for a given hostpool.
 
+### [Get-AzWvdSessionHostSingleRegistrationToken](Get-AzWvdSessionHostSingleRegistrationToken.md)
+Operation to list the scoped RegistrationTokens associated with the SessionHost.
+
 ### [Get-AzWvdStartMenuItem](Get-AzWvdStartMenuItem.md)
 List start menu items in the given application group.
 
@@ -124,6 +127,9 @@ Create a ScalingPlanPersonalSchedule.
 
 ### [New-AzWvdScalingPlanPooledSchedule](New-AzWvdScalingPlanPooledSchedule.md)
 Create a ScalingPlanPooledSchedule.
+
+### [New-AzWvdSessionHost](New-AzWvdSessionHost.md)
+Create a sessionHost.
 
 ### [New-AzWvdSessionHostConfiguration](New-AzWvdSessionHostConfiguration.md)
 Create a SessionHostConfiguration.
