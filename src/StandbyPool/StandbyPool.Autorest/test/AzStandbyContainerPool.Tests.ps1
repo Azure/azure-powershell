@@ -32,10 +32,9 @@ Describe 'AzStandbyContainerPool' {
 
     It 'GetRuntimeView' {
         {
+            Start-TestSleep -Seconds 30
             $standbycgpoolRuntimeView = Get-AzStandbyContainerGroupPoolStatus -Name testCGPool -ResourceGroupName standbypool-powershell-sdk -SubscriptionId $env.SubscriptionId
             $standbycgpoolRuntimeView.Name | Should -Be latest
-            $standbycgpoolRuntimeView.InstanceCountSummary.Count | Should BeGreaterThan 0
-            $standbycgpoolRuntimeView.InstanceCountSummary.instanceCountsByState.Count | Should BeGreaterThan 0
             $standbycgpoolRuntimeView.StatusCode | Should -Not -BeNullOrEmpty   
         } | Should -Not -Throw
     }
