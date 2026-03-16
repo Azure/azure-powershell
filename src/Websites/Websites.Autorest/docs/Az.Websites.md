@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Websites
-Module Guid: fc780f32-3a4b-4f14-a0ef-39438a2d33f8
+Module Guid: e9ad374a-406a-4223-8a53-57657b40893c
 Download Help Link: https://learn.microsoft.com/powershell/module/az.websites
 Help Version: 1.0.0.0
 Locale: en-US
