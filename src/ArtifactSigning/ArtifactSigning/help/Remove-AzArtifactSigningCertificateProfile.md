@@ -47,7 +47,7 @@ This command deletes a artifact signing certificate profile.
 ## PARAMETERS
 
 ### -AccountName
-Trusted Signing account name.
+Artifact Signing account name.
 
 ```yaml
 Type: System.String
