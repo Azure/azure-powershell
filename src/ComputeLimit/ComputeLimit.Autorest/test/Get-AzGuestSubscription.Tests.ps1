@@ -16,14 +16,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzGuestSubscription'))
 
 Describe 'Get-AzGuestSubscription' {
     It 'List' {
-        {
-            Get-AzGuestSubscription -Location $env.Location
-        } | Should -Not -Throw
+        $result = Get-AzGuestSubscription -Location $env.Location
+        $result | Should -Not -BeNullOrEmpty
     }
 
     It 'Get' {
-        {
-            Get-AzGuestSubscription -Location $env.Location -GuestSubscriptionId $env.GuestSubscriptionId
-        } | Should -Not -Throw
+        $result = Get-AzGuestSubscription -Location $env.Location -GuestSubscriptionId $env.GuestSubscriptionId
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $env.GuestSubscriptionId
+        $result.ProvisioningState | Should -Be 'Succeeded'
     }
 }

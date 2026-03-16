@@ -16,14 +16,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSharedLimit'))
 
 Describe 'Get-AzSharedLimit' {
     It 'List' {
-        {
-            Get-AzSharedLimit -Location $env.Location
-        } | Should -Not -Throw
+        $result = Get-AzSharedLimit -Location $env.Location
+        $result | Should -Not -BeNullOrEmpty
     }
 
     It 'Get' {
-        {
-            Get-AzSharedLimit -Location $env.Location -Name $env.SharedLimitName
-        } | Should -Not -Throw
+        $result = Get-AzSharedLimit -Location $env.Location -Name $env.SharedLimitName
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $env.SharedLimitName
+        $result.ProvisioningState | Should -Be 'Succeeded'
     }
 }

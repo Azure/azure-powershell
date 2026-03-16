@@ -16,8 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzSharedLimit'))
 
 Describe 'Remove-AzSharedLimit' {
     It 'Delete' {
-        {
-            Remove-AzSharedLimit -Location $env.Location -Name $env.SharedLimitName
-        } | Should -Not -Throw
+        { Remove-AzSharedLimit -Location $env.Location -Name $env.SharedLimitName } | Should -Not -Throw
     }
 }

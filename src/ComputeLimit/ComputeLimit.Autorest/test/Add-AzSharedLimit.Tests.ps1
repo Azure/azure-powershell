@@ -16,8 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Add-AzSharedLimit'))
 
 Describe 'Add-AzSharedLimit' {
     It 'CreateExpanded' {
-        {
-            Add-AzSharedLimit -Location $env.Location -Name $env.SharedLimitName
-        } | Should -Not -Throw
+        $result = Add-AzSharedLimit -Location $env.Location -Name $env.SharedLimitName
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $env.SharedLimitName
+        $result.ProvisioningState | Should -Be 'Succeeded'
     }
 }

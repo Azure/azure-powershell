@@ -16,8 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzGuestSubscription'))
 
 Describe 'Remove-AzGuestSubscription' {
     It 'Delete' {
-        {
-            Remove-AzGuestSubscription -Location $env.Location -GuestSubscriptionId $env.GuestSubscriptionId
-        } | Should -Not -Throw
+        { Remove-AzGuestSubscription -Location $env.Location -GuestSubscriptionId $env.GuestSubscriptionId } | Should -Not -Throw
     }
 }
