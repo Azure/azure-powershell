@@ -1,5 +1,5 @@
 ---
-external help file: Az.StandbyPool-help.xml
+external help file:
 Module Name: Az.StandbyPool
 online version: https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbyvmpoolstatus
 schema: 2.0.0
@@ -18,20 +18,21 @@ Get-AzStandbyVMPoolStatus -Name <String> -ResourceGroupName <String> [-Subscript
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
-```
-Get-AzStandbyVMPoolStatus -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
-Get-AzStandbyVMPoolStatus -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStandbyVMPoolStatus -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityStandbyVirtualMachinePool
 ```
 Get-AzStandbyVMPoolStatus -StandbyVirtualMachinePoolInputObject <IStandbyPoolIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzStandbyVMPoolStatus -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -104,7 +105,7 @@ SystemDataLastModifiedByType :
 Type                         : Microsoft.StandbyPool/standbyVirtualMachinePools/runtimeViews
 ```
 
-Above command is getting a runtime view of standby virtual machine pool.
+Above command is getting a runtime veiw of standby virtual machine pool.
 
 ## PARAMETERS
 
@@ -215,3 +216,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

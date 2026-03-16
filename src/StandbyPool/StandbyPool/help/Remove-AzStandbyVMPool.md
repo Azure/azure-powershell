@@ -1,5 +1,5 @@
 ---
-external help file: Az.StandbyPool-help.xml
+external help file:
 Module Name: Az.StandbyPool
 online version: https://learn.microsoft.com/powershell/module/az.standbypool/remove-azstandbyvmpool
 schema: 2.0.0
@@ -15,13 +15,13 @@ Delete a StandbyVirtualMachinePoolResource
 ### Delete (Default)
 ```
 Remove-AzStandbyVMPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzStandbyVMPool -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +42,7 @@ Remove-AzStandbyVMPool `
 Target
 ------
 https://management.azure.com/subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/providers/Microsoft.StandbyPool/locations/EASTUS/operationStatuses/dd097fee-99c2-4423-be9a-08ed20bfbf28*9F4DB3114D3D8F7DED8497F0D441BD1016348E645BEF0AF23FFE9753EE918EA8?api-version=2023-12-01-preview&t=638483770276035131&c=MIIHADCCBeig…
+
 ```
 
 Above command is deleting a standby virtual machine pool without waiting.
@@ -216,3 +217,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

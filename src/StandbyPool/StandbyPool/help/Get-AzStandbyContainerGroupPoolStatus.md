@@ -1,5 +1,5 @@
 ---
-external help file: Az.StandbyPool-help.xml
+external help file:
 Module Name: Az.StandbyPool
 online version: https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbycontainergrouppoolstatus
 schema: 2.0.0
@@ -18,12 +18,6 @@ Get-AzStandbyContainerGroupPoolStatus -Name <String> -ResourceGroupName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
-```
-Get-AzStandbyContainerGroupPoolStatus -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
 Get-AzStandbyContainerGroupPoolStatus -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>]
@@ -33,6 +27,12 @@ Get-AzStandbyContainerGroupPoolStatus -InputObject <IStandbyPoolIdentity> [-Defa
 ### GetViaIdentityStandbyContainerGroupPool
 ```
 Get-AzStandbyContainerGroupPoolStatus -StandbyContainerGroupPoolInputObject <IStandbyPoolIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzStandbyContainerGroupPoolStatus -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -86,7 +86,7 @@ SystemDataLastModifiedByType :
 Type                         : Microsoft.StandbyPool/standbyContainerGroupPools/runtimeViews
 ```
 
-Above command is getting a runtime view of standby container group pool.
+Above command is getting a runtime veiw of standby container group pool.
 
 ## PARAMETERS
 
@@ -197,3 +197,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

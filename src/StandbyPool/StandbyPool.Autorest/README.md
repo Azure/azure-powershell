@@ -28,8 +28,8 @@ For information on how to develop for `Az.StandbyPool`, see [how-to.md](how-to.m
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 88735540206d3393d194f4e1cc1aa2daac65af8a
-# tag: package-2024-03
+commit: 788c11df9da57f04d4f9e3a72c05fea0e0bd4c6e
+tag: package-2025-10
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -111,6 +111,13 @@ directive:
   - where:
       verb: New|Update
       subject: StandbyContainerGroupPool
+      parameter-name: ElasticityProfileDynamicSizingEnabled
+    set:
+      parameter-name: DynamicSizingEnabled
+
+  - where:
+      verb: New|Update
+      subject: StandbyContainerGroupPool
       parameter-name: ContainerGroupPropertySubnetId
     set:
       parameter-name: SubnetId
@@ -150,6 +157,20 @@ directive:
       parameter-name: ElasticityProfileMinReadyCapacity
     set:
       parameter-name: MinReadyCapacity
+
+  - where:
+      verb: New|Update
+      subject: StandbyVMPool
+      parameter-name: ElasticityProfilePostProvisioningDelay
+    set:
+      parameter-name: PostProvisioningDelay
+
+  - where:
+      verb: New|Update
+      subject: StandbyVMPool
+      parameter-name: ElasticityProfileDynamicSizingEnabled
+    set:
+      parameter-name: DynamicSizingEnabled
 
   - where:
       verb: New|Update
