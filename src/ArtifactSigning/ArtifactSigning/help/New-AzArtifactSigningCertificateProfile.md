@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzArtifactSigningCertificateProfile
 
 ## SYNOPSIS
-create a certificate profile.
+Create a certificate profile.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ New-AzArtifactSigningCertificateProfile -AccountName <String> -ProfileName <Stri
 ```
 
 ## DESCRIPTION
-create a certificate profile.
+Create a certificate profile.
 
 ## EXAMPLES
 
@@ -56,7 +56,7 @@ This command creates new artifact signing certificate profile.
 ## PARAMETERS
 
 ### -AccountName
-Trusted Signing account name.
+Artifact Signing account name.
 
 ```yaml
 Type: System.String
