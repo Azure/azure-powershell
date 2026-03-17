@@ -1,7 +1,4 @@
 ## 15.4.0 - March 2026
-#### Az.ComputeLimit 0.1.0
-* First release of Az.ComputeLimit module
-
 #### Az.Accounts 5.3.3
 * Updated MSAL to 4.82.1 to fix an issue with ARM endpoint discovery.
 
