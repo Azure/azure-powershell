@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Add-AzGuestSubscription'))
 
 Describe 'Add-AzGuestSubscription' {
     It 'CreateExpanded' {
-        $result = Add-AzGuestSubscription -Location $env.Location -GuestSubscriptionId $env.GuestSubscriptionId
+        $result = Add-AzGuestSubscription -Location $env.Location -Id $env.GuestSubscriptionId
         $result | Should -Not -BeNullOrEmpty
         $result.Name | Should -Be $env.GuestSubscriptionId
         $result.ProvisioningState | Should -Be 'Succeeded'

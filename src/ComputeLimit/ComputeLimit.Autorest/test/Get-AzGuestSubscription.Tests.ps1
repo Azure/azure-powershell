@@ -21,7 +21,7 @@ Describe 'Get-AzGuestSubscription' {
     }
 
     It 'Get' {
-        $result = Get-AzGuestSubscription -Location $env.Location -GuestSubscriptionId $env.GuestSubscriptionId
+        $result = Get-AzGuestSubscription -Location $env.Location -Id $env.GuestSubscriptionId
         $result | Should -Not -BeNullOrEmpty
         $result.Name | Should -Be $env.GuestSubscriptionId
         $result.ProvisioningState | Should -Be 'Succeeded'
