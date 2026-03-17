@@ -16,10 +16,10 @@ Create an applicationGroup.
 ```
 New-AzWvdApplicationGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -ApplicationGroupType <String> -HostPoolArmPath <String> -Location <String> [-Description <String>]
- [-FriendlyName <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>]
- [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
- [-PlanPublisher <String>] [-PlanVersion <String>] [-ShowInFeed] [-SkuCapacity <Int32>] [-SkuFamily <String>]
- [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-FriendlyName <String>] [-IdentityType <String>] [-Kind <String>] [-ManagedBy <String>] [-PlanName <String>]
+ [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-ShowInFeed] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>]
+ [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -161,27 +161,10 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+Type of managed service identity (either system assigned, or none).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -223,8 +206,7 @@ Accept wildcard characters: False
 ```
 
 ### -Kind
-Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
-E.g.
+Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g.
 ApiApps are a kind of Microsoft.Web/sites type.
 If supported, the resource provider must validate and persist this value.
 
