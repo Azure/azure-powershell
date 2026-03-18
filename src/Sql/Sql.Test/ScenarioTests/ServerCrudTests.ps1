@@ -745,14 +745,14 @@ function Test-CreateServerWithSoftDeleteRetention
 		Assert-StartsWith ($server5.ServerName + ".") $server5.FullyQualifiedDomainName
 		Assert-AreEqual $server5.SoftDeleteRetentionDays 0
 
-		# Scenario 6: Create server without either parameter (should default to 0 - disabled or -1 until backend fix is deployed)
+		# Scenario 6: Create server without either parameter.
 		$server6 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName6 `
 			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials
 		Assert-AreEqual $server6.ServerName $serverName6
 		Assert-AreEqual $server6.ServerVersion $version
 		Assert-AreEqual $server6.SqlAdministratorLogin $serverLogin
 		Assert-StartsWith ($server6.ServerName + ".") $server6.FullyQualifiedDomainName
-		Assert-True {$server6.SoftDeleteRetentionDays -eq 0 -or $server6.SoftDeleteRetentionDays -eq -1}
+		Assert-True {$server6.SoftDeleteRetentionDays -eq -1}
 	}
 	finally
 	{

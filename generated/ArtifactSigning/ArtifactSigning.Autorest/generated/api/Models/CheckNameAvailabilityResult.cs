@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
         private string _reason;
 
         /// <summary>
-        /// The reason that a trusted signing account name could not be used. The Reason element is only returned if nameAvailable
+        /// The reason that an artifact signing account name could not be used. The Reason element is only returned if nameAvailable
         /// is false.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PropertyOrigin.Owned)]
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
         PossibleTypes = new [] { typeof(bool) })]
         bool? NameAvailable { get;  }
         /// <summary>
-        /// The reason that a trusted signing account name could not be used. The Reason element is only returned if nameAvailable
+        /// The reason that an artifact signing account name could not be used. The Reason element is only returned if nameAvailable
         /// is false.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Info(
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The reason that a trusted signing account name could not be used. The Reason element is only returned if nameAvailable is false.",
+        Description = @"The reason that an artifact signing account name could not be used. The Reason element is only returned if nameAvailable is false.",
         SerializedName = @"reason",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PSArgumentCompleterAttribute("AccountNameInvalid", "AlreadyExists")]
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
         /// </summary>
         bool? NameAvailable { get; set; }
         /// <summary>
-        /// The reason that a trusted signing account name could not be used. The Reason element is only returned if nameAvailable
+        /// The reason that an artifact signing account name could not be used. The Reason element is only returned if nameAvailable
         /// is false.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PSArgumentCompleterAttribute("AccountNameInvalid", "AlreadyExists")]
