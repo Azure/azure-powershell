@@ -47,8 +47,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Markdown.MAML">
-      <HintPath>lib\Markdown.MAML.dll</HintPath>
+    <Reference Include="Microsoft.PowerShell.PlatyPS">
+      <HintPath>lib\Microsoft.PowerShell.PlatyPS.dll</HintPath>
+    </Reference>
+    <Reference Include="Markdig.Signed">
+      <HintPath>lib\Markdig.Signed.dll</HintPath>
+    </Reference>
+    <Reference Include="YamlDotNet">
+      <HintPath>lib\YamlDotNet.dll</HintPath>
     </Reference>
   </ItemGroup>
 

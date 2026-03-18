@@ -12,8 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Markdown.MAML.Parser;
-using Markdown.MAML.Transformer;
+using Microsoft.PowerShell.PlatyPS;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -37,6 +36,8 @@ namespace StaticAnalysis.HelpAnalyzer
         private const int MissingHelpFile = 6000;
         private const int MissingCmdlet = 7000;
         private const int PlatyPSSchemaViolation = 8000;
+        private const int MissingModuleName = 8050;
+        private const int ModuleNameMismatch = 8060;
         public HelpAnalyzer()
         {
             Name = "Help Analyzer";
@@ -248,6 +249,7 @@ namespace StaticAnalysis.HelpAnalyzer
             helpLogger.Decorator.Remove("Cmdlet");
 
             ValidateHelpRecords(moduleName, allCmdlets, helpFiles, helpLogger);
+            ValidateHelpModuleName(helpFolder, moduleName, helpFiles, helpLogger);
             ValidateHelpMarkdown(helpFolder, helpFiles, helpLogger);
 
             Directory.SetCurrentDirectory(savedDirectory);
@@ -292,18 +294,87 @@ namespace StaticAnalysis.HelpAnalyzer
             }
         }
 
+        private static readonly Regex ModuleNameFrontMatterRegex = new Regex(@"^Module Name:\s*(?<name>.+?)\s*$", RegexOptions.Multiline);
+
+        /// <summary>
+        /// Validates that the 'Module Name' YAML front matter of every cmdlet help markdown file matches the on-disk module name.
+        /// A mismatch causes Export-MamlCommandHelp to silently route the affected cmdlet's MAML into a stray folder named after the wrong module,
+        /// so Get-Help returns nothing for it at runtime.
+        /// </summary>
+        private void ValidateHelpModuleName(
+            string helpFolder,
+            string expectedModuleName,
+            IList<string> helpRecords,
+            ReportLogger<HelpIssue> helpLogger)
+        {
+            foreach (var helpMarkdown in helpRecords)
+            {
+                var file = Path.Combine(helpFolder, helpMarkdown + ".md");
+                if (!File.Exists(file))
+                    continue;
+
+                string content;
+                try
+                {
+                    content = File.ReadAllText(file);
+                }
+                catch (Exception ex)
+                {
+                    Console.Error.WriteLine($"Failed to read {file}: {ex.Message}");
+                    continue;
+                }
+
+                var match = ModuleNameFrontMatterRegex.Match(content);
+                if (!match.Success)
+                {
+                    helpLogger.LogRecord(new HelpIssue
+                    {
+                        Target = helpMarkdown,
+                        Severity = 1,
+                        ProblemId = MissingModuleName,
+                        Description = "'Module Name' metadata is missing from the YAML front matter.",
+                        Remediation = $"Add 'Module Name: {expectedModuleName}' to the YAML front matter at the top of {helpMarkdown}.md."
+                    });
+                    continue;
+                }
+
+                var actualModuleName = match.Groups["name"].Value;
+                if (!string.Equals(actualModuleName, expectedModuleName, StringComparison.Ordinal))
+                {
+                    helpLogger.LogRecord(new HelpIssue
+                    {
+                        Target = helpMarkdown,
+                        Severity = 1,
+                        ProblemId = ModuleNameMismatch,
+                        Description = $"'Module Name' metadata is '{actualModuleName}' but expected '{expectedModuleName}'.",
+                        Remediation = $"Update the 'Module Name' line in the YAML front matter of {helpMarkdown}.md to '{expectedModuleName}'."
+                    });
+                }
+            }
+        }
+
         private void ValidateHelpMarkdown(string helpFolder, IList<string> helpRecords, ReportLogger<HelpIssue> helpLogger)
         {
             foreach (var helpMarkdown in helpRecords)
             {
                 var file = Path.Combine(helpFolder, helpMarkdown + ".md");
-                var content = File.ReadAllText(file);
                 try
                 {
-                    var parser = new MarkdownParser();
-                    var transformer = new ModelTransformerVersion2();
-                    var markdownModel = parser.ParseString(new[] { content });
-                    var model = transformer.NodeModelToMamlModel(markdownModel).FirstOrDefault();
+                    var issues = new List<string>();
+                    var isValid = MarkdownConverter.ValidateMarkdownFile(file, out issues);
+                    if (!isValid)
+                    {
+                        HelpIssue issue = new HelpIssue
+                        {
+                            Target = helpMarkdown,
+                            Severity = 1,
+                            ProblemId = PlatyPSSchemaViolation,
+                            Description = "Help content doesn't conform to PlatyPS Schema definition: " + string.Join("; ", issues),
+                            Remediation = string.Format("No.")
+                        };
+                        helpLogger.LogRecord(issue);
+                        Console.Error.WriteLine($"Failed to validate {file} by Microsoft.PowerShell.PlatyPS: {string.Join("; ", issues)}");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -316,7 +387,7 @@ namespace StaticAnalysis.HelpAnalyzer
                         Remediation = string.Format("No.")
                     };
                     helpLogger.LogRecord(issue);
-                    Console.Error.WriteLine($"Failed to parse {file} by PlatyPS, {ex.Message}");
+                    Console.Error.WriteLine($"Failed to parse {file} by Microsoft.PowerShell.PlatyPS, {ex.Message}");
                 }
             }
         }

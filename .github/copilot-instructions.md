@@ -25,7 +25,7 @@ First-time setup requires these exact steps:
 - **CRITICAL**: Ensure you have network connectivity to Azure DevOps package feeds. Build failures with "Name or service not known" errors indicate firewall/connectivity issues that must be resolved before building.
 - Install .NET SDK 8.0+ and .NET Framework Dev Pack 4.7.2+: `dotnet --version` should show 8.0+
 - Install PowerShell 7+: `pwsh --version` should show 7.0+
-- Install platyPS module: `pwsh -c "Install-Module -Name platyPS -Force -Scope CurrentUser"`
+- Install Microsoft.PowerShell.PlatyPS module: `pwsh -c "Install-Module -Name Microsoft.PowerShell.PlatyPS -Force -Scope CurrentUser"`
 - Install PSScriptAnalyzer: `pwsh -c "Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser"`
 - Set PowerShell execution policy: `pwsh -c "Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser"`
 
@@ -110,7 +110,7 @@ If build appears to hang or shows no progress:
 - Builds may pause during package downloads or complex compilation steps
 
 ### Module-Specific Issues
-- Help generation requires platyPS module to be installed and functioning
+- Help generation requires Microsoft.PowerShell.PlatyPS module to be installed and functioning
 - Static analysis requires PSScriptAnalyzer module  
 - Some projects depend on specific Azure SDK versions from Azure DevOps feeds
 - Missing ChangeLog.md updates will cause PR validation to fail

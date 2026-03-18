@@ -1,4 +1,4 @@
-#Requires -Modules platyPS
+#Requires -Modules Microsoft.PowerShell.PlatyPS
 [CmdletBinding()]
 Param(
     [Parameter()]

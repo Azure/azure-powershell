@@ -1,4 +1,4 @@
-#Requires -Modules platyPS
+#Requires -Modules Microsoft.PowerShell.PlatyPS
 [CmdletBinding()]
 Param(
     [Parameter()]
@@ -11,4 +11,5 @@ Param(
 
 $ModuleFolder = Join-Path -Path $ArtifactFolder -ChildPath $ModuleName
 Import-Module $ModuleFolder
-New-ExternalHelp –Path $HelpFolder -OutputPath $ModuleFolder -Force -Debug
+$cmdHelp = Import-MarkdownCommandHelp -Path (Join-Path $HelpFolder '*-*.md')
+Export-MamlCommandHelp -CommandHelp $cmdHelp -OutputFolder $ModuleFolder -Force

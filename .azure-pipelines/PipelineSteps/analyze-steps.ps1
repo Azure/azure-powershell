@@ -28,7 +28,7 @@ function Assert-ExitCodeSuccess {
 
 # Install PowerShell dependencies
 Write-Host -ForegroundColor Green "-------------------- Start installing PowerShell dependencies ... --------------------"
-Install-Module "platyPS", "PSScriptAnalyzer" -Repository PSGallery -Force -Confirm:$false -Scope CurrentUser
+Install-Module "Microsoft.PowerShell.PlatyPS", "PSScriptAnalyzer" -Repository PSGallery -Force -Confirm:$false -Scope CurrentUser
 Write-Host -ForegroundColor DarkGreen "-------------------- End installing PowerShell dependencies ... --------------------`n`n`n`n`n"
 
 # Install latest Az modules

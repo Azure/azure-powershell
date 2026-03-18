@@ -154,7 +154,7 @@ if (Test-Path $assemblyInfoPath) {
 
 
 <#
-    merge temporary sub module csproj to parent module sln (for platyPS help markdown generation)
+    merge temporary sub module csproj to parent module sln (for Microsoft.PowerShell.PlatyPS help markdown generation)
         1. delete submodule csproj
         2. create temporary submodule csproj pointing src/moduleroot/submodule
         3. add temporary submodule csproj to src/moduleroot/sln
@@ -184,7 +184,7 @@ try{
     Write-Host "Building $slnPath ..." -ForegroundColor DarkGreen
     dotnet build $slnPath
     <#
-        generate help markdown by platyPS
+        generate help markdown by Microsoft.PowerShell.PlatyPS
     #>
 
     Write-Host "Refreshing help markdown ..." -ForegroundColor DarkGreen
@@ -214,7 +214,7 @@ try{
         }
 
         Import-Module $artifactPsd1Path
-        Import-Module platyPS
+        Import-Module Microsoft.PowerShell.PlatyPS
         $helpPath = Join-Path $parentModulePath 'help'
         $subModuleHelpPath = Join-Path $RepoRoot 'src' $ModuleRootName $SubModuleName 'docs'
 
@@ -224,7 +224,7 @@ try{
 
         if (-Not (Test-Path $helpPath)) {
             New-Item -Type Directory $helpPath -Force
-            New-MarkDownHelp -Module "Az.$ModuleRootName" -OutputFolder $helpPath -AlphabeticParamsOrder -UseFullTypeName -WithModulePage -ExcludeDontShow
+            New-MarkdownCommandHelp -ModuleInfo (Get-Module "Az.$ModuleRootName") -OutputFolder $helpPath -WithModulePage
             $indexPath = Join-Path $helpPath "Az.$ModuleRootName.md"
             $content = Get-Content -Path $indexPath
             $content = $content -replace '{{ Update Download Link }}', "https://learn.microsoft.com/powershell/module/az.$($ModuleRootName.ToLower())"
@@ -234,7 +234,13 @@ try{
         }
         Get-ChildItem $subModuleHelpPath -Filter *-*.md | Copy-Item -Destination (Join-Path $helpPath $_.Name) -Force
         Write-Host "Refreshing help markdown files under: $helpPath ..."
-        Update-MarkdownHelpModule -Path $helpPath -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
+        $cmdletHelpFiles = Join-Path $helpPath '*-*.md'
+        Update-MarkdownCommandHelp -Path $cmdletHelpFiles -NoBackup
+        $updatedHelp = Import-MarkdownCommandHelp -Path $cmdletHelpFiles
+        $moduleFile = Get-ChildItem -Path $helpPath -Filter "Az.$ModuleRootName.md" | Select-Object -First 1
+        if ($moduleFile) {
+            Update-MarkdownModuleFile -Path $moduleFile.FullName -CommandHelp $updatedHelp -NoBackup
+        }
         foreach ($helpFile in (Get-ChildItem $helpPath -Filter "*-*.md" -Recurse)) {
             $cmdeltName = $helpFile.Name.Replace(".md", "")
             if ($exportedCommands -notcontains $cmdeltName)

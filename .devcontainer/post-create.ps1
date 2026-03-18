@@ -15,8 +15,8 @@ if ($LASTEXITCODE -ne 0) {
     throw "Failed to install AutoRest"
 }
 
-Write-Host "⚡ Installing platyPS..." -ForegroundColor Cyan
-Install-Module -Name platyPS -Force -Scope CurrentUser -ErrorAction Stop
+Write-Host "⚡ Installing Microsoft.PowerShell.PlatyPS..." -ForegroundColor Cyan
+Install-Module -Name Microsoft.PowerShell.PlatyPS -Force -Scope CurrentUser -ErrorAction Stop
 
 Write-Host "🔐 Installing Az.Accounts for authentication..." -ForegroundColor Cyan
 Install-Module -Name Az.Accounts -Force -Scope CurrentUser -ErrorAction Stop

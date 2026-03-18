@@ -50,7 +50,7 @@ The following prerequisites should be completed before contributing to the Azure
 
 - Install [Visual Studio 2022 or above](https://www.visualstudio.com/downloads/)
 - Install the latest version of [Git](https://git-scm.com/downloads)
-- Install the [`platyPS` module](help-generation.md#Installing-platyPS)
+- Install the [`Microsoft.PowerShell.PlatyPS` module](help-generation.md#Installing-MicrosoftPowerShellPlatyPS)
 - Install [PSScriptAnalyzer](https://github.com/PowerShell/PSScriptAnalyzer#installation)
 - Install [**.NET SDK 6, and .NET Framework Dev Pack 4.7.2**](https://dotnet.microsoft.com/en-us/download/dotnet) or greater
 - Install [PowerShell 7](https://github.com/PowerShell/PowerShell/releases/latest)
@@ -89,7 +89,7 @@ git pull upstream main
 
 ### Building the Environment
 
-_Note_: to build the environment locally, you need `platyPS` install on your machine. Please see the [Prerequisites](#prerequisites) section for details on how to install this module.
+_Note_: to build the environment locally, you need `Microsoft.PowerShell.PlatyPS` install on your machine. Please see the [Prerequisites](#prerequisites) section for details on how to install this module.
 
 After cloning the repository to your local machine, you want to ensure that you can build the environment. To do so, launch `VS Developer Command Prompt` (which is installed with Visual Studio) and run the following command (from the root of the repository) to do a full build:
 
@@ -105,7 +105,7 @@ PS C:\azure-powershell> dotnet msbuild build.proj
 
 ### Generating Help
 
-We build the `dll-Help.xml` files (used to display the help content for cmdlets in PowerShell) from markdown using the `platyPS` module. Since this help generation step can take 10-15 minutes, it is a separate part of the command line build process. Run this to generate help:
+We build the `dll-Help.xml` files (used to display the help content for cmdlets in PowerShell) from markdown using the `Microsoft.PowerShell.PlatyPS` module. Since this help generation step can take 10-15 minutes, it is a separate part of the command line build process. Run this to generate help:
 
 ```
 msbuild build.proj /t:GenerateHelp
@@ -153,7 +153,7 @@ Please submit a design review here: https://github.com/Azure/azure-powershell-cm
 
 _Note_: You will need to be part of the `GitHub Azure` org to see this repository. Please go to [this link](https://aka.ms/azuregithub) to become part of the `Azure` org.
 
-We recommend using the `platyPS` module to easily generate markdown files that contains the above information and including the files in the design submission.
+We recommend using the `Microsoft.PowerShell.PlatyPS` module to easily generate markdown files that contains the above information and including the files in the design submission.
 
 ### Point of Contact
 
@@ -243,7 +243,7 @@ To import modules automatically when debug has started, follow the below steps:
 
 All cmdlets that are created must have accompanying help that is displayed when users execute the command `Get-Help <your cmdlet>`.
 
-Each cmdlet has a markdown file that contains the help content that is displayed in PowerShell; these markdown files are created (and maintained) using the platyPS module.
+Each cmdlet has a markdown file that contains the help content that is displayed in PowerShell; these markdown files are created (and maintained) using the Microsoft.PowerShell.PlatyPS module.
 
 For complete documentation, see [`help-generation.md`](help-generation.md) in the `documentation` folder.
 

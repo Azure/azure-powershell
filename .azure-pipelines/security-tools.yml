@@ -70,10 +70,10 @@ jobs:
         & $buildStepsPath -RepoRoot "$(Build.SourcesDirectory)" -Configuration "Debug" -FilesChangedOutputPath $filesChangedOutputPath -IsSecurityCheck $true -BuildReason $(Build.Reason) -Trigger $trigger
 
   - task: PowerShell@2
-    displayName: Install platyPS
+    displayName: Install Microsoft.PowerShell.PlatyPS
     inputs:
       targetType: inline
-      script: Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser
+      script: Install-Module Microsoft.PowerShell.PlatyPS -Force -Confirm:$false -Scope CurrentUser
       pwsh: true
   - task: UseDotNet@2
     displayName: 'Use .NET SDK 6.0 for CredScan'

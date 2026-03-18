@@ -2,16 +2,16 @@
 
 ## Description
 
-All MAML files containing the help content for cmdlets have been removed from the Azure PowerShell repository and replaced with markdown files, which are generated and maintained using the [`platyPS`](https://github.com/PowerShell/platyPS) module. Each module has a `help` folder (_e.g.,_ `src/Accounts/Accounts/help`) which contains a markdown file for each of the cmdlets found in that given module. When the help content for a cmdlet (or multiple cmdlets) needs to be updated, users will now only have to update the contents of the markdown file, _and not the MAML file as well_.
+All MAML files containing the help content for cmdlets have been removed from the Azure PowerShell repository and replaced with markdown files, which are generated and maintained using the [`Microsoft.PowerShell.PlatyPS`](https://github.com/PowerShell/platyPS) module (v1.0+). Each module has a `help` folder (_e.g.,_ `src/Accounts/Accounts/help`) which contains a markdown file for each of the cmdlets found in that given module. When the help content for a cmdlet (or multiple cmdlets) needs to be updated, users will now only have to update the contents of the markdown file, _and not the MAML file as well_.
 
-## Installing `platyPS`
+## Installing `Microsoft.PowerShell.PlatyPS`
 
-In order to use the cmdlets necessary to update the markdown help files (or generate MAML help locally from these markdown files), you must first install the `platyPS` module mentioned previously.  You will need to install a minimum version of 0.11.0.
+In order to use the cmdlets necessary to update the markdown help files (or generate MAML help locally from these markdown files), you must first install the `Microsoft.PowerShell.PlatyPS` module mentioned previously. You will need to install a minimum version of 1.0.1.
 
-To do so, you can follow the below steps (which are outlined in the [**Quick start**](https://github.com/PowerShell/platyPS#quick-start) section of the `platyPS` README):
+To do so, you can follow the below steps:
 
 ```powershell
-Install-Module -Name platyPS -Scope CurrentUser
+Install-Module -Name Microsoft.PowerShell.PlatyPS -Scope CurrentUser
 ```
 
 **Note:** this module will need to be installed from the [PowerShell Gallery](http://www.powershellgallery.com/). If, for some reason, this isn't a registered repository when running the `Get-PSRepository` cmdlet, then you will need to register it by running the following command:
@@ -20,11 +20,11 @@ Install-Module -Name platyPS -Scope CurrentUser
 Register-PSRepository -Default -InstallationPolicy Trusted
 ```
 
-## Using `platyPS`
+## Using `Microsoft.PowerShell.PlatyPS`
 
 ### Importing your module
 
-Before you run the `platyPS` cmdlets to update your markdown help files, you will need to first import the module containing the changes that you have made to your cmdlets into your current PowerShell session. Once you have built your project (either through Visual Studio or with `msbuild`), you can locate the module manifest that you will need to import in the `artifacts/Debug` folder of your local repository.
+Before you run the `Microsoft.PowerShell.PlatyPS` cmdlets to update your markdown help files, you will need to first import the module containing the changes that you have made to your cmdlets into your current PowerShell session. Once you have built your project (either through Visual Studio or with `msbuild`), you can locate the module manifest that you will need to import in the `artifacts/Debug` folder of your local repository.
 
 For example, if you have made changes to the `Accounts` module, you will find the corresponding module manifest in `artifacts/Debug/Az.Accounts/Az.Accounts.psd1`.
 
@@ -43,7 +43,7 @@ For new modules with no existing `help` folder containing the markdown help file
 
 ```powershell
 $PathToHelpFolder = "../../help" # Full path to help folder containing markdown files to be generated (e.g., src/Accounts/Accounts/help)
-New-MarkdownHelp -Module {{moduleName}} -OutputFolder $PathToHelpFolder -AlphabeticParamsOrder -UseFullTypeName -WithModulePage
+New-MarkdownCommandHelp -ModuleInfo (Get-Module <module>) -OutputFolder $PathToHelpFolder -WithModulePage
 ```
 
 Once this folder has been generated, follow the steps provided in the below section to update the files with any changes made to the public interface of the cmdlets.
@@ -65,55 +65,60 @@ Whenever the public interface for a cmdlet has changed, the corresponding markdo
 
 #### Updating all markdown files in a module
 
-To update all of the markdown files for a single module, use the [`Update-MarkdownHelpModule`](https://github.com/PowerShell/platyPS/blob/master/docs/Update-MarkdownHelpModule.md) cmdlet:
+To update all of the markdown files for a single module, use the `Update-MarkdownCommandHelp` and `Update-MarkdownModuleFile` cmdlets:
 
 ```powershell
 $PathToModuleManifest = "../../<module>.psd1" # Full path to the module manifest that you have updated
 Import-Module -Name $PathToModuleManifest
 
 $PathToHelpFolder = "../../help" # Full path to help folder containing markdown files to be updated
-Update-MarkdownHelpModule -Path $PathToHelpFolder -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName
+
+# Update individual command help markdown files
+$cmdletHelpFiles = Join-Path $PathToHelpFolder '*-*.md'
+Update-MarkdownCommandHelp -Path $cmdletHelpFiles -NoBackup
+
+# Refresh the module page with updated command list
+$cmdHelp = Import-MarkdownCommandHelp -Path $cmdletHelpFiles
+$moduleFile = Get-ChildItem -Path $PathToHelpFolder -Filter 'Az.*.md' | Where-Object { $_.Name -notlike '*-*' } | Select-Object -First 1
+if ($moduleFile) { Update-MarkdownModuleFile -Path $moduleFile.FullName -CommandHelp $cmdHelp -NoBackup }
 ```
 
-If you would like to update the inputs/outputs for a markdown file, please run this cmdlet with the -UpdateInputOutput parameter.  Keep in mind that this will overwrite any customized descriptions of inputs and outputs, so you will need to add these descriptions back if still relevant.
-
-This will update all of the markdown files with public interface changes made to corresponding cmdlets, add markdown files for any new cmdlets, remove markdown files for any deleted cmdlets, and update the module page (_e.g.,_ `Az.Accounts.md`) with any added or removed cmdlets.
+This will update all of the existing markdown files with public interface changes made to corresponding cmdlets and refresh the module page (_e.g.,_ `Az.Accounts.md`) from the markdown files currently on disk.
 
 _This seems to work better when run from within the `help` folder itself (For e.g. to generate the help files for the [`Network`](https://github.com/Azure/azure-powershell/tree/main/src/Network) module run the cmd from under [`Commands.Network/help`](https://github.com/Azure/azure-powershell/tree/main/src/Network/Network/help)). Also, you will have to import the profile module from under <Repo base path>/artifacts/Debug/Az.Accounts/Az.Accounts.psd1_
- 
+
 #### Updating a single markdown file
 
-To update a single markdown file with the changes made to the corresponding cmdlet, use the [`Update-MarkdownHelp`](https://github.com/PowerShell/platyPS/blob/master/docs/Update-MarkdownHelp.md) cmdlet:
+To update a single markdown file with the changes made to the corresponding cmdlet, use the `Update-MarkdownCommandHelp` cmdlet:
 
 ```powershell
 $PathToModuleManifest = "../../<module>.psd1" # Full path to the module manifest that you have updated
 Import-Module -Name $PathToModuleManifest
 
 $PathToMarkdownFile = "../../<cmdlet>.md" # Full path to the markdown file to be updated
-Update-MarkdownHelp -Path $PathToMarkdownFile -AlphabeticParamsOrder -UseFullTypeName
+Update-MarkdownCommandHelp -Path $PathToMarkdownFile -NoBackup
 ```
-
-If you would like to update the inputs/outputs for a markdown file, please run this cmdlet with the -UpdateInputOutput parameter.  Keep in mind that this will overwrite any customized descriptions of inputs and outputs, so you will need to add these descriptions back if still relevant.
 
 #### Generating and viewing the MAML help
 
 During the build, the MAML help will be generated from the markdown files in the repository. If you would like to generate the MAML help and preview what the help content will look like for each of your cmdlets, you can do so with two more commands.
 
-To generate the MAML help based on the contents of your markdown files, use the [`New-ExternalHelp`](https://github.com/PowerShell/platyPS/blob/master/docs/New-ExternalHelp.md) cmdlet:
+To generate the MAML help based on the contents of your markdown files, use the `Import-MarkdownCommandHelp` and `Export-MamlCommandHelp` cmdlets:
 
 ```powershell
 $PathToHelpFolder = "../../help" # Full path to help folder containing markdown files to be updated
 $PathToOutputFolder = "../../.." # Full path to folder where you want the MAML file to be generated
-New-ExternalHelp -Path $PathToHelpFolder -OutputPath $PathToOutputFolder
+$cmdHelp = Import-MarkdownCommandHelp -Path (Join-Path $PathToHelpFolder '*-*.md')
+Export-MamlCommandHelp -CommandHelp $cmdHelp -OutputFolder $PathToOutputFolder -Force
 ```
 
-To preview the help that you just generated, use the [`Get-HelpPreview`](https://github.com/PowerShell/platyPS/blob/master/docs/Get-HelpPreview.md) cmdlet:
+To preview the help that you just generated, use the `Show-HelpPreview` cmdlet:
 
 ```powershell
 $PathToMAML = "../../<maml>.dll-Help.xml" # Full path to the MAML file that was generated
 
 # Save the help locally
-$help = Get-HelpPreview -Path $PathToMAML
+$help = Show-HelpPreview -Path $PathToMAML
 
 # Get the help for a specific cmdlet
 $help | where { $_.Name -eq "<cmdlet>" }

@@ -3,5 +3,6 @@ ipmo D:\powershell\azure-powershell\src\Network\Network.Test\ScenarioTests\Commo
 ipmo D:\powershell\azure-powershell\src\Network\Network.Test\bin\Debug\netcoreapp2.2\Common.ps1
 Import-Module D:\powershell\azure-powershell\artifacts\Debug\Az.Accounts\Az.Accounts.psd1
 Import-Module D:\powershell\azure-powershell\artifacts\Debug\Az.Network\Az.Network.psd1
-New-MarkdownHelp -AlphabeticParamsOrder -UseFullTypeName -Module Az.Network -OutputFolder D:\powershell\Md -Force
-#Update-MarkdownHelpModule -RefreshModulePage -AlphabeticParamsOrder -Path D:\powershell\azure-powershell\src\Network\Network\help
+New-MarkdownCommandHelp -ModuleInfo (Get-Module Az.Network) -OutputFolder D:\powershell\Md -Force
+#$cmdHelp = Import-MarkdownCommandHelp -Path D:\powershell\azure-powershell\src\Network\Network\help\*-*.md
+#Update-MarkdownModuleFile -Path D:\powershell\azure-powershell\src\Network\Network\help\Az.Network.md -CommandHelp $cmdHelp -NoBackup
