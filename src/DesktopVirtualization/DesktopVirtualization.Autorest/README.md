@@ -125,3 +125,8 @@ directive:
       parameter-name: Force
     set:
       parameter-description: 'Specify to force userSession deletion.'
+  # remove Update-AzWvdPrivateEndpointConnection, Finally, we need to remove all private endpoint connection related cmdlets and implement them in Az.Network. Please see https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/examples/private-link-resource-example.md for details.
+  - where:
+      verb: Update
+      subject: PrivateEndpointConnection
+    remove: true
