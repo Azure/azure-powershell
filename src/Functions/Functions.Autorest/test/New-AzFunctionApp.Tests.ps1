@@ -539,7 +539,7 @@ Describe 'New-AzFunctionApp' {
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $env.resourceGroupNameWindowsPremium
             $functionApp.OSType | Should -Be "Windows"
             $functionApp.Runtime | Should -Be $runtime
-            $functionApp.EnableSystemAssignedIdentity | Should -Be $true
+            $functionApp.IdentityType | Should -Be "SystemAssigned"
 
             # Get app settings
             Write-Verbose "Validating app settings..." -Verbose
