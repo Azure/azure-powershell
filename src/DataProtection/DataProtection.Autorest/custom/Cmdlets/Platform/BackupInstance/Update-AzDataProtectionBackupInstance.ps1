@@ -3,53 +3,53 @@
 function Update-AzDataProtectionBackupInstance
 {
 	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource')]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
+    [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Updates a given backup instance')]
 
     param(
-        [Parameter(Mandatory=$false, HelpMessage='Subscription Id of the vault')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory=$false, HelpMessage='Subscription Id of the vault')]
         [System.String]
         ${SubscriptionId},
 
-        [Parameter(Mandatory, HelpMessage='Resource Group of the backup vault')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='Resource Group of the backup vault')]
         [System.String]
         ${ResourceGroupName},
 
-        [Parameter(Mandatory, HelpMessage='Name of the backup vault')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='Name of the backup vault')]
         [System.String]
         ${VaultName},
 
-        [Parameter(Mandatory, HelpMessage='Unique Name of protected backup instance')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='Unique Name of protected backup instance')]
         [Alias('BackupInstanceName')]
         [System.String]
         ${Name},
 
-        [Parameter(Mandatory=$false, HelpMessage='Id of the Policy to be associated with the backup instance')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory=$false, HelpMessage='Id of the Policy to be associated with the backup instance')]
         [System.String]
         ${PolicyId},
 
-        [Parameter(Mandatory=$false, HelpMessage='Use system assigned identity')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory=$false, HelpMessage='Use system assigned identity')]
         [System.Nullable[System.Boolean]]
         ${UseSystemAssignedIdentity},
 
-        [Parameter(Mandatory=$false, HelpMessage='User assigned identity ARM Id')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory=$false, HelpMessage='User assigned identity ARM Id')]
         [Alias('AssignUserIdentity')]
         [System.String]
         ${UserAssignedIdentityArmId},
 
-        [Parameter(Mandatory=$false, HelpMessage='List of containers to be backed up inside the VaultStore. Use this parameter for DatasourceType AzureBlob and AzureDataLakeStorage.')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory=$false, HelpMessage='List of containers to be backed up inside the VaultStore. Use this parameter for DatasourceType AzureBlob and AzureDataLakeStorage.')]
         [System.String[]]
         ${VaultedBackupContainer},
         
-        [Parameter(Mandatory=$false, HelpMessage='Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppModifyPolicy/default. Use this parameter when the operation is MUA protected.')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory=$false, HelpMessage='Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppModifyPolicy/default. Use this parameter when the operation is MUA protected.')]
         [System.String[]]
         ${ResourceGuardOperationRequest},
 
-        [Parameter(Mandatory=$false, HelpMessage='Parameter deprecate. Please use SecureToken instead.')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory=$false, HelpMessage='Parameter deprecate. Please use SecureToken instead.')]
         [System.String]
         ${Token},
 
-        [Parameter(Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.')]
         [System.Security.SecureString]
         ${SecureToken},
 

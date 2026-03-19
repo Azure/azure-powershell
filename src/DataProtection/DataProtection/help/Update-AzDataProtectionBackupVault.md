@@ -401,7 +401,9 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGuardOperationRequest
-ResourceGuardOperationRequests on which LAC check will be performed
+Resource guard operation request in the format similar to \<ResourceGuard-ARMID\>/\<operation\>/default.
+Use this parameter when the operation is MUA protected.
+Supported operations include dppReduceImmutabilityStateRequests, dppReduceSoftDeleteSecurityRequests, and dppModifyEncryptionSettingsRequests.
 
 ```yaml
 Type: System.String[]

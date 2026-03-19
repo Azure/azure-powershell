@@ -400,8 +400,8 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         $operationalVaultedPolicy.Property.PolicyRule.Lifecycle.SourceDataStoreType -contains "OperationalStore" | Should be $true
 
         #Remove policy
-        Remove-AzDataProtectionBackupPolicy -Name $operationalVaultedPolicy -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
-        $pol = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where-Object { $_.Name -match $operationalVaultedPolicy }
+        Remove-AzDataProtectionBackupPolicy -Name $operationalVaultedPolicyName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
+        $pol = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where-Object { $_.Name -match $operationalVaultedPolicyName }
         $pol | Should be $null
     }
 }

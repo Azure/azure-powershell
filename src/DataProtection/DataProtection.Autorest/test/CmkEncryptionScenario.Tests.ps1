@@ -26,9 +26,7 @@ Describe 'CmkEncryptionScenario' {
     It 'New-AzDataProtectionBackupVault' {
         $storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -Type LocallyRedundant -DataStoreType VaultStore
 
-        $userAssignedIdentity = @{$env.TestCmkEncryption.CmkUserAssignedIdentityId = @{}}
-
-        $vault = New-AzDataProtectionBackupVault -SubscriptionId $env.TestCmkEncryption.SubscriptionId -ResourceGroupName $env.TestCmkEncryption.ResourceGroupName -VaultName $env.TestCmkEncryption.VaultName -Location $env.TestCmkEncryption.Location -StorageSetting $storagesetting -UserAssignedIdentity $userAssignedIdentity -CmkEncryptionState Enabled -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId $env.TestCmkEncryption.CmkUserAssignedIdentityId -CmkEncryptionKeyUri $env.TestCmkEncryption.CmkEncryptionKeyUri  -CmkInfrastructureEncryption Enabled
+        $vault = New-AzDataProtectionBackupVault -SubscriptionId $env.TestCmkEncryption.SubscriptionId -ResourceGroupName $env.TestCmkEncryption.ResourceGroupName -VaultName $env.TestCmkEncryption.VaultName -Location $env.TestCmkEncryption.Location -StorageSetting $storagesetting -UserAssignedIdentity @($env.TestCmkEncryption.CmkUserAssignedIdentityId) -CmkEncryptionState Enabled -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId $env.TestCmkEncryption.CmkUserAssignedIdentityId -CmkEncryptionKeyUri $env.TestCmkEncryption.CmkEncryptionKeyUri -CmkInfrastructureEncryption Enabled -SoftDeleteState AlwaysOn -SoftDeleteRetentionDurationInDay 14
 
         $vault.EncryptionSetting.State | Should be "Enabled"
         $vault.EncryptionSetting.CmkInfrastructureEncryption | Should be "Enabled"
@@ -39,7 +37,7 @@ Describe 'CmkEncryptionScenario' {
 
     It 'Update-AzDataProtectionBackupVault' {
 
-        $vault = Update-AzDataProtectionBackupVault -SubscriptionId $env.TestCmkEncryption.SubscriptionId -ResourceGroupName $env.TestCmkEncryption.ResourceGroupName -VaultName $env.TestCmkEncryption.VaultName -CmkEncryptionKeyUri $env.TestCmkEncryption.CmkEncryptionKeyUriUpdated
+        $vault = Update-AzDataProtectionBackupVault -SubscriptionId $env.TestCmkEncryption.SubscriptionId -ResourceGroupName $env.TestCmkEncryption.ResourceGroupName -VaultName $env.TestCmkEncryption.VaultName -CmkEncryptionKeyUri $env.TestCmkEncryption.CmkEncryptionKeyUriUpdated -SoftDeleteState AlwaysOn -SoftDeleteRetentionDurationInDay 14
 
         $vault.EncryptionSetting.State | Should be "Enabled"
         $vault.EncryptionSetting.CmkInfrastructureEncryption | Should be "Enabled"

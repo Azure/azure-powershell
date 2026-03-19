@@ -276,6 +276,33 @@ directive:
       parameter-name: SecuritySettingEncryptionSetting
     set:
       parameter-name: EncryptionSetting
+  # Update ResourceGuardOperationRequest description across all request models to provide actionable guidance
+  # The operation-specific dpp request name varies by cmdlet:
+  #   Suspend-AzDataProtectionBackupInstanceBackup -> dppDisableSuspendBackupsRequests
+  #   Stop-AzDataProtectionBackupInstanceProtection -> dppDisableStopProtectionRequests
+  #   Update-AzDataProtectionBackupInstance -> dppModifyPolicy
+  #   Start-AzDataProtectionBackupInstanceRestore -> dppTriggerRestoreRequests
+  #   Update-AzDataProtectionBackupVault -> dppReduceImmutabilityStateRequests, dppReduceSoftDeleteSecurityRequests, dppModifyEncryptionSettingsRequests
+  - from: swagger-document
+    where: $.definitions.SuspendBackupRequest.properties.resourceGuardOperationRequests
+    transform: >
+      $.description = "Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppDisableSuspendBackupsRequests/default. Use this parameter when the operation is MUA protected.";
+  - from: swagger-document
+    where: $.definitions.StopProtectionRequest.properties.resourceGuardOperationRequests
+    transform: >
+      $.description = "Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppDisableStopProtectionRequests/default. Use this parameter when the operation is MUA protected.";
+  - from: swagger-document
+    where: $.definitions.BackupInstance.properties.resourceGuardOperationRequests
+    transform: >
+      $.description = "Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppModifyPolicy/default. Use this parameter when the operation is MUA protected.";
+  - from: swagger-document
+    where: $.definitions.AzureBackupRestoreRequest.properties.resourceGuardOperationRequests
+    transform: >
+      $.description = "Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppTriggerRestoreRequests/default. Use this parameter when the operation is MUA protected.";
+  - from: swagger-document
+    where: $.definitions.BackupVault.properties.resourceGuardOperationRequests
+    transform: >
+      $.description = "Resource guard operation request in the format similar to <ResourceGuard-ARMID>/<operation>/default. Use this parameter when the operation is MUA protected. Supported operations include dppReduceImmutabilityStateRequests, dppReduceSoftDeleteSecurityRequests, and dppModifyEncryptionSettingsRequests.";
   - where:
       verb: Get
       subject: BackupVaultResource.*
@@ -532,6 +559,11 @@ directive:
       parameter-name: BackupInstanceName
     set:
       parameter-description: The name of the deleted backup instance
+  - where:
+      verb: Update
+      subject: ^BackupInstance$
+      variant: ^UpdateViaIdentityBackupVaultExpanded$|^UpdateViaIdentityExpanded$
+    remove: true
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/findRestorableTimeRanges"].post
     transform: $["description"] = "Finds the valid recovery point in time ranges for the restore."
@@ -591,6 +623,11 @@ directive:
       subject: FetchCrossRegionRestoreJob      
     set:
       subject: CrossRegionRestoreJob
+  - where:
+      verb: Update
+      subject: ^BackupInstance$
+      variant: ^UpdateExpanded$
+    hide: true
   - where:
       verb: Update
       subject: ^BackupInstance$

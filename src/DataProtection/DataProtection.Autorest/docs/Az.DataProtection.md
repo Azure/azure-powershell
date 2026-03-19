@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DataProtection
-Module Guid: b99f7df0-98cb-4eb1-b38f-d6e871ac179d
+Module Guid: ade2ccd6-f7d8-4e4a-a8f2-4c0184d8ca79
 Download Help Link: https://learn.microsoft.com/powershell/module/az.dataprotection
 Help Version: 1.0.0.0
 Locale: en-US
@@ -168,7 +168,7 @@ Undeletes a soft deleted backup vault
 Unlocks the critical operation which is protected by the resource guard
 
 ### [Update-AzDataProtectionBackupInstance](Update-AzDataProtectionBackupInstance.md)
-Update a backup instance in a backup vault
+Updates a given backup instance
 
 ### [Update-AzDataProtectionBackupInstanceAssociatedPolicy](Update-AzDataProtectionBackupInstanceAssociatedPolicy.md)
 Updates associated policy for a given backup instance

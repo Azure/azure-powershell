@@ -36,7 +36,7 @@
         $criteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ScheduleBasedBackupCriteria]::new()
         $criteria.ObjectType = "ScheduleBasedBackupCriteria"
         if($AbsoluteCriteria -ne $null){
-            $criteria.AbsoluteCriterion = $AbsoluteCriteria
+            $criteria.AbsoluteCriterion = @($AbsoluteCriteria.ToString())
         }
 
         if($DaysOfWeek -ne $null){

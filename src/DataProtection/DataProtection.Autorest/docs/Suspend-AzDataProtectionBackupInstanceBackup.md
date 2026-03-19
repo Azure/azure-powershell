@@ -237,7 +237,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGuardOperationRequest
-ResourceGuardOperationRequests on which LAC check will be performed
+Resource guard operation request in the format similar to \<ResourceGuard-ARMID\>/dppDisableSuspendBackupsRequests/default.
+Use this parameter when the operation is MUA protected.
 
 ```yaml
 Type: System.String[]
