@@ -13,9 +13,8 @@ Create a in-memory object for IPConfiguration
 ## SYNTAX
 
 ```
-New-AzDnsResolverIPConfigurationObject [-PrivateIPAddress <String>]
- [-PrivateIPAllocationMethod <IPAllocationMethod>] [-SubnetId <String>]
- [<CommonParameters>]
+New-AzDnsResolverIPConfigurationObject [-PrivateIPAddress <String>] [-PrivateIPAllocationMethod <String>]
+ [-SubnetId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +56,7 @@ Accept wildcard characters: False
 Private IP address allocation method.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.IPAllocationMethod
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

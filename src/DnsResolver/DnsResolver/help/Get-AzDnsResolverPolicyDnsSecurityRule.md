@@ -26,6 +26,12 @@ Get-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName <String> -Name <St
  [<CommonParameters>]
 ```
 
+### GetViaIdentityDnsResolverPolicy
+```
+Get-AzDnsResolverPolicyDnsSecurityRule -Name <String> -DnsResolverPolicyInputObject <IDnsResolverIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzDnsResolverPolicyDnsSecurityRule -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject>]
@@ -91,6 +97,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DnsResolverPolicyInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
+Parameter Sets: GetViaIdentityDnsResolverPolicy
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DnsResolverPolicyName
 The name of the DNS resolver policy.
 
@@ -127,7 +148,7 @@ The name of the DNS security rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityDnsResolverPolicy
 Aliases: DnsSecurityRuleName
 
 Required: True

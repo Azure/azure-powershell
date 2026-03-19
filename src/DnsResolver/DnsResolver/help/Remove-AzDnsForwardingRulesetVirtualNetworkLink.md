@@ -20,6 +20,13 @@ Remove-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName <Strin
  [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityDnsForwardingRuleset
+```
+Remove-AzDnsForwardingRulesetVirtualNetworkLink -Name <String>
+ -DnsForwardingRulesetInputObject <IDnsResolverIdentity> [-IfMatch <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzDnsForwardingRulesetVirtualNetworkLink -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
@@ -81,6 +88,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DnsForwardingRulesetInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
+Parameter Sets: DeleteViaIdentityDnsForwardingRuleset
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DnsForwardingRulesetName
 The name of the DNS forwarding ruleset.
 
@@ -134,7 +156,7 @@ The name of the virtual network link.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityDnsForwardingRuleset
 Aliases: VirtualNetworkLinkName
 
 Required: True

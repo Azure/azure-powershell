@@ -26,6 +26,12 @@ Get-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName <String> -Nam
  [<CommonParameters>]
 ```
 
+### GetViaIdentityDnsForwardingRuleset
+```
+Get-AzDnsForwardingRulesetForwardingRule -Name <String> -DnsForwardingRulesetInputObject <IDnsResolverIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzDnsForwardingRulesetForwardingRule -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject>]
@@ -82,6 +88,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DnsForwardingRulesetInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
+Parameter Sets: GetViaIdentityDnsForwardingRuleset
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DnsForwardingRulesetName
 The name of the DNS forwarding ruleset.
 
@@ -118,7 +139,7 @@ The name of the forwarding rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityDnsForwardingRuleset
 Aliases: ForwardingRuleName
 
 Required: True

@@ -12,8 +12,33 @@ Creates or updates an inbound endpoint for a DNS resolver.
 
 ## SYNTAX
 
+### CreateViaIdentityDnsResolverExpanded (Default)
 ```
-New-AzDnsResolverInboundEndpoint -DnsResolverName <String> -Name <String> -ResourceGroupName <String>
+New-AzDnsResolverInboundEndpoint -Name <String> -DnsResolverInputObject <IDnsResolverIdentity>
+ [-IfMatch <String>] [-IfNoneMatch <String>] -IPConfiguration <IIPConfiguration[]> -Location <String>
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzDnsResolverInboundEndpoint -Name <String> -DnsResolverName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzDnsResolverInboundEndpoint -Name <String> -DnsResolverName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateExpanded
+```
+New-AzDnsResolverInboundEndpoint -Name <String> -DnsResolverName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -IPConfiguration <IIPConfiguration[]>
  -Location <String> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -85,12 +110,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DnsResolverInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
+Parameter Sets: CreateViaIdentityDnsResolverExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DnsResolverName
 The name of the DNS resolver.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded
 Aliases:
 
 Required: True
@@ -138,8 +178,38 @@ IP configurations for the inbound endpoint.
 To construct, see NOTES section for IPCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IIPConfiguration[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IIPConfiguration[]
+Parameter Sets: CreateViaIdentityDnsResolverExpanded, CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -154,7 +224,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaIdentityDnsResolverExpanded, CreateExpanded
 Aliases:
 
 Required: True
@@ -200,7 +270,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded
 Aliases:
 
 Required: True
@@ -216,7 +286,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded
 Aliases:
 
 Required: False
@@ -231,7 +301,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateViaIdentityDnsResolverExpanded, CreateExpanded
 Aliases:
 
 Required: False

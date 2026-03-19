@@ -26,6 +26,12 @@ Get-AzDnsResolverInboundEndpoint -DnsResolverName <String> -Name <String> -Resou
  [<CommonParameters>]
 ```
 
+### GetViaIdentityDnsResolver
+```
+Get-AzDnsResolverInboundEndpoint -Name <String> -DnsResolverInputObject <IDnsResolverIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzDnsResolverInboundEndpoint -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject>]
@@ -82,6 +88,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DnsResolverInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
+Parameter Sets: GetViaIdentityDnsResolver
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DnsResolverName
 The name of the DNS resolver.
 
@@ -118,7 +139,7 @@ The name of the inbound endpoint for the DNS resolver.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityDnsResolver
 Aliases: InboundEndpointName
 
 Required: True

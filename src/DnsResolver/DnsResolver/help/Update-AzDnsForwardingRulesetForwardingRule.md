@@ -15,15 +15,37 @@ Updates a forwarding rule in a DNS forwarding ruleset.
 ### UpdateExpanded (Default)
 ```
 Update-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-ForwardingRuleState <ForwardingRuleState>] [-Metadata <Hashtable>] [-TargetDnsServer <ITargetDnsServer[]>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-ForwardingRuleState <String>]
+ [-Metadata <Hashtable>] [-TargetDnsServer <ITargetDnsServer[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] -JsonString <String>
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityDnsForwardingRulesetExpanded
+```
+Update-AzDnsForwardingRulesetForwardingRule -Name <String>
+ -DnsForwardingRulesetInputObject <IDnsResolverIdentity> [-IfMatch <String>] [-ForwardingRuleState <String>]
+ [-Metadata <Hashtable>] [-TargetDnsServer <ITargetDnsServer[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDnsForwardingRulesetForwardingRule -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
- [-ForwardingRuleState <ForwardingRuleState>] [-Metadata <Hashtable>] [-TargetDnsServer <ITargetDnsServer[]>]
+ [-ForwardingRuleState <String>] [-Metadata <Hashtable>] [-TargetDnsServer <ITargetDnsServer[]>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -77,12 +99,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DnsForwardingRulesetInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
+Parameter Sets: UpdateViaIdentityDnsForwardingRulesetExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DnsForwardingRulesetName
 The name of the DNS forwarding ruleset.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -96,8 +133,8 @@ Accept wildcard characters: False
 The state of forwarding rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.ForwardingRuleState
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDnsForwardingRulesetExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -140,12 +177,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Metadata
 Metadata attached to the forwarding rule.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDnsForwardingRulesetExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -160,7 +227,7 @@ The name of the forwarding rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityDnsForwardingRulesetExpanded
 Aliases: ForwardingRuleName
 
 Required: True
@@ -176,7 +243,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -192,7 +259,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -207,8 +274,8 @@ DNS servers to forward the DNS query to.
 To construct, see NOTES section for TARGETDNSSERVER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ITargetDnsServer[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.ITargetDnsServer[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDnsForwardingRulesetExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

@@ -20,6 +20,30 @@ Update-AzDnsResolverPolicyVirtualNetworkLink -DnsResolverPolicyName <String> -Na
  [<CommonParameters>]
 ```
 
+### UpdateViaJsonString
+```
+Update-AzDnsResolverPolicyVirtualNetworkLink -DnsResolverPolicyName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzDnsResolverPolicyVirtualNetworkLink -DnsResolverPolicyName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityDnsResolverPolicyExpanded
+```
+Update-AzDnsResolverPolicyVirtualNetworkLink -Name <String>
+ -DnsResolverPolicyInputObject <IDnsResolverIdentity> [-IfMatch <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDnsResolverPolicyVirtualNetworkLink -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
@@ -92,12 +116,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DnsResolverPolicyInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
+Parameter Sets: UpdateViaIdentityDnsResolverPolicyExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DnsResolverPolicyName
 The name of the DNS resolver policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -140,12 +179,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the DNS resolver policy virtual network link for the DNS resolver policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityDnsResolverPolicyExpanded
 Aliases: DnsResolverPolicyVirtualNetworkLinkName
 
 Required: True
@@ -176,7 +245,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -192,7 +261,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -207,7 +276,7 @@ Tags for the DNS resolver policy virtual network link.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDnsResolverPolicyExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
