@@ -1,16 +1,5 @@
-."$PSScriptRoot\testDataGenerator.ps1"
-."$PSScriptRoot\virtualNetworkClient.ps1"
-."$PSScriptRoot\dnsResolverAssertions.ps1"
-."$PSScriptRoot\stringExtensions.ps1"
-."$PSScriptRoot\Constants.ps1"
+# Self-contained test for Get-AzDnsResolver
 
-Add-AssertionOperator -Name 'BeSuccessfullyCreated' -Test $Function:BeSuccessfullyCreated
-
-$loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-if (-Not (Test-Path -Path $loadEnvPath)) {
-    $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-}
-. ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzDnsResolver.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
@@ -19,44 +8,35 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-function CreateDnsResolver([String]$DnsResolverName, [String]$VirtualNetworkName)
-{
-    if ($TestMode -eq "Record")
-        {
-            $virtualNetwork = CreateVirtualNetwork -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $VirtualNetworkName;
-        }
-
-    New-AzDnsResolver -Name $DnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetworkId -Location $LOCATION
-}
-
 Describe 'Get-AzDnsResolver' {
-    It 'Get single DNS resolver by name, expect DNS resolver by name retrieved' {
-        # ARRANGE
-        $dnsResolverName = "psdnsresolvername62";
-        $virtualNetworkName = "psvirtualnetworkname62";
-        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
+    BeforeAll {
+        $subscriptionId = '97db216c-169d-4ea9-9d98-114adba0aa20'
+        $location = 'westus2'
+        $rgName = "ps-dnsresolver-get-$(Get-Random -Max 99999)"
 
-        CreateDnsResolver -DnsResolverName $dnsResolverName -VirtualNetworkName $virtualNetworkName 
-
-        # ACT
-        $dnsResolver =  Get-AzDnsResolver -DnsResolverName $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME
-
-        # ASSERT
-        $dnsResolver | Should -BeSuccessfullyCreated
+        if ($TestMode -ne 'playback') {
+            Select-AzSubscription -SubscriptionId $subscriptionId
+            New-AzResourceGroup -Name $rgName -Location $location
+            New-AzVirtualNetwork -Name "vnet-get-1" -ResourceGroupName $rgName -Location $location -AddressPrefix "10.0.0.0/16"
+            $vnetId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/virtualNetworks/vnet-get-1"
+            New-AzDnsResolver -Name "resolver-get-1" -ResourceGroupName $rgName -VirtualNetworkId $vnetId -Location $location
+        }
     }
 
-    It 'List DNS resolvers in a resource group, expected least number of DNS resolvers retrieved' {
-        # ARRANGE
-        $dnsResolverName = "psdnsresolvername63";
-        $virtualNetworkName = "psvirtualnetworkname63";
-        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
+    AfterAll {
+        if ($TestMode -ne 'playback') {
+            Remove-AzResourceGroup -Name $rgName -ErrorAction SilentlyContinue -AsJob | Out-Null
+        }
+    }
 
-        CreateDnsResolver -DnsResolverName $dnsResolverName -VirtualNetworkName $virtualNetworkName 
-        
-        # ACT
-        $dnsResolvers =  Get-AzDnsResolver -ResourceGroupName $RESOURCE_GROUP_NAME
+    It 'Get single DNS resolver by name' {
+        $resolver = Get-AzDnsResolver -DnsResolverName "resolver-get-1" -ResourceGroupName $rgName
+        $resolver.ProvisioningState | Should -Be "Succeeded"
+        $resolver.Name | Should -Be "resolver-get-1"
+    }
 
-        # ASSERT
-        $dnsResolvers.Count | Should -BeGreaterThan 0
+    It 'List DNS resolvers in a resource group' {
+        $resolvers = Get-AzDnsResolver -ResourceGroupName $rgName
+        $resolvers.Count | Should -BeGreaterThan 0
     }
 }
