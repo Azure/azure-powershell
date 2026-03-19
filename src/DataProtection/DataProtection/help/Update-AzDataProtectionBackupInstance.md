@@ -12,7 +12,6 @@ Updates a given backup instance
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
 Update-AzDataProtectionBackupInstance -ResourceGroupName <String> -VaultName <String> -Name <String>
  [-SubscriptionId <String>] [-PolicyId <String>] [-UseSystemAssignedIdentity <Boolean>]
@@ -69,7 +68,6 @@ Second command updates the backup instance with the new User Assigned Managed Id
 ## PARAMETERS
 
 ### -AsJob
-Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -113,7 +111,6 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

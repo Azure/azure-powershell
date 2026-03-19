@@ -8,11 +8,10 @@ schema: 2.0.0
 # Update-AzDataProtectionBackupInstance
 
 ## SYNOPSIS
-Update a backup instance in a backup vault
+Updates a given backup instance
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
 Update-AzDataProtectionBackupInstance -Name <String> -ResourceGroupName <String> -VaultName <String> [-AsJob]
  [-DefaultProfile <PSObject>] [-NoWait] [-PolicyId <String>] [-ResourceGuardOperationRequest <String[]>]
@@ -68,7 +67,6 @@ Second command updates the backup instance with the new User Assigned Managed Id
 ## PARAMETERS
 
 ### -AsJob
-Run the command as a job
 
 
 ```yaml
@@ -114,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Run the command asynchronously
+
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -168,7 +168,7 @@ Undeletes a soft deleted backup vault
 Unlocks the critical operation which is protected by the resource guard
 
 ### [Update-AzDataProtectionBackupInstance](Update-AzDataProtectionBackupInstance.md)
-Update a backup instance in a backup vault
+Updates a given backup instance
 
 ### [Update-AzDataProtectionBackupInstanceAssociatedPolicy](Update-AzDataProtectionBackupInstanceAssociatedPolicy.md)
 Updates associated policy for a given backup instance
