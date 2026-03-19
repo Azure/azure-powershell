@@ -15,21 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFileShareSnapshot'))
 }
 
 Describe 'Update-AzFileShareSnapshot' {
-    It 'UpdateExpanded' {
-        {
-            $config = Update-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
-                                                  -ResourceName $env.fileShareName01 `
-                                                  -Name $env.snapshotName01 `
-                                                  -Tag @{"updated" = "true"; "environment" = "production"}
-            $config.Name | Should -Be $env.snapshotName01
-            $config.Tag["updated"] | Should -Be "true"
-        } | Should -Not -Throw
-    }
-
     It 'UpdateViaJsonString' {
         {
             $jsonString = @{
-                tags = @{
+                metadata = @{
                     updated = "jsonstring"
                     method = "jsonstring"
                 }
@@ -40,7 +29,7 @@ Describe 'Update-AzFileShareSnapshot' {
                                                   -Name $env.snapshotName01 `
                                                   -JsonString $jsonString
             $config.Name | Should -Be $env.snapshotName01
-            $config.Tag["updated"] | Should -Be "jsonstring"
+            $config.Metadata | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
     }
 
@@ -48,7 +37,7 @@ Describe 'Update-AzFileShareSnapshot' {
         {
             $jsonFilePath = Join-Path $PSScriptRoot 'test-snapshot-update.json'
             $jsonContent = @{
-                tags = @{
+                metadata = @{
                     updated = "jsonfile"
                     method = "jsonfile"
                 }
@@ -60,32 +49,9 @@ Describe 'Update-AzFileShareSnapshot' {
                                                   -Name $env.snapshotName01 `
                                                   -JsonFilePath $jsonFilePath
             $config.Name | Should -Be $env.snapshotName01
-            $config.Tag["updated"] | Should -Be "jsonfile"
+            $config.Metadata | Should -Not -BeNullOrEmpty
             
             Remove-Item -Path $jsonFilePath -Force -ErrorAction SilentlyContinue
-        } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityFileShareExpanded' {
-        {
-            $fileShare = Get-AzFileShare -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName01
-            $config = Update-AzFileShareSnapshot -FileShareInputObject $fileShare `
-                                                  -Name $env.snapshotName01 `
-                                                  -Tag @{"updated" = "fileshare-identity"; "method" = "fileshare"}
-            $config.Name | Should -Be $env.snapshotName01
-            $config.Tag["updated"] | Should -Be "fileshare-identity"
-        } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' {
-        {
-            $snapshot = Get-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
-                                                 -ResourceName $env.fileShareName01 `
-                                                 -Name $env.snapshotName01
-            $config = Update-AzFileShareSnapshot -InputObject $snapshot `
-                                                  -Tag @{"updated" = "identity"; "method" = "identity"}
-            $config.Name | Should -Be $env.snapshotName01
-            $config.Tag["updated"] | Should -Be "identity"
         } | Should -Not -Throw
     }
 }

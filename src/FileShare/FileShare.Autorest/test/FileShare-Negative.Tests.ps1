@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'FileShare-NegativeTests'))
+if(($null -eq $TestName) -or ($TestName -contains 'FileShare-Negative'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'FileShare-NegativeTests.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'FileShare-Negative.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'FileShare-NegativeTests'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'FileShare-NegativeTests: Error Handling and Validation' {
+Describe 'FileShare-Negative' {
     
     BeforeAll {
         $script:testShareName = "negative-test-fixed01"

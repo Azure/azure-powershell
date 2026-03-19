@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzFileShareNameAvailabil
 Describe 'Test-AzFileShareNameAvailability' {
     It 'CheckExpanded' {
         {
-            $config = Test-AzFileShareNameAvailability -Location $env.location -Name "testshare-available-$(Get-Random)"
+            $config = Test-AzFileShareNameAvailability -Location $env.location -Name "testshare-available" -Type "Microsoft.FileShares/fileShares"
             $config.NameAvailable | Should -Be $true
         } | Should -Not -Throw
     }
@@ -25,7 +25,8 @@ Describe 'Test-AzFileShareNameAvailability' {
     It 'CheckViaJsonString' {
         {
             $jsonString = @{
-                name = "testshare-json-$(Get-Random)"
+                name = "testshare-json"
+                type = "Microsoft.FileShares/fileShares"
             } | ConvertTo-Json -Depth 10
             
             $config = Test-AzFileShareNameAvailability -Location $env.location -JsonString $jsonString
@@ -37,7 +38,8 @@ Describe 'Test-AzFileShareNameAvailability' {
         {
             $jsonFilePath = Join-Path $PSScriptRoot 'test-availability.json'
             $jsonContent = @{
-                name = "testshare-file-$(Get-Random)"
+                name = "testshare-file"
+                type = "Microsoft.FileShares/fileShares"
             } | ConvertTo-Json -Depth 10
             Set-Content -Path $jsonFilePath -Value $jsonContent
             
@@ -51,7 +53,8 @@ Describe 'Test-AzFileShareNameAvailability' {
     It 'Check' {
         {
             $requestBody = @{
-                name = "testshare-body-$(Get-Random)"
+                name = "testshare-body"
+                type = "Microsoft.FileShares/fileShares"
             }
             $config = Test-AzFileShareNameAvailability -Location $env.location -Body $requestBody
             $config.NameAvailable | Should -Be $true
@@ -60,19 +63,28 @@ Describe 'Test-AzFileShareNameAvailability' {
 
     It 'CheckViaIdentityExpanded' {
         {
-            $inputObj = @{ Location = $env.location }
-            $config = Test-AzFileShareNameAvailability -InputObject $inputObj -Name "testshare-identity-$(Get-Random)"
+            $inputObj = @{ 
+                Location = $env.location
+                SubscriptionId = $env.SubscriptionId
+            }
+            $identity = [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.FileShareIdentity]$inputObj
+            $config = Test-AzFileShareNameAvailability -InputObject $identity -Name "testshare-identity" -Type "Microsoft.FileShares/fileShares"
             $config.NameAvailable | Should -Be $true
         } | Should -Not -Throw
     }
 
     It 'CheckViaIdentity' {
         {
-            $inputObj = @{ Location = $env.location }
-            $requestBody = @{
-                name = "testshare-identity-body-$(Get-Random)"
+            $inputObj = @{ 
+                Location = $env.location
+                SubscriptionId = $env.SubscriptionId
             }
-            $config = Test-AzFileShareNameAvailability -InputObject $inputObj -Body $requestBody
+            $identity = [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.FileShareIdentity]$inputObj
+            $requestBody = @{
+                name = "testshare-identity-body"
+                type = "Microsoft.FileShares/fileShares"
+            }
+            $config = Test-AzFileShareNameAvailability -InputObject $identity -Body $requestBody
             $config.NameAvailable | Should -Be $true
         } | Should -Not -Throw
     }

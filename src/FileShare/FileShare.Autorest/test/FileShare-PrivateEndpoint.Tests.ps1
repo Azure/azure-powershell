@@ -30,20 +30,37 @@ This test suite validates FileShare functionality with Azure Private Endpoints i
 Requires: Az.Network and Az.FileShare modules
 #>
 
-Describe 'FileShare-PrivateEndpoint Tests' {
+Describe 'FileShare-PrivateEndpoint' {
     BeforeAll {
-        # Import required modules
-        Import-Module Az.Network -ErrorAction Stop
-        Import-Module Az.FileShare -ErrorAction Stop
-        
-        # Initialize test variables
-        $script:vnetName = "vnet-fileshare-pe-test-$(Get-Random -Maximum 9999)"
+        # Initialize test variables with fixed names for recording consistency
+        # These are set regardless of Az.Network availability to prevent empty string errors
+        $script:vnetName = "vnet-fileshare-pe-fixed01"
         $script:subnetName = "subnet-pe"
-        $script:privateEndpointName = "pe-fileshare-$(Get-Random -Maximum 9999)"
-        $script:fileSharePeName = "share-pe-$(Get-Random -Maximum 9999)"
-        $script:secondaryRgName = "rg-fileshare-move-$(Get-Random -Maximum 9999)"
+        $script:privateEndpointName = "pe-fileshare-fixed01"
+        $script:fileSharePeName = "share-pe-fixed01"
+        $script:secondaryRgName = "rg-fileshare-move-fixed01"
         $script:vnetAddressPrefix = "10.0.0.0/16"
         $script:subnetAddressPrefix = "10.0.1.0/24"
+        $script:skipPrivateEndpointTests = $false
+        
+        # Check if Az.Network module is available
+        $azNetworkAvailable = $null -ne (Get-Module -ListAvailable Az.Network | Where-Object { $_.Version -ge [Version]"7.0.0" })
+        
+        if (-not $azNetworkAvailable) {
+            Write-Warning "Az.Network module not available or version too old. FileShare-PrivateEndpoint tests may fail."
+            $script:skipPrivateEndpointTests = $true
+        }
+        else {
+            try {
+                # Import Az.Network module (Az.FileShare is already loaded by test framework)
+                Import-Module Az.Network -ErrorAction Stop
+                Write-Host "Az.Network module loaded successfully"
+            }
+            catch {
+                Write-Warning "Failed to load Az.Network module: $_. FileShare-PrivateEndpoint tests may fail."
+                $script:skipPrivateEndpointTests = $true
+            }
+        }
         
         Write-Host "Test Configuration:"
         Write-Host "  Resource Group: $($env.resourceGroup)"
@@ -56,7 +73,7 @@ Describe 'FileShare-PrivateEndpoint Tests' {
     }
     
     Context 'Virtual Network Setup' {
-        It 'Should create a new Virtual Network' {
+        It 'Should create a new Virtual Network' -Skip:$script:skipPrivateEndpointTests {
             {
                 $vnet = New-TestVirtualNetwork -ResourceGroupName $env.resourceGroup `
                                                -VNetName $script:vnetName `
@@ -71,7 +88,7 @@ Describe 'FileShare-PrivateEndpoint Tests' {
             } | Should -Not -Throw
         }
         
-        It 'Should retrieve existing Virtual Network' {
+        It 'Should retrieve existing Virtual Network' -Skip:$script:skipPrivateEndpointTests {
             {
                 $vnet = Get-AzVirtualNetwork -Name $script:vnetName -ResourceGroupName $env.resourceGroup
                 $vnet | Should -Not -BeNullOrEmpty
@@ -79,7 +96,7 @@ Describe 'FileShare-PrivateEndpoint Tests' {
             } | Should -Not -Throw
         }
         
-        It 'Should create a subnet for Private Endpoints' {
+        It 'Should create a subnet for Private Endpoints' -Skip:$script:skipPrivateEndpointTests {
             {
                 $subnet = New-TestSubnet -ResourceGroupName $env.resourceGroup `
                                          -VNetName $script:vnetName `
@@ -94,7 +111,7 @@ Describe 'FileShare-PrivateEndpoint Tests' {
             } | Should -Not -Throw
         }
         
-        It 'Should list VNet subnets' {
+        It 'Should list VNet subnets' -Skip:$script:skipPrivateEndpointTests {
             {
                 $vnet = Get-AzVirtualNetwork -Name $script:vnetName -ResourceGroupName $env.resourceGroup
                 $subnets = $vnet.Subnets
@@ -106,7 +123,7 @@ Describe 'FileShare-PrivateEndpoint Tests' {
     }
     
     Context 'FileShare with Private Network Access' {
-        It 'Should create FileShare with private network access' {
+        It 'Should create FileShare with private network access' -Skip:$script:skipPrivateEndpointTests {
             {
                 $fileShare = New-AzFileShare -ResourceName $script:fileSharePeName `
                                              -ResourceGroupName $env.resourceGroup `
@@ -127,7 +144,7 @@ Describe 'FileShare-PrivateEndpoint Tests' {
             } | Should -Not -Throw
         }
         
-        It 'Should verify FileShare is not publicly accessible' {
+        It 'Should verify FileShare is not publicly accessible' -Skip:$script:skipPrivateEndpointTests {
             {
                 $fileShare = Get-AzFileShare -ResourceName $script:fileSharePeName `
                                              -ResourceGroupName $env.resourceGroup
@@ -138,7 +155,7 @@ Describe 'FileShare-PrivateEndpoint Tests' {
     }
     
     Context 'Private Endpoint Creation and Configuration' {
-        It 'Should create Private Endpoint for FileShare' {
+        It 'Should create Private Endpoint for FileShare' -Skip:$script:skipPrivateEndpointTests {
             {
                 # Get subnet and FileShare details
                 $vnet = Get-AzVirtualNetwork -Name $script:vnetName -ResourceGroupName $env.resourceGroup
@@ -166,7 +183,7 @@ Describe 'FileShare-PrivateEndpoint Tests' {
             } | Should -Not -Throw
         }
         
-        It 'Should retrieve Private Endpoint details' {
+        It 'Should retrieve Private Endpoint details' -Skip:$script:skipPrivateEndpointTests {
             {
                 $pe = Get-AzPrivateEndpoint -Name $script:privateEndpointName `
                                             -ResourceGroupName $env.resourceGroup
@@ -177,7 +194,7 @@ Describe 'FileShare-PrivateEndpoint Tests' {
             } | Should -Not -Throw
         }
         
-        It 'Should verify Private Endpoint connection state' {
+        It 'Should verify Private Endpoint connection state' -Skip:$script:skipPrivateEndpointTests {
             {
                 $pe = Get-AzPrivateEndpoint -Name $script:privateEndpointName `
                                             -ResourceGroupName $env.resourceGroup
@@ -187,7 +204,7 @@ Describe 'FileShare-PrivateEndpoint Tests' {
             } | Should -Not -Throw
         }
         
-        It 'Should list all Private Endpoints in resource group' {
+        It 'Should list all Private Endpoints in resource group' -Skip:$script:skipPrivateEndpointTests {
             {
                 $endpoints = Get-AzPrivateEndpoint -ResourceGroupName $env.resourceGroup
                 $endpoints | Should -Not -BeNullOrEmpty
@@ -197,7 +214,7 @@ Describe 'FileShare-PrivateEndpoint Tests' {
     }
     
     Context 'Network Security and Access Control' {
-        It 'Should verify FileShare is only accessible via Private Endpoint' {
+        It 'Should verify FileShare is only accessible via Private Endpoint' -Skip:$script:skipPrivateEndpointTests {
             {
                 $fileShare = Get-AzFileShare -ResourceName $script:fileSharePeName `
                                              -ResourceGroupName $env.resourceGroup
@@ -209,7 +226,7 @@ Describe 'FileShare-PrivateEndpoint Tests' {
             } | Should -Not -Throw
         }
         
-        It 'Should update FileShare with network access rules' {
+        It 'Should update FileShare with network access rules' -Skip:$script:skipPrivateEndpointTests {
             {
                 $fileShare = Update-AzFileShare -ResourceName $script:fileSharePeName `
                                                 -ResourceGroupName $env.resourceGroup `
@@ -224,7 +241,7 @@ Describe 'FileShare-PrivateEndpoint Tests' {
     }
     
     Context 'Resource Move Operations - Setup' {
-        It 'Should create secondary resource group for move operations' {
+        It 'Should create secondary resource group for move operations' -Skip:$script:skipPrivateEndpointTests {
             {
                 $secondaryRg = New-AzResourceGroup -Name $script:secondaryRgName `
                                                    -Location $env.location
@@ -237,7 +254,7 @@ Describe 'FileShare-PrivateEndpoint Tests' {
     }
     
     Context 'Resource Move - FileShare' {
-        It 'Should validate FileShare can be moved to another resource group' {
+        It 'Should validate FileShare can be moved to another resource group' -Skip:$script:skipPrivateEndpointTests {
             {
                 $fileShare = Get-AzFileShare -ResourceName $script:fileSharePeName `
                                              -ResourceGroupName $env.resourceGroup
@@ -280,7 +297,7 @@ Describe 'FileShare-PrivateEndpoint Tests' {
     }
     
     Context 'Resource Move - Virtual Network' {
-        It 'Should validate Virtual Network resource before move' {
+        It 'Should validate Virtual Network resource before move' -Skip:$script:skipPrivateEndpointTests {
             {
                 $vnet = Get-AzVirtualNetwork -Name $script:vnetName `
                                              -ResourceGroupName $env.resourceGroup
@@ -293,7 +310,7 @@ Describe 'FileShare-PrivateEndpoint Tests' {
             } | Should -Not -Throw
         }
         
-        It 'Should prepare VNet for move (remove dependencies)' {
+        It 'Should prepare VNet for move (remove dependencies)' -Skip:$script:skipPrivateEndpointTests {
             # Note: Virtual Networks with Private Endpoints cannot be moved
             # PE must be deleted first, then VNet can be moved
             Write-Host "Note: VNet with active Private Endpoints cannot be moved directly"
@@ -332,7 +349,7 @@ Describe 'FileShare-PrivateEndpoint Tests' {
     }
     
     Context 'Resource Move - Private Endpoint' {
-        It 'Should validate Private Endpoint resource before move' {
+        It 'Should validate Private Endpoint resource before move' -Skip:$script:skipPrivateEndpointTests {
             {
                 $pe = Get-AzPrivateEndpoint -Name $script:privateEndpointName `
                                             -ResourceGroupName $env.resourceGroup
@@ -370,7 +387,7 @@ Describe 'FileShare-PrivateEndpoint Tests' {
     }
     
     Context 'Complete Resource Move Scenario' {
-        It 'Should document complete cross-RG move procedure' {
+        It 'Should document complete cross-RG move procedure' -Skip:$script:skipPrivateEndpointTests {
             Write-Host "`nComplete Resource Move Procedure:"
             Write-Host "================================="
             Write-Host "1. Create secondary resource group (completed)"

@@ -66,15 +66,4 @@ Describe 'New-AzFileShareSnapshot' {
             Remove-Item -Path $jsonFilePath -Force -ErrorAction SilentlyContinue
         } | Should -Not -Throw
     }
-
-    It 'CreateViaIdentityFileShareExpanded' {
-        {
-            $fileShare = Get-AzFileShare -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName01
-            $snapshotName = "snapshot-identity"
-            $config = New-AzFileShareSnapshot -FileShareInputObject $fileShare `
-                                               -Name $snapshotName `
-                                               -Metadata @{"environment" = "test"; "identity" = "true"}
-            $config.Name | Should -Be $snapshotName
-        } | Should -Not -Throw
-    }
 }

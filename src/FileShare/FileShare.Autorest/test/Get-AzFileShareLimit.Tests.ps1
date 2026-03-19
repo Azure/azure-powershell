@@ -24,8 +24,12 @@ Describe 'Get-AzFileShareLimit' {
 
     It 'GetViaIdentity' {
         {
-            $inputObj = @{ Location = $env.location }
-            $config = Get-AzFileShareLimit -InputObject $inputObj
+            $inputObj = @{ 
+                Location = $env.location
+                SubscriptionId = $env.SubscriptionId
+            }
+            $identity = [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.FileShareIdentity]$inputObj
+            $config = Get-AzFileShareLimit -InputObject $identity
             $config | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
     }

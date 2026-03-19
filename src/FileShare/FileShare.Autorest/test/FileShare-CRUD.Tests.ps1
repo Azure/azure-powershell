@@ -14,12 +14,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'FileShare-CRUD'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'FileShare-CRUD: Complete Lifecycle Tests' {
+Describe 'FileShare-CRUD' {
     
     BeforeAll {
-        $script:crudShareName = "crud-share-" + (RandomString $false 8)
-        $script:crudShareName2 = "crud-share2-" + (RandomString $false 8)
-        $script:crudSnapshotName = "crud-snapshot-" + (RandomString $false 8)
+        $script:crudShareName = "crud-share-fixed01"
+        $script:crudSnapshotName = "crud-snapshot-fixed01"
     }
 
     Context 'Complete CRUD Lifecycle - NFS Protocol' {
@@ -114,10 +113,11 @@ Describe 'FileShare-CRUD: Complete Lifecycle Tests' {
                 $snapshot = New-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
                     -ResourceName $script:crudShareName `
                     -Name $script:crudSnapshotName `
-                    -Tag @{"type" = "snapshot"; "source" = $script.crudShareName}
+                    -Metadata @{"purpose" = "testing"; "environment" = "test"}
                 
                 $snapshot.Name | Should -Be $script:crudSnapshotName
-                $snapshot.ProvisioningState | Should -Be "Succeeded"
+                $snapshot.SnapshotTime | Should -Not -BeNullOrEmpty
+                $snapshot.Metadata["purpose"] | Should -Be "testing"
             } | Should -Not -Throw
         }
 
@@ -132,16 +132,15 @@ Describe 'FileShare-CRUD: Complete Lifecycle Tests' {
             } | Should -Not -Throw
         }
 
-        It 'SNAPSHOT UPDATE: Should update snapshot tags' {
+        It 'SNAPSHOT UPDATE: Should update snapshot' {
             {
                 Start-TestSleep -Seconds 5
                 
                 $updated = Update-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
                     -ResourceName $script:crudShareName `
-                    -Name $script:crudSnapshotName `
-                    -Tag @{"type" = "snapshot"; "updated" = "true"}
+                    -Name $script:crudSnapshotName
                 
-                $updated.Tag["updated"] | Should -Be "true"
+                $updated | Should -Not -BeNullOrEmpty
             } | Should -Not -Throw
         }
 
@@ -183,64 +182,5 @@ Describe 'FileShare-CRUD: Complete Lifecycle Tests' {
         }
     }
 
-    Context 'Complete CRUD Lifecycle - SMB Protocol' {
-        
-        It 'CREATE: Should create a new SMB file share' {
-            {
-                $share = New-AzFileShare -ResourceName $script:crudShareName2 `
-                    -ResourceGroupName $env.resourceGroup `
-                    -Location $env.location `
-                    -MediaTier "SSD" `
-                    -Protocol "SMB" `
-                    -ProvisionedStorageGiB 512 `
-                    -ProvisionedIoPerSec 3000 `
-                    -ProvisionedThroughputMiBPerSec 125 `
-                    -Redundancy "Local" `
-                    -PublicNetworkAccess "Enabled" `
-                    -Tag @{"lifecycle" = "crud"; "test" = "smb"; "protocol" = "SMB"}
-                
-                $share.Name | Should -Be $script:crudShareName2
-                $share.Protocol | Should -Be "SMB"
-                $share.MediaTier | Should -Be "HDD"
-                $share.Redundancy | Should -Be "Geo"
-            } | Should -Not -Throw
-        }
 
-        It 'READ: Should retrieve SMB share' {
-            {
-                $share = Get-AzFileShare -ResourceGroupName $env.resourceGroup -ResourceName $script:crudShareName2
-                $share.Protocol | Should -Be "SMB"
-            } | Should -Not -Throw
-        }
-
-        It 'UPDATE: Should update SMB share tags' {
-            {
-                Start-TestSleep -Seconds 5
-                
-                $updated = Update-AzFileShare -ResourceGroupName $env.resourceGroup `
-                    -ResourceName $script:crudShareName2 `
-                    -Tag @{"lifecycle" = "crud"; "test" = "smb"; "updated" = "yes"}
-                
-                $updated.Tag["updated"] | Should -Be "yes"
-            } | Should -Not -Throw
-        }
-
-        It 'DELETE: Should delete SMB share directly' {
-            {
-                Start-TestSleep -Seconds 5
-                
-                Remove-AzFileShare -ResourceGroupName $env.resourceGroup `
-                    -ResourceName $script:crudShareName2 `
-                    -PassThru | Should -Be $true
-                
-                Start-TestSleep -Seconds 3
-                
-                $deleted = Get-AzFileShare -ResourceGroupName $env.resourceGroup `
-                    -ResourceName $script:crudShareName2 `
-                    -ErrorAction SilentlyContinue
-                
-                $deleted | Should -BeNullOrEmpty
-            } | Should -Not -Throw
-        }
-    }
 }

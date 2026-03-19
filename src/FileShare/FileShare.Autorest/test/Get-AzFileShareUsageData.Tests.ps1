@@ -17,15 +17,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFileShareUsageData'))
 Describe 'Get-AzFileShareUsageData' {
     It 'Get' {
         {
-            $config = Get-AzFileShareUsageData -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName01
+            $config = Get-AzFileShareUsageData -Location $env.location
             $config | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' {
         {
-            $fileShare = Get-AzFileShare -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName01
-            $config = Get-AzFileShareUsageData -InputObject $fileShare
+            $inputObj = @{
+                Location = $env.location
+                SubscriptionId = $env.SubscriptionId
+            }
+            $identity = [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.FileShareIdentity]$inputObj
+            $config = Get-AzFileShareUsageData -InputObject $identity
             $config | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
     }

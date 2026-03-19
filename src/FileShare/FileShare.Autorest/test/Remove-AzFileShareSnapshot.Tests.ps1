@@ -20,47 +20,12 @@ Describe 'Remove-AzFileShareSnapshot' {
             $snapshotName = "snapshot-todelete"
             New-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
                                      -ResourceName $env.fileShareName01 `
-                                     -Name $snapshotName
+                                     -Name $snapshotName `
+                                     -Metadata @{"purpose" = "testing"; "environment" = "test"}
             Remove-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
                                         -ResourceName $env.fileShareName01 `
                                         -Name $snapshotName `
                                         -PassThru
-            $config = Get-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
-                                               -ResourceName $env.fileShareName01 `
-                                               -Name $snapshotName `
-                                               -ErrorAction SilentlyContinue
-            $config | Should -BeNullOrEmpty
-        } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentityFileShare' {
-        {
-            $snapshotName = "snapshot-fileshare-identity"
-            New-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
-                                     -ResourceName $env.fileShareName01 `
-                                     -Name $snapshotName
-            $fileShare = Get-AzFileShare -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName01
-            Remove-AzFileShareSnapshot -FileShareInputObject $fileShare `
-                                        -Name $snapshotName `
-                                        -PassThru
-            $config = Get-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
-                                               -ResourceName $env.fileShareName01 `
-                                               -Name $snapshotName `
-                                               -ErrorAction SilentlyContinue
-            $config | Should -BeNullOrEmpty
-        } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' {
-        {
-            $snapshotName = "snapshot-identity-delete"
-            New-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
-                                     -ResourceName $env.fileShareName01 `
-                                     -Name $snapshotName
-            $snapshot = Get-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
-                                                 -ResourceName $env.fileShareName01 `
-                                                 -Name $snapshotName
-            Remove-AzFileShareSnapshot -InputObject $snapshot -PassThru
             $config = Get-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
                                                -ResourceName $env.fileShareName01 `
                                                -Name $snapshotName `

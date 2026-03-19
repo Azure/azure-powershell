@@ -18,23 +18,24 @@ Describe 'Get-AzFileShareProvisioningRecommendation' {
     It 'GetExpanded' {
         {
             $config = Get-AzFileShareProvisioningRecommendation -Location $env.location `
-                                                                 -TargetStorageGiB 1000 `
-                                                                 -TargetIoPerSec 3000 `
-                                                                 -TargetThroughputMiBPerSec 125
+                                                                 -ProvisionedStorageGiB 1000
             $config | Should -Not -BeNullOrEmpty
+            $config.ProvisionedIOPerSec | Should -Not -BeNullOrEmpty
+            $config.ProvisionedThroughputMiBPerSec | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
     }
 
     It 'GetViaJsonString' {
         {
             $jsonString = @{
-                targetStorageGiB = 1000
-                targetIoPerSec = 3000
-                targetThroughputMiBPerSec = 125
+                properties = @{
+                    provisionedStorageGiB = 1000
+                }
             } | ConvertTo-Json -Depth 10
             
             $config = Get-AzFileShareProvisioningRecommendation -Location $env.location -JsonString $jsonString
             $config | Should -Not -BeNullOrEmpty
+            $config.ProvisionedIOPerSec | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
     }
 
@@ -42,14 +43,15 @@ Describe 'Get-AzFileShareProvisioningRecommendation' {
         {
             $jsonFilePath = Join-Path $PSScriptRoot 'test-recommendation.json'
             $jsonContent = @{
-                targetStorageGiB = 1000
-                targetIoPerSec = 3000
-                targetThroughputMiBPerSec = 125
+                properties = @{
+                    provisionedStorageGiB = 1000
+                }
             } | ConvertTo-Json -Depth 10
             Set-Content -Path $jsonFilePath -Value $jsonContent
             
             $config = Get-AzFileShareProvisioningRecommendation -Location $env.location -JsonFilePath $jsonFilePath
             $config | Should -Not -BeNullOrEmpty
+            $config.ProvisionedIOPerSec | Should -Not -BeNullOrEmpty
             
             Remove-Item -Path $jsonFilePath -Force -ErrorAction SilentlyContinue
         } | Should -Not -Throw
@@ -58,36 +60,39 @@ Describe 'Get-AzFileShareProvisioningRecommendation' {
     It 'Get' {
         {
             $requestBody = @{
-                targetStorageGiB = 1000
-                targetIoPerSec = 3000
-                targetThroughputMiBPerSec = 125
+                ProvisionedStorageGiB = 1000
             }
             $config = Get-AzFileShareProvisioningRecommendation -Location $env.location -Body $requestBody
             $config | Should -Not -BeNullOrEmpty
+            $config.ProvisionedIOPerSec | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
     }
 
     It 'GetViaIdentityExpanded' {
         {
-            $inputObj = @{ Location = $env.location }
+            $inputObj = @{ 
+                Location = $env.location
+                SubscriptionId = $env.SubscriptionId
+            }
             $config = Get-AzFileShareProvisioningRecommendation -InputObject $inputObj `
-                                                                 -TargetStorageGiB 1000 `
-                                                                 -TargetIoPerSec 3000 `
-                                                                 -TargetThroughputMiBPerSec 125
+                                                                 -ProvisionedStorageGiB 1000
             $config | Should -Not -BeNullOrEmpty
+            $config.ProvisionedIOPerSec | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' {
         {
-            $inputObj = @{ Location = $env.location }
+            $inputObj = @{ 
+                Location = $env.location
+                SubscriptionId = $env.SubscriptionId
+            }
             $requestBody = @{
-                targetStorageGiB = 1000
-                targetIoPerSec = 3000
-                targetThroughputMiBPerSec = 125
+                ProvisionedStorageGiB = 1000
             }
             $config = Get-AzFileShareProvisioningRecommendation -InputObject $inputObj -Body $requestBody
             $config | Should -Not -BeNullOrEmpty
+            $config.ProvisionedIOPerSec | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
     }
 }

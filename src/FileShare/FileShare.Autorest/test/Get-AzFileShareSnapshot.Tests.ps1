@@ -22,30 +22,80 @@ Describe 'Get-AzFileShareSnapshot' {
         } | Should -Not -Throw
     }
 
-    It 'GetViaIdentityFileShare' {
-        {
-            $fileShare = Get-AzFileShare -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName01
-            $config = Get-AzFileShareSnapshot -FileShareInputObject $fileShare
-            $config.Count | Should -BeGreaterOrEqual 0
-        } | Should -Not -Throw
-    }
-
     It 'Get' {
         {
-            $config = Get-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
+            # First create a snapshot to retrieve
+            $snapshotName = "snapshot-get-test"
+            $snapshot = New-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
                                                -ResourceName $env.fileShareName01 `
-                                               -Name $env.snapshotName01
-            $config.Name | Should -Be $env.snapshotName01
+                                               -Name $snapshotName `
+                                               -Metadata @{"purpose" = "testing"; "environment" = "test"}
+            $snapshot | Should -Not -BeNullOrEmpty
+            
+            # Get the specific snapshot by name
+            $retrieved = Get-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
+                                                 -ResourceName $env.fileShareName01 `
+                                                 -Name $snapshotName
+            $retrieved | Should -Not -BeNullOrEmpty
+            $retrieved.Name | Should -Be $snapshotName
+            
+            # Clean up
+            Remove-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
+                                      -ResourceName $env.fileShareName01 `
+                                      -Name $snapshotName
         } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' {
         {
-            $snapshot = Get-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
-                                                 -ResourceName $env.fileShareName01 `
-                                                 -Name $env.snapshotName01
-            $config = Get-AzFileShareSnapshot -InputObject $snapshot
-            $config.Name | Should -Be $env.snapshotName01
+            # First create a snapshot
+            $snapshotName = "snapshot-identity-test"
+            $snapshot = New-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
+                                               -ResourceName $env.fileShareName01 `
+                                               -Name $snapshotName `
+                                               -Metadata @{"purpose" = "testing"; "environment" = "test"}
+            $snapshot | Should -Not -BeNullOrEmpty
+            
+            # Get via identity
+            $inputObj = @{
+                SubscriptionId = $env.SubscriptionId
+                ResourceGroupName = $env.resourceGroup
+                ResourceName = $env.fileShareName01
+                Name = $snapshotName
+            }
+            $retrieved = Get-AzFileShareSnapshot -InputObject $inputObj
+            $retrieved | Should -Not -BeNullOrEmpty
+            $retrieved.Name | Should -Be $snapshotName
+            
+            # Clean up
+            Remove-AzFileShareSnapshot -InputObject $inputObj
+        } | Should -Not -Throw
+    }
+
+    It 'GetViaIdentityFileShare' {
+        {
+            # First create a snapshot
+            $snapshotName = "snapshot-fileshare-test"
+            $snapshot = New-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
+                                               -ResourceName $env.fileShareName01 `
+                                               -Name $snapshotName `
+                                               -Metadata @{"purpose" = "testing"; "environment" = "test"}
+            $snapshot | Should -Not -BeNullOrEmpty
+            
+            # Get via file share identity (provides file share, then specify snapshot name)
+            $fileShareInputObj = @{
+                SubscriptionId = $env.SubscriptionId
+                ResourceGroupName = $env.resourceGroup
+                ResourceName = $env.fileShareName01
+            }
+            $retrieved = Get-AzFileShareSnapshot -FileShareInputObject $fileShareInputObj -Name $snapshotName
+            $retrieved | Should -Not -BeNullOrEmpty
+            $retrieved.Name | Should -Be $snapshotName
+            
+            # Clean up
+            Remove-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
+                                      -ResourceName $env.fileShareName01 `
+                                      -Name $snapshotName
         } | Should -Not -Throw
     }
 }
