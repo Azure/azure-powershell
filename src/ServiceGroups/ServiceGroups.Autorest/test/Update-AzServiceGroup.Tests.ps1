@@ -15,19 +15,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzServiceGroup'))
 }
 
 Describe 'Update-AzServiceGroup' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $serviceGroup = Update-AzServiceGroup -Name $env.ServiceGroupNameToUpdate -DisplayName 'Updated Display Name' -Tag @{"env"="test"}
+        $serviceGroup | Should -Not -BeNullOrEmpty
+        $serviceGroup.DisplayName | Should -Be 'Updated Display Name'
+        $serviceGroup.Tag.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'UpdateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaJsonString' {
+        $jsonString = '{"properties":{"displayName":"Updated Via JSON"}}'
+        $serviceGroup = Update-AzServiceGroup -Name $env.ServiceGroupNameToUpdate -JsonString $jsonString
+        $serviceGroup | Should -Not -BeNullOrEmpty
+        $serviceGroup.DisplayName | Should -Be 'Updated Via JSON'
     }
 
-    It 'UpdateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $sgObj = Get-AzServiceGroup -Name $env.ServiceGroupNameToUpdate
+        $serviceGroup = Update-AzServiceGroup -InputObject $sgObj -DisplayName 'Updated Via Identity'
+        $serviceGroup | Should -Not -BeNullOrEmpty
+        $serviceGroup.DisplayName | Should -Be 'Updated Via Identity'
     }
 }

@@ -39,18 +39,59 @@ if ($UsePreviousConfigForRecord) {
 # example: $val = $env.AddWithCache('key', $val, $true)
 $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
 function setupEnv() {
-    # Preload subscriptionId and tenant from context, which will be used in test
-    # as default. You could change them if needed.
-    $env.SubscriptionId = (Get-AzContext).Subscription.Id
-    $env.Tenant = (Get-AzContext).Tenant.Id
-    # For any resources you created for test, you should add it to $env here.
+    Write-Host -ForegroundColor Magenta "Setting up test environment"
+    $env['SubscriptionId'] = (Get-AzContext).Subscription.Id
+    $env['Tenant'] = (Get-AzContext).Tenant.Id
+    $env['RandomString'] = RandomString -allChars $false -len 6
+
+    # Common parent: tenant-level service group
+    $env['TenantParentId'] = "/providers/Microsoft.Management/serviceGroups/$($env.Tenant)"
+    $env['ServiceGroupDisplayName'] = 'Az PS Test Service Group'
+
+    # --- Names for New tests (NOT created here; the tests create them) ---
+    $env['ServiceGroupNameForNew'] = 'testsgnew' + $env.RandomString
+    $env['ServiceGroupNameForNewJson'] = 'testsgnewjson' + $env.RandomString
+    $env['ChildServiceGroupNameForNew'] = 'testsgchildnew' + $env.RandomString
+
+    # --- Resources for Get tests ---
+    $env['ServiceGroupNameForGet'] = 'testsgget' + $env.RandomString
+    New-AzServiceGroup -Name $env.ServiceGroupNameForGet -DisplayName $env.ServiceGroupDisplayName -ParentResourceId $env.TenantParentId
+
+    # --- Resources for Update tests ---
+    $env['ServiceGroupNameToUpdate'] = 'testsgtoupdate' + $env.RandomString
+    New-AzServiceGroup -Name $env.ServiceGroupNameToUpdate -DisplayName 'Az PS SG To Update' -ParentResourceId $env.TenantParentId
+
+    # --- Resources for Remove tests ---
+    $env['ServiceGroupNameToDelete'] = 'testsgtodelete' + $env.RandomString
+    New-AzServiceGroup -Name $env.ServiceGroupNameToDelete -DisplayName 'Az PS SG To Delete' -ParentResourceId $env.TenantParentId
+
+    $env['ServiceGroupNameToDeleteViaIdentity'] = 'testsgdeletevi' + $env.RandomString
+    New-AzServiceGroup -Name $env.ServiceGroupNameToDeleteViaIdentity -DisplayName 'Az PS SG To Delete Via Identity' -ParentResourceId $env.TenantParentId
+
+    # --- Resources for Ancestor tests (child under ServiceGroupNameForGet) ---
+    $env['ParentServiceGroupId'] = "/providers/Microsoft.Management/serviceGroups/$($env.ServiceGroupNameForGet)"
+    $env['ChildServiceGroupName'] = 'testsgchild' + $env.RandomString
+    New-AzServiceGroup -Name $env.ChildServiceGroupName -DisplayName 'Az PS Child Service Group' -ParentResourceId $env.ParentServiceGroupId
+
+    # Write env file
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
-    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
+    Write-Host -ForegroundColor Magenta "Writing environment file $envFile with $($env.Count) entries"
+    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env -Depth 100)
 }
 function cleanupEnv() {
-    # Clean resources you create for testing
+    Write-Host -ForegroundColor Magenta "Cleaning up test environment"
+    # Delete children before parents
+    Remove-AzServiceGroup -Name $env.ChildServiceGroupName -ErrorAction SilentlyContinue
+    Remove-AzServiceGroup -Name $env.ChildServiceGroupNameForNew -ErrorAction SilentlyContinue
+    Remove-AzServiceGroup -Name $env.ServiceGroupNameForNewJson -ErrorAction SilentlyContinue
+    Remove-AzServiceGroup -Name $env.ServiceGroupNameForNew -ErrorAction SilentlyContinue
+    Remove-AzServiceGroup -Name $env.ServiceGroupNameToDeleteViaIdentity -ErrorAction SilentlyContinue
+    Remove-AzServiceGroup -Name $env.ServiceGroupNameToDelete -ErrorAction SilentlyContinue
+    Remove-AzServiceGroup -Name $env.ServiceGroupNameToUpdate -ErrorAction SilentlyContinue
+    Remove-AzServiceGroup -Name $env.ServiceGroupNameForGet -ErrorAction SilentlyContinue
+    Write-Host -ForegroundColor Magenta "Finished cleaning up test environment"
 }
 

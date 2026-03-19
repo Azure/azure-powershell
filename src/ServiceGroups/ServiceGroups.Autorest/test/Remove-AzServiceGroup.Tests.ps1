@@ -15,11 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzServiceGroup'))
 }
 
 Describe 'Remove-AzServiceGroup' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        Remove-AzServiceGroup -Name $env.ServiceGroupNameToDelete
+        { Get-AzServiceGroup -Name $env.ServiceGroupNameToDelete } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $sg = Get-AzServiceGroup -Name $env.ServiceGroupNameToDeleteViaIdentity
+        Remove-AzServiceGroup -InputObject $sg
+        { Get-AzServiceGroup -Name $env.ServiceGroupNameToDeleteViaIdentity } | Should -Throw
     }
 }

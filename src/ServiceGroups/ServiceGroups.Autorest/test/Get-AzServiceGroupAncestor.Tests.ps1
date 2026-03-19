@@ -15,7 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzServiceGroupAncestor'))
 }
 
 Describe 'Get-AzServiceGroupAncestor' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $ancestors = Get-AzServiceGroupAncestor -ServiceGroupName $env.ServiceGroupNameForGet
+        $ancestors | Should -Not -BeNullOrEmpty
+        $ancestors.Count | Should -BeGreaterOrEqual 1
+    }
+
+    It 'ListForChild' {
+        $ancestors = Get-AzServiceGroupAncestor -ServiceGroupName $env.ChildServiceGroupName
+        $ancestors | Should -Not -BeNullOrEmpty
+        $ancestors.Count | Should -BeGreaterOrEqual 2
     }
 }

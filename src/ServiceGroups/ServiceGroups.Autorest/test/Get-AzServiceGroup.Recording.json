@@ -1,0 +1,143 @@
+{
+  "Get-AzServiceGroup+[NoContext]+Get+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/testsggetmzho1i?api-version=2024-02-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/testsggetmzho1i?api-version=2024-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "b53715a4-ac5e-4f6f-b38b-3614f32dd665" ],
+        "CommandName": [ "Get-AzServiceGroup" ],
+        "FullCommandName": [ "Get-AzServiceGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.6.0", "Az.ServiceGroups/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "" ],
+        "client-request-id": [ "869728c4-3002-4ba3-aab2-73dd98e01c0b" ],
+        "Request-Id": [ "869728c4-3002-4ba3-aab2-73dd98e01c0b" ],
+        "x-ba-restapi": [ "3.2026.0302.1" ],
+        "x-ms-request-id": [ "eastus2:869728c4-3002-4ba3-aab2-73dd98e01c0b" ],
+        "mise-correlation-id": [ "d33546fa-5345-478b-8732-90ac5a49abd5" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-correlation-request-id": [ "869728c4-3002-4ba3-aab2-73dd98e01c0b" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20260319T153649Z:869728c4-3002-4ba3-aab2-73dd98e01c0b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 94FF1714CEFC470B8E6A1FAD40AD48C3 Ref B: BN1AA2051012045 Ref C: 2026-03-19T15:36:49Z" ],
+        "Date": [ "Thu, 19 Mar 2026 15:36:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "336" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/testsggetmzho1i\",\"type\":\"Microsoft.Management/serviceGroups\",\"name\":\"testsggetmzho1i\",\"properties\":{\"displayName\":\"Az PS Test Service Group\",\"parent\":{\"resourceId\":\"/providers/Microsoft.Management/serviceGroups/72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzServiceGroup+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/testsggetmzho1i?api-version=2024-02-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/testsggetmzho1i?api-version=2024-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "4015e0de-762a-454a-823a-2e86c2d80a13" ],
+        "CommandName": [ "Get-AzServiceGroup" ],
+        "FullCommandName": [ "Get-AzServiceGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.6.0", "Az.ServiceGroups/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "" ],
+        "client-request-id": [ "72d69fb0-c47a-46da-a1b8-c1e4223ae714" ],
+        "Request-Id": [ "72d69fb0-c47a-46da-a1b8-c1e4223ae714" ],
+        "x-ba-restapi": [ "3.2026.0302.1" ],
+        "x-ms-request-id": [ "eastus:72d69fb0-c47a-46da-a1b8-c1e4223ae714" ],
+        "mise-correlation-id": [ "bb5afe9e-b518-40fa-842c-e50462b46152" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-correlation-request-id": [ "72d69fb0-c47a-46da-a1b8-c1e4223ae714" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260319T153650Z:72d69fb0-c47a-46da-a1b8-c1e4223ae714" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 44DCE3FF6CE040348748280C021F9B7F Ref B: BN1AA2051012045 Ref C: 2026-03-19T15:36:49Z" ],
+        "Date": [ "Thu, 19 Mar 2026 15:36:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "336" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/testsggetmzho1i\",\"type\":\"Microsoft.Management/serviceGroups\",\"name\":\"testsggetmzho1i\",\"properties\":{\"displayName\":\"Az PS Test Service Group\",\"parent\":{\"resourceId\":\"/providers/Microsoft.Management/serviceGroups/72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzServiceGroup+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/testsggetmzho1i?api-version=2024-02-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/testsggetmzho1i?api-version=2024-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "041b5078-5f27-4ea0-8e46-9e6af4aa4133" ],
+        "CommandName": [ "Get-AzServiceGroup" ],
+        "FullCommandName": [ "Get-AzServiceGroup_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.6.0", "Az.ServiceGroups/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "" ],
+        "client-request-id": [ "7654a120-886a-44c2-97de-3334277845e5" ],
+        "Request-Id": [ "7654a120-886a-44c2-97de-3334277845e5" ],
+        "x-ba-restapi": [ "3.2026.0302.1" ],
+        "x-ms-request-id": [ "eastus:7654a120-886a-44c2-97de-3334277845e5" ],
+        "mise-correlation-id": [ "ab7bfc95-bfb5-49aa-8953-8e465c626df5" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-correlation-request-id": [ "7654a120-886a-44c2-97de-3334277845e5" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260319T153650Z:7654a120-886a-44c2-97de-3334277845e5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 135433E4F2DD4A7E883316249482F1EF Ref B: BN1AA2051012045 Ref C: 2026-03-19T15:36:50Z" ],
+        "Date": [ "Thu, 19 Mar 2026 15:36:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "336" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/testsggetmzho1i\",\"type\":\"Microsoft.Management/serviceGroups\",\"name\":\"testsggetmzho1i\",\"properties\":{\"displayName\":\"Az PS Test Service Group\",\"parent\":{\"resourceId\":\"/providers/Microsoft.Management/serviceGroups/72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

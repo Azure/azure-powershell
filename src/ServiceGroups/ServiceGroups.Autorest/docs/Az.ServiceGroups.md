@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ServiceGroups
-Module Guid: d2e2bdb3-c508-4621-8659-e7a9542a3447
+Module Guid: f41823c6-d8a5-433a-96b0-8e67f7a8dccd
 Download Help Link: https://learn.microsoft.com/powershell/module/az.servicegroups
 Help Version: 1.0.0.0
 Locale: en-US

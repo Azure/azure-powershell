@@ -29,27 +29,25 @@ Delete a ServiceGroup
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a service group by name
 ```powershell
-{{ Add code here }}
+Remove-AzServiceGroup -Name "Contoso"
+```
+
+Removes the service group named 'Contoso'.
+The delete operation is asynchronous; use the -AsJob parameter if you need to track completion.
+
+### Example 2: Remove a service group using pipeline input
+```powershell
+Get-AzServiceGroup -Name "Contoso" | Remove-AzServiceGroup -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets the service group 'Contoso' and pipes it to Remove-AzServiceGroup.
+The -PassThru switch outputs True when the deletion is successful.
 
 ## PARAMETERS
 

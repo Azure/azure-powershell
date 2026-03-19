@@ -15,27 +15,27 @@ Update a serviceGroup
 ### UpdateExpanded (Default)
 ```
 Update-AzServiceGroup -Name <String> [-DisplayName <String>] [-ParentResourceId <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzServiceGroup -Name <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzServiceGroup -Name <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzServiceGroup -InputObject <IServiceGroupsIdentity> [-DisplayName <String>]
  [-ParentResourceId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,27 +43,40 @@ Update a serviceGroup
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the display name of a service group
 ```powershell
-{{ Add code here }}
+Update-AzServiceGroup -Name "Contoso" -DisplayName "Contoso Group Updated"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+DisplayName   : Contoso Group Updated
+Id            : /providers/Microsoft.Management/serviceGroups/Contoso
+Kind          :
+Name          : Contoso
+ParentResourceId : /providers/Microsoft.Management/serviceGroups/00000000-0000-0000-0000-000000000000
+ProvisioningState : Succeeded
+Type          : Microsoft.Management/serviceGroups
 ```
 
-{{ Add description here }}
+Updates the display name of the 'Contoso' service group.
+The update operation is asynchronous.
 
-### Example 2: {{ Add title here }}
+### Example 2: Move a service group under a different parent
 ```powershell
-{{ Add code here }}
+Update-AzServiceGroup -Name "ContosoChild" -ParentResourceId "/providers/Microsoft.Management/serviceGroups/NewParent"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+DisplayName   : Contoso Child Group
+Id            : /providers/Microsoft.Management/serviceGroups/ContosoChild
+Kind          :
+Name          : ContosoChild
+ParentResourceId : /providers/Microsoft.Management/serviceGroups/NewParent
+ProvisioningState : Succeeded
+Type          : Microsoft.Management/serviceGroups
 ```
 
-{{ Add description here }}
+Moves the 'ContosoChild' service group under a different parent service group by updating the ParentResourceId property.
 
 ## PARAMETERS
 
@@ -197,21 +210,6 @@ For example, '/providers/Microsoft.Management/serviceGroups/TestServiceGroup'
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -15,11 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzServiceGroup'))
 }
 
 Describe 'Get-AzServiceGroup' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $serviceGroup = Get-AzServiceGroup -Name $env.ServiceGroupNameForGet
+        $serviceGroup | Should -Not -BeNullOrEmpty
+        $serviceGroup.Name | Should -Be $env.ServiceGroupNameForGet
+        $serviceGroup.DisplayName | Should -Be $env.ServiceGroupDisplayName
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $serviceGroupObj = Get-AzServiceGroup -Name $env.ServiceGroupNameForGet
+        $serviceGroup = Get-AzServiceGroup -InputObject $serviceGroupObj
+        $serviceGroup | Should -Not -BeNullOrEmpty
+        $serviceGroup.Name | Should -Be $env.ServiceGroupNameForGet
+        $serviceGroup.DisplayName | Should -Be $env.ServiceGroupDisplayName
     }
 }

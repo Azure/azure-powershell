@@ -15,15 +15,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzServiceGroup'))
 }
 
 Describe 'New-AzServiceGroup' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $serviceGroup = New-AzServiceGroup -Name $env.ServiceGroupNameForNew -DisplayName $env.ServiceGroupDisplayName -ParentResourceId $env.TenantParentId
+        $serviceGroup | Should -Not -BeNullOrEmpty
+        $serviceGroup.Name | Should -Be $env.ServiceGroupNameForNew
+        $serviceGroup.DisplayName | Should -Be $env.ServiceGroupDisplayName
     }
 
-    It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaJsonString' {
+        $jsonString = '{"properties":{"displayName":"Test SG From JSON","parent":{"resourceId":"' + $env.TenantParentId + '"}}}'
+        $serviceGroup = New-AzServiceGroup -Name $env.ServiceGroupNameForNewJson -JsonString $jsonString
+        $serviceGroup | Should -Not -BeNullOrEmpty
+        $serviceGroup.Name | Should -Be $env.ServiceGroupNameForNewJson
     }
 
-    It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateWithNonTenantParent' {
+        $serviceGroup = New-AzServiceGroup -Name $env.ChildServiceGroupNameForNew -DisplayName 'Child Service Group' -ParentResourceId $env.ParentServiceGroupId
+        $serviceGroup | Should -Not -BeNullOrEmpty
+        $serviceGroup.Name | Should -Be $env.ChildServiceGroupNameForNew
     }
 }

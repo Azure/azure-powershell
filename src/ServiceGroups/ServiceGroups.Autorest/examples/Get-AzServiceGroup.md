@@ -1,22 +1,35 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a service group by name
 ```powershell
-{{ Add code here }}
+Get-AzServiceGroup -Name "Contoso"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+DisplayName   : Contoso Group
+Id            : /providers/Microsoft.Management/serviceGroups/Contoso
+Kind          :
+Name          : Contoso
+ParentResourceId : /providers/Microsoft.Management/serviceGroups/00000000-0000-0000-0000-000000000000
+ProvisioningState : Succeeded
+Type          : Microsoft.Management/serviceGroups
 ```
 
-{{ Add description here }}
+Gets the details of the service group named 'Contoso', including its display name, parent, and provisioning state.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a service group using identity input
 ```powershell
-{{ Add code here }}
+$inputObject = @{ServiceGroupName = "Contoso"}
+Get-AzServiceGroup -InputObject $inputObject
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+DisplayName   : Contoso Group
+Id            : /providers/Microsoft.Management/serviceGroups/Contoso
+Kind          :
+Name          : Contoso
+ParentResourceId : /providers/Microsoft.Management/serviceGroups/00000000-0000-0000-0000-000000000000
+ProvisioningState : Succeeded
+Type          : Microsoft.Management/serviceGroups
 ```
 
-{{ Add description here }}
+Gets a service group by constructing an identity object as input.
 
